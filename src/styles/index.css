@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: #020617; /* slate-950 — matches the app gradient base */
+  color: #e2e8f0;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Beat/view enter animations. Applied to freshly-keyed elements so they replay
+   on mount. Disabled entirely under prefers-reduced-motion. */
+@keyframes cf-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.cf-enter {
+  animation: cf-enter 0.3s ease-out both;
+}
+
+.cf-enter-sm {
+  animation: cf-enter 0.32s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cf-enter,
+  .cf-enter-sm {
+    animation: none;
+  }
+}

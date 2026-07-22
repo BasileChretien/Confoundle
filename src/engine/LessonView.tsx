@@ -29,7 +29,7 @@ export function LessonView({
   return (
     <section className="flex flex-col gap-4">
       <header className="flex flex-col gap-2">
-        <Badge tone="brand">The skill</Badge>
+        <Badge tone="brand">{t({ en: "The skill" })}</Badge>
         <h2 className="font-display text-[30px] font-semibold leading-[1.05] text-ink">
           {t(lesson.skillName)}
         </h2>
@@ -38,7 +38,7 @@ export function LessonView({
 
       <div className="flex flex-col gap-1.5">
         <span className="font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-mute">
-          Where this shows up
+          {t({ en: "Where this shows up" })}
         </span>
         <TagChips tags={puzzle.tags} />
       </div>
@@ -50,7 +50,7 @@ export function LessonView({
       ) : null}
 
       <div className="rounded-lg border border-rule bg-paper-2 p-4 text-xs leading-relaxed text-ink-soft">
-        <Badge tone="ink">Source</Badge>
+        <Badge tone="ink">{t({ en: "Source" })}</Badge>
         <p className="mt-1.5">{provenance.source}</p>
         {sourceLink ? (
           <a
@@ -71,7 +71,7 @@ export function LessonView({
         <details className="group rounded-lg border border-rule bg-paper-2">
           <summary className="flex cursor-pointer list-none items-center justify-between gap-2 rounded-lg px-4 py-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand [&::-webkit-details-marker]:hidden">
             <span className="font-sans text-[11px] font-semibold uppercase tracking-eyebrow text-ink-soft">
-              See it in the wild
+              {t({ en: "See it in the wild" })}
             </span>
             <svg
               className="h-4 w-4 text-ink-mute transition-transform duration-200 group-open:rotate-180 motion-reduce:transition-none"
@@ -93,7 +93,7 @@ export function LessonView({
             {lesson.howItWorks ? (
               <div>
                 <div className="mb-1 font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-mute">
-                  Why it happens
+                  {t({ en: "Why it happens" })}
                 </div>
                 <p className="text-[14px] leading-relaxed text-ink-soft">
                   {t(lesson.howItWorks)}
@@ -104,7 +104,7 @@ export function LessonView({
             {examples.length > 0 ? (
               <div className="flex flex-col gap-3.5">
                 <div className="font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-mute">
-                  Same trap, other places
+                  {t({ en: "Same trap, other places" })}
                 </div>
                 {examples.map((ex, i) => {
                   const exLink = linkFor(ex.provenance);
@@ -135,7 +135,7 @@ export function LessonView({
         </details>
       ) : null}
 
-      <Button onClick={onNext}>Make my card →</Button>
+      <Button onClick={onNext}>{t({ en: "Make my card →" })}</Button>
 
       {goDeeperUrl ? (
         <a
@@ -144,7 +144,7 @@ export function LessonView({
           rel="noreferrer"
           className="text-center text-sm text-ink-soft underline decoration-rule underline-offset-2 hover:text-ink"
         >
-          Go deeper on this idea →
+          {t({ en: "Go deeper on this idea →" })}
         </a>
       ) : null}
     </section>

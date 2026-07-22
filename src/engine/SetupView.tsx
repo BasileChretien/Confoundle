@@ -33,7 +33,7 @@ export function SetupView({
     <section className="flex flex-col gap-3">
       <header className="flex flex-col gap-2">
         <div className="flex flex-wrap items-center gap-2">
-          <Badge tone="rust">{humanize(puzzle.category)}</Badge>
+          <Badge tone="rust">{t({ en: humanize(puzzle.category) })}</Badge>
           <TagChips tags={puzzle.tags} />
         </div>
         <h1 className="font-display text-[25px] font-semibold leading-[1.1] text-ink">
@@ -48,7 +48,7 @@ export function SetupView({
         <figcaption className="mb-2.5 flex items-center justify-between border-b border-rule pb-2">
           <Badge tone="ink">{t(dataTitle(data))}</Badge>
           <span className="font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-mute">
-            {scopeLabel(puzzle.setup.initialView.kind)}
+            {t({ en: scopeLabel(puzzle.setup.initialView.kind) })}
           </span>
         </figcaption>
         <DataViewRenderer

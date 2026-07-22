@@ -42,7 +42,7 @@ export function CommitView({
         ))}
       </div>
       <p className="text-center font-sans text-[11px] uppercase tracking-eyebrow text-ink-mute">
-        Commit to see the reveal. No peeking.
+        {t({ en: "Commit to see the reveal. No peeking." })}
       </p>
     </div>
   );

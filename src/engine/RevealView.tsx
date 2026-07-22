@@ -55,17 +55,17 @@ export function RevealView({
     <section className="flex flex-col gap-4">
       <header className="flex flex-col gap-2">
         <Badge tone={caught ? "brand" : "rust"}>
-          {caught ? "You caught it" : "Most people miss this"}
+          {caught ? t({ en: "You caught it" }) : t({ en: "Most people miss this" })}
         </Badge>
         <h2 className="font-display text-[24px] font-semibold leading-[1.12] text-ink">
           {t(puzzle.reveal.headline)}
         </h2>
         <p className="text-sm text-ink-soft">
-          You picked{" "}
+          {t({ en: "You picked" })}{" "}
           <span className="font-semibold text-ink">{t(committed.label)}</span>.{" "}
           {caught
-            ? "Nicely done, you didn't take the number at face value."
-            : "So does almost everyone. That's exactly the trap."}
+            ? t({ en: "Nicely done, you didn't take the number at face value." })
+            : t({ en: "So does almost everyone. That's exactly the trap." })}
         </p>
       </header>
 
@@ -77,7 +77,7 @@ export function RevealView({
               className="font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-mute"
               aria-live="polite"
             >
-              {scopeLabel(view)}
+              {t({ en: scopeLabel(view) })}
             </span>
             {!reduced ? (
               <button
@@ -85,7 +85,7 @@ export function RevealView({
                 onClick={replay}
                 className="rounded font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-brand-ink hover:text-brand focus:outline-none focus-visible:ring-2 focus-visible:ring-brand"
               >
-                ↺ Replay
+                ↺ {t({ en: "Replay" })}
               </button>
             ) : null}
           </div>
@@ -102,7 +102,7 @@ export function RevealView({
         <Badge tone="gold">
           {puzzle.reveal.mechanismLabel
             ? t(puzzle.reveal.mechanismLabel)
-            : "The lurking variable"}
+            : t({ en: "The lurking variable" })}
         </Badge>
         <h3 className="mt-1 font-display text-lg font-semibold text-ink">
           {t(puzzle.reveal.mechanismName)}
@@ -113,7 +113,7 @@ export function RevealView({
         {data.type === "rates" ? (
           <div className="mt-3">
             <div className="mb-1.5 font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-soft">
-              Who each treatment actually treated
+              {t({ en: "Who each treatment actually treated" })}
             </div>
             <CaseMixBars data={data} />
           </div>
@@ -127,7 +127,7 @@ export function RevealView({
       ) : null}
 
       <Button onClick={onNext}>
-        {caught ? "Name the skill →" : "So what's the skill? →"}
+        {caught ? t({ en: "Name the skill →" }) : t({ en: "So what's the skill? →" })}
       </Button>
     </section>
   );

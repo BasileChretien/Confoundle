@@ -14,14 +14,14 @@ export type LocalizedText = z.infer<typeof LocalizedText>;
 /* ---------------------------------------------------------------------------
  * Generic data model
  * The numbers live here ONCE (single source of truth). The engine derives
- * aggregate + stratified rates from these observations — the paradox itself
+ * aggregate + stratified rates from these observations, the paradox itself
  * lives in that derivation, so we compute it rather than hardcode "78%".
  * `type` is a discriminant so a future puzzle can ship a completely different
  * data shape (e.g. type: "correlation") without touching existing renderers.
  * ------------------------------------------------------------------------- */
 export const Group = z.object({
   id: z.string().min(1), // stable key, e.g. "A"
-  label: LocalizedText, // "Treatment A — open surgery"
+  label: LocalizedText, // "Treatment A, open surgery"
   short: LocalizedText.optional(), // "A" (for compact chart labels)
 });
 export type Group = z.infer<typeof Group>;
@@ -75,16 +75,16 @@ export type FrequenciesData = z.infer<typeof FrequenciesData>;
 const CausalData = z.object({
   type: z.literal("causal"),
   label: LocalizedText, // figure title, e.g. "Across 23 countries"
-  cause: LocalizedText, // X — the claimed cause, e.g. "Chocolate eaten"
-  effect: LocalizedText, // Y — the effect, e.g. "Nobel prizes"
-  commonCause: LocalizedText, // Z — the real driver, e.g. "A country's wealth"
+  cause: LocalizedText, // X, the claimed cause, e.g. "Chocolate eaten"
+  effect: LocalizedText, // Y, the effect, e.g. "Nobel prizes"
+  commonCause: LocalizedText, // Z, the real driver, e.g. "A country's wealth"
   correlationNote: LocalizedText.optional(), // e.g. "r ≈ 0.79"
 });
 export type CausalData = z.infer<typeof CausalData>;
 
 /**
  * Survivorship-bias data: the visible sample is filtered (only survivors are
- * observed). The seed renders a WWII bomber damage-map — hits cluster where a
+ * observed). The seed renders a WWII bomber damage-map, hits cluster where a
  * plane can be shot and still return, so the *un-hit* areas are the vulnerable
  * ones. Labels are authored; the plane layout lives in the renderer.
  */
@@ -106,7 +106,7 @@ export const PuzzleData = z.discriminatedUnion("type", [
 export type PuzzleData = z.infer<typeof PuzzleData>;
 
 /* ---------------------------------------------------------------------------
- * Data views — how a beat renders the data. The engine dispatches on `kind`.
+ * Data views, how a beat renders the data. The engine dispatches on `kind`.
  * ------------------------------------------------------------------------- */
 export const DataView = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("aggregate"), caption: LocalizedText.optional() }),
@@ -156,17 +156,17 @@ export const Example = z.object({
 export type Example = z.infer<typeof Example>;
 
 /* ---------------------------------------------------------------------------
- * Tags — who a bias is most relevant to (audience) and where it shows up
+ * Tags, who a bias is most relevant to (audience) and where it shows up
  * (domain). A puzzle carries one or more, so a library of biases can be browsed
  * and filtered by relevance. The schema pins only the controlled vocabulary;
  * display metadata (labels, grouping, order) lives in ./tags.ts.
  * ------------------------------------------------------------------------- */
 export const TAG_IDS = [
-  // audience — who most needs this
+  // audience, who most needs this
   "everyday",
   "clinical",
   "research",
-  // method — cross-cutting
+  // method, cross-cutting
   "statistics",
   // medicine
   "diagnosis",
@@ -220,7 +220,7 @@ export const Puzzle = z
 
     reveal: z.object({
       headline: LocalizedText,
-      // The gold callout's heading — names the mechanism/insight behind the
+      // The gold callout's heading, names the mechanism/insight behind the
       // reveal (the confounder for Simpson's, the base rate for base-rate
       // neglect, etc.). Not confounding-specific.
       mechanismName: LocalizedText,
@@ -242,7 +242,7 @@ export const Puzzle = z
 
     share: z.object({
       title: LocalizedText,
-      // Plain-language explanation of the skill for the share card — written for
+      // Plain-language explanation of the skill for the share card, written for
       // anyone, not just scientists. Longer/looser than the lesson takeaway.
       explainer: LocalizedText,
       captions: z.object({

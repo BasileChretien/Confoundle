@@ -12,7 +12,7 @@ import {
  * a project where a numbers error is existential should assert, in CI-able code,
  * that the seed data genuinely produces the paradox it claims to teach.
  */
-describe("kidney-stones seed data — Simpson's paradox holds", () => {
+describe("kidney-stones seed data, Simpson's paradox holds", () => {
   const data = kidneyStones.setup.data;
   if (data.type !== "rates") throw new Error("seed puzzle must be rates data");
 

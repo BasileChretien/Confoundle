@@ -78,7 +78,7 @@ async function nodeToPngBlob(node: HTMLElement): Promise<Blob> {
 
 /**
  * Render the card node to a PNG and hand it to the OS share sheet when files
- * are supported; otherwise fall back to a download. Never throws to the UI —
+ * are supported; otherwise fall back to a download. Never throws to the UI, 
  * returns a result the caller can turn into a status message.
  */
 export async function shareOrDownloadCard(

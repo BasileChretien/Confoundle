@@ -9,7 +9,7 @@ function linkFor(p: Provenance): string | undefined {
 
 /**
  * Beat 4: the lesson. Names the portable skill and the "you'll see it
- * everywhere" takeaway. Provenance is shown here — after the reveal, off the
+ * everywhere" takeaway. Provenance is shown here, after the reveal, off the
  * emotional path. An optional deep-dive ("see it in the wild") is collapsed by
  * default so the curious can open it without cluttering the main flow.
  */

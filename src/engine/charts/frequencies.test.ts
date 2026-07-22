@@ -7,7 +7,7 @@ import { frequencyBreakdown } from "./frequencies";
  * still yields a tiny positive predictive value. If these numbers ever drift,
  * the puzzle stops teaching what it claims.
  */
-describe("base-rate seed — most positives are false alarms", () => {
+describe("base-rate seed, most positives are false alarms", () => {
   const data = baseRate.setup.data;
   if (data.type !== "frequencies")
     throw new Error("seed puzzle must be frequencies data");

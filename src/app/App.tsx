@@ -67,7 +67,7 @@ interface DemoPickerProps {
 /**
  * Demo-only affordance (single-file build): jump between all puzzles so a
  * one-off visitor can try every reasoning trap. The real daily build ships
- * without this — one puzzle a day is the point.
+ * without this, one puzzle a day is the point.
  */
 function DemoPicker({ current, onPick }: DemoPickerProps) {
   const t = useT();

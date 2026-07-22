@@ -33,7 +33,7 @@ function writeAll(map: ProgressMap): void {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(map));
   } catch {
-    // storage unavailable (private mode, quota) — degrade silently
+    // storage unavailable (private mode, quota), degrade silently
   }
 }
 

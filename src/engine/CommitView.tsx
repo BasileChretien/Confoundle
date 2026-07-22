@@ -3,7 +3,7 @@ import { useT } from "../app/i18n";
 
 /**
  * The commit step. Selecting a choice is the commitment that makes the reveal
- * land — there is deliberately no "skip" or "peek". Choices render as real
+ * land, there is deliberately no "skip" or "peek". Choices render as real
  * buttons (keyboard-navigable, large tap targets) in authored order.
  */
 export function CommitView({
@@ -42,7 +42,7 @@ export function CommitView({
         ))}
       </div>
       <p className="text-center font-sans text-[11px] uppercase tracking-eyebrow text-ink-mute">
-        Commit to see the reveal — no peeking
+        Commit to see the reveal. No peeking.
       </p>
     </div>
   );

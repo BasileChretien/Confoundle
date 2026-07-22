@@ -3,11 +3,11 @@ import { useT } from "../../app/i18n";
 import { frequencyBreakdown } from "./frequencies";
 import { formatPct } from "./rates";
 
-const TRUE_COLOR = "#0E8C7A"; // teal — actually has the condition
-const FALSE_COLOR = "#D8C6A6"; // pale — false alarm
+const TRUE_COLOR = "#0E8C7A"; // teal, actually has the condition
+const FALSE_COLOR = "#D8C6A6"; // pale, false alarm
 
 function oneIn(withCondition: number, total: number): string {
-  if (withCondition <= 0) return "—";
+  if (withCondition <= 0) return "n/a";
   const n = Math.round(total / withCondition);
   return `1 in ${n.toLocaleString("en-US")}`;
 }

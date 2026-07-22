@@ -2,7 +2,7 @@ import type { FrequenciesData } from "../../puzzles/schema";
 
 /**
  * Pure derivation of the natural-frequency breakdown (base-rate puzzles). No
- * React/DOM — reusable by the web engine and future Remotion templates. The
+ * React/DOM, reusable by the web engine and future Remotion templates. The
  * paradox lives in the positive predictive value: when the condition is rare,
  * false positives swamp the true ones.
  */

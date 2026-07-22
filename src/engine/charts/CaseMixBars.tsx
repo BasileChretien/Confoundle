@@ -5,8 +5,8 @@ import { stratumColor, stratumIsDark } from "./palette";
 /**
  * The composition view that makes Simpson's paradox concrete: one full-width
  * bar per group, segmented by stratum in proportion to the number of patients
- * (denominators). It shows the *case mix* — the confounder's uneven split
- * between the groups — which the success-rate chart hides. This is the actual
+ * (denominators). It shows the *case mix*, the confounder's uneven split
+ * between the groups, which the success-rate chart hides. This is the actual
  * driver of the reversal (the pooled rate is a weighted average, and the
  * weights differ). Pure-derivation friendly and reusable for any rates puzzle.
  */

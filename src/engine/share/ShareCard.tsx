@@ -23,7 +23,7 @@ const CARD = {
   gold: "#D6A43A",
   teal: "#2AB39C",
   rust: "#E06A45",
-  falseDim: "#7E7159", // dim tan — "false alarm" dots on the dark plate
+  falseDim: "#7E7159", // dim tan, "false alarm" dots on the dark plate
   rule: "rgba(242,236,222,0.16)",
 };
 
@@ -99,7 +99,7 @@ function GlyphPanel({
 
 /**
  * Abstract illustration of the paradox: the same option (teal) leads in every
- * group, yet the other (rust) leads once the groups are pooled — the winner
+ * group, yet the other (rust) leads once the groups are pooled, the winner
  * flips. Deliberately carries no case-specific numbers or labels; the card
  * teaches the concept, not this one puzzle.
  */
@@ -120,7 +120,7 @@ function ReversalGlyph() {
 
 /**
  * Abstract illustration of the false-positive paradox: everyone shown here
- * tested positive, yet almost all are false alarms — because the condition is
+ * tested positive, yet almost all are false alarms, because the condition is
  * rare. Derived from the puzzle's counts (scaled to fit); no case specifics.
  */
 function FrequencyGlyph({ data }: { data: FrequenciesData }) {
@@ -250,7 +250,7 @@ function CausalGlyph({ data }: { data: CausalData }) {
 
 /**
  * Abstract survivorship illustration for the card: armour the "clean" spots
- * (engines/cockpit) — the bullet holes only map where a plane can be hit and
+ * (engines/cockpit), the bullet holes only map where a plane can be hit and
  * still come home. No case specifics beyond the iconic bomber shape.
  */
 function SurvivorshipGlyph() {
@@ -265,7 +265,7 @@ function SurvivorshipGlyph() {
       <svg
         viewBox="0 0 200 168"
         role="img"
-        aria-label="Armour the engines and cockpit — the clean-looking spots — not the bullet holes"
+        aria-label="Armour the engines and cockpit, the clean-looking spots, not the bullet holes"
         style={{ display: "block", width: "100%", maxWidth: 200, margin: "0 auto" }}
       >
         <rect x="14" y="60" width="172" height="24" rx="11" fill={FILL} stroke={STROKE} strokeWidth="1.5" />
@@ -282,7 +282,7 @@ function SurvivorshipGlyph() {
         className="mt-2 text-center text-[11px] font-semibold"
         style={{ color: CARD.gold }}
       >
-        Armour the clean-looking spots — not the bullet holes.
+        Armour the clean-looking spots, not the bullet holes.
       </div>
     </div>
   );
@@ -331,7 +331,7 @@ export function ShareCard({
     const result: ExportResult = await shareOrDownloadCard(
       cardRef.current,
       `confoundle-${puzzle.slug}.png`,
-      { title: t(puzzle.share.title), text: `${caption} — Confoundle` },
+      { title: t(puzzle.share.title), text: `${caption}, Confoundle` },
     );
     track("share_export", { slug: puzzle.slug, framing, result });
     setStatus(
@@ -341,7 +341,7 @@ export function ShareCard({
           ? "Saved to your device."
           : result === "cancelled"
             ? null
-            : "Couldn't create the image — try again.",
+            : "Couldn't create the image, try again.",
     );
     setBusy(false);
   }
@@ -351,11 +351,11 @@ export function ShareCard({
       <header className="flex flex-col gap-2">
         <Badge tone="brand">Your card</Badge>
         <h2 className="font-display text-xl font-semibold text-ink">
-          Nice — now catch a friend.
+          Nice, now catch a friend.
         </h2>
       </header>
 
-      {/* The screenshot-able card — a dark almanac plate that explains the skill */}
+      {/* The screenshot-able card, a dark almanac plate that explains the skill */}
       <div className="flex justify-center">
         <div
           ref={cardRef}
@@ -407,7 +407,7 @@ export function ShareCard({
         </div>
       </div>
 
-      {/* Caption framing — both offered side by side */}
+      {/* Caption framing, both offered side by side */}
       <div>
         <p className="mb-2 text-center font-sans text-[11px] uppercase tracking-eyebrow text-ink-mute">
           Pick your caption

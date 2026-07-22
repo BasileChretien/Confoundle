@@ -62,7 +62,7 @@ export interface RateChartProps {
   data: RatesData;
   view: DataViewKind;
   animate: boolean;
-  /** Mark the winning bar within each view (gold — the truth as it shifts). */
+  /** Mark the winning bar within each view (gold, the truth as it shifts). */
   highlightWinner?: boolean;
 }
 

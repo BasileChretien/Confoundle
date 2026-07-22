@@ -1,7 +1,7 @@
 import type { RatesData } from "../../puzzles/schema";
 
 /**
- * Pure derivation of rates from raw observations. No React, no DOM — importable
+ * Pure derivation of rates from raw observations. No React, no DOM, importable
  * by the web engine AND (later) by Remotion card/clip templates, so every
  * surface shows exactly the same numbers. This is where Simpson's paradox
  * actually lives: aggregate() pools the counts, stratified() keeps them split.

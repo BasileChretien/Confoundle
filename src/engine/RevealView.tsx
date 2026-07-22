@@ -64,8 +64,8 @@ export function RevealView({
           You picked{" "}
           <span className="font-semibold text-ink">{t(committed.label)}</span>.{" "}
           {caught
-            ? "Nicely done — you didn't take the number at face value."
-            : "So does almost everyone — that's exactly the trap."}
+            ? "Nicely done, you didn't take the number at face value."
+            : "So does almost everyone. That's exactly the trap."}
         </p>
       </header>
 

@@ -1,8 +1,8 @@
 import type { Puzzle } from "../schema";
 
 /**
- * Puzzle #3 — correlation ≠ causation, via Messerli's real (tongue-in-cheek)
- * chocolate–Nobel correlation. Uses the "causal" data shape: a claimed cause, an
+ * Puzzle #3, correlation ≠ causation, via Messerli's real (tongue-in-cheek)
+ * chocolate-Nobel correlation. Uses the "causal" data shape: a claimed cause, an
  * effect, and the lurking common cause that actually drives both.
  */
 export const correlationCausation: Puzzle = {
@@ -20,9 +20,9 @@ export const correlationCausation: Puzzle = {
       en: "More chocolate, more Nobel Prizes. Should your country stock up?",
     },
     framing: {
-      en: "It's a real, published finding: across 23 countries, the more chocolate people eat, the more Nobel laureates the country has produced — a strong correlation (r ≈ 0.79). The trend is hard to argue with.",
+      en: "It's a real, published finding: across 23 countries, the more chocolate people eat, the more Nobel laureates the country has produced, a strong correlation (r ≈ 0.79). The trend is hard to argue with.",
     },
-    question: { en: "So — does eating chocolate help win Nobel Prizes?" },
+    question: { en: "So, does eating chocolate help win Nobel Prizes?" },
     data: {
       type: "causal",
       label: { en: "Across 23 countries" },
@@ -37,21 +37,21 @@ export const correlationCausation: Puzzle = {
   choices: [
     {
       id: "cause",
-      label: { en: "Yes — chocolate boosts brainpower" },
+      label: { en: "Yes, chocolate boosts brainpower" },
       sublabel: { en: "the trend is strong" },
       isCorrect: false,
       isIntuitiveTrap: true,
     },
     {
       id: "fluke",
-      label: { en: "No — it's a pure fluke" },
+      label: { en: "No, it's a pure fluke" },
       sublabel: { en: "coincidence" },
       isCorrect: false,
       isIntuitiveTrap: false,
     },
     {
       id: "common",
-      label: { en: "No — a third thing drives both" },
+      label: { en: "No, a third thing drives both" },
       sublabel: { en: "a common cause" },
       isCorrect: true,
       isIntuitiveTrap: false,
@@ -63,7 +63,7 @@ export const correlationCausation: Puzzle = {
     mechanismLabel: { en: "The common cause" },
     mechanismName: { en: "A country's wealth pulls both up" },
     explanation: {
-      en: "Wealthier countries can afford more chocolate AND fund more universities, labs and research — which is what actually wins Nobel Prizes. Wealth drives both, so chocolate and Nobels rise together without one causing the other. Hand out free chocolate and you'd get sweeter teeth, not more laureates.",
+      en: "Wealthier countries can afford more chocolate AND fund more universities, labs and research, which is what actually wins Nobel Prizes. Wealth drives both, so chocolate and Nobels rise together without one causing the other. Hand out free chocolate and you'd get sweeter teeth, not more laureates.",
     },
     view: { kind: "cause" },
   },
@@ -71,23 +71,23 @@ export const correlationCausation: Puzzle = {
   lesson: {
     skillName: { en: "Correlation ≠ causation" },
     takeaway: {
-      en: "Two things moving together doesn't mean one causes the other — often a third thing is quietly driving both.",
+      en: "Two things moving together doesn't mean one causes the other. Often a third thing is quietly driving both.",
     },
     body: {
       en: "When you see a strong link, run through the possibilities before believing X causes Y: maybe Y causes X, maybe a common cause drives both, or maybe it's chance. Usually only a controlled comparison can tell which.",
     },
     howItWorks: {
-      en: "A correlation only says two things tend to move together. That can happen for several reasons: one really does cause the other; the causation runs the other way; a hidden third factor drives both (a common cause — like hot weather driving both ice-cream sales and drownings); or it's a coincidence, which gets more likely the more data you sift through. Spotting a correlation is the easy part. Working out which of these is behind it is the real job — and usually needs an experiment, not just a chart.",
+      en: "A correlation only says two things tend to move together. That can happen for several reasons: one really does cause the other; the causation runs the other way; a hidden third factor drives both (a common cause, like hot weather driving both ice-cream sales and drownings); or it's a coincidence, which gets more likely the more data you sift through. Spotting a correlation is the easy part. Working out which of these is behind it is the real job, and usually needs an experiment, not just a chart.",
     },
     examples: [
       {
         title: { en: "Storks and babies" },
         summary: {
-          en: "Across European countries, the ones with more storks really do have more human births — a statistically significant link. The legend isn't true: larger countries simply have room for both more storks and more people.",
+          en: "Across European countries, the ones with more storks really do have more human births, a statistically significant link. The legend isn't true: larger countries simply have room for both more storks and more people.",
         },
         provenance: {
           source:
-            "Matthews R. Storks deliver babies (p = 0.008). Teaching Statistics. 2000;22(2):36–38. (Significant correlation across 17 European countries — a classic correlation ≠ causation lesson.)",
+            "Matthews R. Storks deliver babies (p = 0.008). Teaching Statistics. 2000;22(2):36-38. (Significant correlation across 17 European countries, a classic correlation ≠ causation lesson.)",
           year: 2000,
           doi: "10.1111/1467-9639.00013",
           url: "https://doi.org/10.1111/1467-9639.00013",
@@ -96,7 +96,7 @@ export const correlationCausation: Puzzle = {
       {
         title: { en: "Nicolas Cage and drownings" },
         summary: {
-          en: "The number of films Nicolas Cage releases in a year tracks the number of people who drown in swimming pools. Nobody thinks one causes the other — line up enough unrelated trends and some will match by pure chance.",
+          en: "The number of films Nicolas Cage releases in a year tracks the number of people who drown in swimming pools. Nobody thinks one causes the other; line up enough unrelated trends and some will match by pure chance.",
         },
         provenance: {
           source:
@@ -109,9 +109,9 @@ export const correlationCausation: Puzzle = {
   },
 
   share: {
-    title: { en: "Correlation ≠ causation — a reasoning trap." },
+    title: { en: "Correlation ≠ causation, a reasoning trap." },
     explainer: {
-      en: "Two things can rise and fall together perfectly and still have nothing to do with each other. Very often a hidden third thing is pulling both strings at once — so it looks like one causes the other when neither does. Before you believe a headline that “X is linked to Y,” ask what else could be driving both.",
+      en: "Two things can rise and fall together perfectly and still have nothing to do with each other. Very often a hidden third thing is pulling both strings at once, so it looks like one causes the other when neither does. Before you believe a headline that “X is linked to Y,” ask what else could be driving both.",
     },
     captions: {
       competitive: { en: "Caught it. Bet you can't." },
@@ -121,7 +121,7 @@ export const correlationCausation: Puzzle = {
 
   provenance: {
     source:
-      "Messerli FH. Chocolate consumption, cognitive function, and Nobel laureates. N Engl J Med. 2012;367(16):1562–1564. (r ≈ 0.79 across 23 countries; a deliberately tongue-in-cheek demonstration that correlation is not causation.)",
+      "Messerli FH. Chocolate consumption, cognitive function, and Nobel laureates. N Engl J Med. 2012;367(16):1562-1564. (r ≈ 0.79 across 23 countries; a deliberately tongue-in-cheek demonstration that correlation is not causation.)",
     year: 2012,
     doi: "10.1056/NEJMon1211064",
     url: "https://doi.org/10.1056/NEJMon1211064",

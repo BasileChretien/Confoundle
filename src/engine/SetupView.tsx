@@ -17,7 +17,7 @@ function humanize(category: string): string {
 
 /**
  * Beat 1+2: the setup (framing + data plate) and the commit, on one screen.
- * The plate renders the puzzle's authored `initialView` — never the answer.
+ * The plate renders the puzzle's authored `initialView`, never the answer.
  */
 export function SetupView({
   puzzle,

@@ -10,7 +10,7 @@ import { SurvivorshipView } from "./SurvivorshipView";
 
 /**
  * The generic seam: dispatch on the data's `type` to the matching renderer.
- * A new data shape is added here and nowhere else — existing puzzles untouched.
+ * A new data shape is added here and nowhere else, existing puzzles untouched.
  */
 export function DataViewRenderer({
   data,

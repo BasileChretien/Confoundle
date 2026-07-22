@@ -34,7 +34,7 @@ const topic = (
 ): TagMeta => ({ label: { en: label }, kind: "topic", group, blurb: { en: blurb } });
 
 export const TAGS: Record<TagId, TagMeta> = {
-  // audience — who most needs this
+  // audience, who most needs this
   everyday: audience("Everyday", "Anyone can fall for it"),
   clinical: audience("Clinical", "Bites at the bedside"),
   research: audience("Research", "Study design & evidence appraisal"),

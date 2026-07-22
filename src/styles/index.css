@@ -14,7 +14,7 @@ body,
 
 body {
   margin: 0;
-  background-color: #f2ecde; /* paper — matches the app surface */
+  background-color: #f2ecde; /* paper, matches the app surface */
   color: #221d15; /* ink */
   font-family:
     "Space Grotesk Variable", "Space Grotesk", ui-sans-serif, system-ui,

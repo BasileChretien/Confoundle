@@ -16,7 +16,7 @@ const SCATTER: ReadonlyArray<readonly [number, number]> = [
   [252, 30],
 ];
 
-/** Setup view: the observed correlation — X and Y rising together. */
+/** Setup view: the observed correlation, X and Y rising together. */
 function TrendView({ data }: { data: CausalData }) {
   const t = useT();
   return (
@@ -56,7 +56,7 @@ function TrendView({ data }: { data: CausalData }) {
   );
 }
 
-/** Reveal view: the common cause driving both — X ← Z → Y, with no direct link. */
+/** Reveal view: the common cause driving both, X ← Z → Y, with no direct link. */
 function CausalDiagram({ data }: { data: CausalData }) {
   const t = useT();
   const pill =

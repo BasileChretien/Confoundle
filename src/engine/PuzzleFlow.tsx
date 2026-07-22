@@ -12,7 +12,7 @@ type Beat = "setup" | "reveal" | "lesson" | "share";
 const ORDER: Beat[] = ["setup", "reveal", "lesson", "share"];
 
 /**
- * The engine's beat state machine. Renders ANY puzzle from its data — it never
+ * The engine's beat state machine. Renders ANY puzzle from its data, it never
  * references the seed puzzle's specifics. Adding a puzzle changes nothing here.
  * Each beat is keyed so its CSS enter-animation replays on mount (see index.css);
  * reduced motion disables the animation but not the transition.

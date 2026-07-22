@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 /**
  * Animates a number from 0 up to `target`. Returns `target` immediately when
- * inactive or when reduced motion is requested — so callers can drive both a
+ * inactive or when reduced motion is requested, so callers can drive both a
  * bar's height and its label off one value and stay in sync, with zero motion
  * for users who ask for none.
  */

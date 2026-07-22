@@ -3,10 +3,10 @@ import { useT } from "../../app/i18n";
 
 const PLANE_FILL = "#BDB39C";
 const PLANE_STROKE = "#8A7E6A";
-const HIT = "#BE4A2F"; // rust — bullet holes on survivors
-const ARMOR = "#9A6B12"; // gold — the vulnerable, under-observed areas
+const HIT = "#BE4A2F"; // rust, bullet holes on survivors
+const ARMOR = "#9A6B12"; // gold, the vulnerable, under-observed areas
 
-// Holes cluster on the wings and body — never on the engines/cockpit/tail,
+// Holes cluster on the wings and body, never on the engines/cockpit/tail,
 // because planes hit there didn't come back.
 const DAMAGE_DOTS: ReadonlyArray<readonly [number, number]> = [
   [26, 72],
@@ -33,7 +33,7 @@ function Plane({ armor }: { armor: boolean }) {
       role="img"
       aria-label={
         armor
-          ? "The engines and cockpit — clean on returning planes — are the vulnerable spots to armour"
+          ? "The engines and cockpit, clean on returning planes, are the vulnerable spots to armour"
           : "Bullet holes on returning planes cluster on the wings and body"
       }
       style={{ display: "block", width: "100%", maxWidth: 220, margin: "0 auto" }}
@@ -41,7 +41,7 @@ function Plane({ armor }: { armor: boolean }) {
       <rect x="14" y="60" width="172" height="24" rx="11" fill={PLANE_FILL} stroke={PLANE_STROKE} strokeWidth="1.5" />
       <rect x="64" y="128" width="72" height="15" rx="7" fill={PLANE_FILL} stroke={PLANE_STROKE} strokeWidth="1.5" />
       <rect x="88" y="22" width="24" height="128" rx="12" fill={PLANE_FILL} stroke={PLANE_STROKE} strokeWidth="1.5" />
-      {/* cockpit + engines — highlighted gold in the armour view */}
+      {/* cockpit + engines, highlighted gold in the armour view */}
       <circle cx="100" cy="38" r="9" fill={zoneFill} stroke={zoneStroke} strokeWidth={zoneW} />
       <rect x="42" y="64" width="16" height="16" rx="4" fill={zoneFill} stroke={zoneStroke} strokeWidth={zoneW} />
       <rect x="142" y="64" width="16" height="16" rx="4" fill={zoneFill} stroke={zoneStroke} strokeWidth={zoneW} />

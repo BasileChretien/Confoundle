@@ -50,8 +50,28 @@ const RatesData = z.object({
 });
 export type RatesData = z.infer<typeof RatesData>;
 
+/**
+ * Natural-frequency data (base-rate / diagnostic puzzles): a rare condition and
+ * a test, authored as counts out of `total` so the numbers stay exact. The
+ * engine derives the positive predictive value and the true/false-positive mix.
+ */
+const FrequenciesData = z.object({
+  type: z.literal("frequencies"),
+  label: LocalizedText, // figure title, e.g. "In 1,000 people"
+  total: z.number().int().positive(),
+  conditionLabel: LocalizedText, // "have the disease"
+  positiveLabel: LocalizedText, // "test positive"
+  withCondition: z.number().int().nonnegative(), // base-rate count
+  positiveGivenCondition: z.number().int().nonnegative(), // true positives
+  positiveGivenNoCondition: z.number().int().nonnegative(), // false positives
+});
+export type FrequenciesData = z.infer<typeof FrequenciesData>;
+
 /** Discriminated by `type`. Add new members here to support new data shapes. */
-export const PuzzleData = z.discriminatedUnion("type", [RatesData]);
+export const PuzzleData = z.discriminatedUnion("type", [
+  RatesData,
+  FrequenciesData,
+]);
 export type PuzzleData = z.infer<typeof PuzzleData>;
 
 /* ---------------------------------------------------------------------------
@@ -60,6 +80,8 @@ export type PuzzleData = z.infer<typeof PuzzleData>;
 export const DataView = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("aggregate"), caption: LocalizedText.optional() }),
   z.object({ kind: z.literal("stratified"), caption: LocalizedText.optional() }),
+  z.object({ kind: z.literal("headline"), caption: LocalizedText.optional() }),
+  z.object({ kind: z.literal("breakdown"), caption: LocalizedText.optional() }),
 ]);
 export type DataView = z.infer<typeof DataView>;
 export type DataViewKind = DataView["kind"];
@@ -127,6 +149,8 @@ export const Puzzle = z
       explanation: LocalizedText,
       view: DataView, // usually { kind: "stratified" }
       body: LocalizedText.optional(),
+      // Overrides the gold callout eyebrow (default "The lurking variable").
+      mechanismLabel: LocalizedText.optional(),
     }),
 
     lesson: z.object({
@@ -232,6 +256,33 @@ export const Puzzle = z
           });
         }
       });
+    }
+
+    if (p.setup.data.type === "frequencies") {
+      const d = p.setup.data;
+      const path = ["setup", "data"] as const;
+      if (d.withCondition > d.total) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: [...path, "withCondition"],
+          message: `withCondition (${d.withCondition}) exceeds total (${d.total})`,
+        });
+      }
+      if (d.positiveGivenCondition > d.withCondition) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: [...path, "positiveGivenCondition"],
+          message: `true positives (${d.positiveGivenCondition}) exceed those with the condition (${d.withCondition})`,
+        });
+      }
+      const without = d.total - d.withCondition;
+      if (d.positiveGivenNoCondition > without) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: [...path, "positiveGivenNoCondition"],
+          message: `false positives (${d.positiveGivenNoCondition}) exceed those without the condition (${without})`,
+        });
+      }
     }
   });
 export type Puzzle = z.infer<typeof Puzzle>;

@@ -1,10 +1,13 @@
-import { getTodaysPuzzle } from "../puzzles";
+import { getPuzzleBySlug, getTodaysPuzzle } from "../puzzles";
 import { PuzzleFlow } from "../engine/PuzzleFlow";
 import { hasPlayedToday } from "./session";
 import { LocaleProvider } from "./i18n";
 
 export default function App() {
-  const puzzle = getTodaysPuzzle();
+  // Every puzzle is URL-addressable via ?p=<slug>; otherwise serve today's.
+  const requested = new URLSearchParams(window.location.search).get("p");
+  const puzzle =
+    (requested ? getPuzzleBySlug(requested) : undefined) ?? getTodaysPuzzle();
   const played = hasPlayedToday(puzzle.slug);
 
   return (

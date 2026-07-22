@@ -4,7 +4,11 @@ import { useT } from "../app/i18n";
 import { track } from "../app/analytics";
 import { useReducedMotion } from "./useReducedMotion";
 import { Badge, Button } from "./ui";
-import { DataViewRenderer } from "./charts/DataViewRenderer";
+import {
+  DataViewRenderer,
+  dataTitle,
+  scopeLabel,
+} from "./charts/DataViewRenderer";
 import { Legend } from "./charts/RateChart";
 import { CaseMixBars } from "./charts/CaseMixBars";
 
@@ -43,9 +47,9 @@ export function RevealView({
     window.setTimeout(() => setFlipped(true), 650);
   }
 
-  const view = flipped ? "stratified" : "aggregate";
+  const view = flipped ? puzzle.reveal.view.kind : puzzle.setup.initialView.kind;
   const caught = committed.isCorrect;
-  const metric = data.type === "rates" ? t(data.metricLabel) : "Figure";
+  const metric = t(dataTitle(data));
 
   return (
     <section className="flex flex-col gap-4">
@@ -60,8 +64,8 @@ export function RevealView({
           You picked{" "}
           <span className="font-semibold text-ink">{t(committed.label)}</span>.{" "}
           {caught
-            ? "You saw past the pooled number."
-            : "So does most everyone — the overall rate is built to mislead."}
+            ? "Nicely done — you didn't take the number at face value."
+            : "So does almost everyone — that's exactly the trap."}
         </p>
       </header>
 
@@ -73,7 +77,7 @@ export function RevealView({
               className="font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-mute"
               aria-live="polite"
             >
-              {view === "aggregate" ? "Overall" : "By subgroup"}
+              {scopeLabel(view)}
             </span>
             {!reduced ? (
               <button
@@ -95,7 +99,11 @@ export function RevealView({
       </figure>
 
       <div className="rounded-lg border border-gold/40 border-l-4 border-l-gold bg-gold/[0.08] p-3.5">
-        <Badge tone="gold">The lurking variable</Badge>
+        <Badge tone="gold">
+          {puzzle.reveal.mechanismLabel
+            ? t(puzzle.reveal.mechanismLabel)
+            : "The lurking variable"}
+        </Badge>
         <h3 className="mt-1 font-display text-lg font-semibold text-ink">
           {t(puzzle.reveal.confounderName)}
         </h3>

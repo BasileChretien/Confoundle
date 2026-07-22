@@ -2,7 +2,11 @@ import type { Choice, Puzzle } from "../puzzles/schema";
 import { useT } from "../app/i18n";
 import { Badge } from "./ui";
 import { CommitView } from "./CommitView";
-import { DataViewRenderer } from "./charts/DataViewRenderer";
+import {
+  DataViewRenderer,
+  dataTitle,
+  scopeLabel,
+} from "./charts/DataViewRenderer";
 import { Legend } from "./charts/RateChart";
 
 function humanize(category: string): string {
@@ -38,11 +42,9 @@ export function SetupView({
 
       <figure className="rounded-lg border border-rule bg-paper-2 p-3.5">
         <figcaption className="mb-2.5 flex items-center justify-between border-b border-rule pb-2">
-          <Badge tone="ink">
-            {data.type === "rates" ? t(data.metricLabel) : "Figure"}
-          </Badge>
+          <Badge tone="ink">{t(dataTitle(data))}</Badge>
           <span className="font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-mute">
-            Overall
+            {scopeLabel(puzzle.setup.initialView.kind)}
           </span>
         </figcaption>
         <DataViewRenderer

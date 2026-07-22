@@ -77,7 +77,7 @@ export const kidneyStones: Puzzle = {
     headline: { en: "Treatment A actually wins — for both stone sizes." },
     confounderName: { en: "Stone size (case severity)" },
     explanation: {
-      en: "The hard cases — large stones — mostly went to Treatment A (263 vs 80). That drags A's overall number down, even though A beats B on small stones AND on large. The pooled rate hid a variable split unevenly between the groups.",
+      en: "A and B weren't treating the same patients. A got mostly the hard cases — large stones — while B got mostly the easy ones. Everyone does worse on hard cases, so A's overall average sinks even though A wins in each group:",
     },
     view: { kind: "stratified" },
   },

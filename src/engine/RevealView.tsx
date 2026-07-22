@@ -6,6 +6,7 @@ import { useReducedMotion } from "./useReducedMotion";
 import { Badge, Button } from "./ui";
 import { DataViewRenderer } from "./charts/DataViewRenderer";
 import { Legend } from "./charts/RateChart";
+import { CaseMixBars } from "./charts/CaseMixBars";
 
 /**
  * Beat 3: the reveal. The plate opens on the same pooled view the user just
@@ -101,6 +102,14 @@ export function RevealView({
         <p className="mt-1 text-[15px] leading-snug text-ink">
           {t(puzzle.reveal.explanation)}
         </p>
+        {data.type === "rates" ? (
+          <div className="mt-3">
+            <div className="mb-1.5 font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-soft">
+              Who each treatment actually treated
+            </div>
+            <CaseMixBars data={data} />
+          </div>
+        ) : null}
       </div>
 
       {puzzle.reveal.body ? (

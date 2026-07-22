@@ -7,6 +7,8 @@ import { SetupView } from "./SetupView";
 import { RevealView } from "./RevealView";
 import { LessonView } from "./LessonView";
 import { ShareCard } from "./share/ShareCard";
+import { StatsPanel } from "./StatsPanel";
+import { scoreFor, type Confidence } from "./scoring";
 
 type Beat = "setup" | "reveal" | "lesson" | "share";
 const ORDER: Beat[] = ["setup", "reveal", "lesson", "share"];
@@ -20,14 +22,16 @@ const ORDER: Beat[] = ["setup", "reveal", "lesson", "share"];
 export function PuzzleFlow({ puzzle }: { puzzle: Puzzle }) {
   const [beat, setBeat] = useState<Beat>("setup");
   const [committed, setCommitted] = useState<Choice | null>(null);
+  const [confidence, setConfidence] = useState<Confidence | null>(null);
 
   useEffect(() => {
     track("puzzle_view", { slug: puzzle.slug });
   }, [puzzle.slug]);
 
-  function commit(choice: Choice) {
+  function commit(choice: Choice, wager: Confidence) {
     setCommitted(choice);
-    recordPlay(puzzle.slug, choice.id);
+    setConfidence(wager);
+    recordPlay(puzzle.slug, choice.id, choice.isCorrect, wager);
     track("commit", {
       slug: puzzle.slug,
       choiceId: choice.id,
@@ -49,6 +53,7 @@ export function PuzzleFlow({ puzzle }: { puzzle: Puzzle }) {
 
   function replay() {
     setCommitted(null);
+    setConfidence(null);
     track("puzzle_view", { slug: puzzle.slug });
     setBeat("setup");
   }
@@ -60,12 +65,20 @@ export function PuzzleFlow({ puzzle }: { puzzle: Puzzle }) {
       <ProgressDots total={ORDER.length} index={index} />
       <div key={beat} className="cf-enter">
         {beat === "setup" && <SetupView puzzle={puzzle} onCommit={commit} />}
-        {beat === "reveal" && committed && (
-          <RevealView puzzle={puzzle} committed={committed} onNext={toLesson} />
+        {beat === "reveal" && committed && confidence && (
+          <RevealView
+            puzzle={puzzle}
+            committed={committed}
+            confidence={confidence}
+            onNext={toLesson}
+          />
         )}
         {beat === "lesson" && <LessonView puzzle={puzzle} onNext={toShare} />}
-        {beat === "share" && committed && (
-          <ShareCard puzzle={puzzle} committed={committed} onReplay={replay} />
+        {beat === "share" && committed && confidence && (
+          <div className="flex flex-col gap-4">
+            <StatsPanel todayScore={scoreFor(committed.isCorrect, confidence)} />
+            <ShareCard puzzle={puzzle} committed={committed} onReplay={replay} />
+          </div>
         )}
       </div>
     </div>

@@ -74,6 +74,31 @@ export const fr: Record<string, string> = {
   actually: "réellement",
   chance: "de probabilité",
   "false alarm": "fausse alerte",
+  // wager + stats
+  "How sure are you?": "À quel point êtes-vous sûr ?",
+  Hunch: "Intuition",
+  "Fairly sure": "Assez sûr",
+  Certain: "Certain",
+  "Pick one, then stake how sure you are":
+    "Choisissez, puis misez votre niveau de confiance",
+  pts: "pts",
+  Today: "Aujourd'hui",
+  Streak: "Série",
+  Best: "Record",
+  Caught: "Repérés",
+  Calibration: "Calibration",
+  "A new puzzle every day. Keep the streak alive.":
+    "Un nouveau puzzle chaque jour. Ne cassez pas la série.",
+  "Sharp eye, and you called it.":
+    "Bien vu, et vous l'aviez annoncé.",
+  "Nicely spotted.": "Joliment repéré.",
+  "Good instinct.": "Bon instinct.",
+  "Ouch. Confidently wrong, the classic trap.":
+    "Aïe. Sûr de vous et pourtant dans l'erreur, le piège classique.",
+  "So does almost everyone. That's the trap.":
+    "Comme presque tout le monde. C'est ça, le piège.",
+  "You sensed something was off, but went with it anyway.":
+    "Vous sentiez que quelque chose clochait, mais vous y êtes allé quand même.",
 
   // ---- shared share-card captions ----
   "Caught it. Bet you can't.": "Je l'ai vu venir. Pas sûr que vous y arriviez.",

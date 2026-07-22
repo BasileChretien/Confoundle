@@ -11,6 +11,7 @@ import {
 } from "./charts/DataViewRenderer";
 import { Legend } from "./charts/RateChart";
 import { CaseMixBars } from "./charts/CaseMixBars";
+import { scoreFor, reactionFor, type Confidence } from "./scoring";
 
 /**
  * Beat 3: the reveal. The plate opens on the same pooled view the user just
@@ -21,10 +22,12 @@ import { CaseMixBars } from "./charts/CaseMixBars";
 export function RevealView({
   puzzle,
   committed,
+  confidence,
   onNext,
 }: {
   puzzle: Puzzle;
   committed: Choice;
+  confidence: Confidence;
   onNext: () => void;
 }) {
   const t = useT();
@@ -49,23 +52,34 @@ export function RevealView({
 
   const view = flipped ? puzzle.reveal.view.kind : puzzle.setup.initialView.kind;
   const caught = committed.isCorrect;
+  const score = scoreFor(caught, confidence);
   const metric = t(dataTitle(data));
 
   return (
     <section className="flex flex-col gap-4">
       <header className="flex flex-col gap-2">
-        <Badge tone={caught ? "brand" : "rust"}>
-          {caught ? t({ en: "You caught it" }) : t({ en: "Most people miss this" })}
-        </Badge>
+        <div className="flex items-center justify-between gap-2">
+          <Badge tone={caught ? "brand" : "rust"}>
+            {caught
+              ? t({ en: "You caught it" })
+              : t({ en: "Most people miss this" })}
+          </Badge>
+          <span
+            className={
+              "font-display text-base font-semibold tabular-nums " +
+              (score >= 0 ? "text-brand-ink" : "text-rust-ink")
+            }
+          >
+            {score >= 0 ? `+${score}` : score} {t({ en: "pts" })}
+          </span>
+        </div>
         <h2 className="font-display text-[24px] font-semibold leading-[1.12] text-ink">
           {t(puzzle.reveal.headline)}
         </h2>
         <p className="text-sm text-ink-soft">
           {t({ en: "You picked" })}{" "}
           <span className="font-semibold text-ink">{t(committed.label)}</span>.{" "}
-          {caught
-            ? t({ en: "Nicely done, you didn't take the number at face value." })
-            : t({ en: "So does almost everyone. That's exactly the trap." })}
+          {t({ en: reactionFor(caught, confidence) })}
         </p>
       </header>
 

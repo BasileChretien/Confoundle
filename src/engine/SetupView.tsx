@@ -9,6 +9,7 @@ import {
 } from "./charts/DataViewRenderer";
 import { Legend } from "./charts/RateChart";
 import { TagChips } from "./TagChips";
+import type { Confidence } from "./scoring";
 
 function humanize(category: string): string {
   const spaced = category.replace(/-/g, " ");
@@ -24,7 +25,7 @@ export function SetupView({
   onCommit,
 }: {
   puzzle: Puzzle;
-  onCommit: (choice: Choice) => void;
+  onCommit: (choice: Choice, confidence: Confidence) => void;
 }) {
   const t = useT();
   const data = puzzle.setup.data;

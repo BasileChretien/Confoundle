@@ -105,7 +105,7 @@ export function RevealView({
             : "The lurking variable"}
         </Badge>
         <h3 className="mt-1 font-display text-lg font-semibold text-ink">
-          {t(puzzle.reveal.confounderName)}
+          {t(puzzle.reveal.mechanismName)}
         </h3>
         <p className="mt-1 text-[15px] leading-snug text-ink">
           {t(puzzle.reveal.explanation)}

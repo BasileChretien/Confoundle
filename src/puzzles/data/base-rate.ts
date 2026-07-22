@@ -63,7 +63,7 @@ export const baseRate: Puzzle = {
   reveal: {
     headline: { en: "Positive — but almost certainly a false alarm." },
     mechanismLabel: { en: "The base rate" },
-    confounderName: { en: "The disease is rare — that flips the odds" },
+    mechanismName: { en: "The disease is rare — that flips the odds" },
     explanation: {
       en: "Because almost nobody has the disease, the test's small error rate does the heavy lifting. In 1,000 people, only 1 is truly sick — but about 50 healthy people also get a positive. So among the ~51 positive results, just 1 is real. A positive barely nudges you from “very unlikely” to “still unlikely.”",
     },

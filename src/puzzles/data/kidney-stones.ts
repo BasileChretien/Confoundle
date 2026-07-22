@@ -75,7 +75,7 @@ export const kidneyStones: Puzzle = {
 
   reveal: {
     headline: { en: "Treatment A actually wins — for both stone sizes." },
-    confounderName: { en: "Stone size (case severity)" },
+    mechanismName: { en: "Stone size (case severity)" },
     explanation: {
       en: "A and B weren't treating the same patients. A got mostly the hard cases — large stones — while B got mostly the easy ones. Everyone does worse on hard cases, so A's overall average sinks even though A wins in each group:",
     },

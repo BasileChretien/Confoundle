@@ -145,11 +145,14 @@ export const Puzzle = z
 
     reveal: z.object({
       headline: LocalizedText,
-      confounderName: LocalizedText,
+      // The gold callout's heading — names the mechanism/insight behind the
+      // reveal (the confounder for Simpson's, the base rate for base-rate
+      // neglect, etc.). Not confounding-specific.
+      mechanismName: LocalizedText,
       explanation: LocalizedText,
       view: DataView, // usually { kind: "stratified" }
       body: LocalizedText.optional(),
-      // Overrides the gold callout eyebrow (default "The lurking variable").
+      // The callout's small eyebrow above it (default "The lurking variable").
       mechanismLabel: LocalizedText.optional(),
     }),
 

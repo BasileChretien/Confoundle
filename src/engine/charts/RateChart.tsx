@@ -20,7 +20,7 @@ function Bar({ pct, colorHex, label, sub, winner, animate }: BarProps) {
   const height = Math.max(0, Math.min(100, value));
 
   return (
-    <div className="flex min-w-0 flex-1 flex-col items-center gap-1.5">
+    <div className="flex min-w-0 flex-1 flex-col items-center gap-1">
       <div className="flex items-center gap-1 text-sm font-semibold tabular-nums text-ink">
         {winner ? (
           <span className="text-gold" aria-hidden="true">
@@ -37,7 +37,7 @@ function Bar({ pct, colorHex, label, sub, winner, animate }: BarProps) {
           {Math.round(value)}%
         </span>
       </div>
-      <div className="flex h-36 w-full items-end justify-center">
+      <div className="flex h-28 w-full items-end justify-center">
         <div
           className="relative w-9 rounded-t-[3px]"
           style={{ height: `${height}%`, minHeight: "4px", backgroundColor: colorHex }}
@@ -83,7 +83,7 @@ export function RateChart({
       ? bestGroupId(rates, data.higherIsBetter)
       : null;
     return (
-      <div className="flex items-end justify-center gap-12 px-2">
+      <div className="flex items-end justify-center gap-10 px-2">
         {rates.map((r) => (
           <Bar
             key={r.groupId}
@@ -101,18 +101,18 @@ export function RateChart({
 
   const strata = stratifiedRates(data);
   return (
-    <div className="grid grid-cols-2 gap-3">
+    <div className="grid grid-cols-2 gap-2.5">
       {strata.map((s) => {
         const stratum = data.strata.find((x) => x.id === s.stratumId)!;
         const winner = highlightWinner
           ? bestGroupId(s.rates, data.higherIsBetter)
           : null;
         return (
-          <div key={s.stratumId} className="rounded-md border border-rule bg-paper/50 p-3">
-            <div className="mb-2 text-center font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-soft">
+          <div key={s.stratumId} className="rounded-md border border-rule bg-paper/50 p-2.5">
+            <div className="mb-1.5 text-center font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-soft">
               {t(stratum.label)}
             </div>
-            <div className="flex items-end justify-center gap-4">
+            <div className="flex items-end justify-center gap-3">
               {s.rates.map((r) => (
                 <Bar
                   key={r.groupId}
@@ -135,7 +135,7 @@ export function RateChart({
 export function Legend({ data }: { data: RatesData }) {
   const t = useT();
   return (
-    <ul className="mt-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-xs text-ink-soft">
+    <ul className="mt-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs text-ink-soft">
       {data.groups.map((g, i) => (
         <li key={g.id} className="inline-flex items-center gap-1.5">
           <span

@@ -23,7 +23,7 @@ export const kidneyStones: Puzzle = {
       en: "Treatment B cures more patients overall. Which would you pick?",
     },
     framing: {
-      en: "Two treatments for kidney stones were each tried on 350 patients. Judged on the overall success rate, Treatment B comes out ahead. Same illness, same goal — one clean number to go on.",
+      en: "Two kidney-stone treatments, 350 patients each. On overall success rate, Treatment B comes out ahead. Same illness, same goal — one number to go on.",
     },
     question: { en: "Which treatment would you pick?" },
     data: {
@@ -77,12 +77,9 @@ export const kidneyStones: Puzzle = {
     headline: { en: "Treatment A actually wins — for both stone sizes." },
     confounderName: { en: "Stone size (case severity)" },
     explanation: {
-      en: "The hard cases — large stones — went to Treatment A far more often (263 patients vs 80). Those tougher cases drag A's overall number down, even though A beats B on small stones AND on large stones. The single overall rate hid a variable split unevenly between the groups.",
+      en: "The hard cases — large stones — mostly went to Treatment A (263 vs 80). That drags A's overall number down, even though A beats B on small stones AND on large. The pooled rate hid a variable split unevenly between the groups.",
     },
     view: { kind: "stratified" },
-    body: {
-      en: "Stone size is the clearest driver here — but it's rarely the only one, and the honest takeaway isn't “A is always best.” It's this: don't trust one pooled number when the groups weren't facing the same difficulty.",
-    },
   },
 
   lesson: {
@@ -91,7 +88,7 @@ export const kidneyStones: Puzzle = {
       en: "An overall trend can reverse once you account for a lurking variable that's split unevenly between the groups.",
     },
     body: {
-      en: "Whenever two groups are compared with one pooled rate, ask what got mixed together to make that number — and whether the groups were even up against the same odds.",
+      en: "Whenever two groups are compared with one pooled rate, ask what got mixed together to make that number — and whether the groups were even up against the same odds. Stone size is the clearest confounder here; it's rarely the only one.",
     },
   },
 

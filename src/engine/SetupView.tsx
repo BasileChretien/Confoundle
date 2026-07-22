@@ -25,19 +25,19 @@ export function SetupView({
   const data = puzzle.setup.data;
 
   return (
-    <section className="flex flex-col gap-5">
-      <header className="flex flex-col gap-2.5">
+    <section className="flex flex-col gap-4">
+      <header className="flex flex-col gap-2">
         <Badge tone="rust">{humanize(puzzle.category)}</Badge>
-        <h1 className="font-display text-[28px] font-semibold leading-[1.12] text-ink">
+        <h1 className="font-display text-[25px] font-semibold leading-[1.1] text-ink">
           {t(puzzle.setup.headline)}
         </h1>
-        <p className="text-[15px] leading-relaxed text-ink-soft">
+        <p className="text-[15px] leading-snug text-ink-soft">
           {t(puzzle.setup.framing)}
         </p>
       </header>
 
-      <figure className="rounded-lg border border-rule bg-paper-2 p-4">
-        <figcaption className="mb-3 flex items-center justify-between border-b border-rule pb-2">
+      <figure className="rounded-lg border border-rule bg-paper-2 p-3.5">
+        <figcaption className="mb-2.5 flex items-center justify-between border-b border-rule pb-2">
           <Badge tone="ink">
             {data.type === "rates" ? t(data.metricLabel) : "Figure"}
           </Badge>

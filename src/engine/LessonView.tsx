@@ -21,10 +21,10 @@ export function LessonView({
     (provenance.doi ? `https://doi.org/${provenance.doi}` : undefined);
 
   return (
-    <section className="flex flex-col gap-5">
+    <section className="flex flex-col gap-4">
       <header className="flex flex-col gap-2">
         <Badge tone="brand">The skill</Badge>
-        <h2 className="font-display text-[34px] font-semibold leading-[1.05] text-ink">
+        <h2 className="font-display text-[30px] font-semibold leading-[1.05] text-ink">
           {t(lesson.skillName)}
         </h2>
         <p className="text-lg leading-relaxed text-ink">{t(lesson.takeaway)}</p>

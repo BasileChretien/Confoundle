@@ -56,7 +56,7 @@ export function PuzzleFlow({ puzzle }: { puzzle: Puzzle }) {
   const index = ORDER.indexOf(beat);
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-4">
       <ProgressDots total={ORDER.length} index={index} />
       <div key={beat} className="cf-enter">
         {beat === "setup" && <SetupView puzzle={puzzle} onCommit={commit} />}

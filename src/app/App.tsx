@@ -10,8 +10,8 @@ export default function App() {
   return (
     <LocaleProvider locale="en">
       <div className="min-h-[100dvh] bg-paper">
-        <main className="mx-auto flex min-h-[100dvh] w-full max-w-md flex-col px-5 pb-8 pt-5">
-          <header className="mb-5 flex items-end justify-between border-b border-rule pb-3">
+        <main className="mx-auto flex min-h-[100dvh] w-full max-w-md flex-col px-5 pb-6 pt-4">
+          <header className="mb-4 flex items-end justify-between border-b border-rule pb-3">
             <div>
               <div className="flex items-center gap-1.5">
                 <span className="font-display text-xl font-semibold tracking-tight text-ink">
@@ -37,7 +37,7 @@ export default function App() {
             <PuzzleFlow puzzle={puzzle} />
           </div>
 
-          <footer className="mt-8 border-t border-rule pt-3 text-center font-sans text-[10px] uppercase tracking-eyebrow text-ink-mute">
+          <footer className="mt-6 border-t border-rule pt-3 text-center font-sans text-[10px] uppercase tracking-eyebrow text-ink-mute">
             No accounts · no tracking · just the reasoning
           </footer>
         </main>

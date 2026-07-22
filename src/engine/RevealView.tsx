@@ -47,12 +47,12 @@ export function RevealView({
   const metric = data.type === "rates" ? t(data.metricLabel) : "Figure";
 
   return (
-    <section className="flex flex-col gap-5">
-      <header className="flex flex-col gap-2.5">
+    <section className="flex flex-col gap-4">
+      <header className="flex flex-col gap-2">
         <Badge tone={caught ? "brand" : "rust"}>
           {caught ? "You caught it" : "Most people miss this"}
         </Badge>
-        <h2 className="font-display text-[26px] font-semibold leading-[1.14] text-ink">
+        <h2 className="font-display text-[24px] font-semibold leading-[1.12] text-ink">
           {t(puzzle.reveal.headline)}
         </h2>
         <p className="text-sm text-ink-soft">
@@ -64,8 +64,8 @@ export function RevealView({
         </p>
       </header>
 
-      <figure className="rounded-lg border border-rule bg-paper-2 p-4">
-        <figcaption className="mb-3 flex items-center justify-between border-b border-rule pb-2">
+      <figure className="rounded-lg border border-rule bg-paper-2 p-3.5">
+        <figcaption className="mb-2.5 flex items-center justify-between border-b border-rule pb-2">
           <Badge tone="ink">{metric}</Badge>
           <div className="flex items-center gap-3">
             <span
@@ -93,18 +93,18 @@ export function RevealView({
         {data.type === "rates" ? <Legend data={data} /> : null}
       </figure>
 
-      <div className="rounded-lg border border-gold/40 border-l-4 border-l-gold bg-gold/[0.08] p-4">
+      <div className="rounded-lg border border-gold/40 border-l-4 border-l-gold bg-gold/[0.08] p-3.5">
         <Badge tone="gold">The lurking variable</Badge>
-        <h3 className="mt-1.5 font-display text-lg font-semibold text-ink">
+        <h3 className="mt-1 font-display text-lg font-semibold text-ink">
           {t(puzzle.reveal.confounderName)}
         </h3>
-        <p className="mt-1 text-[15px] leading-relaxed text-ink">
+        <p className="mt-1 text-[15px] leading-snug text-ink">
           {t(puzzle.reveal.explanation)}
         </p>
       </div>
 
       {puzzle.reveal.body ? (
-        <p className="text-sm leading-relaxed text-ink-soft">
+        <p className="text-sm leading-snug text-ink-soft">
           {t(puzzle.reveal.body)}
         </p>
       ) : null}

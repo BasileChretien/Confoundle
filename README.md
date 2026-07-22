@@ -39,10 +39,14 @@ pnpm gen:icons    # regenerate PWA icons from the brand motif
 
 ```bash
 # A) Direct upload — live in ~2 minutes, no GitHub needed
-pnpm build
-pnpm dlx wrangler pages deploy dist --project-name confoundle
-#   first run opens a browser to log into your Cloudflare account
+pnpm run deploy
+#   builds, then uploads dist/ via wrangler; first run opens a browser
+#   to log into your Cloudflare account
 ```
+
+> Wrangler is invoked through `npx` (npm's flat layout), not `pnpm dlx` — under
+> pnpm's isolated store, wrangler's `miniflare` can't resolve `undici` and
+> crashes on startup.
 
 Or **B) Git-connected** for auto-deploy on push: in the Cloudflare dashboard, *Workers & Pages → Create → Pages → Connect to Git*, then set **build command** `pnpm build` and **output directory** `dist`. Node version is pinned by [`.node-version`](./.node-version); caching/headers come from [`public/_headers`](./public/_headers).
 

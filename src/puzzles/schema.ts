@@ -82,11 +82,26 @@ const CausalData = z.object({
 });
 export type CausalData = z.infer<typeof CausalData>;
 
+/**
+ * Survivorship-bias data: the visible sample is filtered (only survivors are
+ * observed). The seed renders a WWII bomber damage-map — hits cluster where a
+ * plane can be shot and still return, so the *un-hit* areas are the vulnerable
+ * ones. Labels are authored; the plane layout lives in the renderer.
+ */
+const SurvivorshipData = z.object({
+  type: z.literal("survivorship"),
+  label: LocalizedText, // figure title, e.g. "Returning bombers"
+  hitLabel: LocalizedText, // "hits on planes that came back"
+  armorLabel: LocalizedText, // "armour here"
+});
+export type SurvivorshipData = z.infer<typeof SurvivorshipData>;
+
 /** Discriminated by `type`. Add new members here to support new data shapes. */
 export const PuzzleData = z.discriminatedUnion("type", [
   RatesData,
   FrequenciesData,
   CausalData,
+  SurvivorshipData,
 ]);
 export type PuzzleData = z.infer<typeof PuzzleData>;
 
@@ -100,6 +115,8 @@ export const DataView = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("breakdown"), caption: LocalizedText.optional() }),
   z.object({ kind: z.literal("trend"), caption: LocalizedText.optional() }),
   z.object({ kind: z.literal("cause"), caption: LocalizedText.optional() }),
+  z.object({ kind: z.literal("damage"), caption: LocalizedText.optional() }),
+  z.object({ kind: z.literal("armor"), caption: LocalizedText.optional() }),
 ]);
 export type DataView = z.infer<typeof DataView>;
 export type DataViewKind = DataView["kind"];

@@ -249,6 +249,46 @@ function CausalGlyph({ data }: { data: CausalData }) {
 }
 
 /**
+ * Abstract survivorship illustration for the card: armour the "clean" spots
+ * (engines/cockpit) — the bullet holes only map where a plane can be hit and
+ * still come home. No case specifics beyond the iconic bomber shape.
+ */
+function SurvivorshipGlyph() {
+  const FILL = "#4A4335";
+  const STROKE = "rgba(242,236,222,0.4)";
+  const HITS: ReadonlyArray<readonly [number, number]> = [
+    [26, 72], [70, 70], [82, 80], [118, 71], [130, 80], [176, 72],
+    [100, 96], [94, 110], [107, 124], [99, 138],
+  ];
+  return (
+    <div className="mt-4 rounded-lg p-3" style={{ backgroundColor: "rgba(0,0,0,0.28)" }}>
+      <svg
+        viewBox="0 0 200 168"
+        role="img"
+        aria-label="Armour the engines and cockpit — the clean-looking spots — not the bullet holes"
+        style={{ display: "block", width: "100%", maxWidth: 200, margin: "0 auto" }}
+      >
+        <rect x="14" y="60" width="172" height="24" rx="11" fill={FILL} stroke={STROKE} strokeWidth="1.5" />
+        <rect x="64" y="128" width="72" height="15" rx="7" fill={FILL} stroke={STROKE} strokeWidth="1.5" />
+        <rect x="88" y="22" width="24" height="128" rx="12" fill={FILL} stroke={STROKE} strokeWidth="1.5" />
+        <circle cx="100" cy="38" r="9" fill="rgba(214,164,58,0.30)" stroke={CARD.gold} strokeWidth="2.5" />
+        <rect x="42" y="64" width="16" height="16" rx="4" fill="rgba(214,164,58,0.30)" stroke={CARD.gold} strokeWidth="2.5" />
+        <rect x="142" y="64" width="16" height="16" rx="4" fill="rgba(214,164,58,0.30)" stroke={CARD.gold} strokeWidth="2.5" />
+        {HITS.map(([cx, cy], i) => (
+          <circle key={i} cx={cx} cy={cy} r="3.2" fill={CARD.rust} opacity="0.3" />
+        ))}
+      </svg>
+      <div
+        className="mt-2 text-center text-[11px] font-semibold"
+        style={{ color: CARD.gold }}
+      >
+        Armour the clean-looking spots — not the bullet holes.
+      </div>
+    </div>
+  );
+}
+
+/**
  * Beat 5: the shareable result card. The card node (cardRef) is what gets
  * rendered to PNG. It explains the reasoning skill itself (name + definition +
  * an abstract diagram) so it teaches anyone who sees it, independent of the
@@ -277,6 +317,7 @@ export function ShareCard({
   const frequencyGlyph =
     data.type === "frequencies" && frequencyBreakdown(data).ppv < 0.5;
   const causalGlyph = data.type === "causal";
+  const survivorshipGlyph = data.type === "survivorship";
 
   function selectFraming(next: Framing) {
     setFraming(next);
@@ -347,6 +388,8 @@ export function ShareCard({
             <FrequencyGlyph data={data} />
           ) : causalGlyph ? (
             <CausalGlyph data={data} />
+          ) : survivorshipGlyph ? (
+            <SurvivorshipGlyph />
           ) : null}
 
           <p className="mt-4 font-display text-[17px] font-medium leading-snug">

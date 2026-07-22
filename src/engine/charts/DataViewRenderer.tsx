@@ -6,6 +6,7 @@ import type {
 import { RateChart } from "./RateChart";
 import { FrequencyView } from "./FrequencyView";
 import { CausalView } from "./CausalView";
+import { SurvivorshipView } from "./SurvivorshipView";
 
 /**
  * The generic seam: dispatch on the data's `type` to the matching renderer.
@@ -36,6 +37,8 @@ export function DataViewRenderer({
       return <FrequencyView data={data} view={view} animate={animate} />;
     case "causal":
       return <CausalView data={data} view={view} animate={animate} />;
+    case "survivorship":
+      return <SurvivorshipView data={data} view={view} animate={animate} />;
     default:
       return null;
   }
@@ -61,6 +64,10 @@ export function scopeLabel(kind: DataViewKind): string {
       return "Observed";
     case "cause":
       return "Explained";
+    case "damage":
+      return "Survivors";
+    case "armor":
+      return "The full picture";
     default:
       return "";
   }

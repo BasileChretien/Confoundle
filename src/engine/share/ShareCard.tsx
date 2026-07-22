@@ -37,48 +37,78 @@ function hasReversal(data: RatesData): boolean {
   return Boolean(champ && agg && champ !== agg);
 }
 
+/** One labelled pair of bars with a gold check over the taller one. */
+function GlyphPanel({
+  label,
+  a,
+  b,
+  winner,
+  emphasized,
+}: {
+  label: string;
+  a: number;
+  b: number;
+  winner: "a" | "b";
+  emphasized?: boolean;
+}) {
+  const bar = (k: "a" | "b", v: number) => (
+    <div
+      key={k}
+      className="relative w-4 rounded-t-[2px]"
+      style={{ height: `${v}%`, backgroundColor: k === "a" ? CARD.teal : CARD.rust }}
+    >
+      {winner === k ? (
+        <span
+          className="absolute left-1/2 -translate-x-1/2 text-xs font-bold leading-none"
+          style={{ top: -15, color: CARD.gold }}
+        >
+          ✓
+        </span>
+      ) : null}
+    </div>
+  );
+  return (
+    <div
+      className={
+        "flex flex-col items-center gap-1.5 rounded-md px-2 py-1 " +
+        (emphasized ? "" : "")
+      }
+      style={emphasized ? { backgroundColor: "rgba(255,255,255,0.06)" } : undefined}
+    >
+      <div className="flex h-[58px] items-end justify-center gap-2">
+        {bar("a", a)}
+        {bar("b", b)}
+      </div>
+      <span
+        className="text-[9px] font-semibold uppercase tracking-eyebrow"
+        style={{ color: CARD.muted }}
+      >
+        {label}
+      </span>
+    </div>
+  );
+}
+
 /**
- * Abstract illustration of the paradox — the trend rises within each group but
- * falls once the groups are pooled. Deliberately carries no case-specific
- * numbers or labels: the card teaches the concept, not this one puzzle.
+ * Abstract illustration of the paradox: the same option (teal) leads in every
+ * group, yet the other (rust) leads once the groups are pooled — the winner
+ * flips. Deliberately carries no case-specific numbers or labels; the card
+ * teaches the concept, not this one puzzle.
  */
 function ReversalGlyph() {
   return (
-    <div
-      className="mt-4 rounded-lg p-3"
-      style={{ backgroundColor: "rgba(0,0,0,0.28)" }}
-    >
-      <svg
-        viewBox="0 0 260 84"
-        width="100%"
-        role="img"
-        aria-label="Within each group the trend rises, but pooled together it reverses and falls."
-        style={{ display: "block" }}
-      >
-        <line
-          x1="20" y1="30" x2="240" y2="66"
-          stroke={CARD.rust} strokeWidth="2.5" strokeDasharray="5 6" strokeLinecap="round"
-        />
-        <line x1="26" y1="52" x2="98" y2="28" stroke={CARD.teal} strokeWidth="4" strokeLinecap="round" />
-        <circle cx="26" cy="52" r="3.6" fill={CARD.teal} />
-        <circle cx="98" cy="28" r="3.6" fill={CARD.teal} />
-        <line x1="162" y1="74" x2="234" y2="50" stroke={CARD.teal} strokeWidth="4" strokeLinecap="round" />
-        <circle cx="162" cy="74" r="3.6" fill={CARD.teal} />
-        <circle cx="234" cy="50" r="3.6" fill={CARD.teal} />
-      </svg>
-      <div
-        className="mt-2 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-[10px]"
-        style={{ color: CARD.muted }}
-      >
-        <span className="inline-flex items-center gap-1.5">
-          <span style={{ width: 14, height: 3, background: CARD.teal, borderRadius: 2, display: "inline-block" }} />
-          within each group ↑
+    <div className="mt-4 rounded-lg p-3" style={{ backgroundColor: "rgba(0,0,0,0.28)" }}>
+      <div className="flex items-end justify-center gap-2.5 pt-4">
+        <GlyphPanel label="Group 1" a={92} b={82} winner="a" />
+        <GlyphPanel label="Group 2" a={64} b={56} winner="a" />
+        <span className="pb-5 text-sm" style={{ color: CARD.muted }} aria-hidden="true">
+          →
         </span>
-        <span className="inline-flex items-center gap-1.5">
-          <span style={{ width: 14, borderTop: `2px dashed ${CARD.rust}`, display: "inline-block" }} />
-          pooled together ↓
-        </span>
+        <GlyphPanel label="Combined" a={70} b={82} winner="b" emphasized />
       </div>
+      <p className="mt-2 text-center text-[11px] leading-snug" style={{ color: CARD.muted }}>
+        Leads in every group — trails once you pool them.
+      </p>
     </div>
   );
 }

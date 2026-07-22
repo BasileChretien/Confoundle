@@ -33,10 +33,21 @@ pnpm gen:icons    # regenerate PWA icons from the brand motif
 
 ## Deploy
 
-`pnpm build` emits a fully static site to `dist/` — no server, no environment variables, no secrets. Host it anywhere that serves static files (Netlify, Vercel, Cloudflare Pages, GitHub Pages, S3). On the zero-config hosts, point the build command at `pnpm build` and the publish directory at `dist`.
+`pnpm build` emits a fully static site to `dist/` — no server, no environment variables, no secrets, nothing collected about the visitor. Host it anywhere that serves static files.
+
+**Cloudflare Pages** is the recommended host (free tier, unlimited bandwidth, global CDN). Two ways:
+
+```bash
+# A) Direct upload — live in ~2 minutes, no GitHub needed
+pnpm build
+pnpm dlx wrangler pages deploy dist --project-name confoundle
+#   first run opens a browser to log into your Cloudflare account
+```
+
+Or **B) Git-connected** for auto-deploy on push: in the Cloudflare dashboard, *Workers & Pages → Create → Pages → Connect to Git*, then set **build command** `pnpm build` and **output directory** `dist`. Node version is pinned by [`.node-version`](./.node-version); caching/headers come from [`public/_headers`](./public/_headers).
 
 - **No SPA rewrite needed.** Puzzles are addressed with a query string (`?p=<slug>`), not a path, so every request resolves to `index.html` on any static host out of the box.
-- **Root vs. sub-path.** The default base path is `/` (root domains and Netlify/Vercel/CF Pages). For a GitHub Pages project site served under `/<repo>/`, build with `--base=/<repo>/`.
+- **Root vs. sub-path.** The default base path is `/` (root domains, incl. `*.pages.dev`). For a GitHub Pages project site served under `/<repo>/`, build with `--base=/<repo>/` instead.
 - **The daily** rotates deterministically by date across the registry, so every visitor sees the same puzzle on the same day.
 
 **Single-file build (no host required).** `SINGLEFILE=1 pnpm exec vite build` inlines everything — JS, CSS, and fonts — into one self-contained `dist-single/index.html` with a built-in puzzle picker. Open it directly, email it, or publish it as-is. (This mode drops the service worker / offline PWA.)

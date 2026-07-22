@@ -1,9 +1,15 @@
 import { useRef, useState } from "react";
-import type { Choice, Puzzle, RatesData } from "../../puzzles/schema";
+import type {
+  Choice,
+  FrequenciesData,
+  Puzzle,
+  RatesData,
+} from "../../puzzles/schema";
 import { useT } from "../../app/i18n";
 import { track } from "../../app/analytics";
 import { Badge, Button } from "../ui";
 import { aggregateRates, bestGroupId, stratifiedRates } from "../charts/rates";
+import { frequencyBreakdown } from "../charts/frequencies";
 import { shareOrDownloadCard, type ExportResult } from "./exportCard";
 
 type Framing = "competitive" | "selfDeprecating";
@@ -16,6 +22,7 @@ const CARD = {
   gold: "#D6A43A",
   teal: "#2AB39C",
   rust: "#E06A45",
+  falseDim: "#7E7159", // dim tan — "false alarm" dots on the dark plate
   rule: "rgba(242,236,222,0.16)",
 };
 
@@ -111,6 +118,76 @@ function ReversalGlyph() {
 }
 
 /**
+ * Abstract illustration of the false-positive paradox: everyone shown here
+ * tested positive, yet almost all are false alarms — because the condition is
+ * rare. Derived from the puzzle's counts (scaled to fit); no case specifics.
+ */
+function FrequencyGlyph({ data }: { data: FrequenciesData }) {
+  const b = frequencyBreakdown(data);
+  const CAP = 60;
+  let trueN = b.truePositive;
+  let falseN = b.falsePositive;
+  if (b.allPositive > CAP) {
+    trueN = Math.max(1, Math.round((b.truePositive / b.allPositive) * CAP));
+    falseN = Math.max(0, CAP - trueN);
+  }
+  return (
+    <div
+      className="mt-4 rounded-lg p-3"
+      style={{ backgroundColor: "rgba(0,0,0,0.28)" }}
+    >
+      <div
+        className="mb-2 text-center font-sans text-[10px] font-semibold uppercase tracking-eyebrow"
+        style={{ color: CARD.muted }}
+      >
+        Everyone here tested positive
+      </div>
+      <div className="mx-auto flex max-w-[15rem] flex-wrap justify-center gap-1">
+        {Array.from({ length: trueN }).map((_, i) => (
+          <span
+            key={`t${i}`}
+            className="h-2.5 w-2.5 rounded-full"
+            style={{ backgroundColor: CARD.teal }}
+          />
+        ))}
+        {Array.from({ length: falseN }).map((_, i) => (
+          <span
+            key={`f${i}`}
+            className="h-2.5 w-2.5 rounded-full"
+            style={{ backgroundColor: CARD.falseDim }}
+          />
+        ))}
+      </div>
+      <div
+        className="mt-2.5 text-center text-[11px] font-semibold"
+        style={{ color: CARD.gold }}
+      >
+        Almost every one is a false alarm.
+      </div>
+      <div
+        className="mt-1.5 flex flex-wrap justify-center gap-x-4 gap-y-1 text-[10px]"
+        style={{ color: CARD.muted }}
+      >
+        <span className="inline-flex items-center gap-1.5">
+          <span
+            className="h-2.5 w-2.5 rounded-full"
+            style={{ backgroundColor: CARD.teal }}
+          />
+          really has it
+        </span>
+        <span className="inline-flex items-center gap-1.5">
+          <span
+            className="h-2.5 w-2.5 rounded-full"
+            style={{ backgroundColor: CARD.falseDim }}
+          />
+          false alarm
+        </span>
+      </div>
+    </div>
+  );
+}
+
+/**
  * Beat 5: the shareable result card. The card node (cardRef) is what gets
  * rendered to PNG. It explains the reasoning skill itself (name + definition +
  * an abstract diagram) so it teaches anyone who sees it, independent of the
@@ -135,7 +212,9 @@ export function ShareCard({
 
   const data = puzzle.setup.data;
   const caption = t(puzzle.share.captions[framing]);
-  const showGlyph = data.type === "rates" && hasReversal(data);
+  const reversalGlyph = data.type === "rates" && hasReversal(data);
+  const frequencyGlyph =
+    data.type === "frequencies" && frequencyBreakdown(data).ppv < 0.5;
 
   function selectFraming(next: Framing) {
     setFraming(next);
@@ -200,7 +279,11 @@ export function ShareCard({
             {t(puzzle.share.explainer)}
           </p>
 
-          {showGlyph ? <ReversalGlyph /> : null}
+          {reversalGlyph ? (
+            <ReversalGlyph />
+          ) : frequencyGlyph ? (
+            <FrequencyGlyph data={data} />
+          ) : null}
 
           <p className="mt-4 font-display text-[17px] font-medium leading-snug">
             <span style={{ color: CARD.gold }}>“</span>

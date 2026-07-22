@@ -3,114 +3,91 @@ import type { Choice, Puzzle, RatesData } from "../../puzzles/schema";
 import { useT } from "../../app/i18n";
 import { track } from "../../app/analytics";
 import { Badge, Button } from "../ui";
-import {
-  aggregateRates,
-  bestGroupId,
-  formatPct,
-  stratifiedRates,
-} from "../charts/rates";
+import { aggregateRates, bestGroupId, stratifiedRates } from "../charts/rates";
 import { shareOrDownloadCard, type ExportResult } from "./exportCard";
 
 type Framing = "competitive" | "selfDeprecating";
 
-// Card-specific colors: brighter data tones for legibility on the dark plate.
+// Card-specific colors: brighter tones for legibility on the dark plate.
 const CARD = {
   bg: "#201B14",
   text: "#F2ECDE",
   muted: "#C9BEA6",
   gold: "#D6A43A",
+  teal: "#2AB39C",
+  rust: "#E06A45",
   rule: "rgba(242,236,222,0.16)",
-  track: "rgba(242,236,222,0.14)",
 };
-const CARD_SERIES = ["#2AB39C", "#E06A45", "#D6A43A", "#8CA0C0", "#C08BB0"];
-const cardColor = (i: number) => CARD_SERIES[i % CARD_SERIES.length];
 
-/** Compact, static reversal graphic for the share card (no animation). */
-function MiniReversal({ data }: { data: RatesData }) {
-  const t = useT();
-  const indexOf = new Map(data.groups.map((g, i) => [g.id, i]));
-  const short = (id: string) => {
-    const g = data.groups.find((x) => x.id === id)!;
-    return t(g.short ?? g.label);
-  };
+function humanize(category: string): string {
+  const s = category.replace(/-/g, " ");
+  return s.charAt(0).toUpperCase() + s.slice(1);
+}
 
-  const agg = aggregateRates(data);
-  const aggWinner = bestGroupId(agg, data.higherIsBetter);
-  const strata = stratifiedRates(data);
-  const stratumWinners = strata.map((s) =>
+/** True when the pooled winner differs from the (consistent) subgroup winner. */
+function hasReversal(data: RatesData): boolean {
+  const agg = bestGroupId(aggregateRates(data), data.higherIsBetter);
+  const winners = stratifiedRates(data).map((s) =>
     bestGroupId(s.rates, data.higherIsBetter),
   );
-  const subgroupChamp =
-    stratumWinners.length > 0 &&
-    stratumWinners.every((w) => w === stratumWinners[0])
-      ? stratumWinners[0]
+  const champ =
+    winners.length > 0 && winners.every((w) => w === winners[0])
+      ? winners[0]
       : null;
-  const isReversal = subgroupChamp && aggWinner && subgroupChamp !== aggWinner;
+  return Boolean(champ && agg && champ !== agg);
+}
 
+/**
+ * Abstract illustration of the paradox — the trend rises within each group but
+ * falls once the groups are pooled. Deliberately carries no case-specific
+ * numbers or labels: the card teaches the concept, not this one puzzle.
+ */
+function ReversalGlyph() {
   return (
-    <div className="mt-4 rounded-lg p-3" style={{ backgroundColor: "rgba(0,0,0,0.28)" }}>
-      {strata.map((s) => {
-        const stratum = data.strata.find((x) => x.id === s.stratumId)!;
-        const winner = bestGroupId(s.rates, data.higherIsBetter);
-        return (
-          <div key={s.stratumId} className="mb-2 last:mb-0">
-            <div
-              className="mb-1 font-sans text-[10px] font-semibold uppercase tracking-eyebrow"
-              style={{ color: CARD.muted }}
-            >
-              {t(stratum.label)}
-            </div>
-            {s.rates.map((r) => (
-              <div key={r.groupId} className="mb-1 flex items-center gap-2">
-                <span
-                  className="w-4 font-sans text-[11px] font-bold"
-                  style={{ color: CARD.text }}
-                >
-                  {short(r.groupId)}
-                </span>
-                <div
-                  className="h-2 flex-1 overflow-hidden rounded-full"
-                  style={{ backgroundColor: CARD.track }}
-                >
-                  <div
-                    className="h-full rounded-full"
-                    style={{
-                      width: `${Math.round(r.rate * 100)}%`,
-                      backgroundColor: cardColor(indexOf.get(r.groupId) ?? 0),
-                    }}
-                  />
-                </div>
-                <span
-                  className="w-9 text-right font-sans text-[11px] tabular-nums"
-                  style={{ color: winner === r.groupId ? CARD.gold : CARD.muted }}
-                >
-                  {formatPct(r.rate)}
-                </span>
-                <span className="w-2 text-[11px]" style={{ color: CARD.gold }}>
-                  {winner === r.groupId ? "✓" : ""}
-                </span>
-              </div>
-            ))}
-          </div>
-        );
-      })}
-      {isReversal ? (
-        <div
-          className="mt-2 text-center font-sans text-[11px] font-semibold"
-          style={{ color: CARD.gold }}
-        >
-          {short(subgroupChamp)} wins every subgroup — {short(aggWinner)} only
-          wins the average.
-        </div>
-      ) : null}
+    <div
+      className="mt-4 rounded-lg p-3"
+      style={{ backgroundColor: "rgba(0,0,0,0.28)" }}
+    >
+      <svg
+        viewBox="0 0 260 84"
+        width="100%"
+        role="img"
+        aria-label="Within each group the trend rises, but pooled together it reverses and falls."
+        style={{ display: "block" }}
+      >
+        <line
+          x1="20" y1="30" x2="240" y2="66"
+          stroke={CARD.rust} strokeWidth="2.5" strokeDasharray="5 6" strokeLinecap="round"
+        />
+        <line x1="26" y1="52" x2="98" y2="28" stroke={CARD.teal} strokeWidth="4" strokeLinecap="round" />
+        <circle cx="26" cy="52" r="3.6" fill={CARD.teal} />
+        <circle cx="98" cy="28" r="3.6" fill={CARD.teal} />
+        <line x1="162" y1="74" x2="234" y2="50" stroke={CARD.teal} strokeWidth="4" strokeLinecap="round" />
+        <circle cx="162" cy="74" r="3.6" fill={CARD.teal} />
+        <circle cx="234" cy="50" r="3.6" fill={CARD.teal} />
+      </svg>
+      <div
+        className="mt-2 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-[10px]"
+        style={{ color: CARD.muted }}
+      >
+        <span className="inline-flex items-center gap-1.5">
+          <span style={{ width: 14, height: 3, background: CARD.teal, borderRadius: 2, display: "inline-block" }} />
+          within each group ↑
+        </span>
+        <span className="inline-flex items-center gap-1.5">
+          <span style={{ width: 14, borderTop: `2px dashed ${CARD.rust}`, display: "inline-block" }} />
+          pooled together ↓
+        </span>
+      </div>
     </div>
   );
 }
 
 /**
  * Beat 5: the shareable result card. The card node (cardRef) is what gets
- * rendered to PNG. Both caption framings are offered side-by-side at the moment
- * of sharing and update the card live.
+ * rendered to PNG. It explains the reasoning skill itself (name + definition +
+ * an abstract diagram) so it teaches anyone who sees it, independent of the
+ * specific puzzle. Both caption framings are offered side-by-side.
  */
 export function ShareCard({
   puzzle,
@@ -131,6 +108,7 @@ export function ShareCard({
 
   const data = puzzle.setup.data;
   const caption = t(puzzle.share.captions[framing]);
+  const showGlyph = data.type === "rates" && hasReversal(data);
 
   function selectFraming(next: Framing) {
     setFraming(next);
@@ -144,7 +122,7 @@ export function ShareCard({
     const result: ExportResult = await shareOrDownloadCard(
       cardRef.current,
       `confoundle-${puzzle.slug}.png`,
-      { title: "Confoundle", text: `${caption} — Confoundle` },
+      { title: t(puzzle.share.title), text: `${caption} — Confoundle` },
     );
     track("share_export", { slug: puzzle.slug, framing, result });
     setStatus(
@@ -168,7 +146,7 @@ export function ShareCard({
         </h2>
       </header>
 
-      {/* The screenshot-able card — a dark almanac plate */}
+      {/* The screenshot-able card — a dark almanac plate that explains the skill */}
       <div className="flex justify-center">
         <div
           ref={cardRef}
@@ -183,7 +161,7 @@ export function ShareCard({
               className="font-sans text-[10px] font-semibold uppercase tracking-eyebrow"
               style={{ color: CARD.muted }}
             >
-              {t(puzzle.share.title)}
+              {humanize(puzzle.category)}
             </span>
           </div>
 
@@ -191,7 +169,11 @@ export function ShareCard({
             {t(puzzle.lesson.skillName)}
           </div>
 
-          {data.type === "rates" ? <MiniReversal data={data} /> : null}
+          <p className="mt-2 text-[14px] leading-snug" style={{ color: CARD.text }}>
+            {t(puzzle.lesson.takeaway)}
+          </p>
+
+          {showGlyph ? <ReversalGlyph /> : null}
 
           <p className="mt-4 font-display text-[17px] font-medium leading-snug">
             <span style={{ color: CARD.gold }}>“</span>

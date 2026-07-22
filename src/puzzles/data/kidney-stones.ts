@@ -93,14 +93,10 @@ export const kidneyStones: Puzzle = {
   },
 
   share: {
-    title: { en: "I met the kidney-stone paradox." },
+    title: { en: "Simpson's paradox — a reasoning trap." },
     captions: {
-      competitive: {
-        en: "Caught the reversal in one look. Bet you pick the wrong treatment.",
-      },
-      selfDeprecating: {
-        en: "I confidently picked the worse treatment. Textbook.",
-      },
+      competitive: { en: "Caught it. Bet you can't." },
+      selfDeprecating: { en: "I totally fell for this." },
     },
   },
 

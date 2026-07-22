@@ -166,12 +166,29 @@ export const TAG_IDS = [
   "everyday",
   "clinical",
   "research",
-  // domain — where it shows up
+  // method — cross-cutting
   "statistics",
+  // medicine
   "diagnosis",
   "screening",
   "epidemiology",
   "pharmacology",
+  // sciences
+  "psychology",
+  "biology",
+  "technology",
+  // social sciences
+  "economics",
+  "politics",
+  "education",
+  // applied
+  "finance",
+  "business",
+  "law",
+  "sports",
+  // humanities
+  "history",
+  "media",
 ] as const;
 export const TagId = z.enum(TAG_IDS);
 export type TagId = z.infer<typeof TagId>;

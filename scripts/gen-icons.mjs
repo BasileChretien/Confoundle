@@ -68,16 +68,11 @@ function drawIcon(size, motifScale) {
     rgba[i + 3] = a;
   };
 
-  // indigo (#4f46e5) → violet (#7c3aed) vertical gradient
-  for (let y = 0; y < size; y++) {
-    const t = y / (size - 1);
-    const r = lerp(0x4f, 0x7c, t);
-    const g = lerp(0x46, 0x3a, t);
-    const b = lerp(0xe5, 0xed, t);
-    for (let x = 0; x < size; x++) set(x, y, r, g, b, 255);
-  }
+  // solid warm-ink ground
+  for (let y = 0; y < size; y++)
+    for (let x = 0; x < size; x++) set(x, y, 0x20, 0x1b, 0x14, 255);
 
-  // two white bars within the (maskable-safe) motif area
+  // two data bars (teal + rust) within the (maskable-safe) motif area
   const area = size * motifScale;
   const ox = (size - area) / 2;
   const oy = (size - area) / 2;
@@ -87,15 +82,15 @@ function drawIcon(size, motifScale) {
   const startX = Math.round(ox + (area - totalW) / 2);
   const baseY = Math.round(oy + area * 0.84);
 
-  const drawBar = (x, h) => {
+  const drawBar = (x, h, col) => {
     const top = Math.round(baseY - h);
     for (let yy = top; yy < baseY; yy++)
       for (let xx = x; xx < x + barW; xx++)
         if (xx >= 0 && xx < size && yy >= 0 && yy < size)
-          set(xx, yy, 255, 255, 255, 255);
+          set(xx, yy, col[0], col[1], col[2], 255);
   };
-  drawBar(startX, Math.round(area * 0.4));
-  drawBar(startX + barW + gap, Math.round(area * 0.64));
+  drawBar(startX, Math.round(area * 0.42), [0x2a, 0xb3, 0x9c]); // teal
+  drawBar(startX + barW + gap, Math.round(area * 0.66), [0xe0, 0x6a, 0x45]); // rust
 
   return rgba;
 }

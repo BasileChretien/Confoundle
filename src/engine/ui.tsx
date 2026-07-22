@@ -12,11 +12,11 @@ export function Button({
   ...rest
 }: ButtonProps) {
   const base =
-    "w-full rounded-xl px-5 py-3.5 text-center text-base font-semibold transition active:scale-[.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 disabled:opacity-50";
+    "w-full rounded-lg px-5 py-3.5 text-center text-base font-semibold transition-[transform,background-color,border-color] duration-200 active:scale-[.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-paper disabled:opacity-50";
   const look =
     variant === "primary"
-      ? "bg-indigo-500 text-white hover:bg-indigo-400"
-      : "bg-white/10 text-slate-200 hover:bg-white/15";
+      ? "bg-ink text-paper hover:bg-ink/90"
+      : "border border-rule bg-transparent text-ink hover:border-ink/40 hover:bg-paper-3";
   return (
     <button className={`${base} ${look} ${className}`} {...rest}>
       {children}
@@ -24,9 +24,25 @@ export function Button({
   );
 }
 
-export function Badge({ children }: { children: ReactNode }) {
+type Tone = "ink" | "brand" | "rust" | "gold";
+const TICK: Record<Tone, string> = {
+  ink: "bg-ink-mute",
+  brand: "bg-brand",
+  rust: "bg-rust",
+  gold: "bg-gold",
+};
+
+/** Editorial eyebrow: uppercase, tracked, with a small colored tick. */
+export function Badge({
+  children,
+  tone = "ink",
+}: {
+  children: ReactNode;
+  tone?: Tone;
+}) {
   return (
-    <span className="inline-block rounded-full bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-indigo-200">
+    <span className="inline-flex items-center gap-2 font-sans text-[11px] font-semibold uppercase tracking-eyebrow text-ink-soft">
+      <span className={`h-2 w-2 rounded-[1px] ${TICK[tone]}`} aria-hidden="true" />
       {children}
     </span>
   );
@@ -42,7 +58,7 @@ export function ProgressDots({
 }) {
   return (
     <div
-      className="flex items-center justify-center gap-2"
+      className="flex items-center gap-1.5"
       role="progressbar"
       aria-valuemin={1}
       aria-valuemax={total}
@@ -53,12 +69,12 @@ export function ProgressDots({
         <span
           key={i}
           className={
-            "h-1.5 rounded-full transition-all " +
+            "h-[3px] rounded-full transition-all duration-300 " +
             (i === index
-              ? "w-6 bg-indigo-400"
+              ? "w-7 bg-brand"
               : i < index
-                ? "w-1.5 bg-indigo-400/70"
-                : "w-1.5 bg-white/20")
+                ? "w-4 bg-brand/50"
+                : "w-4 bg-rule")
           }
         />
       ))}

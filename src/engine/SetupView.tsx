@@ -11,8 +11,8 @@ function humanize(category: string): string {
 }
 
 /**
- * Beat 1+2: the setup (framing + data) and the commit, on one mobile screen.
- * The chart renders the puzzle's authored `initialView` — never the answer.
+ * Beat 1+2: the setup (framing + data plate) and the commit, on one screen.
+ * The plate renders the puzzle's authored `initialView` — never the answer.
  */
 export function SetupView({
   puzzle,
@@ -26,17 +26,25 @@ export function SetupView({
 
   return (
     <section className="flex flex-col gap-5">
-      <header className="flex flex-col gap-2">
-        <Badge>{humanize(puzzle.category)}</Badge>
-        <h1 className="text-2xl font-extrabold leading-tight text-white">
+      <header className="flex flex-col gap-2.5">
+        <Badge tone="rust">{humanize(puzzle.category)}</Badge>
+        <h1 className="font-display text-[28px] font-semibold leading-[1.12] text-ink">
           {t(puzzle.setup.headline)}
         </h1>
-        <p className="text-[15px] leading-relaxed text-slate-300">
+        <p className="text-[15px] leading-relaxed text-ink-soft">
           {t(puzzle.setup.framing)}
         </p>
       </header>
 
-      <div className="rounded-2xl bg-white/5 p-4">
+      <figure className="rounded-lg border border-rule bg-paper-2 p-4">
+        <figcaption className="mb-3 flex items-center justify-between border-b border-rule pb-2">
+          <Badge tone="ink">
+            {data.type === "rates" ? t(data.metricLabel) : "Figure"}
+          </Badge>
+          <span className="font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-mute">
+            Overall
+          </span>
+        </figcaption>
         <DataViewRenderer
           data={data}
           view={puzzle.setup.initialView.kind}
@@ -44,7 +52,7 @@ export function SetupView({
           highlightWinner
         />
         {data.type === "rates" ? <Legend data={data} /> : null}
-      </div>
+      </figure>
 
       <CommitView puzzle={puzzle} onCommit={onCommit} />
     </section>

@@ -21,3 +21,6 @@ pnpm-debug.log*
 .idea/
 .DS_Store
 Thumbs.db
+
+# local design preview renders (not part of the source)
+design-preview/

@@ -5,8 +5,7 @@ import { Badge, Button } from "./ui";
 /**
  * Beat 4: the lesson. Names the portable skill and the "you'll see it
  * everywhere" takeaway. Provenance is shown here — after the reveal, off the
- * emotional path (a citation inside the reveal would kill the beat). The
- * optional go-deeper link is kept visually secondary.
+ * emotional path. The optional go-deeper link is kept visually secondary.
  */
 export function LessonView({
   puzzle,
@@ -24,38 +23,34 @@ export function LessonView({
   return (
     <section className="flex flex-col gap-5">
       <header className="flex flex-col gap-2">
-        <Badge>The skill</Badge>
-        <h2 className="text-3xl font-extrabold leading-tight text-white">
+        <Badge tone="brand">The skill</Badge>
+        <h2 className="font-display text-[34px] font-semibold leading-[1.05] text-ink">
           {t(lesson.skillName)}
         </h2>
-        <p className="text-lg font-medium leading-relaxed text-indigo-100">
-          {t(lesson.takeaway)}
-        </p>
+        <p className="text-lg leading-relaxed text-ink">{t(lesson.takeaway)}</p>
       </header>
 
       {lesson.body ? (
-        <p className="text-[15px] leading-relaxed text-slate-300">
+        <p className="text-[15px] leading-relaxed text-ink-soft">
           {t(lesson.body)}
         </p>
       ) : null}
 
-      <div className="rounded-xl border border-white/10 bg-white/5 p-4 text-xs leading-relaxed text-slate-400">
-        <div className="mb-1 font-semibold uppercase tracking-wide text-slate-500">
-          Source
-        </div>
-        <p>{provenance.source}</p>
+      <div className="rounded-lg border border-rule bg-paper-2 p-4 text-xs leading-relaxed text-ink-soft">
+        <Badge tone="ink">Source</Badge>
+        <p className="mt-1.5">{provenance.source}</p>
         {sourceLink ? (
           <a
             href={sourceLink}
             target="_blank"
             rel="noreferrer"
-            className="mt-1 inline-block text-indigo-300 underline decoration-indigo-300/40 underline-offset-2 hover:text-indigo-200"
+            className="mt-1 inline-block font-medium text-brand-ink underline decoration-brand/40 underline-offset-2 hover:decoration-brand"
           >
             {provenance.doi ? `doi:${provenance.doi}` : sourceLink}
           </a>
         ) : null}
         {provenance.note ? (
-          <p className="mt-2 italic text-slate-500">{t(provenance.note)}</p>
+          <p className="mt-2 italic text-ink-mute">{t(provenance.note)}</p>
         ) : null}
       </div>
 
@@ -66,7 +61,7 @@ export function LessonView({
           href={goDeeperUrl}
           target="_blank"
           rel="noreferrer"
-          className="text-center text-sm text-slate-400 underline decoration-slate-600 underline-offset-2 hover:text-slate-200"
+          className="text-center text-sm text-ink-soft underline decoration-rule underline-offset-2 hover:text-ink"
         >
           Go deeper on this idea →
         </a>

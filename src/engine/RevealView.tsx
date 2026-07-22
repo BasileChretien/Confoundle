@@ -8,7 +8,7 @@ import { DataViewRenderer } from "./charts/DataViewRenderer";
 import { Legend } from "./charts/RateChart";
 
 /**
- * Beat 3: the reveal. The chart opens on the same pooled view the user just
+ * Beat 3: the reveal. The plate opens on the same pooled view the user just
  * committed against, then flips to the stratified breakdown where the trend
  * reverses. Under reduced motion it opens directly on the breakdown with no
  * animation and no auto-transition.
@@ -44,65 +44,67 @@ export function RevealView({
 
   const view = flipped ? "stratified" : "aggregate";
   const caught = committed.isCorrect;
+  const metric = data.type === "rates" ? t(data.metricLabel) : "Figure";
 
   return (
     <section className="flex flex-col gap-5">
-      <header className="flex flex-col gap-2">
-        <Badge>{caught ? "You caught it" : "You're in good company"}</Badge>
-        <h2 className="text-2xl font-extrabold leading-tight text-white">
+      <header className="flex flex-col gap-2.5">
+        <Badge tone={caught ? "brand" : "rust"}>
+          {caught ? "You caught it" : "Most people miss this"}
+        </Badge>
+        <h2 className="font-display text-[26px] font-semibold leading-[1.14] text-ink">
           {t(puzzle.reveal.headline)}
         </h2>
-        <p className="text-sm text-slate-400">
+        <p className="text-sm text-ink-soft">
           You picked{" "}
-          <span className="font-semibold text-slate-200">
-            {t(committed.label)}
-          </span>
-          .{" "}
+          <span className="font-semibold text-ink">{t(committed.label)}</span>.{" "}
           {caught
-            ? "You saw through the pooled number."
+            ? "You saw past the pooled number."
             : "So does most everyone — the overall rate is built to mislead."}
         </p>
       </header>
 
-      <div className="rounded-2xl bg-white/5 p-4">
-        <div className="mb-3 flex items-center justify-between text-xs text-slate-400">
-          <span aria-live="polite">
-            {view === "aggregate"
-              ? `${t(data.metricLabel)}, overall`
-              : `Split by ${t(puzzle.reveal.confounderName).toLowerCase()}`}
-          </span>
-          {!reduced ? (
-            <button
-              type="button"
-              onClick={replay}
-              className="rounded-md px-2 py-1 text-slate-300 hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+      <figure className="rounded-lg border border-rule bg-paper-2 p-4">
+        <figcaption className="mb-3 flex items-center justify-between border-b border-rule pb-2">
+          <Badge tone="ink">{metric}</Badge>
+          <div className="flex items-center gap-3">
+            <span
+              className="font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-mute"
+              aria-live="polite"
             >
-              ↺ Replay
-            </button>
-          ) : null}
-        </div>
+              {view === "aggregate" ? "Overall" : "By subgroup"}
+            </span>
+            {!reduced ? (
+              <button
+                type="button"
+                onClick={replay}
+                className="rounded font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-brand-ink hover:text-brand focus:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+              >
+                ↺ Replay
+              </button>
+            ) : null}
+          </div>
+        </figcaption>
 
         <div key={view} className="cf-enter-sm">
           <DataViewRenderer data={data} view={view} animate highlightWinner />
         </div>
 
         {data.type === "rates" ? <Legend data={data} /> : null}
-      </div>
+      </figure>
 
-      <div className="rounded-2xl border border-indigo-400/30 bg-indigo-500/10 p-4">
-        <div className="mb-1 text-xs font-semibold uppercase tracking-wide text-indigo-200">
-          The lurking variable
-        </div>
-        <h3 className="text-lg font-bold text-white">
+      <div className="rounded-lg border border-gold/40 border-l-4 border-l-gold bg-gold/[0.08] p-4">
+        <Badge tone="gold">The lurking variable</Badge>
+        <h3 className="mt-1.5 font-display text-lg font-semibold text-ink">
           {t(puzzle.reveal.confounderName)}
         </h3>
-        <p className="mt-1 text-[15px] leading-relaxed text-slate-200">
+        <p className="mt-1 text-[15px] leading-relaxed text-ink">
           {t(puzzle.reveal.explanation)}
         </p>
       </div>
 
       {puzzle.reveal.body ? (
-        <p className="text-sm leading-relaxed text-slate-400">
+        <p className="text-sm leading-relaxed text-ink-soft">
           {t(puzzle.reveal.body)}
         </p>
       ) : null}

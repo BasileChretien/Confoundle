@@ -14,8 +14,8 @@ export default defineConfig({
         short_name: "Confoundle",
         description:
           "Spot the hidden variable. A daily reasoning puzzle that fools you, then shows you the trick.",
-        theme_color: "#4f46e5",
-        background_color: "#020617",
+        theme_color: "#f2ecde",
+        background_color: "#f2ecde",
         display: "standalone",
         orientation: "portrait",
         start_url: "/",

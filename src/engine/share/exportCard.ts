@@ -2,7 +2,7 @@ import { toSvg } from "html-to-image";
 
 export type ExportResult = "shared" | "downloaded" | "cancelled" | "error";
 
-const CARD_BG = "#0b1020"; // fills the rounded-corner gaps behind the card
+const CARD_BG = "#201b14"; // fills the rounded-corner gaps behind the card (ink)
 const SCALE = 2; // crisp on high-DPI phones
 
 /** Reject a promise if it doesn't settle in time, so the UI can't hang forever. */
@@ -64,10 +64,10 @@ function rasterizeSvg(
 }
 
 async function nodeToPngBlob(node: HTMLElement): Promise<Blob> {
-  // skipFonts: the card uses only system fonts; html-to-image's web-font
-  // embedding otherwise scans/fetches stylesheets and can stall.
+  // Embed web fonts (only latin subsets are referenced) so the exported card
+  // keeps its Fraunces/Space Grotesk type rather than falling back to system.
   const svgDataUrl = await withTimeout(
-    toSvg(node, { skipFonts: true, backgroundColor: CARD_BG }),
+    toSvg(node, { backgroundColor: CARD_BG }),
     12000,
   );
   return withTimeout(

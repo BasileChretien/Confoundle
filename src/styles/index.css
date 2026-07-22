@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 html,
@@ -14,10 +14,24 @@ body,
 
 body {
   margin: 0;
-  background-color: #020617; /* slate-950 — matches the app gradient base */
-  color: #e2e8f0;
+  background-color: #f2ecde; /* paper — matches the app surface */
+  color: #221d15; /* ink */
+  font-family:
+    "Space Grotesk Variable", "Space Grotesk", ui-sans-serif, system-ui,
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+/* Fraunces reads warmer/wittier with optical sizing and a touch of its SOFT axis. */
+.font-display {
+  font-optical-sizing: auto;
+  font-variation-settings: "SOFT" 30;
+}
+
+::selection {
+  background-color: #0e8c7a; /* brand teal */
+  color: #f2ecde;
 }
 
 /* Beat/view enter animations. Applied to freshly-keyed elements so they replay
@@ -34,11 +48,11 @@ body {
 }
 
 .cf-enter {
-  animation: cf-enter 0.3s ease-out both;
+  animation: cf-enter 0.34s cubic-bezier(0.22, 0.61, 0.36, 1) both;
 }
 
 .cf-enter-sm {
-  animation: cf-enter 0.32s ease-out both;
+  animation: cf-enter 0.3s cubic-bezier(0.22, 0.61, 0.36, 1) both;
 }
 
 @media (prefers-reduced-motion: reduce) {

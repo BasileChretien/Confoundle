@@ -16,30 +16,30 @@ export function CommitView({
   const t = useT();
   return (
     <div className="flex flex-col gap-3">
-      <p className="text-center text-lg font-semibold text-white">
+      <p className="text-center font-display text-lg font-medium text-ink">
         {t(puzzle.setup.question)}
       </p>
-      <div className="grid gap-3">
+      <div className="grid gap-2.5">
         {puzzle.choices.map((choice) => (
           <button
             key={choice.id}
             type="button"
             onClick={() => onCommit(choice)}
-            className="flex items-center justify-between gap-3 rounded-xl border border-white/10 bg-white/5 px-5 py-4 text-left transition hover:border-white/25 hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 active:scale-[.99]"
+            className="group flex items-center justify-between gap-3 rounded-lg border border-rule bg-paper-2 px-5 py-4 text-left transition-[transform,background-color,border-color] duration-200 hover:border-ink/40 hover:bg-paper-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-paper active:scale-[.99]"
           >
-            <span className="text-base font-semibold text-white">
+            <span className="text-base font-semibold text-ink">
               {t(choice.label)}
             </span>
             {choice.sublabel ? (
-              <span className="shrink-0 text-sm tabular-nums text-slate-400">
+              <span className="shrink-0 tabular-nums text-sm text-ink-soft">
                 {t(choice.sublabel)}
               </span>
             ) : null}
           </button>
         ))}
       </div>
-      <p className="text-center text-xs text-slate-500">
-        Commit to see the reveal — no peeking.
+      <p className="text-center font-sans text-[11px] uppercase tracking-eyebrow text-ink-mute">
+        Commit to see the reveal — no peeking
       </p>
     </div>
   );

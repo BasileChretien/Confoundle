@@ -21,29 +21,38 @@ function Bar({ pct, colorHex, label, sub, winner, animate }: BarProps) {
 
   return (
     <div className="flex min-w-0 flex-1 flex-col items-center gap-1.5">
-      <div className="text-sm font-bold tabular-nums text-white">
-        {Math.round(value)}%
+      <div className="flex items-center gap-1 text-sm font-semibold tabular-nums text-ink">
+        {winner ? (
+          <span className="text-gold" aria-hidden="true">
+            ✓
+          </span>
+        ) : null}
+        <span
+          className={
+            winner
+              ? "underline decoration-gold decoration-2 underline-offset-4"
+              : "text-ink-soft"
+          }
+        >
+          {Math.round(value)}%
+        </span>
       </div>
       <div className="flex h-36 w-full items-end justify-center">
         <div
-          className={
-            "w-9 rounded-md " +
-            (winner
-              ? "ring-2 ring-white/85 ring-offset-2 ring-offset-slate-900"
-              : "")
-          }
-          style={{
-            height: `${height}%`,
-            minHeight: "4px",
-            backgroundColor: colorHex,
-          }}
+          className="relative w-9 rounded-t-[3px]"
+          style={{ height: `${height}%`, minHeight: "4px", backgroundColor: colorHex }}
           role="img"
           aria-label={`${label}: ${Math.round(pct)} percent${winner ? ", highest" : ""}`}
-        />
+        >
+          <span
+            className="pointer-events-none absolute inset-0 rounded-t-[3px] ring-1 ring-inset ring-black/15"
+            aria-hidden="true"
+          />
+        </div>
       </div>
       <div className="text-center text-[11px] leading-tight">
-        <div className="font-medium text-slate-200">{label}</div>
-        {sub ? <div className="tabular-nums text-slate-500">{sub}</div> : null}
+        <div className="font-medium text-ink">{label}</div>
+        {sub ? <div className="tabular-nums text-ink-soft">{sub}</div> : null}
       </div>
     </div>
   );
@@ -53,7 +62,7 @@ export interface RateChartProps {
   data: RatesData;
   view: DataViewKind;
   animate: boolean;
-  /** Ring the winning bar within each view (drives the eye during the reveal). */
+  /** Mark the winning bar within each view (gold — the truth as it shifts). */
   highlightWinner?: boolean;
 }
 
@@ -74,7 +83,7 @@ export function RateChart({
       ? bestGroupId(rates, data.higherIsBetter)
       : null;
     return (
-      <div className="flex items-end justify-center gap-10 px-2">
+      <div className="flex items-end justify-center gap-12 px-2">
         {rates.map((r) => (
           <Bar
             key={r.groupId}
@@ -99,8 +108,8 @@ export function RateChart({
           ? bestGroupId(s.rates, data.higherIsBetter)
           : null;
         return (
-          <div key={s.stratumId} className="rounded-xl bg-black/20 p-3">
-            <div className="mb-2 text-center text-xs font-semibold text-slate-300">
+          <div key={s.stratumId} className="rounded-md border border-rule bg-paper/50 p-3">
+            <div className="mb-2 text-center font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-soft">
               {t(stratum.label)}
             </div>
             <div className="flex items-end justify-center gap-4">
@@ -126,11 +135,11 @@ export function RateChart({
 export function Legend({ data }: { data: RatesData }) {
   const t = useT();
   return (
-    <ul className="mt-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-xs text-slate-300">
+    <ul className="mt-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-xs text-ink-soft">
       {data.groups.map((g, i) => (
         <li key={g.id} className="inline-flex items-center gap-1.5">
           <span
-            className="h-2.5 w-2.5 shrink-0 rounded-sm"
+            className="h-2.5 w-2.5 shrink-0 rounded-[2px] ring-1 ring-inset ring-black/15"
             style={{ backgroundColor: colorFor(i) }}
             aria-hidden="true"
           />

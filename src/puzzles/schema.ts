@@ -89,6 +89,15 @@ export const Provenance = z
   });
 export type Provenance = z.infer<typeof Provenance>;
 
+/** A real-world instance of the same skill, for the optional deep-dive. Each
+ * example is sourced to primary literature, same bar as the puzzle itself. */
+export const Example = z.object({
+  title: LocalizedText,
+  summary: LocalizedText,
+  provenance: Provenance,
+});
+export type Example = z.infer<typeof Example>;
+
 export const Puzzle = z
   .object({
     schemaVersion: z.literal(1),
@@ -124,6 +133,9 @@ export const Puzzle = z
       skillName: LocalizedText,
       takeaway: LocalizedText,
       body: LocalizedText.optional(),
+      // Optional "learn more" deep-dive, shown collapsed on the lesson screen.
+      howItWorks: LocalizedText.optional(),
+      examples: z.array(Example).optional(),
     }),
 
     share: z.object({

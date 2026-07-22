@@ -4,7 +4,7 @@
 
 Each puzzle runs in four beats: **setup → commit → reveal → lesson**, ending in a screenshot-able **share card**. You have to commit to an answer *before* the reveal — the small sting of being caught is the whole point.
 
-This repository is the **Phase 0 prototype**: one fully playable puzzle (a Simpson's-paradox reversal), built on a generic engine so that adding a puzzle is just dropping in a new data file. See [`PROJECT_PLAN.md`](./PROJECT_PLAN.md) for the full product vision.
+This repository is the **Phase 0 prototype**: four fully playable puzzles (Simpson's paradox, the base-rate fallacy, correlation ≠ causation, survivorship bias) on a generic engine, served one-per-day Wordle-style. Each new puzzle is just a data file — the engine renders it, no code changes. See [`PROJECT_PLAN.md`](./PROJECT_PLAN.md) for the full product vision.
 
 ---
 
@@ -28,6 +28,18 @@ pnpm gen:icons    # regenerate PWA icons from the brand motif
 ```
 
 > No `pnpm`? Either `corepack enable` (recommended) or run the same scripts with `npm` (`npm install`, `npm run dev`, …).
+
+---
+
+## Deploy
+
+`pnpm build` emits a fully static site to `dist/` — no server, no environment variables, no secrets. Host it anywhere that serves static files (Netlify, Vercel, Cloudflare Pages, GitHub Pages, S3). On the zero-config hosts, point the build command at `pnpm build` and the publish directory at `dist`.
+
+- **No SPA rewrite needed.** Puzzles are addressed with a query string (`?p=<slug>`), not a path, so every request resolves to `index.html` on any static host out of the box.
+- **Root vs. sub-path.** The default base path is `/` (root domains and Netlify/Vercel/CF Pages). For a GitHub Pages project site served under `/<repo>/`, build with `--base=/<repo>/`.
+- **The daily** rotates deterministically by date across the registry, so every visitor sees the same puzzle on the same day.
+
+**Single-file build (no host required).** `SINGLEFILE=1 pnpm exec vite build` inlines everything — JS, CSS, and fonts — into one self-contained `dist-single/index.html` with a built-in puzzle picker. Open it directly, email it, or publish it as-is. (This mode drops the service worker / offline PWA.)
 
 ---
 

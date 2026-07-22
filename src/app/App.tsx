@@ -1,13 +1,20 @@
-import { getPuzzleBySlug, getTodaysPuzzle } from "../puzzles";
+import { useState } from "react";
+import { getPuzzleBySlug, getTodaysPuzzle, puzzles } from "../puzzles";
 import { PuzzleFlow } from "../engine/PuzzleFlow";
 import { hasPlayedToday } from "./session";
-import { LocaleProvider } from "./i18n";
+import { LocaleProvider, useT } from "./i18n";
+
+/** Which puzzle to open first: an explicit ?p=<slug>, else today's daily. */
+function initialSlug(): string {
+  const requested = new URLSearchParams(window.location.search).get("p");
+  if (requested && getPuzzleBySlug(requested)) return requested;
+  // Demo build opens on the flagship (Simpson's); real build follows the daily.
+  return __DEMO__ ? puzzles[0].slug : getTodaysPuzzle().slug;
+}
 
 export default function App() {
-  // Every puzzle is URL-addressable via ?p=<slug>; otherwise serve today's.
-  const requested = new URLSearchParams(window.location.search).get("p");
-  const puzzle =
-    (requested ? getPuzzleBySlug(requested) : undefined) ?? getTodaysPuzzle();
+  const [slug, setSlug] = useState(initialSlug);
+  const puzzle = getPuzzleBySlug(slug) ?? getTodaysPuzzle();
   const played = hasPlayedToday(puzzle.slug);
 
   return (
@@ -36,8 +43,11 @@ export default function App() {
             ) : null}
           </header>
 
+          {__DEMO__ ? <DemoPicker current={slug} onPick={setSlug} /> : null}
+
           <div className="flex-1">
-            <PuzzleFlow puzzle={puzzle} />
+            {/* Re-key on slug so switching puzzles resets the flow to its first beat. */}
+            <PuzzleFlow key={slug} puzzle={puzzle} />
           </div>
 
           <footer className="mt-6 border-t border-rule pt-3 text-center font-sans text-[10px] uppercase tracking-eyebrow text-ink-mute">
@@ -46,5 +56,47 @@ export default function App() {
         </main>
       </div>
     </LocaleProvider>
+  );
+}
+
+interface DemoPickerProps {
+  current: string;
+  onPick: (slug: string) => void;
+}
+
+/**
+ * Demo-only affordance (single-file build): jump between all puzzles so a
+ * one-off visitor can try every reasoning trap. The real daily build ships
+ * without this — one puzzle a day is the point.
+ */
+function DemoPicker({ current, onPick }: DemoPickerProps) {
+  const t = useT();
+  return (
+    <div className="mb-5 flex flex-col gap-2 rounded-lg border border-rule bg-paper-2 p-3">
+      <span className="font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-mute">
+        Demo · try any puzzle
+      </span>
+      <div className="flex flex-wrap gap-1.5">
+        {puzzles.map((p) => {
+          const active = p.slug === current;
+          return (
+            <button
+              key={p.slug}
+              type="button"
+              onClick={() => onPick(p.slug)}
+              aria-pressed={active}
+              className={
+                "rounded-md px-2.5 py-1 font-sans text-[12px] font-semibold transition " +
+                (active
+                  ? "bg-ink text-paper"
+                  : "border border-rule bg-paper text-ink hover:bg-paper-3")
+              }
+            >
+              {t(p.lesson.skillName)}
+            </button>
+          );
+        })}
+      </div>
+    </div>
   );
 }

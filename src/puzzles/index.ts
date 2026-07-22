@@ -32,9 +32,16 @@ export function getPuzzleBySlug(slug: string): PuzzleType | undefined {
 }
 
 /**
- * Phase 0 serves a single seed puzzle. Later this becomes a Wordle-style daily
- * selection keyed by date; the app layer owns that scheduling, not the content.
+ * Deterministic daily selection (Wordle-style): everyone sees the same puzzle
+ * on the same day, cycling through the registry. Pure in `dayIndex` so it's
+ * testable; `getTodaysPuzzle` supplies today's day number.
  */
+export function puzzleForDay(dayIndex: number): PuzzleType {
+  const n = puzzles.length;
+  const i = ((dayIndex % n) + n) % n;
+  return puzzles[i];
+}
+
 export function getTodaysPuzzle(): PuzzleType {
-  return puzzles[0];
+  return puzzleForDay(Math.floor(Date.now() / 86_400_000));
 }

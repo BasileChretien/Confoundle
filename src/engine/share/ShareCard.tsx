@@ -106,9 +106,6 @@ function ReversalGlyph() {
         </span>
         <GlyphPanel label="Combined" a={70} b={82} winner="b" emphasized />
       </div>
-      <p className="mt-2 text-center text-[11px] leading-snug" style={{ color: CARD.muted }}>
-        Leads in every group — trails once you pool them.
-      </p>
     </div>
   );
 }
@@ -199,8 +196,8 @@ export function ShareCard({
             {t(puzzle.lesson.skillName)}
           </div>
 
-          <p className="mt-2 text-[14px] leading-snug" style={{ color: CARD.text }}>
-            {t(puzzle.lesson.takeaway)}
+          <p className="mt-2.5 text-[14px] leading-[1.5]" style={{ color: CARD.text }}>
+            {t(puzzle.share.explainer)}
           </p>
 
           {showGlyph ? <ReversalGlyph /> : null}

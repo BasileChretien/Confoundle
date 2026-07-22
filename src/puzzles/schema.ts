@@ -128,6 +128,9 @@ export const Puzzle = z
 
     share: z.object({
       title: LocalizedText,
+      // Plain-language explanation of the skill for the share card — written for
+      // anyone, not just scientists. Longer/looser than the lesson takeaway.
+      explainer: LocalizedText,
       captions: z.object({
         competitive: LocalizedText,
         selfDeprecating: LocalizedText,

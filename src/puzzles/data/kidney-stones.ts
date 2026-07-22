@@ -94,6 +94,9 @@ export const kidneyStones: Puzzle = {
 
   share: {
     title: { en: "Simpson's paradox — a reasoning trap." },
+    explainer: {
+      en: "One choice can win in every single group — yet lose the moment you lump all the groups together. It sounds impossible, but it's real. It happens when the groups aren't a fair comparison: one side quietly got the easy cases, the other got the hard ones. So the big combined number says one thing while the group-by-group numbers say the opposite — and it's the big number that fools you.",
+    },
     captions: {
       competitive: { en: "Caught it. Bet you can't." },
       selfDeprecating: { en: "I totally fell for this." },

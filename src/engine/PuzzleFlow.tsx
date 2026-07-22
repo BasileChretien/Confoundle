@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import type { Choice, Puzzle } from "../puzzles/schema";
 import { track } from "../app/analytics";
-import { recordPlay } from "../app/session";
+import { recordPlay, getStats } from "../app/session";
 import { ProgressDots } from "./ui";
 import { SetupView } from "./SetupView";
 import { RevealView } from "./RevealView";
 import { LessonView } from "./LessonView";
 import { ShareCard } from "./share/ShareCard";
 import { StatsPanel } from "./StatsPanel";
+import { FriendsBoard } from "./FriendsBoard";
 import { scoreFor, type Confidence } from "./scoring";
 
 type Beat = "setup" | "reveal" | "lesson" | "share";
@@ -77,6 +78,13 @@ export function PuzzleFlow({ puzzle }: { puzzle: Puzzle }) {
         {beat === "share" && committed && confidence && (
           <div className="flex flex-col gap-4">
             <StatsPanel todayScore={scoreFor(committed.isCorrect, confidence)} />
+            <FriendsBoard
+              today={{
+                caught: committed.isCorrect,
+                score: scoreFor(committed.isCorrect, confidence),
+                streak: getStats().currentStreak,
+              }}
+            />
             <ShareCard puzzle={puzzle} committed={committed} onReplay={replay} />
           </div>
         )}

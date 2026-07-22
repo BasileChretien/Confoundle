@@ -1,4 +1,5 @@
 import type { Confidence } from "../engine/scoring";
+import type { ResultData } from "../engine/result";
 
 /**
  * Day/session state in localStorage. Privacy-respecting by design: this records
@@ -141,4 +142,84 @@ export function computeStats(map: ProgressMap, todayIso: string): Stats {
 
 export function getStats(): Stats {
   return computeStats(readAll(), todayISODate());
+}
+
+// ---- nickname (local only, for the friends board) ----
+const NAME_KEY = "confoundle:name";
+
+export function getNickname(): string {
+  try {
+    return localStorage.getItem(NAME_KEY) ?? "";
+  } catch {
+    return "";
+  }
+}
+
+export function setNickname(name: string): void {
+  try {
+    localStorage.setItem(NAME_KEY, name.trim().slice(0, 24));
+  } catch {
+    // storage unavailable, degrade silently
+  }
+}
+
+// ---- puzzle number: same local day is the same number for everyone ----
+const LAUNCH_ISO = "2026-07-01";
+
+export function puzzleNumber(todayIso: string = todayISODate()): number {
+  return dayNumber(todayIso) - dayNumber(LAUNCH_ISO) + 1;
+}
+
+// ---- friends board: a local tally of results friends paste in ----
+const FRIENDS_KEY = "confoundle:friends:v1";
+type FriendEntry = { caught: boolean; score: number; streak: number };
+type FriendsStore = Record<string, Record<string, FriendEntry>>; // [puzzleNo][name]
+
+function readFriends(): FriendsStore {
+  try {
+    const raw = localStorage.getItem(FRIENDS_KEY);
+    return raw ? (JSON.parse(raw) as FriendsStore) : {};
+  } catch {
+    return {};
+  }
+}
+
+function writeFriends(store: FriendsStore): void {
+  try {
+    localStorage.setItem(FRIENDS_KEY, JSON.stringify(store));
+  } catch {
+    // storage unavailable, degrade silently
+  }
+}
+
+/** Merge parsed result lines into the board (latest wins per name per day). */
+export function addFriendResults(results: ResultData[]): void {
+  const store = readFriends();
+  for (const r of results) {
+    const day = String(r.puzzleNo);
+    if (!store[day]) store[day] = {};
+    store[day][r.name] = {
+      caught: r.caught,
+      score: r.score,
+      streak: r.streak,
+    };
+  }
+  writeFriends(store);
+}
+
+export interface BoardRow extends FriendEntry {
+  name: string;
+}
+
+/** Today's board, ranked by score then streak. */
+export function getFriendsBoard(puzzleNo: number): BoardRow[] {
+  const day = readFriends()[String(puzzleNo)] ?? {};
+  return Object.entries(day)
+    .map(([name, e]) => ({ name, ...e }))
+    .sort(
+      (a, b) =>
+        b.score - a.score ||
+        b.streak - a.streak ||
+        a.name.localeCompare(b.name),
+    );
 }

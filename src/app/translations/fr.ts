@@ -99,6 +99,15 @@ export const fr: Record<string, string> = {
     "Comme presque tout le monde. C'est ça, le piège.",
   "You sensed something was off, but went with it anyway.":
     "Vous sentiez que quelque chose clochait, mais vous y êtes allé quand même.",
+  // friends board
+  "Friends board": "Classement entre amis",
+  "Your name": "Votre nom",
+  "Copy result": "Copier le résultat",
+  Copied: "Copié",
+  Share: "Partager",
+  "Paste your friends' results here":
+    "Collez ici les résultats de vos amis",
+  "Add to board": "Ajouter au classement",
 
   // ---- shared share-card captions ----
   "Caught it. Bet you can't.": "Je l'ai vu venir. Pas sûr que vous y arriviez.",

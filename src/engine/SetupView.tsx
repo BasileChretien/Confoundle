@@ -29,7 +29,7 @@ export function SetupView({
   const data = puzzle.setup.data;
 
   return (
-    <section className="flex flex-col gap-4">
+    <section className="flex flex-col gap-3">
       <header className="flex flex-col gap-2">
         <Badge tone="rust">{humanize(puzzle.category)}</Badge>
         <h1 className="font-display text-[25px] font-semibold leading-[1.1] text-ink">

@@ -37,7 +37,7 @@ function Bar({ pct, colorHex, label, sub, winner, animate }: BarProps) {
           {Math.round(value)}%
         </span>
       </div>
-      <div className="flex h-28 w-full items-end justify-center">
+      <div className="flex h-24 w-full items-end justify-center">
         <div
           className="relative w-9 rounded-t-[3px]"
           style={{ height: `${height}%`, minHeight: "4px", backgroundColor: colorHex }}

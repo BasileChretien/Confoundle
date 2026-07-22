@@ -9,6 +9,7 @@ import {
 } from "react";
 import type { LocalizedText } from "../puzzles/schema";
 import { localeInfo, matchLocale, LOCALE_CODES } from "./locales";
+import { DICTIONARIES } from "./translations";
 
 export const DEFAULT_LOCALE = "en";
 const STORAGE_KEY = "cf.locale";
@@ -85,9 +86,18 @@ export function useSetLocale(): (code: string) => void {
   return useContext(LocaleContext).setLocale;
 }
 
-/** Resolve a localized string, falling back to English. */
+/**
+ * Resolve a localized string. An inline locale key wins (used for the few UI
+ * frame strings); otherwise we look the English text up in that locale's
+ * dictionary; otherwise English. This keeps puzzle data files English-only
+ * while translations live in one file per language.
+ */
 export function translate(text: LocalizedText, locale: string): string {
-  return text[locale] ?? text[DEFAULT_LOCALE];
+  const inline = text[locale];
+  if (inline != null) return inline;
+  const fromDict = DICTIONARIES[locale]?.[text[DEFAULT_LOCALE]];
+  if (fromDict != null) return fromDict;
+  return text[DEFAULT_LOCALE];
 }
 
 /** Hook returning a `t()` bound to the active locale. */

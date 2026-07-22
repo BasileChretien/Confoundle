@@ -63,6 +63,17 @@ export const fr: Record<string, string> = {
   History: "Histoire",
   Media: "Médias",
   "Demo · try any puzzle": "Démo · essayez n'importe quel puzzle",
+  // frequency view (base-rate puzzle)
+  "1 in": "1 sur",
+  "How common it is": "Sa fréquence",
+  "Test catches it": "Le test la détecte",
+  Always: "Toujours",
+  "False-alarm rate": "Taux de fausses alertes",
+  "Positive tests": "Tests positifs",
+  of: "sur",
+  actually: "réellement",
+  chance: "de probabilité",
+  "false alarm": "fausse alerte",
 
   // ---- shared share-card captions ----
   "Caught it. Bet you can't.": "Je l'ai vu venir. Pas sûr que vous y arriviez.",

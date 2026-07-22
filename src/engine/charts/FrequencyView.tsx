@@ -1,4 +1,8 @@
-import type { DataViewKind, FrequenciesData } from "../../puzzles/schema";
+import type {
+  DataViewKind,
+  FrequenciesData,
+  LocalizedText,
+} from "../../puzzles/schema";
 import { useT } from "../../app/i18n";
 import { frequencyBreakdown } from "./frequencies";
 import { formatPct } from "./rates";
@@ -6,22 +10,27 @@ import { formatPct } from "./rates";
 const TRUE_COLOR = "#0E8C7A"; // teal, actually has the condition
 const FALSE_COLOR = "#D8C6A6"; // pale, false alarm
 
-function oneIn(withCondition: number, total: number): string {
+function oneIn(
+  t: (x: LocalizedText) => string,
+  withCondition: number,
+  total: number,
+): string {
   if (withCondition <= 0) return "n/a";
   const n = Math.round(total / withCondition);
-  return `1 in ${n.toLocaleString("en-US")}`;
+  return `${t({ en: "1 in" })} ${n.toLocaleString("en-US")}`;
 }
 
 /** Setup view: the given facts a player is handed (and tends to neglect). */
 function Facts({ data }: { data: FrequenciesData }) {
+  const t = useT();
   const b = frequencyBreakdown(data);
   const rows = [
-    { k: "How common it is", v: oneIn(b.withCondition, b.total) },
+    { k: t({ en: "How common it is" }), v: oneIn(t, b.withCondition, b.total) },
     {
-      k: "Test catches it",
-      v: b.sensitivity >= 1 ? "Always" : formatPct(b.sensitivity),
+      k: t({ en: "Test catches it" }),
+      v: b.sensitivity >= 1 ? t({ en: "Always" }) : formatPct(b.sensitivity),
     },
-    { k: "False-alarm rate", v: `~${formatPct(b.falsePositiveRate)}` },
+    { k: t({ en: "False-alarm rate" }), v: `~${formatPct(b.falsePositiveRate)}` },
   ];
   return (
     <dl className="flex flex-col divide-y divide-rule">
@@ -49,7 +58,7 @@ function Breakdown({ data }: { data: FrequenciesData }) {
   return (
     <div className="flex flex-col items-center gap-3">
       <div className="text-center font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-soft">
-        Positive tests · {b.allPositive}
+        {t({ en: "Positive tests" })} · {b.allPositive}
       </div>
 
       {asDots ? (
@@ -86,11 +95,13 @@ function Breakdown({ data }: { data: FrequenciesData }) {
 
       <div className="text-center">
         <div className="font-display text-2xl font-semibold text-ink">
-          {b.truePositive} of {b.allPositive}
+          {b.truePositive} {t({ en: "of" })} {b.allPositive}
         </div>
-        <div className="text-sm text-ink-soft">actually {t(data.conditionLabel)}</div>
+        <div className="text-sm text-ink-soft">
+          {t({ en: "actually" })} {t(data.conditionLabel)}
+        </div>
         <div className="mt-1 text-sm font-semibold text-gold-ink">
-          ≈ {formatPct(b.ppv)} chance
+          ≈ {formatPct(b.ppv)} {t({ en: "chance" })}
         </div>
       </div>
 
@@ -107,7 +118,7 @@ function Breakdown({ data }: { data: FrequenciesData }) {
             className="h-2.5 w-2.5 rounded-full ring-1 ring-inset ring-black/15"
             style={{ backgroundColor: FALSE_COLOR }}
           />
-          false alarm
+          {t({ en: "false alarm" })}
         </span>
       </div>
     </div>

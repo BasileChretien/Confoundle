@@ -13,6 +13,7 @@ export const baseRate: Puzzle = {
   category: "statistical-reasoning",
   reasoningSkill: "base-rate-fallacy",
   difficulty: "medium",
+  tags: ["everyday", "clinical", "diagnosis"],
   supportedLocales: ["en"],
 
   setup: {

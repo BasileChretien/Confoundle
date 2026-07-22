@@ -8,6 +8,7 @@ import {
   scopeLabel,
 } from "./charts/DataViewRenderer";
 import { Legend } from "./charts/RateChart";
+import { TagChips } from "./TagChips";
 
 function humanize(category: string): string {
   const spaced = category.replace(/-/g, " ");
@@ -31,7 +32,10 @@ export function SetupView({
   return (
     <section className="flex flex-col gap-3">
       <header className="flex flex-col gap-2">
-        <Badge tone="rust">{humanize(puzzle.category)}</Badge>
+        <div className="flex flex-wrap items-center gap-2">
+          <Badge tone="rust">{humanize(puzzle.category)}</Badge>
+          <TagChips tags={puzzle.tags} />
+        </div>
         <h1 className="font-display text-[25px] font-semibold leading-[1.1] text-ink">
           {t(puzzle.setup.headline)}
         </h1>

@@ -12,6 +12,7 @@ export const survivorship: Puzzle = {
   category: "statistical-reasoning",
   reasoningSkill: "survivorship-bias",
   difficulty: "medium",
+  tags: ["everyday", "research"],
   supportedLocales: ["en"],
 
   setup: {

@@ -12,6 +12,7 @@ export const correlationCausation: Puzzle = {
   category: "causal-reasoning",
   reasoningSkill: "correlation-not-causation",
   difficulty: "easy",
+  tags: ["everyday", "research", "epidemiology"],
   supportedLocales: ["en"],
 
   setup: {

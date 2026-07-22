@@ -1,6 +1,7 @@
 import type { Provenance, Puzzle } from "../puzzles/schema";
 import { useT } from "../app/i18n";
 import { Badge, Button } from "./ui";
+import { TagChips } from "./TagChips";
 
 function linkFor(p: Provenance): string | undefined {
   return p.url ?? (p.doi ? `https://doi.org/${p.doi}` : undefined);
@@ -34,6 +35,13 @@ export function LessonView({
         </h2>
         <p className="text-lg leading-relaxed text-ink">{t(lesson.takeaway)}</p>
       </header>
+
+      <div className="flex flex-col gap-1.5">
+        <span className="font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-mute">
+          Where this shows up
+        </span>
+        <TagChips tags={puzzle.tags} />
+      </div>
 
       {lesson.body ? (
         <p className="text-[15px] leading-relaxed text-ink-soft">

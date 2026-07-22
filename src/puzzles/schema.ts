@@ -155,6 +155,27 @@ export const Example = z.object({
 });
 export type Example = z.infer<typeof Example>;
 
+/* ---------------------------------------------------------------------------
+ * Tags — who a bias is most relevant to (audience) and where it shows up
+ * (domain). A puzzle carries one or more, so a library of biases can be browsed
+ * and filtered by relevance. The schema pins only the controlled vocabulary;
+ * display metadata (labels, grouping, order) lives in ./tags.ts.
+ * ------------------------------------------------------------------------- */
+export const TAG_IDS = [
+  // audience — who most needs this
+  "everyday",
+  "clinical",
+  "research",
+  // domain — where it shows up
+  "statistics",
+  "diagnosis",
+  "screening",
+  "epidemiology",
+  "pharmacology",
+] as const;
+export const TagId = z.enum(TAG_IDS);
+export type TagId = z.infer<typeof TagId>;
+
 export const Puzzle = z
   .object({
     schemaVersion: z.literal(1),
@@ -166,6 +187,8 @@ export const Puzzle = z
     category: z.string().min(1), // "causal-reasoning"
     reasoningSkill: z.string().min(1), // "simpsons-paradox"
     difficulty: z.enum(["easy", "medium", "hard"]),
+    // Audience/domain tags (≥1); see TAG_IDS. A bias can carry several.
+    tags: z.array(TagId).min(1),
     supportedLocales: z.array(z.string()).default(["en"]),
 
     setup: z.object({

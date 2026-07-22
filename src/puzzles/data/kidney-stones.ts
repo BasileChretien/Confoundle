@@ -16,6 +16,7 @@ export const kidneyStones: Puzzle = {
   category: "causal-reasoning",
   reasoningSkill: "simpsons-paradox",
   difficulty: "hard",
+  tags: ["everyday", "clinical", "statistics"],
   supportedLocales: ["en"],
 
   setup: {

@@ -3,6 +3,8 @@ import { getPuzzleBySlug, getTodaysPuzzle, puzzles } from "../puzzles";
 import { PuzzleFlow } from "../engine/PuzzleFlow";
 import { hasPlayedToday } from "./session";
 import { LocaleProvider, useT } from "./i18n";
+import { LanguageSwitcher } from "./LanguageSwitcher";
+import { UI } from "./ui";
 
 /** Which puzzle to open first: an explicit ?p=<slug>, else today's daily. */
 function initialSlug(): string {
@@ -13,49 +15,60 @@ function initialSlug(): string {
 }
 
 export default function App() {
+  // The provider must wrap the content so the switcher and useT below it react.
+  return (
+    <LocaleProvider>
+      <AppShell />
+    </LocaleProvider>
+  );
+}
+
+function AppShell() {
+  const t = useT();
   const [slug, setSlug] = useState(initialSlug);
   const puzzle = getPuzzleBySlug(slug) ?? getTodaysPuzzle();
   const played = hasPlayedToday(puzzle.slug);
 
   return (
-    <LocaleProvider locale="en">
-      <div className="min-h-[100dvh] bg-paper">
-        <main className="mx-auto flex min-h-[100dvh] w-full max-w-md flex-col px-5 pb-6 pt-4">
-          <header className="mb-4 flex items-end justify-between border-b border-rule pb-3">
-            <div>
-              <div className="flex items-center gap-1.5">
-                <span className="font-display text-xl font-semibold tracking-tight text-ink">
-                  Confoundle
-                </span>
-                <span
-                  className="h-1.5 w-1.5 rounded-[1px] bg-rust"
-                  aria-hidden="true"
-                />
-              </div>
-              <div className="mt-0.5 font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-mute">
-                Daily · reasoning
-              </div>
+    <div className="min-h-[100dvh] bg-paper">
+      <main className="mx-auto flex min-h-[100dvh] w-full max-w-md flex-col px-5 pb-6 pt-4">
+        <header className="mb-4 flex items-start justify-between gap-3 border-b border-rule pb-3">
+          <div>
+            <div className="flex items-center gap-1.5">
+              <span className="font-display text-xl font-semibold tracking-tight text-ink">
+                Confoundle
+              </span>
+              <span
+                className="h-1.5 w-1.5 rounded-[1px] bg-rust"
+                aria-hidden="true"
+              />
             </div>
+            <div className="mt-0.5 font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-mute">
+              {t(UI.daily)} · {t(UI.reasoning)}
+            </div>
+          </div>
+          <div className="flex flex-col items-end gap-1">
+            <LanguageSwitcher />
             {played ? (
               <span className="font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-mute">
-                Played today
+                {t(UI.playedToday)}
               </span>
             ) : null}
-          </header>
-
-          {__DEMO__ ? <DemoPicker current={slug} onPick={setSlug} /> : null}
-
-          <div className="flex-1">
-            {/* Re-key on slug so switching puzzles resets the flow to its first beat. */}
-            <PuzzleFlow key={slug} puzzle={puzzle} />
           </div>
+        </header>
 
-          <footer className="mt-6 border-t border-rule pt-3 text-center font-sans text-[10px] uppercase tracking-eyebrow text-ink-mute">
-            No accounts · no tracking · just the reasoning
-          </footer>
-        </main>
-      </div>
-    </LocaleProvider>
+        {__DEMO__ ? <DemoPicker current={slug} onPick={setSlug} /> : null}
+
+        <div className="flex-1">
+          {/* Re-key on slug so switching puzzles resets the flow to its first beat. */}
+          <PuzzleFlow key={slug} puzzle={puzzle} />
+        </div>
+
+        <footer className="mt-6 border-t border-rule pt-3 text-center font-sans text-[10px] uppercase tracking-eyebrow text-ink-mute">
+          {t(UI.footer)}
+        </footer>
+      </main>
+    </div>
   );
 }
 

@@ -5,7 +5,7 @@ import { VitePWA } from "vite-plugin-pwa";
 import { viteSingleFile } from "vite-plugin-singlefile";
 
 // `SINGLEFILE=1 vite build` inlines everything (JS, CSS, fonts) into one
-// self-contained dist-single/index.html — for publishing a playable build where
+// self-contained dist-single/index.html, for publishing a playable build where
 // a static host isn't available. The PWA/service worker is dropped in that mode.
 const singleFile = process.env.SINGLEFILE === "1";
 

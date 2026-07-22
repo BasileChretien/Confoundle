@@ -1,6 +1,7 @@
 import { Puzzle, type Puzzle as PuzzleType } from "./schema";
 import { kidneyStones } from "./data/kidney-stones";
 import { baseRate } from "./data/base-rate";
+import { correlationCausation } from "./data/correlation-causation";
 
 /**
  * The puzzle registry. Adding a puzzle = import its data file and add it to
@@ -8,7 +9,7 @@ import { baseRate } from "./data/base-rate";
  * malformed or self-contradictory puzzle fails fast (in dev, build, and tests)
  * rather than shipping a broken beat.
  */
-const rawPuzzles: unknown[] = [kidneyStones, baseRate];
+const rawPuzzles: unknown[] = [kidneyStones, baseRate, correlationCausation];
 
 export const puzzles: PuzzleType[] = rawPuzzles.map((p, i) => {
   const result = Puzzle.safeParse(p);

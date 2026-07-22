@@ -67,10 +67,26 @@ const FrequenciesData = z.object({
 });
 export type FrequenciesData = z.infer<typeof FrequenciesData>;
 
+/**
+ * Causal-structure data (correlation ≠ causation puzzles): a claimed cause X, an
+ * effect Y, and the lurking common cause Z that actually drives both. Labels are
+ * short (they sit in a trend chart and a causal diagram).
+ */
+const CausalData = z.object({
+  type: z.literal("causal"),
+  label: LocalizedText, // figure title, e.g. "Across 23 countries"
+  cause: LocalizedText, // X — the claimed cause, e.g. "Chocolate eaten"
+  effect: LocalizedText, // Y — the effect, e.g. "Nobel prizes"
+  commonCause: LocalizedText, // Z — the real driver, e.g. "A country's wealth"
+  correlationNote: LocalizedText.optional(), // e.g. "r ≈ 0.79"
+});
+export type CausalData = z.infer<typeof CausalData>;
+
 /** Discriminated by `type`. Add new members here to support new data shapes. */
 export const PuzzleData = z.discriminatedUnion("type", [
   RatesData,
   FrequenciesData,
+  CausalData,
 ]);
 export type PuzzleData = z.infer<typeof PuzzleData>;
 
@@ -82,6 +98,8 @@ export const DataView = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("stratified"), caption: LocalizedText.optional() }),
   z.object({ kind: z.literal("headline"), caption: LocalizedText.optional() }),
   z.object({ kind: z.literal("breakdown"), caption: LocalizedText.optional() }),
+  z.object({ kind: z.literal("trend"), caption: LocalizedText.optional() }),
+  z.object({ kind: z.literal("cause"), caption: LocalizedText.optional() }),
 ]);
 export type DataView = z.infer<typeof DataView>;
 export type DataViewKind = DataView["kind"];

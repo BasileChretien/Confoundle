@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import type {
+  CausalData,
   Choice,
   FrequenciesData,
   Puzzle,
@@ -188,6 +189,66 @@ function FrequencyGlyph({ data }: { data: FrequenciesData }) {
 }
 
 /**
+ * Abstract common-cause diagram for the card: a hidden third thing (Z) drives
+ * both the claimed cause and the effect, which have no direct link.
+ */
+function CausalGlyph({ data }: { data: CausalData }) {
+  const t = useT();
+  const pill =
+    "rounded-lg px-3 py-1.5 text-center text-[13px] font-semibold leading-tight";
+  const nodeBg = "rgba(255,255,255,0.06)";
+  return (
+    <div
+      className="mt-4 rounded-lg p-3"
+      style={{ backgroundColor: "rgba(0,0,0,0.28)" }}
+    >
+      <div className="flex flex-col items-center gap-1.5">
+        <div
+          className={pill}
+          style={{
+            backgroundColor: "rgba(214,164,58,0.18)",
+            color: CARD.text,
+            border: `1px solid ${CARD.gold}`,
+          }}
+        >
+          {t(data.commonCause)}
+        </div>
+        <div
+          className="flex justify-center gap-12 text-lg leading-none"
+          style={{ color: CARD.gold }}
+          aria-hidden="true"
+        >
+          <span>↙</span>
+          <span>↘</span>
+        </div>
+        <div className="flex w-full max-w-[16rem] items-stretch justify-center gap-3">
+          <div className={`${pill} flex-1`} style={{ backgroundColor: nodeBg, color: CARD.text }}>
+            {t(data.cause)}
+          </div>
+          <div className={`${pill} flex-1`} style={{ backgroundColor: nodeBg, color: CARD.text }}>
+            {t(data.effect)}
+          </div>
+        </div>
+        <div
+          className="mt-0.5 flex items-center gap-2 text-[11px] font-semibold"
+          style={{ color: CARD.rust }}
+        >
+          <span
+            className="inline-block w-8"
+            style={{ borderTop: `1px dashed ${CARD.rust}` }}
+          />
+          ✗ no direct link
+          <span
+            className="inline-block w-8"
+            style={{ borderTop: `1px dashed ${CARD.rust}` }}
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/**
  * Beat 5: the shareable result card. The card node (cardRef) is what gets
  * rendered to PNG. It explains the reasoning skill itself (name + definition +
  * an abstract diagram) so it teaches anyone who sees it, independent of the
@@ -215,6 +276,7 @@ export function ShareCard({
   const reversalGlyph = data.type === "rates" && hasReversal(data);
   const frequencyGlyph =
     data.type === "frequencies" && frequencyBreakdown(data).ppv < 0.5;
+  const causalGlyph = data.type === "causal";
 
   function selectFraming(next: Framing) {
     setFraming(next);
@@ -283,6 +345,8 @@ export function ShareCard({
             <ReversalGlyph />
           ) : frequencyGlyph ? (
             <FrequencyGlyph data={data} />
+          ) : causalGlyph ? (
+            <CausalGlyph data={data} />
           ) : null}
 
           <p className="mt-4 font-display text-[17px] font-medium leading-snug">

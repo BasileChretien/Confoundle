@@ -5,6 +5,7 @@ import type {
 } from "../../puzzles/schema";
 import { RateChart } from "./RateChart";
 import { FrequencyView } from "./FrequencyView";
+import { CausalView } from "./CausalView";
 
 /**
  * The generic seam: dispatch on the data's `type` to the matching renderer.
@@ -33,6 +34,8 @@ export function DataViewRenderer({
       );
     case "frequencies":
       return <FrequencyView data={data} view={view} animate={animate} />;
+    case "causal":
+      return <CausalView data={data} view={view} animate={animate} />;
     default:
       return null;
   }
@@ -54,6 +57,10 @@ export function scopeLabel(kind: DataViewKind): string {
       return "The facts";
     case "breakdown":
       return "The reality";
+    case "trend":
+      return "Observed";
+    case "cause":
+      return "Explained";
     default:
       return "";
   }

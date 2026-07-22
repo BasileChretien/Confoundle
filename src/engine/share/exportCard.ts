@@ -1,6 +1,9 @@
-import { toPng } from "html-to-image";
+import { toSvg } from "html-to-image";
 
 export type ExportResult = "shared" | "downloaded" | "cancelled" | "error";
+
+const CARD_BG = "#0b1020"; // fills the rounded-corner gaps behind the card
+const SCALE = 2; // crisp on high-DPI phones
 
 /** Reject a promise if it doesn't settle in time, so the UI can't hang forever. */
 function withTimeout<T>(promise: Promise<T>, ms: number): Promise<T> {
@@ -19,19 +22,58 @@ function withTimeout<T>(promise: Promise<T>, ms: number): Promise<T> {
   });
 }
 
+/**
+ * Rasterize an SVG data URL to a PNG blob via `img.onload` + canvas. We drive
+ * the raster step ourselves (rather than html-to-image's `toPng`) because its
+ * internal `img.decode()` is a known flaky/stall point on some browsers; the
+ * `onload` path is broadly reliable.
+ */
+function rasterizeSvg(
+  svgDataUrl: string,
+  width: number,
+  height: number,
+): Promise<Blob> {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => {
+      try {
+        const canvas = document.createElement("canvas");
+        canvas.width = Math.round(width * SCALE);
+        canvas.height = Math.round(height * SCALE);
+        const ctx = canvas.getContext("2d");
+        if (!ctx) {
+          reject(new Error("2d canvas context unavailable"));
+          return;
+        }
+        ctx.fillStyle = CARD_BG;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.scale(SCALE, SCALE);
+        ctx.drawImage(img, 0, 0, width, height);
+        canvas.toBlob(
+          (blob) =>
+            blob ? resolve(blob) : reject(new Error("canvas.toBlob was null")),
+          "image/png",
+        );
+      } catch (e) {
+        reject(e instanceof Error ? e : new Error(String(e)));
+      }
+    };
+    img.onerror = () => reject(new Error("card SVG failed to load"));
+    img.src = svgDataUrl;
+  });
+}
+
 async function nodeToPngBlob(node: HTMLElement): Promise<Blob> {
-  // skipFonts: the card uses only system fonts, and html-to-image's web-font
+  // skipFonts: the card uses only system fonts; html-to-image's web-font
   // embedding otherwise scans/fetches stylesheets and can stall.
-  const dataUrl = await withTimeout(
-    toPng(node, {
-      pixelRatio: 2,
-      backgroundColor: "#0b1020",
-      skipFonts: true,
-    }),
+  const svgDataUrl = await withTimeout(
+    toSvg(node, { skipFonts: true, backgroundColor: CARD_BG }),
     12000,
   );
-  const res = await fetch(dataUrl);
-  return res.blob();
+  return withTimeout(
+    rasterizeSvg(svgDataUrl, node.offsetWidth, node.offsetHeight),
+    8000,
+  );
 }
 
 /**

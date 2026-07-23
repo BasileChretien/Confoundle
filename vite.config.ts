@@ -32,7 +32,50 @@ const origin = (process.env.SITE_ORIGIN ?? "https://confoundle.pages.dev").repla
  * time, rather than shipping a policy with a dead link in silence.
  */
 const CONTACT_PLACEHOLDER = "CONTACT-EMAIL-PLACEHOLDER";
-const contactEmail = process.env.CONTACT_EMAIL?.trim();
+
+/**
+ * Reject a contact address that is obviously not one.
+ *
+ * This exists because it happened, twice, in the space of ten minutes: an
+ * example address written into a set of instructions got pasted verbatim into
+ * the build, and the privacy policy went out carrying it. That failure is
+ * worse than leaving the placeholder in, because CONTACT-EMAIL-PLACEHOLDER is
+ * visibly broken whereas a plausible-looking address just quietly goes
+ * nowhere, and the page it sits on is the one that tells a person how to
+ * exercise a legal right.
+ *
+ * So the build FAILS rather than warns. A warning scrolls past in a wall of
+ * asset sizes, which is exactly what happened. The only thing a warning is
+ * right for is the placeholder itself, which is honest about being unset.
+ */
+const PLACEHOLDER_PATTERNS = [
+  /^CONTACT-EMAIL-PLACEHOLDER$/i,
+  /\bthe-real-address\b/i,
+  /@(wherever|yourdomain|your-domain|example|domain)\b/i,
+  /@(example|test|invalid|localhost)\.(com|org|net)$/i,
+  /^privacy@confoundle\.org$/i, // an example from a chat transcript, not a domain we hold
+];
+
+function checkContactEmail(value: string | undefined): string | undefined {
+  const email = value?.trim();
+  if (!email) return undefined;
+  if (!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(email)) {
+    throw new Error(
+      `CONTACT_EMAIL is not an email address: ${JSON.stringify(email)}`,
+    );
+  }
+  if (PLACEHOLDER_PATTERNS.some((p) => p.test(email))) {
+    throw new Error(
+      `CONTACT_EMAIL looks like an example rather than a real address: ${JSON.stringify(email)}.\n` +
+        "This goes on the published privacy policy as the data controller's contact, " +
+        "so it has to be a mailbox that someone actually reads. Leave it unset if you " +
+        "are not ready; the build will warn instead.",
+    );
+  }
+  return email;
+}
+
+const contactEmail = checkContactEmail(process.env.CONTACT_EMAIL);
 
 /**
  * Write one static HTML page per lesson per language, at /l/<slug>/[<locale>/].

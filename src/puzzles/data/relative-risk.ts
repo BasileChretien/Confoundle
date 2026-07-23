@@ -6,6 +6,16 @@ import type { Puzzle } from "../schema";
  * The counts are the WOSCOPS primary endpoint (Shepherd et al., NEJM 1995):
  * definite nonfatal myocardial infarction or death from coronary heart disease,
  * 248 events on placebo and 174 on pravastatin, over an average 4.9 years.
+ * All four integers were read from the paper: the arm sizes from the Table 1
+ * column headers (repeated in Table 2), the counts from Table 2. Table 3 checks
+ * them, its age subgroups summing to 96 + 152 = 248 and 57 + 117 = 174.
+ *
+ * Careful: the percentages the paper prints beside those counts (7.9 and 5.5)
+ * are Kaplan-Meier five-year risks, not crude proportions, because follow-up
+ * averaged 4.9 years and many men had stopped treatment by year five. Deriving
+ * from the counts, as this project's convention requires, therefore gives
+ * slightly different figures from the ones on the page. That is not a
+ * discrepancy to hide; the provenance states it.
  *
  * Everything the puzzle shows is derived from those four integers, so the
  * headline and the reveal cannot drift apart:
@@ -162,7 +172,7 @@ export const relativeRisk: Puzzle = {
 
   provenance: {
     source:
-      "Shepherd J, Cobbe SM, Ford I, et al. Prevention of coronary heart disease with pravastatin in men with hypercholesterolemia. N Engl J Med. 1995;333(20):1301-1307. (The West of Scotland Coronary Prevention Study.)",
+      "Shepherd J, Cobbe SM, Ford I, et al. Prevention of coronary heart disease with pravastatin in men with hypercholesterolemia. N Engl J Med. 1995;333(20):1301-1308. (The West of Scotland Coronary Prevention Study. Arm sizes are the Table 1 column headers, repeated in Table 2; the event counts are Table 2. The percentages the paper prints beside those counts, 7.9 and 5.5, are Kaplan-Meier five-year risk estimates, not the crude proportions this puzzle derives from the counts, 7.5 and 5.3, and its 31 percent is a Cox proportional-hazards estimate rather than a ratio of the two rates. The paper gives an absolute difference of 2.4 percentage points on that Kaplan-Meier basis and prints no number needed to treat, so the 44 here is derived.)",
     year: 1995,
     doi: "10.1056/NEJM199511163332001",
     url: "https://pubmed.ncbi.nlm.nih.gov/7566020/",

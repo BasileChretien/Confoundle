@@ -34,3 +34,45 @@ See the ["How to add a puzzle"](./README.md#how-to-add-a-puzzle) section of the 
 ## Reporting an error
 
 Found a mistake in a puzzle — a wrong number, a misleading framing, a missing nuance? Open an issue. Corrections to content are the most valuable contribution there is; getting the facts right is the entire credibility of the project.
+
+## Copyright and other rights (non-negotiable)
+
+Confoundle rests on real findings, which means it constantly touches other
+people's published work. The line we hold is **facts yes, expression no**.
+
+**Use freely: the facts.** Counts, rates, sample sizes, dates, what a study
+found, what a court decided. Facts and data are not protected by copyright, so
+reproducing the handful of figures a puzzle needs is fine, and citing them is
+required anyway. Author them once as raw counts and let the engine derive the
+percentages.
+
+**Never reproduce: the expression.**
+- No sentences lifted from an abstract, paper, press release, book or web page,
+  and no close paraphrase that merely reshuffles the original wording.
+- No figures, charts, tables-as-images, photographs or illustrations from a
+  source. We draw our own charts from the numbers.
+- Every `summary`, `framing`, `explanation` and `howItWorks` is written from
+  scratch, in the game's own plain voice, and is far shorter than the source.
+- If a quotation is genuinely unavoidable, keep it short, put it in quotation
+  marks, and attribute it inline. Prefer not to.
+
+**Specific traps we have already hit:**
+- **Wikipedia is CC-BY-SA.** Use it only to *find* sources. Then read the
+  primary source, cite that, and write our own text. Pasting Wikipedia prose
+  would drag its share-alike terms onto our content.
+- **Court opinions** (US federal and state) are public domain as government
+  edicts, so their text may be quoted freely. Still cite them properly.
+- **EU database right** (Directive 96/9/EC) protects substantial extraction from
+  a database even where individual facts are free. Taking the few numbers a
+  puzzle needs is not substantial extraction; bulk-harvesting a dataset is.
+- **Trademarks and logos** belong to their owners. Name a company or product
+  only where it is the factual subject, never use its branding.
+
+**Trap Hunt items** are hypothetical scenarios we invent, so they carry no
+third-party rights, and that is exactly why they carry no `provenance`. Anything
+asserting a real-world finding belongs in a puzzle instead.
+
+**Anyone (or any agent) researching a puzzle** must work from primary sources,
+verify every number, and write original prose. "I found the abstract" is not
+permission to reuse its sentences. If a number cannot be verified, do not ship
+the puzzle; say so instead.

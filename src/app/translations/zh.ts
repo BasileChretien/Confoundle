@@ -1879,4 +1879,126 @@ export const zh: Record<string, string> = {
     "家电已损坏的用户和家电仍正常的用户都被问及何时购买以及使用频率。随后他们的回答与收银小票和应用使用日志作了比对，两组的误差大小相同、方向也相同。",
   "The reported histories were checked against records and both groups misremembered equally, so the comparison is not driven by one group searching its memory harder; a hasty player would assume the aggrieved owners overstated their use.":
     "所报告的历史与记录作了核对，两组的记忆偏差相同，所以这个比较并非由某一组更用力地搜寻记忆所驱动；性急的玩家会以为受损失的用户夸大了自己的使用量。",
+
+  // ---- intention to treat, recall bias, immortal time ----
+  "Where every excluded patient had already relapsed":
+    "被排除的患者，每一个都已经复发",
+  "A trial compared two treatments for opioid dependence in 570 people. Counting only those who actually started the drug they were assigned, the first treatment looked slightly better: 52 percent relapsed against 56 percent. Counting everyone the coin assigned, it was clearly worse, 65 percent against 57 percent. The reason is the cleanest you will find. That first drug can only be started after a full detoxification, or it triggers immediate withdrawal, so 79 of its patients never managed to begin it, against 17 in the other arm. Every single one of those 79 relapsed. Dropping them removed the whole of the treatment's failure.":
+    "一项试验在570人中比较了两种治疗阿片类药物依赖的方法。只统计真正开始服用所分配药物的人时，第一种治疗看起来略好一些：复发率52%对56%。统计所有被随机分配到的人时，它明显更差，65%对57%。原因再干净不过。第一种药只能在完成脱毒之后开始服用，否则会立即引发戒断，因此有79名患者始终没能开始服药，另一组则是17名。这79人无一例外全部复发。把他们剔除，等于把这种治疗的失败整个剔除了。",
+  "Almost two thirds of the months people spent on this drug brought muscle pain. Is the drug doing it?":
+    "人们服用这种药的月份里，将近三分之二出现了肌肉疼痛。是这种药造成的吗？",
+  "152 people who had all had muscle trouble on a statin before took part. Each spent up to six two-month stretches on either atorvastatin or an identical dummy tablet, in a random order, without knowing which was which, and said at the end of each stretch whether they had muscle symptoms. Muscle symptoms were reported in 62.5 percent of the stretches on the drug.":
+    "152名此前都曾在服用他汀时出现肌肉不适的人参加了试验。每人以随机顺序，最多经历六个为期两个月的阶段，分别服用阿托伐他汀或外观完全相同的安慰剂药片，本人并不知道是哪一种，并在每个阶段结束时说明自己有没有肌肉症状。在服药的阶段中，62.5%报告了肌肉症状。",
+  "Is the statin causing the pain?":
+    "是他汀造成了这些疼痛吗？",
+  "Two-month stretches with muscle symptoms":
+    "出现肌肉症状的两个月阶段",
+  "Stretches on the statin":
+    "服用他汀的阶段",
+  "Stretches on the dummy tablet":
+    "服用安慰剂药片的阶段",
+  "Dummy":
+    "安慰剂",
+  "All stretches":
+    "全部阶段",
+  "On the drug":
+    "服药期间",
+  "Yes, the drug is causing it":
+    "是的，就是这种药造成的",
+  "two thirds of the time":
+    "三分之二的阶段都如此",
+  "No, the pain is not real":
+    "不，这些疼痛不是真的",
+  "they are imagining it":
+    "是他们想象出来的",
+  "The pain is real, and the drug is not causing it":
+    "疼痛是真的，而造成它的不是这种药",
+  "compare it with something":
+    "需要一个对照来比较",
+  "The dummy tablet did almost exactly the same thing.":
+    "安慰剂药片的结果几乎一模一样。",
+  "There was nothing in the other tablet":
+    "另一种药片里什么都没有",
+  "The same people, in the same months, taking a tablet with no drug in it, reported muscle symptoms 61.6 percent of the time. Nobody knew which tablet they were on. So the pain was there either way, and the 62.5 percent on the statin is almost entirely a rate of muscle pain in people who ache, not a rate of pain caused by the drug:":
+    "同样这些人，在同样的月份里，服用不含药的片剂时，61.6%的阶段报告了肌肉症状。没有人知道自己吃的是哪一种。也就是说，两种情况下疼痛都在，而他汀的那个62.5%几乎完全是一群本就容易疼痛的人身上的肌肉疼痛发生率，不是这种药造成的疼痛的发生率：",
+  "Both tablets":
+    "两种药片",
+  "That is what a control group is for, and why a rate on its own can never answer the question. Muscle pain is common. It is commoner still in people who have had it before, who are watching for it, and who have been handed a leaflet listing it. The only way to find out what the drug adds is to run the same months without it, which is what this trial did.":
+    "对照组的用处正在于此，这也是单独一个发生率永远无法回答问题的原因。肌肉疼痛本来就常见。在那些以前有过、正在留意它、又拿到了列有这一条的说明书的人身上，就更常见。要弄清这种药本身增加了多少，唯一的办法是让同样的月份在没有它的情况下再走一遍，这项试验做的正是这件事。",
+  "What the second bar is for":
+    "第二根柱子的用处",
+  "The nocebo effect":
+    "反安慰剂效应",
+  "A symptom that appears after you start a drug is not evidence the drug caused it, until you know how often the same symptom appears in people taking nothing.":
+    "开始服药之后出现的症状，并不能证明是这种药造成的，除非你知道同样的症状在什么都没吃的人当中出现得有多频繁。",
+  "Note carefully what this does not say. The pain is real: these people hurt, and were not pretending. Rare genuine statin muscle injury exists and is a different thing, diagnosed differently. Everyone here had already had muscle trouble on a statin, so this is a selected group rather than the general population. And the trial says nothing at all about whether statins do their job. What it settles is narrower and more useful: for this common complaint, the tablet and the dummy behaved the same.":
+    "请仔细看清这里没有说什么。疼痛是真实的：这些人确实在痛，并没有假装。他汀确实存在罕见的真正肌肉损伤，那是另一回事，诊断方式也不同。这里的每个人此前都曾在服用他汀时出现肌肉不适，所以这是一个经过筛选的人群，而不是普通人群。而且这项试验完全没有说他汀是否有效。它确定下来的结论更窄，也更有用：对于这种常见的不适，药片和安慰剂表现相同。",
+  "Expecting a side effect helps produce it, and being told to watch for one makes you notice sensations you would otherwise have let pass. That is the nocebo effect, the unhappy twin of the placebo effect, and it is not lying or weakness: attention genuinely changes what a body reports, and aches are ordinary enough that everyone has some to find. The reasoning trap around it is simpler than the psychology. Someone starts a drug, a symptom appears, and the two get joined up, because a story with a cause in it is easier to hold than a coincidence. The missing number is always the same one: how often does that symptom turn up in people who did not take the drug? Without it, a side-effect rate is not a measurement of the drug at all, it is a measurement of how common the symptom is in the kind of person who gets prescribed it. This is why blinding matters so much for anything a patient reports. Once someone knows they are on the drug, their symptom reports are partly about the drug and partly about knowing, and the two cannot be separated afterwards. The effect is large enough to reverse conclusions: in trials of the same drug, side-effect rates measured while nobody knew who was taking what are routinely far lower than the rates measured once everyone knows. None of which means a reported side effect should be waved away. It means the question of whether this is the drug gets answered by taking the drug away and putting it back, not by counting how many people on it have the symptom.":
+    "预期会有某种副作用，本身就有助于让它出现；被叮嘱要留意某种感觉，你就会注意到那些原本会被放过去的感觉。这就是反安慰剂效应，安慰剂效应不讨喜的孪生兄弟，它既不是撒谎也不是软弱：注意力确实会改变身体所报告的内容，而酸痛又足够平常，人人身上都能找出一些。围绕它的推理陷阱比其中的心理机制简单。有人开始服药，一个症状出现了，两者就被连到了一起，因为一个带原因的故事比一次巧合更容易被记住。缺的那个数字永远是同一个：这种症状在没有服药的人当中出现得有多频繁？没有它，副作用发生率根本不是对这种药的测量，而是对这种症状在被开这类药的人群里有多常见的测量。这就是为什么对任何由患者自己报告的内容，盲法都如此重要。一旦有人知道自己在服药，他的症状报告就一部分来自药，一部分来自知道，事后再也分不开。这种影响大到足以颠倒结论：在同一种药的试验里，无人知晓谁服了什么时测得的副作用发生率，通常远低于所有人都知道之后测得的发生率。这一切都不意味着患者报告的副作用可以被随手打发掉。它的意思是，要回答这到底是不是药的问题，靠的是把药停掉再加回来，而不是数一数服药的人里有多少人有这个症状。",
+  "The months with no tablet at all":
+    "完全不吃药片的那些月份",
+  "A companion trial went one better and added a third condition: months on the statin, months on an identical dummy, and months taking nothing whatsoever, all in a random order, with participants rating their symptoms every day. The months on the dummy tablet were nearly as bad as the months on the statin. The months with no tablet were far better than either. Most of the symptom burden, in other words, came from the act of taking a tablet rather than from what was in it, and half the participants restarted a statin afterwards.":
+    "一项配套试验更进一步，加上了第三种情况：服他汀的月份、服外观相同的安慰剂药片的月份，以及什么都不吃的月份，全部随机排序，参与者每天为自己的症状打分。服安慰剂药片的月份几乎和服他汀的月份一样难受。什么都不吃的月份则比这两者都好得多。换句话说，大部分症状负担来自吃药片这个动作，而不是药片里的东西，事后有一半参与者重新开始服用他汀。",
+  "The nocebo effect, a reasoning trap.":
+    "反安慰剂效应，一个推理陷阱。",
+  "You start a new tablet, and a week later your legs ache. The tablet did it, obviously. Except that aches are common, and expecting one helps you find it. In one trial, people took a statin for some months and an identical tablet with nothing in it for others, without knowing which. They reported muscle pain in 62.5 percent of the months on the drug, and 61.6 percent of the months on the dummy. The pain was real. The drug was not what was causing it. A side-effect rate with nothing to compare it against tells you how common the symptom is, not what the drug does.":
+    "你开始吃一种新药片，一周后腿开始酸痛。显然是这药片干的。只是酸痛本来就常见，而预期它会来，本身就帮你把它找出来。在一项试验里，人们有些月份服他汀，有些月份服外观相同、里面什么都没有的药片，自己并不知道哪个是哪个。他们在服药的月份里62.5%报告了肌肉疼痛，在服安慰剂的月份里是61.6%。疼痛是真实的。造成它的不是这种药。一个没有对照可比的副作用发生率，告诉你的是这种症状有多常见，而不是这种药做了什么。",
+  "The denominators are two-month treatment periods, not people: 152 participants each completed up to six blinded periods, three of atorvastatin 20 mg and three of matching placebo, so 785 periods come from 152 individuals. The paper's own column heading says participants, which is loose wording on its part, and the figures are presented here as periods because that is what they are. For the same reason the paper's odds ratio cannot be recomputed from these four numbers, since one person contributes several periods, so it is not quoted. A person-level figure is also printed: 18 of 200 randomised participants withdrew because of intolerable muscle symptoms while on atorvastatin, against 13 of 200 while on placebo. Participants were recruited precisely because they had had muscle symptoms on a statin before, so this is a selected group and its rates should not be read as rates in the general population.":
+    "分母是为期两个月的治疗期，不是人：152名参与者每人最多完成六个盲法治疗期，其中三个服阿托伐他汀20 mg，三个服相匹配的安慰剂，所以785个治疗期来自152个人。原文自己的表头写的是参与者，那是原文用词不严谨，这里按治疗期呈现，因为它们本来就是治疗期。出于同样的原因，原文的比值比无法用这四个数字重新算出，因为一个人贡献了好几个治疗期，所以未予引用。文中也给出了以人为单位的数字：200名随机分组的参与者中，有18人因无法忍受的肌肉症状在服用阿托伐他汀期间退出，服用安慰剂期间则是200人中的13人。参与者正是因为此前服他汀时出现过肌肉症状才被招募，所以这是一个经过筛选的人群，其发生率不应当作普通人群的发生率来读。",
+  "Six months after a wind farm opened, a campaign group posted leaflets asking residents to report headaches and poor sleep. Ninety of the 400 households replied describing such symptoms. The group states that the turbines are making the village ill and wants them switched off.":
+    "一座风电场投运半年后，一个活动团体投放传单，请居民报告头痛和睡眠不佳。400户人家中有90户回复，描述了这类症状。该团体表示，涡轮机正在让这个村子生病，要求把它们关停。",
+  "Nobody counted headaches and poor sleep in comparable villages with no turbines, where both are common anyway. A leaflet asking people to watch for particular symptoms also changes how many get noticed and reported.":
+    "没有人在没有涡轮机的可比村庄里统计过头痛和睡眠不佳，而这两者在那里本来也很常见。一份请人们留意特定症状的传单，也会改变有多少症状被注意到、被报告。",
+  "An office replaced its ventilation system and emailed staff that the airflow would feel different. A survey the following month found 38% reporting afternoon tiredness and dry throats. Facilities management concluded the new system was at fault and had it re-engineered.":
+    "一间办公楼更换了通风系统，并发邮件告诉员工，气流的感觉会有所不同。第二个月的一项调查发现，38%的人报告下午犯困和喉咙发干。后勤管理部门认定新系统有问题，把它重新改造了一遍。",
+  "The same question was never asked before the change, nor on the floors still running the old system, so there is nothing to say whether 38% is unusual for that building.":
+    "改造之前从来没有问过同样的问题，仍在使用旧系统的楼层也没有问过，所以无从判断38%对这栋楼来说是不是反常。",
+  "A student unplugs his hall's new wireless router at night and records that he sleeps better on the nights it is off. He tells friends, who try it and agree. The residents' committee asks for the router to be taken out.":
+    "一名学生每晚拔掉宿舍楼新装的无线路由器，并记录到关掉它的那些夜里自己睡得更好。他告诉了朋友，朋友试过之后也同意。住户委员会要求把路由器拆走。",
+  "He knew on every single night whether the router was on, so what he expected could shape both his sleep and how he rated it. The test needs nights where neither he nor whoever flipped the switch knew.":
+    "每一个夜里他都知道路由器是开还是关，所以他所预期的东西既可能影响他的睡眠，也可能影响他给睡眠打的分。这个测试需要一些他和按开关的人都不知道的夜晚。",
+  "A primary school was repainted over the holidays. In the first week back, 27 pupils were sent home feeling sick. A parents' meeting concluded that fumes from the paint were responsible and called for the classrooms to be stripped.":
+    "一所小学在假期里重新刷了漆。开学第一周，有27名学生因为不舒服被送回家。一次家长会认定是油漆气味所致，要求把教室的漆全部铲掉。",
+  "No one checked how many pupils are sent home sick in a normal first week back, or whether nearby schools with no new paint saw the same thing that week.":
+    "没有人查过在平常的开学第一周有多少学生因不适被送回家，也没有查过那一周附近没有重新刷漆的学校是不是也这样。",
+  "A retailer issued a new uniform. After a widely shared staff forum thread about the fabric being itchy, complaints of rashes went from a handful to several hundred in a fortnight. The retailer withdrew the uniform and apologised.":
+    "一家零售商发放了新制服。一个说面料扎人的员工论坛帖被广泛转发之后，两周内皮疹投诉从零星几例增加到几百例。这家零售商撤回了制服并致歉。",
+  "The itching is real, but the surge tracks the forum thread rather than the rollout, and rash rates were never compared with branches still wearing the old uniform, where skin complaints also occur.":
+    "发痒是真实的，但投诉激增跟随的是那个论坛帖，而不是制服的发放，而且皮疹发生率从未与仍穿旧制服的门店比较过，那里同样会有皮肤方面的投诉。",
+  "An app update's release notes warned that text might look slightly different. Tickets mentioning eye strain tripled that week. The team announced a rollback, tickets returned to normal, and the engineer wrote that the change had been straining users' eyes.":
+    "某次应用更新的发布说明提醒，文字看起来可能会略有不同。那一周提到眼睛疲劳的工单增加到三倍。团队宣布回滚，工单回到正常水平，工程师写道，这次改动一直在让用户的眼睛疲劳。",
+  "Users told to expect a visual difference went looking for one, and the rollback was announced just as loudly, so both the rise and the fall follow what people were told rather than any measured change on screen.":
+    "被告知会看到视觉差异的用户就去找差异，而回滚也宣布得同样响亮，所以上升和回落跟随的都是别人告诉他们的话，而不是屏幕上任何测量到的变化。",
+  "A taxi firm switched to electric cars and briefed drivers that the smooth one-pedal acceleration can make passengers queasy, asking them to note any complaints. Drivers logged sixty queasy passengers in a month. The firm concluded the cars cause travel sickness and reordered the old fleet.":
+    "一家出租车公司换用电动车，并向司机说明，单踏板加速很平顺，可能让乘客反胃，请他们记下任何投诉。一个月里司机记录了60名反胃的乘客。公司认定这些车会引起晕车，重新订购了旧车队。",
+  "Nobody ever logged queasy passengers in the old fleet, so sixty has nothing to be compared against, and drivers primed to expect complaints will hear and record more of them.":
+    "旧车队里从来没有人记录过反胃的乘客，所以60这个数字没有任何可比对象，而被提前告知会有投诉的司机，会听到并记下更多投诉。",
+  "A wellness programme tells participants that days two and three will bring headaches, irritability and aching as the body clears itself. Most report exactly that, then feel better. The organiser presents this as proof the programme is doing its work.":
+    "一个养生项目告诉参与者，第二天和第三天身体在自我清理，会带来头痛、烦躁和酸痛。多数人报告的正是这些，之后感觉好转。主办方把这当作项目正在起作用的证明。",
+  "Participants were told precisely which sensations to expect and on which days, and no comparison group followed an ordinary diet or an inert version of the plan. The pattern matches the prediction they were given.":
+    "参与者被准确告知了会有哪些感觉、出现在哪几天，而且没有对照组按普通饮食或该方案的无效版本执行。出现的规律与他们收到的预告相符。",
+  "During a trial's blinded year, muscle aches were reported by 14% on the tablet and 13% on the dummy. Everyone was then told what they had taken and offered the tablet openly; that year one in five reported aches. A patients' group says the harm only shows in real use.":
+    "在一项试验设盲的那一年，服药片的人中14%报告肌肉酸痛，服安慰剂的人中是13%。随后所有人都被告知自己此前服的是什么，并可以公开服用该药片；那一年有五分之一的人报告酸痛。一个患者团体说，危害只有在真实使用中才显现。",
+  "The only thing that changed between the two years is that everyone now knew what they were taking. While nobody knew, the ache rate was the same with the drug and without it.":
+    "两年之间唯一变了的，是所有人现在都知道自己吃的是什么。在无人知晓的时候，服药和不服药的酸痛发生率是一样的。",
+  "A pharmacy moved patients onto an equivalent tablet from a different maker, oval and yellow rather than round and white, sending a letter explaining the change. Reports of dizziness and nausea from those patients rose fivefold over two months, and a newsletter concluded the new version is poorly tolerated.":
+    "一家药房把患者换成了另一家厂商的等效药片，椭圆的黄色而不是圆的白色，并寄信说明这次更换。两个月里这些患者报告的头晕和恶心增加到五倍，一份通讯得出结论说，新版本耐受性差。",
+  "The letter drew attention to the change and gave everyday dizziness something new to be attributed to, and no one measured the rate over the same two months in patients kept on the original tablet.":
+    "这封信把注意力引向了这次更换，也让日常的头晕有了一个新的可归因对象，而且没有人测量同样这两个月里继续服用原来药片的患者的发生率。",
+  "A retailer had 200 volunteers wear a sleeve of the new cloth on one arm and the old cloth on the other for two weeks, without being told which was which. An assessor who did not know either graded photographs of both arms: visible redness on 31 new-cloth arms and 4 old-cloth arms.":
+    "一家零售商让200名志愿者一只手臂戴新面料的袖套、另一只戴旧面料的袖套，持续两周，并且不告诉他们哪只是哪种。一名同样不知情的评估者为两只手臂的照片评级：31条戴新面料的手臂和4条戴旧面料的手臂出现可见发红。",
+  "Every volunteer carried both fabrics at once without knowing which arm had which, and the redness was graded by someone equally unaware, so what anyone expected cannot account for the gap.":
+    "每名志愿者同时带着两种面料，且不知道哪只手臂是哪一种，发红由同样不知情的人评级，所以任何人的预期都无法解释这个差距。",
+  "A man's back pain began after a new mattress arrived. His partner swapped the old and new mattresses under identical covers on a schedule he never saw, three times across six weeks. His pain scores were high on every new-mattress stretch and low on every old-mattress stretch.":
+    "一名男子的背痛在新床垫送到之后开始。他的伴侣按一份他从未见过的时间表，在相同的床罩下把新旧床垫互换，六周里换了三次。他在每一段新床垫的时期评分都高，在每一段旧床垫的时期评分都低。",
+  "The mattress was removed and returned repeatedly while he had no way of knowing which one he was lying on, so his expectations could not have followed the pattern his pain followed.":
+    "床垫被反复撤走又换回，而他无从知道自己躺的是哪一张，所以他的预期不可能跟着他的疼痛所走的规律走。",
+  "A housing committee reviewing a new communal heating system logged 46 residents reporting headaches and dry eyes. Its report states that no similar block without the system was surveyed, that nobody knows how common these complaints were beforehand, and that it therefore cannot say the system is the cause.":
+    "一个住户委员会在评估新的公共供暖系统时，记录了46名住户报告头痛和眼睛发干。它的报告写明：没有调查过没有该系统的类似楼栋，也没有人知道这些不适此前有多常见，因此无法断定该系统就是原因。",
+  "The committee reports the count it actually has and stops there, because with no comparable block and no before figure a complaint total on its own supports no causal claim.":
+    "委员会只报告了它实际掌握的计数，到此为止，因为在没有可比楼栋、也没有此前数字的情况下，单独一个投诉总数支撑不了任何因果结论。",
+  "In a trial where neither patients nor their doctors knew who was getting what, dry mouth was reported by 44% of those on the drug and 6% of those on the dummy tablet. The report lists dry mouth as a side effect of the drug.":
+    "在一项患者和医生都不知道谁拿到什么的试验中，服药的人里44%报告口干，服安慰剂药片的人里是6%。报告把口干列为这种药的副作用。",
+  "Both groups were equally unaware of what they were taking and equally primed to watch for side effects, so the gap between 44% and 6% is what the drug itself added.":
+    "两组同样不知道自己服的是什么，也同样被提示要留意副作用，所以44%和6%之间的差距，就是这种药本身增加的部分。",
 };

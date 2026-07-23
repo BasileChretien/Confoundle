@@ -1878,4 +1878,126 @@ export const ja: Record<string, string> = {
     "故障した家電の所有者と正常に動いている家電の所有者に、購入時期と使用頻度を尋ねます。その回答をレシートとアプリの利用記録と照合すると、2つの群の誤差は同じ大きさで同じ方向であることが分かります。",
   "The reported histories were checked against records and both groups misremembered equally, so the comparison is not driven by one group searching its memory harder; a hasty player would assume the aggrieved owners overstated their use.":
     "申告された履歴は記録と照合され、両群とも同じ程度に記憶違いをしていました。したがってこの比較は、一方の群がより熱心に記憶をたどったことによるものではありません。早合点した回答者は、不満を抱えた所有者が使用を誇張したと思い込むでしょう。",
+
+  // ---- intention to treat, recall bias, immortal time ----
+  "Where every excluded patient had already relapsed":
+    "除外された患者が全員すでに再発していた試験",
+  "A trial compared two treatments for opioid dependence in 570 people. Counting only those who actually started the drug they were assigned, the first treatment looked slightly better: 52 percent relapsed against 56 percent. Counting everyone the coin assigned, it was clearly worse, 65 percent against 57 percent. The reason is the cleanest you will find. That first drug can only be started after a full detoxification, or it triggers immediate withdrawal, so 79 of its patients never managed to begin it, against 17 in the other arm. Every single one of those 79 relapsed. Dropping them removed the whole of the treatment's failure.":
+    "ある試験が、オピオイド依存に対する2つの治療を570人で比較しました。割り付けられた薬を実際に開始した人だけを数えると、1つ目の治療のほうがわずかに良く見え、再発は52パーセント対56パーセントでした。ランダム化で割り付けられた全員を数えると、明らかに悪く、65パーセント対57パーセントでした。理由はこれ以上ないほど明快です。1つ目の薬は完全な解毒を終えてからでないと開始できず、そうでなければ直ちに離脱症状を引き起こすため、79人が開始できませんでした（もう一方の群では17人）。その79人は全員が再発しました。この人たちを除外することで、治療の失敗がまるごと消えていたのです。",
+  "Almost two thirds of the months people spent on this drug brought muscle pain. Is the drug doing it?":
+    "この薬を飲んでいた期間の3分の2近くで筋肉の痛みが出ました。原因は薬でしょうか。",
+  "152 people who had all had muscle trouble on a statin before took part. Each spent up to six two-month stretches on either atorvastatin or an identical dummy tablet, in a random order, without knowing which was which, and said at the end of each stretch whether they had muscle symptoms. Muscle symptoms were reported in 62.5 percent of the stretches on the drug.":
+    "以前にスタチンで筋肉の不調を経験したことのある152人が参加しました。それぞれが、アトルバスタチンか見分けのつかない偽薬のどちらかを、ランダムな順序で、どちらかを知らされないまま2か月ずつ最大6期間服用し、各期間の終わりに筋症状があったかどうかを答えました。薬を飲んだ期間の62.5パーセントで筋症状が報告されました。",
+  "Is the statin causing the pain?":
+    "その痛みの原因はスタチンでしょうか。",
+  "Two-month stretches with muscle symptoms":
+    "筋症状のあった2か月の期間",
+  "Stretches on the statin":
+    "スタチンを飲んだ期間",
+  "Stretches on the dummy tablet":
+    "偽薬を飲んだ期間",
+  "Dummy":
+    "偽薬",
+  "All stretches":
+    "すべての期間",
+  "On the drug":
+    "薬を飲んだ期間",
+  "Yes, the drug is causing it":
+    "はい、原因は薬です",
+  "two thirds of the time":
+    "3分の2の期間で出ています",
+  "No, the pain is not real":
+    "いいえ、痛みは本物ではありません",
+  "they are imagining it":
+    "気のせいです",
+  "The pain is real, and the drug is not causing it":
+    "痛みは本物ですが、原因は薬ではありません",
+  "compare it with something":
+    "何かと比べる必要があります",
+  "The dummy tablet did almost exactly the same thing.":
+    "偽薬でもほとんど同じことが起きていました。",
+  "There was nothing in the other tablet":
+    "もう一方の錠剤には何も入っていませんでした",
+  "The same people, in the same months, taking a tablet with no drug in it, reported muscle symptoms 61.6 percent of the time. Nobody knew which tablet they were on. So the pain was there either way, and the 62.5 percent on the statin is almost entirely a rate of muscle pain in people who ache, not a rate of pain caused by the drug:":
+    "同じ人たちが、同じ時期に、薬の入っていない錠剤を飲んだ期間の61.6パーセントで筋症状を報告しました。どちらの錠剤かは誰も知りませんでした。つまり痛みはどちらでも同じように現れており、スタチンでの62.5パーセントは、そのほとんどが痛みを抱えやすい人たちに筋肉の痛みが起きる割合であって、薬が引き起こした痛みの割合ではありません。",
+  "Both tablets":
+    "両方の錠剤",
+  "That is what a control group is for, and why a rate on its own can never answer the question. Muscle pain is common. It is commoner still in people who have had it before, who are watching for it, and who have been handed a leaflet listing it. The only way to find out what the drug adds is to run the same months without it, which is what this trial did.":
+    "対照群があるのはそのためであり、割合だけを見ても問いに答えられないのもそのためです。筋肉の痛みはよくあるものです。以前に経験したことがあり、それに注意を向けており、症状として書かれた説明書を渡された人ではなおさらです。薬が何を上乗せしているのかを知る唯一の方法は、同じ期間を薬なしで過ごしてもらうことで、この試験はまさにそれを行いました。",
+  "What the second bar is for":
+    "2本目の棒があるわけ",
+  "The nocebo effect":
+    "ノセボ効果",
+  "A symptom that appears after you start a drug is not evidence the drug caused it, until you know how often the same symptom appears in people taking nothing.":
+    "薬を始めた後に現れた症状は、何も飲んでいない人に同じ症状がどれくらいの頻度で現れるのかを知らないかぎり、薬が原因だという証拠にはなりません。",
+  "Note carefully what this does not say. The pain is real: these people hurt, and were not pretending. Rare genuine statin muscle injury exists and is a different thing, diagnosed differently. Everyone here had already had muscle trouble on a statin, so this is a selected group rather than the general population. And the trial says nothing at all about whether statins do their job. What it settles is narrower and more useful: for this common complaint, the tablet and the dummy behaved the same.":
+    "これが述べていないことに注意してください。痛みは本物です。参加者は実際に痛みを感じており、演技をしていたわけではありません。まれではありますがスタチンによる本物の筋障害は存在し、それは別のもので、診断の仕方も異なります。ここでの参加者は全員が以前スタチンで筋肉の不調を経験しており、一般の人々ではなく選ばれた集団です。またこの試験は、スタチンが本来の役目を果たすかどうかについては何も語っていません。分かったのはもっと限定的で、その分だけ役に立つことです。このよくある訴えに関しては、実薬も偽薬も同じように振る舞ったということです。",
+  "Expecting a side effect helps produce it, and being told to watch for one makes you notice sensations you would otherwise have let pass. That is the nocebo effect, the unhappy twin of the placebo effect, and it is not lying or weakness: attention genuinely changes what a body reports, and aches are ordinary enough that everyone has some to find. The reasoning trap around it is simpler than the psychology. Someone starts a drug, a symptom appears, and the two get joined up, because a story with a cause in it is easier to hold than a coincidence. The missing number is always the same one: how often does that symptom turn up in people who did not take the drug? Without it, a side-effect rate is not a measurement of the drug at all, it is a measurement of how common the symptom is in the kind of person who gets prescribed it. This is why blinding matters so much for anything a patient reports. Once someone knows they are on the drug, their symptom reports are partly about the drug and partly about knowing, and the two cannot be separated afterwards. The effect is large enough to reverse conclusions: in trials of the same drug, side-effect rates measured while nobody knew who was taking what are routinely far lower than the rates measured once everyone knows. None of which means a reported side effect should be waved away. It means the question of whether this is the drug gets answered by taking the drug away and putting it back, not by counting how many people on it have the symptom.":
+    "副作用を予期することはその発生を後押しし、注意するように言われると、そうでなければ気に留めずに過ぎたはずの感覚にも気づくようになります。これがノセボ効果、つまりプラセボ効果の不幸な双子であり、うそでも弱さでもありません。注意を向けることは体が報告する内容を実際に変えますし、痛みや不調はありふれていて、探せば誰にでも何かしら見つかるものです。ここにある推論の落とし穴は、心理の仕組みよりも単純です。誰かが薬を始め、症状が現れ、その二つが結びつけられます。原因のある物語のほうが、偶然よりも受け止めやすいからです。抜けている数字はいつも同じです。その症状は、薬を飲まなかった人にどれくらいの頻度で現れるのか。それがなければ、副作用の発生率は薬を測ったものではまったくなく、その薬を処方されるような人にその症状がどれだけよくあるかを測ったものにすぎません。だからこそ、患者本人が報告するものについては盲検がこれほど重要になります。自分が薬を飲んでいると分かった時点から、症状の報告は薬によるものと、知っていることによるものが混ざり、後から二つを切り分けることはできません。その影響は結論をひっくり返すほど大きく、同じ薬の試験でも、誰が何を飲んでいるか誰も知らない状態で測った副作用の発生率は、全員が知った後で測った発生率よりはるかに低いのが常です。とはいえ、報告された副作用を軽く扱ってよいという話ではありません。これは薬のせいなのかという問いは、薬をいったんやめて、また戻してみることで答えが出るのであって、薬を飲んでいる人のうち何人に症状があるかを数えても答えは出ない、ということです。",
+  "The months with no tablet at all":
+    "錠剤をまったく飲まない期間",
+  "A companion trial went one better and added a third condition: months on the statin, months on an identical dummy, and months taking nothing whatsoever, all in a random order, with participants rating their symptoms every day. The months on the dummy tablet were nearly as bad as the months on the statin. The months with no tablet were far better than either. Most of the symptom burden, in other words, came from the act of taking a tablet rather than from what was in it, and half the participants restarted a statin afterwards.":
+    "関連する別の試験は、さらに一歩進んで3つ目の条件を加えました。スタチンを飲む期間、見分けのつかない偽薬を飲む期間、そして何も飲まない期間を、すべてランダムな順序で設け、参加者は毎日症状を評価しました。偽薬の期間は、スタチンの期間とほぼ同じくらいつらいものでした。何も飲まない期間は、そのどちらよりもはるかに軽く済みました。つまり症状の負担の大半は、錠剤に何が入っていたかではなく、錠剤を飲むという行為から生じていたことになり、この後、参加者の半数がスタチンを再開しました。",
+  "The nocebo effect, a reasoning trap.":
+    "ノセボ効果、推論の落とし穴。",
+  "You start a new tablet, and a week later your legs ache. The tablet did it, obviously. Except that aches are common, and expecting one helps you find it. In one trial, people took a statin for some months and an identical tablet with nothing in it for others, without knowing which. They reported muscle pain in 62.5 percent of the months on the drug, and 61.6 percent of the months on the dummy. The pain was real. The drug was not what was causing it. A side-effect rate with nothing to compare it against tells you how common the symptom is, not what the drug does.":
+    "新しい錠剤を飲み始め、1週間後に脚が痛みます。原因は錠剤だ、と思うのが自然です。ただ、痛みはありふれたもので、予期していると見つけやすくもなります。ある試験では、参加者がどちらか分からないまま、ある期間はスタチンを、別の期間は中身のない同じ見た目の錠剤を飲みました。筋肉の痛みが報告されたのは、薬の期間の62.5パーセント、偽薬の期間の61.6パーセントでした。痛みは本物でした。原因は薬ではありませんでした。比べる相手のない副作用の発生率が教えてくれるのは、その症状がどれくらいよくあるかであって、薬が何をしているかではありません。",
+  "The denominators are two-month treatment periods, not people: 152 participants each completed up to six blinded periods, three of atorvastatin 20 mg and three of matching placebo, so 785 periods come from 152 individuals. The paper's own column heading says participants, which is loose wording on its part, and the figures are presented here as periods because that is what they are. For the same reason the paper's odds ratio cannot be recomputed from these four numbers, since one person contributes several periods, so it is not quoted. A person-level figure is also printed: 18 of 200 randomised participants withdrew because of intolerable muscle symptoms while on atorvastatin, against 13 of 200 while on placebo. Participants were recruited precisely because they had had muscle symptoms on a statin before, so this is a selected group and its rates should not be read as rates in the general population.":
+    "分母は人数ではなく2か月の治療期間です。152人の参加者がそれぞれ最大6期間の盲検期間を完了し、そのうち3期間がアトルバスタチン20 mg、3期間が対応するプラセボであるため、785期間は152人から生じています。原論文の表の見出しは参加者となっていますが、これは論文側の緩い表現であり、ここでは実際のとおり期間として示しています。同じ理由で、1人が複数の期間に寄与するため、論文のオッズ比をこの4つの数値から再計算することはできず、引用していません。人単位の数値も報告されています。ランダム化された200人のうち、アトルバスタチン服用中に耐えがたい筋症状のために中止したのは18人、プラセボ服用中は200人のうち13人でした。参加者は以前にスタチンで筋症状を経験していたことを理由に募集されており、選ばれた集団であるため、その割合を一般集団での割合として読むべきではありません。",
+  "Six months after a wind farm opened, a campaign group posted leaflets asking residents to report headaches and poor sleep. Ninety of the 400 households replied describing such symptoms. The group states that the turbines are making the village ill and wants them switched off.":
+    "風力発電所が稼働して半年後、ある運動団体が、頭痛や睡眠の悪化を報告するよう住民に呼びかけるちらしを配りました。400世帯のうち90世帯が、そうした症状を訴える返答をしました。団体は、風車が村の住民を病気にしていると主張し、稼働の停止を求めています。",
+  "Nobody counted headaches and poor sleep in comparable villages with no turbines, where both are common anyway. A leaflet asking people to watch for particular symptoms also changes how many get noticed and reported.":
+    "風車のない同じような村で、頭痛や睡眠の悪化を数えた人はいません。そうした村でもどちらもよくあることです。特定の症状に注意するよう求めるちらしは、気づかれて報告される数そのものも変えます。",
+  "An office replaced its ventilation system and emailed staff that the airflow would feel different. A survey the following month found 38% reporting afternoon tiredness and dry throats. Facilities management concluded the new system was at fault and had it re-engineered.":
+    "あるオフィスが換気設備を入れ替え、空気の流れの感じが変わると社員にメールで知らせました。翌月の調査では、38%が午後の眠気とのどの乾燥を報告しました。施設管理部門は新しい設備に問題があると結論づけ、再設計させました。",
+  "The same question was never asked before the change, nor on the floors still running the old system, so there is nothing to say whether 38% is unusual for that building.":
+    "同じ質問は、入れ替えの前にも、古い設備のままのフロアでも行われていないため、38%がその建物にとって異常な値なのかを判断する材料がありません。",
+  "A student unplugs his hall's new wireless router at night and records that he sleeps better on the nights it is off. He tells friends, who try it and agree. The residents' committee asks for the router to be taken out.":
+    "ある学生が寮の新しい無線ルーターを夜間に抜き、切っている夜のほうがよく眠れると記録しました。友人たちに話すと、試した友人たちも同意しました。寮生委員会はルーターの撤去を求めています。",
+  "He knew on every single night whether the router was on, so what he expected could shape both his sleep and how he rated it. The test needs nights where neither he nor whoever flipped the switch knew.":
+    "彼は毎晩、ルーターが入っているかどうかを知っていたので、彼の予期が、眠りそのものにも、その評価の仕方にも影響しえます。この検証には、本人もスイッチを操作した人も分からない夜が必要です。",
+  "A primary school was repainted over the holidays. In the first week back, 27 pupils were sent home feeling sick. A parents' meeting concluded that fumes from the paint were responsible and called for the classrooms to be stripped.":
+    "ある小学校が休みの間に塗り替えられました。休み明けの最初の1週間で、27人の児童が気分が悪くなって早退しました。保護者会は塗料の臭気が原因だと結論づけ、教室の塗装をはがすよう求めました。",
+  "No one checked how many pupils are sent home sick in a normal first week back, or whether nearby schools with no new paint saw the same thing that week.":
+    "普段の休み明け最初の1週間に何人の児童が体調不良で早退するのかも、塗り替えのない近隣の学校でその週に同じことが起きていたかも、誰も確認していません。",
+  "A retailer issued a new uniform. After a widely shared staff forum thread about the fabric being itchy, complaints of rashes went from a handful to several hundred in a fortnight. The retailer withdrew the uniform and apologised.":
+    "ある小売業者が新しい制服を導入しました。生地がちくちくするという社内フォーラムの投稿が広く共有された後、発疹の訴えは2週間でわずか数件から数百件に増えました。会社は制服を回収し、謝罪しました。",
+  "The itching is real, but the surge tracks the forum thread rather than the rollout, and rash rates were never compared with branches still wearing the old uniform, where skin complaints also occur.":
+    "かゆみは本物ですが、急増の時期は制服の導入ではなくフォーラムの投稿と重なっています。また発疹の発生率は、旧制服のままの店舗と比較されたことがなく、そうした店舗でも皮膚の訴えは起こります。",
+  "An app update's release notes warned that text might look slightly different. Tickets mentioning eye strain tripled that week. The team announced a rollback, tickets returned to normal, and the engineer wrote that the change had been straining users' eyes.":
+    "あるアプリ更新のリリースノートに、文字の見え方が少し変わるかもしれないと書かれていました。その週、眼精疲労に触れる問い合わせが3倍になりました。チームは差し戻しを発表し、問い合わせは元の水準に戻り、担当エンジニアはこの変更がユーザーの目に負担をかけていたと書きました。",
+  "Users told to expect a visual difference went looking for one, and the rollback was announced just as loudly, so both the rise and the fall follow what people were told rather than any measured change on screen.":
+    "見た目が変わると伝えられたユーザーはその違いを探しに行きますし、差し戻しも同じくらい大きく告知されました。増加も減少も、画面上で測定された変化ではなく、人々が何を伝えられたかに沿って動いています。",
+  "A taxi firm switched to electric cars and briefed drivers that the smooth one-pedal acceleration can make passengers queasy, asking them to note any complaints. Drivers logged sixty queasy passengers in a month. The firm concluded the cars cause travel sickness and reordered the old fleet.":
+    "あるタクシー会社が電気自動車に切り替え、なめらかなワンペダルの加速で乗客が気分を悪くすることがあると運転手に説明し、苦情があれば記録するよう求めました。運転手は1か月で60人の気分が悪くなった乗客を記録しました。会社は車が乗り物酔いを起こすと結論づけ、以前の車両を再発注しました。",
+  "Nobody ever logged queasy passengers in the old fleet, so sixty has nothing to be compared against, and drivers primed to expect complaints will hear and record more of them.":
+    "以前の車両で気分が悪くなった乗客が記録されたことはなく、60という数字には比較する相手がありません。また苦情を予期するよう仕向けられた運転手は、それをより多く聞き取り、より多く記録します。",
+  "A wellness programme tells participants that days two and three will bring headaches, irritability and aching as the body clears itself. Most report exactly that, then feel better. The organiser presents this as proof the programme is doing its work.":
+    "ある健康プログラムは、体が自ら解毒される過程で、2日目と3日目に頭痛、いらだち、体の痛みが出ると参加者に伝えています。ほとんどの参加者がまさにそのとおりに報告し、その後は楽になります。主催者はこれをプログラムが効いている証拠として示しています。",
+  "Participants were told precisely which sensations to expect and on which days, and no comparison group followed an ordinary diet or an inert version of the plan. The pattern matches the prediction they were given.":
+    "参加者は、どの感覚がどの日に出るかを正確に伝えられており、普通の食事や中身のないプログラムを行う比較群はありませんでした。現れたパターンは、与えられた予告と一致しています。",
+  "During a trial's blinded year, muscle aches were reported by 14% on the tablet and 13% on the dummy. Everyone was then told what they had taken and offered the tablet openly; that year one in five reported aches. A patients' group says the harm only shows in real use.":
+    "ある試験の盲検だった1年間では、筋肉の痛みを報告したのは錠剤で14%、偽薬で13%でした。その後、全員に自分が何を飲んでいたかが伝えられ、その錠剤が非盲検で提供されました。その年は5人に1人が痛みを報告しました。ある患者団体は、害は実際の使用でのみ現れると述べています。",
+  "The only thing that changed between the two years is that everyone now knew what they were taking. While nobody knew, the ache rate was the same with the drug and without it.":
+    "2つの年の間で変わったのは、全員が自分の飲んでいるものを知るようになったという点だけです。誰も知らなかった間は、痛みの割合は薬があってもなくても同じでした。",
+  "A pharmacy moved patients onto an equivalent tablet from a different maker, oval and yellow rather than round and white, sending a letter explaining the change. Reports of dizziness and nausea from those patients rose fivefold over two months, and a newsletter concluded the new version is poorly tolerated.":
+    "ある薬局が、患者を別のメーカーの同等の錠剤に切り替えました。丸くて白い錠剤から、楕円形で黄色い錠剤への変更で、その説明の手紙を送りました。これらの患者からのめまいと吐き気の報告は2か月で5倍に増え、ある会報は新しい方の錠剤は忍容性が低いと結論づけました。",
+  "The letter drew attention to the change and gave everyday dizziness something new to be attributed to, and no one measured the rate over the same two months in patients kept on the original tablet.":
+    "手紙は変更に注意を向けさせ、日常的に起こるめまいに新たな原因の候補を与えました。また、元の錠剤のままの患者について、同じ2か月間の発生率を測った人はいません。",
+  "A retailer had 200 volunteers wear a sleeve of the new cloth on one arm and the old cloth on the other for two weeks, without being told which was which. An assessor who did not know either graded photographs of both arms: visible redness on 31 new-cloth arms and 4 old-cloth arms.":
+    "ある小売業者が、200人の協力者に、片腕に新しい生地の袖を、もう片方の腕に古い生地の袖を、どちらがどちらか知らされないまま2週間着けてもらいました。同じく知らされていない評価者が両腕の写真を判定したところ、目に見える赤みが認められたのは、新しい生地の腕が31、古い生地の腕が4でした。",
+  "Every volunteer carried both fabrics at once without knowing which arm had which, and the redness was graded by someone equally unaware, so what anyone expected cannot account for the gap.":
+    "どの協力者も、どちらの腕がどちらの生地か知らないまま両方の生地を同時に身につけており、赤みも同じく知らされていない人が判定しているため、誰かの予期でこの差を説明することはできません。",
+  "A man's back pain began after a new mattress arrived. His partner swapped the old and new mattresses under identical covers on a schedule he never saw, three times across six weeks. His pain scores were high on every new-mattress stretch and low on every old-mattress stretch.":
+    "ある男性の腰痛は、新しいマットレスが届いた後に始まりました。パートナーが、同じカバーをかけた古いマットレスと新しいマットレスを、本人が見ていない予定に沿って、6週間で3回入れ替えました。彼の痛みの点数は、新しいマットレスの期間はいずれも高く、古いマットレスの期間はいずれも低いままでした。",
+  "The mattress was removed and returned repeatedly while he had no way of knowing which one he was lying on, so his expectations could not have followed the pattern his pain followed.":
+    "本人がどちらのマットレスで寝ているのか知りようがない状態で、マットレスは繰り返し外され、また戻されました。ですから、彼の予期が、痛みの描いたパターンをなぞることはありえません。",
+  "A housing committee reviewing a new communal heating system logged 46 residents reporting headaches and dry eyes. Its report states that no similar block without the system was surveyed, that nobody knows how common these complaints were beforehand, and that it therefore cannot say the system is the cause.":
+    "新しい共同暖房設備を検討していた住宅委員会は、頭痛と目の乾きを訴える住民46人を記録しました。報告書には、この設備のない同じような集合住宅は調査されていないこと、これらの訴えが以前どれくらいよくあったかは誰も知らないこと、したがって設備が原因だとは言えないことが書かれています。",
+  "The committee reports the count it actually has and stops there, because with no comparable block and no before figure a complaint total on its own supports no causal claim.":
+    "委員会は、実際に手元にある件数を報告し、そこで止めています。比較できる集合住宅も、以前の数字もない以上、訴えの合計だけでは因果関係の主張を支えられないからです。",
+  "In a trial where neither patients nor their doctors knew who was getting what, dry mouth was reported by 44% of those on the drug and 6% of those on the dummy tablet. The report lists dry mouth as a side effect of the drug.":
+    "患者も担当医もどちらが何を受けているかを知らない試験で、口の渇きを報告したのは、薬を飲んでいた人の44%、偽薬を飲んでいた人の6%でした。報告書は口の渇きをその薬の副作用として挙げています。",
+  "Both groups were equally unaware of what they were taking and equally primed to watch for side effects, so the gap between 44% and 6% is what the drug itself added.":
+    "どちらの群も、自分が何を飲んでいるかを同じように知らされておらず、副作用に注意するよう同じように仕向けられていたため、44%と6%の差は薬そのものが上乗せした分です。",
 };

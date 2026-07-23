@@ -15,6 +15,7 @@ import { publicationBias } from "./data/publication-bias";
 import { intentionToTreat } from "./data/intention-to-treat";
 import { recallBias } from "./data/recall-bias";
 import { immortalTime } from "./data/immortal-time";
+import { nocebo } from "./data/nocebo";
 
 /**
  * The puzzle registry. Adding a puzzle = import its data file and add it to
@@ -39,6 +40,7 @@ const rawPuzzles: unknown[] = [
   intentionToTreat,
   recallBias,
   immortalTime,
+  nocebo,
 ];
 
 export const puzzles: PuzzleType[] = rawPuzzles.map((p, i) => {

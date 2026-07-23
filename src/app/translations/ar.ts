@@ -1897,4 +1897,126 @@ export const ar: Record<string, string> = {
     "يسأل مالكو جهاز تعطل ومالكو جهاز يعمل عن موعد شرائه وعدد مرات تشغيله. ثم تقارن إجاباتهم بإيصالات الشراء وسجلات استخدام التطبيق، فيتبين أن أخطاء المجموعتين متساوية في الحجم ومتجهة في الاتجاه نفسه.",
   "The reported histories were checked against records and both groups misremembered equally, so the comparison is not driven by one group searching its memory harder; a hasty player would assume the aggrieved owners overstated their use.":
     "قوبلت التواريخ المذكورة بالسجلات وأخطأت المجموعتان في التذكر بالقدر نفسه، فالمقارنة ليست مدفوعة بمجموعة تنقب في ذاكرتها أكثر؛ واللاعب المتسرع سيفترض أن المالكين المتضررين بالغوا في تقدير استخدامهم.",
+
+  // ---- intention to treat, recall bias, immortal time ----
+  "Where every excluded patient had already relapsed":
+    "حيث كان كل مريض مستبعَد قد انتكس بالفعل",
+  "A trial compared two treatments for opioid dependence in 570 people. Counting only those who actually started the drug they were assigned, the first treatment looked slightly better: 52 percent relapsed against 56 percent. Counting everyone the coin assigned, it was clearly worse, 65 percent against 57 percent. The reason is the cleanest you will find. That first drug can only be started after a full detoxification, or it triggers immediate withdrawal, so 79 of its patients never managed to begin it, against 17 in the other arm. Every single one of those 79 relapsed. Dropping them removed the whole of the treatment's failure.":
+    "قارنت تجربة بين علاجين للاعتماد على المواد الأفيونية لدى 570 شخصًا. وباحتساب من بدأوا فعليًا الدواء المخصص لهم فقط، بدا العلاج الأول أفضل قليلًا: انتكس 52 بالمئة مقابل 56 بالمئة. وباحتساب كل من خصصته القرعة، بدا أسوأ بوضوح: 65 بالمئة مقابل 57 بالمئة. والسبب من أوضح ما يكون. فذلك الدواء الأول لا يمكن البدء به إلا بعد إزالة السموم كاملةً، وإلا أحدث أعراض انسحاب فورية، لذلك لم يتمكن 79 من مرضاه من الشروع فيه إطلاقًا، مقابل 17 في الذراع الأخرى. وقد انتكس أولئك الـ 79 جميعًا دون استثناء. وإسقاطهم أزال فشل العلاج بأكمله.",
+  "Almost two thirds of the months people spent on this drug brought muscle pain. Is the drug doing it?":
+    "قرابة ثلثي الأشهر التي قضاها الناس على هذا الدواء صاحبها ألم عضلي. فهل الدواء هو السبب؟",
+  "152 people who had all had muscle trouble on a statin before took part. Each spent up to six two-month stretches on either atorvastatin or an identical dummy tablet, in a random order, without knowing which was which, and said at the end of each stretch whether they had muscle symptoms. Muscle symptoms were reported in 62.5 percent of the stretches on the drug.":
+    "شارك 152 شخصًا سبق أن عانوا جميعًا متاعب عضلية مع ستاتين. قضى كل منهم ما يصل إلى ست فترات مدة كل منها شهران، إما على أتورفاستاتين وإما على قرص غُفل مطابق في مظهره، بترتيب عشوائي، دون معرفة أيهما تناول، وأفاد في نهاية كل فترة بما إذا كانت لديه أعراض عضلية. وأُبلغ عن أعراض عضلية في 62.5 بالمئة من الفترات على الدواء.",
+  "Is the statin causing the pain?":
+    "هل الستاتين هو سبب الألم؟",
+  "Two-month stretches with muscle symptoms":
+    "فترات الشهرين ذات الأعراض العضلية",
+  "Stretches on the statin":
+    "الفترات على الستاتين",
+  "Stretches on the dummy tablet":
+    "الفترات على القرص الغُفل",
+  "Dummy":
+    "الغُفل",
+  "All stretches":
+    "كل الفترات",
+  "On the drug":
+    "على الدواء",
+  "Yes, the drug is causing it":
+    "نعم، الدواء هو السبب",
+  "two thirds of the time":
+    "في ثلثي الفترات",
+  "No, the pain is not real":
+    "لا، الألم غير حقيقي",
+  "they are imagining it":
+    "إنهم يتوهمونه",
+  "The pain is real, and the drug is not causing it":
+    "الألم حقيقي، والدواء ليس سببه",
+  "compare it with something":
+    "قارِنه بشيء آخر",
+  "The dummy tablet did almost exactly the same thing.":
+    "القرص الغُفل فعل الشيء نفسه تقريبًا.",
+  "There was nothing in the other tablet":
+    "لم يكن في القرص الآخر أي دواء",
+  "The same people, in the same months, taking a tablet with no drug in it, reported muscle symptoms 61.6 percent of the time. Nobody knew which tablet they were on. So the pain was there either way, and the 62.5 percent on the statin is almost entirely a rate of muscle pain in people who ache, not a rate of pain caused by the drug:":
+    "الأشخاص أنفسهم، في الأشهر نفسها، حين تناولوا قرصًا لا دواء فيه، أبلغوا عن أعراض عضلية في 61.6 بالمئة من الأوقات. ولم يكن أحد يعرف أي قرص يتناول. فالألم كان موجودًا في الحالتين، ونسبة 62.5 بالمئة على الستاتين هي في مجملها تقريبًا معدل ألم عضلي لدى أشخاص يتألمون، لا معدل ألم يسببه الدواء:",
+  "Both tablets":
+    "كلا القرصين",
+  "That is what a control group is for, and why a rate on its own can never answer the question. Muscle pain is common. It is commoner still in people who have had it before, who are watching for it, and who have been handed a leaflet listing it. The only way to find out what the drug adds is to run the same months without it, which is what this trial did.":
+    "لهذا توجد مجموعة الضبط، ولهذا لا يمكن لمعدل بمفرده أن يجيب عن السؤال أبدًا. فالألم العضلي شائع، وهو أشيع لدى من سبق أن أصابهم، ومن يترقبونه، ومن سُلّمت إليهم نشرة تذكره ضمن الأعراض. والسبيل الوحيد لمعرفة ما يضيفه الدواء هو تكرار الأشهر نفسها من دونه، وهو ما فعلته هذه التجربة.",
+  "What the second bar is for":
+    "ما فائدة العمود الثاني",
+  "The nocebo effect":
+    "تأثير النوسيبو",
+  "A symptom that appears after you start a drug is not evidence the drug caused it, until you know how often the same symptom appears in people taking nothing.":
+    "ظهور عَرَض بعد بدء دواء ليس دليلًا على أن الدواء سببه، ما لم تعرف كم مرة يظهر العَرَض نفسه لدى من لا يتناولون شيئًا.",
+  "Note carefully what this does not say. The pain is real: these people hurt, and were not pretending. Rare genuine statin muscle injury exists and is a different thing, diagnosed differently. Everyone here had already had muscle trouble on a statin, so this is a selected group rather than the general population. And the trial says nothing at all about whether statins do their job. What it settles is narrower and more useful: for this common complaint, the tablet and the dummy behaved the same.":
+    "انتبه جيدًا لما لا تقوله هذه النتيجة. الألم حقيقي: هؤلاء الأشخاص يتألمون فعلًا، ولم يكونوا يتظاهرون. والإصابة العضلية الحقيقية النادرة بسبب الستاتينات موجودة، وهي أمر مختلف يُشخَّص بطريقة أخرى. وجميع من هنا سبق أن عانوا متاعب عضلية مع ستاتين، فهذه مجموعة منتقاة لا عموم الناس. كما أن التجربة لا تقول شيئًا البتة عن كون الستاتينات تؤدي وظيفتها أم لا. وما تحسمه أضيق وأنفع: في هذه الشكوى الشائعة، تصرّف القرص والغُفل بالطريقة نفسها.",
+  "Expecting a side effect helps produce it, and being told to watch for one makes you notice sensations you would otherwise have let pass. That is the nocebo effect, the unhappy twin of the placebo effect, and it is not lying or weakness: attention genuinely changes what a body reports, and aches are ordinary enough that everyone has some to find. The reasoning trap around it is simpler than the psychology. Someone starts a drug, a symptom appears, and the two get joined up, because a story with a cause in it is easier to hold than a coincidence. The missing number is always the same one: how often does that symptom turn up in people who did not take the drug? Without it, a side-effect rate is not a measurement of the drug at all, it is a measurement of how common the symptom is in the kind of person who gets prescribed it. This is why blinding matters so much for anything a patient reports. Once someone knows they are on the drug, their symptom reports are partly about the drug and partly about knowing, and the two cannot be separated afterwards. The effect is large enough to reverse conclusions: in trials of the same drug, side-effect rates measured while nobody knew who was taking what are routinely far lower than the rates measured once everyone knows. None of which means a reported side effect should be waved away. It means the question of whether this is the drug gets answered by taking the drug away and putting it back, not by counting how many people on it have the symptom.":
+    "توقّع الأثر الجانبي يسهم في حدوثه، وإخبارك بأن تترقبه يجعلك تنتبه إلى أحاسيس كنت ستدعها تمر لولا ذلك. هذا هو تأثير النوسيبو، التوأم التعيس لتأثير الغُفل، وهو ليس كذبًا ولا ضعفًا: فالانتباه يغيّر فعلًا ما يبلّغ عنه الجسد، والأوجاع من العادية بحيث يجد كل إنسان لديه شيئًا منها. أما مصيدة الاستدلال المحيطة به فأبسط من علم النفس. يبدأ شخص دواءً، فيظهر عَرَض، فيُربط الأمران معًا، لأن حكاية فيها سبب أسهل على الذهن من مصادفة. والرقم الغائب هو الرقم نفسه دائمًا: كم مرة يظهر ذلك العَرَض لدى من لم يتناولوا الدواء؟ من دونه لا يكون معدل الآثار الجانبية قياسًا للدواء إطلاقًا، بل قياسًا لمدى شيوع العَرَض لدى نوع الأشخاص الذين يوصف لهم. ولهذا تبلغ التعمية كل هذه الأهمية في أي شيء يبلّغ عنه المريض. فما إن يعرف الشخص أنه على الدواء، حتى تصبح بلاغاته عن الأعراض متعلقة جزئيًا بالدواء وجزئيًا بمعرفته، ولا سبيل للفصل بينهما بعد ذلك. والأثر كبير بما يكفي لقلب الاستنتاجات: ففي تجارب الدواء الواحد، تكون معدلات الآثار الجانبية المقيسة بينما لا يعرف أحد من يتناول ماذا أدنى بكثير، على نحو معتاد، من المعدلات المقيسة بعد أن يعرف الجميع. ولا يعني ذلك كله أن أثرًا جانبيًا مُبلَّغًا عنه ينبغي التغاضي عنه. بل يعني أن سؤال هل هذا هو الدواء يُجاب عنه برفع الدواء ثم إعادته، لا بعدّ كم من متناوليه لديهم العَرَض.",
+  "The months with no tablet at all":
+    "الأشهر بلا أي قرص إطلاقًا",
+  "A companion trial went one better and added a third condition: months on the statin, months on an identical dummy, and months taking nothing whatsoever, all in a random order, with participants rating their symptoms every day. The months on the dummy tablet were nearly as bad as the months on the statin. The months with no tablet were far better than either. Most of the symptom burden, in other words, came from the act of taking a tablet rather than from what was in it, and half the participants restarted a statin afterwards.":
+    "ذهبت تجربة مرافقة خطوة أبعد فأضافت حالة ثالثة: أشهر على الستاتين، وأشهر على غُفل مطابق، وأشهر بلا تناول أي شيء البتة، جميعها بترتيب عشوائي، مع تقييم المشاركين لأعراضهم كل يوم. وكانت الأشهر على القرص الغُفل سيئة تقريبًا كالأشهر على الستاتين، بينما كانت الأشهر بلا قرص أفضل بكثير من كلتيهما. أي أن معظم عبء الأعراض جاء من فعل تناول قرص لا مما فيه، وقد عاد نصف المشاركين إلى الستاتين بعد ذلك.",
+  "The nocebo effect, a reasoning trap.":
+    "تأثير النوسيبو، مصيدة استدلال.",
+  "You start a new tablet, and a week later your legs ache. The tablet did it, obviously. Except that aches are common, and expecting one helps you find it. In one trial, people took a statin for some months and an identical tablet with nothing in it for others, without knowing which. They reported muscle pain in 62.5 percent of the months on the drug, and 61.6 percent of the months on the dummy. The pain was real. The drug was not what was causing it. A side-effect rate with nothing to compare it against tells you how common the symptom is, not what the drug does.":
+    "تبدأ قرصًا جديدًا، وبعد أسبوع تؤلمك ساقاك. القرص هو السبب، بداهةً. غير أن الأوجاع شائعة، وتوقّعها يعينك على العثور عليها. في إحدى التجارب، تناول أشخاص ستاتينًا في بعض الأشهر وقرصًا مطابقًا لا شيء فيه في أشهر أخرى، دون معرفة أيهما. وأبلغوا عن ألم عضلي في 62.5 بالمئة من الأشهر على الدواء، و61.6 بالمئة من الأشهر على الغُفل. كان الألم حقيقيًا. ولم يكن الدواء هو ما يسببه. معدل أثر جانبي لا شيء يقارَن به يخبرك بمدى شيوع العَرَض، لا بما يفعله الدواء.",
+  "The denominators are two-month treatment periods, not people: 152 participants each completed up to six blinded periods, three of atorvastatin 20 mg and three of matching placebo, so 785 periods come from 152 individuals. The paper's own column heading says participants, which is loose wording on its part, and the figures are presented here as periods because that is what they are. For the same reason the paper's odds ratio cannot be recomputed from these four numbers, since one person contributes several periods, so it is not quoted. A person-level figure is also printed: 18 of 200 randomised participants withdrew because of intolerable muscle symptoms while on atorvastatin, against 13 of 200 while on placebo. Participants were recruited precisely because they had had muscle symptoms on a statin before, so this is a selected group and its rates should not be read as rates in the general population.":
+    "المقامات هي فترات علاجية مدتها شهران، لا أشخاص: أكمل 152 مشاركًا كل منهم ما يصل إلى ست فترات معمّاة، ثلاث منها بأتورفاستاتين 20 ملغ وثلاث بغُفل مطابق، فجاءت 785 فترة من 152 فردًا. وعنوان العمود في الورقة نفسها يقول مشاركين، وهي صياغة فضفاضة منها، والأرقام معروضة هنا بوصفها فترات لأنها كذلك فعلًا. وللسبب نفسه لا يمكن إعادة حساب نسبة الأرجحية الواردة في الورقة من هذه الأرقام الأربعة، لأن الشخص الواحد يسهم بعدة فترات، ولذلك لم تُقتبس. وهناك أيضًا رقم على مستوى الأشخاص: انسحب 18 من 200 مشارك مُعشّى بسبب أعراض عضلية لا تُحتمل أثناء تناول أتورفاستاتين، مقابل 13 من 200 أثناء تناول الغُفل. وقد جُنّد المشاركون تحديدًا لأنهم عانوا أعراضًا عضلية مع ستاتين من قبل، فهذه مجموعة منتقاة ولا ينبغي قراءة معدلاتها بوصفها معدلات في عموم السكان.",
+  "Six months after a wind farm opened, a campaign group posted leaflets asking residents to report headaches and poor sleep. Ninety of the 400 households replied describing such symptoms. The group states that the turbines are making the village ill and wants them switched off.":
+    "بعد ستة أشهر من افتتاح مزرعة رياح، وزّعت مجموعة حملات نشرات تطلب من السكان الإبلاغ عن الصداع وسوء النوم. وردّت تسعون من أصل 400 أسرة تصف مثل هذه الأعراض. وتقول المجموعة إن التوربينات تمرض القرية وتريد إيقافها.",
+  "Nobody counted headaches and poor sleep in comparable villages with no turbines, where both are common anyway. A leaflet asking people to watch for particular symptoms also changes how many get noticed and reported.":
+    "لم يُحصِ أحد الصداع وسوء النوم في قرى مماثلة بلا توربينات، وكلاهما شائع فيها على أي حال. كما أن نشرة تطلب من الناس ترقّب أعراض بعينها تغيّر عدد ما يُلاحَظ منها ويُبلَّغ عنه.",
+  "An office replaced its ventilation system and emailed staff that the airflow would feel different. A survey the following month found 38% reporting afternoon tiredness and dry throats. Facilities management concluded the new system was at fault and had it re-engineered.":
+    "استبدل مكتب نظام التهوية لديه وأرسل بريدًا إلكترونيًا للموظفين يفيد بأن تدفق الهواء سيبدو مختلفًا. ووجد استطلاع في الشهر التالي أن 38% يبلّغون عن تعب بعد الظهر وجفاف في الحلق. واستنتجت إدارة المرافق أن النظام الجديد هو المسؤول فأعادت هندسته.",
+  "The same question was never asked before the change, nor on the floors still running the old system, so there is nothing to say whether 38% is unusual for that building.":
+    "لم يُطرح السؤال نفسه قط قبل التغيير، ولا في الطوابق التي ما زالت تعمل بالنظام القديم، فلا شيء يبيّن ما إذا كانت 38% نسبة غير معتادة في ذلك المبنى.",
+  "A student unplugs his hall's new wireless router at night and records that he sleeps better on the nights it is off. He tells friends, who try it and agree. The residents' committee asks for the router to be taken out.":
+    "يفصل طالب موجّه الشبكة اللاسلكية الجديد في سكنه ليلًا ويسجّل أنه ينام أفضل في الليالي التي يكون فيها مطفأً. ويخبر أصدقاءه، فيجربون ذلك ويوافقونه. وتطلب لجنة السكان إزالة الموجّه.",
+  "He knew on every single night whether the router was on, so what he expected could shape both his sleep and how he rated it. The test needs nights where neither he nor whoever flipped the switch knew.":
+    "كان يعرف في كل ليلة على حدة ما إذا كان الموجّه يعمل، فما توقّعه قد يشكّل نومه وتقييمه له معًا. والاختبار يحتاج إلى ليالٍ لا يعرف فيها لا هو ولا من يدير المفتاح.",
+  "A primary school was repainted over the holidays. In the first week back, 27 pupils were sent home feeling sick. A parents' meeting concluded that fumes from the paint were responsible and called for the classrooms to be stripped.":
+    "أُعيد طلاء مدرسة ابتدائية خلال العطلة. وفي الأسبوع الأول بعد العودة، أُرسل 27 تلميذًا إلى منازلهم وهم يشعرون بالتوعك. واستنتج اجتماع لأولياء الأمور أن أبخرة الطلاء هي المسؤولة وطالب بتجريد الفصول منه.",
+  "No one checked how many pupils are sent home sick in a normal first week back, or whether nearby schools with no new paint saw the same thing that week.":
+    "لم يتحقق أحد من عدد التلاميذ الذين يُرسلون إلى منازلهم مرضى في أسبوع عودة عادي، ولا مما إذا كانت مدارس قريبة بلا طلاء جديد قد شهدت الأمر نفسه ذلك الأسبوع.",
+  "A retailer issued a new uniform. After a widely shared staff forum thread about the fabric being itchy, complaints of rashes went from a handful to several hundred in a fortnight. The retailer withdrew the uniform and apologised.":
+    "أصدر متجر تجزئة زيًا موحدًا جديدًا. وبعد موضوع في منتدى الموظفين انتشر على نطاق واسع عن كون القماش يسبب الحكة، ارتفعت شكاوى الطفح من حفنة إلى عدة مئات في أسبوعين. وسحب المتجر الزي واعتذر.",
+  "The itching is real, but the surge tracks the forum thread rather than the rollout, and rash rates were never compared with branches still wearing the old uniform, where skin complaints also occur.":
+    "الحكة حقيقية، لكن الارتفاع يواكب موضوع المنتدى لا إطلاق الزي، ولم تُقارَن معدلات الطفح قط بفروع ما زالت ترتدي الزي القديم، حيث تحدث شكاوى جلدية أيضًا.",
+  "An app update's release notes warned that text might look slightly different. Tickets mentioning eye strain tripled that week. The team announced a rollback, tickets returned to normal, and the engineer wrote that the change had been straining users' eyes.":
+    "حذّرت ملاحظات إصدار تحديث لتطبيق من أن النص قد يبدو مختلفًا قليلًا. وتضاعفت التذاكر التي تذكر إجهاد العين ثلاث مرات ذلك الأسبوع. وأعلن الفريق التراجع عن التحديث، فعادت التذاكر إلى معدلها المعتاد، وكتب المهندس أن التغيير كان يجهد أعين المستخدمين.",
+  "Users told to expect a visual difference went looking for one, and the rollback was announced just as loudly, so both the rise and the fall follow what people were told rather than any measured change on screen.":
+    "المستخدمون الذين أُخبروا بتوقّع فرق بصري راحوا يبحثون عنه، وأُعلن التراجع بالقدر نفسه من الصخب، فالارتفاع والانخفاض كلاهما يتبع ما قيل للناس لا أي تغير مقيس على الشاشة.",
+  "A taxi firm switched to electric cars and briefed drivers that the smooth one-pedal acceleration can make passengers queasy, asking them to note any complaints. Drivers logged sixty queasy passengers in a month. The firm concluded the cars cause travel sickness and reordered the old fleet.":
+    "انتقلت شركة سيارات أجرة إلى سيارات كهربائية وأبلغت السائقين أن التسارع السلس بدواسة واحدة قد يصيب الركاب بالغثيان، وطلبت منهم تسجيل أي شكاوى. وسجّل السائقون ستين راكبًا شعروا بالغثيان في شهر واحد. واستنتجت الشركة أن السيارات تسبب دوار السفر وأعادت طلب الأسطول القديم.",
+  "Nobody ever logged queasy passengers in the old fleet, so sixty has nothing to be compared against, and drivers primed to expect complaints will hear and record more of them.":
+    "لم يسجّل أحد قط ركابًا يشعرون بالغثيان في الأسطول القديم، فليس لدى الستين ما يقارَن به، والسائقون المهيّؤون لتوقّع الشكاوى سيسمعون منها ويسجّلون أكثر.",
+  "A wellness programme tells participants that days two and three will bring headaches, irritability and aching as the body clears itself. Most report exactly that, then feel better. The organiser presents this as proof the programme is doing its work.":
+    "يخبر برنامج عافية المشاركين بأن اليومين الثاني والثالث سيجلبان صداعًا وتهيجًا وأوجاعًا بينما يتخلص الجسم من السموم. ويبلّغ معظمهم عن ذلك تمامًا، ثم يتحسنون. ويقدّم المنظّم هذا دليلًا على أن البرنامج يؤدي عمله.",
+  "Participants were told precisely which sensations to expect and on which days, and no comparison group followed an ordinary diet or an inert version of the plan. The pattern matches the prediction they were given.":
+    "أُخبر المشاركون بدقة بأي الأحاسيس يتوقعون وفي أي الأيام، ولم تتبع أي مجموعة مقارنة نظامًا غذائيًا عاديًا أو نسخة خاملة من الخطة. والنمط يطابق التنبؤ الذي أُعطي لهم.",
+  "During a trial's blinded year, muscle aches were reported by 14% on the tablet and 13% on the dummy. Everyone was then told what they had taken and offered the tablet openly; that year one in five reported aches. A patients' group says the harm only shows in real use.":
+    "خلال السنة المعمّاة من تجربة، أبلغ عن أوجاع عضلية 14% ممن على القرص و13% ممن على الغُفل. ثم أُخبر الجميع بما تناولوه وعُرض عليهم القرص بشكل مكشوف؛ وفي تلك السنة أبلغ واحد من كل خمسة عن أوجاع. وتقول مجموعة مرضى إن الضرر لا يظهر إلا في الاستعمال الواقعي.",
+  "The only thing that changed between the two years is that everyone now knew what they were taking. While nobody knew, the ache rate was the same with the drug and without it.":
+    "الشيء الوحيد الذي تغيّر بين السنتين هو أن الجميع صاروا يعرفون ما يتناولون. وحين لم يكن أحد يعرف، كان معدل الأوجاع واحدًا مع الدواء ومن دونه.",
+  "A pharmacy moved patients onto an equivalent tablet from a different maker, oval and yellow rather than round and white, sending a letter explaining the change. Reports of dizziness and nausea from those patients rose fivefold over two months, and a newsletter concluded the new version is poorly tolerated.":
+    "نقلت صيدلية مرضى إلى قرص مكافئ من صانع مختلف، بيضوي وأصفر بدل مستدير وأبيض، مع إرسال رسالة تشرح التغيير. وارتفعت بلاغات الدوخة والغثيان من أولئك المرضى خمسة أضعاف خلال شهرين، واستنتجت نشرة إخبارية أن النسخة الجديدة سيئة التحمل.",
+  "The letter drew attention to the change and gave everyday dizziness something new to be attributed to, and no one measured the rate over the same two months in patients kept on the original tablet.":
+    "الرسالة لفتت الانتباه إلى التغيير وأعطت الدوخة اليومية شيئًا جديدًا تُنسب إليه، ولم يقس أحد المعدل خلال الشهرين نفسيهما لدى مرضى أُبقوا على القرص الأصلي.",
+  "A retailer had 200 volunteers wear a sleeve of the new cloth on one arm and the old cloth on the other for two weeks, without being told which was which. An assessor who did not know either graded photographs of both arms: visible redness on 31 new-cloth arms and 4 old-cloth arms.":
+    "جعل متجر تجزئة 200 متطوع يرتدون كمًّا من القماش الجديد على ذراع والقماش القديم على الأخرى لمدة أسبوعين، دون إخبارهم بأيهما أي. وصنّف مقيّم لا يعرف هو الآخر صورًا للذراعين: احمرار ظاهر على 31 ذراعًا بالقماش الجديد و4 أذرع بالقماش القديم.",
+  "Every volunteer carried both fabrics at once without knowing which arm had which, and the redness was graded by someone equally unaware, so what anyone expected cannot account for the gap.":
+    "كل متطوع حمل القماشين معًا دون معرفة أي ذراع بأيهما، وصُنّف الاحمرار على يد شخص لا يعرف كذلك، فما توقعه أي أحد لا يفسّر الفارق.",
+  "A man's back pain began after a new mattress arrived. His partner swapped the old and new mattresses under identical covers on a schedule he never saw, three times across six weeks. His pain scores were high on every new-mattress stretch and low on every old-mattress stretch.":
+    "بدأ ألم ظهر رجل بعد وصول مرتبة جديدة. وبدّل شريكه بين المرتبة القديمة والجديدة تحت أغطية متطابقة وفق جدول لم يره قط، ثلاث مرات على مدى ستة أسابيع. وكانت درجات ألمه مرتفعة في كل فترة بالمرتبة الجديدة ومنخفضة في كل فترة بالمرتبة القديمة.",
+  "The mattress was removed and returned repeatedly while he had no way of knowing which one he was lying on, so his expectations could not have followed the pattern his pain followed.":
+    "أُزيلت المرتبة وأُعيدت مرارًا بينما لم يكن لديه سبيل لمعرفة أيهما ينام عليها، فلم يكن بوسع توقعاته أن تتبع النمط الذي تبعه ألمه.",
+  "A housing committee reviewing a new communal heating system logged 46 residents reporting headaches and dry eyes. Its report states that no similar block without the system was surveyed, that nobody knows how common these complaints were beforehand, and that it therefore cannot say the system is the cause.":
+    "سجّلت لجنة إسكان تدرس نظام تدفئة مشتركًا جديدًا 46 ساكنًا يبلّغون عن صداع وجفاف في العينين. ويذكر تقريرها أنه لم يُستطلع أي مجمع مماثل بلا هذا النظام، وأن أحدًا لا يعرف مدى شيوع هذه الشكاوى قبل ذلك، وأنها لذلك لا تستطيع القول إن النظام هو السبب.",
+  "The committee reports the count it actually has and stops there, because with no comparable block and no before figure a complaint total on its own supports no causal claim.":
+    "تُبلغ اللجنة بالعدد الذي لديها فعلًا وتقف عند ذلك، لأنه بلا مجمع مماثل وبلا رقم سابق لا يدعم إجمالي الشكاوى وحده أي ادعاء سببي.",
+  "In a trial where neither patients nor their doctors knew who was getting what, dry mouth was reported by 44% of those on the drug and 6% of those on the dummy tablet. The report lists dry mouth as a side effect of the drug.":
+    "في تجربة لم يكن فيها المرضى ولا أطباؤهم يعرفون من يتلقى ماذا، أبلغ عن جفاف الفم 44% ممن على الدواء و6% ممن على القرص الغُفل. ويدرج التقرير جفاف الفم أثرًا جانبيًا للدواء.",
+  "Both groups were equally unaware of what they were taking and equally primed to watch for side effects, so the gap between 44% and 6% is what the drug itself added.":
+    "كانت المجموعتان جاهلتين بالتساوي بما تتناولانه ومهيّأتين بالتساوي لترقّب الآثار الجانبية، فالفارق بين 44% و6% هو ما أضافه الدواء نفسه.",
 };

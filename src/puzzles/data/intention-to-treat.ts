@@ -162,6 +162,19 @@ export const intentionToTreat: Puzzle = {
     },
     examples: [
       {
+        title: { en: "Where every excluded patient had already relapsed" },
+        summary: {
+          en: "A trial compared two treatments for opioid dependence in 570 people. Counting only those who actually started the drug they were assigned, the first treatment looked slightly better: 52 percent relapsed against 56 percent. Counting everyone the coin assigned, it was clearly worse, 65 percent against 57 percent. The reason is the cleanest you will find. That first drug can only be started after a full detoxification, or it triggers immediate withdrawal, so 79 of its patients never managed to begin it, against 17 in the other arm. Every single one of those 79 relapsed. Dropping them removed the whole of the treatment's failure.",
+        },
+        provenance: {
+          source:
+            "Lee JD, Nunes EV Jr, Novo P, et al. Comparative effectiveness of extended-release naltrexone versus buprenorphine-naloxone for opioid relapse prevention (X:BOT). Lancet. 2018;391(10118):309-318, Table 2. Free full text at PMC5806119. Relapse among those who initiated: 106 of 204 and 150 of 270. Relapse in the full randomised sample: 185 of 283 and 163 of 287. The counts for the patients excluded are subtraction over those printed integers, and they close: 283 minus 204 is 79 never inducted, and 185 minus 106 is 79 relapses among them.",
+          year: 2018,
+          doi: "10.1016/S0140-6736(17)32812-X",
+          url: "https://pubmed.ncbi.nlm.nih.gov/29150198/",
+        },
+      },
+      {
         title: { en: "The same trap, without the verdict flipping" },
         summary: {
           en: "A tuberculosis trial compared shorter regimens with the standard six-month one. In the group treated per protocol, the standard regimen appeared to fail in about 8 percent of patients. Counting everyone who was randomised and had an assessable outcome, it failed in about 16 percent. Almost everyone the per-protocol analysis removed had had an unfavourable outcome, because an unfavourable outcome was frequently the reason they left the protocol. Nothing about the trial's conclusion changed, and every failure rate in it halved.",

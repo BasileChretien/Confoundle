@@ -316,7 +316,7 @@ consensus only · **X** absent from official documents.
 | Selection bias (general) | X | A | O | X | via Berkson, survivorship |
 | Information / classification bias | X | A | O | X | **gap** |
 | Recall bias | X | **A** | O | X | **shipped** |
-| Attrition / loss to follow-up | X | **A** | O | X | **gap**; partly inside intention to treat |
+| Attrition / loss to follow-up | X | **A** | O | X | inside intention to treat, deliberately; see below |
 | Intention to treat vs per protocol | O | **A** | O | X | **shipped** |
 | Lead-time bias | X | **A** | O | (once) | shipped |
 | Length-time bias | X | **A** | O | X | **shipped**; also in Korea 2026 paper |
@@ -329,7 +329,7 @@ consensus only · **X** absent from official documents.
 | Effect modification vs confounding | X | B | X | X | **gap, high value** |
 | Confounding by indication | X | B | T | X | shipped |
 | Differential vs non-differential misclassification | X | B | T | X | **gap** |
-| Placebo / nocebo | X | **A** | O | X | **gap** |
+| Placebo / nocebo | X | **A** | O | X | **shipped** |
 | Statistical vs clinical significance | X | **A** | O | X | **gap** |
 | Power, type I and type II error | X | **A** | O | X | **gap** |
 | Sponsorship / conflict of interest | X | **A** | T | X | **gap** |
@@ -366,14 +366,45 @@ document exists to catch.
   is the mechanism made visible rather than asserted. Without it the reveal is
   "the number changed"; with it, the reveal is why.
 
+### Attrition is not a separate puzzle, and X:BOT is why
+
+This was sourced as its own puzzle and then deliberately not built as one.
+
+X:BOT (Lee JD et al, Lancet 2018;391(10118):309-318, Table 2) is as good as
+this kind of evidence gets. Counting only those who started the drug they were
+assigned, extended-release naltrexone looks slightly better than
+buprenorphine-naloxone, 106 of 204 relapsing against 150 of 270, so 52.0
+percent against 55.6. Counting everyone randomised it is clearly worse, 185 of
+283 against 163 of 287, so 65.4 against 56.8. **The verdict flips.** And the
+mechanism is unusually clean: naltrexone cannot be started without a full
+detoxification first or it precipitates withdrawal, so 79 of its patients never
+managed to begin, against 17 in the other arm, and **all 79 relapsed** (185
+minus 106 is 79, which is the whole of the excluded group).
+
+But that is post-randomisation exclusion, which is precisely the mechanism the
+intention-to-treat puzzle already teaches, and `registry.test.ts` requires each
+puzzle to teach a distinct `reasoningSkill`. Shipping it as "attrition bias"
+would have put two names on one reasoning move and taught a distinction that
+does not exist. It is now the lead deep-dive example on that puzzle, where a
+flipped verdict does more work than a near-duplicate would have.
+
+The lesson for the next pass: **check that a sourced topic is a distinct
+reasoning move before authoring it**, not only that it has good numbers.
+Classical loss to follow-up, where people vanish rather than being excluded by
+rule, would be a genuinely different puzzle and is still unsourced.
+
 Ready to build next, with counts verified this session and written up in full
 under `scratchpad/research/`:
 
-- **Nocebo / side effects on placebo.** StatinWISE, Herrett E et al, BMJ
-  2021;372:n135, Table 2, p. 5, CC BY. Muscle symptoms reported in 248 of 397
-  statin periods (62.5 percent) against 239 of 388 placebo periods (61.6
-  percent). All eight integers printed. **Denominators are two-month treatment
-  periods, not people**, and the puzzle must say so. ASCOT-LLA was checked and
+- ~~Nocebo / side effects on placebo~~ **shipped** as puzzle #17, from
+  StatinWISE (Herrett E et al, BMJ 2021;372:n135, Table 2, p. 5, CC BY): muscle
+  symptoms in 248 of 397 statin periods against 239 of 388 placebo periods, all
+  eight integers printed. Two things the build had to get right. The
+  denominators are two-month treatment **periods, not people** (152
+  participants, up to six periods each), so the figure, the framing and the
+  provenance all say so. And both rates round to 62 percent for display, so the
+  prose quotes the paper's one-decimal 62.5 and 61.6 rather than integers, with
+  a test forbidding the earlier draft's "63 percent". ASCOT-LLA was checked and
   rejected: its denominators are person-time, and deriving crude proportions
   from its printed counts reverses the open-label finding.
 - **Attrition, as post-randomisation exclusion.** X:BOT, Lee JD et al, Lancet

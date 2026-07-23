@@ -2297,6 +2297,149 @@ const items: TestItem[] = [
       en: "The reported histories were checked against records and both groups misremembered equally, so the comparison is not driven by one group searching its memory harder; a hasty player would assume the aggrieved owners overstated their use.",
     },
   },
+
+  // ---- nocebo-effect, second wave ----
+  {
+    id: "nc-turbine-headaches",
+    scenario: {
+      en: "Six months after a wind farm opened, a campaign group posted leaflets asking residents to report headaches and poor sleep. Ninety of the 400 households replied describing such symptoms. The group states that the turbines are making the village ill and wants them switched off.",
+    },
+    trap: "nocebo-effect",
+    explanation: {
+      en: "Nobody counted headaches and poor sleep in comparable villages with no turbines, where both are common anyway. A leaflet asking people to watch for particular symptoms also changes how many get noticed and reported.",
+    },
+  },
+  {
+    id: "nc-office-aircon",
+    scenario: {
+      en: "An office replaced its ventilation system and emailed staff that the airflow would feel different. A survey the following month found 38% reporting afternoon tiredness and dry throats. Facilities management concluded the new system was at fault and had it re-engineered.",
+    },
+    trap: "nocebo-effect",
+    explanation: {
+      en: "The same question was never asked before the change, nor on the floors still running the old system, so there is nothing to say whether 38% is unusual for that building.",
+    },
+  },
+  {
+    id: "nc-wifi-sleep",
+    scenario: {
+      en: "A student unplugs his hall's new wireless router at night and records that he sleeps better on the nights it is off. He tells friends, who try it and agree. The residents' committee asks for the router to be taken out.",
+    },
+    trap: "nocebo-effect",
+    explanation: {
+      en: "He knew on every single night whether the router was on, so what he expected could shape both his sleep and how he rated it. The test needs nights where neither he nor whoever flipped the switch knew.",
+    },
+  },
+  {
+    id: "nc-school-paint",
+    scenario: {
+      en: "A primary school was repainted over the holidays. In the first week back, 27 pupils were sent home feeling sick. A parents' meeting concluded that fumes from the paint were responsible and called for the classrooms to be stripped.",
+    },
+    trap: "nocebo-effect",
+    explanation: {
+      en: "No one checked how many pupils are sent home sick in a normal first week back, or whether nearby schools with no new paint saw the same thing that week.",
+    },
+  },
+  {
+    id: "nc-uniform-rash",
+    scenario: {
+      en: "A retailer issued a new uniform. After a widely shared staff forum thread about the fabric being itchy, complaints of rashes went from a handful to several hundred in a fortnight. The retailer withdrew the uniform and apologised.",
+    },
+    trap: "nocebo-effect",
+    explanation: {
+      en: "The itching is real, but the surge tracks the forum thread rather than the rollout, and rash rates were never compared with branches still wearing the old uniform, where skin complaints also occur.",
+    },
+  },
+  {
+    id: "nc-app-eyestrain",
+    scenario: {
+      en: "An app update's release notes warned that text might look slightly different. Tickets mentioning eye strain tripled that week. The team announced a rollback, tickets returned to normal, and the engineer wrote that the change had been straining users' eyes.",
+    },
+    trap: "nocebo-effect",
+    explanation: {
+      en: "Users told to expect a visual difference went looking for one, and the rollback was announced just as loudly, so both the rise and the fall follow what people were told rather than any measured change on screen.",
+    },
+  },
+  {
+    id: "nc-taxi-queasy",
+    scenario: {
+      en: "A taxi firm switched to electric cars and briefed drivers that the smooth one-pedal acceleration can make passengers queasy, asking them to note any complaints. Drivers logged sixty queasy passengers in a month. The firm concluded the cars cause travel sickness and reordered the old fleet.",
+    },
+    trap: "nocebo-effect",
+    explanation: {
+      en: "Nobody ever logged queasy passengers in the old fleet, so sixty has nothing to be compared against, and drivers primed to expect complaints will hear and record more of them.",
+    },
+  },
+  {
+    id: "nc-detox-crash",
+    scenario: {
+      en: "A wellness programme tells participants that days two and three will bring headaches, irritability and aching as the body clears itself. Most report exactly that, then feel better. The organiser presents this as proof the programme is doing its work.",
+    },
+    trap: "nocebo-effect",
+    explanation: {
+      en: "Participants were told precisely which sensations to expect and on which days, and no comparison group followed an ordinary diet or an inert version of the plan. The pattern matches the prediction they were given.",
+    },
+  },
+  {
+    id: "nc-open-extension",
+    scenario: {
+      en: "During a trial's blinded year, muscle aches were reported by 14% on the tablet and 13% on the dummy. Everyone was then told what they had taken and offered the tablet openly; that year one in five reported aches. A patients' group says the harm only shows in real use.",
+    },
+    trap: "nocebo-effect",
+    explanation: {
+      en: "The only thing that changed between the two years is that everyone now knew what they were taking. While nobody knew, the ache rate was the same with the drug and without it.",
+    },
+  },
+  {
+    id: "nc-tablet-switch",
+    scenario: {
+      en: "A pharmacy moved patients onto an equivalent tablet from a different maker, oval and yellow rather than round and white, sending a letter explaining the change. Reports of dizziness and nausea from those patients rose fivefold over two months, and a newsletter concluded the new version is poorly tolerated.",
+    },
+    trap: "nocebo-effect",
+    explanation: {
+      en: "The letter drew attention to the change and gave everyday dizziness something new to be attributed to, and no one measured the rate over the same two months in patients kept on the original tablet.",
+    },
+  },
+  // ---- Genuinely sound reasoning (more decoys), second wave ----
+  {
+    id: "ok-fabric-blinded",
+    scenario: {
+      en: "A retailer had 200 volunteers wear a sleeve of the new cloth on one arm and the old cloth on the other for two weeks, without being told which was which. An assessor who did not know either graded photographs of both arms: visible redness on 31 new-cloth arms and 4 old-cloth arms.",
+    },
+    trap: null,
+    explanation: {
+      en: "Every volunteer carried both fabrics at once without knowing which arm had which, and the redness was graded by someone equally unaware, so what anyone expected cannot account for the gap.",
+    },
+  },
+  {
+    id: "ok-mattress-rechallenge",
+    scenario: {
+      en: "A man's back pain began after a new mattress arrived. His partner swapped the old and new mattresses under identical covers on a schedule he never saw, three times across six weeks. His pain scores were high on every new-mattress stretch and low on every old-mattress stretch.",
+    },
+    trap: null,
+    explanation: {
+      en: "The mattress was removed and returned repeatedly while he had no way of knowing which one he was lying on, so his expectations could not have followed the pattern his pain followed.",
+    },
+  },
+  {
+    id: "ok-heating-honest",
+    scenario: {
+      en: "A housing committee reviewing a new communal heating system logged 46 residents reporting headaches and dry eyes. Its report states that no similar block without the system was surveyed, that nobody knows how common these complaints were beforehand, and that it therefore cannot say the system is the cause.",
+    },
+    trap: null,
+    explanation: {
+      en: "The committee reports the count it actually has and stops there, because with no comparable block and no before figure a complaint total on its own supports no causal claim.",
+    },
+  },
+  {
+    id: "ok-blinded-dry-mouth",
+    scenario: {
+      en: "In a trial where neither patients nor their doctors knew who was getting what, dry mouth was reported by 44% of those on the drug and 6% of those on the dummy tablet. The report lists dry mouth as a side effect of the drug.",
+    },
+    trap: null,
+    explanation: {
+      en: "Both groups were equally unaware of what they were taking and equally primed to watch for side effects, so the gap between 44% and 6% is what the drug itself added.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

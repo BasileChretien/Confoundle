@@ -1,8 +1,8 @@
 # Confoundle
 
-**Spot the hidden variable.** A mobile-first, open-source reasoning game that teaches you to catch flaws in causal and statistical arguments — by first fooling you, then showing you the trick.
+**Spot the hidden variable.** A mobile-first, open-source reasoning game that teaches you to catch flaws in causal and statistical arguments by first fooling you, then showing you the trick.
 
-Each puzzle runs in four beats: **setup → commit → reveal → lesson**, ending in a screenshot-able **share card**. You have to commit to an answer *before* the reveal — the small sting of being caught is the whole point.
+Each puzzle runs in four beats: **setup → commit → reveal → lesson**, ending in a screenshot-able **share card**. You have to commit to an answer *before* the reveal, because the small sting of being caught is the whole point.
 
 This repository is the **Phase 0 prototype**: sixteen fully playable puzzles on a generic engine, served one-per-day Wordle-style, in ten languages, plus a **Trap Hunt** item bank of 63 scenarios for testing whether you can spot a flaw when nobody has told you one is there.
 
@@ -39,18 +39,18 @@ pnpm gen:icons    # regenerate PWA icons from the brand motif
 
 ## Deploy
 
-`pnpm build` emits a fully static site to `dist/` — no server, no environment variables, no secrets, nothing collected about the visitor. Host it anywhere that serves static files. The two optional Pages Functions below add a global percentile and accounts; skip them and everything else still works.
+`pnpm build` emits a fully static site to `dist/`: no server, no environment variables, no secrets, nothing collected about the visitor. Host it anywhere that serves static files. The two optional Pages Functions below add a global percentile and accounts; skip them and everything else still works.
 
 **Cloudflare Pages** is the recommended host (free tier, unlimited bandwidth, global CDN). Two ways:
 
 ```bash
-# A) Direct upload — live in ~2 minutes, no GitHub needed
+# A) Direct upload, live in ~2 minutes, no GitHub needed
 pnpm run deploy
 #   builds, then uploads dist/ via wrangler; first run opens a browser
 #   to log into your Cloudflare account
 ```
 
-> Wrangler is invoked through `npx` (npm's flat layout), not `pnpm dlx` — under
+> Wrangler is invoked through `npx` (npm's flat layout), not `pnpm dlx`: under
 > pnpm's isolated store, wrangler's `miniflare` can't resolve `undici` and
 > crashes on startup.
 
@@ -72,7 +72,7 @@ Then in the Cloudflare dashboard open the Pages project and go to **Settings →
 
 Signing in (one click with Google, or a code emailed to you) makes your **spaced-repetition schedule follow you between devices**. That is the only thing it does: nothing is gated on an account, answers and streaks stay on your device either way, and a deployment without the bindings hides the panel entirely.
 
-It runs on **Cloudflare D1**, not KV — the reasoning, along with the full setup runbook, is in [`docs/accounts.md`](./docs/accounts.md). There is **no password column**: both routes prove control of an email address, so there is nothing worth stealing and nothing to reset.
+It runs on **Cloudflare D1**, not KV. The reasoning, along with the full setup runbook, is in [`docs/accounts.md`](./docs/accounts.md). There is **no password column**: both routes prove control of an email address, so there is nothing worth stealing and nothing to reset.
 
 Before accounts go live the privacy page needs a contact address, which is a build variable rather than a committed line: copy `.env.example` to the gitignored `.env.local` and fill in `CONTACT_EMAIL`, or pass it per build (`CONTACT_EMAIL=privacy@yourdomain corepack pnpm build`). Left unset the build warns on every run.
 
@@ -82,7 +82,7 @@ Deletion and export are built in from day one and are in the panel, not behind a
 
 `pnpm build` also writes **one static page per lesson per language** to `dist/l/<slug>/` (English) and `dist/l/<slug>/<locale>/`, plus a `sitemap.xml`. Sixteen puzzles across ten languages is 160 pages, about 10 KB each.
 
-These are for a case the game itself can't serve: someone is arguing on the internet and you want to hand them **the explanation**, not a puzzle. A link into the game opens something built to fool the reader first, which lands badly when it arrives from the person you're arguing with, and a single-page app returns the same empty shell to the crawler that builds the link preview — so every lesson would unfurl with the same title. Each page carries its own Open Graph and Twitter tags, works with JavaScript off, and links back into the puzzle for anyone who'd rather be fooled first.
+These are for a case the game itself can't serve: someone is arguing on the internet and you want to hand them **the explanation**, not a puzzle. A link into the game opens something built to fool the reader first, which lands badly when it arrives from the person you're arguing with, and a single-page app returns the same empty shell to the crawler that builds the link preview, so every lesson would unfurl with the same title. Each page carries its own Open Graph and Twitter tags, works with JavaScript off, and links back into the puzzle for anyone who'd rather be fooled first.
 
 The lesson screen has a **Copy link** button that copies the skill, the one-line rule, and the link in the reader's current language.
 
@@ -96,7 +96,7 @@ SITE_ORIGIN=https://example.org pnpm build
 - **Root vs. sub-path.** The default base path is `/` (root domains, incl. `*.pages.dev`). For a GitHub Pages project site served under `/<repo>/`, build with `--base=/<repo>/` instead.
 - **The daily** rotates deterministically by date across the registry, so every visitor sees the same puzzle on the same day.
 
-**Single-file build (no host required).** `SINGLEFILE=1 pnpm exec vite build` inlines everything — JS, CSS, and fonts — into one self-contained `dist-single/index.html` with a built-in puzzle picker. Open it directly, email it, or publish it as-is. (This mode drops the service worker / offline PWA.)
+**Single-file build (no host required).** `SINGLEFILE=1 pnpm exec vite build` inlines everything (JS, CSS, and fonts) into one self-contained `dist-single/index.html` with a built-in puzzle picker. Open it directly, email it, or publish it as-is. (This mode drops the service worker / offline PWA.)
 
 ---
 
@@ -104,7 +104,7 @@ SITE_ORIGIN=https://example.org pnpm build
 
 - **Vite + React + TypeScript**, **Tailwind CSS**, installable **PWA** (`vite-plugin-pwa`).
 - **Puzzles are data.** Each puzzle is a typed file validated by a single **zod** schema; the inferred TypeScript type is the one source of truth.
-- **The engine renders any puzzle generically** — no puzzle-specific code. Card image generation is client-side (`html-to-image`).
+- **The engine renders any puzzle generically**, with no puzzle-specific code. Card image generation is client-side (`html-to-image`).
 - **The game needs no server.** `dist/` is a static site and plays fully offline. Two optional Cloudflare Pages Functions sit beside it: the anonymous score histogram, and accounts. Without their bindings the app hides those features rather than breaking.
 
 ```
@@ -124,7 +124,7 @@ migrations/   the D1 schema
 
 A puzzle is one object validated by [`src/puzzles/schema.ts`](./src/puzzles/schema.ts). The key ideas:
 
-- **Every user-facing string is locale-keyed** (`{ en: "…" }`, other locales optional) — translatable from day one.
+- **Every user-facing string is locale-keyed** (`{ en: "…" }`, other locales optional), so it is translatable from day one.
 - **Numbers live once.** You author raw `observations` (numerator / denominator per group × stratum); the engine *derives* the aggregate and stratified rates. The paradox lives in that derivation, so the pooled result can never disagree with the strata by accident.
 - **`data` is discriminated by `type`** (`"rates"`, `"frequencies"`, `"causal"`, `"survivorship"`, `"timeline"`, `"risk"`) so a new puzzle can add an entirely new chart shape without touching existing renderers. Build one whenever the lesson needs it: setup and reveal have to be two views of the *same* data, and a lesson forced into the wrong shape produces a reveal that merely restates the setup. See [`docs/risk-shape.md`](./docs/risk-shape.md) for a worked example of that decision.
 - **A view can show part of the data.** `initialView` and `reveal.view` accept `groupIds` / `strataIds`, so the setup can show the one slice that creates the illusion and hold the rest back for the reveal. Omit them and the whole figure is drawn.
@@ -147,16 +147,16 @@ Top-level shape (abridged):
 
 ## How to add a puzzle
 
-Adding a puzzle requires **no engine changes** — only a new data file.
+Adding a puzzle requires **no engine changes**, only a new data file.
 
 1. Create `src/puzzles/data/<your-slug>.ts` exporting a `Puzzle` (import the type from `../schema` for full autocomplete and type-checking).
-2. Register it in [`src/puzzles/index.ts`](./src/puzzles/index.ts) (import it and add it to the array). Every puzzle is validated against the schema at load — a malformed or self-contradictory puzzle fails fast in dev, build, and tests.
+2. Register it in [`src/puzzles/index.ts`](./src/puzzles/index.ts) (import it and add it to the array). Every puzzle is validated against the schema at load, so a malformed or self-contradictory puzzle fails fast in dev, build, and tests.
 3. Add a test next to it asserting that your data actually produces the effect you claim (see `src/puzzles/data/*.test.ts`). This is the project's habit for a reason: it means a mistyped count fails CI instead of shipping a paradox that isn't one.
 4. Add two or three **Trap Hunt** items in [`src/puzzles/testItems.ts`](./src/puzzles/testItems.ts), including at least one where the same kind of reasoning is genuinely *sound*. Without those, players learn that the answer is always "trap".
 5. Translate. `pnpm test` fails if any authored English string is missing from any of the nine dictionaries in `src/app/translations/`, or if the dictionaries drift out of key parity.
 6. If your puzzle introduces a **new data shape** (not success/total `"rates"`), add a member to the `PuzzleData` union in `schema.ts`, a renderer, a branch in `src/engine/charts/DataViewRenderer.tsx`, and a glyph in `share/ShareCard.tsx`. Existing puzzles are unaffected.
 
-Please read [`CONTRIBUTING.md`](./CONTRIBUTING.md) first — the content bar (sourcing, no oversimplification, a politically balanced set) is the point of the project.
+Please read [`CONTRIBUTING.md`](./CONTRIBUTING.md) first: the content bar (sourcing, no oversimplification, a politically balanced set) is the point of the project.
 
 ---
 

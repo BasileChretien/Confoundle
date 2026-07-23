@@ -5,6 +5,7 @@ import { correlationCausation } from "./data/correlation-causation";
 import { survivorship } from "./data/survivorship";
 import { prosecutorsFallacy } from "./data/prosecutors-fallacy";
 import { willRogers } from "./data/will-rogers";
+import { leadTime } from "./data/lead-time";
 
 /**
  * The puzzle registry. Adding a puzzle = import its data file and add it to
@@ -19,6 +20,7 @@ const rawPuzzles: unknown[] = [
   survivorship,
   prosecutorsFallacy,
   willRogers,
+  leadTime,
 ];
 
 export const puzzles: PuzzleType[] = rawPuzzles.map((p, i) => {

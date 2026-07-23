@@ -1,4 +1,5 @@
 import type {
+  DataView,
   DataViewKind,
   LocalizedText,
   PuzzleData,
@@ -7,6 +8,7 @@ import { RateChart } from "./RateChart";
 import { FrequencyView } from "./FrequencyView";
 import { CausalView } from "./CausalView";
 import { SurvivorshipView } from "./SurvivorshipView";
+import { TimelineView } from "./TimelineView";
 
 /**
  * The generic seam: dispatch on the data's `type` to the matching renderer.
@@ -19,12 +21,14 @@ export function DataViewRenderer({
   highlightWinner,
 }: {
   data: PuzzleData;
-  view: DataViewKind;
+  view: DataView;
   animate: boolean;
   highlightWinner?: boolean;
 }) {
   switch (data.type) {
     case "rates":
+      // Only the rates chart can draw a slice of its data so far, so it takes
+      // the whole view; the others need nothing but the kind.
       return (
         <RateChart
           data={data}
@@ -34,11 +38,13 @@ export function DataViewRenderer({
         />
       );
     case "frequencies":
-      return <FrequencyView data={data} view={view} animate={animate} />;
+      return <FrequencyView data={data} view={view.kind} animate={animate} />;
     case "causal":
-      return <CausalView data={data} view={view} animate={animate} />;
+      return <CausalView data={data} view={view.kind} animate={animate} />;
     case "survivorship":
-      return <SurvivorshipView data={data} view={view} animate={animate} />;
+      return <SurvivorshipView data={data} view={view.kind} animate={animate} />;
+    case "timeline":
+      return <TimelineView data={data} view={view.kind} animate={animate} />;
     default:
       return null;
   }
@@ -49,7 +55,18 @@ export function dataTitle(data: PuzzleData): LocalizedText {
   return data.type === "rates" ? data.metricLabel : data.label;
 }
 
-/** Scope tag (right of the figcaption), per view kind. */
+/**
+ * A stable identity for a view, so React can tell two beats apart even when
+ * they share a kind and differ only in which slice of the data they draw.
+ */
+export function viewKey(view: DataView): string {
+  const groups = view.groupIds?.join(",") ?? "";
+  const strata = view.strataIds?.join(",") ?? "";
+  return `${view.kind}|${groups}|${strata}`;
+}
+
+/** Scope tag (right of the figcaption), per view kind. A view may override it
+ * with its own `caption` when the generic word is too vague. */
 export function scopeLabel(kind: DataViewKind): string {
   switch (kind) {
     case "aggregate":
@@ -68,6 +85,10 @@ export function scopeLabel(kind: DataViewKind): string {
       return "Survivors";
     case "armor":
       return "The full picture";
+    case "survival":
+      return "From diagnosis";
+    case "lifespan":
+      return "The whole life";
     default:
       return "";
   }

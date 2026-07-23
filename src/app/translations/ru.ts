@@ -475,4 +475,95 @@ export const ru: Record<string, string> = {
     "Больница сообщает, что за пять лет выживаемость выросла в каждой степени тяжести. Она также сообщает, что критерии определения тяжести за это время не менялись, что новых диагностических тестов не вводили и что число пациентов в каждой степени осталось примерно прежним.",
   "This is the case where the improvement is real. Nothing reclassified the patients, and the grades held the same share of people, so no reshuffling could have manufactured the gain.":
     "Это тот случай, когда улучшение настоящее. Пациентов ничто не переклассифицировало, и в степенях тяжести осталась та же доля людей, так что никакая перетасовка не могла создать этот прирост.",
+
+  // ---- Lead-time bias (puzzle #7) ----
+  A: "A",
+  B: "B",
+  "Screened patients survive five years after diagnosis. Unscreened ones survive two.":
+    "Пациенты, прошедшие скрининг, живут после постановки диагноза пять лет. Не проходившие скрининг, два года.",
+  "The same cancer, growing at the same speed, treated the same way. One person had a scan that found it early. The other went to a doctor years later, when the first symptom appeared. Survival is counted from the day of diagnosis, which is how survival is almost always counted.":
+    "Один и тот же рак, растущий с одинаковой скоростью, и одинаковое лечение. Одному человеку сделали снимок, который выявил опухоль рано. Другой пришёл к врачу спустя годы, когда появился первый симптом. Выживаемость считают со дня постановки диагноза, именно так её и считают почти всегда.",
+  "Did finding it early give this person more time alive?":
+    "Дало ли раннее выявление этому человеку больше времени жизни?",
+  "One life, two moments of diagnosis":
+    "Одна жизнь, два момента постановки диагноза",
+  years: "лет",
+  "cancer begins": "начало рака",
+  diagnosed: "диагноз",
+  died: "смерть",
+  "Survival counted from diagnosis": "Выживаемость от даты диагноза",
+  "Found when symptoms appeared": "Выявлен по симптомам",
+  "Found early, by screening": "Выявлен рано, на скрининге",
+  "Yes, three extra years": "Да, три дополнительных года",
+  "five instead of two": "пять вместо двух",
+  "No, not one extra day": "Нет, ни одного лишнего дня",
+  "only the clock moved": "сдвинулся только отсчёт",
+  "Both died on exactly the same day.":
+    "Оба умерли ровно в один и тот же день.",
+  "The clock started earlier, the life did not get longer":
+    "Отсчёт начался раньше, а жизнь длиннее не стала",
+  "Screening did not postpone anything. It moved the diagnosis three years earlier, so this person spent three more years knowing they had cancer. Counted from diagnosis that reads as three extra years of survival. Put both lives on the same calendar and they end at the same instant:":
+    "Скрининг ничего не отсрочил. Он сдвинул диагноз на три года раньше, поэтому человек прожил на три года больше, зная о своём раке. В отсчёте от диагноза это выглядит как три дополнительных года выживаемости. Положите обе жизни на один календарь, и они заканчиваются в один и тот же миг:",
+  "The extra years": "Дополнительные годы",
+  "Lead-time bias": "Ошибка опережения диагноза",
+  "Finding a disease earlier stretches survival measured from diagnosis even when it postpones death by not a single day.":
+    "Более раннее выявление болезни растягивает выживаемость, измеренную от диагноза, даже если смерть не отодвигается ни на один день.",
+  "This does not mean early detection is worthless. It means survival from diagnosis cannot tell you whether it worked. Whenever survival improves after a new test arrives, ask whether people are living longer or simply being told sooner. The measure that cannot be fooled this way is the death rate in the whole population, screened and unscreened alike.":
+    "Это не значит, что раннее выявление бесполезно. Это значит, что выживаемость от диагноза не может сказать, сработало ли оно. Всякий раз, когда выживаемость растёт после появления нового теста, спрашивайте, дольше ли живут люди или им просто раньше об этом сообщают. Показатель, который так не обманешь, это смертность во всём населении, и среди прошедших скрининг, и среди не проходивших его.",
+  "Survival statistics start their clock on the day of diagnosis. That day is not a fact about the disease, it is a fact about when somebody looked. Move the looking earlier and you add time to the front of the measurement while changing nothing at the back. Everyone diagnosed early is guaranteed to clear the five-year mark more often, because they were handed a head start. Two other effects push the same way. A screening programme catches slow-growing disease far more often than fast-growing disease, simply because slow disease sits there longer waiting to be found, and slow disease has a better outlook anyway. And a sensitive enough test finds harmless abnormalities that would never have caused trouble, which are then counted as cured cancers. All three flatter survival without saving anyone. The only honest test is to take a whole population, invite half of it to be screened, and count deaths in everyone from the day of the invitation. Screening programmes that pass that test exist, which is exactly why the test is worth insisting on.":
+    "Статистика выживаемости начинает отсчёт в день постановки диагноза. Этот день говорит не о болезни, а о том, когда кто-то посмотрел. Сдвиньте момент поиска раньше, и вы добавите время в начало измерения, ничего не изменив в его конце. Те, кому диагноз поставили рано, гарантированно чаще переступают пятилетний рубеж, потому что им дали фору. В ту же сторону работают ещё два эффекта. Программа скрининга гораздо чаще ловит медленно растущую болезнь, чем быстро растущую, просто потому что медленная болезнь дольше ждёт, пока её найдут, а прогноз при ней и так лучше. А достаточно чувствительный тест находит безобидные отклонения, которые никогда не доставили бы неприятностей, и их потом засчитывают как излеченные случаи рака. Все три эффекта приукрашивают выживаемость, никого не спасая. Единственная честная проверка, это взять целое население, пригласить половину на скрининг и считать смерти у всех со дня приглашения. Программы скрининга, которые такую проверку проходят, существуют, и именно поэтому на ней стоит настаивать.",
+  "Survival rose for every cancer. Deaths did not follow.":
+    "Выживаемость выросла при каждом виде рака. Смертность за ней не последовала.",
+  "Between 1950 and 1995, five-year survival improved for all 20 of the most common solid tumours in the United States, by as little as 3 points for pancreatic cancer and as much as 50 for prostate. Over the same years the death rate fell for 12 of those cancers and rose for the other 8. Comparing tumour by tumour, the change in survival was unrelated to the change in mortality, and instead tracked the change in how many cancers were being found.":
+    "С 1950 по 1995 год пятилетняя выживаемость выросла при всех 20 самых частых солидных опухолях в США: всего на 3 пункта при раке поджелудочной железы и на целых 50 при раке простаты. За те же годы смертность снизилась при 12 из этих видов рака и выросла при остальных 8. При сравнении опухоль за опухолью изменение выживаемости не было связано с изменением смертности, зато следовало за изменением того, как много случаев рака выявляли.",
+  "Screening babies for a childhood tumour":
+    "Скрининг младенцев на детскую опухоль",
+  "Two large programmes tested screening infants for neuroblastoma. Quebec screened 476,654 children born over five years, with 92 percent taking part, and deaths from the tumour before the age of eight came to 4.78 per 100,000, no lower than in the comparison populations. Germany compared 1,475,773 screened children with 2,117,600 unscreened ones and found advanced disease in 3.7 against 3.8 per 100,000, and deaths in 1.3 against 1.2. More tumours were found. The same number of children died.":
+    "Две крупные программы проверяли скрининг младенцев на нейробластому. В Квебеке обследовали 476 654 ребёнка, родившихся за пять лет, участие приняли 92 процента, и смертность от этой опухоли до восьми лет составила 4,78 на 100 000, не ниже, чем в популяциях сравнения. В Германии сравнили 1 475 773 обследованных ребёнка и 2 117 600 необследованных: запущенная болезнь встречалась с частотой 3,7 против 3,8 на 100 000, а смерти 1,3 против 1,2. Опухолей нашли больше. Детей умерло столько же.",
+  "What a real benefit looks like": "Как выглядит настоящая польза",
+  "Screening is not doomed to be an illusion, it just has to be measured properly. A trial put 46,551 people aged 50 to 80 into three groups: yearly stool testing for hidden blood, testing every two years, or none. Over 13 years, deaths from colorectal cancer came to 5.88 per 1,000 in the yearly group against 8.83 in the unscreened group, a third fewer. That is a count of deaths in everyone invited, not survival from diagnosis, so no head start could have produced it.":
+    "Скрининг не обречён быть иллюзией, его просто нужно правильно измерять. В исследовании 46 551 человека в возрасте от 50 до 80 лет разделили на три группы: ежегодный анализ кала на скрытую кровь, такой же анализ раз в два года или ничего. За 13 лет смертность от колоректального рака составила 5,88 на 1000 в группе ежегодного анализа против 8,83 в группе без скрининга, на треть меньше. Это подсчёт смертей среди всех приглашённых, а не выживаемость от диагноза, поэтому никакая фора его дать не могла.",
+  "Lead-time bias, a reasoning trap.":
+    "Ошибка опережения диагноза, ловушка мышления.",
+  "Survival is counted from the day you are diagnosed. So a test that finds a disease earlier automatically makes survival look longer, even if it changes nothing about when the disease kills you. You simply spend more of your life as a patient. That is why a screening programme can raise five-year survival dramatically while exactly the same number of people die. The number that cannot be gamed is deaths in the whole population, not survival among the diagnosed.":
+    "Выживаемость считают со дня, когда вам поставили диагноз. Поэтому тест, который находит болезнь раньше, автоматически делает выживаемость длиннее, даже если он ничего не меняет в том, когда болезнь вас убьёт. Вы просто дольше живёте в статусе пациента. Вот почему программа скрининга может резко поднять пятилетнюю выживаемость, тогда как умирает ровно столько же людей. Число, которое не подделать, это смерти во всём населении, а не выживаемость среди тех, кому поставили диагноз.",
+  "The timeline is a schematic illustration of one life, not measured data. The finding behind it is Welch and colleagues': across the 20 most common solid tumours between 1950 and 1995, five-year survival rose for every one, yet tumour by tumour the change in survival was uncorrelated with the change in mortality (Pearson r = 0.00) and instead tracked the change in incidence (Pearson r = 0.49).":
+    "Шкала времени, это схематичная иллюстрация одной жизни, а не измеренные данные. За ней стоит результат Уэлча и соавт.: при 20 самых частых солидных опухолях с 1950 по 1995 год пятилетняя выживаемость выросла у каждой, однако опухоль за опухолью изменение выживаемости не коррелировало с изменением смертности (корреляция Пирсона r = 0,00) и вместо этого следовало за изменением заболеваемости (корреляция Пирсона r = 0,49).",
+  "A hospital introduces a blood test that picks up a cancer about two years before symptoms would have appeared. Among patients diagnosed there, five-year survival rises from 41% to 68%. The hospital announces that the test is saving lives.":
+    "Больница вводит анализ крови, который выявляет рак примерно за два года до того, как появились бы симптомы. Среди пациентов, которым там поставили диагноз, пятилетняя выживаемость растёт с 41 % до 68 %. Больница объявляет, что тест спасает жизни.",
+  "Survival is counted from diagnosis, and the diagnosis now happens two years sooner. Everyone gets a two-year head start towards the five-year mark, whether or not the test changed anyone's outcome.":
+    "Выживаемость считают от диагноза, а диагноз теперь ставят на два года раньше. Все получают двухлетнюю фору на пути к пятилетнему рубежу, независимо от того, изменил ли тест чей-нибудь исход.",
+  "A national registry reports that the average time between diagnosis and death for a disease has risen from three years to six since a new scan came into routine use. A minister says patients now live twice as long.":
+    "Национальный регистр сообщает, что среднее время между диагнозом и смертью при одной болезни выросло с трёх лет до шести с тех пор, как новый метод визуализации вошёл в рутинную практику. Министр заявляет, что пациенты теперь живут вдвое дольше.",
+  "Time from diagnosis to death can double purely because the diagnosis moved earlier. To claim people live longer you have to show that death is arriving later, not that the label is arriving sooner.":
+    "Время от диагноза до смерти может удвоиться просто оттого, что диагноз сдвинулся раньше. Чтобы утверждать, что люди живут дольше, нужно показать, что позже наступает смерть, а не что раньше появляется ярлык.",
+  "A region invites half its residents, chosen at random, to be screened for a disease and leaves the other half uninvited. Ten years on it counts deaths from that disease among everyone in both halves, screened or not, attended or not. Deaths are 30% lower in the invited half.":
+    "Регион приглашает половину своих жителей, выбранных случайным образом, на скрининг по поводу одной болезни, а вторую половину не приглашает. Через десять лет он считает смерти от этой болезни у всех в обеих половинах, прошли они скрининг или нет, явились или нет. В приглашённой половине смертей на 30 % меньше.",
+  "This is the design an earlier diagnosis cannot fool. The clock starts at the invitation rather than at diagnosis, and the count includes everyone invited, so no head start and no extra diagnoses can manufacture the difference.":
+    "Это тот дизайн, который более ранний диагноз обмануть не может. Отсчёт начинается с приглашения, а не с диагноза, и в подсчёт входят все приглашённые, так что ни фора, ни лишние диагнозы не могут создать эту разницу.",
+
+  // ---- Tag blurbs (browse screen) and timeline scope tags ----
+  "Anyone can fall for it": "На это попадаются все",
+  "Bites at the bedside": "Подводит у постели больного",
+  "Study design & evidence appraisal":
+    "Дизайн исследований и оценка доказательств",
+  "Reading the numbers": "Как читать числа",
+  "Tests & diagnostic reasoning": "Тесты и диагностическое мышление",
+  "Screening programmes": "Программы скрининга",
+  "Populations, exposure & risk": "Популяции, воздействие и риск",
+  "Drugs & drug safety": "Лекарства и их безопасность",
+  "Mind & behaviour": "Психика и поведение",
+  "Life & evolution": "Жизнь и эволюция",
+  "Data, computing & AI": "Данные, вычисления и ИИ",
+  "Markets & incentives": "Рынки и стимулы",
+  "Elections & policy": "Выборы и политика",
+  "Teaching & testing": "Обучение и проверка знаний",
+  "Investing & returns": "Инвестиции и доходность",
+  "Management & strategy": "Управление и стратегия",
+  "Courts & forensics": "Суды и криминалистика",
+  "Performance & records": "Результаты и рекорды",
+  "The past & how we read it": "Прошлое и как мы его читаем",
+  "News & the numbers in it": "Новости и числа в них",
+  "From diagnosis": "От диагноза",
+  "The whole life": "Вся жизнь",
 };

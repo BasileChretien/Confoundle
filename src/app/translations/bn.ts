@@ -474,4 +474,95 @@ export const bn: Record<string, string> = {
     "একটি হাসপাতাল জানায় যে পাঁচ বছরে প্রতিটি তীব্রতার স্তরে বেঁচে থাকার হার বেড়েছে। তারা আরও জানায় যে ওই সময়ে স্তর নির্ধারণের মানদণ্ড বদলায়নি, নতুন কোনো রোগনির্ণয় পরীক্ষা চালু হয়নি, আর প্রতিটি স্তরে রোগীর সংখ্যা প্রায় একই ছিল।",
   "This is the case where the improvement is real. Nothing reclassified the patients, and the grades held the same share of people, so no reshuffling could have manufactured the gain.":
     "এটি সেই ক্ষেত্র যেখানে উন্নতিটি সত্যিকারের। কোনো কিছুই রোগীদের নতুন করে শ্রেণিভুক্ত করেনি, আর স্তরগুলোতে মানুষের অনুপাত একই থেকেছে, তাই কোনো রদবদল এই অগ্রগতিটি বানিয়ে তুলতে পারত না।",
+
+  // ---- Lead-time bias (puzzle #7) ----
+  "Screened patients survive five years after diagnosis. Unscreened ones survive two.":
+    "স্ক্রিনিং করানো রোগীরা রোগনির্ণয়ের পর পাঁচ বছর বাঁচেন। স্ক্রিনিং না করানোরা বাঁচেন দুই বছর।",
+  "The same cancer, growing at the same speed, treated the same way. One person had a scan that found it early. The other went to a doctor years later, when the first symptom appeared. Survival is counted from the day of diagnosis, which is how survival is almost always counted.":
+    "একই ক্যানসার, একই গতিতে বাড়ছে, একইভাবে চিকিৎসা হয়েছে। একজনের একটি স্ক্যান হয়েছিল যা রোগটি আগেভাগে ধরে ফেলে। অন্যজন ডাক্তারের কাছে গিয়েছিলেন বছর কয়েক পরে, যখন প্রথম উপসর্গ দেখা দিল। বেঁচে থাকার হিসাব শুরু হয় রোগনির্ণয়ের দিন থেকে, প্রায় সবসময় এভাবেই এটি গোনা হয়।",
+  "Did finding it early give this person more time alive?":
+    "আগেভাগে ধরা পড়ায় কি এই মানুষটি বেশি সময় বেঁচে থাকলেন?",
+  "One life, two moments of diagnosis": "একটি জীবন, রোগনির্ণয়ের দুটি মুহূর্ত",
+  years: "বছর",
+  "cancer begins": "ক্যানসার শুরু",
+  diagnosed: "রোগনির্ণয়",
+  died: "মৃত্যু",
+  "Survival counted from diagnosis": "রোগনির্ণয় থেকে গোনা বেঁচে থাকা",
+  "Found when symptoms appeared": "উপসর্গ দেখা দিলে ধরা পড়ল",
+  "Found early, by screening": "স্ক্রিনিংয়ে আগেই ধরা পড়ল",
+  "Yes, three extra years": "হ্যাঁ, বাড়তি তিন বছর",
+  "five instead of two": "দুইয়ের বদলে পাঁচ",
+  "No, not one extra day": "না, একটি দিনও বাড়তি নয়",
+  "only the clock moved": "কেবল ঘড়িটাই সরেছে",
+  "Both died on exactly the same day.": "দুজনেই হুবহু একই দিনে মারা গেছেন।",
+  "The clock started earlier, the life did not get longer":
+    "ঘড়ি আগে চালু হয়েছে, জীবন দীর্ঘ হয়নি",
+  "Screening did not postpone anything. It moved the diagnosis three years earlier, so this person spent three more years knowing they had cancer. Counted from diagnosis that reads as three extra years of survival. Put both lives on the same calendar and they end at the same instant:":
+    "স্ক্রিনিং কিছুই পিছিয়ে দেয়নি। এটি রোগনির্ণয়কে তিন বছর আগে এগিয়ে এনেছে, তাই এই মানুষটি ক্যানসার আছে জেনে আরও তিনটি বছর কাটিয়েছেন। রোগনির্ণয় থেকে গুনলে সেটাই দাঁড়ায় বাড়তি তিন বছর বেঁচে থাকা। দুটি জীবনকে একই ক্যালেন্ডারে বসিয়ে দিন, দুটোই শেষ হয় ঠিক একই মুহূর্তে:",
+  "The extra years": "বাড়তি বছরগুলো",
+  "Lead-time bias": "লিড-টাইম পক্ষপাত",
+  "Finding a disease earlier stretches survival measured from diagnosis even when it postpones death by not a single day.":
+    "কোনো রোগ আগেভাগে ধরা পড়লে রোগনির্ণয় থেকে মাপা বেঁচে থাকার সময় লম্বা হয়ে যায়, এমনকি মৃত্যু একটি দিনও পিছিয়ে না গেলেও।",
+  "This does not mean early detection is worthless. It means survival from diagnosis cannot tell you whether it worked. Whenever survival improves after a new test arrives, ask whether people are living longer or simply being told sooner. The measure that cannot be fooled this way is the death rate in the whole population, screened and unscreened alike.":
+    "এর মানে এই নয় যে আগেভাগে শনাক্ত করা মূল্যহীন। এর মানে হলো, রোগনির্ণয় থেকে গোনা বেঁচে থাকার হার আপনাকে বলতে পারে না সেটি কাজ করেছে কি না। নতুন একটি পরীক্ষা আসার পরে যখনই বেঁচে থাকার হার বাড়ে, জিজ্ঞাসা করুন মানুষ কি সত্যিই বেশিদিন বাঁচছে, নাকি কেবল আগেভাগে জেনে যাচ্ছে। যে মাপকাঠিকে এভাবে বোকা বানানো যায় না তা হলো গোটা জনসংখ্যার মৃত্যুর হার, স্ক্রিনিং করানো আর না করানো সবাইকে নিয়ে।",
+  "Survival statistics start their clock on the day of diagnosis. That day is not a fact about the disease, it is a fact about when somebody looked. Move the looking earlier and you add time to the front of the measurement while changing nothing at the back. Everyone diagnosed early is guaranteed to clear the five-year mark more often, because they were handed a head start. Two other effects push the same way. A screening programme catches slow-growing disease far more often than fast-growing disease, simply because slow disease sits there longer waiting to be found, and slow disease has a better outlook anyway. And a sensitive enough test finds harmless abnormalities that would never have caused trouble, which are then counted as cured cancers. All three flatter survival without saving anyone. The only honest test is to take a whole population, invite half of it to be screened, and count deaths in everyone from the day of the invitation. Screening programmes that pass that test exist, which is exactly why the test is worth insisting on.":
+    "বেঁচে থাকার পরিসংখ্যান তার ঘড়ি চালু করে রোগনির্ণয়ের দিন থেকে। ওই দিনটি রোগ সম্পর্কে কোনো তথ্য নয়, এটি তথ্য দেয় কখন কেউ খুঁজে দেখেছিল তা নিয়ে। খোঁজাটা আগে এগিয়ে আনুন, তাতে পরিমাপের সামনের দিকে সময় যোগ হয়, অথচ পেছনের দিকে কিছুই বদলায় না। আগেভাগে রোগনির্ণয় হওয়া প্রত্যেকেই পাঁচ বছরের দাগ বেশিবার পেরোবেন, এটা নিশ্চিত, কারণ তাঁদের হাতে আগে শুরুর সুবিধাটি ধরিয়ে দেওয়া হয়েছে। আরও দুটি প্রভাব একই দিকে ঠেলে। একটি স্ক্রিনিং কর্মসূচি দ্রুত বাড়া রোগের চেয়ে ধীরে বাড়া রোগ অনেক বেশিবার ধরে ফেলে, কেবল এই কারণে যে ধীর রোগ ধরা পড়ার অপেক্ষায় অনেক বেশি সময় পড়ে থাকে; আর ধীর রোগের পরিণতি এমনিতেই ভালো। আবার যথেষ্ট সংবেদনশীল একটি পরীক্ষা এমন নিরীহ অস্বাভাবিকতাও খুঁজে বের করে যা কখনোই কোনো ঝামেলা করত না, অথচ পরে সেগুলোকেই সেরে যাওয়া ক্যানসার হিসেবে গোনা হয়। তিনটিই কাউকে না বাঁচিয়েই বেঁচে থাকার হারকে বাড়িয়ে দেখায়। একমাত্র সৎ পরীক্ষাটি হলো একটি গোটা জনসংখ্যা নিন, তার অর্ধেককে স্ক্রিনিংয়ের জন্য আমন্ত্রণ জানান, আর আমন্ত্রণের দিন থেকে প্রত্যেকের মৃত্যু গুনুন। এই পরীক্ষায় উতরে যাওয়া স্ক্রিনিং কর্মসূচি সত্যিই আছে, আর ঠিক এ কারণেই পরীক্ষাটির ওপর জোর দেওয়া দরকার।",
+  "Survival rose for every cancer. Deaths did not follow.":
+    "প্রতিটি ক্যানসারেই বেঁচে থাকার হার বেড়েছে। মৃত্যু সেই পথে হাঁটেনি।",
+  "Between 1950 and 1995, five-year survival improved for all 20 of the most common solid tumours in the United States, by as little as 3 points for pancreatic cancer and as much as 50 for prostate. Over the same years the death rate fell for 12 of those cancers and rose for the other 8. Comparing tumour by tumour, the change in survival was unrelated to the change in mortality, and instead tracked the change in how many cancers were being found.":
+    "১৯৫০ থেকে ১৯৯৫ সালের মধ্যে যুক্তরাষ্ট্রে সবচেয়ে সাধারণ ২০টি সলিড টিউমারের প্রতিটিতেই পাঁচ বছরে বেঁচে থাকার হার বেড়েছে, অগ্ন্যাশয়ের ক্যানসারে সামান্য ৩ পয়েন্ট থেকে শুরু করে প্রস্টেটে ৫০ পয়েন্ট পর্যন্ত। একই বছরগুলোতে এর মধ্যে ১২টি ক্যানসারে মৃত্যুর হার কমেছে আর বাকি ৮টিতে বেড়েছে। টিউমার ধরে টিউমার তুলনা করলে দেখা যায়, বেঁচে থাকার হারের পরিবর্তনের সঙ্গে মৃত্যুহারের পরিবর্তনের কোনো সম্পর্ক ছিল না; বরং তা মিলে গিয়েছিল কতগুলো ক্যানসার ধরা পড়ছিল তার পরিবর্তনের সঙ্গে।",
+  "Screening babies for a childhood tumour":
+    "শিশুদের একটি টিউমার খুঁজতে নবজাতক স্ক্রিনিং",
+  "Two large programmes tested screening infants for neuroblastoma. Quebec screened 476,654 children born over five years, with 92 percent taking part, and deaths from the tumour before the age of eight came to 4.78 per 100,000, no lower than in the comparison populations. Germany compared 1,475,773 screened children with 2,117,600 unscreened ones and found advanced disease in 3.7 against 3.8 per 100,000, and deaths in 1.3 against 1.2. More tumours were found. The same number of children died.":
+    "দুটি বড় কর্মসূচি নবজাতকদের নিউরোব্লাস্টোমার জন্য স্ক্রিনিং করে দেখেছিল। কুইবেক পাঁচ বছরে জন্ম নেওয়া ৪,৭৬,৬৫৪ জন শিশুকে স্ক্রিনিং করে, যাতে ৯২ শতাংশ অংশ নেয়; আট বছর বয়সের আগে ওই টিউমারে মৃত্যু দাঁড়ায় প্রতি লাখে ৪.৭৮, যা তুলনার জনগোষ্ঠীগুলোর চেয়ে কম নয়। জার্মানি ১৪,৭৫,৭৭৩ জন স্ক্রিনিং করা শিশুর সঙ্গে ২১,১৭,৬০০ জন স্ক্রিনিং না করা শিশুর তুলনা করে দেখল, অগ্রসর রোগ প্রতি লাখে ৩.৭ বনাম ৩.৮, আর মৃত্যু ১.৩ বনাম ১.২। বেশি টিউমার ধরা পড়ল। শিশু মারা গেল ঠিক একই সংখ্যক।",
+  "What a real benefit looks like": "সত্যিকারের উপকার দেখতে কেমন হয়",
+  "Screening is not doomed to be an illusion, it just has to be measured properly. A trial put 46,551 people aged 50 to 80 into three groups: yearly stool testing for hidden blood, testing every two years, or none. Over 13 years, deaths from colorectal cancer came to 5.88 per 1,000 in the yearly group against 8.83 in the unscreened group, a third fewer. That is a count of deaths in everyone invited, not survival from diagnosis, so no head start could have produced it.":
+    "স্ক্রিনিং যে বিভ্রম হতেই হবে এমন নয়, কেবল ঠিকভাবে মাপতে হবে। একটি ট্রায়ালে ৫০ থেকে ৮০ বছর বয়সী ৪৬,৫৫১ জন মানুষকে তিনটি দলে ভাগ করা হয়: প্রতি বছর মলে লুকানো রক্তের পরীক্ষা, প্রতি দুই বছরে পরীক্ষা, কিংবা কোনো পরীক্ষা নয়। ১৩ বছরে কোলোরেক্টাল ক্যানসারে মৃত্যু দাঁড়ায় প্রতি বছর পরীক্ষা করা দলে প্রতি ১,০০০ জনে ৫.৮৮, আর স্ক্রিনিং না করা দলে ৮.৮৩, অর্থাৎ এক-তৃতীয়াংশ কম। এটি আমন্ত্রণ পাওয়া প্রত্যেকের মৃত্যুর হিসাব, রোগনির্ণয় থেকে গোনা বেঁচে থাকার হার নয়, তাই আগে শুরুর সুবিধা দিয়ে এটি বানিয়ে তোলা যেত না।",
+  "Lead-time bias, a reasoning trap.": "লিড-টাইম পক্ষপাত, একটি যুক্তির ফাঁদ।",
+  "Survival is counted from the day you are diagnosed. So a test that finds a disease earlier automatically makes survival look longer, even if it changes nothing about when the disease kills you. You simply spend more of your life as a patient. That is why a screening programme can raise five-year survival dramatically while exactly the same number of people die. The number that cannot be gamed is deaths in the whole population, not survival among the diagnosed.":
+    "বেঁচে থাকার হিসাব শুরু হয় যেদিন আপনার রোগ ধরা পড়ে সেদিন থেকে। তাই যে পরীক্ষা রোগটি আগেভাগে খুঁজে বের করে, তা আপনাআপনিই বেঁচে থাকাকে লম্বা দেখায়, রোগটি আপনাকে কবে মারবে তাতে কিছুই না বদলালেও। আপনি কেবল জীবনের বেশি সময় রোগী হয়ে কাটান। এ কারণেই একটি স্ক্রিনিং কর্মসূচি পাঁচ বছরে বেঁচে থাকার হারকে নাটকীয়ভাবে বাড়িয়ে দিতে পারে, অথচ মারা যায় ঠিক একই সংখ্যক মানুষ। যে সংখ্যাটি নিয়ে কারচুপি করা যায় না তা হলো গোটা জনসংখ্যার মৃত্যু, রোগ ধরা পড়া মানুষদের মধ্যে বেঁচে থাকার হার নয়।",
+  "The timeline is a schematic illustration of one life, not measured data. The finding behind it is Welch and colleagues': across the 20 most common solid tumours between 1950 and 1995, five-year survival rose for every one, yet tumour by tumour the change in survival was uncorrelated with the change in mortality (Pearson r = 0.00) and instead tracked the change in incidence (Pearson r = 0.49).":
+    "সময়রেখাটি একটি জীবনের পরিকল্পিত চিত্র, মাপা তথ্য নয়। এর পেছনের ফলাফলটি ওয়েলচ ও সহকর্মীদের: ১৯৫০ থেকে ১৯৯৫ সালের মধ্যে সবচেয়ে সাধারণ ২০টি সলিড টিউমারের প্রতিটিতেই পাঁচ বছরে বেঁচে থাকার হার বেড়েছে, অথচ টিউমার ধরে টিউমার দেখলে বেঁচে থাকার হারের পরিবর্তনের সঙ্গে মৃত্যুহারের পরিবর্তনের কোনো সহসম্পর্ক ছিল না (Pearson r = ০.০০); বরং তা মিলে গিয়েছিল ইনসিডেন্সের, অর্থাৎ কত নতুন রোগ ধরা পড়ছে তার পরিবর্তনের সঙ্গে (Pearson r = ০.৪৯)।",
+
+  // Trap Hunt items for lead-time bias
+  "A hospital introduces a blood test that picks up a cancer about two years before symptoms would have appeared. Among patients diagnosed there, five-year survival rises from 41% to 68%. The hospital announces that the test is saving lives.":
+    "একটি হাসপাতাল এমন একটি রক্তপরীক্ষা চালু করে যা উপসর্গ দেখা দেওয়ার প্রায় দুই বছর আগেই একটি ক্যানসার ধরে ফেলে। সেখানে রোগনির্ণয় হওয়া রোগীদের মধ্যে পাঁচ বছরে বেঁচে থাকার হার ৪১% থেকে বেড়ে ৬৮% হয়। হাসপাতালটি ঘোষণা করে যে পরীক্ষাটি জীবন বাঁচাচ্ছে।",
+  "Survival is counted from diagnosis, and the diagnosis now happens two years sooner. Everyone gets a two-year head start towards the five-year mark, whether or not the test changed anyone's outcome.":
+    "বেঁচে থাকার হিসাব রোগনির্ণয় থেকে শুরু হয়, আর রোগনির্ণয় এখন দুই বছর আগেই হচ্ছে। পাঁচ বছরের দাগের দিকে সবাই দুই বছরের আগে শুরুর সুবিধা পেয়ে যায়, পরীক্ষাটি কারও পরিণতি বদলাক বা না বদলাক।",
+  "A national registry reports that the average time between diagnosis and death for a disease has risen from three years to six since a new scan came into routine use. A minister says patients now live twice as long.":
+    "একটি জাতীয় রেজিস্ট্রি জানায় যে একটি নতুন স্ক্যান নিয়মিত ব্যবহারে আসার পর থেকে একটি রোগে রোগনির্ণয় ও মৃত্যুর মাঝের গড় সময় তিন বছর থেকে বেড়ে ছয় বছর হয়েছে। একজন মন্ত্রী বলেন, রোগীরা এখন দ্বিগুণ সময় বাঁচছেন।",
+  "Time from diagnosis to death can double purely because the diagnosis moved earlier. To claim people live longer you have to show that death is arriving later, not that the label is arriving sooner.":
+    "রোগনির্ণয় থেকে মৃত্যু পর্যন্ত সময় নিছক রোগনির্ণয় এগিয়ে আসার কারণেই দ্বিগুণ হতে পারে। মানুষ বেশিদিন বাঁচছে দাবি করতে হলে দেখাতে হবে যে মৃত্যু দেরিতে আসছে, লেবেলটি আগে আসছে বলে নয়।",
+  "A region invites half its residents, chosen at random, to be screened for a disease and leaves the other half uninvited. Ten years on it counts deaths from that disease among everyone in both halves, screened or not, attended or not. Deaths are 30% lower in the invited half.":
+    "একটি অঞ্চল এলোমেলোভাবে বেছে নেওয়া তার অর্ধেক বাসিন্দাকে একটি রোগের স্ক্রিনিংয়ের জন্য আমন্ত্রণ জানায় আর বাকি অর্ধেককে আমন্ত্রণ জানায় না। দশ বছর পরে তারা দুই অর্ধেকের প্রত্যেকের মধ্যে ওই রোগে মৃত্যু গোনে, স্ক্রিনিং হোক বা না হোক, হাজির হোক বা না হোক। আমন্ত্রিত অর্ধেকে মৃত্যু ৩০% কম।",
+  "This is the design an earlier diagnosis cannot fool. The clock starts at the invitation rather than at diagnosis, and the count includes everyone invited, so no head start and no extra diagnoses can manufacture the difference.":
+    "এটিই সেই নকশা যাকে আগেভাগে রোগনির্ণয় বোকা বানাতে পারে না। ঘড়ি চালু হয় রোগনির্ণয়ে নয়, আমন্ত্রণের মুহূর্তে, আর গণনায় আমন্ত্রণ পাওয়া প্রত্যেকেই থাকেন; তাই আগে শুরুর সুবিধা কিংবা বাড়তি রোগনির্ণয়, কোনোটাই এই পার্থক্যটি বানিয়ে তুলতে পারে না।",
+
+  // ---- Tag blurbs (one line each, for the browse screen) ----
+  "Anyone can fall for it": "যে কেউ এতে পা দিতে পারে",
+  "Bites at the bedside": "শয্যাপাশেই কামড় বসায়",
+  "Study design & evidence appraisal": "গবেষণার নকশা ও প্রমাণ যাচাই",
+  "Reading the numbers": "সংখ্যাগুলো পড়তে শেখা",
+  "Tests & diagnostic reasoning": "পরীক্ষা ও রোগনির্ণয়ের যুক্তি",
+  "Screening programmes": "স্ক্রিনিং কর্মসূচি",
+  "Populations, exposure & risk": "জনগোষ্ঠী, সংস্পর্শ ও ঝুঁকি",
+  "Drugs & drug safety": "ওষুধ ও ওষুধের নিরাপত্তা",
+  "Mind & behaviour": "মন ও আচরণ",
+  "Life & evolution": "প্রাণ ও বিবর্তন",
+  "Data, computing & AI": "ডেটা, কম্পিউটিং ও এআই",
+  "Markets & incentives": "বাজার ও প্রণোদনা",
+  "Elections & policy": "নির্বাচন ও নীতি",
+  "Teaching & testing": "শেখানো ও পরীক্ষা",
+  "Investing & returns": "বিনিয়োগ ও রিটার্ন",
+  "Management & strategy": "ব্যবস্থাপনা ও কৌশল",
+  "Courts & forensics": "আদালত ও ফরেনসিক",
+  "Performance & records": "পারফরম্যান্স ও রেকর্ড",
+  "The past & how we read it": "অতীত আর আমরা তা কীভাবে পড়ি",
+  "News & the numbers in it": "খবর আর তার ভেতরের সংখ্যা",
+
+  // ---- Odds and ends (compact chart labels, scope tags) ----
+  A: "A",
+  B: "B",
+  "From diagnosis": "রোগনির্ণয় থেকে",
+  "The whole life": "গোটা জীবন",
 };

@@ -289,6 +289,62 @@ function SurvivorshipGlyph() {
 }
 
 /**
+ * Abstract lead-time illustration for the card: two lives, the same length,
+ * ending on the same gold line. One was told earlier, so the stretch counted as
+ * "survival" (the bright part) is longer while the life is not. No case
+ * specifics; the card teaches the move, not this puzzle.
+ */
+function TimelineGlyph() {
+  const ROWS = [
+    { found: 58, label: "told late" },
+    { found: 26, label: "told early" },
+  ];
+  const DEATH = 82; // percent along the axis, shared by both rows
+  return (
+    <div
+      className="mt-4 rounded-lg p-3"
+      style={{ backgroundColor: "rgba(0,0,0,0.28)" }}
+    >
+      <div className="relative flex flex-col gap-3">
+        {ROWS.map((row, i) => (
+          <div key={row.label} className="flex flex-col gap-1">
+            <span
+              className="text-[9px] font-semibold uppercase tracking-eyebrow"
+              style={{ color: CARD.muted }}
+            >
+              {row.label}
+            </span>
+            <div
+              className="relative h-3 w-full rounded-[2px]"
+              style={{ backgroundColor: "rgba(242,236,222,0.14)" }}
+            >
+              <span
+                className="absolute inset-y-0 rounded-[2px]"
+                style={{
+                  left: `${row.found}%`,
+                  width: `${DEATH - row.found}%`,
+                  backgroundColor: i === 0 ? CARD.teal : CARD.rust,
+                }}
+              />
+            </div>
+          </div>
+        ))}
+        <span
+          className="pointer-events-none absolute bottom-0 top-0 w-[2px]"
+          style={{ left: `${DEATH}%`, backgroundColor: CARD.gold }}
+        />
+      </div>
+      <div
+        className="mt-2.5 text-center text-[11px] font-semibold"
+        style={{ color: CARD.gold }}
+      >
+        Same day of death. Longer "survival".
+      </div>
+    </div>
+  );
+}
+
+/**
  * Beat 5: the shareable result card. The card node (cardRef) is what gets
  * rendered to PNG. It explains the reasoning skill itself (name + definition +
  * an abstract diagram) so it teaches anyone who sees it, independent of the
@@ -318,6 +374,7 @@ export function ShareCard({
     data.type === "frequencies" && frequencyBreakdown(data).ppv < 0.5;
   const causalGlyph = data.type === "causal";
   const survivorshipGlyph = data.type === "survivorship";
+  const timelineGlyph = data.type === "timeline";
 
   function selectFraming(next: Framing) {
     setFraming(next);
@@ -390,6 +447,8 @@ export function ShareCard({
             <CausalGlyph data={data} />
           ) : survivorshipGlyph ? (
             <SurvivorshipGlyph />
+          ) : timelineGlyph ? (
+            <TimelineGlyph />
           ) : null}
 
           <p className="mt-4 font-display text-[17px] font-medium leading-snug">

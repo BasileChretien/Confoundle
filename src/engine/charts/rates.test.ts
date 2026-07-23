@@ -5,6 +5,7 @@ import {
   stratifiedRates,
   bestGroupId,
   formatPct,
+  restrictRates,
 } from "./rates";
 
 /**
@@ -49,5 +50,43 @@ describe("kidney-stones seed data, Simpson's paradox holds", () => {
     expect(pct("small", "B")).toBe("87%");
     expect(pct("large", "A")).toBe("73%");
     expect(pct("large", "B")).toBe("69%");
+  });
+});
+
+describe("restrictRates, drawing part of the data", () => {
+  const data = kidneyStones.setup.data;
+  if (data.type !== "rates") throw new Error("seed puzzle must be rates data");
+
+  it("returns the data untouched when nothing is filtered", () => {
+    expect(restrictRates(data)).toBe(data);
+    expect(restrictRates(data, {})).toBe(data);
+  });
+
+  it("keeps only the named stratum, and only its observations", () => {
+    const only = restrictRates(data, { strataIds: ["large"] });
+    expect(only.strata.map((s) => s.id)).toEqual(["large"]);
+    expect(only.groups).toHaveLength(2);
+    expect(only.observations).toHaveLength(2);
+    expect(only.observations.every((o) => o.stratumId === "large")).toBe(true);
+  });
+
+  it("keeps only the named group, and only its observations", () => {
+    const only = restrictRates(data, { groupIds: ["A"] });
+    expect(only.groups.map((g) => g.id)).toEqual(["A"]);
+    expect(only.strata).toHaveLength(2);
+    expect(only.observations.every((o) => o.groupId === "A")).toBe(true);
+  });
+
+  it("leaves the authored data alone", () => {
+    const before = JSON.stringify(data);
+    restrictRates(data, { groupIds: ["A"], strataIds: ["small"] });
+    expect(JSON.stringify(data)).toBe(before);
+  });
+
+  it("derives the same rates from the slice as from the whole", () => {
+    const whole = stratifiedRates(data).find((s) => s.stratumId === "large")!;
+    const slice = stratifiedRates(restrictRates(data, { strataIds: ["large"] }));
+    expect(slice).toHaveLength(1);
+    expect(slice[0]).toEqual(whole);
   });
 });

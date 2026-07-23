@@ -473,4 +473,98 @@ export const es: Record<string, string> = {
     "Un hospital informa de que la supervivencia mejoró en todos los grados de gravedad a lo largo de cinco años. Informa además de que los criterios de clasificación no cambiaron en ese tiempo, de que no se introdujo ninguna prueba diagnóstica nueva y de que el número de pacientes de cada grado se mantuvo más o menos igual.",
   "This is the case where the improvement is real. Nothing reclassified the patients, and the grades held the same share of people, so no reshuffling could have manufactured the gain.":
     "Este es el caso en el que la mejora es real. Nada reclasificó a los pacientes, y los grados mantuvieron la misma proporción de personas, así que ninguna redistribución pudo fabricar esa ganancia.",
+
+  // ==== Sesgo de anticipación diagnóstica (puzle #7) ====
+  "Screened patients survive five years after diagnosis. Unscreened ones survive two.":
+    "Los pacientes cribados sobreviven cinco años tras el diagnóstico. Los no cribados, dos.",
+  "The same cancer, growing at the same speed, treated the same way. One person had a scan that found it early. The other went to a doctor years later, when the first symptom appeared. Survival is counted from the day of diagnosis, which is how survival is almost always counted.":
+    "El mismo cáncer, que crece a la misma velocidad, tratado de la misma manera. A una de las personas le hicieron una prueba de imagen que lo detectó pronto. La otra fue al médico años más tarde, cuando apareció el primer síntoma. La supervivencia se cuenta desde el día del diagnóstico, que es como se cuenta casi siempre.",
+  "Did finding it early give this person more time alive?":
+    "¿Detectarlo pronto le dio a esta persona más tiempo de vida?",
+  "One life, two moments of diagnosis": "Una vida, dos momentos de diagnóstico",
+  "years": "años",
+  "cancer begins": "empieza el cáncer",
+  "diagnosed": "se diagnostica",
+  "died": "muere",
+  "Survival counted from diagnosis":
+    "Supervivencia contada desde el diagnóstico",
+  "Found when symptoms appeared": "Detectado al aparecer los síntomas",
+  "Found early, by screening": "Detectado pronto, por cribado",
+  "Yes, three extra years": "Sí, tres años más",
+  "five instead of two": "cinco en lugar de dos",
+  "No, not one extra day": "No, ni un solo día más",
+  "only the clock moved": "solo se movió el reloj",
+  "Both died on exactly the same day.":
+    "Los dos murieron exactamente el mismo día.",
+  "The clock started earlier, the life did not get longer":
+    "El reloj empezó antes, la vida no se alargó",
+  "Screening did not postpone anything. It moved the diagnosis three years earlier, so this person spent three more years knowing they had cancer. Counted from diagnosis that reads as three extra years of survival. Put both lives on the same calendar and they end at the same instant:":
+    "El cribado no aplazó nada. Adelantó el diagnóstico tres años, así que esta persona pasó tres años más sabiendo que tenía cáncer. Contado desde el diagnóstico, eso se lee como tres años más de supervivencia. Pon las dos vidas en el mismo calendario y terminan en el mismo instante:",
+  "The extra years": "Los años de más",
+  "Lead-time bias": "El sesgo de anticipación diagnóstica",
+  "Finding a disease earlier stretches survival measured from diagnosis even when it postpones death by not a single day.":
+    "Detectar antes una enfermedad alarga la supervivencia medida desde el diagnóstico aunque no retrase la muerte ni un solo día.",
+  "This does not mean early detection is worthless. It means survival from diagnosis cannot tell you whether it worked. Whenever survival improves after a new test arrives, ask whether people are living longer or simply being told sooner. The measure that cannot be fooled this way is the death rate in the whole population, screened and unscreened alike.":
+    "Esto no significa que la detección precoz no sirva de nada. Significa que la supervivencia desde el diagnóstico no puede decirte si funcionó. Siempre que la supervivencia mejore tras la llegada de un test nuevo, pregúntate si la gente vive más tiempo o simplemente se entera antes. La medida que no se deja engañar así es la tasa de mortalidad en toda la población, cribada y no cribada por igual.",
+  "Survival statistics start their clock on the day of diagnosis. That day is not a fact about the disease, it is a fact about when somebody looked. Move the looking earlier and you add time to the front of the measurement while changing nothing at the back. Everyone diagnosed early is guaranteed to clear the five-year mark more often, because they were handed a head start. Two other effects push the same way. A screening programme catches slow-growing disease far more often than fast-growing disease, simply because slow disease sits there longer waiting to be found, and slow disease has a better outlook anyway. And a sensitive enough test finds harmless abnormalities that would never have caused trouble, which are then counted as cured cancers. All three flatter survival without saving anyone. The only honest test is to take a whole population, invite half of it to be screened, and count deaths in everyone from the day of the invitation. Screening programmes that pass that test exist, which is exactly why the test is worth insisting on.":
+    "Las estadísticas de supervivencia ponen su reloj en marcha el día del diagnóstico. Ese día no es un dato sobre la enfermedad, es un dato sobre cuándo miró alguien. Adelanta el momento de mirar y añades tiempo por delante de la medición sin cambiar nada por detrás. Todo el que recibe un diagnóstico precoz tiene garantizado superar la marca de los cinco años más a menudo, porque le han dado ventaja de salida. Otros dos efectos empujan en la misma dirección. Un programa de cribado detecta la enfermedad de crecimiento lento mucho más a menudo que la de crecimiento rápido, sencillamente porque la lenta se queda ahí más tiempo esperando a que la encuentren, y la lenta tiene además mejor pronóstico. Y un test lo bastante sensible encuentra anomalías inofensivas que nunca habrían dado problemas, que luego se cuentan como cánceres curados. Los tres adornan la supervivencia sin salvar a nadie. La única prueba honesta consiste en tomar una población entera, invitar a la mitad al cribado y contar las muertes en todos desde el día de la invitación. Hay programas de cribado que superan esa prueba, y por eso mismo merece la pena exigirla.",
+  "Survival rose for every cancer. Deaths did not follow.":
+    "La supervivencia subió en todos los cánceres. Las muertes no siguieron.",
+  "Between 1950 and 1995, five-year survival improved for all 20 of the most common solid tumours in the United States, by as little as 3 points for pancreatic cancer and as much as 50 for prostate. Over the same years the death rate fell for 12 of those cancers and rose for the other 8. Comparing tumour by tumour, the change in survival was unrelated to the change in mortality, and instead tracked the change in how many cancers were being found.":
+    "Entre 1950 y 1995, la supervivencia a cinco años mejoró en los 20 tumores sólidos más frecuentes de Estados Unidos, desde apenas 3 puntos en el cáncer de páncreas hasta 50 en el de próstata. En esos mismos años la tasa de mortalidad bajó en 12 de esos cánceres y subió en los otros 8. Comparando tumor por tumor, el cambio en la supervivencia no guardaba relación con el cambio en la mortalidad, sino que seguía al cambio en cuántos cánceres se estaban detectando.",
+  "Screening babies for a childhood tumour":
+    "Cribar a los bebés en busca de un tumor infantil",
+  "Two large programmes tested screening infants for neuroblastoma. Quebec screened 476,654 children born over five years, with 92 percent taking part, and deaths from the tumour before the age of eight came to 4.78 per 100,000, no lower than in the comparison populations. Germany compared 1,475,773 screened children with 2,117,600 unscreened ones and found advanced disease in 3.7 against 3.8 per 100,000, and deaths in 1.3 against 1.2. More tumours were found. The same number of children died.":
+    "Dos grandes programas pusieron a prueba el cribado de neuroblastoma en lactantes. Quebec cribó a 476 654 niños nacidos a lo largo de cinco años, con una participación del 92 por ciento, y las muertes por el tumor antes de los ocho años fueron de 4,78 por cada 100 000, no menos que en las poblaciones de comparación. Alemania comparó a 1 475 773 niños cribados con 2 117 600 no cribados y encontró enfermedad avanzada en 3,7 frente a 3,8 por cada 100 000, y muertes en 1,3 frente a 1,2. Se encontraron más tumores. Murió el mismo número de niños.",
+  "What a real benefit looks like": "Qué aspecto tiene un beneficio real",
+  "Screening is not doomed to be an illusion, it just has to be measured properly. A trial put 46,551 people aged 50 to 80 into three groups: yearly stool testing for hidden blood, testing every two years, or none. Over 13 years, deaths from colorectal cancer came to 5.88 per 1,000 in the yearly group against 8.83 in the unscreened group, a third fewer. That is a count of deaths in everyone invited, not survival from diagnosis, so no head start could have produced it.":
+    "El cribado no está condenado a ser una ilusión, solo hay que medirlo bien. Un ensayo repartió a 46 551 personas de 50 a 80 años en tres grupos: análisis anual de sangre oculta en heces, análisis cada dos años o ninguno. A lo largo de 13 años, las muertes por cáncer colorrectal fueron de 5,88 por cada 1000 en el grupo anual frente a 8,83 en el grupo sin cribado, un tercio menos. Eso es un recuento de las muertes de todas las personas invitadas, no una supervivencia desde el diagnóstico, así que ninguna ventaja de salida pudo producirlo.",
+  "Lead-time bias, a reasoning trap.":
+    "El sesgo de anticipación diagnóstica, una trampa de razonamiento.",
+  "Survival is counted from the day you are diagnosed. So a test that finds a disease earlier automatically makes survival look longer, even if it changes nothing about when the disease kills you. You simply spend more of your life as a patient. That is why a screening programme can raise five-year survival dramatically while exactly the same number of people die. The number that cannot be gamed is deaths in the whole population, not survival among the diagnosed.":
+    "La supervivencia se cuenta desde el día en que te diagnostican. Así que un test que detecta antes una enfermedad hace que la supervivencia parezca más larga de forma automática, aunque no cambie nada sobre cuándo te mata la enfermedad. Simplemente pasas más parte de tu vida siendo paciente. Por eso un programa de cribado puede subir muchísimo la supervivencia a cinco años mientras muere exactamente la misma gente. El número que no se puede manipular son las muertes en toda la población, no la supervivencia entre los diagnosticados.",
+  "The timeline is a schematic illustration of one life, not measured data. The finding behind it is Welch and colleagues': across the 20 most common solid tumours between 1950 and 1995, five-year survival rose for every one, yet tumour by tumour the change in survival was uncorrelated with the change in mortality (Pearson r = 0.00) and instead tracked the change in incidence (Pearson r = 0.49).":
+    "La línea de tiempo es una ilustración esquemática de una vida, no un dato medido. El hallazgo que hay detrás es el de Welch y colaboradores: en los 20 tumores sólidos más frecuentes entre 1950 y 1995, la supervivencia a cinco años subió en todos ellos, pero tumor por tumor el cambio en la supervivencia no guardaba correlación con el cambio en la mortalidad (r de Pearson = 0,00) y sí seguía al cambio en la incidencia (r de Pearson = 0,49).",
+  // caza de trampas
+  "A hospital introduces a blood test that picks up a cancer about two years before symptoms would have appeared. Among patients diagnosed there, five-year survival rises from 41% to 68%. The hospital announces that the test is saving lives.":
+    "Un hospital introduce un análisis de sangre que detecta un cáncer unos dos años antes de que hubieran aparecido los síntomas. Entre los pacientes diagnosticados allí, la supervivencia a cinco años sube del 41 % al 68 %. El hospital anuncia que el test está salvando vidas.",
+  "Survival is counted from diagnosis, and the diagnosis now happens two years sooner. Everyone gets a two-year head start towards the five-year mark, whether or not the test changed anyone's outcome.":
+    "La supervivencia se cuenta desde el diagnóstico, y ahora el diagnóstico llega dos años antes. Todo el mundo recibe una ventaja de salida de dos años hacia la marca de los cinco años, haya cambiado o no el test el desenlace de alguien.",
+  "A national registry reports that the average time between diagnosis and death for a disease has risen from three years to six since a new scan came into routine use. A minister says patients now live twice as long.":
+    "Un registro nacional informa de que el tiempo medio entre el diagnóstico y la muerte por una enfermedad ha pasado de tres años a seis desde que una nueva prueba de imagen se usa de forma rutinaria. Un ministro dice que los pacientes viven ahora el doble.",
+  "Time from diagnosis to death can double purely because the diagnosis moved earlier. To claim people live longer you have to show that death is arriving later, not that the label is arriving sooner.":
+    "El tiempo entre el diagnóstico y la muerte puede duplicarse solo porque el diagnóstico se ha adelantado. Para afirmar que la gente vive más hay que demostrar que la muerte llega más tarde, no que la etiqueta llega antes.",
+  "A region invites half its residents, chosen at random, to be screened for a disease and leaves the other half uninvited. Ten years on it counts deaths from that disease among everyone in both halves, screened or not, attended or not. Deaths are 30% lower in the invited half.":
+    "Una región invita a la mitad de sus habitantes, elegidos al azar, a cribarse para una enfermedad y deja a la otra mitad sin invitar. Diez años después cuenta las muertes por esa enfermedad entre todas las personas de las dos mitades, se cribaran o no, acudieran o no. Las muertes son un 30 % menores en la mitad invitada.",
+  "This is the design an earlier diagnosis cannot fool. The clock starts at the invitation rather than at diagnosis, and the count includes everyone invited, so no head start and no extra diagnoses can manufacture the difference.":
+    "Este es el diseño al que un diagnóstico más precoz no puede engañar. El reloj arranca en la invitación y no en el diagnóstico, y el recuento incluye a todos los invitados, así que ninguna ventaja de salida ni ningún diagnóstico de más puede fabricar la diferencia.",
+
+  // ---- Etiquetas de tema, alcance de figura y cadenas sueltas ----
+  // etiquetas de alcance (a la derecha del pie de figura)
+  "From diagnosis": "Desde el diagnóstico",
+  "The whole life": "La vida entera",
+  // etiquetas cortas de los dos tratamientos en el gráfico
+  "A": "A",
+  "B": "B",
+  // descripciones de las etiquetas (pantalla de exploración)
+  "Anyone can fall for it": "Cualquiera puede caer",
+  "Bites at the bedside": "Muerde a pie de cama",
+  "Study design & evidence appraisal": "Diseño de estudios y lectura crítica",
+  "Reading the numbers": "Leer los números",
+  "Tests & diagnostic reasoning": "Tests y razonamiento diagnóstico",
+  "Screening programmes": "Programas de cribado",
+  "Populations, exposure & risk": "Poblaciones, exposición y riesgo",
+  "Drugs & drug safety": "Fármacos y su seguridad",
+  "Mind & behaviour": "Mente y conducta",
+  "Life & evolution": "Vida y evolución",
+  "Data, computing & AI": "Datos, informática e IA",
+  "Markets & incentives": "Mercados e incentivos",
+  "Elections & policy": "Elecciones y políticas públicas",
+  "Teaching & testing": "Enseñar y evaluar",
+  "Investing & returns": "Inversión y rentabilidad",
+  "Management & strategy": "Gestión y estrategia",
+  "Courts & forensics": "Tribunales y ciencia forense",
+  "Performance & records": "Rendimiento y récords",
+  "The past & how we read it": "El pasado y cómo lo leemos",
+  "News & the numbers in it": "Las noticias y sus números",
 };

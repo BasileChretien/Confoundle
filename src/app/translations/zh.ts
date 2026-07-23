@@ -470,4 +470,93 @@ export const zh: Record<string, string> = {
     "一家医院报告说，五年间每一个严重程度分级的生存率都提高了。医院同时说明，这期间分级标准没有改动，没有引入新的诊断检查，各个分级中的患者人数也基本保持不变。",
   "This is the case where the improvement is real. Nothing reclassified the patients, and the grades held the same share of people, so no reshuffling could have manufactured the gain.":
     "这正是改善确有其事的情形。没有任何因素把患者重新分级，各个分级所占的人数比例也没有变化，所以不可能有什么重新洗牌制造出这份进步。",
+
+  // ---- Lead-time bias (puzzle #7) ----
+  A: "A",
+  B: "B",
+  "Screened patients survive five years after diagnosis. Unscreened ones survive two.":
+    "接受筛查的患者确诊后存活五年。未接受筛查的只有两年。",
+  "The same cancer, growing at the same speed, treated the same way. One person had a scan that found it early. The other went to a doctor years later, when the first symptom appeared. Survival is counted from the day of diagnosis, which is how survival is almost always counted.":
+    "同样的癌症，以同样的速度生长，接受同样的治疗。一个人做了扫描，早早就查了出来。另一个人几年后才去看医生，那时第一个症状刚刚出现。生存期从确诊那一天算起，而生存期几乎从来都是这样算的。",
+  "Did finding it early give this person more time alive?":
+    "早点发现，有没有让这个人多活一些时间？",
+  "One life, two moments of diagnosis": "一段人生，两个确诊时刻",
+  years: "年",
+  "cancer begins": "癌症开始",
+  diagnosed: "确诊",
+  died: "死亡",
+  "Survival counted from diagnosis": "从确诊起算的生存期",
+  "Found when symptoms appeared": "出现症状后发现",
+  "Found early, by screening": "经筛查早期发现",
+  "Yes, three extra years": "是的，多了三年",
+  "five instead of two": "五年而不是两年",
+  "No, not one extra day": "没有，一天也没多",
+  "only the clock moved": "移动的只是时钟",
+  "Both died on exactly the same day.": "两个人死在完全相同的一天。",
+  "The clock started earlier, the life did not get longer":
+    "时钟提前开始，生命并没有变长",
+  "Screening did not postpone anything. It moved the diagnosis three years earlier, so this person spent three more years knowing they had cancer. Counted from diagnosis that reads as three extra years of survival. Put both lives on the same calendar and they end at the same instant:":
+    "筛查没有推迟任何事情。它把确诊提前了三年，所以这个人多出三年是在知道自己患癌的情况下度过的。从确诊起算，这看上去就是多了三年生存期。把两段人生放到同一条日历上，它们在同一瞬间结束：",
+  "The extra years": "多出来的那几年",
+  "Lead-time bias": "领先时间偏倚",
+  "Finding a disease earlier stretches survival measured from diagnosis even when it postpones death by not a single day.":
+    "更早发现疾病，会拉长从确诊起算的生存期，哪怕它一天也没能把死亡推迟。",
+  "This does not mean early detection is worthless. It means survival from diagnosis cannot tell you whether it worked. Whenever survival improves after a new test arrives, ask whether people are living longer or simply being told sooner. The measure that cannot be fooled this way is the death rate in the whole population, screened and unscreened alike.":
+    "这并不意味着早期发现毫无价值。它意味着从确诊起算的生存期无法告诉你早期发现是否奏效。每当一项新检测出现之后生存数字变好了，都要问一问：人们是真的活得更久，还是只是被更早地告知。唯一骗不了的指标是整个人群的死亡率，接受筛查的和没接受筛查的一起算。",
+  "Survival statistics start their clock on the day of diagnosis. That day is not a fact about the disease, it is a fact about when somebody looked. Move the looking earlier and you add time to the front of the measurement while changing nothing at the back. Everyone diagnosed early is guaranteed to clear the five-year mark more often, because they were handed a head start. Two other effects push the same way. A screening programme catches slow-growing disease far more often than fast-growing disease, simply because slow disease sits there longer waiting to be found, and slow disease has a better outlook anyway. And a sensitive enough test finds harmless abnormalities that would never have caused trouble, which are then counted as cured cancers. All three flatter survival without saving anyone. The only honest test is to take a whole population, invite half of it to be screened, and count deaths in everyone from the day of the invitation. Screening programmes that pass that test exist, which is exactly why the test is worth insisting on.":
+    "生存统计的计时起点是确诊那一天。这一天说明的不是疾病本身，而是有人在什么时候去看了这一眼。把这一眼提前，你就在测量的前端加上了一段时间，而后端什么也没变。所有被提早确诊的人，跨过五年那道线的比例必然更高，因为他们凭空得到了一段起跑优势。还有另外两种效应把结果推向同一个方向。筛查项目查出生长缓慢的疾病的机会，远高于查出生长迅速的疾病，只因为长得慢的病会在那里停留更久，等着被发现，而长得慢的病本来预后就更好。另外，一项足够灵敏的检测会查出一些永远不会惹麻烦的无害异常，它们随后被算作治愈的癌症。这三者都在美化生存数字，却没有救下任何人。唯一诚实的检验办法是：取整个人群，邀请其中一半去接受筛查，然后从发出邀请那天起统计所有人的死亡。确实存在能通过这项检验的筛查项目，这恰恰说明这项检验值得坚持。",
+  "Survival rose for every cancer. Deaths did not follow.":
+    "每一种癌症的生存率都上升了。死亡人数却没有跟上。",
+  "Between 1950 and 1995, five-year survival improved for all 20 of the most common solid tumours in the United States, by as little as 3 points for pancreatic cancer and as much as 50 for prostate. Over the same years the death rate fell for 12 of those cancers and rose for the other 8. Comparing tumour by tumour, the change in survival was unrelated to the change in mortality, and instead tracked the change in how many cancers were being found.":
+    "1950 年至 1995 年间，美国最常见的 20 种实体瘤的五年生存率全部提高，胰腺癌只提高了 3 个百分点，前列腺癌则提高了多达 50 个百分点。在同样这些年里，其中 12 种癌症的死亡率下降，另外 8 种上升。逐个肿瘤对照来看，生存率的变化与死亡率的变化毫无关系，反而与被查出的癌症数量的变化同步。",
+  "Screening babies for a childhood tumour": "给婴儿筛查一种儿童肿瘤",
+  "Two large programmes tested screening infants for neuroblastoma. Quebec screened 476,654 children born over five years, with 92 percent taking part, and deaths from the tumour before the age of eight came to 4.78 per 100,000, no lower than in the comparison populations. Germany compared 1,475,773 screened children with 2,117,600 unscreened ones and found advanced disease in 3.7 against 3.8 per 100,000, and deaths in 1.3 against 1.2. More tumours were found. The same number of children died.":
+    "两个大型项目检验了对婴儿进行神经母细胞瘤筛查的效果。魁北克对五年间出生的 476,654 名儿童做了筛查，参与率为 92%，八岁前死于该肿瘤的人数为每 100,000 人 4.78 例，并不低于对照人群。德国把 1,475,773 名接受筛查的儿童与 2,117,600 名未筛查的儿童作了比较，晚期病例为每 100,000 人 3.7 例对 3.8 例，死亡为 1.3 例对 1.2 例。查出的肿瘤更多了。死去的孩子却一个不少。",
+  "What a real benefit looks like": "真正的获益长什么样",
+  "Screening is not doomed to be an illusion, it just has to be measured properly. A trial put 46,551 people aged 50 to 80 into three groups: yearly stool testing for hidden blood, testing every two years, or none. Over 13 years, deaths from colorectal cancer came to 5.88 per 1,000 in the yearly group against 8.83 in the unscreened group, a third fewer. That is a count of deaths in everyone invited, not survival from diagnosis, so no head start could have produced it.":
+    "筛查并非注定只是一种幻觉，它只是必须被正确地测量。一项试验把 46,551 名 50 至 80 岁的人分成三组：每年做一次粪便隐血检测、每两年做一次，或者不做。13 年间，结直肠癌死亡在每年检测组为每 1,000 人 5.88 例，在未筛查组为 8.83 例，少了三分之一。这统计的是所有受邀者当中的死亡人数，而不是从确诊起算的生存期，所以任何起跑优势都造不出这个结果。",
+  "Lead-time bias, a reasoning trap.": "领先时间偏倚，一个推理陷阱。",
+  "Survival is counted from the day you are diagnosed. So a test that finds a disease earlier automatically makes survival look longer, even if it changes nothing about when the disease kills you. You simply spend more of your life as a patient. That is why a screening programme can raise five-year survival dramatically while exactly the same number of people die. The number that cannot be gamed is deaths in the whole population, not survival among the diagnosed.":
+    "生存期是从你被确诊那天开始算的。所以一项能更早发现疾病的检测，会自动让生存期看上去更长，哪怕它完全没有改变疾病夺走你生命的时间。你只不过是把人生中更长的一段过成了病人。这就是为什么一个筛查项目可以大幅提高五年生存率，而死去的人数却一个不差。唯一无法被操弄的数字是整个人群中的死亡人数，而不是确诊者当中的生存率。",
+  "The timeline is a schematic illustration of one life, not measured data. The finding behind it is Welch and colleagues': across the 20 most common solid tumours between 1950 and 1995, five-year survival rose for every one, yet tumour by tumour the change in survival was uncorrelated with the change in mortality (Pearson r = 0.00) and instead tracked the change in incidence (Pearson r = 0.49).":
+    "这条时间轴是对一段人生的示意性图解，而不是实测数据。它背后的发现来自 Welch 及其同事：在 1950 年至 1995 年间最常见的 20 种实体瘤中，每一种的五年生存率都上升了，但逐个肿瘤来看，生存率的变化与死亡率的变化并不相关（Pearson r = 0.00），反而与发病率的变化同步（Pearson r = 0.49）。",
+  // Trap Hunt items for lead-time bias
+  "A hospital introduces a blood test that picks up a cancer about two years before symptoms would have appeared. Among patients diagnosed there, five-year survival rises from 41% to 68%. The hospital announces that the test is saving lives.":
+    "一家医院引入了一项血液检测，能在症状出现前大约两年查出某种癌症。在该院确诊的患者中，五年生存率从 41% 升到了 68%。医院宣布这项检测正在挽救生命。",
+  "Survival is counted from diagnosis, and the diagnosis now happens two years sooner. Everyone gets a two-year head start towards the five-year mark, whether or not the test changed anyone's outcome.":
+    "生存期从确诊起算，而现在确诊提前了两年。每个人在冲向五年那道线时都白得了两年的起跑优势，不论这项检测有没有改变任何人的结局。",
+  "A national registry reports that the average time between diagnosis and death for a disease has risen from three years to six since a new scan came into routine use. A minister says patients now live twice as long.":
+    "一个全国登记系统报告说，自从一项新的扫描进入常规使用，某种疾病从确诊到死亡的平均时间已经从三年升到六年。一位部长表示，患者现在活得是过去的两倍长。",
+  "Time from diagnosis to death can double purely because the diagnosis moved earlier. To claim people live longer you have to show that death is arriving later, not that the label is arriving sooner.":
+    "从确诊到死亡的时间，可以仅仅因为确诊提前而翻倍。要说人们活得更久，你必须证明死亡来得更晚，而不是标签贴得更早。",
+  "A region invites half its residents, chosen at random, to be screened for a disease and leaves the other half uninvited. Ten years on it counts deaths from that disease among everyone in both halves, screened or not, attended or not. Deaths are 30% lower in the invited half.":
+    "一个地区随机抽出一半居民，邀请他们接受某种疾病的筛查，另一半不发邀请。十年后，它统计两半人群中所有人死于该病的人数，无论是否筛查、是否应邀前往。受邀的那一半死亡人数低了 30%。",
+  "This is the design an earlier diagnosis cannot fool. The clock starts at the invitation rather than at diagnosis, and the count includes everyone invited, so no head start and no extra diagnoses can manufacture the difference.":
+    "这正是提前确诊骗不了的设计。计时从发出邀请开始，而不是从确诊开始，统计也涵盖了所有受邀者，所以无论是起跑优势还是多出来的确诊，都造不出这个差异。",
+
+  // ---- Scope tags for the timeline figure ----
+  "From diagnosis": "从确诊起算",
+  "The whole life": "整段人生",
+
+  // ---- Tag blurbs (browse screen) ----
+  "Anyone can fall for it": "谁都可能中招",
+  "Bites at the bedside": "在病床边咬人",
+  "Study design & evidence appraisal": "研究设计与证据评价",
+  "Reading the numbers": "读懂数字",
+  "Tests & diagnostic reasoning": "检测与诊断推理",
+  "Screening programmes": "筛查项目",
+  "Populations, exposure & risk": "人群、暴露与风险",
+  "Drugs & drug safety": "药物与用药安全",
+  "Mind & behaviour": "心智与行为",
+  "Life & evolution": "生命与演化",
+  "Data, computing & AI": "数据、计算与人工智能",
+  "Markets & incentives": "市场与激励",
+  "Elections & policy": "选举与政策",
+  "Teaching & testing": "教学与考试",
+  "Investing & returns": "投资与回报",
+  "Management & strategy": "管理与战略",
+  "Courts & forensics": "法庭与法医鉴定",
+  "Performance & records": "表现与纪录",
+  "The past & how we read it": "过去，以及我们如何解读它",
+  "News & the numbers in it": "新闻，以及其中的数字",
 };

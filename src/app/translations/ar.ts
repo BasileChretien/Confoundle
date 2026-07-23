@@ -476,4 +476,93 @@ export const ar: Record<string, string> = {
     "يُبلغ مستشفى عن تحسن البقاء على قيد الحياة في كل درجة من درجات الشدة على مدى خمس سنوات. ويُبلغ أيضاً بأن معايير التدريج لم تتغير في تلك المدة، وأنه لم يُستحدث أي اختبار تشخيصي جديد، وأن عدد المرضى في كل درجة ظل على حاله تقريباً.",
   "This is the case where the improvement is real. Nothing reclassified the patients, and the grades held the same share of people, so no reshuffling could have manufactured the gain.":
     "هذه هي الحالة التي يكون فيها التحسن حقيقياً. فلا شيء أعاد تصنيف المرضى، وحافظت الدرجات على النسبة نفسها من الناس، لذا ما كان لإعادة توزيع أن تصنع هذا المكسب.",
+
+  // ---- Lead-time bias (puzzle #7) ----
+  "Screened patients survive five years after diagnosis. Unscreened ones survive two.":
+    "المرضى الذين خضعوا للفحص الاستقصائي يبقون على قيد الحياة خمس سنوات بعد التشخيص. أما من لم يخضعوا له فيبقون سنتين.",
+  "The same cancer, growing at the same speed, treated the same way. One person had a scan that found it early. The other went to a doctor years later, when the first symptom appeared. Survival is counted from the day of diagnosis, which is how survival is almost always counted.":
+    "السرطان نفسه، ينمو بالسرعة نفسها، ويُعالَج بالطريقة نفسها. أحدهما خضع لتصوير كشفه مبكراً. والآخر ذهب إلى الطبيب بعد سنوات، حين ظهر أول عَرَض. ويُحسب البقاء على قيد الحياة من يوم التشخيص، وهي الطريقة التي يُحسب بها البقاء دائماً تقريباً.",
+  "Did finding it early give this person more time alive?":
+    "هل منح اكتشافه مبكراً هذا الشخص وقتاً أطول على قيد الحياة؟",
+  "One life, two moments of diagnosis": "حياة واحدة، لحظتا تشخيص",
+  years: "سنوات",
+  "cancer begins": "بداية السرطان",
+  diagnosed: "التشخيص",
+  died: "الوفاة",
+  "Survival counted from diagnosis": "البقاء محسوباً من التشخيص",
+  "Found when symptoms appeared": "اكتُشف عند ظهور الأعراض",
+  "Found early, by screening": "اكتُشف مبكراً بالفحص الاستقصائي",
+  "Yes, three extra years": "نعم، ثلاث سنوات إضافية",
+  "five instead of two": "خمس بدل سنتين",
+  "No, not one extra day": "لا، ولا يوم واحد إضافي",
+  "only the clock moved": "الساعة وحدها هي التي تحركت",
+  "Both died on exactly the same day.": "كلاهما توفي في اليوم نفسه تماماً.",
+  "The clock started earlier, the life did not get longer":
+    "بدأت الساعة أبكر، لكن الحياة لم تَطُل",
+  "Screening did not postpone anything. It moved the diagnosis three years earlier, so this person spent three more years knowing they had cancer. Counted from diagnosis that reads as three extra years of survival. Put both lives on the same calendar and they end at the same instant:":
+    "لم يؤجّل الفحص الاستقصائي شيئاً. لقد قدّم التشخيص ثلاث سنوات، فقضى هذا الشخص ثلاث سنوات إضافية وهو يعلم أنه مصاب بالسرطان. ومحسوباً من التشخيص، يبدو ذلك ثلاث سنوات إضافية من البقاء على قيد الحياة. ضع الحياتين على التقويم نفسه، فتنتهيان في اللحظة نفسها:",
+  "The extra years": "السنوات الإضافية",
+  "Lead-time bias": "تحيز زمن السبق",
+  "Finding a disease earlier stretches survival measured from diagnosis even when it postpones death by not a single day.":
+    "اكتشاف المرض مبكراً يُطيل البقاء على قيد الحياة مقيساً من التشخيص، حتى حين لا يؤجّل الوفاة يوماً واحداً.",
+  "This does not mean early detection is worthless. It means survival from diagnosis cannot tell you whether it worked. Whenever survival improves after a new test arrives, ask whether people are living longer or simply being told sooner. The measure that cannot be fooled this way is the death rate in the whole population, screened and unscreened alike.":
+    "هذا لا يعني أن الكشف المبكر بلا قيمة. بل يعني أن البقاء على قيد الحياة محسوباً من التشخيص لا يخبرك إن كان قد نجح. فكلما تحسّن البقاء بعد وصول اختبار جديد، اسأل: هل يعيش الناس مدة أطول، أم أنهم يُبلَّغون في وقت أبكر فحسب؟ المقياس الذي لا يمكن خداعه بهذه الطريقة هو معدل الوفيات في عموم السكان، من خضعوا للفحص الاستقصائي ومن لم يخضعوا على حد سواء.",
+  "Survival statistics start their clock on the day of diagnosis. That day is not a fact about the disease, it is a fact about when somebody looked. Move the looking earlier and you add time to the front of the measurement while changing nothing at the back. Everyone diagnosed early is guaranteed to clear the five-year mark more often, because they were handed a head start. Two other effects push the same way. A screening programme catches slow-growing disease far more often than fast-growing disease, simply because slow disease sits there longer waiting to be found, and slow disease has a better outlook anyway. And a sensitive enough test finds harmless abnormalities that would never have caused trouble, which are then counted as cured cancers. All three flatter survival without saving anyone. The only honest test is to take a whole population, invite half of it to be screened, and count deaths in everyone from the day of the invitation. Screening programmes that pass that test exist, which is exactly why the test is worth insisting on.":
+    "إحصاءات البقاء على قيد الحياة تبدأ ساعتها يوم التشخيص. وذلك اليوم ليس حقيقة عن المرض، بل حقيقة عن اللحظة التي نظر فيها أحدهم. قدِّم النظر إلى وقت أبكر، فتضيف زمناً إلى مقدمة القياس دون أن تغيّر شيئاً في مؤخرته. وكل من يُشخَّص مبكراً مضمون له أن يتجاوز حاجز الخمس سنوات أكثر، لأنه مُنح سبقاً زمنياً. وهناك أثران آخران يدفعان في الاتجاه نفسه. فبرنامج الفحص الاستقصائي يلتقط المرض بطيء النمو أكثر بكثير من المرض سريع النمو، لمجرد أن المرض البطيء يمكث مدة أطول في انتظار من يكتشفه، والمرض البطيء أفضل مآلاً أصلاً. كما أن اختباراً شديد الحساسية يعثر على شذوذات غير مؤذية ما كانت لتسبب أي متاعب، فتُحتسب سرطانات شُفيت. الثلاثة جميعاً تجمّل البقاء دون أن تنقذ أحداً. الاختبار النزيه الوحيد هو أن تأخذ مجتمعاً سكانياً بأكمله، وتدعو نصفه إلى الفحص الاستقصائي، وتَعُدّ الوفيات لدى الجميع بدءاً من يوم الدعوة. وهناك برامج فحص استقصائي تجتاز هذا الاختبار، ولهذا بالضبط يستحق الأمر أن نصرّ عليه.",
+  "Survival rose for every cancer. Deaths did not follow.":
+    "ارتفع البقاء على قيد الحياة في كل سرطان. أما الوفيات فلم تتبعه.",
+  "Between 1950 and 1995, five-year survival improved for all 20 of the most common solid tumours in the United States, by as little as 3 points for pancreatic cancer and as much as 50 for prostate. Over the same years the death rate fell for 12 of those cancers and rose for the other 8. Comparing tumour by tumour, the change in survival was unrelated to the change in mortality, and instead tracked the change in how many cancers were being found.":
+    "بين عامي 1950 و1995، تحسّن البقاء على قيد الحياة لخمس سنوات في جميع الأورام الصلبة العشرين الأكثر شيوعاً في الولايات المتحدة، بما لا يزيد على 3 نقاط في سرطان البنكرياس وبما يبلغ 50 نقطة في سرطان البروستاتا. وخلال السنوات نفسها، انخفض معدل الوفيات في 12 من تلك السرطانات وارتفع في الثمانية الباقية. وبالمقارنة ورماً بورم، لم تكن للتغير في البقاء صلة بالتغير في الوفيات، بل واكب التغير في عدد السرطانات التي كانت تُكتشف.",
+  "Screening babies for a childhood tumour":
+    "فحص استقصائي للرُّضّع بحثاً عن ورم طفولي",
+  "Two large programmes tested screening infants for neuroblastoma. Quebec screened 476,654 children born over five years, with 92 percent taking part, and deaths from the tumour before the age of eight came to 4.78 per 100,000, no lower than in the comparison populations. Germany compared 1,475,773 screened children with 2,117,600 unscreened ones and found advanced disease in 3.7 against 3.8 per 100,000, and deaths in 1.3 against 1.2. More tumours were found. The same number of children died.":
+    "اختبر برنامجان كبيران الفحص الاستقصائي للرُّضّع بحثاً عن الورم الأرومي العصبي. فحصت كيبيك 476,654 طفلاً وُلدوا على مدى خمس سنوات، بمشاركة 92 بالمئة منهم، وبلغت الوفيات بهذا الورم قبل سن الثامنة 4.78 لكل 100,000، أي ليست أقل مما في مجموعات المقارنة. وقارنت ألمانيا 1,475,773 طفلاً خضعوا للفحص بـ 2,117,600 لم يخضعوا له، فوجدت مرضاً متقدماً لدى 3.7 مقابل 3.8 لكل 100,000، ووفيات 1.3 مقابل 1.2. اكتُشفت أورام أكثر. ومات العدد نفسه من الأطفال.",
+  "What a real benefit looks like": "كيف تبدو الفائدة الحقيقية",
+  "Screening is not doomed to be an illusion, it just has to be measured properly. A trial put 46,551 people aged 50 to 80 into three groups: yearly stool testing for hidden blood, testing every two years, or none. Over 13 years, deaths from colorectal cancer came to 5.88 per 1,000 in the yearly group against 8.83 in the unscreened group, a third fewer. That is a count of deaths in everyone invited, not survival from diagnosis, so no head start could have produced it.":
+    "ليس محتوماً على الفحص الاستقصائي أن يكون وهماً، عليه فقط أن يُقاس قياساً سليماً. وزّعت تجربة 46,551 شخصاً تتراوح أعمارهم بين 50 و80 عاماً على ثلاث مجموعات: فحص سنوي للبراز بحثاً عن دم خفي، أو فحص كل سنتين، أو لا فحص. وعلى مدى 13 سنة، بلغت الوفيات بسرطان القولون والمستقيم 5.88 لكل 1000 في المجموعة السنوية مقابل 8.83 في المجموعة التي لم تخضع للفحص، أي أقل بالثلث. وهذا عدٌّ للوفيات لدى كل من دُعي، لا بقاءً على قيد الحياة محسوباً من التشخيص، فما كان لسبق زمني أن ينتجه.",
+  "Lead-time bias, a reasoning trap.": "تحيز زمن السبق، فخ في الاستدلال.",
+  "Survival is counted from the day you are diagnosed. So a test that finds a disease earlier automatically makes survival look longer, even if it changes nothing about when the disease kills you. You simply spend more of your life as a patient. That is why a screening programme can raise five-year survival dramatically while exactly the same number of people die. The number that cannot be gamed is deaths in the whole population, not survival among the diagnosed.":
+    "يُحسب البقاء على قيد الحياة من يوم تشخيصك. لذا فإن اختباراً يكتشف المرض مبكراً يجعل البقاء يبدو أطول تلقائياً، حتى لو لم يغيّر شيئاً في موعد وفاتك بذلك المرض. أنت فقط تقضي جزءاً أكبر من حياتك مريضاً. لهذا يستطيع برنامج فحص استقصائي أن يرفع البقاء لخمس سنوات ارتفاعاً هائلاً بينما يموت العدد نفسه من الناس تماماً. الرقم الذي لا يمكن التلاعب به هو الوفيات في عموم السكان، لا البقاء بين المشخَّصين.",
+  "The timeline is a schematic illustration of one life, not measured data. The finding behind it is Welch and colleagues': across the 20 most common solid tumours between 1950 and 1995, five-year survival rose for every one, yet tumour by tumour the change in survival was uncorrelated with the change in mortality (Pearson r = 0.00) and instead tracked the change in incidence (Pearson r = 0.49).":
+    "الخط الزمني رسم تخطيطي يوضح حياة واحدة، وليس بيانات مقيسة. أما النتيجة التي يستند إليها فهي لويلش وزملائه: عبر الأورام الصلبة العشرين الأكثر شيوعاً بين عامي 1950 و1995، ارتفع البقاء على قيد الحياة لخمس سنوات في كل منها، ومع ذلك، ورماً بورم، لم يكن التغير في البقاء مرتبطاً بالتغير في الوفيات (معامل بيرسون r = 0.00) بل واكب التغير في معدل الحدوث (معامل بيرسون r = 0.49).",
+  "A hospital introduces a blood test that picks up a cancer about two years before symptoms would have appeared. Among patients diagnosed there, five-year survival rises from 41% to 68%. The hospital announces that the test is saving lives.":
+    "يستحدث مستشفى اختبار دم يكشف سرطاناً قبل نحو سنتين من ظهور الأعراض. وبين المرضى المشخَّصين فيه، يرتفع البقاء على قيد الحياة لخمس سنوات من 41% إلى 68%. فيعلن المستشفى أن الاختبار ينقذ الأرواح.",
+  "Survival is counted from diagnosis, and the diagnosis now happens two years sooner. Everyone gets a two-year head start towards the five-year mark, whether or not the test changed anyone's outcome.":
+    "البقاء على قيد الحياة يُحسب من التشخيص، والتشخيص صار يحدث قبل سنتين. فيحصل الجميع على سبق زمني قدره سنتان نحو حاجز الخمس سنوات، سواء غيّر الاختبار نتيجة أحد أم لم يغيّرها.",
+  "A national registry reports that the average time between diagnosis and death for a disease has risen from three years to six since a new scan came into routine use. A minister says patients now live twice as long.":
+    "يُفيد سجل وطني بأن متوسط المدة بين التشخيص والوفاة في أحد الأمراض ارتفع من ثلاث سنوات إلى ست منذ دخول تصوير جديد في الاستخدام الروتيني. فيقول وزير إن المرضى صاروا يعيشون ضعف ما كانوا يعيشون.",
+  "Time from diagnosis to death can double purely because the diagnosis moved earlier. To claim people live longer you have to show that death is arriving later, not that the label is arriving sooner.":
+    "قد تتضاعف المدة من التشخيص إلى الوفاة لمجرد أن التشخيص تقدّم إلى وقت أبكر. ولكي تدّعي أن الناس يعيشون مدة أطول، عليك أن تبيّن أن الوفاة تأتي متأخرة، لا أن التسمية تأتي مبكرة.",
+  "A region invites half its residents, chosen at random, to be screened for a disease and leaves the other half uninvited. Ten years on it counts deaths from that disease among everyone in both halves, screened or not, attended or not. Deaths are 30% lower in the invited half.":
+    "تدعو منطقة نصف سكانها، مختارين عشوائياً، إلى فحص استقصائي لمرض ما، وتترك النصف الآخر دون دعوة. وبعد عشر سنوات، تَعُدّ الوفيات بذلك المرض لدى الجميع في النصفين، من خضع للفحص ومن لم يخضع، ومن لبّى الدعوة ومن لم يلبِّها. فتكون الوفيات أقل بنسبة 30% في النصف المدعو.",
+  "This is the design an earlier diagnosis cannot fool. The clock starts at the invitation rather than at diagnosis, and the count includes everyone invited, so no head start and no extra diagnoses can manufacture the difference.":
+    "هذا هو التصميم الذي لا يستطيع تشخيص أبكر أن يخدعه. فالساعة تبدأ عند الدعوة لا عند التشخيص، والعدّ يشمل كل من دُعي، لذا لا يستطيع سبق زمني ولا تشخيصات إضافية أن تصنع هذا الفارق.",
+
+  // ---- Tag blurbs (browse screen) ----
+  "Anyone can fall for it": "يقع فيه أي أحد",
+  "Bites at the bedside": "يلدغ عند سرير المريض",
+  "Study design & evidence appraisal": "تصميم الدراسات وتقييم الأدلة",
+  "Reading the numbers": "قراءة الأرقام",
+  "Tests & diagnostic reasoning": "الاختبارات والاستدلال التشخيصي",
+  "Screening programmes": "برامج الفحص الاستقصائي",
+  "Populations, exposure & risk": "السكان والتعرض والخطر",
+  "Drugs & drug safety": "الأدوية وسلامتها",
+  "Mind & behaviour": "العقل والسلوك",
+  "Life & evolution": "الحياة والتطور",
+  "Data, computing & AI": "البيانات والحوسبة والذكاء الاصطناعي",
+  "Markets & incentives": "الأسواق والحوافز",
+  "Elections & policy": "الانتخابات والسياسات",
+  "Teaching & testing": "التدريس والاختبارات",
+  "Investing & returns": "الاستثمار والعوائد",
+  "Management & strategy": "الإدارة والاستراتيجية",
+  "Courts & forensics": "المحاكم والأدلة الجنائية",
+  "Performance & records": "الأداء والأرقام القياسية",
+  "The past & how we read it": "الماضي وكيف نقرؤه",
+  "News & the numbers in it": "الأخبار والأرقام التي فيها",
+
+  // ---- Odds and ends (chart short labels, timeline scope tags) ----
+  A: "A",
+  B: "B",
+  "From diagnosis": "من التشخيص",
+  "The whole life": "الحياة كاملة",
 };

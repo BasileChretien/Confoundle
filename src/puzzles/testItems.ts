@@ -156,7 +156,39 @@ const items: TestItem[] = [
     },
   },
 
+  // ---- Lead-time bias ----
+  {
+    id: "lt-bloodtest",
+    scenario: {
+      en: "A hospital introduces a blood test that picks up a cancer about two years before symptoms would have appeared. Among patients diagnosed there, five-year survival rises from 41% to 68%. The hospital announces that the test is saving lives.",
+    },
+    trap: "lead-time-bias",
+    explanation: {
+      en: "Survival is counted from diagnosis, and the diagnosis now happens two years sooner. Everyone gets a two-year head start towards the five-year mark, whether or not the test changed anyone's outcome.",
+    },
+  },
+  {
+    id: "lt-registry",
+    scenario: {
+      en: "A national registry reports that the average time between diagnosis and death for a disease has risen from three years to six since a new scan came into routine use. A minister says patients now live twice as long.",
+    },
+    trap: "lead-time-bias",
+    explanation: {
+      en: "Time from diagnosis to death can double purely because the diagnosis moved earlier. To claim people live longer you have to show that death is arriving later, not that the label is arriving sooner.",
+    },
+  },
+
   // ---- Genuinely sound reasoning (decoys) ----
+  {
+    id: "ok-screening-mortality",
+    scenario: {
+      en: "A region invites half its residents, chosen at random, to be screened for a disease and leaves the other half uninvited. Ten years on it counts deaths from that disease among everyone in both halves, screened or not, attended or not. Deaths are 30% lower in the invited half.",
+    },
+    trap: null,
+    explanation: {
+      en: "This is the design an earlier diagnosis cannot fool. The clock starts at the invitation rather than at diagnosis, and the count includes everyone invited, so no head start and no extra diagnoses can manufacture the difference.",
+    },
+  },
   {
     id: "ok-no-migration",
     scenario: {

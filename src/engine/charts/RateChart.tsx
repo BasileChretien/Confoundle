@@ -1,9 +1,14 @@
-import type { DataViewKind, Group, RatesData } from "../../puzzles/schema";
+import type { DataView, RatesData } from "../../puzzles/schema";
 import { useT } from "../../app/i18n";
 import { useReducedMotion } from "../useReducedMotion";
 import { useCountUp } from "../useCountUp";
 import { colorFor } from "./palette";
-import { aggregateRates, bestGroupId, stratifiedRates } from "./rates";
+import {
+  aggregateRates,
+  bestGroupId,
+  restrictRates,
+  stratifiedRates,
+} from "./rates";
 
 interface BarProps {
   pct: number; // 0..100
@@ -60,7 +65,7 @@ function Bar({ pct, colorHex, label, sub, winner, animate }: BarProps) {
 
 export interface RateChartProps {
   data: RatesData;
-  view: DataViewKind;
+  view: DataView;
   animate: boolean;
   /** Mark the winning bar within each view (gold, the truth as it shifts). */
   highlightWinner?: boolean;
@@ -73,15 +78,20 @@ export function RateChart({
   highlightWinner = false,
 }: RateChartProps) {
   const t = useT();
+  // Colours are indexed off the FULL group list, so a group keeps its colour
+  // even in a view that only draws some of them.
   const indexOfGroup = new Map(data.groups.map((g, i) => [g.id, i]));
-  const shortLabel = (g: Group) => t(g.short ?? g.label);
+  const shown = restrictRates(data, view);
+  const shortLabel = (g: { label: typeof data.groups[number]["label"]; short?: typeof data.groups[number]["short"] }) =>
+    t(g.short ?? g.label);
   const groupById = (id: string) => data.groups.find((g) => g.id === id)!;
 
-  if (view === "aggregate") {
-    const rates = aggregateRates(data);
-    const winner = highlightWinner
-      ? bestGroupId(rates, data.higherIsBetter)
-      : null;
+  if (view.kind === "aggregate") {
+    const rates = aggregateRates(shown);
+    const winner =
+      highlightWinner && shown.crownWinner !== false
+        ? bestGroupId(rates, shown.higherIsBetter)
+        : null;
     return (
       <div className="flex items-end justify-center gap-10 px-2">
         {rates.map((r) => (
@@ -99,14 +109,15 @@ export function RateChart({
     );
   }
 
-  const strata = stratifiedRates(data);
+  const strata = stratifiedRates(shown);
   return (
-    <div className="grid grid-cols-2 gap-2.5">
+    <div className={strata.length === 1 ? "grid grid-cols-1" : "grid grid-cols-2 gap-2.5"}>
       {strata.map((s) => {
-        const stratum = data.strata.find((x) => x.id === s.stratumId)!;
-        const winner = highlightWinner
-          ? bestGroupId(s.rates, data.higherIsBetter)
-          : null;
+        const stratum = shown.strata.find((x) => x.id === s.stratumId)!;
+        const winner =
+          highlightWinner && shown.crownWinner !== false
+            ? bestGroupId(s.rates, shown.higherIsBetter)
+            : null;
         return (
           <div key={s.stratumId} className="rounded-md border border-rule bg-paper/50 p-2.5">
             <div className="mb-1.5 text-center font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-soft">
@@ -132,20 +143,25 @@ export function RateChart({
   );
 }
 
-export function Legend({ data }: { data: RatesData }) {
+export function Legend({ data, view }: { data: RatesData; view?: DataView }) {
   const t = useT();
+  // Name only the groups actually on screen, but keep each one's colour.
+  const shownIds = new Set(restrictRates(data, view).groups.map((g) => g.id));
   return (
     <ul className="mt-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs text-ink-soft">
-      {data.groups.map((g, i) => (
-        <li key={g.id} className="inline-flex items-center gap-1.5">
-          <span
-            className="h-2.5 w-2.5 shrink-0 rounded-[2px] ring-1 ring-inset ring-black/15"
-            style={{ backgroundColor: colorFor(i) }}
-            aria-hidden="true"
-          />
-          <span>{t(g.label)}</span>
-        </li>
-      ))}
+      {data.groups
+        .map((g, i) => ({ g, i }))
+        .filter(({ g }) => shownIds.has(g.id))
+        .map(({ g, i }) => (
+          <li key={g.id} className="inline-flex items-center gap-1.5">
+            <span
+              className="h-2.5 w-2.5 shrink-0 rounded-[2px] ring-1 ring-inset ring-black/15"
+              style={{ backgroundColor: colorFor(i) }}
+              aria-hidden="true"
+            />
+            <span>{t(g.label)}</span>
+          </li>
+        ))}
     </ul>
   );
 }

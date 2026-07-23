@@ -44,6 +44,22 @@ const RatesData = z.object({
   type: z.literal("rates"),
   metricLabel: LocalizedText, // "Success rate"
   higherIsBetter: z.boolean().default(true),
+  /**
+   * Whether the taller bar is a winner worth marking. Not every rate is a
+   * contest: "share of these people who also had a second disease" has no good
+   * side, and crowning the higher bar would assert a finding the data does not
+   * support. Off means no bar is marked in any view.
+   */
+  crownWinner: z.boolean().optional(),
+  /**
+   * Normally the strata partition one population (small stones / large
+   * stones), so pooling them is meaningful and their sizes are a case mix.
+   * Set this when they are instead separate samples set side by side, possibly
+   * overlapping or nested (hospital patients inside a community survey). Then
+   * pooling them would be nonsense and stacking their sizes into one bar would
+   * be a lie, so the engine does neither.
+   */
+  strataAreSeparateSamples: z.boolean().optional(),
   groups: z.array(Group).min(2),
   strata: z.array(Stratum).min(1), // a single stratum => a non-stratified puzzle
   observations: z.array(Observation).min(1),
@@ -96,27 +112,75 @@ const SurvivorshipData = z.object({
 });
 export type SurvivorshipData = z.infer<typeof SurvivorshipData>;
 
+/**
+ * One life on an axis, drawn once per track. Lead-time bias cannot be told with
+ * rates: the claim is not "which group did better" but "the clock started
+ * earlier", so it needs the same span of time shown two ways. Screening moves
+ * `detectedAt` earlier; `diedAt` is what the puzzle turns on.
+ *
+ * The figure is schematic (like the bomber diagram), so the numbers here are an
+ * illustration, not a measurement. The puzzle's factual claim still needs
+ * `provenance`, and a puzzle-level test proves the property it teaches.
+ */
+export const TimelineTrack = z.object({
+  id: z.string().min(1),
+  label: LocalizedText, // "Found by screening"
+  onsetAt: z.number().nonnegative(), // when the disease actually began
+  detectedAt: z.number().nonnegative(), // when it was found
+  diedAt: z.number().nonnegative(), // when the person died
+});
+export type TimelineTrack = z.infer<typeof TimelineTrack>;
+
+const TimelineData = z.object({
+  type: z.literal("timeline"),
+  label: LocalizedText, // figure title
+  unit: LocalizedText, // "years"
+  span: z.number().positive(), // total axis length
+  onsetLabel: LocalizedText, // "disease begins"
+  detectedLabel: LocalizedText, // "diagnosed"
+  diedLabel: LocalizedText, // "died"
+  survivalLabel: LocalizedText, // "survival after diagnosis"
+  tracks: z.array(TimelineTrack).min(2),
+});
+export type TimelineData = z.infer<typeof TimelineData>;
+
 /** Discriminated by `type`. Add new members here to support new data shapes. */
 export const PuzzleData = z.discriminatedUnion("type", [
   RatesData,
   FrequenciesData,
   CausalData,
   SurvivorshipData,
+  TimelineData,
 ]);
 export type PuzzleData = z.infer<typeof PuzzleData>;
 
 /* ---------------------------------------------------------------------------
  * Data views, how a beat renders the data. The engine dispatches on `kind`.
  * ------------------------------------------------------------------------- */
+/**
+ * Fields every view carries. `groupIds` / `strataIds` draw only part of the
+ * data: a setup beat often needs to show the slice that creates the illusion
+ * and hold the rest back for the reveal (Berkson's bias is exactly this, the
+ * hospital sample looks damning until the community sample lands beside it).
+ * Omitted means "draw everything", so existing puzzles are untouched.
+ */
+const viewFields = {
+  caption: LocalizedText.optional(),
+  groupIds: z.array(z.string().min(1)).min(1).optional(),
+  strataIds: z.array(z.string().min(1)).min(1).optional(),
+};
+
 export const DataView = z.discriminatedUnion("kind", [
-  z.object({ kind: z.literal("aggregate"), caption: LocalizedText.optional() }),
-  z.object({ kind: z.literal("stratified"), caption: LocalizedText.optional() }),
-  z.object({ kind: z.literal("headline"), caption: LocalizedText.optional() }),
-  z.object({ kind: z.literal("breakdown"), caption: LocalizedText.optional() }),
-  z.object({ kind: z.literal("trend"), caption: LocalizedText.optional() }),
-  z.object({ kind: z.literal("cause"), caption: LocalizedText.optional() }),
-  z.object({ kind: z.literal("damage"), caption: LocalizedText.optional() }),
-  z.object({ kind: z.literal("armor"), caption: LocalizedText.optional() }),
+  z.object({ kind: z.literal("aggregate"), ...viewFields }),
+  z.object({ kind: z.literal("stratified"), ...viewFields }),
+  z.object({ kind: z.literal("headline"), ...viewFields }),
+  z.object({ kind: z.literal("breakdown"), ...viewFields }),
+  z.object({ kind: z.literal("trend"), ...viewFields }),
+  z.object({ kind: z.literal("cause"), ...viewFields }),
+  z.object({ kind: z.literal("damage"), ...viewFields }),
+  z.object({ kind: z.literal("armor"), ...viewFields }),
+  z.object({ kind: z.literal("survival"), ...viewFields }),
+  z.object({ kind: z.literal("lifespan"), ...viewFields }),
 ]);
 export type DataView = z.infer<typeof DataView>;
 export type DataViewKind = DataView["kind"];
@@ -229,6 +293,10 @@ export const Puzzle = z
       body: LocalizedText.optional(),
       // The callout's small eyebrow above it (default "The lurking variable").
       mechanismLabel: LocalizedText.optional(),
+      // Heading over the case-mix bars, which are only drawn for stratified
+      // rates data (default "Who each treatment actually treated"). Not every
+      // stratified puzzle is comparing treatments.
+      caseMixLabel: LocalizedText.optional(),
     }),
 
     lesson: z.object({
@@ -324,6 +392,51 @@ export const Puzzle = z
         }
       }
 
+      // Separate samples must never be pooled: an "overall" bar across a
+      // community survey and the hospital subset inside it counts people twice
+      // and means nothing.
+      if (d.strataAreSeparateSamples) {
+        for (const [where, view] of [
+          ["initialView", p.setup.initialView],
+          ["reveal.view", p.reveal.view],
+        ] as const) {
+          if (view.kind === "aggregate") {
+            ctx.addIssue({
+              code: z.ZodIssueCode.custom,
+              path: [where, "kind"],
+              message:
+                "cannot pool strata that are separate samples (strataAreSeparateSamples is set)",
+            });
+          }
+        }
+      }
+
+      // A view that filters to a group or stratum must name one that exists,
+      // otherwise the beat silently renders an empty chart.
+      for (const [where, view] of [
+        ["initialView", p.setup.initialView],
+        ["reveal.view", p.reveal.view],
+      ] as const) {
+        for (const id of view.groupIds ?? []) {
+          if (!groupIds.has(id)) {
+            ctx.addIssue({
+              code: z.ZodIssueCode.custom,
+              path: [where, "groupIds"],
+              message: `unknown group id "${id}"`,
+            });
+          }
+        }
+        for (const id of view.strataIds ?? []) {
+          if (!stratumIds.has(id)) {
+            ctx.addIssue({
+              code: z.ZodIssueCode.custom,
+              path: [where, "strataIds"],
+              message: `unknown stratum id "${id}"`,
+            });
+          }
+        }
+      }
+
       // Choice ids deliberately need NOT name a group. Some paradoxes have no
       // winning group: the Will Rogers phenomenon's honest answer is "nothing
       // changed". Nothing in the renderers resolves a choice id to a group
@@ -356,6 +469,46 @@ export const Puzzle = z
           message: `false positives (${d.positiveGivenNoCondition}) exceed those without the condition (${without})`,
         });
       }
+    }
+
+    if (p.setup.data.type === "timeline") {
+      const d = p.setup.data;
+      const seen = new Set<string>();
+      d.tracks.forEach((tr, i) => {
+        const at = (k: string) => ["setup", "data", "tracks", i, k];
+        if (seen.has(tr.id)) {
+          ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            path: at("id"),
+            message: `duplicate track id "${tr.id}"`,
+          });
+        }
+        seen.add(tr.id);
+        // A life runs one way: it starts, it is found, it ends, inside the axis.
+        // Which of those instants differ between tracks is the puzzle's business
+        // (and its test's); that they are ordered at all is structural.
+        if (!(tr.onsetAt <= tr.detectedAt)) {
+          ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            path: at("detectedAt"),
+            message: `detectedAt (${tr.detectedAt}) precedes onsetAt (${tr.onsetAt})`,
+          });
+        }
+        if (!(tr.detectedAt <= tr.diedAt)) {
+          ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            path: at("diedAt"),
+            message: `diedAt (${tr.diedAt}) precedes detectedAt (${tr.detectedAt})`,
+          });
+        }
+        if (!(tr.diedAt <= d.span)) {
+          ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            path: at("diedAt"),
+            message: `diedAt (${tr.diedAt}) runs past the axis span (${d.span})`,
+          });
+        }
+      });
     }
   });
 export type Puzzle = z.infer<typeof Puzzle>;

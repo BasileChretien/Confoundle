@@ -1,7 +1,19 @@
 # Design note: the `timeline` data shape (for lead-time bias)
 
-Status: **designed, not built.** Written at the end of a long session so the next
-one can start immediately instead of rediscovering this.
+Status: **built and shipped**, in `stage-migration`'s successor `lead-time`
+(puzzle #7). Kept as the record of why the shape looks like this, and of the two
+places the build deliberately departed from the plan:
+
+1. **Death alignment is proved by a test, not by the schema.** The plan wanted a
+   superRefine forcing `diedAt` equal across tracks. That would have been right
+   for lead-time and wrong for the next two tenants of this shape: length-time
+   and immortal time bias do not align their deaths. The schema now enforces
+   only what is structurally true of any life (`onsetAt <= detectedAt <= diedAt
+   <= span`), and `data/lead-time.test.ts` asserts the alignment that *this*
+   puzzle turns on, exactly as `will-rogers.test.ts` proves its own paradox.
+2. **The tracks carry three more labels** than the sketch: `detectedLabel`,
+   `diedLabel` and `survivalLabel`. The renderer needs to name the markers and
+   the survival bar, and every user-facing string has to be one a puzzle owns.
 
 ## Why a new shape
 
@@ -47,20 +59,28 @@ Two `DataView` kinds, matching the setup/reveal rhythm:
 The reveal is the alignment of the two death markers. That is the entire lesson,
 so the renderer should make that vertical line unmissable.
 
-## Build checklist
+## Build checklist (all done)
 
-1. `schema.ts`: add `TimelineData` to the `PuzzleData` union, add `survival` and
-   `lifespan` to the `DataView` union. Add a superRefine: `diedAt` must be equal
-   across tracks (that equality IS the paradox), and `onsetAt <= detectedAt <=
-   diedAt <= span` on every track.
-2. `charts/timeline.ts`: pure derivation plus a unit test asserting the two
-   survival-from-diagnosis durations differ while the death instants match.
+1. `schema.ts`: `TimelineData` in the `PuzzleData` union, `survival` and
+   `lifespan` in the `DataView` union, superRefine on track ordering.
+2. `charts/timeline.ts`: pure derivation plus `timeline.test.ts`.
 3. `charts/TimelineView.tsx`: the renderer. Horizontal, works at 375px wide.
-4. `DataViewRenderer.tsx`: one new `case "timeline"`, plus `scopeLabel` entries
-   for the two new kinds.
-5. `ShareCard.tsx`: a `TimelineGlyph` on the dark plate (two lines, aligned
-   death markers) and its dispatch branch.
-6. The puzzle data file, then Trap Hunt items, then the nine translations.
+4. `DataViewRenderer.tsx`: `case "timeline"` plus the two `scopeLabel` entries.
+5. `ShareCard.tsx`: `TimelineGlyph` on the dark plate and its dispatch branch.
+6. The puzzle data file, Trap Hunt items, nine translations.
+
+## What the next tenant needs
+
+**Length-time bias** and **immortal time bias** reuse the shape but not the
+`lifespan` view, because their reveal is not an alignment:
+
+- Length-time needs several tracks with *different* `onsetAt`-to-`diedAt`
+  lengths, and a view that shows which ones a periodic screen is likely to
+  catch (the slow ones sit in the detectable window longer). Probably a new
+  `sampled` view kind rather than a change to the shape.
+- Immortal time needs a stretch of a track marked as "counted as exposed but
+  could not have died yet". That is one more optional field on a track, plus a
+  view that shades it.
 
 ## Content: sourcing lead-time bias
 

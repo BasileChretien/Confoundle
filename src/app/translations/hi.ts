@@ -472,4 +472,96 @@ export const hi: Record<string, string> = {
     "एक अस्पताल बताता है कि पाँच साल में हर गंभीरता स्तर में उत्तरजीविता सुधरी है। वह यह भी बताता है कि इस दौरान स्तर तय करने के मानदंड नहीं बदले, कोई नई नैदानिक जाँच शुरू नहीं की गई, और हर स्तर में मरीज़ों की संख्या लगभग वही रही।",
   "This is the case where the improvement is real. Nothing reclassified the patients, and the grades held the same share of people, so no reshuffling could have manufactured the gain.":
     "यह वह मामला है जहाँ सुधार असली है। किसी चीज़ ने मरीज़ों का वर्गीकरण नहीं बदला, और हर स्तर में लोगों का हिस्सा वही रहा, इसलिए कोई फेरबदल इस बढ़त को गढ़ नहीं सकता था।",
+
+  // ---- Lead-time bias (puzzle #7) ----
+  "Screened patients survive five years after diagnosis. Unscreened ones survive two.":
+    "जिन मरीज़ों की स्क्रीनिंग हुई वे निदान के बाद पाँच साल जीते हैं। जिनकी नहीं हुई वे दो साल।",
+  "The same cancer, growing at the same speed, treated the same way. One person had a scan that found it early. The other went to a doctor years later, when the first symptom appeared. Survival is counted from the day of diagnosis, which is how survival is almost always counted.":
+    "वही कैंसर, उसी रफ़्तार से बढ़ता हुआ, उसी तरह इलाज किया गया। एक व्यक्ति ने स्कैन कराया जिसने उसे जल्दी पकड़ लिया। दूसरा कई साल बाद डॉक्टर के पास गया, जब पहला लक्षण उभरा। उत्तरजीविता निदान वाले दिन से गिनी जाती है, और उत्तरजीविता लगभग हमेशा इसी तरह गिनी जाती है।",
+  "Did finding it early give this person more time alive?":
+    "क्या जल्दी पता चल जाने से इस व्यक्ति को जीने के लिए ज़्यादा समय मिला?",
+  "One life, two moments of diagnosis": "एक ज़िंदगी, निदान के दो पल",
+  years: "साल",
+  "cancer begins": "कैंसर शुरू",
+  diagnosed: "निदान",
+  died: "मृत्यु",
+  "Survival counted from diagnosis": "निदान से गिनी गई उत्तरजीविता",
+  "Found when symptoms appeared": "लक्षण आने पर पता चला",
+  "Found early, by screening": "स्क्रीनिंग से जल्दी पता चला",
+  "Yes, three extra years": "हाँ, तीन साल ज़्यादा",
+  "five instead of two": "दो के बजाय पाँच",
+  "No, not one extra day": "नहीं, एक दिन भी ज़्यादा नहीं",
+  "only the clock moved": "सिर्फ़ घड़ी खिसकी",
+  "Both died on exactly the same day.":
+    "दोनों की मृत्यु ठीक एक ही दिन हुई।",
+  "The clock started earlier, the life did not get longer":
+    "घड़ी पहले चल पड़ी, ज़िंदगी लंबी नहीं हुई",
+  "Screening did not postpone anything. It moved the diagnosis three years earlier, so this person spent three more years knowing they had cancer. Counted from diagnosis that reads as three extra years of survival. Put both lives on the same calendar and they end at the same instant:":
+    "स्क्रीनिंग ने कुछ भी टाला नहीं। उसने निदान को तीन साल पहले खिसका दिया, इसलिए इस व्यक्ति ने तीन साल और यह जानते हुए बिताए कि उसे कैंसर है। निदान से गिनने पर यह तीन साल ज़्यादा उत्तरजीविता जैसा पढ़ा जाता है। दोनों ज़िंदगियों को एक ही कैलेंडर पर रखिए और वे ठीक एक ही पल पर खत्म होती हैं:",
+  "The extra years": "वे अतिरिक्त साल",
+  "Lead-time bias": "लीड टाइम पूर्वाग्रह",
+  "Finding a disease earlier stretches survival measured from diagnosis even when it postpones death by not a single day.":
+    "बीमारी का पहले पता चल जाना निदान से मापी गई उत्तरजीविता को खींचकर लंबा कर देता है, भले ही वह मृत्यु को एक दिन भी न टाले।",
+  "This does not mean early detection is worthless. It means survival from diagnosis cannot tell you whether it worked. Whenever survival improves after a new test arrives, ask whether people are living longer or simply being told sooner. The measure that cannot be fooled this way is the death rate in the whole population, screened and unscreened alike.":
+    "इसका मतलब यह नहीं कि जल्दी पता लगाना बेकार है। मतलब यह है कि निदान से गिनी गई उत्तरजीविता आपको यह नहीं बता सकती कि वह काम आया या नहीं। जब भी कोई नई जाँच आने के बाद उत्तरजीविता सुधरे, तो पूछिए कि लोग सचमुच ज़्यादा जी रहे हैं या उन्हें बस पहले बता दिया गया है। जिस पैमाने को इस तरह धोखा नहीं दिया जा सकता, वह है पूरी आबादी में मृत्यु दर, स्क्रीनिंग वालों और बिना स्क्रीनिंग वालों, दोनों को मिलाकर।",
+  "Survival statistics start their clock on the day of diagnosis. That day is not a fact about the disease, it is a fact about when somebody looked. Move the looking earlier and you add time to the front of the measurement while changing nothing at the back. Everyone diagnosed early is guaranteed to clear the five-year mark more often, because they were handed a head start. Two other effects push the same way. A screening programme catches slow-growing disease far more often than fast-growing disease, simply because slow disease sits there longer waiting to be found, and slow disease has a better outlook anyway. And a sensitive enough test finds harmless abnormalities that would never have caused trouble, which are then counted as cured cancers. All three flatter survival without saving anyone. The only honest test is to take a whole population, invite half of it to be screened, and count deaths in everyone from the day of the invitation. Screening programmes that pass that test exist, which is exactly why the test is worth insisting on.":
+    "उत्तरजीविता के आँकड़े अपनी घड़ी निदान वाले दिन से शुरू करते हैं। वह दिन बीमारी के बारे में कोई तथ्य नहीं है, वह इस बारे में तथ्य है कि किसी ने कब देखा। देखने का समय पहले खिसका दीजिए और आप माप के अगले सिरे पर समय जोड़ देते हैं, जबकि पिछले सिरे पर कुछ भी नहीं बदलता। जिनका निदान जल्दी हो जाता है वे पाँच साल का पड़ाव ज़्यादा बार पार करेंगे ही, क्योंकि उन्हें शुरुआती बढ़त थमा दी गई थी। दो और असर इसी दिशा में धकेलते हैं। स्क्रीनिंग कार्यक्रम धीमे बढ़ने वाली बीमारी को तेज़ बढ़ने वाली बीमारी के मुकाबले कहीं ज़्यादा बार पकड़ता है, सिर्फ़ इसलिए कि धीमी बीमारी पकड़ में आने के इंतज़ार में ज़्यादा देर तक पड़ी रहती है, और धीमी बीमारी का नतीजा वैसे भी बेहतर होता है। और पर्याप्त संवेदनशील जाँच ऐसी हानिरहित असामान्यताएँ भी खोज निकालती है जो कभी कोई परेशानी खड़ी ही नहीं करतीं, और फिर उन्हें ठीक हो चुके कैंसर के रूप में गिन लिया जाता है। तीनों ही उत्तरजीविता की छवि चमकाते हैं, बिना किसी को बचाए। एकमात्र ईमानदार कसौटी यह है कि पूरी आबादी लीजिए, उसके आधे हिस्से को स्क्रीनिंग के लिए बुलाइए, और बुलावे वाले दिन से सभी में मौतें गिनिए। ऐसे स्क्रीनिंग कार्यक्रम मौजूद हैं जो इस कसौटी पर खरे उतरते हैं, और ठीक इसीलिए इस कसौटी पर अड़े रहना सार्थक है।",
+  "Survival rose for every cancer. Deaths did not follow.":
+    "हर कैंसर में उत्तरजीविता बढ़ी। मौतें साथ नहीं चलीं।",
+  "Between 1950 and 1995, five-year survival improved for all 20 of the most common solid tumours in the United States, by as little as 3 points for pancreatic cancer and as much as 50 for prostate. Over the same years the death rate fell for 12 of those cancers and rose for the other 8. Comparing tumour by tumour, the change in survival was unrelated to the change in mortality, and instead tracked the change in how many cancers were being found.":
+    "1950 और 1995 के बीच, अमेरिका के सबसे आम 20 ठोस ट्यूमरों में से हर एक के लिए पाँच साल की उत्तरजीविता सुधरी, अग्न्याशय के कैंसर में महज़ 3 अंक और प्रोस्टेट में पूरे 50 अंक तक। उन्हीं वर्षों में उनमें से 12 कैंसरों की मृत्यु दर गिरी और बाकी 8 की बढ़ी। ट्यूमर दर ट्यूमर तुलना करने पर, उत्तरजीविता के बदलाव का मृत्यु दर के बदलाव से कोई नाता नहीं था; वह इसके बजाय इस बात के साथ चलता था कि कितने कैंसर खोजे जा रहे थे।",
+  "Screening babies for a childhood tumour":
+    "बचपन के एक ट्यूमर के लिए शिशुओं की स्क्रीनिंग",
+  "Two large programmes tested screening infants for neuroblastoma. Quebec screened 476,654 children born over five years, with 92 percent taking part, and deaths from the tumour before the age of eight came to 4.78 per 100,000, no lower than in the comparison populations. Germany compared 1,475,773 screened children with 2,117,600 unscreened ones and found advanced disease in 3.7 against 3.8 per 100,000, and deaths in 1.3 against 1.2. More tumours were found. The same number of children died.":
+    "दो बड़े कार्यक्रमों ने न्यूरोब्लास्टोमा के लिए शिशुओं की स्क्रीनिंग को परखा। क्यूबेक ने पाँच साल में जन्मे 476,654 बच्चों की स्क्रीनिंग की, जिसमें 92 प्रतिशत ने हिस्सा लिया, और आठ साल की उम्र से पहले इस ट्यूमर से हुई मौतें प्रति 100,000 पर 4.78 रहीं, यानी तुलना वाली आबादियों से कुछ भी कम नहीं। जर्मनी ने स्क्रीनिंग वाले 1,475,773 बच्चों की तुलना बिना स्क्रीनिंग वाले 2,117,600 बच्चों से की और उन्नत बीमारी प्रति 100,000 पर 3.7 बनाम 3.8 पाई, और मौतें 1.3 बनाम 1.2। ज़्यादा ट्यूमर मिले। मरने वाले बच्चों की संख्या वही रही।",
+  "What a real benefit looks like": "असली फ़ायदा कैसा दिखता है",
+  "Screening is not doomed to be an illusion, it just has to be measured properly. A trial put 46,551 people aged 50 to 80 into three groups: yearly stool testing for hidden blood, testing every two years, or none. Over 13 years, deaths from colorectal cancer came to 5.88 per 1,000 in the yearly group against 8.83 in the unscreened group, a third fewer. That is a count of deaths in everyone invited, not survival from diagnosis, so no head start could have produced it.":
+    "स्क्रीनिंग का भ्रम बनकर रह जाना तय नहीं है, बस उसे सही ढंग से मापना होता है। एक परीक्षण ने 50 से 80 साल के 46,551 लोगों को तीन समूहों में बाँटा: हर साल मल में छिपे खून की जाँच, हर दो साल पर जाँच, या कोई जाँच नहीं। 13 साल में, कोलोरेक्टल कैंसर से हुई मौतें हर साल जाँच वाले समूह में प्रति 1,000 पर 5.88 रहीं, जबकि बिना स्क्रीनिंग वाले समूह में 8.83, यानी एक तिहाई कम। यह उन सभी लोगों में मौतों की गिनती है जिन्हें बुलाया गया था, निदान से गिनी गई उत्तरजीविता नहीं, इसलिए कोई शुरुआती बढ़त इसे पैदा नहीं कर सकती थी।",
+  "Lead-time bias, a reasoning trap.":
+    "लीड टाइम पूर्वाग्रह, तर्क का एक जाल।",
+  "Survival is counted from the day you are diagnosed. So a test that finds a disease earlier automatically makes survival look longer, even if it changes nothing about when the disease kills you. You simply spend more of your life as a patient. That is why a screening programme can raise five-year survival dramatically while exactly the same number of people die. The number that cannot be gamed is deaths in the whole population, not survival among the diagnosed.":
+    "उत्तरजीविता उस दिन से गिनी जाती है जिस दिन आपका निदान होता है। इसलिए जो जाँच बीमारी को पहले पकड़ लेती है, वह अपने आप उत्तरजीविता को लंबा दिखा देती है, भले ही वह इस बारे में कुछ न बदले कि बीमारी आपको कब मारेगी। बस आप अपनी ज़िंदगी का ज़्यादा हिस्सा मरीज़ बनकर बिताते हैं। यही वजह है कि कोई स्क्रीनिंग कार्यक्रम पाँच साल की उत्तरजीविता को नाटकीय ढंग से बढ़ा सकता है, जबकि मरने वालों की संख्या ठीक उतनी ही रहती है। जिस संख्या के साथ खिलवाड़ नहीं किया जा सकता वह है पूरी आबादी में मौतें, न कि जिनका निदान हुआ उनकी उत्तरजीविता।",
+  "The timeline is a schematic illustration of one life, not measured data. The finding behind it is Welch and colleagues': across the 20 most common solid tumours between 1950 and 1995, five-year survival rose for every one, yet tumour by tumour the change in survival was uncorrelated with the change in mortality (Pearson r = 0.00) and instead tracked the change in incidence (Pearson r = 0.49).":
+    "यह समयरेखा एक ज़िंदगी का योजनाबद्ध चित्रण है, मापे गए आँकड़े नहीं। इसके पीछे का निष्कर्ष Welch और सहयोगियों का है: 1950 और 1995 के बीच सबसे आम 20 ठोस ट्यूमरों में से हर एक के लिए पाँच साल की उत्तरजीविता बढ़ी, फिर भी ट्यूमर दर ट्यूमर देखने पर उत्तरजीविता के बदलाव का मृत्यु दर के बदलाव से कोई सहसंबंध नहीं था (Pearson r = 0.00), और वह इसके बजाय नए मामलों की दर के बदलाव के साथ चलता था (Pearson r = 0.49)।",
+  // trap hunt items (lead-time bias)
+  "A hospital introduces a blood test that picks up a cancer about two years before symptoms would have appeared. Among patients diagnosed there, five-year survival rises from 41% to 68%. The hospital announces that the test is saving lives.":
+    "एक अस्पताल ऐसी रक्त जाँच शुरू करता है जो कैंसर को लक्षण उभरने से करीब दो साल पहले पकड़ लेती है। वहाँ जिन मरीज़ों का निदान होता है, उनमें पाँच साल की उत्तरजीविता 41% से बढ़कर 68% हो जाती है। अस्पताल घोषणा करता है कि यह जाँच जान बचा रही है।",
+  "Survival is counted from diagnosis, and the diagnosis now happens two years sooner. Everyone gets a two-year head start towards the five-year mark, whether or not the test changed anyone's outcome.":
+    "उत्तरजीविता निदान से गिनी जाती है, और अब निदान दो साल पहले हो जाता है। पाँच साल के पड़ाव की ओर सभी को दो साल की शुरुआती बढ़त मिल जाती है, चाहे उस जाँच ने किसी का नतीजा बदला हो या नहीं।",
+  "A national registry reports that the average time between diagnosis and death for a disease has risen from three years to six since a new scan came into routine use. A minister says patients now live twice as long.":
+    "एक राष्ट्रीय रजिस्ट्री बताती है कि जब से एक नई स्कैन जाँच नियमित इस्तेमाल में आई है, किसी बीमारी में निदान और मृत्यु के बीच का औसत समय तीन साल से बढ़कर छह साल हो गया है। एक मंत्री कहते हैं कि मरीज़ अब दोगुना जीते हैं।",
+  "Time from diagnosis to death can double purely because the diagnosis moved earlier. To claim people live longer you have to show that death is arriving later, not that the label is arriving sooner.":
+    "निदान से मृत्यु तक का समय महज़ इसलिए दोगुना हो सकता है क्योंकि निदान पहले खिसक गया। यह दावा करने के लिए कि लोग ज़्यादा जीते हैं, आपको दिखाना होगा कि मृत्यु देर से आ रही है, न कि यह कि लेबल जल्दी आ रहा है।",
+  "A region invites half its residents, chosen at random, to be screened for a disease and leaves the other half uninvited. Ten years on it counts deaths from that disease among everyone in both halves, screened or not, attended or not. Deaths are 30% lower in the invited half.":
+    "एक क्षेत्र अपने आधे निवासियों को, जिन्हें यादृच्छिक रूप से चुना गया है, किसी बीमारी की स्क्रीनिंग के लिए बुलाता है और बाकी आधे को नहीं बुलाता। दस साल बाद वह दोनों हिस्सों के सभी लोगों में उस बीमारी से हुई मौतें गिनता है, चाहे स्क्रीनिंग हुई हो या नहीं, चाहे वे आए हों या नहीं। बुलाए गए आधे हिस्से में मौतें 30% कम हैं।",
+  "This is the design an earlier diagnosis cannot fool. The clock starts at the invitation rather than at diagnosis, and the count includes everyone invited, so no head start and no extra diagnoses can manufacture the difference.":
+    "यह वह अध्ययन डिज़ाइन है जिसे पहले हुआ निदान धोखा नहीं दे सकता। घड़ी निदान से नहीं, बुलावे से शुरू होती है, और गिनती में हर बुलाया गया व्यक्ति शामिल है, इसलिए न कोई शुरुआती बढ़त और न कोई अतिरिक्त निदान इस फ़र्क को गढ़ सकता है।",
+
+  // ---- Tag blurbs (browse screen) ----
+  "Anyone can fall for it": "इसमें कोई भी फँस सकता है",
+  "Bites at the bedside": "मरीज़ के सामने ही धोखा देता है",
+  "Study design & evidence appraisal": "अध्ययन डिज़ाइन और साक्ष्य का आकलन",
+  "Reading the numbers": "संख्याओं को पढ़ना",
+  "Tests & diagnostic reasoning": "जाँचें और नैदानिक तर्क",
+  "Screening programmes": "स्क्रीनिंग कार्यक्रम",
+  "Populations, exposure & risk": "आबादी, संपर्क और जोखिम",
+  "Drugs & drug safety": "दवाएँ और दवा सुरक्षा",
+  "Mind & behaviour": "मन और व्यवहार",
+  "Life & evolution": "जीवन और क्रमविकास",
+  "Data, computing & AI": "डेटा, कंप्यूटिंग और AI",
+  "Markets & incentives": "बाज़ार और प्रोत्साहन",
+  "Elections & policy": "चुनाव और नीति",
+  "Teaching & testing": "पढ़ाना और परखना",
+  "Investing & returns": "निवेश और प्रतिफल",
+  "Management & strategy": "प्रबंधन और रणनीति",
+  "Courts & forensics": "अदालतें और फ़ोरेंसिक",
+  "Performance & records": "प्रदर्शन और रिकॉर्ड",
+  "The past & how we read it": "अतीत और उसे पढ़ने का तरीका",
+  "News & the numbers in it": "खबरें और उनमें छिपी संख्याएँ",
+
+  // ---- Leftovers (compact chart labels, scope tags) ----
+  A: "A",
+  B: "B",
+  "From diagnosis": "निदान से",
+  "The whole life": "पूरी ज़िंदगी",
 };

@@ -8,6 +8,7 @@ import {
   DataViewRenderer,
   dataTitle,
   scopeLabel,
+  viewKey,
 } from "./charts/DataViewRenderer";
 import { Legend } from "./charts/RateChart";
 import { CaseMixBars } from "./charts/CaseMixBars";
@@ -50,7 +51,7 @@ export function RevealView({
     window.setTimeout(() => setFlipped(true), 650);
   }
 
-  const view = flipped ? puzzle.reveal.view.kind : puzzle.setup.initialView.kind;
+  const view = flipped ? puzzle.reveal.view : puzzle.setup.initialView;
   const caught = committed.isCorrect;
   const score = scoreFor(caught, confidence);
   const metric = t(dataTitle(data));
@@ -91,7 +92,7 @@ export function RevealView({
               className="font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-mute"
               aria-live="polite"
             >
-              {t({ en: scopeLabel(view) })}
+              {view.caption ? t(view.caption) : t({ en: scopeLabel(view.kind) })}
             </span>
             {!reduced ? (
               <button
@@ -105,11 +106,14 @@ export function RevealView({
           </div>
         </figcaption>
 
-        <div key={view} className="cf-enter-sm">
+        {/* Keyed on the whole view, not just its kind: a beat can flip to the
+            same kind with a different slice of the data (setup shows one
+            stratum, the reveal shows them all). */}
+        <div key={viewKey(view)} className="cf-enter-sm">
           <DataViewRenderer data={data} view={view} animate highlightWinner />
         </div>
 
-        {data.type === "rates" ? <Legend data={data} /> : null}
+        {data.type === "rates" ? <Legend data={data} view={view} /> : null}
       </figure>
 
       <div className="rounded-lg border border-gold/40 border-l-4 border-l-gold bg-gold/[0.08] p-3.5">
@@ -124,10 +128,16 @@ export function RevealView({
         <p className="mt-1 text-[15px] leading-snug text-ink">
           {t(puzzle.reveal.explanation)}
         </p>
-        {data.type === "rates" ? (
+        {/* The case mix is the confounder made visible, so it only earns its
+            place when there is more than one stratum to mix. */}
+        {data.type === "rates" &&
+        data.strata.length > 1 &&
+        !data.strataAreSeparateSamples ? (
           <div className="mt-3">
             <div className="mb-1.5 font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-soft">
-              {t({ en: "Who each treatment actually treated" })}
+              {puzzle.reveal.caseMixLabel
+                ? t(puzzle.reveal.caseMixLabel)
+                : t({ en: "Who each treatment actually treated" })}
             </div>
             <CaseMixBars data={data} />
           </div>

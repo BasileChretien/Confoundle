@@ -49,16 +49,20 @@ export function SetupView({
         <figcaption className="mb-2.5 flex items-center justify-between border-b border-rule pb-2">
           <Badge tone="ink">{t(dataTitle(data))}</Badge>
           <span className="font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-mute">
-            {t({ en: scopeLabel(puzzle.setup.initialView.kind) })}
+            {puzzle.setup.initialView.caption
+              ? t(puzzle.setup.initialView.caption)
+              : t({ en: scopeLabel(puzzle.setup.initialView.kind) })}
           </span>
         </figcaption>
         <DataViewRenderer
           data={data}
-          view={puzzle.setup.initialView.kind}
+          view={puzzle.setup.initialView}
           animate
           highlightWinner
         />
-        {data.type === "rates" ? <Legend data={data} /> : null}
+        {data.type === "rates" ? (
+          <Legend data={data} view={puzzle.setup.initialView} />
+        ) : null}
       </figure>
 
       <CommitView puzzle={puzzle} onCommit={onCommit} />

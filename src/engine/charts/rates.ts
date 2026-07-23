@@ -28,6 +28,39 @@ function toRate(groupId: string, numerator: number, denominator: number): Rate {
   };
 }
 
+/**
+ * A view can ask for part of the data (see `DataView.groupIds` / `strataIds`).
+ * Returns a new RatesData holding only the named groups and strata, so every
+ * derivation below stays unaware that any filtering happened. Immutable: the
+ * authored data is never touched.
+ */
+export function restrictRates(
+  data: RatesData,
+  filter?: { groupIds?: string[]; strataIds?: string[] },
+): RatesData {
+  const wantGroups = filter?.groupIds;
+  const wantStrata = filter?.strataIds;
+  if (!wantGroups && !wantStrata) return data;
+
+  const groups = wantGroups
+    ? data.groups.filter((g) => wantGroups.includes(g.id))
+    : data.groups;
+  const strata = wantStrata
+    ? data.strata.filter((s) => wantStrata.includes(s.id))
+    : data.strata;
+  const keptGroups = new Set(groups.map((g) => g.id));
+  const keptStrata = new Set(strata.map((s) => s.id));
+
+  return {
+    ...data,
+    groups,
+    strata,
+    observations: data.observations.filter(
+      (o) => keptGroups.has(o.groupId) && keptStrata.has(o.stratumId),
+    ),
+  };
+}
+
 /** One pooled rate per group, summed across all strata. */
 export function aggregateRates(data: RatesData): Rate[] {
   return data.groups.map((g) => {

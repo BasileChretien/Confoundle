@@ -122,13 +122,27 @@ describe("bank depth, which is the real constraint on shipping this", () => {
     expect(thin).toEqual([]);
   });
 
-  it("is honest that the bank is not yet deep enough for spaced repetition", () => {
-    // A ladder of eight review stages wants 8 to 12 scenarios per skill, so a
-    // learner does not meet the same one twice before burning it. Today the
-    // deck carries 2 or 3. This assertion is deliberately written to hold NOW
-    // and to be tightened as the bank grows, so the gap stays visible in the
-    // suite instead of living only in a planning document.
-    const deepEnough = SKILLS.filter((s) => poolDepth(s, TEST_ITEMS) >= 8);
-    expect(deepEnough.length).toBeLessThan(SKILLS.length);
+  it("carries a scenario for every rung of the ladder", () => {
+    // Eight review stages before a skill burns, so a skill needs at least eight
+    // distinct scenarios or a learner meets one twice and is tested on whether
+    // they remember the scenario rather than on the skill. Ten is the floor
+    // here, which leaves slack for the sound decoys that land on a skill
+    // without being drawn from its own pool.
+    //
+    // This assertion used to say the opposite. It was written to FAIL once the
+    // bank grew, so the gap could not quietly stop being tracked, and it has
+    // now been tightened as intended. Raise the floor again, do not delete it.
+    const thin = SKILLS.map((skill) => ({
+      skill,
+      scenarios: poolDepth(skill, TEST_ITEMS),
+    })).filter((entry) => entry.scenarios < 10);
+    expect(thin).toEqual([]);
+  });
+
+  it("never lets one skill hoard the bank", () => {
+    // A skill with five times another's pool is a sign a wave of authoring went
+    // to whatever was easiest to write, which is exactly where quality slips.
+    const depths = SKILLS.map((s) => poolDepth(s, TEST_ITEMS));
+    expect(Math.max(...depths)).toBeLessThanOrEqual(Math.min(...depths) * 3);
   });
 });

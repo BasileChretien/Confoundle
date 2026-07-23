@@ -1240,4 +1240,642 @@ export const ja: Record<string, string> = {
     "より簡便なレジメンが標準レジメンに劣らないかを検証する試験が、両方の解析を報告し、アドヒアランスの悪い患者を割り付けられた群のまま数えると2つの治療が似て見えやすくなることを指摘したうえで、2つの解析のうち1つしか支持していないため非劣性の主張を控えています。",
   "Counting everyone as assigned is conservative when you are trying to show a difference and permissive when you are trying to show similarity, so a non-inferiority claim needs both analyses to agree. Refusing to claim it when they disagree is the careful move, not the trap.":
     "割り付けどおりに全員を数えることは、差を示そうとするときには保守的に働き、同等性を示そうとするときには甘く働きます。ですから非劣性の主張には、両方の解析が一致することが必要です。一致しないときに主張を控えるのは慎重な判断であり、罠ではありません。",
+
+  // ---- intention to treat, recall bias, immortal time ----
+  "Two players are compared over a season. Player A made 35% of all shots and Player B made 65%, and the coach's report names B the more accurate shooter. Sorted into close shots and long shots, A had the higher percentage in both.":
+    "1シーズンを通じて2人の選手を比較します。選手Aは全シュートの35%を決め、選手Bは65%を決めており、コーチの報告書はBをより正確なシューターとしています。近距離シュートとロングシュートに分けると、Aはどちらでも成功率が高くなっていました。",
+  "Almost all of B's attempts were close range, where anyone scores often, while A shot mostly from distance, so the pooled percentages record where the shots were taken from rather than who shoots better.":
+    "Bの試投はほぼすべてが近距離で、誰でもよく決まる位置でした。一方Aは大半を遠距離から打っていたため、合算した成功率は誰がうまいかではなく、どこから打ったかを記録しています。",
+  "A company reviews last year's applications. Overall 70% of outside applicants were hired against 40% of internal ones, and a manager tells the board the process quietly favours outsiders. Team by team, internal applicants were hired at the higher rate in both the engineering team and the sales team.":
+    "ある会社が昨年の応募を見直します。全体では社外応募者の70%が採用されたのに対し社内応募者は40%で、ある管理職は取締役会に、選考は密かに社外の人を優遇していると伝えます。チーム別に見ると、エンジニアリングチームでも営業チームでも社内応募者の採用率のほうが高くなっていました。",
+  "Outside applicants went mainly to engineering, which was hiring heavily, while internal ones applied mainly to sales, where almost nobody was being taken on, so the pooled figures compare which team people applied to.":
+    "社外応募者は大量採用中のエンジニアリングに集中し、社内応募者はほとんど採用のなかった営業に集中していたため、合算した数字はどのチームに応募したかを比べています。",
+  "A team replaces its sign up page. The new page signs up 35% of visitors against the old page's 13%, and the product lead calls it a clear win. Looked at separately, the old page did better among desktop visitors and better among phone visitors.":
+    "あるチームが登録ページを刷新します。新ページは訪問者の35%を登録に結びつけ、旧ページは13%で、プロダクト責任者は明確な勝利だとしています。分けて見ると、旧ページはパソコンからの訪問者でも、スマートフォンからの訪問者でも成績が上でした。",
+  "The old page was seen mostly by phone visitors, who rarely sign up on either version, and the new one mostly by desktop visitors, who sign up often, so the overall gap tracks the audience mix.":
+    "旧ページはどちらの版でもめったに登録しないスマートフォン訪問者が中心で、新ページはよく登録するパソコン訪問者が中心でした。したがって全体の差は訪問者の構成を反映しています。",
+  "Two customer service centres are compared. One settles 85% of calls at the first attempt and the other 54%, so the bonus goes to the first. Broken into routine calls and complicated ones, the second centre settles the higher share of each.":
+    "2つのカスタマーサービスセンターを比較します。一方は電話の85%を一度で解決し、もう一方は54%であるため、賞与は前者に出ます。定型的な電話と複雑な電話に分けると、後者のセンターがどちらでも高い割合で解決していました。",
+  "Nearly all of the second centre's work is complicated calls, which are hard to settle at once, while the first handles mostly routine ones, so the combined rate compares workloads rather than skill.":
+    "後者のセンターの業務はほぼすべてが一度では解決しにくい複雑な電話で、前者は大半が定型的な電話です。合算した解決率は技能ではなく業務内容を比べています。",
+  "A chain compares two hotels on guest ratings. One averages 4.3 out of 5 and the other 3.3, and head office holds the second up as the weaker property. Among business guests the second scores higher, and among holiday guests it scores higher too.":
+    "あるチェーンが2つのホテルを宿泊者評価で比較します。一方は5点満点で平均4.3、もう一方は3.3で、本社は後者を弱いホテルとして扱います。ビジネス客の間では後者の評価が高く、観光客の間でも後者が高くなっています。",
+  "Almost all of the lower rated hotel's reviews come from business guests, who mark every hotel down, while the other's come mostly from holidaymakers, who mark everything up, so the averages compare who was reviewing.":
+    "評価が低いホテルのレビューはほぼすべて、どのホテルにも辛い点をつけるビジネス客からのもので、もう一方は甘い点をつける観光客が中心です。平均点は誰が評価したかを比べています。",
+  "A cooperative compares two seed varieties across its members' fields. One averaged 5.6 tonnes a hectare and the other 2.6, and the newsletter recommends the first. On clay ground the second variety yielded more, and on sandy ground it yielded more as well.":
+    "ある協同組合が組合員の圃場で2つの品種を比較します。一方は1ヘクタール当たり平均5.6トン、もう一方は2.6トンで、会報は前者を推奨します。粘土質の土地では後者の品種の収量が多く、砂質の土地でも後者が多くなっていました。",
+  "The lower yielding variety was sown almost entirely on sandy ground, which grows little of anything, and the other almost entirely on clay, so the averages mostly record where each seed was planted.":
+    "収量の低い品種はほぼすべて何を植えても育ちにくい砂質の土地に播かれ、もう一方はほぼすべて粘土質に播かれていました。平均値は主にどこに播かれたかを記録しています。",
+  "Two courier firms report on time delivery. One arrives on time for 92% of parcels and the other for 72%, so a retailer moves its contract to the first. Counting town deliveries and country deliveries separately, the second firm is on time more often in both.":
+    "2つの宅配業者が定時配達を報告します。一方は荷物の92%、もう一方は72%が時間どおりに届くため、ある小売業者は契約を前者に移します。市街地配達と郊外配達を分けて数えると、後者の業者がどちらでも定時率が高くなっています。",
+  "The firm with the worse headline figure carries nearly all the country parcels, which run late for everyone, while the other carries mostly short town runs, so the combined rate reflects the routes each was given.":
+    "表向きの数字が悪い業者は、誰が運んでも遅れがちな郊外の荷物をほぼすべて担当し、もう一方は市街地の短い配達が中心です。合算した定時率は割り当てられた配送路を反映しています。",
+  "A screening test at an amateur athletics meeting catches 99% of competitors who have used a banned substance and wrongly flags 1% of those who have not. About 1 competitor in 500 has used one. A commentator says a flagged athlete is 99% certain to be guilty.":
+    "アマチュア陸上競技会のスクリーニング検査は、禁止物質を使用した競技者の99%を検出し、使用していない競技者の1%を誤って陽性とします。使用者はおよそ500人に1人です。ある解説者は、陽性となった選手は99%の確率で違反していると述べます。",
+  "Clean competitors outnumber users 499 to 1, so flagging one percent of them yields roughly five wrong flags for every real one, and most flagged athletes have taken nothing.":
+    "使用していない競技者は使用者の499倍いるため、その1%を陽性とすると、本当の1件につきおよそ5件の誤った陽性が出ます。陽性となった選手の大半は何も使っていません。",
+  "A bank's monitoring catches essentially every fraudulent card payment and wrongly flags 1 legitimate payment in 200. About 1 payment in 10,000 is fraudulent. A manager proposes freezing the account of anyone whose payment is flagged, saying almost all of them are frauds.":
+    "ある銀行の監視システムは不正なカード決済をほぼすべて検出し、正当な決済200件に1件を誤って検出します。不正な決済はおよそ10,000件に1件です。ある管理職は、検出された決済の口座はすべて凍結すべきだと提案し、そのほとんどは不正だと述べます。",
+  "For each fraudulent payment there are about 10,000 legitimate ones, and half a percent of those is roughly 50 wrong flags per real fraud, so nearly every frozen account belongs to an ordinary customer.":
+    "不正な決済1件につき正当な決済がおよそ10,000件あり、その0.5%は本当の不正1件につきおよそ50件の誤検出になります。凍結された口座のほぼすべては通常の顧客のものです。",
+  "A university's text checking tool is 98% accurate in both directions. About 1 essay in 200 is genuinely copied. The disciplinary panel tells every student it flags that there is a 98% chance they copied.":
+    "ある大学の文章照合ツールは、どちらの方向でも98%の精度です。実際に写しているレポートはおよそ200本に1本です。懲戒委員会は、検出されたすべての学生に写した確率は98%だと告げます。",
+  "Honest essays outnumber copied ones 199 to 1, so two percent of them produces about four wrong flags for every real one, and a flagged student is more likely innocent than not.":
+    "正直に書かれたレポートは写したものの199倍あるため、その2%は本当の1件につきおよそ4件の誤検出を生みます。検出された学生は潔白である可能性のほうが高くなります。",
+  "A camera on a production line spots 95% of faulty units and wrongly rejects 3% of good ones. About 1 unit in 1,000 leaves the line faulty. The plant manager scraps every rejected unit, saying almost all of them must be defective.":
+    "製造ラインのカメラは不良品の95%を発見し、良品の3%を誤って排除します。ラインから出る製品のうち不良はおよそ1,000個に1個です。工場長は排除された製品をすべて廃棄し、そのほとんどは不良に違いないと述べます。",
+  "Good units outnumber faulty ones about 1,000 to 1, so rejecting three percent of them discards roughly thirty sound units for every faulty one caught.":
+    "良品は不良品のおよそ1,000倍あるため、その3%を排除すると、捕らえた不良1個につきおよそ30個の良品を捨てることになります。",
+  "A water company's sensors are right 95% of the time when they call a pipe section leaking or sound. About 1 section in 400 leaks in a given year. The operations plan assumes crews will find a leak at nearly every flagged section.":
+    "ある水道会社のセンサーは、管路区間を漏水ありとも健全とも判定する際に95%の確率で正しい判定を出します。ある年に漏水する区間はおよそ400区間に1区間です。運用計画は、検出された区間のほぼすべてで作業班が漏水を見つけると想定しています。",
+  "Sound sections outnumber leaking ones 399 to 1, so the five percent of them wrongly called leaking gives about twenty wasted excavations for every genuine leak.":
+    "健全な区間は漏水区間の399倍あるため、その5%が誤って漏水ありとされると、本当の漏水1件につきおよそ20回の無駄な掘削が生じます。",
+  "A retailer screens applicants with a questionnaire that correctly identifies 90% of people who would steal stock and wrongly flags 10% of those who would not. About 1 applicant in 100 would steal. The hiring team rejects everyone flagged, saying nine in ten of them are thieves.":
+    "ある小売業者は、商品を盗む人の90%を正しく判別し、盗まない人の10%を誤って判別する質問票で応募者をスクリーニングします。盗む応募者はおよそ100人に1人です。採用チームは判別された応募者を全員不採用とし、その10人に9人は窃盗者だと述べます。",
+  "Honest applicants outnumber the rest 99 to 1, so flagging a tenth of them turns away about eleven blameless people for every one who would have stolen.":
+    "正直な応募者はそれ以外の99倍いるため、その10分の1を判別すると、盗んだであろう1人につきおよそ11人の罪のない人を退けることになります。",
+  "A company's mail filter is 99% accurate at telling phishing from ordinary mail. About 1 arriving message in 3,000 is phishing. The security lead tells staff that anything the filter quarantines is almost certainly an attack.":
+    "ある会社のメールフィルターは、フィッシングと通常のメールを99%の精度で見分けます。受信するメールのうちフィッシングはおよそ3,000通に1通です。セキュリティ責任者は社員に、フィルターが隔離したものはほぼ確実に攻撃だと伝えます。",
+  "Ordinary messages outnumber phishing ones about 3,000 to 1, so the one percent of them wrongly quarantined outnumbers the real attacks by roughly thirty to one.":
+    "通常のメールはフィッシングのおよそ3,000倍あるため、その1%が誤って隔離されると、本当の攻撃をおよそ30対1で上回ります。",
+  "An insurer finds that drivers who have fitted a dashboard camera claim for accidents far less often than drivers who have not. Its marketing team announces that fitting a camera makes you a safer driver, and offers a discount to anyone who installs one.":
+    "ある保険会社は、ドライブレコーダーを取り付けた運転者は取り付けていない運転者よりも事故の請求がはるかに少ないことを見つけます。マーケティング部門は、カメラを付ければ運転が安全になると発表し、設置した人に割引を提供します。",
+  "Cautious drivers are the ones who buy the cameras in the first place, so the camera marks out a type of driver rather than changing how anyone drives.":
+    "そもそもカメラを買うのは慎重な運転者であり、カメラは運転の仕方を変えるのではなく、ある種類の運転者を示しているだけです。",
+  "A consultant surveys firms and reports that those with the largest customer support teams receive the most complaints. The write up advises keeping support teams small so that complaints stay down.":
+    "あるコンサルタントが企業を調査し、カスタマーサポート部門が最も大きい企業ほど苦情が多いと報告します。報告書は、苦情を抑えるためにサポート部門を小さく保つよう助言します。",
+  "Firms staff up because complaints are already arriving, so the arrow runs from complaints to headcount, and larger firms generate more of both anyway.":
+    "企業はすでに苦情が来ているから人員を増やすのであり、矢印は苦情から人数へ向かいます。そもそも大きな企業ほどどちらも多くなります。",
+  "An energy supplier reports that homes with a smart thermostat use a fifth less gas than homes without one. Its advertising says the thermostat cuts your gas use by a fifth.":
+    "あるエネルギー供給会社は、スマートサーモスタットのある家庭はない家庭よりガス使用量が5分の1少ないと報告します。広告では、サーモスタットがガス使用量を5分の1減らすとしています。",
+  "The households that install one tend to have newer, better insulated homes and an existing interest in trimming bills, so the comparison is between two kinds of household as much as two thermostats.":
+    "設置する世帯は新しく断熱の良い住宅に住み、もともと光熱費を抑えることに関心がある傾向があります。この比較は2種類のサーモスタットの比較であると同時に、2種類の世帯の比較でもあります。",
+  "A motoring column notes that stretches of road with fixed speed cameras record more crashes than stretches without them, and argues that the cameras distract drivers into crashing.":
+    "ある自動車コラムは、固定式速度取締カメラのある区間は、ない区間より事故が多く記録されていると指摘し、カメラが運転者の注意をそらして事故を起こさせていると論じます。",
+  "Cameras are installed on stretches that already had a bad crash record, so the crashes came first and chose the camera sites rather than the other way round.":
+    "カメラはすでに事故の多い区間に設置されるため、事故が先にあり、それがカメラの設置場所を決めています。順序は逆です。",
+  "A gym newsletter reports that members who use the sauna after training take fewer sick days than members who do not, and concludes that ten minutes in the sauna strengthens the immune system.":
+    "あるジムの会報は、トレーニング後にサウナを使う会員は使わない会員より病欠が少ないと報告し、サウナに10分入ると免疫が強くなると結論づけます。",
+  "Members with the time and habit to stay on for the sauna are the ones training regularly and in better health already, so sauna use is a marker of that group rather than a cause.":
+    "サウナに残る時間と習慣がある会員は、もともと定期的に運動していて健康状態も良い人たちです。サウナの利用は原因ではなく、その集団の目印です。",
+  "A trend piece points out that over eleven years national sales of houseplants and of noise cancelling headphones rose almost in step, and suggests the houseplant boom is what pushed people to buy headphones.":
+    "ある流行記事は、11年間で観葉植物とノイズキャンセリングヘッドホンの全国売上がほぼ足並みをそろえて伸びたと指摘し、観葉植物の流行が人々にヘッドホンを買わせたと示唆します。",
+  "Both climbed alongside the same rise in city renting and spending on home comfort, and any two quantities that drift steadily upward will track each other whatever is driving them.":
+    "どちらも都市部の賃貸住まいと住空間への支出という同じ増加とともに伸びました。着実に上昇する2つの量は、何が動かしていようと互いに連動して見えます。",
+  "A plant manager notices that shifts where the radio is playing turn out fewer defective units, and orders music to be played on every shift to bring the defect rate down.":
+    "ある工場長は、ラジオが流れているシフトのほうが不良品が少ないことに気づき、不良率を下げるため全シフトで音楽を流すよう指示します。",
+  "The radio happens to be on during day shifts, which are staffed by the longest serving operators working the easier product runs, so experience and workload are what separate the shifts.":
+    "ラジオがついているのはたまたま日勤で、日勤には勤続年数の長い作業者が入り、扱いやすい製品を生産しています。シフトを分けているのは経験と作業内容です。",
+  "An investment firm's brochure lists the twenty funds it offers today and reports that the average one has beaten the market over the past ten years. The sales team presents this as proof of the firm's stock-picking skill.":
+    "ある投資会社のパンフレットは、現在扱っている20本のファンドを掲載し、平均すると過去10年で市場を上回ったと報告します。営業チームはこれを銘柄選択能力の証拠として示します。",
+  "The table contains only funds still open today, so the ones that did badly enough to be closed or merged away during the decade have been dropped from the average before it was taken.":
+    "表には現在も運用中のファンドしか含まれておらず、この10年の間に成績不振で償還されたり統合されたりしたものは、平均を取る前に除かれています。",
+  "A magazine profiles thirty founders whose companies are now worth billions and finds that most left university early and ignored advice to take a safe job. Its careers columnist tells readers that leaving early is the surer path.":
+    "ある雑誌が、いまや数十億ドル規模の企業を築いた創業者30人を取り上げ、その多くが大学を早期に去り、安定した職に就けという助言を無視していたことを見つけます。キャリア担当のコラムニストは読者に、早く辞めるほうが確実な道だと伝えます。",
+  "The thirty were picked for having made it, so the far larger number who left early, failed and were never profiled are missing, and the failure rate of the strategy cannot be read off this group.":
+    "30人は成功したことを理由に選ばれているため、同じく早く辞めて失敗し、記事にならなかったはるかに多くの人が抜けています。この集団からこの戦略の失敗率は読み取れません。",
+  "A council engineer notes that the stone bridges built in the town two centuries ago all still carry traffic, while several concrete ones from the 1970s have had to be replaced. He writes that the older building methods were plainly more durable.":
+    "ある自治体の技術者は、200年前に町に架けられた石橋がいまもすべて交通を支えている一方、1970年代のコンクリート橋はいくつも架け替えが必要になったと指摘します。彼は、昔の工法のほうが明らかに耐久性が高いと書きます。",
+  "Only the two hundred year old bridges good enough to last are left to inspect, while the poorly built ones of that era collapsed or were demolished long ago and never enter the comparison.":
+    "200年前の橋のうち、残るだけの出来だったものしか点検の対象になりません。当時の粗悪な橋はとうに崩落するか撤去されており、比較に入りません。",
+  "A music magazine interviews twenty bands that reached the charts after years in small venues, and finds that every one of them refused to change their sound when a label asked. The writer concludes that refusing to compromise is what gets a band signed.":
+    "ある音楽雑誌が、小さな会場での下積みを経てチャートに入った20組のバンドに取材し、全組がレーベルに求められても音楽性を変えなかったことを見つけます。筆者は、妥協を拒むことこそが契約につながると結論づけます。",
+  "The sample was drawn from bands that charted, so the many acts that also refused and were dropped or never signed are absent, leaving the cost of the tactic invisible.":
+    "標本はチャートに入ったバンドから取られているため、同じく拒んで契約を打ち切られたり契約に至らなかった多数のバンドが抜けており、この方針の代償が見えません。",
+  "A car magazine surveys owners at an enthusiasts' rally for a model built thirty years ago. Almost all report low running costs and few breakdowns, and the magazine names it the most dependable car of its era.":
+    "ある自動車雑誌が、30年前に作られた車種の愛好者イベントで所有者に調査します。ほぼ全員が維持費の安さと故障の少なさを挙げ、雑誌はこの車を同時代で最も信頼できる車と評します。",
+  "Only cars sound enough to still be driven to a rally are in the sample; the ones that rusted or failed were scrapped years ago and their owners are not there to be asked.":
+    "標本に入るのは、イベントまで走ってこられるだけ状態の良い車だけです。錆びたり壊れたりした車は何年も前に廃車になっており、その所有者はその場にいません。",
+  "A museum label states that the region's ancient potters worked to a standard modern factories struggle to match. The claim rests on the jars in the case, all of them lifted whole from a buried settlement two thousand years later.":
+    "ある博物館の解説板は、この地域の古代の陶工は現代の工場でも並ぶのが難しい水準で仕事をしていたと記します。この主張は展示ケースの壺に基づいており、いずれも2000年後に埋没した集落から完全な形で掘り出されたものです。",
+  "The collection is filtered by what stayed intact underground for two millennia, so thin, flawed or badly fired pots are physically absent from the evidence used to judge the average standard.":
+    "収蔵品は2000年間地中で無傷のまま残ったものに絞られており、薄いもの、欠陥のあるもの、焼成の悪いものは、平均的な水準を判断する証拠から物理的に欠けています。",
+  "A rowing academy studies the athletes in its national squad and finds that nearly all of them trained through serious pain at eighteen. The head coach tells new recruits that pushing through injury is what separates those who make it.":
+    "あるボート競技のアカデミーが代表候補の選手を調べ、そのほぼ全員が18歳の時点で強い痛みを押して練習していたことを見つけます。ヘッドコーチは新入生に、けがを押して続けることが成功する者を分けると伝えます。",
+  "The squad consists of those whose bodies withstood it, while recruits whose injuries ended their careers left the sport and are no longer in the group being examined, hiding the risk of the advice.":
+    "候補選手は体が持ちこたえた人たちで構成されています。けがで競技を離れた人はもう調査対象の集団にいないため、この助言の危険が隠れます。",
+  "A partial print from a break-in is searched against a national database of six million people and returns one name. The examiner says about 1 person in 500,000 would match it. Counsel tells the jury there is therefore a 1 in 500,000 chance the man was not there.":
+    "侵入事件で採取された部分指紋が600万人分の国のデータベースと照合され、1人の名前が返ります。鑑定人は、およそ500,000人に1人がこれに一致すると述べます。法廷で弁護士は陪審に、したがってこの男がその場にいなかった確率は500,000分の1だと伝えます。",
+  "The 1 in 500,000 is how often an unconnected person matches, and searching six million people should turn up about a dozen such matches, so it is not the chance that this man was elsewhere.":
+    "500,000分の1は無関係な人が一致する頻度であり、600万人を検索すればそうした一致がおよそ12件出るはずです。これはこの男が別の場所にいた確率ではありません。",
+  "An auditor screens every branch of a retail chain for a rounding pattern that would arise by chance in about 1 honestly kept ledger in 10,000. One of the chain's 30,000 branches shows it, and the report states that the manager is almost certainly falsifying figures.":
+    "ある監査人が小売チェーンの全支店を対象に、正しく記帳された帳簿でも偶然におよそ10,000冊に1冊は現れる端数のパターンを調べます。チェーンの30,000支店のうち1店にそれが現れ、報告書はその店長がほぼ確実に数字を改ざんしていると記します。",
+  "The 1 in 10,000 describes how often honest books show the pattern, not how often books showing it are dishonest, and screening 30,000 branches should produce about three honest ones like it.":
+    "10,000分の1は正直な帳簿がこのパターンを示す頻度であって、このパターンを示す帳簿が不正である頻度ではありません。30,000支店を調べれば、同様の正直な帳簿がおよそ3件出るはずです。",
+  "A weekly prize draw has been won twice by the same person. An organiser calculates that the odds of a given player winning twice are about one in a million, and concludes the draw was rigged. The draw has run for twenty years with over three million regular players.":
+    "毎週の抽選で同じ人が2回当選しました。主催者側のある担当者は、特定の参加者が2回当たる確率はおよそ100万分の1だと計算し、抽選に不正があったと結論づけます。この抽選は20年間続いており、常連の参加者は300万人を超えます。",
+  "One in a million applies to one player named in advance, whereas the question asked afterwards is whether anyone at all among three million regular players would win twice, which is close to expected.":
+    "100万分の1はあらかじめ名前を挙げた1人に当てはまる数字です。後から問われているのは、300万人の常連のうち誰か1人でも2回当たるかどうかであり、それは予想される範囲に近い出来事です。",
+  "An internal auditor at a company of 700 staff reports that two employees who sign off each other's expense claims were born on the same day of the year. He puts the chance of that at 1 in 365 and states they are almost certainly working together.":
+    "従業員700人の会社の内部監査人が、互いの経費精算を承認し合う2人の従業員の誕生日が同じ日であると報告します。彼はその確率を365分の1とし、2人はほぼ確実に共謀していると述べます。",
+  "The 1 in 365 fits one pair chosen in advance, but he combed hundreds of pairs for any oddity, and how often innocent pairs share a birthday is not the probability of innocence given a shared birthday.":
+    "365分の1はあらかじめ選んだ1組に当てはまります。ところが彼は数百組を洗って何か変わった点を探しました。潔白な組が誕生日を共有する頻度は、誕生日が同じであるときに潔白である確率ではありません。",
+  "Four children on one street develop the same rare illness within a year. A campaigner calculates that this would happen by chance in about one street in a million, and tells a public meeting there is therefore a one in a million chance the nearby plant is blameless.":
+    "ある通りで4人の子どもが1年のうちに同じ希少な病気を発症します。ある活動家は、これが偶然に起こるのはおよそ100万本の通りに1本だと計算し、公開集会で、したがって近くの工場に責任がない確率は100万分の1だと述べます。",
+  "The figure is the chance of such a cluster on a street picked in advance with nothing causing it, and with millions of streets in the country a few clusters are expected somewhere regardless of the plant.":
+    "この数字は、原因が何もない状態であらかじめ選んだ1本の通りにそうした集積が起こる確率です。国内には数百万本の通りがあるため、工場と関係なくどこかで数件の集積が起こると見込まれます。",
+  "An anonymous threatening letter was printed in a distinctive typeface installed on roughly 1 printer in 20,000. A suspect's office printer carries it. The investigating officer writes that the odds against anyone else having produced the letter are 20,000 to 1.":
+    "匿名の脅迫状は、およそ20,000台に1台のプリンターにしか入っていない特徴的な書体で印刷されていました。容疑者の職場のプリンターにその書体が入っています。捜査官は、他の誰かがこの手紙を作成した可能性は20,000対1で否定されると書きます。",
+  "With millions of printers in the country, several hundred carry the same typeface, so the figure measures how rare the feature is rather than how likely this owner is to have written the letter.":
+    "国内には数百万台のプリンターがあり、数百台が同じ書体を備えています。この数字はこの特徴の希少さを測るものであって、この所有者が手紙を書いた可能性を測るものではありません。",
+  "A national programme screens about 60,000 samples a year. One athlete's sample shows a marker found in roughly 1 in 10,000 samples from clean competitors, and the panel chair states there is a 1 in 10,000 chance the athlete competed clean.":
+    "ある全国的な計画では年間およそ60,000検体をスクリーニングします。ある選手の検体に、違反していない競技者の検体のおよそ10,000件に1件で見つかる指標が現れ、委員長は、この選手が違反なく競技した確率は10,000分の1だと述べます。",
+  "1 in 10,000 is how often clean samples show the marker, so about six clean athletes a year would show it; turning that into the chance of being clean also requires knowing how few competitors dope.":
+    "10,000分の1は違反のない検体がこの指標を示す頻度であり、年におよそ6人の違反していない選手に現れます。これを潔白である確率に変えるには、ドーピングをする競技者がどれほど少ないかも知る必要があります。",
+  "A league moves its four lowest-ranked clubs down into the second tier. A ratings service recalculates the tier averages and finds the average club rating is now higher in both tiers than before the reshuffle. The commissioner calls it a sign that standards are rising everywhere.":
+    "あるリーグが順位下位4クラブを2部に降格させます。格付け会社が各部の平均を再計算すると、クラブの平均格付けは入れ替え前よりどちらの部でも高くなっていました。コミッショナーは、どこでも水準が上がっている証拠だと述べます。",
+  "Those four clubs rated below the top tier's average and above the second tier's, so taking them out lifts one figure and adding them lifts the other, while no club plays any better than before.":
+    "この4クラブは1部の平均より下、2部の平均より上に位置していました。したがって除けば一方の数字が上がり、加えればもう一方も上がります。どのクラブも以前より強くなってはいません。",
+  "An insurer moves the safest quarter of its high-risk motor policies into its standard pool. The next report shows the average claim cost has risen in the high-risk pool and in the standard pool, and the underwriting director warns that both books are deteriorating.":
+    "ある保険会社が、高リスクの自動車契約のうち最も安全な4分の1を標準の区分に移します。次の報告では、平均請求額が高リスク区分でも標準区分でも上がっており、引受担当役員は両方の契約群が悪化していると警告します。",
+  "The transferred policies cost less than the high-risk average and more than the standard average, so removing them raises one mean and adding them raises the other, with no driver's risk changed.":
+    "移された契約は高リスクの平均より安く、標準の平均より高いものでした。したがって除けば一方の平均が上がり、加えればもう一方も上がります。どの運転者のリスクも変わっていません。",
+  "An armed service brings in a medical screen that catches minor problems the old one missed, and moves the personnel it flags from fully deployable to restricted duties. Average fitness scores then come out higher in both categories, and a spokesman credits the new training programme.":
+    "ある軍が、従来の検査では見逃していた軽微な問題を拾う健康診断を導入し、該当した隊員を完全派遣可能から制限勤務に移します。その後、平均体力評価はどちらの区分でも高くなり、報道官は新しい訓練計画の成果だとします。",
+  "Those moved were the least fit of the deployable group and the fittest of the restricted group, so both averages rise on the reclassification alone, without anyone's fitness changing.":
+    "移された隊員は派遣可能群で最も体力が低く、制限勤務群では最も体力が高い人たちでした。分類の変更だけで両方の平均が上がり、誰の体力も変わっていません。",
+  "A bank tightens the test that puts a loan on its watch list, so a batch of loans previously counted as performing moves across. The next figures show a higher average credit score in the performing book and in the watch list, and the risk committee reports improvement on both.":
+    "ある銀行が要注意先に分類する基準を厳しくし、これまで正常先とされていた一群の融資が移ります。次の数字では、正常先の平均信用スコアも要注意先の平均信用スコアも上がっており、リスク委員会は両方が改善したと報告します。",
+  "The moved loans were the weakest of the performing book and the strongest of the watch list, so both averages rise the moment they change column, with no borrower's position altered.":
+    "移った融資は正常先で最も弱く、要注意先では最も強いものでした。区分が変わった瞬間に両方の平均が上がり、どの借り手の状況も変わっていません。",
+  "A depot fits a vibration sensor that picks up early wear, and engines it flags are shifted from the serviceable list to the overhaul list. The next report shows average hours between faults up on both lists, and the fleet manager credits a change of lubricant.":
+    "ある車両基地が初期摩耗を捉える振動センサーを取り付け、検出されたエンジンを使用可能リストからオーバーホールリストに移します。次の報告では、故障間の平均稼働時間が両方のリストで伸びており、車両管理者は潤滑油の変更の成果だとします。",
+  "The flagged engines were the worst on the serviceable list and the best on the overhaul list, so removing them lifts one average and adding them lifts the other, with no engine actually wearing less.":
+    "検出されたエンジンは使用可能リストで最も状態が悪く、オーバーホールリストでは最も良いものでした。除けば一方の平均が上がり、加えればもう一方も上がります。実際に摩耗が減ったエンジンはありません。",
+  "A sales director has a senior team averaging 50 sales a month and a junior team averaging 30. She moves two representatives who each average 40 from the senior team to the junior team. The next report shows both team averages have gone up, and she credits the reshuffle.":
+    "ある営業部長のもとで、上位チームは月平均50件、下位チームは月平均30件を売っています。部長は、それぞれ平均40件の営業担当2人を上位チームから下位チームへ移します。次の報告では両チームの平均が上がっており、部長は配置換えの成果だとします。",
+  "The two sell below the senior team's average and above the junior team's, so the senior mean climbs above 50 and the junior mean above 30 while nobody sells a single unit more.":
+    "この2人は上位チームの平均より低く、下位チームの平均より高く売っています。したがって上位の平均は50を超え、下位の平均は30を超えますが、誰も1件も多く売ってはいません。",
+  "An exporter grades boxes as premium, averaging 90 points, or standard, averaging 70. It changes the cut-off so that boxes scoring 82, until now premium, count as standard. The next quality report shows the average score up in both grades, and the manager says the growers have improved.":
+    "ある輸出業者は、箱を平均90点の上級品と平均70点の標準品に等級分けしています。基準を変更し、これまで上級品だった82点の箱を標準品とします。次の品質報告では両方の等級で平均点が上がっており、担当者は生産者の質が上がったと述べます。",
+  "Boxes at 82 sat below the premium average of 90 and above the standard average of 70, so shifting them lifts both figures without a single box of fruit being any better.":
+    "82点の箱は上級品の平均90より下、標準品の平均70より上にありました。移すだけで両方の数字が上がり、果物の中身は1箱も良くなっていません。",
+  "A conservatoire moves its five weakest cellists out of the advanced class and into the intermediate class. At the end of term the average examination mark is higher in the advanced class and higher in the intermediate class, and the principal praises the new teaching plan.":
+    "ある音楽院が、最も実力の低いチェロ奏者5人を上級クラスから中級クラスへ移します。学期末には、試験の平均点が上級クラスでも中級クラスでも高くなっており、学長は新しい指導計画を称賛します。",
+  "Those five scored below the advanced class average and above the intermediate class average, so taking them out raises one mean and adding them raises the other, whatever any student's playing does.":
+    "この5人は上級クラスの平均より下、中級クラスの平均より上でした。除けば一方の平均が上がり、加えればもう一方も上がります。学生の演奏がどうであろうと同じです。",
+  "A haulage firm fits vibration sensors that flag a failing gearbox about eight months before a driver would notice the noise. The log now shows an average of fourteen months from first fault report to breakdown, up from six. The firm's newsletter says the sensors are making gearboxes last far longer.":
+    "ある運送会社が、運転手が異音に気づくよりおよそ8か月早く変速機の不調を検出する振動センサーを取り付けます。記録では、最初の故障報告から故障停止までが平均6か月から14か月に延びました。会社の社内報は、センサーによって変速機の寿命が大幅に延びたとしています。",
+  "The breakdowns still happen when they always did; only the moment the fault entered the log moved earlier, so the measured gap from report to breakdown grew by exactly the warning the sensors bought.":
+    "故障停止が起こる時期は以前と同じです。記録に故障が入る時点だけが早まったため、報告から故障までの測定される間隔は、センサーが稼いだ警告時間の分だけ延びました。",
+  "A roads authority begins ultrasound surveys that reveal cracking in girders years before it becomes visible. Girders are still replaced at the same age as before, yet the average time from a crack being recorded to replacement has risen from four years to nine. The authority reports longer girder life.":
+    "ある道路管理者が、目に見えるようになる何年も前に桁のひび割れを見つける超音波検査を始めます。桁の交換時期は以前と同じ年数のままですが、ひび割れの記録から交換までの平均期間は4年から9年に延びました。管理者は桁の寿命が延びたと報告します。",
+  "Replacement happens at the same age it always did, so nothing about the girder changed. Recording the crack earlier simply lengthened the interval being measured.":
+    "交換はこれまでと同じ年数で行われており、桁には何の変化もありません。ひび割れを早く記録したことが、測定される期間を延ばしただけです。",
+  "A data centre switches on drive health alerts that fire well before a disk starts losing sectors. Disks are still retired at the same age, but the mean time from first alert to retirement has tripled. The operations page claims the alerts are extending disk life threefold.":
+    "あるデータセンターが、ディスクがセクタを失い始めるよりかなり前に発報する健全性アラートを有効にします。ディスクの退役時期は同じままですが、最初のアラートから退役までの平均時間は3倍になりました。運用ページは、アラートがディスク寿命を3倍に延ばしていると主張します。",
+  "The retirement date did not move. Starting the count at an earlier alert stretches the measured interval without a single disk lasting longer.":
+    "退役日は動いていません。より早いアラートから数え始めれば測定される期間は延びますが、長持ちしたディスクは1台もありません。",
+  "A phone maker adds a diagnostic that warns of battery decline far earlier than the old check did. Support records show the average time from first warning to replacement has doubled, and batteries are still replaced at the same age. Marketing says the diagnostic doubles battery life.":
+    "ある携帯電話メーカーが、従来の点検よりはるかに早くバッテリーの劣化を警告する診断機能を追加します。サポート記録では、最初の警告から交換までの平均期間が2倍になっており、バッテリーの交換時期は同じままです。マーケティング部門は、この診断がバッテリー寿命を2倍にすると述べます。",
+  "Batteries reach replacement at the same age as before; only the warning moved forward, so the interval from warning to replacement grew by the time gained in detecting decline.":
+    "バッテリーが交換に至る時期は以前と同じで、警告だけが前倒しになりました。警告から交換までの期間は、劣化の検出が早まった分だけ延びています。",
+  "A grower adopts a leaf assay that identifies infected trees months before wilting appears. Records now show infected trees standing fifteen months after detection rather than five, and trees are still felled at the same age. The assay supplier's leaflet claims it keeps infected trees productive three times as long.":
+    "ある生産者が、萎れが出る数か月前に感染樹を特定する葉の検査を導入します。記録では、感染樹が検出後に立っている期間が5か月から15か月になり、伐採の時期は同じままです。検査の販売業者の資料は、感染樹の生産期間が3倍になると主張します。",
+  "Felling happens at the same age, so no tree gained a day. The assay only started the clock earlier, which inflates the interval from detection to felling.":
+    "伐採は同じ樹齢で行われており、1日も得た木はありません。検査は時計を早く動かし始めただけで、検出から伐採までの期間を水増しします。",
+  "A water utility installs acoustic monitoring that finds leaks long before they surface. Pipes are still dug up only when a leak reaches the road, yet the average time from logging a leak to the dig has risen from two months to eleven. The utility reports that leaking pipes now last far longer.":
+    "ある水道事業者が、漏水が地表に出るずっと前にそれを見つける音響監視を導入します。掘削は漏水が路面に達したときにしか行われませんが、漏水の記録から掘削までの平均期間は2か月から11か月に延びました。事業者は、漏水した管の寿命が大幅に延びたと報告します。",
+  "The dig is still triggered by the same event at the same moment. Logging the leak nine months sooner adds nine months to the measured interval and nothing to the pipe.":
+    "掘削は同じ出来事によって同じ時点で始まります。漏水を9か月早く記録すれば測定される期間に9か月が加わりますが、管には何も加わりません。",
+  "A memory service introduces a test that identifies a degenerative condition several years earlier than before. Patients still move into full time care at about the same age, but the average interval from diagnosis to that move has risen from four years to seven. A leaflet says the test delays dependence.":
+    "ある物忘れ外来が、変性疾患をこれまでより数年早く特定する検査を導入します。患者が常時介護に移る年齢はほぼ同じままですが、診断からその移行までの平均期間は4年から7年に延びました。ある資料は、この検査が要介護化を遅らせると述べます。",
+  "The move into full time care happens at the same age as before, so nothing was delayed. Diagnosing sooner simply lengthened the stretch of time counted after diagnosis.":
+    "常時介護への移行は以前と同じ年齢で起こっており、何も遅れていません。診断が早まったことで、診断後に数える期間が延びただけです。",
+  "Before a new imaging protocol, a clinic's patients were identified at an average age of 62 and died at 66. Since the protocol, they are identified at 59 and still die at 66. The annual report states that average survival after diagnosis has risen from four years to seven.":
+    "新しい画像検査手順の導入前、ある診療所の患者は平均62歳で発見され、66歳で亡くなっていました。導入後は59歳で発見され、亡くなるのは変わらず66歳です。年次報告は、診断後の平均生存期間が4年から7年に延びたと記しています。",
+  "The age at death is unchanged, so no patient gained time. Moving the moment of identification three years earlier adds three years to every measured interval.":
+    "死亡時の年齢は変わっておらず、時間を得た患者はいません。発見の時点を3年早めれば、測定されるすべての期間に3年が加わります。",
+  "A detector is checked against obvious photocopied notes and crisp notes straight from the mint, and separates them almost perfectly. The maker advertises 99% accuracy. A bank buys it to sort well made counterfeits from worn, creased notes taken over the counter, and expects the same figure.":
+    "ある識別機が、明らかなコピー紙幣と造幣局から出たばかりの真新しい紙幣で試験され、ほぼ完璧に見分けます。製造元は99%の精度をうたいます。ある銀行は、精巧な偽札と窓口で受け取った擦れて折り目のついた紙幣を仕分けるためにこれを購入し、同じ数字を期待します。",
+  "The advertised figure came from the crudest fakes set against the cleanest genuine notes. Where the fakes are skilled and the genuine notes are battered, the two groups overlap on exactly the features the detector reads.":
+    "宣伝された数字は、最も粗雑な偽札と最もきれいな真札を並べて得られたものです。偽札が精巧で真札が傷んでいる場面では、識別機が読む特徴のまさにその点で2つの集団が重なります。",
+  "A filter is benchmarked on bulk advertising full of misspellings and on a folder of ordinary personal mail, and scores 99.6%. A firm deploys it against carefully written impersonation attempts and against unusual but genuine messages from new suppliers, quoting the same score to its board.":
+    "あるフィルターが、綴りの誤りだらけの大量広告メールと通常の個人的なメールのフォルダで評価され、99.6%を記録します。ある会社は、丁寧に書かれたなりすましメールと、新しい取引先からの珍しいが正当なメールを相手にこれを導入し、取締役会に同じ数字を示します。",
+  "The benchmark asked the filter to separate the most obvious junk from the most obviously legitimate mail. Polished impersonations and odd but genuine supplier mail sit in the middle, where the filter was never measured.":
+    "評価では、最も明白な迷惑メールと最も明白に正当なメールを分けることが求められました。洗練されたなりすましと、風変わりだが正当な取引先のメールは中間にあり、そこでフィルターは一度も測定されていません。",
+  "A placement test was validated on absolute beginners and on near native speakers, and told them apart almost every time. A school now uses it to sort intermediate learners into three levels and cites the original accuracy figure in its prospectus.":
+    "あるクラス分けテストが、まったくの初心者と母語話者に近い人で検証され、ほぼ毎回両者を見分けました。ある学校はいま、中級学習者を3つのレベルに振り分けるためにこれを使い、募集要項に当初の精度の数字を載せています。",
+  "The test was only ever asked to separate the two ends of the range, which almost any crude measure manages. Intermediate learners sit in the middle, where it was never shown to discriminate at all.":
+    "このテストは範囲の両端を分けることしか求められておらず、それはどんな粗い指標でもほぼできます。中級学習者は中間にあり、そこで判別力が示されたことは一度もありません。",
+  "An inspection system was tuned on deliberately ruined test welds and on flawless reference welds, and caught 97% of the bad ones. On the production line, where flaws are hairline and sound welds carry cosmetic spatter, it catches far fewer. The plant keeps quoting 97% to customers.":
+    "ある検査装置が、意図的に劣化させた試験溶接と欠陥のない標準溶接で調整され、不良の97%を検出しました。欠陥が髪の毛ほどの細さで、健全な溶接にも見た目のスパッタが付く製造ラインでは、検出率ははるかに下がります。工場は顧客に97%を示し続けています。",
+  "The 97% was measured on wrecked welds against pristine ones, a comparison with a wide gap. Real line output has faint flaws and untidy good welds, so the same thresholds separate much less.":
+    "97%はひどく壊した溶接と完璧な溶接という差の大きい比較で測られました。実際のライン品はかすかな欠陥と見た目の悪い良品からなるため、同じしきい値では分離力がずっと落ちます。",
+  "A tool that claims to tell machine written text from human writing was checked on raw machine output and on handwritten classroom essays, scoring 98%. A college applies it to lightly edited submissions and to careful work by students writing in a second language, and treats every flag as proof.":
+    "機械が書いた文章と人間が書いた文章を見分けるとうたうツールが、加工していない機械の出力と教室で手書きされたレポートで試験され、98%を記録します。ある大学はこれを、軽く手直しされた提出物と、第二言語で書く学生の丁寧な文章に適用し、検出をすべて証拠として扱います。",
+  "The 98% came from the most obvious machine output set against the most obviously human writing. Edited text and unusually careful second language prose sit between those extremes, where the tool's accuracy was never established.":
+    "98%は、最も明白な機械の出力と最も明白に人間らしい文章を並べて得られたものです。手直しされた文章や、際立って丁寧な第二言語の文章はその両極の間にあり、そこでツールの精度は確かめられていません。",
+  "A moisture meter was calibrated against soaking wet blocks and oven dried blocks, and told them apart every time. A surveyor now uses it on borderline walls where mild condensation and genuine structural damp look much alike, and reports the manufacturer's accuracy figure in his findings.":
+    "ある水分計が、びしょ濡れのブロックと乾燥炉で乾かしたブロックで校正され、毎回両者を見分けました。ある建物調査士はいま、軽い結露と本当の構造的湿気がよく似て見える判断の難しい壁でこれを使い、所見にメーカーの精度の数字を記載しています。",
+  "Calibration contrasted two extremes that any meter could tell apart. The walls the surveyor actually meets are neither soaked nor bone dry, so the readings that mattered in calibration barely differ here.":
+    "校正では、どんな計測器でも見分けられる両極端が対比されました。調査士が実際に出会う壁はずぶ濡れでも完全な乾燥状態でもないため、校正で意味を持った測定値がここではほとんど違いません。",
+  "An image classifier for a skin condition was built from textbook photographs of advanced lesions and clear photographs of normal skin, reporting 96% accuracy. A community clinic runs it on early lesions and on patients with eczema and insect bites, and quotes the same 96% to them.":
+    "ある皮膚疾患の画像分類器が、進行した病変の教科書写真と正常な皮膚の鮮明な写真から作られ、96%の精度を報告します。ある地域の診療所は、早期の病変や湿疹、虫刺されの患者にこれを使い、同じ96%を患者に示します。",
+  "The reported accuracy came from advanced textbook lesions against plainly normal skin. In the clinic the lesions are early and the comparison skin carries rashes and bites that mimic them, so the separation the figure rested on is gone.":
+    "報告された精度は、進行した教科書的病変と明らかに正常な皮膚の対比から得られたものです。診療所では病変は早期で、比較対象の皮膚にはそれに似た発疹や虫刺されがあるため、この数字が拠って立っていた分離はありません。",
+  "A sideline test for head injury was validated on players with unmistakable symptoms and on rested players at the start of the season, sorting them almost perfectly. A club now applies it late in matches, to subtle knocks in tired and dehydrated players, quoting the same numbers.":
+    "頭部外傷を判定する競技場脇の検査が、症状の明らかな選手とシーズン開幕時の休養十分な選手で検証され、ほぼ完璧に振り分けました。あるクラブはいま、試合終盤に、疲労と脱水のある選手のわずかな接触に対してこれを使い、同じ数字を示しています。",
+  "Validation contrasted obvious injury with fresh, unaffected controls. Late in a match the injuries are subtle and the uninjured are fatigued, so both groups score alike on the very things the test measures.":
+    "検証では、明らかな外傷と、疲れのない無傷の対照が対比されました。試合終盤では外傷はわずかで、無傷の選手も疲労しているため、検査が測るまさにその項目で両群が似た値になります。",
+  "A firm interviews any applicant who scores highly on either the coding test or the communication exercise. Among the applicants who reach interview, the two scores move in opposite directions. The hiring manager concludes that people who are good with code tend to be poor with people.":
+    "ある会社は、コーディング試験かコミュニケーション課題のどちらかで高得点を取った応募者を面接します。面接に進んだ応募者の中では、2つの得点は逆方向に動きます。採用責任者は、コードが得意な人は人付き合いが苦手な傾向があると結論づけます。",
+  "Reaching interview required a high score on one test or the other, so a weak communicator is there only because the coding score carried them, which produces the opposite pattern inside the interview pool while saying nothing about applicants in general.":
+    "面接に進むにはどちらか一方で高得点が必要でした。コミュニケーションが弱い人がそこにいるのはコーディングの得点に支えられたからであり、これが面接者の集団の中で逆の関係を作ります。応募者全体については何も語りません。",
+  "A conservatory offers places to musicians who are outstanding in either technical playing or expressive interpretation. Among those who take up a place, the strongest technicians consistently receive the lowest expression marks. A tutor writes that drilling technique appears to blunt musicality.":
+    "ある音楽院は、技巧か表現の解釈のどちらかで傑出した音楽家に入学を許可します。入学した学生の中では、技巧が最も高い学生が一貫して表現の評価が最も低くなります。ある指導者は、技巧の反復練習が音楽性を鈍らせるようだと書きます。",
+  "A place required excellence on at least one of the two measures, so a student who is flat on expression must have been outstanding technically to get in, and the tradeoff exists only among those offered places.":
+    "入学には2つの尺度の少なくとも一方で卓越していることが必要でした。表現が平板な学生が入れたのは技巧が傑出していたからであり、この二律背反は入学を許可された人の中にしか存在しません。",
+  "A repair shop sees a device only when the battery has failed or the screen has cracked. Its records show that devices with dead batteries have unusually intact screens. The owner writes a blog post arguing that battery wear somehow spares the glass.":
+    "ある修理店には、バッテリーが寿命を迎えたか画面が割れた端末しか持ち込まれません。記録では、バッテリーが切れた端末は画面が異常なほど無傷です。店主は、バッテリーの劣化がなぜかガラスを守っているという記事をブログに書きます。",
+  "A device reaches the shop if at least one of the two faults happened, so a battery failure gets a device in without any screen damage, leaving cracked screens rarer among battery cases than among devices as a whole.":
+    "端末が店に来るのは2つの不具合の少なくとも一方が起きた場合です。バッテリーの故障だけで画面の損傷がなくても持ち込まれるため、バッテリー案件の中では画面割れが端末全体より少なくなります。",
+  "A city guide lists a restaurant only if it is unusually cheap or unusually good. A blogger works through the listings and finds that the pricier ones nearly always have the better food. He tells readers that in this city you really do get what you pay for.":
+    "ある街のガイドは、飛び抜けて安いか飛び抜けて質が高い店だけを掲載します。あるブロガーが掲載店を順に回り、値段の高い店ほどほぼ必ず料理が良いことを見つけます。彼は読者に、この街では本当に値段どおりの質が得られると伝えます。",
+  "A restaurant earns a listing by being cheap or by being good, so any expensive one in the guide is there because the food is good, which links price to quality inside the guide even if the city's restaurants show no such link.":
+    "店が掲載されるのは安いか質が高いかのどちらかによります。ガイドに載っている高い店は料理が良いから載っているのであり、街の飲食店全体にそうした関係がなくても、ガイドの中では値段と質が結びつきます。",
+  "A national squad picks players who are either exceptionally quick or exceptionally good at reading the game. Within the squad, the fastest players score lowest on the tactical assessment. The coaching staff decide that sprint work must be dulling game intelligence.":
+    "ある代表チームは、飛び抜けて速いか、試合の展開を読むのが飛び抜けてうまい選手を選びます。チーム内では、最も速い選手が戦術評価で最も低い点を取ります。コーチ陣は、スプリント練習が試合勘を鈍らせているに違いないと判断します。",
+  "A place needed one outstanding quality or the other, so a very quick player did not also need tactical strength to be picked, and the inverse pattern appears only among the players who were picked.":
+    "選出にはどちらか一方の傑出した資質が必要でした。非常に速い選手は戦術面の強さがなくても選ばれたため、この逆の関係は選ばれた選手の中にだけ現れます。",
+  "A funding panel awards money to proposals that have either a strong past record or a genuinely novel idea. Reviewing the funded projects five years later, an analyst finds the most novel ones came from the weakest records, and reports that experience seems to kill originality.":
+    "ある助成審査会は、過去の実績が強いか、着想が真に新しいかのどちらかの申請に資金を出します。5年後に採択課題を見直したある分析者は、最も新しい着想が最も実績の弱い申請から出ていることを見つけ、経験が独創性を殺すようだと報告します。",
+  "Funding required strength on one criterion or the other, so a novel proposal did not also need a strong record to win money, and the tradeoff holds among funded projects rather than among everyone who applied.":
+    "採択にはどちらか一方の基準での強さが必要でした。新しい申請は実績が強くなくても資金を得られたため、この二律背反は応募者全体ではなく採択課題の中で成り立ちます。",
+  "An insurer studies its motor claim file, which holds a case only when the vehicle was badly damaged or someone was hurt. In the file, badly damaged vehicles are less often linked to injuries. A memo suggests that heavier crash damage somehow protects the occupants.":
+    "ある保険会社が自動車の請求記録を調べます。この記録には、車両が大きく損傷したか誰かが負傷した場合しか事案が入りません。記録の中では、大きく損傷した車両ほど負傷と結びつくことが少なくなっています。ある社内文書は、衝突の損傷が大きいほどなぜか乗員が守られていると示唆します。",
+  "A crash enters the file if it caused serious damage or an injury, so heavily damaged vehicles are recorded even with nobody hurt, while lightly damaged ones appear only when someone was injured.":
+    "事故が記録に入るのは大きな損傷か負傷を生じた場合です。大きく損傷した車両は誰も負傷しなくても記録され、損傷の小さい事故は誰かが負傷したときにしか現れません。",
+  "A conference accepts a talk when the research is strikingly new or the speaker is a superb presenter. An attendee notices that the most original talks are the worst delivered, and posts afterwards that the polished speakers must be doing the shallowest work.":
+    "ある学会は、研究が際立って新しいか、発表者が非常に優れた話し手である場合に発表を採択します。ある参加者は、最も独創的な発表ほど話し方が拙いことに気づき、後から、洗練された話し手ほど中身が浅いに違いないと投稿します。",
+  "Acceptance needed novelty or delivery, so an original talk got on the programme without a polished speaker, and the tradeoff exists among accepted talks rather than among everything submitted.":
+    "採択には新規性か話し方のどちらかが必要でした。独創的な発表は話し方が洗練されていなくてもプログラムに載ったため、この二律背反は投稿全体ではなく採択された発表の中に存在します。",
+  "A motoring magazine reports that one gearbox is 40 percent more likely to fail in its first three years than the alternative. The maker's own figures show 7 failures per 10,000 cars against 5 per 10,000. Readers are advised to avoid the model.":
+    "ある自動車雑誌は、一方の変速機がもう一方より最初の3年で故障する可能性が40パーセント高いと報じます。メーカー自身の数字では、10,000台当たり7件に対して10,000台当たり5件です。読者にはこの車種を避けるよう助言されています。",
+  "The gap is 2 extra failures per 10,000 cars, so 9,998 owners in 10,000 notice no difference at all, and the 40 percent describes a change to an already tiny number.":
+    "差は10,000台当たり2件の増加であり、10,000人のうち9,998人の所有者は何の違いも感じません。40パーセントはもともと非常に小さい数字の変化を表しています。",
+  "A lottery app tells users that buying a second ticket doubles their chance of taking the jackpot, and pushes a two ticket bundle at checkout. A single ticket wins the jackpot about once in 14 million draws.":
+    "ある宝くじアプリは、2枚目を買えば1等が当たる確率が2倍になると利用者に伝え、決済画面で2枚組を勧めます。1枚で1等が当たるのはおよそ1,400万回に1回です。",
+  "Doubling moves the chance from about 1 in 14 million to about 2 in 14 million, an increase of roughly one chance in 14 million, which is why the proportional wording sounds far larger than the actual change.":
+    "2倍にすると確率はおよそ1,400万分の1から1,400万分の2になり、増加はおよそ1,400万分の1です。割合での言い方が実際の変化よりはるかに大きく聞こえるのはそのためです。",
+  "An airline advertisement says its new fleet has cut a particular in flight fault by 60 percent. The maintenance log behind the claim shows the fault used to occur on about 5 flights per million and now occurs on about 2 per million.":
+    "ある航空会社の広告は、新しい機材によって特定の飛行中の不具合が60パーセント減ったとしています。この主張の根拠となる整備記録では、この不具合は以前は100万便当たりおよそ5便、現在はおよそ2便で起きています。",
+  "That is 3 fewer faults per million flights, so a passenger's chance was already about 1 in 200,000 before the new fleet arrived and the headline percentage sits on a very small starting number.":
+    "これは100万便当たり3件の減少です。乗客が遭遇する確率は新機材の導入前でもすでにおよそ200,000分の1であり、見出しの割合は非常に小さい出発点の上に乗っています。",
+  "A bank advertises that its new account pays 50 percent more interest than the old one. The old account paid 0.2 percent a year and the new one pays 0.3 percent. A saver moves a 2,000 dollar balance across, expecting a noticeable difference.":
+    "ある銀行は、新しい口座が旧口座より50パーセント多い利息を付けると宣伝します。旧口座は年0.2パーセント、新口座は年0.3パーセントです。ある預金者は、目に見える違いを期待して2,000ドルの残高を移します。",
+  "On 2,000 dollars the switch is worth 6 dollars a year instead of 4, a gain of 2 dollars, because 50 percent more of a very small rate is still a very small rate.":
+    "2,000ドルでは年4ドルが年6ドルになるだけで、増える分は2ドルです。非常に小さい金利の50パーセント増しは、やはり非常に小さい金利です。",
+  "A newspaper reports that eating a particular snack every day raises the chance of a rare bowel condition by 25 percent, and shoppers start avoiding it. The figures behind the story are 4 cases per 10,000 people over ten years among non eaters and 5 per 10,000 among daily eaters.":
+    "ある新聞は、特定の菓子を毎日食べると希少な腸の病気になる可能性が25パーセント高まると報じ、買い物客はその菓子を避け始めます。記事の根拠となる数字は、食べない人では10年間で10,000人当たり4件、毎日食べる人では10,000人当たり5件です。",
+  "The difference is 1 extra case per 10,000 people across a decade, so 9,999 in 10,000 are unaffected either way and the 25 percent applies to an outcome that was already rare.":
+    "差は10年間で10,000人当たり1件の増加です。10,000人のうち9,999人はどちらでも影響を受けず、25パーセントはもともとまれな結果に当てはまっています。",
+  "A clinic leaflet says a daily tablet cuts the chance of a particular event over five years from 4 in 1,000 to 3 in 1,000, a reduction of a quarter. The leaflet adds that this means about one patient in four will be spared the event.":
+    "ある診療所の資料は、1日1錠の服用で5年間の特定の出来事の確率が1,000人中4人から1,000人中3人に、つまり4分の1減ると述べます。資料はさらに、これはおよそ4人に1人の患者がその出来事を免れることを意味すると付け加えます。",
+  "Only 1 patient in 1,000 avoids the event, so about 1,000 people must take the tablet for five years for one to benefit; the quarter describes how much a small chance shrank, not the share of patients helped.":
+    "その出来事を免れるのは1,000人に1人だけであり、1人が恩恵を受けるにはおよそ1,000人が5年間服用する必要があります。4分の1は小さい確率がどれだけ縮んだかを表すもので、恩恵を受ける患者の割合ではありません。",
+  "A factory's internal report gives the risk ratio for injuries after a new floor marking scheme as 0.47. The staff newsletter announces that the scheme has cut injuries by 47 percent, and the plant manager repeats that figure to the board.":
+    "ある工場の内部報告は、新しい床表示の導入後の負傷のリスク比を0.47としています。社内報は、この取り組みで負傷が47パーセント減ったと伝え、工場長は取締役会でその数字を繰り返します。",
+  "A ratio of 0.47 means injuries fell to 47 percent of the old level, which is a fall of 53 percent, so the newsletter has reported the share that remains as though it were the share removed.":
+    "0.47という比は、負傷が従来の47パーセントの水準まで下がったことを意味し、減少は53パーセントです。社内報は残った割合を、減った割合であるかのように報じています。",
+  "A home insurer tells customers that fitting a certain type of wood stove triples the chance of a fire claim, and raises those premiums by a third. Its own data show 1 claim per 10,000 insured homes a year without the stove and 3 per 10,000 with it.":
+    "ある住宅保険会社は、ある種類の薪ストーブを設置すると火災の請求が3倍になると顧客に伝え、その保険料を3分の1引き上げます。自社のデータでは、ストーブのない住宅では年に10,000戸当たり1件、ある住宅では10,000戸当たり3件です。",
+  "The extra chance is 2 fire claims per 10,000 homes a year, so 9,997 homes in 10,000 with the stove make no claim, and tripling something rare leaves it rare.":
+    "増える分は年に10,000戸当たり2件です。ストーブのある住宅10,000戸のうち9,997戸は請求をせず、まれな出来事を3倍にしてもやはりまれなままです。",
+  "A school picks pupils for extra tutoring on the basis of which ones teachers judge most likely to fail. At the end of the year the tutored pupils score lower on average than the rest, and a governors' report calls the tutoring ineffective and recommends closing it.":
+    "ある学校は、教員が最も落第しそうだと判断した生徒を補習の対象に選びます。年度末には補習を受けた生徒の平均点が他より低く、理事会の報告書は補習は効果がないとして廃止を勧めます。",
+  "Teachers chose pupils for tutoring precisely because they were already heading for a poor result, so the tutored group started further behind and the tutoring is blamed for the reason it was offered.":
+    "教員が補習に選んだのは、まさにその生徒たちがすでに悪い結果に向かっていたからです。補習を受けた集団はより後ろから出発しており、補習が提供された理由そのものが補習の責任にされています。",
+  "A phone company calls customers its model flags as most likely to leave and offers them a discount. Over the next quarter those customers cancel more often than customers who got no call. The analysis concludes that retention calls push people out of the door.":
+    "ある携帯電話会社は、解約しそうだとモデルが判定した顧客に電話し、割引を提案します。次の四半期には、その顧客は電話を受けなかった顧客より多く解約します。分析は、引き止めの電話が顧客を出て行かせていると結論づけます。",
+  "The call went only to customers already judged most likely to cancel, so the flag that triggered the call, not the call itself, explains their higher cancellation rate.":
+    "電話はすでに解約の可能性が最も高いと判断された顧客だけにかけられました。解約率の高さを説明するのは電話そのものではなく、電話のきっかけとなった判定です。",
+  "A plant sends a machine for early servicing whenever an operator reports an unusual noise. An audit finds that machines serviced early broke down more often the following year than machines left alone, and recommends servicing less.":
+    "ある工場は、作業者が異音を報告するたびに機械を早期整備に出します。監査では、早期整備を受けた機械は手を付けなかった機械より翌年の故障が多いことが分かり、整備を減らすよう勧告します。",
+  "The noise that prompted early servicing was itself a sign of a machine on its way to failing, so the servicing takes the blame for the condition that selected it.":
+    "早期整備のきっかけとなった異音は、故障に向かっている機械の兆候そのものでした。整備は、それを選び出した状態の責任を負わされています。",
+  "Places on a prison workshop scheme are limited, so staff give them to the inmates they judge most motivated and least likely to offend again. Two years on, scheme graduates have far lower reoffending, and the governor presents this as proof the scheme works.":
+    "刑務所の職業訓練の定員は限られているため、職員は最も意欲が高く再犯の可能性が最も低いと判断した受刑者に枠を与えます。2年後、修了者の再犯率ははるかに低く、所長はこれを訓練が有効である証拠として示します。",
+  "Staff selected participants using their own judgement of who would reoffend, which is the very outcome being measured, so the places went to the men already likely to do best.":
+    "職員は誰が再犯するかという自らの判断で参加者を選びましたが、それはまさに測定されている結果です。枠はもともと最も良い経過をたどりそうな人に渡りました。",
+  "A bank rewrites the terms of a loan as soon as the account shows early signs of strain. A year later, rewritten loans have defaulted more often than the rest of the book, and the credit committee concludes that rewriting terms encourages default.":
+    "ある銀行は、口座に苦しさの初期の兆候が現れるとすぐに融資条件を書き換えます。1年後、条件を書き換えた融資は他より多く債務不履行になっており、与信委員会は条件の書き換えが債務不履行を招くと結論づけます。",
+  "The rewrite was triggered by warning signs that already predicted default, so the rewritten loans began from a worse position that the comparison never accounted for.":
+    "書き換えのきっかけは、すでに債務不履行を予測させる警告の兆候でした。書き換えられた融資はより悪い状態から出発しており、比較はそれを考慮していません。",
+  "An employer assigns a senior mentor to the graduate recruits its managers rate as highest potential. Three years later the mentored recruits have been promoted twice as often as the others, and the internal newsletter credits the mentoring scheme.":
+    "ある雇用主は、管理職が最も将来性が高いと評価した新卒採用者に上級のメンターを付けます。3年後、メンターの付いた社員は他の2倍昇進しており、社内報はメンター制度の成果だとします。",
+  "Managers picked mentees on a judgement of who would rise fastest, so the mentored group was already on the quicker track before any mentoring happened.":
+    "管理職は誰が最も速く昇進するかという判断でメンティーを選びました。メンターが付く前から、その集団はすでに速い道筋に乗っていました。",
+  "A care home moves residents to its specialist wing when staff judge that they are declining fastest. A quality review finds that residents in the specialist wing die sooner than those on ordinary floors, and questions whether the wing should stay open.":
+    "ある介護施設は、職員が最も急速に衰えていると判断した入居者を専門棟に移します。品質評価では、専門棟の入居者は一般階の入居者より早く亡くなることが分かり、専門棟を存続させるべきかが問われます。",
+  "The move was decided by how fast a resident was already declining, and that decline, not the wing, drives the difference in how long they lived.":
+    "移動はその入居者がすでにどれだけ速く衰えているかで決まりました。生存期間の差を生んでいるのは専門棟ではなく、その衰えです。",
+  "A clinic offers its intensive shoulder programme only to patients who can already raise the arm to shoulder height, since the exercises need it. Those patients regain full movement far more often than the rest, and the clinic advertises the programme as its most effective treatment.":
+    "ある診療所は、運動に必要なため、すでに腕を肩の高さまで上げられる患者にだけ集中的な肩のプログラムを提供します。その患者は他よりはるかに高い割合で可動域を完全に取り戻し、診療所はこのプログラムを最も効果的な治療として宣伝します。",
+  "The entry rule handed the programme the patients whose shoulders were least damaged to begin with, so the people most likely to recover anyway are the ones being counted.":
+    "参加条件によって、もともと肩の損傷が最も軽い患者がプログラムに集まりました。放っておいても回復しやすい人が数えられています。",
+  "A fleet inspects every van once a year. Vans whose brake faults were picked up at inspection go on to have far fewer roadside breakdowns than vans whose faults turned up in between. The workshop manager concludes that the annual inspection catches the dangerous faults.":
+    "ある車両部門は全バンを年に1回点検します。点検でブレーキの不具合が見つかったバンは、点検の間に不具合が出たバンよりも路上故障がはるかに少なくなります。整備責任者は、年次点検が危険な不具合を捉えていると結論づけます。",
+  "A yearly check can only find wear slow enough to still be half formed on the day the inspector calls; anything that goes from sound to broken inside a year declares itself between visits. The inspected group is therefore stacked with the gradual faults from the outset.":
+    "年1回の点検で見つかるのは、点検の日にまだ途中の段階でとどまる程度に進行の遅い摩耗だけです。1年以内に健全から破損まで進むものは点検と点検の間に姿を現します。したがって点検で見つかる集団は、初めから進行の遅い不具合に偏っています。",
+  "A card issuer reviews merchant accounts once a month. Accounts stopped by the review have cost the issuer far less on average than accounts reported by cardholders between reviews. The risk team reports that the monthly review is holding losses down.":
+    "あるカード会社は加盟店の口座を月に1回審査します。審査で停止された口座は、審査の間にカード会員から通報された口座より平均して損失額がはるかに小さくなっています。リスク部門は、月次審査が損失を抑えていると報告します。",
+  "A scheme that opens, drains and vanishes within days sits entirely between two reviews, so the review can only catch the slow, low value operations. Those were the cheaper ones before anyone intervened.":
+    "数日のうちに開設し、資金を抜き、消える手口は完全に2回の審査の間に収まります。審査が捉えられるのは動きの遅い低額の手口だけです。それらは誰かが介入する前から損失の小さいものでした。",
+  "A software team audits its codebase every quarter. Defects the audit finds are rated far less severe than those users report between audits. The engineering lead writes that auditing removes problems before they can turn serious.":
+    "あるソフトウェアチームは四半期ごとにコードを監査します。監査で見つかる不具合は、監査の間に利用者から報告される不具合よりはるかに軽度と評価されます。開発責任者は、監査が問題を深刻になる前に取り除いていると書きます。",
+  "A defect that crashes the app is reported by a user within hours of shipping, long before the next quarterly pass, leaving the audit only the quiet long lived ones. Those were the mild defects already, not defects the audit made mild.":
+    "アプリを落とす不具合は出荷から数時間で利用者に報告され、次の四半期の監査よりずっと前に表面化します。監査に残るのは目立たず長く残る不具合だけです。それらはもともと軽度だったのであり、監査が軽度にしたわけではありません。",
+  "A housing association surveys each block once every five years. Defects found by the survey are almost always cosmetic, while the serious ones, a collapsed ceiling or a burst tank, arrive as emergency calls. The association reports that its survey programme keeps defects minor.":
+    "ある住宅組合は各棟を5年に1回調査します。調査で見つかる不具合はほぼ必ず見た目の問題で、天井の崩落やタンクの破裂といった重大なものは緊急通報として入ります。組合は、調査計画によって不具合が軽微に保たれていると報告します。",
+  "A defect that takes years to develop is present, and still small, whichever year the surveyor happens to call. One that develops in a fortnight almost certainly falls between two surveys and comes in as an emergency instead.":
+    "進行に何年もかかる不具合は、調査員が何年目に来ても存在していて、しかもまだ小さいままです。2週間で進む不具合はほぼ確実に2回の調査の間に起こり、代わりに緊急通報として入ります。",
+  "A grid operator surveys its lines from the air twice a year. Faults seen on a survey are almost always minor, and the faults behind most outages had never appeared on one. The operator's report credits the surveys with keeping serious faults rare.":
+    "ある送電事業者は年に2回、上空から送電線を調査します。調査で見つかる不具合はほぼ必ず軽微で、停電の大半の原因となった不具合は調査に一度も現れていませんでした。事業者の報告は、重大な不具合がまれなのは調査のおかげだとします。",
+  "Only damage that creeps along for months is still sitting there to be photographed when the aircraft passes. Damage that goes from intact to failed in a fortnight becomes an outage before any survey can see it, so the surveyed set is minor by construction.":
+    "航空機が通るときにまだそこにあって撮影されるのは、何か月もかけてじわじわ進む損傷だけです。2週間で健全から破損に至る損傷は、どの調査より先に停電になります。調査で見つかる集合は仕組み上、軽微なものになります。",
+  "A dental practice recalls its patients every eighteen months. Problems found at recall are nearly always fixable with a filling, while most extractions come from patients who telephone in pain between appointments. The practice tells patients that regular recall prevents extractions.":
+    "ある歯科医院は18か月ごとに患者を定期健診に呼びます。健診で見つかる問題はほぼ必ず詰め物で対応でき、抜歯の大半は健診の間に痛みで電話してくる患者から出ます。医院は患者に、定期健診が抜歯を防ぐと伝えます。",
+  "Decay that creeps along for years is present, and still small, whenever the recall falls. A tooth that goes from sound to abscessed in three months announces itself before the next appointment, so the recall sees the slow problems and little else.":
+    "何年もかけて進むむし歯は、健診がいつ来ても存在していて、まだ小さいままです。3か月で健全から膿瘍に至る歯は次の予約より前に姿を現すため、健診が見るのは進行の遅い問題ばかりです。",
+  "A large employer offers a lung scan every two years. Employees whose disease is found at a scan need much less urgent treatment than those who arrive breathless at the clinic between rounds. Occupational health reports that scanning catches disease while it is still controllable.":
+    "ある大企業は2年ごとに肺の画像検査を提供します。検査で病気が見つかった従業員は、検査と検査の間に息切れで受診した従業員よりも緊急の治療をはるかに必要としません。産業保健部門は、検査が病気をまだ制御できるうちに捉えていると報告します。",
+  "Disease that progresses over many years is detectable at whichever round comes along, while disease that goes from nothing to breathless inside two years surfaces between rounds. The scanned group is loaded with the milder illness before any treatment starts.":
+    "何年もかけて進行する病気は、どの回の検査でも見つかります。2年以内に無症状から息切れまで進む病気は検査と検査の間に表面化します。検査で見つかる集団は、治療が始まる前から軽い病気に偏っています。",
+  "A clinic lengthens its check up interval from one year to three. The cases it now picks up look milder on average than the ones it used to find, and the clinical lead takes this as evidence that the longer interval suits patients better.":
+    "ある診療所が健診の間隔を1年から3年に延ばします。いま見つかる症例は以前見つけていた症例より平均して軽く見え、診療責任者はこれを、長い間隔のほうが患者に合っている証拠と受け取ります。",
+  "Stretching the gap gives fast moving disease more room to appear and declare itself between visits, so a larger share of what the check up still finds is the slow moving kind. The milder mix reflects what the interval now misses, not better care.":
+    "間隔を延ばすと、進行の速い病気が受診と受診の間に現れて表面化する余地が広がります。健診がなお見つけるもののうち、進行の遅い種類の割合が増えます。軽い症例が増えたのは、その間隔が取りこぼすようになったものを映しているのであって、診療が良くなったからではありません。",
+  "A company's product newsletter runs a write up whenever an experiment beats the current design. Teams whose tests showed no difference tend to move on without writing anything. A new joiner reads a year of newsletters and concludes that almost every idea here lifts sign ups.":
+    "ある会社のプロダクト社内報は、実験が現行の設計を上回るたびに記事を掲載します。差が出なかったチームは何も書かずに次へ進む傾向があります。新入社員が1年分の社内報を読み、この会社ではほぼどの案でも登録が増えると結論づけます。",
+  "Only the experiments that won were written up, so the newsletter records a small winning slice of the year's tests while the flat and losing ones never appeared anywhere the new joiner could read them.":
+    "記事になったのは勝った実験だけです。社内報はその年の試験のうち勝った一部だけを記録し、差の出なかったものや負けたものは新入社員が読める場所に一度も現れていません。",
+  "A training provider's homepage carries fifteen graduate stories, each describing a good job within months of finishing. The stories came from graduates who answered a request for success stories. A prospective student reads them and concludes the course almost always leads to work.":
+    "ある職業訓練提供者のホームページには修了生の体験談が15件掲載され、いずれも修了から数か月で良い仕事に就いたと書かれています。これらは成功体験の募集に応じた修了生から寄せられたものです。入学を検討している人がこれを読み、この講座はほぼ必ず就職につながると結論づけます。",
+  "The page gathers only graduates who had a success to report, so those who finished the course and found nothing are missing from the evidence the student is weighing.":
+    "このページに集まっているのは報告できる成功があった修了生だけです。講座を終えても何も見つからなかった人は、検討中の人が見ている材料から抜けています。",
+  "On a woodworking forum, members post photographs of finished cabinets, and the build threads run to hundreds of admiring replies. A newcomer reads twenty of them and decides the design is straightforward enough for a first project.":
+    "ある木工の掲示板では、会員が完成した戸棚の写真を投稿し、製作の書き込みには数百件の称賛の返信が付きます。ある初心者が20件を読み、この設計は最初の作品として十分に取り組みやすいと判断します。",
+  "Builds that were abandoned halfway never get a thread, so the forum shows the attempts that worked and gives no sign of how often the design defeated someone.":
+    "途中で放棄された製作は書き込みになりません。掲示板に表れるのはうまくいった試みだけで、この設計がどれだけの人を挫折させたかは分かりません。",
+  "A software vendor's website hosts twelve customer case studies, each with a chart of improved results. The vendor decides which pilots to turn into case studies after seeing how they went. A buyer reads all twelve and signs a three year contract.":
+    "あるソフトウェア会社のサイトには12件の顧客事例が掲載され、いずれも成果が改善した図が付いています。会社はどの試験導入を事例にするかを、結果を見てから決めています。ある購入担当者が12件すべてを読み、3年契約を結びます。",
+  "The vendor wrote up only the pilots that turned out well, so the twelve studies are the flattering end of a larger set of pilots whose disappointing results were never put on the site.":
+    "会社が記事にしたのはうまくいった試験導入だけです。12件はより大きな集合のうち見栄えの良い端にあたり、期待外れの結果はサイトに載っていません。",
+  "An allotment association's newsletter has carried enthusiastic reports of a plant feed for ten years. Members who noticed a big difference send in a report; members who noticed nothing rarely bother. The committee votes to buy the feed in bulk for every plot.":
+    "ある市民農園組合の会報は、10年にわたってある肥料の好意的な報告を掲載してきました。大きな違いに気づいた会員は報告を送り、何も気づかなかった会員はめったに送りません。運営委員会は全区画分の肥料をまとめて購入することを議決します。",
+  "Only growers who saw an effect wrote in, so a decade of newsletters preserves the striking results and leaves out every plot where the feed changed nothing.":
+    "投稿したのは効果を見た人だけです。10年分の会報には目立つ結果だけが残り、肥料が何も変えなかった区画はすべて抜けています。",
+  "A research group posts a blog each time a new network design beats the standard benchmark, and quietly shelves the runs that did not. A reader tallies such posts across several groups and writes that progress in the field is accelerating sharply.":
+    "ある研究グループは、新しいネットワーク設計が標準の指標を上回るたびにブログを投稿し、上回らなかった実行は静かに棚上げします。ある読者が複数のグループの投稿を数え上げ、この分野の進歩が急速に加速していると書きます。",
+  "Runs that failed to beat the benchmark were never posted, so the tally counts the successes drawn from far more attempts and reads a filtered record as though it were the rate of progress.":
+    "指標を上回らなかった実行は投稿されていません。この集計ははるかに多い試行から取り出された成功だけを数えており、選別された記録を進歩の速度として読んでいます。",
+  "Someone collects every published trial of a supplement and notices that the small trials report much larger benefits than the large ones. He averages all of them together and reports a clear overall benefit.":
+    "ある人がサプリメントの公表された試験をすべて集め、小規模試験のほうが大規模試験よりはるかに大きな効果を報告していることに気づきます。彼はそれらをすべて平均し、全体として明確な効果があると報告します。",
+  "A small trial that found nothing is easy to leave unwritten, while a small trial that happened to land a striking result gets submitted, so the small studies on show are the lucky ones and averaging them pushes the estimate up.":
+    "何も見つからなかった小規模試験は書かずに済ませやすく、たまたま目立つ結果が出た小規模試験は投稿されます。目に見える小規模研究は運の良かったものであり、それらを平均すると推定値が押し上げられます。",
+  "A journal's guidance for authors says it looks for findings that are surprising and change how readers think. A student reviews ten years of its issues and concludes that effects in this field are usually large.":
+    "ある学術誌の投稿規定は、驚きがあり読者の考え方を変える知見を求めると述べています。ある学生が10年分の号を通読し、この分野の効果は通常大きいと結論づけます。",
+  "The journal chose papers by how striking the result was, so modest and flat findings were turned away or never submitted, and the ten years the student read contain none of them.":
+    "この学術誌は結果の目立ち方で論文を選んでいたため、控えめな知見や差のない知見は不採択になるか、そもそも投稿されませんでした。学生が読んだ10年分にはそれらが含まれていません。",
+  "A bank randomly gives half of its new savers an automatic top up feature and the rest a standard account. Its year end report compares average balances among savers still paying in after twelve months, and finds the feature far ahead.":
+    "ある銀行が、新規の預金者の半数に無作為で自動積み増し機能を付け、残りには通常の口座を提供します。年度末の報告は、12か月後もなお入金を続けている預金者の平均残高を比較し、この機能が大きく上回っていることを示します。",
+  "Whether someone was still paying in at twelve months was settled after the random split, and the feature itself affects who keeps going, so the sets compared are no longer the groups the allocation created.":
+    "12か月後も入金を続けているかどうかは無作為の割付の後に決まったことであり、機能そのものが誰が続けるかに影響します。比較されている集合はもはや割付が作った群ではありません。",
+  "Classes are randomly allocated to a new reading scheme or to the usual lessons. Twelve allocated classes never got the scheme running, so the evaluators move them into the comparison group, saying the figures should reflect what actually happened in the classroom.":
+    "学級が無作為に新しい読書指導か通常の授業に割り付けられます。割り付けられた12学級では指導が始まらなかったため、評価者はそれらを比較群に移し、数字は教室で実際に起きたことを反映すべきだと述べます。",
+  "Which classes failed to start was determined after allocation, probably by the schools least able to run anything new, so shifting them loads the comparison group with the weakest classes.":
+    "どの学級が始められなかったかは割付の後に決まったことで、おそらく新しいことを最も実施しにくい学校で起きています。それらを移すと、比較群に最も弱い学級が集まります。",
+  "An employer randomly assigns supervisors to a management course or to nothing. Anyone who changed department during the year is then left out of the analysis, in both groups alike, because the evaluator says their results would not be comparable.":
+    "ある雇用主が、監督者を無作為に管理職研修か何もなしに割り付けます。その後、年の途中で部署を異動した人は、どちらの群でも同様に分析から除外されます。評価者は、その結果は比較できないと述べています。",
+  "Department moves happened after the assignment, and the course itself can prompt or prevent them, so the filter removes a different sort of person from each group.":
+    "部署の異動は割付の後に起きており、研修そのものが異動を促すことも防ぐこともあります。この除外は、それぞれの群から異なる種類の人を取り除きます。",
+  "A council randomly assigns smokers to a quit programme or to a leaflet. The final report covers only those who turned up to the four week check, since the rest could not be verified. Attendance was 70% in the programme arm and 90% in the leaflet arm.":
+    "ある自治体が、喫煙者を無作為に禁煙プログラムかパンフレットに割り付けます。最終報告は4週後の確認に来た人だけを対象としています。残りは確認できなかったためです。出席率はプログラム群で70%、パンフレット群で90%でした。",
+  "Turning up to the check happened after assignment and at very different rates in the two arms, and the people likeliest to be missing from the programme arm are those who went back to smoking.":
+    "確認に来るかどうかは割付の後の出来事であり、2つの群で大きく異なる割合で起きました。プログラム群で欠けている可能性が最も高いのは、喫煙に戻った人です。",
+  "Farms are randomly allocated a new pest control routine or their usual one. Farms that sprayed late or missed a spray are dropped, and so are farms in the other group whose records had gaps. The routine comes out strongly ahead.":
+    "農場が無作為に新しい防除手順か従来の手順に割り付けられます。散布が遅れた農場や散布を飛ばした農場は除外され、もう一方の群でも記録に欠けのある農場は除外されます。新しい手順が大きく上回る結果になります。",
+  "Whether a farm followed the routine was decided after allocation and reflects how well it is run, so the best run farms in one group are being set against a differently filtered set in the other.":
+    "農場が手順を守ったかどうかは割付の後に決まったことで、その農場の運営の良さを反映します。一方の群で最もよく運営された農場が、もう一方では別の基準で選別された集合と比べられています。",
+  "An insurer randomly fits a driving feedback device to half of its new policies. Drivers who unplugged the device are dropped from that group, and drivers in the other group who bought one privately are dropped from theirs. The remaining comparison shows far fewer claims with the device.":
+    "ある保険会社が、新規契約の半数に無作為で運転フィードバック装置を取り付けます。装置を外した運転者はその群から除外され、もう一方の群で自費で装置を購入した運転者もその群から除外されます。残った比較では、装置がある場合の請求がはるかに少なくなります。",
+  "Unplugging a device and buying one privately both happened after the random split and mark out very different drivers, so what is left is two self selected sets rather than the groups the allocation made.":
+    "装置を外すことも自費で買うことも、どちらも無作為の割付の後に起きた出来事で、まったく異なる運転者を示します。残っているのは割付が作った群ではなく、自ら選んだ2つの集合です。",
+  "Travellers whose holiday went badly are asked what the brochure promised about the hotel, and their answers are set against those of travellers who enjoyed the same trip. The operator's complaints team treats the gap as evidence of mis-selling.":
+    "旅行がうまくいかなかった旅行者に、パンフレットがホテルについて何を約束していたかを尋ね、その回答を同じ旅行を楽しんだ旅行者の回答と並べます。旅行会社の苦情対応部門はその差を不適切な販売の証拠として扱います。",
+  "People whose holiday disappointed them have already been back over what they were told looking for a broken promise, while the satisfied travellers have never revisited the brochure.":
+    "期待外れの旅行になった人は、破られた約束を探して説明の内容をすでに何度も振り返っています。満足した旅行者はパンフレットを見直したことがありません。",
+  "After a food company recalls a batch, buyers are phoned and asked whether anything seemed odd about the smell. Those who fell ill report an odd smell far more often, and the report concludes the smell was a reliable warning sign.":
+    "ある食品会社が製品を回収した後、購入者に電話し、においに変わったところがなかったかを尋ねます。体調を崩した人はにおいの異常をはるかに多く報告し、報告書はにおいが信頼できる警告の兆候だったと結論づけます。",
+  "Buyers who got ill have replayed the meal hunting for something wrong with it, while those who felt fine had no reason to think about the smell at all.":
+    "体調を崩した購入者は、どこがおかしかったのかを探してその食事を何度も思い返しています。何ともなかった人はにおいについて考える理由がまったくありませんでした。",
+  "A road safety survey asks drivers how fast they usually take a particular bend. Drivers who have crashed there give very different figures from drivers who have not, and the survey uses the gap to set a recommended limit.":
+    "ある交通安全調査が、特定のカーブを普段どれくらいの速度で曲がるかを運転者に尋ねます。そこで事故を起こした運転者は起こしていない運転者とまったく異なる数字を答え、調査はその差をもとに推奨速度を定めます。",
+  "A driver who crashed at that bend has gone over the moment repeatedly and knows how it ended, so the speed now reported is reconstructed from the crash rather than independent of it.":
+    "そのカーブで事故を起こした運転者はその瞬間を何度も振り返り、結末を知っています。いま答える速度は事故から再構成されたものであって、事故と無関係ではありません。",
+  "A regulator asks customers who lost money on an investment what the salesperson said about the risk, and compares their accounts with those of satisfied customers who bought the same product from the same team.":
+    "ある規制当局が、投資で損失を出した顧客に、販売員がリスクについて何を言ったかを尋ね、その説明を同じ担当者から同じ商品を買って満足している顧客の説明と比較します。",
+  "Customers sitting on a loss have gone back through the conversation looking for a reassurance that should never have been given, while satisfied customers have had no reason to replay it.":
+    "損失を抱えた顧客は、与えられるべきでなかった安心の言葉を探して会話をたどり直しています。満足している顧客にはそれを思い返す理由がありません。",
+  "Parents of pupils who failed their final exams are asked how much homework the school set three years earlier, alongside parents of pupils who passed. The parents of failing pupils report much less, and a campaign group blames the school.":
+    "最終試験に落ちた生徒の保護者に、3年前に学校がどれだけ宿題を出していたかを、合格した生徒の保護者とあわせて尋ねます。落ちた生徒の保護者ははるかに少なかったと答え、ある市民団体は学校を非難します。",
+  "Parents whose children failed have been searching for an explanation ever since the results came out, so their account of past homework is produced by the outcome rather than measured independently of it.":
+    "子どもが落ちた保護者は、結果が出て以来ずっと理由を探しています。過去の宿題についての説明は結果によって作られたものであり、結果とは独立に測られたものではありません。",
+  "After an outbreak of illness following a conference dinner, attendees are asked which dishes they ate. Those who fell ill much more often say they had the seafood, and the report names it as the source.":
+    "学会の懇親会の後に発生した集団発症を受けて、参加者にどの料理を食べたかを尋ねます。体調を崩した人ははるかに多く魚介類を食べたと答え、報告書はそれを原因と特定します。",
+  "Attendees who became ill have reconstructed the meal trying to work out what caused it, so they account for their plate far more thoroughly than guests who never thought about dinner again.":
+    "体調を崩した参加者は、何が原因かを突き止めようとして食事を再構成しています。その後の食事を思い出しもしなかった参加者よりも、自分の皿をはるかに詳しく説明します。",
+  "A company reports that staff who received its five year loyalty award go on to average eleven years with the firm, against three years for everyone else, counted from each person's start date. HR presents the award as proof that recognition keeps people.":
+    "ある会社は、勤続5年の表彰を受けた社員はその後、入社日から数えて平均11年在籍し、それ以外の社員は3年だと報告します。人事は、この表彰を評価が定着につながる証拠として示します。",
+  "Receiving the award required staying five years, so anyone who left sooner cannot be in that group at all, and those five guaranteed years are counted into its average.":
+    "表彰を受けるには5年在籍する必要がありました。それより早く辞めた人はこの群に入りようがなく、確定した5年間がその平均に組み込まれています。",
+  "A subscription service reports that customers who ever moved to its premium tier stay subscribed four times longer than customers who never did, measured from the day each one signed up. Marketing pushes the upgrade at new customers on the strength of it.":
+    "ある定額サービスは、一度でも上位プランに移った顧客は、移らなかった顧客より4倍長く契約を続けると、それぞれの加入日から測って報告します。マーケティング部門はこれを根拠に新規顧客へのプラン変更を勧めます。",
+  "A customer had to still be subscribed in order to upgrade, so everyone who left early lands automatically in the other group, and the months before the upgrade are credited to premium.":
+    "プランを変更するには契約を続けている必要がありました。早く解約した人は自動的にもう一方の群に入り、変更前の月数まで上位プランの功績に数えられています。",
+  "A sports channel reports that clubs reaching the cup final went an average of nine weeks unbeaten in the competition, far better than clubs knocked out early, and puts it down to the finalists' training methods.":
+    "あるスポーツ専門局は、カップ戦の決勝に進んだクラブは大会で平均9週間無敗だったと報じ、早期に敗退したクラブよりはるかに良いとして、決勝進出クラブの練習方法によるものだとします。",
+  "Reaching the final required winning every earlier round, so those weeks cannot contain a defeat for any club in that group; the unbeaten run is the entry condition rather than a result of training.":
+    "決勝に進むには、それ以前のすべての回戦に勝つ必要がありました。その期間にこの群のどのクラブの敗戦も入りようがありません。無敗の連続は練習の成果ではなく、その群に入る条件です。",
+  "A delivery firm refurbishes each van at five years old. It reports that refurbished vans last on average four years longer than the rest of the fleet, measuring every van's life from the day it was bought, and orders more refurbishments.":
+    "ある配送会社は各バンを使用5年目に改修します。会社は、改修したバンは購入日から数えて他の車両より平均4年長く使えると報告し、改修をさらに増やすよう指示します。",
+  "A van had to still be running at five years to be refurbished, so vans that failed before then can only be in the other group, and those first five years are credited to refurbishment.":
+    "改修されるには5年目にまだ走っている必要がありました。それ以前に壊れたバンはもう一方の群にしか入れず、最初の5年間が改修の功績に数えられています。",
+  "A college reports that students who submitted the optional final year dissertation were far less likely to have left before graduating than students who did not, counted from enrolment, and proposes making the dissertation compulsory.":
+    "ある大学は、任意の最終学年の卒業論文を提出した学生は、提出しなかった学生より、入学時から数えて卒業前に退学する割合がはるかに低いと報告し、卒業論文の必修化を提案します。",
+  "Submitting required still being enrolled in the final year, so every student who left earlier falls automatically into the other group and cannot count against the dissertation.":
+    "提出するには最終学年まで在籍している必要がありました。それより早く退学した学生は自動的にもう一方の群に入り、卒業論文の不利には数えられません。",
+  "An insurer reports that drivers who earned its five year no claims discount average far fewer claims per year of cover than other drivers, counted from the day each policy began, and advertises the discount as something that makes people drive better.":
+    "ある保険会社は、5年間無事故の割引を得た運転者は、契約開始日から数えて補償1年当たりの請求件数が他の運転者よりはるかに少ないと報告し、この割引を運転を良くするものとして宣伝します。",
+  "Earning the discount required five years without a claim, so those claim free years are built into the group by definition and any driver who crashed early could never appear in it.":
+    "割引を得るには請求のない5年間が必要でした。その無請求の年数は定義上この群に組み込まれており、早く事故を起こした運転者はこの群に入りようがありません。",
+  "A firm reports that offers made by its retrained recruiters were accepted 71% of the time against 62% for the rest. The appendix tables show the retrained group ahead in every role family and at every seniority level.":
+    "ある会社は、再研修を受けた採用担当者が出した内定の承諾率が71%、それ以外は62%だったと報告します。付表では、再研修を受けた群がどの職種群でも、どの職位でも上回っています。",
+  "The headline gap points the same way as every published subgroup, so no mix of roles can be producing it; a hasty player would accuse the aggregate of hiding a reversal it has already ruled out.":
+    "全体の差は公表されたすべての部分集団と同じ向きを示しており、職種の構成がこの差を生んでいることはありえません。早合点した回答者は、すでに否定されている逆転を全体の数字が隠していると責めるでしょう。",
+  "Two bus depots are compared on punctuality. Because one runs far more rural routes than the other, the report recalculates both depots using a single common mix of route types, and prints the mix it used.":
+    "2つのバス営業所を定時運行で比較します。一方が他方よりはるかに多くの郊外路線を走っているため、報告書は共通の路線種別構成を用いて両営業所を再計算し、用いた構成も記載しています。",
+  "Standardising both depots to one route mix removes the difference in case mix before comparing, which is exactly the correction a pooled figure needs; a hasty player would accuse it of lumping unlike routes together.":
+    "両営業所を1つの路線構成に標準化することで、比較の前に構成の違いが取り除かれます。これはまさに合算した数字に必要な補正です。早合点した回答者は、性質の異なる路線を一緒くたにしていると責めるでしょう。",
+  "An online store sends each visitor at random to one of two checkout designs, and design B converts better overall. The report notes that the share of new and returning visitors came out almost identical in the two arms.":
+    "あるオンライン店舗が、訪問者を無作為に2つの決済画面のどちらかに振り分け、全体では設計Bのほうが成約率が高くなります。報告書は、新規訪問者と再訪問者の割合が2つの群でほぼ同じだったと記しています。",
+  "With the visitor mix verified as the same in both arms, the pooled result is a weighted average using identical weights, so a reversal inside the segments is arithmetically impossible; a hasty player would demand the segments be split out.":
+    "訪問者の構成が両群で同じだと確認されているため、合算した結果は同じ重みによる加重平均であり、区分内での逆転は算術的に起こりえません。早合点した回答者は、区分ごとに分けて出すよう求めるでしょう。",
+  "A bank's model flags card transactions for review. Before quoting a figure to the fraud team, the analyst combines the flag rate with how often transactions in that category actually turn out to be fraudulent, and reports the share of flagged transactions that are genuine fraud.":
+    "ある銀行のモデルがカード取引を審査対象として検出します。分析担当者は不正対策部門に数字を伝える前に、検出率とその区分の取引が実際に不正である頻度を組み合わせ、検出された取引のうち本当に不正である割合を報告します。",
+  "The number quoted is the chance of fraud given a flag, worked out using how common fraud is, rather than the model's accuracy read backwards; a hasty player would accuse the team of confusing the two.":
+    "示された数字は、不正の多さを用いて求めた、検出されたときに不正である確率であり、モデルの精度を逆向きに読んだものではありません。早合点した回答者は、2つを混同していると責めるでしょう。",
+  "A vision system catches nearly every cracked casting and wrongly marks about one sound casting in twenty. On this line roughly a third of castings really are cracked. The supervisor tells the crew a marked casting is probably cracked and sends marked ones for rework.":
+    "ある画像検査装置は、ひび割れた鋳物をほぼすべて検出し、健全な鋳物のおよそ20個に1個を誤って印付けします。このラインではおよそ3分の1の鋳物が実際にひび割れています。監督者は作業員に、印の付いた鋳物はおそらくひび割れていると伝え、印の付いたものを手直しに回します。",
+  "With a third of castings genuinely cracked, marked parts are cracked around nine times in ten, so the condition needed for false alarms to swamp true ones is absent; a hasty player would object to accuracy being read as the chance of a crack.":
+    "鋳物の3分の1が実際にひび割れているため、印の付いた部品はおよそ10個に9個がひび割れています。誤検出が真の検出を圧倒するのに必要な条件がありません。早合点した回答者は、精度をひび割れの確率として読んでいると異議を唱えるでしょう。",
+  "A text checker flags about 3% of original essays and nearly all copied ones. On a module where past audits found roughly one submission in five was copied, the tutor treats a flag as good reason to open an investigation rather than as proof.":
+    "ある文章照合ツールは、独自に書かれたレポートのおよそ3%と、写したレポートのほぼすべてを検出します。過去の監査で提出物のおよそ5本に1本が写しだと分かっている科目で、担当教員は検出を証拠ではなく調査を始める十分な理由として扱います。",
+  "Copying is common enough here that a flag makes it much more likely than not, and the conclusion drawn is only to investigate; a hasty player would accuse the tutor of reading the checker's accuracy as the chance of copying.":
+    "ここでは写しが十分に多いため、検出されればその可能性はかなり高くなります。しかも導かれた結論は調査するというだけです。早合点した回答者は、教員がツールの精度を写しの確率として読んでいると責めるでしょう。",
+  "An online grocer picks half its customers at random to receive a free delivery voucher and holds the rest back. Over the next three months the voucher group spends more, and the company reports that the voucher raised spending.":
+    "あるネットスーパーが、顧客の半数を無作為に選んで送料無料のクーポンを配り、残りには配りません。次の3か月間、クーポンを受け取った群のほうが多く支出し、会社はクーポンが支出を増やしたと報告します。",
+  "Chance decided who got a voucher, so the difference cannot come from the sort of customer who would have sought one out; a hasty player would accuse the grocer of reading cause off an association.":
+    "誰がクーポンを受け取るかは偶然が決めたため、この差が自分から探しに来るような顧客の性質から生じることはありえません。早合点した回答者は、関連から原因を読み取っていると責めるでしょう。",
+  "A council can afford to relight only twelve of its forty districts this year and draws the twelve by lot. Night collisions then fall in the relit districts over the following year and hold steady in the rest, and the council credits the lighting.":
+    "ある自治体は今年、40地区のうち12地区しか照明を更新できず、12地区をくじで選びます。その後1年間、夜間の衝突事故は更新した地区で減り、残りの地区では横ばいとなり、自治体は照明の成果だとします。",
+  "The lot decided which districts were treated, so the untouched districts are a fair comparison over the same period; a hasty player would dismiss it as a before and after story with no control.":
+    "どの地区が対象になるかはくじが決めたため、手を付けていない地区は同じ期間の公平な比較対象になります。早合点した回答者は、対照のない前後比較だと退けるでしょう。",
+  "A district notes that schools running more after school clubs have better attendance. Its report says the two go together, adds that clubs are commoner in better funded schools, and asks for a small trial before any wider rollout.":
+    "ある教育区は、放課後クラブを多く運営している学校ほど出席率が良いことに気づきます。報告書は両者に関連があると述べ、クラブは予算の多い学校ほど多いと付け加え、広く展開する前に小規模な試行を求めます。",
+  "The report stops at an association, names the obvious alternative explanation, and calls for an experiment instead of acting; a hasty player would accuse it of proposing a rollout on the strength of a pattern.":
+    "報告書は関連にとどめ、明らかな別の説明を挙げ、行動する代わりに実験を求めています。早合点した回答者は、傾向を根拠に展開を提案していると責めるでしょう。",
+  "A fund publishes the average return across every company it backed in its first five years, including the fourteen that closed and the four sold at a loss, and states how each was valued.":
+    "あるファンドが、最初の5年間に出資したすべての会社の平均収益率を、廃業した14社と損失を出して売却した4社を含めて公表し、それぞれの評価方法も明記します。",
+  "The failures sit in the denominator beside the successes, so the average is not computed from the companies that lasted; a hasty player would assume only the winners were counted.":
+    "失敗した会社も成功した会社と並んで分母に入っているため、平均は生き残った会社だけから計算されていません。早合点した回答者は、勝者しか数えられていないと思い込むでしょう。",
+  "A flying school reports what share of trainees reach a licence. The figure counts everyone who enrolled in a given year, including those who left partway through and those who failed the final check.":
+    "あるフライトスクールが、訓練生のうち免許に到達した割合を報告します。この数字はある年に入学した全員を数えており、途中でやめた人と最終審査に落ちた人も含みます。",
+  "The denominator is the entry cohort rather than the group who finished, so leavers cannot inflate the pass rate; a hasty player would assume the number came only from trainees still flying.":
+    "分母は修了した集団ではなく入学した集団であるため、脱落者が合格率を押し上げることはありません。早合点した回答者は、この数字がいまも飛んでいる訓練生だけから出ていると思い込むでしょう。",
+  "A manufacturer reports pump faults per thousand units sold, taking faults from the warranty claim file and the denominator from the sales register rather than from the units brought into its workshops. This year's model comes out ahead of last year's on the same two sources.":
+    "あるメーカーが、販売台数1,000台当たりのポンプの故障件数を報告します。故障は保証請求の記録から、分母は修理工場に持ち込まれた台数ではなく販売台帳から取っています。同じ2つの資料で、今年の機種が昨年の機種を上回っています。",
+  "Every unit sold sits in the denominator, including those that never came back, so neither year's rate is computed only among the pumps that turned up for repair; a hasty player would assume the figures came from the workshop queue.":
+    "一度も戻ってこなかったものも含め、販売した全台が分母に入っているため、どちらの年の率も修理に来たポンプだけから計算されてはいません。早合点した回答者は、この数字が修理待ちの列から出ていると思い込むでしょう。",
+  "An examiner testifies that the tyre pattern from the scene appears on about one van in three hundred, and adds that with roughly nine hundred vans registered in the area, some three of them would carry the same pattern.":
+    "鑑定人が、現場のタイヤ痕の模様はおよそ300台に1台のバンに見られると証言し、この地域には約900台のバンが登録されているため、そのうちおよそ3台が同じ模様を備えているはずだと付け加えます。",
+  "The rarity figure is turned into how many other vehicles would match, presenting the mark as narrowing the field rather than as a chance of innocence; a hasty player would expect the small number to be flipped into a probability of guilt.":
+    "希少性の数字は、他に何台が一致するかに換算されており、この痕跡は潔白の確率ではなく対象を絞る材料として示されています。早合点した回答者は、その小さい数字が有罪の確率に読み替えられていると考えるでしょう。",
+  "An auditor finds that one clerk's rounding pattern would arise by chance in about one month in five hundred. Noting that two hundred clerks were reviewed across twelve months, the auditor asks for a routine check of that ledger rather than a referral.":
+    "ある監査人は、1人の担当者の端数の付き方が偶然に生じるのはおよそ500か月に1か月だと突き止めます。監査人は、200人の担当者を12か月にわたって調べたことを踏まえ、告発ではなく通常の帳簿確認を求めます。",
+  "Across 2,400 clerk months such a pattern is expected several times by chance, and the response is scaled to that; a hasty player would accuse the auditor of treating a rare coincidence as evidence of wrongdoing.":
+    "担当者2,400か月分では、こうしたパターンは偶然に数回起こると見込まれ、対応もそれに見合っています。早合点した回答者は、監査人がまれな偶然を不正の証拠として扱っていると責めるでしょう。",
+  "An investigator reports that this claim pattern is about forty times more likely when a claim is fraudulent than when it is honest. Since roughly one claim in a thousand is fraudulent, she puts the chance this one is fraudulent at about one in twenty five and opens a file.":
+    "ある調査員は、この請求のパターンが現れる可能性は、請求が不正である場合のほうが正当な場合よりおよそ40倍高いと報告します。請求のおよそ1,000件に1件が不正であることから、彼女はこの請求が不正である確率をおよそ25分の1とし、案件を立ち上げます。",
+  "The strength of the evidence is combined with how common fraud is, giving the chance of fraud given the pattern rather than the reverse; a hasty player would expect the forty fold figure itself to be quoted as the odds of guilt.":
+    "証拠の強さが不正の多さと組み合わされ、このパターンが出たときに不正である確率が求められています。逆向きではありません。早合点した回答者は、40倍という数字そのものが有罪の確率として示されていると考えるでしょう。",
+  "A youth league keeps the same clubs in the same two divisions for two seasons running, with no promotions or relegations in between. Average match attendance rose in both divisions in the second season.":
+    "あるユースリーグは、2シーズン続けて同じクラブを同じ2つの部に置き、その間に昇格も降格もありません。2シーズン目には平均観客数が両方の部で増えました。",
+  "No club moved between divisions, so a rise in both cannot come from shuffling teams from one group into the other; a hasty player would suspect the categories had been rearranged between the seasons.":
+    "部の間を移ったクラブはないため、両方の上昇が一方の群から他方へチームを移したことによる可能性はありません。早合点した回答者は、シーズンの間に区分が組み替えられたのではないかと疑うでしょう。",
+  "A council changed how it grades road defects in 2023. To compare repair times with 2019, it first re-graded every 2019 record under the current rules, then compared grade by grade.":
+    "ある自治体は2023年に道路の損傷の等級付けを変更しました。2019年と補修時間を比較するため、まず2019年の記録をすべて現行の基準で付け直し、その上で等級ごとに比較しました。",
+  "Both years are sorted by identical rules, so an improvement within a grade cannot be produced by defects sliding between grades; a hasty player would assume the new grading had quietly reshuffled the categories.":
+    "両方の年が同一の基準で分類されているため、等級内の改善が損傷の等級間の移動によって生じることはありえません。早合点した回答者は、新しい等級付けが区分を密かに組み替えたと思い込むでしょう。",
+  "A rail operator fits sensors that pick up bearing wear months before a bearing would fail in service. In the two years after fitting, in service bearing failures per million miles run fell by about a third.":
+    "ある鉄道事業者が、軸受が運行中に故障する数か月前に摩耗を捉えるセンサーを取り付けます。取り付け後の2年間で、走行100万マイル当たりの運行中の軸受故障はおよそ3分の1減りました。",
+  "The measure is how often failures occur per mile, not how long the operator knew about a fault beforehand, so spotting problems earlier cannot by itself move the number; a hasty player would assume earlier detection was doing the work.":
+    "指標は走行距離当たりの故障の起こりやすさであって、事業者が事前にどれだけ長く不具合を知っていたかではありません。問題を早く見つけるだけではこの数字は動きません。早合点した回答者は、早期発見がこの数字を作っていると思い込むでしょう。",
+  "A team installs monitoring that alerts it to outages far sooner. Its quarterly report measures the time from the first affected customer request, taken from server logs, to full recovery, and shows that this fell after the tool went in.":
+    "あるチームが、障害をはるかに早く通知する監視の仕組みを導入します。四半期報告は、サーバーログから取った最初に影響を受けた顧客のリクエストから完全復旧までの時間を測り、導入後にこれが短くなったことを示します。",
+  "The clock starts at the moment of impact rather than at detection, so learning of an outage earlier cannot stretch the measured interval; a hasty player would assume earlier alerts manufactured the improvement.":
+    "時計は検知の時点ではなく影響が出た時点から動き出すため、障害を早く知っても測定される間隔は延びません。早合点した回答者は、早い通知が改善を作り出したと思い込むでしょう。",
+  "A lender builds a repayment risk model and tests it on applicants from the same branches, income range and loan sizes where it will be used. Accuracy is reported separately for applicants with long credit histories and for those with almost none.":
+    "ある貸し手が返済リスクのモデルを作り、実際に使う予定と同じ支店、同じ所得帯、同じ融資規模の申込者で検証します。精度は、信用履歴の長い申込者とほとんどない申込者に分けて報告されます。",
+  "The test population matches the one the model will run on and performance is broken out by how hard the cases are, so a figure earned on an easier mix is not being carried across; a hasty player would assume it was validated on obvious cases.":
+    "検証の対象がモデルを動かす対象と一致しており、性能は事例の難しさごとに分けて示されています。より易しい構成で得た数字が持ち込まれてはいません。早合点した回答者は、分かりやすい事例で検証されたと思い込むでしょう。",
+  "A soil test's published accuracy came from severely degraded plots. Before recommending it, a co-op ran the test again on ordinary member farms and quotes those second figures, not the original ones, in its guidance.":
+    "ある土壌検査の公表された精度は、著しく劣化した圃場から得られたものでした。ある協同組合は推奨する前に、通常の組合員の農場でこの検査を実施し直し、当初の数字ではなく2回目の数字を手引きに載せています。",
+  "The test was measured again in the ordinary fields where it will actually be used, so the easy contrast of the original setting is not passed off as everyday performance; a hasty player would attack the original validation.":
+    "検査は実際に使われる通常の圃場で改めて測定されており、当初の場面の易しい対比が日常の性能として通されてはいません。早合点した回答者は、当初の検証を攻撃するでしょう。",
+  "An inspection rig's detection rate was measured on cracks longer than two millimetres. The report says so plainly, notes that shorter cracks were not tested, and the plant uses the rig only as a check on the longer class.":
+    "ある検査装置の検出率は、長さ2ミリメートルを超えるひび割れで測定されました。報告書はそのことを明記し、それより短いひび割れは試験していないと記しています。工場はこの装置を長いひび割れの区分の確認にしか使いません。",
+  "The stated accuracy stays tied to the crack sizes it was measured on and use is limited to that range, so it is never applied to a harder mix; a hasty player would accuse the plant of importing a number from an easy test set.":
+    "示された精度は測定されたひび割れの大きさに結びついたままで、使用もその範囲に限られています。より難しい構成に適用されることはありません。早合点した回答者は、易しい試験集合から数字を持ち込んでいると責めるでしょう。",
+  "A firm asks whether its coding test score and its interview rating agree. Both are recorded for every applicant before any shortlist is drawn, and across all applicants the two rise together mildly.":
+    "ある会社が、コーディング試験の得点と面接評価が一致するかを調べます。どちらも候補者を絞る前にすべての応募者について記録されており、応募者全体では2つは緩やかに一緒に上がります。",
+  "The pair is measured on everyone who applied rather than only on those who cleared a bar that both scores helped set, so selection cannot manufacture the relationship; a hasty player would assume the sample had been filtered on both.":
+    "2つの指標は、両方の得点が関わる基準を通過した人だけでなく、応募した全員について測られているため、選抜がこの関係を作り出すことはありません。早合点した回答者は、標本が両方の得点で絞られていると思い込むでしょう。",
+  "A county register covering every resident, not only those who were admitted somewhere, reports that two conditions occur together a little more often than chance alone would give.":
+    "どこかに入院した人だけでなく全住民を対象とするある県の登録が、2つの疾患が偶然だけの場合よりわずかに多く併存すると報告します。",
+  "The pattern comes from the whole resident population rather than from people filtered in by admission, so it is not an artefact of both conditions raising the odds of being in the sample; a hasty player would assume a hospital roster.":
+    "このパターンは入院によって選ばれた人ではなく住民全体から得られているため、どちらの疾患も標本に入る確率を上げることによる見かけ上の関係ではありません。早合点した回答者は、病院の名簿だと思い込むでしょう。",
+  "A safety body reports that the new helmet standard cut serious head injuries by about a quarter, and adds that in the riders studied this meant roughly 12 serious injuries per 10,000 a year falling to about 9.":
+    "ある安全機関は、新しいヘルメット規格によって重度の頭部外傷がおよそ4分の1減ったと報告し、調査対象の運転者では年に10,000人当たりおよそ12件がおよそ9件に減ったことを意味すると付け加えます。",
+  "The proportional figure is given with the counts it came from, so the size of the benefit cannot be inflated in the reader's head; a hasty player would object to the percentage before noticing the numbers behind it.":
+    "割合の数字は、その元になった件数とともに示されているため、読み手の頭の中で効果の大きさが膨らむことはありません。早合点した回答者は、背後の数字に気づく前に割合に異議を唱えるでしょう。",
+  "A vendor's brochure says its filter cuts successful phishing by about 60%, and states directly below that in the trial this was 12 staff in every 1,000 falling to about 5 over a year.":
+    "ある販売会社のパンフレットは、このフィルターが成功するフィッシングをおよそ60%減らすとし、そのすぐ下に、試験では1年間で1,000人当たり12人がおよそ5人に減ったことだと記しています。",
+  "The relative claim is anchored to absolute numbers in the same place, letting the reader see how large the change really is; a hasty player would reject the headline percentage as unanchored marketing.":
+    "相対的な主張が同じ場所で実数に結びつけられており、読み手は変化の実際の大きさを見ることができます。早合点した回答者は、見出しの割合を根拠のない宣伝として退けるでしょう。",
+  "A drink maker's label gives the trial counts behind its claim, 14 cases of a stomach complaint among 5,000 users of the new formula against 18 among 5,000 of the old, and calls the difference small and not certain.":
+    "ある飲料メーカーの表示は、主張の根拠となる試験の件数を示し、新しい配合の利用者5,000人中14件の胃の不調に対し、従来の配合の5,000人中18件だとした上で、差は小さく確実ではないと述べています。",
+  "The counts are shown and the conclusion is scaled down to match them rather than being dressed up as a 22% reduction; a hasty player would expect a percentage to be doing the persuading.":
+    "件数が示され、結論は22%の減少として飾り立てられるのではなく、それに見合う大きさに抑えられています。早合点した回答者は、割合が説得の役割を担っていると考えるでしょう。",
+  "Two painkillers are compared using patients who started one or the other for the same recorded complaint, at the same clinics, restricted to people who had taken neither before. Side effect rates come out similar.":
+    "2つの鎮痛薬を、同じ診療所で同じ記録された症状のためにどちらかを開始した患者を用いて比較します。対象はどちらも以前に使ったことのない人に限られます。副作用の発現率は同程度になります。",
+  "Comparing first time users of two drugs given for the same complaint means both groups were treated for the same reason, so the reason for prescribing is not what separates them; a hasty player would assume sicker patients got one of the drugs.":
+    "同じ症状に対して出された2つの薬の初回使用者を比べるということは、どちらの群も同じ理由で治療されたということです。処方の理由が両群を分けているのではありません。早合点した回答者は、より重い患者が一方の薬を受け取ったと思い込むでしょう。",
+  "More pupils apply for extra tutoring than a council can fund, so places are drawn by lot. The evaluation compares later grades between pupils who were drawn and pupils who applied but were not.":
+    "補習の希望者が自治体の予算で賄える人数を上回るため、枠はくじで決められます。評価では、当選した生徒と、応募したが当選しなかった生徒のその後の成績を比較します。",
+  "Everyone in both groups wanted the tutoring and only chance decided who received it, so the tutored pupils are not the ones judged to need it most; a hasty player would assume places went to those struggling hardest.":
+    "どちらの群の生徒も補習を望んでおり、誰が受けるかは偶然だけが決めました。補習を受けた生徒は最も必要だと判断された生徒ではありません。早合点した回答者は、最も苦労している生徒に枠が回ったと思い込むでしょう。",
+  "A haulier puts a new engine oil in every truck whose fleet number ends in an even digit and keeps the rest on the old oil. After a year it compares breakdown rates between the two halves.":
+    "ある運送業者が、車両番号の末尾が偶数のトラックすべてに新しいエンジンオイルを入れ、残りは従来のオイルのままにします。1年後、2つの集団の故障率を比較します。",
+  "The last digit is arbitrary and has nothing to do with a truck's age or condition, so the treated trucks are not the ones a mechanic thought needed help; a hasty player would assume the worst trucks were picked for the new oil.":
+    "末尾の数字は任意であり、トラックの年式や状態とは無関係です。新しいオイルを入れたトラックは整備士が手当てが必要だと考えた車両ではありません。早合点した回答者は、状態の悪いトラックが新しいオイルに選ばれたと思い込むでしょう。",
+  "A region that began offering a regular check reports how many residents per 100,000 are found with advanced disease each year. That figure falls over the following decade while neighbouring regions stay flat.":
+    "定期的な検査の提供を始めたある地域が、進行した病気が見つかる住民の数を年ごとに100,000人当たりで報告します。その数字は続く10年間で減り、近隣の地域では横ばいのままです。",
+  "Fewer advanced cases arising in the whole population cannot be produced by a check that merely finds slow growing cases sooner; a hasty player would expect survival among detected cases to be the number on offer.":
+    "人口全体で進行した症例の発生が減ることは、進行の遅い症例を早く見つけるだけの検査では生じません。早合点した回答者は、示されているのは発見された症例の生存期間だと考えるでしょう。",
+  "An analyst measuring how long support tickets stay open takes every ticket opened in a given month last year and follows each one to its closure, rather than looking at the tickets sitting in the queue today.":
+    "サポートの問い合わせがどれだけ長く未解決のままかを測る分析者が、現在待ち行列にある問い合わせを見るのではなく、昨年のある月に受け付けた問い合わせをすべて取り、それぞれを解決まで追跡します。",
+  "Sampling by opening date gives quick and slow tickets the same chance of entering the sample, while a snapshot of the queue would be crowded with the ones that linger; a hasty player would assume the long cases dominate.":
+    "受付日で標本を取ると、早く終わる問い合わせも長引く問い合わせも同じ確率で標本に入ります。待ち行列のある時点の断面では長引くものが多くなります。早合点した回答者は、長い事例が支配していると思い込むでしょう。",
+  "A national medicines agency reviews a treatment using every trial the maker was required to file with it, including three whose results were never written up anywhere, and pools them all.":
+    "ある国の医薬品規制当局が、製造販売業者が提出を義務づけられていた試験をすべて用いて治療法を評価します。結果がどこにも発表されなかった3件を含め、すべてを統合します。",
+  "The pool is defined by what had to be filed rather than by what reached a journal, so dull results are still in it; a hasty player would assume the review was built from the literature.":
+    "統合の対象は学術誌に載ったものではなく提出が義務づけられたもので定義されているため、地味な結果も含まれています。早合点した回答者は、この評価が文献から組み立てられたと思い込むでしょう。",
+  "A product team's quarterly memo lists the outcome of all forty tests it ran that quarter, including the twenty seven that moved nothing, alongside the four whose results it acted on.":
+    "あるプロダクトチームの四半期報告は、その四半期に実施した40件の試験すべての結果を、何も動かなかった27件も含めて列挙し、結果を受けて対応した4件と並べて示します。",
+  "Every experiment run is reported, so the ones that worked are read against the full set of attempts; a hasty player would assume only the wins were written up.":
+    "実施した実験がすべて報告されているため、うまくいったものは試行の全体と照らして読むことができます。早合点した回答者は、勝った実験だけが記事にされたと思い込むでしょう。",
+  "Before averaging fifteen field trials of a fertiliser, an analyst compares the small trials with the large ones and notes that the small ones landed below the overall average as often as above it.":
+    "ある肥料の15件の圃場試験を平均する前に、分析者は小規模試験と大規模試験を比べ、小規模試験が全体平均を下回る頻度と上回る頻度が同じだったと記します。",
+  "The check for missing unfavourable small studies was made and came out clean, which is the very thing that would otherwise tilt the average; a hasty player would assume the small trials were the ones cherry picked.":
+    "不利な小規模研究が欠けていないかの確認が行われ、問題は見つかりませんでした。それこそが本来なら平均を傾けるものです。早合点した回答者は、小規模試験こそが都合よく選ばれたものだと思い込むでしょう。",
+  "A city offers a free three month transit pass to a randomly chosen half of newly registered residents. The evaluation compares car trips between everyone offered a pass and everyone not offered, including the third who never collected theirs.":
+    "ある市が、新たに転入した住民の半数を無作為に選び、3か月間無料の交通パスを提供します。評価では、パスを提供された全員と提供されなかった全員の自動車利用回数を比較し、パスを受け取らなかった3分の1も含めます。",
+  "People are counted in the group they were offered, so those keen enough to collect a pass are not being measured against everybody else; a hasty player would want only the actual pass holders analysed.":
+    "人々は提供された群のまま数えられているため、わざわざパスを受け取るほど熱心な人が他の全員と比べられているのではありません。早合点した回答者は、実際にパスを持っている人だけを分析すべきだと考えるでしょう。",
+  "A jobs programme evaluation counts every applicant in the group chance assigned them to. For the twenty two who could not be traced at one year, it repeats the sums assuming first that all were unemployed and then that all were working, and the ranking holds either way.":
+    "ある就労支援計画の評価は、応募者全員を偶然が割り当てた群のまま数えます。1年後に追跡できなかった22人については、まず全員が失業していたと仮定し、次に全員が就労していたと仮定して計算し直しますが、順位はどちらでも変わりません。",
+  "Nobody is dropped for being untraceable, and the two extreme assumptions bracket anything the missing answers could have done; a hasty player would assume the untraced were quietly excluded.":
+    "追跡できないことを理由に除外された人はおらず、2つの極端な仮定が、欠けた回答が及ぼしうるあらゆる影響を挟み込んでいます。早合点した回答者は、追跡できなかった人が黙って除外されたと思い込むでしょう。",
+  "A haulage study compares trucks that were fitted with a driver alert system when they were bought against trucks bought without one, counting each truck's mileage from the day it entered service.":
+    "ある運送業の研究が、購入時に運転者警報装置を取り付けたトラックと、装置なしで購入したトラックを比較し、各トラックの走行距離を運用開始日から数えます。",
+  "Which group a truck belongs to was settled before its clock started, so no truck has to survive a waiting period in order to count as equipped; a hasty player would assume the fitted trucks were credited with time before fitting.":
+    "どちらの群に属するかは時計が動き出す前に決まっているため、装備ありとして数えられるために待機期間を生き延びる必要があるトラックはありません。早合点した回答者は、装備したトラックに取り付け前の期間が加算されていると思い込むでしょう。",
+  "An employer compares staff who passed a certification with those who did not. Each person who passed is matched, at the moment of passing, to a colleague still employed at that point with the same months of service, and both are followed from then on.":
+    "ある雇用主が、資格に合格した社員と合格しなかった社員を比較します。合格した各人は、合格した時点で、その時点でなお在籍し勤続月数が同じ同僚と対応づけられ、両者はそこから追跡されます。",
+  "Follow up starts when the certification is achieved and the matched colleague has already worked the same stretch, so the months spent studying are not credited to the certified group; a hasty player would assume that time was counted.":
+    "追跡は資格取得の時点から始まり、対応づけられた同僚もすでに同じ期間働いています。学習に費やした月数が資格取得群の功績に数えられることはありません。早合点した回答者は、その期間が数えられていると思い込むでしょう。",
+  "A study of whether long commutes wear people down uses travel diaries that staff filled in each week through the year, well before anyone knew who would later resign.":
+    "長い通勤が人をすり減らすかを調べる研究が、誰が後に退職するか分かるずっと前に、社員が1年を通じて毎週記入した移動記録を用います。",
+  "The exposure was written down as it happened rather than reconstructed afterwards, so knowing the outcome cannot have coloured the answers; a hasty player would assume leavers were asked to look back.":
+    "曝露は後から再構成されたのではなく、起きたその時に書き留められています。結果を知っていることが回答に色を付けることはありえません。早合点した回答者は、退職者が振り返って尋ねられたと思い込むでしょう。",
+  "To ask whether a safety course reduces injuries, an analyst takes attendance from the course register and injuries from the insurer's claim file, matching the two by employee number. Nobody is asked to remember anything.":
+    "安全講習が負傷を減らすかを調べるため、分析者は受講記録から出席を、保険会社の請求記録から負傷を取り、社員番号で突き合わせます。誰も何かを思い出すよう求められません。",
+  "Both the exposure and the outcome come from records written at the time, so no one's account of the course can be shaped by whether they were later hurt; a hasty player would assume the workers were interviewed.":
+    "曝露も結果もその時に書かれた記録から取られているため、講習についての説明が後に負傷したかどうかで形づくられることはありません。早合点した回答者は、労働者に聞き取りをしたと思い込むでしょう。",
+  "Owners of a failed appliance and owners of a working one are asked when they bought it and how often they ran it. Their answers are then compared with till receipts and app usage logs, and the two groups' errors turn out to be the same size and in the same direction.":
+    "故障した家電の所有者と正常に動いている家電の所有者に、購入時期と使用頻度を尋ねます。その回答をレシートとアプリの利用記録と照合すると、2つの群の誤差は同じ大きさで同じ方向であることが分かります。",
+  "The reported histories were checked against records and both groups misremembered equally, so the comparison is not driven by one group searching its memory harder; a hasty player would assume the aggrieved owners overstated their use.":
+    "申告された履歴は記録と照合され、両群とも同じ程度に記憶違いをしていました。したがってこの比較は、一方の群がより熱心に記憶をたどったことによるものではありません。早合点した回答者は、不満を抱えた所有者が使用を誇張したと思い込むでしょう。",
 };

@@ -1241,4 +1241,642 @@ export const zh: Record<string, string> = {
     "一项检验更简单的方案是否不劣于标准方案的试验同时报告了两种分析，指出把依从性差的患者仍计入其分配组会倾向于让两种治疗看起来相似，并且因为两种分析中只有一种支持，而未宣称非劣效。",
   "Counting everyone as assigned is conservative when you are trying to show a difference and permissive when you are trying to show similarity, so a non-inferiority claim needs both analyses to agree. Refusing to claim it when they disagree is the careful move, not the trap.":
     "按分配计入所有人，在你想证明存在差异时是保守的，在你想证明相似时则是宽松的，所以非劣效的结论需要两种分析一致。当两者不一致时拒绝下这个结论，是审慎之举，而不是陷阱。",
+
+  // ---- intention to treat, recall bias, immortal time ----
+  "Two players are compared over a season. Player A made 35% of all shots and Player B made 65%, and the coach's report names B the more accurate shooter. Sorted into close shots and long shots, A had the higher percentage in both.":
+    "对两名球员进行整个赛季的比较。A 球员的总命中率为 35%，B 球员为 65%，教练组的报告认定 B 出手更准。按近距离出手和远距离出手分开看，A 在两类中的命中率都更高。",
+  "Almost all of B's attempts were close range, where anyone scores often, while A shot mostly from distance, so the pooled percentages record where the shots were taken from rather than who shoots better.":
+    "B 的出手几乎全部来自近距离，而近距离谁都容易命中；A 则大多从远处出手，因此合并后的百分比记录的是在哪里出手，而不是谁投得更准。",
+  "A company reviews last year's applications. Overall 70% of outside applicants were hired against 40% of internal ones, and a manager tells the board the process quietly favours outsiders. Team by team, internal applicants were hired at the higher rate in both the engineering team and the sales team.":
+    "一家公司复盘去年的求职申请。总体上外部申请者的录用率为 70%，内部申请者为 40%，一位经理向董事会表示流程暗中偏向外部人选。分团队看，在工程团队和销售团队中，内部申请者的录用率都更高。",
+  "Outside applicants went mainly to engineering, which was hiring heavily, while internal ones applied mainly to sales, where almost nobody was being taken on, so the pooled figures compare which team people applied to.":
+    "外部申请者主要投向正在大量招人的工程团队，内部申请者主要投向几乎不招人的销售团队，因此合并后的数字比较的是人们申请了哪个团队。",
+  "A team replaces its sign up page. The new page signs up 35% of visitors against the old page's 13%, and the product lead calls it a clear win. Looked at separately, the old page did better among desktop visitors and better among phone visitors.":
+    "一个团队更换了注册页面。新页面的访客注册率为 35%，旧页面为 13%，产品负责人称这是明显的胜利。分开来看，旧页面在电脑访客中表现更好，在手机访客中也更好。",
+  "The old page was seen mostly by phone visitors, who rarely sign up on either version, and the new one mostly by desktop visitors, who sign up often, so the overall gap tracks the audience mix.":
+    "旧页面主要被手机访客看到，这类访客在两个版本上都很少注册；新页面主要被电脑访客看到，这类访客经常注册，所以总体差距反映的是受众构成。",
+  "Two customer service centres are compared. One settles 85% of calls at the first attempt and the other 54%, so the bonus goes to the first. Broken into routine calls and complicated ones, the second centre settles the higher share of each.":
+    "对两个客服中心进行比较。一个中心 85% 的来电一次解决，另一个为 54%，奖金因此发给了前者。拆成常规来电和复杂来电后，第二个中心在两类中的一次解决比例都更高。",
+  "Nearly all of the second centre's work is complicated calls, which are hard to settle at once, while the first handles mostly routine ones, so the combined rate compares workloads rather than skill.":
+    "第二个中心的工作几乎全是复杂来电，这类来电很难一次解决，而第一个中心处理的大多是常规来电，所以合并后的比率比较的是工作量而不是能力。",
+  "A chain compares two hotels on guest ratings. One averages 4.3 out of 5 and the other 3.3, and head office holds the second up as the weaker property. Among business guests the second scores higher, and among holiday guests it scores higher too.":
+    "一家连锁集团比较两家酒店的客人评分。一家平均 4.3 分（满分 5 分），另一家 3.3 分，总部把第二家列为较差的物业。在商务客人中第二家得分更高，在度假客人中它的得分也更高。",
+  "Almost all of the lower rated hotel's reviews come from business guests, who mark every hotel down, while the other's come mostly from holidaymakers, who mark everything up, so the averages compare who was reviewing.":
+    "评分较低那家酒店的点评几乎全部来自商务客人，这类客人给每家酒店打分都偏低；另一家的点评大多来自度假客人，这类客人给什么都打分偏高，所以平均分比较的是谁在点评。",
+  "A cooperative compares two seed varieties across its members' fields. One averaged 5.6 tonnes a hectare and the other 2.6, and the newsletter recommends the first. On clay ground the second variety yielded more, and on sandy ground it yielded more as well.":
+    "一家合作社在社员的田地上比较两个种子品种。一个平均每公顷 5.6 吨，另一个 2.6 吨，社刊推荐第一个。在黏土地上第二个品种产量更高，在沙土地上它的产量也更高。",
+  "The lower yielding variety was sown almost entirely on sandy ground, which grows little of anything, and the other almost entirely on clay, so the averages mostly record where each seed was planted.":
+    "产量较低的品种几乎全部播在沙土地上，而沙土地种什么都长不好；另一个几乎全部播在黏土地上，所以平均值主要记录的是每种种子播在了哪里。",
+  "Two courier firms report on time delivery. One arrives on time for 92% of parcels and the other for 72%, so a retailer moves its contract to the first. Counting town deliveries and country deliveries separately, the second firm is on time more often in both.":
+    "两家快递公司报告准时送达情况。一家 92% 的包裹准时到达，另一家为 72%，一家零售商因此把合同转给了前者。把城区配送和乡村配送分开统计，第二家公司在两类中的准时比例都更高。",
+  "The firm with the worse headline figure carries nearly all the country parcels, which run late for everyone, while the other carries mostly short town runs, so the combined rate reflects the routes each was given.":
+    "总体数字较差的那家承运了几乎全部乡村包裹，这类包裹对谁来说都容易延误；另一家承运的大多是城区短途，所以合并后的比率反映的是各自分到的线路。",
+  "A screening test at an amateur athletics meeting catches 99% of competitors who have used a banned substance and wrongly flags 1% of those who have not. About 1 competitor in 500 has used one. A commentator says a flagged athlete is 99% certain to be guilty.":
+    "业余田径运动会上的一项筛检能查出 99% 使用过违禁物质的参赛者，并把 1% 未使用者错误标记。约每 500 名参赛者中有 1 人使用过。一位评论员说被标记的运动员有 99% 的把握是有问题的。",
+  "Clean competitors outnumber users 499 to 1, so flagging one percent of them yields roughly five wrong flags for every real one, and most flagged athletes have taken nothing.":
+    "干净的参赛者与使用者的比例是 499 比 1，把其中百分之一标记出来，每有一个真阳性就大约有五个错误标记，被标记的运动员大多什么都没用过。",
+  "A bank's monitoring catches essentially every fraudulent card payment and wrongly flags 1 legitimate payment in 200. About 1 payment in 10,000 is fraudulent. A manager proposes freezing the account of anyone whose payment is flagged, saying almost all of them are frauds.":
+    "一家银行的监控几乎能查出每一笔欺诈性刷卡支付，并把每 200 笔正常支付中的 1 笔错误标记。约每 10,000 笔支付中有 1 笔属于欺诈。一位经理提议冻结所有被标记支付的账户，称其中几乎都是欺诈。",
+  "For each fraudulent payment there are about 10,000 legitimate ones, and half a percent of those is roughly 50 wrong flags per real fraud, so nearly every frozen account belongs to an ordinary customer.":
+    "每一笔欺诈支付对应约 10,000 笔正常支付，其中的百分之零点五意味着每一笔真欺诈约有 50 个错误标记，所以被冻结的账户几乎都属于普通客户。",
+  "A university's text checking tool is 98% accurate in both directions. About 1 essay in 200 is genuinely copied. The disciplinary panel tells every student it flags that there is a 98% chance they copied.":
+    "一所大学的文本查重工具在两个方向上的准确率都是 98%。约每 200 篇论文中有 1 篇确实是抄袭的。纪律委员会告诉每一位被标记的学生，他们抄袭的可能性是 98%。",
+  "Honest essays outnumber copied ones 199 to 1, so two percent of them produces about four wrong flags for every real one, and a flagged student is more likely innocent than not.":
+    "诚实完成的论文与抄袭论文的比例是 199 比 1，其中百分之二意味着每有一个真抄袭就约有四个错误标记，被标记的学生更可能是清白的。",
+  "A camera on a production line spots 95% of faulty units and wrongly rejects 3% of good ones. About 1 unit in 1,000 leaves the line faulty. The plant manager scraps every rejected unit, saying almost all of them must be defective.":
+    "生产线上的一台相机能识别 95% 的次品，并错误剔除 3% 的合格品。约每 1,000 件下线产品中有 1 件是次品。厂长把所有被剔除的产品报废，称其中几乎都有缺陷。",
+  "Good units outnumber faulty ones about 1,000 to 1, so rejecting three percent of them discards roughly thirty sound units for every faulty one caught.":
+    "合格品与次品的比例约为 1,000 比 1，剔除其中百分之三意味着每抓出一件次品就丢掉约三十件好产品。",
+  "A water company's sensors are right 95% of the time when they call a pipe section leaking or sound. About 1 section in 400 leaks in a given year. The operations plan assumes crews will find a leak at nearly every flagged section.":
+    "一家自来水公司的传感器在判断管段漏水或完好时，有 95% 的时候是正确的。某一年里约每 400 段管道中有 1 段漏水。运营计划假定作业队在几乎每一个被标记的管段都会找到漏点。",
+  "Sound sections outnumber leaking ones 399 to 1, so the five percent of them wrongly called leaking gives about twenty wasted excavations for every genuine leak.":
+    "完好管段与漏水管段的比例是 399 比 1，被误判为漏水的那百分之五意味着每一个真漏点对应约二十次白挖。",
+  "A retailer screens applicants with a questionnaire that correctly identifies 90% of people who would steal stock and wrongly flags 10% of those who would not. About 1 applicant in 100 would steal. The hiring team rejects everyone flagged, saying nine in ten of them are thieves.":
+    "一家零售商用问卷筛检求职者，问卷能正确识别 90% 会偷货的人，并错误标记 10% 不会偷货的人。约每 100 名求职者中有 1 人会偷货。招聘团队拒绝所有被标记的人，称其中十之有九是小偷。",
+  "Honest applicants outnumber the rest 99 to 1, so flagging a tenth of them turns away about eleven blameless people for every one who would have stolen.":
+    "诚实的求职者与其余的人的比例是 99 比 1，把其中十分之一标记出来，每挡下一个会偷货的人就同时拒掉约十一个无辜的人。",
+  "A company's mail filter is 99% accurate at telling phishing from ordinary mail. About 1 arriving message in 3,000 is phishing. The security lead tells staff that anything the filter quarantines is almost certainly an attack.":
+    "一家公司的邮件过滤器在区分钓鱼邮件和普通邮件时准确率为 99%。约每 3,000 封收到的邮件中有 1 封是钓鱼邮件。安全负责人告诉员工，凡是被过滤器隔离的几乎肯定是攻击。",
+  "Ordinary messages outnumber phishing ones about 3,000 to 1, so the one percent of them wrongly quarantined outnumbers the real attacks by roughly thirty to one.":
+    "普通邮件与钓鱼邮件的比例约为 3,000 比 1，被错误隔离的那百分之一在数量上以约三十比一压倒真正的攻击。",
+  "An insurer finds that drivers who have fitted a dashboard camera claim for accidents far less often than drivers who have not. Its marketing team announces that fitting a camera makes you a safer driver, and offers a discount to anyone who installs one.":
+    "一家保险公司发现，装了行车记录仪的司机出险索赔的频率远低于没装的司机。其市场部宣布装记录仪会让你开车更安全，并对安装者提供折扣。",
+  "Cautious drivers are the ones who buy the cameras in the first place, so the camera marks out a type of driver rather than changing how anyone drives.":
+    "本来就谨慎的司机才会去买记录仪，所以记录仪标记出的是一类司机，而不是改变了任何人的驾驶方式。",
+  "A consultant surveys firms and reports that those with the largest customer support teams receive the most complaints. The write up advises keeping support teams small so that complaints stay down.":
+    "一位顾问调查了多家企业，报告称客服团队最大的企业收到的投诉最多。报告建议把客服团队保持精简，以便压低投诉。",
+  "Firms staff up because complaints are already arriving, so the arrow runs from complaints to headcount, and larger firms generate more of both anyway.":
+    "企业增加人手是因为投诉已经涌来，所以箭头是从投诉指向人数的，而且更大的公司本来两者都更多。",
+  "An energy supplier reports that homes with a smart thermostat use a fifth less gas than homes without one. Its advertising says the thermostat cuts your gas use by a fifth.":
+    "一家能源供应商报告称，装了智能温控器的家庭比没装的家庭少用五分之一的燃气。其广告称温控器能把你的燃气用量减少五分之一。",
+  "The households that install one tend to have newer, better insulated homes and an existing interest in trimming bills, so the comparison is between two kinds of household as much as two thermostats.":
+    "安装温控器的家庭往往住在更新、保温更好的房子里，本来就在意压低账单，所以这个比较既是在比两种温控器，也是在比两类家庭。",
+  "A motoring column notes that stretches of road with fixed speed cameras record more crashes than stretches without them, and argues that the cameras distract drivers into crashing.":
+    "一个汽车专栏指出，装有固定测速摄像头的路段记录的事故比没装的路段更多，并主张摄像头分散了司机注意力从而导致事故。",
+  "Cameras are installed on stretches that already had a bad crash record, so the crashes came first and chose the camera sites rather than the other way round.":
+    "摄像头装在本来事故记录就很差的路段上，所以是事故在先并决定了摄像头的位置，而不是反过来。",
+  "A gym newsletter reports that members who use the sauna after training take fewer sick days than members who do not, and concludes that ten minutes in the sauna strengthens the immune system.":
+    "一家健身房的通讯报告称，训练后使用桑拿的会员请病假的天数少于不用的会员，并得出结论说十分钟桑拿能增强免疫系统。",
+  "Members with the time and habit to stay on for the sauna are the ones training regularly and in better health already, so sauna use is a marker of that group rather than a cause.":
+    "有时间也有习惯留下来蒸桑拿的会员，本来就是规律训练、身体更好的那批人，所以使用桑拿是这个群体的标志而不是原因。",
+  "A trend piece points out that over eleven years national sales of houseplants and of noise cancelling headphones rose almost in step, and suggests the houseplant boom is what pushed people to buy headphones.":
+    "一篇趋势报道指出，十一年间全国室内绿植和降噪耳机的销量几乎同步上升，并提出室内绿植热潮推动了人们购买耳机。",
+  "Both climbed alongside the same rise in city renting and spending on home comfort, and any two quantities that drift steadily upward will track each other whatever is driving them.":
+    "两者都是随着同一波城市租房增长和居家舒适支出上升而攀升的，而任何两个持续走高的量都会彼此同步，无论背后的推手是什么。",
+  "A plant manager notices that shifts where the radio is playing turn out fewer defective units, and orders music to be played on every shift to bring the defect rate down.":
+    "一位厂长注意到放收音机的班次次品更少，于是下令每个班次都放音乐以降低次品率。",
+  "The radio happens to be on during day shifts, which are staffed by the longest serving operators working the easier product runs, so experience and workload are what separate the shifts.":
+    "收音机恰好是在白班开着的，白班由工龄最长的操作工负责，做的也是较容易的产品批次，所以真正区分这些班次的是经验和工作难度。",
+  "An investment firm's brochure lists the twenty funds it offers today and reports that the average one has beaten the market over the past ten years. The sales team presents this as proof of the firm's stock-picking skill.":
+    "一家投资公司的宣传册列出了它今天在售的二十只基金，并报告平均而言这些基金在过去十年跑赢了大盘。销售团队把这当作公司选股能力的证明。",
+  "The table contains only funds still open today, so the ones that did badly enough to be closed or merged away during the decade have been dropped from the average before it was taken.":
+    "表格里只有今天仍在运作的基金，那些十年间因业绩太差而清盘或被合并掉的基金，在计算平均值之前就已经被剔除了。",
+  "A magazine profiles thirty founders whose companies are now worth billions and finds that most left university early and ignored advice to take a safe job. Its careers columnist tells readers that leaving early is the surer path.":
+    "一本杂志采访了三十位公司现值数十亿的创始人，发现其中多数人提前从大学退学，并且没听从找一份稳定工作的建议。其职业专栏作者告诉读者，提前退学是更稳妥的路。",
+  "The thirty were picked for having made it, so the far larger number who left early, failed and were never profiled are missing, and the failure rate of the strategy cannot be read off this group.":
+    "这三十人是因为成功了才被选中的，那些同样提前退学、失败了、从未被采访的更大多数人并不在其中，这个群体读不出这条策略的失败率。",
+  "A council engineer notes that the stone bridges built in the town two centuries ago all still carry traffic, while several concrete ones from the 1970s have had to be replaced. He writes that the older building methods were plainly more durable.":
+    "一位市政工程师注意到，镇上两百年前建的石桥至今仍在通车，而 1970 年代的几座混凝土桥已不得不重建。他写道，旧的建造方法显然更耐久。",
+  "Only the two hundred year old bridges good enough to last are left to inspect, while the poorly built ones of that era collapsed or were demolished long ago and never enter the comparison.":
+    "留下来供人查看的只有那些质量足以撑过两百年的桥，那个年代建得差的桥早已垮塌或被拆除，根本没有进入这个比较。",
+  "A music magazine interviews twenty bands that reached the charts after years in small venues, and finds that every one of them refused to change their sound when a label asked. The writer concludes that refusing to compromise is what gets a band signed.":
+    "一本音乐杂志采访了二十支在小场地演了多年后打进排行榜的乐队，发现每一支在唱片公司提出要求时都拒绝改变自己的曲风。作者的结论是，拒绝妥协才能让乐队签约。",
+  "The sample was drawn from bands that charted, so the many acts that also refused and were dropped or never signed are absent, leaving the cost of the tactic invisible.":
+    "样本取自打进排行榜的乐队，那些同样拒绝妥协却被弃约或从未签约的众多乐队并不在内，这条做法的代价因此看不见。",
+  "A car magazine surveys owners at an enthusiasts' rally for a model built thirty years ago. Almost all report low running costs and few breakdowns, and the magazine names it the most dependable car of its era.":
+    "一本汽车杂志在一场车迷聚会上调查了一款三十年前生产车型的车主。几乎所有人都反映使用成本低、故障少，杂志因此把它评为那个年代最可靠的车。",
+  "Only cars sound enough to still be driven to a rally are in the sample; the ones that rusted or failed were scrapped years ago and their owners are not there to be asked.":
+    "样本里只有状况好到还能开去聚会的车；那些锈掉或坏掉的车多年前就已报废，它们的车主不在现场，也就无从问起。",
+  "A museum label states that the region's ancient potters worked to a standard modern factories struggle to match. The claim rests on the jars in the case, all of them lifted whole from a buried settlement two thousand years later.":
+    "一块博物馆展签写道，该地区的古代陶工达到的水准是现代工厂难以企及的。这一说法依据的是展柜里的陶罐，它们全都是两千年后从一处埋藏的聚落中完整取出的。",
+  "The collection is filtered by what stayed intact underground for two millennia, so thin, flawed or badly fired pots are physically absent from the evidence used to judge the average standard.":
+    "这批藏品被在地下完整保存两千年这一条件筛选过，所以壁薄的、有瑕疵的或烧制不佳的陶器，在用来判断平均水准的证据里根本不存在。",
+  "A rowing academy studies the athletes in its national squad and finds that nearly all of them trained through serious pain at eighteen. The head coach tells new recruits that pushing through injury is what separates those who make it.":
+    "一所赛艇学院研究了国家队的运动员，发现几乎所有人在十八岁时都曾忍着剧痛训练。主教练告诉新学员，带伤硬撑正是能否出头的分水岭。",
+  "The squad consists of those whose bodies withstood it, while recruits whose injuries ended their careers left the sport and are no longer in the group being examined, hiding the risk of the advice.":
+    "国家队由身体扛住了的人组成，而那些因伤结束生涯的学员已经离开了这项运动，不再属于被考察的群体，这条建议的风险因此被掩盖。",
+  "A partial print from a break-in is searched against a national database of six million people and returns one name. The examiner says about 1 person in 500,000 would match it. Counsel tells the jury there is therefore a 1 in 500,000 chance the man was not there.":
+    "一起入室案现场的残缺指纹在一个含六百万人的全国数据库中检索，返回了一个名字。鉴定人说约每 500,000 人中有 1 人会与之匹配。律师告诉陪审团，因此此人不在现场的可能性是 500,000 分之 1。",
+  "The 1 in 500,000 is how often an unconnected person matches, and searching six million people should turn up about a dozen such matches, so it is not the chance that this man was elsewhere.":
+    "500,000 分之 1 说的是一个毫无关联的人发生匹配的频率，在六百万人中检索应当出现约十几个这样的匹配，所以它不是此人当时身在别处的概率。",
+  "An auditor screens every branch of a retail chain for a rounding pattern that would arise by chance in about 1 honestly kept ledger in 10,000. One of the chain's 30,000 branches shows it, and the report states that the manager is almost certainly falsifying figures.":
+    "一名审计员对一家连锁零售的每个门店筛检一种取整模式，这种模式在如实记账的账簿中偶然出现的概率约为 10,000 分之 1。该连锁 30,000 家门店中有一家出现了这种模式，报告称该店经理几乎肯定在做假账。",
+  "The 1 in 10,000 describes how often honest books show the pattern, not how often books showing it are dishonest, and screening 30,000 branches should produce about three honest ones like it.":
+    "10,000 分之 1 描述的是诚实账簿出现这种模式的频率，而不是出现这种模式的账簿有多大比例不诚实，筛检 30,000 家门店本就应当出现约三家这样的诚实账簿。",
+  "A weekly prize draw has been won twice by the same person. An organiser calculates that the odds of a given player winning twice are about one in a million, and concludes the draw was rigged. The draw has run for twenty years with over three million regular players.":
+    "一项每周抽奖被同一个人中了两次。一位主办方人员算出某位指定玩家中两次的几率约为百万分之一，据此认定抽奖被做了手脚。该抽奖已办了二十年，固定参与者超过三百万人。",
+  "One in a million applies to one player named in advance, whereas the question asked afterwards is whether anyone at all among three million regular players would win twice, which is close to expected.":
+    "百万分之一适用于事先指定的某一位玩家，而事后提出的问题是三百万固定玩家中是否有任何一人会中两次，这接近于本来就该发生的情况。",
+  "An internal auditor at a company of 700 staff reports that two employees who sign off each other's expense claims were born on the same day of the year. He puts the chance of that at 1 in 365 and states they are almost certainly working together.":
+    "一家有 700 名员工的公司的内部审计员报告称，两名互相签批报销单的员工在一年中的同一天出生。他把这种情况的概率定为 365 分之 1，并称两人几乎肯定在串通。",
+  "The 1 in 365 fits one pair chosen in advance, but he combed hundreds of pairs for any oddity, and how often innocent pairs share a birthday is not the probability of innocence given a shared birthday.":
+    "365 分之 1 适用于事先选定的一对人，但他是在数百对人中搜寻任何异常，而清白的一对人生日相同的频率，并不等于生日相同条件下清白的概率。",
+  "Four children on one street develop the same rare illness within a year. A campaigner calculates that this would happen by chance in about one street in a million, and tells a public meeting there is therefore a one in a million chance the nearby plant is blameless.":
+    "同一条街上有四名儿童在一年内患上同一种罕见疾病。一位活动人士算出这种情况偶然发生的概率约为百万条街中有一条，并在一场公开会议上说，因此附近那家工厂无责的可能性是百万分之一。",
+  "The figure is the chance of such a cluster on a street picked in advance with nothing causing it, and with millions of streets in the country a few clusters are expected somewhere regardless of the plant.":
+    "这个数字是在没有任何致因的情况下，事先指定的一条街出现这种聚集的概率，而全国有数百万条街，不管有没有那家工厂，某些地方本来就应当出现几处聚集。",
+  "An anonymous threatening letter was printed in a distinctive typeface installed on roughly 1 printer in 20,000. A suspect's office printer carries it. The investigating officer writes that the odds against anyone else having produced the letter are 20,000 to 1.":
+    "一封匿名恐吓信使用了一种特殊字体打印，约每 20,000 台打印机中有 1 台装有该字体。一名嫌疑人办公室的打印机装有它。办案人员写道，这封信出自他人之手的几率是 20,000 比 1。",
+  "With millions of printers in the country, several hundred carry the same typeface, so the figure measures how rare the feature is rather than how likely this owner is to have written the letter.":
+    "全国有数百万台打印机，其中数百台装有同样的字体，所以这个数字衡量的是该特征有多罕见，而不是这台机器的主人写了这封信的可能性有多大。",
+  "A national programme screens about 60,000 samples a year. One athlete's sample shows a marker found in roughly 1 in 10,000 samples from clean competitors, and the panel chair states there is a 1 in 10,000 chance the athlete competed clean.":
+    "一个全国性项目每年筛检约 60,000 份样本。某位运动员的样本出现了一种标志物，该标志物在干净参赛者的样本中约每 10,000 份出现 1 次，评审组主席表示这名运动员干净参赛的可能性是 10,000 分之 1。",
+  "1 in 10,000 is how often clean samples show the marker, so about six clean athletes a year would show it; turning that into the chance of being clean also requires knowing how few competitors dope.":
+    "10,000 分之 1 说的是干净样本出现该标志物的频率，所以每年约有六名干净运动员会出现它；要把它转成清白的概率，还需要知道有多少参赛者使用兴奋剂。",
+  "A league moves its four lowest-ranked clubs down into the second tier. A ratings service recalculates the tier averages and finds the average club rating is now higher in both tiers than before the reshuffle. The commissioner calls it a sign that standards are rising everywhere.":
+    "一个联赛把排名最低的四家俱乐部降入乙级。一家评级机构重算了两级的平均分，发现两级的俱乐部平均评分都比调整前更高。联盟主席称这说明整体水平都在提升。",
+  "Those four clubs rated below the top tier's average and above the second tier's, so taking them out lifts one figure and adding them lifts the other, while no club plays any better than before.":
+    "这四家俱乐部的评分低于甲级的平均值、高于乙级的平均值，所以把它们移出抬高了一个数字，把它们加入抬高了另一个，而没有哪家俱乐部踢得比以前更好。",
+  "An insurer moves the safest quarter of its high-risk motor policies into its standard pool. The next report shows the average claim cost has risen in the high-risk pool and in the standard pool, and the underwriting director warns that both books are deteriorating.":
+    "一家保险公司把高风险车险保单中最安全的四分之一转入标准保单池。下一期报告显示高风险池和标准池的平均赔付成本都上升了，核保总监警告说两本账都在恶化。",
+  "The transferred policies cost less than the high-risk average and more than the standard average, so removing them raises one mean and adding them raises the other, with no driver's risk changed.":
+    "被转出的保单成本低于高风险池的均值、高于标准池的均值，所以移出抬高了一个均值，加入抬高了另一个，而没有任何一位司机的风险发生变化。",
+  "An armed service brings in a medical screen that catches minor problems the old one missed, and moves the personnel it flags from fully deployable to restricted duties. Average fitness scores then come out higher in both categories, and a spokesman credits the new training programme.":
+    "某军种引入了一项能查出旧方法漏掉的轻微问题的体检筛检，并把被标记的人员从完全可派遣调整为限制勤务。随后两个类别的平均体能分都更高了，一位发言人把功劳归于新的训练计划。",
+  "Those moved were the least fit of the deployable group and the fittest of the restricted group, so both averages rise on the reclassification alone, without anyone's fitness changing.":
+    "被调整的人是可派遣组中体能最差的，也是限制勤务组中体能最好的，所以仅凭重新归类两个平均值就都上升了，而没有任何人的体能发生变化。",
+  "A bank tightens the test that puts a loan on its watch list, so a batch of loans previously counted as performing moves across. The next figures show a higher average credit score in the performing book and in the watch list, and the risk committee reports improvement on both.":
+    "一家银行收紧了把贷款列入观察名单的标准，于是一批原本算作正常的贷款被划了过去。下一期数据显示正常贷款账和观察名单的平均信用分都更高了，风险委员会报告两边都有改善。",
+  "The moved loans were the weakest of the performing book and the strongest of the watch list, so both averages rise the moment they change column, with no borrower's position altered.":
+    "被划过去的贷款是正常账中最弱的，也是观察名单中最强的，所以它们一换列两个平均值就都上升了，而没有任何借款人的处境发生变化。",
+  "A depot fits a vibration sensor that picks up early wear, and engines it flags are shifted from the serviceable list to the overhaul list. The next report shows average hours between faults up on both lists, and the fleet manager credits a change of lubricant.":
+    "一处车场装了能捕捉早期磨损的振动传感器，被标记的发动机从可用清单转入大修清单。下一期报告显示两份清单的平均故障间隔小时数都上升了，车队经理把功劳归于更换了润滑油。",
+  "The flagged engines were the worst on the serviceable list and the best on the overhaul list, so removing them lifts one average and adding them lifts the other, with no engine actually wearing less.":
+    "被标记的发动机是可用清单上最差的，也是大修清单上最好的，所以移出抬高了一个平均值，加入抬高了另一个，而没有哪台发动机实际上磨损更少。",
+  "A sales director has a senior team averaging 50 sales a month and a junior team averaging 30. She moves two representatives who each average 40 from the senior team to the junior team. The next report shows both team averages have gone up, and she credits the reshuffle.":
+    "一位销售总监手下的资深团队月均成交 50 单，初级团队月均 30 单。她把两名月均各 40 单的代表从资深团队调到初级团队。下一期报告显示两个团队的平均值都上升了，她把功劳归于这次调整。",
+  "The two sell below the senior team's average and above the junior team's, so the senior mean climbs above 50 and the junior mean above 30 while nobody sells a single unit more.":
+    "这两人的成交量低于资深团队的均值、高于初级团队的均值，所以资深团队的均值升到 50 以上，初级团队的均值升到 30 以上，而没有任何人多卖出一单。",
+  "An exporter grades boxes as premium, averaging 90 points, or standard, averaging 70. It changes the cut-off so that boxes scoring 82, until now premium, count as standard. The next quality report shows the average score up in both grades, and the manager says the growers have improved.":
+    "一家出口商把箱装货分为特级（平均 90 分）和普通级（平均 70 分）。它调整了分界线，使得原本算特级的 82 分箱子改算普通级。下一期质量报告显示两个等级的平均分都上升了，经理说种植户进步了。",
+  "Boxes at 82 sat below the premium average of 90 and above the standard average of 70, so shifting them lifts both figures without a single box of fruit being any better.":
+    "82 分的箱子低于特级的平均 90 分、高于普通级的平均 70 分，所以把它们挪过去抬高了两个数字，而没有任何一箱水果变得更好。",
+  "A conservatoire moves its five weakest cellists out of the advanced class and into the intermediate class. At the end of term the average examination mark is higher in the advanced class and higher in the intermediate class, and the principal praises the new teaching plan.":
+    "一所音乐学院把最弱的五名大提琴学生从高级班调入中级班。学期末高级班的平均考试分数更高了，中级班的平均分也更高了，院长称赞了新的教学方案。",
+  "Those five scored below the advanced class average and above the intermediate class average, so taking them out raises one mean and adding them raises the other, whatever any student's playing does.":
+    "这五人的分数低于高级班的均值、高于中级班的均值，所以把他们移出抬高了一个均值，加入抬高了另一个，与任何学生的演奏水平无关。",
+  "A haulage firm fits vibration sensors that flag a failing gearbox about eight months before a driver would notice the noise. The log now shows an average of fourteen months from first fault report to breakdown, up from six. The firm's newsletter says the sensors are making gearboxes last far longer.":
+    "一家货运公司装了振动传感器，能在司机听出异响前约八个月标记出即将损坏的变速箱。台账现在显示从首次故障报告到损坏平均为十四个月，此前是六个月。公司通讯称传感器让变速箱的寿命延长了许多。",
+  "The breakdowns still happen when they always did; only the moment the fault entered the log moved earlier, so the measured gap from report to breakdown grew by exactly the warning the sensors bought.":
+    "损坏发生的时间和以前一样；提前的只是故障进入台账的时刻，所以从报告到损坏的测量间隔，正好增加了传感器争取到的预警时间。",
+  "A roads authority begins ultrasound surveys that reveal cracking in girders years before it becomes visible. Girders are still replaced at the same age as before, yet the average time from a crack being recorded to replacement has risen from four years to nine. The authority reports longer girder life.":
+    "一家公路管理机构开始进行超声检测，能在裂纹肉眼可见前数年发现梁体开裂。梁体更换的年限和以前一样，但从记录到裂纹至更换的平均时间从四年升到了九年。该机构报告梁体寿命延长。",
+  "Replacement happens at the same age it always did, so nothing about the girder changed. Recording the crack earlier simply lengthened the interval being measured.":
+    "更换发生在和以往相同的年限上，所以梁体本身没有任何变化。更早记录裂纹只是拉长了被测量的那段间隔。",
+  "A data centre switches on drive health alerts that fire well before a disk starts losing sectors. Disks are still retired at the same age, but the mean time from first alert to retirement has tripled. The operations page claims the alerts are extending disk life threefold.":
+    "一家数据中心启用了硬盘健康告警，能在磁盘开始出现坏扇区之前很久就触发。磁盘退役的年限没变，但从首次告警到退役的平均时间增加到了原来的三倍。运维页面声称告警把磁盘寿命延长到了三倍。",
+  "The retirement date did not move. Starting the count at an earlier alert stretches the measured interval without a single disk lasting longer.":
+    "退役日期没有移动。把计时起点提前到更早的告警拉长了被测量的间隔，而没有任何一块磁盘用得更久。",
+  "A phone maker adds a diagnostic that warns of battery decline far earlier than the old check did. Support records show the average time from first warning to replacement has doubled, and batteries are still replaced at the same age. Marketing says the diagnostic doubles battery life.":
+    "一家手机厂商加入了一项诊断功能，比旧的检查早得多地对电池衰减发出警告。售后记录显示从首次警告到更换的平均时间翻了一倍，而电池仍在相同的使用年限被更换。市场部称该诊断把电池寿命延长了一倍。",
+  "Batteries reach replacement at the same age as before; only the warning moved forward, so the interval from warning to replacement grew by the time gained in detecting decline.":
+    "电池被更换的使用年限和以前一样；提前的只有警告，所以从警告到更换的间隔增加的正是提前发现衰减所争取到的时间。",
+  "A grower adopts a leaf assay that identifies infected trees months before wilting appears. Records now show infected trees standing fifteen months after detection rather than five, and trees are still felled at the same age. The assay supplier's leaflet claims it keeps infected trees productive three times as long.":
+    "一位种植户采用了一种叶片检测，能在枯萎出现前数月识别出染病的树。记录现在显示染病的树在检出后可存留十五个月而非五个月，而树木仍在相同的树龄被砍伐。检测供应商的宣传页声称它能让染病的树保持产出的时间延长到三倍。",
+  "Felling happens at the same age, so no tree gained a day. The assay only started the clock earlier, which inflates the interval from detection to felling.":
+    "砍伐发生在相同的树龄上，所以没有哪棵树多活一天。检测只是把计时起点提前了，这抬高了从检出到砍伐的间隔。",
+  "A water utility installs acoustic monitoring that finds leaks long before they surface. Pipes are still dug up only when a leak reaches the road, yet the average time from logging a leak to the dig has risen from two months to eleven. The utility reports that leaking pipes now last far longer.":
+    "一家自来水公司安装了声学监测，能在漏水冒出地面之前很久就发现它。只有当漏水渗到路面时才会开挖管道，但从记录漏点到开挖的平均时间已从两个月升到十一个月。该公司报告称漏水管道现在的使用寿命长了许多。",
+  "The dig is still triggered by the same event at the same moment. Logging the leak nine months sooner adds nine months to the measured interval and nothing to the pipe.":
+    "开挖仍由同一事件在同一时刻触发。把漏点提前九个月记录，给被测量的间隔加上了九个月，而给管道什么也没加。",
+  "A memory service introduces a test that identifies a degenerative condition several years earlier than before. Patients still move into full time care at about the same age, but the average interval from diagnosis to that move has risen from four years to seven. A leaflet says the test delays dependence.":
+    "一家记忆门诊引入了一项检查，能比以前提前数年识别出一种退行性疾病。患者转入全日照护的年龄大致不变，但从诊断到转入的平均间隔已从四年升到七年。一份宣传页称该检查推迟了失能。",
+  "The move into full time care happens at the same age as before, so nothing was delayed. Diagnosing sooner simply lengthened the stretch of time counted after diagnosis.":
+    "转入全日照护发生在和以前相同的年龄上，所以什么都没有被推迟。更早诊断只是拉长了诊断之后被计入的那段时间。",
+  "Before a new imaging protocol, a clinic's patients were identified at an average age of 62 and died at 66. Since the protocol, they are identified at 59 and still die at 66. The annual report states that average survival after diagnosis has risen from four years to seven.":
+    "在采用新的影像方案之前，某诊所的患者平均在 62 岁被发现，在 66 岁去世。采用方案之后，他们在 59 岁被发现，仍在 66 岁去世。年报称诊断后的平均生存期已从四年升到七年。",
+  "The age at death is unchanged, so no patient gained time. Moving the moment of identification three years earlier adds three years to every measured interval.":
+    "去世年龄没有变化，所以没有患者多获得时间。把发现的时刻提前三年，就给每一段被测量的间隔加上了三年。",
+  "A detector is checked against obvious photocopied notes and crisp notes straight from the mint, and separates them almost perfectly. The maker advertises 99% accuracy. A bank buys it to sort well made counterfeits from worn, creased notes taken over the counter, and expects the same figure.":
+    "一台验钞机用明显的复印假钞和刚从印钞厂出来的崭新钞票做测试，几乎完美地把两者分开。厂家宣传准确率为 99%。一家银行买来它，用于把做工精良的假钞与柜面收进的磨损起皱钞票区分开，并期待同样的数字。",
+  "The advertised figure came from the crudest fakes set against the cleanest genuine notes. Where the fakes are skilled and the genuine notes are battered, the two groups overlap on exactly the features the detector reads.":
+    "宣传的数字来自最粗劣的假钞与最干净的真钞的对比。当假钞做工精良而真钞破旧时，两组恰好在验钞机所读取的那些特征上相互重叠。",
+  "A filter is benchmarked on bulk advertising full of misspellings and on a folder of ordinary personal mail, and scores 99.6%. A firm deploys it against carefully written impersonation attempts and against unusual but genuine messages from new suppliers, quoting the same score to its board.":
+    "一款过滤器在满是拼写错误的群发广告和一批普通私人邮件上做基准测试，得分 99.6%。一家公司把它用于识别精心撰写的冒充邮件以及来自新供应商的少见但真实的邮件，并向董事会援引同样的分数。",
+  "The benchmark asked the filter to separate the most obvious junk from the most obviously legitimate mail. Polished impersonations and odd but genuine supplier mail sit in the middle, where the filter was never measured.":
+    "基准测试要求过滤器把最明显的垃圾邮件与最明显的正常邮件分开。打磨过的冒充邮件和少见但真实的供应商邮件位于中间地带，而过滤器从未在那里被测量过。",
+  "A placement test was validated on absolute beginners and on near native speakers, and told them apart almost every time. A school now uses it to sort intermediate learners into three levels and cites the original accuracy figure in its prospectus.":
+    "一项分班测试是在零基础学员和接近母语水平的人身上验证的，几乎每次都能把两者分开。一所学校现在用它把中级学员分成三个级别，并在招生简章中引用最初的准确率数字。",
+  "The test was only ever asked to separate the two ends of the range, which almost any crude measure manages. Intermediate learners sit in the middle, where it was never shown to discriminate at all.":
+    "这项测试被要求区分的只是两个极端，几乎任何粗糙的量度都能做到。中级学员位于中间，而它从未被证明在那里具有任何区分力。",
+  "An inspection system was tuned on deliberately ruined test welds and on flawless reference welds, and caught 97% of the bad ones. On the production line, where flaws are hairline and sound welds carry cosmetic spatter, it catches far fewer. The plant keeps quoting 97% to customers.":
+    "一套检测系统是在人为破坏的试验焊缝和完美的参照焊缝上调校的，查出了 97% 的不合格焊缝。在生产线上，缺陷是发丝般的细纹，合格焊缝带有影响外观的飞溅，它查出的要少得多。工厂仍继续向客户援引 97%。",
+  "The 97% was measured on wrecked welds against pristine ones, a comparison with a wide gap. Real line output has faint flaws and untidy good welds, so the same thresholds separate much less.":
+    "97% 是在破坏性焊缝与完好焊缝之间测得的，这是一个差距很大的对比。真实产线产出的是细微缺陷和外观不整洁的合格焊缝，所以同样的阈值区分力差得多。",
+  "A tool that claims to tell machine written text from human writing was checked on raw machine output and on handwritten classroom essays, scoring 98%. A college applies it to lightly edited submissions and to careful work by students writing in a second language, and treats every flag as proof.":
+    "一款声称能区分机器生成文本与人类写作的工具，在未经修改的机器输出和课堂手写作文上做了检验，得分 98%。一所学院把它用于经过轻微编辑的作业以及用第二语言认真写作的学生作品，并把每一次标记都当作证据。",
+  "The 98% came from the most obvious machine output set against the most obviously human writing. Edited text and unusually careful second language prose sit between those extremes, where the tool's accuracy was never established.":
+    "98% 来自最明显的机器输出与最明显的人类写作的对比。经过编辑的文本和格外工整的第二语言文章位于这两个极端之间，而该工具的准确率在那里从未被确立。",
+  "A moisture meter was calibrated against soaking wet blocks and oven dried blocks, and told them apart every time. A surveyor now uses it on borderline walls where mild condensation and genuine structural damp look much alike, and reports the manufacturer's accuracy figure in his findings.":
+    "一台水分仪是用浸透的砌块和烘干的砌块校准的，每次都能把两者分开。一位验房师现在把它用在难以判断的墙面上，那里轻微冷凝和真正的结构性受潮看起来很相似，他在报告中援引厂家的准确率数字。",
+  "Calibration contrasted two extremes that any meter could tell apart. The walls the surveyor actually meets are neither soaked nor bone dry, so the readings that mattered in calibration barely differ here.":
+    "校准对比的是任何仪器都能分开的两个极端。验房师实际遇到的墙面既不是浸透的也不是干透的，所以在校准中起决定作用的读数在这里几乎没有差别。",
+  "An image classifier for a skin condition was built from textbook photographs of advanced lesions and clear photographs of normal skin, reporting 96% accuracy. A community clinic runs it on early lesions and on patients with eczema and insect bites, and quotes the same 96% to them.":
+    "一款皮肤病图像分类器是用教科书上的晚期皮损照片和清晰的正常皮肤照片建立的，报告准确率为 96%。一家社区诊所把它用于早期皮损以及患有湿疹和蚊虫叮咬的患者，并向他们援引同样的 96%。",
+  "The reported accuracy came from advanced textbook lesions against plainly normal skin. In the clinic the lesions are early and the comparison skin carries rashes and bites that mimic them, so the separation the figure rested on is gone.":
+    "报告的准确率来自教科书上的晚期皮损与明显正常的皮肤的对比。在诊所里皮损是早期的，作为对照的皮肤带有与之相似的皮疹和叮咬痕迹，所以这个数字所依赖的区分度已经不复存在。",
+  "A sideline test for head injury was validated on players with unmistakable symptoms and on rested players at the start of the season, sorting them almost perfectly. A club now applies it late in matches, to subtle knocks in tired and dehydrated players, quoting the same numbers.":
+    "一项场边头部损伤测试是在症状明确的球员和赛季初休息充分的球员身上验证的，几乎完美地把两者分开。一家俱乐部现在把它用在比赛后段，用于疲劳脱水球员身上不明显的撞击，并援引同样的数字。",
+  "Validation contrasted obvious injury with fresh, unaffected controls. Late in a match the injuries are subtle and the uninjured are fatigued, so both groups score alike on the very things the test measures.":
+    "验证对比的是明显的损伤与状态良好、未受影响的对照。比赛后段损伤并不明显，未受伤者也已疲劳，所以两组在该测试所衡量的那些指标上得分相近。",
+  "A firm interviews any applicant who scores highly on either the coding test or the communication exercise. Among the applicants who reach interview, the two scores move in opposite directions. The hiring manager concludes that people who are good with code tend to be poor with people.":
+    "一家公司只要求职者在编程测试或沟通演练中任一项得分很高，就给予面试。在进入面试的求职者中，两项分数呈相反方向变动。招聘经理由此认为，代码好的人往往不擅长与人打交道。",
+  "Reaching interview required a high score on one test or the other, so a weak communicator is there only because the coding score carried them, which produces the opposite pattern inside the interview pool while saying nothing about applicants in general.":
+    "进入面试需要在两项测试中的一项拿到高分，所以沟通较弱的人能出现在这里，只是因为编程分数把他们带了进来，这在面试池内部产生了相反的模式，却说明不了求职者整体的情况。",
+  "A conservatory offers places to musicians who are outstanding in either technical playing or expressive interpretation. Among those who take up a place, the strongest technicians consistently receive the lowest expression marks. A tutor writes that drilling technique appears to blunt musicality.":
+    "一所音乐学院把名额给予在演奏技术或表现力诠释中任一项特别出色的音乐学生。在接受名额的学生中，技术最强的人在表现力上的分数始终最低。一位导师写道，苦练技术似乎会削弱乐感。",
+  "A place required excellence on at least one of the two measures, so a student who is flat on expression must have been outstanding technically to get in, and the tradeoff exists only among those offered places.":
+    "获得名额需要在两项标准中至少一项上表现优异，所以表现力平淡的学生必然是靠技术出众才进来的，这种此消彼长只存在于拿到名额的人当中。",
+  "A repair shop sees a device only when the battery has failed or the screen has cracked. Its records show that devices with dead batteries have unusually intact screens. The owner writes a blog post arguing that battery wear somehow spares the glass.":
+    "一家维修店只有在电池报废或屏幕破裂时才会见到设备。它的记录显示，电池报废的设备屏幕格外完好。店主写了一篇博客，主张电池损耗以某种方式保护了玻璃。",
+  "A device reaches the shop if at least one of the two faults happened, so a battery failure gets a device in without any screen damage, leaving cracked screens rarer among battery cases than among devices as a whole.":
+    "设备只要发生两种故障中的至少一种就会送到店里，所以电池故障能让一台屏幕毫发无损的设备进来，于是碎屏在电池故障的设备中比在全部设备中更少见。",
+  "A city guide lists a restaurant only if it is unusually cheap or unusually good. A blogger works through the listings and finds that the pricier ones nearly always have the better food. He tells readers that in this city you really do get what you pay for.":
+    "一本城市指南只收录特别便宜或特别好吃的餐厅。一位博主逐一试过收录名单，发现价格较贵的几乎都菜品更好。他告诉读者，在这座城市里确实是一分钱一分货。",
+  "A restaurant earns a listing by being cheap or by being good, so any expensive one in the guide is there because the food is good, which links price to quality inside the guide even if the city's restaurants show no such link.":
+    "一家餐厅靠便宜或靠好吃获得收录，所以指南里任何一家贵的餐厅都是因为菜品好才在其中，这在指南内部把价格和品质联系了起来，即便这座城市的餐厅整体上并无这种联系。",
+  "A national squad picks players who are either exceptionally quick or exceptionally good at reading the game. Within the squad, the fastest players score lowest on the tactical assessment. The coaching staff decide that sprint work must be dulling game intelligence.":
+    "一支国家队挑选的球员要么速度极快，要么对比赛的阅读能力极强。在队内，速度最快的球员在战术评估中得分最低。教练组认定，冲刺训练一定是削弱了比赛智商。",
+  "A place needed one outstanding quality or the other, so a very quick player did not also need tactical strength to be picked, and the inverse pattern appears only among the players who were picked.":
+    "入选需要具备其中一项突出素质，所以速度很快的球员不必同时具备战术能力也能被选上，这种反向模式只出现在被选上的球员当中。",
+  "A funding panel awards money to proposals that have either a strong past record or a genuinely novel idea. Reviewing the funded projects five years later, an analyst finds the most novel ones came from the weakest records, and reports that experience seems to kill originality.":
+    "一个资助评审组把经费给予要么以往成果扎实、要么想法确实新颖的申请。五年后回顾获资助的项目时，一位分析人员发现最新颖的项目来自以往成果最弱的申请人，并报告称经验似乎会扼杀原创性。",
+  "Funding required strength on one criterion or the other, so a novel proposal did not also need a strong record to win money, and the tradeoff holds among funded projects rather than among everyone who applied.":
+    "获得资助需要在两条标准中的一条上表现突出，所以新颖的申请不必同时有扎实的成果记录也能拿到钱，这种此消彼长成立于获资助的项目之中，而不是所有申请人之中。",
+  "An insurer studies its motor claim file, which holds a case only when the vehicle was badly damaged or someone was hurt. In the file, badly damaged vehicles are less often linked to injuries. A memo suggests that heavier crash damage somehow protects the occupants.":
+    "一家保险公司研究了它的车险理赔档案，档案只在车辆严重受损或有人受伤时才收录案件。在档案中，严重受损的车辆与人员受伤相关联的情况较少。一份备忘录提出，更重的碰撞损坏以某种方式保护了车内人员。",
+  "A crash enters the file if it caused serious damage or an injury, so heavily damaged vehicles are recorded even with nobody hurt, while lightly damaged ones appear only when someone was injured.":
+    "一起事故只要造成严重损坏或人员受伤就会进入档案，所以严重受损的车辆即使无人受伤也会被记录，而轻微受损的车辆只有在有人受伤时才会出现。",
+  "A conference accepts a talk when the research is strikingly new or the speaker is a superb presenter. An attendee notices that the most original talks are the worst delivered, and posts afterwards that the polished speakers must be doing the shallowest work.":
+    "一场会议在研究非常新颖或演讲者表达极佳时接受报告。一位与会者注意到最有原创性的报告讲得最差，会后发帖称表达娴熟的演讲者做的一定是最浅的研究。",
+  "Acceptance needed novelty or delivery, so an original talk got on the programme without a polished speaker, and the tradeoff exists among accepted talks rather than among everything submitted.":
+    "被接受需要新颖性或表达能力，所以有原创性的报告不必配上娴熟的演讲者也能进入日程，这种此消彼长存在于被接受的报告之中，而不是全部投稿之中。",
+  "A motoring magazine reports that one gearbox is 40 percent more likely to fail in its first three years than the alternative. The maker's own figures show 7 failures per 10,000 cars against 5 per 10,000. Readers are advised to avoid the model.":
+    "一本汽车杂志报道称，某款变速箱在前三年内损坏的可能性比另一款高 40%。厂家自己的数字是每 10,000 辆车 7 次损坏对每 10,000 辆 5 次。文章建议读者避开这款车。",
+  "The gap is 2 extra failures per 10,000 cars, so 9,998 owners in 10,000 notice no difference at all, and the 40 percent describes a change to an already tiny number.":
+    "差距是每 10,000 辆车多 2 次损坏，所以 10,000 名车主中有 9,998 名根本感觉不到差别，那 40% 描述的是一个本来就极小的数字的变化。",
+  "A lottery app tells users that buying a second ticket doubles their chance of taking the jackpot, and pushes a two ticket bundle at checkout. A single ticket wins the jackpot about once in 14 million draws.":
+    "一款彩票应用告诉用户，买第二张票会让中头奖的机会翻倍，并在结算时推销两张票的套餐。单张票中头奖的概率约为 1400 万分之一。",
+  "Doubling moves the chance from about 1 in 14 million to about 2 in 14 million, an increase of roughly one chance in 14 million, which is why the proportional wording sounds far larger than the actual change.":
+    "翻倍是把机会从约 1400 万分之 1 变成约 1400 万分之 2，增加了大约 1400 万分之一的机会，这就是为什么按比例的说法听起来远大于实际变化。",
+  "An airline advertisement says its new fleet has cut a particular in flight fault by 60 percent. The maintenance log behind the claim shows the fault used to occur on about 5 flights per million and now occurs on about 2 per million.":
+    "一则航空公司广告称，其新机队把某种飞行中的故障减少了 60%。这一说法背后的维修记录显示，该故障过去约每百万架次发生 5 次，现在约每百万架次 2 次。",
+  "That is 3 fewer faults per million flights, so a passenger's chance was already about 1 in 200,000 before the new fleet arrived and the headline percentage sits on a very small starting number.":
+    "这是每百万架次少 3 次故障，所以在新机队到来之前乘客遇到的概率就已经约为 200,000 分之 1，那个醒目的百分比建立在一个非常小的基数上。",
+  "A bank advertises that its new account pays 50 percent more interest than the old one. The old account paid 0.2 percent a year and the new one pays 0.3 percent. A saver moves a 2,000 dollar balance across, expecting a noticeable difference.":
+    "一家银行宣传其新账户的利息比旧账户高 50%。旧账户年利率 0.2%，新账户 0.3%。一位储户把 2,000 美元余额转了过去，期待有明显的差别。",
+  "On 2,000 dollars the switch is worth 6 dollars a year instead of 4, a gain of 2 dollars, because 50 percent more of a very small rate is still a very small rate.":
+    "在 2,000 美元上，这次转移意味着一年 6 美元而不是 4 美元，多了 2 美元，因为一个很小的利率再高 50% 仍然是一个很小的利率。",
+  "A newspaper reports that eating a particular snack every day raises the chance of a rare bowel condition by 25 percent, and shoppers start avoiding it. The figures behind the story are 4 cases per 10,000 people over ten years among non eaters and 5 per 10,000 among daily eaters.":
+    "一家报纸报道称，每天吃某种零食会使一种罕见肠道疾病的概率上升 25%，购物者开始避开它。报道背后的数字是：十年间不吃的人每 10,000 人有 4 例，每天吃的人每 10,000 人有 5 例。",
+  "The difference is 1 extra case per 10,000 people across a decade, so 9,999 in 10,000 are unaffected either way and the 25 percent applies to an outcome that was already rare.":
+    "差别是十年间每 10,000 人多 1 例，所以 10,000 人中有 9,999 人无论如何都不受影响，那 25% 针对的是一个本来就罕见的结局。",
+  "A clinic leaflet says a daily tablet cuts the chance of a particular event over five years from 4 in 1,000 to 3 in 1,000, a reduction of a quarter. The leaflet adds that this means about one patient in four will be spared the event.":
+    "一份诊所宣传页称，每天服一片药可把五年内发生某种事件的概率从 1,000 分之 4 降到 1,000 分之 3，降幅为四分之一。宣传页还写道，这意味着约每四名患者中就有一人免于该事件。",
+  "Only 1 patient in 1,000 avoids the event, so about 1,000 people must take the tablet for five years for one to benefit; the quarter describes how much a small chance shrank, not the share of patients helped.":
+    "只有 1,000 名患者中的 1 名避免了该事件，所以约需 1,000 人服药五年才有一人获益；四分之一描述的是一个很小的概率缩小了多少，而不是获益患者的比例。",
+  "A factory's internal report gives the risk ratio for injuries after a new floor marking scheme as 0.47. The staff newsletter announces that the scheme has cut injuries by 47 percent, and the plant manager repeats that figure to the board.":
+    "一家工厂的内部报告给出新地面标线方案实施后工伤的风险比为 0.47。员工通讯宣布该方案把工伤减少了 47%，厂长又把这个数字复述给董事会。",
+  "A ratio of 0.47 means injuries fell to 47 percent of the old level, which is a fall of 53 percent, so the newsletter has reported the share that remains as though it were the share removed.":
+    "0.47 的比值意味着工伤降到了原来水平的 47%，也就是下降了 53%，所以通讯把剩下的那部分当成了减少的那部分来报告。",
+  "A home insurer tells customers that fitting a certain type of wood stove triples the chance of a fire claim, and raises those premiums by a third. Its own data show 1 claim per 10,000 insured homes a year without the stove and 3 per 10,000 with it.":
+    "一家家庭财险公司告诉客户，安装某种柴炉会使火灾理赔的概率变为三倍，并把这些保单的保费提高三分之一。它自己的数据显示，没有柴炉的家庭每年每 10,000 户有 1 次理赔，有柴炉的每 10,000 户有 3 次。",
+  "The extra chance is 2 fire claims per 10,000 homes a year, so 9,997 homes in 10,000 with the stove make no claim, and tripling something rare leaves it rare.":
+    "多出来的概率是每年每 10,000 户多 2 次火灾理赔，所以装了柴炉的 10,000 户中有 9,997 户不会理赔，把罕见的事变为三倍后它仍然罕见。",
+  "A school picks pupils for extra tutoring on the basis of which ones teachers judge most likely to fail. At the end of the year the tutored pupils score lower on average than the rest, and a governors' report calls the tutoring ineffective and recommends closing it.":
+    "一所学校根据教师判断谁最可能不及格来挑选学生参加课外辅导。年末接受辅导的学生平均分低于其他学生，一份校董报告称辅导无效并建议停办。",
+  "Teachers chose pupils for tutoring precisely because they were already heading for a poor result, so the tutored group started further behind and the tutoring is blamed for the reason it was offered.":
+    "教师挑选学生参加辅导，正是因为他们本来就要考砸，所以受辅导组的起点更落后，辅导被怪罪的恰恰是它被提供的原因。",
+  "A phone company calls customers its model flags as most likely to leave and offers them a discount. Over the next quarter those customers cancel more often than customers who got no call. The analysis concludes that retention calls push people out of the door.":
+    "一家电话公司致电模型标记为最可能流失的客户并提供折扣。在接下来的一个季度里，这些客户的销号率高于没有接到电话的客户。分析得出结论说挽留电话把人推出了门。",
+  "The call went only to customers already judged most likely to cancel, so the flag that triggered the call, not the call itself, explains their higher cancellation rate.":
+    "电话只打给了已被判定最可能销号的客户，所以解释他们更高销号率的是触发这通电话的标记，而不是电话本身。",
+  "A plant sends a machine for early servicing whenever an operator reports an unusual noise. An audit finds that machines serviced early broke down more often the following year than machines left alone, and recommends servicing less.":
+    "只要操作工报告异响，工厂就把机器送去提前保养。一次审计发现，提前保养的机器在第二年的故障率高于未动过的机器，于是建议减少保养。",
+  "The noise that prompted early servicing was itself a sign of a machine on its way to failing, so the servicing takes the blame for the condition that selected it.":
+    "促成提前保养的异响本身就是机器正走向故障的迹象，所以保养替那个把它挑出来的状况背了锅。",
+  "Places on a prison workshop scheme are limited, so staff give them to the inmates they judge most motivated and least likely to offend again. Two years on, scheme graduates have far lower reoffending, and the governor presents this as proof the scheme works.":
+    "监狱作业培训项目名额有限，所以管教人员把名额给了他们认为最有动力、最不可能再犯的服刑人员。两年后，结业者的再犯率低得多，监狱长把这当作项目有效的证明。",
+  "Staff selected participants using their own judgement of who would reoffend, which is the very outcome being measured, so the places went to the men already likely to do best.":
+    "管教人员是凭自己对谁会再犯的判断来挑选参加者的，而再犯正是被测量的那个结局，所以名额给了本来就最可能表现最好的人。",
+  "A bank rewrites the terms of a loan as soon as the account shows early signs of strain. A year later, rewritten loans have defaulted more often than the rest of the book, and the credit committee concludes that rewriting terms encourages default.":
+    "只要账户出现早期紧张迹象，银行就重新约定贷款条款。一年后，重新约定条款的贷款违约率高于账上其余贷款，信贷委员会得出结论说重新约定条款会助长违约。",
+  "The rewrite was triggered by warning signs that already predicted default, so the rewritten loans began from a worse position that the comparison never accounted for.":
+    "重新约定是由已经预示违约的预警信号触发的，所以这些贷款的起点更差，而这个比较从未把这一点考虑进去。",
+  "An employer assigns a senior mentor to the graduate recruits its managers rate as highest potential. Three years later the mentored recruits have been promoted twice as often as the others, and the internal newsletter credits the mentoring scheme.":
+    "一家雇主为经理们评为潜力最高的应届录用者配备资深导师。三年后，有导师的录用者晋升的频率是其他人的两倍，内部通讯把功劳归于导师计划。",
+  "Managers picked mentees on a judgement of who would rise fastest, so the mentored group was already on the quicker track before any mentoring happened.":
+    "经理们是凭对谁会升得最快的判断来挑选学员的，所以在任何辅导发生之前，有导师的这组人就已经在更快的轨道上了。",
+  "A care home moves residents to its specialist wing when staff judge that they are declining fastest. A quality review finds that residents in the specialist wing die sooner than those on ordinary floors, and questions whether the wing should stay open.":
+    "当工作人员判断某些住户衰退最快时，养老院就把他们转到专护区。一次质量评审发现，专护区住户的去世时间早于普通楼层的住户，并质疑该区是否应继续开办。",
+  "The move was decided by how fast a resident was already declining, and that decline, not the wing, drives the difference in how long they lived.":
+    "转区是由住户已经衰退的速度决定的，造成生存时间差异的是这种衰退，而不是专护区。",
+  "A clinic offers its intensive shoulder programme only to patients who can already raise the arm to shoulder height, since the exercises need it. Those patients regain full movement far more often than the rest, and the clinic advertises the programme as its most effective treatment.":
+    "一家诊所只把强化肩部康复项目提供给已经能把手臂抬到肩高的患者，因为训练需要这个前提。这些患者恢复全部活动度的比例远高于其他人，诊所把该项目宣传为最有效的治疗。",
+  "The entry rule handed the programme the patients whose shoulders were least damaged to begin with, so the people most likely to recover anyway are the ones being counted.":
+    "准入规则把肩部损伤本来最轻的患者交给了这个项目，所以被计入的正是那些无论如何都最可能恢复的人。",
+  "A fleet inspects every van once a year. Vans whose brake faults were picked up at inspection go on to have far fewer roadside breakdowns than vans whose faults turned up in between. The workshop manager concludes that the annual inspection catches the dangerous faults.":
+    "一支车队每年对每辆厢式货车检验一次。在检验中查出刹车故障的车，此后路边抛锚的次数远少于在两次检验之间才暴露故障的车。车间主管由此认为年度检验抓住了危险故障。",
+  "A yearly check can only find wear slow enough to still be half formed on the day the inspector calls; anything that goes from sound to broken inside a year declares itself between visits. The inspected group is therefore stacked with the gradual faults from the outset.":
+    "一年一次的检查只能发现那些慢到在检验员上门那天还处于半成形状态的磨损；任何在一年之内从完好变为损坏的问题都会在两次检验之间自行暴露。因此被检出的那一组从一开始就堆满了渐进型故障。",
+  "A card issuer reviews merchant accounts once a month. Accounts stopped by the review have cost the issuer far less on average than accounts reported by cardholders between reviews. The risk team reports that the monthly review is holding losses down.":
+    "一家发卡机构每月审查一次商户账户。被审查叫停的账户给发卡机构造成的平均损失，远低于在两次审查之间由持卡人举报的账户。风险团队报告称月度审查把损失压了下去。",
+  "A scheme that opens, drains and vanishes within days sits entirely between two reviews, so the review can only catch the slow, low value operations. Those were the cheaper ones before anyone intervened.":
+    "一个几天之内开户、掏空、消失的骗局完全落在两次审查之间，所以审查只能抓到那些缓慢、金额较小的操作。这些操作在任何人介入之前就已经是损失较小的那类。",
+  "A software team audits its codebase every quarter. Defects the audit finds are rated far less severe than those users report between audits. The engineering lead writes that auditing removes problems before they can turn serious.":
+    "一个软件团队每季度审计一次代码库。审计发现的缺陷被评定的严重程度远低于用户在两次审计之间报告的缺陷。工程负责人写道，审计在问题变严重之前就把它们清除了。",
+  "A defect that crashes the app is reported by a user within hours of shipping, long before the next quarterly pass, leaving the audit only the quiet long lived ones. Those were the mild defects already, not defects the audit made mild.":
+    "会让应用崩溃的缺陷在发版后几小时内就被用户报告，远早于下一次季度审计，留给审计的只有那些不出声、长期存在的缺陷。这些本来就是轻微缺陷，而不是被审计变轻的缺陷。",
+  "A housing association surveys each block once every five years. Defects found by the survey are almost always cosmetic, while the serious ones, a collapsed ceiling or a burst tank, arrive as emergency calls. The association reports that its survey programme keeps defects minor.":
+    "一家住房协会每五年对每栋楼查勘一次。查勘发现的缺陷几乎都是外观问题，而严重的问题，比如天花板塌落或水箱爆裂，则以紧急报修的形式出现。协会报告称查勘计划使缺陷保持在轻微水平。",
+  "A defect that takes years to develop is present, and still small, whichever year the surveyor happens to call. One that develops in a fortnight almost certainly falls between two surveys and comes in as an emergency instead.":
+    "需要数年才形成的缺陷，无论查勘员哪一年上门都已存在且仍然很小。两周内就形成的缺陷几乎肯定落在两次查勘之间，转而以紧急报修的形式出现。",
+  "A grid operator surveys its lines from the air twice a year. Faults seen on a survey are almost always minor, and the faults behind most outages had never appeared on one. The operator's report credits the surveys with keeping serious faults rare.":
+    "一家电网运营商每年两次从空中巡查线路。巡查中看到的故障几乎都是轻微的，而造成多数停电的故障从未在巡查中出现过。运营商的报告把严重故障的稀少归功于巡查。",
+  "Only damage that creeps along for months is still sitting there to be photographed when the aircraft passes. Damage that goes from intact to failed in a fortnight becomes an outage before any survey can see it, so the surveyed set is minor by construction.":
+    "只有持续数月缓慢发展的损伤才会在飞机飞过时仍留在那里被拍到。两周内从完好变为失效的损伤在任何巡查看到它之前就已变成停电，所以被巡查到的那一组从构成上就是轻微的。",
+  "A dental practice recalls its patients every eighteen months. Problems found at recall are nearly always fixable with a filling, while most extractions come from patients who telephone in pain between appointments. The practice tells patients that regular recall prevents extractions.":
+    "一家牙科诊所每十八个月召回患者复查一次。复查发现的问题几乎都能靠补牙解决，而多数拔牙来自在两次预约之间因疼痛致电的患者。诊所告诉患者定期复查可以避免拔牙。",
+  "Decay that creeps along for years is present, and still small, whenever the recall falls. A tooth that goes from sound to abscessed in three months announces itself before the next appointment, so the recall sees the slow problems and little else.":
+    "持续数年缓慢发展的龋坏，无论复查落在什么时候都已存在且仍然很小。三个月内从完好变成脓肿的牙齿会在下次预约之前自行暴露，所以复查看到的几乎只有发展缓慢的问题。",
+  "A large employer offers a lung scan every two years. Employees whose disease is found at a scan need much less urgent treatment than those who arrive breathless at the clinic between rounds. Occupational health reports that scanning catches disease while it is still controllable.":
+    "一家大型雇主每两年提供一次肺部检查。在检查中被发现患病的员工，所需的紧急治疗远少于在两轮检查之间气促就诊的员工。职业健康部门报告称检查在疾病仍可控时就抓住了它。",
+  "Disease that progresses over many years is detectable at whichever round comes along, while disease that goes from nothing to breathless inside two years surfaces between rounds. The scanned group is loaded with the milder illness before any treatment starts.":
+    "历经多年进展的疾病在任何一轮检查中都能被检出，而两年之内从无到气促的疾病则在两轮之间浮现。在任何治疗开始之前，被检出的那一组就已装满了较轻的病例。",
+  "A clinic lengthens its check up interval from one year to three. The cases it now picks up look milder on average than the ones it used to find, and the clinical lead takes this as evidence that the longer interval suits patients better.":
+    "一家诊所把复查间隔从一年拉长到三年。它现在查出的病例平均看起来比以前查出的更轻，临床负责人把这当作更长的间隔更适合患者的证据。",
+  "Stretching the gap gives fast moving disease more room to appear and declare itself between visits, so a larger share of what the check up still finds is the slow moving kind. The milder mix reflects what the interval now misses, not better care.":
+    "拉长间隔给了进展快的疾病更多在两次就诊之间出现并暴露的余地，所以复查仍能查出的病例中，进展慢的那类占比更大。更轻的构成反映的是这个间隔现在漏掉了什么，而不是照护更好了。",
+  "A company's product newsletter runs a write up whenever an experiment beats the current design. Teams whose tests showed no difference tend to move on without writing anything. A new joiner reads a year of newsletters and concludes that almost every idea here lifts sign ups.":
+    "一家公司的产品通讯只要有实验胜过现行设计就会发一篇总结。测试没有差异的团队往往不写任何东西就转向下一件事。一位新入职者读了一年的通讯，得出结论说这里几乎每个想法都能提升注册量。",
+  "Only the experiments that won were written up, so the newsletter records a small winning slice of the year's tests while the flat and losing ones never appeared anywhere the new joiner could read them.":
+    "只有胜出的实验被写了出来，所以通讯记录的是这一年测试中胜出的一小部分，而持平和落败的那些从未出现在新入职者能读到的任何地方。",
+  "A training provider's homepage carries fifteen graduate stories, each describing a good job within months of finishing. The stories came from graduates who answered a request for success stories. A prospective student reads them and concludes the course almost always leads to work.":
+    "一家培训机构的主页上有十五则毕业生故事，每则都讲述结业后几个月内找到了好工作。这些故事来自响应征集成功案例的毕业生。一位准学员读完后得出结论说这门课程几乎总能带来工作。",
+  "The page gathers only graduates who had a success to report, so those who finished the course and found nothing are missing from the evidence the student is weighing.":
+    "这个页面只收集了有成功可讲的毕业生，所以那些读完课程却一无所获的人不在这位学员所权衡的证据之中。",
+  "On a woodworking forum, members post photographs of finished cabinets, and the build threads run to hundreds of admiring replies. A newcomer reads twenty of them and decides the design is straightforward enough for a first project.":
+    "在一个木工论坛上，会员们发布完工柜子的照片，制作帖下有数百条赞叹的回复。一位新人读了其中二十个帖子，认定这个设计足够简单，适合做第一个项目。",
+  "Builds that were abandoned halfway never get a thread, so the forum shows the attempts that worked and gives no sign of how often the design defeated someone.":
+    "半途放弃的制作根本不会有帖子，所以论坛展示的是成功的尝试，完全看不出这个设计有多少次让人做不下去。",
+  "A software vendor's website hosts twelve customer case studies, each with a chart of improved results. The vendor decides which pilots to turn into case studies after seeing how they went. A buyer reads all twelve and signs a three year contract.":
+    "一家软件供应商的网站上有十二个客户案例研究，每个都配有结果改善的图表。供应商是在看到试点进展如何之后，才决定把哪些试点做成案例研究的。一位采购读完全部十二个后签下了三年合同。",
+  "The vendor wrote up only the pilots that turned out well, so the twelve studies are the flattering end of a larger set of pilots whose disappointing results were never put on the site.":
+    "供应商只写了结果好的试点，所以这十二个案例是一批更大试点中好看的那一端，其中结果令人失望的从未放上网站。",
+  "An allotment association's newsletter has carried enthusiastic reports of a plant feed for ten years. Members who noticed a big difference send in a report; members who noticed nothing rarely bother. The committee votes to buy the feed in bulk for every plot.":
+    "一个市民农园协会的通讯十年来一直刊登关于某种植物肥的热情报告。注意到明显差别的会员会投稿；什么也没注意到的会员很少费这个事。委员会投票决定为每块地批量采购这种肥料。",
+  "Only growers who saw an effect wrote in, so a decade of newsletters preserves the striking results and leaves out every plot where the feed changed nothing.":
+    "只有看到效果的种植者投了稿，所以十年的通讯保存下来的是那些显眼的结果，而漏掉了每一块肥料毫无作用的地。",
+  "A research group posts a blog each time a new network design beats the standard benchmark, and quietly shelves the runs that did not. A reader tallies such posts across several groups and writes that progress in the field is accelerating sharply.":
+    "一个研究组每当有新的网络设计胜过标准基准就发一篇博客，没胜过的运行则悄悄搁置。一位读者统计了几个研究组的这类博客，写道该领域的进展正在急剧加速。",
+  "Runs that failed to beat the benchmark were never posted, so the tally counts the successes drawn from far more attempts and reads a filtered record as though it were the rate of progress.":
+    "没能胜过基准的运行从未被发出，所以这个统计数的是从多得多的尝试中挑出来的成功，把一份经过筛选的记录当成了进展的速度来读。",
+  "Someone collects every published trial of a supplement and notices that the small trials report much larger benefits than the large ones. He averages all of them together and reports a clear overall benefit.":
+    "有人收集了某种补充剂的全部已发表试验，注意到小型试验报告的获益远大于大型试验。他把所有试验平均在一起，报告了明确的总体获益。",
+  "A small trial that found nothing is easy to leave unwritten, while a small trial that happened to land a striking result gets submitted, so the small studies on show are the lucky ones and averaging them pushes the estimate up.":
+    "一项什么也没发现的小型试验很容易就不写了，而一项碰巧得出惊人结果的小型试验则会投稿，所以能看到的小型研究是走运的那些，把它们平均进去会把估计值往上推。",
+  "A journal's guidance for authors says it looks for findings that are surprising and change how readers think. A student reviews ten years of its issues and concludes that effects in this field are usually large.":
+    "一本期刊的作者须知写明它寻求令人意外、能改变读者想法的发现。一位学生梳理了它十年的各期，得出结论说这个领域的效应通常很大。",
+  "The journal chose papers by how striking the result was, so modest and flat findings were turned away or never submitted, and the ten years the student read contain none of them.":
+    "该期刊是按结果有多惊人来挑选论文的，所以温和的和无差异的发现被退稿或从未投稿，学生读的这十年里一篇也没有。",
+  "A bank randomly gives half of its new savers an automatic top up feature and the rest a standard account. Its year end report compares average balances among savers still paying in after twelve months, and finds the feature far ahead.":
+    "一家银行随机给一半新储户开通自动存入功能，其余人使用标准账户。年终报告比较了十二个月后仍在持续存钱的储户的平均余额，发现该功能遥遥领先。",
+  "Whether someone was still paying in at twelve months was settled after the random split, and the feature itself affects who keeps going, so the sets compared are no longer the groups the allocation created.":
+    "一个人在十二个月时是否仍在存钱，是在随机分组之后才定下来的，而这项功能本身会影响谁能坚持，所以被比较的集合已不再是分配所形成的那两组。",
+  "Classes are randomly allocated to a new reading scheme or to the usual lessons. Twelve allocated classes never got the scheme running, so the evaluators move them into the comparison group, saying the figures should reflect what actually happened in the classroom.":
+    "各班级被随机分配到新的阅读方案或常规课程。有十二个被分配的班级始终没有把方案开展起来，于是评估者把它们移入对照组，理由是数字应当反映课堂上实际发生的情况。",
+  "Which classes failed to start was determined after allocation, probably by the schools least able to run anything new, so shifting them loads the comparison group with the weakest classes.":
+    "哪些班级没能开展是在分配之后才决定的，很可能出在最没有能力开展新事物的学校，所以把它们挪过去让对照组装满了最弱的班级。",
+  "An employer randomly assigns supervisors to a management course or to nothing. Anyone who changed department during the year is then left out of the analysis, in both groups alike, because the evaluator says their results would not be comparable.":
+    "一家雇主把主管随机分配去上管理课程或不做任何安排。随后凡是在这一年中调换过部门的人都被排除在分析之外，两组一视同仁，理由是评估者认为他们的结果不可比。",
+  "Department moves happened after the assignment, and the course itself can prompt or prevent them, so the filter removes a different sort of person from each group.":
+    "调换部门发生在分配之后，而课程本身可能促成或阻止这种调动，所以这道筛选从两组中剔除的是不同类型的人。",
+  "A council randomly assigns smokers to a quit programme or to a leaflet. The final report covers only those who turned up to the four week check, since the rest could not be verified. Attendance was 70% in the programme arm and 90% in the leaflet arm.":
+    "一个市政机构把吸烟者随机分配到戒烟项目或一份宣传页。最终报告只覆盖了到场参加四周复查的人，因为其余人无法核实。项目组的到场率为 70%，宣传页组为 90%。",
+  "Turning up to the check happened after assignment and at very different rates in the two arms, and the people likeliest to be missing from the programme arm are those who went back to smoking.":
+    "到场复查发生在分配之后，两组的到场率差别很大，而项目组中最可能缺席的正是那些又抽起烟来的人。",
+  "Farms are randomly allocated a new pest control routine or their usual one. Farms that sprayed late or missed a spray are dropped, and so are farms in the other group whose records had gaps. The routine comes out strongly ahead.":
+    "各农场被随机分配采用新的病虫害防治方案或原有方案。喷药迟了或漏喷的农场被剔除，另一组中记录有缺口的农场也被剔除。新方案的结果大幅领先。",
+  "Whether a farm followed the routine was decided after allocation and reflects how well it is run, so the best run farms in one group are being set against a differently filtered set in the other.":
+    "一家农场是否遵守方案是在分配之后决定的，反映的是它经营得好不好，所以一组中经营最好的农场被拿去对比另一组中以不同方式筛选出的农场。",
+  "An insurer randomly fits a driving feedback device to half of its new policies. Drivers who unplugged the device are dropped from that group, and drivers in the other group who bought one privately are dropped from theirs. The remaining comparison shows far fewer claims with the device.":
+    "一家保险公司随机为一半新保单安装驾驶反馈设备。拔掉设备的司机被从该组剔除，另一组中自行购买了设备的司机也被从其组内剔除。余下的比较显示装了设备的理赔少得多。",
+  "Unplugging a device and buying one privately both happened after the random split and mark out very different drivers, so what is left is two self selected sets rather than the groups the allocation made.":
+    "拔掉设备和自行购买设备都发生在随机分组之后，且标记出的是非常不同的司机，所以剩下的是两个自我选择的集合，而不是分配所形成的两组。",
+  "Travellers whose holiday went badly are asked what the brochure promised about the hotel, and their answers are set against those of travellers who enjoyed the same trip. The operator's complaints team treats the gap as evidence of mis-selling.":
+    "度假体验糟糕的旅客被问及宣传册对酒店作了什么承诺，他们的回答与同一行程中玩得开心的旅客的回答作对比。旅行社的投诉团队把这个差距当作不当销售的证据。",
+  "People whose holiday disappointed them have already been back over what they were told looking for a broken promise, while the satisfied travellers have never revisited the brochure.":
+    "度假不如意的人已经把当初被告知的内容反复回想过，寻找哪里的承诺没有兑现，而满意的旅客从未重新翻看过宣传册。",
+  "After a food company recalls a batch, buyers are phoned and asked whether anything seemed odd about the smell. Those who fell ill report an odd smell far more often, and the report concludes the smell was a reliable warning sign.":
+    "一家食品公司召回某批次产品后，购买者接到电话，被问及气味是否有异样。生病的人报告气味异常的比例高得多，报告由此认定气味是可靠的预警信号。",
+  "Buyers who got ill have replayed the meal hunting for something wrong with it, while those who felt fine had no reason to think about the smell at all.":
+    "生病的购买者已经把那顿饭反复回想，搜寻哪里不对劲，而没事的人根本没有理由去想气味的事。",
+  "A road safety survey asks drivers how fast they usually take a particular bend. Drivers who have crashed there give very different figures from drivers who have not, and the survey uses the gap to set a recommended limit.":
+    "一项道路安全调查询问司机通常以多快的速度通过某个弯道。在那里出过事故的司机给出的数字与没出过事故的司机差别很大，调查用这个差距来设定建议限速。",
+  "A driver who crashed at that bend has gone over the moment repeatedly and knows how it ended, so the speed now reported is reconstructed from the crash rather than independent of it.":
+    "在那个弯道出过事故的司机已经反复回想过那一刻，并且知道结果如何，所以现在报告的速度是从事故重构出来的，而不是独立于事故的。",
+  "A regulator asks customers who lost money on an investment what the salesperson said about the risk, and compares their accounts with those of satisfied customers who bought the same product from the same team.":
+    "一家监管机构询问投资亏钱的客户，销售人员当时是怎么说风险的，并把他们的说法与从同一团队买了同一产品的满意客户的说法作比较。",
+  "Customers sitting on a loss have gone back through the conversation looking for a reassurance that should never have been given, while satisfied customers have had no reason to replay it.":
+    "手上有亏损的客户已经把那次谈话重新过了一遍，寻找当初本不该给出的保证，而满意的客户没有理由去重放它。",
+  "Parents of pupils who failed their final exams are asked how much homework the school set three years earlier, alongside parents of pupils who passed. The parents of failing pupils report much less, and a campaign group blames the school.":
+    "结业考试不及格学生的家长被问及三年前学校布置了多少作业，及格学生的家长也被问了同样的问题。不及格学生的家长报告的作业量少得多，一个维权团体因此指责学校。",
+  "Parents whose children failed have been searching for an explanation ever since the results came out, so their account of past homework is produced by the outcome rather than measured independently of it.":
+    "孩子不及格的家长自成绩公布起就一直在寻找解释，所以他们对过去作业量的说法是由结果产生的，而不是独立于结果测得的。",
+  "After an outbreak of illness following a conference dinner, attendees are asked which dishes they ate. Those who fell ill much more often say they had the seafood, and the report names it as the source.":
+    "一场会议晚宴后暴发疾病，与会者被问及吃了哪些菜。生病的人说自己吃了海鲜的比例高得多，报告因此认定海鲜是源头。",
+  "Attendees who became ill have reconstructed the meal trying to work out what caused it, so they account for their plate far more thoroughly than guests who never thought about dinner again.":
+    "生病的与会者已经把那顿饭重构了一遍，试图弄清是什么引起的，所以他们对自己盘中之物的交代远比那些再也没想过这顿晚宴的客人详尽。",
+  "A company reports that staff who received its five year loyalty award go on to average eleven years with the firm, against three years for everyone else, counted from each person's start date. HR presents the award as proof that recognition keeps people.":
+    "一家公司报告称，获得五年忠诚奖的员工此后在公司平均待满十一年，其他所有人为三年，均从每个人的入职日起算。人力资源部把这个奖项当作认可能留住人的证明。",
+  "Receiving the award required staying five years, so anyone who left sooner cannot be in that group at all, and those five guaranteed years are counted into its average.":
+    "获得该奖项需要待满五年，所以更早离职的人根本不可能出现在那一组里，而这五年是必然存在的，也被计入了它的平均值。",
+  "A subscription service reports that customers who ever moved to its premium tier stay subscribed four times longer than customers who never did, measured from the day each one signed up. Marketing pushes the upgrade at new customers on the strength of it.":
+    "一家订阅服务报告称，曾升级到高级档的客户的订阅时长是从未升级客户的四倍，均从各自注册当天起算。市场部据此向新客户力推升级。",
+  "A customer had to still be subscribed in order to upgrade, so everyone who left early lands automatically in the other group, and the months before the upgrade are credited to premium.":
+    "客户必须仍在订阅才能升级，所以每一个早早离开的人都自动落入另一组，而升级之前的那些月份被记在了高级档头上。",
+  "A sports channel reports that clubs reaching the cup final went an average of nine weeks unbeaten in the competition, far better than clubs knocked out early, and puts it down to the finalists' training methods.":
+    "一家体育频道报道称，打进杯赛决赛的俱乐部在该项赛事中平均保持九周不败，远好于早早出局的俱乐部，并把这归因于决赛队伍的训练方法。",
+  "Reaching the final required winning every earlier round, so those weeks cannot contain a defeat for any club in that group; the unbeaten run is the entry condition rather than a result of training.":
+    "进入决赛需要赢下此前的每一轮，所以对那一组中的任何俱乐部来说，那些周里都不可能有一场败仗；不败纪录是入选条件，而不是训练的结果。",
+  "A delivery firm refurbishes each van at five years old. It reports that refurbished vans last on average four years longer than the rest of the fleet, measuring every van's life from the day it was bought, and orders more refurbishments.":
+    "一家配送公司在每辆厢式货车满五年时进行翻新。它报告称翻新过的车比车队其余车辆平均多用四年，每辆车的寿命均从购车当天起算，并据此加订更多翻新。",
+  "A van had to still be running at five years to be refurbished, so vans that failed before then can only be in the other group, and those first five years are credited to refurbishment.":
+    "一辆车必须在五年时仍能运行才能被翻新，所以在那之前就报废的车只能落在另一组，而最初那五年被记在了翻新头上。",
+  "A college reports that students who submitted the optional final year dissertation were far less likely to have left before graduating than students who did not, counted from enrolment, and proposes making the dissertation compulsory.":
+    "一所学院报告称，提交了毕业年选修论文的学生在毕业前退学的可能性远低于未提交的学生，均从入学起算，并提议把论文改为必修。",
+  "Submitting required still being enrolled in the final year, so every student who left earlier falls automatically into the other group and cannot count against the dissertation.":
+    "提交论文需要在毕业年仍在学籍上，所以每一个更早退学的学生都自动落入另一组，不可能算在论文的账上。",
+  "An insurer reports that drivers who earned its five year no claims discount average far fewer claims per year of cover than other drivers, counted from the day each policy began, and advertises the discount as something that makes people drive better.":
+    "一家保险公司报告称，拿到五年无理赔折扣的司机每承保年的平均理赔次数远少于其他司机，均从各自保单生效当天起算，并把这项折扣宣传为能让人开车更好的东西。",
+  "Earning the discount required five years without a claim, so those claim free years are built into the group by definition and any driver who crashed early could never appear in it.":
+    "拿到该折扣需要五年无理赔，所以这些无理赔的年份按定义就内建在这一组里，任何早期出过事故的司机都不可能出现在其中。",
+  "A firm reports that offers made by its retrained recruiters were accepted 71% of the time against 62% for the rest. The appendix tables show the retrained group ahead in every role family and at every seniority level.":
+    "一家公司报告称，经过再培训的招聘人员发出的录用通知有 71% 被接受，其余人为 62%。附录表格显示，在每个岗位族和每个职级上，再培训组都领先。",
+  "The headline gap points the same way as every published subgroup, so no mix of roles can be producing it; a hasty player would accuse the aggregate of hiding a reversal it has already ruled out.":
+    "总体差距与公布的每一个亚组指向同一方向，所以不可能是岗位构成造出来的；性急的玩家会指责这个合计值掩盖了一处逆转，而它其实已经排除了这种可能。",
+  "Two bus depots are compared on punctuality. Because one runs far more rural routes than the other, the report recalculates both depots using a single common mix of route types, and prints the mix it used.":
+    "对两个公交车场的准点率进行比较。由于其中一个运营的乡村线路远多于另一个，报告用一套共同的线路类型构成对两个车场重新计算，并列出了所用的构成。",
+  "Standardising both depots to one route mix removes the difference in case mix before comparing, which is exactly the correction a pooled figure needs; a hasty player would accuse it of lumping unlike routes together.":
+    "把两个车场标准化到同一线路构成，在比较之前消除了构成上的差异，这正是合并数字所需要的校正；性急的玩家会指责它把不同的线路混为一谈。",
+  "An online store sends each visitor at random to one of two checkout designs, and design B converts better overall. The report notes that the share of new and returning visitors came out almost identical in the two arms.":
+    "一家网店把每位访客随机导向两种结算页设计之一，设计 B 的总体转化更好。报告指出，两组中新访客和回访者的占比几乎完全一致。",
+  "With the visitor mix verified as the same in both arms, the pooled result is a weighted average using identical weights, so a reversal inside the segments is arithmetically impossible; a hasty player would demand the segments be split out.":
+    "既然已核实两组的访客构成相同，合并结果就是用相同权重得到的加权平均，所以分段内部出现逆转在算术上不可能；性急的玩家会要求把分段拆开来看。",
+  "A bank's model flags card transactions for review. Before quoting a figure to the fraud team, the analyst combines the flag rate with how often transactions in that category actually turn out to be fraudulent, and reports the share of flagged transactions that are genuine fraud.":
+    "一家银行的模型标记出需要复核的刷卡交易。在向反欺诈团队给出数字之前，分析师把标记率与该类别交易实际为欺诈的频率结合起来，报告了被标记交易中真正属于欺诈的比例。",
+  "The number quoted is the chance of fraud given a flag, worked out using how common fraud is, rather than the model's accuracy read backwards; a hasty player would accuse the team of confusing the two.":
+    "给出的数字是被标记条件下属于欺诈的概率，是结合欺诈有多常见算出来的，而不是把模型准确率反过来读；性急的玩家会指责这个团队混淆了两者。",
+  "A vision system catches nearly every cracked casting and wrongly marks about one sound casting in twenty. On this line roughly a third of castings really are cracked. The supervisor tells the crew a marked casting is probably cracked and sends marked ones for rework.":
+    "一套视觉系统几乎能查出每一件有裂纹的铸件，并把约每二十件完好铸件中的一件错误标记。在这条产线上约三分之一的铸件确实有裂纹。班长告诉工人被标记的铸件很可能有裂纹，并把被标记的送去返工。",
+  "With a third of castings genuinely cracked, marked parts are cracked around nine times in ten, so the condition needed for false alarms to swamp true ones is absent; a hasty player would object to accuracy being read as the chance of a crack.":
+    "在三分之一的铸件确实有裂纹的情况下，被标记的零件约有十之有九确有裂纹，所以让误报压倒真阳性所需的条件并不存在；性急的玩家会反对把准确率读成有裂纹的概率。",
+  "A text checker flags about 3% of original essays and nearly all copied ones. On a module where past audits found roughly one submission in five was copied, the tutor treats a flag as good reason to open an investigation rather than as proof.":
+    "一款查重工具会标记约 3% 的原创论文和几乎全部抄袭论文。在一门以往审查发现约五分之一提交为抄袭的课程中，导师把标记当作展开调查的充分理由，而不是当作证据。",
+  "Copying is common enough here that a flag makes it much more likely than not, and the conclusion drawn is only to investigate; a hasty player would accuse the tutor of reading the checker's accuracy as the chance of copying.":
+    "抄袭在这里足够常见，因此一次标记让抄袭的可能性大大超过一半，而得出的结论只是去调查；性急的玩家会指责这位导师把查重工具的准确率读成了抄袭的概率。",
+  "An online grocer picks half its customers at random to receive a free delivery voucher and holds the rest back. Over the next three months the voucher group spends more, and the company reports that the voucher raised spending.":
+    "一家生鲜电商随机挑选一半客户发放免运费券，其余人不发。在接下来的三个月里，收到券的一组消费更多，公司报告称券提高了消费。",
+  "Chance decided who got a voucher, so the difference cannot come from the sort of customer who would have sought one out; a hasty player would accuse the grocer of reading cause off an association.":
+    "谁拿到券是由随机决定的，所以差异不可能来自那种会主动去找券的客户；性急的玩家会指责这家电商从关联中读出了因果。",
+  "A council can afford to relight only twelve of its forty districts this year and draws the twelve by lot. Night collisions then fall in the relit districts over the following year and hold steady in the rest, and the council credits the lighting.":
+    "一个市政机构今年只有能力为四十个片区中的十二个更换路灯，并以抽签方式选出这十二个。接下来的一年里，换灯片区的夜间碰撞事故下降，其余片区保持不变，市政机构把功劳归于照明。",
+  "The lot decided which districts were treated, so the untouched districts are a fair comparison over the same period; a hasty player would dismiss it as a before and after story with no control.":
+    "抽签决定了哪些片区被处理，所以未动过的片区在同一时期构成了公平的对照；性急的玩家会把它斥为一个没有对照的前后对比故事。",
+  "A district notes that schools running more after school clubs have better attendance. Its report says the two go together, adds that clubs are commoner in better funded schools, and asks for a small trial before any wider rollout.":
+    "一个学区注意到开设更多课后社团的学校出勤率更好。报告说两者同时出现，并补充说社团在经费更充足的学校更常见，同时要求在大范围推广之前先做一次小规模试验。",
+  "The report stops at an association, names the obvious alternative explanation, and calls for an experiment instead of acting; a hasty player would accuse it of proposing a rollout on the strength of a pattern.":
+    "报告止步于关联，点出了明显的替代解释，并呼吁做实验而不是直接行动；性急的玩家会指责它凭一个模式就提议推广。",
+  "A fund publishes the average return across every company it backed in its first five years, including the fourteen that closed and the four sold at a loss, and states how each was valued.":
+    "一只基金公布了它头五年投资的每一家公司的平均回报，包括倒闭的十四家和亏损出售的四家，并说明了每一家的估值方法。",
+  "The failures sit in the denominator beside the successes, so the average is not computed from the companies that lasted; a hasty player would assume only the winners were counted.":
+    "失败的项目与成功的项目一同位于分母之中，所以这个平均值不是从存活下来的公司算出来的；性急的玩家会以为只统计了赢家。",
+  "A flying school reports what share of trainees reach a licence. The figure counts everyone who enrolled in a given year, including those who left partway through and those who failed the final check.":
+    "一所飞行学校报告了学员中拿到执照的比例。这个数字统计了某一年入学的所有人，包括中途退出的和最终考核未通过的。",
+  "The denominator is the entry cohort rather than the group who finished, so leavers cannot inflate the pass rate; a hasty player would assume the number came only from trainees still flying.":
+    "分母是入学队列而不是完成学业的那一组，所以退出者无法抬高通过率；性急的玩家会以为这个数字只来自仍在飞的学员。",
+  "A manufacturer reports pump faults per thousand units sold, taking faults from the warranty claim file and the denominator from the sales register rather than from the units brought into its workshops. This year's model comes out ahead of last year's on the same two sources.":
+    "一家制造商报告每千台售出水泵的故障数，故障取自保修索赔档案，分母取自销售登记而不是送进其维修车间的台数。用同样这两个来源计算，今年的型号优于去年的。",
+  "Every unit sold sits in the denominator, including those that never came back, so neither year's rate is computed only among the pumps that turned up for repair; a hasty player would assume the figures came from the workshop queue.":
+    "每一台售出的水泵都在分母之中，包括那些从未返修的，所以两年的比率都不是只在送修的水泵中算出来的；性急的玩家会以为这些数字来自车间的排队记录。",
+  "An examiner testifies that the tyre pattern from the scene appears on about one van in three hundred, and adds that with roughly nine hundred vans registered in the area, some three of them would carry the same pattern.":
+    "一名鉴定人出庭作证说，现场的轮胎花纹约每三百辆厢式货车中出现在一辆上，并补充说该地区登记的厢式货车约有九百辆，其中约有三辆会带有同样的花纹。",
+  "The rarity figure is turned into how many other vehicles would match, presenting the mark as narrowing the field rather than as a chance of innocence; a hasty player would expect the small number to be flipped into a probability of guilt.":
+    "这个稀有度数字被换算成还有多少辆车会匹配，把痕迹呈现为缩小范围的线索而不是清白的概率；性急的玩家会预期这个小数字被翻转成有罪的概率。",
+  "An auditor finds that one clerk's rounding pattern would arise by chance in about one month in five hundred. Noting that two hundred clerks were reviewed across twelve months, the auditor asks for a routine check of that ledger rather than a referral.":
+    "一名审计员发现某位记账员的取整模式偶然出现的概率约为每五百个月一次。注意到共审查了两百名记账员十二个月的记录，该审计员要求对那本账簿做例行检查，而不是移送。",
+  "Across 2,400 clerk months such a pattern is expected several times by chance, and the response is scaled to that; a hasty player would accuse the auditor of treating a rare coincidence as evidence of wrongdoing.":
+    "在 2,400 个记账员月中，这种模式本就应当偶然出现好几次，应对措施的力度与此相称；性急的玩家会指责这位审计员把罕见的巧合当成了违规的证据。",
+  "An investigator reports that this claim pattern is about forty times more likely when a claim is fraudulent than when it is honest. Since roughly one claim in a thousand is fraudulent, she puts the chance this one is fraudulent at about one in twenty five and opens a file.":
+    "一名调查员报告称，这种索赔模式在欺诈索赔中出现的可能性约为在诚实索赔中的四十倍。由于约每一千件索赔中有一件属于欺诈，她把这一件属于欺诈的概率定为约二十五分之一，并立了案。",
+  "The strength of the evidence is combined with how common fraud is, giving the chance of fraud given the pattern rather than the reverse; a hasty player would expect the forty fold figure itself to be quoted as the odds of guilt.":
+    "证据的强度与欺诈有多常见结合在一起，给出的是出现该模式条件下属于欺诈的概率，而不是反过来；性急的玩家会预期那个四十倍的数字本身被当作有罪的几率来引用。",
+  "A youth league keeps the same clubs in the same two divisions for two seasons running, with no promotions or relegations in between. Average match attendance rose in both divisions in the second season.":
+    "一个青少年联赛连续两个赛季把同样的俱乐部留在同样的两个级别中，其间没有升降级。第二个赛季两个级别的场均观众人数都上升了。",
+  "No club moved between divisions, so a rise in both cannot come from shuffling teams from one group into the other; a hasty player would suspect the categories had been rearranged between the seasons.":
+    "没有俱乐部在级别之间移动，所以两边同时上升不可能来自把球队从一组挪到另一组；性急的玩家会怀疑两个赛季之间分类被重新排过。",
+  "A council changed how it grades road defects in 2023. To compare repair times with 2019, it first re-graded every 2019 record under the current rules, then compared grade by grade.":
+    "一个市政机构在 2023 年改变了道路缺陷的分级方式。为了与 2019 年的维修时长作比较，它先按现行规则对每一条 2019 年的记录重新分级，然后逐级比较。",
+  "Both years are sorted by identical rules, so an improvement within a grade cannot be produced by defects sliding between grades; a hasty player would assume the new grading had quietly reshuffled the categories.":
+    "两年都按相同的规则归类，所以某一等级内部的改善不可能由缺陷在等级之间滑动造成；性急的玩家会以为新的分级方式悄悄重排了类别。",
+  "A rail operator fits sensors that pick up bearing wear months before a bearing would fail in service. In the two years after fitting, in service bearing failures per million miles run fell by about a third.":
+    "一家铁路运营商加装了传感器，能在轴承运营中损坏之前数月捕捉到磨损。加装后的两年里，每百万运行英里的运营中轴承故障数下降了约三分之一。",
+  "The measure is how often failures occur per mile, not how long the operator knew about a fault beforehand, so spotting problems earlier cannot by itself move the number; a hasty player would assume earlier detection was doing the work.":
+    "这个指标衡量的是每英里发生故障的频率，而不是运营商事先知道故障多久，所以更早发现问题本身不能改变这个数字；性急的玩家会以为是更早检出在起作用。",
+  "A team installs monitoring that alerts it to outages far sooner. Its quarterly report measures the time from the first affected customer request, taken from server logs, to full recovery, and shows that this fell after the tool went in.":
+    "一个团队安装了能更早通知它服务中断的监控。其季度报告测量的是从服务器日志中取到的第一个受影响客户请求到完全恢复的时间，并显示这个时间在工具上线后下降了。",
+  "The clock starts at the moment of impact rather than at detection, so learning of an outage earlier cannot stretch the measured interval; a hasty player would assume earlier alerts manufactured the improvement.":
+    "计时从受影响的那一刻开始，而不是从发现开始，所以更早得知中断不会拉长被测量的间隔；性急的玩家会以为是更早的告警制造了这次改善。",
+  "A lender builds a repayment risk model and tests it on applicants from the same branches, income range and loan sizes where it will be used. Accuracy is reported separately for applicants with long credit histories and for those with almost none.":
+    "一家放贷机构建立了还款风险模型，并在它将被使用的同样网点、收入区间和贷款额度的申请人身上进行测试。准确率分别针对信用记录长的申请人和几乎没有信用记录的申请人报告。",
+  "The test population matches the one the model will run on and performance is broken out by how hard the cases are, so a figure earned on an easier mix is not being carried across; a hasty player would assume it was validated on obvious cases.":
+    "测试人群与模型将要运行的人群一致，性能还按案例难易程度分开列出，所以并没有把在较容易构成上得到的数字挪用过来；性急的玩家会以为它是在明显的案例上验证的。",
+  "A soil test's published accuracy came from severely degraded plots. Before recommending it, a co-op ran the test again on ordinary member farms and quotes those second figures, not the original ones, in its guidance.":
+    "一项土壤检测公布的准确率来自严重退化的地块。在推荐它之前，一家合作社在普通社员农场上重新做了这项检测，并在其指南中引用了第二次的数字，而不是最初的数字。",
+  "The test was measured again in the ordinary fields where it will actually be used, so the easy contrast of the original setting is not passed off as everyday performance; a hasty player would attack the original validation.":
+    "这项检测在它实际将被使用的普通田地里重新测量过，所以最初场景中那种容易的对比没有被冒充为日常表现；性急的玩家会攻击最初的验证。",
+  "An inspection rig's detection rate was measured on cracks longer than two millimetres. The report says so plainly, notes that shorter cracks were not tested, and the plant uses the rig only as a check on the longer class.":
+    "一台检测设备的检出率是在长度超过两毫米的裂纹上测得的。报告明确写明了这一点，并指出更短的裂纹未做测试，工厂只把该设备用于对较长那一类的检查。",
+  "The stated accuracy stays tied to the crack sizes it was measured on and use is limited to that range, so it is never applied to a harder mix; a hasty player would accuse the plant of importing a number from an easy test set.":
+    "所声明的准确率始终与测得它的裂纹尺寸绑定，使用也限于该范围，所以它从未被用到更难的构成上；性急的玩家会指责工厂从一个容易的测试集上搬来了一个数字。",
+  "A firm asks whether its coding test score and its interview rating agree. Both are recorded for every applicant before any shortlist is drawn, and across all applicants the two rise together mildly.":
+    "一家公司想知道它的编程测试分数和面试评分是否一致。在拟定任何入围名单之前，两项都对每位求职者作了记录，在全体求职者中两者呈轻度同向上升。",
+  "The pair is measured on everyone who applied rather than only on those who cleared a bar that both scores helped set, so selection cannot manufacture the relationship; a hasty player would assume the sample had been filtered on both.":
+    "这一对指标是在所有申请者身上测量的，而不是只在跨过了由两项分数共同决定的门槛的人身上，所以选择无法制造出这种关系；性急的玩家会以为样本是按两项指标筛选过的。",
+  "A county register covering every resident, not only those who were admitted somewhere, reports that two conditions occur together a little more often than chance alone would give.":
+    "一份覆盖全体居民而不仅是住过院的人的县级登记册报告称，两种疾病同时出现的频率略高于仅凭偶然应有的水平。",
+  "The pattern comes from the whole resident population rather than from people filtered in by admission, so it is not an artefact of both conditions raising the odds of being in the sample; a hasty player would assume a hospital roster.":
+    "这个模式来自全体居民人口，而不是经住院筛入的人群，所以它不是两种疾病都提高入样几率所造成的假象；性急的玩家会以为用的是医院名册。",
+  "A safety body reports that the new helmet standard cut serious head injuries by about a quarter, and adds that in the riders studied this meant roughly 12 serious injuries per 10,000 a year falling to about 9.":
+    "一家安全机构报告称，新的头盔标准把严重头部损伤减少了约四分之一，并补充说在所研究的骑手中，这意味着每年每 10,000 人约 12 例严重损伤降到约 9 例。",
+  "The proportional figure is given with the counts it came from, so the size of the benefit cannot be inflated in the reader's head; a hasty player would object to the percentage before noticing the numbers behind it.":
+    "比例数字与它所依据的计数一同给出，所以获益的大小不会在读者脑中被放大；性急的玩家会在注意到背后的数字之前就反对这个百分比。",
+  "A vendor's brochure says its filter cuts successful phishing by about 60%, and states directly below that in the trial this was 12 staff in every 1,000 falling to about 5 over a year.":
+    "一家供应商的宣传册称其过滤器把成功的钓鱼攻击减少了约 60%，并紧接着在下方写明，在试验中这相当于一年内每 1,000 名员工中受害人数从 12 名降到约 5 名。",
+  "The relative claim is anchored to absolute numbers in the same place, letting the reader see how large the change really is; a hasty player would reject the headline percentage as unanchored marketing.":
+    "相对说法在同一处被锚定到绝对数字上，让读者看清这个变化究竟有多大；性急的玩家会把这个醒目的百分比当作没有依托的营销话术加以否定。",
+  "A drink maker's label gives the trial counts behind its claim, 14 cases of a stomach complaint among 5,000 users of the new formula against 18 among 5,000 of the old, and calls the difference small and not certain.":
+    "一家饮料厂商在标签上给出了其说法背后的试验计数：新配方的 5,000 名使用者中出现 14 例胃部不适，旧配方的 5,000 名使用者中出现 18 例，并称这个差异很小且不确定。",
+  "The counts are shown and the conclusion is scaled down to match them rather than being dressed up as a 22% reduction; a hasty player would expect a percentage to be doing the persuading.":
+    "计数被展示了出来，结论也被调整到与之相称，而不是被包装成 22% 的降幅；性急的玩家会预期是某个百分比在做说服工作。",
+  "Two painkillers are compared using patients who started one or the other for the same recorded complaint, at the same clinics, restricted to people who had taken neither before. Side effect rates come out similar.":
+    "两种止痛药的比较使用的是在同样的诊所、因同样记录在案的症状开始服用其中一种的患者，并限定为此前两种都没用过的人。不良反应发生率结果相近。",
+  "Comparing first time users of two drugs given for the same complaint means both groups were treated for the same reason, so the reason for prescribing is not what separates them; a hasty player would assume sicker patients got one of the drugs.":
+    "比较因同一症状而首次使用两种药物的人，意味着两组接受治疗的理由相同，所以区分他们的不是开药的理由；性急的玩家会以为病情更重的患者拿到了其中一种药。",
+  "More pupils apply for extra tutoring than a council can fund, so places are drawn by lot. The evaluation compares later grades between pupils who were drawn and pupils who applied but were not.":
+    "申请课外辅导的学生多于市政机构能够资助的人数，所以名额以抽签决定。评估比较了抽中的学生与申请了但未抽中的学生此后的成绩。",
+  "Everyone in both groups wanted the tutoring and only chance decided who received it, so the tutored pupils are not the ones judged to need it most; a hasty player would assume places went to those struggling hardest.":
+    "两组中的每个人都想要辅导，谁得到辅导只由随机决定，所以受辅导的学生并不是被判定最需要辅导的那些；性急的玩家会以为名额给了最吃力的学生。",
+  "A haulier puts a new engine oil in every truck whose fleet number ends in an even digit and keeps the rest on the old oil. After a year it compares breakdown rates between the two halves.":
+    "一家货运公司给车队编号以偶数结尾的每一辆卡车换用新的发动机油，其余仍用旧油。一年后它比较了两半车辆的故障率。",
+  "The last digit is arbitrary and has nothing to do with a truck's age or condition, so the treated trucks are not the ones a mechanic thought needed help; a hasty player would assume the worst trucks were picked for the new oil.":
+    "末位数字是任意的，与卡车的车龄或状况无关，所以换油的卡车并不是修理工认为需要帮助的那些；性急的玩家会以为最差的卡车被挑去用新油。",
+  "A region that began offering a regular check reports how many residents per 100,000 are found with advanced disease each year. That figure falls over the following decade while neighbouring regions stay flat.":
+    "一个开始提供定期检查的地区报告了每年每 100,000 名居民中查出晚期疾病的人数。在随后的十年里这个数字下降，而邻近地区保持平稳。",
+  "Fewer advanced cases arising in the whole population cannot be produced by a check that merely finds slow growing cases sooner; a hasty player would expect survival among detected cases to be the number on offer.":
+    "整个人群中出现的晚期病例减少，不可能由一项仅仅更早发现进展缓慢病例的检查造成；性急的玩家会预期拿出来的数字是被检出病例的生存期。",
+  "An analyst measuring how long support tickets stay open takes every ticket opened in a given month last year and follows each one to its closure, rather than looking at the tickets sitting in the queue today.":
+    "一位分析师在测量支持工单保持开启的时长时，取的是去年某一个月开出的每一张工单，并跟踪每一张直到关闭，而不是查看今天积压在队列中的工单。",
+  "Sampling by opening date gives quick and slow tickets the same chance of entering the sample, while a snapshot of the queue would be crowded with the ones that linger; a hasty player would assume the long cases dominate.":
+    "按开单日期抽样让处理快的和处理慢的工单进入样本的机会相同，而队列快照会挤满那些迟迟不结的工单；性急的玩家会以为长期未结的案例占了主导。",
+  "A national medicines agency reviews a treatment using every trial the maker was required to file with it, including three whose results were never written up anywhere, and pools them all.":
+    "一家国家药品监管机构在评审一种治疗时，使用了厂商依规必须向其报送的每一项试验，包括三项结果从未在任何地方发表过的试验，并把它们全部合并。",
+  "The pool is defined by what had to be filed rather than by what reached a journal, so dull results are still in it; a hasty player would assume the review was built from the literature.":
+    "这个合并集合由必须报送的内容界定，而不是由发表到期刊上的内容界定，所以平淡的结果仍在其中；性急的玩家会以为这次评审是基于文献建立的。",
+  "A product team's quarterly memo lists the outcome of all forty tests it ran that quarter, including the twenty seven that moved nothing, alongside the four whose results it acted on.":
+    "一个产品团队的季度备忘录列出了它在该季度所做全部四十项测试的结果，既包括毫无变化的二十七项，也包括它据以采取行动的四项。",
+  "Every experiment run is reported, so the ones that worked are read against the full set of attempts; a hasty player would assume only the wins were written up.":
+    "每一项做过的实验都被报告了出来，所以奏效的那些是放在全部尝试的背景下来读的；性急的玩家会以为只有胜出的被写了出来。",
+  "Before averaging fifteen field trials of a fertiliser, an analyst compares the small trials with the large ones and notes that the small ones landed below the overall average as often as above it.":
+    "在把一种肥料的十五项田间试验平均之前，一位分析师把小型试验与大型试验作了比较，并指出小型试验落在总体平均值以下的次数与以上的次数一样多。",
+  "The check for missing unfavourable small studies was made and came out clean, which is the very thing that would otherwise tilt the average; a hasty player would assume the small trials were the ones cherry picked.":
+    "对是否缺失了不利的小型研究做了检查，结果没有问题，而这恰恰是原本会让平均值发生倾斜的因素；性急的玩家会以为小型试验是被挑拣出来的那些。",
+  "A city offers a free three month transit pass to a randomly chosen half of newly registered residents. The evaluation compares car trips between everyone offered a pass and everyone not offered, including the third who never collected theirs.":
+    "一座城市向随机选出的一半新登记居民提供三个月免费公交卡。评估比较了所有获赠公交卡的人与所有未获赠的人的开车出行次数，其中包括从未去领卡的那三分之一人。",
+  "People are counted in the group they were offered, so those keen enough to collect a pass are not being measured against everybody else; a hasty player would want only the actual pass holders analysed.":
+    "人们被计入他们被提供的那一组，所以并不是拿积极到会去领卡的人去和其他所有人比较；性急的玩家会希望只分析真正持卡的人。",
+  "A jobs programme evaluation counts every applicant in the group chance assigned them to. For the twenty two who could not be traced at one year, it repeats the sums assuming first that all were unemployed and then that all were working, and the ranking holds either way.":
+    "一项就业项目评估把每位申请人计入随机把他们分到的那一组。对于一年时无法联系上的二十二人，评估先假定他们全部失业、再假定他们全部在业各算了一遍，两种情况下排序都不变。",
+  "Nobody is dropped for being untraceable, and the two extreme assumptions bracket anything the missing answers could have done; a hasty player would assume the untraced were quietly excluded.":
+    "没有人因为联系不上而被剔除，两个极端假设把缺失回答可能造成的任何结果都框在了中间；性急的玩家会以为联系不上的人被悄悄排除了。",
+  "A haulage study compares trucks that were fitted with a driver alert system when they were bought against trucks bought without one, counting each truck's mileage from the day it entered service.":
+    "一项货运研究把购车时就装有驾驶员警示系统的卡车与购车时未装的卡车作比较，每辆卡车的里程均从投入运营当天起算。",
+  "Which group a truck belongs to was settled before its clock started, so no truck has to survive a waiting period in order to count as equipped; a hasty player would assume the fitted trucks were credited with time before fitting.":
+    "一辆卡车属于哪一组是在它开始计时之前就定下的，所以没有哪辆卡车必须熬过一段等待期才能算作装有系统；性急的玩家会以为装了系统的卡车被记上了安装前的时间。",
+  "An employer compares staff who passed a certification with those who did not. Each person who passed is matched, at the moment of passing, to a colleague still employed at that point with the same months of service, and both are followed from then on.":
+    "一家雇主把通过某项认证的员工与未通过的员工作比较。每一位通过者都在通过的那一刻，与一位当时仍在职、工龄月数相同的同事配对，两人从那时起被同步随访。",
+  "Follow up starts when the certification is achieved and the matched colleague has already worked the same stretch, so the months spent studying are not credited to the certified group; a hasty player would assume that time was counted.":
+    "随访从取得认证时开始，配对的同事也已经工作了同样长的一段时间，所以备考的那些月份没有被记在获证组头上；性急的玩家会以为那段时间被算了进去。",
+  "A study of whether long commutes wear people down uses travel diaries that staff filled in each week through the year, well before anyone knew who would later resign.":
+    "一项关于长通勤是否消耗人的研究，使用的是员工全年每周填写的出行日志，远早于任何人知道后来谁会辞职。",
+  "The exposure was written down as it happened rather than reconstructed afterwards, so knowing the outcome cannot have coloured the answers; a hasty player would assume leavers were asked to look back.":
+    "暴露是在发生时记录下来的，而不是事后重构的，所以知道结局不可能给回答染上颜色；性急的玩家会以为是让离职者回头追忆的。",
+  "To ask whether a safety course reduces injuries, an analyst takes attendance from the course register and injuries from the insurer's claim file, matching the two by employee number. Nobody is asked to remember anything.":
+    "为了考察安全课程是否减少工伤，一位分析师从课程签到册中取出勤记录，从保险公司的理赔档案中取工伤记录，按员工编号把两者匹配。没有人被要求回忆任何事情。",
+  "Both the exposure and the outcome come from records written at the time, so no one's account of the course can be shaped by whether they were later hurt; a hasty player would assume the workers were interviewed.":
+    "暴露和结局都来自当时写下的记录，所以没有人对课程的说法会被后来是否受伤所塑造；性急的玩家会以为是对工人做了访谈。",
+  "Owners of a failed appliance and owners of a working one are asked when they bought it and how often they ran it. Their answers are then compared with till receipts and app usage logs, and the two groups' errors turn out to be the same size and in the same direction.":
+    "家电已损坏的用户和家电仍正常的用户都被问及何时购买以及使用频率。随后他们的回答与收银小票和应用使用日志作了比对，两组的误差大小相同、方向也相同。",
+  "The reported histories were checked against records and both groups misremembered equally, so the comparison is not driven by one group searching its memory harder; a hasty player would assume the aggrieved owners overstated their use.":
+    "所报告的历史与记录作了核对，两组的记忆偏差相同，所以这个比较并非由某一组更用力地搜寻记忆所驱动；性急的玩家会以为受损失的用户夸大了自己的使用量。",
 };

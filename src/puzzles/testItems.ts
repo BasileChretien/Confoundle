@@ -689,6 +689,1614 @@ const items: TestItem[] = [
       en: "Counting everyone as assigned is conservative when you are trying to show a difference and permissive when you are trying to show similarity, so a non-inferiority claim needs both analyses to agree. Refusing to claim it when they disagree is the careful move, not the trap.",
     },
   },
+
+  // ---- simpsons-paradox, second wave ----
+  {
+    id: "sp-shots",
+    scenario: {
+      en: "Two players are compared over a season. Player A made 35% of all shots and Player B made 65%, and the coach's report names B the more accurate shooter. Sorted into close shots and long shots, A had the higher percentage in both.",
+    },
+    trap: "simpsons-paradox",
+    explanation: {
+      en: "Almost all of B's attempts were close range, where anyone scores often, while A shot mostly from distance, so the pooled percentages record where the shots were taken from rather than who shoots better.",
+    },
+  },
+  {
+    id: "sp-recruit",
+    scenario: {
+      en: "A company reviews last year's applications. Overall 70% of outside applicants were hired against 40% of internal ones, and a manager tells the board the process quietly favours outsiders. Team by team, internal applicants were hired at the higher rate in both the engineering team and the sales team.",
+    },
+    trap: "simpsons-paradox",
+    explanation: {
+      en: "Outside applicants went mainly to engineering, which was hiring heavily, while internal ones applied mainly to sales, where almost nobody was being taken on, so the pooled figures compare which team people applied to.",
+    },
+  },
+  {
+    id: "sp-signup",
+    scenario: {
+      en: "A team replaces its sign up page. The new page signs up 35% of visitors against the old page's 13%, and the product lead calls it a clear win. Looked at separately, the old page did better among desktop visitors and better among phone visitors.",
+    },
+    trap: "simpsons-paradox",
+    explanation: {
+      en: "The old page was seen mostly by phone visitors, who rarely sign up on either version, and the new one mostly by desktop visitors, who sign up often, so the overall gap tracks the audience mix.",
+    },
+  },
+  {
+    id: "sp-callcentre",
+    scenario: {
+      en: "Two customer service centres are compared. One settles 85% of calls at the first attempt and the other 54%, so the bonus goes to the first. Broken into routine calls and complicated ones, the second centre settles the higher share of each.",
+    },
+    trap: "simpsons-paradox",
+    explanation: {
+      en: "Nearly all of the second centre's work is complicated calls, which are hard to settle at once, while the first handles mostly routine ones, so the combined rate compares workloads rather than skill.",
+    },
+  },
+  {
+    id: "sp-guestscore",
+    scenario: {
+      en: "A chain compares two hotels on guest ratings. One averages 4.3 out of 5 and the other 3.3, and head office holds the second up as the weaker property. Among business guests the second scores higher, and among holiday guests it scores higher too.",
+    },
+    trap: "simpsons-paradox",
+    explanation: {
+      en: "Almost all of the lower rated hotel's reviews come from business guests, who mark every hotel down, while the other's come mostly from holidaymakers, who mark everything up, so the averages compare who was reviewing.",
+    },
+  },
+  {
+    id: "sp-seed",
+    scenario: {
+      en: "A cooperative compares two seed varieties across its members' fields. One averaged 5.6 tonnes a hectare and the other 2.6, and the newsletter recommends the first. On clay ground the second variety yielded more, and on sandy ground it yielded more as well.",
+    },
+    trap: "simpsons-paradox",
+    explanation: {
+      en: "The lower yielding variety was sown almost entirely on sandy ground, which grows little of anything, and the other almost entirely on clay, so the averages mostly record where each seed was planted.",
+    },
+  },
+  {
+    id: "sp-courier",
+    scenario: {
+      en: "Two courier firms report on time delivery. One arrives on time for 92% of parcels and the other for 72%, so a retailer moves its contract to the first. Counting town deliveries and country deliveries separately, the second firm is on time more often in both.",
+    },
+    trap: "simpsons-paradox",
+    explanation: {
+      en: "The firm with the worse headline figure carries nearly all the country parcels, which run late for everyone, while the other carries mostly short town runs, so the combined rate reflects the routes each was given.",
+    },
+  },
+  // ---- base-rate-fallacy, second wave ----
+  {
+    id: "br-doping",
+    scenario: {
+      en: "A screening test at an amateur athletics meeting catches 99% of competitors who have used a banned substance and wrongly flags 1% of those who have not. About 1 competitor in 500 has used one. A commentator says a flagged athlete is 99% certain to be guilty.",
+    },
+    trap: "base-rate-fallacy",
+    explanation: {
+      en: "Clean competitors outnumber users 499 to 1, so flagging one percent of them yields roughly five wrong flags for every real one, and most flagged athletes have taken nothing.",
+    },
+  },
+  {
+    id: "br-cardflag",
+    scenario: {
+      en: "A bank's monitoring catches essentially every fraudulent card payment and wrongly flags 1 legitimate payment in 200. About 1 payment in 10,000 is fraudulent. A manager proposes freezing the account of anyone whose payment is flagged, saying almost all of them are frauds.",
+    },
+    trap: "base-rate-fallacy",
+    explanation: {
+      en: "For each fraudulent payment there are about 10,000 legitimate ones, and half a percent of those is roughly 50 wrong flags per real fraud, so nearly every frozen account belongs to an ordinary customer.",
+    },
+  },
+  {
+    id: "br-essay",
+    scenario: {
+      en: "A university's text checking tool is 98% accurate in both directions. About 1 essay in 200 is genuinely copied. The disciplinary panel tells every student it flags that there is a 98% chance they copied.",
+    },
+    trap: "base-rate-fallacy",
+    explanation: {
+      en: "Honest essays outnumber copied ones 199 to 1, so two percent of them produces about four wrong flags for every real one, and a flagged student is more likely innocent than not.",
+    },
+  },
+  {
+    id: "br-inspection",
+    scenario: {
+      en: "A camera on a production line spots 95% of faulty units and wrongly rejects 3% of good ones. About 1 unit in 1,000 leaves the line faulty. The plant manager scraps every rejected unit, saying almost all of them must be defective.",
+    },
+    trap: "base-rate-fallacy",
+    explanation: {
+      en: "Good units outnumber faulty ones about 1,000 to 1, so rejecting three percent of them discards roughly thirty sound units for every faulty one caught.",
+    },
+  },
+  {
+    id: "br-pipe",
+    scenario: {
+      en: "A water company's sensors are right 95% of the time when they call a pipe section leaking or sound. About 1 section in 400 leaks in a given year. The operations plan assumes crews will find a leak at nearly every flagged section.",
+    },
+    trap: "base-rate-fallacy",
+    explanation: {
+      en: "Sound sections outnumber leaking ones 399 to 1, so the five percent of them wrongly called leaking gives about twenty wasted excavations for every genuine leak.",
+    },
+  },
+  {
+    id: "br-integrity",
+    scenario: {
+      en: "A retailer screens applicants with a questionnaire that correctly identifies 90% of people who would steal stock and wrongly flags 10% of those who would not. About 1 applicant in 100 would steal. The hiring team rejects everyone flagged, saying nine in ten of them are thieves.",
+    },
+    trap: "base-rate-fallacy",
+    explanation: {
+      en: "Honest applicants outnumber the rest 99 to 1, so flagging a tenth of them turns away about eleven blameless people for every one who would have stolen.",
+    },
+  },
+  {
+    id: "br-phish",
+    scenario: {
+      en: "A company's mail filter is 99% accurate at telling phishing from ordinary mail. About 1 arriving message in 3,000 is phishing. The security lead tells staff that anything the filter quarantines is almost certainly an attack.",
+    },
+    trap: "base-rate-fallacy",
+    explanation: {
+      en: "Ordinary messages outnumber phishing ones about 3,000 to 1, so the one percent of them wrongly quarantined outnumbers the real attacks by roughly thirty to one.",
+    },
+  },
+  // ---- correlation-not-causation, second wave ----
+  {
+    id: "cc-dashcam",
+    scenario: {
+      en: "An insurer finds that drivers who have fitted a dashboard camera claim for accidents far less often than drivers who have not. Its marketing team announces that fitting a camera makes you a safer driver, and offers a discount to anyone who installs one.",
+    },
+    trap: "correlation-not-causation",
+    explanation: {
+      en: "Cautious drivers are the ones who buy the cameras in the first place, so the camera marks out a type of driver rather than changing how anyone drives.",
+    },
+  },
+  {
+    id: "cc-support",
+    scenario: {
+      en: "A consultant surveys firms and reports that those with the largest customer support teams receive the most complaints. The write up advises keeping support teams small so that complaints stay down.",
+    },
+    trap: "correlation-not-causation",
+    explanation: {
+      en: "Firms staff up because complaints are already arriving, so the arrow runs from complaints to headcount, and larger firms generate more of both anyway.",
+    },
+  },
+  {
+    id: "cc-thermostat",
+    scenario: {
+      en: "An energy supplier reports that homes with a smart thermostat use a fifth less gas than homes without one. Its advertising says the thermostat cuts your gas use by a fifth.",
+    },
+    trap: "correlation-not-causation",
+    explanation: {
+      en: "The households that install one tend to have newer, better insulated homes and an existing interest in trimming bills, so the comparison is between two kinds of household as much as two thermostats.",
+    },
+  },
+  {
+    id: "cc-cameras",
+    scenario: {
+      en: "A motoring column notes that stretches of road with fixed speed cameras record more crashes than stretches without them, and argues that the cameras distract drivers into crashing.",
+    },
+    trap: "correlation-not-causation",
+    explanation: {
+      en: "Cameras are installed on stretches that already had a bad crash record, so the crashes came first and chose the camera sites rather than the other way round.",
+    },
+  },
+  {
+    id: "cc-sauna",
+    scenario: {
+      en: "A gym newsletter reports that members who use the sauna after training take fewer sick days than members who do not, and concludes that ten minutes in the sauna strengthens the immune system.",
+    },
+    trap: "correlation-not-causation",
+    explanation: {
+      en: "Members with the time and habit to stay on for the sauna are the ones training regularly and in better health already, so sauna use is a marker of that group rather than a cause.",
+    },
+  },
+  {
+    id: "cc-plants",
+    scenario: {
+      en: "A trend piece points out that over eleven years national sales of houseplants and of noise cancelling headphones rose almost in step, and suggests the houseplant boom is what pushed people to buy headphones.",
+    },
+    trap: "correlation-not-causation",
+    explanation: {
+      en: "Both climbed alongside the same rise in city renting and spending on home comfort, and any two quantities that drift steadily upward will track each other whatever is driving them.",
+    },
+  },
+  {
+    id: "cc-radio",
+    scenario: {
+      en: "A plant manager notices that shifts where the radio is playing turn out fewer defective units, and orders music to be played on every shift to bring the defect rate down.",
+    },
+    trap: "correlation-not-causation",
+    explanation: {
+      en: "The radio happens to be on during day shifts, which are staffed by the longest serving operators working the easier product runs, so experience and workload are what separate the shifts.",
+    },
+  },
+  // ---- survivorship-bias, second wave ----
+  {
+    id: "sv-fundtable",
+    scenario: {
+      en: "An investment firm's brochure lists the twenty funds it offers today and reports that the average one has beaten the market over the past ten years. The sales team presents this as proof of the firm's stock-picking skill.",
+    },
+    trap: "survivorship-bias",
+    explanation: {
+      en: "The table contains only funds still open today, so the ones that did badly enough to be closed or merged away during the decade have been dropped from the average before it was taken.",
+    },
+  },
+  {
+    id: "sv-dropouts",
+    scenario: {
+      en: "A magazine profiles thirty founders whose companies are now worth billions and finds that most left university early and ignored advice to take a safe job. Its careers columnist tells readers that leaving early is the surer path.",
+    },
+    trap: "survivorship-bias",
+    explanation: {
+      en: "The thirty were picked for having made it, so the far larger number who left early, failed and were never profiled are missing, and the failure rate of the strategy cannot be read off this group.",
+    },
+  },
+  {
+    id: "sv-bridges",
+    scenario: {
+      en: "A council engineer notes that the stone bridges built in the town two centuries ago all still carry traffic, while several concrete ones from the 1970s have had to be replaced. He writes that the older building methods were plainly more durable.",
+    },
+    trap: "survivorship-bias",
+    explanation: {
+      en: "Only the two hundred year old bridges good enough to last are left to inspect, while the poorly built ones of that era collapsed or were demolished long ago and never enter the comparison.",
+    },
+  },
+  {
+    id: "sv-demos",
+    scenario: {
+      en: "A music magazine interviews twenty bands that reached the charts after years in small venues, and finds that every one of them refused to change their sound when a label asked. The writer concludes that refusing to compromise is what gets a band signed.",
+    },
+    trap: "survivorship-bias",
+    explanation: {
+      en: "The sample was drawn from bands that charted, so the many acts that also refused and were dropped or never signed are absent, leaving the cost of the tactic invisible.",
+    },
+  },
+  {
+    id: "sv-rally",
+    scenario: {
+      en: "A car magazine surveys owners at an enthusiasts' rally for a model built thirty years ago. Almost all report low running costs and few breakdowns, and the magazine names it the most dependable car of its era.",
+    },
+    trap: "survivorship-bias",
+    explanation: {
+      en: "Only cars sound enough to still be driven to a rally are in the sample; the ones that rusted or failed were scrapped years ago and their owners are not there to be asked.",
+    },
+  },
+  {
+    id: "sv-amphorae",
+    scenario: {
+      en: "A museum label states that the region's ancient potters worked to a standard modern factories struggle to match. The claim rests on the jars in the case, all of them lifted whole from a buried settlement two thousand years later.",
+    },
+    trap: "survivorship-bias",
+    explanation: {
+      en: "The collection is filtered by what stayed intact underground for two millennia, so thin, flawed or badly fired pots are physically absent from the evidence used to judge the average standard.",
+    },
+  },
+  {
+    id: "sv-academy",
+    scenario: {
+      en: "A rowing academy studies the athletes in its national squad and finds that nearly all of them trained through serious pain at eighteen. The head coach tells new recruits that pushing through injury is what separates those who make it.",
+    },
+    trap: "survivorship-bias",
+    explanation: {
+      en: "The squad consists of those whose bodies withstood it, while recruits whose injuries ended their careers left the sport and are no longer in the group being examined, hiding the risk of the advice.",
+    },
+  },
+  // ---- prosecutors-fallacy, second wave ----
+  {
+    id: "pf-print",
+    scenario: {
+      en: "A partial print from a break-in is searched against a national database of six million people and returns one name. The examiner says about 1 person in 500,000 would match it. Counsel tells the jury there is therefore a 1 in 500,000 chance the man was not there.",
+    },
+    trap: "prosecutors-fallacy",
+    explanation: {
+      en: "The 1 in 500,000 is how often an unconnected person matches, and searching six million people should turn up about a dozen such matches, so it is not the chance that this man was elsewhere.",
+    },
+  },
+  {
+    id: "pf-ledger",
+    scenario: {
+      en: "An auditor screens every branch of a retail chain for a rounding pattern that would arise by chance in about 1 honestly kept ledger in 10,000. One of the chain's 30,000 branches shows it, and the report states that the manager is almost certainly falsifying figures.",
+    },
+    trap: "prosecutors-fallacy",
+    explanation: {
+      en: "The 1 in 10,000 describes how often honest books show the pattern, not how often books showing it are dishonest, and screening 30,000 branches should produce about three honest ones like it.",
+    },
+  },
+  {
+    id: "pf-lottery",
+    scenario: {
+      en: "A weekly prize draw has been won twice by the same person. An organiser calculates that the odds of a given player winning twice are about one in a million, and concludes the draw was rigged. The draw has run for twenty years with over three million regular players.",
+    },
+    trap: "prosecutors-fallacy",
+    explanation: {
+      en: "One in a million applies to one player named in advance, whereas the question asked afterwards is whether anyone at all among three million regular players would win twice, which is close to expected.",
+    },
+  },
+  {
+    id: "pf-birthday",
+    scenario: {
+      en: "An internal auditor at a company of 700 staff reports that two employees who sign off each other's expense claims were born on the same day of the year. He puts the chance of that at 1 in 365 and states they are almost certainly working together.",
+    },
+    trap: "prosecutors-fallacy",
+    explanation: {
+      en: "The 1 in 365 fits one pair chosen in advance, but he combed hundreds of pairs for any oddity, and how often innocent pairs share a birthday is not the probability of innocence given a shared birthday.",
+    },
+  },
+  {
+    id: "pf-cluster",
+    scenario: {
+      en: "Four children on one street develop the same rare illness within a year. A campaigner calculates that this would happen by chance in about one street in a million, and tells a public meeting there is therefore a one in a million chance the nearby plant is blameless.",
+    },
+    trap: "prosecutors-fallacy",
+    explanation: {
+      en: "The figure is the chance of such a cluster on a street picked in advance with nothing causing it, and with millions of streets in the country a few clusters are expected somewhere regardless of the plant.",
+    },
+  },
+  {
+    id: "pf-typeface",
+    scenario: {
+      en: "An anonymous threatening letter was printed in a distinctive typeface installed on roughly 1 printer in 20,000. A suspect's office printer carries it. The investigating officer writes that the odds against anyone else having produced the letter are 20,000 to 1.",
+    },
+    trap: "prosecutors-fallacy",
+    explanation: {
+      en: "With millions of printers in the country, several hundred carry the same typeface, so the figure measures how rare the feature is rather than how likely this owner is to have written the letter.",
+    },
+  },
+  {
+    id: "pf-doping",
+    scenario: {
+      en: "A national programme screens about 60,000 samples a year. One athlete's sample shows a marker found in roughly 1 in 10,000 samples from clean competitors, and the panel chair states there is a 1 in 10,000 chance the athlete competed clean.",
+    },
+    trap: "prosecutors-fallacy",
+    explanation: {
+      en: "1 in 10,000 is how often clean samples show the marker, so about six clean athletes a year would show it; turning that into the chance of being clean also requires knowing how few competitors dope.",
+    },
+  },
+  // ---- will-rogers-phenomenon, second wave ----
+  {
+    id: "wr-relegation",
+    scenario: {
+      en: "A league moves its four lowest-ranked clubs down into the second tier. A ratings service recalculates the tier averages and finds the average club rating is now higher in both tiers than before the reshuffle. The commissioner calls it a sign that standards are rising everywhere.",
+    },
+    trap: "will-rogers-phenomenon",
+    explanation: {
+      en: "Those four clubs rated below the top tier's average and above the second tier's, so taking them out lifts one figure and adding them lifts the other, while no club plays any better than before.",
+    },
+  },
+  {
+    id: "wr-insurance",
+    scenario: {
+      en: "An insurer moves the safest quarter of its high-risk motor policies into its standard pool. The next report shows the average claim cost has risen in the high-risk pool and in the standard pool, and the underwriting director warns that both books are deteriorating.",
+    },
+    trap: "will-rogers-phenomenon",
+    explanation: {
+      en: "The transferred policies cost less than the high-risk average and more than the standard average, so removing them raises one mean and adding them raises the other, with no driver's risk changed.",
+    },
+  },
+  {
+    id: "wr-fitness",
+    scenario: {
+      en: "An armed service brings in a medical screen that catches minor problems the old one missed, and moves the personnel it flags from fully deployable to restricted duties. Average fitness scores then come out higher in both categories, and a spokesman credits the new training programme.",
+    },
+    trap: "will-rogers-phenomenon",
+    explanation: {
+      en: "Those moved were the least fit of the deployable group and the fittest of the restricted group, so both averages rise on the reclassification alone, without anyone's fitness changing.",
+    },
+  },
+  {
+    id: "wr-credit",
+    scenario: {
+      en: "A bank tightens the test that puts a loan on its watch list, so a batch of loans previously counted as performing moves across. The next figures show a higher average credit score in the performing book and in the watch list, and the risk committee reports improvement on both.",
+    },
+    trap: "will-rogers-phenomenon",
+    explanation: {
+      en: "The moved loans were the weakest of the performing book and the strongest of the watch list, so both averages rise the moment they change column, with no borrower's position altered.",
+    },
+  },
+  {
+    id: "wr-maintenance",
+    scenario: {
+      en: "A depot fits a vibration sensor that picks up early wear, and engines it flags are shifted from the serviceable list to the overhaul list. The next report shows average hours between faults up on both lists, and the fleet manager credits a change of lubricant.",
+    },
+    trap: "will-rogers-phenomenon",
+    explanation: {
+      en: "The flagged engines were the worst on the serviceable list and the best on the overhaul list, so removing them lifts one average and adding them lifts the other, with no engine actually wearing less.",
+    },
+  },
+  {
+    id: "wr-salesteams",
+    scenario: {
+      en: "A sales director has a senior team averaging 50 sales a month and a junior team averaging 30. She moves two representatives who each average 40 from the senior team to the junior team. The next report shows both team averages have gone up, and she credits the reshuffle.",
+    },
+    trap: "will-rogers-phenomenon",
+    explanation: {
+      en: "The two sell below the senior team's average and above the junior team's, so the senior mean climbs above 50 and the junior mean above 30 while nobody sells a single unit more.",
+    },
+  },
+  {
+    id: "wr-produce",
+    scenario: {
+      en: "An exporter grades boxes as premium, averaging 90 points, or standard, averaging 70. It changes the cut-off so that boxes scoring 82, until now premium, count as standard. The next quality report shows the average score up in both grades, and the manager says the growers have improved.",
+    },
+    trap: "will-rogers-phenomenon",
+    explanation: {
+      en: "Boxes at 82 sat below the premium average of 90 and above the standard average of 70, so shifting them lifts both figures without a single box of fruit being any better.",
+    },
+  },
+  {
+    id: "wr-conservatoire",
+    scenario: {
+      en: "A conservatoire moves its five weakest cellists out of the advanced class and into the intermediate class. At the end of term the average examination mark is higher in the advanced class and higher in the intermediate class, and the principal praises the new teaching plan.",
+    },
+    trap: "will-rogers-phenomenon",
+    explanation: {
+      en: "Those five scored below the advanced class average and above the intermediate class average, so taking them out raises one mean and adding them raises the other, whatever any student's playing does.",
+    },
+  },
+  // ---- lead-time-bias, second wave ----
+  {
+    id: "lt-bearings",
+    scenario: {
+      en: "A haulage firm fits vibration sensors that flag a failing gearbox about eight months before a driver would notice the noise. The log now shows an average of fourteen months from first fault report to breakdown, up from six. The firm's newsletter says the sensors are making gearboxes last far longer.",
+    },
+    trap: "lead-time-bias",
+    explanation: {
+      en: "The breakdowns still happen when they always did; only the moment the fault entered the log moved earlier, so the measured gap from report to breakdown grew by exactly the warning the sensors bought.",
+    },
+  },
+  {
+    id: "lt-girders",
+    scenario: {
+      en: "A roads authority begins ultrasound surveys that reveal cracking in girders years before it becomes visible. Girders are still replaced at the same age as before, yet the average time from a crack being recorded to replacement has risen from four years to nine. The authority reports longer girder life.",
+    },
+    trap: "lead-time-bias",
+    explanation: {
+      en: "Replacement happens at the same age it always did, so nothing about the girder changed. Recording the crack earlier simply lengthened the interval being measured.",
+    },
+  },
+  {
+    id: "lt-disks",
+    scenario: {
+      en: "A data centre switches on drive health alerts that fire well before a disk starts losing sectors. Disks are still retired at the same age, but the mean time from first alert to retirement has tripled. The operations page claims the alerts are extending disk life threefold.",
+    },
+    trap: "lead-time-bias",
+    explanation: {
+      en: "The retirement date did not move. Starting the count at an earlier alert stretches the measured interval without a single disk lasting longer.",
+    },
+  },
+  {
+    id: "lt-battery",
+    scenario: {
+      en: "A phone maker adds a diagnostic that warns of battery decline far earlier than the old check did. Support records show the average time from first warning to replacement has doubled, and batteries are still replaced at the same age. Marketing says the diagnostic doubles battery life.",
+    },
+    trap: "lead-time-bias",
+    explanation: {
+      en: "Batteries reach replacement at the same age as before; only the warning moved forward, so the interval from warning to replacement grew by the time gained in detecting decline.",
+    },
+  },
+  {
+    id: "lt-orchard",
+    scenario: {
+      en: "A grower adopts a leaf assay that identifies infected trees months before wilting appears. Records now show infected trees standing fifteen months after detection rather than five, and trees are still felled at the same age. The assay supplier's leaflet claims it keeps infected trees productive three times as long.",
+    },
+    trap: "lead-time-bias",
+    explanation: {
+      en: "Felling happens at the same age, so no tree gained a day. The assay only started the clock earlier, which inflates the interval from detection to felling.",
+    },
+  },
+  {
+    id: "lt-leaks",
+    scenario: {
+      en: "A water utility installs acoustic monitoring that finds leaks long before they surface. Pipes are still dug up only when a leak reaches the road, yet the average time from logging a leak to the dig has risen from two months to eleven. The utility reports that leaking pipes now last far longer.",
+    },
+    trap: "lead-time-bias",
+    explanation: {
+      en: "The dig is still triggered by the same event at the same moment. Logging the leak nine months sooner adds nine months to the measured interval and nothing to the pipe.",
+    },
+  },
+  {
+    id: "lt-memory",
+    scenario: {
+      en: "A memory service introduces a test that identifies a degenerative condition several years earlier than before. Patients still move into full time care at about the same age, but the average interval from diagnosis to that move has risen from four years to seven. A leaflet says the test delays dependence.",
+    },
+    trap: "lead-time-bias",
+    explanation: {
+      en: "The move into full time care happens at the same age as before, so nothing was delayed. Diagnosing sooner simply lengthened the stretch of time counted after diagnosis.",
+    },
+  },
+  {
+    id: "lt-agecheck",
+    scenario: {
+      en: "Before a new imaging protocol, a clinic's patients were identified at an average age of 62 and died at 66. Since the protocol, they are identified at 59 and still die at 66. The annual report states that average survival after diagnosis has risen from four years to seven.",
+    },
+    trap: "lead-time-bias",
+    explanation: {
+      en: "The age at death is unchanged, so no patient gained time. Moving the moment of identification three years earlier adds three years to every measured interval.",
+    },
+  },
+  // ---- spectrum-bias, second wave ----
+  {
+    id: "sb-notes",
+    scenario: {
+      en: "A detector is checked against obvious photocopied notes and crisp notes straight from the mint, and separates them almost perfectly. The maker advertises 99% accuracy. A bank buys it to sort well made counterfeits from worn, creased notes taken over the counter, and expects the same figure.",
+    },
+    trap: "spectrum-bias",
+    explanation: {
+      en: "The advertised figure came from the crudest fakes set against the cleanest genuine notes. Where the fakes are skilled and the genuine notes are battered, the two groups overlap on exactly the features the detector reads.",
+    },
+  },
+  {
+    id: "sb-spam",
+    scenario: {
+      en: "A filter is benchmarked on bulk advertising full of misspellings and on a folder of ordinary personal mail, and scores 99.6%. A firm deploys it against carefully written impersonation attempts and against unusual but genuine messages from new suppliers, quoting the same score to its board.",
+    },
+    trap: "spectrum-bias",
+    explanation: {
+      en: "The benchmark asked the filter to separate the most obvious junk from the most obviously legitimate mail. Polished impersonations and odd but genuine supplier mail sit in the middle, where the filter was never measured.",
+    },
+  },
+  {
+    id: "sb-language",
+    scenario: {
+      en: "A placement test was validated on absolute beginners and on near native speakers, and told them apart almost every time. A school now uses it to sort intermediate learners into three levels and cites the original accuracy figure in its prospectus.",
+    },
+    trap: "spectrum-bias",
+    explanation: {
+      en: "The test was only ever asked to separate the two ends of the range, which almost any crude measure manages. Intermediate learners sit in the middle, where it was never shown to discriminate at all.",
+    },
+  },
+  {
+    id: "sb-welds",
+    scenario: {
+      en: "An inspection system was tuned on deliberately ruined test welds and on flawless reference welds, and caught 97% of the bad ones. On the production line, where flaws are hairline and sound welds carry cosmetic spatter, it catches far fewer. The plant keeps quoting 97% to customers.",
+    },
+    trap: "spectrum-bias",
+    explanation: {
+      en: "The 97% was measured on wrecked welds against pristine ones, a comparison with a wide gap. Real line output has faint flaws and untidy good welds, so the same thresholds separate much less.",
+    },
+  },
+  {
+    id: "sb-aitext",
+    scenario: {
+      en: "A tool that claims to tell machine written text from human writing was checked on raw machine output and on handwritten classroom essays, scoring 98%. A college applies it to lightly edited submissions and to careful work by students writing in a second language, and treats every flag as proof.",
+    },
+    trap: "spectrum-bias",
+    explanation: {
+      en: "The 98% came from the most obvious machine output set against the most obviously human writing. Edited text and unusually careful second language prose sit between those extremes, where the tool's accuracy was never established.",
+    },
+  },
+  {
+    id: "sb-damp",
+    scenario: {
+      en: "A moisture meter was calibrated against soaking wet blocks and oven dried blocks, and told them apart every time. A surveyor now uses it on borderline walls where mild condensation and genuine structural damp look much alike, and reports the manufacturer's accuracy figure in his findings.",
+    },
+    trap: "spectrum-bias",
+    explanation: {
+      en: "Calibration contrasted two extremes that any meter could tell apart. The walls the surveyor actually meets are neither soaked nor bone dry, so the readings that mattered in calibration barely differ here.",
+    },
+  },
+  {
+    id: "sb-lesions",
+    scenario: {
+      en: "An image classifier for a skin condition was built from textbook photographs of advanced lesions and clear photographs of normal skin, reporting 96% accuracy. A community clinic runs it on early lesions and on patients with eczema and insect bites, and quotes the same 96% to them.",
+    },
+    trap: "spectrum-bias",
+    explanation: {
+      en: "The reported accuracy came from advanced textbook lesions against plainly normal skin. In the clinic the lesions are early and the comparison skin carries rashes and bites that mimic them, so the separation the figure rested on is gone.",
+    },
+  },
+  {
+    id: "sb-concussion",
+    scenario: {
+      en: "A sideline test for head injury was validated on players with unmistakable symptoms and on rested players at the start of the season, sorting them almost perfectly. A club now applies it late in matches, to subtle knocks in tired and dehydrated players, quoting the same numbers.",
+    },
+    trap: "spectrum-bias",
+    explanation: {
+      en: "Validation contrasted obvious injury with fresh, unaffected controls. Late in a match the injuries are subtle and the uninjured are fatigued, so both groups score alike on the very things the test measures.",
+    },
+  },
+  // ---- berksons-bias, second wave ----
+  {
+    id: "bk-shortlist",
+    scenario: {
+      en: "A firm interviews any applicant who scores highly on either the coding test or the communication exercise. Among the applicants who reach interview, the two scores move in opposite directions. The hiring manager concludes that people who are good with code tend to be poor with people.",
+    },
+    trap: "berksons-bias",
+    explanation: {
+      en: "Reaching interview required a high score on one test or the other, so a weak communicator is there only because the coding score carried them, which produces the opposite pattern inside the interview pool while saying nothing about applicants in general.",
+    },
+  },
+  {
+    id: "bk-conservatory",
+    scenario: {
+      en: "A conservatory offers places to musicians who are outstanding in either technical playing or expressive interpretation. Among those who take up a place, the strongest technicians consistently receive the lowest expression marks. A tutor writes that drilling technique appears to blunt musicality.",
+    },
+    trap: "berksons-bias",
+    explanation: {
+      en: "A place required excellence on at least one of the two measures, so a student who is flat on expression must have been outstanding technically to get in, and the tradeoff exists only among those offered places.",
+    },
+  },
+  {
+    id: "bk-warranty",
+    scenario: {
+      en: "A repair shop sees a device only when the battery has failed or the screen has cracked. Its records show that devices with dead batteries have unusually intact screens. The owner writes a blog post arguing that battery wear somehow spares the glass.",
+    },
+    trap: "berksons-bias",
+    explanation: {
+      en: "A device reaches the shop if at least one of the two faults happened, so a battery failure gets a device in without any screen damage, leaving cracked screens rarer among battery cases than among devices as a whole.",
+    },
+  },
+  {
+    id: "bk-guide",
+    scenario: {
+      en: "A city guide lists a restaurant only if it is unusually cheap or unusually good. A blogger works through the listings and finds that the pricier ones nearly always have the better food. He tells readers that in this city you really do get what you pay for.",
+    },
+    trap: "berksons-bias",
+    explanation: {
+      en: "A restaurant earns a listing by being cheap or by being good, so any expensive one in the guide is there because the food is good, which links price to quality inside the guide even if the city's restaurants show no such link.",
+    },
+  },
+  {
+    id: "bk-squad",
+    scenario: {
+      en: "A national squad picks players who are either exceptionally quick or exceptionally good at reading the game. Within the squad, the fastest players score lowest on the tactical assessment. The coaching staff decide that sprint work must be dulling game intelligence.",
+    },
+    trap: "berksons-bias",
+    explanation: {
+      en: "A place needed one outstanding quality or the other, so a very quick player did not also need tactical strength to be picked, and the inverse pattern appears only among the players who were picked.",
+    },
+  },
+  {
+    id: "bk-grants",
+    scenario: {
+      en: "A funding panel awards money to proposals that have either a strong past record or a genuinely novel idea. Reviewing the funded projects five years later, an analyst finds the most novel ones came from the weakest records, and reports that experience seems to kill originality.",
+    },
+    trap: "berksons-bias",
+    explanation: {
+      en: "Funding required strength on one criterion or the other, so a novel proposal did not also need a strong record to win money, and the tradeoff holds among funded projects rather than among everyone who applied.",
+    },
+  },
+  {
+    id: "bk-claims",
+    scenario: {
+      en: "An insurer studies its motor claim file, which holds a case only when the vehicle was badly damaged or someone was hurt. In the file, badly damaged vehicles are less often linked to injuries. A memo suggests that heavier crash damage somehow protects the occupants.",
+    },
+    trap: "berksons-bias",
+    explanation: {
+      en: "A crash enters the file if it caused serious damage or an injury, so heavily damaged vehicles are recorded even with nobody hurt, while lightly damaged ones appear only when someone was injured.",
+    },
+  },
+  {
+    id: "bk-talks",
+    scenario: {
+      en: "A conference accepts a talk when the research is strikingly new or the speaker is a superb presenter. An attendee notices that the most original talks are the worst delivered, and posts afterwards that the polished speakers must be doing the shallowest work.",
+    },
+    trap: "berksons-bias",
+    explanation: {
+      en: "Acceptance needed novelty or delivery, so an original talk got on the programme without a polished speaker, and the tradeoff exists among accepted talks rather than among everything submitted.",
+    },
+  },
+  // ---- relative-vs-absolute-risk, second wave ----
+  {
+    id: "ra-gearbox",
+    scenario: {
+      en: "A motoring magazine reports that one gearbox is 40 percent more likely to fail in its first three years than the alternative. The maker's own figures show 7 failures per 10,000 cars against 5 per 10,000. Readers are advised to avoid the model.",
+    },
+    trap: "relative-vs-absolute-risk",
+    explanation: {
+      en: "The gap is 2 extra failures per 10,000 cars, so 9,998 owners in 10,000 notice no difference at all, and the 40 percent describes a change to an already tiny number.",
+    },
+  },
+  {
+    id: "ra-lottery",
+    scenario: {
+      en: "A lottery app tells users that buying a second ticket doubles their chance of taking the jackpot, and pushes a two ticket bundle at checkout. A single ticket wins the jackpot about once in 14 million draws.",
+    },
+    trap: "relative-vs-absolute-risk",
+    explanation: {
+      en: "Doubling moves the chance from about 1 in 14 million to about 2 in 14 million, an increase of roughly one chance in 14 million, which is why the proportional wording sounds far larger than the actual change.",
+    },
+  },
+  {
+    id: "ra-fleet",
+    scenario: {
+      en: "An airline advertisement says its new fleet has cut a particular in flight fault by 60 percent. The maintenance log behind the claim shows the fault used to occur on about 5 flights per million and now occurs on about 2 per million.",
+    },
+    trap: "relative-vs-absolute-risk",
+    explanation: {
+      en: "That is 3 fewer faults per million flights, so a passenger's chance was already about 1 in 200,000 before the new fleet arrived and the headline percentage sits on a very small starting number.",
+    },
+  },
+  {
+    id: "ra-savings",
+    scenario: {
+      en: "A bank advertises that its new account pays 50 percent more interest than the old one. The old account paid 0.2 percent a year and the new one pays 0.3 percent. A saver moves a 2,000 dollar balance across, expecting a noticeable difference.",
+    },
+    trap: "relative-vs-absolute-risk",
+    explanation: {
+      en: "On 2,000 dollars the switch is worth 6 dollars a year instead of 4, a gain of 2 dollars, because 50 percent more of a very small rate is still a very small rate.",
+    },
+  },
+  {
+    id: "ra-snack",
+    scenario: {
+      en: "A newspaper reports that eating a particular snack every day raises the chance of a rare bowel condition by 25 percent, and shoppers start avoiding it. The figures behind the story are 4 cases per 10,000 people over ten years among non eaters and 5 per 10,000 among daily eaters.",
+    },
+    trap: "relative-vs-absolute-risk",
+    explanation: {
+      en: "The difference is 1 extra case per 10,000 people across a decade, so 9,999 in 10,000 are unaffected either way and the 25 percent applies to an outcome that was already rare.",
+    },
+  },
+  {
+    id: "ra-nnt",
+    scenario: {
+      en: "A clinic leaflet says a daily tablet cuts the chance of a particular event over five years from 4 in 1,000 to 3 in 1,000, a reduction of a quarter. The leaflet adds that this means about one patient in four will be spared the event.",
+    },
+    trap: "relative-vs-absolute-risk",
+    explanation: {
+      en: "Only 1 patient in 1,000 avoids the event, so about 1,000 people must take the tablet for five years for one to benefit; the quarter describes how much a small chance shrank, not the share of patients helped.",
+    },
+  },
+  {
+    id: "ra-ratio",
+    scenario: {
+      en: "A factory's internal report gives the risk ratio for injuries after a new floor marking scheme as 0.47. The staff newsletter announces that the scheme has cut injuries by 47 percent, and the plant manager repeats that figure to the board.",
+    },
+    trap: "relative-vs-absolute-risk",
+    explanation: {
+      en: "A ratio of 0.47 means injuries fell to 47 percent of the old level, which is a fall of 53 percent, so the newsletter has reported the share that remains as though it were the share removed.",
+    },
+  },
+  {
+    id: "ra-stove",
+    scenario: {
+      en: "A home insurer tells customers that fitting a certain type of wood stove triples the chance of a fire claim, and raises those premiums by a third. Its own data show 1 claim per 10,000 insured homes a year without the stove and 3 per 10,000 with it.",
+    },
+    trap: "relative-vs-absolute-risk",
+    explanation: {
+      en: "The extra chance is 2 fire claims per 10,000 homes a year, so 9,997 homes in 10,000 with the stove make no claim, and tripling something rare leaves it rare.",
+    },
+  },
+  // ---- confounding-by-indication, second wave ----
+  {
+    id: "ci-tutoring",
+    scenario: {
+      en: "A school picks pupils for extra tutoring on the basis of which ones teachers judge most likely to fail. At the end of the year the tutored pupils score lower on average than the rest, and a governors' report calls the tutoring ineffective and recommends closing it.",
+    },
+    trap: "confounding-by-indication",
+    explanation: {
+      en: "Teachers chose pupils for tutoring precisely because they were already heading for a poor result, so the tutored group started further behind and the tutoring is blamed for the reason it was offered.",
+    },
+  },
+  {
+    id: "ci-retention",
+    scenario: {
+      en: "A phone company calls customers its model flags as most likely to leave and offers them a discount. Over the next quarter those customers cancel more often than customers who got no call. The analysis concludes that retention calls push people out of the door.",
+    },
+    trap: "confounding-by-indication",
+    explanation: {
+      en: "The call went only to customers already judged most likely to cancel, so the flag that triggered the call, not the call itself, explains their higher cancellation rate.",
+    },
+  },
+  {
+    id: "ci-servicing",
+    scenario: {
+      en: "A plant sends a machine for early servicing whenever an operator reports an unusual noise. An audit finds that machines serviced early broke down more often the following year than machines left alone, and recommends servicing less.",
+    },
+    trap: "confounding-by-indication",
+    explanation: {
+      en: "The noise that prompted early servicing was itself a sign of a machine on its way to failing, so the servicing takes the blame for the condition that selected it.",
+    },
+  },
+  {
+    id: "ci-workshop",
+    scenario: {
+      en: "Places on a prison workshop scheme are limited, so staff give them to the inmates they judge most motivated and least likely to offend again. Two years on, scheme graduates have far lower reoffending, and the governor presents this as proof the scheme works.",
+    },
+    trap: "confounding-by-indication",
+    explanation: {
+      en: "Staff selected participants using their own judgement of who would reoffend, which is the very outcome being measured, so the places went to the men already likely to do best.",
+    },
+  },
+  {
+    id: "ci-loanterms",
+    scenario: {
+      en: "A bank rewrites the terms of a loan as soon as the account shows early signs of strain. A year later, rewritten loans have defaulted more often than the rest of the book, and the credit committee concludes that rewriting terms encourages default.",
+    },
+    trap: "confounding-by-indication",
+    explanation: {
+      en: "The rewrite was triggered by warning signs that already predicted default, so the rewritten loans began from a worse position that the comparison never accounted for.",
+    },
+  },
+  {
+    id: "ci-mentoring",
+    scenario: {
+      en: "An employer assigns a senior mentor to the graduate recruits its managers rate as highest potential. Three years later the mentored recruits have been promoted twice as often as the others, and the internal newsletter credits the mentoring scheme.",
+    },
+    trap: "confounding-by-indication",
+    explanation: {
+      en: "Managers picked mentees on a judgement of who would rise fastest, so the mentored group was already on the quicker track before any mentoring happened.",
+    },
+  },
+  {
+    id: "ci-carehome",
+    scenario: {
+      en: "A care home moves residents to its specialist wing when staff judge that they are declining fastest. A quality review finds that residents in the specialist wing die sooner than those on ordinary floors, and questions whether the wing should stay open.",
+    },
+    trap: "confounding-by-indication",
+    explanation: {
+      en: "The move was decided by how fast a resident was already declining, and that decline, not the wing, drives the difference in how long they lived.",
+    },
+  },
+  {
+    id: "ci-shoulder",
+    scenario: {
+      en: "A clinic offers its intensive shoulder programme only to patients who can already raise the arm to shoulder height, since the exercises need it. Those patients regain full movement far more often than the rest, and the clinic advertises the programme as its most effective treatment.",
+    },
+    trap: "confounding-by-indication",
+    explanation: {
+      en: "The entry rule handed the programme the patients whose shoulders were least damaged to begin with, so the people most likely to recover anyway are the ones being counted.",
+    },
+  },
+  // ---- length-time-bias, second wave ----
+  {
+    id: "lg-brakes",
+    scenario: {
+      en: "A fleet inspects every van once a year. Vans whose brake faults were picked up at inspection go on to have far fewer roadside breakdowns than vans whose faults turned up in between. The workshop manager concludes that the annual inspection catches the dangerous faults.",
+    },
+    trap: "length-time-bias",
+    explanation: {
+      en: "A yearly check can only find wear slow enough to still be half formed on the day the inspector calls; anything that goes from sound to broken inside a year declares itself between visits. The inspected group is therefore stacked with the gradual faults from the outset.",
+    },
+  },
+  {
+    id: "lg-fraud",
+    scenario: {
+      en: "A card issuer reviews merchant accounts once a month. Accounts stopped by the review have cost the issuer far less on average than accounts reported by cardholders between reviews. The risk team reports that the monthly review is holding losses down.",
+    },
+    trap: "length-time-bias",
+    explanation: {
+      en: "A scheme that opens, drains and vanishes within days sits entirely between two reviews, so the review can only catch the slow, low value operations. Those were the cheaper ones before anyone intervened.",
+    },
+  },
+  {
+    id: "lg-audit",
+    scenario: {
+      en: "A software team audits its codebase every quarter. Defects the audit finds are rated far less severe than those users report between audits. The engineering lead writes that auditing removes problems before they can turn serious.",
+    },
+    trap: "length-time-bias",
+    explanation: {
+      en: "A defect that crashes the app is reported by a user within hours of shipping, long before the next quarterly pass, leaving the audit only the quiet long lived ones. Those were the mild defects already, not defects the audit made mild.",
+    },
+  },
+  {
+    id: "lg-survey",
+    scenario: {
+      en: "A housing association surveys each block once every five years. Defects found by the survey are almost always cosmetic, while the serious ones, a collapsed ceiling or a burst tank, arrive as emergency calls. The association reports that its survey programme keeps defects minor.",
+    },
+    trap: "length-time-bias",
+    explanation: {
+      en: "A defect that takes years to develop is present, and still small, whichever year the surveyor happens to call. One that develops in a fortnight almost certainly falls between two surveys and comes in as an emergency instead.",
+    },
+  },
+  {
+    id: "lg-lines",
+    scenario: {
+      en: "A grid operator surveys its lines from the air twice a year. Faults seen on a survey are almost always minor, and the faults behind most outages had never appeared on one. The operator's report credits the surveys with keeping serious faults rare.",
+    },
+    trap: "length-time-bias",
+    explanation: {
+      en: "Only damage that creeps along for months is still sitting there to be photographed when the aircraft passes. Damage that goes from intact to failed in a fortnight becomes an outage before any survey can see it, so the surveyed set is minor by construction.",
+    },
+  },
+  {
+    id: "lg-dental",
+    scenario: {
+      en: "A dental practice recalls its patients every eighteen months. Problems found at recall are nearly always fixable with a filling, while most extractions come from patients who telephone in pain between appointments. The practice tells patients that regular recall prevents extractions.",
+    },
+    trap: "length-time-bias",
+    explanation: {
+      en: "Decay that creeps along for years is present, and still small, whenever the recall falls. A tooth that goes from sound to abscessed in three months announces itself before the next appointment, so the recall sees the slow problems and little else.",
+    },
+  },
+  {
+    id: "lg-workplace",
+    scenario: {
+      en: "A large employer offers a lung scan every two years. Employees whose disease is found at a scan need much less urgent treatment than those who arrive breathless at the clinic between rounds. Occupational health reports that scanning catches disease while it is still controllable.",
+    },
+    trap: "length-time-bias",
+    explanation: {
+      en: "Disease that progresses over many years is detectable at whichever round comes along, while disease that goes from nothing to breathless inside two years surfaces between rounds. The scanned group is loaded with the milder illness before any treatment starts.",
+    },
+  },
+  {
+    id: "lg-interval",
+    scenario: {
+      en: "A clinic lengthens its check up interval from one year to three. The cases it now picks up look milder on average than the ones it used to find, and the clinical lead takes this as evidence that the longer interval suits patients better.",
+    },
+    trap: "length-time-bias",
+    explanation: {
+      en: "Stretching the gap gives fast moving disease more room to appear and declare itself between visits, so a larger share of what the check up still finds is the slow moving kind. The milder mix reflects what the interval now misses, not better care.",
+    },
+  },
+  // ---- publication-bias, second wave ----
+  {
+    id: "pb-abtest",
+    scenario: {
+      en: "A company's product newsletter runs a write up whenever an experiment beats the current design. Teams whose tests showed no difference tend to move on without writing anything. A new joiner reads a year of newsletters and concludes that almost every idea here lifts sign ups.",
+    },
+    trap: "publication-bias",
+    explanation: {
+      en: "Only the experiments that won were written up, so the newsletter records a small winning slice of the year's tests while the flat and losing ones never appeared anywhere the new joiner could read them.",
+    },
+  },
+  {
+    id: "pb-bootcamp",
+    scenario: {
+      en: "A training provider's homepage carries fifteen graduate stories, each describing a good job within months of finishing. The stories came from graduates who answered a request for success stories. A prospective student reads them and concludes the course almost always leads to work.",
+    },
+    trap: "publication-bias",
+    explanation: {
+      en: "The page gathers only graduates who had a success to report, so those who finished the course and found nothing are missing from the evidence the student is weighing.",
+    },
+  },
+  {
+    id: "pb-forum",
+    scenario: {
+      en: "On a woodworking forum, members post photographs of finished cabinets, and the build threads run to hundreds of admiring replies. A newcomer reads twenty of them and decides the design is straightforward enough for a first project.",
+    },
+    trap: "publication-bias",
+    explanation: {
+      en: "Builds that were abandoned halfway never get a thread, so the forum shows the attempts that worked and gives no sign of how often the design defeated someone.",
+    },
+  },
+  {
+    id: "pb-casestudy",
+    scenario: {
+      en: "A software vendor's website hosts twelve customer case studies, each with a chart of improved results. The vendor decides which pilots to turn into case studies after seeing how they went. A buyer reads all twelve and signs a three year contract.",
+    },
+    trap: "publication-bias",
+    explanation: {
+      en: "The vendor wrote up only the pilots that turned out well, so the twelve studies are the flattering end of a larger set of pilots whose disappointing results were never put on the site.",
+    },
+  },
+  {
+    id: "pb-allotment",
+    scenario: {
+      en: "An allotment association's newsletter has carried enthusiastic reports of a plant feed for ten years. Members who noticed a big difference send in a report; members who noticed nothing rarely bother. The committee votes to buy the feed in bulk for every plot.",
+    },
+    trap: "publication-bias",
+    explanation: {
+      en: "Only growers who saw an effect wrote in, so a decade of newsletters preserves the striking results and leaves out every plot where the feed changed nothing.",
+    },
+  },
+  {
+    id: "pb-leaderboard",
+    scenario: {
+      en: "A research group posts a blog each time a new network design beats the standard benchmark, and quietly shelves the runs that did not. A reader tallies such posts across several groups and writes that progress in the field is accelerating sharply.",
+    },
+    trap: "publication-bias",
+    explanation: {
+      en: "Runs that failed to beat the benchmark were never posted, so the tally counts the successes drawn from far more attempts and reads a filtered record as though it were the rate of progress.",
+    },
+  },
+  {
+    id: "pb-smallstudies",
+    scenario: {
+      en: "Someone collects every published trial of a supplement and notices that the small trials report much larger benefits than the large ones. He averages all of them together and reports a clear overall benefit.",
+    },
+    trap: "publication-bias",
+    explanation: {
+      en: "A small trial that found nothing is easy to leave unwritten, while a small trial that happened to land a striking result gets submitted, so the small studies on show are the lucky ones and averaging them pushes the estimate up.",
+    },
+  },
+  {
+    id: "pb-novelty",
+    scenario: {
+      en: "A journal's guidance for authors says it looks for findings that are surprising and change how readers think. A student reviews ten years of its issues and concludes that effects in this field are usually large.",
+    },
+    trap: "publication-bias",
+    explanation: {
+      en: "The journal chose papers by how striking the result was, so modest and flat findings were turned away or never submitted, and the ten years the student read contain none of them.",
+    },
+  },
+  // ---- intention-to-treat, second wave ----
+  {
+    id: "itt-savings",
+    scenario: {
+      en: "A bank randomly gives half of its new savers an automatic top up feature and the rest a standard account. Its year end report compares average balances among savers still paying in after twelve months, and finds the feature far ahead.",
+    },
+    trap: "intention-to-treat",
+    explanation: {
+      en: "Whether someone was still paying in at twelve months was settled after the random split, and the feature itself affects who keeps going, so the sets compared are no longer the groups the allocation created.",
+    },
+  },
+  {
+    id: "itt-nonstarters",
+    scenario: {
+      en: "Classes are randomly allocated to a new reading scheme or to the usual lessons. Twelve allocated classes never got the scheme running, so the evaluators move them into the comparison group, saying the figures should reflect what actually happened in the classroom.",
+    },
+    trap: "intention-to-treat",
+    explanation: {
+      en: "Which classes failed to start was determined after allocation, probably by the schools least able to run anything new, so shifting them loads the comparison group with the weakest classes.",
+    },
+  },
+  {
+    id: "itt-movers",
+    scenario: {
+      en: "An employer randomly assigns supervisors to a management course or to nothing. Anyone who changed department during the year is then left out of the analysis, in both groups alike, because the evaluator says their results would not be comparable.",
+    },
+    trap: "intention-to-treat",
+    explanation: {
+      en: "Department moves happened after the assignment, and the course itself can prompt or prevent them, so the filter removes a different sort of person from each group.",
+    },
+  },
+  {
+    id: "itt-quitline",
+    scenario: {
+      en: "A council randomly assigns smokers to a quit programme or to a leaflet. The final report covers only those who turned up to the four week check, since the rest could not be verified. Attendance was 70% in the programme arm and 90% in the leaflet arm.",
+    },
+    trap: "intention-to-treat",
+    explanation: {
+      en: "Turning up to the check happened after assignment and at very different rates in the two arms, and the people likeliest to be missing from the programme arm are those who went back to smoking.",
+    },
+  },
+  {
+    id: "itt-orchards",
+    scenario: {
+      en: "Farms are randomly allocated a new pest control routine or their usual one. Farms that sprayed late or missed a spray are dropped, and so are farms in the other group whose records had gaps. The routine comes out strongly ahead.",
+    },
+    trap: "intention-to-treat",
+    explanation: {
+      en: "Whether a farm followed the routine was decided after allocation and reflects how well it is run, so the best run farms in one group are being set against a differently filtered set in the other.",
+    },
+  },
+  {
+    id: "itt-drivers",
+    scenario: {
+      en: "An insurer randomly fits a driving feedback device to half of its new policies. Drivers who unplugged the device are dropped from that group, and drivers in the other group who bought one privately are dropped from theirs. The remaining comparison shows far fewer claims with the device.",
+    },
+    trap: "intention-to-treat",
+    explanation: {
+      en: "Unplugging a device and buying one privately both happened after the random split and mark out very different drivers, so what is left is two self selected sets rather than the groups the allocation made.",
+    },
+  },
+  // ---- recall-bias, second wave ----
+  {
+    id: "rb-brochure",
+    scenario: {
+      en: "Travellers whose holiday went badly are asked what the brochure promised about the hotel, and their answers are set against those of travellers who enjoyed the same trip. The operator's complaints team treats the gap as evidence of mis-selling.",
+    },
+    trap: "recall-bias",
+    explanation: {
+      en: "People whose holiday disappointed them have already been back over what they were told looking for a broken promise, while the satisfied travellers have never revisited the brochure.",
+    },
+  },
+  {
+    id: "rb-smell",
+    scenario: {
+      en: "After a food company recalls a batch, buyers are phoned and asked whether anything seemed odd about the smell. Those who fell ill report an odd smell far more often, and the report concludes the smell was a reliable warning sign.",
+    },
+    trap: "recall-bias",
+    explanation: {
+      en: "Buyers who got ill have replayed the meal hunting for something wrong with it, while those who felt fine had no reason to think about the smell at all.",
+    },
+  },
+  {
+    id: "rb-bend",
+    scenario: {
+      en: "A road safety survey asks drivers how fast they usually take a particular bend. Drivers who have crashed there give very different figures from drivers who have not, and the survey uses the gap to set a recommended limit.",
+    },
+    trap: "recall-bias",
+    explanation: {
+      en: "A driver who crashed at that bend has gone over the moment repeatedly and knows how it ended, so the speed now reported is reconstructed from the crash rather than independent of it.",
+    },
+  },
+  {
+    id: "rb-adviser",
+    scenario: {
+      en: "A regulator asks customers who lost money on an investment what the salesperson said about the risk, and compares their accounts with those of satisfied customers who bought the same product from the same team.",
+    },
+    trap: "recall-bias",
+    explanation: {
+      en: "Customers sitting on a loss have gone back through the conversation looking for a reassurance that should never have been given, while satisfied customers have had no reason to replay it.",
+    },
+  },
+  {
+    id: "rb-homework",
+    scenario: {
+      en: "Parents of pupils who failed their final exams are asked how much homework the school set three years earlier, alongside parents of pupils who passed. The parents of failing pupils report much less, and a campaign group blames the school.",
+    },
+    trap: "recall-bias",
+    explanation: {
+      en: "Parents whose children failed have been searching for an explanation ever since the results came out, so their account of past homework is produced by the outcome rather than measured independently of it.",
+    },
+  },
+  {
+    id: "rb-buffet",
+    scenario: {
+      en: "After an outbreak of illness following a conference dinner, attendees are asked which dishes they ate. Those who fell ill much more often say they had the seafood, and the report names it as the source.",
+    },
+    trap: "recall-bias",
+    explanation: {
+      en: "Attendees who became ill have reconstructed the meal trying to work out what caused it, so they account for their plate far more thoroughly than guests who never thought about dinner again.",
+    },
+  },
+  // ---- immortal-time-bias, second wave ----
+  {
+    id: "it-loyaltyaward",
+    scenario: {
+      en: "A company reports that staff who received its five year loyalty award go on to average eleven years with the firm, against three years for everyone else, counted from each person's start date. HR presents the award as proof that recognition keeps people.",
+    },
+    trap: "immortal-time-bias",
+    explanation: {
+      en: "Receiving the award required staying five years, so anyone who left sooner cannot be in that group at all, and those five guaranteed years are counted into its average.",
+    },
+  },
+  {
+    id: "it-upgrade",
+    scenario: {
+      en: "A subscription service reports that customers who ever moved to its premium tier stay subscribed four times longer than customers who never did, measured from the day each one signed up. Marketing pushes the upgrade at new customers on the strength of it.",
+    },
+    trap: "immortal-time-bias",
+    explanation: {
+      en: "A customer had to still be subscribed in order to upgrade, so everyone who left early lands automatically in the other group, and the months before the upgrade are credited to premium.",
+    },
+  },
+  {
+    id: "it-cupfinal",
+    scenario: {
+      en: "A sports channel reports that clubs reaching the cup final went an average of nine weeks unbeaten in the competition, far better than clubs knocked out early, and puts it down to the finalists' training methods.",
+    },
+    trap: "immortal-time-bias",
+    explanation: {
+      en: "Reaching the final required winning every earlier round, so those weeks cannot contain a defeat for any club in that group; the unbeaten run is the entry condition rather than a result of training.",
+    },
+  },
+  {
+    id: "it-fleet",
+    scenario: {
+      en: "A delivery firm refurbishes each van at five years old. It reports that refurbished vans last on average four years longer than the rest of the fleet, measuring every van's life from the day it was bought, and orders more refurbishments.",
+    },
+    trap: "immortal-time-bias",
+    explanation: {
+      en: "A van had to still be running at five years to be refurbished, so vans that failed before then can only be in the other group, and those first five years are credited to refurbishment.",
+    },
+  },
+  {
+    id: "it-dissertation",
+    scenario: {
+      en: "A college reports that students who submitted the optional final year dissertation were far less likely to have left before graduating than students who did not, counted from enrolment, and proposes making the dissertation compulsory.",
+    },
+    trap: "immortal-time-bias",
+    explanation: {
+      en: "Submitting required still being enrolled in the final year, so every student who left earlier falls automatically into the other group and cannot count against the dissertation.",
+    },
+  },
+  {
+    id: "it-noclaims",
+    scenario: {
+      en: "An insurer reports that drivers who earned its five year no claims discount average far fewer claims per year of cover than other drivers, counted from the day each policy began, and advertises the discount as something that makes people drive better.",
+    },
+    trap: "immortal-time-bias",
+    explanation: {
+      en: "Earning the discount required five years without a claim, so those claim free years are built into the group by definition and any driver who crashed early could never appear in it.",
+    },
+  },
+  // ---- Genuinely sound reasoning (more decoys), second wave ----
+  {
+    id: "ok-cells-all-agree",
+    scenario: {
+      en: "A firm reports that offers made by its retrained recruiters were accepted 71% of the time against 62% for the rest. The appendix tables show the retrained group ahead in every role family and at every seniority level.",
+    },
+    trap: null,
+    explanation: {
+      en: "The headline gap points the same way as every published subgroup, so no mix of roles can be producing it; a hasty player would accuse the aggregate of hiding a reversal it has already ruled out.",
+    },
+  },
+  {
+    id: "ok-common-route-mix",
+    scenario: {
+      en: "Two bus depots are compared on punctuality. Because one runs far more rural routes than the other, the report recalculates both depots using a single common mix of route types, and prints the mix it used.",
+    },
+    trap: null,
+    explanation: {
+      en: "Standardising both depots to one route mix removes the difference in case mix before comparing, which is exactly the correction a pooled figure needs; a hasty player would accuse it of lumping unlike routes together.",
+    },
+  },
+  {
+    id: "ok-arms-balanced",
+    scenario: {
+      en: "An online store sends each visitor at random to one of two checkout designs, and design B converts better overall. The report notes that the share of new and returning visitors came out almost identical in the two arms.",
+    },
+    trap: null,
+    explanation: {
+      en: "With the visitor mix verified as the same in both arms, the pooled result is a weighted average using identical weights, so a reversal inside the segments is arithmetically impossible; a hasty player would demand the segments be split out.",
+    },
+  },
+  {
+    id: "ok-flag-share-fraud",
+    scenario: {
+      en: "A bank's model flags card transactions for review. Before quoting a figure to the fraud team, the analyst combines the flag rate with how often transactions in that category actually turn out to be fraudulent, and reports the share of flagged transactions that are genuine fraud.",
+    },
+    trap: null,
+    explanation: {
+      en: "The number quoted is the chance of fraud given a flag, worked out using how common fraud is, rather than the model's accuracy read backwards; a hasty player would accuse the team of confusing the two.",
+    },
+  },
+  {
+    id: "ok-defects-common",
+    scenario: {
+      en: "A vision system catches nearly every cracked casting and wrongly marks about one sound casting in twenty. On this line roughly a third of castings really are cracked. The supervisor tells the crew a marked casting is probably cracked and sends marked ones for rework.",
+    },
+    trap: null,
+    explanation: {
+      en: "With a third of castings genuinely cracked, marked parts are cracked around nine times in ten, so the condition needed for false alarms to swamp true ones is absent; a hasty player would object to accuracy being read as the chance of a crack.",
+    },
+  },
+  {
+    id: "ok-flagged-essays",
+    scenario: {
+      en: "A text checker flags about 3% of original essays and nearly all copied ones. On a module where past audits found roughly one submission in five was copied, the tutor treats a flag as good reason to open an investigation rather than as proof.",
+    },
+    trap: null,
+    explanation: {
+      en: "Copying is common enough here that a flag makes it much more likely than not, and the conclusion drawn is only to investigate; a hasty player would accuse the tutor of reading the checker's accuracy as the chance of copying.",
+    },
+  },
+  {
+    id: "ok-voucher-lottery",
+    scenario: {
+      en: "An online grocer picks half its customers at random to receive a free delivery voucher and holds the rest back. Over the next three months the voucher group spends more, and the company reports that the voucher raised spending.",
+    },
+    trap: null,
+    explanation: {
+      en: "Chance decided who got a voucher, so the difference cannot come from the sort of customer who would have sought one out; a hasty player would accuse the grocer of reading cause off an association.",
+    },
+  },
+  {
+    id: "ok-lighting-lottery",
+    scenario: {
+      en: "A council can afford to relight only twelve of its forty districts this year and draws the twelve by lot. Night collisions then fall in the relit districts over the following year and hold steady in the rest, and the council credits the lighting.",
+    },
+    trap: null,
+    explanation: {
+      en: "The lot decided which districts were treated, so the untouched districts are a fair comparison over the same period; a hasty player would dismiss it as a before and after story with no control.",
+    },
+  },
+  {
+    id: "ok-clubs-association-only",
+    scenario: {
+      en: "A district notes that schools running more after school clubs have better attendance. Its report says the two go together, adds that clubs are commoner in better funded schools, and asks for a small trial before any wider rollout.",
+    },
+    trap: null,
+    explanation: {
+      en: "The report stops at an association, names the obvious alternative explanation, and calls for an experiment instead of acting; a hasty player would accuse it of proposing a rollout on the strength of a pattern.",
+    },
+  },
+  {
+    id: "ok-whole-portfolio",
+    scenario: {
+      en: "A fund publishes the average return across every company it backed in its first five years, including the fourteen that closed and the four sold at a loss, and states how each was valued.",
+    },
+    trap: null,
+    explanation: {
+      en: "The failures sit in the denominator beside the successes, so the average is not computed from the companies that lasted; a hasty player would assume only the winners were counted.",
+    },
+  },
+  {
+    id: "ok-every-enrolment",
+    scenario: {
+      en: "A flying school reports what share of trainees reach a licence. The figure counts everyone who enrolled in a given year, including those who left partway through and those who failed the final check.",
+    },
+    trap: null,
+    explanation: {
+      en: "The denominator is the entry cohort rather than the group who finished, so leavers cannot inflate the pass rate; a hasty player would assume the number came only from trainees still flying.",
+    },
+  },
+  {
+    id: "ok-units-sold",
+    scenario: {
+      en: "A manufacturer reports pump faults per thousand units sold, taking faults from the warranty claim file and the denominator from the sales register rather than from the units brought into its workshops. This year's model comes out ahead of last year's on the same two sources.",
+    },
+    trap: null,
+    explanation: {
+      en: "Every unit sold sits in the denominator, including those that never came back, so neither year's rate is computed only among the pumps that turned up for repair; a hasty player would assume the figures came from the workshop queue.",
+    },
+  },
+  {
+    id: "ok-tread-narrows",
+    scenario: {
+      en: "An examiner testifies that the tyre pattern from the scene appears on about one van in three hundred, and adds that with roughly nine hundred vans registered in the area, some three of them would carry the same pattern.",
+    },
+    trap: null,
+    explanation: {
+      en: "The rarity figure is turned into how many other vehicles would match, presenting the mark as narrowing the field rather than as a chance of innocence; a hasty player would expect the small number to be flipped into a probability of guilt.",
+    },
+  },
+  {
+    id: "ok-many-clerk-months",
+    scenario: {
+      en: "An auditor finds that one clerk's rounding pattern would arise by chance in about one month in five hundred. Noting that two hundred clerks were reviewed across twelve months, the auditor asks for a routine check of that ledger rather than a referral.",
+    },
+    trap: null,
+    explanation: {
+      en: "Across 2,400 clerk months such a pattern is expected several times by chance, and the response is scaled to that; a hasty player would accuse the auditor of treating a rare coincidence as evidence of wrongdoing.",
+    },
+  },
+  {
+    id: "ok-odds-updated",
+    scenario: {
+      en: "An investigator reports that this claim pattern is about forty times more likely when a claim is fraudulent than when it is honest. Since roughly one claim in a thousand is fraudulent, she puts the chance this one is fraudulent at about one in twenty five and opens a file.",
+    },
+    trap: null,
+    explanation: {
+      en: "The strength of the evidence is combined with how common fraud is, giving the chance of fraud given the pattern rather than the reverse; a hasty player would expect the forty fold figure itself to be quoted as the odds of guilt.",
+    },
+  },
+  {
+    id: "ok-same-divisions",
+    scenario: {
+      en: "A youth league keeps the same clubs in the same two divisions for two seasons running, with no promotions or relegations in between. Average match attendance rose in both divisions in the second season.",
+    },
+    trap: null,
+    explanation: {
+      en: "No club moved between divisions, so a rise in both cannot come from shuffling teams from one group into the other; a hasty player would suspect the categories had been rearranged between the seasons.",
+    },
+  },
+  {
+    id: "ok-regraded-both-years",
+    scenario: {
+      en: "A council changed how it grades road defects in 2023. To compare repair times with 2019, it first re-graded every 2019 record under the current rules, then compared grade by grade.",
+    },
+    trap: null,
+    explanation: {
+      en: "Both years are sorted by identical rules, so an improvement within a grade cannot be produced by defects sliding between grades; a hasty player would assume the new grading had quietly reshuffled the categories.",
+    },
+  },
+  {
+    id: "ok-failures-per-mile",
+    scenario: {
+      en: "A rail operator fits sensors that pick up bearing wear months before a bearing would fail in service. In the two years after fitting, in service bearing failures per million miles run fell by about a third.",
+    },
+    trap: null,
+    explanation: {
+      en: "The measure is how often failures occur per mile, not how long the operator knew about a fault beforehand, so spotting problems earlier cannot by itself move the number; a hasty player would assume earlier detection was doing the work.",
+    },
+  },
+  {
+    id: "ok-clock-from-impact",
+    scenario: {
+      en: "A team installs monitoring that alerts it to outages far sooner. Its quarterly report measures the time from the first affected customer request, taken from server logs, to full recovery, and shows that this fell after the tool went in.",
+    },
+    trap: null,
+    explanation: {
+      en: "The clock starts at the moment of impact rather than at detection, so learning of an outage earlier cannot stretch the measured interval; a hasty player would assume earlier alerts manufactured the improvement.",
+    },
+  },
+  {
+    id: "ok-same-applicant-pool",
+    scenario: {
+      en: "A lender builds a repayment risk model and tests it on applicants from the same branches, income range and loan sizes where it will be used. Accuracy is reported separately for applicants with long credit histories and for those with almost none.",
+    },
+    trap: null,
+    explanation: {
+      en: "The test population matches the one the model will run on and performance is broken out by how hard the cases are, so a figure earned on an easier mix is not being carried across; a hasty player would assume it was validated on obvious cases.",
+    },
+  },
+  {
+    id: "ok-revalidated-plots",
+    scenario: {
+      en: "A soil test's published accuracy came from severely degraded plots. Before recommending it, a co-op ran the test again on ordinary member farms and quotes those second figures, not the original ones, in its guidance.",
+    },
+    trap: null,
+    explanation: {
+      en: "The test was measured again in the ordinary fields where it will actually be used, so the easy contrast of the original setting is not passed off as everyday performance; a hasty player would attack the original validation.",
+    },
+  },
+  {
+    id: "ok-scoped-crack-size",
+    scenario: {
+      en: "An inspection rig's detection rate was measured on cracks longer than two millimetres. The report says so plainly, notes that shorter cracks were not tested, and the plant uses the rig only as a check on the longer class.",
+    },
+    trap: null,
+    explanation: {
+      en: "The stated accuracy stays tied to the crack sizes it was measured on and use is limited to that range, so it is never applied to a harder mix; a hasty player would accuse the plant of importing a number from an easy test set.",
+    },
+  },
+  {
+    id: "ok-all-applicants-measured",
+    scenario: {
+      en: "A firm asks whether its coding test score and its interview rating agree. Both are recorded for every applicant before any shortlist is drawn, and across all applicants the two rise together mildly.",
+    },
+    trap: null,
+    explanation: {
+      en: "The pair is measured on everyone who applied rather than only on those who cleared a bar that both scores helped set, so selection cannot manufacture the relationship; a hasty player would assume the sample had been filtered on both.",
+    },
+  },
+  {
+    id: "ok-county-register",
+    scenario: {
+      en: "A county register covering every resident, not only those who were admitted somewhere, reports that two conditions occur together a little more often than chance alone would give.",
+    },
+    trap: null,
+    explanation: {
+      en: "The pattern comes from the whole resident population rather than from people filtered in by admission, so it is not an artefact of both conditions raising the odds of being in the sample; a hasty player would assume a hospital roster.",
+    },
+  },
+  {
+    id: "ok-helmet-counts",
+    scenario: {
+      en: "A safety body reports that the new helmet standard cut serious head injuries by about a quarter, and adds that in the riders studied this meant roughly 12 serious injuries per 10,000 a year falling to about 9.",
+    },
+    trap: null,
+    explanation: {
+      en: "The proportional figure is given with the counts it came from, so the size of the benefit cannot be inflated in the reader's head; a hasty player would object to the percentage before noticing the numbers behind it.",
+    },
+  },
+  {
+    id: "ok-filter-counts",
+    scenario: {
+      en: "A vendor's brochure says its filter cuts successful phishing by about 60%, and states directly below that in the trial this was 12 staff in every 1,000 falling to about 5 over a year.",
+    },
+    trap: null,
+    explanation: {
+      en: "The relative claim is anchored to absolute numbers in the same place, letting the reader see how large the change really is; a hasty player would reject the headline percentage as unanchored marketing.",
+    },
+  },
+  {
+    id: "ok-label-counts",
+    scenario: {
+      en: "A drink maker's label gives the trial counts behind its claim, 14 cases of a stomach complaint among 5,000 users of the new formula against 18 among 5,000 of the old, and calls the difference small and not certain.",
+    },
+    trap: null,
+    explanation: {
+      en: "The counts are shown and the conclusion is scaled down to match them rather than being dressed up as a 22% reduction; a hasty player would expect a percentage to be doing the persuading.",
+    },
+  },
+  {
+    id: "ok-same-indication-newusers",
+    scenario: {
+      en: "Two painkillers are compared using patients who started one or the other for the same recorded complaint, at the same clinics, restricted to people who had taken neither before. Side effect rates come out similar.",
+    },
+    trap: null,
+    explanation: {
+      en: "Comparing first time users of two drugs given for the same complaint means both groups were treated for the same reason, so the reason for prescribing is not what separates them; a hasty player would assume sicker patients got one of the drugs.",
+    },
+  },
+  {
+    id: "ok-tutoring-lottery",
+    scenario: {
+      en: "More pupils apply for extra tutoring than a council can fund, so places are drawn by lot. The evaluation compares later grades between pupils who were drawn and pupils who applied but were not.",
+    },
+    trap: null,
+    explanation: {
+      en: "Everyone in both groups wanted the tutoring and only chance decided who received it, so the tutored pupils are not the ones judged to need it most; a hasty player would assume places went to those struggling hardest.",
+    },
+  },
+  {
+    id: "ok-even-fleet-numbers",
+    scenario: {
+      en: "A haulier puts a new engine oil in every truck whose fleet number ends in an even digit and keeps the rest on the old oil. After a year it compares breakdown rates between the two halves.",
+    },
+    trap: null,
+    explanation: {
+      en: "The last digit is arbitrary and has nothing to do with a truck's age or condition, so the treated trucks are not the ones a mechanic thought needed help; a hasty player would assume the worst trucks were picked for the new oil.",
+    },
+  },
+  {
+    id: "ok-advanced-case-rate",
+    scenario: {
+      en: "A region that began offering a regular check reports how many residents per 100,000 are found with advanced disease each year. That figure falls over the following decade while neighbouring regions stay flat.",
+    },
+    trap: null,
+    explanation: {
+      en: "Fewer advanced cases arising in the whole population cannot be produced by a check that merely finds slow growing cases sooner; a hasty player would expect survival among detected cases to be the number on offer.",
+    },
+  },
+  {
+    id: "ok-sampled-by-open-date",
+    scenario: {
+      en: "An analyst measuring how long support tickets stay open takes every ticket opened in a given month last year and follows each one to its closure, rather than looking at the tickets sitting in the queue today.",
+    },
+    trap: null,
+    explanation: {
+      en: "Sampling by opening date gives quick and slow tickets the same chance of entering the sample, while a snapshot of the queue would be crowded with the ones that linger; a hasty player would assume the long cases dominate.",
+    },
+  },
+  {
+    id: "ok-all-filed-trials",
+    scenario: {
+      en: "A national medicines agency reviews a treatment using every trial the maker was required to file with it, including three whose results were never written up anywhere, and pools them all.",
+    },
+    trap: null,
+    explanation: {
+      en: "The pool is defined by what had to be filed rather than by what reached a journal, so dull results are still in it; a hasty player would assume the review was built from the literature.",
+    },
+  },
+  {
+    id: "ok-all-experiments-listed",
+    scenario: {
+      en: "A product team's quarterly memo lists the outcome of all forty tests it ran that quarter, including the twenty seven that moved nothing, alongside the four whose results it acted on.",
+    },
+    trap: null,
+    explanation: {
+      en: "Every experiment run is reported, so the ones that worked are read against the full set of attempts; a hasty player would assume only the wins were written up.",
+    },
+  },
+  {
+    id: "ok-small-trials-checked",
+    scenario: {
+      en: "Before averaging fifteen field trials of a fertiliser, an analyst compares the small trials with the large ones and notes that the small ones landed below the overall average as often as above it.",
+    },
+    trap: null,
+    explanation: {
+      en: "The check for missing unfavourable small studies was made and came out clean, which is the very thing that would otherwise tilt the average; a hasty player would assume the small trials were the ones cherry picked.",
+    },
+  },
+  {
+    id: "ok-everyone-offered",
+    scenario: {
+      en: "A city offers a free three month transit pass to a randomly chosen half of newly registered residents. The evaluation compares car trips between everyone offered a pass and everyone not offered, including the third who never collected theirs.",
+    },
+    trap: null,
+    explanation: {
+      en: "People are counted in the group they were offered, so those keen enough to collect a pass are not being measured against everybody else; a hasty player would want only the actual pass holders analysed.",
+    },
+  },
+  {
+    id: "ok-extremes-bracketed",
+    scenario: {
+      en: "A jobs programme evaluation counts every applicant in the group chance assigned them to. For the twenty two who could not be traced at one year, it repeats the sums assuming first that all were unemployed and then that all were working, and the ranking holds either way.",
+    },
+    trap: null,
+    explanation: {
+      en: "Nobody is dropped for being untraceable, and the two extreme assumptions bracket anything the missing answers could have done; a hasty player would assume the untraced were quietly excluded.",
+    },
+  },
+  {
+    id: "ok-fitted-at-purchase",
+    scenario: {
+      en: "A haulage study compares trucks that were fitted with a driver alert system when they were bought against trucks bought without one, counting each truck's mileage from the day it entered service.",
+    },
+    trap: null,
+    explanation: {
+      en: "Which group a truck belongs to was settled before its clock started, so no truck has to survive a waiting period in order to count as equipped; a hasty player would assume the fitted trucks were credited with time before fitting.",
+    },
+  },
+  {
+    id: "ok-matched-at-passing",
+    scenario: {
+      en: "An employer compares staff who passed a certification with those who did not. Each person who passed is matched, at the moment of passing, to a colleague still employed at that point with the same months of service, and both are followed from then on.",
+    },
+    trap: null,
+    explanation: {
+      en: "Follow up starts when the certification is achieved and the matched colleague has already worked the same stretch, so the months spent studying are not credited to the certified group; a hasty player would assume that time was counted.",
+    },
+  },
+  {
+    id: "ok-weekly-diaries",
+    scenario: {
+      en: "A study of whether long commutes wear people down uses travel diaries that staff filled in each week through the year, well before anyone knew who would later resign.",
+    },
+    trap: null,
+    explanation: {
+      en: "The exposure was written down as it happened rather than reconstructed afterwards, so knowing the outcome cannot have coloured the answers; a hasty player would assume leavers were asked to look back.",
+    },
+  },
+  {
+    id: "ok-register-and-claims",
+    scenario: {
+      en: "To ask whether a safety course reduces injuries, an analyst takes attendance from the course register and injuries from the insurer's claim file, matching the two by employee number. Nobody is asked to remember anything.",
+    },
+    trap: null,
+    explanation: {
+      en: "Both the exposure and the outcome come from records written at the time, so no one's account of the course can be shaped by whether they were later hurt; a hasty player would assume the workers were interviewed.",
+    },
+  },
+  {
+    id: "ok-checked-against-records",
+    scenario: {
+      en: "Owners of a failed appliance and owners of a working one are asked when they bought it and how often they ran it. Their answers are then compared with till receipts and app usage logs, and the two groups' errors turn out to be the same size and in the same direction.",
+    },
+    trap: null,
+    explanation: {
+      en: "The reported histories were checked against records and both groups misremembered equally, so the comparison is not driven by one group searching its memory harder; a hasty player would assume the aggrieved owners overstated their use.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

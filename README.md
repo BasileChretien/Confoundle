@@ -4,7 +4,9 @@
 
 Each puzzle runs in four beats: **setup → commit → reveal → lesson**, ending in a screenshot-able **share card**. You have to commit to an answer *before* the reveal — the small sting of being caught is the whole point.
 
-This repository is the **Phase 0 prototype**: sixteen fully playable puzzles on a generic engine, served one-per-day Wordle-style, in ten languages, plus a **Trap Hunt** item bank of 63 scenarios for testing whether you can spot a flaw when nobody has told you one is there.
+This repository is the **Phase 0 prototype**: sixteen fully playable puzzles on a generic engine, served one-per-day Wordle-style, in ten languages, plus a **Trap Hunt** item bank of 223 scenarios for testing whether you can spot a flaw when nobody has told you one is there.
+
+The bank is sized for spaced repetition rather than for a quiz: at least ten distinct scenarios per skill, so a learner climbing the eight-stage review ladder never meets the same one twice, and 63 of the 223 are cases where the reasoning is **genuinely sound**. Without those, the winning strategy would be to answer "trap" every time and the score would measure nothing.
 
 The puzzles so far: Simpson's paradox, the base-rate fallacy, correlation vs causation, survivorship bias, the prosecutor's fallacy, the Will Rogers phenomenon, lead-time bias, spectrum bias, Berkson's bias, relative vs absolute risk, confounding by indication, length-time bias, publication bias, intention to treat vs per protocol, recall bias, and immortal time bias.
 
@@ -152,7 +154,7 @@ Adding a puzzle requires **no engine changes** — only a new data file.
 1. Create `src/puzzles/data/<your-slug>.ts` exporting a `Puzzle` (import the type from `../schema` for full autocomplete and type-checking).
 2. Register it in [`src/puzzles/index.ts`](./src/puzzles/index.ts) (import it and add it to the array). Every puzzle is validated against the schema at load — a malformed or self-contradictory puzzle fails fast in dev, build, and tests.
 3. Add a test next to it asserting that your data actually produces the effect you claim (see `src/puzzles/data/*.test.ts`). This is the project's habit for a reason: it means a mistyped count fails CI instead of shipping a paradox that isn't one.
-4. Add two or three **Trap Hunt** items in [`src/puzzles/testItems.ts`](./src/puzzles/testItems.ts), including at least one where the same kind of reasoning is genuinely *sound*. Without those, players learn that the answer is always "trap".
+4. Add **Trap Hunt** items in [`src/puzzles/testItems.ts`](./src/puzzles/testItems.ts) — at least ten per skill, so the spaced-repetition ladder never repeats a scenario, plus at least one where the same kind of reasoning is genuinely *sound*. Without those, players learn that the answer is always "trap". `src/srs/select.test.ts` enforces both the floor and the sound share.
 5. Translate. `pnpm test` fails if any authored English string is missing from any of the nine dictionaries in `src/app/translations/`, or if the dictionaries drift out of key parity.
 6. If your puzzle introduces a **new data shape** (not success/total `"rates"`), add a member to the `PuzzleData` union in `schema.ts`, a renderer, a branch in `src/engine/charts/DataViewRenderer.tsx`, and a glyph in `share/ShareCard.tsx`. Existing puzzles are unaffected.
 

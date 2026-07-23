@@ -211,6 +211,76 @@ export interface BoardRow extends FriendEntry {
   name: string;
 }
 
+// ---- learned biases and Trap Hunt state ----
+const LEARNED_KEY = "confoundle:learned:v1";
+
+export function getLearned(): string[] {
+  try {
+    const raw = localStorage.getItem(LEARNED_KEY);
+    return raw ? (JSON.parse(raw) as string[]) : [];
+  } catch {
+    return [];
+  }
+}
+
+/** Called when a player reaches a puzzle's lesson: that bias is now "taught". */
+export function markLearned(skill: string): void {
+  try {
+    const current = getLearned();
+    if (!current.includes(skill)) {
+      localStorage.setItem(LEARNED_KEY, JSON.stringify([...current, skill]));
+    }
+  } catch {
+    // storage unavailable, degrade silently
+  }
+}
+
+const HUNT_KEY = "confoundle:hunt:v1";
+
+export interface HuntState {
+  lastCheckpointAt: number; // learned-count when the last checkpoint ran
+  lastReviewDay: number | null;
+  totalCorrect: number;
+  rounds: number;
+}
+
+const EMPTY_HUNT: HuntState = {
+  lastCheckpointAt: 0,
+  lastReviewDay: null,
+  totalCorrect: 0,
+  rounds: 0,
+};
+
+export function getHuntState(): HuntState {
+  try {
+    const raw = localStorage.getItem(HUNT_KEY);
+    return raw
+      ? { ...EMPTY_HUNT, ...(JSON.parse(raw) as Partial<HuntState>) }
+      : { ...EMPTY_HUNT };
+  } catch {
+    return { ...EMPTY_HUNT };
+  }
+}
+
+export function recordHunt(correct: number, learnedCount: number): void {
+  const s = getHuntState();
+  const next: HuntState = {
+    lastCheckpointAt: learnedCount,
+    lastReviewDay: dayNumber(todayISODate()),
+    totalCorrect: s.totalCorrect + correct,
+    rounds: s.rounds + 1,
+  };
+  try {
+    localStorage.setItem(HUNT_KEY, JSON.stringify(next));
+  } catch {
+    // storage unavailable, degrade silently
+  }
+}
+
+export function todayDayNumber(): number {
+  return dayNumber(todayISODate());
+}
+
 /** Today's board, ranked by score then streak. */
 export function getFriendsBoard(puzzleNo: number): BoardRow[] {
   const day = readFriends()[String(puzzleNo)] ?? {};

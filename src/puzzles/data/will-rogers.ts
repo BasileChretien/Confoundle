@@ -1,25 +1,26 @@
 import type { Puzzle } from "../schema";
 
 /**
- * The Will Rogers phenomenon (stage migration).
+ * Puzzle #6, the Will Rogers phenomenon, via Feinstein's lung cancer cohort.
  *
- * Structure: two cohorts of 200 lung cancer patients, split into an early and an
- * advanced stratum. The later cohort is ahead in BOTH strata yet behind overall,
- * because sharper imaging moved 40 borderline patients out of the early bucket
- * and into the advanced one. Only the counts are authored; every percentage in
- * the app is derived from them (see engine/charts/rates.ts).
+ * The counts are the real ones from Table 4 of Feinstein, Sosin & Wells (NEJM
+ * 1985): the SAME 131 patients treated in 1977, staged twice. Once using only
+ * the kind of information available to the older cohort, once using the new
+ * imaging. Same people, same outcomes, same 72 survivors, and yet every stage
+ * looks better under the new staging.
  *
- * Provenance note: the phenomenon, and the lung cancer setting, are Feinstein,
- * Sosin & Wells (NEJM 1985), cited below. Their stage-by-stage counts are not
- * openly available, so the 200-patient table here is a worked illustration of
- * the mechanism they described rather than their data. Every real-world figure
- * quoted in the lesson carries its own primary citation and was checked against
- * the source.
+ * Arithmetic checked against the paper: old 42+25+64 = 131 and 32+17+23 = 72;
+ * new 24+18+89 = 131 and 22+13+37 = 72. Both totals derive to 55 percent.
+ *
+ * The aggregate view is therefore a dead heat, which is the whole point, so
+ * bestGroupId returns null and no bar is crowned. The setup opens on the
+ * stratified view (the seductive "better everywhere") and the reveal shows the
+ * unchanged total.
  */
 export const willRogers: Puzzle = {
   schemaVersion: 1,
   id: "will-rogers-stage-migration",
-  slug: "will-rogers",
+  slug: "stage-migration",
   category: "statistical-reasoning",
   reasoningSkill: "will-rogers-phenomenon",
   difficulty: "hard",
@@ -28,59 +29,40 @@ export const willRogers: Puzzle = {
 
   setup: {
     headline: {
-      en: "Survival improved in every stage. So which group actually did better?",
+      en: "Better survival in every single stage. Did anyone actually live longer?",
     },
     framing: {
-      en: "Picture 200 lung cancer patients at one hospital, and another 200 treated there years later. In between, the hospital started scanning everyone with CT and bone scans on top of the chest X-ray it always did. The drugs and the surgery barely changed. Here is how many were alive at six months, split by how advanced the cancer was.",
+      en: "One group of 131 lung cancer patients, treated in 1977, sorted into stages twice. First using only the information older hospitals could gather, then again after new scans. Nobody was treated differently. Only the sorting changed.",
     },
-    question: {
-      en: "Counting all 200 patients in each group, which group was more likely to be alive at six months?",
-    },
+    question: { en: "Did these patients actually do better?" },
     data: {
       type: "rates",
       metricLabel: { en: "Six-month survival" },
       higherIsBetter: true,
       groups: [
         {
-          id: "before",
-          label: { en: "Earlier group, staged by chest X-ray" },
-          short: { en: "Earlier" },
+          id: "old",
+          label: { en: "Sorted the old way" },
+          short: { en: "Old" },
         },
         {
-          id: "after",
-          label: { en: "Later group, staged by X-ray plus CT and bone scan" },
-          short: { en: "Later" },
+          id: "new",
+          label: { en: "Sorted after the new scans" },
+          short: { en: "New" },
         },
       ],
       strata: [
-        { id: "early", label: { en: "Early stage" } },
-        { id: "advanced", label: { en: "Advanced stage" } },
+        { id: "i", label: { en: "Stage I" } },
+        { id: "ii", label: { en: "Stage II" } },
+        { id: "iii", label: { en: "Stage III" } },
       ],
       observations: [
-        {
-          groupId: "before",
-          stratumId: "early",
-          numerator: 96,
-          denominator: 120,
-        },
-        {
-          groupId: "before",
-          stratumId: "advanced",
-          numerator: 20,
-          denominator: 80,
-        },
-        {
-          groupId: "after",
-          stratumId: "early",
-          numerator: 68,
-          denominator: 80,
-        },
-        {
-          groupId: "after",
-          stratumId: "advanced",
-          numerator: 46,
-          denominator: 120,
-        },
+        { groupId: "old", stratumId: "i", numerator: 32, denominator: 42 },
+        { groupId: "old", stratumId: "ii", numerator: 17, denominator: 25 },
+        { groupId: "old", stratumId: "iii", numerator: 23, denominator: 64 },
+        { groupId: "new", stratumId: "i", numerator: 22, denominator: 24 },
+        { groupId: "new", stratumId: "ii", numerator: 13, denominator: 18 },
+        { groupId: "new", stratumId: "iii", numerator: 37, denominator: 89 },
       ],
     },
     initialView: { kind: "stratified" },
@@ -88,27 +70,34 @@ export const willRogers: Puzzle = {
 
   choices: [
     {
-      id: "after",
-      label: { en: "The later group" },
-      sublabel: { en: "ahead in both stages" },
+      id: "improved",
+      label: { en: "Yes, they did better" },
+      sublabel: { en: "every stage improved" },
       isCorrect: false,
       isIntuitiveTrap: true,
     },
     {
-      id: "before",
-      label: { en: "The earlier group" },
-      sublabel: { en: "behind in both stages" },
+      id: "unknowable",
+      label: { en: "There is no way to tell" },
+      sublabel: { en: "too little to go on" },
+      isCorrect: false,
+      isIntuitiveTrap: false,
+    },
+    {
+      id: "unchanged",
+      label: { en: "No, nothing changed" },
+      sublabel: { en: "only the labels moved" },
       isCorrect: true,
       isIntuitiveTrap: false,
     },
   ],
 
   reveal: {
-    headline: { en: "Ahead in both stages. Not ahead overall." },
-    mechanismLabel: { en: "What actually moved" },
-    mechanismName: { en: "Stage migration, the labels moved, not the patients" },
+    headline: { en: "Identical. Seventy two survivors either way." },
+    mechanismLabel: { en: "The migration" },
+    mechanismName: { en: "Patients moved between stages, and lifted both" },
     explanation: {
-      en: "The scans cured nobody. They found small, silent spread that a chest X-ray misses, so 40 patients who would once have been filed under early stage were filed under advanced instead. Those 40 were the frailest of the early group, so the early figure went up when they left. They were also the sturdiest of the advanced group, so the advanced figure went up when they arrived. Both stages improved by relabelling alone, and across all 200 patients nothing improved at all:",
+      en: "The new scans spotted spread that the old workup had missed, so patients were moved out of better stages into worse ones. Each of them was among the sickest in the stage they left, so that stage's average rose. Each was also among the healthiest in the stage they joined, so that average rose too. Every stage improved and not one person's outcome changed:",
     },
     view: { kind: "aggregate" },
   },
@@ -116,39 +105,39 @@ export const willRogers: Puzzle = {
   lesson: {
     skillName: { en: "The Will Rogers phenomenon" },
     takeaway: {
-      en: "Move the borderline cases out of the good group and into the bad one, and both groups' averages rise, even though not one person is better off.",
+      en: "Move members from one group into another and you can lift the average of every group at once, while the overall picture stays exactly the same.",
     },
     body: {
-      en: "Whenever results are reported group by group, ask whether the two sets of people were sorted into those groups by the same rule. A sharper test sorts more strictly, and stricter sorting flatters every group at once. The number that cannot be massaged this way is the one that covers everybody.",
+      en: "Whenever a category's average improves, ask whether the category still holds the same kind of members. Better detection quietly reshuffles who counts as mild and who counts as severe, and a reshuffle on its own can make every column look better.",
     },
     howItWorks: {
-      en: "Picture two buckets, one for mild cases and one for severe. The people sitting right on the boundary are the worst members of the mild bucket and the best members of the severe bucket. Move them across and you have taken the mild bucket's weakest members away, so its average rises, and you have handed the severe bucket its strongest members, so its average rises too. Nobody's health changed by a day. Better scanners perform exactly this move on their own, every time they catch spread that older tests missed, and so does any tightened definition or lowered threshold. That is why survival reported stage by stage cannot be compared across eras, or between two hospitals that scan at different rates: the stages themselves are not the same stages. The defences are simple. Look at everyone pooled together, and sort people by something the technology cannot shift, such as their symptoms.",
+      en: "Picture two buckets, one of good outcomes and one of bad. Take the worst items out of the good bucket and drop them into the bad one, where they are the best of a bad lot. The good bucket's average rises because its weakest members left. The bad bucket's average rises because it gained members better than its own. Both averages improve and nothing about any individual has changed. In medicine the reshuffling is done by better scans, which find disease that was always there but previously invisible. That is why survival by stage can improve across the board in a period when the treatments themselves did not get better, and it is why comparing stages across eras of different technology is treacherous.",
     },
     examples: [
       {
-        title: { en: "Lung cancer, the original case" },
+        title: { en: "The check that gave it away" },
         summary: {
-          en: "Researchers compared lung cancer patients first treated in 1977 with patients treated at the same institutions between 1953 and 1964. The newer patients had better six-month survival for the whole group and inside each of the three main TNM stages. The newer patients had also had a battery of new imaging tests, which revealed spread that had formerly gone unnoticed, so many who would once have been put in a good stage were now put in a bad one. Sorted instead by symptoms, a yardstick no scanner can shift, the two groups had similar survival. The authors named the effect after Will Rogers.",
+          en: "The same researchers sorted both eras of patients by their symptoms instead, a yardstick no scanner can shift. Judged that way the two groups survived at much the same rate, around 77 and 78 percent for those without symptoms, and 26 against 22 percent for the sickest. What had really changed was the mix, because the newer group held twice the proportion of the mildest patients.",
         },
         provenance: {
           source:
-            "Feinstein AR, Sosin DM, Wells CK. The Will Rogers phenomenon. Stage migration and new diagnostic techniques as a source of misleading statistics for survival in cancer. N Engl J Med. 1985;312(25):1604-1608.",
+            "Feinstein AR, Sosin DM, Wells CK. The Will Rogers phenomenon: stage migration and new diagnostic techniques as a source of misleading statistics for survival in cancer. N Engl J Med. 1985;312(25):1604-1608. (Survival and cohort composition by symptom stage.)",
           year: 1985,
           doi: "10.1056/NEJM198506203122504",
           url: "https://pubmed.ncbi.nlm.nih.gov/4000199/",
         },
       },
       {
-        title: { en: "The same trick, twenty years later" },
+        title: { en: "It happened again with PET" },
         summary: {
-          en: "As PET scanning spread through American hospitals, it happened again. Among lung cancer patients in a population registry, 1,914 of 4,941 were labelled stage IV in 1994 to 1998; in 1999 to 2004 it was 3,517 of 7,454. Survival inside the stages duly looked better: two-year survival for stage III went from 18% to 22%, and for stage IV from 6% to 8%. The authors called their paper the Will Rogers phenomenon revisited.",
+          en: "As PET scanning spread through American hospitals, lung cancer patients were reclassified all over again. The share labelled most advanced grew, and survival within the stages duly ticked up, two year survival moving from 18 to 22 percent in one stage and 6 to 8 percent in another. The authors called their paper the phenomenon revisited.",
         },
         provenance: {
           source:
             "Chee KG, Nguyen DV, Brown M, Gandara DR, Wun T, Lara PN. Positron emission tomography and improved survival in patients with lung cancer: the Will Rogers phenomenon revisited. Arch Intern Med. 2008;168(14):1541-1549.",
           year: 2008,
           doi: "10.1001/archinte.168.14.1541",
-          url: "https://pubmed.ncbi.nlm.nih.gov/18663166/",
+          url: "https://doi.org/10.1001/archinte.168.14.1541",
         },
       },
     ],
@@ -157,7 +146,7 @@ export const willRogers: Puzzle = {
   share: {
     title: { en: "The Will Rogers phenomenon, a reasoning trap." },
     explainer: {
-      en: "Take the weakest members of a good group and move them into the bad group. The good group's average goes up, because you removed its worst. The bad group's average goes up too, because you gave it your best. Both groups now look better and not a single person has changed. This happens for real every time a sharper scan or a stricter definition pushes borderline cases across a line, which is why \"survival improved at every stage\" can mean nothing improved at all.",
+      en: "Take the worst members of a good group and move them into a bad group. The good group's average rises, because its weakest ones left. The bad group's average rises too, because the newcomers are better than what it already had. Every group improves and nothing real has happened. It is how sharper scans can make survival look better in every stage of a disease while exactly as many people live and die.",
     },
     captions: {
       competitive: { en: "Caught it. Bet you can't." },
@@ -167,38 +156,14 @@ export const willRogers: Puzzle = {
 
   provenance: {
     source:
-      "Feinstein AR, Sosin DM, Wells CK. The Will Rogers phenomenon. Stage migration and new diagnostic techniques as a source of misleading statistics for survival in cancer. N Engl J Med. 1985;312(25):1604-1608.",
+      "Feinstein AR, Sosin DM, Wells CK. The Will Rogers phenomenon: stage migration and new diagnostic techniques as a source of misleading statistics for survival in cancer. N Engl J Med. 1985;312(25):1604-1608.",
     year: 1985,
     doi: "10.1056/NEJM198506203122504",
     url: "https://pubmed.ncbi.nlm.nih.gov/4000199/",
     note: {
-      en: "Feinstein and colleagues described exactly this effect: lung cancer patients treated in 1977 had better six-month survival than patients treated at the same institutions in 1953 to 1964, both overall and within each of the three main TNM stages, because new imaging pushed patients with newly visible spread out of the good stages and into the bad ones. The 200-patient table in this puzzle is a worked illustration of that mechanism; it is not data from their paper, whose stage-by-stage counts are not openly available. Every real-world figure quoted in the lesson carries its own citation and was checked against the source.",
+      en: "The counts are Table 4: the 1977 cohort of 131 patients staged twice, once on the data the older cohort had and once with the new imaging. Both stagings give 72 survivors, a six-month survival of 55 percent.",
     },
   },
 
   goDeeperUrl: "https://en.wikipedia.org/wiki/Will_Rogers_phenomenon",
 };
-
-/* -----------------------------------------------------------------------------
- * VERIFIED SOURCE DATA (Feinstein, Sosin & Wells, NEJM 1985;312(25):1604-1608,
- * Table 4). Read from the paper directly and arithmetic-checked. These replace
- * the illustrative figures above once the engine change below is made.
- *
- * The 1977 cohort (131 patients) staged two ways. Same patients, same outcomes:
- *
- *   Stage        old-data staging     new-data staging
- *   I            32/42   (76%)        22/24   (92%)
- *   II           17/25   (68%)        13/18   (72%)
- *   III          23/64   (36%)        37/89   (42%)
- *   Total        72/131  (55%)        72/131  (55%)
- *
- *   old: 42+25+64 = 131, 32+17+23 = 72.  new: 24+18+89 = 131, 22+13+37 = 72.
- *
- * Every stage improves; the whole is unchanged. That is the phenomenon.
- *
- * BLOCKER (engine, not data): the `rates` shape requires every choice id to
- * match a group id, i.e. the answer must be "which group wins". Will Rogers has
- * no winning group: the correct answer is "neither, nothing actually changed".
- * Registering this puzzle needs that superRefine rule relaxed (no renderer
- * appears to rely on the choice-to-group link), or a dedicated answer model.
- * -------------------------------------------------------------------------- */

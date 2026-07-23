@@ -57,10 +57,16 @@ export function bestGroupId(
   higherIsBetter: boolean,
 ): string | null {
   if (rates.length === 0) return null;
-  return rates.reduce((best, r) => {
-    const better = higherIsBetter ? r.rate > best.rate : r.rate < best.rate;
-    return better ? r : best;
-  }).groupId;
+  const best = rates.reduce((b, r) => {
+    const better = higherIsBetter ? r.rate > b.rate : r.rate < b.rate;
+    return better ? r : b;
+  });
+  // A tie has no winner. Marking one arbitrarily would be a lie, and some
+  // puzzles turn on the two totals being exactly equal.
+  const tied = rates.some(
+    (r) => r.groupId !== best.groupId && r.rate === best.rate,
+  );
+  return tied ? null : best.groupId;
 }
 
 export function formatPct(rate: number): string {

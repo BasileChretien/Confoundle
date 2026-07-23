@@ -324,16 +324,11 @@ export const Puzzle = z
         }
       }
 
-      // every choice id must reference a real group so the reveal can highlight it
-      p.choices.forEach((c, i) => {
-        if (!groupIds.has(c.id)) {
-          ctx.addIssue({
-            code: z.ZodIssueCode.custom,
-            path: ["choices", i, "id"],
-            message: `choice id "${c.id}" does not match any group id`,
-          });
-        }
-      });
+      // Choice ids deliberately need NOT name a group. Some paradoxes have no
+      // winning group: the Will Rogers phenomenon's honest answer is "nothing
+      // changed". Nothing in the renderers resolves a choice id to a group
+      // (the charts highlight via bestGroupId, computed from the data alone),
+      // so requiring it would only rule out valid puzzles.
     }
 
     if (p.setup.data.type === "frequencies") {

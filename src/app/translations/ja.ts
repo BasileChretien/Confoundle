@@ -849,4 +849,121 @@ export const ja: Record<string, string> = {
     "ある診療所が、自院の成績を全国の基準値と比較し、患者の病気の重さで調整したうえで、調整前の粗の数字と調整後の数字を、調整に用いた症例構成とあわせて並べて公表しています。",
   "Showing both figures and the mix behind them is the honest move. A reader can see how much of the difference was case mix and how much survived accounting for it, instead of being handed only the flattering one.":
     "両方の数字と、その背後にある構成を示すのが誠実なやり方です。読み手は、都合の良いほうだけを手渡されるのではなく、差のうちどれだけが症例構成によるもので、どれだけが考慮したあとも残ったのかを、自分で見て取れます。",
+
+  // ==== Length-time bias (puzzle #12, Mayo Lung Project) ====
+  "Screened men whose lung cancer was found died of it less often. Did the screening save them?":
+    "検診を受けた男性のうち肺がんが見つかった人は、その肺がんで亡くなる割合が低くなっていました。検診が彼らを救ったのでしょうか?",
+  "9,211 male smokers were randomly assigned either to chest x-rays and sputum tests every four months for six years, or to usual care, and followed for two decades. Among the men who were diagnosed with lung cancer, 65 percent of the intensively screened died of it, against 74 percent of the others.":
+    "9,211人の男性喫煙者を、6年間にわたり4か月ごとに胸部エックス線検査と喀痰検査を受ける群と、通常の診療を受ける群とに無作為に割り付け、20年にわたって追跡しました。肺がんと診断された男性のうち、集中的に検診を受けた群では65パーセントがその肺がんで亡くなったのに対し、それ以外の群では74パーセントでした。",
+  "Did the extra screening save lives?":
+    "上乗せされた検診は、命を救ったのでしょうか?",
+  "Died of lung cancer": "肺がんで死亡した割合",
+  "Screened every four months": "4か月ごとに検診",
+  Screened: "検診",
+  "Usual care": "通常の診療",
+  "Among the men diagnosed with lung cancer": "肺がんと診断された男性のうち",
+  "Among everyone in the trial": "試験に参加した全員のうち",
+  "Among the diagnosed": "診断された人のうち",
+  "Yes, fewer of them died of it": "はい、亡くなった人が少なくなりました",
+  "65% against 74%": "65%対74%",
+  "Too early to say": "判断するにはまだ早い",
+  "the follow-up is too short": "追跡期間が短すぎる",
+  "No, count everyone and it vanishes": "いいえ、全員を数えると消えます",
+  "the cases changed, not the deaths": "変わったのは症例であって、死亡ではない",
+  "Count everyone, and the screened arm did no better.":
+    "全員を数えると、検診群のほうが良かったわけではありませんでした。",
+  "Screening changed who counted as having cancer":
+    "検診は、誰ががんとして数えられるかを変えた",
+  "The screened men were diagnosed far more often, 206 against 160, in a trial that split them evenly. The extra cancers were not a random sample of the disease. A test applied every few months catches the slow-growing tumours, because slow ones sit in the detectable stage for years waiting to be found, while fast ones surface between visits. Slow tumours also do better whatever you do, and some would never have surfaced at all. Those cases join the pool of people with lung cancer and survive it, so the share dying falls. Nobody was saved:":
+    "人数を均等に分けた試験であるにもかかわらず、検診を受けた男性は206人対160人と、はるかに多く診断されていました。上乗せされたがんは、この病気から無作為に取り出した標本ではありません。数か月ごとに行われる検査は、進行の遅い腫瘍を捉えます。進行の遅いものは、見つけられるのを待ちながら発見可能な段階に何年もとどまるのに対し、進行の速いものは受診と受診のあいだに姿を現すからです。しかも進行の遅い腫瘍は、何をしようと経過が良く、なかには最後まで表に出ずに終わったはずのものもあります。そうした症例が肺がんを持つ人の集まりに加わり、そして生き延びるので、亡くなる人の割合は下がります。誰も救われてはいません。",
+  "Both ways of counting": "両方の数え方",
+  "Three effects travel together here and this trial cannot separate them: the slow cases are caught preferentially (length-time), the clock starts earlier for those caught (lead-time), and some tumours found would never have caused harm (overdiagnosis). All three flatter the diagnosed group and none of them postpones a death. The number that stayed honest is deaths among everyone randomised, and it did not fall.":
+    "ここでは3つの効果が連れ立って働いており、この試験ではそれらを切り分けられません。進行の遅い症例が優先的に捉えられること(長さバイアス)、捉えられた人では時計が早く動き出すこと(リードタイムバイアス)、そして見つかった腫瘍のなかには害を及ぼすことのなかったものがあること(過剰診断)です。3つはいずれも診断された群を実際より良く見せますが、どれ一つとして死を先延ばしにはしません。誠実なままだった数字は、無作為に割り付けられた全員のうちの死亡数であり、それは下がりませんでした。",
+  "Who became a case": "誰が症例になったのか",
+  "Length-time bias": "長さバイアス",
+  "Screening does not sample disease fairly. It catches the slow-growing kind preferentially, and the slow kind was always going to do better, so screen-detected cases flatter the test.":
+    "検診は、病気を公平に標本抽出しません。進行の遅い種類を優先的に捉えますが、進行の遅い種類はもともと経過が良いものでした。だから検診で見つかった症例は、検査を実際より良く見せるのです。",
+  "Whenever a screening programme is defended with how well its detected cases do, ask what kind of disease a periodic test can catch. A tumour that takes years to declare itself is available to be found on many visits; one that goes from nothing to symptoms in three months is available on almost none. The only fair question is whether deaths fall in everyone offered screening.":
+    "検診プログラムが、見つけた症例の経過の良さをもって擁護されているときはいつでも、定期的な検査がどんな種類の病気を捉えられるのかを問いましょう。自らを現すまでに何年もかかる腫瘍には、見つけてもらえる受診機会が何度もあります。何もない状態から3か月で症状に至る腫瘍には、その機会がほとんどありません。公平な問いはただ1つ、検診を提供された全員のなかで死亡が減るかどうかです。",
+  "Picture the same disease arriving in two speeds. Slow tumours spend years in the window where a test could find them but the patient feels nothing. Fast ones cross that window in weeks. Now sample the population every six months. You will find nearly all the slow ones and almost none of the fast ones, because the fast ones announce themselves between your visits. So the pile of screen-detected cases is loaded with indolent disease, and the pile of symptom-detected cases is loaded with aggressive disease, before treatment enters the story at all. Compare their outcomes and screening looks wonderful. At the extreme edge of this sits overdiagnosis: disease so slow it would never have troubled the person in their lifetime, which counts as a cancer found and cured while doing nothing but harm through the treatment. The defence is the same one that beats lead-time bias, and it is the reason screening programmes are judged the way they are: randomise who is invited, then count deaths in everyone invited, attended or not, diagnosed or not.":
+    "同じ病気が2つの速さで訪れるところを思い描いてください。進行の遅い腫瘍は、検査なら見つけられるのに患者本人は何も感じない、という窓のなかに何年もとどまります。進行の速い腫瘍は、その窓を数週間で通り抜けます。ここで、集団を6か月ごとに調べてみましょう。あなたは進行の遅いものをほぼすべて見つけ、進行の速いものはほとんど見つけられません。速いものは、受診と受診のあいだに自ら名乗り出るからです。だから検診で見つかった症例の山にはおとなしい病気が詰まり、症状で見つかった症例の山には勢いの強い病気が詰まります。治療がまだ物語に登場すらしていない段階で、そうなっているのです。両者の経過を比べれば、検診は見事なものに映ります。この延長線上の極端な端にあるのが過剰診断です。あまりに進行が遅く、その人の生涯を通じて一度も困らせることのなかったはずの病気であり、それが見つかって治ったがんとして数えられる一方で、治療を通じて害を及ぼす以外には何もしません。備えとなるのは、リードタイムバイアスを打ち破るのと同じものです。そして、検診プログラムがあのようなやり方で評価されるのも、そのためです。誰を招くかを無作為に決め、そのうえで、招かれた全員について死亡を数えるのです。実際に足を運んだかどうかも、診断されたかどうかも問わずに。",
+  "The trial's own explanation": "試験自身による説明",
+  "The authors did not attribute the gap to better treatment. They noted that similar mortality alongside better survival points to lesions of limited clinical relevance being found in the screened arm. Twenty years of follow-up did not rescue the result: deaths from lung cancer were 337 among 4,607 screened men and 303 among 4,585 others, a difference in the wrong direction and not statistically significant.":
+    "著者らは、この差を治療の良さによるものとは考えませんでした。死亡率がほぼ同じでありながら生存が良いという組み合わせは、検診を受けた群で臨床的な意味の乏しい病変が見つかっていることを示している、と指摘しています。20年の追跡でもこの結果は覆りませんでした。肺がんによる死亡は、検診を受けた男性4,607人のうち337人、それ以外の4,585人のうち303人で、差は望ましくない向きであり、統計的にも有意ではありませんでした。",
+  "Why screening is judged on deaths, not survival":
+    "検診が生存ではなく死亡で評価される理由",
+  "This is not a historical curiosity. National screening programmes are assessed on whether they lower deaths from the disease in the whole invited population, precisely because survival among detected cases can be lifted by three separate artefacts without a single life being extended. A programme that raises five-year survival and leaves mortality untouched has, on the evidence, done nothing except give more people the label.":
+    "これは歴史上の珍事ではありません。国の検診プログラムは、招かれた集団全体でその病気による死亡が減るかどうかで評価されます。見つかった症例のあいだの生存は、誰ひとり寿命が延びていなくても、3つの別々のみせかけの効果によって押し上げられうるからです。5年生存率を上げながら死亡率をまったく動かさないプログラムは、エビデンスに照らせば、より多くの人に病名を与えた以外に何もしていません。",
+  "Length-time bias, a reasoning trap.": "長さバイアス、推論の罠です。",
+  "A test you run every few months finds slow-growing disease far more easily than fast-growing disease, because slow disease sits there for years waiting to be found while fast disease erupts between visits. Slow disease also has a better outlook whatever anyone does. So the cases a screening programme catches are the gentle ones, and they do well, and the programme takes the credit. The only number that cannot be gamed this way is deaths in everyone offered screening, whether or not they attended.":
+    "数か月ごとに行う検査は、進行の速い病気より進行の遅い病気のほうを、はるかにたやすく見つけます。進行の遅い病気は見つけられるのを待ちながら何年もそこにとどまり、進行の速い病気は受診と受診のあいだに噴き出すからです。しかも進行の遅い病気は、誰が何をしようと見通しが良いのです。だから検診プログラムが捉える症例はおとなしいものばかりで、その人たちは経過が良く、手柄はプログラムのものになります。この手でごまかせない唯一の数字は、実際に足を運んだかどうかにかかわらず、検診を提供された全員のうちの死亡数です。",
+  "Table 3 prints the usual-care case count as 106, which is a typographic error; the correct figure is 160, and this puzzle uses 160. The paper says so itself six times over: the body text on page 1310, the Figure 2 curve label, Table 3's own percentages (119 of 160 printed as 74 percent, 156 of 160 as 98 percent), and the totals of Tables 4 and 5. With 106 the lung-cancer deaths alone would outnumber the cohort. Note also that this trial compared two screening intensities rather than screening against none, and that it cannot separate length-time bias from lead-time bias and overdiagnosis, which is why the lesson names all three.":
+    "表3は、通常の診療群の症例数を106と印刷していますが、これは誤植です。正しい数字は160であり、このパズルは160を用いています。論文自身が6か所でそう述べています。1310ページの本文、図2の曲線のラベル、表3自身のパーセント表示(160人中119人が74パーセント、160人中156人が98パーセントと印刷されています)、そして表4と表5の合計です。106であれば、肺がんによる死亡だけでコホートの人数を上回ってしまいます。また、この試験は検診と検診なしを比べたのではなく、2つの検診強度を比べたものであること、そして長さバイアスをリードタイムバイアスや過剰診断と切り分けられないことにも注意してください。レッスンが3つすべての名前を挙げているのは、そのためです。",
+
+  // ==== Publication bias (puzzle #13, twelve antidepressants) ====
+  "Read the journals and almost every trial of these drugs worked. How many actually did?":
+    "医学雑誌を読むと、これらの薬の試験はほぼすべてが成功しています。実際に成功したのは何件だったのでしょうか?",
+  "Twelve antidepressants, and every trial run to get them approved had to be registered with the American regulator before it began. That registry is the rare thing in medicine: a complete list, including the trials nobody ever wrote up. Go to the medical journals instead and you find 51 published trials, of which 48 read as positive.":
+    "12種類の抗うつ薬。その承認を得るために行われた試験は、開始前にアメリカの規制当局へ登録することが義務づけられていました。このレジストリは、医学ではまれなものです。誰も論文にしなかった試験まで含んだ、完全な一覧なのです。代わりに医学雑誌をあたると、公表された試験は51件で、そのうち48件が肯定的な結果として読めます。",
+  "Out of all 74 trials that were actually run, how many did the regulator judge positive?":
+    "実際に行われた74件の試験すべてのうち、規制当局が肯定的と判断したのは何件だったのでしょうか?",
+  "Trials that read as positive": "肯定的な結果として読める試験の割合",
+  "As the journals tell it": "医学雑誌が語るところでは",
+  Journals: "医学雑誌",
+  "As the full registry tells it": "レジストリ全体が語るところでは",
+  Registry: "レジストリ",
+  "Trials of twelve antidepressants": "12種類の抗うつ薬の試験",
+  "The published literature": "公表された文献",
+  "Nearly all of them": "ほぼすべて",
+  "the journals are the evidence": "医学雑誌こそがエビデンスだ",
+  "About two thirds": "約3分の2",
+  "some trials always fail": "失敗する試験は必ずいくらかある",
+  "38 of the 74": "74件のうち38件",
+  "Half. A coin flip, printed as a near-certainty.":
+    "半分です。コイン投げと変わらないものが、ほぼ確実なこととして活字になっていました。",
+  "The failures were filtered out on the way to the journals":
+    "失敗は、医学雑誌にたどり着くまでにふるい落とされた",
+  "The regulator judged 38 of the 74 trials positive and 36 not. Of those 36, twenty two were never published at all. Eleven more did reach print, but reading as a positive result. So a doctor searching the literature finds 48 positive trials out of 51 and concludes the case is overwhelming, when the complete record says it was close to even:":
+    "規制当局は、74件の試験のうち38件を肯定的、36件をそうではないと判断しました。その36件のうち、22件はまったく公表されませんでした。さらに11件は活字にはなったものの、肯定的な結果として読める形になっていました。そのため、文献を検索した医師は51件中48件が肯定的な試験だと知り、証拠は圧倒的だと結論づけます。完全な記録は、それがほぼ互角だったと語っているのにです。",
+  "Journals against the registry": "医学雑誌とレジストリの比較",
+  "Two of those judgements belong to different people, and it matters. Positive or negative was the regulator's own decision on the outcome each trial had promised to measure in advance. The reading that eleven publications conveyed a positive result was the study authors' assessment, not the regulator's, and they said so. What is not a matter of opinion is the twenty two that never appeared.":
+    "ここに出てくる判断のうち2つは、下した人が異なります。そしてその違いは重要です。肯定的か否定的かは、各試験が事前に測ると約束していた評価項目について、規制当局自身が下した判断でした。11件の公表論文が肯定的な結果を伝えているという読み取りは、規制当局ではなく研究の著者らによる評価であり、著者ら自身がそう明記しています。意見の分かれようがないのは、一度も現れなかった22件です。",
+  "What never reached print": "活字にならなかったもの",
+  "Publication bias": "出版バイアス",
+  "The published literature is not a sample of the research done. It is the research that someone chose to submit and someone chose to print, and success survives that filter far better than failure.":
+    "公表された文献は、行われた研究から取り出した標本ではありません。それは、誰かが投稿しようと選び、誰かが印刷しようと選んだ研究であり、そのふるいを生き延びる力は、失敗より成功のほうがはるかに強いのです。",
+  "This is why a registry matters more than it sounds. Requiring every trial to be declared before it starts creates the denominator, so the missing ones become countable instead of invisible. When you read a review, the question is not only what the studies found but whether you are looking at all of them.":
+    "レジストリが、聞こえ以上に重要なのはこのためです。すべての試験に開始前の届け出を義務づければ分母ができあがり、欠けているものは見えないままではなく、数えられるものになります。総説を読むときの問いは、研究が何を見いだしたかだけではありません。あなたがそのすべてを見ているのかどうか、でもあるのです。",
+  "Nothing here requires anyone to lie. A trial that finds nothing is duller to write up, harder to place, and commercially unwelcome, so it drifts to the bottom of the pile and quietly never gets finished. Repeat that across a field and the surviving literature is systematically sunnier than the research was. The effect compounds, because reviews and guidelines are built on what was published, so the gap is inherited by everything downstream and looks like accumulating evidence rather than a filter. Two things push back. The first is registration: declare the trial and its primary outcome before you start, and an unpublished result leaves a visible hole rather than no trace. The second is the funnel plot, which exploits the fact that small studies scatter widely and large ones cluster; if the small studies that should have landed on the disappointing side are missing, the scatter comes out lopsided. Neither fix works retrospectively on a literature that predates them, which is why the regulator's archive was the only way to answer this question at all.":
+    "ここでは、誰かが嘘をつく必要はまったくありません。何も見いだせなかった試験は、書くのが退屈で、載せてくれる雑誌を見つけるのが難しく、商業的にも歓迎されません。だから書類の山の底へ沈んでいき、ひっそりと最後まで仕上げられないまま終わります。それが一つの分野じゅうで繰り返されると、生き残った文献は、実際に行われた研究より体系的に明るいものになります。この効果は積み重なります。総説も診療ガイドラインも公表されたものの上に組み立てられるので、この隔たりは下流のすべてに受け継がれ、ふるいではなくエビデンスの蓄積のように見えてしまうからです。これに抗う手立てが2つあります。1つめは登録です。試験と、その主要評価項目を開始前に届け出ておけば、公表されなかった結果は、跡形もなく消えるのではなく、目に見える穴として残ります。2つめはファンネルプロットです。これは、小規模な研究は広くばらつき、大規模な研究は一点に集まるという性質を利用します。芳しくない側に落ちるはずだった小規模な研究が欠けていれば、ばらつきは左右非対称になって現れます。どちらの手立ても、それらより前に積み上がった文献にさかのぼって効くわけではありません。だからこそ、この問いに答える道は、規制当局の保管記録しかなかったのです。",
+  "The drugs also looked stronger than they were":
+    "薬は、実際より強く効くようにも見えていた",
+  "The same trials were pooled twice, once as the regulator held them and once as the journals reported them. Measured across the complete set the average benefit was 0.31 on a standardised scale; measured from the published literature alone it was 0.41, about a third larger. That is a standardised mean difference, not a share of patients helped, and the effect was not confined to one drug: every one of the twelve looked better in the journals, by between 11 and 69 percent.":
+    "同じ試験群を、2通りのやり方でメタ分析にかけました。1回は規制当局が保管していたとおりのデータで、もう1回は医学雑誌が報告したとおりのデータでです。完全なひとそろいで測ると、平均的な効果量は標準化された尺度で0.31でしたが、公表された文献だけから測ると0.41で、約3分の1大きくなりました。これは標準化平均差であって、効果があった患者の割合ではありません。しかもこの現象は1つの薬にとどまりませんでした。12種類のいずれもが医学雑誌のほうで良く見えており、その差は11から69パーセントに及びました。",
+  "It got better, which is the point": "状況は良くなった。そこが肝心なところ",
+  "The same team repeated the audit on four antidepressants approved between 2008 and 2013, after trial registration had become the norm. This time all 15 positive trials were reported transparently, and of the 15 negative ones 6 went unpublished and 2 were reported as positive. Still imperfect, and still worth knowing about, but the inflation in apparent effect had roughly halved. Publication bias is not a law of nature; it responds to rules about declaring trials in advance.":
+    "同じ研究チームは、試験の登録が当たり前になったあとの2008年から2013年に承認された4種類の抗うつ薬について、同じ点検を繰り返しました。今回は、肯定的な15件の試験がすべて透明性のある形で報告され、否定的な15件のうち6件が未公表、2件が肯定的な結果として報告されていました。依然として完璧ではなく、依然として知っておく価値はありますが、見かけ上の効果の水増しはおよそ半分になっていました。出版バイアスは自然の法則ではありません。試験を事前に届け出るという決まりに、きちんと反応するのです。",
+  "Publication bias, a reasoning trap.": "出版バイアス、推論の罠です。",
+  "Search the medical literature on a drug and you are not seeing the research that was done. You are seeing the research that got written up and accepted, and studies that found something clear survive that filter much better than studies that found nothing. For one class of drugs the regulator's complete archive showed about half the trials were positive, while the journals showed nearly all of them. Nobody had to lie for that to happen. The disappointing ones simply never got finished.":
+    "ある薬について医学文献を検索しても、あなたが見ているのは、行われた研究ではありません。論文にまとめられ、受理された研究です。そして、はっきりした結果が出た研究は、何も出なかった研究より、そのふるいをはるかによく生き延びます。ある薬効群では、規制当局の完全な保管記録は試験の約半分が肯定的だったと示していたのに、医学雑誌ではほぼすべてが肯定的に見えていました。そうなるために、誰も嘘をつく必要はありませんでした。芳しくない試験は、ただ最後まで仕上げられなかっただけなのです。",
+  "Three points of care. The positive or negative verdict on each trial is the regulator's own, on the outcome the trial specified in advance; the label questionable, and the reading that eleven publications conveyed a positive result, are the study authors' judgements and the paper says so. The published-trial figure of 48 of 51 is the sum of two printed counts, 37 and 11, rather than a single printed number. And the authors note that they excluded articles covering several studies at once, so they probably counted a few trials as unpublished that were technically published, which makes 22 and 23 upper bounds.":
+    "注意すべき点が3つあります。各試験が肯定的か否定的かという判定は、その試験が事前に定めた評価項目について、規制当局自身が下したものです。一方、「疑わしい」という区分と、11件の公表論文が肯定的な結果を伝えているという読み取りは、研究の著者らによる判断であり、論文にもそう書かれています。公表された試験の51件中48件という数字は、印刷されている2つの数、37と11の合計であって、1つの数として印刷されているものではありません。また著者らは、複数の研究を一度に扱った論文を除外したと述べており、そのため、技術的には公表されていた試験をいくつか未公表として数えた可能性があります。したがって22と23は上限値です。",
+
+  // ---- Trap Hunt test items (publication bias, length-time bias) ----
+  "A review gathers every published trial of a treatment it can find. Eleven of the thirteen are positive, and it concludes the treatment works. The review does not say how many trials of the treatment were ever started.":
+    "ある総説が、その治療について見つけられる限りの公表された試験を集めました。13件のうち11件が肯定的で、総説はその治療は効くと結論づけています。この総説は、その治療の試験がこれまでに何件始められたのかについては述べていません。",
+  "Searching the literature finds the studies that reached print, not the studies that were run. Without knowing how many were started, there is no way to tell whether two disappointing trials is the whole story or the visible corner of it.":
+    "文献検索で見つかるのは活字になった研究であって、行われた研究ではありません。何件が始められたのかがわからなければ、芳しくない試験が2件というのが全体の姿なのか、それとも見えている一角にすぎないのかを、判断する術はありません。",
+  "A researcher runs a study that finds nothing, decides it is not interesting enough to write up, and moves on to the next project. Several colleagues in the same field do the same thing that year.":
+    "ある研究者が、何も見いだせなかった研究を行い、論文にするほど面白くはないと判断して、次の課題へ移りました。同じ分野の複数の同僚も、その年に同じことをしました。",
+  "Nobody here has done anything dishonest, and that is exactly the point. The filter is made of ordinary decisions about what is worth the effort, and it still leaves the published record systematically sunnier than the research was.":
+    "ここでは誰ひとり不誠実なことはしておらず、まさにそこが肝心なところです。このふるいは、何に手間をかける価値があるかという、ごく当たり前の判断でできています。それでもなお、公表された記録は、実際に行われた研究より体系的に明るいものになってしまうのです。",
+  "A clinic reports that men whose cancer was picked up by its regular screening programme are far more likely to still be alive ten years on than men who came in with symptoms. It concludes that screening works.":
+    "ある診療所が、自院の定期的な検診プログラムでがんを拾い上げられた男性は、症状があって受診した男性よりも、10年後になお生存している割合がはるかに高いと報告しています。そして、検診は効いていると結論づけました。",
+  "A test run at intervals catches slow tumours easily and fast ones hardly at all, because fast ones surface between visits. So the screen-detected group is loaded with the gentle kind of disease before treatment is even considered.":
+    "一定の間隔で行われる検査は、進行の遅い腫瘍をたやすく捉える一方、進行の速い腫瘍はほとんど捉えられません。速いものは受診と受診のあいだに姿を現すからです。だから検診で見つかった群には、治療を考えるより前の段階で、おとなしい種類の病気が詰まっているのです。",
+  "A new scan finds three times as many cases of a cancer as were previously diagnosed in the same population, and the people it finds do very well. Deaths from that cancer in the population are unchanged.":
+    "新しい画像検査が、同じ集団でこれまで診断されていたがんの3倍の症例を見つけ、見つかった人たちの経過はきわめて良好です。その集団におけるそのがんによる死亡は、変わっていません。",
+  "More cases found, the same number of deaths, and excellent outcomes among the extra cases is the signature of finding disease that was never going to cause harm. The survival figures improve because the denominator filled up with people who were never in danger.":
+    "見つかる症例は増え、死亡数は同じで、上乗せされた症例の経過がきわめて良い。これは、そもそも害を及ぼすことのなかった病気を見つけていることの特徴です。生存の数字が良くなるのは、はじめから危険のなかった人たちで分母が埋まったからです。",
 };

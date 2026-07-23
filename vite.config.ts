@@ -12,6 +12,20 @@ const singleFile = process.env.SINGLEFILE === "1";
 const pwa = VitePWA({
   registerType: "autoUpdate",
   includeAssets: ["favicon.svg"],
+  workbox: {
+    // The bundle crossed workbox's 2 MiB precache default once the tenth
+    // language landed: every dictionary is imported eagerly by
+    // app/translations/index.ts, so a reader in France downloads Bengali,
+    // Arabic, Hindi, Japanese, Chinese and Russian too.
+    //
+    // Raising the ceiling keeps the app installable and fully offline, which
+    // is the property that matters, but it is a stopgap and not the fix. The
+    // fix is to load each dictionary on demand, which needs the locale
+    // resolved before first paint (or an accepted flash of English), so it is
+    // a real change rather than a config tweak. Revisit before adding an
+    // eleventh language.
+    maximumFileSizeToCacheInBytes: 4 * 1024 * 1024,
+  },
   manifest: {
     name: "Confoundle",
     short_name: "Confoundle",

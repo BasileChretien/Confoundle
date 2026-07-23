@@ -852,4 +852,119 @@ export const zh: Record<string, string> = {
     "一家诊所把自己的结果与全国基准作比较，按患者病情的严重程度做了校正，并把粗数字和校正后的数字并排公布，同时公布了它据以校正的病例构成。",
   "Showing both figures and the mix behind them is the honest move. A reader can see how much of the difference was case mix and how much survived accounting for it, instead of being handed only the flattering one.":
     "把两个数字以及它们背后的病例构成都摆出来，才是诚实的做法。读者能看出差异中有多少来自病例构成，又有多少在把病例构成考虑进去之后依然存在，而不是只拿到那个好看的数字。",
+
+  // ==== Length-time bias (puzzle #12, Mayo Lung Project) ====
+  "Screened men whose lung cancer was found died of it less often. Did the screening save them?":
+    "接受筛查的男性中，被查出肺癌的人死于肺癌的比例更低。是筛查救了他们吗？",
+  "9,211 male smokers were randomly assigned either to chest x-rays and sputum tests every four months for six years, or to usual care, and followed for two decades. Among the men who were diagnosed with lung cancer, 65 percent of the intensively screened died of it, against 74 percent of the others.":
+    "9,211 名男性吸烟者被随机分配到两组：一组在六年里每四个月做一次胸部 X 光和痰液检查，另一组接受常规照护，两组都随访了二十年。在被诊断出肺癌的男性中，接受高强度筛查的人有 65% 死于肺癌，另一组是 74%。",
+  "Did the extra screening save lives?": "这些额外的筛查挽救了生命吗？",
+  "Died of lung cancer": "死于肺癌",
+  "Screened every four months": "每四个月筛查一次",
+  Screened: "筛查组",
+  "Usual care": "常规照护",
+  "Among the men diagnosed with lung cancer": "在被诊断出肺癌的男性中",
+  "Among everyone in the trial": "在试验中的所有人当中",
+  "Among the diagnosed": "确诊者当中",
+  "Yes, fewer of them died of it": "是的，他们当中死于肺癌的人更少",
+  "65% against 74%": "65% 对 74%",
+  "Too early to say": "现在下结论还太早",
+  "the follow-up is too short": "随访时间太短",
+  "No, count everyone and it vanishes": "不，把所有人都算进来，它就消失了",
+  "the cases changed, not the deaths": "变的是病例，不是死亡",
+  "Count everyone, and the screened arm did no better.":
+    "把所有人都算进来，筛查组并没有更好。",
+  "Screening changed who counted as having cancer": "筛查改变了谁被算作癌症患者",
+  "The screened men were diagnosed far more often, 206 against 160, in a trial that split them evenly. The extra cancers were not a random sample of the disease. A test applied every few months catches the slow-growing tumours, because slow ones sit in the detectable stage for years waiting to be found, while fast ones surface between visits. Slow tumours also do better whatever you do, and some would never have surfaced at all. Those cases join the pool of people with lung cancer and survive it, so the share dying falls. Nobody was saved:":
+    "接受筛查的男性被诊断出肺癌的人数多得多，206 例对 160 例，而这项试验把人数平均分成了两组。多出来的那些癌症并不是这种疾病的随机样本。每隔几个月做一次的检查，查出的是生长缓慢的肿瘤，因为长得慢的病灶会在可被查出的阶段停留数年，等着被发现，而长得快的则在两次检查之间冒出来。生长缓慢的肿瘤无论你做什么，预后本来就更好，其中有些甚至永远不会显露出来。这些病例加入了肺癌患者的行列，并且活了下来，于是死亡的比例下降了。没有任何人因此获救：",
+  "Both ways of counting": "两种统计方式",
+  "Three effects travel together here and this trial cannot separate them: the slow cases are caught preferentially (length-time), the clock starts earlier for those caught (lead-time), and some tumours found would never have caused harm (overdiagnosis). All three flatter the diagnosed group and none of them postpones a death. The number that stayed honest is deaths among everyone randomised, and it did not fall.":
+    "这里有三种效应同时起作用，而这项试验无法把它们分开：生长缓慢的病例被优先查出（病程长短），被查出的人计时起点提前（领先时间），还有一些查出的肿瘤本来永远不会造成危害（过度诊断）。这三者都美化了确诊人群，却没有一个能把死亡推迟。始终诚实的那个数字，是所有随机分组者当中的死亡人数，而它并没有下降。",
+  "Who became a case": "谁成了病例",
+  "Length-time bias": "病程长短偏倚",
+  "Screening does not sample disease fairly. It catches the slow-growing kind preferentially, and the slow kind was always going to do better, so screen-detected cases flatter the test.":
+    "筛查并不是对疾病的公平抽样。它优先查出生长缓慢的那一类，而长得慢的那一类本来预后就更好，于是经筛查发现的病例美化了这项检查。",
+  "Whenever a screening programme is defended with how well its detected cases do, ask what kind of disease a periodic test can catch. A tumour that takes years to declare itself is available to be found on many visits; one that goes from nothing to symptoms in three months is available on almost none. The only fair question is whether deaths fall in everyone offered screening.":
+    "每当有人用被查出的病例结局有多好来为一个筛查项目辩护时，都要问一问：定期做的检查究竟能查到什么样的疾病。一个要花好几年才显露出来的肿瘤，在很多次检查中都有被发现的机会；而一个三个月内就从无到有、直接出现症状的肿瘤，几乎在任何一次检查中都碰不上。唯一公平的问题是：在所有被提供筛查的人当中，死亡人数有没有下降。",
+  "Picture the same disease arriving in two speeds. Slow tumours spend years in the window where a test could find them but the patient feels nothing. Fast ones cross that window in weeks. Now sample the population every six months. You will find nearly all the slow ones and almost none of the fast ones, because the fast ones announce themselves between your visits. So the pile of screen-detected cases is loaded with indolent disease, and the pile of symptom-detected cases is loaded with aggressive disease, before treatment enters the story at all. Compare their outcomes and screening looks wonderful. At the extreme edge of this sits overdiagnosis: disease so slow it would never have troubled the person in their lifetime, which counts as a cancer found and cured while doing nothing but harm through the treatment. The defence is the same one that beats lead-time bias, and it is the reason screening programmes are judged the way they are: randomise who is invited, then count deaths in everyone invited, attended or not, diagnosed or not.":
+    "想象同一种疾病以两种速度到来。生长缓慢的肿瘤会有好几年停留在这样一个窗口里：检查已经能查出它，患者却毫无感觉。生长迅速的肿瘤几周之内就穿过了这个窗口。现在每六个月对人群抽查一次。你几乎会查出所有长得慢的，却几乎一个长得快的都查不到，因为长得快的会在两次检查之间自己冒出来。于是，经筛查发现的那一堆病例装满了惰性疾病，因症状发现的那一堆装满了侵袭性疾病，而这一切发生在治疗登场之前。比较两者的结局，筛查看上去妙极了。这条路的极端一端坐着过度诊断：疾病慢到在这个人有生之年从不会给他添麻烦，却被算作一例查出并治愈的癌症，而治疗除了带来伤害什么也没做。防身之道与击败领先时间偏倚的那一条相同，这也是筛查项目为什么要按现在这种方式来评判：随机决定邀请谁，然后统计所有受邀者当中的死亡，无论他们有没有应邀前往，有没有被确诊。",
+  "The trial's own explanation": "试验自己的解释",
+  "The authors did not attribute the gap to better treatment. They noted that similar mortality alongside better survival points to lesions of limited clinical relevance being found in the screened arm. Twenty years of follow-up did not rescue the result: deaths from lung cancer were 337 among 4,607 screened men and 303 among 4,585 others, a difference in the wrong direction and not statistically significant.":
+    "作者并没有把这道差距归功于更好的治疗。他们指出，死亡率相近而生存率更好，说明筛查组查出了一些临床意义有限的病灶。二十年的随访也没能挽救这个结果：肺癌死亡在 4,607 名接受筛查的男性中为 337 例，在另外 4,585 人中为 303 例，差异的方向是反的，而且没有统计学意义。",
+  "Why screening is judged on deaths, not survival": "为什么筛查要看死亡，而不是生存",
+  "This is not a historical curiosity. National screening programmes are assessed on whether they lower deaths from the disease in the whole invited population, precisely because survival among detected cases can be lifted by three separate artefacts without a single life being extended. A programme that raises five-year survival and leaves mortality untouched has, on the evidence, done nothing except give more people the label.":
+    "这不是一桩历史趣闻。全国性的筛查项目要看的是它能否降低整个受邀人群中死于该病的人数，原因恰恰在于：被查出的病例的生存率可以被三种各自独立的假象抬高，而没有一条生命因此延长。一个提高了五年生存率、却让死亡率纹丝不动的项目，从证据上看，除了给更多人贴上标签之外什么也没做。",
+  "Length-time bias, a reasoning trap.": "病程长短偏倚，一个推理陷阱。",
+  "A test you run every few months finds slow-growing disease far more easily than fast-growing disease, because slow disease sits there for years waiting to be found while fast disease erupts between visits. Slow disease also has a better outlook whatever anyone does. So the cases a screening programme catches are the gentle ones, and they do well, and the programme takes the credit. The only number that cannot be gamed this way is deaths in everyone offered screening, whether or not they attended.":
+    "每隔几个月做一次的检查，查出生长缓慢的疾病要比查出生长迅速的疾病容易得多，因为长得慢的病会在那里停留数年等着被发现，而长得快的病在两次检查之间就爆发了。长得慢的病无论谁做什么，预后本来也更好。所以筛查项目抓到的都是温和的那一类病例，它们结局良好，功劳却记在了项目头上。唯一无法被这样操弄的数字，是所有被提供筛查的人当中的死亡人数，不论他们有没有真的去做。",
+  "Table 3 prints the usual-care case count as 106, which is a typographic error; the correct figure is 160, and this puzzle uses 160. The paper says so itself six times over: the body text on page 1310, the Figure 2 curve label, Table 3's own percentages (119 of 160 printed as 74 percent, 156 of 160 as 98 percent), and the totals of Tables 4 and 5. With 106 the lung-cancer deaths alone would outnumber the cohort. Note also that this trial compared two screening intensities rather than screening against none, and that it cannot separate length-time bias from lead-time bias and overdiagnosis, which is why the lesson names all three.":
+    "表 3 把常规照护组的病例数印成了 106，这是一处排印错误；正确的数字是 160，本谜题采用 160。论文自己就有六处佐证：第 1310 页的正文、图 2 的曲线标签、表 3 自己算出的百分比（160 例中的 119 例印为 74%，160 例中的 156 例印为 98%），以及表 4 和表 5 的合计。若按 106 计算，仅肺癌死亡人数就会超过整个队列。另外要注意，这项试验比较的是两种筛查强度，而不是筛查与完全不筛查；而且它无法把病程长短偏倚与领先时间偏倚和过度诊断分开，这正是这一课把三者一并点名的原因。",
+
+  // ==== Publication bias (puzzle #13, antidepressant trials) ====
+  "Read the journals and almost every trial of these drugs worked. How many actually did?":
+    "翻看期刊，这些药几乎每一项试验都成功了。真正成功的到底有多少项？",
+  "Twelve antidepressants, and every trial run to get them approved had to be registered with the American regulator before it began. That registry is the rare thing in medicine: a complete list, including the trials nobody ever wrote up. Go to the medical journals instead and you find 51 published trials, of which 48 read as positive.":
+    "十二种抗抑郁药，为让它们获批而做的每一项试验，都必须在开始之前向美国的监管机构注册。那个注册库是医学中难得一见的东西：一份完整的清单，连没有任何人写成论文的试验也在其中。改去翻医学期刊，你会看到 51 项已发表的试验，其中 48 项读起来是阳性结果。",
+  "Out of all 74 trials that were actually run, how many did the regulator judge positive?":
+    "在实际做过的全部 74 项试验中，监管机构判定为阳性的有多少项？",
+  "Trials that read as positive": "读起来是阳性的试验",
+  "As the journals tell it": "按期刊的说法",
+  Journals: "期刊",
+  "As the full registry tells it": "按完整注册库的说法",
+  Registry: "注册库",
+  "Trials of twelve antidepressants": "十二种抗抑郁药的试验",
+  "The published literature": "已发表的文献",
+  "Nearly all of them": "几乎全部",
+  "the journals are the evidence": "期刊就是证据",
+  "About two thirds": "大约三分之二",
+  "some trials always fail": "总有一些试验会失败",
+  "38 of the 74": "74 项中的 38 项",
+  "Half. A coin flip, printed as a near-certainty.":
+    "一半。一次抛硬币，却被印成了几乎板上钉钉。",
+  "The failures were filtered out on the way to the journals":
+    "失败的试验在通往期刊的路上被筛掉了",
+  "The regulator judged 38 of the 74 trials positive and 36 not. Of those 36, twenty two were never published at all. Eleven more did reach print, but reading as a positive result. So a doctor searching the literature finds 48 positive trials out of 51 and concludes the case is overwhelming, when the complete record says it was close to even:":
+    "监管机构判定 74 项试验中有 38 项为阳性，36 项不是。那 36 项里，有 22 项根本没有发表。另有 11 项确实印了出来，但读起来是阳性结果。于是，一位检索文献的医生看到的是 51 项试验里有 48 项阳性，从而断定证据压倒性地充分，而完整的记录说的却是双方几乎势均力敌：",
+  "Journals against the registry": "期刊对注册库",
+  "Two of those judgements belong to different people, and it matters. Positive or negative was the regulator's own decision on the outcome each trial had promised to measure in advance. The reading that eleven publications conveyed a positive result was the study authors' assessment, not the regulator's, and they said so. What is not a matter of opinion is the twenty two that never appeared.":
+    "这里有两处判断出自不同的人，而这一点很重要。阳性还是阴性，是监管机构自己就每项试验事先承诺要测量的那个结局作出的裁定。而 11 篇发表的论文读起来传达了阳性结果，这是研究作者的评估，不是监管机构的，他们自己也这样说明了。不属于见仁见智的，是那 22 项从未出现过的试验。",
+  "What never reached print": "从未印出来的那些",
+  "Publication bias": "发表偏倚",
+  "The published literature is not a sample of the research done. It is the research that someone chose to submit and someone chose to print, and success survives that filter far better than failure.":
+    "已发表的文献并不是已完成研究的一份样本。它是有人选择投出、又有人选择刊印的那部分研究，而在这道筛选面前，成功活下来的机会远大于失败。",
+  "This is why a registry matters more than it sounds. Requiring every trial to be declared before it starts creates the denominator, so the missing ones become countable instead of invisible. When you read a review, the question is not only what the studies found but whether you are looking at all of them.":
+    "这就是为什么注册库的分量比听上去更重。要求每一项试验在开始之前都申报，等于造出了分母，于是缺失的那些从隐形变成了可数。当你读一篇综述时，要问的不只是这些研究发现了什么，还有你看到的是不是它们的全部。",
+  "Nothing here requires anyone to lie. A trial that finds nothing is duller to write up, harder to place, and commercially unwelcome, so it drifts to the bottom of the pile and quietly never gets finished. Repeat that across a field and the surviving literature is systematically sunnier than the research was. The effect compounds, because reviews and guidelines are built on what was published, so the gap is inherited by everything downstream and looks like accumulating evidence rather than a filter. Two things push back. The first is registration: declare the trial and its primary outcome before you start, and an unpublished result leaves a visible hole rather than no trace. The second is the funnel plot, which exploits the fact that small studies scatter widely and large ones cluster; if the small studies that should have landed on the disappointing side are missing, the scatter comes out lopsided. Neither fix works retrospectively on a literature that predates them, which is why the regulator's archive was the only way to answer this question at all.":
+    "这里没有哪一步需要谁去撒谎。一项什么也没发现的试验，写起来更乏味，更难找到地方发表，商业上也不受欢迎，于是它慢慢沉到那摞纸的最底下，悄无声息地永远没有写完。把这件事在一个领域里重复许多遍，存活下来的文献就系统性地比真实的研究更明亮。这种效应还会叠加，因为综述和指南都建立在已发表的东西之上，于是这道缺口被下游的一切继承下来，看上去像是不断积累的证据，而不是一道筛选。有两样东西可以对抗它。第一样是注册：在开始之前就申报试验及其主要结局，未发表的结果就会留下一个看得见的窟窿，而不是不留痕迹。第二样是漏斗图，它利用了这样一个事实：小型研究散得很开，大型研究则聚在一起；如果本该落在令人失望那一侧的小型研究不见了，散点就会偏向一边。这两种办法对早于它们出现的文献都无法追溯生效，这正是为什么监管机构的档案是回答这个问题的唯一途径。",
+  "The drugs also looked stronger than they were": "这些药看上去也比实际更有效",
+  "The same trials were pooled twice, once as the regulator held them and once as the journals reported them. Measured across the complete set the average benefit was 0.31 on a standardised scale; measured from the published literature alone it was 0.41, about a third larger. That is a standardised mean difference, not a share of patients helped, and the effect was not confined to one drug: every one of the twelve looked better in the journals, by between 11 and 69 percent.":
+    "同样这些试验被做了两次荟萃分析，一次用监管机构掌握的数据，一次用期刊报道的数据。按完整的一整套试验来算，平均获益在标准化量尺上是 0.31；只按已发表的文献来算则是 0.41，大了约三分之一。这是一个标准化均数差，而不是获益患者所占的比例；而且这种效应不限于某一种药：十二种药在期刊里全都显得更好，幅度在 11% 到 69% 之间。",
+  "It got better, which is the point": "情况后来变好了，而这正是重点",
+  "The same team repeated the audit on four antidepressants approved between 2008 and 2013, after trial registration had become the norm. This time all 15 positive trials were reported transparently, and of the 15 negative ones 6 went unpublished and 2 were reported as positive. Still imperfect, and still worth knowing about, but the inflation in apparent effect had roughly halved. Publication bias is not a law of nature; it responds to rules about declaring trials in advance.":
+    "同一个团队又对 2008 年至 2013 年间获批的四种抗抑郁药做了同样的核查，那时试验注册已经成为惯例。这一次，15 项阳性试验全部得到了透明的报告；15 项阴性试验中，有 6 项未发表，2 项被报告为阳性。仍不完美，也仍然值得留意，但表观效应量的膨胀大约减半了。发表偏倚不是一条自然法则，它会随着事先申报试验的规则而改变。",
+  "Publication bias, a reasoning trap.": "发表偏倚，一个推理陷阱。",
+  "Search the medical literature on a drug and you are not seeing the research that was done. You are seeing the research that got written up and accepted, and studies that found something clear survive that filter much better than studies that found nothing. For one class of drugs the regulator's complete archive showed about half the trials were positive, while the journals showed nearly all of them. Nobody had to lie for that to happen. The disappointing ones simply never got finished.":
+    "检索一种药的医学文献，你看到的并不是已经做过的研究。你看到的是被写成论文并被接收的那部分研究，而发现了明确结果的研究，比什么也没发现的研究更容易通过这道筛选。对某一类药来说，监管机构完整的档案显示大约一半的试验是阳性的，期刊里却几乎全是阳性。这一切发生并不需要任何人撒谎。那些令人失望的试验，只是从来没有被写完。",
+  "Three points of care. The positive or negative verdict on each trial is the regulator's own, on the outcome the trial specified in advance; the label questionable, and the reading that eleven publications conveyed a positive result, are the study authors' judgements and the paper says so. The published-trial figure of 48 of 51 is the sum of two printed counts, 37 and 11, rather than a single printed number. And the authors note that they excluded articles covering several studies at once, so they probably counted a few trials as unpublished that were technically published, which makes 22 and 23 upper bounds.":
+    "有三点需要留意。每项试验阳性还是阴性的裁定，是监管机构自己就该试验事先指定的结局作出的；而“存疑”这个标签，以及 11 篇发表的论文读起来传达了阳性结果这一判读，都是研究作者的判断，论文自己也这样说明了。已发表试验 51 项中 48 项这个数字，是两个印出来的计数 37 和 11 相加得到的，而不是某个单独印出来的数字。另外，作者说明他们排除了一次涵盖多项研究的文章，所以他们大概把少数几项技术上已经发表的试验算成了未发表，这使得 22 和 23 都是上限。",
+
+  // Trap Hunt items for publication bias
+  "A review gathers every published trial of a treatment it can find. Eleven of the thirteen are positive, and it concludes the treatment works. The review does not say how many trials of the treatment were ever started.":
+    "一篇综述收集了它能找到的、关于某种治疗的全部已发表试验。13 项中有 11 项是阳性的，综述据此得出结论：这种治疗有效。综述没有说这种治疗一共启动过多少项试验。",
+  "Searching the literature finds the studies that reached print, not the studies that were run. Without knowing how many were started, there is no way to tell whether two disappointing trials is the whole story or the visible corner of it.":
+    "检索文献找到的是印出来的研究，而不是做过的研究。不知道一共启动了多少项，就没法判断两项令人失望的试验是故事的全部，还是它露出来的一角。",
+  "A researcher runs a study that finds nothing, decides it is not interesting enough to write up, and moves on to the next project. Several colleagues in the same field do the same thing that year.":
+    "一位研究者做了一项研究，什么也没发现，觉得不够有意思，不值得写成论文，就转去做下一个课题。同一年里，这个领域的好几位同行也做了同样的事。",
+  "Nobody here has done anything dishonest, and that is exactly the point. The filter is made of ordinary decisions about what is worth the effort, and it still leaves the published record systematically sunnier than the research was.":
+    "这里没有任何人做了不诚实的事，而这恰恰是重点。这道筛选是由一个个关于什么值得花力气的普通决定构成的，它却仍然让已发表的记录系统性地比真实的研究更明亮。",
+
+  // Trap Hunt items for length-time bias and overdiagnosis
+  "A clinic reports that men whose cancer was picked up by its regular screening programme are far more likely to still be alive ten years on than men who came in with symptoms. It concludes that screening works.":
+    "一家诊所报告说，癌症是通过它的定期筛查项目查出来的男性，十年后仍然在世的比例远高于因症状前来就诊的男性。诊所据此得出结论：筛查是有效的。",
+  "A test run at intervals catches slow tumours easily and fast ones hardly at all, because fast ones surface between visits. So the screen-detected group is loaded with the gentle kind of disease before treatment is even considered.":
+    "定期做的检查很容易查出生长缓慢的肿瘤，却几乎查不到生长迅速的，因为长得快的会在两次检查之间冒出来。所以在还没考虑治疗之前，经筛查发现的那一组就已经装满了温和的那一类疾病。",
+  "A new scan finds three times as many cases of a cancer as were previously diagnosed in the same population, and the people it finds do very well. Deaths from that cancer in the population are unchanged.":
+    "一项新的扫描在同一人群中查出的某种癌症病例数，是过去确诊数的三倍，而被它查出的人结局非常好。该人群中死于这种癌症的人数没有变化。",
+  "More cases found, the same number of deaths, and excellent outcomes among the extra cases is the signature of finding disease that was never going to cause harm. The survival figures improve because the denominator filled up with people who were never in danger.":
+    "查出的病例更多、死亡人数不变、多出来的那些病例结局又极好，这正是查出了本来就不会造成危害的疾病的标志。生存数字之所以变好，是因为分母里填满了从来就没有危险的人。",
 };

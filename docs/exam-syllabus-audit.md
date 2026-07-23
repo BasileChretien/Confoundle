@@ -1,0 +1,425 @@
+# What the national medical exams actually require, and what Confoundle covers
+
+Working document. The point is to stop guessing which biases matter and instead
+audit the deck against the four blueprints a qualifying doctor is examined on:
+
+- **Japan**: 医師国家試験出題基準 (MHLW), with the 医学教育モデル・コア・カリキュラム behind it.
+- **France**: the EDN programme, defined by arrêté as numbered items with rang A
+  and rang B objectives, plus the LCA (lecture critique d'article) framework.
+- **USA**: the USMLE Content Outline, plus the per-Step specifications.
+- **UK**: the GMC's MLA content map and Outcomes for Graduates.
+
+Two tiers are kept apart throughout, because conflating them would overstate
+what is actually required:
+
+- **Named**: the blueprint prints the term.
+- **Taught**: the concept is standard in the teaching and question banks of that
+  country but the official document does not enumerate it. Absence from a
+  blueprint is not evidence of non-examinability (the USMLE outline says so of
+  itself), but it does change how confidently we can claim "the exam requires
+  this".
+
+## Status
+
+| Source | Read | Notes |
+|---|---|---|
+| USA, USMLE | done | Official outline names roughly 15 bias terms; the taught taxonomy runs past 40. |
+| Japan, 出題基準 令和6年版 | done | Names only seven error terms. Cross-checked against 1,200 real exam questions. |
+| France, EDN | done | The only layer that names biases is the intitulés de connaissance, not the arrêté. |
+| UK, MLA | done | Names essentially no statistical bias. The negative is the finding. |
+| Korea, KMLE | done | Blueprint names no bias; the released 2026 paper names five in one question. |
+| China, Spain, Germany, Russia | pending | |
+
+## Korea: the blueprint delegates, the paper delivers
+
+The official KMLE written blueprint (평가목표집, 2014, still operative) names
+**zero individual biases**. The token 바이어스 appears three times, always as a
+bare category with enumeration handed to the candidate: objective PE #102 says
+only "list the biases that can arise in epidemiologic research, and explain the
+cause of each and the remedy", and PE #100 refers to "the biases that can be a
+problem when evaluating screening test effectiveness" without naming lead-time
+or length-time. The word 교란 (confounding) does not appear at all.
+
+**But the actual exam is far more demanding than its blueprint.** The 90th KMLE
+(sat January 2026, officially released) contains one question, 1교시 Q67, whose
+correct answer is **버크슨 바이어스, Berkson's bias**, presented as a
+single-hospital case-control study with OR 2.3 that collapses to 1.1 on
+nationwide replication. Its four distractors are **탈락 (attrition), 무응답
+(non-response), 기간차이 (length-time) and 자발적 참여자 (volunteer) bias**. So
+five biases are expected by name in one item.
+
+The same paper requires Bradford Hill criteria by name (Q59), discriminating
+proportional mortality from four other mortality measures (Q64), computing a
+**relative risk reduction of 50% where the absolute reduction is 0.8 percentage
+points** (Q73), and refusing the largest relative risk in favour of the only one
+whose confidence interval excludes 1 (Q74).
+
+Note the register: Korean exam material uses the transliteration **바이어스**,
+not 편향 and not 비뚤림 (which is the Cochrane/NECA term). That matters if the
+app is ever localised to Korean.
+
+## UK: the blueprint names almost nothing, and that is deliberate
+
+Across **both** versions of the GMC's MLA content map (632 strings in the 2019
+edition, 861 in the 2026 one), a programmatic scan finds **zero** occurrences of:
+confounding, lead time, length time, anchoring, premature closure, availability,
+confirmation bias, heuristic, cognitive, sensitivity, specificity, predictive
+value, prevalence, incidence, absolute risk, relative risk, odds ratio, number
+needed to treat, p-value, confidence interval, randomised, blinding, intention
+to treat, regression to the mean, critical appraisal, systematic review, cohort,
+case-control, causation.
+
+The word **bias appears exactly once**, in the 2026 edition, and it means
+discrimination: "recognising both conscious and unconscious bias towards
+individuals and groups". The only named epistemic error in the entire assessment
+blueprint is **over-diagnosis**, and only from September 2026.
+
+This is not an oversight. The GMC was asked during consultation to add public
+health to the map and **declined**, recording that it was not "a context of care
+delivery in the UK Foundation Programme". The map also states it is not a
+syllabus and "should not be viewed as exhaustive".
+
+The binding graduation standard, **Outcomes for Graduates**, is broader but still
+names no type of bias. It requires interpreting common statistical tests,
+critically appraising study design and diagnostic/prognostic/treatment trials,
+describing stratified risk, and recognising the consequences of over-diagnosis
+and over-treatment. Everything else is functional: "interpreting and using
+research, data and statistics" is the single line carrying all of biostatistics
+in the assessment blueprint.
+
+**Named bias content in the UK sits one level up, in postgraduate documents.**
+
+- The GMC's **Generic professional capabilities framework**, which every
+  postgraduate curriculum must incorporate, names "fixation error, unconscious
+  and cognitive biases" in Domain 6 and defines all three in its glossary. No
+  individual diagnostic bias is named.
+- The **RCGP curriculum topic guides** (from August 2025) are the most detailed
+  official UK list by a wide margin, naming bias and confounding, sensitivity,
+  specificity, predictive values, absolute and relative risk, NNT and NNH,
+  hazard and odds ratios, type 1 and type 2 errors, power. This is GP training,
+  not qualification.
+- **Anchoring, availability, confirmation and search satisfaction** appear in an
+  **HSSIB investigation report**, not in any curriculum.
+
+On screening, the UK NSC criteria embed the substance without the vocabulary:
+criterion 11 requires RCT evidence of reduced **mortality or morbidity**, and
+criterion 13 names **overdiagnosis, overtreatment, false positives and false
+reassurance** as harms. **Lead-time bias appears once in any current official UK
+document** (NHS Population Screening Standards, section 3.2) and **length-time
+bias could not be found named in any of them.** The common claim that UK practice
+formally embeds both is, on the documents, half true.
+
+## The consolidated list, and what the deck covers
+
+Legend: **A** named and required of every doctor · **O** officially named ·
+**E** examined in practice though not in the blueprint · **T** taught
+consensus only · **X** absent from official documents.
+
+| Reasoning trap | JP | FR | US | UK | In deck |
+|---|---|---|---|---|---|
+| Confounding (general) | A | A | O | X | via Simpson's, indication |
+| Selection bias (general) | X | A | O | X | via Berkson, survivorship |
+| Information / classification bias | X | A | O | X | **gap** |
+| Recall bias | X | **A** | O | X | **gap, sourcing** |
+| Attrition / loss to follow-up | X | **A** | O | X | **gap** |
+| Intention to treat vs per protocol | O | **A** | O | X | **gap, sourcing** |
+| Lead-time bias | X | **A** | O | (once) | shipped |
+| Length-time bias | X | **A** | O | X | **shipped**; also in Korea 2026 paper |
+| Overdiagnosis | X | **A** | T | **A** | inside length-time |
+| Publication bias | E | A(body) | O | X | **shipped this session** |
+| Base rate / predictive value vs prevalence | **E every year** | A | O | X | shipped |
+| Relative vs absolute risk, NNT | A (x2) | A | O | X | shipped |
+| Blinding: performance + detection bias | X | **A** | O | X | **gap** |
+| Allocation concealment | X | **A** | O | X | **gap** |
+| Effect modification vs confounding | X | B | X | X | **gap, high value** |
+| Confounding by indication | X | B | T | X | shipped |
+| Differential vs non-differential misclassification | X | B | T | X | **gap** |
+| Placebo / nocebo | X | **A** | O | X | **gap** |
+| Statistical vs clinical significance | X | **A** | O | X | **gap** |
+| Power, type I and type II error | X | **A** | O | X | **gap** |
+| Sponsorship / conflict of interest | X | **A** | T | X | **gap** |
+| Regression to the mean | X | **X** | O | X | **gap** |
+| Ecological fallacy | X | **X** | O | X | **gap** |
+| Simpson's paradox | X | **X** | **X** | X | shipped (consensus only) |
+| Berkson's bias | X | **X** | **X** | X | shipped; **named in Korea 2026 paper** |
+| Survivorship bias | X | **X** | **X** | X | shipped (consensus only) |
+| Spectrum bias | X | **X** | **X** | X | shipped (consensus only) |
+| Will Rogers phenomenon | X | X | X | X | shipped (consensus only) |
+| Prosecutor's fallacy | X | X | X | X | shipped (not a medical exam topic) |
+| Immortal time bias | X | **X** | T | X | **gap, sourced and ready** |
+| Healthy worker / healthy user | X | X | T | X | partly inside indication |
+| Hawthorne effect | X | X | **O** | X | **gap** |
+| Neyman / prevalence-incidence | X | X | T | X | **gap** |
+| Cognitive: anchoring, availability, framing | named as a category | **X** | O | postgrad | **gap, needs a new beat** |
+
+## Sourced and ready to build
+
+Verified counts, so the next session can author straight from here rather than
+re-running the search.
+
+**Immortal time bias.** Suissa S, Am J Epidemiol 2008;167(4):492-499, Table 1,
+free full text. Multiple-event-based cohort row: on the drug 188 deaths of 388,
+off it 357 of 500, so 48.5% against 71.4%. The reveal is the person-time:
+276.3 counted years against **291.1 immortal years**, more immortal than counted,
+during which nobody in the exposed group could die by construction. Hazard ratio
+moves 0.48 to 0.91 once corrected. Needs the `timeline` shape extended with an
+optional shaded stretch per track.
+
+The Academy Award study is the better *story* and is verified end to end
+(Redelmeier & Singh, Ann Intern Med 2001, claimed 3.9 extra years; Sylvestre et
+al, 2006, corrected it to about 1.0 year, not significant; the original authors
+then published their own null). But its crude death proportions are 42.1%
+against 41.9%, essentially identical, so a rate chart shows nothing in the setup.
+Use it as the deep-dive example, not the figure.
+
+**Recall bias.** Parr CL et al, Am J Epidemiol 2009;169(3):257-266, Table 4,
+p. 262. Same women asked the same question before diagnosis and again after.
+Skin's tanning response, "light tan or no tan": cases 54/141 prospectively then
+64/141 retrospectively; controls 281/1094 then 269/1094. So cases drift +7.1
+points and controls drift -1.0. The odds ratio the drift manufactures is printed:
+1.90 becomes 3.01. Eye colour in the same table is a built-in negative control,
+drifting equally in both groups.
+
+Disclose honestly: the reference standard is the woman's own pre-diagnosis
+questionnaire, not an external record, and the authors' own conclusion is hedged,
+since this was the only host factor whose shift was significant in cases and not
+in controls. For a genuinely external record, Werler MM et al, Am J Epidemiol
+1989;129(2):415-421, Table 3, compares interview against the obstetric chart: of
+mothers whose chart documented a urinary or yeast infection, 12 of 19 case
+mothers mentioned it against 7 of 30 controls. Two cells only, because
+obstetricians rarely document non-exposure.
+
+**Intention to treat versus per protocol.** Velazquez EJ et al, N Engl J Med
+2011;364(17):1607-1616 (STICH), Supplementary Table 5, p. 9 of the appendix.
+Death from any cause, median 56 months, bypass surgery against medical therapy:
+
+- Intention to treat: 244/602 medical, 218/610 surgery. Hazard ratio 0.86,
+  P = 0.123, **not significant**.
+- Per protocol: 229/537 and 188/555. Hazard ratio 0.76, P = 0.005, **significant**.
+
+So the two analyses give opposite verdicts on the same trial, which is exactly
+the lesson. All four cells are printed integers, every rate sits between 33.9%
+and 43.8%, and the arithmetic reconciles three ways: the excluded 65 and 55
+patients reassemble the as-treated arms (537 + 55 = 592, 555 + 65 = 620), and
+total deaths are conserved between the intention-to-treat and as-treated splits
+(244 + 218 = 259 + 203 = 462).
+
+The mechanism is the good part. The medical patients dropped from the
+per-protocol set are the ones who **crossed over to surgery**, which required
+surviving long enough to reach an operating table; the surgical patients dropped
+are largely those who **died before their operation**. Restricting to
+per-protocol therefore hands the surgical arm a survival requirement and strips
+the medical arm of its healthiest members. Note in provenance that 65 and 55 are
+implied by printed denominators rather than printed themselves, and that the
+paper's P values come from Cox models, not from the 2x2.
+
+Backup if a non-surgical example is wanted: REMoxTB (Gillespie SH et al, N Engl
+J Med 2014;371(17):1577-1587, Table 2), where per-protocol analysis almost only
+removes patients who had an unfavourable outcome, halving the control arm's
+apparent failure rate from 16% to 8%. Be honest there that the verdict does not
+flip; only the size of everything changes.
+
+**A correction the deck should carry.** Klemetti & Saxén, Am J Public Health
+1967;57(12):2071-2075, free, is cited everywhere as the origin of recall bias
+and **does not demonstrate it**. Its own text reports no significant difference
+in unidentical replies between the mothers of affected and healthy children. What
+it does show, spectacularly, is *non-differential* misclassification: only about
+a quarter of prospectively collected information reappeared identically at
+re-interview, and roughly two thirds of retrospective positive replies had no
+prospective history at all, **in both groups**. That is a puzzle in its own right
+(retrospective interviews are unreliable even when nobody is biased) and an
+excellent sound decoy for the Trap Hunt.
+
+Similarly, Hall N et al (UKCCS), Int J Epidemiol 2023;52(4):1187-1196, open
+access, is the largest study of this shape (1,624 cases, 2,524 controls against
+GP records) and finds **essentially no differential recall at all**. Worth citing
+so the deck does not teach that recall bias is universal.
+
+### Three uncomfortable findings
+
+1. **Four of our thirteen puzzles teach traps that no blueprint names**, and the
+   fifth was rescued by looking at a real paper rather than a blueprint.
+   Simpson's paradox, survivorship, spectrum bias and the Will Rogers phenomenon
+   are consensus teaching, not required content, in every jurisdiction read so
+   far. **Berkson's bias is the exception**: no blueprint names it, but Korea's
+   released 2026 paper makes it a correct answer. That is a warning about
+   method. Blueprints understate what is examined, sometimes badly, so a bias
+   absent from every syllabus may still be asked. Where released papers exist
+   (Japan, Korea) they are better evidence than the blueprint, and this table
+   should be read as a floor rather than a ceiling.
+2. **The gaps cluster in trial appraisal, not in exotic biases.** Blinding,
+   allocation concealment, attrition, intention to treat, power, statistical
+   versus clinical significance and placebo are all **rang A in France** and
+   official in the US, and we teach none of them. That is a more serious hole
+   than any individual named bias.
+3. **The jurisdictions disagree sharply.** France requires lead-time, length-time
+   and overdiagnosis of every doctor; Japan's blueprint names none of them. The
+   US names regression to the mean and the ecological fallacy; France explicitly
+   has neither anywhere in its 367 items. Any claim that a bias is "on the
+   medical curriculum" needs a country attached to it.
+
+## France: the legal programme names nothing, the knowledge objectives name plenty
+
+Three layers, and only one of them matters here.
+
+1. The **arrêté** (2 September 2020, annexe 1) is the legal programme, 367 items.
+   It names **zero** biases and carries no rang markings at all. Note item 20 was
+   renamed by R2C and is no longer "Interprétation d'une enquête
+   épidémiologique" but **"La méthodologie de la recherche en santé"**.
+2. The **intitulés de connaissance** (`OIC-<item>-<n>-<rang>`), published on
+   LiSA by the collèges. The EDN cahier des charges states that questions bear
+   on rang A or rang B intitulés, so **this is the operative programme**, and it
+   is the only layer naming biases.
+3. The collèges' referentiels and commercial books. Secondary.
+
+**Rang A means every doctor must know it.** These are named at rang A:
+
+- Item 20 (OIC-020-26): erreur aléatoire and erreur systématique, biais,
+  **biais de sélection**, **biais de classement** (information), **biais de
+  confusion** and facteur de confusion, and, flagged in the objective statement
+  as special cases, **biais d'attrition** and **biais de mémorisation** (recall).
+  Plus the controls: ajustement, appariement, stratification, restriction.
+- Item 290, cancer screening (OIC-290-24): the three screening biases, all rang
+  A. **Avance au diagnostic** (lead-time), **biais de progression** (length-time),
+  **biais de surdiagnostic** (overdiagnosis). The fiche states outright that the
+  endpoint must be mortality and that survival duration is the trap.
+- Item 323 (OIC-323-15, -17, -25): biases avoided by blinding, hence
+  **performance** and **detection** bias; bias from failed allocation
+  concealment; and attrition through **intention to treat versus per protocole**.
+- Publication bias appears at rang A but only in the fiche body (OIC-323-08),
+  not in an objective statement.
+
+At rang B: differential versus non-differential misclassification (OIC-020-27),
+**interaction / modification d'effet, explicitly to be distinguished from
+confounding** (OIC-020-28), **biais d'indication** (OIC-323-04), and
+surdiagnostic/surtraitement under prévention quaternaire (OIC-003-05).
+
+### What France explicitly does NOT contain
+
+Checked individually against the full 367-item corpus, each returning zero hits:
+**régression vers la moyenne, paradoxe de Simpson, sophisme écologique
+(ecological fallacy), biais du temps immortel, healthy worker effect, biais de
+Berkson, biais de Neyman, biais de survie, spectrum bias, biais de vérification,
+effet Hawthorne**, and **every named cognitive bias** (ancrage, disponibilité,
+confirmation, clôture prématurée, cadrage). The R2C programme contains no
+cognitive-bias vocabulary whatsoever.
+
+The LCA (lecture critique d'article) survives in the EDN and its questions carry
+**double weight**, but it has no bias list of its own; its examinable content is
+the rang A/B knowledge of items 3, 20 and 323. The historical CNCI LCA framework
+named only two families, "biais d'information et de sélection", so the widely
+repeated claim that LCA once had a long official bias list is not supported.
+
+**Access caveat.** LiSA sits behind UNESS authentication and Légifrance refuses
+scripted requests, so the structure, identifiers and rangs above come from a
+complete public mirror of the LiSA sheets, whose prose has been
+machine-translated to English. The French terms above are therefore standard
+back-translations, not verbatim official wording.
+
+## Japan: a blueprint that names almost nothing, and an exam that tests plenty
+
+The 医師国家試験出題基準 令和6年版 (current, governing 第118回 onward) names
+just seven error terms in total: バイアス (generic, no subtypes), 交絡因子,
+認知バイアス, 医師による偏見・スティグマ, 偶然誤差, 誤差, and
+ヒューマンエラー・システムエラー. Selection, information, recall, lead-time,
+publication, survivorship, Berkson, regression to the mean and overdiagnosis
+are **absent from the blueprint entirely**, as are all the individual cognitive
+biases.
+
+The 医学教育モデル・コア・カリキュラム behind it adds only 主なバイアスや交絡
+("major biases and confounding", undifferentiated) and 二重過程理論 (dual
+process theory), which is the sole named cognitive-science construct in either
+document.
+
+**But the exam outruns its own blueprint.** Reading the MHLW question papers
+for 第118回 to 第120回 (six blocks each) shows:
+
+- **Bayesian post-test probability is examined every single year** (118C63,
+  119E, 120E14), always as pre-test probability to post-test probability, and
+  **never using the word 的中度** (predictive value). Base-rate reasoning is
+  the most reliably examined quantitative topic in the whole area, and it is
+  examined under a name the blueprint does not use.
+- **Publication bias is examined without being authorised by the blueprint**
+  (118E2, 120C20, the latter with a funnel plot).
+- Confounding appears as 未測定の交絡因子, unmeasured confounders (118B9).
+- **Zero occurrences in three years** of 選択バイアス, 情報バイアス,
+  リードタイムバイアス, or any named cognitive bias.
+
+Two structural quirks worth knowing:
+
+- **Cognitive bias is filed under 医原病 (iatrogenic disease)**, not clinical
+  reasoning. Japan treats diagnostic error as a cause of patient harm.
+- **Prevalence and pre-test probability sit in different chapters**, and the
+  blueprint never states the link between them. The student has to supply it,
+  which is precisely the reasoning step our base-rate puzzle teaches.
+
+Emphasis is stated rather than inferred: 必修 §10 臨床判断の基本 is about 4% of
+必修, which is 100 questions carrying an **80% pass threshold**, so roughly four
+questions a year in the highest-stakes section of the exam. Hill's criteria are
+named in full and constitute the blueprint's entire apparatus for "correlation
+is not causation", a phrase that never appears. Relative and absolute risk are
+defined in **two separate chapters**, which signals emphasis, though the fallacy
+itself is never framed.
+
+## USA: what the official outline names
+
+From the USMLE Content Outline (2026 public release), in
+*Biostatistics, Epidemiology/Population Health & Interpretation of the Medical
+Literature* and in *Social Sciences*.
+
+Bias and validity terms, printed:
+
+- selection bias, sampling bias
+- information bias, with the exemplars recall, ascertainment, ecologic fallacy,
+  lack of blinding, loss to follow-up
+- confounding variables, and methods to address them
+- Hawthorne effect
+- placebo effect
+- lead-time bias
+- length bias
+- publication bias, funnel diagrams
+- reverse causality
+- regression to the mean
+- intention-to-treat, loss to follow-up
+
+Reasoning traps that are not called "bias" but are printed:
+
+- sensitivity and specificity versus predictive values; pretest and posttest
+  probability; likelihood ratios
+- absolute risk, relative risk, odds ratio, hazard ratio, number needed to
+  treat and to harm
+- type I error and alpha; type II error, beta, power; multiple comparisons;
+  a priori versus post hoc and subgroup analysis
+- p-values, confidence intervals, statistical versus clinical significance
+- clinical versus surrogate endpoints
+- internal versus external validity, generalisability, efficacy versus
+  effectiveness
+- non-inferiority and equivalence designs
+- causal criteria: temporality, dose-response
+
+Cognitive bias, official enumeration, and note **where it sits**: Social
+Sciences → systems-based practice and patient safety → causes of error →
+physician factors. Only *cognitive bias, availability, heuristic, anchoring,
+framing* are named. Step 1 carries no patient-safety competency at all, so this
+is Step 2 CK and Step 3 material officially.
+
+Weightings: biostatistics and epidemiology is 4-6% of Step 1, 3-5% of Step 2 CK
+and **11-13% of Step 3**. The Step 3 figure is the one that matters for how
+seriously the material is taken.
+
+### Named in US teaching but NOT in the official outline
+
+Worth recording because several are already in our deck, and we should not
+claim official standing for them: Berkson's bias, Simpson's paradox,
+survivorship bias, healthy worker effect, healthy user and healthy adherer
+bias, volunteer and self-selection bias, non-response bias, observer and
+Pygmalion effects, procedure bias, performance bias, surveillance and detection
+bias, differential versus non-differential misclassification, prevalence-incidence
+(Neyman) bias, immortal time bias, confounding by indication and channelling,
+overdiagnosis, per-protocol analysis, composite endpoints, and **effect
+modification / interaction**.
+
+That last one is the most interesting gap: effect modification is absent from
+the official outline entirely, yet it is the concept most often confused with
+confounding in teaching. Under-specified officially and heavily tested in
+practice is exactly the profile of a good puzzle.

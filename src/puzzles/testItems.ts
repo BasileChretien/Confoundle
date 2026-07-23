@@ -244,6 +244,50 @@ const items: TestItem[] = [
     },
   },
 
+  // ---- Publication bias ----
+  {
+    id: "pb-review",
+    scenario: {
+      en: "A review gathers every published trial of a treatment it can find. Eleven of the thirteen are positive, and it concludes the treatment works. The review does not say how many trials of the treatment were ever started.",
+    },
+    trap: "publication-bias",
+    explanation: {
+      en: "Searching the literature finds the studies that reached print, not the studies that were run. Without knowing how many were started, there is no way to tell whether two disappointing trials is the whole story or the visible corner of it.",
+    },
+  },
+  {
+    id: "pb-drawer",
+    scenario: {
+      en: "A researcher runs a study that finds nothing, decides it is not interesting enough to write up, and moves on to the next project. Several colleagues in the same field do the same thing that year.",
+    },
+    trap: "publication-bias",
+    explanation: {
+      en: "Nobody here has done anything dishonest, and that is exactly the point. The filter is made of ordinary decisions about what is worth the effort, and it still leaves the published record systematically sunnier than the research was.",
+    },
+  },
+
+  // ---- Length-time bias ----
+  {
+    id: "lt2-prostate",
+    scenario: {
+      en: "A clinic reports that men whose cancer was picked up by its regular screening programme are far more likely to still be alive ten years on than men who came in with symptoms. It concludes that screening works.",
+    },
+    trap: "length-time-bias",
+    explanation: {
+      en: "A test run at intervals catches slow tumours easily and fast ones hardly at all, because fast ones surface between visits. So the screen-detected group is loaded with the gentle kind of disease before treatment is even considered.",
+    },
+  },
+  {
+    id: "lt2-indolent",
+    scenario: {
+      en: "A new scan finds three times as many cases of a cancer as were previously diagnosed in the same population, and the people it finds do very well. Deaths from that cancer in the population are unchanged.",
+    },
+    trap: "length-time-bias",
+    explanation: {
+      en: "More cases found, the same number of deaths, and excellent outcomes among the extra cases is the signature of finding disease that was never going to cause harm. The survival figures improve because the denominator filled up with people who were never in danger.",
+    },
+  },
+
   // ---- Confounding by indication ----
   {
     id: "ci-oxygen",

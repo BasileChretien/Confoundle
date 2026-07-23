@@ -178,3 +178,27 @@ export const willRogers: Puzzle = {
 
   goDeeperUrl: "https://en.wikipedia.org/wiki/Will_Rogers_phenomenon",
 };
+
+/* -----------------------------------------------------------------------------
+ * VERIFIED SOURCE DATA (Feinstein, Sosin & Wells, NEJM 1985;312(25):1604-1608,
+ * Table 4). Read from the paper directly and arithmetic-checked. These replace
+ * the illustrative figures above once the engine change below is made.
+ *
+ * The 1977 cohort (131 patients) staged two ways. Same patients, same outcomes:
+ *
+ *   Stage        old-data staging     new-data staging
+ *   I            32/42   (76%)        22/24   (92%)
+ *   II           17/25   (68%)        13/18   (72%)
+ *   III          23/64   (36%)        37/89   (42%)
+ *   Total        72/131  (55%)        72/131  (55%)
+ *
+ *   old: 42+25+64 = 131, 32+17+23 = 72.  new: 24+18+89 = 131, 22+13+37 = 72.
+ *
+ * Every stage improves; the whole is unchanged. That is the phenomenon.
+ *
+ * BLOCKER (engine, not data): the `rates` shape requires every choice id to
+ * match a group id, i.e. the answer must be "which group wins". Will Rogers has
+ * no winning group: the correct answer is "neither, nothing actually changed".
+ * Registering this puzzle needs that superRefine rule relaxed (no renderer
+ * appears to rely on the choice-to-group link), or a dedicated answer model.
+ * -------------------------------------------------------------------------- */

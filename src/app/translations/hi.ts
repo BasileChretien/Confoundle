@@ -640,8 +640,6 @@ export const hi: Record<string, string> = {
     "सबसे पूछिए, और यह संबंध गायब हो जाता है।",
   "Two illnesses are two chances to be admitted":
     "दो बीमारियाँ यानी भर्ती होने के दो मौके",
-  "The same survey, the same people, the same two diseases. Across everyone it asked, having a respiratory disease made a bone or joint disease no more likely at all. The hospital panel is not a finding about disease, it is a finding about admission. Either illness can put you in a hospital bed, so people with both turn up there far more often than people with one, and inside those walls the two look inseparable:":
-    "वही सर्वेक्षण, वही लोग, वही दो बीमारियाँ। उसने जितने लोगों से पूछा, उन सब में साँस की बीमारी होने से हड्डी या जोड़ की बीमारी की संभावना ज़रा भी नहीं बढ़ी। अस्पताल वाला पैनल बीमारी के बारे में कोई निष्कर्ष नहीं है, वह भर्ती के बारे में निष्कर्ष है। दोनों में से कोई भी बीमारी आपको अस्पताल के बिस्तर तक पहुँचा सकती है, इसलिए जिन्हें दोनों हैं वे वहाँ उनसे कहीं ज़्यादा बार मिलते हैं जिन्हें एक है, और उन दीवारों के भीतर दोनों अलग न होने वाली लगती हैं:",
   "Hospital and community": "अस्पताल और समुदाय",
   "The filter": "फ़िल्टर",
   "Berkson's bias": "बर्कसन का पूर्वाग्रह",
@@ -690,4 +688,81 @@ export const hi: Record<string, string> = {
     "एक कंपनी यह जानना चाहती है कि उसके उपभोक्ताओं की दो बातें साथ साथ चलती हैं या नहीं। वह उन सभी लोगों में से यादृच्छिक रूप से नमूना लेती है जिन्होंने कभी खाता खोला था, उन लोगों समेत जो दोबारा कभी नहीं लौटे और जिन्होंने खाता बंद कर दिया, और उन दोनों बातों के बीच कोई संबंध नहीं पाती।",
   "The sample was drawn before any filter that either of the two things could have influenced. Nothing about staying, succeeding or being admitted decided who got counted, so a selection artefact cannot be hiding in it.":
     "नमूना किसी भी ऐसे फ़िल्टर से पहले लिया गया जिस पर इन दो बातों में से कोई भी असर डाल सकती थी। टिके रहने, कामयाब होने या भर्ती होने से यह तय नहीं हुआ कि किसे गिना जाएगा, इसलिए इसमें चयन का कोई कृत्रिम असर छिपा नहीं हो सकता।",
+
+  // ---- Berkson's bias, corrected reveal (puzzle #9) ----
+  "The same survey, the same people, the same two diseases. Across everyone it asked, people with a respiratory disease were barely any likelier to have a bone or joint disease than people without one, and the odds come out at 1.06 against 1, which is nothing. The hospital panel is not a finding about disease, it is a finding about admission. Either illness can put you in a hospital bed, so people with both turn up there far more often than people with one, and inside those walls the two look inseparable:":
+    "वही सर्वेक्षण, वही लोग, वही दो बीमारियाँ। उसने जितने लोगों से पूछा, उन सब में साँस की बीमारी वालों को हड्डी या जोड़ की बीमारी होने की संभावना बिना साँस की बीमारी वालों से बमुश्किल ही ज़्यादा थी, और ऑड्स 1.06 बनाम 1 निकलते हैं, यानी कुछ भी नहीं। अस्पताल वाला पैनल बीमारी के बारे में कोई निष्कर्ष नहीं है, वह भर्ती के बारे में निष्कर्ष है। दोनों में से कोई भी बीमारी आपको अस्पताल के बिस्तर तक पहुँचा सकती है, इसलिए जिन्हें दोनों हैं वे वहाँ उनसे कहीं ज़्यादा बार मिलते हैं जिन्हें एक है, और उन दीवारों के भीतर दोनों अलग न होने वाली लगती हैं:",
+
+  // ---- Relative versus absolute risk (puzzle #10) ----
+  "A drug cuts your risk of a heart attack by about a third. How many people does that help?":
+    "एक दवा दिल के दौरे का आपका जोखिम करीब एक तिहाई घटा देती है। इससे कितने लोगों को फ़ायदा होता है?",
+  "A trial gave 6,595 middle-aged men with high cholesterol and no history of heart trouble either a statin or a dummy pill, and followed them for about five years. The drug cut heart attacks and coronary deaths by roughly a third. That is a real result, and it is how the finding was reported.":
+    "एक परीक्षण ने ऊँचे कोलेस्ट्रॉल वाले और दिल की कोई पुरानी तकलीफ़ न रखने वाले, अधेड़ उम्र के 6,595 पुरुषों को या तो स्टैटिन दिया या नकली गोली, और करीब पाँच साल तक उन पर नज़र रखी। दवा ने दिल के दौरे और कोरोनरी मौतें करीब एक तिहाई घटा दीं। यह एक असली नतीजा है, और निष्कर्ष इसी तरह बताया भी गया था।",
+  "Out of 1,000 men who took it for five years, how many were spared a heart attack or a coronary death?":
+    "जिन 1,000 पुरुषों ने इसे पाँच साल तक लिया, उनमें से कितने दिल के दौरे या कोरोनरी मौत से बच गए?",
+  "A five-year statin trial in 6,595 men":
+    "6,595 पुरुषों में पाँच साल का स्टैटिन परीक्षण",
+  "Heart attack or death from heart disease":
+    "दिल का दौरा या हृदय रोग से मृत्यु",
+  "Dummy pill": "नकली गोली",
+  Statin: "स्टैटिन",
+  "of the risk removed": "जोखिम का इतना हिस्सा हट गया",
+  "spared, in every 1,000 men treated for five years":
+    "पाँच साल इलाज पाने वाले हर 1,000 पुरुषों में से इतने बच गए",
+  "men treated for five years to spare one":
+    "इतने पुरुषों का पाँच साल इलाज, ताकि एक बच जाए",
+  "About 300": "लगभग 300",
+  "roughly a third of them": "उनमें से करीब एक तिहाई",
+  "About 100": "लगभग 100",
+  "one in ten": "दस में से एक",
+  "About 23": "लगभग 23",
+  "roughly 1 in 44": "करीब 44 में से 1",
+  "Twenty three men in a thousand.": "एक हज़ार में तेईस पुरुष।",
+  "A third of a risk that was small to begin with":
+    "एक ऐसे जोखिम का एक तिहाई, जो शुरू से ही छोटा था",
+  "Both numbers come from the same trial. Without the drug, about 75 men in 1,000 had a heart attack or died of heart disease over the five years. With it, about 53 did. That is a third of the risk gone, and it is also 23 men in 1,000. The first number is divided by the risk, the second by the people, which is the whole reason they feel so different. Put the other way round, 44 men had to take the drug for five years for one of them to be spared:":
+    "दोनों संख्याएँ एक ही परीक्षण से आती हैं। दवा के बिना, 1,000 में से करीब 75 पुरुषों को इन पाँच सालों में दिल का दौरा पड़ा या वे हृदय रोग से मरे। दवा के साथ, करीब 53 को। यही जोखिम का एक तिहाई हट जाना है, और यही 1,000 में 23 पुरुष भी है। पहली संख्या जोखिम से भाग दी गई है, दूसरी लोगों से, और यही पूरी वजह है कि दोनों इतनी अलग लगती हैं। उल्टी तरफ़ से कहें तो, 44 पुरुषों को पाँच साल तक दवा लेनी पड़ी ताकि उनमें से एक बच सके:",
+  "A third of what?": "किसका एक तिहाई?",
+  "Relative versus absolute risk": "सापेक्ष बनाम निरपेक्ष जोखिम",
+  "A percentage reduction tells you what share of a risk went away. It cannot tell you how big that risk was, and that is the part that decides whether it matters to you.":
+    "प्रतिशत में बताई गई कमी यह बताती है कि जोखिम का कितना हिस्सा हट गया। वह यह नहीं बता सकती कि वह जोखिम कितना बड़ा था, और यही वह बात है जो तय करती है कि इससे आपको फ़र्क पड़ता है या नहीं।",
+  "Whenever you meet a percentage change, ask what it is a percentage of. Halving a one-in-a-million risk and halving a one-in-two risk make the same headline and mean completely different things. The two figures worth asking for are the difference in plain numbers of people, and how many have to be treated for one of them to benefit.":
+    "जब भी आपको प्रतिशत में कोई बदलाव मिले, पूछिए कि वह किसका प्रतिशत है। दस लाख में 1 वाले जोखिम को आधा करना और दो में 1 वाले जोखिम को आधा करना, दोनों की सुर्खी एक जैसी बनती है पर उनका मतलब बिल्कुल अलग होता है। दो आँकड़े माँगने लायक हैं: सीधे सादे लोगों की गिनती में फ़र्क कितना है, और कितने लोगों का इलाज करना पड़ता है ताकि उनमें से एक को फ़ायदा हो।",
+  "Take a risk of 8 in 100 and drop it to 5 in 100. Divide the drop by the risk and you get a third, which sounds like a lot. Divide the same drop by the people and you get 3 in 100, which sounds like very little. Neither is wrong. They answer different questions: what fraction of the danger was removed, and what are the odds this helps me. Only the second one is about you. The gap between them grows as the risk shrinks, which is why the most impressive relative figures usually come from the rarest outcomes. This is not only a media problem. Relative figures make treatments look better to doctors too, and the same trial result draws more enthusiasm when it is described relatively than when it is described in whole people. It also cuts the other way with harms: a scare expressed as a doubling of risk sounds alarming whether the risk went from 1 in 10 to 2 in 10 or from 1 in 100,000 to 2 in 100,000. The habit that protects you in both directions is to insist on the numbers out of a fixed group of people, and on how many have to be treated, or exposed, for one to be affected.":
+    "100 में से 8 का जोखिम लीजिए और उसे घटाकर 100 में से 5 कर दीजिए। इस गिरावट को जोखिम से भाग दीजिए तो एक तिहाई मिलता है, जो बहुत ज़्यादा सुनाई देता है। उसी गिरावट को लोगों से भाग दीजिए तो 100 में से 3 मिलता है, जो बहुत कम सुनाई देता है। दोनों में से कोई गलत नहीं है। वे अलग अलग सवालों के जवाब देते हैं: खतरे का कितना हिस्सा हटा, और इस बात की संभावना कितनी है कि इससे मुझे फ़ायदा होगा। इनमें से केवल दूसरा सवाल आपके बारे में है। जोखिम जितना छोटा होता जाता है, दोनों के बीच की खाई उतनी ही बढ़ती जाती है, और यही वजह है कि सबसे प्रभावशाली सापेक्ष आँकड़े आम तौर पर सबसे दुर्लभ नतीजों से आते हैं। यह सिर्फ़ मीडिया की समस्या नहीं है। सापेक्ष आँकड़े इलाज को डॉक्टरों की नज़र में भी बेहतर दिखाते हैं, और एक ही परीक्षण के नतीजे को सापेक्ष रूप में बताने पर उस पर ज़्यादा उत्साह जगता है, बजाय इसके कि उसे पूरे लोगों में गिनकर बताया जाए। नुकसान के मामले में यह उल्टी दिशा में भी काटता है: जोखिम के दोगुना होने के रूप में बताया गया डर डरावना ही लगता है, चाहे जोखिम 10 में से 1 से बढ़कर 10 में से 2 हुआ हो या 100,000 में से 1 से बढ़कर 100,000 में से 2। दोनों दिशाओं में आपको बचाने वाली आदत यह है कि लोगों के एक तय समूह में से गिनती माँगी जाए, और यह भी पूछा जाए कि एक व्यक्ति पर असर पड़ने के लिए कितने लोगों का इलाज करना, या कितने लोगों का उस चीज़ के संपर्क में आना, ज़रूरी है।",
+  "The same kind of drug, in people at real risk":
+    "वही तरह की दवा, असली जोखिम वाले लोगों में",
+  "A second trial gave a statin to patients who had already had a heart attack or had angina. Major coronary events fell from 28 percent to 19 percent. As a relative figure that is about a third, almost the same headline as in the healthy men. But because the risk it was cutting into was nearly four times larger, the gain was about 9 patients in every 100 instead of 2. The identical headline, several times the benefit. This is why a percentage on its own cannot tell you whether a drug is worth taking, and why the answer differs from patient to patient.":
+    "एक दूसरे परीक्षण ने उन मरीज़ों को स्टैटिन दिया जिन्हें पहले दिल का दौरा पड़ चुका था या जिन्हें एनजाइना था। बड़ी कोरोनरी घटनाएँ 28 प्रतिशत से घटकर 19 प्रतिशत रह गईं। सापेक्ष आँकड़े के रूप में यह करीब एक तिहाई है, यानी स्वस्थ पुरुषों वाली सुर्खी जैसी ही सुर्खी। पर चूँकि जिस जोखिम में यह कटौती हो रही थी वह करीब चार गुना बड़ा था, फ़ायदा हर 100 में 2 मरीज़ों के बजाय करीब 9 मरीज़ों का हुआ। सुर्खी बिल्कुल वही, फ़ायदा कई गुना। यही वजह है कि अकेला प्रतिशत आपको यह नहीं बता सकता कि कोई दवा लेने लायक है या नहीं, और यही वजह है कि इसका जवाब हर मरीज़ के लिए अलग होता है।",
+  "When a relative figure did real damage":
+    "जब एक सापेक्ष आँकड़े ने असली नुकसान किया",
+  "In October 1995 a British safety committee warned that some contraceptive pills carried about twice the risk of a blood clot. The warning travelled as a doubling, with no sense of how small the risk was either way, and women stopped taking the pill. Among girls under 16, use fell from 40 percent to 27 percent within a year. The health service met roughly 21 million pounds in extra maternity costs and 46 million pounds in abortion provision. A relative figure with no absolute figure beside it is not a neutral way to describe a risk.":
+    "अक्तूबर 1995 में ब्रिटेन की एक दवा सुरक्षा समिति ने चेताया कि कुछ गर्भनिरोधक गोलियों के साथ खून का थक्का बनने का जोखिम करीब दोगुना है। यह चेतावनी ‘दोगुना’ बनकर फैली, इस अहसास के बिना कि दोनों ही हालात में जोखिम कितना छोटा था, और महिलाओं ने गोली लेना बंद कर दिया। 16 साल से कम उम्र की लड़कियों में इसका इस्तेमाल एक साल के भीतर 40 प्रतिशत से गिरकर 27 प्रतिशत रह गया। स्वास्थ्य सेवा को प्रसूति का करीब 2.1 करोड़ पाउंड अतिरिक्त खर्च और गर्भपात सेवाओं का 4.6 करोड़ पाउंड खर्च उठाना पड़ा। जिस सापेक्ष आँकड़े के बगल में निरपेक्ष आँकड़ा न हो, वह जोखिम बताने का निष्पक्ष तरीका नहीं है।",
+  "The fix is in the wording": "उपाय शब्दों के चुनाव में है",
+  "Describe the same result in whole people, so many out of 1,000 against so many out of 1,000, and both patients and doctors judge it far more accurately than when it arrives as a percentage reduction. Relative risks belong to a small family of formats that reliably confuse, alongside single-event probabilities and conditional ones like a test's sensitivity. None of them is wrong. They are just easy to misread, and there is a clearer way to say the same thing.":
+    "वही नतीजा पूरे लोगों में बताइए, 1,000 में से इतने बनाम 1,000 में से इतने, और मरीज़ तथा डॉक्टर, दोनों उसे प्रतिशत में बताई गई कमी के मुकाबले कहीं ज़्यादा सही ढंग से आँकते हैं। सापेक्ष जोखिम उन चंद प्रारूपों के परिवार का हिस्सा है जो लोगों को बार बार उलझाते हैं; इसी परिवार में एकल घटना की संभावनाएँ और सशर्त संभावनाएँ भी हैं, जैसे किसी जाँच की संवेदनशीलता। इनमें से कोई गलत नहीं है। बस इन्हें गलत पढ़ लेना आसान है, और वही बात कहने का एक साफ़ तरीका मौजूद है।",
+  "Relative versus absolute risk, a reasoning trap.":
+    "सापेक्ष बनाम निरपेक्ष जोखिम, तर्क का एक जाल।",
+  '"Cuts your risk by a third" sounds enormous. But a third of what? If the risk was 75 in 1,000, a third of it is 23 people. If the risk was 3 in 1,000, a third of it is one. The percentage tells you how much of the risk went away and says nothing at all about how much risk there was, which is the part that decides whether it matters to you. Ask for the plain numbers: how many out of 1,000, and how many people have to take it for one of them to benefit.':
+    "“जोखिम एक तिहाई घटा देती है” सुनने में बहुत बड़ी बात लगती है। पर किसका एक तिहाई? अगर जोखिम 1,000 में 75 था, तो उसका एक तिहाई 23 लोग हैं। अगर जोखिम 1,000 में 3 था, तो उसका एक तिहाई एक व्यक्ति है। प्रतिशत आपको बताता है कि जोखिम का कितना हिस्सा हट गया, और यह बिल्कुल नहीं बताता कि जोखिम था कितना, जबकि यही वह बात है जो तय करती है कि इससे आपको फ़र्क पड़ता है या नहीं। सीधी सादी संख्याएँ माँगिए: 1,000 में से कितने, और कितने लोगों को इसे लेना पड़ता है ताकि उनमें से एक को फ़ायदा हो।",
+  "The counts are the trial's primary endpoint, a definite nonfatal heart attack or death from coronary heart disease: 248 events among the men on placebo and 174 among those on pravastatin, over an average of 4.9 years. The paper reports a 31 percent relative risk reduction, estimated from a proportional-hazards model; the crude counts give 30 percent. Every figure this puzzle shows is derived from the counts, so it quotes about a third rather than a number the chart would contradict.":
+    "ये आँकड़े परीक्षण के प्राथमिक एंडपॉइंट के हैं, यानी एक निश्चित गैर घातक दिल का दौरा या कोरोनरी हृदय रोग से मृत्यु: प्लेसिबो लेने वाले पुरुषों में 248 घटनाएँ और प्रवास्टैटिन लेने वालों में 174, औसतन 4.9 साल में। शोधपत्र सापेक्ष जोखिम में 31 प्रतिशत की कमी बताता है, जो प्रोपोर्शनल हैज़र्ड्स मॉडल से आँकी गई है; सीधी गिनती 30 प्रतिशत देती है। यह पहेली जो भी आँकड़ा दिखाती है वह इन्हीं गिनतियों से निकला है, इसलिए यह ऐसी कोई संख्या बताने के बजाय ‘करीब एक तिहाई’ कहती है जिसे ग्राफ़ खुद झुठला दे।",
+
+  // trap hunt items (relative versus absolute risk)
+  "A press release says a new drug halves the risk of a rare complication. It does not say how common the complication is. A newspaper runs the story under the headline that the drug halves the danger.":
+    "एक प्रेस विज्ञप्ति कहती है कि नई दवा एक दुर्लभ जटिलता का जोखिम आधा कर देती है। वह यह नहीं बताती कि वह जटिलता कितनी आम है। एक अख़बार यह खबर इस सुर्खी के साथ छापता है कि दवा खतरे को आधा कर देती है।",
+  "Halving a risk means nothing until you know the risk. If the complication strikes 2 people in 10,000, halving it spares one of them.":
+    "जब तक आपको जोखिम पता न हो, उसका आधा होना कोई मायने नहीं रखता। अगर वह जटिलता 10,000 में से 2 लोगों को होती है, तो उसे आधा करने पर उनमें से एक बचता है।",
+  "A supplement is advertised as cutting the chance of a particular cancer by 40%. The trial it rests on found 7 cases among about 1,000 people taking the supplement and 12 among about 1,000 taking a dummy.":
+    "एक सप्लीमेंट का विज्ञापन कहता है कि यह एक ख़ास कैंसर की संभावना 40% घटा देता है। जिस परीक्षण पर यह टिका है उसमें सप्लीमेंट लेने वाले करीब 1,000 लोगों में 7 मामले मिले और नकली गोली लेने वाले करीब 1,000 लोगों में 12।",
+  "The 40% is arithmetically right and it amounts to 5 people in 1,000. Around 200 people would have to take the supplement for years for one of them to avoid a cancer.":
+    "40% का आँकड़ा गणित के हिसाब से सही है और वह 1,000 में 5 लोगों के बराबर बैठता है। किसी एक व्यक्ति का कैंसर टलने के लिए करीब 200 लोगों को यह सप्लीमेंट सालों तक लेना पड़ेगा।",
+  "A trial reports that the treatment reduced strokes from 12 in every 100 patients to 8 in every 100, calls that a reduction of a third, and adds that about 25 patients need to be treated for five years to prevent one stroke.":
+    "एक परीक्षण बताता है कि उपचार ने स्ट्रोक हर 100 मरीज़ों में 12 से घटाकर हर 100 में 8 कर दिए, इसे एक तिहाई की कमी कहता है, और यह भी जोड़ता है कि एक स्ट्रोक रोकने के लिए करीब 25 मरीज़ों का पाँच साल तक इलाज करना पड़ता है।",
+  "The relative figure, the plain numbers of people and the number needed to treat are all on the table, so nothing is hidden behind the percentage. This is how a result should be reported.":
+    "सापेक्ष आँकड़ा, लोगों की सीधी सादी गिनती और उपचार के लिए आवश्यक संख्या (number needed to treat), तीनों सामने रखे गए हैं, इसलिए प्रतिशत के पीछे कुछ भी छिपा नहीं है। नतीजा इसी तरह बताया जाना चाहिए।",
+
+  // scope tags (relative and absolute views)
+  "Compared to the risk": "जोखिम के मुकाबले",
+  "Compared to the people": "लोगों के मुकाबले",
 };

@@ -4,9 +4,9 @@
 
 Each puzzle runs in four beats: **setup → commit → reveal → lesson**, ending in a screenshot-able **share card**. You have to commit to an answer *before* the reveal — the small sting of being caught is the whole point.
 
-This repository is the **Phase 0 prototype**: nine fully playable puzzles on a generic engine, served one-per-day Wordle-style, in ten languages, plus a **Trap Hunt** item bank for testing whether you can spot a flaw when nobody has told you one is there.
+This repository is the **Phase 0 prototype**: ten fully playable puzzles on a generic engine, served one-per-day Wordle-style, in ten languages, plus a **Trap Hunt** item bank for testing whether you can spot a flaw when nobody has told you one is there.
 
-The puzzles so far: Simpson's paradox, the base-rate fallacy, correlation vs causation, survivorship bias, the prosecutor's fallacy, the Will Rogers phenomenon, lead-time bias, spectrum bias, and Berkson's bias.
+The puzzles so far: Simpson's paradox, the base-rate fallacy, correlation vs causation, survivorship bias, the prosecutor's fallacy, the Will Rogers phenomenon, lead-time bias, spectrum bias, Berkson's bias, and relative vs absolute risk.
 
 Most new puzzles are just a data file; the engine renders them with no code changes. A genuinely new *shape* of data (a timeline rather than a set of rates, say) adds one member to the schema union and one renderer. See [`PROJECT_PLAN.md`](./PROJECT_PLAN.md) for the full product vision and [`CONTRIBUTING.md`](./CONTRIBUTING.md) for the content bar, which is deliberately high.
 
@@ -95,7 +95,7 @@ A puzzle is one object validated by [`src/puzzles/schema.ts`](./src/puzzles/sche
 
 - **Every user-facing string is locale-keyed** (`{ en: "…" }`, other locales optional) — translatable from day one.
 - **Numbers live once.** You author raw `observations` (numerator / denominator per group × stratum); the engine *derives* the aggregate and stratified rates. The paradox lives in that derivation, so the pooled result can never disagree with the strata by accident.
-- **`data` is discriminated by `type`** (`"rates"`, `"frequencies"`, `"causal"`, `"survivorship"`, `"timeline"`) so a new puzzle can add an entirely new chart shape without touching existing renderers.
+- **`data` is discriminated by `type`** (`"rates"`, `"frequencies"`, `"causal"`, `"survivorship"`, `"timeline"`, `"risk"`) so a new puzzle can add an entirely new chart shape without touching existing renderers. Build one whenever the lesson needs it: setup and reveal have to be two views of the *same* data, and a lesson forced into the wrong shape produces a reveal that merely restates the setup. See [`docs/risk-shape.md`](./docs/risk-shape.md) for a worked example of that decision.
 - **A view can show part of the data.** `initialView` and `reveal.view` accept `groupIds` / `strataIds`, so the setup can show the one slice that creates the illusion and hold the rest back for the reveal. Omit them and the whole figure is drawn.
 - **`provenance` is required** on every puzzle (source + year + URL/DOI). `goDeeperUrl` is optional and kept off the main flow.
 

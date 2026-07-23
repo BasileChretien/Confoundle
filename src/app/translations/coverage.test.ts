@@ -47,6 +47,15 @@ function authoredStrings(): string[] {
 const LOCALES = Object.keys(DICTIONARIES);
 const STRINGS = authoredStrings();
 
+/**
+ * The failure message below is the translation worklist: it names every source
+ * string a locale is missing. When starting a translation pass it is worth
+ * having that list as JSON instead, so keys can be copied programmatically
+ * rather than transcribed (a transcribed key that differs by one character
+ * fails silently at runtime, falling back to English forever). CLAUDE.md holds
+ * the throwaway recipe for dumping it.
+ */
+
 describe("translation coverage", () => {
   it("has something to check", () => {
     expect(LOCALES.length).toBe(9);

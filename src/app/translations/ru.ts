@@ -644,8 +644,6 @@ export const ru: Record<string, string> = {
   "Ask everyone, and the link disappears.": "Спросите всех, и связь исчезает.",
   "Two illnesses are two chances to be admitted":
     "Две болезни, это два шанса попасть в больницу",
-  "The same survey, the same people, the same two diseases. Across everyone it asked, having a respiratory disease made a bone or joint disease no more likely at all. The hospital panel is not a finding about disease, it is a finding about admission. Either illness can put you in a hospital bed, so people with both turn up there far more often than people with one, and inside those walls the two look inseparable:":
-    "Тот же опрос, те же люди, те же две болезни. У всех, кого он спросил, наличие болезни органов дыхания вовсе не делало болезнь костей или суставов более вероятной. Больничная панель, это факт не о болезни, а о госпитализации. Любая из двух болезней может уложить вас на больничную койку, поэтому люди с обеими попадают туда гораздо чаще, чем люди с одной, и внутри этих стен две болезни выглядят неразлучными:",
   "Hospital and community": "Больница и население",
   "The filter": "Фильтр",
   "Berkson's bias": "Ошибка Берксона",
@@ -694,4 +692,82 @@ export const ru: Record<string, string> = {
     "Компания выясняет, связаны ли между собой две характеристики её пользователей. Она случайным образом отбирает людей из всех, кто когда-либо завёл учётную запись, включая тех, кто больше не вернулся, и тех, кто её закрыл, и никакой связи не находит.",
   "The sample was drawn before any filter that either of the two things could have influenced. Nothing about staying, succeeding or being admitted decided who got counted, so a selection artefact cannot be hiding in it.":
     "Выборку взяли до всякого фильтра, на который могла бы повлиять любая из двух характеристик. Кого посчитали, не зависело ни от того, остался ли человек, ни от его успеха, ни от госпитализации, поэтому артефакт отбора спрятаться в ней не может.",
+
+  // ==== Berkson's bias, corrected reveal wording ====
+  "The same survey, the same people, the same two diseases. Across everyone it asked, people with a respiratory disease were barely any likelier to have a bone or joint disease than people without one, and the odds come out at 1.06 against 1, which is nothing. The hospital panel is not a finding about disease, it is a finding about admission. Either illness can put you in a hospital bed, so people with both turn up there far more often than people with one, and inside those walls the two look inseparable:":
+    "Тот же опрос, те же люди, те же две болезни. У всех, кого он спросил, болезнь костей или суставов встречалась у людей с болезнью органов дыхания едва ли чаще, чем у людей без неё, и отношение шансов выходит 1,06 против 1, то есть ничего. Больничная панель, это факт не о болезни, а о госпитализации. Любая из двух болезней может уложить вас на больничную койку, поэтому люди с обеими попадают туда гораздо чаще, чем люди с одной, и внутри этих стен две болезни выглядят неразлучными:",
+
+  // ==== Relative versus absolute risk (statin trial) ====
+  "A drug cuts your risk of a heart attack by about a third. How many people does that help?":
+    "Препарат снижает ваш риск инфаркта примерно на треть. Скольким людям это помогает?",
+  "A trial gave 6,595 middle-aged men with high cholesterol and no history of heart trouble either a statin or a dummy pill, and followed them for about five years. The drug cut heart attacks and coronary deaths by roughly a third. That is a real result, and it is how the finding was reported.":
+    "В исследовании 6595 мужчин среднего возраста с повышенным холестерином и без проблем с сердцем в прошлом получали либо статин, либо пустышку, и за ними наблюдали около пяти лет. Препарат снизил число инфарктов и коронарных смертей примерно на треть. Это настоящий результат, и именно так о нём и сообщали.",
+  "Out of 1,000 men who took it for five years, how many were spared a heart attack or a coronary death?":
+    "Из 1000 мужчин, принимавших его пять лет, скольким удалось избежать инфаркта или коронарной смерти?",
+  "A five-year statin trial in 6,595 men":
+    "Пятилетнее исследование статина у 6595 мужчин",
+  "Heart attack or death from heart disease":
+    "Инфаркт или смерть от болезни сердца",
+  "Dummy pill": "Пустышка",
+  Statin: "Статин",
+  // captions under the big numbers
+  "of the risk removed": "риска устранено",
+  "spared, in every 1,000 men treated for five years":
+    "мужчины из каждой 1000 избежали события за пять лет лечения",
+  "men treated for five years to spare one":
+    "мужчины должны лечиться пять лет, чтобы уберечь одного",
+  // scope tags (right of the figure caption)
+  "Compared to the risk": "В сравнении с риском",
+  "Compared to the people": "В сравнении с людьми",
+  // choices, reveal, lesson, share, provenance
+  "About 300": "Около 300",
+  "roughly a third of them": "примерно треть из них",
+  "About 100": "Около 100",
+  "one in ten": "один из десяти",
+  "About 23": "Около 23",
+  "roughly 1 in 44": "примерно 1 из 44",
+  "Twenty three men in a thousand.": "Двадцать три мужчины из тысячи.",
+  "A third of a risk that was small to begin with":
+    "Треть риска, который и так был невелик",
+  "Both numbers come from the same trial. Without the drug, about 75 men in 1,000 had a heart attack or died of heart disease over the five years. With it, about 53 did. That is a third of the risk gone, and it is also 23 men in 1,000. The first number is divided by the risk, the second by the people, which is the whole reason they feel so different. Put the other way round, 44 men had to take the drug for five years for one of them to be spared:":
+    "Оба числа взяты из одного и того же исследования. Без препарата примерно у 75 мужчин из 1000 за эти пять лет случился инфаркт или наступила смерть от болезни сердца. С препаратом таких было около 53. Это исчезнувшая треть риска, и это же самое, 23 мужчины из 1000. Первое число делят на риск, второе на людей, и именно поэтому они ощущаются так по-разному. Если посмотреть с другой стороны, 44 мужчинам надо было принимать препарат пять лет, чтобы уберечь одного из них:",
+  "A third of what?": "Треть от чего?",
+  "Relative versus absolute risk": "Относительный риск против абсолютного",
+  "A percentage reduction tells you what share of a risk went away. It cannot tell you how big that risk was, and that is the part that decides whether it matters to you.":
+    "Снижение в процентах говорит, какая доля риска исчезла. Оно не говорит, насколько велик был сам риск, а именно это и решает, важно ли это для вас.",
+  "Whenever you meet a percentage change, ask what it is a percentage of. Halving a one-in-a-million risk and halving a one-in-two risk make the same headline and mean completely different things. The two figures worth asking for are the difference in plain numbers of people, and how many have to be treated for one of them to benefit.":
+    "Всякий раз, встречая изменение в процентах, спрашивайте, процент от чего это. Уменьшить вдвое риск один на миллион и уменьшить вдвое риск один из двух, это один и тот же заголовок и совершенно разные вещи. Две цифры, которые стоит спросить, это разница в обычных числах людей и то, скольких нужно пролечить, чтобы польза досталась одному.",
+  "Take a risk of 8 in 100 and drop it to 5 in 100. Divide the drop by the risk and you get a third, which sounds like a lot. Divide the same drop by the people and you get 3 in 100, which sounds like very little. Neither is wrong. They answer different questions: what fraction of the danger was removed, and what are the odds this helps me. Only the second one is about you. The gap between them grows as the risk shrinks, which is why the most impressive relative figures usually come from the rarest outcomes. This is not only a media problem. Relative figures make treatments look better to doctors too, and the same trial result draws more enthusiasm when it is described relatively than when it is described in whole people. It also cuts the other way with harms: a scare expressed as a doubling of risk sounds alarming whether the risk went from 1 in 10 to 2 in 10 or from 1 in 100,000 to 2 in 100,000. The habit that protects you in both directions is to insist on the numbers out of a fixed group of people, and on how many have to be treated, or exposed, for one to be affected.":
+    "Возьмите риск 8 из 100 и снизьте его до 5 из 100. Разделите это снижение на риск, и получится треть, что звучит внушительно. Разделите то же снижение на людей, и получится 3 из 100, что звучит совсем мало. Ни то ни другое не ошибочно. Они отвечают на разные вопросы: какая доля опасности устранена и каковы шансы, что это поможет лично мне. Только второй вопрос о вас. Разрыв между ними растёт по мере того, как риск уменьшается, и поэтому самые впечатляющие относительные цифры обычно получаются при самых редких исходах. Это проблема не только прессы. Относительные цифры делают лечение привлекательнее и в глазах врачей: один и тот же результат исследования вызывает больше энтузиазма, когда его описывают в относительных величинах, а не в целых людях. С вредом это работает и в обратную сторону: испуг, выраженный как удвоение риска, звучит тревожно и когда риск вырос с 1 из 10 до 2 из 10, и когда он вырос с 1 из 100 000 до 2 из 100 000. Привычка, которая защищает вас в обе стороны, это требовать числа из фиксированной группы людей и то, скольких нужно пролечить или подвергнуть воздействию, чтобы это коснулось одного.",
+  "The same kind of drug, in people at real risk":
+    "Тот же препарат, но у людей с настоящим риском",
+  "A second trial gave a statin to patients who had already had a heart attack or had angina. Major coronary events fell from 28 percent to 19 percent. As a relative figure that is about a third, almost the same headline as in the healthy men. But because the risk it was cutting into was nearly four times larger, the gain was about 9 patients in every 100 instead of 2. The identical headline, several times the benefit. This is why a percentage on its own cannot tell you whether a drug is worth taking, and why the answer differs from patient to patient.":
+    "Во втором исследовании статин давали пациентам, которые уже перенесли инфаркт или страдали стенокардией. Серьёзные коронарные события сократились с 28 процентов до 19. В относительном выражении это примерно треть, почти тот же заголовок, что и у здоровых мужчин. Но поскольку риск, который препарат урезал, был почти вчетверо больше, выигрыш составил около 9 пациентов на каждые 100 вместо 2. Заголовок тот же, польза в несколько раз больше. Вот почему процент сам по себе не может сказать, стоит ли принимать препарат, и почему ответ у разных пациентов разный.",
+  "When a relative figure did real damage":
+    "Когда относительная цифра нанесла настоящий вред",
+  "In October 1995 a British safety committee warned that some contraceptive pills carried about twice the risk of a blood clot. The warning travelled as a doubling, with no sense of how small the risk was either way, and women stopped taking the pill. Among girls under 16, use fell from 40 percent to 27 percent within a year. The health service met roughly 21 million pounds in extra maternity costs and 46 million pounds in abortion provision. A relative figure with no absolute figure beside it is not a neutral way to describe a risk.":
+    "В октябре 1995 года британский комитет по безопасности лекарств предупредил, что при приёме некоторых оральных контрацептивов риск тромба примерно вдвое выше. Предупреждение разошлось именно как удвоение, без всякого представления о том, насколько мал этот риск в обоих случаях, и женщины перестали принимать таблетки. Среди девушек младше 16 лет их применение за год упало с 40 процентов до 27. Здравоохранению это обошлось примерно в 21 миллион фунтов дополнительных расходов на роды и 46 миллионов фунтов на аборты. Относительная цифра, рядом с которой нет абсолютной, это не нейтральный способ описать риск.",
+  "The fix is in the wording": "Решение в формулировке",
+  "Describe the same result in whole people, so many out of 1,000 against so many out of 1,000, and both patients and doctors judge it far more accurately than when it arrives as a percentage reduction. Relative risks belong to a small family of formats that reliably confuse, alongside single-event probabilities and conditional ones like a test's sensitivity. None of them is wrong. They are just easy to misread, and there is a clearer way to say the same thing.":
+    "Опишите тот же результат в целых людях, столько-то из 1000 против столько-то из 1000, и пациенты, и врачи оценят его гораздо точнее, чем когда он подаётся как снижение в процентах. Относительные риски принадлежат к небольшому семейству форматов, которые надёжно сбивают с толку, вместе с вероятностями единичного события и условными вероятностями вроде чувствительности теста. Ни один из них не ошибочен. Их просто легко неверно прочитать, а сказать то же самое можно яснее.",
+  "Relative versus absolute risk, a reasoning trap.":
+    "Относительный риск против абсолютного, ловушка мышления.",
+  "\"Cuts your risk by a third\" sounds enormous. But a third of what? If the risk was 75 in 1,000, a third of it is 23 people. If the risk was 3 in 1,000, a third of it is one. The percentage tells you how much of the risk went away and says nothing at all about how much risk there was, which is the part that decides whether it matters to you. Ask for the plain numbers: how many out of 1,000, and how many people have to take it for one of them to benefit.":
+    "«Снижает ваш риск на треть» звучит колоссально. Но треть от чего? Если риск был 75 из 1000, то треть от него, это 23 человека. Если риск был 3 из 1000, то треть от него, это один человек. Процент говорит, сколько риска исчезло, и совсем ничего не говорит о том, сколько риска было, а именно это и решает, важно ли это для вас. Спрашивайте обычные числа: сколько человек из 1000 и скольким нужно это принимать, чтобы польза досталась одному из них.",
+  "The counts are the trial's primary endpoint, a definite nonfatal heart attack or death from coronary heart disease: 248 events among the men on placebo and 174 among those on pravastatin, over an average of 4.9 years. The paper reports a 31 percent relative risk reduction, estimated from a proportional-hazards model; the crude counts give 30 percent. Every figure this puzzle shows is derived from the counts, so it quotes about a third rather than a number the chart would contradict.":
+    "Числа, это первичная конечная точка исследования, достоверный нефатальный инфаркт миокарда или смерть от ишемической болезни сердца: 248 событий у мужчин на плацебо и 174 у тех, кто получал правастатин, в среднем за 4,9 года. В статье приводится снижение относительного риска на 31 процент, оценённое по модели пропорциональных рисков; по грубым подсчётам событий выходит 30 процентов. Каждая цифра, которую показывает эта головоломка, выведена из этих подсчётов, поэтому здесь говорится примерно о трети, а не приводится число, которому график противоречил бы.",
+
+  // ==== Trap Hunt items (relative versus absolute risk, plus a sound decoy) ====
+  "A press release says a new drug halves the risk of a rare complication. It does not say how common the complication is. A newspaper runs the story under the headline that the drug halves the danger.":
+    "В пресс-релизе говорится, что новый препарат вдвое снижает риск редкого осложнения. О том, насколько это осложнение распространено, там не сказано. Газета публикует материал под заголовком о том, что препарат вдвое снижает опасность.",
+  "Halving a risk means nothing until you know the risk. If the complication strikes 2 people in 10,000, halving it spares one of them.":
+    "Уменьшение риска вдвое ничего не значит, пока вы не знаете самого риска. Если осложнение случается у 2 человек из 10 000, то уменьшение вдвое убережёт одного из них.",
+  "A supplement is advertised as cutting the chance of a particular cancer by 40%. The trial it rests on found 7 cases among about 1,000 people taking the supplement and 12 among about 1,000 taking a dummy.":
+    "Биодобавку рекламируют как снижающую вероятность одного вида рака на 40 %. В исследовании, на которое она опирается, нашли 7 случаев среди примерно 1000 человек, принимавших добавку, и 12 среди примерно 1000 принимавших пустышку.",
+  "The 40% is arithmetically right and it amounts to 5 people in 1,000. Around 200 people would have to take the supplement for years for one of them to avoid a cancer.":
+    "40 % арифметически верны, и это составляет 5 человек на 1000. Около 200 человек должны были бы годами принимать добавку, чтобы один из них избежал рака.",
+  "A trial reports that the treatment reduced strokes from 12 in every 100 patients to 8 in every 100, calls that a reduction of a third, and adds that about 25 patients need to be treated for five years to prevent one stroke.":
+    "Исследование сообщает, что лечение снизило число инсультов с 12 на каждые 100 пациентов до 8 на каждые 100, называет это снижением на треть и добавляет, что примерно 25 пациентов нужно лечить пять лет, чтобы предотвратить один инсульт.",
+  "The relative figure, the plain numbers of people and the number needed to treat are all on the table, so nothing is hidden behind the percentage. This is how a result should be reported.":
+    "Относительная цифра, обычные числа людей и число больных, которых нужно пролечить, все они выложены на стол, так что за процентом ничего не спрятано. Именно так и следует сообщать результат.",
 };

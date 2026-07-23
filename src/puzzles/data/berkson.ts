@@ -102,7 +102,7 @@ export const berkson: Puzzle = {
     mechanismLabel: { en: "The filter" },
     mechanismName: { en: "Two illnesses are two chances to be admitted" },
     explanation: {
-      en: "The same survey, the same people, the same two diseases. Across everyone it asked, having a respiratory disease made a bone or joint disease no more likely at all. The hospital panel is not a finding about disease, it is a finding about admission. Either illness can put you in a hospital bed, so people with both turn up there far more often than people with one, and inside those walls the two look inseparable:",
+      en: "The same survey, the same people, the same two diseases. Across everyone it asked, people with a respiratory disease were barely any likelier to have a bone or joint disease than people without one, and the odds come out at 1.06 against 1, which is nothing. The hospital panel is not a finding about disease, it is a finding about admission. Either illness can put you in a hospital bed, so people with both turn up there far more often than people with one, and inside those walls the two look inseparable:",
     },
     view: { kind: "stratified", caption: { en: "Hospital and community" } },
   },

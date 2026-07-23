@@ -630,8 +630,6 @@ export const zh: Record<string, string> = {
   "it is about who gets admitted": "关键在于谁会住院",
   "Ask everyone, and the link disappears.": "问遍所有人，这种关联就消失了。",
   "Two illnesses are two chances to be admitted": "两种病，就是两次住院的机会",
-  "The same survey, the same people, the same two diseases. Across everyone it asked, having a respiratory disease made a bone or joint disease no more likely at all. The hospital panel is not a finding about disease, it is a finding about admission. Either illness can put you in a hospital bed, so people with both turn up there far more often than people with one, and inside those walls the two look inseparable:":
-    "同一项调查，同一批人，同样这两种疾病。在它问到的所有人当中，患有呼吸系统疾病完全没有让骨关节疾病变得更常见。住院那一组图讲的不是疾病，而是住院。这两种病中的任何一种都可能让你躺上病床，所以两病兼有的人出现在那里的机会远高于只有一种病的人，而在医院的墙内，这两者看上去密不可分：",
   "Hospital and community": "医院与社区",
   "The filter": "筛选机制",
   "Berkson's bias": "伯克森偏倚",
@@ -678,4 +676,78 @@ export const zh: Record<string, string> = {
     "一家公司想知道用户身上的两个特征是不是相伴出现。它从所有开过账户的人中随机抽样，包括那些再也没回来的人和已经注销的人，结果发现两者之间没有关系。",
   "The sample was drawn before any filter that either of the two things could have influenced. Nothing about staying, succeeding or being admitted decided who got counted, so a selection artefact cannot be hiding in it.":
     "样本是在任何可能受这两个特征影响的筛选之前抽取的。是否留下、是否成功、是否被收治，都没有决定谁会被统计进来，所以里面藏不住选择偏倚造成的假象。",
+
+  // ==== Relative versus absolute risk (puzzle #10, statin trial) ====
+  "A drug cuts your risk of a heart attack by about a third. How many people does that help?":
+    "一种药物把你心脏病发作的风险降低了约三分之一。这到底帮到了多少人？",
+  "A trial gave 6,595 middle-aged men with high cholesterol and no history of heart trouble either a statin or a dummy pill, and followed them for about five years. The drug cut heart attacks and coronary deaths by roughly a third. That is a real result, and it is how the finding was reported.":
+    "一项试验让 6,595 名胆固醇偏高、且没有心脏病史的中年男性分别服用他汀或安慰剂，随访了大约五年。药物把心脏病发作和冠心病死亡减少了大约三分之一。这是一个真实的结果，当初的报道也正是这么说的。",
+  "Out of 1,000 men who took it for five years, how many were spared a heart attack or a coronary death?":
+    "在服用了五年的 1,000 名男性中，有多少人因此免于心脏病发作或冠心病死亡？",
+  "A five-year statin trial in 6,595 men": "6,595 名男性参加的五年他汀试验",
+  "Heart attack or death from heart disease": "心脏病发作或死于心脏病",
+  "Dummy pill": "安慰剂",
+  Statin: "他汀",
+  "of the risk removed": "的风险被消除",
+  "spared, in every 1,000 men treated for five years":
+    "人免于这一结局（每 1,000 名接受五年治疗的男性中）",
+  "men treated for five years to spare one":
+    "名男性接受五年治疗，才能让其中 1 人免于这一结局",
+  "About 300": "大约 300 人",
+  "roughly a third of them": "大约是其中的三分之一",
+  "About 100": "大约 100 人",
+  "one in ten": "十分之一",
+  "About 23": "大约 23 人",
+  "roughly 1 in 44": "大约每 44 人中 1 人",
+  "Twenty three men in a thousand.": "一千人中，二十三人。",
+  "A third of a risk that was small to begin with":
+    "本来就很小的风险，去掉了三分之一",
+  "Both numbers come from the same trial. Without the drug, about 75 men in 1,000 had a heart attack or died of heart disease over the five years. With it, about 53 did. That is a third of the risk gone, and it is also 23 men in 1,000. The first number is divided by the risk, the second by the people, which is the whole reason they feel so different. Put the other way round, 44 men had to take the drug for five years for one of them to be spared:":
+    "这两个数字来自同一项试验。不吃药的话，五年里每 1,000 名男性中约有 75 人心脏病发作或死于心脏病。吃了药，这个数字约为 53 人。这既是风险少了三分之一，也是每 1,000 人中少了 23 人。第一个数字是拿来除以风险的，第二个是拿来除以人数的，这正是两者感觉如此不同的全部原因。反过来说，要让 1 个人幸免，就得有 44 名男性连吃五年药：",
+  "A third of what?": "是什么的三分之一？",
+  "Relative versus absolute risk": "相对风险与绝对风险",
+  "A percentage reduction tells you what share of a risk went away. It cannot tell you how big that risk was, and that is the part that decides whether it matters to you.":
+    "百分比的下降只告诉你风险中有多大一部分消失了。它无法告诉你这个风险原本有多大，而后者才决定这件事对你是否重要。",
+  "Whenever you meet a percentage change, ask what it is a percentage of. Halving a one-in-a-million risk and halving a one-in-two risk make the same headline and mean completely different things. The two figures worth asking for are the difference in plain numbers of people, and how many have to be treated for one of them to benefit.":
+    "每当你遇到一个百分比变化，都要问一问它是谁的百分比。把百万分之一的风险减半，和把二分之一的风险减半，标题一模一样，含义却天差地别。值得追问的两个数字是：用具体人数表示的差值，以及要治疗多少人才能让其中 1 人获益。",
+  "Take a risk of 8 in 100 and drop it to 5 in 100. Divide the drop by the risk and you get a third, which sounds like a lot. Divide the same drop by the people and you get 3 in 100, which sounds like very little. Neither is wrong. They answer different questions: what fraction of the danger was removed, and what are the odds this helps me. Only the second one is about you. The gap between them grows as the risk shrinks, which is why the most impressive relative figures usually come from the rarest outcomes. This is not only a media problem. Relative figures make treatments look better to doctors too, and the same trial result draws more enthusiasm when it is described relatively than when it is described in whole people. It also cuts the other way with harms: a scare expressed as a doubling of risk sounds alarming whether the risk went from 1 in 10 to 2 in 10 or from 1 in 100,000 to 2 in 100,000. The habit that protects you in both directions is to insist on the numbers out of a fixed group of people, and on how many have to be treated, or exposed, for one to be affected.":
+    "把每 100 人中 8 人的风险降到每 100 人中 5 人。用下降的幅度去除以风险，你得到三分之一，听起来很多。用同样的下降幅度去除以人数，你得到每 100 人中 3 人，听起来微不足道。两者都没有错。它们回答的是不同的问题：危险中有多大一部分被消除了，以及这件事帮到我的概率有多大。只有第二个问题是关于你的。风险越小，两者的差距就越大，这也是为什么最惊人的相对数字往往出自最罕见的结局。这不只是媒体的问题。相对数字也会让治疗在医生眼里显得更好，同一项试验结果，用相对方式描述时引来的热情，比用具体人数描述时更高。在危害那一侧，它同样起作用：一则说风险翻倍的警告听起来都很吓人，不论风险是从每 10 人中 1 人升到 2 人，还是从每 100,000 人中 1 人升到 2 人。在两个方向上都能保护你的习惯是：坚持要一个固定人群里的具体人数，以及要治疗多少人、或者暴露多少人，才会有 1 个人受到影响。",
+  "The same kind of drug, in people at real risk":
+    "同一类药物，用在真正有风险的人身上",
+  "A second trial gave a statin to patients who had already had a heart attack or had angina. Major coronary events fell from 28 percent to 19 percent. As a relative figure that is about a third, almost the same headline as in the healthy men. But because the risk it was cutting into was nearly four times larger, the gain was about 9 patients in every 100 instead of 2. The identical headline, several times the benefit. This is why a percentage on its own cannot tell you whether a drug is worth taking, and why the answer differs from patient to patient.":
+    "第二项试验把他汀用在已经发生过心脏病发作或患有心绞痛的患者身上。主要冠心病事件从 28% 降到 19%。换成相对数字，这大约是三分之一，和那些健康男性中的标题几乎一样。但因为它所削减的那个风险大了将近四倍，获益是每 100 名患者中约 9 人，而不是 2 人。标题完全相同，获益却是好几倍。这就是为什么单凭一个百分比无法告诉你一种药值不值得吃，也是为什么答案因人而异。",
+  "When a relative figure did real damage": "一个相对数字造成的真实伤害",
+  "In October 1995 a British safety committee warned that some contraceptive pills carried about twice the risk of a blood clot. The warning travelled as a doubling, with no sense of how small the risk was either way, and women stopped taking the pill. Among girls under 16, use fell from 40 percent to 27 percent within a year. The health service met roughly 21 million pounds in extra maternity costs and 46 million pounds in abortion provision. A relative figure with no absolute figure beside it is not a neutral way to describe a risk.":
+    "1995 年 10 月，英国一个安全委员会警告说，某些口服避孕药的血栓风险约为原来的两倍。这条警告以“翻倍”的形式传开，完全没有交代无论哪一边风险其实都很小，于是女性纷纷停药。在 16 岁以下的女孩中，使用率一年之内从 40% 降到 27%。医疗服务体系为此承担了大约两千一百万英镑的额外产科费用，以及四千六百万英镑的人工流产费用。一个旁边没有绝对数字的相对数字，并不是一种中立的风险表述方式。",
+  "The fix is in the wording": "解决办法在于表述",
+  "Describe the same result in whole people, so many out of 1,000 against so many out of 1,000, and both patients and doctors judge it far more accurately than when it arrives as a percentage reduction. Relative risks belong to a small family of formats that reliably confuse, alongside single-event probabilities and conditional ones like a test's sensitivity. None of them is wrong. They are just easy to misread, and there is a clearer way to say the same thing.":
+    "把同一个结果用具体人数说出来，每 1,000 人中多少人对每 1,000 人中多少人，患者和医生对它的判断都会比听到一个百分比下降时准确得多。相对风险属于一小类总能把人绕晕的表述方式，同类的还有单次事件概率，以及像检测敏感度这样的条件概率。它们都没有错。只是容易被误读，而同样的意思有更清楚的说法。",
+  "Relative versus absolute risk, a reasoning trap.":
+    "相对风险与绝对风险，一个推理陷阱。",
+  "\"Cuts your risk by a third\" sounds enormous. But a third of what? If the risk was 75 in 1,000, a third of it is 23 people. If the risk was 3 in 1,000, a third of it is one. The percentage tells you how much of the risk went away and says nothing at all about how much risk there was, which is the part that decides whether it matters to you. Ask for the plain numbers: how many out of 1,000, and how many people have to take it for one of them to benefit.":
+    "“把你的风险降低三分之一”听上去大得惊人。但是什么的三分之一？如果风险是每 1,000 人中 75 人，它的三分之一就是 23 个人。如果风险是每 1,000 人中 3 人，它的三分之一就是 1 个人。百分比告诉你风险消失了多少，却完全没有说原本有多少风险，而后者才决定这件事对你是否重要。去要那些朴素的数字：每 1,000 人中有多少，以及要多少人服药才能让其中 1 人获益。",
+  "The counts are the trial's primary endpoint, a definite nonfatal heart attack or death from coronary heart disease: 248 events among the men on placebo and 174 among those on pravastatin, over an average of 4.9 years. The paper reports a 31 percent relative risk reduction, estimated from a proportional-hazards model; the crude counts give 30 percent. Every figure this puzzle shows is derived from the counts, so it quotes about a third rather than a number the chart would contradict.":
+    "这些数字是该试验的主要终点，即确定的非致死性心脏病发作或冠心病死亡：安慰剂组的男性中有 248 例事件，普伐他汀组中有 174 例，平均随访 4.9 年。论文报告的相对风险降低为 31%，是用比例风险模型估计出来的；按粗计数计算则为 30%。这道谜题展示的每一个数字都由这些计数推导而来，所以它引用的是“大约三分之一”，而不是一个会与图表相矛盾的数字。",
+
+  // ---- Scope tags for the risk figure ----
+  "Compared to the risk": "相对于风险",
+  "Compared to the people": "相对于人数",
+
+  // Trap Hunt items for relative versus absolute risk
+  "A press release says a new drug halves the risk of a rare complication. It does not say how common the complication is. A newspaper runs the story under the headline that the drug halves the danger.":
+    "一份新闻稿说，一种新药把某种罕见并发症的风险减半。它没有说这种并发症有多常见。一家报纸以“该药把危险减半”为标题报道了这件事。",
+  "Halving a risk means nothing until you know the risk. If the complication strikes 2 people in 10,000, halving it spares one of them.":
+    "在你知道风险有多大之前，风险减半什么也说明不了。如果这种并发症每 10,000 人中发生 2 例，减半就是让其中 1 人幸免。",
+  "A supplement is advertised as cutting the chance of a particular cancer by 40%. The trial it rests on found 7 cases among about 1,000 people taking the supplement and 12 among about 1,000 taking a dummy.":
+    "一种膳食补充剂的广告说，它能把某种癌症的发生概率降低 40%。它所依据的试验，在约 1,000 名服用补充剂的人中发现 7 例，在约 1,000 名服用安慰剂的人中发现 12 例。",
+  "The 40% is arithmetically right and it amounts to 5 people in 1,000. Around 200 people would have to take the supplement for years for one of them to avoid a cancer.":
+    "40% 在算术上是对的，而它相当于每 1,000 人中 5 人。大约需要 200 个人连年服用这种补充剂，才能让其中 1 人免于一次癌症。",
+  "A trial reports that the treatment reduced strokes from 12 in every 100 patients to 8 in every 100, calls that a reduction of a third, and adds that about 25 patients need to be treated for five years to prevent one stroke.":
+    "一项试验报告说，治疗把卒中从每 100 名患者中 12 例减少到每 100 名中 8 例，称之为减少了三分之一，并补充说大约需要治疗 25 名患者五年，才能预防 1 次卒中。",
+  "The relative figure, the plain numbers of people and the number needed to treat are all on the table, so nothing is hidden behind the percentage. This is how a result should be reported.":
+    "相对数字、具体人数和需治疗人数都摆在桌面上，所以百分比背后没有藏着任何东西。结果本来就该这样报告。",
+
+  // ---- Berkson's bias, corrected community wording ----
+  "The same survey, the same people, the same two diseases. Across everyone it asked, people with a respiratory disease were barely any likelier to have a bone or joint disease than people without one, and the odds come out at 1.06 against 1, which is nothing. The hospital panel is not a finding about disease, it is a finding about admission. Either illness can put you in a hospital bed, so people with both turn up there far more often than people with one, and inside those walls the two look inseparable:":
+    "同一项调查，同一批人，同样这两种疾病。在它问到的所有人当中，患有呼吸系统疾病的人，患骨关节疾病的可能性只比没有呼吸系统疾病的人高出一点点，比值比算出来是 1.06 比 1，等于什么也没有。住院那一组图讲的不是疾病，而是住院。这两种病中的任何一种都可能让你躺上病床，所以两病兼有的人出现在那里的机会远高于只有一种病的人，而在医院的墙内，这两者看上去密不可分：",
 };

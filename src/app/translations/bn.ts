@@ -643,8 +643,6 @@ export const bn: Record<string, string> = {
     "সবাইকে জিজ্ঞাসা করুন, সম্পর্কটি মিলিয়ে যায়।",
   "Two illnesses are two chances to be admitted":
     "দুটি অসুখ মানে ভর্তি হওয়ার দুটি সুযোগ",
-  "The same survey, the same people, the same two diseases. Across everyone it asked, having a respiratory disease made a bone or joint disease no more likely at all. The hospital panel is not a finding about disease, it is a finding about admission. Either illness can put you in a hospital bed, so people with both turn up there far more often than people with one, and inside those walls the two look inseparable:":
-    "একই জরিপ, একই মানুষ, একই দুটি রোগ। জরিপটি যাঁদের জিজ্ঞাসা করেছিল তাঁদের সবাইকে ধরলে, শ্বাসতন্ত্রের রোগ থাকায় হাড় বা অস্থিসন্ধির রোগের সম্ভাবনা একটুও বাড়েনি। হাসপাতালের প্যানেলটি রোগ সম্পর্কে কোনো আবিষ্কার নয়, এটি ভর্তি হওয়া সম্পর্কে একটি আবিষ্কার। দুটি অসুখের যেকোনোটিই আপনাকে হাসপাতালের শয্যায় নিয়ে যেতে পারে, তাই যাঁদের দুটোই আছে তাঁরা সেখানে একটিমাত্র রোগ থাকা মানুষদের চেয়ে অনেক বেশিবার হাজির হন; আর ওই দেয়ালের ভেতরে দুটিকে অবিচ্ছেদ্য মনে হয়:",
   "Hospital and community": "হাসপাতাল আর জনসমাজ",
   "The filter": "ছাঁকনিটি",
   "Berkson's bias": "বার্কসনের পক্ষপাত",
@@ -693,4 +691,80 @@ export const bn: Record<string, string> = {
     "একটি কোম্পানি জানতে চায় তার ব্যবহারকারীদের দুটি বৈশিষ্ট্য একসঙ্গে চলে কি না। যাঁরা কখনো একটি অ্যাকাউন্ট খুলেছিলেন তাঁদের সবার মধ্য থেকে এটি এলোমেলোভাবে নমুনা নেয়, যাঁরা আর কখনো ফিরে আসেননি আর যাঁরা বাতিল করে দিয়েছেন তাঁদেরসহ, আর দুটির মধ্যে কোনো সম্পর্ক পায় না।",
   "The sample was drawn before any filter that either of the two things could have influenced. Nothing about staying, succeeding or being admitted decided who got counted, so a selection artefact cannot be hiding in it.":
     "দুটি জিনিসের যেকোনোটি প্রভাবিত করতে পারত এমন যেকোনো ছাঁকনির আগেই নমুনাটি নেওয়া হয়েছে। থেকে যাওয়া, সফল হওয়া কিংবা ভর্তি হওয়া, কোনোটিই ঠিক করেনি কারা গোনায় আসবেন; তাই এর ভেতরে কোনো বাছাইজনিত কৃত্রিম ফল লুকিয়ে থাকতে পারে না।",
+
+  // ==== Relative versus absolute risk (statin trial) ====
+  "A drug cuts your risk of a heart attack by about a third. How many people does that help?":
+    "একটি ওষুধ আপনার হার্ট অ্যাটাকের ঝুঁকি প্রায় এক-তৃতীয়াংশ কমিয়ে দেয়। এতে কতজন মানুষের উপকার হয়?",
+  "A trial gave 6,595 middle-aged men with high cholesterol and no history of heart trouble either a statin or a dummy pill, and followed them for about five years. The drug cut heart attacks and coronary deaths by roughly a third. That is a real result, and it is how the finding was reported.":
+    "একটি ট্রায়ালে উচ্চ কোলেস্টেরল থাকা আর হৃদরোগের কোনো ইতিহাস না থাকা ৬,৫৯৫ জন মধ্যবয়সী পুরুষকে হয় একটি স্ট্যাটিন নয়তো একটি নকল বড়ি দেওয়া হয়, আর প্রায় পাঁচ বছর ধরে তাঁদের অনুসরণ করা হয়। ওষুধটি হার্ট অ্যাটাক আর করোনারি মৃত্যু মোটামুটি এক-তৃতীয়াংশ কমিয়ে দিয়েছিল। এটি একটি সত্যিকারের ফলাফল, আর ফলাফলটি এভাবেই জানানো হয়েছিল।",
+  "Out of 1,000 men who took it for five years, how many were spared a heart attack or a coronary death?":
+    "পাঁচ বছর ধরে ওষুধটি খাওয়া ১,০০০ জন পুরুষের মধ্যে কতজন হার্ট অ্যাটাক বা করোনারি মৃত্যু থেকে রেহাই পেয়েছিলেন?",
+  "A five-year statin trial in 6,595 men":
+    "৬,৫৯৫ জন পুরুষের ওপর পাঁচ বছরের একটি স্ট্যাটিন ট্রায়াল",
+  "Heart attack or death from heart disease": "হার্ট অ্যাটাক বা হৃদরোগে মৃত্যু",
+  "Dummy pill": "নকল বড়ি",
+  Statin: "স্ট্যাটিন",
+  "of the risk removed": "ঝুঁকির এই অংশ সরে গেছে",
+  "spared, in every 1,000 men treated for five years":
+    "পাঁচ বছর চিকিৎসা পাওয়া প্রতি ১,০০০ জন পুরুষে এতজন রেহাই পেয়েছেন",
+  "men treated for five years to spare one":
+    "একজনকে রেহাই দিতে এতজন পুরুষকে পাঁচ বছর চিকিৎসা দিতে হয়েছে",
+  "About 300": "প্রায় ৩০০",
+  "roughly a third of them": "তাঁদের মোটামুটি এক-তৃতীয়াংশ",
+  "About 100": "প্রায় ১০০",
+  "one in ten": "দশ জনে একজন",
+  "About 23": "প্রায় ২৩",
+  "roughly 1 in 44": "মোটামুটি ৪৪ জনে ১",
+  "Twenty three men in a thousand.": "হাজারে তেইশ জন পুরুষ।",
+  "A third of a risk that was small to begin with":
+    "শুরুতেই ছোট ছিল এমন একটি ঝুঁকির এক-তৃতীয়াংশ",
+  "Both numbers come from the same trial. Without the drug, about 75 men in 1,000 had a heart attack or died of heart disease over the five years. With it, about 53 did. That is a third of the risk gone, and it is also 23 men in 1,000. The first number is divided by the risk, the second by the people, which is the whole reason they feel so different. Put the other way round, 44 men had to take the drug for five years for one of them to be spared:":
+    "দুটি সংখ্যাই একই ট্রায়াল থেকে এসেছে। ওষুধ ছাড়া, পাঁচ বছরে ১,০০০ জনে প্রায় ৭৫ জন পুরুষের হার্ট অ্যাটাক হয়েছিল বা তাঁরা হৃদরোগে মারা গিয়েছিলেন। ওষুধ খেয়ে, প্রায় ৫৩ জনের। এটাই ঝুঁকির এক-তৃতীয়াংশ সরে যাওয়া, আবার এটাই ১,০০০ জনে ২৩ জন পুরুষ। প্রথম সংখ্যাটিকে ভাগ করা হয়েছে ঝুঁকি দিয়ে, দ্বিতীয়টিকে মানুষ দিয়ে, আর এ কারণেই দুটিকে এত আলাদা মনে হয়। উল্টো করে বললে, একজন পুরুষকে রেহাই দিতে ৪৪ জনকে পাঁচ বছর ধরে ওষুধটি খেতে হয়েছিল:",
+  "A third of what?": "কীসের এক-তৃতীয়াংশ?",
+  "Relative versus absolute risk": "আপেক্ষিক বনাম পরম ঝুঁকি",
+  "A percentage reduction tells you what share of a risk went away. It cannot tell you how big that risk was, and that is the part that decides whether it matters to you.":
+    "শতাংশে বলা কোনো হ্রাস আপনাকে জানায় ঝুঁকির কতটুকু অংশ সরে গেল। ঝুঁকিটি কত বড় ছিল তা এটি বলতে পারে না, আর ওই অংশটিই ঠিক করে দেয় এটি আপনার কাছে গুরুত্বপূর্ণ কি না।",
+  "Whenever you meet a percentage change, ask what it is a percentage of. Halving a one-in-a-million risk and halving a one-in-two risk make the same headline and mean completely different things. The two figures worth asking for are the difference in plain numbers of people, and how many have to be treated for one of them to benefit.":
+    "যখনই শতাংশে বলা কোনো পরিবর্তন দেখবেন, জিজ্ঞাসা করুন সেটি কীসের শতাংশ। দশ লাখে এক ঝুঁকি অর্ধেক করা আর দুইয়ে এক ঝুঁকি অর্ধেক করা একই শিরোনাম তৈরি করে, অথচ দুটির মানে সম্পূর্ণ আলাদা। যে দুটি সংখ্যা চেয়ে নেওয়া দরকার তা হলো সরল মানুষের হিসাবে পার্থক্যটি কত, আর একজনের উপকার হতে কতজনকে চিকিৎসা দিতে হয়।",
+  "Take a risk of 8 in 100 and drop it to 5 in 100. Divide the drop by the risk and you get a third, which sounds like a lot. Divide the same drop by the people and you get 3 in 100, which sounds like very little. Neither is wrong. They answer different questions: what fraction of the danger was removed, and what are the odds this helps me. Only the second one is about you. The gap between them grows as the risk shrinks, which is why the most impressive relative figures usually come from the rarest outcomes. This is not only a media problem. Relative figures make treatments look better to doctors too, and the same trial result draws more enthusiasm when it is described relatively than when it is described in whole people. It also cuts the other way with harms: a scare expressed as a doubling of risk sounds alarming whether the risk went from 1 in 10 to 2 in 10 or from 1 in 100,000 to 2 in 100,000. The habit that protects you in both directions is to insist on the numbers out of a fixed group of people, and on how many have to be treated, or exposed, for one to be affected.":
+    "১০০-তে ৮ একটি ঝুঁকি নিন, আর সেটিকে নামিয়ে আনুন ১০০-তে ৫-এ। পতনটিকে ঝুঁকি দিয়ে ভাগ করলে পাবেন এক-তৃতীয়াংশ, যা শুনতে অনেক মনে হয়। একই পতনকে মানুষ দিয়ে ভাগ করলে পাবেন ১০০-তে ৩, যা শুনতে খুবই সামান্য মনে হয়। কোনোটিই ভুল নয়। তারা আলাদা প্রশ্নের উত্তর দেয়: বিপদের কতটুকু অংশ সরে গেল, আর এটি আমাকে সাহায্য করার সম্ভাবনা কত। কেবল দ্বিতীয়টিই আপনাকে নিয়ে। ঝুঁকি যত ছোট হয়, দুটির মধ্যে ফারাক তত বাড়ে; এ কারণেই সবচেয়ে চমকপ্রদ আপেক্ষিক সংখ্যাগুলো সাধারণত আসে সবচেয়ে বিরল পরিণতিগুলো থেকে। এটি কেবল গণমাধ্যমের সমস্যা নয়। আপেক্ষিক সংখ্যা ডাক্তারদের চোখেও চিকিৎসাকে ভালো দেখায়, আর একই ট্রায়ালের ফল গোটা মানুষের হিসাবে বললে যতটা উৎসাহ জাগায়, আপেক্ষিকভাবে বললে জাগায় তার চেয়ে বেশি। ক্ষতির বেলাতেও ব্যাপারটা উল্টো দিকে কাজ করে: ঝুঁকি দ্বিগুণ হওয়ার কথা বলে ছড়ানো একটি আতঙ্ক ভয় ধরিয়ে দেয়, ঝুঁকিটি ১০-এ ১ থেকে ১০-এ ২ হোক কিংবা ১,০০,০০০-এ ১ থেকে ১,০০,০০০-এ ২ হোক। দুই দিকেই যে অভ্যাসটি আপনাকে রক্ষা করে তা হলো নির্দিষ্ট একদল মানুষের মধ্যে সংখ্যাগুলো চেয়ে নেওয়া, আর একজনের ওপর প্রভাব পড়তে কতজনকে চিকিৎসা দিতে বা সংস্পর্শে আসতে হয় তা জেনে নেওয়া।",
+  "The same kind of drug, in people at real risk":
+    "একই ধরনের ওষুধ, সত্যিকারের ঝুঁকিতে থাকা মানুষদের ক্ষেত্রে",
+  "A second trial gave a statin to patients who had already had a heart attack or had angina. Major coronary events fell from 28 percent to 19 percent. As a relative figure that is about a third, almost the same headline as in the healthy men. But because the risk it was cutting into was nearly four times larger, the gain was about 9 patients in every 100 instead of 2. The identical headline, several times the benefit. This is why a percentage on its own cannot tell you whether a drug is worth taking, and why the answer differs from patient to patient.":
+    "আরেকটি ট্রায়ালে স্ট্যাটিন দেওয়া হয়েছিল এমন রোগীদের, যাঁদের আগেই হার্ট অ্যাটাক হয়েছিল বা অ্যানজাইনা ছিল। বড় করোনারি ঘটনা ২৮ শতাংশ থেকে নেমে ১৯ শতাংশে এসেছিল। আপেক্ষিক সংখ্যা হিসেবে সেটি প্রায় এক-তৃতীয়াংশ, সুস্থ পুরুষদের ক্ষেত্রে পাওয়া শিরোনামের প্রায় হুবহু এক। কিন্তু এটি যে ঝুঁকিটিতে হাত দিচ্ছিল তা প্রায় চার গুণ বড় ছিল বলে লাভটা দাঁড়িয়েছিল প্রতি ১০০ জনে ২ জনের বদলে প্রায় ৯ জন রোগী। শিরোনাম হুবহু এক, উপকার কয়েক গুণ। এ কারণেই কেবল একটি শতাংশ আপনাকে বলতে পারে না ওষুধটি খাওয়ার মতো কি না, আর এ কারণেই উত্তরটা রোগীভেদে আলাদা হয়।",
+  "When a relative figure did real damage":
+    "যখন একটি আপেক্ষিক সংখ্যা সত্যিকারের ক্ষতি করেছিল",
+  "In October 1995 a British safety committee warned that some contraceptive pills carried about twice the risk of a blood clot. The warning travelled as a doubling, with no sense of how small the risk was either way, and women stopped taking the pill. Among girls under 16, use fell from 40 percent to 27 percent within a year. The health service met roughly 21 million pounds in extra maternity costs and 46 million pounds in abortion provision. A relative figure with no absolute figure beside it is not a neutral way to describe a risk.":
+    "১৯৯৫ সালের অক্টোবরে ব্রিটেনের একটি ওষুধ নিরাপত্তা কমিটি সতর্ক করে যে কিছু গর্ভনিরোধক বড়িতে রক্ত জমাট বাঁধার ঝুঁকি প্রায় দ্বিগুণ। সতর্কবার্তাটি ছড়িয়ে পড়ে “দ্বিগুণ” হিসেবেই, কোনো দিকেই ঝুঁকিটি কত ছোট ছিল তার কোনো ধারণা ছাড়াই; আর নারীরা বড়ি খাওয়া বন্ধ করে দেন। ১৬ বছরের কম বয়সী মেয়েদের মধ্যে এক বছরের ভেতরেই বড়ির ব্যবহার ৪০ শতাংশ থেকে নেমে ২৭ শতাংশে দাঁড়ায়। স্বাস্থ্য পরিষেবাকে বাড়তি মাতৃত্বসেবা বাবদ মোটামুটি ২ কোটি ১০ লাখ পাউন্ড আর গর্ভপাত সেবা বাবদ ৪ কোটি ৬০ লাখ পাউন্ড খরচ সামলাতে হয়। পাশে কোনো পরম সংখ্যা ছাড়া একটি আপেক্ষিক সংখ্যা ঝুঁকি বর্ণনার নিরপেক্ষ উপায় নয়।",
+  "The fix is in the wording": "সমাধানটি শব্দচয়নে",
+  "Describe the same result in whole people, so many out of 1,000 against so many out of 1,000, and both patients and doctors judge it far more accurately than when it arrives as a percentage reduction. Relative risks belong to a small family of formats that reliably confuse, alongside single-event probabilities and conditional ones like a test's sensitivity. None of them is wrong. They are just easy to misread, and there is a clearer way to say the same thing.":
+    "একই ফলাফল গোটা মানুষের হিসাবে বলুন, ১,০০০ জনে এতজনের বিপরীতে ১,০০০ জনে এতজন, তাহলে রোগী আর ডাক্তার দুজনেই তা শতাংশে বলা হ্রাস হিসেবে আসার চেয়ে অনেক বেশি নির্ভুলভাবে বিচার করেন। আপেক্ষিক ঝুঁকি এমন কয়েকটি উপস্থাপনার ছোট্ট পরিবারের সদস্য যেগুলো নিয়ম করে বিভ্রান্ত করে; সঙ্গে আছে একক ঘটনার সম্ভাবনা আর শর্তসাপেক্ষ সম্ভাবনা, যেমন একটি পরীক্ষার সংবেদনশীলতা। এদের একটিও ভুল নয়। কেবল এদের ভুল পড়া সহজ, আর একই কথা বলার আরও স্পষ্ট একটি উপায় আছে।",
+  "Relative versus absolute risk, a reasoning trap.":
+    "আপেক্ষিক বনাম পরম ঝুঁকি, একটি যুক্তির ফাঁদ।",
+  "\"Cuts your risk by a third\" sounds enormous. But a third of what? If the risk was 75 in 1,000, a third of it is 23 people. If the risk was 3 in 1,000, a third of it is one. The percentage tells you how much of the risk went away and says nothing at all about how much risk there was, which is the part that decides whether it matters to you. Ask for the plain numbers: how many out of 1,000, and how many people have to take it for one of them to benefit.":
+    "“আপনার ঝুঁকি এক-তৃতীয়াংশ কমিয়ে দেয়” শুনতে বিশাল লাগে। কিন্তু কীসের এক-তৃতীয়াংশ? ঝুঁকিটি যদি ১,০০০-এ ৭৫ হয়, তার এক-তৃতীয়াংশ মানে ২৩ জন মানুষ। ঝুঁকিটি যদি ১,০০০-এ ৩ হয়, তার এক-তৃতীয়াংশ মানে একজন। শতাংশটি আপনাকে বলে ঝুঁকির কতটুকু সরে গেল, আর ঝুঁকিটা আদৌ কতটা ছিল সে সম্পর্কে কিছুই বলে না; অথচ ওই অংশটিই ঠিক করে দেয় এটি আপনার কাছে গুরুত্বপূর্ণ কি না। সরল সংখ্যাগুলো চেয়ে নিন: ১,০০০ জনে কতজন, আর একজনের উপকার হতে কতজন মানুষকে এটি খেতে হয়।",
+  "The counts are the trial's primary endpoint, a definite nonfatal heart attack or death from coronary heart disease: 248 events among the men on placebo and 174 among those on pravastatin, over an average of 4.9 years. The paper reports a 31 percent relative risk reduction, estimated from a proportional-hazards model; the crude counts give 30 percent. Every figure this puzzle shows is derived from the counts, so it quotes about a third rather than a number the chart would contradict.":
+    "সংখ্যাগুলো ট্রায়ালের প্রাইমারি এন্ডপয়েন্ট থেকে নেওয়া, অর্থাৎ নিশ্চিত একটি নন-ফেটাল হার্ট অ্যাটাক বা করোনারি হৃদরোগে মৃত্যু: প্লাসিবোতে থাকা পুরুষদের মধ্যে ২৪৮টি ঘটনা আর প্রাভাস্ট্যাটিনে থাকাদের মধ্যে ১৭৪টি, গড়ে ৪.৯ বছরে। গবেষণাপত্রটি ৩১ শতাংশ আপেক্ষিক ঝুঁকি হ্রাসের কথা জানায়, যা একটি প্রোপোরশনাল-হ্যাজার্ডস মডেল থেকে অনুমান করা; কাঁচা গণনাগুলো দেয় ৩০ শতাংশ। এই ধাঁধায় দেখানো প্রতিটি সংখ্যা ওই গণনাগুলো থেকেই বের করা, তাই চার্টের সঙ্গে সাংঘর্ষিক কোনো সংখ্যা না বলে এটি বলে “প্রায় এক-তৃতীয়াংশ”।",
+
+  // Trap Hunt items for relative versus absolute risk
+  "A press release says a new drug halves the risk of a rare complication. It does not say how common the complication is. A newspaper runs the story under the headline that the drug halves the danger.":
+    "একটি প্রেস বিজ্ঞপ্তিতে বলা হয় যে একটি নতুন ওষুধ একটি বিরল জটিলতার ঝুঁকি অর্ধেক করে দেয়। জটিলতাটি কতটা সাধারণ তা বলা হয় না। একটি সংবাদপত্র খবরটি ছাপে এই শিরোনামে যে ওষুধটি বিপদ অর্ধেক করে দেয়।",
+  "Halving a risk means nothing until you know the risk. If the complication strikes 2 people in 10,000, halving it spares one of them.":
+    "ঝুঁকিটি কত তা না জানা পর্যন্ত ঝুঁকি অর্ধেক করার কোনো মানে নেই। জটিলতাটি যদি ১০,০০০ জনে ২ জনের হয়, তা অর্ধেক করলে তাঁদের একজন রেহাই পান।",
+  "A supplement is advertised as cutting the chance of a particular cancer by 40%. The trial it rests on found 7 cases among about 1,000 people taking the supplement and 12 among about 1,000 taking a dummy.":
+    "একটি সাপ্লিমেন্টের বিজ্ঞাপনে বলা হয় যে এটি একটি নির্দিষ্ট ক্যানসারের সম্ভাবনা ৪০% কমিয়ে দেয়। যে ট্রায়ালের ওপর এটি দাঁড়িয়ে আছে সেখানে সাপ্লিমেন্ট খাওয়া প্রায় ১,০০০ জন মানুষের মধ্যে ৭টি কেস আর নকল বড়ি খাওয়া প্রায় ১,০০০ জনের মধ্যে ১২টি কেস পাওয়া গিয়েছিল।",
+  "The 40% is arithmetically right and it amounts to 5 people in 1,000. Around 200 people would have to take the supplement for years for one of them to avoid a cancer.":
+    "৪০% সংখ্যাটি পাটিগণিতে ঠিকই আছে, আর তা দাঁড়ায় ১,০০০ জনে ৫ জন। একজনের ক্যানসার এড়াতে প্রায় ২০০ জন মানুষকে বছরের পর বছর সাপ্লিমেন্টটি খেতে হতো।",
+  "A trial reports that the treatment reduced strokes from 12 in every 100 patients to 8 in every 100, calls that a reduction of a third, and adds that about 25 patients need to be treated for five years to prevent one stroke.":
+    "একটি ট্রায়াল জানায় যে চিকিৎসাটি স্ট্রোক প্রতি ১০০ জন রোগীতে ১২ থেকে কমিয়ে প্রতি ১০০ জনে ৮-এ নামিয়ে এনেছে, একে বলে এক-তৃতীয়াংশ হ্রাস, আর যোগ করে যে একটি স্ট্রোক ঠেকাতে প্রায় ২৫ জন রোগীকে পাঁচ বছর চিকিৎসা দিতে হয়।",
+  "The relative figure, the plain numbers of people and the number needed to treat are all on the table, so nothing is hidden behind the percentage. This is how a result should be reported.":
+    "আপেক্ষিক সংখ্যাটি, মানুষের সরল সংখ্যাগুলো আর একজনের উপকার হতে কতজনকে চিকিৎসা দিতে হয় সেই সংখ্যা (NNT), সবই সামনে রাখা আছে; তাই শতাংশের পেছনে কিছুই লুকোনো নেই। একটি ফলাফল এভাবেই জানানো উচিত।",
+
+  // ---- Scope tags for the two risk views ----
+  "Compared to the risk": "ঝুঁকির তুলনায়",
+  "Compared to the people": "মানুষের তুলনায়",
+
+  // Berkson's bias: reveal wording corrected to the table's own odds
+  "The same survey, the same people, the same two diseases. Across everyone it asked, people with a respiratory disease were barely any likelier to have a bone or joint disease than people without one, and the odds come out at 1.06 against 1, which is nothing. The hospital panel is not a finding about disease, it is a finding about admission. Either illness can put you in a hospital bed, so people with both turn up there far more often than people with one, and inside those walls the two look inseparable:":
+    "একই জরিপ, একই মানুষ, একই দুটি রোগ। জরিপটি যাঁদের জিজ্ঞাসা করেছিল তাঁদের সবাইকে ধরলে, শ্বাসতন্ত্রের রোগ থাকা মানুষদের হাড় বা অস্থিসন্ধির রোগ থাকার সম্ভাবনা ওই রোগ না থাকা মানুষদের চেয়ে সামান্যই বেশি ছিল, অডস দাঁড়ায় ১-এর বিপরীতে ১.০৬, যা কিছুই নয়। হাসপাতালের প্যানেলটি রোগ সম্পর্কে কোনো আবিষ্কার নয়, এটি ভর্তি হওয়া সম্পর্কে একটি আবিষ্কার। দুটি অসুখের যেকোনোটিই আপনাকে হাসপাতালের শয্যায় নিয়ে যেতে পারে, তাই যাঁদের দুটোই আছে তাঁরা সেখানে একটিমাত্র রোগ থাকা মানুষদের চেয়ে অনেক বেশিবার হাজির হন; আর ওই দেয়ালের ভেতরে দুটিকে অবিচ্ছেদ্য মনে হয়:",
 };

@@ -65,7 +65,11 @@ function ArmBar({
 }: {
   arm: RiskArm;
   fill: number;
-  readout: string;
+  /** The risk as a percentage, in the absolute view only. In the relative view
+   * the bars are a share of the control risk, and printing "100%" over the
+   * control arm would read as "100% of these men", which is the opposite of
+   * what it means. There the gold stat carries the only number. */
+  readout: string | null;
   colorHex: string;
   framed: boolean;
   animate: boolean;
@@ -77,7 +81,7 @@ function ArmBar({
 
   return (
     <div className="flex min-w-0 flex-1 flex-col items-center gap-1">
-      <span className="text-sm font-semibold tabular-nums text-ink">
+      <span className="min-h-[1.25rem] text-sm font-semibold tabular-nums text-ink">
         {readout}
       </span>
       <div
@@ -88,7 +92,7 @@ function ArmBar({
             : undefined
         }
         role="img"
-        aria-label={`${t(arm.label)}: ${readout}, ${arm.events} of ${arm.n}`}
+        aria-label={`${t(arm.label)}: ${arm.events} of ${arm.n}${readout ? `, ${readout}` : ""}`}
       >
         <div
           className="w-10 rounded-t-[3px]"
@@ -128,14 +132,10 @@ export function RiskView({
   const s = riskSummary(data);
   const relative = view === "relative";
 
-  const arms: Array<{ arm: RiskArm; fill: number; readout: string }> = relative
+  const arms: Array<{ arm: RiskArm; fill: number; readout: string | null }> = relative
     ? [
-        { arm: data.control, fill: 1, readout: formatRiskPct(1) },
-        {
-          arm: data.treated,
-          fill: s.remainingShare,
-          readout: formatRiskPct(s.remainingShare),
-        },
+        { arm: data.control, fill: 1, readout: null },
+        { arm: data.treated, fill: s.remainingShare, readout: null },
       ]
     : [
         {

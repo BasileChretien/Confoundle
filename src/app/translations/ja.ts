@@ -633,8 +633,6 @@ export const ja: Record<string, string> = {
   "Ask everyone, and the link disappears.": "全員に尋ねると、関連は消えます。",
   "Two illnesses are two chances to be admitted":
     "病気が2つあれば、入院する機会も2つある",
-  "The same survey, the same people, the same two diseases. Across everyone it asked, having a respiratory disease made a bone or joint disease no more likely at all. The hospital panel is not a finding about disease, it is a finding about admission. Either illness can put you in a hospital bed, so people with both turn up there far more often than people with one, and inside those walls the two look inseparable:":
-    "同じ調査、同じ人々、同じ2つの病気です。尋ねた全員を通して見ると、呼吸器疾患があることで骨関節疾患を持つ可能性が高まることは、まったくありませんでした。入院患者のパネルは、病気についての知見ではなく、入院についての知見なのです。どちらの病気も、人を病院のベッドに送り込むことがあります。だから両方を持つ人は、片方だけの人よりもはるかに多くそこに現れ、その壁の内側では、2つの病気は切り離せないものに見えるのです。",
   "Hospital and community": "病院と地域",
   "The filter": "ふるい",
   "Berkson's bias": "バークソンバイアス",
@@ -682,4 +680,74 @@ export const ja: Record<string, string> = {
     "ある企業が、利用者に関する2つの事柄が一緒に現れるかどうかを調べました。二度と戻らなかった人も解約した人も含め、これまでに口座を開設したすべての人から無作為に標本を取ったところ、2つのあいだに関係は見られませんでした。",
   "The sample was drawn before any filter that either of the two things could have influenced. Nothing about staying, succeeding or being admitted decided who got counted, so a selection artefact cannot be hiding in it.":
     "この標本は、2つの事柄のどちらかが影響を及ぼしえたどんなふるいよりも前の段階で取られています。誰が数に入るかは、残ったかどうか、成功したかどうか、入院したかどうかでは決まっていません。したがって、選択バイアスによるみせかけの関連が、ここに潜んでいることはあり得ません。",
+
+  // ==== Relative versus absolute risk (puzzle #10, statin trial) ====
+  "A drug cuts your risk of a heart attack by about a third. How many people does that help?":
+    "ある薬が心筋梗塞のリスクを約3分の1減らします。それで救われるのは何人でしょうか?",
+  "A trial gave 6,595 middle-aged men with high cholesterol and no history of heart trouble either a statin or a dummy pill, and followed them for about five years. The drug cut heart attacks and coronary deaths by roughly a third. That is a real result, and it is how the finding was reported.":
+    "ある試験は、コレステロール値が高く心臓病の既往のない中年男性6,595人を、スタチンか偽薬のどちらかに割り付け、約5年間追跡しました。この薬は心筋梗塞と冠動脈疾患による死亡を、およそ3分の1減らしました。これは本物の結果であり、実際にこう報じられました。",
+  "Out of 1,000 men who took it for five years, how many were spared a heart attack or a coronary death?":
+    "この薬を5年間飲んだ男性1,000人のうち、心筋梗塞や冠動脈疾患による死亡を免れたのは何人でしょうか?",
+  "A five-year statin trial in 6,595 men": "男性6,595人を対象とした5年間のスタチン試験",
+  "Heart attack or death from heart disease": "心筋梗塞または心臓病による死亡",
+  "Dummy pill": "偽薬",
+  Statin: "スタチン",
+  "of the risk removed": "取り除かれたリスクの割合",
+  "spared, in every 1,000 men treated for five years":
+    "5年間治療した男性1,000人あたり、免れた人数",
+  "men treated for five years to spare one": "1人を救うために5年間治療が必要な男性の数",
+  "About 300": "約300人",
+  "roughly a third of them": "そのおよそ3分の1",
+  "About 100": "約100人",
+  "one in ten": "10人に1人",
+  "About 23": "約23人",
+  "roughly 1 in 44": "おおよそ44人に1人",
+  "Twenty three men in a thousand.": "1,000人のうち23人です。",
+  "A third of a risk that was small to begin with": "もともと小さかったリスクの3分の1",
+  "Both numbers come from the same trial. Without the drug, about 75 men in 1,000 had a heart attack or died of heart disease over the five years. With it, about 53 did. That is a third of the risk gone, and it is also 23 men in 1,000. The first number is divided by the risk, the second by the people, which is the whole reason they feel so different. Put the other way round, 44 men had to take the drug for five years for one of them to be spared:":
+    "どちらの数字も同じ試験から出ています。薬を飲まない場合、5年間で心筋梗塞を起こすか心臓病で亡くなった人は、男性1,000人あたり約75人でした。薬を飲んだ場合は約53人です。これはリスクの3分の1が消えたということであり、同時に1,000人あたり23人ということでもあります。1つめの数字はリスクで割ったもの、2つめは人の数で割ったものです。2つがこれほど違って感じられる理由は、まさにそこにあります。逆から言えば、1人が免れるために、44人が5年間その薬を飲まなければならなかったということです。",
+  "A third of what?": "3分の1とは、何の3分の1か?",
+  "Relative versus absolute risk": "相対リスクと絶対リスク",
+  "A percentage reduction tells you what share of a risk went away. It cannot tell you how big that risk was, and that is the part that decides whether it matters to you.":
+    "パーセントで示された減少は、リスクのうちどれだけの割合が消えたかを教えてくれます。しかし、そのリスクがどれほど大きかったかは教えてくれません。そして、それがあなたにとって意味を持つかどうかを決めるのは、まさにその部分なのです。",
+  "Whenever you meet a percentage change, ask what it is a percentage of. Halving a one-in-a-million risk and halving a one-in-two risk make the same headline and mean completely different things. The two figures worth asking for are the difference in plain numbers of people, and how many have to be treated for one of them to benefit.":
+    "パーセントで表された変化に出会ったときはいつでも、それが何に対するパーセントなのかを問いましょう。100万分の1のリスクを半分にすることと、2分の1のリスクを半分にすることは、同じ見出しになりますが、意味はまったく違います。求める価値のある数字は2つです。人の数そのもので表した差と、1人が恩恵を受けるために何人を治療しなければならないか、です。",
+  "Take a risk of 8 in 100 and drop it to 5 in 100. Divide the drop by the risk and you get a third, which sounds like a lot. Divide the same drop by the people and you get 3 in 100, which sounds like very little. Neither is wrong. They answer different questions: what fraction of the danger was removed, and what are the odds this helps me. Only the second one is about you. The gap between them grows as the risk shrinks, which is why the most impressive relative figures usually come from the rarest outcomes. This is not only a media problem. Relative figures make treatments look better to doctors too, and the same trial result draws more enthusiasm when it is described relatively than when it is described in whole people. It also cuts the other way with harms: a scare expressed as a doubling of risk sounds alarming whether the risk went from 1 in 10 to 2 in 10 or from 1 in 100,000 to 2 in 100,000. The habit that protects you in both directions is to insist on the numbers out of a fixed group of people, and on how many have to be treated, or exposed, for one to be affected.":
+    "100人に8人というリスクを、100人に5人まで下げたとしましょう。その下がり幅をリスクで割れば3分の1となり、大きく聞こえます。同じ下がり幅を人の数で割れば100人あたり3人となり、ごくわずかに聞こえます。どちらも間違いではありません。両者は別々の問いに答えています。危険のうちどれだけの割合が取り除かれたのか、そして、これが自分の役に立つ見込みはどのくらいか、です。あなた自身に関わるのは2つめだけです。両者の開きはリスクが小さくなるほど大きくなります。だからこそ、最も見栄えのする相対的な数字は、たいてい最もまれな結果から生まれるのです。これはメディアだけの問題ではありません。相対的な数字は、医師に対しても治療をよく見せます。同じ試験の結果でも、人の数そのもので説明されたときより、相対的に説明されたときのほうが強い期待を集めます。害についても、同じことが逆向きに起こります。リスクが2倍になったという形で語られる警告は、リスクが10人に1人から10人に2人へ動いたときも、100,000人に1人から100,000人に2人へ動いたときも、同じように不安をかき立てます。どちらの向きからもあなたを守る習慣は、決まった人数の集団あたりの数字と、1人に影響が及ぶまでに何人を治療、あるいは曝露しなければならないかを、必ず求めることです。",
+  "The same kind of drug, in people at real risk": "同じ種類の薬を、本当にリスクの高い人に使うと",
+  "A second trial gave a statin to patients who had already had a heart attack or had angina. Major coronary events fell from 28 percent to 19 percent. As a relative figure that is about a third, almost the same headline as in the healthy men. But because the risk it was cutting into was nearly four times larger, the gain was about 9 patients in every 100 instead of 2. The identical headline, several times the benefit. This is why a percentage on its own cannot tell you whether a drug is worth taking, and why the answer differs from patient to patient.":
+    "2つめの試験は、すでに心筋梗塞を起こした患者や狭心症のある患者にスタチンを投与しました。主要な冠動脈イベントは28パーセントから19パーセントへ減りました。相対的な数字にすればおよそ3分の1で、健康な男性のときとほとんど同じ見出しです。しかし、削り込む相手のリスクが4倍近く大きかったため、得られた効果は100人あたり2人ではなく約9人でした。見出しは同じで、効果は数倍です。だからこそ、パーセントだけでは、その薬を飲む価値があるかどうかは判断できません。そして、その答えが患者ごとに違ってくるのも、そのためです。",
+  "When a relative figure did real damage": "相対的な数字が本当に害をもたらしたとき",
+  "In October 1995 a British safety committee warned that some contraceptive pills carried about twice the risk of a blood clot. The warning travelled as a doubling, with no sense of how small the risk was either way, and women stopped taking the pill. Among girls under 16, use fell from 40 percent to 27 percent within a year. The health service met roughly 21 million pounds in extra maternity costs and 46 million pounds in abortion provision. A relative figure with no absolute figure beside it is not a neutral way to describe a risk.":
+    "1995年10月、英国のある安全性委員会が、一部の経口避妊薬は血栓のリスクが約2倍になると警告しました。この警告は「2倍」という形だけで広まり、どちらにせよそのリスクがどれほど小さいのかは伝わらないまま、女性たちは服用をやめました。16歳未満の少女では、1年のうちに使用率が40パーセントから27パーセントへ下がりました。公的医療サービスは、出産に伴う追加費用としておよそ2,100万ポンド、人工妊娠中絶の提供に4,600万ポンドを負担しました。絶対的な数字を添えない相対的な数字は、リスクを中立に伝える言い方ではありません。",
+  "The fix is in the wording": "処方箋は言い回しにある",
+  "Describe the same result in whole people, so many out of 1,000 against so many out of 1,000, and both patients and doctors judge it far more accurately than when it arrives as a percentage reduction. Relative risks belong to a small family of formats that reliably confuse, alongside single-event probabilities and conditional ones like a test's sensitivity. None of them is wrong. They are just easy to misread, and there is a clearer way to say the same thing.":
+    "同じ結果を人の数そのもので、1,000人あたり何人に対して1,000人あたり何人、という形で説明すると、患者も医師も、パーセントの減少として示されたときよりはるかに正確に判断できます。相対リスクは、決まって人を混乱させる少数の表示形式の一族に属していて、そこには単一の出来事の確率や、検査の感度のような条件付きの確率も並んでいます。どれも間違いではありません。ただ読み違えやすいだけであり、同じことをもっと明確に言う方法があるのです。",
+  "Relative versus absolute risk, a reasoning trap.": "相対リスクと絶対リスク、推論の罠です。",
+  "\"Cuts your risk by a third\" sounds enormous. But a third of what? If the risk was 75 in 1,000, a third of it is 23 people. If the risk was 3 in 1,000, a third of it is one. The percentage tells you how much of the risk went away and says nothing at all about how much risk there was, which is the part that decides whether it matters to you. Ask for the plain numbers: how many out of 1,000, and how many people have to take it for one of them to benefit.":
+    "「リスクを3分の1減らす」と聞くと、とてつもなく大きく響きます。しかし、何の3分の1なのでしょうか。リスクが1,000人に75人だったなら、その3分の1は23人です。リスクが1,000人に3人だったなら、その3分の1は1人です。パーセントは、リスクのうちどれだけが消えたかを教えるだけで、そもそもリスクがどれだけあったのかについては何も語りません。そして、それがあなたにとって意味を持つかどうかを決めるのは、その部分なのです。人の数そのものを求めましょう。1,000人のうち何人か、そして1人が恩恵を受けるために何人が飲まなければならないか、です。",
+  "The counts are the trial's primary endpoint, a definite nonfatal heart attack or death from coronary heart disease: 248 events among the men on placebo and 174 among those on pravastatin, over an average of 4.9 years. The paper reports a 31 percent relative risk reduction, estimated from a proportional-hazards model; the crude counts give 30 percent. Every figure this puzzle shows is derived from the counts, so it quotes about a third rather than a number the chart would contradict.":
+    "この数値は、試験の主要エンドポイントである、確定した非致死性の心筋梗塞または冠動脈疾患による死亡の件数です。平均4.9年の追跡で、プラセボを飲んだ男性では248件、プラバスタチンを飲んだ男性では174件でした。論文は、比例ハザードモデルから推定した31パーセントの相対リスク減少を報告しており、単純な件数から計算すると30パーセントになります。このパズルが示す数字はすべてこの件数から導いているため、グラフと食い違う数字を挙げるのではなく、およそ3分の1という言い方をしています。",
+
+  // ---- Trap Hunt test items (relative versus absolute risk) ----
+  "A press release says a new drug halves the risk of a rare complication. It does not say how common the complication is. A newspaper runs the story under the headline that the drug halves the danger.":
+    "あるプレスリリースが、新しい薬はまれな合併症のリスクを半分にすると伝えています。その合併症がどのくらいありふれているかは書かれていません。新聞は、この薬が危険を半分にするという見出しでこの話を報じました。",
+  "Halving a risk means nothing until you know the risk. If the complication strikes 2 people in 10,000, halving it spares one of them.":
+    "リスクを半分にすると言われても、そのリスクの大きさを知るまでは意味がありません。その合併症が10,000人のうち2人に起こるのなら、半分にして免れるのは1人です。",
+  "A supplement is advertised as cutting the chance of a particular cancer by 40%. The trial it rests on found 7 cases among about 1,000 people taking the supplement and 12 among about 1,000 taking a dummy.":
+    "あるサプリメントが、特定のがんにかかる可能性を40%減らすとうたわれています。その根拠となった試験では、サプリメントを飲んだ約1,000人のうち7人、偽薬を飲んだ約1,000人のうち12人に、がんが見つかりました。",
+  "The 40% is arithmetically right and it amounts to 5 people in 1,000. Around 200 people would have to take the supplement for years for one of them to avoid a cancer.":
+    "40%という計算そのものは正しく、それは1,000人あたり5人にあたります。1人ががんを免れるためには、約200人が何年もそのサプリメントを飲み続けなければならない計算です。",
+  "A trial reports that the treatment reduced strokes from 12 in every 100 patients to 8 in every 100, calls that a reduction of a third, and adds that about 25 patients need to be treated for five years to prevent one stroke.":
+    "ある試験が、この治療によって脳卒中が患者100人あたり12人から100人あたり8人へ減ったと報告し、それを3分の1の減少と呼び、さらに、脳卒中を1件防ぐには約25人を5年間治療する必要があると付け加えています。",
+  "The relative figure, the plain numbers of people and the number needed to treat are all on the table, so nothing is hidden behind the percentage. This is how a result should be reported.":
+    "相対的な数字も、人の数そのものも、治療必要数(NNT)も、すべて示されています。だからパーセントの陰に隠れているものは何もありません。結果はこのように報告されるべきです。",
+
+  // ---- Risk-view scope tags ----
+  "Compared to the risk": "リスクとの比較",
+  "Compared to the people": "人の数との比較",
+
+  // ---- Correction: Berkson's bias reveal (supersedes the wording above) ----
+  "The same survey, the same people, the same two diseases. Across everyone it asked, people with a respiratory disease were barely any likelier to have a bone or joint disease than people without one, and the odds come out at 1.06 against 1, which is nothing. The hospital panel is not a finding about disease, it is a finding about admission. Either illness can put you in a hospital bed, so people with both turn up there far more often than people with one, and inside those walls the two look inseparable:":
+    "同じ調査、同じ人々、同じ2つの病気です。尋ねた全員を通して見ると、呼吸器疾患がある人が骨関節疾患も併せ持つ可能性は、呼吸器疾患がない人とほとんど変わりませんでした。オッズにすると1に対して1.06で、差はないに等しい値です。入院患者のパネルは、病気についての知見ではなく、入院についての知見なのです。どちらの病気も、人を病院のベッドに送り込むことがあります。だから両方を持つ人は、片方だけの人よりもはるかに多くそこに現れ、その壁の内側では、2つの病気は切り離せないものに見えるのです。",
 };

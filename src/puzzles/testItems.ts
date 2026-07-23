@@ -222,7 +222,39 @@ const items: TestItem[] = [
     },
   },
 
+  // ---- Relative versus absolute risk ----
+  {
+    id: "ra-halves",
+    scenario: {
+      en: "A press release says a new drug halves the risk of a rare complication. It does not say how common the complication is. A newspaper runs the story under the headline that the drug halves the danger.",
+    },
+    trap: "relative-vs-absolute-risk",
+    explanation: {
+      en: "Halving a risk means nothing until you know the risk. If the complication strikes 2 people in 10,000, halving it spares one of them.",
+    },
+  },
+  {
+    id: "ra-supplement",
+    scenario: {
+      en: "A supplement is advertised as cutting the chance of a particular cancer by 40%. The trial it rests on found 7 cases among about 1,000 people taking the supplement and 12 among about 1,000 taking a dummy.",
+    },
+    trap: "relative-vs-absolute-risk",
+    explanation: {
+      en: "The 40% is arithmetically right and it amounts to 5 people in 1,000. Around 200 people would have to take the supplement for years for one of them to avoid a cancer.",
+    },
+  },
+
   // ---- Genuinely sound reasoning (decoys) ----
+  {
+    id: "ok-both-figures",
+    scenario: {
+      en: "A trial reports that the treatment reduced strokes from 12 in every 100 patients to 8 in every 100, calls that a reduction of a third, and adds that about 25 patients need to be treated for five years to prevent one stroke.",
+    },
+    trap: null,
+    explanation: {
+      en: "The relative figure, the plain numbers of people and the number needed to treat are all on the table, so nothing is hidden behind the percentage. This is how a result should be reported.",
+    },
+  },
   {
     id: "ok-consecutive-patients",
     scenario: {

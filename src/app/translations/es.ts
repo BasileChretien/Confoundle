@@ -648,8 +648,6 @@ export const es: Record<string, string> = {
     "Pregunta a todo el mundo y el vínculo desaparece.",
   "Two illnesses are two chances to be admitted":
     "Dos enfermedades son dos oportunidades de ingresar",
-  "The same survey, the same people, the same two diseases. Across everyone it asked, having a respiratory disease made a bone or joint disease no more likely at all. The hospital panel is not a finding about disease, it is a finding about admission. Either illness can put you in a hospital bed, so people with both turn up there far more often than people with one, and inside those walls the two look inseparable:":
-    "La misma encuesta, las mismas personas, las mismas dos enfermedades. Entre todas las personas a las que preguntó, tener una enfermedad respiratoria no hacía en absoluto más probable una enfermedad ósea o articular. El panel del hospital no es un hallazgo sobre la enfermedad, es un hallazgo sobre el ingreso. Cualquiera de las dos enfermedades puede llevarte a una cama de hospital, así que las personas que tienen las dos aparecen allí mucho más a menudo que las que tienen una sola, y dentro de esas paredes las dos parecen inseparables:",
   "Hospital and community": "Hospital y comunidad",
   "The filter": "El filtro",
   "Berkson's bias": "El sesgo de Berkson",
@@ -699,4 +697,85 @@ export const es: Record<string, string> = {
     "Una empresa se pregunta si dos características de sus usuarios van juntas. Toma una muestra al azar de todas las personas que abrieron una cuenta alguna vez, incluidas las que no volvieron nunca y las que se dieron de baja, y no encuentra ninguna relación entre ellas.",
   "The sample was drawn before any filter that either of the two things could have influenced. Nothing about staying, succeeding or being admitted decided who got counted, so a selection artefact cannot be hiding in it.":
     "La muestra se extrajo antes de cualquier filtro en el que hubiera podido influir cualquiera de las dos cosas. Ni quedarse, ni tener éxito, ni ser admitido decidió a quién se contaba, así que no puede esconderse ahí un artefacto de selección.",
+
+  // ==== Corrección: sesgo de Berkson (odds de 1,06 frente a 1) ====
+  "The same survey, the same people, the same two diseases. Across everyone it asked, people with a respiratory disease were barely any likelier to have a bone or joint disease than people without one, and the odds come out at 1.06 against 1, which is nothing. The hospital panel is not a finding about disease, it is a finding about admission. Either illness can put you in a hospital bed, so people with both turn up there far more often than people with one, and inside those walls the two look inseparable:":
+    "La misma encuesta, las mismas personas, las mismas dos enfermedades. Entre todas las personas a las que preguntó, las que tenían una enfermedad respiratoria tenían apenas algo más de probabilidad de tener una enfermedad ósea o articular que las que no la tenían, y las odds quedan en 1,06 frente a 1, que no es nada. El panel del hospital no es un hallazgo sobre la enfermedad, es un hallazgo sobre el ingreso. Cualquiera de las dos enfermedades puede llevarte a una cama de hospital, así que las personas que tienen las dos aparecen allí mucho más a menudo que las que tienen una sola, y dentro de esas paredes las dos parecen inseparables:",
+
+  // ==== Riesgo relativo frente a absoluto (estatinas, puzle #10) ====
+  "A drug cuts your risk of a heart attack by about a third. How many people does that help?":
+    "Un fármaco reduce en torno a un tercio tu riesgo de infarto. ¿A cuántas personas ayuda eso?",
+  "A trial gave 6,595 middle-aged men with high cholesterol and no history of heart trouble either a statin or a dummy pill, and followed them for about five years. The drug cut heart attacks and coronary deaths by roughly a third. That is a real result, and it is how the finding was reported.":
+    "Un ensayo dio a 6595 hombres de mediana edad con el colesterol alto y sin antecedentes de problemas de corazón una estatina o una pastilla falsa, y los siguió durante unos cinco años. El fármaco redujo los infartos y las muertes coronarias en torno a un tercio. Es un resultado real, y así fue como se comunicó el hallazgo.",
+  "Out of 1,000 men who took it for five years, how many were spared a heart attack or a coronary death?":
+    "De cada 1000 hombres que lo tomaron durante cinco años, ¿cuántos se libraron de un infarto o de una muerte coronaria?",
+  "A five-year statin trial in 6,595 men":
+    "Un ensayo de cinco años con estatina en 6595 hombres",
+  "Heart attack or death from heart disease":
+    "Infarto o muerte por enfermedad cardíaca",
+  "Dummy pill": "Pastilla falsa",
+  "Statin": "Estatina",
+  // etiquetas de alcance (a la derecha del pie de figura)
+  "Compared to the risk": "Frente al riesgo",
+  "Compared to the people": "Frente a las personas",
+  // pies de las cifras grandes (nunca dentro de una frase)
+  "of the risk removed": "de reducción del riesgo",
+  "spared, in every 1,000 men treated for five years":
+    "hombres que se libran, por cada 1000 tratados durante cinco años",
+  "men treated for five years to spare one":
+    "hombres tratados durante cinco años para que uno se libre",
+  // opciones
+  "About 300": "Unos 300",
+  "roughly a third of them": "más o menos un tercio de ellos",
+  "About 100": "Unos 100",
+  "one in ten": "uno de cada diez",
+  "About 23": "Unos 23",
+  "roughly 1 in 44": "más o menos 1 de cada 44",
+  // revelación y lección
+  "Twenty three men in a thousand.": "Veintitrés hombres de cada mil.",
+  "A third of a risk that was small to begin with":
+    "Un tercio de un riesgo que ya era pequeño de entrada",
+  "Both numbers come from the same trial. Without the drug, about 75 men in 1,000 had a heart attack or died of heart disease over the five years. With it, about 53 did. That is a third of the risk gone, and it is also 23 men in 1,000. The first number is divided by the risk, the second by the people, which is the whole reason they feel so different. Put the other way round, 44 men had to take the drug for five years for one of them to be spared:":
+    "Los dos números salen del mismo ensayo. Sin el fármaco, unos 75 hombres de cada 1000 tuvieron un infarto o murieron por una enfermedad cardíaca a lo largo de los cinco años. Con él, unos 53. Eso es un tercio del riesgo que desaparece, y son también 23 hombres de cada 1000. El primer número se divide por el riesgo, el segundo por las personas, y esa es toda la razón de que resulten tan distintos. Dicho al revés, 44 hombres tuvieron que tomar el fármaco durante cinco años para que uno de ellos se librara:",
+  "A third of what?": "¿Un tercio de qué?",
+  "Relative versus absolute risk": "Riesgo relativo frente a riesgo absoluto",
+  "A percentage reduction tells you what share of a risk went away. It cannot tell you how big that risk was, and that is the part that decides whether it matters to you.":
+    "Una reducción porcentual te dice qué parte de un riesgo desapareció. No puede decirte cómo de grande era ese riesgo, y esa es justamente la parte que decide si tiene importancia para ti.",
+  "Whenever you meet a percentage change, ask what it is a percentage of. Halving a one-in-a-million risk and halving a one-in-two risk make the same headline and mean completely different things. The two figures worth asking for are the difference in plain numbers of people, and how many have to be treated for one of them to benefit.":
+    "Siempre que te encuentres con un cambio porcentual, pregúntate de qué es ese porcentaje. Reducir a la mitad un riesgo de uno entre un millón y reducir a la mitad un riesgo de uno entre dos dan el mismo titular y significan cosas completamente distintas. Las dos cifras que merece la pena pedir son la diferencia en número de personas y cuántas hay que tratar para que una de ellas se beneficie.",
+  "Take a risk of 8 in 100 and drop it to 5 in 100. Divide the drop by the risk and you get a third, which sounds like a lot. Divide the same drop by the people and you get 3 in 100, which sounds like very little. Neither is wrong. They answer different questions: what fraction of the danger was removed, and what are the odds this helps me. Only the second one is about you. The gap between them grows as the risk shrinks, which is why the most impressive relative figures usually come from the rarest outcomes. This is not only a media problem. Relative figures make treatments look better to doctors too, and the same trial result draws more enthusiasm when it is described relatively than when it is described in whole people. It also cuts the other way with harms: a scare expressed as a doubling of risk sounds alarming whether the risk went from 1 in 10 to 2 in 10 or from 1 in 100,000 to 2 in 100,000. The habit that protects you in both directions is to insist on the numbers out of a fixed group of people, and on how many have to be treated, or exposed, for one to be affected.":
+    "Toma un riesgo de 8 de cada 100 y bájalo a 5 de cada 100. Divide la bajada por el riesgo y obtienes un tercio, que suena a mucho. Divide esa misma bajada por las personas y obtienes 3 de cada 100, que suena a muy poco. Ninguna de las dos cuentas está mal. Responden a preguntas distintas: qué fracción del peligro se ha eliminado, y qué probabilidad hay de que esto me ayude a mí. Solo la segunda habla de ti. La distancia entre ambas crece a medida que el riesgo se encoge, y por eso las cifras relativas más impresionantes suelen venir de los desenlaces más raros. Y esto no es solo un problema de los medios. Las cifras relativas también hacen que los tratamientos parezcan mejores a los médicos, y un mismo resultado de un ensayo despierta más entusiasmo cuando se describe en términos relativos que cuando se describe en personas enteras. Con los daños funciona igual pero al revés: un susto expresado como un riesgo que se duplica suena alarmante tanto si el riesgo pasó de 1 de cada 10 a 2 de cada 10 como si pasó de 1 de cada 100 000 a 2 de cada 100 000. La costumbre que te protege en las dos direcciones es exigir los números sobre un grupo fijo de personas, y cuántas hay que tratar, o exponer, para que una se vea afectada.",
+  // ejemplos
+  "The same kind of drug, in people at real risk":
+    "El mismo tipo de fármaco, en personas con riesgo real",
+  "A second trial gave a statin to patients who had already had a heart attack or had angina. Major coronary events fell from 28 percent to 19 percent. As a relative figure that is about a third, almost the same headline as in the healthy men. But because the risk it was cutting into was nearly four times larger, the gain was about 9 patients in every 100 instead of 2. The identical headline, several times the benefit. This is why a percentage on its own cannot tell you whether a drug is worth taking, and why the answer differs from patient to patient.":
+    "Un segundo ensayo dio una estatina a pacientes que ya habían tenido un infarto o tenían angina de pecho. Los eventos coronarios mayores bajaron del 28 por ciento al 19 por ciento. Como cifra relativa eso es alrededor de un tercio, casi el mismo titular que en los hombres sanos. Pero como el riesgo sobre el que actuaba era casi cuatro veces mayor, la ganancia fue de unos 9 pacientes de cada 100 en lugar de 2. Titular idéntico, varias veces el beneficio. Por eso un porcentaje por sí solo no puede decirte si merece la pena tomar un fármaco, y por eso la respuesta cambia de un paciente a otro.",
+  "When a relative figure did real damage":
+    "Cuando una cifra relativa hizo daño de verdad",
+  "In October 1995 a British safety committee warned that some contraceptive pills carried about twice the risk of a blood clot. The warning travelled as a doubling, with no sense of how small the risk was either way, and women stopped taking the pill. Among girls under 16, use fell from 40 percent to 27 percent within a year. The health service met roughly 21 million pounds in extra maternity costs and 46 million pounds in abortion provision. A relative figure with no absolute figure beside it is not a neutral way to describe a risk.":
+    "En octubre de 1995, un comité de seguridad británico advirtió de que algunas píldoras anticonceptivas conllevaban alrededor del doble de riesgo de un coágulo de sangre. La advertencia circuló como una duplicación, sin ninguna idea de lo pequeño que era el riesgo en un caso y en el otro, y las mujeres dejaron de tomar la píldora. Entre las menores de 16 años, el uso cayó del 40 por ciento al 27 por ciento en un año. El sistema sanitario asumió unos 21 millones de libras en costes de maternidad adicionales y 46 millones de libras en la prestación de abortos. Una cifra relativa sin una cifra absoluta al lado no es una manera neutral de describir un riesgo.",
+  "The fix is in the wording": "El remedio está en la redacción",
+  "Describe the same result in whole people, so many out of 1,000 against so many out of 1,000, and both patients and doctors judge it far more accurately than when it arrives as a percentage reduction. Relative risks belong to a small family of formats that reliably confuse, alongside single-event probabilities and conditional ones like a test's sensitivity. None of them is wrong. They are just easy to misread, and there is a clearer way to say the same thing.":
+    "Describe el mismo resultado en personas enteras, tantos de cada 1000 frente a tantos de cada 1000, y tanto los pacientes como los médicos lo juzgan con mucha más precisión que cuando llega en forma de reducción porcentual. Los riesgos relativos pertenecen a una pequeña familia de formatos que confunden de manera fiable, junto a las probabilidades de un solo suceso y a las condicionales, como la sensibilidad de un test. Ninguno de ellos es erróneo. Solo son fáciles de malinterpretar, y hay una manera más clara de decir lo mismo.",
+  // tarjeta y procedencia
+  "Relative versus absolute risk, a reasoning trap.":
+    "Riesgo relativo frente a riesgo absoluto, una trampa de razonamiento.",
+  "\"Cuts your risk by a third\" sounds enormous. But a third of what? If the risk was 75 in 1,000, a third of it is 23 people. If the risk was 3 in 1,000, a third of it is one. The percentage tells you how much of the risk went away and says nothing at all about how much risk there was, which is the part that decides whether it matters to you. Ask for the plain numbers: how many out of 1,000, and how many people have to take it for one of them to benefit.":
+    "«Reduce tu riesgo en un tercio» suena enorme. Pero ¿un tercio de qué? Si el riesgo era de 75 de cada 1000, un tercio son 23 personas. Si el riesgo era de 3 de cada 1000, un tercio es una. El porcentaje te dice cuánto riesgo desapareció y no dice absolutamente nada sobre cuánto riesgo había, que es la parte que decide si tiene importancia para ti. Pide los números sencillos: cuántos de cada 1000, y cuántas personas tienen que tomarlo para que una de ellas se beneficie.",
+  "The counts are the trial's primary endpoint, a definite nonfatal heart attack or death from coronary heart disease: 248 events among the men on placebo and 174 among those on pravastatin, over an average of 4.9 years. The paper reports a 31 percent relative risk reduction, estimated from a proportional-hazards model; the crude counts give 30 percent. Every figure this puzzle shows is derived from the counts, so it quotes about a third rather than a number the chart would contradict.":
+    "Los recuentos corresponden al criterio de valoración principal del ensayo, un infarto no mortal confirmado o la muerte por enfermedad coronaria: 248 eventos entre los hombres con placebo y 174 entre los que tomaban pravastatina, a lo largo de una media de 4,9 años. El artículo comunica una reducción del riesgo relativo del 31 por ciento, estimada con un modelo de riesgos proporcionales; los recuentos brutos dan un 30 por ciento. Todas las cifras que muestra este puzle se derivan de los recuentos, así que habla de alrededor de un tercio en lugar de dar un número que el gráfico contradiría.",
+
+  // ==== Caza de trampas: riesgo relativo frente a absoluto ====
+  "A press release says a new drug halves the risk of a rare complication. It does not say how common the complication is. A newspaper runs the story under the headline that the drug halves the danger.":
+    "Una nota de prensa dice que un fármaco nuevo reduce a la mitad el riesgo de una complicación rara. No dice cómo de frecuente es la complicación. Un periódico publica la noticia con el titular de que el fármaco reduce el peligro a la mitad.",
+  "Halving a risk means nothing until you know the risk. If the complication strikes 2 people in 10,000, halving it spares one of them.":
+    "Reducir un riesgo a la mitad no significa nada hasta que sabes cuál era el riesgo. Si la complicación afecta a 2 personas de cada 10 000, reducirla a la mitad libra a una de ellas.",
+  "A supplement is advertised as cutting the chance of a particular cancer by 40%. The trial it rests on found 7 cases among about 1,000 people taking the supplement and 12 among about 1,000 taking a dummy.":
+    "Un suplemento se anuncia como capaz de reducir un 40 % la probabilidad de un cáncer concreto. El ensayo en el que se apoya encontró 7 casos entre unas 1000 personas que tomaban el suplemento y 12 entre unas 1000 que tomaban una pastilla falsa.",
+  "The 40% is arithmetically right and it amounts to 5 people in 1,000. Around 200 people would have to take the supplement for years for one of them to avoid a cancer.":
+    "El 40 % es aritméticamente correcto y equivale a 5 personas de cada 1000. Unas 200 personas tendrían que tomar el suplemento durante años para que una de ellas evitara un cáncer.",
+  "A trial reports that the treatment reduced strokes from 12 in every 100 patients to 8 in every 100, calls that a reduction of a third, and adds that about 25 patients need to be treated for five years to prevent one stroke.":
+    "Un ensayo informa de que el tratamiento redujo los ictus de 12 de cada 100 pacientes a 8 de cada 100, lo llama una reducción de un tercio y añade que hay que tratar a unos 25 pacientes durante cinco años para evitar un ictus.",
+  "The relative figure, the plain numbers of people and the number needed to treat are all on the table, so nothing is hidden behind the percentage. This is how a result should be reported.":
+    "La cifra relativa, el número de personas y el número necesario a tratar están todos sobre la mesa, así que no hay nada escondido detrás del porcentaje. Así es como debería comunicarse un resultado.",
 };

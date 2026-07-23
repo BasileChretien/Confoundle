@@ -642,8 +642,6 @@ export const ar: Record<string, string> = {
   "Ask everyone, and the link disappears.": "اسأل الجميع، فتختفي الصلة.",
   "Two illnesses are two chances to be admitted":
     "مرضان يعنيان فرصتين لدخول المستشفى",
-  "The same survey, the same people, the same two diseases. Across everyone it asked, having a respiratory disease made a bone or joint disease no more likely at all. The hospital panel is not a finding about disease, it is a finding about admission. Either illness can put you in a hospital bed, so people with both turn up there far more often than people with one, and inside those walls the two look inseparable:":
-    "المسح نفسه، والناس أنفسهم، والمرضان نفساهما. فعبر كل من سألهم المسح، لم يجعل وجودُ مرض تنفسي مرضَ العظام أو المفاصل أرجح على الإطلاق. لوحة المستشفى ليست نتيجة عن المرض، بل نتيجة عن دخول المستشفى. فأيٌّ من المرضين قد يضعك في سرير مستشفى، لذا يظهر أصحاب المرضين معاً هناك أكثر بكثير من أصحاب مرض واحد، وداخل تلك الجدران يبدو المرضان لا ينفصلان:",
   "Hospital and community": "المستشفى والمجتمع",
   "The filter": "المِصفاة",
   "Berkson's bias": "تحيز بيركسون",
@@ -691,4 +689,78 @@ export const ar: Record<string, string> = {
     "تسأل شركة عمّا إذا كان أمران يخصان مستخدميها يسيران معاً. فتأخذ عينة عشوائية من كل من فتح حساباً يوماً، بمن فيهم من لم يعودوا قط ومن ألغوا حساباتهم، فلا تجد أي علاقة بين الأمرين.",
   "The sample was drawn before any filter that either of the two things could have influenced. Nothing about staying, succeeding or being admitted decided who got counted, so a selection artefact cannot be hiding in it.":
     "سُحبت العينة قبل أي مِصفاة كان يمكن لأيٍّ من الأمرين أن يؤثر فيها. فلم يكن البقاء ولا النجاح ولا الدخول إلى المستشفى هو ما قرر من يُحتسب، لذا لا يمكن أن يختبئ فيها أثر انتقاء مصطنع.",
+
+  // ---- Berkson's bias, corrected wording ----
+  "The same survey, the same people, the same two diseases. Across everyone it asked, people with a respiratory disease were barely any likelier to have a bone or joint disease than people without one, and the odds come out at 1.06 against 1, which is nothing. The hospital panel is not a finding about disease, it is a finding about admission. Either illness can put you in a hospital bed, so people with both turn up there far more often than people with one, and inside those walls the two look inseparable:":
+    "المسح نفسه، والناس أنفسهم، والمرضان نفساهما. فعبر كل من سألهم المسح، لم يكن المصابون بمرض تنفسي أرجح إلا بالكاد أن يكون لديهم مرض في العظام أو المفاصل مقارنة بغير المصابين، والأرجحية تبلغ 1.06 مقابل 1، وهو ما لا يعني شيئاً. لوحة المستشفى ليست نتيجة عن المرض، بل نتيجة عن دخول المستشفى. فأيٌّ من المرضين قد يضعك في سرير مستشفى، لذا يظهر أصحاب المرضين معاً هناك أكثر بكثير من أصحاب مرض واحد، وداخل تلك الجدران يبدو المرضان لا ينفصلان:",
+
+  // ==== Relative versus absolute risk (puzzle #10) ====
+  "A drug cuts your risk of a heart attack by about a third. How many people does that help?":
+    "دواء يخفض خطر إصابتك بنوبة قلبية بنحو الثلث. فكم شخصاً يساعد ذلك؟",
+  "A trial gave 6,595 middle-aged men with high cholesterol and no history of heart trouble either a statin or a dummy pill, and followed them for about five years. The drug cut heart attacks and coronary deaths by roughly a third. That is a real result, and it is how the finding was reported.":
+    "أعطت تجربة 6,595 رجلاً في منتصف العمر لديهم كوليسترول مرتفع ولا تاريخ لهم مع متاعب القلب إما ستاتين وإما دواءً وهمياً، وتابعتهم نحو خمس سنوات. وقد خفض الدواء النوبات القلبية والوفيات التاجية بنحو الثلث. تلك نتيجة حقيقية، وهكذا جرى الإبلاغ عنها.",
+  "Out of 1,000 men who took it for five years, how many were spared a heart attack or a coronary death?":
+    "من كل 1,000 رجل تناولوه خمس سنوات، كم واحداً جرى تجنيبه نوبة قلبية أو وفاة تاجية؟",
+  "A five-year statin trial in 6,595 men":
+    "تجربة ستاتين على مدى خمس سنوات في 6,595 رجلاً",
+  "Heart attack or death from heart disease": "نوبة قلبية أو وفاة بمرض قلبي",
+  "Dummy pill": "دواء وهمي",
+  Statin: "ستاتين",
+  "of the risk removed": "من الخطر أُزيل",
+  "spared, in every 1,000 men treated for five years":
+    "جُنِّبوا الإصابة، من كل 1,000 رجل عولجوا خمس سنوات",
+  "men treated for five years to spare one":
+    "رجلاً يجب علاجهم خمس سنوات لتجنيب واحد منهم",
+  "About 300": "نحو 300",
+  "roughly a third of them": "تقريباً ثلثهم",
+  "About 100": "نحو 100",
+  "one in ten": "واحد من كل عشرة",
+  "About 23": "نحو 23",
+  "roughly 1 in 44": "تقريباً 1 من كل 44",
+  "Twenty three men in a thousand.": "ثلاثة وعشرون رجلاً من كل ألف.",
+  "A third of a risk that was small to begin with": "ثلث خطر كان صغيراً أصلاً",
+  "Both numbers come from the same trial. Without the drug, about 75 men in 1,000 had a heart attack or died of heart disease over the five years. With it, about 53 did. That is a third of the risk gone, and it is also 23 men in 1,000. The first number is divided by the risk, the second by the people, which is the whole reason they feel so different. Put the other way round, 44 men had to take the drug for five years for one of them to be spared:":
+    "الرقمان كلاهما من التجربة نفسها. فمن دون الدواء، أصيب نحو 75 رجلاً من كل 1,000 بنوبة قلبية أو توفوا بمرض قلبي خلال السنوات الخمس. ومعه، أصيب نحو 53. ذلك ثلث الخطر قد زال، وهو أيضاً 23 رجلاً من كل 1,000. الرقم الأول مقسوم على الخطر، والثاني مقسوم على الناس، وهذا وحده سبب اختلاف وقعهما إلى هذا الحد. وبالمقلوب، كان على 44 رجلاً أن يتناولوا الدواء خمس سنوات كي يُجنَّب واحد منهم:",
+  "A third of what?": "ثلث ماذا؟",
+  "Relative versus absolute risk": "الخطر النسبي مقابل الخطر المطلق",
+  "A percentage reduction tells you what share of a risk went away. It cannot tell you how big that risk was, and that is the part that decides whether it matters to you.":
+    "الخفض بالنسبة المئوية يخبرك ما حصة الخطر التي زالت. لكنه لا يستطيع أن يخبرك كم كان ذلك الخطر كبيراً، وهذا هو الجزء الذي يقرر إن كان الأمر يعنيك.",
+  "Whenever you meet a percentage change, ask what it is a percentage of. Halving a one-in-a-million risk and halving a one-in-two risk make the same headline and mean completely different things. The two figures worth asking for are the difference in plain numbers of people, and how many have to be treated for one of them to benefit.":
+    "كلما صادفت تغيراً بنسبة مئوية، اسأل: نسبة مئوية من ماذا؟ فتنصيف خطر مقداره واحد في المليون وتنصيف خطر مقداره واحد من اثنين ينتجان العنوان نفسه ويعنيان أمرين مختلفين تماماً. والرقمان اللذان يستحقان السؤال عنهما هما الفارق بأعداد الناس الصريحة، وكم شخصاً يجب علاجهم كي يستفيد واحد منهم.",
+  "Take a risk of 8 in 100 and drop it to 5 in 100. Divide the drop by the risk and you get a third, which sounds like a lot. Divide the same drop by the people and you get 3 in 100, which sounds like very little. Neither is wrong. They answer different questions: what fraction of the danger was removed, and what are the odds this helps me. Only the second one is about you. The gap between them grows as the risk shrinks, which is why the most impressive relative figures usually come from the rarest outcomes. This is not only a media problem. Relative figures make treatments look better to doctors too, and the same trial result draws more enthusiasm when it is described relatively than when it is described in whole people. It also cuts the other way with harms: a scare expressed as a doubling of risk sounds alarming whether the risk went from 1 in 10 to 2 in 10 or from 1 in 100,000 to 2 in 100,000. The habit that protects you in both directions is to insist on the numbers out of a fixed group of people, and on how many have to be treated, or exposed, for one to be affected.":
+    "خذ خطراً مقداره 8 من كل 100 وأنزله إلى 5 من كل 100. اقسم الانخفاض على الخطر فتحصل على الثلث، وهو ما يبدو كثيراً. واقسم الانخفاض نفسه على الناس فتحصل على 3 من كل 100، وهو ما يبدو قليلاً جداً. ولا أحد الرقمين خاطئ. إنهما يجيبان عن سؤالين مختلفين: ما الحصة التي أُزيلت من الخطر، وما احتمال أن يفيدني هذا أنا. والثاني وحده هو الذي يخصك. والفجوة بينهما تتسع كلما صغر الخطر، ولهذا تأتي أكثر الأرقام النسبية إبهاراً عادةً من أندر النتائج. وهذه ليست مشكلة إعلامية فحسب. فالأرقام النسبية تجعل العلاجات تبدو أفضل في عيون الأطباء أيضاً، ونتيجة التجربة الواحدة تثير حماسة أكبر حين تُوصف نسبياً مما تثيره حين تُوصف بأعداد أشخاص كاملين. والأمر ينقلب كذلك في جانب الأضرار: فتحذير يُصاغ على أنه مضاعفة للخطر يبدو مخيفاً سواء انتقل الخطر من 1 من كل 10 إلى 2 من كل 10 أو من 1 من كل 100,000 إلى 2 من كل 100,000. والعادة التي تحميك في الاتجاهين هي أن تصرّ على الأرقام منسوبة إلى مجموعة ثابتة من الناس، وعلى عدد من يجب علاجهم، أو تعريضهم، كي يتأثر واحد منهم.",
+  "The same kind of drug, in people at real risk":
+    "النوع نفسه من الدواء، لدى أشخاص معرَّضين لخطر حقيقي",
+  "A second trial gave a statin to patients who had already had a heart attack or had angina. Major coronary events fell from 28 percent to 19 percent. As a relative figure that is about a third, almost the same headline as in the healthy men. But because the risk it was cutting into was nearly four times larger, the gain was about 9 patients in every 100 instead of 2. The identical headline, several times the benefit. This is why a percentage on its own cannot tell you whether a drug is worth taking, and why the answer differs from patient to patient.":
+    "أعطت تجربة ثانية ستاتين لمرضى سبق أن أصيبوا بنوبة قلبية أو لديهم ذبحة صدرية. فانخفضت الأحداث التاجية الكبرى من 28 بالمئة إلى 19 بالمئة. وكرقم نسبي، هذا نحو الثلث، أي العنوان نفسه تقريباً كما في الرجال الأصحاء. لكن لأن الخطر الذي كان يقتطع منه أكبر بنحو أربعة أضعاف، بلغ المكسب نحو 9 مرضى من كل 100 بدلاً من 2. العنوان ذاته، والفائدة أضعاف مضاعفة. ولهذا لا تستطيع نسبة مئوية وحدها أن تخبرك إن كان دواء يستحق التناول، ولهذا تختلف الإجابة من مريض إلى آخر.",
+  "When a relative figure did real damage": "حين ألحق رقم نسبي ضرراً حقيقياً",
+  "In October 1995 a British safety committee warned that some contraceptive pills carried about twice the risk of a blood clot. The warning travelled as a doubling, with no sense of how small the risk was either way, and women stopped taking the pill. Among girls under 16, use fell from 40 percent to 27 percent within a year. The health service met roughly 21 million pounds in extra maternity costs and 46 million pounds in abortion provision. A relative figure with no absolute figure beside it is not a neutral way to describe a risk.":
+    "في أكتوبر 1995، حذّرت لجنة سلامة بريطانية من أن بعض حبوب منع الحمل تحمل نحو ضعف خطر الجلطة. وانتقل التحذير بوصفه مضاعفة، دون أي تصور لمدى صغر الخطر في الحالتين، فتوقفت النساء عن تناول الحبوب. وبين الفتيات دون سن 16، هبط الاستعمال من 40 بالمئة إلى 27 بالمئة خلال سنة. وتحمّلت الخدمة الصحية نحو 21 مليون جنيه إسترليني تكاليف ولادة إضافية و46 مليون جنيه إسترليني لتوفير خدمات الإجهاض. والرقم النسبي دون رقم مطلق إلى جانبه ليس طريقة محايدة لوصف خطر.",
+  "The fix is in the wording": "الحل في الصياغة",
+  "Describe the same result in whole people, so many out of 1,000 against so many out of 1,000, and both patients and doctors judge it far more accurately than when it arrives as a percentage reduction. Relative risks belong to a small family of formats that reliably confuse, alongside single-event probabilities and conditional ones like a test's sensitivity. None of them is wrong. They are just easy to misread, and there is a clearer way to say the same thing.":
+    "صِف النتيجة نفسها بأشخاص كاملين، كذا من كل 1,000 مقابل كذا من كل 1,000، فيحكم عليها المرضى والأطباء على السواء بدقة أكبر بكثير مما يفعلون حين تصلهم على شكل خفض بنسبة مئوية. والأخطار النسبية تنتمي إلى أسرة صغيرة من الصيغ التي تربك الناس على نحو موثوق، إلى جانب احتمالات الحدث المفرد والاحتمالات الشرطية مثل حساسية اختبار ما. ولا واحدة منها خاطئة. إنها فقط سهلة على سوء القراءة، وثمة طريقة أوضح لقول الشيء نفسه.",
+  "Relative versus absolute risk, a reasoning trap.":
+    "الخطر النسبي مقابل الخطر المطلق، فخ في الاستدلال.",
+  "\"Cuts your risk by a third\" sounds enormous. But a third of what? If the risk was 75 in 1,000, a third of it is 23 people. If the risk was 3 in 1,000, a third of it is one. The percentage tells you how much of the risk went away and says nothing at all about how much risk there was, which is the part that decides whether it matters to you. Ask for the plain numbers: how many out of 1,000, and how many people have to take it for one of them to benefit.":
+    "«يخفض خطرك بمقدار الثلث» عبارة تبدو هائلة. لكن ثلث ماذا؟ إذا كان الخطر 75 من كل 1,000، فثلثه 23 شخصاً. وإذا كان الخطر 3 من كل 1,000، فثلثه شخص واحد. النسبة المئوية تخبرك كم زال من الخطر ولا تقول شيئاً على الإطلاق عن حجم الخطر الذي كان موجوداً، وهذا هو الجزء الذي يقرر إن كان الأمر يعنيك. اطلب الأرقام الصريحة: كم من كل 1,000، وكم شخصاً يجب أن يتناولوه كي يستفيد واحد منهم.",
+  "The counts are the trial's primary endpoint, a definite nonfatal heart attack or death from coronary heart disease: 248 events among the men on placebo and 174 among those on pravastatin, over an average of 4.9 years. The paper reports a 31 percent relative risk reduction, estimated from a proportional-hazards model; the crude counts give 30 percent. Every figure this puzzle shows is derived from the counts, so it quotes about a third rather than a number the chart would contradict.":
+    "الأعداد هي نقطة النهاية الأولية للتجربة، أي نوبة قلبية غير مميتة مؤكدة أو وفاة بمرض القلب التاجي: 248 حدثاً بين الرجال على الدواء الوهمي و174 بين من تناولوا برافاستاتين، على مدى 4.9 سنوات وسطياً. ويذكر البحث خفضاً نسبياً للخطر بنسبة 31 بالمئة، مقدَّراً من نموذج المخاطر التناسبية، بينما تعطي الأعداد الخام 30 بالمئة. وكل رقم تعرضه هذه الأحجية مشتق من الأعداد، لذا تذكر «نحو الثلث» بدلاً من رقم يناقضه الرسم البياني.",
+
+  // ==== Trap Hunt test items (relative versus absolute risk) ====
+  "A press release says a new drug halves the risk of a rare complication. It does not say how common the complication is. A newspaper runs the story under the headline that the drug halves the danger.":
+    "بيان صحفي يقول إن دواءً جديداً ينصّف خطر مضاعفة نادرة. ولا يذكر مدى شيوع تلك المضاعفة. فتنشر صحيفة الخبر تحت عنوان يقول إن الدواء ينصّف الخطر.",
+  "Halving a risk means nothing until you know the risk. If the complication strikes 2 people in 10,000, halving it spares one of them.":
+    "تنصيف خطر لا يعني شيئاً حتى تعرف حجم ذلك الخطر. فإذا كانت المضاعفة تصيب 2 من كل 10,000 شخص، فإن تنصيفها يجنّب واحداً منهما.",
+  "A supplement is advertised as cutting the chance of a particular cancer by 40%. The trial it rests on found 7 cases among about 1,000 people taking the supplement and 12 among about 1,000 taking a dummy.":
+    "يُروَّج لمكمّل غذائي على أنه يخفض احتمال سرطان معيّن بنسبة 40%. والتجربة التي يستند إليها وجدت 7 حالات بين نحو 1,000 شخص يتناولون المكمّل و12 حالة بين نحو 1,000 يتناولون دواءً وهمياً.",
+  "The 40% is arithmetically right and it amounts to 5 people in 1,000. Around 200 people would have to take the supplement for years for one of them to avoid a cancer.":
+    "رقم 40% صحيح حسابياً وهو يساوي 5 أشخاص من كل 1,000. وسيتعين على نحو 200 شخص أن يتناولوا المكمّل سنوات كي يتفادى واحد منهم سرطاناً.",
+  "A trial reports that the treatment reduced strokes from 12 in every 100 patients to 8 in every 100, calls that a reduction of a third, and adds that about 25 patients need to be treated for five years to prevent one stroke.":
+    "تُبلغ تجربة أن العلاج خفض السكتات الدماغية من 12 من كل 100 مريض إلى 8 من كل 100، وتسمّي ذلك خفضاً بمقدار الثلث، وتضيف أن نحو 25 مريضاً يحتاجون إلى العلاج خمس سنوات لمنع سكتة واحدة.",
+  "The relative figure, the plain numbers of people and the number needed to treat are all on the table, so nothing is hidden behind the percentage. This is how a result should be reported.":
+    "الرقم النسبي وأعداد الناس الصريحة وعدد المرضى اللازم علاجهم كلها معروضة، فلا شيء مختبئ خلف النسبة المئوية. هكذا ينبغي أن يُبلَّغ عن نتيجة.",
+
+  // ---- Scope tags (risk chart) ----
+  "Compared to the risk": "قياساً إلى الخطر",
+  "Compared to the people": "قياساً إلى الناس",
 };

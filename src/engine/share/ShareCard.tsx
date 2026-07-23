@@ -347,6 +347,62 @@ function TimelineGlyph() {
 }
 
 /**
+ * For puzzles whose strata are one population sliced two ways (Berkson's
+ * hospital sample inside its survey, DIG's patients sorted by prescription and
+ * then by randomisation): two panels, drawn from the puzzle's own rates. One
+ * shows a yawning gap, the other shows none, and no bar is crowned because
+ * neither slicing is a contest. Derived, so it stays true to whatever data the
+ * puzzle carries.
+ */
+function SplitSampleGlyph({ data }: { data: RatesData }) {
+  const t = useT();
+  const strata = stratifiedRates(data);
+  const tallest = Math.max(...strata.flatMap((s) => s.rates.map((r) => r.rate)), 0.01);
+
+  return (
+    <div
+      className="mt-4 rounded-lg p-3"
+      style={{ backgroundColor: "rgba(0,0,0,0.28)" }}
+    >
+      <div className="flex items-start justify-center gap-4">
+        {strata.map((s) => {
+          const stratum = data.strata.find((x) => x.id === s.stratumId)!;
+          return (
+            <div key={s.stratumId} className="flex flex-1 flex-col items-center gap-1.5">
+              <div className="flex h-[62px] items-end justify-center gap-2">
+                {s.rates.map((r, i) => (
+                  <div
+                    key={r.groupId}
+                    className="w-5 rounded-t-[2px]"
+                    style={{
+                      height: `${(r.rate / tallest) * 100}%`,
+                      minHeight: 2,
+                      backgroundColor: i === 0 ? CARD.rust : CARD.teal,
+                    }}
+                  />
+                ))}
+              </div>
+              <span
+                className="text-center text-[9px] font-semibold uppercase leading-tight tracking-eyebrow"
+                style={{ color: CARD.muted }}
+              >
+                {t(stratum.label)}
+              </span>
+            </div>
+          );
+        })}
+      </div>
+      <div
+        className="mt-2.5 text-center text-[11px] font-semibold"
+        style={{ color: CARD.gold }}
+      >
+        Same people. Two ways of sorting them.
+      </div>
+    </div>
+  );
+}
+
+/**
  * Abstract relative-versus-absolute illustration for the card: the same drop,
  * measured twice. On the left the treated bar is scaled against the untreated
  * one and a third of it is gone. On the right both sit inside the whole
@@ -462,6 +518,10 @@ export function ShareCard({
   const survivorshipGlyph = data.type === "survivorship";
   const timelineGlyph = data.type === "timeline";
   const riskGlyph = data.type === "risk";
+  const splitSampleGlyph =
+    data.type === "rates" &&
+    Boolean(data.strataAreSeparateSamples) &&
+    data.strata.length === 2;
 
   function selectFraming(next: Framing) {
     setFraming(next);
@@ -528,6 +588,8 @@ export function ShareCard({
 
           {reversalGlyph ? (
             <ReversalGlyph />
+          ) : splitSampleGlyph && data.type === "rates" ? (
+            <SplitSampleGlyph data={data} />
           ) : frequencyGlyph ? (
             <FrequencyGlyph data={data} />
           ) : causalGlyph ? (

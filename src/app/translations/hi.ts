@@ -765,4 +765,111 @@ export const hi: Record<string, string> = {
   // scope tags (relative and absolute views)
   "Compared to the risk": "जोखिम के मुकाबले",
   "Compared to the people": "लोगों के मुकाबले",
+
+  // ---- Confounding by indication (puzzle #11) ----
+  "Patients taking this heart drug died more often than patients not taking it. Is the drug killing them?":
+    "दिल की यह दवा लेने वाले मरीज़ न लेने वालों के मुकाबले ज़्यादा मरे। क्या दवा उन्हें मार रही है?",
+  "6,800 people with heart failure. When they joined the trial, some were already on digoxin because a doctor had decided to prescribe it, and some were not. Over the following years, 40 percent of those already on it died, against 31 percent of the others.":
+    "हृदय विफलता (heart failure) से पीड़ित 6,800 लोग। परीक्षण में शामिल होते समय कुछ लोग पहले से डिजॉक्सिन ले रहे थे, क्योंकि किसी डॉक्टर ने उसे लिखने का फ़ैसला किया था, और कुछ नहीं ले रहे थे। अगले सालों में, जो पहले से इसे ले रहे थे उनमें से 40 प्रतिशत की मृत्यु हुई, जबकि बाकी लोगों में 31 प्रतिशत की।",
+  "Is digoxin causing those extra deaths?":
+    "क्या ये अतिरिक्त मौतें डिजॉक्सिन की वजह से हो रही हैं?",
+  "Died during the trial": "परीक्षण के दौरान मृत्यु",
+  "On digoxin": "डिजॉक्सिन ले रहे थे",
+  Digoxin: "डिजॉक्सिन",
+  "Not on digoxin": "डिजॉक्सिन नहीं ले रहे थे",
+  "Not on it": "बिना डिजॉक्सिन",
+  "Sorted by what doctors prescribed":
+    "डॉक्टरों ने जो लिखा उसके हिसाब से बाँटा गया",
+  "Sorted by the trial's coin flip": "परीक्षण के सिक्के के उछाल से बाँटा गया",
+  "As prescribed in practice": "जैसा असल व्यवहार में लिखा गया",
+  "Yes, the drug is harming them": "हाँ, दवा उन्हें नुकसान पहुँचा रही है",
+  "nine points worse": "नौ अंक ज़्यादा खराब",
+  "No, and adjusting for severity will show that":
+    "नहीं, और गंभीरता के लिए समायोजन यही दिखा देगा",
+  "the statistics can correct it": "सांख्यिकी इसे सुधार सकती है",
+  "No, and adjusting will not fix it either":
+    "नहीं, और समायोजन से भी यह ठीक नहीं होगा",
+  "the prescription marks the patient":
+    "दवा लिखा जाना मरीज़ पर निशान लगा देता है",
+  "The same 6,800 patients, sorted by a coin flip. No difference.":
+    "वही 6,800 मरीज़, सिक्के के उछाल से बाँटे गए। कोई फ़र्क नहीं।",
+  "The prescription marked how ill they already were":
+    "दवा लिखा जाना बता रहा था कि वे पहले से कितने बीमार थे",
+  "These are the same people in both panels, grouped two different ways. Sorted by what their doctors had decided, digoxin looks lethal. Sorted by the trial's random assignment, which no clinical judgement touched, the two groups die at the same rate. Doctors were reaching for digoxin in the patients who were already worse off, so the prescription carried information about the patient that nothing in the dataset had recorded:":
+    "दोनों पैनलों में ये वही लोग हैं, बस दो अलग तरीकों से बाँटे गए। उनके डॉक्टरों ने जो तय किया था उसके हिसाब से बाँटने पर डिजॉक्सिन जानलेवा लगती है। परीक्षण के यादृच्छिक बँटवारे के हिसाब से बाँटने पर, जिसे किसी नैदानिक राय ने छुआ तक नहीं, दोनों समूह एक ही दर से मरते हैं। डॉक्टर डिजॉक्सिन उन्हीं मरीज़ों के लिए उठा रहे थे जिनकी हालत पहले से खराब थी, इसलिए दवा लिखे जाने में मरीज़ के बारे में वह जानकारी छिपी थी जो आँकड़ों में कहीं दर्ज ही नहीं थी:",
+  "Both ways of sorting": "बाँटने के दोनों तरीके",
+  "Adjusting for 27 recorded baseline characteristics barely moved it, from a 36 percent excess to 22 percent. And the same excess turned up among the patients the trial had randomised to placebo, people who took no digoxin at all during it. A drug cannot harm those who never received it, so the excess was never the drug.":
+    "दर्ज की गई 27 आधारभूत विशेषताओं के लिए समायोजन करने पर यह मुश्किल से हिला, 36 प्रतिशत की अधिकता से घटकर 22 प्रतिशत। और वही अधिकता उन मरीज़ों में भी दिखी जिन्हें परीक्षण ने यादृच्छिक रूप से प्लेसिबो में डाला था, यानी उन लोगों में जिन्होंने उस दौरान डिजॉक्सिन ली ही नहीं। कोई दवा उन्हें नुकसान नहीं पहुँचा सकती जिन्हें वह मिली ही नहीं, इसलिए यह अधिकता कभी दवा की थी ही नहीं।",
+  "The reason for the prescription": "दवा लिखने की वजह",
+  "Confounding by indication":
+    "इलाज चुनने की वजह से पैदा भ्रामकता (confounding by indication)",
+  "When a doctor decides who gets a treatment, the treated differ from the untreated in ways the data never recorded, and the treatment takes the blame, or the credit, for the reason it was given.":
+    "जब कोई डॉक्टर तय करता है कि इलाज किसे मिलेगा, तो इलाज पाने वाले न पाने वालों से ऐसे तरीकों में अलग होते हैं जो आँकड़ों में कभी दर्ज ही नहीं हुए, और जिस वजह से इलाज दिया गया था उसका दोष, या श्रेय, इलाज के सिर चढ़ जाता है।",
+  'This is why observational comparisons between treated and untreated patients are read so warily, and why "we adjusted for that" does not end the argument. Adjustment can only remove what was written down. The judgement that led to the prescription usually was not.':
+    "यही वजह है कि इलाज पाने वाले और न पाने वाले मरीज़ों की अवलोकन आधारित तुलनाओं को इतनी सावधानी से पढ़ा जाता है, और यही वजह है कि “हमने उसके लिए समायोजन कर लिया था” कह देने से बहस खत्म नहीं होती। समायोजन केवल वही हटा सकता है जो लिखकर दर्ज किया गया हो। जिस राय के चलते दवा लिखी गई, वह आम तौर पर दर्ज नहीं होती।",
+  "Treatments are not handed out at random. A doctor prescribes because of something about the patient: they are sicker, or frailer, or their symptoms are worse. That something also affects how they were going to do anyway. So the treated group starts out different, and any comparison with the untreated measures both the drug and the reason it was chosen, tangled together. It runs both ways. A drug given to the sickest looks harmful; a drug given to the fittest, or one that only patients well enough to attend a clinic can receive, looks miraculous. The standard defence is to adjust for the differences, and it helps, but only for the differences someone thought to record. The clinician's impression that this particular patient was going downhill is real information, it is why the prescription happened, and it is almost never in the dataset. That is the whole reason randomised trials are worth their expense: a coin flip cannot know anything about the patient, so it cannot smuggle the reason into the comparison. When a trial and an observational study disagree about the same drug, this is usually why.":
+    "इलाज यूँ ही यादृच्छिक रूप से नहीं बाँटे जाते। डॉक्टर दवा मरीज़ की किसी बात की वजह से लिखता है: वह ज़्यादा बीमार है, या ज़्यादा कमज़ोर, या उसके लक्षण ज़्यादा खराब हैं। वही बात इस पर भी असर डालती है कि उसका हाल वैसे भी कैसा रहने वाला था। इसलिए इलाज पाने वाला समूह शुरू से ही अलग होता है, और इलाज न पाने वालों से उसकी कोई भी तुलना दवा और उसे चुनने की वजह, दोनों को एक साथ उलझाकर मापती है। यह दोनों दिशाओं में चलता है। सबसे बीमार लोगों को दी गई दवा नुकसानदेह लगती है; सबसे तंदुरुस्त लोगों को दी गई दवा, या ऐसी दवा जो केवल वही मरीज़ पा सकते हैं जो क्लिनिक तक आने लायक हैं, चमत्कारी लगती है। आम बचाव यह है कि इन अंतरों के लिए समायोजन कर लिया जाए, और इससे मदद मिलती भी है, पर केवल उन्हीं अंतरों के लिए जिन्हें किसी ने दर्ज करने की सोची थी। डॉक्टर को यह जो लगा कि यह मरीज़ ढलान पर है, वह असली जानकारी है, वही दवा लिखे जाने की वजह है, और वह आँकड़ों में लगभग कभी नहीं होती। यादृच्छिक परीक्षण अपने खर्च के लायक इसीलिए हैं: सिक्के का उछाल मरीज़ के बारे में कुछ भी नहीं जान सकता, इसलिए वह उस वजह को चोरी छिपे तुलना में नहीं घुसा सकता। जब एक ही दवा के बारे में कोई परीक्षण और कोई अवलोकन आधारित अध्ययन आपस में टकराते हैं, तो वजह आम तौर पर यही होती है।",
+  "Taking your pills predicts survival, even when they are dummies":
+    "गोलियाँ नियम से लेना उत्तरजीविता बता देता है, तब भी जब वे नकली हों",
+  "An earlier trial split its patients by how faithfully they had taken their tablets. Those who took at least 80 percent of them had 15.0 percent five-year mortality against 24.6 percent for the rest, which looks like proof that the drug works if you actually take it. Then the researchers ran the same split inside the placebo group, where the tablets contained nothing: 15.1 percent against 28.2 percent. Adjusting for 40 recorded characteristics narrowed that gap to 16.4 against 25.8 and left it overwhelming. Whatever adherence marks about a person, it was not the medicine.":
+    "एक पुराने परीक्षण ने अपने मरीज़ों को इस हिसाब से बाँटा कि उन्होंने अपनी गोलियाँ कितने नियम से ली थीं। जिन्होंने उनमें से कम से कम 80 प्रतिशत गोलियाँ लीं, उनकी पाँच साल की मृत्यु दर 15.0 प्रतिशत रही, जबकि बाकी लोगों की 24.6 प्रतिशत, जो इस बात का सबूत लगता है कि दवा तभी काम करती है जब आप उसे सचमुच लें। फिर शोधकर्ताओं ने वही बँटवारा प्लेसिबो समूह के भीतर भी किया, जहाँ गोलियों में कुछ था ही नहीं: 15.1 प्रतिशत बनाम 28.2 प्रतिशत। दर्ज की गई 40 विशेषताओं के लिए समायोजन ने उस खाई को घटाकर 16.4 बनाम 25.8 किया, और वह फिर भी भारी बनी रही। गोलियाँ नियम से लेना किसी व्यक्ति के बारे में जो भी बताता हो, वह दवा नहीं थी।",
+  "The same argument, about a procedure": "वही दलील, एक प्रक्रिया के बारे में",
+  "In a study of 5,735 critically ill patients, those who had a catheter threaded into the right side of the heart died more often within 30 days than those who did not, 38.0 percent against 30.6 percent. The procedure was reserved for the patients in most trouble. When it was later tested by randomising who got one, mortality came out at 62 percent with the catheter and 60 percent without, in a trial whose patients were sicker still. The gap that had looked like harm was mostly a gap in who was chosen.":
+    "गंभीर रूप से बीमार 5,735 मरीज़ों के एक अध्ययन में, जिनके दिल के दाहिने हिस्से तक कैथेटर डाला गया वे 30 दिनों के भीतर बाकी लोगों से ज़्यादा मरे, 38.0 प्रतिशत बनाम 30.6 प्रतिशत। यह प्रक्रिया सबसे ज़्यादा मुश्किल में फँसे मरीज़ों के लिए ही रखी जाती थी। बाद में जब यादृच्छिक रूप से तय करके इसे परखा गया कि कैथेटर किसे मिलेगा, तो मृत्यु दर कैथेटर के साथ 62 प्रतिशत और उसके बिना 60 प्रतिशत निकली, और उस परीक्षण के मरीज़ तो और भी ज़्यादा बीमार थे। जो खाई नुकसान जैसी दिख रही थी, वह ज़्यादातर इस बात की खाई थी कि चुना किसे गया।",
+  "Confounding by indication, a reasoning trap.":
+    "इलाज चुनने की वजह से पैदा भ्रामकता, तर्क का एक जाल।",
+  "Nobody hands out medicines at random. Doctors prescribe because of something about the patient, and that something usually affects how the patient was going to do anyway. So people on a drug can die more often than people not on it while the drug does nothing at all: it was given to those who were already worse off. Adjusting for the differences helps, but only the differences somebody wrote down, and the reason for the prescription rarely is one. It is why a coin flip is worth so much.":
+    "दवाएँ कोई यूँ ही यादृच्छिक रूप से नहीं बाँटता। डॉक्टर मरीज़ की किसी बात की वजह से दवा लिखते हैं, और वह बात आम तौर पर इस पर भी असर डालती है कि मरीज़ का हाल वैसे भी कैसा रहने वाला था। इसलिए कोई दवा लेने वाले लोग न लेने वालों से ज़्यादा मर सकते हैं, जबकि दवा कुछ भी नहीं कर रही होती: वह उन्हें दी गई थी जिनकी हालत पहले से खराब थी। अंतरों के लिए समायोजन मदद करता है, पर केवल उन अंतरों के लिए जिन्हें किसी ने लिखकर दर्ज किया, और दवा लिखने की वजह शायद ही कभी दर्ज होती है। सिक्के का उछाल इसीलिए इतना कीमती है।",
+  "The four death counts are printed in the 2019 paper, and the randomised arm sizes in the 1997 trial report. The two prescribed-in-practice denominators are not printed anywhere: 3,017 is the sum of the supplement's two counts of prior digoxin use (1,498 and 1,519) and 3,783 is the rest of the 6,800. That is addition over published whole numbers rather than a figure worked backwards from a percentage, and it closes both ways: 1,207 plus 1,168 and 1,181 plus 1,194 both give 2,375 deaths, and both pairs of denominators give 6,800 patients.":
+    "मौतों की चारों गिनतियाँ 2019 के शोधपत्र में छपी हैं, और यादृच्छिक रूप से बाँटे गए समूहों के आकार 1997 की परीक्षण रिपोर्ट में। असल व्यवहार में दवा लिखे जाने के हिसाब से बने दोनों समूहों के कुल आकार कहीं छपे ही नहीं हैं: 3,017 पूरक सामग्री में दी गई, पहले से डिजॉक्सिन लेने की दो गिनतियों (1,498 और 1,519) का जोड़ है, और 3,783 उन 6,800 में से बचा हुआ हिस्सा। यह किसी प्रतिशत से उलटा हिसाब लगाकर निकाला गया आँकड़ा नहीं, बल्कि प्रकाशित पूर्ण संख्याओं का जोड़ है, और यह दोनों तरफ़ से मिल जाता है: 1,207 और 1,168 का जोड़, तथा 1,181 और 1,194 का जोड़, दोनों 2,375 मौतें देते हैं, और कुल आकारों की दोनों जोड़ियाँ 6,800 मरीज़ देती हैं।",
+
+  // trap hunt items (confounding by indication)
+  "A hospital reviews its records and finds that patients who were given a particular breathing support died far more often than patients who were not. A committee recommends using it less.":
+    "एक अस्पताल अपने रिकॉर्ड की समीक्षा करता है और पाता है कि जिन मरीज़ों को साँस लेने में मदद देने वाला एक ख़ास सहारा दिया गया, वे न पाने वालों के मुकाबले कहीं ज़्यादा मरे। एक समिति इसका इस्तेमाल कम करने की सिफ़ारिश करती है।",
+  "The support was given to the patients who were struggling to breathe. It is standing in for how ill they already were, and the records cannot separate the treatment from the reason it was reached for.":
+    "यह सहारा उन्हीं मरीज़ों को दिया गया था जिन्हें साँस लेने में तकलीफ़ हो रही थी। वह इस बात की निशानी बन जाता है कि वे पहले से कितने बीमार थे, और रिकॉर्ड इलाज को उस वजह से अलग नहीं कर सकते जिसके चलते वह इलाज उठाया गया।",
+  "An observational study finds higher mortality among patients on a drug. The authors adjust for age, sex, blood pressure and twelve laboratory values, the excess shrinks a little but remains, and they conclude the drug is harmful.":
+    "एक अवलोकन आधारित अध्ययन पाता है कि कोई दवा लेने वाले मरीज़ों में मृत्यु दर ज़्यादा है। लेखक उम्र, लिंग, रक्तचाप और बारह प्रयोगशाला मानों के लिए समायोजन करते हैं, यह अधिकता थोड़ी घटती है पर बनी रहती है, और वे निष्कर्ष निकालते हैं कि दवा नुकसानदेह है।",
+  "Adjustment can only remove what was recorded. The clinician's sense that this patient was deteriorating is exactly why the drug was prescribed, and it is not among the twelve laboratory values.":
+    "समायोजन केवल वही हटा सकता है जो दर्ज हुआ हो। डॉक्टर को यह जो लगा कि यह मरीज़ बिगड़ रहा है, ठीक इसी वजह से दवा लिखी गई थी, और वह उन बारह प्रयोगशाला मानों में शामिल नहीं है।",
+
+  // trap hunt items (a second pass over the earlier skills)
+  "A national audit finds that patients operated on at small local hospitals survive more often than those at large teaching hospitals. Broken down by how severe the case was, the teaching hospitals come out ahead in every category.":
+    "एक राष्ट्रीय ऑडिट पाता है कि छोटे स्थानीय अस्पतालों में ऑपरेशन कराने वाले मरीज़ बड़े शिक्षण अस्पतालों के मरीज़ों के मुकाबले ज़्यादा बचते हैं। मामले की गंभीरता के हिसाब से बाँटने पर, हर श्रेणी में शिक्षण अस्पताल आगे निकलते हैं।",
+  "Teaching hospitals take the difficult cases, so their pooled figure is dragged down by a case mix nobody chose at random. Better in every severity band and worse overall is the signature of that.":
+    "शिक्षण अस्पताल मुश्किल मामले लेते हैं, इसलिए उनका मिलाजुला आँकड़ा मरीज़ों के ऐसे मिश्रण से नीचे खिंच जाता है जिसे किसी ने यादृच्छिक रूप से नहीं चुना। गंभीरता की हर पट्टी में बेहतर और कुल मिलाकर बदतर, यही इसकी पहचान है।",
+  "A genetic test for a condition affecting about 1 in 5,000 people is 99.9% accurate. A clinic tells everyone who screens positive that the diagnosis is essentially confirmed.":
+    "लगभग 5,000 में से 1 व्यक्ति को होने वाली एक बीमारी की आनुवंशिक जाँच 99.9% सटीक है। एक क्लिनिक हर उस व्यक्ति से कहता है जिसकी स्क्रीनिंग पॉज़िटिव आती है कि निदान लगभग पक्का हो चुका है।",
+  "Even at 99.9%, errors outnumber real cases when the condition is this rare. Among 100,000 people about 20 have it, and about 100 healthy people also test positive, so a positive is right roughly one time in six.":
+    "बीमारी इतनी दुर्लभ हो तो 99.9% सटीकता पर भी गलतियाँ असली मामलों से ज़्यादा हो जाती हैं। 100,000 लोगों में करीब 20 को यह बीमारी होती है, और करीब 100 स्वस्थ लोगों की जाँच भी पॉज़िटिव आती है, इसलिए पॉज़िटिव परिणाम करीब छह में से एक बार ही सही होता है।",
+  "A surgeon reports excellent long-term results in the patients seen at the five-year follow-up clinic. Patients who moved away, stopped attending, or died before five years are not in the series.":
+    "एक सर्जन पाँच साल की फ़ॉलो-अप क्लिनिक में आने वाले मरीज़ों में बेहतरीन दीर्घकालिक नतीजे बताता है। जो मरीज़ कहीं और चले गए, जिन्होंने आना बंद कर दिया, या जो पाँच साल से पहले चल बसे, वे इस शृंखला में हैं ही नहीं।",
+  "The series was defined by who was still turning up. The patients who did worst are precisely the ones most likely to be missing from it, so the outcomes describe the survivors rather than the operation.":
+    "यह शृंखला इस बात से तय हुई कि अब भी कौन आ रहा है। जिन मरीज़ों के नतीजे सबसे खराब रहे, ठीक उन्हीं के इसमें से गायब होने की संभावना सबसे ज़्यादा है, इसलिए ये नतीजे ऑपरेशन का नहीं, बचे हुए लोगों का वर्णन करते हैं।",
+  "Hospitals that use more of a particular monitoring device have lower death rates. The manufacturer's brochure concludes that buying the device saves lives.":
+    "जो अस्पताल एक ख़ास निगरानी उपकरण का ज़्यादा इस्तेमाल करते हैं वहाँ मृत्यु दर कम है। बनाने वाली कंपनी की पुस्तिका निष्कर्ष निकालती है कि यह उपकरण खरीदने से जानें बचती हैं।",
+  "Hospitals that can afford more monitors can usually afford more of everything else too, including staff. The device may be a marker of a well resourced hospital rather than the cause of its results.":
+    "जो अस्पताल ज़्यादा मॉनिटर खरीद सकते हैं वे आम तौर पर बाकी हर चीज़ भी ज़्यादा जुटा सकते हैं, स्टाफ़ समेत। हो सकता है यह उपकरण अपने नतीजों का कारण न हो, बल्कि इस बात की निशानी हो कि अस्पताल के पास संसाधन अच्छे हैं।",
+  "A rare reaction occurs in about 1 in 50,000 people taking a drug. A patient develops it, and a report concludes there is only a 1 in 50,000 chance the drug was not responsible.":
+    "कोई दवा लेने वाले लगभग 50,000 में से 1 व्यक्ति को एक दुर्लभ प्रतिक्रिया होती है। एक मरीज़ को यह प्रतिक्रिया हो जाती है, और एक रिपोर्ट निष्कर्ष निकालती है कि इसके लिए दवा ज़िम्मेदार न होने की संभावना केवल 50,000 में 1 है।",
+  "That flips the question round. The 1 in 50,000 is how often the reaction appears among people taking the drug, not the chance the drug caused this case. Answering that needs to know how often the same thing happens in people who never took it.":
+    "यह सवाल को उल्टा कर देना है। 50,000 में 1 का आँकड़ा बताता है कि दवा लेने वाले लोगों में यह प्रतिक्रिया कितनी बार दिखती है, न कि यह कि इस मामले में दवा के ही कारण होने की संभावना कितनी है। उसका जवाब देने के लिए यह जानना ज़रूरी है कि जिन लोगों ने कभी यह दवा नहीं ली उनमें यही चीज़ कितनी बार होती है।",
+
+  // trap hunt items (genuinely sound reasoning)
+  "A trial reports the outcome it registered in advance as its main one, states that it also measured eleven others, and says plainly that success was judged on the registered outcome alone.":
+    "एक परीक्षण उसी नतीजे को अपना मुख्य नतीजा बताता है जिसे उसने पहले से पंजीकृत कराया था, यह भी बताता है कि उसने ग्यारह और नतीजे मापे थे, और साफ़ साफ़ कहता है कि सफलता केवल उसी पंजीकृत नतीजे के आधार पर आँकी गई।",
+  "Naming the outcome before seeing the data, and then reporting all of them, is what stops a study quietly promoting whichever measure happened to come out well.":
+    "आँकड़े देखने से पहले नतीजा तय कर देना, और फिर सभी नतीजे बता देना, यही किसी अध्ययन को उस माप को चुपचाप आगे बढ़ाने से रोकता है जो संयोग से अच्छी निकल आई हो।",
+  "A cohort study links an exposure to a disease. It reports that the association survived adjustment for the confounders named in advance, that more exposure went with more disease, and that two independent cohorts elsewhere found the same pattern.":
+    "एक कोहोर्ट अध्ययन किसी संपर्क को किसी बीमारी से जोड़ता है। वह बताता है कि पहले से तय किए गए भ्रामक कारकों के लिए समायोजन के बाद भी यह संबंध बना रहा, कि ज़्यादा संपर्क के साथ ज़्यादा बीमारी दिखी, और कि कहीं और के दो स्वतंत्र कोहोर्ट में भी वही पैटर्न मिला।",
+  "No single one of these settles causation, but together they are the things that make an observational finding worth taking seriously: a prior plan, a dose-response pattern, and replication in populations that do not share the same quirks.":
+    "इनमें से अकेली कोई बात कारणता तय नहीं करती, पर मिलकर ये वही चीज़ें हैं जो किसी अवलोकन आधारित निष्कर्ष को गंभीरता से लेने लायक बनाती हैं: पहले से बनी योजना, संपर्क बढ़ने के साथ बीमारी बढ़ने वाला पैटर्न, और ऐसी आबादियों में वही पैटर्न दोबारा मिलना जिनमें वही स्थानीय खासियतें मौजूद नहीं हैं।",
+  "Patients are assigned by a computer to a drug or a dummy tablet, with neither they nor their doctor knowing which. Deaths are counted in everyone assigned, whatever they went on to take. The drug group does slightly better.":
+    "मरीज़ों को कंप्यूटर यादृच्छिक रूप से दवा या नकली गोली में बाँट देता है, और न उन्हें और न उनके डॉक्टर को पता होता है कि किसे क्या मिला। मौतें हर उस व्यक्ति में गिनी जाती हैं जिसे बाँटा गया था, चाहे उसने आगे चलकर कुछ भी लिया हो। दवा वाले समूह का नतीजा थोड़ा बेहतर रहता है।",
+  "A coin flip knows nothing about the patient, so it cannot smuggle the reason for treatment into the comparison. Counting everyone as assigned keeps that protection even when people stop taking their tablets.":
+    "सिक्के का उछाल मरीज़ के बारे में कुछ नहीं जानता, इसलिए वह इलाज की वजह को चोरी छिपे तुलना में नहीं घुसा सकता। सबको उसी समूह में गिनना जिसमें उन्हें बाँटा गया था, यह सुरक्षा तब भी बनाए रखता है जब लोग गोलियाँ लेना बंद कर देते हैं।",
+  "A clinic compares its results with a national benchmark, adjusts for how severe its patients' illness was, and publishes the crude and the adjusted figures side by side along with the case mix it adjusted for.":
+    "एक क्लिनिक अपने नतीजों की तुलना एक राष्ट्रीय मानक से करता है, अपने मरीज़ों की बीमारी कितनी गंभीर थी इसके लिए समायोजन करता है, और कच्चे तथा समायोजित, दोनों आँकड़े साथ साथ छापता है, साथ में मरीज़ों का वह मिश्रण भी जिसके लिए समायोजन किया गया।",
+  "Showing both figures and the mix behind them is the honest move. A reader can see how much of the difference was case mix and how much survived accounting for it, instead of being handed only the flattering one.":
+    "दोनों आँकड़े और उनके पीछे का मिश्रण दिखाना ही ईमानदार तरीका है। पढ़ने वाला देख सकता है कि फ़र्क का कितना हिस्सा मरीज़ों के मिश्रण की वजह से था और कितना उसका हिसाब लगाने के बाद भी बचा रहा, बजाय इसके कि उसे केवल छवि चमकाने वाला आँकड़ा थमा दिया जाए।",
 };

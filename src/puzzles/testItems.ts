@@ -244,7 +244,121 @@ const items: TestItem[] = [
     },
   },
 
+  // ---- Confounding by indication ----
+  {
+    id: "ci-oxygen",
+    scenario: {
+      en: "A hospital reviews its records and finds that patients who were given a particular breathing support died far more often than patients who were not. A committee recommends using it less.",
+    },
+    trap: "confounding-by-indication",
+    explanation: {
+      en: "The support was given to the patients who were struggling to breathe. It is standing in for how ill they already were, and the records cannot separate the treatment from the reason it was reached for.",
+    },
+  },
+  {
+    id: "ci-adjusted",
+    scenario: {
+      en: "An observational study finds higher mortality among patients on a drug. The authors adjust for age, sex, blood pressure and twelve laboratory values, the excess shrinks a little but remains, and they conclude the drug is harmful.",
+    },
+    trap: "confounding-by-indication",
+    explanation: {
+      en: "Adjustment can only remove what was recorded. The clinician's sense that this patient was deteriorating is exactly why the drug was prescribed, and it is not among the twelve laboratory values.",
+    },
+  },
+
+  // ---- A second pass, clinically flavoured ----
+  {
+    id: "sp-hospitals",
+    scenario: {
+      en: "A national audit finds that patients operated on at small local hospitals survive more often than those at large teaching hospitals. Broken down by how severe the case was, the teaching hospitals come out ahead in every category.",
+    },
+    trap: "simpsons-paradox",
+    explanation: {
+      en: "Teaching hospitals take the difficult cases, so their pooled figure is dragged down by a case mix nobody chose at random. Better in every severity band and worse overall is the signature of that.",
+    },
+  },
+  {
+    id: "br-genetic",
+    scenario: {
+      en: "A genetic test for a condition affecting about 1 in 5,000 people is 99.9% accurate. A clinic tells everyone who screens positive that the diagnosis is essentially confirmed.",
+    },
+    trap: "base-rate-fallacy",
+    explanation: {
+      en: "Even at 99.9%, errors outnumber real cases when the condition is this rare. Among 100,000 people about 20 have it, and about 100 healthy people also test positive, so a positive is right roughly one time in six.",
+    },
+  },
+  {
+    id: "sv-followup",
+    scenario: {
+      en: "A surgeon reports excellent long-term results in the patients seen at the five-year follow-up clinic. Patients who moved away, stopped attending, or died before five years are not in the series.",
+    },
+    trap: "survivorship-bias",
+    explanation: {
+      en: "The series was defined by who was still turning up. The patients who did worst are precisely the ones most likely to be missing from it, so the outcomes describe the survivors rather than the operation.",
+    },
+  },
+  {
+    id: "cc-monitor",
+    scenario: {
+      en: "Hospitals that use more of a particular monitoring device have lower death rates. The manufacturer's brochure concludes that buying the device saves lives.",
+    },
+    trap: "correlation-not-causation",
+    explanation: {
+      en: "Hospitals that can afford more monitors can usually afford more of everything else too, including staff. The device may be a marker of a well resourced hospital rather than the cause of its results.",
+    },
+  },
+  {
+    id: "pf-adverse",
+    scenario: {
+      en: "A rare reaction occurs in about 1 in 50,000 people taking a drug. A patient develops it, and a report concludes there is only a 1 in 50,000 chance the drug was not responsible.",
+    },
+    trap: "prosecutors-fallacy",
+    explanation: {
+      en: "That flips the question round. The 1 in 50,000 is how often the reaction appears among people taking the drug, not the chance the drug caused this case. Answering that needs to know how often the same thing happens in people who never took it.",
+    },
+  },
+
   // ---- Genuinely sound reasoning (decoys) ----
+  {
+    id: "ok-prespecified",
+    scenario: {
+      en: "A trial reports the outcome it registered in advance as its main one, states that it also measured eleven others, and says plainly that success was judged on the registered outcome alone.",
+    },
+    trap: null,
+    explanation: {
+      en: "Naming the outcome before seeing the data, and then reporting all of them, is what stops a study quietly promoting whichever measure happened to come out well.",
+    },
+  },
+  {
+    id: "ok-triangulated",
+    scenario: {
+      en: "A cohort study links an exposure to a disease. It reports that the association survived adjustment for the confounders named in advance, that more exposure went with more disease, and that two independent cohorts elsewhere found the same pattern.",
+    },
+    trap: null,
+    explanation: {
+      en: "No single one of these settles causation, but together they are the things that make an observational finding worth taking seriously: a prior plan, a dose-response pattern, and replication in populations that do not share the same quirks.",
+    },
+  },
+  {
+    id: "ok-randomised-drug",
+    scenario: {
+      en: "Patients are assigned by a computer to a drug or a dummy tablet, with neither they nor their doctor knowing which. Deaths are counted in everyone assigned, whatever they went on to take. The drug group does slightly better.",
+    },
+    trap: null,
+    explanation: {
+      en: "A coin flip knows nothing about the patient, so it cannot smuggle the reason for treatment into the comparison. Counting everyone as assigned keeps that protection even when people stop taking their tablets.",
+    },
+  },
+  {
+    id: "ok-both-shown",
+    scenario: {
+      en: "A clinic compares its results with a national benchmark, adjusts for how severe its patients' illness was, and publishes the crude and the adjusted figures side by side along with the case mix it adjusted for.",
+    },
+    trap: null,
+    explanation: {
+      en: "Showing both figures and the mix behind them is the honest move. A reader can see how much of the difference was case mix and how much survived accounting for it, instead of being handed only the flattering one.",
+    },
+  },
   {
     id: "ok-both-figures",
     scenario: {

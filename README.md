@@ -4,9 +4,9 @@
 
 Each puzzle runs in four beats: **setup → commit → reveal → lesson**, ending in a screenshot-able **share card**. You have to commit to an answer *before* the reveal — the small sting of being caught is the whole point.
 
-This repository is the **Phase 0 prototype**: ten fully playable puzzles on a generic engine, served one-per-day Wordle-style, in ten languages, plus a **Trap Hunt** item bank for testing whether you can spot a flaw when nobody has told you one is there.
+This repository is the **Phase 0 prototype**: eleven fully playable puzzles on a generic engine, served one-per-day Wordle-style, in ten languages, plus a **Trap Hunt** item bank of 41 scenarios for testing whether you can spot a flaw when nobody has told you one is there.
 
-The puzzles so far: Simpson's paradox, the base-rate fallacy, correlation vs causation, survivorship bias, the prosecutor's fallacy, the Will Rogers phenomenon, lead-time bias, spectrum bias, Berkson's bias, and relative vs absolute risk.
+The puzzles so far: Simpson's paradox, the base-rate fallacy, correlation vs causation, survivorship bias, the prosecutor's fallacy, the Will Rogers phenomenon, lead-time bias, spectrum bias, Berkson's bias, relative vs absolute risk, and confounding by indication.
 
 Most new puzzles are just a data file; the engine renders them with no code changes. A genuinely new *shape* of data (a timeline rather than a set of rates, say) adds one member to the schema union and one renderer. See [`PROJECT_PLAN.md`](./PROJECT_PLAN.md) for the full product vision and [`CONTRIBUTING.md`](./CONTRIBUTING.md) for the content bar, which is deliberately high.
 

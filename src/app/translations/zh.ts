@@ -750,4 +750,106 @@ export const zh: Record<string, string> = {
   // ---- Berkson's bias, corrected community wording ----
   "The same survey, the same people, the same two diseases. Across everyone it asked, people with a respiratory disease were barely any likelier to have a bone or joint disease than people without one, and the odds come out at 1.06 against 1, which is nothing. The hospital panel is not a finding about disease, it is a finding about admission. Either illness can put you in a hospital bed, so people with both turn up there far more often than people with one, and inside those walls the two look inseparable:":
     "同一项调查，同一批人，同样这两种疾病。在它问到的所有人当中，患有呼吸系统疾病的人，患骨关节疾病的可能性只比没有呼吸系统疾病的人高出一点点，比值比算出来是 1.06 比 1，等于什么也没有。住院那一组图讲的不是疾病，而是住院。这两种病中的任何一种都可能让你躺上病床，所以两病兼有的人出现在那里的机会远高于只有一种病的人，而在医院的墙内，这两者看上去密不可分：",
+
+  // ==== Confounding by indication (puzzle #11, DIG trial) ====
+  "Patients taking this heart drug died more often than patients not taking it. Is the drug killing them?":
+    "服用这种心脏药的患者，比不服用的患者死得更多。是这种药在害死他们吗？",
+  "6,800 people with heart failure. When they joined the trial, some were already on digoxin because a doctor had decided to prescribe it, and some were not. Over the following years, 40 percent of those already on it died, against 31 percent of the others.":
+    "6,800 名心力衰竭患者。入组这项试验时，有些人已经在服用地高辛，因为此前有医生决定给他们开这种药；另一些人没有。在随后的几年里，本来就在服药的人有 40% 死亡，其他人是 31%。",
+  "Is digoxin causing those extra deaths?":
+    "这些多出来的死亡是地高辛造成的吗？",
+  "Died during the trial": "试验期间死亡",
+  "On digoxin": "在服地高辛",
+  Digoxin: "地高辛",
+  "Not on digoxin": "未服地高辛",
+  "Not on it": "未服药",
+  "Sorted by what doctors prescribed": "按医生开出的处方分组",
+  "Sorted by the trial's coin flip": "按试验的抛硬币分组",
+  "As prescribed in practice": "按临床实际的处方",
+  "Yes, the drug is harming them": "是的，这种药在伤害他们",
+  "nine points worse": "高出 9 个百分点",
+  "No, and adjusting for severity will show that":
+    "不，按病情严重程度校正就能说明这一点",
+  "the statistics can correct it": "统计方法可以纠正它",
+  "No, and adjusting will not fix it either": "不，而且校正也解决不了",
+  "the prescription marks the patient": "处方本身就标记了患者",
+  "The same 6,800 patients, sorted by a coin flip. No difference.":
+    "同样这 6,800 名患者，按抛硬币分组。没有差别。",
+  "The prescription marked how ill they already were":
+    "处方标记出他们本来病得有多重",
+  "These are the same people in both panels, grouped two different ways. Sorted by what their doctors had decided, digoxin looks lethal. Sorted by the trial's random assignment, which no clinical judgement touched, the two groups die at the same rate. Doctors were reaching for digoxin in the patients who were already worse off, so the prescription carried information about the patient that nothing in the dataset had recorded:":
+    "两组图里是同一批人，只是分组方式不同。按医生此前的决定来分，地高辛看上去是致命的。按试验的随机分配来分，而随机分配不受任何临床判断影响，两组的死亡率完全一样。医生正是在那些本来就更糟的患者身上伸手去用地高辛，所以处方携带了关于患者的信息，而数据集里没有任何东西记录下这些信息：",
+  "Both ways of sorting": "两种分组方式",
+  "Adjusting for 27 recorded baseline characteristics barely moved it, from a 36 percent excess to 22 percent. And the same excess turned up among the patients the trial had randomised to placebo, people who took no digoxin at all during it. A drug cannot harm those who never received it, so the excess was never the drug.":
+    "对 27 项记录在案的基线特征做校正，几乎没有撼动它：多出来的死亡风险只从 36% 降到 22%。而且同样多出来的死亡也出现在被试验随机分到安慰剂的患者身上，这些人在试验期间根本没有服用过地高辛。一种药不可能伤害从未用过它的人，所以这份多出来的死亡从来都不是药造成的。",
+  "The reason for the prescription": "开出处方的理由",
+  "Confounding by indication": "适应证混杂",
+  "When a doctor decides who gets a treatment, the treated differ from the untreated in ways the data never recorded, and the treatment takes the blame, or the credit, for the reason it was given.":
+    "当由医生来决定谁接受治疗时，接受治疗的人与没接受的人，在数据从未记录下来的方面本来就已经不同，于是治疗替它被开出的理由背了黑锅，或者领了功劳。",
+  "This is why observational comparisons between treated and untreated patients are read so warily, and why \"we adjusted for that\" does not end the argument. Adjustment can only remove what was written down. The judgement that led to the prescription usually was not.":
+    "这就是为什么在观察性研究里，治疗组与未治疗组之间的比较总被谨慎对待，也是为什么“我们已经对此做了校正”并不能终结争论。校正只能去掉写下来的东西。而促成那张处方的判断，通常没有被写下来。",
+  "Treatments are not handed out at random. A doctor prescribes because of something about the patient: they are sicker, or frailer, or their symptoms are worse. That something also affects how they were going to do anyway. So the treated group starts out different, and any comparison with the untreated measures both the drug and the reason it was chosen, tangled together. It runs both ways. A drug given to the sickest looks harmful; a drug given to the fittest, or one that only patients well enough to attend a clinic can receive, looks miraculous. The standard defence is to adjust for the differences, and it helps, but only for the differences someone thought to record. The clinician's impression that this particular patient was going downhill is real information, it is why the prescription happened, and it is almost never in the dataset. That is the whole reason randomised trials are worth their expense: a coin flip cannot know anything about the patient, so it cannot smuggle the reason into the comparison. When a trial and an observational study disagree about the same drug, this is usually why.":
+    "治疗不是随机发放的。医生开药，是因为患者身上的某些情况：病得更重，或者更虚弱，或者症状更糟。而这些情况本来也会影响他们的结局。于是接受治疗的那一组从一开始就与众不同，任何与未治疗组的比较，测到的都是药物和选择用药的理由，两者纠缠在一起。它朝两个方向都会起作用。给病得最重的人用的药看上去有害；给身体最好的人用的药，或者只有健康到能来门诊的患者才拿得到的药，看上去神效非凡。标准的应对办法是对这些差异做校正，这确实有帮助，但只对那些有人想到要记录下来的差异有效。临床医生觉得这个患者正在走下坡路，这是真实的信息，正是它促成了那张处方，而它几乎从不出现在数据集里。这就是随机对照试验值得花那么多钱的全部理由：抛硬币不可能知道患者的任何情况，所以它无法把用药的理由偷偷带进比较之中。当一项试验和一项观察性研究对同一种药得出相反的结论时，原因通常就在这里。",
+  "Taking your pills predicts survival, even when they are dummies":
+    "按时吃药能预示活得更久，哪怕吃的只是安慰剂",
+  "An earlier trial split its patients by how faithfully they had taken their tablets. Those who took at least 80 percent of them had 15.0 percent five-year mortality against 24.6 percent for the rest, which looks like proof that the drug works if you actually take it. Then the researchers ran the same split inside the placebo group, where the tablets contained nothing: 15.1 percent against 28.2 percent. Adjusting for 40 recorded characteristics narrowed that gap to 16.4 against 25.8 and left it overwhelming. Whatever adherence marks about a person, it was not the medicine.":
+    "一项更早的试验按服药依从性把患者分成两组。至少服下了 80% 药片的人，五年死亡率为 15.0%，其余的人为 24.6%，这看起来正好证明只要你真的按时吃，药就有效。随后研究者在安慰剂组里做了同样的划分，而那里的药片什么成分都没有：15.1% 对 28.2%。对 40 项记录在案的特征做校正，只把这个差距缩小到 16.4% 对 25.8%，差距依然悬殊。服药依从性标记出的无论是这个人身上的什么，都不是药。",
+  "The same argument, about a procedure": "同样的道理，换成一项操作",
+  "In a study of 5,735 critically ill patients, those who had a catheter threaded into the right side of the heart died more often within 30 days than those who did not, 38.0 percent against 30.6 percent. The procedure was reserved for the patients in most trouble. When it was later tested by randomising who got one, mortality came out at 62 percent with the catheter and 60 percent without, in a trial whose patients were sicker still. The gap that had looked like harm was mostly a gap in who was chosen.":
+    "在一项纳入 5,735 名危重患者的研究中，把导管置入心脏右侧的患者，30 天内死亡的比例高于没有置管的患者，38.0% 对 30.6%。这项操作只留给病情最棘手的患者。后来有人改用随机分配谁来置管的方式检验它，置管组的死亡率是 62%，未置管组是 60%，而那项试验的患者病得还要更重。原本看上去像是危害的那道差距，大部分只是谁被挑中的差距。",
+  "Confounding by indication, a reasoning trap.": "适应证混杂，一个推理陷阱。",
+  "Nobody hands out medicines at random. Doctors prescribe because of something about the patient, and that something usually affects how the patient was going to do anyway. So people on a drug can die more often than people not on it while the drug does nothing at all: it was given to those who were already worse off. Adjusting for the differences helps, but only the differences somebody wrote down, and the reason for the prescription rarely is one. It is why a coin flip is worth so much.":
+    "没有人会随机地把药发出去。医生开药，是因为患者身上的某些情况，而这些情况通常本来就会影响患者的结局。于是，服药的人可以比不服药的人死得更多，而药其实什么也没做：它被给了那些本来就更糟的人。对差异做校正是有帮助的，但只限于有人写下来的差异，而开处方的理由很少是其中之一。这正是抛一次硬币如此值钱的原因。",
+  "The four death counts are printed in the 2019 paper, and the randomised arm sizes in the 1997 trial report. The two prescribed-in-practice denominators are not printed anywhere: 3,017 is the sum of the supplement's two counts of prior digoxin use (1,498 and 1,519) and 3,783 is the rest of the 6,800. That is addition over published whole numbers rather than a figure worked backwards from a percentage, and it closes both ways: 1,207 plus 1,168 and 1,181 plus 1,194 both give 2,375 deaths, and both pairs of denominators give 6,800 patients.":
+    "四个死亡人数印在 2019 年那篇论文里，随机分组各组的人数印在 1997 年的试验报告里。实际处方那两组的分母哪里都没有印出来：3,017 是补充材料中两项既往地高辛使用人数之和（1,498 和 1,519），3,783 是 6,800 中剩下的部分。这是对已发表的整数做加法，而不是从百分比倒推出来的数字，而且两个方向都对得上：1,207 加 1,168、1,181 加 1,194 都得到 2,375 例死亡，两对分母也都得到 6,800 名患者。",
+
+  // Trap Hunt items for confounding by indication
+  "A hospital reviews its records and finds that patients who were given a particular breathing support died far more often than patients who were not. A committee recommends using it less.":
+    "一家医院查阅自己的病历记录，发现用过某种呼吸支持的患者，死亡比没有用过的患者多得多。一个委员会建议少用这种支持。",
+  "The support was given to the patients who were struggling to breathe. It is standing in for how ill they already were, and the records cannot separate the treatment from the reason it was reached for.":
+    "这种支持是给那些呼吸困难的患者用的。它代表的其实是这些人本来病得有多重，而病历记录无法把治疗和动用治疗的理由分开。",
+  "An observational study finds higher mortality among patients on a drug. The authors adjust for age, sex, blood pressure and twelve laboratory values, the excess shrinks a little but remains, and they conclude the drug is harmful.":
+    "一项观察性研究发现，服用某种药的患者死亡率更高。作者对年龄、性别、血压和 12 项实验室指标做了校正，多出来的部分缩小了一点，但依然存在，他们由此得出结论：这种药有害。",
+  "Adjustment can only remove what was recorded. The clinician's sense that this patient was deteriorating is exactly why the drug was prescribed, and it is not among the twelve laboratory values.":
+    "校正只能去掉被记录下来的东西。临床医生觉得这个患者正在恶化，这恰恰是当初开出这种药的理由，而它不在那 12 项实验室指标之中。",
+
+  // Trap Hunt items, a clinical pass over the earlier skills
+  "A national audit finds that patients operated on at small local hospitals survive more often than those at large teaching hospitals. Broken down by how severe the case was, the teaching hospitals come out ahead in every category.":
+    "一项全国审计发现，在小型地方医院接受手术的患者，存活的比例高于在大型教学医院接受手术的患者。但按病例的严重程度拆分后，教学医院在每一个类别里都领先。",
+  "Teaching hospitals take the difficult cases, so their pooled figure is dragged down by a case mix nobody chose at random. Better in every severity band and worse overall is the signature of that.":
+    "教学医院接的是疑难病例，所以它们合并后的数字被一份并非随机形成的病例构成拖了下来。每一个严重程度分层都更好、总体却更差，正是这件事的标志。",
+  "A genetic test for a condition affecting about 1 in 5,000 people is 99.9% accurate. A clinic tells everyone who screens positive that the diagnosis is essentially confirmed.":
+    "某种疾病大约每 5,000 人中有 1 人患上，针对它的基因检测准确率为 99.9%。一家诊所告诉所有筛查呈阳性的人，诊断基本可以确定。",
+  "Even at 99.9%, errors outnumber real cases when the condition is this rare. Among 100,000 people about 20 have it, and about 100 healthy people also test positive, so a positive is right roughly one time in six.":
+    "疾病罕见到这个程度时，即便准确率有 99.9%，出错的次数也多于真实病例。在 100,000 人中大约有 20 人患病，同时还有大约 100 名健康人也会检测呈阳性，所以一个阳性结果大约每 6 次才对 1 次。",
+  "A surgeon reports excellent long-term results in the patients seen at the five-year follow-up clinic. Patients who moved away, stopped attending, or died before five years are not in the series.":
+    "一位外科医生报告说，在五年随访门诊见到的患者中，长期结果非常好。搬走的、不再来复诊的，以及五年内已经去世的患者，都不在这组病例里。",
+  "The series was defined by who was still turning up. The patients who did worst are precisely the ones most likely to be missing from it, so the outcomes describe the survivors rather than the operation.":
+    "这组病例是由谁还会来复诊决定的。结局最差的患者，恰恰最可能不在其中，所以这些结果描述的是幸存者，而不是这台手术。",
+  "Hospitals that use more of a particular monitoring device have lower death rates. The manufacturer's brochure concludes that buying the device saves lives.":
+    "某种监护设备用得更多的医院，死亡率更低。厂家的宣传册由此得出结论：买下这台设备就能挽救生命。",
+  "Hospitals that can afford more monitors can usually afford more of everything else too, including staff. The device may be a marker of a well resourced hospital rather than the cause of its results.":
+    "买得起更多监护仪的医院，通常别的东西也买得起更多，包括人手。这台设备可能只是一家资源充裕的医院的标志，而不是它成绩的原因。",
+  "A rare reaction occurs in about 1 in 50,000 people taking a drug. A patient develops it, and a report concludes there is only a 1 in 50,000 chance the drug was not responsible.":
+    "服用某种药的人当中，大约每 50,000 人有 1 人出现一种罕见反应。一名患者出现了这种反应，一份报告由此得出结论：这种药不是元凶的概率只有 50,000 分之一。",
+  "That flips the question round. The 1 in 50,000 is how often the reaction appears among people taking the drug, not the chance the drug caused this case. Answering that needs to know how often the same thing happens in people who never took it.":
+    "这是把问题倒了过来。50,000 分之一说的是这种反应在服药人群中出现的频率，而不是这种药导致了这一例的概率。要回答后者，还得知道同样的情况在从未服过药的人当中有多常发生。",
+
+  // Trap Hunt items where the reasoning is sound
+  "A trial reports the outcome it registered in advance as its main one, states that it also measured eleven others, and says plainly that success was judged on the registered outcome alone.":
+    "一项试验报告了它事先登记为主要结局的那个指标，说明自己另外还测量了 11 个指标，并明确表示成败只按已登记的那个结局来判断。",
+  "Naming the outcome before seeing the data, and then reporting all of them, is what stops a study quietly promoting whichever measure happened to come out well.":
+    "在看到数据之前就定下结局指标，事后又把所有指标都报出来，正是这样才能阻止一项研究悄悄把碰巧好看的那个指标扶上主位。",
+  "A cohort study links an exposure to a disease. It reports that the association survived adjustment for the confounders named in advance, that more exposure went with more disease, and that two independent cohorts elsewhere found the same pattern.":
+    "一项队列研究发现某种暴露与某种疾病相关联。研究报告说，对事先指明的混杂因素做校正后关联依然存在，暴露越多疾病越多，而且其他地方的两个独立队列也发现了同样的模式。",
+  "No single one of these settles causation, but together they are the things that make an observational finding worth taking seriously: a prior plan, a dose-response pattern, and replication in populations that do not share the same quirks.":
+    "这几点中的任何一点单独拿出来都不足以确立因果，但合在一起，它们正是让一项观察性发现值得认真对待的东西：事先定好的计划、剂量反应关系，以及在没有同样怪癖的人群中得到重复。",
+  "Patients are assigned by a computer to a drug or a dummy tablet, with neither they nor their doctor knowing which. Deaths are counted in everyone assigned, whatever they went on to take. The drug group does slightly better.":
+    "患者由计算机分配到药物或安慰剂，他们本人和医生都不知道分到的是哪一种。死亡的统计涵盖所有被分配的人，不论他们后来实际服用了什么。药物组的结局略好一些。",
+  "A coin flip knows nothing about the patient, so it cannot smuggle the reason for treatment into the comparison. Counting everyone as assigned keeps that protection even when people stop taking their tablets.":
+    "抛硬币对患者一无所知，所以它无法把用药的理由偷偷带进比较之中。按分配情况统计所有人，能在有人中途停药时仍然保住这层保护。",
+  "A clinic compares its results with a national benchmark, adjusts for how severe its patients' illness was, and publishes the crude and the adjusted figures side by side along with the case mix it adjusted for.":
+    "一家诊所把自己的结果与全国基准作比较，按患者病情的严重程度做了校正，并把粗数字和校正后的数字并排公布，同时公布了它据以校正的病例构成。",
+  "Showing both figures and the mix behind them is the honest move. A reader can see how much of the difference was case mix and how much survived accounting for it, instead of being handed only the flattering one.":
+    "把两个数字以及它们背后的病例构成都摆出来，才是诚实的做法。读者能看出差异中有多少来自病例构成，又有多少在把病例构成考虑进去之后依然存在，而不是只拿到那个好看的数字。",
 };

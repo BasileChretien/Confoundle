@@ -71,6 +71,19 @@ describe("the puzzle registry", () => {
     expect(underfed).toEqual([]);
   });
 
+  it("gives every Trap Hunt item a distinct id", () => {
+    // Ids key the session's seen/answered records, so a duplicate silently
+    // merges two items' histories. Nothing else checks this.
+    const ids = TEST_ITEMS.map((i) => i.id);
+    const duplicated = ids.filter((id, i) => ids.indexOf(id) !== i);
+    expect(duplicated).toEqual([]);
+  });
+
+  it("never repeats a Trap Hunt scenario", () => {
+    const scenarios = TEST_ITEMS.map((i) => i.scenario.en);
+    expect(new Set(scenarios).size).toBe(TEST_ITEMS.length);
+  });
+
   it("keeps enough sound decoys that the answer is never always yes", () => {
     const sound = TEST_ITEMS.filter((i) => i.trap === null);
     const traps = TEST_ITEMS.filter((i) => i.trap !== null);

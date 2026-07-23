@@ -763,4 +763,106 @@ export const ar: Record<string, string> = {
   // ---- Scope tags (risk chart) ----
   "Compared to the risk": "قياساً إلى الخطر",
   "Compared to the people": "قياساً إلى الناس",
+
+  // ==== Confounding by indication (puzzle #11) ====
+  "Patients taking this heart drug died more often than patients not taking it. Is the drug killing them?":
+    "المرضى الذين يتناولون دواء القلب هذا ماتوا أكثر من الذين لا يتناولونه. فهل الدواء هو الذي يقتلهم؟",
+  "6,800 people with heart failure. When they joined the trial, some were already on digoxin because a doctor had decided to prescribe it, and some were not. Over the following years, 40 percent of those already on it died, against 31 percent of the others.":
+    "6,800 شخص مصاب بقصور القلب. عند انضمامهم إلى التجربة، كان بعضهم يتناول الديجوكسين أصلاً لأن طبيباً قرر وصفه له، وبعضهم لا يتناوله. وعلى مدى السنوات التالية، توفي 40 بالمئة ممن كانوا يتناولونه أصلاً، مقابل 31 بالمئة من الآخرين.",
+  "Is digoxin causing those extra deaths?":
+    "هل الديجوكسين هو سبب تلك الوفيات الزائدة؟",
+  "Died during the trial": "توفوا أثناء التجربة",
+  "On digoxin": "يتناولون الديجوكسين",
+  Digoxin: "ديجوكسين",
+  "Not on digoxin": "لا يتناولون الديجوكسين",
+  "Not on it": "لا يتناولونه",
+  "Sorted by what doctors prescribed": "مصنَّفون حسب ما وصفه الأطباء",
+  "Sorted by the trial's coin flip": "مصنَّفون حسب رمي العملة في التجربة",
+  "As prescribed in practice": "كما وُصف في الممارسة",
+  "Yes, the drug is harming them": "نعم، الدواء يضرّهم",
+  "nine points worse": "أسوأ بتسع نقاط",
+  "No, and adjusting for severity will show that":
+    "لا، والتعديل الإحصائي لشدة الحالة سيبيّن ذلك",
+  "the statistics can correct it": "الإحصاء قادر على تصحيحه",
+  "No, and adjusting will not fix it either":
+    "لا، والتعديل الإحصائي لن يصلحه أيضاً",
+  "the prescription marks the patient": "الوصفة الطبية تشي بحال المريض",
+  "The same 6,800 patients, sorted by a coin flip. No difference.":
+    "المرضى الـ 6,800 أنفسهم، مصنَّفين حسب رمي عملة. لا فرق.",
+  "The prescription marked how ill they already were":
+    "الوصفة الطبية كانت علامة على شدة مرضهم أصلاً",
+  "These are the same people in both panels, grouped two different ways. Sorted by what their doctors had decided, digoxin looks lethal. Sorted by the trial's random assignment, which no clinical judgement touched, the two groups die at the same rate. Doctors were reaching for digoxin in the patients who were already worse off, so the prescription carried information about the patient that nothing in the dataset had recorded:":
+    "هؤلاء هم الأشخاص أنفسهم في اللوحتين، مجموعين بطريقتين مختلفتين. فحسب ما قرره أطباؤهم، يبدو الديجوكسين قاتلاً. وحسب التوزيع العشوائي في التجربة، الذي لم يمسسه أي حكم سريري، تموت المجموعتان بالمعدل نفسه. كان الأطباء يلجأون إلى الديجوكسين لدى المرضى الأسوأ حالاً أصلاً، فحملت الوصفة الطبية معلومة عن المريض لم يسجلها أي شيء في مجموعة البيانات:",
+  "Both ways of sorting": "طريقتا التصنيف معاً",
+  "Adjusting for 27 recorded baseline characteristics barely moved it, from a 36 percent excess to 22 percent. And the same excess turned up among the patients the trial had randomised to placebo, people who took no digoxin at all during it. A drug cannot harm those who never received it, so the excess was never the drug.":
+    "لم يُحرّك التعديل الإحصائي لـ 27 من الخصائص الأولية المسجَّلة الأمرَ إلا بالكاد، من زيادة قدرها 36 بالمئة إلى 22 بالمئة. ثم ظهرت الزيادة نفسها بين المرضى الذين وزعتهم التجربة عشوائياً على الدواء الوهمي، وهم أشخاص لم يتناولوا الديجوكسين أثناءها إطلاقاً. والدواء لا يستطيع أن يضر من لم يتلقوه قط، لذا لم تكن الزيادة يوماً من الدواء.",
+  "The reason for the prescription": "سبب الوصفة الطبية",
+  "Confounding by indication": "الخلط حسب دواعي الاستعمال",
+  "When a doctor decides who gets a treatment, the treated differ from the untreated in ways the data never recorded, and the treatment takes the blame, or the credit, for the reason it was given.":
+    "حين يقرر الطبيب من يتلقى العلاج، يختلف من عولجوا عمّن لم يعالَجوا بطرق لم تسجلها البيانات قط، فيتحمل العلاجُ اللومَ، أو ينال الفضلَ، عن السبب الذي أُعطي من أجله.",
+  "This is why observational comparisons between treated and untreated patients are read so warily, and why \"we adjusted for that\" does not end the argument. Adjustment can only remove what was written down. The judgement that led to the prescription usually was not.":
+    "لهذا تُقرأ المقارنات الرصدية بين المرضى المعالَجين وغير المعالَجين بحذر شديد، ولهذا لا تُنهي عبارة «لقد عدّلنا إحصائياً لذلك» النقاش. فالتعديل الإحصائي لا يستطيع أن يزيل إلا ما كُتب. أما الحكم الذي أدى إلى الوصفة الطبية فلم يكن مكتوباً في العادة.",
+  "Treatments are not handed out at random. A doctor prescribes because of something about the patient: they are sicker, or frailer, or their symptoms are worse. That something also affects how they were going to do anyway. So the treated group starts out different, and any comparison with the untreated measures both the drug and the reason it was chosen, tangled together. It runs both ways. A drug given to the sickest looks harmful; a drug given to the fittest, or one that only patients well enough to attend a clinic can receive, looks miraculous. The standard defence is to adjust for the differences, and it helps, but only for the differences someone thought to record. The clinician's impression that this particular patient was going downhill is real information, it is why the prescription happened, and it is almost never in the dataset. That is the whole reason randomised trials are worth their expense: a coin flip cannot know anything about the patient, so it cannot smuggle the reason into the comparison. When a trial and an observational study disagree about the same drug, this is usually why.":
+    "العلاجات لا تُوزَّع عشوائياً. فالطبيب يصف الدواء بسبب شيء ما في المريض: هو أشد مرضاً، أو أوهن، أو أعراضه أسوأ. وذلك الشيء نفسه يؤثر أيضاً في مآله على أي حال. لذا تبدأ المجموعة المعالَجة مختلفة، وأي مقارنة مع غير المعالَجين تقيس الدواء وسبب اختياره معاً، متشابكين. والأمر يجري في الاتجاهين. فالدواء الذي يُعطى للأشد مرضاً يبدو ضاراً، والدواء الذي يُعطى للأوفر صحة، أو الذي لا يتلقاه إلا مرضى في حال تسمح لهم بالحضور إلى العيادة، يبدو معجزة. والدفاع المعتاد هو التعديل الإحصائي للفروق، وهو يفيد، لكن للفروق التي خطر لأحدهم أن يسجلها فقط. أما انطباع الطبيب بأن هذا المريض بالذات كان يتدهور فهو معلومة حقيقية، وهو سبب حدوث الوصفة الطبية، ولا يكاد يوجد قط في مجموعة البيانات. وهذا وحده سبب استحقاق التجارب العشوائية لكلفتها: فرمي العملة لا يمكن أن يعرف شيئاً عن المريض، لذا لا يستطيع أن يهرّب السبب إلى داخل المقارنة. وحين تختلف تجربة سريرية ودراسة رصدية بشأن الدواء نفسه، فهذا هو السبب عادةً.",
+  "Taking your pills predicts survival, even when they are dummies":
+    "الالتزام بتناول الأقراص يتنبأ بالبقاء على قيد الحياة، حتى حين تكون الأقراص وهمية",
+  "An earlier trial split its patients by how faithfully they had taken their tablets. Those who took at least 80 percent of them had 15.0 percent five-year mortality against 24.6 percent for the rest, which looks like proof that the drug works if you actually take it. Then the researchers ran the same split inside the placebo group, where the tablets contained nothing: 15.1 percent against 28.2 percent. Adjusting for 40 recorded characteristics narrowed that gap to 16.4 against 25.8 and left it overwhelming. Whatever adherence marks about a person, it was not the medicine.":
+    "قسّمت تجربة أسبق مرضاها حسب مدى التزامهم بتناول أقراصهم. فمن تناولوا 80 بالمئة منها على الأقل بلغ معدل الوفيات لديهم بعد خمس سنوات 15.0 بالمئة مقابل 24.6 بالمئة لدى الباقين، وهو ما يبدو دليلاً على أن الدواء ينفع إن تناولته فعلاً. ثم أجرى الباحثون التقسيم نفسه داخل مجموعة الدواء الوهمي، حيث لم تكن الأقراص تحتوي على شيء: 15.1 بالمئة مقابل 28.2 بالمئة. وضيّق التعديل الإحصائي لـ 40 خاصية مسجَّلة تلك الفجوة إلى 16.4 مقابل 25.8 وتركها ساحقة. ومهما يكن ما يدل عليه الالتزام بالعلاج في الشخص، فهو لم يكن الدواء.",
+  "The same argument, about a procedure": "الحجة نفسها، بشأن إجراء طبي",
+  "In a study of 5,735 critically ill patients, those who had a catheter threaded into the right side of the heart died more often within 30 days than those who did not, 38.0 percent against 30.6 percent. The procedure was reserved for the patients in most trouble. When it was later tested by randomising who got one, mortality came out at 62 percent with the catheter and 60 percent without, in a trial whose patients were sicker still. The gap that had looked like harm was mostly a gap in who was chosen.":
+    "في دراسة شملت 5,735 مريضاً في حالة حرجة، مات من أُدخلت لهم قسطرة إلى الجانب الأيمن من القلب خلال 30 يوماً أكثر ممن لم تُدخل لهم، 38.0 بالمئة مقابل 30.6 بالمئة. وكان هذا الإجراء مقصوراً على المرضى الأشد تعثراً. وحين اختُبر لاحقاً بتوزيع من يتلقاه عشوائياً، جاء معدل الوفيات 62 بالمئة مع القسطرة و60 بالمئة من دونها، في تجربة كان مرضاها أشد مرضاً بعدُ. فالفجوة التي بدت ضرراً كانت في معظمها فجوة في من جرى اختياره.",
+  "Confounding by indication, a reasoning trap.":
+    "الخلط حسب دواعي الاستعمال، فخ في الاستدلال.",
+  "Nobody hands out medicines at random. Doctors prescribe because of something about the patient, and that something usually affects how the patient was going to do anyway. So people on a drug can die more often than people not on it while the drug does nothing at all: it was given to those who were already worse off. Adjusting for the differences helps, but only the differences somebody wrote down, and the reason for the prescription rarely is one. It is why a coin flip is worth so much.":
+    "لا أحد يوزّع الأدوية عشوائياً. فالأطباء يصفون الدواء بسبب شيء ما في المريض، وذلك الشيء يؤثر عادةً في مآل المريض على أي حال. لذا يمكن أن يموت متناولو دواء ما أكثر من غير متناوليه بينما لا يفعل الدواء شيئاً البتة: فقد أُعطي لمن كانوا أسوأ حالاً أصلاً. والتعديل الإحصائي للفروق يفيد، لكن للفروق التي كتبها أحدهم فقط، ونادراً ما يكون سبب الوصفة الطبية واحداً منها. لهذا يساوي رمي العملة كل هذا القدر.",
+  "The four death counts are printed in the 2019 paper, and the randomised arm sizes in the 1997 trial report. The two prescribed-in-practice denominators are not printed anywhere: 3,017 is the sum of the supplement's two counts of prior digoxin use (1,498 and 1,519) and 3,783 is the rest of the 6,800. That is addition over published whole numbers rather than a figure worked backwards from a percentage, and it closes both ways: 1,207 plus 1,168 and 1,181 plus 1,194 both give 2,375 deaths, and both pairs of denominators give 6,800 patients.":
+    "أعداد الوفيات الأربعة مطبوعة في بحث عام 2019، وأحجام الذراعين العشوائيتين في تقرير تجربة عام 1997. أما مقاما المجموعتين المصنَّفتين حسب الوصف في الممارسة فغير مطبوعين في أي مكان: فالعدد 3,017 هو مجموع عدَدَي الاستعمال السابق للديجوكسين في الملحق (1,498 و1,519)، والعدد 3,783 هو بقية الـ 6,800. وهذه عملية جمع لأعداد صحيحة منشورة، لا رقم استُخرج عكسياً من نسبة مئوية، وهي تُغلق الحساب في الاتجاهين: فـ 1,207 زائد 1,168، و1,181 زائد 1,194، كلاهما يعطي 2,375 وفاة، وكلا زوجَي المقامات يعطي 6,800 مريض.",
+
+  // ==== Trap Hunt test items (confounding by indication) ====
+  "A hospital reviews its records and finds that patients who were given a particular breathing support died far more often than patients who were not. A committee recommends using it less.":
+    "يراجع مستشفى سجلاته فيجد أن المرضى الذين تلقوا نوعاً معيناً من دعم التنفس ماتوا أكثر بكثير من المرضى الذين لم يتلقوه. فتوصي لجنة باستعماله بدرجة أقل.",
+  "The support was given to the patients who were struggling to breathe. It is standing in for how ill they already were, and the records cannot separate the treatment from the reason it was reached for.":
+    "أُعطي الدعم للمرضى الذين كانوا يعانون في التنفس. فهو يقوم مقام مؤشر على شدة مرضهم أصلاً، والسجلات لا تستطيع فصل العلاج عن السبب الذي دعا إليه.",
+  "An observational study finds higher mortality among patients on a drug. The authors adjust for age, sex, blood pressure and twelve laboratory values, the excess shrinks a little but remains, and they conclude the drug is harmful.":
+    "تجد دراسة رصدية معدل وفيات أعلى بين المرضى الذين يتناولون دواءً ما. ويجري المؤلفون تعديلاً إحصائياً للعمر والجنس وضغط الدم واثنتي عشرة قيمة مخبرية، فتتقلص الزيادة قليلاً لكنها تبقى، فيخلصون إلى أن الدواء ضار.",
+  "Adjustment can only remove what was recorded. The clinician's sense that this patient was deteriorating is exactly why the drug was prescribed, and it is not among the twelve laboratory values.":
+    "التعديل الإحصائي لا يزيل إلا ما جرى تسجيله. وإحساس الطبيب بأن هذا المريض كان يتدهور هو بالضبط سبب وصف الدواء، وهو ليس بين القيم المخبرية الاثنتي عشرة.",
+
+  // ==== Trap Hunt test items (earlier skills, and sound reasoning) ====
+  "A national audit finds that patients operated on at small local hospitals survive more often than those at large teaching hospitals. Broken down by how severe the case was, the teaching hospitals come out ahead in every category.":
+    "يجد تدقيق وطني أن المرضى الذين تُجرى لهم الجراحة في المستشفيات المحلية الصغيرة يبقون على قيد الحياة أكثر من المرضى في المستشفيات التعليمية الكبيرة. وعند التفصيل حسب شدة الحالة، تتقدم المستشفيات التعليمية في كل فئة.",
+  "Teaching hospitals take the difficult cases, so their pooled figure is dragged down by a case mix nobody chose at random. Better in every severity band and worse overall is the signature of that.":
+    "المستشفيات التعليمية تستقبل الحالات الصعبة، لذا يجرّ مزيجُ حالاتٍ لم يخترْه أحد عشوائياً رقمَها المجمَّع إلى الأسفل. وأن تكون أفضل في كل نطاق شدة وأسوأ إجمالاً هو بصمة ذلك.",
+  "A genetic test for a condition affecting about 1 in 5,000 people is 99.9% accurate. A clinic tells everyone who screens positive that the diagnosis is essentially confirmed.":
+    "اختبار وراثي لحالة تصيب نحو 1 من كل 5,000 شخص دقته 99.9%. وتقول عيادة لكل من تأتي نتيجة فحصه إيجابية إن التشخيص مؤكد في جوهره.",
+  "Even at 99.9%, errors outnumber real cases when the condition is this rare. Among 100,000 people about 20 have it, and about 100 healthy people also test positive, so a positive is right roughly one time in six.":
+    "حتى عند 99.9%، تفوق الأخطاء عددَ الحالات الحقيقية حين تكون الحالة بهذه الندرة. فمن بين 100,000 شخص يُصاب بها نحو 20، وتأتي نتيجة نحو 100 شخص سليم إيجابية أيضاً، لذا تكون النتيجة الإيجابية صحيحة مرة واحدة تقريباً من كل ست.",
+  "A surgeon reports excellent long-term results in the patients seen at the five-year follow-up clinic. Patients who moved away, stopped attending, or died before five years are not in the series.":
+    "يُبلغ جرّاح عن نتائج بعيدة المدى ممتازة لدى المرضى الذين عاينهم في عيادة المتابعة بعد خمس سنوات. أما المرضى الذين انتقلوا إلى مكان آخر، أو توقفوا عن الحضور، أو توفوا قبل خمس سنوات، فليسوا ضمن السلسلة.",
+  "The series was defined by who was still turning up. The patients who did worst are precisely the ones most likely to be missing from it, so the outcomes describe the survivors rather than the operation.":
+    "تحددت السلسلة بمن ظل يحضر. والمرضى الأسوأ حالاً هم بالضبط الأرجح أن يكونوا غائبين عنها، لذا تصف النتائج الناجين لا العملية الجراحية.",
+  "Hospitals that use more of a particular monitoring device have lower death rates. The manufacturer's brochure concludes that buying the device saves lives.":
+    "المستشفيات التي تستخدم جهاز مراقبة معيناً أكثر لديها معدلات وفيات أقل. ويخلص كتيب الشركة الصانعة إلى أن شراء الجهاز ينقذ الأرواح.",
+  "Hospitals that can afford more monitors can usually afford more of everything else too, including staff. The device may be a marker of a well resourced hospital rather than the cause of its results.":
+    "المستشفيات القادرة على شراء أجهزة مراقبة أكثر قادرة عادةً على شراء المزيد من كل شيء آخر أيضاً، بما في ذلك الكوادر. فقد يكون الجهاز علامة على مستشفى وفير الموارد لا سبباً لنتائجه.",
+  "A rare reaction occurs in about 1 in 50,000 people taking a drug. A patient develops it, and a report concludes there is only a 1 in 50,000 chance the drug was not responsible.":
+    "يحدث تفاعل نادر لدى نحو 1 من كل 50,000 شخص يتناولون دواءً ما. ويصاب به مريض، فيخلص تقرير إلى أن احتمال ألا يكون الدواء مسؤولاً عنه هو 1 من كل 50,000 فقط.",
+  "That flips the question round. The 1 in 50,000 is how often the reaction appears among people taking the drug, not the chance the drug caused this case. Answering that needs to know how often the same thing happens in people who never took it.":
+    "هذا يقلب السؤال رأساً على عقب. فرقم 1 من كل 50,000 هو مدى تكرار ظهور التفاعل بين متناولي الدواء، لا احتمال أن يكون الدواء قد سبب هذه الحالة. والإجابة عن ذلك تحتاج إلى معرفة مدى تكرار حدوث الشيء نفسه لدى من لم يتناولوه قط.",
+  "A trial reports the outcome it registered in advance as its main one, states that it also measured eleven others, and says plainly that success was judged on the registered outcome alone.":
+    "تُبلغ تجربة سريرية عن النتيجة التي سجّلتها مسبقاً بوصفها نتيجتها الرئيسية، وتذكر أنها قاست إحدى عشرة نتيجة أخرى أيضاً، وتقول صراحةً إن الحكم على النجاح استند إلى النتيجة المسجَّلة وحدها.",
+  "Naming the outcome before seeing the data, and then reporting all of them, is what stops a study quietly promoting whichever measure happened to come out well.":
+    "تسمية النتيجة قبل رؤية البيانات، ثم الإبلاغ عنها جميعاً، هو ما يمنع دراسةً من أن ترفع بهدوء شأن أي مقياس صادف أن جاء جيداً.",
+  "A cohort study links an exposure to a disease. It reports that the association survived adjustment for the confounders named in advance, that more exposure went with more disease, and that two independent cohorts elsewhere found the same pattern.":
+    "تربط دراسة حشد بين تعرض ومرض. وتُبلغ بأن الارتباط صمد أمام التعديل الإحصائي للعوامل المربِكة المسماة مسبقاً، وأن التعرض الأكبر رافقه مرض أكثر، وأن حشدين مستقلين في مكان آخر وجدا النمط نفسه.",
+  "No single one of these settles causation, but together they are the things that make an observational finding worth taking seriously: a prior plan, a dose-response pattern, and replication in populations that do not share the same quirks.":
+    "لا يحسم أيٌّ من هذه وحده مسألة السببية، لكنها مجتمعة هي ما يجعل نتيجة رصدية جديرة بأن تؤخذ على محمل الجد: خطة مسبقة، ونمط استجابة للجرعة، وتكرار في مجتمعات سكانية لا تشترك في الخصوصيات نفسها.",
+  "Patients are assigned by a computer to a drug or a dummy tablet, with neither they nor their doctor knowing which. Deaths are counted in everyone assigned, whatever they went on to take. The drug group does slightly better.":
+    "يوزّع حاسوب المرضى على دواء أو قرص وهمي، دون أن يعرف المرضى ولا أطباؤهم أيهما تلقوا. وتُحصى الوفيات لدى كل من جرى توزيعهم، أياً كان ما تناولوه بعد ذلك. وتأتي حال مجموعة الدواء أفضل قليلاً.",
+  "A coin flip knows nothing about the patient, so it cannot smuggle the reason for treatment into the comparison. Counting everyone as assigned keeps that protection even when people stop taking their tablets.":
+    "رمي العملة لا يعرف شيئاً عن المريض، لذا لا يستطيع أن يهرّب سبب العلاج إلى داخل المقارنة. واحتساب الجميع حسب ما خُصص لهم يحفظ تلك الحماية حتى حين يتوقف الناس عن تناول أقراصهم.",
+  "A clinic compares its results with a national benchmark, adjusts for how severe its patients' illness was, and publishes the crude and the adjusted figures side by side along with the case mix it adjusted for.":
+    "تقارن عيادة نتائجها بمعيار مرجعي وطني، وتجري تعديلاً إحصائياً لشدة مرض مرضاها، وتنشر الأرقام الخام والأرقام المعدَّلة جنباً إلى جنب مع مزيج الحالات الذي عدّلت له.",
+  "Showing both figures and the mix behind them is the honest move. A reader can see how much of the difference was case mix and how much survived accounting for it, instead of being handed only the flattering one.":
+    "عرض الرقمين معاً والمزيج الذي وراءهما هو التصرف النزيه. فيستطيع القارئ أن يرى كم من الفارق كان مزيج الحالات وكم منه صمد بعد أخذه في الحسبان، بدلاً من أن يُسلَّم الرقم المجمِّل وحده.",
 };

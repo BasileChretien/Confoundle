@@ -750,4 +750,103 @@ export const ja: Record<string, string> = {
   // ---- Correction: Berkson's bias reveal (supersedes the wording above) ----
   "The same survey, the same people, the same two diseases. Across everyone it asked, people with a respiratory disease were barely any likelier to have a bone or joint disease than people without one, and the odds come out at 1.06 against 1, which is nothing. The hospital panel is not a finding about disease, it is a finding about admission. Either illness can put you in a hospital bed, so people with both turn up there far more often than people with one, and inside those walls the two look inseparable:":
     "同じ調査、同じ人々、同じ2つの病気です。尋ねた全員を通して見ると、呼吸器疾患がある人が骨関節疾患も併せ持つ可能性は、呼吸器疾患がない人とほとんど変わりませんでした。オッズにすると1に対して1.06で、差はないに等しい値です。入院患者のパネルは、病気についての知見ではなく、入院についての知見なのです。どちらの病気も、人を病院のベッドに送り込むことがあります。だから両方を持つ人は、片方だけの人よりもはるかに多くそこに現れ、その壁の内側では、2つの病気は切り離せないものに見えるのです。",
+
+  // ==== Confounding by indication (puzzle #11, DIG trial) ====
+  "Patients taking this heart drug died more often than patients not taking it. Is the drug killing them?":
+    "この心臓の薬を飲んでいる患者は、飲んでいない患者より多く亡くなっていました。この薬が患者の命を奪っているのでしょうか?",
+  "6,800 people with heart failure. When they joined the trial, some were already on digoxin because a doctor had decided to prescribe it, and some were not. Over the following years, 40 percent of those already on it died, against 31 percent of the others.":
+    "心不全の患者6,800人。試験に参加した時点で、医師が処方すると判断したためにすでにジゴキシンを飲んでいた人もいれば、飲んでいなかった人もいました。その後の数年間で、すでに飲んでいた人の40パーセントが亡くなったのに対し、それ以外の人では31パーセントでした。",
+  "Is digoxin causing those extra deaths?":
+    "この過剰な死亡を引き起こしているのは、ジゴキシンなのでしょうか?",
+  "Died during the trial": "試験中に死亡した割合",
+  "On digoxin": "ジゴキシンを飲んでいた",
+  Digoxin: "ジゴキシン",
+  "Not on digoxin": "ジゴキシンを飲んでいなかった",
+  "Not on it": "飲んでいなかった",
+  "Sorted by what doctors prescribed": "医師の処方で分けた場合",
+  "Sorted by the trial's coin flip": "試験のコイン投げで分けた場合",
+  "As prescribed in practice": "実際の処方どおり",
+  "Yes, the drug is harming them": "はい、この薬が害を与えています",
+  "nine points worse": "9ポイント悪い",
+  "No, and adjusting for severity will show that":
+    "いいえ、重症度で調整すればそれがわかります",
+  "the statistics can correct it": "統計で補正できる",
+  "No, and adjusting will not fix it either": "いいえ、調整しても直りません",
+  "the prescription marks the patient": "処方が患者の状態を映す",
+  "The same 6,800 patients, sorted by a coin flip. No difference.":
+    "同じ6,800人の患者を、コイン投げで分けた場合。差はありません。",
+  "The prescription marked how ill they already were":
+    "処方が、すでにどれだけ重かったかを映していた",
+  "These are the same people in both panels, grouped two different ways. Sorted by what their doctors had decided, digoxin looks lethal. Sorted by the trial's random assignment, which no clinical judgement touched, the two groups die at the same rate. Doctors were reaching for digoxin in the patients who were already worse off, so the prescription carried information about the patient that nothing in the dataset had recorded:":
+    "どちらのパネルも同じ人たちで、2通りのやり方でグループ分けしただけです。担当医が下した判断で分けると、ジゴキシンは命を奪うものに見えます。臨床的な判断がいっさい触れていない、試験の無作為割り付けで分けると、2つの群は同じ割合で亡くなっています。医師は、すでに状態が悪かった患者にこそジゴキシンを手に取っていました。だから処方は、データセットのどこにも記録されていなかった患者についての情報を運んでいたのです。",
+  "Both ways of sorting": "両方の分け方",
+  "Adjusting for 27 recorded baseline characteristics barely moved it, from a 36 percent excess to 22 percent. And the same excess turned up among the patients the trial had randomised to placebo, people who took no digoxin at all during it. A drug cannot harm those who never received it, so the excess was never the drug.":
+    "記録されていた27項目のベースライン特性で調整しても、この差はほとんど動かず、36パーセントの過剰が22パーセントになっただけでした。しかも同じ過剰は、試験がプラセボに無作為化した患者、つまり試験の期間中ジゴキシンをまったく飲まなかった人たちのあいだにも現れました。薬は、一度も受け取っていない人に害を与えることはできません。だからこの過剰は、はじめから薬によるものではなかったのです。",
+  "The reason for the prescription": "処方の理由",
+  "Confounding by indication": "適応による交絡",
+  "When a doctor decides who gets a treatment, the treated differ from the untreated in ways the data never recorded, and the treatment takes the blame, or the credit, for the reason it was given.":
+    "誰が治療を受けるかを医師が決めるとき、治療を受けた人は、データがいっさい記録しなかった点で、受けなかった人と異なっています。そして治療は、それが与えられた理由の分まで、責めを負い、あるいは手柄を得ることになります。",
+  "This is why observational comparisons between treated and untreated patients are read so warily, and why \"we adjusted for that\" does not end the argument. Adjustment can only remove what was written down. The judgement that led to the prescription usually was not.":
+    "治療を受けた患者と受けなかった患者を比べる観察研究が、これほど慎重に読まれるのはこのためです。そして「その点は調整しました」の一言で議論が終わらないのも、同じ理由です。調整が取り除けるのは、書き留められたものだけです。処方に至った判断は、たいてい書き留められていません。",
+  "Treatments are not handed out at random. A doctor prescribes because of something about the patient: they are sicker, or frailer, or their symptoms are worse. That something also affects how they were going to do anyway. So the treated group starts out different, and any comparison with the untreated measures both the drug and the reason it was chosen, tangled together. It runs both ways. A drug given to the sickest looks harmful; a drug given to the fittest, or one that only patients well enough to attend a clinic can receive, looks miraculous. The standard defence is to adjust for the differences, and it helps, but only for the differences someone thought to record. The clinician's impression that this particular patient was going downhill is real information, it is why the prescription happened, and it is almost never in the dataset. That is the whole reason randomised trials are worth their expense: a coin flip cannot know anything about the patient, so it cannot smuggle the reason into the comparison. When a trial and an observational study disagree about the same drug, this is usually why.":
+    "治療は無作為に配られるものではありません。医師が処方するのは、患者について何かがあるからです。病状が重い、体が弱っている、症状が強い、といったことです。その何かは、その患者がもともとどうなるはずだったかにも影響します。だから治療を受けた群は、出発点からすでに違っています。そして治療を受けなかった群との比較はどれも、薬そのものと、それが選ばれた理由とを、絡み合ったまま同時に測っていることになります。これは両方向に働きます。最も重い患者に与えられた薬は有害に見え、最も元気な患者に与えられた薬や、通院できるほど元気な患者しか受けられない薬は、奇跡のように見えます。定石の対抗策は、その違いを調整することです。それは役に立ちますが、誰かが記録しておこうと考えた違いについてだけです。この患者は下り坂に入っている、という臨床医の感触は本物の情報であり、それこそが処方の起きた理由でありながら、データセットにはまず入っていません。無作為化試験がその費用に見合う理由は、まさにここにあります。コイン投げは患者について何ひとつ知りえないので、その理由を比較の中に忍び込ませることができないのです。同じ薬について試験と観察研究の結論が食い違うとき、たいていはこれが原因です。",
+  "Taking your pills predicts survival, even when they are dummies":
+    "薬をきちんと飲む人ほど長く生きる。その錠剤が偽薬であっても",
+  "An earlier trial split its patients by how faithfully they had taken their tablets. Those who took at least 80 percent of them had 15.0 percent five-year mortality against 24.6 percent for the rest, which looks like proof that the drug works if you actually take it. Then the researchers ran the same split inside the placebo group, where the tablets contained nothing: 15.1 percent against 28.2 percent. Adjusting for 40 recorded characteristics narrowed that gap to 16.4 against 25.8 and left it overwhelming. Whatever adherence marks about a person, it was not the medicine.":
+    "それ以前のある試験は、患者を、錠剤をどれだけ忠実に飲んでいたかで分けました。80パーセント以上を飲んだ人の5年死亡率は15.0パーセント、それ以外の人では24.6パーセントで、きちんと飲みさえすれば薬は効く、という証拠のように見えます。ところが研究者たちは、同じ分け方をプラセボ群の中でも行いました。中身が何も入っていない錠剤の群です。結果は15.1パーセント対28.2パーセントでした。記録されていた40項目の特性で調整しても、この差は16.4対25.8に縮まっただけで、依然として圧倒的なままでした。服薬アドヒアランスがその人について何を映しているにせよ、それは薬ではありませんでした。",
+  "The same argument, about a procedure": "同じ論法を、ある手技について",
+  "In a study of 5,735 critically ill patients, those who had a catheter threaded into the right side of the heart died more often within 30 days than those who did not, 38.0 percent against 30.6 percent. The procedure was reserved for the patients in most trouble. When it was later tested by randomising who got one, mortality came out at 62 percent with the catheter and 60 percent without, in a trial whose patients were sicker still. The gap that had looked like harm was mostly a gap in who was chosen.":
+    "重症患者5,735人を対象としたある研究では、心臓の右側にカテーテルを通した患者は、通さなかった患者よりも30日以内に亡くなる割合が高く、38.0パーセント対30.6パーセントでした。この手技は、最も状態の悪い患者に限って行われていました。後に、誰にカテーテルを入れるかを無作為化して検証したところ、死亡率はカテーテルを入れた群で62パーセント、入れなかった群で60パーセントでした。しかもこの試験の患者は、さらに重症だったのです。害のように見えていたその差は、その大半が、誰が選ばれたかの差でした。",
+  "Confounding by indication, a reasoning trap.":
+    "適応による交絡、推論の罠です。",
+  "Nobody hands out medicines at random. Doctors prescribe because of something about the patient, and that something usually affects how the patient was going to do anyway. So people on a drug can die more often than people not on it while the drug does nothing at all: it was given to those who were already worse off. Adjusting for the differences helps, but only the differences somebody wrote down, and the reason for the prescription rarely is one. It is why a coin flip is worth so much.":
+    "薬を無作為に配る人はいません。医師が処方するのは患者について何かがあるからで、その何かはたいてい、その患者がもともとどうなるはずだったかにも影響します。だから、薬がまったく何もしていないのに、薬を飲んでいる人のほうが飲んでいない人より多く亡くなる、ということが起こり得ます。その薬は、すでに状態の悪かった人に与えられていたからです。違いを調整することは助けになりますが、それは誰かが書き留めた違いについてだけであり、処方の理由が書き留められていることはめったにありません。コイン投げにそれほどの価値があるのは、このためです。",
+  "The four death counts are printed in the 2019 paper, and the randomised arm sizes in the 1997 trial report. The two prescribed-in-practice denominators are not printed anywhere: 3,017 is the sum of the supplement's two counts of prior digoxin use (1,498 and 1,519) and 3,783 is the rest of the 6,800. That is addition over published whole numbers rather than a figure worked backwards from a percentage, and it closes both ways: 1,207 plus 1,168 and 1,181 plus 1,194 both give 2,375 deaths, and both pairs of denominators give 6,800 patients.":
+    "4つの死亡数は2019年の論文に、無作為化された各群の人数は1997年の試験報告に印刷されています。実際の処方で分けた場合の2つの分母は、どこにも印刷されていません。3,017は、補足資料にある過去のジゴキシン使用に関する2つの数(1,498と1,519)の合計であり、3,783は6,800人の残りです。これはパーセントから逆算した数字ではなく、公表された整数どうしの足し算であり、しかも計算はどちらの向きでも合います。1,207足す1,168も、1,181足す1,194も、ともに死亡2,375人になり、どちらの分母の組も患者6,800人になります。",
+
+  // ---- Trap Hunt test items (confounding by indication, and five earlier skills) ----
+  "A hospital reviews its records and finds that patients who were given a particular breathing support died far more often than patients who were not. A committee recommends using it less.":
+    "ある病院が診療記録を見直したところ、ある呼吸補助を受けた患者は、受けなかった患者よりはるかに多く亡くなっていることがわかりました。委員会は、その使用を減らすよう勧告しました。",
+  "The support was given to the patients who were struggling to breathe. It is standing in for how ill they already were, and the records cannot separate the treatment from the reason it was reached for.":
+    "その補助は、呼吸が苦しくなっていた患者に対して行われたものです。それは、その患者がすでにどれだけ重かったかの代わりを務めているのであり、診療記録では、治療そのものと、それが手に取られた理由とを切り離せません。",
+  "An observational study finds higher mortality among patients on a drug. The authors adjust for age, sex, blood pressure and twelve laboratory values, the excess shrinks a little but remains, and they conclude the drug is harmful.":
+    "ある観察研究が、その薬を飲んでいる患者では死亡率が高いことを見いだしました。著者らは年齢、性別、血圧、および12項目の検査値で調整し、過剰は少し縮んだものの残ったため、この薬は有害だと結論づけました。",
+  "Adjustment can only remove what was recorded. The clinician's sense that this patient was deteriorating is exactly why the drug was prescribed, and it is not among the twelve laboratory values.":
+    "調整が取り除けるのは、記録されたものだけです。この患者は悪化しつつある、という臨床医の感触こそが薬を処方した理由であり、それは12項目の検査値の中にはありません。",
+  "A national audit finds that patients operated on at small local hospitals survive more often than those at large teaching hospitals. Broken down by how severe the case was, the teaching hospitals come out ahead in every category.":
+    "ある全国調査で、小規模な地域の病院で手術を受けた患者のほうが、大規模な教育病院で手術を受けた患者よりも生存する割合が高いことがわかりました。症例の重さで分けて見ると、どの区分でも教育病院が上回っています。",
+  "Teaching hospitals take the difficult cases, so their pooled figure is dragged down by a case mix nobody chose at random. Better in every severity band and worse overall is the signature of that.":
+    "教育病院は難しい症例を引き受けます。そのため、まとめた数字は、誰も無作為に選んだわけではない症例構成によって引き下げられます。どの重症度の区分でも優れているのに全体では劣る、というのが、まさにその特徴です。",
+  "A genetic test for a condition affecting about 1 in 5,000 people is 99.9% accurate. A clinic tells everyone who screens positive that the diagnosis is essentially confirmed.":
+    "およそ5,000人に1人がかかる疾患を調べる遺伝学的検査の精度は99.9%です。ある診療所は、スクリーニングで陽性となった人全員に、診断はほぼ確定したと伝えています。",
+  "Even at 99.9%, errors outnumber real cases when the condition is this rare. Among 100,000 people about 20 have it, and about 100 healthy people also test positive, so a positive is right roughly one time in six.":
+    "疾患がこれほどまれなときは、99.9%であっても、誤りの数が本物の症例の数を上回ります。100,000人のうち、その疾患を持つのは約20人ですが、健康な人も約100人が陽性になります。だから陽性が当たっているのは、おおよそ6回に1回です。",
+  "A surgeon reports excellent long-term results in the patients seen at the five-year follow-up clinic. Patients who moved away, stopped attending, or died before five years are not in the series.":
+    "ある外科医が、5年後の経過観察外来で診た患者について、長期の成績はきわめて良好だと報告しています。転居した患者、通院をやめた患者、5年たつ前に亡くなった患者は、この症例シリーズに入っていません。",
+  "The series was defined by who was still turning up. The patients who did worst are precisely the ones most likely to be missing from it, so the outcomes describe the survivors rather than the operation.":
+    "この症例シリーズを決めたのは、誰がまだ姿を見せていたかです。経過が最も悪かった患者こそ、そこから抜け落ちている可能性が最も高い人たちです。だからこの成績が語っているのは、手術ではなく生存者のほうなのです。",
+  "Hospitals that use more of a particular monitoring device have lower death rates. The manufacturer's brochure concludes that buying the device saves lives.":
+    "ある監視装置をより多く使っている病院ほど、死亡率が低くなっています。製造元のパンフレットは、この装置を買えば命が救われると結論づけています。",
+  "Hospitals that can afford more monitors can usually afford more of everything else too, including staff. The device may be a marker of a well resourced hospital rather than the cause of its results.":
+    "より多くの監視装置を買える病院は、たいていそれ以外のものも、人員を含めてより多くそろえられます。この装置は、その病院の成績の原因というより、資源に恵まれた病院であることの目印なのかもしれません。",
+  "A rare reaction occurs in about 1 in 50,000 people taking a drug. A patient develops it, and a report concludes there is only a 1 in 50,000 chance the drug was not responsible.":
+    "ある薬を飲んでいる人のおよそ50,000人に1人に、まれな副作用が起こります。ある患者にそれが現れ、報告書は、この薬が原因でなかった確率は50,000分の1しかないと結論づけました。",
+  "That flips the question round. The 1 in 50,000 is how often the reaction appears among people taking the drug, not the chance the drug caused this case. Answering that needs to know how often the same thing happens in people who never took it.":
+    "これは問いをひっくり返しています。50,000分の1は、その薬を飲んでいる人のあいだでその副作用が現れる頻度であって、この症例の原因がその薬である確率ではありません。後者に答えるには、その薬を一度も飲んだことのない人で同じことがどのくらいの頻度で起こるのかを知る必要があります。",
+  "A trial reports the outcome it registered in advance as its main one, states that it also measured eleven others, and says plainly that success was judged on the registered outcome alone.":
+    "ある試験が、主要評価項目として事前に登録しておいた結果を報告し、ほかに11項目も測定したことを明示したうえで、成功の判定は登録した評価項目だけで行ったと、はっきり述べています。",
+  "Naming the outcome before seeing the data, and then reporting all of them, is what stops a study quietly promoting whichever measure happened to come out well.":
+    "データを見る前に評価項目を名指ししておき、そのうえで測定したすべての項目を報告すること。それこそが、たまたま良い結果が出た指標をこっそり主役に押し上げることを防ぎます。",
+  "A cohort study links an exposure to a disease. It reports that the association survived adjustment for the confounders named in advance, that more exposure went with more disease, and that two independent cohorts elsewhere found the same pattern.":
+    "あるコホート研究が、ある曝露とある疾患を結び付けています。この研究は、あらかじめ名指ししておいた交絡因子で調整しても関連が残ったこと、曝露が多いほど疾患も多かったこと、そして別の場所にある2つの独立したコホートでも同じパターンが見られたことを報告しています。",
+  "No single one of these settles causation, but together they are the things that make an observational finding worth taking seriously: a prior plan, a dose-response pattern, and replication in populations that do not share the same quirks.":
+    "このうちのどれか1つで因果関係が決まるわけではありません。しかし、これらがそろっていることこそが、観察研究の知見を真剣に受け止めるに値するものにします。事前の計画、量反応の関係、そして同じ偏りを共有しない集団での再現です。",
+  "Patients are assigned by a computer to a drug or a dummy tablet, with neither they nor their doctor knowing which. Deaths are counted in everyone assigned, whatever they went on to take. The drug group does slightly better.":
+    "患者はコンピュータによって、薬か偽薬の錠剤かに割り付けられ、本人も担当医も、どちらなのかを知りません。死亡は、その後実際に何を飲んだかにかかわらず、割り付けられた全員について数えられます。薬の群のほうが、わずかに良い成績でした。",
+  "A coin flip knows nothing about the patient, so it cannot smuggle the reason for treatment into the comparison. Counting everyone as assigned keeps that protection even when people stop taking their tablets.":
+    "コイン投げは患者について何も知らないので、治療の理由を比較の中に忍び込ませることができません。割り付けどおりに全員を数えれば、途中で錠剤を飲むのをやめた人がいても、その守りは保たれます。",
+  "A clinic compares its results with a national benchmark, adjusts for how severe its patients' illness was, and publishes the crude and the adjusted figures side by side along with the case mix it adjusted for.":
+    "ある診療所が、自院の成績を全国の基準値と比較し、患者の病気の重さで調整したうえで、調整前の粗の数字と調整後の数字を、調整に用いた症例構成とあわせて並べて公表しています。",
+  "Showing both figures and the mix behind them is the honest move. A reader can see how much of the difference was case mix and how much survived accounting for it, instead of being handed only the flattering one.":
+    "両方の数字と、その背後にある構成を示すのが誠実なやり方です。読み手は、都合の良いほうだけを手渡されるのではなく、差のうちどれだけが症例構成によるもので、どれだけが考慮したあとも残ったのかを、自分で見て取れます。",
 };

@@ -9,6 +9,7 @@ import { leadTime } from "./data/lead-time";
 import { spectrumBias } from "./data/spectrum-bias";
 import { berkson } from "./data/berkson";
 import { relativeRisk } from "./data/relative-risk";
+import { confoundingIndication } from "./data/confounding-indication";
 
 /**
  * The puzzle registry. Adding a puzzle = import its data file and add it to
@@ -27,6 +28,7 @@ const rawPuzzles: unknown[] = [
   spectrumBias,
   berkson,
   relativeRisk,
+  confoundingIndication,
 ];
 
 export const puzzles: PuzzleType[] = rawPuzzles.map((p, i) => {

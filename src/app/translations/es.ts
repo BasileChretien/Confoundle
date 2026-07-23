@@ -88,6 +88,8 @@ export const es: Record<string, string> = {
   "Best": "Récord",
   "Caught": "Detectados",
   "Calibration": "Calibración",
+  "You beat {pct}% of players today":
+    "Has superado al {pct} % de los jugadores hoy",
   "A new puzzle every day. Keep the streak alive.":
     "Un puzle nuevo cada día. No rompas la racha.",
   "Sharp eye, and you called it.":
@@ -100,6 +102,32 @@ export const es: Record<string, string> = {
     "Como casi todo el mundo. Esa es la trampa.",
   "You sensed something was off, but went with it anyway.":
     "Intuías que algo no cuadraba, pero aun así te decidiste por ello.",
+  // clasificación entre amigos
+  "Friends board": "Clasificación entre amigos",
+  "Your name": "Tu nombre",
+  "Copy result": "Copiar resultado",
+  "Copied": "Copiado",
+  "Share": "Compartir",
+  "Paste your friends' results here":
+    "Pega aquí los resultados de tus amigos",
+  "Add to board": "Añadir a la clasificación",
+  // caza de trampas
+  "Trap Hunt": "Caza de trampas",
+  "Some of these are sound. Some hide a trap.":
+    "Algunos de estos razonamientos son válidos. Otros esconden una trampa.",
+  "Sound reasoning": "Razonamiento válido",
+  "There's a trap": "Hay una trampa",
+  "Which trap?": "¿Qué trampa?",
+  "Rank": "Rango",
+  "Done": "Terminado",
+  "Trap Hunt unlocked": "Caza de trampas desbloqueada",
+  "Can you still spot the traps?":
+    "¿Sabrás seguir detectando las trampas?",
+  "Novice": "Novato",
+  "Sceptic": "Escéptico",
+  "Detective": "Detective",
+  "Analyst": "Analista",
+  "Sharp eye": "Ojo experto",
 
   // ---- textos compartidos de la tarjeta ----
   "Caught it. Bet you can't.": "Lo vi venir. A que tú no.",

@@ -1,0 +1,13 @@
+{
+  "routes": [
+    {
+      "routePath": "/api/score",
+      "mountPath": "/api",
+      "method": "POST",
+      "module": [
+        "api/score.ts:onRequestPost"
+      ]
+    }
+  ],
+  "baseURL": "/"
+}

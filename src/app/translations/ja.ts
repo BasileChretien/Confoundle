@@ -88,6 +88,8 @@ export const ja: Record<string, string> = {
   Best: "最高",
   Caught: "見抜き",
   Calibration: "キャリブレーション",
+  "You beat {pct}% of players today":
+    "今日のプレイヤーの{pct}%を上回りました",
   "A new puzzle every day. Keep the streak alive.":
     "毎日新しいパズルを。連続記録を絶やさないように。",
   "Sharp eye, and you called it.":
@@ -100,6 +102,32 @@ export const ja: Record<string, string> = {
     "ほとんどの人も同じです。それが罠なのです。",
   "You sensed something was off, but went with it anyway.":
     "何かおかしいと感じつつ、それでも進んでしまいましたね。",
+  // friends board
+  "Friends board": "友だちランキング",
+  "Your name": "あなたの名前",
+  "Copy result": "結果をコピー",
+  Copied: "コピーしました",
+  Share: "共有",
+  "Paste your friends' results here":
+    "友だちの結果をここに貼り付け",
+  "Add to board": "ランキングに追加",
+  // trap hunt
+  "Trap Hunt": "罠ハント",
+  "Some of these are sound. Some hide a trap.":
+    "この中には妥当な推論もあれば、罠が隠れているものもあります。",
+  "Sound reasoning": "妥当な推論",
+  "There's a trap": "罠がある",
+  "Which trap?": "どの罠?",
+  Rank: "ランク",
+  Done: "完了",
+  "Trap Hunt unlocked": "罠ハント解禁",
+  "Can you still spot the traps?":
+    "まだ罠を見抜けますか?",
+  Novice: "見習い",
+  Sceptic: "懐疑派",
+  Detective: "探偵",
+  Analyst: "分析官",
+  "Sharp eye": "鋭い目",
 
   // ---- shared share-card captions ----
   "Caught it. Bet you can't.": "見抜きました。あなたにできますか?",

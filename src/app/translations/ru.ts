@@ -87,6 +87,8 @@ export const ru: Record<string, string> = {
   Best: "Рекорд",
   Caught: "Замечено",
   Calibration: "Калибровка",
+  "You beat {pct}% of players today":
+    "Сегодня вы обошли {pct} % игроков",
   "A new puzzle every day. Keep the streak alive.":
     "Новая головоломка каждый день. Не прерывайте серию.",
   "Sharp eye, and you called it.":
@@ -99,6 +101,32 @@ export const ru: Record<string, string> = {
     "Как и почти все. В этом и ловушка.",
   "You sensed something was off, but went with it anyway.":
     "Вы чувствовали, что что-то не так, но всё равно на это пошли.",
+  // friends board
+  "Friends board": "Рейтинг друзей",
+  "Your name": "Ваше имя",
+  "Copy result": "Скопировать результат",
+  Copied: "Скопировано",
+  Share: "Поделиться",
+  "Paste your friends' results here":
+    "Вставьте сюда результаты друзей",
+  "Add to board": "Добавить в рейтинг",
+  // trap hunt
+  "Trap Hunt": "Охота на ловушки",
+  "Some of these are sound. Some hide a trap.":
+    "Некоторые рассуждения верны. В других спрятана ловушка.",
+  "Sound reasoning": "Рассуждение верное",
+  "There's a trap": "Здесь ловушка",
+  "Which trap?": "Какая ловушка?",
+  Rank: "Ранг",
+  Done: "Готово",
+  "Trap Hunt unlocked": "Охота на ловушки открыта",
+  "Can you still spot the traps?":
+    "Сможете ли вы и дальше замечать ловушки?",
+  Novice: "Новичок",
+  Sceptic: "Скептик",
+  Detective: "Детектив",
+  Analyst: "Аналитик",
+  "Sharp eye": "Острый глаз",
 
   // ---- shared share-card captions ----
   "Caught it. Bet you can't.": "Я это раскусил. Спорим, у вас не получится.",

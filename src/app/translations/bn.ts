@@ -87,6 +87,8 @@ export const bn: Record<string, string> = {
   Best: "সেরা",
   Caught: "ধরেছেন",
   Calibration: "ক্যালিব্রেশন",
+  "You beat {pct}% of players today":
+    "আজ আপনি {pct}% খেলোয়াড়কে হারিয়েছেন",
   "A new puzzle every day. Keep the streak alive.":
     "প্রতিদিন একটি নতুন ধাঁধা। ধারাবাহিকতা ধরে রাখুন।",
   "Sharp eye, and you called it.":
@@ -99,6 +101,32 @@ export const bn: Record<string, string> = {
     "প্রায় সবাই তা-ই করে। এটাই ফাঁদ।",
   "You sensed something was off, but went with it anyway.":
     "আপনি টের পেয়েছিলেন কিছু একটা গোলমাল, তবু সেটাই বেছে নিলেন।",
+  // friends board
+  "Friends board": "বন্ধুদের স্কোরবোর্ড",
+  "Your name": "আপনার নাম",
+  "Copy result": "ফলাফল কপি করুন",
+  Copied: "কপি হয়েছে",
+  Share: "শেয়ার",
+  "Paste your friends' results here":
+    "আপনার বন্ধুদের ফলাফল এখানে পেস্ট করুন",
+  "Add to board": "বোর্ডে যোগ করুন",
+  // trap hunt
+  "Trap Hunt": "ফাঁদ শিকার",
+  "Some of these are sound. Some hide a trap.":
+    "এগুলোর কিছু যুক্তি ঠিকঠাক। কিছুতে লুকিয়ে আছে একটি ফাঁদ।",
+  "Sound reasoning": "যুক্তি ঠিক আছে",
+  "There's a trap": "এখানে ফাঁদ আছে",
+  "Which trap?": "কোন ফাঁদ?",
+  Rank: "র‍্যাঙ্ক",
+  Done: "সম্পন্ন",
+  "Trap Hunt unlocked": "ফাঁদ শিকার আনলক হয়েছে",
+  "Can you still spot the traps?":
+    "আপনি কি এখনও ফাঁদগুলো ধরতে পারেন?",
+  Novice: "নবিশ",
+  Sceptic: "সংশয়ী",
+  Detective: "গোয়েন্দা",
+  Analyst: "বিশ্লেষক",
+  "Sharp eye": "তীক্ষ্ণ চোখ",
 
   // ---- shared share-card captions ----
   "Caught it. Bet you can't.": "ধরে ফেলেছি। বাজি ধরি, আপনি পারবেন না।",

@@ -87,6 +87,8 @@ export const hi: Record<string, string> = {
   Best: "सर्वश्रेष्ठ",
   Caught: "पकड़े गए",
   Calibration: "कैलिब्रेशन",
+  "You beat {pct}% of players today":
+    "आज आपने {pct}% खिलाड़ियों को पीछे छोड़ा",
   "A new puzzle every day. Keep the streak alive.":
     "हर दिन एक नई पहेली। सिलसिला बनाए रखें।",
   "Sharp eye, and you called it.":
@@ -99,6 +101,32 @@ export const hi: Record<string, string> = {
     "लगभग हर कोई ऐसा ही करता है। यही तो जाल है।",
   "You sensed something was off, but went with it anyway.":
     "आपको लगा कि कुछ गड़बड़ है, फिर भी आप उसी के साथ चले गए।",
+  // friends board
+  "Friends board": "दोस्तों की रैंकिंग",
+  "Your name": "आपका नाम",
+  "Copy result": "नतीजा कॉपी करें",
+  Copied: "कॉपी हो गया",
+  Share: "साझा करें",
+  "Paste your friends' results here":
+    "अपने दोस्तों के नतीजे यहाँ चिपकाएँ",
+  "Add to board": "रैंकिंग में जोड़ें",
+  // trap hunt
+  "Trap Hunt": "जाल की तलाश",
+  "Some of these are sound. Some hide a trap.":
+    "इनमें से कुछ तर्क सही हैं। कुछ में जाल छिपा है।",
+  "Sound reasoning": "तर्क सही है",
+  "There's a trap": "इसमें जाल है",
+  "Which trap?": "कौन सा जाल?",
+  Rank: "रैंक",
+  Done: "पूरा हुआ",
+  "Trap Hunt unlocked": "जाल की तलाश अनलॉक हुई",
+  "Can you still spot the traps?":
+    "क्या आप अब भी जाल पहचान सकते हैं?",
+  Novice: "नौसिखिया",
+  Sceptic: "संशयी",
+  Detective: "जासूस",
+  Analyst: "विश्लेषक",
+  "Sharp eye": "पैनी नज़र",
 
   // ---- shared share-card captions ----
   "Caught it. Bet you can't.": "मैंने पकड़ लिया। देखें आप पकड़ पाते हैं क्या।",

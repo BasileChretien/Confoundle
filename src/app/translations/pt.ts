@@ -87,6 +87,8 @@ export const pt: Record<string, string> = {
   Best: "Recorde",
   Caught: "Percebidos",
   Calibration: "Calibração",
+  "You beat {pct}% of players today":
+    "Você superou {pct}% dos jogadores hoje",
   "A new puzzle every day. Keep the streak alive.":
     "Um novo desafio todo dia. Mantenha a sequência viva.",
   "Sharp eye, and you called it.":
@@ -99,6 +101,32 @@ export const pt: Record<string, string> = {
     "Como quase todo mundo. É essa a armadilha.",
   "You sensed something was off, but went with it anyway.":
     "Você sentiu que algo estava errado, mas foi em frente mesmo assim.",
+  // friends board
+  "Friends board": "Ranking dos amigos",
+  "Your name": "Seu nome",
+  "Copy result": "Copiar resultado",
+  Copied: "Copiado",
+  Share: "Compartilhar",
+  "Paste your friends' results here":
+    "Cole aqui os resultados dos seus amigos",
+  "Add to board": "Adicionar ao ranking",
+  // trap hunt
+  "Trap Hunt": "Caça às armadilhas",
+  "Some of these are sound. Some hide a trap.":
+    "Alguns destes raciocínios são válidos. Outros escondem uma armadilha.",
+  "Sound reasoning": "Raciocínio válido",
+  "There's a trap": "Tem uma armadilha",
+  "Which trap?": "Qual armadilha?",
+  Rank: "Nível",
+  Done: "Concluído",
+  "Trap Hunt unlocked": "Caça às armadilhas desbloqueada",
+  "Can you still spot the traps?":
+    "Você ainda consegue identificar as armadilhas?",
+  Novice: "Novato",
+  Sceptic: "Cético",
+  Detective: "Detetive",
+  Analyst: "Analista",
+  "Sharp eye": "Olho atento",
 
   // ---- shared share-card captions ----
   "Caught it. Bet you can't.": "Eu percebi. Aposto que você não consegue.",

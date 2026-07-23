@@ -88,6 +88,8 @@ export const zh: Record<string, string> = {
   Best: "最佳",
   Caught: "识破",
   Calibration: "校准",
+  "You beat {pct}% of players today":
+    "你今天击败了 {pct}% 的玩家",
   "A new puzzle every day. Keep the streak alive.":
     "每天一道新谜题。别让连胜中断。",
   "Sharp eye, and you called it.":
@@ -100,6 +102,32 @@ export const zh: Record<string, string> = {
     "几乎所有人都一样。这就是陷阱。",
   "You sensed something was off, but went with it anyway.":
     "你察觉到有些不对劲，却还是照着选了。",
+  // friends board
+  "Friends board": "好友榜",
+  "Your name": "你的名字",
+  "Copy result": "复制结果",
+  Copied: "已复制",
+  Share: "分享",
+  "Paste your friends' results here":
+    "把好友的结果粘贴到这里",
+  "Add to board": "加入榜单",
+  // trap hunt
+  "Trap Hunt": "陷阱狩猎",
+  "Some of these are sound. Some hide a trap.":
+    "其中有些推理是站得住脚的。有些则藏着陷阱。",
+  "Sound reasoning": "推理成立",
+  "There's a trap": "这里有陷阱",
+  "Which trap?": "是哪种陷阱？",
+  Rank: "段位",
+  Done: "完成",
+  "Trap Hunt unlocked": "陷阱狩猎已解锁",
+  "Can you still spot the traps?":
+    "你还能识破这些陷阱吗？",
+  Novice: "新手",
+  Sceptic: "怀疑者",
+  Detective: "侦探",
+  Analyst: "分析师",
+  "Sharp eye": "火眼金睛",
 
   // ---- shared share-card captions ----
   "Caught it. Bet you can't.": "我识破了。你未必行。",

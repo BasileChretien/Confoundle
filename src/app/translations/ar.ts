@@ -88,6 +88,8 @@ export const ar: Record<string, string> = {
   Best: "الأفضل",
   Caught: "المُلتقَطة",
   Calibration: "المعايرة",
+  "You beat {pct}% of players today":
+    "تفوّقت على {pct}% من اللاعبين اليوم",
   "A new puzzle every day. Keep the streak alive.":
     "أحجية جديدة كل يوم. حافظ على استمرار السلسلة.",
   "Sharp eye, and you called it.":
@@ -100,6 +102,32 @@ export const ar: Record<string, string> = {
     "وكذلك يفعل الجميع تقريباً. هذا هو الفخ.",
   "You sensed something was off, but went with it anyway.":
     "شعرت أن شيئاً ما ليس على ما يرام، لكنك مضيت فيه رغم ذلك.",
+  // friends board
+  "Friends board": "لوحة الأصدقاء",
+  "Your name": "اسمك",
+  "Copy result": "انسخ النتيجة",
+  Copied: "تم النسخ",
+  Share: "شارك",
+  "Paste your friends' results here":
+    "الصق نتائج أصدقائك هنا",
+  "Add to board": "أضف إلى اللوحة",
+  // trap hunt
+  "Trap Hunt": "صيد الفخاخ",
+  "Some of these are sound. Some hide a trap.":
+    "بعض هذه الاستدلالات سليم، وبعضها يخفي فخاً.",
+  "Sound reasoning": "استدلال سليم",
+  "There's a trap": "هناك فخ",
+  "Which trap?": "أي فخ؟",
+  Rank: "الرتبة",
+  Done: "تم",
+  "Trap Hunt unlocked": "تم فتح صيد الفخاخ",
+  "Can you still spot the traps?":
+    "هل ما زلت تستطيع رصد الفخاخ؟",
+  Novice: "مبتدئ",
+  Sceptic: "متشكّك",
+  Detective: "محقّق",
+  Analyst: "محلّل",
+  "Sharp eye": "عين ثاقبة",
 
   // ---- shared share-card captions ----
   "Caught it. Bet you can't.": "التقطته. أراهن أنك لن تستطيع.",

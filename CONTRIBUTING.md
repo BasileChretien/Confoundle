@@ -76,3 +76,35 @@ asserting a real-world finding belongs in a puzzle instead.
 verify every number, and write original prose. "I found the abstract" is not
 permission to reuse its sentences. If a number cannot be verified, do not ship
 the puzzle; say so instead.
+
+### Can we take numbers from a copyrighted table?
+
+**The numbers, yes. The table, no.**
+
+Facts are not copyrightable. In the US this is settled by *Feist Publications v.
+Rural Telephone* (1991), which also rejected the "sweat of the brow" theory: the
+effort a team spent collecting data does not create protection over the data.
+A published table's counts, sample sizes and rates are facts about the world.
+What copyright protects is the table's *expression*: its layout, its caption
+prose, any creative selection or arrangement, and the figure as an image.
+
+So, concretely:
+- **Allowed:** read the table, extract the counts, re-present them in our own
+  chart, and cite the source.
+- **Not allowed:** reproduce the table or figure as an image, copy its caption
+  text, or clone a distinctive visual design.
+
+This is already how the project works. Puzzles store raw counts and the engine
+draws its own chart, so we never embed anyone else's figure.
+
+Two things that sit *outside* copyright and still apply:
+- **Access terms.** Reading a paywalled paper through an institutional
+  subscription is governed by the library's licence with the publisher, which is
+  contract law, not copyright. Extracting a few figures for scholarly or
+  educational use is ordinary practice; systematic bulk harvesting is not.
+- **EU database right** (96/9/EC). A handful of numbers is not substantial
+  extraction. Taking a whole dataset would be.
+
+Practical consequence: copyright is rarely what blocks a puzzle. **Access and
+verification are.** If a number cannot be checked against its source, the puzzle
+does not ship, no matter how confident the prose sounds.

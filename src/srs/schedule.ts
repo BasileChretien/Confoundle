@@ -52,6 +52,13 @@ export interface SkillProgress {
    */
   misconceived: boolean;
   lifetime: { correct: number; wrong: number };
+  /**
+   * When this record last changed. Only needed to reconcile two devices once
+   * accounts land, where the rule is last write wins per skill. Kept here
+   * rather than bolted on later, because adding a field to persisted data
+   * after it exists in the wild means a migration.
+   */
+  updatedAt: number;
 }
 
 export function newProgress(skill: string, now: number): SkillProgress {
@@ -62,6 +69,7 @@ export function newProgress(skill: string, now: number): SkillProgress {
     seenItemIds: [],
     misconceived: false,
     lifetime: { correct: 0, wrong: 0 },
+    updatedAt: now,
   };
 }
 
@@ -122,6 +130,7 @@ export function applyReview(
       correct: progress.lifetime.correct + (outcome.correct ? 1 : 0),
       wrong: progress.lifetime.wrong + (outcome.correct ? 0 : 1),
     },
+    updatedAt: now,
   };
 }
 

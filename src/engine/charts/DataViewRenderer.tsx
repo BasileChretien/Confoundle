@@ -96,6 +96,10 @@ export function scopeLabel(kind: DataViewKind): string {
       return "Compared to the risk";
     case "absolute":
       return "Compared to the people";
+    case "counted":
+      return "As the study counted it";
+    case "immortal":
+      return "Time nobody could die in";
     default:
       return "";
   }

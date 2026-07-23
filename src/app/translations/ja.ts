@@ -966,4 +966,278 @@ export const ja: Record<string, string> = {
     "新しい画像検査が、同じ集団でこれまで診断されていたがんの3倍の症例を見つけ、見つかった人たちの経過はきわめて良好です。その集団におけるそのがんによる死亡は、変わっていません。",
   "More cases found, the same number of deaths, and excellent outcomes among the extra cases is the signature of finding disease that was never going to cause harm. The survival figures improve because the denominator filled up with people who were never in danger.":
     "見つかる症例は増え、死亡数は同じで、上乗せされた症例の経過がきわめて良い。これは、そもそも害を及ぼすことのなかった病気を見つけていることの特徴です。生存の数字が良くなるのは、はじめから危険のなかった人たちで分母が埋まったからです。",
+
+  // ---- intention to treat, recall bias, immortal time ----
+  "Among the patients who actually got the treatment they were assigned, surgery saved lives. Is that the trial's answer?":
+    "割り付けどおりの治療を実際に受けた患者に限れば、手術は命を救っていました。それがこの試験の答えでしょうか。",
+  "1,212 people with heart failure, randomly assigned to medicine alone or to medicine plus bypass surgery. Analysing the ones who received what they were assigned, 43 percent of the medicine group died against 34 percent of the surgery group. The difference is statistically significant.":
+    "心不全の1,212人を、薬物療法単独か、薬物療法にバイパス手術を加える群にランダムに割り付けました。割り付けどおりの治療を受けた人だけを解析すると、薬物療法群の43パーセントが死亡したのに対し、手術群では34パーセントでした。この差は統計学的に有意です。",
+  "Does this trial show that surgery cuts deaths?":
+    "この試験は手術が死亡を減らすことを示しているでしょうか。",
+  "Died during follow-up":
+    "追跡期間中に死亡",
+  "Medicine alone":
+    "薬物療法単独",
+  "Medicine":
+    "薬物療法",
+  "Surgery added":
+    "手術を追加",
+  "Surgery":
+    "手術",
+  "Only those who got what they were assigned":
+    "割り付けどおりに治療された人だけ",
+  "Everyone, as the coin assigned them":
+    "コインが割り付けたとおりの全員",
+  "The patients left out of the first panel":
+    "最初の図から除かれた患者",
+  "Those who followed the protocol":
+    "プロトコールを守った人",
+  "Yes, that is what surgery does":
+    "はい、手術の効果です",
+  "nine points fewer deaths":
+    "死亡が9ポイント少ない",
+  "No, and it understates the benefit":
+    "いいえ、効果を過小評価しています",
+  "crossovers dilute a real effect":
+    "クロスオーバーが真の効果を薄めます",
+  "No, that comparison is no longer randomised":
+    "いいえ、その比較はもうランダム化されていません",
+  "dying is why some were left out":
+    "除外の理由が死亡だからです",
+  "Counting everyone the coin assigned, the difference is not significant.":
+    "コインが割り付けた全員を数えると、差は有意ではありません。",
+  "The surgical patients who were dropped had mostly died first":
+    "除外された手術群の患者は、その多くが先に亡くなっていました",
+  "The 120 patients missing from the first panel are not a random sample. Of the 55 dropped from the surgery group, 30 died, and most of them died before they ever reached an operating table. Of the 65 dropped from the medicine group, only 15 died, because crossing over to surgery required living long enough to have it. So the surgical arm shed its worst outcomes and the medical arm lost its best, and the gap nearly doubled without one patient's fate changing:":
+    "最初の図から抜けている120人は、ランダムな標本ではありません。手術群から外れた55人のうち30人が死亡し、その大半は手術台にたどり着く前に亡くなっています。薬物療法群から外れた65人のうち死亡したのは15人だけです。手術へクロスオーバーするには、それを受けられるだけ長く生きている必要があったからです。つまり手術群は最悪の転帰を切り捨て、薬物療法群は最良の転帰を失い、患者の運命は一人も変わらないまま差はほぼ倍になりました。",
+  "All three views of one trial":
+    "1つの試験の3つの見方",
+  "A randomised comparison is only worth something while it is still random. The coin flip made the two groups alike; deciding afterwards who counts, on the basis of something that happened after the flip, undoes that. Here the deciding factor was survival itself, which is the outcome being measured. Counting everyone in the group they were assigned to, whatever happened next, is the analysis that keeps the coin flip intact.":
+    "ランダム化比較に価値があるのは、それがランダムであり続けるあいだだけです。コイン投げが2つの群を似た者どうしにしたのに、投げたあとに起きたことを根拠に誰を数えるかを後から決めれば、その利点は失われます。ここで数えるかどうかを決めていたのは生存そのもの、つまり測定している転帰でした。その後に何が起きたかにかかわらず、割り付けられた群のまま全員を数える解析だけが、コイン投げをそのまま保ちます。",
+  "Who the analysis dropped":
+    "解析が誰を除いたか",
+  "Intention to treat":
+    "治療企図解析（ITT）",
+  "Once you exclude people for what happened after they were randomised, you are no longer comparing the groups the coin made, and the exclusions usually favour one side.":
+    "ランダム化されたあとに起きたことを理由に人を除外した時点で、コインが作った群どうしを比べてはいません。そして除外はたいてい一方に有利に働きます。",
+  "This is not a rule that per-protocol analysis is dishonest. It answers a different question, and there are trials where it is the right one to ask. The rule is narrower and harder: any analysis that drops people for something that happened after randomisation has to explain why those people were not different, and when the reason for dropping is entangled with the outcome, no explanation will do.":
+    "これは、per protocol解析が不誠実だという原則ではありません。それは別の問いに答えるものであり、その問いこそが適切な試験もあります。原則はもっと限定的で、もっと厳しいものです。ランダム化のあとに起きたことを理由に人を除く解析はすべて、除かれた人たちがなぜ違わなかったのかを説明しなければならず、除外の理由が転帰と絡み合っているときには、どんな説明も足りません。",
+  "Randomisation buys one thing: two groups that differ only by chance, including in all the ways nobody measured. Everything a trial claims rests on that. The trouble is that trials are run on people, who cross over, refuse the operation, stop the tablets or die before treatment starts, and it is tempting to set those people aside and look at the clean comparison underneath. But whether someone stayed on protocol is itself an outcome. Patients who cross from medicine to surgery must survive to be operated on. Patients assigned to surgery who never get it are often the ones too ill to be operated on, or already dead. Removing them is removing patients selected by prognosis, and prognosis is what the trial is measuring. Intention to treat keeps everyone in the arm the coin put them in, which sounds absurd when a patient never received the treatment, and is exactly the point: it measures the effect of the decision to treat, under real conditions, which is also the decision a doctor actually faces. It has a known cost. Crossovers pull the arms together, so intention to treat tends to shrink a real effect towards nothing. That is a conservative failure when you are trying to prove a drug works, and a dangerous one when you are trying to prove a drug is no worse than another, which is why non-inferiority trials report both analyses and are believed only when the two agree.":
+    "ランダム化が買えるものは1つだけです。偶然によってしか違わない2つの群、誰も測定しなかったあらゆる面についてもそうである2つの群です。試験の主張はすべてそこに乗っています。厄介なのは、試験の対象が人であることです。人はクロスオーバーし、手術を断り、錠剤をやめ、あるいは治療が始まる前に亡くなります。そうした人をわきに置いて、その下にあるきれいな比較を見たくなります。しかし、プロトコールを守れたかどうか自体が1つの転帰です。薬物療法から手術へ移る患者は、手術を受けるまで生きていなければなりません。手術に割り付けられながら受けなかった患者は、しばしば手術に耐えられないほど重症だった人か、すでに亡くなっていた人です。彼らを取り除くことは、予後によって選ばれた患者を取り除くことであり、その予後こそ試験が測っているものです。治療企図解析は、コインが入れた群に全員をとどめます。治療を一度も受けていない患者についてそうするのは不合理に聞こえますが、まさにそこが要点です。それは現実の条件のもとで治療するという決断の効果を測っており、それは医師が実際に直面する決断でもあります。代償も知られています。クロスオーバーは両群を近づけるため、治療企図解析は真の効果をゼロの方向へ縮める傾向があります。薬が効くことを示そうとしている場面では保守的な失敗ですが、ある薬が別の薬に劣らないことを示そうとしている場面では危険な失敗です。非劣性試験が両方の解析を報告し、2つが一致したときにだけ信用されるのはそのためです。",
+  "The same trap, without the verdict flipping":
+    "判定は覆らないまま、同じ罠",
+  "A tuberculosis trial compared shorter regimens with the standard six-month one. In the group treated per protocol, the standard regimen appeared to fail in about 8 percent of patients. Counting everyone who was randomised and had an assessable outcome, it failed in about 16 percent. Almost everyone the per-protocol analysis removed had had an unfavourable outcome, because an unfavourable outcome was frequently the reason they left the protocol. Nothing about the trial's conclusion changed, and every failure rate in it halved.":
+    "ある結核の試験は、より短い治療レジメンを標準の6か月レジメンと比較しました。per protocol解析の集団では、標準レジメンの失敗はおよそ8パーセントに見えました。ランダム化されて評価可能な転帰があった全員を数えると、失敗はおよそ16パーセントでした。per protocol解析が取り除いた人のほとんどは好ましくない転帰をたどっていました。好ましくない転帰こそ、プロトコールから外れる理由になることが多かったからです。試験の結論は何も変わりませんが、そこに書かれた失敗率はどれも半分になっていました。",
+  "Intention to treat, a reasoning trap.":
+    "治療企図解析、推論の罠。",
+  "A trial flips a coin so its two groups start out alike. Then real life happens: people switch treatments, refuse the operation, or die before it. It seems only fair to compare the ones who actually got what they were assigned. It is not, because whether someone stuck to the plan depends on how they were doing, and often on whether they survived. Dropping them quietly sorts the groups by prognosis, which is the very thing the trial is trying to measure. Count everyone where the coin put them, and the flattering result can vanish.":
+    "試験は2つの群が同じ状態から始まるようにコインを投げます。そのあとに現実が起こります。人は治療を切り替え、手術を断り、あるいはその前に亡くなります。実際に割り付けどおりの治療を受けた人だけを比べるのが公平に思えます。しかしそうではありません。計画を守れたかどうかは、その人の状態、そしてしばしば生き延びたかどうかに左右されるからです。彼らを外すことは、群を予後によって静かに仕分けることであり、その予後こそ試験が測ろうとしているものです。コインが入れた場所のまま全員を数えると、都合のよい結果は消えることがあります。",
+  "The four counts in the first two panels are printed. The third panel is subtraction over those printed integers rather than figures of its own: 65 and 55 are 602 minus 537 and 610 minus 555, and 15 and 30 are 244 minus 229 and 218 minus 188. It closes three ways. The excluded patients reassemble the as-treated arms, 537 plus 55 and 555 plus 65 giving 592 and 620, which sum to the 1,212 randomised; and total deaths are conserved in every split, 244 plus 218 and 259 plus 203 both giving 462. Note also that the trial's P values, 0.12 as randomised and 0.005 per protocol, come from Cox proportional-hazards models over the whole follow-up, not from these four-cell tables, so they are quoted as the trial's own results and not recomputed here.":
+    "最初の2つの図にある4つの実数は、論文に印刷されているものです。3つ目の図は独自の数値ではなく、それらの印刷された整数の引き算です。65と55は602引く537、610引く555であり、15と30は244引く229、218引く188です。整合は3通りで確かめられます。除外された患者を戻すとas-treatedの群が再構成され、537足す55と555足す65は592と620になり、その合計はランダム化された1,212人と一致します。また、どの分け方でも死亡の総数は保たれ、244足す218も259足す203も462になります。なお、試験のP値、ランダム化どおりで0.12、per protocolで0.005は、これら4セルの表からではなく、追跡期間全体を用いたCox比例ハザードモデルから得られたものです。したがって試験自身の結果として引用しており、ここで再計算はしていません。",
+  "Women with melanoma report burning easily far more often than women without it. How much of that gap is their skin?":
+    "メラノーマの女性は、そうでない女性よりも日焼けしやすいと答える割合がはるかに高くなります。その差のどれだけが本当に肌の性質でしょうか。",
+  "141 women who had been diagnosed with melanoma and 1,094 who had not, asked how their skin responds to the sun. 45 percent of the women with melanoma said they tan little or not at all, against 25 percent of the others. Pale, easily burned skin is a known risk factor, so the finding looks exactly as expected.":
+    "メラノーマと診断された女性141人と、診断されていない女性1,094人に、日光に対する肌の反応をたずねました。メラノーマの女性の45パーセントが、ほとんど、あるいはまったく黒くならないと答えたのに対し、そうでない女性では25パーセントでした。色白で日焼けしやすい肌は既知のリスク因子なので、この結果は予想どおりに見えます。",
+  "Is that twenty point gap what their skin was really like?":
+    "その20ポイントの差は、本当の肌の性質だったのでしょうか。",
+  "Said their skin tans little or not at all":
+    "ほとんど、またはまったく黒くならないと回答",
+  "Women who developed melanoma":
+    "メラノーマを発症した女性",
+  "Melanoma":
+    "メラノーマ",
+  "Women who did not":
+    "発症しなかった女性",
+  "No melanoma":
+    "メラノーマなし",
+  "Asked after the diagnosis":
+    "診断後にたずねた回答",
+  "Asked years before anyone knew":
+    "誰も知らない数年前の回答",
+  "Yes, pale skin is a real risk factor":
+    "はい、色白は本当のリスク因子です",
+  "the gap is their skin":
+    "差は肌の性質です",
+  "No, the whole association is an artefact":
+    "いいえ、関連はすべて見かけです",
+  "they are reinterpreting their past":
+    "過去を解釈し直しています",
+  "Partly, and part of it appeared afterwards":
+    "一部はそうで、一部は後から生じました",
+  "real, but not this large":
+    "本物ですが、ここまで大きくはありません",
+  "These same women had already answered, years earlier.":
+    "この同じ女性たちは、数年前にすでに答えていました。",
+  "The question was answered by a different person, in a sense":
+    "ある意味で、答えたのは別の人でした",
+  "Every one of these women filled in the same question before anyone knew who would get melanoma. Back then the gap was thirteen points, not twenty. The women who went on to be diagnosed shifted seven points towards saying they burn; the women who were not diagnosed, answering over the same years, shifted a point the other way. Nobody's skin changed in between. What changed was that some of them had since been asked to explain a cancer:":
+    "この女性たちは全員、誰がメラノーマになるか分からない時点で同じ質問に回答していました。当時の差は20ポイントではなく13ポイントでした。のちに診断された女性は、日焼けしやすいと答える方向へ7ポイント動きました。診断されなかった女性は、同じ年月のあいだに1ポイント逆へ動きました。そのあいだに肌が変わった人はいません。変わったのは、一部の人がその後、がんの理由を説明するよう求められたことです。",
+  "The same women, asked twice":
+    "同じ女性に、2度たずねた結果",
+  "So the risk factor is real and the study still overstates it: the crude odds ratio these counts give is about 1.8 before the diagnosis and about 2.5 after it, so roughly a third of what the later study measured was not there beforehand. That is the awkward shape of recall bias. It rarely conjures an association out of nothing. It takes a true one and inflates it, which is far harder to spot, because the result still agrees with everything you already believed.":
+    "つまりリスク因子は本物であり、それでもこの研究はそれを過大に見せています。これらの実数から計算される粗オッズ比は、診断前がおよそ1.8、診断後がおよそ2.5です。したがって後の研究が測ったもののおよそ3分の1は、あらかじめ存在していませんでした。これが思い出しバイアスの厄介な形です。何もないところから関連を作り出すことはまれです。本物の関連を取り上げて膨らませるので、見抜くのははるかに難しくなります。結果は、あなたがすでに信じていたことと変わらず一致するからです。",
+  "What the diagnosis changed":
+    "診断が変えたもの",
+  "Recall bias":
+    "思い出しバイアス",
+  "People who know how their story ended remember the beginning differently, so asking about the past after the outcome is known measures the outcome as well as the past.":
+    "自分の話がどう終わったかを知っている人は、その始まりを違うように思い出します。ですから転帰が分かったあとで過去をたずねると、過去だけでなく転帰も測ってしまいます。",
+  "Nobody here is lying. Searching your memory harder because you have been given a reason to search it is an ordinary human thing to do, and the answers that come back are honestly meant. That is what makes it so hard to correct for: there is no dishonest group to exclude and no question you can ask that fixes it, because the more carefully someone thinks about it, the worse it gets.":
+    "ここで嘘をついている人は誰もいません。探す理由を与えられたから記憶をより熱心に探す、というのはごく普通の人間のふるまいであり、返ってくる答えは正直なものです。だからこそ補正が難しいのです。除外すべき不誠実な集団は存在せず、これを直せる質問もありません。丁寧に考えるほど、事態は悪くなるからです。",
+  "A case-control study starts from the outcome and works backwards, asking people who have a disease and people who do not what they were exposed to. It is fast, it is cheap, and for a rare disease it is often the only design that will ever be affordable. Its weakness is that one group has been given a reason to search their memory. A diagnosis prompts the question \"why me\", and the mind answers it, reaching for the sunburn, the chemical, the medicine, the difficult pregnancy. The other group has no such prompt and remembers no harder than anyone remembers anything. So the two groups are not just being compared on exposure, they are being compared on how hard they looked. The direction is usually predictable: it inflates whatever the person already suspects is to blame, which means it tends to confirm the hypothesis under test. The defences are all about not relying on memory. Take the exposure from a record written before the outcome, from a prescription database, a workplace log, a stored blood sample, a questionnaire filled in years earlier. Or build in a comparison the mechanism cannot touch, such as a second exposure question that nobody associates with the disease: if the groups drift equally on that one, the drift is not about the disease. What does not work is asking the question more carefully, and what does not work is telling people to be objective.":
+    "症例対照研究は転帰から出発して過去へさかのぼり、病気のある人とない人に何に曝露したかをたずねます。速く、安く、まれな疾患では現実的に実施できる唯一の設計であることも少なくありません。弱点は、一方の群だけが記憶を探す理由を与えられていることです。診断は「なぜ自分が」という問いを呼び起こし、心はそれに答えようとして、日焼け、化学物質、薬、難しかった妊娠へと手を伸ばします。もう一方の群にはそのきっかけがなく、誰もが何かを思い出す程度にしか思い出しません。つまり2つの群は曝露だけでなく、どれだけ熱心に探したかでも比較されています。向きはたいてい予測できます。本人がすでに原因ではないかと疑っているものを膨らませるので、検証中の仮説を裏づける方向に働きがちです。対策はいずれも記憶に頼らないことに尽きます。転帰が分かる前に書かれた記録から曝露を取ること、すなわち処方データベース、職場の記録、保存された血液検体、数年前に記入された質問票です。あるいは、この機構が触れられない比較を組み込むこと、たとえば誰もその疾患と結びつけていない2つ目の曝露についての質問を加えることです。その質問で両群が同じだけずれるなら、そのずれは疾患のせいではありません。うまくいかないのは、質問をより丁寧にすることであり、客観的であるようにと人に頼むことです。",
+  "The study everyone credits for this does not show it":
+    "原典とされる研究は、実はそれを示していません",
+  "A 1967 Finnish study is cited across the literature as the origin of recall bias. It re-interviewed mothers whose answers had been recorded during pregnancy, and its own text reports no significant difference between the mothers of affected and healthy children in how often the replies disagreed. What it does show, and spectacularly, is something else: only about a quarter of the information collected prospectively reappeared identically at re-interview, and roughly two thirds of the retrospective positive answers had no prospective record behind them, in both groups alike. That is not recall bias, it is a warning that retrospective interviews are unreliable even when nobody is biased at all.":
+    "1967年のフィンランドの研究は、思い出しバイアスの起源として文献で広く引用されています。この研究は、妊娠中に回答が記録されていた母親に再度面接しました。しかし論文自身の記述では、回答が食い違う頻度に、疾患のある子の母親と健康な子の母親のあいだで有意差はありませんでした。代わりにこの研究が、しかも際立った形で示しているのは別のことです。前向きに収集された情報のうち再面接で同一の形で再現したのはおよそ4分の1にすぎず、後ろ向きの陽性回答のおよそ3分の2には対応する前向きの記録がなく、それは両群で同じでした。これは思い出しバイアスではなく、誰にもバイアスがなくても後ろ向きの面接は信頼できないという警告です。",
+  "And the largest test of it found almost none":
+    "そして最大の検証では、ほとんど見つかりませんでした",
+  "The biggest study of this design compared what parents said in interview against what their family doctor had already written down, for 1,624 children with cancer and 2,524 without. Agreement with the records was poor in places, but it was poor in much the same way in both groups. The authors found essentially no evidence that having a sick child changed how the past was reported. Recall bias is a real mechanism and a reason to prefer records over memory. It is not a law that memory always bends, and a study is not discredited by the mere fact that it asked people to remember.":
+    "この設計で最大の研究は、がんの子ども1,624人と、がんのない子ども2,524人について、親が面接で語った内容と、かかりつけ医がすでに書き残していた内容を比較しました。記録との一致は部分的に良くありませんでしたが、その悪さの様子は両群でほぼ同じでした。著者らは、子どもが病気であることが過去の報告のしかたを変えたという証拠は実質的に見いだしていません。思い出しバイアスは実在する機構であり、記憶より記録を選ぶ理由になります。しかし記憶が必ず曲がるという法則ではなく、人に思い出してもらったというだけで研究の信用が失われるわけでもありません。",
+  "Recall bias, a reasoning trap.":
+    "思い出しバイアス、推論の罠。",
+  "Ask someone what they were exposed to before they got ill and you are not only asking about the past, you are asking someone who has been given a reason to search it. A diagnosis makes people look harder, and looking harder turns up more. In one study the same women answered the same question about their skin years apart, once before anyone knew and once after a melanoma diagnosis, and the ones who had been diagnosed had shifted. Their skin had not. This rarely invents a finding from nothing. It takes a true one and makes it look bigger, which is much harder to catch, because the answer still agrees with what you expected.":
+    "病気になる前に何に曝露したかをたずねるとき、あなたは過去についてたずねているだけでなく、それを探す理由を与えられた人にたずねています。診断は人により熱心に探させ、熱心に探せばより多くが見つかります。ある研究では、同じ女性が自分の肌について同じ質問に数年の間隔をおいて答えました。1度目は誰も何も知らない時点、2度目はメラノーマの診断後です。診断された人の回答は動いていました。肌は動いていません。これが何もないところから所見を作り出すことはまれです。本物の所見を取り上げて大きく見せるので、はるかに気づきにくくなります。答えは、あなたが予想していたことと変わらず一致するからです。",
+  "Two things a careful reader should know. First, the reference standard is the woman's own questionnaire filled in before diagnosis, not an external record, so this shows that the answers moved rather than which of the two answers was correct, and the authors' own conclusion is appropriately hedged: tanning ability was the one host factor whose shift was significant in the cases and not in the controls. Second, the paper prints odds ratios of 1.90 and 3.01 for this comparison. Those are the authors' own estimates and are not the crude odds ratios of these four cells, which are 1.80 and 2.55. The two pairs move in the same direction by a similar factor but they are not the same quantity, so only the crude ones, which anyone can recompute from the counts shown, appear in the text above.":
+    "注意深い読者に知っておいてほしいことが2つあります。第一に、基準となるのは外部の記録ではなく、診断前に本人が記入した質問票です。したがってこれは回答が動いたことを示すのであって、2つの回答のどちらが正しかったかを示すものではありません。著者ら自身の結論も適切に留保されています。日焼けのしやすさは、症例で有意に動き、対照では動かなかった唯一の宿主因子でした。第二に、論文はこの比較についてオッズ比1.90と3.01を示しています。これらは著者ら自身の推定値であり、ここに示した4セルの粗オッズ比1.80と2.55とは別のものです。2組は同じ向きに、似た程度で動きますが、同じ量ではありません。そのため上の本文には、示された実数から誰でも計算し直せる粗オッズ比だけを載せています。",
+  "Patients who were dispensed this drug died far less often than those who were not. Is the drug working?":
+    "この薬を調剤された患者は、されなかった患者よりはるかに死亡が少なくなっていました。薬が効いているのでしょうか。",
+  "A cohort is followed from the day each patient enters it. Anyone who is dispensed the drug at any point during follow-up counts as treated; everyone else counts as untreated. 49 percent of the treated died against 71 percent of the untreated, and the drug appears to halve the death rate.":
+    "あるコホートを、各患者が組み入れられた日から追跡します。追跡期間中のいずれかの時点で薬を調剤された人は治療群、それ以外の人は非治療群として数えます。治療群の49パーセントが死亡したのに対し、非治療群では71パーセントで、薬は死亡率を半分にしているように見えます。",
+  "Is that gap the drug?":
+    "その差は薬によるものでしょうか。",
+  "One patient from each group":
+    "各群から1人ずつ",
+  "months":
+    "か月",
+  "entered the cohort":
+    "コホートに組み入れ",
+  "first prescription dispensed":
+    "最初の処方を調剤",
+  "follow-up credited to each group":
+    "各群に算入された追跡期間",
+  "Counted, but death was impossible":
+    "数えられたが死亡はあり得ない期間",
+  "Follow-up credited to each group":
+    "各群に算入された追跡期間",
+  "Counted as on the drug":
+    "服薬中として算入",
+  "Counted as not on the drug":
+    "非服薬として算入",
+  "As the study counted it":
+    "研究の数え方どおり",
+  "Yes, the drug is keeping them alive":
+    "はい、薬が生かしています",
+  "half the deaths":
+    "死亡が半分",
+  "No, the untreated were sicker to begin with":
+    "いいえ、非治療群がもともと重症でした",
+  "they were never offered it":
+    "そもそも投与されませんでした",
+  "No, some of that time could not contain a death":
+    "いいえ、死亡があり得ない期間が含まれます",
+  "the clock was started too early":
+    "時計を早く回し始めています",
+  "Half the treated group's follow-up was time in which nobody could die.":
+    "治療群の追跡期間の半分は、誰も死にようがない時間でした。",
+  "Surviving is what put them in the treated group":
+    "治療群に入れたのは、生き延びたからです",
+  "This patient was counted as treated from the day they entered, but the prescription was not dispensed until month 11. Those eleven months are immortal: had the patient died in month 6, no prescription would ever have been written and they would have been counted in the other group instead. Death was not merely unlikely in that stretch, it was impossible by the way the groups were defined, and it is credited to the drug all the same:":
+    "この患者は組み入れの日から治療群として数えられていますが、処方が調剤されたのは11か月目でした。この11か月は不死の期間です。もし6か月目に亡くなっていれば処方は一度も書かれず、この患者はもう一方の群に数えられていたはずです。この区間で死亡は起こりにくかったのではなく、群の定義のしかたによってあり得なかったのです。それでもこの期間は、同じように薬の側に算入されています。",
+  "The same follow-up, marked":
+    "同じ追跡期間に印をつけたもの",
+  "Nothing about the patients has to differ for this to work. Give both groups exactly the same drug, the same illness and the same luck, and the treated group will still come out ahead, because it has been handed a run of guaranteed survival that the other group cannot have. In the published example this is drawn from, the treated group was credited with 291.1 immortal person-years against 276.3 person-years in which it was genuinely at risk: more of its follow-up was impossible-to-die time than was real. Correcting only that moved the hazard ratio from 0.48 to 0.91.":
+    "これが働くために、患者どうしが違っている必要はまったくありません。両群にまったく同じ薬、同じ病気、同じ運を与えても、治療群はやはり優れて見えます。もう一方の群には持ちようのない、生存が保証された期間を渡されているからです。この例のもとになった論文では、治療群に不死の291.1人年が算入され、本当にリスクにさらされていたのは276.3人年でした。つまり追跡期間のうち、死にようがない時間のほうが実際の時間より長かったのです。そこだけを補正すると、ハザード比は0.48から0.91に動きました。",
+  "The stretch before the prescription":
+    "処方までの区間",
+  "Immortal time bias":
+    "不死時間バイアス",
+  "If being in a group requires surviving until something happens, then the time before it happened cannot contain a death, and counting it towards that group manufactures survival out of bookkeeping.":
+    "ある群に入る条件が、何かが起きるまで生きていることであるなら、それが起きる前の期間に死亡は含まれ得ません。その期間をその群に算入すれば、帳簿の付け方から生存が作り出されます。",
+  "The tell is a group defined by something that occurs after follow-up starts: filled the prescription, had the operation, responded to treatment, won the award, completed the course. Ask what happens to a person who dies the day before. If they land in the comparison group, the clock is wrong. The fix is not a cleverer adjustment: it is to count each person's time as unexposed until the moment they become exposed, and let them switch.":
+    "見分ける手がかりは、追跡開始後に起きる出来事で群が定義されていることです。処方を受け取った、手術を受けた、治療に反応した、賞を取った、コースを修了した、といった定義です。その前日に亡くなった人がどう扱われるかを問うてください。その人が比較群に入るなら、時計の始点が誤っています。解決はより巧妙な調整ではありません。各人の時間を、曝露になる瞬間までは非曝露として数え、その時点で移せるようにすることです。",
+  "Cohort studies compare rates, and a rate is deaths divided by time at risk. That denominator is where this hides. Suppose you want to know whether a drug helps, so you follow everyone admitted to hospital and sort them afterwards by whether they were ever dispensed it. The sorting looks innocent, but it uses information from the future: to be dispensed a drug in month 11, you must be alive in month 11. So every patient in the treated group is guaranteed to have survived to their own first prescription, and if you start their clock at admission you credit the treated group with all of that guaranteed survival. The untreated group gets no such gift, because it is where the early deaths necessarily land. The bias is large, it always points the same way, it makes useless drugs look protective, and it does not shrink with a bigger sample, because it is not noise. It also has nothing to do with confounding, which is why adjusting for how ill the patients were does not touch it: you can simulate the whole thing with identical patients and a drug that does nothing. The correct handling is standard and unglamorous. Treat exposure as time-varying: every patient contributes unexposed time from entry until their first prescription and exposed time after it, so nobody is credited to a group before they belong to it. The same trap sits under any claim built on people who finished something, from Academy Award winners living longer than nominees to patients who completed a rehabilitation programme, and in each case the first question is the same: what happens in these numbers to the person who died in the middle?":
+    "コホート研究は率を比較し、率とは死亡数をリスクにさらされた時間で割ったものです。この分母にこそ、この問題は隠れています。ある薬が役に立つかを知りたくて、入院した全員を追跡し、その後、薬を一度でも調剤されたかどうかで振り分けるとします。この振り分けは無害に見えますが、未来の情報を使っています。11か月目に薬を調剤されるには、11か月目に生きていなければなりません。したがって治療群の患者は全員、自分の最初の処方まで生き延びたことが保証されており、時計を入院日から回し始めれば、その保証された生存のすべてを治療群に算入することになります。非治療群にその贈り物はありません。早期の死亡は必ずそちらに落ちるからです。このバイアスは大きく、つねに同じ向きを指し、役に立たない薬を予防的に見せ、標本を大きくしても縮みません。雑音ではないからです。交絡とも関係がないので、患者がどれだけ重症だったかを調整しても手が届きません。まったく同じ患者と、何もしない薬でこの現象をそのままシミュレーションできます。正しい扱いは標準的で、地味です。曝露を時間依存として扱うのです。すべての患者は、組み入れから最初の処方までを非曝露の時間として、その後を曝露の時間として提供します。こうすれば、誰もその群に属する前からその群に算入されることはありません。同じ罠は、何かをやり遂げた人をもとに組み立てられたあらゆる主張の下にひそんでいます。アカデミー賞の受賞者がノミネートされただけの人より長生きするという話から、リハビリテーションのプログラムを完了した患者の話まで同じです。どの場合も最初の問いは同じです。途中で亡くなった人は、この数字のなかでどう扱われているのでしょうか。",
+  "The Oscar winners who did not, after all, live longer":
+    "結局は長生きしていなかったオスカー受賞者",
+  "A well-known study reported that Academy Award winners outlived the actors merely nominated alongside them by nearly four years, and it was widely read as evidence that status is good for your health. But an actor cannot win an award while dead, so every winner was credited with all the years before their win, whereas a nominee who died young could only ever be a nominee. Reanalysing the same data with the award treated as something that happens partway through a life, rather than a property of the whole life, cut the advantage to about a year and it was no longer statistically significant. The original authors later published a null result of their own.":
+    "よく知られた研究は、アカデミー賞の受賞者が、同じ年にノミネートされただけの俳優より4年近く長く生きたと報告し、地位が健康に良い証拠として広く読まれました。しかし俳優は亡くなった状態で受賞することはできません。ですから受賞者は受賞までのすべての年数を算入され、若くして亡くなったノミネート者は、どうやってもノミネート者のままです。同じデータを、受賞を人生全体の属性ではなく人生の途中で起きる出来事として扱って再解析すると、差はおよそ1年に縮み、統計学的に有意ではなくなりました。元の著者らも、のちに自ら差がないという結果を発表しています。",
+  "Immortal time bias, a reasoning trap.":
+    "不死時間バイアス、推論の罠。",
+  "Sort people into groups by something that happens later, and one of those groups gets a hidden head start. To be counted as having taken the drug, you have to live long enough to be given it. So everybody in the treated group is guaranteed to have survived up to their first prescription, and if you count that stretch towards the drug, the drug is credited with survival it had nothing to do with. Anyone who died early is automatically filed under untreated. It works even when the drug does nothing at all, it always points the same way, and a bigger study only makes it more convincing.":
+    "あとから起きる出来事で人を群に振り分けると、一方の群に隠れた先行が与えられます。薬を飲んだと数えられるには、それを渡されるまで生きていなければなりません。ですから治療群の全員は、最初の処方まで生き延びたことが保証されています。その区間を薬の側に数えれば、薬は自分と関係のない生存を手柄にすることになります。早く亡くなった人は自動的に非治療群に分類されます。これは薬がまったく何もしなくても働き、つねに同じ向きを指し、研究を大きくすればするほど説得力だけが増します。",
+  "The figure above is schematic, like the bomber diagram: two illustrative patients rather than two rows of the dataset, with proportions chosen to echo the published ones (eleven immortal months out of twenty-two counted, against 291.1 immortal person-years out of 567.4 counted, which is 51.3 percent). The numbers that are claims about the world, the death counts and the two hazard ratios, are all in the citation above and none of them is recomputed here: the hazard ratios come from survival models rather than from any two-by-two table, and the paper is a methodological reanalysis in which several cohort definitions are applied to one dataset, so the row is named exactly.":
+    "上の図は、爆撃機の図と同じく模式図です。データセットの2行ではなく、説明のための2人の患者であり、比率は公表値に対応するように選んでいます（算入された22か月のうち11か月が不死の期間であり、これは算入された567.4人年のうち291.1人年が不死の期間、すなわち51.3パーセントに対応します）。世界についての主張である数値、つまり死亡数と2つのハザード比は、いずれも上の出典に記載されており、ここで再計算したものは1つもありません。ハザード比は2×2の表からではなく生存モデルから得られたものであり、この論文は1つのデータセットに複数のコホート定義を当てはめた方法論的な再解析なので、どの行かを正確に示しています。",
+  "A weight-loss trial randomly assigns 400 people to a programme or to usual care. It reports the average weight lost among the 180 programme participants who attended at least eight sessions, and among all 200 controls. The programme wins comfortably.":
+    "ある減量試験が400人を、プログラム群か通常ケア群にランダムに割り付けます。報告されているのは、8回以上のセッションに参加したプログラム群180人の平均減量と、対照群200人全員の平均減量です。プログラムが余裕をもって上回ります。",
+  "One arm has been filtered and the other has not. Attending eight sessions is something people who were doing well were more able to do, so the programme group has quietly been reduced to its successes while the control group keeps everybody.":
+    "一方の群だけがふるいにかけられ、もう一方はそのままです。8回のセッションに参加できたのは、うまくいっていた人ほど可能だったことなので、プログラム群は静かに成功例だけに絞られ、対照群は全員を保っています。",
+  "In a surgical trial, some patients assigned to medication deteriorate and are operated on anyway. The analysis counts each patient under the treatment they ended up receiving, and finds surgery ahead.":
+    "ある手術の試験で、薬物療法に割り付けられた一部の患者が悪化し、結局手術を受けます。解析は各患者を最終的に受けた治療のもとで数え、手術が優れているという結果になります。",
+  "Switching happened after the coin flip and for a reason: those patients had to survive long enough to reach the operating table. Counting people by what they received rather than what they were assigned sorts them by how they were doing, which is the thing being measured.":
+    "切り替えはコイン投げのあとに、理由があって起きています。その患者たちは手術台にたどり着くまで生きていなければなりませんでした。割り付けではなく実際に受けた治療で人を数えることは、その人の状態によって仕分けることであり、その状態こそ測定しているものです。",
+  "A trial of a daily tablet excludes anyone who took less than 80 percent of their doses, on the grounds that the question is whether the drug works when actually taken. Both arms are filtered the same way.":
+    "1日1回の錠剤の試験が、処方量の80パーセント未満しか服用しなかった人を除外します。問うているのは実際に服用したときに薬が効くかどうかだから、という理由です。両群は同じ基準でふるいにかけられます。",
+  "Filtering both arms identically does not repair it. Who manages to take 80 percent of their tablets differs by how well they are and by much else besides, so each arm loses a different kind of patient and the groups the coin made no longer exist.":
+    "両群を同じようにふるいにかけても、これは直りません。錠剤の80パーセントを飲めるのがどんな人かは、体調によっても、ほかの多くの要因によっても変わります。そのため各群は違う種類の患者を失い、コインが作った群はもう存在しません。",
+  "A trial reports that among patients who completed the full twelve months, the new drug halved relapses. A quarter of that arm withdrew before twelve months and are not counted.":
+    "ある試験は、12か月を完了した患者のなかで新薬が再発を半減させたと報告します。その群の4分の1は12か月より前に脱落し、数えられていません。",
+  "People usually withdraw for a reason, and relapsing is one of the commonest. An analysis of completers can turn the drug's failures into people who simply are not in the table.":
+    "人が脱落するのはたいてい理由があり、再発はそのうち最も多いものの1つです。完了者だけの解析は、薬の失敗を、単に表に載っていない人へと変えてしまいます。",
+  "Mothers of babies born with a heart defect are interviewed about what they took during pregnancy, alongside mothers of healthy babies. The mothers of affected babies report far more medicine use in the first trimester, and a report concludes the medicines are implicated.":
+    "心奇形をもって生まれた赤ちゃんの母親と、健康な赤ちゃんの母親に、妊娠中に何を服用したかを面接でたずねます。心奇形の児の母親は妊娠初期の薬の使用をはるかに多く報告し、ある報告はその薬が関与していると結論します。",
+  "One group has spent months being asked what went wrong and searching for it. The other has had no reason to think about the first trimester at all. The comparison is partly of what was taken and partly of how hard each group looked.":
+    "一方の群は、何がいけなかったのかを何か月も問われ、探し続けてきました。もう一方には、妊娠初期について考える理由がまったくありませんでした。この比較は、一部は何を服用したかの比較であり、一部はどれだけ熱心に探したかの比較です。",
+  "People with a brain tumour and people without are asked how many hours a week they used a mobile phone ten years ago, and on which side of the head. Those with a tumour report more hours, and more often on the side the tumour is on.":
+    "脳腫瘍のある人とない人に、10年前に週何時間、頭のどちら側で携帯電話を使っていたかをたずねます。腫瘍のある人はより長い時間を報告し、腫瘍のある側だと答えることも多くなります。",
+  "Nobody can accurately recall a decade of phone habits, so the gap is filled in, and the tumour tells them which side to fill it in on. Billing records would settle it; memory cannot.":
+    "10年分の通話の習慣を正確に思い出せる人はいないので、隙間は埋められます。そしてどちら側で埋めるかは腫瘍が教えます。通話明細の記録なら決着がつきますが、記憶ではつきません。",
+  "After a bowel cancer diagnosis, patients are asked to describe their diet over the previous twenty years, and their answers are compared with those of healthy volunteers of the same age.":
+    "大腸がんの診断後、患者は過去20年間の食事を説明するよう求められ、その回答が同年代の健康なボランティアの回答と比較されます。",
+  "The patients have already been told which foods are suspected, and are reconstructing twenty years around a diagnosis. The volunteers are reconstructing twenty years around nothing in particular.":
+    "患者はどの食品が疑われているかをすでに聞かされており、診断を中心に20年を組み立て直しています。ボランティアは、特に何もない20年を組み立て直しています。",
+  "Workers making a compensation claim for back pain are asked how heavy their lifting used to be, and their answers are compared with those of colleagues who made no claim.":
+    "腰痛で補償を申請している労働者に、以前どれくらい重いものを持ち上げていたかをたずね、その回答を申請していない同僚の回答と比較します。",
+  "Both groups did the same job. Only one has spent months assembling an account of how demanding it was, and that account is what is being measured.":
+    "両群は同じ仕事をしていました。しかし一方だけが、その仕事がどれほどきつかったかの説明を何か月もかけて組み立ててきました。そして測られているのは、その説明です。",
+  "A registry compares patients who received a transplant with those on the waiting list who did not, counting each patient's survival from the day they joined the list. The transplanted group lives far longer.":
+    "ある登録データが、移植を受けた患者と、待機リストにいて受けなかった患者を比較し、各患者の生存をリストに登録された日から数えます。移植群のほうがはるかに長く生きています。",
+  "To be transplanted you must survive until an organ arrives, so everyone in that group is guaranteed to have lived from listing to surgery. Anyone who dies while waiting can only ever be in the other group.":
+    "移植を受けるには臓器が来るまで生きていなければならないので、その群の全員は登録から手術まで生きていたことが保証されます。待機中に亡くなった人は、どうやってももう一方の群にしか入りません。",
+  "A hospital reports that patients who completed the full six-week rehabilitation course had better one-year survival than those who did not, measured from the day of admission.":
+    "ある病院が、6週間のリハビリテーションコースを完了した患者は、完了しなかった患者より1年生存が良かったと報告します。生存は入院日から測っています。",
+  "Completing six weeks requires being alive for six weeks. The comparison group collects everyone who died in the meantime, and the course is credited with those first six weeks of guaranteed survival.":
+    "6週間を完了するには、6週間生きている必要があります。比較群にはそのあいだに亡くなった人が全員集まり、最初の6週間という保証された生存はコースの手柄になります。",
+  "Using a prescription database, researchers classify each patient as a drug user if they were ever dispensed it during follow-up, and count follow-up from the date of their hospital discharge.":
+    "処方データベースを用いて、研究者は追跡期間中に一度でも薬を調剤された患者を服薬者と分類し、追跡期間を退院日から数えます。",
+  "The classification uses the future. Time between discharge and the first dispensing cannot contain a death for anyone counted as a user, yet it is credited to the drug. Counting each patient as unexposed until their first prescription removes it.":
+    "この分類は未来の情報を使っています。服薬者と数えられた人にとって、退院から最初の調剤までの期間に死亡は含まれ得ませんが、その期間は薬の側に算入されています。各患者を最初の処方までは非曝露として数えれば、これは取り除けます。",
+  "An oncology paper reports that patients whose tumour responded to chemotherapy survived longer than non-responders, timing survival from the start of treatment. Response was assessed after three cycles.":
+    "ある腫瘍学の論文が、化学療法に腫瘍が反応した患者は非反応者より長く生存したと報告し、生存を治療開始時から測っています。反応の評価は3サイクル後に行われました。",
+  "You cannot be classed as a responder unless you live to the assessment after three cycles. Patients who die during the first two cycles are all non-responders by construction, so the responder group starts with survival built into it.":
+    "3サイクル後の評価まで生きていなければ、反応者に分類されることはありません。最初の2サイクルのあいだに亡くなった患者は、定義上すべて非反応者です。したがって反応者の群には、はじめから生存が組み込まれています。",
+  "A drug-safety study counts each patient as untreated from enrolment until the day of their first prescription, and as treated from that day onwards, so a patient can contribute time to both groups.":
+    "ある薬剤安全性研究は、各患者を組み入れから最初の処方の日までは非治療、その日以降は治療として数えます。したがって1人の患者が両方の群に時間を提供できます。",
+  "Nobody is credited to a group before they belong to it, so no stretch of guaranteed survival is handed to the treated group. This is the standard fix, correctly applied.":
+    "その群に属する前から算入される人はいないので、保証された生存の区間が治療群に渡されることもありません。これは標準的な解決法が正しく適用された例です。",
+  "A study of patients who completed a course of treatment starts everyone's clock at the end of the course, and excludes anyone who died before that point from both groups alike.":
+    "治療コースを完了した患者を対象とする研究が、全員の時計をコース終了時から回し始め、その時点より前に亡くなった人を両群から同じように除外します。",
+  "Starting the clock after the point where group membership was settled means neither group can be credited with survival it was guaranteed. It costs some early data, and it removes the head start.":
+    "群への所属が決まった時点より後から時計を回し始めれば、どちらの群も保証された生存を算入されません。初期のデータは失われますが、先行は取り除かれます。",
+  "A study of a drug taken in pregnancy takes the exposure from the national prescription database rather than from interviews, then compares outcomes. Neither the mothers nor the researchers supplied the exposure data.":
+    "妊娠中に服用した薬に関する研究が、曝露を面接ではなく全国の処方データベースから取り、その後に転帰を比較します。曝露データを提供したのは、母親でも研究者でもありません。",
+  "The exposure was written down before anyone knew the outcome, by someone with no stake in it. That is the standard defence against memory bending, and here it was used.":
+    "曝露は、転帰を誰も知らない時点で、利害のない人によって記録されていました。それが記憶の歪みに対する標準的な防御であり、ここではそれが用いられています。",
+  "A case-control study asks about the suspected exposure and also about a second, unrelated one that nobody associates with the disease. Both groups report the second one at the same rate, and the authors say so before reporting the first.":
+    "ある症例対照研究が、疑われている曝露に加えて、誰もその疾患と結びつけていない無関係な2つ目の曝露についてもたずねます。2つ目は両群で同じ割合で報告され、著者らは1つ目を報告する前にそのことを述べています。",
+  "The second question is a control for the searching itself. If one group were simply remembering harder across the board, it would show up there too, and it did not.":
+    "2つ目の質問は、記憶を探す行為そのものに対する対照です。一方の群が全般に熱心に思い出しているだけなら、その質問にも現れるはずですが、現れませんでした。",
+  "A trial's main result counts every patient in the group they were randomly assigned to, including the 40 who never started the treatment. A per-protocol analysis is reported alongside it, agrees with it, and is labelled as secondary.":
+    "ある試験の主要結果は、治療を一度も開始しなかった40人も含めて、全患者をランダムに割り付けられた群のまま数えています。per protocol解析も併せて報告され、結果は一致しており、副次的な解析と明示されています。",
+  "The randomised comparison is the one the conclusion rests on, the other is shown for completeness, and the two agree. That is how both analyses are supposed to be used.":
+    "結論が乗っているのはランダム化どおりの比較で、もう一方は補足として示され、2つは一致しています。これが両方の解析の本来の使い方です。",
+  "A trial testing whether a simpler regimen is no worse than the standard one reports both analyses, notes that counting non-adherent patients in their assigned group tends to make two treatments look alike, and declines to claim non-inferiority because only one of the two analyses supports it.":
+    "より簡便なレジメンが標準レジメンに劣らないかを検証する試験が、両方の解析を報告し、アドヒアランスの悪い患者を割り付けられた群のまま数えると2つの治療が似て見えやすくなることを指摘したうえで、2つの解析のうち1つしか支持していないため非劣性の主張を控えています。",
+  "Counting everyone as assigned is conservative when you are trying to show a difference and permissive when you are trying to show similarity, so a non-inferiority claim needs both analyses to agree. Refusing to claim it when they disagree is the careful move, not the trap.":
+    "割り付けどおりに全員を数えることは、差を示そうとするときには保守的に働き、同等性を示そうとするときには甘く働きます。ですから非劣性の主張には、両方の解析が一致することが必要です。一致しないときに主張を控えるのは慎重な判断であり、罠ではありません。",
 };

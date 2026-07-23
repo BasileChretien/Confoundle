@@ -310,6 +310,132 @@ const items: TestItem[] = [
     },
   },
 
+  // ---- Intention to treat ----
+  {
+    id: "itt-completers",
+    scenario: {
+      en: "A weight-loss trial randomly assigns 400 people to a programme or to usual care. It reports the average weight lost among the 180 programme participants who attended at least eight sessions, and among all 200 controls. The programme wins comfortably.",
+    },
+    trap: "intention-to-treat",
+    explanation: {
+      en: "One arm has been filtered and the other has not. Attending eight sessions is something people who were doing well were more able to do, so the programme group has quietly been reduced to its successes while the control group keeps everybody.",
+    },
+  },
+  {
+    id: "itt-crossover",
+    scenario: {
+      en: "In a surgical trial, some patients assigned to medication deteriorate and are operated on anyway. The analysis counts each patient under the treatment they ended up receiving, and finds surgery ahead.",
+    },
+    trap: "intention-to-treat",
+    explanation: {
+      en: "Switching happened after the coin flip and for a reason: those patients had to survive long enough to reach the operating table. Counting people by what they received rather than what they were assigned sorts them by how they were doing, which is the thing being measured.",
+    },
+  },
+  {
+    id: "itt-nonadherent",
+    scenario: {
+      en: "A trial of a daily tablet excludes anyone who took less than 80 percent of their doses, on the grounds that the question is whether the drug works when actually taken. Both arms are filtered the same way.",
+    },
+    trap: "intention-to-treat",
+    explanation: {
+      en: "Filtering both arms identically does not repair it. Who manages to take 80 percent of their tablets differs by how well they are and by much else besides, so each arm loses a different kind of patient and the groups the coin made no longer exist.",
+    },
+  },
+  {
+    id: "itt-withdrew-early",
+    scenario: {
+      en: "A trial reports that among patients who completed the full twelve months, the new drug halved relapses. A quarter of that arm withdrew before twelve months and are not counted.",
+    },
+    trap: "intention-to-treat",
+    explanation: {
+      en: "People usually withdraw for a reason, and relapsing is one of the commonest. An analysis of completers can turn the drug's failures into people who simply are not in the table.",
+    },
+  },
+
+  // ---- Recall bias ----
+  {
+    id: "rb-birth-defect",
+    scenario: {
+      en: "Mothers of babies born with a heart defect are interviewed about what they took during pregnancy, alongside mothers of healthy babies. The mothers of affected babies report far more medicine use in the first trimester, and a report concludes the medicines are implicated.",
+    },
+    trap: "recall-bias",
+    explanation: {
+      en: "One group has spent months being asked what went wrong and searching for it. The other has had no reason to think about the first trimester at all. The comparison is partly of what was taken and partly of how hard each group looked.",
+    },
+  },
+  {
+    id: "rb-phone-tumour",
+    scenario: {
+      en: "People with a brain tumour and people without are asked how many hours a week they used a mobile phone ten years ago, and on which side of the head. Those with a tumour report more hours, and more often on the side the tumour is on.",
+    },
+    trap: "recall-bias",
+    explanation: {
+      en: "Nobody can accurately recall a decade of phone habits, so the gap is filled in, and the tumour tells them which side to fill it in on. Billing records would settle it; memory cannot.",
+    },
+  },
+  {
+    id: "rb-diet-questionnaire",
+    scenario: {
+      en: "After a bowel cancer diagnosis, patients are asked to describe their diet over the previous twenty years, and their answers are compared with those of healthy volunteers of the same age.",
+    },
+    trap: "recall-bias",
+    explanation: {
+      en: "The patients have already been told which foods are suspected, and are reconstructing twenty years around a diagnosis. The volunteers are reconstructing twenty years around nothing in particular.",
+    },
+  },
+  {
+    id: "rb-injury-claim",
+    scenario: {
+      en: "Workers making a compensation claim for back pain are asked how heavy their lifting used to be, and their answers are compared with those of colleagues who made no claim.",
+    },
+    trap: "recall-bias",
+    explanation: {
+      en: "Both groups did the same job. Only one has spent months assembling an account of how demanding it was, and that account is what is being measured.",
+    },
+  },
+
+  // ---- Immortal time bias ----
+  {
+    id: "it-transplant",
+    scenario: {
+      en: "A registry compares patients who received a transplant with those on the waiting list who did not, counting each patient's survival from the day they joined the list. The transplanted group lives far longer.",
+    },
+    trap: "immortal-time-bias",
+    explanation: {
+      en: "To be transplanted you must survive until an organ arrives, so everyone in that group is guaranteed to have lived from listing to surgery. Anyone who dies while waiting can only ever be in the other group.",
+    },
+  },
+  {
+    id: "it-completed-course",
+    scenario: {
+      en: "A hospital reports that patients who completed the full six-week rehabilitation course had better one-year survival than those who did not, measured from the day of admission.",
+    },
+    trap: "immortal-time-bias",
+    explanation: {
+      en: "Completing six weeks requires being alive for six weeks. The comparison group collects everyone who died in the meantime, and the course is credited with those first six weeks of guaranteed survival.",
+    },
+  },
+  {
+    id: "it-dispensed",
+    scenario: {
+      en: "Using a prescription database, researchers classify each patient as a drug user if they were ever dispensed it during follow-up, and count follow-up from the date of their hospital discharge.",
+    },
+    trap: "immortal-time-bias",
+    explanation: {
+      en: "The classification uses the future. Time between discharge and the first dispensing cannot contain a death for anyone counted as a user, yet it is credited to the drug. Counting each patient as unexposed until their first prescription removes it.",
+    },
+  },
+  {
+    id: "it-responders",
+    scenario: {
+      en: "An oncology paper reports that patients whose tumour responded to chemotherapy survived longer than non-responders, timing survival from the start of treatment. Response was assessed after three cycles.",
+    },
+    trap: "immortal-time-bias",
+    explanation: {
+      en: "You cannot be classed as a responder unless you live to the assessment after three cycles. Patients who die during the first two cycles are all non-responders by construction, so the responder group starts with survival built into it.",
+    },
+  },
+
   // ---- A second pass, clinically flavoured ----
   {
     id: "sp-hospitals",
@@ -501,6 +627,66 @@ const items: TestItem[] = [
     trap: null,
     explanation: {
       en: "Reporting the whole enrolled group, dropouts included, is exactly the defence against counting only the survivors.",
+    },
+  },
+  {
+    id: "ok-time-varying",
+    scenario: {
+      en: "A drug-safety study counts each patient as untreated from enrolment until the day of their first prescription, and as treated from that day onwards, so a patient can contribute time to both groups.",
+    },
+    trap: null,
+    explanation: {
+      en: "Nobody is credited to a group before they belong to it, so no stretch of guaranteed survival is handed to the treated group. This is the standard fix, correctly applied.",
+    },
+  },
+  {
+    id: "ok-landmark",
+    scenario: {
+      en: "A study of patients who completed a course of treatment starts everyone's clock at the end of the course, and excludes anyone who died before that point from both groups alike.",
+    },
+    trap: null,
+    explanation: {
+      en: "Starting the clock after the point where group membership was settled means neither group can be credited with survival it was guaranteed. It costs some early data, and it removes the head start.",
+    },
+  },
+  {
+    id: "ok-prescription-records",
+    scenario: {
+      en: "A study of a drug taken in pregnancy takes the exposure from the national prescription database rather than from interviews, then compares outcomes. Neither the mothers nor the researchers supplied the exposure data.",
+    },
+    trap: null,
+    explanation: {
+      en: "The exposure was written down before anyone knew the outcome, by someone with no stake in it. That is the standard defence against memory bending, and here it was used.",
+    },
+  },
+  {
+    id: "ok-negative-control-question",
+    scenario: {
+      en: "A case-control study asks about the suspected exposure and also about a second, unrelated one that nobody associates with the disease. Both groups report the second one at the same rate, and the authors say so before reporting the first.",
+    },
+    trap: null,
+    explanation: {
+      en: "The second question is a control for the searching itself. If one group were simply remembering harder across the board, it would show up there too, and it did not.",
+    },
+  },
+  {
+    id: "ok-itt-primary",
+    scenario: {
+      en: "A trial's main result counts every patient in the group they were randomly assigned to, including the 40 who never started the treatment. A per-protocol analysis is reported alongside it, agrees with it, and is labelled as secondary.",
+    },
+    trap: null,
+    explanation: {
+      en: "The randomised comparison is the one the conclusion rests on, the other is shown for completeness, and the two agree. That is how both analyses are supposed to be used.",
+    },
+  },
+  {
+    id: "ok-per-protocol-noninferiority",
+    scenario: {
+      en: "A trial testing whether a simpler regimen is no worse than the standard one reports both analyses, notes that counting non-adherent patients in their assigned group tends to make two treatments look alike, and declines to claim non-inferiority because only one of the two analyses supports it.",
+    },
+    trap: null,
+    explanation: {
+      en: "Counting everyone as assigned is conservative when you are trying to show a difference and permissive when you are trying to show similarity, so a non-inferiority claim needs both analyses to agree. Refusing to claim it when they disagree is the careful move, not the trap.",
     },
   },
 ];

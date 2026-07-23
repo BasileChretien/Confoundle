@@ -4,9 +4,9 @@
 
 Each puzzle runs in four beats: **setup → commit → reveal → lesson**, ending in a screenshot-able **share card**. You have to commit to an answer *before* the reveal — the small sting of being caught is the whole point.
 
-This repository is the **Phase 0 prototype**: thirteen fully playable puzzles on a generic engine, served one-per-day Wordle-style, in ten languages, plus a **Trap Hunt** item bank of 45 scenarios for testing whether you can spot a flaw when nobody has told you one is there.
+This repository is the **Phase 0 prototype**: sixteen fully playable puzzles on a generic engine, served one-per-day Wordle-style, in ten languages, plus a **Trap Hunt** item bank of 63 scenarios for testing whether you can spot a flaw when nobody has told you one is there.
 
-The puzzles so far: Simpson's paradox, the base-rate fallacy, correlation vs causation, survivorship bias, the prosecutor's fallacy, the Will Rogers phenomenon, lead-time bias, spectrum bias, Berkson's bias, relative vs absolute risk, confounding by indication, length-time bias, and publication bias.
+The puzzles so far: Simpson's paradox, the base-rate fallacy, correlation vs causation, survivorship bias, the prosecutor's fallacy, the Will Rogers phenomenon, lead-time bias, spectrum bias, Berkson's bias, relative vs absolute risk, confounding by indication, length-time bias, publication bias, intention to treat vs per protocol, recall bias, and immortal time bias.
 
 Which biases a doctor is actually examined on differs sharply by country, and the deck is audited against nine national licensing systems in [`docs/exam-syllabus-audit.md`](./docs/exam-syllabus-audit.md).
 

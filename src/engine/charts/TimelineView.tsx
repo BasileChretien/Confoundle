@@ -3,10 +3,113 @@ import { useT } from "../../app/i18n";
 import { useReducedMotion } from "../useReducedMotion";
 import { useCountUp } from "../useCountUp";
 import { colorFor, WINNER_GOLD } from "./palette";
-import { deathsAligned, formatDuration, trackDurations } from "./timeline";
+import {
+  atRiskTime,
+  countedTime,
+  deathsAligned,
+  formatDuration,
+  immortalTime,
+  trackDurations,
+} from "./timeline";
 
 const RAIL = "#DCD2BC"; // the un-lived part of the axis
 const ONSET = "#8A7E6A";
+
+/**
+ * One row of the `counted` and `immortal` views: the stretch of time a study
+ * credited to a group, drawn from the person's entry to their death.
+ *
+ * The two views draw the SAME bar. The only difference is that `immortal`
+ * hatches the part of it during which the person could not have died, because
+ * dying would have kept them out of the group being credited. That is the whole
+ * reveal, and it is why this is one component with a flag rather than two: if
+ * the bars differed in any other way, the puzzle would be comparing two
+ * pictures instead of showing one picture twice.
+ */
+function CountedRow({
+  track,
+  colorHex,
+  span,
+  unit,
+  shadeImmortal,
+}: {
+  track: TimelineTrack;
+  colorHex: string;
+  span: number;
+  unit: string;
+  shadeImmortal: boolean;
+}) {
+  const t = useT();
+  const pct = (v: number) => (span > 0 ? (v / span) * 100 : 0);
+  const immortal = immortalTime(track);
+  const shown = shadeImmortal && immortal > 0 ? atRiskTime(track) : countedTime(track);
+
+  return (
+    <div className="flex flex-col gap-1">
+      <div className="flex items-baseline justify-between gap-2">
+        <span className="text-[11px] font-medium leading-tight text-ink">
+          {t(track.label)}
+        </span>
+        <span className="shrink-0 text-sm font-semibold tabular-nums text-ink">
+          {formatDuration(Math.round(shown * 10) / 10)} {unit}
+        </span>
+      </div>
+      <div
+        className="relative h-5 w-full rounded-[3px]"
+        style={{ backgroundColor: RAIL }}
+        role="img"
+        aria-label={
+          shadeImmortal && immortal > 0
+            ? `${t(track.label)}: ${formatDuration(immortal)} ${unit} counted but not at risk, then ${formatDuration(atRiskTime(track))} ${unit} at risk`
+            : `${t(track.label)}: ${formatDuration(countedTime(track))} ${unit} counted`
+        }
+      >
+        {shadeImmortal && immortal > 0 ? (
+          <>
+            {/* Counted, but guaranteed death-free by the way the group was
+                defined. Hatched rather than merely paler, so it reads as "this
+                does not count" even in greyscale or on a screenshot. */}
+            <div
+              className="absolute inset-y-0 rounded-l-[3px]"
+              style={{
+                left: `${pct(track.onsetAt)}%`,
+                width: `${pct(immortal)}%`,
+                backgroundImage: `repeating-linear-gradient(45deg, ${colorHex} 0 3px, transparent 3px 6px)`,
+                opacity: 0.55,
+              }}
+            />
+            <div
+              className="absolute inset-y-0 rounded-r-[3px]"
+              style={{
+                left: `${pct(track.immortalUntil ?? track.onsetAt)}%`,
+                width: `${pct(atRiskTime(track))}%`,
+                backgroundColor: colorHex,
+              }}
+            />
+            {/* The instant the person actually joined the group. */}
+            <span
+              className="absolute inset-y-0 w-[2px]"
+              style={{
+                left: `${pct(track.immortalUntil ?? track.onsetAt)}%`,
+                backgroundColor: "#221D15",
+              }}
+              aria-hidden="true"
+            />
+          </>
+        ) : (
+          <div
+            className="absolute inset-y-0 rounded-[3px]"
+            style={{
+              left: `${pct(track.onsetAt)}%`,
+              width: `${pct(countedTime(track))}%`,
+              backgroundColor: colorHex,
+            }}
+          />
+        )}
+      </div>
+    </div>
+  );
+}
 
 /**
  * One row of the `survival` view: the bar that survival statistics actually
@@ -157,6 +260,50 @@ export function TimelineView({
             animate={animate}
           />
         ))}
+      </div>
+    );
+  }
+
+  if (view === "counted" || view === "immortal") {
+    const shade = view === "immortal";
+    return (
+      <div className="flex flex-col gap-3">
+        {/* No heading of its own: the figure title and the scope tag beside it
+            already name this view, and a third label saying the same thing was
+            just noise on a phone. */}
+        {data.tracks.map((tr, i) => (
+          <CountedRow
+            key={tr.id}
+            track={tr}
+            colorHex={colorFor(i)}
+            span={data.span}
+            unit={unit}
+            shadeImmortal={shade}
+          />
+        ))}
+        {shade ? (
+          <div className="flex flex-wrap justify-center gap-x-4 gap-y-1 text-[11px] text-ink-soft">
+            <span className="inline-flex items-center gap-1.5">
+              <span
+                className="h-3 w-6 shrink-0 rounded-[2px]"
+                style={{
+                  backgroundImage: `repeating-linear-gradient(45deg, ${colorFor(0)} 0 3px, transparent 3px 6px)`,
+                  opacity: 0.55,
+                }}
+                aria-hidden="true"
+              />
+              {t(data.immortalLabel ?? data.survivalLabel)}
+            </span>
+            <span className="inline-flex items-center gap-1.5">
+              <span
+                className="h-3 w-[2px] shrink-0"
+                style={{ backgroundColor: "#221D15" }}
+                aria-hidden="true"
+              />
+              {t(data.detectedLabel)}
+            </span>
+          </div>
+        ) : null}
       </div>
     );
   }

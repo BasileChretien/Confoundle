@@ -994,4 +994,278 @@ export const bn: Record<string, string> = {
     "একটি নতুন স্ক্যান একই জনগোষ্ঠীতে আগে যত ক্যানসার ধরা পড়ত তার তিন গুণ কেস খুঁজে পায়, আর যাঁদের ধরা পড়ে তাঁদের অবস্থা খুব ভালো হয়। ওই জনগোষ্ঠীতে সেই ক্যানসারে মৃত্যু অপরিবর্তিত থাকে।",
   "More cases found, the same number of deaths, and excellent outcomes among the extra cases is the signature of finding disease that was never going to cause harm. The survival figures improve because the denominator filled up with people who were never in danger.":
     "বেশি কেস ধরা পড়া, মৃত্যু ঠিক আগের সংখ্যাতেই থেকে যাওয়া, আর বাড়তি কেসগুলোর চমৎকার পরিণতি, এটাই সেই রোগ খুঁজে পাওয়ার স্বাক্ষর যা কখনো কোনো ক্ষতি করত না। বেঁচে থাকার সংখ্যাগুলো ভালো হয় কারণ হরটি এমন মানুষে ভরে যায় যাঁরা কখনো বিপদেই ছিলেন না।",
+
+  // ---- intention to treat, recall bias, immortal time ----
+  "Among the patients who actually got the treatment they were assigned, surgery saved lives. Is that the trial's answer?":
+    "যাদের ভাগে যে চিকিৎসা পড়েছিল তারা সত্যিই সেটাই পেয়েছেন, তাদের মধ্যে সার্জারি প্রাণ বাঁচিয়েছে। এটাই কি ট্রায়ালের উত্তর?",
+  "1,212 people with heart failure, randomly assigned to medicine alone or to medicine plus bypass surgery. Analysing the ones who received what they were assigned, 43 percent of the medicine group died against 34 percent of the surgery group. The difference is statistically significant.":
+    "হার্ট ফেলিওরে আক্রান্ত 1,212 জন, এলোমেলোভাবে ভাগ করা হয়েছে শুধু ওষুধে বা ওষুধের সঙ্গে বাইপাস সার্জারিতে। যারা বরাদ্দ অনুযায়ী চিকিৎসা পেয়েছেন কেবল তাদের বিশ্লেষণ করলে, ওষুধ গ্রুপের 43 শতাংশ মারা গেছেন, সার্জারি গ্রুপের 34 শতাংশের বিপরীতে। পার্থক্যটি পরিসংখ্যানগতভাবে সিগনিফিক্যান্ট।",
+  "Does this trial show that surgery cuts deaths?":
+    "এই ট্রায়াল কি দেখাচ্ছে যে সার্জারি মৃত্যু কমায়?",
+  "Died during follow-up":
+    "ফলো-আপে মারা গেছেন",
+  "Medicine alone":
+    "শুধু ওষুধ",
+  "Medicine":
+    "ওষুধ",
+  "Surgery added":
+    "সার্জারি যুক্ত",
+  "Surgery":
+    "সার্জারি",
+  "Only those who got what they were assigned":
+    "শুধু যারা বরাদ্দ অনুযায়ী পেয়েছেন",
+  "Everyone, as the coin assigned them":
+    "সবাই, কয়েন যেভাবে ভাগ করেছিল",
+  "The patients left out of the first panel":
+    "প্রথম প্যানেল থেকে বাদ পড়া রোগীরা",
+  "Those who followed the protocol":
+    "যারা প্রোটোকল মেনেছেন",
+  "Yes, that is what surgery does":
+    "হ্যাঁ, সার্জারি এটাই করে",
+  "nine points fewer deaths":
+    "নয় পয়েন্ট কম মৃত্যু",
+  "No, and it understates the benefit":
+    "না, বরং সুফলকে কম দেখাচ্ছে",
+  "crossovers dilute a real effect":
+    "ক্রসওভার আসল প্রভাব লঘু করে",
+  "No, that comparison is no longer randomised":
+    "না, ওই তুলনা আর র‍্যান্ডমাইজড নয়",
+  "dying is why some were left out":
+    "মৃত্যুর কারণেই কেউ কেউ বাদ পড়েছেন",
+  "Counting everyone the coin assigned, the difference is not significant.":
+    "কয়েন যাদের যেখানে দিয়েছিল সবাইকে গুনলে, পার্থক্যটি সিগনিফিক্যান্ট নয়।",
+  "The surgical patients who were dropped had mostly died first":
+    "বাদ পড়া সার্জারি রোগীদের বেশির ভাগ আগেই মারা গিয়েছিলেন",
+  "The 120 patients missing from the first panel are not a random sample. Of the 55 dropped from the surgery group, 30 died, and most of them died before they ever reached an operating table. Of the 65 dropped from the medicine group, only 15 died, because crossing over to surgery required living long enough to have it. So the surgical arm shed its worst outcomes and the medical arm lost its best, and the gap nearly doubled without one patient's fate changing:":
+    "প্রথম প্যানেল থেকে অনুপস্থিত 120 জন রোগী এলোমেলো নমুনা নন। সার্জারি গ্রুপ থেকে বাদ পড়া 55 জনের মধ্যে 30 জন মারা গেছেন, এবং তাদের বেশির ভাগই অপারেশন টেবিল পর্যন্ত পৌঁছানোর আগেই মারা গেছেন। ওষুধ গ্রুপ থেকে বাদ পড়া 65 জনের মধ্যে মাত্র 15 জন মারা গেছেন, কারণ সার্জারিতে ক্রসওভার করতে হলে সেই দিন পর্যন্ত বেঁচে থাকা লাগত। ফলে সার্জারি আর্ম তার সবচেয়ে খারাপ ফলাফলগুলো ঝেড়ে ফেলল আর ওষুধ আর্ম হারাল তার সেরাগুলো, আর একজন রোগীরও পরিণতি না বদলে ব্যবধান প্রায় দ্বিগুণ হয়ে গেল:",
+  "All three views of one trial":
+    "এক ট্রায়ালের তিনটি দৃশ্য",
+  "A randomised comparison is only worth something while it is still random. The coin flip made the two groups alike; deciding afterwards who counts, on the basis of something that happened after the flip, undoes that. Here the deciding factor was survival itself, which is the outcome being measured. Counting everyone in the group they were assigned to, whatever happened next, is the analysis that keeps the coin flip intact.":
+    "র‍্যান্ডমাইজড তুলনার দাম ততক্ষণই, যতক্ষণ সেটি সত্যিই র‍্যান্ডম থাকে। কয়েন টস দুই গ্রুপকে একরকম করেছিল; পরে, কয়েন টসের পরে ঘটা কোনো কিছুর ভিত্তিতে কে গোনায় থাকবে তা ঠিক করলে সেটি নষ্ট হয়ে যায়। এখানে নির্ধারক বিষয়টি ছিল বেঁচে থাকা নিজেই, অর্থাৎ যে ফলাফলটি মাপা হচ্ছে সেটিই। পরে যা-ই ঘটুক, প্রত্যেককে তার বরাদ্দ গ্রুপেই গোনা, এটাই সেই বিশ্লেষণ যা কয়েন টসকে অক্ষত রাখে।",
+  "Who the analysis dropped":
+    "বিশ্লেষণ কাদের বাদ দিল",
+  "Intention to treat":
+    "ইনটেনশন টু ট্রিট",
+  "Once you exclude people for what happened after they were randomised, you are no longer comparing the groups the coin made, and the exclusions usually favour one side.":
+    "র‍্যান্ডমাইজেশনের পরে ঘটা কোনো কিছুর জন্য একবার মানুষকে বাদ দিলে, কয়েন যে গ্রুপ দুটি বানিয়েছিল আপনি আর সেগুলোর তুলনা করছেন না, আর এই বাদ দেওয়া সাধারণত এক পক্ষের অনুকূলে যায়।",
+  "This is not a rule that per-protocol analysis is dishonest. It answers a different question, and there are trials where it is the right one to ask. The rule is narrower and harder: any analysis that drops people for something that happened after randomisation has to explain why those people were not different, and when the reason for dropping is entangled with the outcome, no explanation will do.":
+    "এটি এমন কোনো নিয়ম নয় যে পার প্রোটোকল বিশ্লেষণ অসৎ। এটি ভিন্ন একটি প্রশ্নের উত্তর দেয়, আর এমন ট্রায়ালও আছে যেখানে সেটিই সঠিক প্রশ্ন। নিয়মটি আরও সংকীর্ণ এবং আরও কঠিন: র‍্যান্ডমাইজেশনের পরে ঘটা কোনো কিছুর জন্য যে বিশ্লেষণ মানুষকে বাদ দেয়, তাকে ব্যাখ্যা করতে হবে কেন ওই মানুষগুলো আলাদা ছিলেন না, আর বাদ দেওয়ার কারণটি যখন ফলাফলের সঙ্গে জড়িয়ে থাকে, তখন কোনো ব্যাখ্যাই যথেষ্ট নয়।",
+  "Randomisation buys one thing: two groups that differ only by chance, including in all the ways nobody measured. Everything a trial claims rests on that. The trouble is that trials are run on people, who cross over, refuse the operation, stop the tablets or die before treatment starts, and it is tempting to set those people aside and look at the clean comparison underneath. But whether someone stayed on protocol is itself an outcome. Patients who cross from medicine to surgery must survive to be operated on. Patients assigned to surgery who never get it are often the ones too ill to be operated on, or already dead. Removing them is removing patients selected by prognosis, and prognosis is what the trial is measuring. Intention to treat keeps everyone in the arm the coin put them in, which sounds absurd when a patient never received the treatment, and is exactly the point: it measures the effect of the decision to treat, under real conditions, which is also the decision a doctor actually faces. It has a known cost. Crossovers pull the arms together, so intention to treat tends to shrink a real effect towards nothing. That is a conservative failure when you are trying to prove a drug works, and a dangerous one when you are trying to prove a drug is no worse than another, which is why non-inferiority trials report both analyses and are believed only when the two agree.":
+    "র‍্যান্ডমাইজেশন একটি জিনিসই কিনে দেয়: দুটি গ্রুপ যারা কেবল কাকতালীয়ভাবে আলাদা, যার মধ্যে আছে সেই সব দিকও যা কেউ মাপেনি। একটি ট্রায়ালের প্রতিটি দাবি এর উপরেই দাঁড়িয়ে। মুশকিল হলো, ট্রায়াল চলে মানুষের উপরে, আর মানুষ ক্রসওভার করে, অপারেশনে রাজি হয় না, ট্যাবলেট বন্ধ করে দেয় বা চিকিৎসা শুরুর আগেই মারা যায়, আর তখন এদের সরিয়ে রেখে নিচের পরিষ্কার তুলনাটা দেখার লোভ হয়। কিন্তু কেউ প্রোটোকলে থাকল কি না, সেটি নিজেই একটি ফলাফল। ওষুধ থেকে সার্জারিতে যাওয়া রোগীদের অপারেশন পাওয়া পর্যন্ত বেঁচে থাকতে হয়। সার্জারিতে বরাদ্দ যেসব রোগী কখনও তা পান না, তারা প্রায়ই সেই মানুষ যারা অপারেশনের জন্য অতিরিক্ত অসুস্থ, বা ইতিমধ্যেই মৃত। এদের সরানো মানে প্রগনোসিস দিয়ে বাছাই করা রোগীদের সরানো, আর প্রগনোসিসই তো ট্রায়ালটি মাপছে। ইনটেনশন টু ট্রিট প্রত্যেককে সেই আর্মেই রাখে যেখানে কয়েন তাকে ফেলেছিল, যা রোগী চিকিৎসাটি আদৌ না পেলে অদ্ভুত শোনায়, আর ঠিক সেটাই মূল কথা: এটি চিকিৎসার সিদ্ধান্তের প্রভাব মাপে, বাস্তব পরিস্থিতিতে, আর একজন চিকিৎসককে সত্যিই এই সিদ্ধান্তেরই মুখোমুখি হতে হয়। এর একটি জানা মূল্য আছে। ক্রসওভার আর্মগুলোকে কাছাকাছি টেনে আনে, তাই ইনটেনশন টু ট্রিট আসল প্রভাবকে শূন্যের দিকে ছোট করে দেখানোর প্রবণতা রাখে। কোনো ওষুধ কাজ করে তা প্রমাণ করতে গেলে এটি একটি রক্ষণশীল ত্রুটি, আর কোনো ওষুধ অন্যটির চেয়ে খারাপ নয় তা প্রমাণ করতে গেলে বিপজ্জনক, আর এ কারণেই নন-ইনফিরিয়রিটি ট্রায়ালগুলো দুটি বিশ্লেষণই জানায় এবং কেবল দুটি মিললেই বিশ্বাস করা হয়।",
+  "The same trap, without the verdict flipping":
+    "একই ফাঁদ, রায় না বদলেও",
+  "A tuberculosis trial compared shorter regimens with the standard six-month one. In the group treated per protocol, the standard regimen appeared to fail in about 8 percent of patients. Counting everyone who was randomised and had an assessable outcome, it failed in about 16 percent. Almost everyone the per-protocol analysis removed had had an unfavourable outcome, because an unfavourable outcome was frequently the reason they left the protocol. Nothing about the trial's conclusion changed, and every failure rate in it halved.":
+    "একটি যক্ষ্মা ট্রায়াল সংক্ষিপ্ত রেজিমেনগুলোর সঙ্গে প্রচলিত ছয় মাসের রেজিমেনের তুলনা করেছিল। পার প্রোটোকল চিকিৎসিত গ্রুপে প্রচলিত রেজিমেনটি প্রায় 8 শতাংশ রোগীর ক্ষেত্রে ব্যর্থ বলে মনে হয়েছিল। যারা র‍্যান্ডমাইজড হয়েছিলেন এবং যাদের ফলাফল মূল্যায়নযোগ্য ছিল, তাদের সবাইকে গুনলে এটি প্রায় 16 শতাংশে ব্যর্থ হয়। পার প্রোটোকল বিশ্লেষণ যাদের বাদ দিয়েছিল তাদের প্রায় সবারই ফলাফল প্রতিকূল ছিল, কারণ প্রতিকূল ফলাফলই প্রায়ই ছিল তাদের প্রোটোকল ছাড়ার কারণ। ট্রায়ালের সিদ্ধান্তের কিছুই বদলায়নি, অথচ এর প্রতিটি ব্যর্থতার হার অর্ধেক হয়ে গিয়েছিল।",
+  "Intention to treat, a reasoning trap.":
+    "ইনটেনশন টু ট্রিট, একটি যুক্তির ফাঁদ।",
+  "A trial flips a coin so its two groups start out alike. Then real life happens: people switch treatments, refuse the operation, or die before it. It seems only fair to compare the ones who actually got what they were assigned. It is not, because whether someone stuck to the plan depends on how they were doing, and often on whether they survived. Dropping them quietly sorts the groups by prognosis, which is the very thing the trial is trying to measure. Count everyone where the coin put them, and the flattering result can vanish.":
+    "একটি ট্রায়াল কয়েন টস করে যাতে তার দুই গ্রুপ শুরুতে একরকম হয়। তারপর বাস্তব জীবন ঘটে: মানুষ চিকিৎসা বদলায়, অপারেশনে রাজি হয় না, বা তার আগেই মারা যায়। যারা সত্যিই বরাদ্দ চিকিৎসাটি পেয়েছেন কেবল তাদের তুলনা করাই ন্যায্য মনে হয়। তা নয়, কারণ কেউ পরিকল্পনায় টিকে থাকল কি না তা নির্ভর করে সে কেমন ছিল তার উপর, আর প্রায়ই সে বেঁচে ছিল কি না তার উপর। তাদের নিঃশব্দে বাদ দিলে গ্রুপগুলো প্রগনোসিস অনুযায়ী সাজানো হয়ে যায়, যা মাপার জন্যই ট্রায়ালটি করা হচ্ছে। কয়েন যাকে যেখানে রেখেছিল সেখানেই সবাইকে গুনুন, আর তোষামুদে ফলাফলটি উবে যেতে পারে।",
+  "The four counts in the first two panels are printed. The third panel is subtraction over those printed integers rather than figures of its own: 65 and 55 are 602 minus 537 and 610 minus 555, and 15 and 30 are 244 minus 229 and 218 minus 188. It closes three ways. The excluded patients reassemble the as-treated arms, 537 plus 55 and 555 plus 65 giving 592 and 620, which sum to the 1,212 randomised; and total deaths are conserved in every split, 244 plus 218 and 259 plus 203 both giving 462. Note also that the trial's P values, 0.12 as randomised and 0.005 per protocol, come from Cox proportional-hazards models over the whole follow-up, not from these four-cell tables, so they are quoted as the trial's own results and not recomputed here.":
+    "প্রথম দুটি প্যানেলের চারটি সংখ্যা ছাপা আছে। তৃতীয় প্যানেলটি নিজস্ব কোনো সংখ্যা নয়, ওই ছাপা পূর্ণসংখ্যাগুলোর বিয়োগফল: 65 আর 55 হলো 602 বিয়োগ 537 এবং 610 বিয়োগ 555, আর 15 আর 30 হলো 244 বিয়োগ 229 এবং 218 বিয়োগ 188। এটি তিনভাবে মিলে যায়। বাদ পড়া রোগীরা অ্যাজ-ট্রিটেড আর্মগুলো আবার গড়ে তোলে, 537 যোগ 55 এবং 555 যোগ 65 দিলে হয় 592 আর 620, যাদের যোগফল র‍্যান্ডমাইজড 1,212; আর প্রতিটি ভাগেই মোট মৃত্যু অপরিবর্তিত থাকে, 244 যোগ 218 এবং 259 যোগ 203 দুটিই দেয় 462। এটিও লক্ষণীয় যে ট্রায়ালের P মান, র‍্যান্ডমাইজড হিসাবে 0.12 এবং পার প্রোটোকল 0.005, এসেছে পুরো ফলো-আপের উপর Cox proportional-hazards মডেল থেকে, এই চার-ঘরের ছক থেকে নয়, তাই এগুলো ট্রায়ালের নিজস্ব ফলাফল হিসেবেই উদ্ধৃত, এখানে নতুন করে হিসাব করা হয়নি।",
+  "Women with melanoma report burning easily far more often than women without it. How much of that gap is their skin?":
+    "মেলানোমা আছে এমন নারীরা সহজে রোদে পুড়ে যাওয়ার কথা জানান, যাদের নেই তাদের চেয়ে অনেক বেশি। এই ব্যবধানের কতটা আসলে তাদের ত্বক?",
+  "141 women who had been diagnosed with melanoma and 1,094 who had not, asked how their skin responds to the sun. 45 percent of the women with melanoma said they tan little or not at all, against 25 percent of the others. Pale, easily burned skin is a known risk factor, so the finding looks exactly as expected.":
+    "141 জন নারী যাদের মেলানোমা ধরা পড়েছিল এবং 1,094 জন যাদের পড়েনি, তাদের জিজ্ঞেস করা হয়েছিল রোদে তাদের ত্বক কেমন সাড়া দেয়। মেলানোমা আছে এমন নারীদের 45 শতাংশ বলেছেন তাদের ত্বক সামান্য ট্যান হয় বা একেবারেই হয় না, অন্যদের 25 শতাংশের বিপরীতে। ফ্যাকাশে, সহজে পুড়ে যাওয়া ত্বক একটি পরিচিত ঝুঁকির কারণ, তাই ফলাফলটি ঠিক প্রত্যাশিত রকমেরই দেখাচ্ছে।",
+  "Is that twenty point gap what their skin was really like?":
+    "ওই কুড়ি পয়েন্টের ব্যবধান কি সত্যিই তাদের ত্বকের চিত্র?",
+  "Said their skin tans little or not at all":
+    "বলেছেন তাদের ত্বক সামান্য বা একেবারেই ট্যান হয় না",
+  "Women who developed melanoma":
+    "যেসব নারীর মেলানোমা হয়েছিল",
+  "Melanoma":
+    "মেলানোমা",
+  "Women who did not":
+    "যাদের হয়নি",
+  "No melanoma":
+    "মেলানোমা নেই",
+  "Asked after the diagnosis":
+    "রোগ ধরা পড়ার পরে জিজ্ঞাসা",
+  "Asked years before anyone knew":
+    "কেউ জানার বহু বছর আগে জিজ্ঞাসা",
+  "Yes, pale skin is a real risk factor":
+    "হ্যাঁ, ফ্যাকাশে ত্বক সত্যিকারের ঝুঁকির কারণ",
+  "the gap is their skin":
+    "ব্যবধানটাই তাদের ত্বক",
+  "No, the whole association is an artefact":
+    "না, পুরো সম্পর্কটাই কৃত্রিম",
+  "they are reinterpreting their past":
+    "তারা নিজেদের অতীত নতুন করে ব্যাখ্যা করছেন",
+  "Partly, and part of it appeared afterwards":
+    "আংশিক, বাকিটা পরে তৈরি হয়েছে",
+  "real, but not this large":
+    "সত্যি, তবে এত বড় নয়",
+  "These same women had already answered, years earlier.":
+    "এই একই নারীরা বহু বছর আগেও একই প্রশ্নের উত্তর দিয়েছিলেন।",
+  "The question was answered by a different person, in a sense":
+    "এক অর্থে উত্তরটি দিয়েছেন অন্য একজন মানুষ",
+  "Every one of these women filled in the same question before anyone knew who would get melanoma. Back then the gap was thirteen points, not twenty. The women who went on to be diagnosed shifted seven points towards saying they burn; the women who were not diagnosed, answering over the same years, shifted a point the other way. Nobody's skin changed in between. What changed was that some of them had since been asked to explain a cancer:":
+    "এই নারীদের প্রত্যেকে একই প্রশ্নের উত্তর দিয়েছিলেন তখন, যখন কার মেলানোমা হবে তা কেউ জানত না। তখন ব্যবধান ছিল তেরো পয়েন্ট, কুড়ি নয়। যাদের পরে রোগ ধরা পড়ে তারা সাত পয়েন্ট সরে গিয়ে বলেছেন তারা সহজে পুড়ে যান; আর যাদের রোগ ধরা পড়েনি, একই বছরগুলোতে উত্তর দিয়ে, তারা এক পয়েন্ট উল্টো দিকে সরেছেন। এর মধ্যে কারও ত্বক বদলায়নি। যা বদলেছে তা হলো, ইতিমধ্যে তাদের কারও কারও কাছে একটি ক্যানসারের ব্যাখ্যা চাওয়া হয়েছে:",
+  "The same women, asked twice":
+    "একই নারীরা, দুবার জিজ্ঞাসিত",
+  "So the risk factor is real and the study still overstates it: the crude odds ratio these counts give is about 1.8 before the diagnosis and about 2.5 after it, so roughly a third of what the later study measured was not there beforehand. That is the awkward shape of recall bias. It rarely conjures an association out of nothing. It takes a true one and inflates it, which is far harder to spot, because the result still agrees with everything you already believed.":
+    "তাই ঝুঁকির কারণটি সত্যি, আর তবুও গবেষণাটি সেটিকে বাড়িয়ে দেখায়: এই সংখ্যাগুলো থেকে পাওয়া ক্রুড অডস রেশিও রোগ ধরা পড়ার আগে প্রায় 1.8 এবং পরে প্রায় 2.5, অর্থাৎ পরের গবেষণাটি যা মেপেছিল তার মোটামুটি এক-তৃতীয়াংশ আগে ছিলই না। রিকল বায়াসের আকৃতিটি এমনই অস্বস্তিকর। এটি খুব কমই শূন্য থেকে কোনো সম্পর্ক তৈরি করে। এটি একটি সত্যি সম্পর্ককে নিয়ে ফুলিয়ে দেয়, যা ধরা অনেক বেশি কঠিন, কারণ ফলাফলটি তখনও আপনার আগের বিশ্বাসের সঙ্গে মিলে যায়।",
+  "What the diagnosis changed":
+    "রোগনির্ণয় যা বদলে দিল",
+  "Recall bias":
+    "রিকল বায়াস",
+  "People who know how their story ended remember the beginning differently, so asking about the past after the outcome is known measures the outcome as well as the past.":
+    "নিজের গল্পের শেষটা জানা মানুষ শুরুটা অন্যভাবে মনে রাখে, তাই ফলাফল জানার পরে অতীত নিয়ে প্রশ্ন করলে অতীতের সঙ্গে ফলাফলটিও মাপা হয়ে যায়।",
+  "Nobody here is lying. Searching your memory harder because you have been given a reason to search it is an ordinary human thing to do, and the answers that come back are honestly meant. That is what makes it so hard to correct for: there is no dishonest group to exclude and no question you can ask that fixes it, because the more carefully someone thinks about it, the worse it gets.":
+    "এখানে কেউ মিথ্যা বলছেন না। খোঁজার কারণ পেয়ে স্মৃতিতে আরও গভীরভাবে খোঁজা একেবারেই স্বাভাবিক মানবিক আচরণ, আর যে উত্তরগুলো ফিরে আসে সেগুলো সৎভাবেই দেওয়া। এ কারণেই এর সংশোধন এত কঠিন: বাদ দেওয়ার মতো কোনো অসৎ গ্রুপ নেই, আর এমন কোনো প্রশ্নও নেই যা এটি ঠিক করে দেয়, কারণ কেউ যত যত্ন করে ভাববেন, ব্যাপারটা তত খারাপ হবে।",
+  "A case-control study starts from the outcome and works backwards, asking people who have a disease and people who do not what they were exposed to. It is fast, it is cheap, and for a rare disease it is often the only design that will ever be affordable. Its weakness is that one group has been given a reason to search their memory. A diagnosis prompts the question \"why me\", and the mind answers it, reaching for the sunburn, the chemical, the medicine, the difficult pregnancy. The other group has no such prompt and remembers no harder than anyone remembers anything. So the two groups are not just being compared on exposure, they are being compared on how hard they looked. The direction is usually predictable: it inflates whatever the person already suspects is to blame, which means it tends to confirm the hypothesis under test. The defences are all about not relying on memory. Take the exposure from a record written before the outcome, from a prescription database, a workplace log, a stored blood sample, a questionnaire filled in years earlier. Or build in a comparison the mechanism cannot touch, such as a second exposure question that nobody associates with the disease: if the groups drift equally on that one, the drift is not about the disease. What does not work is asking the question more carefully, and what does not work is telling people to be objective.":
+    "একটি কেস-কন্ট্রোল স্টাডি ফলাফল থেকে শুরু করে পেছনের দিকে কাজ করে, রোগ আছে এমন মানুষ আর যাদের নেই তাদের জিজ্ঞেস করে তারা কীসের সংস্পর্শে এসেছিলেন। এটি দ্রুত, সস্তা, আর বিরল রোগের ক্ষেত্রে প্রায়ই এটিই একমাত্র ডিজাইন যা কখনও সাধ্যের মধ্যে থাকে। এর দুর্বলতা হলো, এক গ্রুপকে স্মৃতি হাতড়ানোর একটি কারণ দেওয়া হয়েছে। রোগনির্ণয় \"কেন আমি\" প্রশ্নটি জাগিয়ে তোলে, আর মন তার উত্তর খোঁজে, হাত বাড়ায় রোদে পোড়া, রাসায়নিক, ওষুধ, কঠিন গর্ভাবস্থার দিকে। অন্য গ্রুপের এমন কোনো তাড়না নেই, আর তারা যেকোনো কিছু যতটুকু মনে রাখে তার বেশি খোঁজে না। ফলে দুই গ্রুপের তুলনা কেবল এক্সপোজারের নয়, তারা কতটা খুঁজেছে তারও। দিকটি সাধারণত অনুমেয়: মানুষ যাকে দায়ী বলে সন্দেহ করে এটি সেটিকেই ফুলিয়ে দেয়, অর্থাৎ পরীক্ষাধীন অনুমানটিকেই সমর্থন করার প্রবণতা রাখে। প্রতিরক্ষাগুলো সবই স্মৃতির উপর নির্ভর না করা নিয়ে। এক্সপোজারটি নিন ফলাফল জানার আগে লেখা কোনো নথি থেকে, প্রেসক্রিপশন ডেটাবেস, কর্মস্থলের লগ, সংরক্ষিত রক্তের নমুনা, বছরকয়েক আগে পূরণ করা প্রশ্নপত্র থেকে। অথবা এমন একটি তুলনা ভেতরে রাখুন যেখানে এই প্রক্রিয়াটি পৌঁছাতে পারে না, যেমন দ্বিতীয় একটি এক্সপোজার প্রশ্ন যাকে কেউ রোগটির সঙ্গে যুক্ত করে না: ওই প্রশ্নে যদি দুই গ্রুপ সমানভাবে সরে যায়, তবে সরে যাওয়াটা রোগ নিয়ে নয়। যা কাজ করে না তা হলো প্রশ্নটি আরও যত্ন করে করা, আর যা কাজ করে না তা হলো মানুষকে বস্তুনিষ্ঠ হতে বলা।",
+  "The study everyone credits for this does not show it":
+    "যে গবেষণাকে সবাই এর উৎস বলে, সেটি এটি দেখায় না",
+  "A 1967 Finnish study is cited across the literature as the origin of recall bias. It re-interviewed mothers whose answers had been recorded during pregnancy, and its own text reports no significant difference between the mothers of affected and healthy children in how often the replies disagreed. What it does show, and spectacularly, is something else: only about a quarter of the information collected prospectively reappeared identically at re-interview, and roughly two thirds of the retrospective positive answers had no prospective record behind them, in both groups alike. That is not recall bias, it is a warning that retrospective interviews are unreliable even when nobody is biased at all.":
+    "1967 সালের একটি ফিনিশ গবেষণাকে সাহিত্যজুড়ে রিকল বায়াসের উৎস হিসেবে উদ্ধৃত করা হয়। এতে সেসব মায়ের আবার সাক্ষাৎকার নেওয়া হয়েছিল যাদের উত্তর গর্ভাবস্থার সময়েই লিপিবদ্ধ ছিল, আর গবেষণাটির নিজের লেখাতেই বলা আছে, উত্তরগুলো কত ঘন ঘন মেলেনি তাতে অসুস্থ ও সুস্থ শিশুদের মায়েদের মধ্যে কোনো সিগনিফিক্যান্ট পার্থক্য পাওয়া যায়নি। এটি যা দেখায়, আর তা দেখায় অসাধারণভাবে, তা অন্য কিছু: প্রসপেক্টিভভাবে সংগৃহীত তথ্যের মাত্র এক-চতুর্থাংশের মতো পুনঃসাক্ষাৎকারে হুবহু একইভাবে ফিরে এসেছিল, আর রেট্রোস্পেক্টিভ ইতিবাচক উত্তরের মোটামুটি দুই-তৃতীয়াংশের পেছনে কোনো প্রসপেক্টিভ নথিই ছিল না, দুই গ্রুপেই একইভাবে। সেটি রিকল বায়াস নয়, সেটি একটি সতর্কবার্তা যে রেট্রোস্পেক্টিভ সাক্ষাৎকার অনির্ভরযোগ্য, কারও কোনো বায়াস না থাকলেও।",
+  "And the largest test of it found almost none":
+    "আর এর সবচেয়ে বড় পরীক্ষাটি প্রায় কিছুই পায়নি",
+  "The biggest study of this design compared what parents said in interview against what their family doctor had already written down, for 1,624 children with cancer and 2,524 without. Agreement with the records was poor in places, but it was poor in much the same way in both groups. The authors found essentially no evidence that having a sick child changed how the past was reported. Recall bias is a real mechanism and a reason to prefer records over memory. It is not a law that memory always bends, and a study is not discredited by the mere fact that it asked people to remember.":
+    "এই নকশার সবচেয়ে বড় গবেষণাটি সাক্ষাৎকারে বাবা-মায়ের বলা কথার সঙ্গে তাদের পারিবারিক চিকিৎসকের আগে থেকে লিখে রাখা তথ্য মিলিয়ে দেখেছিল, ক্যানসারে আক্রান্ত 1,624 শিশু এবং ক্যানসার নেই এমন 2,524 শিশুর জন্য। নথির সঙ্গে মিল কোথাও কোথাও খারাপ ছিল, কিন্তু দুই গ্রুপেই তা প্রায় একইভাবে খারাপ ছিল। লেখকরা কার্যত কোনো প্রমাণ পাননি যে অসুস্থ সন্তান থাকা অতীতের বর্ণনার ধরন বদলে দিয়েছে। রিকল বায়াস একটি বাস্তব প্রক্রিয়া এবং স্মৃতির চেয়ে নথিকে অগ্রাধিকার দেওয়ার কারণ। এটি এমন কোনো নিয়ম নয় যে স্মৃতি সবসময় বেঁকে যায়, আর শুধু মানুষকে মনে করতে বলা হয়েছে বলেই কোনো গবেষণা অগ্রহণযোগ্য হয়ে যায় না।",
+  "Recall bias, a reasoning trap.":
+    "রিকল বায়াস, একটি যুক্তির ফাঁদ।",
+  "Ask someone what they were exposed to before they got ill and you are not only asking about the past, you are asking someone who has been given a reason to search it. A diagnosis makes people look harder, and looking harder turns up more. In one study the same women answered the same question about their skin years apart, once before anyone knew and once after a melanoma diagnosis, and the ones who had been diagnosed had shifted. Their skin had not. This rarely invents a finding from nothing. It takes a true one and makes it look bigger, which is much harder to catch, because the answer still agrees with what you expected.":
+    "অসুস্থ হওয়ার আগে কেউ কীসের সংস্পর্শে ছিলেন তা জিজ্ঞেস করলে আপনি কেবল অতীত নিয়ে প্রশ্ন করছেন না, আপনি এমন একজনকে জিজ্ঞেস করছেন যাকে সেই অতীত হাতড়ানোর একটি কারণ দেওয়া হয়েছে। রোগনির্ণয় মানুষকে আরও গভীরভাবে খুঁজতে বাধ্য করে, আর গভীরভাবে খুঁজলে বেশি কিছু মেলে। একটি গবেষণায় একই নারীরা তাদের ত্বক নিয়ে একই প্রশ্নের উত্তর দিয়েছিলেন কয়েক বছরের ব্যবধানে, একবার কেউ কিছু জানার আগে আর একবার মেলানোমা ধরা পড়ার পরে, আর যাদের রোগ ধরা পড়েছিল তাদের উত্তর সরে গিয়েছিল। তাদের ত্বক সরেনি। এটি খুব কমই শূন্য থেকে কোনো ফলাফল বানায়। এটি একটি সত্যি ফলাফলকে বড় দেখায়, যা ধরা অনেক কঠিন, কারণ উত্তরটি তখনও আপনার প্রত্যাশার সঙ্গে মেলে।",
+  "Two things a careful reader should know. First, the reference standard is the woman's own questionnaire filled in before diagnosis, not an external record, so this shows that the answers moved rather than which of the two answers was correct, and the authors' own conclusion is appropriately hedged: tanning ability was the one host factor whose shift was significant in the cases and not in the controls. Second, the paper prints odds ratios of 1.90 and 3.01 for this comparison. Those are the authors' own estimates and are not the crude odds ratios of these four cells, which are 1.80 and 2.55. The two pairs move in the same direction by a similar factor but they are not the same quantity, so only the crude ones, which anyone can recompute from the counts shown, appear in the text above.":
+    "যত্নবান পাঠকের দুটি বিষয় জানা দরকার। প্রথমত, রেফারেন্স স্ট্যান্ডার্ড হলো রোগনির্ণয়ের আগে ওই নারীর নিজের পূরণ করা প্রশ্নপত্র, বাইরের কোনো নথি নয়, তাই এটি দেখায় যে উত্তরগুলো সরে গিয়েছিল, দুটি উত্তরের কোনটি সঠিক ছিল তা নয়, আর লেখকদের নিজেদের সিদ্ধান্তটিও যথাযথভাবে সংযত: ট্যান হওয়ার ক্ষমতাই ছিল একমাত্র হোস্ট ফ্যাক্টর যার পরিবর্তন কেসদের মধ্যে সিগনিফিক্যান্ট ছিল এবং কন্ট্রোলদের মধ্যে ছিল না। দ্বিতীয়ত, গবেষণাপত্রটি এই তুলনার জন্য 1.90 এবং 3.01 অডস রেশিও ছাপে। ওগুলো লেখকদের নিজস্ব হিসাব এবং এই চার ঘরের ক্রুড অডস রেশিও নয়, যেগুলো 1.80 এবং 2.55। জোড়া দুটি একই দিকে প্রায় একই অনুপাতে সরে, কিন্তু সেগুলো একই রাশি নয়, তাই উপরের লেখায় কেবল ক্রুড হিসাবগুলোই আছে, যেগুলো দেখানো সংখ্যা থেকে যে কেউ আবার হিসাব করতে পারেন।",
+  "Patients who were dispensed this drug died far less often than those who were not. Is the drug working?":
+    "যাদের এই ওষুধ দেওয়া হয়েছিল তারা অন্যদের চেয়ে অনেক কম হারে মারা গেছেন। ওষুধটি কি কাজ করছে?",
+  "A cohort is followed from the day each patient enters it. Anyone who is dispensed the drug at any point during follow-up counts as treated; everyone else counts as untreated. 49 percent of the treated died against 71 percent of the untreated, and the drug appears to halve the death rate.":
+    "একটি কোহর্ট অনুসরণ করা হয় প্রত্যেক রোগীর কোহর্টে ঢোকার দিন থেকে। ফলো-আপের যেকোনো সময়ে যাকে ওষুধটি দেওয়া হয়েছে তিনি চিকিৎসিত হিসেবে গোনা হন; বাকি সবাই অচিকিৎসিত। চিকিৎসিতদের 49 শতাংশ মারা গেছেন, অচিকিৎসিতদের 71 শতাংশের বিপরীতে, আর ওষুধটি মৃত্যুহার অর্ধেক করছে বলে মনে হয়।",
+  "Is that gap the drug?":
+    "ওই ব্যবধানটা কি ওষুধের কাজ?",
+  "One patient from each group":
+    "প্রতিটি গ্রুপ থেকে একজন রোগী",
+  "months":
+    "মাস",
+  "entered the cohort":
+    "কোহর্টে ঢুকলেন",
+  "first prescription dispensed":
+    "প্রথম প্রেসক্রিপশন দেওয়া হলো",
+  "follow-up credited to each group":
+    "প্রতিটি গ্রুপের নামে গোনা ফলো-আপ",
+  "Counted, but death was impossible":
+    "গোনা হয়েছে, কিন্তু মৃত্যু অসম্ভব ছিল",
+  "Follow-up credited to each group":
+    "প্রতিটি গ্রুপের নামে গোনা ফলো-আপ",
+  "Counted as on the drug":
+    "ওষুধে আছেন বলে গোনা",
+  "Counted as not on the drug":
+    "ওষুধে নেই বলে গোনা",
+  "As the study counted it":
+    "গবেষণাটি যেভাবে গুনেছিল",
+  "Yes, the drug is keeping them alive":
+    "হ্যাঁ, ওষুধই তাদের বাঁচিয়ে রাখছে",
+  "half the deaths":
+    "অর্ধেক মৃত্যু",
+  "No, the untreated were sicker to begin with":
+    "না, অচিকিৎসিতরা শুরু থেকেই বেশি অসুস্থ ছিলেন",
+  "they were never offered it":
+    "তাদের কখনও এটি দেওয়াই হয়নি",
+  "No, some of that time could not contain a death":
+    "না, ওই সময়ের কিছুটায় মৃত্যু ঘটাই সম্ভব ছিল না",
+  "the clock was started too early":
+    "ঘড়ি অনেক আগে চালু করা হয়েছে",
+  "Half the treated group's follow-up was time in which nobody could die.":
+    "চিকিৎসিত গ্রুপের অর্ধেক ফলো-আপ ছিল এমন সময়, যখন কারও মৃত্যু সম্ভব ছিল না।",
+  "Surviving is what put them in the treated group":
+    "বেঁচে থাকাই তাদের চিকিৎসিত গ্রুপে ঢুকিয়েছে",
+  "This patient was counted as treated from the day they entered, but the prescription was not dispensed until month 11. Those eleven months are immortal: had the patient died in month 6, no prescription would ever have been written and they would have been counted in the other group instead. Death was not merely unlikely in that stretch, it was impossible by the way the groups were defined, and it is credited to the drug all the same:":
+    "এই রোগীকে কোহর্টে ঢোকার দিন থেকেই চিকিৎসিত হিসেবে গোনা হয়েছে, অথচ প্রেসক্রিপশনটি দেওয়া হয়েছিল 11 নম্বর মাসে। ওই এগারো মাস ইমমর্টাল: রোগী যদি 6 নম্বর মাসে মারা যেতেন, কোনো প্রেসক্রিপশনই লেখা হতো না আর তাকে অন্য গ্রুপে গোনা হতো। ওই সময়টুকুতে মৃত্যু কেবল অসম্ভাব্য ছিল না, গ্রুপগুলো যেভাবে সংজ্ঞায়িত হয়েছে তাতে সেটি ছিল অসম্ভব, আর তবুও সেটি ওষুধের নামেই গোনা হচ্ছে:",
+  "The same follow-up, marked":
+    "একই ফলো-আপ, চিহ্নিত করা",
+  "Nothing about the patients has to differ for this to work. Give both groups exactly the same drug, the same illness and the same luck, and the treated group will still come out ahead, because it has been handed a run of guaranteed survival that the other group cannot have. In the published example this is drawn from, the treated group was credited with 291.1 immortal person-years against 276.3 person-years in which it was genuinely at risk: more of its follow-up was impossible-to-die time than was real. Correcting only that moved the hazard ratio from 0.48 to 0.91.":
+    "এটি ঘটার জন্য রোগীদের মধ্যে কোনো পার্থক্য থাকার দরকার নেই। দুই গ্রুপকে ঠিক একই ওষুধ, একই অসুখ আর একই ভাগ্য দিন, তবুও চিকিৎসিত গ্রুপ এগিয়ে থাকবে, কারণ তার হাতে নিশ্চিত বেঁচে থাকার একটি সময় তুলে দেওয়া হয়েছে যা অন্য গ্রুপ পেতেই পারে না। এটি যে প্রকাশিত উদাহরণ থেকে নেওয়া, সেখানে চিকিৎসিত গ্রুপের নামে গোনা হয়েছিল 291.1 ইমমর্টাল পার্সন-ইয়ার, আর সত্যিকারের ঝুঁকিতে থাকা সময় ছিল 276.3 পার্সন-ইয়ার: তার ফলো-আপের বেশি অংশই ছিল মৃত্যু-অসম্ভব সময়, বাস্তব সময়ের চেয়েও বেশি। শুধু এটুকু সংশোধন করাতেই হ্যাজার্ড রেশিও 0.48 থেকে 0.91 এ চলে যায়।",
+  "The stretch before the prescription":
+    "প্রেসক্রিপশনের আগের সময়টুকু",
+  "Immortal time bias":
+    "ইমমর্টাল টাইম বায়াস",
+  "If being in a group requires surviving until something happens, then the time before it happened cannot contain a death, and counting it towards that group manufactures survival out of bookkeeping.":
+    "কোনো গ্রুপে থাকতে গেলে যদি কিছু একটা ঘটা পর্যন্ত বেঁচে থাকতে হয়, তবে সেটি ঘটার আগের সময়ে মৃত্যু ঘটতে পারে না, আর ওই সময়টুকু সেই গ্রুপের নামে গুনলে নিছক হিসাবরক্ষণ থেকেই বেঁচে থাকা তৈরি হয়ে যায়।",
+  "The tell is a group defined by something that occurs after follow-up starts: filled the prescription, had the operation, responded to treatment, won the award, completed the course. Ask what happens to a person who dies the day before. If they land in the comparison group, the clock is wrong. The fix is not a cleverer adjustment: it is to count each person's time as unexposed until the moment they become exposed, and let them switch.":
+    "চিহ্নটি হলো এমন একটি গ্রুপ, যাকে সংজ্ঞায়িত করা হয়েছে ফলো-আপ শুরুর পরে ঘটা কিছু দিয়ে: প্রেসক্রিপশন নিয়েছেন, অপারেশন হয়েছে, চিকিৎসায় সাড়া দিয়েছেন, পুরস্কার জিতেছেন, কোর্স শেষ করেছেন। জিজ্ঞেস করুন, তার আগের দিন যিনি মারা যান তার কী হয়। তিনি যদি তুলনা গ্রুপে গিয়ে পড়েন, তবে ঘড়িটি ভুল। সমাধান কোনো চতুর অ্যাডজাস্টমেন্ট নয়: সমাধান হলো প্রত্যেকের সময়কে এক্সপোজড হওয়ার মুহূর্ত পর্যন্ত আনএক্সপোজড হিসেবে গোনা, আর তারপর তাকে গ্রুপ বদলাতে দেওয়া।",
+  "Cohort studies compare rates, and a rate is deaths divided by time at risk. That denominator is where this hides. Suppose you want to know whether a drug helps, so you follow everyone admitted to hospital and sort them afterwards by whether they were ever dispensed it. The sorting looks innocent, but it uses information from the future: to be dispensed a drug in month 11, you must be alive in month 11. So every patient in the treated group is guaranteed to have survived to their own first prescription, and if you start their clock at admission you credit the treated group with all of that guaranteed survival. The untreated group gets no such gift, because it is where the early deaths necessarily land. The bias is large, it always points the same way, it makes useless drugs look protective, and it does not shrink with a bigger sample, because it is not noise. It also has nothing to do with confounding, which is why adjusting for how ill the patients were does not touch it: you can simulate the whole thing with identical patients and a drug that does nothing. The correct handling is standard and unglamorous. Treat exposure as time-varying: every patient contributes unexposed time from entry until their first prescription and exposed time after it, so nobody is credited to a group before they belong to it. The same trap sits under any claim built on people who finished something, from Academy Award winners living longer than nominees to patients who completed a rehabilitation programme, and in each case the first question is the same: what happens in these numbers to the person who died in the middle?":
+    "কোহর্ট স্টাডি হার তুলনা করে, আর হার মানে মৃত্যু ভাগ ঝুঁকিতে থাকা সময়। ওই হরেই এটি লুকিয়ে থাকে। ধরুন আপনি জানতে চান কোনো ওষুধ কাজে দেয় কি না, তাই আপনি হাসপাতালে ভর্তি সবাইকে অনুসরণ করলেন আর পরে তাদের ভাগ করলেন এই অনুযায়ী যে তাদের কখনও ওষুধটি দেওয়া হয়েছিল কি না। ভাগ করাটা নির্দোষ দেখায়, কিন্তু এতে ভবিষ্যতের তথ্য ব্যবহার হয়: 11 নম্বর মাসে ওষুধ পেতে হলে আপনাকে 11 নম্বর মাসে বেঁচে থাকতে হবে। ফলে চিকিৎসিত গ্রুপের প্রতিটি রোগী নিজের প্রথম প্রেসক্রিপশন পর্যন্ত বেঁচে ছিলেন এটি নিশ্চিত, আর আপনি যদি তাদের ঘড়ি ভর্তির দিন থেকে চালু করেন, তবে ওই নিশ্চিত বেঁচে থাকার পুরোটাই চিকিৎসিত গ্রুপের নামে জমা হয়। অচিকিৎসিত গ্রুপ এমন কোনো উপহার পায় না, কারণ আগেভাগে ঘটা মৃত্যুগুলো অনিবার্যভাবে সেখানেই গিয়ে পড়ে। বায়াসটি বড়, এটি সবসময় একই দিকে যায়, এটি অকেজো ওষুধকে সুরক্ষাদায়ী দেখায়, আর নমুনা বড় করলেও এটি ছোট হয় না, কারণ এটি নয়েজ নয়। কনফাউন্ডিংয়ের সঙ্গেও এর কোনো সম্পর্ক নেই, আর সে কারণেই রোগীরা কতটা অসুস্থ ছিলেন তার জন্য অ্যাডজাস্ট করলে এটি এতটুকুও নড়ে না: অভিন্ন রোগী আর কিছুই করে না এমন একটি ওষুধ দিয়ে গোটা ব্যাপারটি সিমুলেট করা যায়। সঠিক সমাধানটি প্রচলিত এবং নিরুত্তেজ। এক্সপোজারকে সময়-পরিবর্তনশীল হিসেবে ধরুন: প্রতিটি রোগী কোহর্টে ঢোকা থেকে তার প্রথম প্রেসক্রিপশন পর্যন্ত আনএক্সপোজড সময় দেন আর তার পরে এক্সপোজড সময়, ফলে কাউকেই কোনো গ্রুপে ঢোকার আগে সেই গ্রুপের নামে গোনা হয় না। একই ফাঁদ লুকিয়ে থাকে যেকোনো দাবির নিচে যা কিছু শেষ করা মানুষদের নিয়ে গড়া, অস্কারজয়ীরা মনোনীতদের চেয়ে বেশি বাঁচেন থেকে শুরু করে যেসব রোগী পুনর্বাসন কর্মসূচি শেষ করেছেন, আর প্রতিটি ক্ষেত্রেই প্রথম প্রশ্নটি একই: এই সংখ্যাগুলোতে সেই মানুষটির কী হয় যিনি মাঝপথে মারা গেলেন?",
+  "The Oscar winners who did not, after all, live longer":
+    "অস্কারজয়ীরা, যারা শেষ পর্যন্ত বেশি বাঁচেননি",
+  "A well-known study reported that Academy Award winners outlived the actors merely nominated alongside them by nearly four years, and it was widely read as evidence that status is good for your health. But an actor cannot win an award while dead, so every winner was credited with all the years before their win, whereas a nominee who died young could only ever be a nominee. Reanalysing the same data with the award treated as something that happens partway through a life, rather than a property of the whole life, cut the advantage to about a year and it was no longer statistically significant. The original authors later published a null result of their own.":
+    "একটি সুপরিচিত গবেষণা জানিয়েছিল যে অস্কারজয়ীরা তাদের সঙ্গে কেবল মনোনীত অভিনেতাদের চেয়ে প্রায় চার বছর বেশি বেঁচেছেন, আর এটি ব্যাপকভাবে পড়া হয়েছিল এই প্রমাণ হিসেবে যে মর্যাদা স্বাস্থ্যের জন্য ভালো। কিন্তু মৃত অবস্থায় কোনো অভিনেতা পুরস্কার জিততে পারেন না, তাই প্রত্যেক বিজয়ীর নামে জেতার আগের সব বছর জমা হয়েছিল, অথচ অল্প বয়সে মারা যাওয়া কেউ কেবল মনোনীতই থেকে যেতে পারতেন। একই তথ্য নতুন করে বিশ্লেষণ করে, পুরস্কারটিকে গোটা জীবনের বৈশিষ্ট্য না ধরে জীবনের মাঝপথে ঘটা একটি ঘটনা ধরলে, সুবিধাটি নেমে আসে প্রায় এক বছরে আর তা আর পরিসংখ্যানগতভাবে সিগনিফিক্যান্ট থাকে না। মূল লেখকরা পরে নিজেরাই একটি নাল ফলাফল প্রকাশ করেন।",
+  "Immortal time bias, a reasoning trap.":
+    "ইমমর্টাল টাইম বায়াস, একটি যুক্তির ফাঁদ।",
+  "Sort people into groups by something that happens later, and one of those groups gets a hidden head start. To be counted as having taken the drug, you have to live long enough to be given it. So everybody in the treated group is guaranteed to have survived up to their first prescription, and if you count that stretch towards the drug, the drug is credited with survival it had nothing to do with. Anyone who died early is automatically filed under untreated. It works even when the drug does nothing at all, it always points the same way, and a bigger study only makes it more convincing.":
+    "পরে ঘটা কোনো কিছু দিয়ে মানুষকে গ্রুপে ভাগ করুন, আর একটি গ্রুপ গোপনে এগিয়ে থাকার সুযোগ পেয়ে যাবে। ওষুধ নিয়েছেন বলে গোনা হতে হলে আপনাকে সেটি পাওয়া পর্যন্ত বেঁচে থাকতে হবে। ফলে চিকিৎসিত গ্রুপের প্রত্যেকে নিজের প্রথম প্রেসক্রিপশন পর্যন্ত বেঁচে ছিলেন এটি নিশ্চিত, আর ওই সময়টুকু ওষুধের নামে গুনলে ওষুধ এমন বেঁচে থাকার কৃতিত্ব পায় যার সঙ্গে তার কোনো সম্পর্ক নেই। যিনি আগে মারা গেছেন তিনি স্বয়ংক্রিয়ভাবে অচিকিৎসিত খাতে চলে যান। ওষুধ কিছুই না করলেও এটি কাজ করে, এটি সবসময় একই দিকে যায়, আর বড় গবেষণা একে আরও বিশ্বাসযোগ্য করে তোলে।",
+  "The figure above is schematic, like the bomber diagram: two illustrative patients rather than two rows of the dataset, with proportions chosen to echo the published ones (eleven immortal months out of twenty-two counted, against 291.1 immortal person-years out of 567.4 counted, which is 51.3 percent). The numbers that are claims about the world, the death counts and the two hazard ratios, are all in the citation above and none of them is recomputed here: the hazard ratios come from survival models rather than from any two-by-two table, and the paper is a methodological reanalysis in which several cohort definitions are applied to one dataset, so the row is named exactly.":
+    "উপরের চিত্রটি পরিকল্পিত, বোমারু বিমানের ডায়াগ্রামের মতো: ডেটাসেটের দুটি সারি নয়, বরং দৃষ্টান্তমূলক দুজন রোগী, আর অনুপাতগুলো বেছে নেওয়া হয়েছে প্রকাশিত অনুপাতের প্রতিধ্বনি হিসেবে (গোনা বাইশ মাসের মধ্যে এগারো মাস ইমমর্টাল, যার বিপরীতে গোনা 567.4 পার্সন-ইয়ারের মধ্যে 291.1 ইমমর্টাল পার্সন-ইয়ার, অর্থাৎ 51.3 শতাংশ)। যে সংখ্যাগুলো বাস্তব জগৎ নিয়ে দাবি, অর্থাৎ মৃত্যুর সংখ্যা আর দুটি হ্যাজার্ড রেশিও, সবই উপরের উদ্ধৃত সূত্রে আছে আর তার কোনোটিই এখানে নতুন করে হিসাব করা হয়নি: হ্যাজার্ড রেশিওগুলো এসেছে সারভাইভাল মডেল থেকে, কোনো দুই-বাই-দুই ছক থেকে নয়, আর গবেষণাপত্রটি একটি পদ্ধতিগত পুনর্বিশ্লেষণ যেখানে একটি ডেটাসেটে একাধিক কোহর্ট সংজ্ঞা প্রয়োগ করা হয়েছে, তাই সারিটির নাম নির্দিষ্ট করেই বলা হয়েছে।",
+  "A weight-loss trial randomly assigns 400 people to a programme or to usual care. It reports the average weight lost among the 180 programme participants who attended at least eight sessions, and among all 200 controls. The programme wins comfortably.":
+    "একটি ওজন কমানোর ট্রায়াল 400 জনকে এলোমেলোভাবে একটি কর্মসূচিতে বা প্রচলিত পরিচর্যায় ভাগ করে। এটি জানায় কর্মসূচির যে 180 জন অংশগ্রহণকারী অন্তত আটটি সেশনে উপস্থিত ছিলেন তাদের গড় ওজন হ্রাস, আর 200 জন কন্ট্রোলের সবার গড়। কর্মসূচিটি স্বচ্ছন্দে জেতে।",
+  "One arm has been filtered and the other has not. Attending eight sessions is something people who were doing well were more able to do, so the programme group has quietly been reduced to its successes while the control group keeps everybody.":
+    "একটি আর্মকে ছেঁকে নেওয়া হয়েছে, অন্যটিকে নয়। আটটি সেশনে উপস্থিত থাকা তাদের পক্ষেই বেশি সম্ভব ছিল যাদের অবস্থা ভালো যাচ্ছিল, তাই কর্মসূচির গ্রুপটি নিঃশব্দে তার সাফল্যগুলোতে নেমে এসেছে, আর কন্ট্রোল গ্রুপ সবাইকে রেখে দিয়েছে।",
+  "In a surgical trial, some patients assigned to medication deteriorate and are operated on anyway. The analysis counts each patient under the treatment they ended up receiving, and finds surgery ahead.":
+    "একটি সার্জিক্যাল ট্রায়ালে, ওষুধে বরাদ্দ কিছু রোগীর অবস্থার অবনতি হয় এবং তাদের যা হোক অপারেশন করা হয়। বিশ্লেষণটি প্রত্যেক রোগীকে শেষ পর্যন্ত যে চিকিৎসা পেয়েছেন সেই খাতে গোনে, আর সার্জারিকে এগিয়ে পায়।",
+  "Switching happened after the coin flip and for a reason: those patients had to survive long enough to reach the operating table. Counting people by what they received rather than what they were assigned sorts them by how they were doing, which is the thing being measured.":
+    "বদলটি ঘটেছে কয়েন টসের পরে এবং একটি কারণে: ওই রোগীদের অপারেশন টেবিল পর্যন্ত পৌঁছাতে ততদিন বেঁচে থাকতে হয়েছে। বরাদ্দ অনুযায়ী নয়, প্রাপ্ত চিকিৎসা অনুযায়ী মানুষকে গুনলে তারা তাদের অবস্থা অনুযায়ী সাজানো হয়ে যায়, আর সেটিই মাপা হচ্ছে।",
+  "A trial of a daily tablet excludes anyone who took less than 80 percent of their doses, on the grounds that the question is whether the drug works when actually taken. Both arms are filtered the same way.":
+    "দৈনিক একটি ট্যাবলেটের ট্রায়াল তাদের বাদ দেয় যারা নিজেদের ডোজের 80 শতাংশের কম নিয়েছেন, এই যুক্তিতে যে প্রশ্নটি হলো সত্যিই নিলে ওষুধটি কাজ করে কি না। দুটি আর্মকেই একইভাবে ছাঁকা হয়েছে।",
+  "Filtering both arms identically does not repair it. Who manages to take 80 percent of their tablets differs by how well they are and by much else besides, so each arm loses a different kind of patient and the groups the coin made no longer exist.":
+    "দুটি আর্মকে একইভাবে ছাঁকলেই সমস্যাটি সারে না। কে নিজের ট্যাবলেটের 80 শতাংশ নিতে পারেন তা নির্ভর করে তিনি কতটা ভালো আছেন তার উপর, আর আরও অনেক কিছুর উপর, তাই প্রতিটি আর্ম আলাদা ধরনের রোগী হারায় আর কয়েন যে গ্রুপ দুটি বানিয়েছিল সেগুলো আর থাকে না।",
+  "A trial reports that among patients who completed the full twelve months, the new drug halved relapses. A quarter of that arm withdrew before twelve months and are not counted.":
+    "একটি ট্রায়াল জানায় যে পুরো বারো মাস সম্পূর্ণ করা রোগীদের মধ্যে নতুন ওষুধটি রিল্যাপ্স অর্ধেক করেছে। ওই আর্মের এক-চতুর্থাংশ বারো মাসের আগেই সরে গেছেন এবং তাদের গোনা হয়নি।",
+  "People usually withdraw for a reason, and relapsing is one of the commonest. An analysis of completers can turn the drug's failures into people who simply are not in the table.":
+    "মানুষ সাধারণত একটি কারণেই সরে যান, আর রিল্যাপ্স করা তার মধ্যে সবচেয়ে সাধারণগুলোর একটি। কেবল সম্পূর্ণকারীদের নিয়ে করা বিশ্লেষণ ওষুধের ব্যর্থতাগুলোকে এমন মানুষে বদলে দিতে পারে যারা ছকেই নেই।",
+  "Mothers of babies born with a heart defect are interviewed about what they took during pregnancy, alongside mothers of healthy babies. The mothers of affected babies report far more medicine use in the first trimester, and a report concludes the medicines are implicated.":
+    "হৃৎপিণ্ডের ত্রুটি নিয়ে জন্মানো শিশুদের মায়েদের সাক্ষাৎকার নেওয়া হয় গর্ভাবস্থায় তারা কী নিয়েছিলেন তা নিয়ে, পাশাপাশি সুস্থ শিশুদের মায়েদেরও। আক্রান্ত শিশুদের মায়েরা প্রথম ত্রৈমাসিকে অনেক বেশি ওষুধ ব্যবহারের কথা জানান, আর একটি প্রতিবেদন সিদ্ধান্ত টানে যে ওষুধগুলো এর সঙ্গে জড়িত।",
+  "One group has spent months being asked what went wrong and searching for it. The other has had no reason to think about the first trimester at all. The comparison is partly of what was taken and partly of how hard each group looked.":
+    "একটি গ্রুপ মাসের পর মাস ধরে শুনেছে কী ভুল হয়েছিল এই প্রশ্ন, আর নিজেও তা খুঁজেছে। অন্য গ্রুপের প্রথম ত্রৈমাসিক নিয়ে ভাবার কোনো কারণই ছিল না। তুলনাটি আংশিকভাবে কী নেওয়া হয়েছিল তার, আর আংশিকভাবে কোন গ্রুপ কতটা খুঁজেছে তার।",
+  "People with a brain tumour and people without are asked how many hours a week they used a mobile phone ten years ago, and on which side of the head. Those with a tumour report more hours, and more often on the side the tumour is on.":
+    "ব্রেন টিউমার আছে এমন মানুষ আর যাদের নেই তাদের জিজ্ঞেস করা হয় দশ বছর আগে তারা সপ্তাহে কত ঘণ্টা মোবাইল ফোন ব্যবহার করতেন, আর মাথার কোন পাশে। যাদের টিউমার আছে তারা বেশি ঘণ্টার কথা জানান, আর বেশির ভাগ ক্ষেত্রে টিউমার যে পাশে সেই পাশেরই কথা বলেন।",
+  "Nobody can accurately recall a decade of phone habits, so the gap is filled in, and the tumour tells them which side to fill it in on. Billing records would settle it; memory cannot.":
+    "এক দশকের ফোন ব্যবহারের অভ্যাস কেউ নিখুঁতভাবে মনে করতে পারেন না, তাই ফাঁকটা ভরাট করে নেওয়া হয়, আর টিউমারই বলে দেয় কোন পাশে ভরাট করতে হবে। বিলিং রেকর্ড বিষয়টি মীমাংসা করতে পারত; স্মৃতি পারে না।",
+  "After a bowel cancer diagnosis, patients are asked to describe their diet over the previous twenty years, and their answers are compared with those of healthy volunteers of the same age.":
+    "অন্ত্রের ক্যানসার ধরা পড়ার পরে রোগীদের বলা হয় আগের কুড়ি বছরের খাদ্যাভ্যাস বর্ণনা করতে, আর তাদের উত্তর একই বয়সের সুস্থ স্বেচ্ছাসেবকদের উত্তরের সঙ্গে তুলনা করা হয়।",
+  "The patients have already been told which foods are suspected, and are reconstructing twenty years around a diagnosis. The volunteers are reconstructing twenty years around nothing in particular.":
+    "রোগীদের আগেই বলা হয়েছে কোন খাবারগুলো সন্দেহের তালিকায়, আর তারা একটি রোগনির্ণয়কে কেন্দ্র করে কুড়ি বছর সাজিয়ে নিচ্ছেন। স্বেচ্ছাসেবকরা কুড়ি বছর সাজাচ্ছেন এমন কিছু ঘিরে যা বিশেষ কিছুই নয়।",
+  "Workers making a compensation claim for back pain are asked how heavy their lifting used to be, and their answers are compared with those of colleagues who made no claim.":
+    "পিঠের ব্যথার জন্য ক্ষতিপূরণের দাবি করা শ্রমিকদের জিজ্ঞেস করা হয় তাদের কাজে কতটা ভারী জিনিস তুলতে হতো, আর তাদের উত্তর তুলনা করা হয় দাবি না করা সহকর্মীদের উত্তরের সঙ্গে।",
+  "Both groups did the same job. Only one has spent months assembling an account of how demanding it was, and that account is what is being measured.":
+    "দুই গ্রুপই একই কাজ করেছে। কেবল একটি গ্রুপ মাসের পর মাস ধরে সাজিয়েছে কাজটি কতটা কষ্টসাধ্য ছিল তার বিবরণ, আর সেই বিবরণটিই এখানে মাপা হচ্ছে।",
+  "A registry compares patients who received a transplant with those on the waiting list who did not, counting each patient's survival from the day they joined the list. The transplanted group lives far longer.":
+    "একটি রেজিস্ট্রি ট্রান্সপ্ল্যান্ট পাওয়া রোগীদের তুলনা করে অপেক্ষমাণ তালিকার যারা পাননি তাদের সঙ্গে, আর প্রত্যেক রোগীর বেঁচে থাকা গোনে তালিকায় নাম ওঠার দিন থেকে। ট্রান্সপ্ল্যান্ট পাওয়া গ্রুপ অনেক বেশি দিন বাঁচে।",
+  "To be transplanted you must survive until an organ arrives, so everyone in that group is guaranteed to have lived from listing to surgery. Anyone who dies while waiting can only ever be in the other group.":
+    "ট্রান্সপ্ল্যান্ট পেতে হলে অঙ্গ আসা পর্যন্ত আপনাকে বেঁচে থাকতে হবে, তাই ওই গ্রুপের প্রত্যেকে তালিকাভুক্তি থেকে অস্ত্রোপচার পর্যন্ত বেঁচে ছিলেন এটি নিশ্চিত। যিনি অপেক্ষা করতে করতে মারা যান তিনি কেবল অন্য গ্রুপেই থাকতে পারেন।",
+  "A hospital reports that patients who completed the full six-week rehabilitation course had better one-year survival than those who did not, measured from the day of admission.":
+    "একটি হাসপাতাল জানায় যে পুরো ছয় সপ্তাহের পুনর্বাসন কোর্স সম্পূর্ণ করা রোগীদের এক বছরের বেঁচে থাকার হার যারা করেননি তাদের চেয়ে ভালো ছিল, ভর্তির দিন থেকে মেপে।",
+  "Completing six weeks requires being alive for six weeks. The comparison group collects everyone who died in the meantime, and the course is credited with those first six weeks of guaranteed survival.":
+    "ছয় সপ্তাহ সম্পূর্ণ করতে হলে ছয় সপ্তাহ বেঁচে থাকতে হবে। এর মধ্যে যারা মারা গেছেন তারা সবাই তুলনা গ্রুপে জমা হন, আর ওই প্রথম ছয় সপ্তাহের নিশ্চিত বেঁচে থাকার কৃতিত্ব কোর্সটির নামে যায়।",
+  "Using a prescription database, researchers classify each patient as a drug user if they were ever dispensed it during follow-up, and count follow-up from the date of their hospital discharge.":
+    "একটি প্রেসক্রিপশন ডেটাবেস ব্যবহার করে গবেষকরা প্রত্যেক রোগীকে ওষুধ ব্যবহারকারী হিসেবে চিহ্নিত করেন যদি ফলো-আপের কোনো সময়ে তাকে ওষুধটি দেওয়া হয়ে থাকে, আর ফলো-আপ গোনেন তার হাসপাতাল থেকে ছাড়া পাওয়ার তারিখ থেকে।",
+  "The classification uses the future. Time between discharge and the first dispensing cannot contain a death for anyone counted as a user, yet it is credited to the drug. Counting each patient as unexposed until their first prescription removes it.":
+    "শ্রেণিবিভাগটি ভবিষ্যৎ ব্যবহার করছে। ছাড়া পাওয়া আর প্রথম ওষুধ পাওয়ার মাঝের সময়ে ব্যবহারকারী হিসেবে গোনা কারও মৃত্যু ঘটা সম্ভব নয়, তবু সেটি ওষুধের নামে জমা হয়। প্রতিটি রোগীকে তার প্রথম প্রেসক্রিপশন পর্যন্ত আনএক্সপোজড গুনলে এটি চলে যায়।",
+  "An oncology paper reports that patients whose tumour responded to chemotherapy survived longer than non-responders, timing survival from the start of treatment. Response was assessed after three cycles.":
+    "একটি অনকোলজি গবেষণাপত্র জানায় যে যেসব রোগীর টিউমার কেমোথেরাপিতে সাড়া দিয়েছিল তারা সাড়া না দেওয়াদের চেয়ে বেশি দিন বেঁচেছেন, বেঁচে থাকা মাপা হয়েছে চিকিৎসা শুরুর সময় থেকে। সাড়া মূল্যায়ন করা হয়েছিল তিনটি সাইকেলের পরে।",
+  "You cannot be classed as a responder unless you live to the assessment after three cycles. Patients who die during the first two cycles are all non-responders by construction, so the responder group starts with survival built into it.":
+    "তিনটি সাইকেলের পরের মূল্যায়ন পর্যন্ত বেঁচে না থাকলে আপনাকে সাড়াদানকারী হিসেবে গোনা যায় না। প্রথম দুটি সাইকেলে যারা মারা যান তারা গঠনগতভাবেই সবাই সাড়া না দেওয়াদের দলে, তাই সাড়াদানকারী গ্রুপটি শুরুই হয় ভেতরে গাঁথা বেঁচে থাকা নিয়ে।",
+  "A drug-safety study counts each patient as untreated from enrolment until the day of their first prescription, and as treated from that day onwards, so a patient can contribute time to both groups.":
+    "একটি ওষুধ-নিরাপত্তা গবেষণা প্রত্যেক রোগীকে নাম নথিভুক্তি থেকে তার প্রথম প্রেসক্রিপশনের দিন পর্যন্ত অচিকিৎসিত এবং সেই দিন থেকে চিকিৎসিত হিসেবে গোনে, ফলে একজন রোগী দুটি গ্রুপেই সময় দিতে পারেন।",
+  "Nobody is credited to a group before they belong to it, so no stretch of guaranteed survival is handed to the treated group. This is the standard fix, correctly applied.":
+    "কাউকেই কোনো গ্রুপে ঢোকার আগে সেই গ্রুপের নামে গোনা হচ্ছে না, তাই চিকিৎসিত গ্রুপের হাতে নিশ্চিত বেঁচে থাকার কোনো সময় তুলে দেওয়া হচ্ছে না। এটিই প্রচলিত সমাধান, ঠিকভাবে প্রয়োগ করা।",
+  "A study of patients who completed a course of treatment starts everyone's clock at the end of the course, and excludes anyone who died before that point from both groups alike.":
+    "চিকিৎসার একটি কোর্স সম্পূর্ণ করা রোগীদের নিয়ে একটি গবেষণা সবার ঘড়ি চালু করে কোর্স শেষ হওয়ার সময় থেকে, আর তার আগে যারা মারা গেছেন তাদের দুই গ্রুপ থেকেই সমানভাবে বাদ দেয়।",
+  "Starting the clock after the point where group membership was settled means neither group can be credited with survival it was guaranteed. It costs some early data, and it removes the head start.":
+    "গ্রুপ কোনটি তা নির্ধারিত হওয়ার পরে ঘড়ি চালু করার মানে হলো, কোনো গ্রুপই এমন বেঁচে থাকার কৃতিত্ব পাবে না যা তার জন্য নিশ্চিত ছিল। এতে শুরুর কিছু তথ্য হারায়, আর এগিয়ে থাকার সুযোগটি চলে যায়।",
+  "A study of a drug taken in pregnancy takes the exposure from the national prescription database rather than from interviews, then compares outcomes. Neither the mothers nor the researchers supplied the exposure data.":
+    "গর্ভাবস্থায় নেওয়া একটি ওষুধ নিয়ে একটি গবেষণা এক্সপোজারের তথ্য নেয় জাতীয় প্রেসক্রিপশন ডেটাবেস থেকে, সাক্ষাৎকার থেকে নয়, তারপর ফলাফল তুলনা করে। মা বা গবেষক কেউই এক্সপোজারের তথ্য দেননি।",
+  "The exposure was written down before anyone knew the outcome, by someone with no stake in it. That is the standard defence against memory bending, and here it was used.":
+    "এক্সপোজারটি লিপিবদ্ধ হয়েছিল ফলাফল কেউ জানার আগে, এমন কারও হাতে যার এতে কোনো স্বার্থ ছিল না। স্মৃতির বেঁকে যাওয়ার বিরুদ্ধে এটিই প্রচলিত প্রতিরক্ষা, আর এখানে সেটি ব্যবহার করা হয়েছে।",
+  "A case-control study asks about the suspected exposure and also about a second, unrelated one that nobody associates with the disease. Both groups report the second one at the same rate, and the authors say so before reporting the first.":
+    "একটি কেস-কন্ট্রোল স্টাডি সন্দেহভাজন এক্সপোজার নিয়ে প্রশ্ন করে, আর সঙ্গে দ্বিতীয় একটি অসম্পর্কিত এক্সপোজার নিয়েও, যাকে কেউ রোগটির সঙ্গে যুক্ত করে না। দুই গ্রুপই দ্বিতীয়টির কথা একই হারে জানায়, আর লেখকরা প্রথমটির ফল জানানোর আগেই সেটি উল্লেখ করেন।",
+  "The second question is a control for the searching itself. If one group were simply remembering harder across the board, it would show up there too, and it did not.":
+    "দ্বিতীয় প্রশ্নটি খোঁজার প্রবণতাটির জন্যই একটি কন্ট্রোল। একটি গ্রুপ যদি সব বিষয়েই কেবল বেশি মনে করার চেষ্টা করত, তবে সেটি ওখানেও দেখা যেত, আর দেখা যায়নি।",
+  "A trial's main result counts every patient in the group they were randomly assigned to, including the 40 who never started the treatment. A per-protocol analysis is reported alongside it, agrees with it, and is labelled as secondary.":
+    "একটি ট্রায়ালের মূল ফলাফল প্রত্যেক রোগীকে গোনে সেই গ্রুপে যেখানে তাকে এলোমেলোভাবে বরাদ্দ করা হয়েছিল, সেই 40 জনসহ যারা চিকিৎসা কখনও শুরুই করেননি। পাশাপাশি একটি পার প্রোটোকল বিশ্লেষণও জানানো হয়, যা মূল ফলাফলের সঙ্গে মেলে, আর যাকে গৌণ হিসেবে চিহ্নিত করা হয়।",
+  "The randomised comparison is the one the conclusion rests on, the other is shown for completeness, and the two agree. That is how both analyses are supposed to be used.":
+    "সিদ্ধান্ত দাঁড়িয়ে আছে র‍্যান্ডমাইজড তুলনার উপর, অন্যটি দেখানো হয়েছে পূর্ণতার জন্য, আর দুটি মিলে যায়। দুটি বিশ্লেষণ ঠিক এভাবেই ব্যবহার করার কথা।",
+  "A trial testing whether a simpler regimen is no worse than the standard one reports both analyses, notes that counting non-adherent patients in their assigned group tends to make two treatments look alike, and declines to claim non-inferiority because only one of the two analyses supports it.":
+    "একটি সহজতর রেজিমেন প্রচলিতটির চেয়ে খারাপ নয় কি না তা পরীক্ষা করা একটি ট্রায়াল দুটি বিশ্লেষণই জানায়, উল্লেখ করে যে প্রোটোকল না মানা রোগীদের তাদের বরাদ্দ গ্রুপে গুনলে দুটি চিকিৎসাকে একরকম দেখানোর প্রবণতা তৈরি হয়, আর নন-ইনফিরিয়রিটির দাবি করতে অস্বীকার করে কারণ দুটির মধ্যে কেবল একটি বিশ্লেষণ তা সমর্থন করে।",
+  "Counting everyone as assigned is conservative when you are trying to show a difference and permissive when you are trying to show similarity, so a non-inferiority claim needs both analyses to agree. Refusing to claim it when they disagree is the careful move, not the trap.":
+    "বরাদ্দ অনুযায়ী সবাইকে গোনা রক্ষণশীল যখন আপনি পার্থক্য দেখাতে চাইছেন, আর শিথিল যখন আপনি সাদৃশ্য দেখাতে চাইছেন, তাই নন-ইনফিরিয়রিটির দাবির জন্য দুটি বিশ্লেষণেরই মিল দরকার। দুটি না মিললে দাবি করতে অস্বীকার করাই যত্নবান পদক্ষেপ, ফাঁদ নয়।",
 };

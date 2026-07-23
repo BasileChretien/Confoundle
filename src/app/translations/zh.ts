@@ -967,4 +967,278 @@ export const zh: Record<string, string> = {
     "一项新的扫描在同一人群中查出的某种癌症病例数，是过去确诊数的三倍，而被它查出的人结局非常好。该人群中死于这种癌症的人数没有变化。",
   "More cases found, the same number of deaths, and excellent outcomes among the extra cases is the signature of finding disease that was never going to cause harm. The survival figures improve because the denominator filled up with people who were never in danger.":
     "查出的病例更多、死亡人数不变、多出来的那些病例结局又极好，这正是查出了本来就不会造成危害的疾病的标志。生存数字之所以变好，是因为分母里填满了从来就没有危险的人。",
+
+  // ---- intention to treat, recall bias, immortal time ----
+  "Among the patients who actually got the treatment they were assigned, surgery saved lives. Is that the trial's answer?":
+    "在真正接受了所分配治疗的患者中，手术挽救了生命。这就是这项试验的答案吗？",
+  "1,212 people with heart failure, randomly assigned to medicine alone or to medicine plus bypass surgery. Analysing the ones who received what they were assigned, 43 percent of the medicine group died against 34 percent of the surgery group. The difference is statistically significant.":
+    "1,212 名心力衰竭患者，随机分配到单纯药物治疗组或药物加搭桥手术组。只分析那些实际接受了所分配治疗的人，药物组 43% 死亡，手术组 34% 死亡。差异有统计学意义。",
+  "Does this trial show that surgery cuts deaths?":
+    "这项试验能说明手术降低了死亡吗？",
+  "Died during follow-up":
+    "随访期间死亡",
+  "Medicine alone":
+    "单纯药物",
+  "Medicine":
+    "药物",
+  "Surgery added":
+    "加做手术",
+  "Surgery":
+    "手术",
+  "Only those who got what they were assigned":
+    "仅限实际接受所分配治疗者",
+  "Everyone, as the coin assigned them":
+    "全部，按随机分配归组",
+  "The patients left out of the first panel":
+    "第一张图中被排除的患者",
+  "Those who followed the protocol":
+    "遵守方案的人",
+  "Yes, that is what surgery does":
+    "是，手术就是有这个效果",
+  "nine points fewer deaths":
+    "死亡少九个百分点",
+  "No, and it understates the benefit":
+    "不，而且它低估了获益",
+  "crossovers dilute a real effect":
+    "交叉治疗稀释了真实效应",
+  "No, that comparison is no longer randomised":
+    "不，这个比较已不再是随机的",
+  "dying is why some were left out":
+    "有些人被排除正是因为死亡",
+  "Counting everyone the coin assigned, the difference is not significant.":
+    "把随机分配的所有人都计入，差异没有统计学意义。",
+  "The surgical patients who were dropped had mostly died first":
+    "被剔除的手术组患者多数是先死亡了",
+  "The 120 patients missing from the first panel are not a random sample. Of the 55 dropped from the surgery group, 30 died, and most of them died before they ever reached an operating table. Of the 65 dropped from the medicine group, only 15 died, because crossing over to surgery required living long enough to have it. So the surgical arm shed its worst outcomes and the medical arm lost its best, and the gap nearly doubled without one patient's fate changing:":
+    "第一张图中缺失的 120 名患者不是随机样本。手术组被剔除的 55 人中有 30 人死亡，其中多数在上手术台之前就已死亡。药物组被剔除的 65 人中只有 15 人死亡，因为交叉去做手术的前提是活得足够久。于是手术组甩掉了它最差的结局，药物组失去了它最好的结局，差距几乎翻倍，而没有任何一名患者的命运发生改变：",
+  "All three views of one trial":
+    "同一项试验的三种看法",
+  "A randomised comparison is only worth something while it is still random. The coin flip made the two groups alike; deciding afterwards who counts, on the basis of something that happened after the flip, undoes that. Here the deciding factor was survival itself, which is the outcome being measured. Counting everyone in the group they were assigned to, whatever happened next, is the analysis that keeps the coin flip intact.":
+    "随机比较只有在仍然随机的时候才有价值。随机分配让两组变得相似；事后再根据分配之后发生的事情来决定谁算数，就把这一点抹掉了。这里的决定因素正是生存本身，而生存就是被测量的结局。无论之后发生什么，都把每个人计入他被分配到的组，这样的分析才能保住随机分配。",
+  "Who the analysis dropped":
+    "分析剔除了谁",
+  "Intention to treat":
+    "意向性治疗分析",
+  "Once you exclude people for what happened after they were randomised, you are no longer comparing the groups the coin made, and the exclusions usually favour one side.":
+    "一旦你因为随机化之后发生的事情而排除某些人，你比较的就不再是随机分出来的两组，而且这些排除通常偏向其中一方。",
+  "This is not a rule that per-protocol analysis is dishonest. It answers a different question, and there are trials where it is the right one to ask. The rule is narrower and harder: any analysis that drops people for something that happened after randomisation has to explain why those people were not different, and when the reason for dropping is entangled with the outcome, no explanation will do.":
+    "这并不是说符合方案分析不诚实。它回答的是另一个问题，有些试验里那正是该问的问题。规则更窄也更难：任何因随机化之后发生的事情而剔除人群的分析，都必须解释为什么被剔除的这些人没有不同；而当剔除的理由与结局纠缠在一起时，任何解释都无济于事。",
+  "Randomisation buys one thing: two groups that differ only by chance, including in all the ways nobody measured. Everything a trial claims rests on that. The trouble is that trials are run on people, who cross over, refuse the operation, stop the tablets or die before treatment starts, and it is tempting to set those people aside and look at the clean comparison underneath. But whether someone stayed on protocol is itself an outcome. Patients who cross from medicine to surgery must survive to be operated on. Patients assigned to surgery who never get it are often the ones too ill to be operated on, or already dead. Removing them is removing patients selected by prognosis, and prognosis is what the trial is measuring. Intention to treat keeps everyone in the arm the coin put them in, which sounds absurd when a patient never received the treatment, and is exactly the point: it measures the effect of the decision to treat, under real conditions, which is also the decision a doctor actually faces. It has a known cost. Crossovers pull the arms together, so intention to treat tends to shrink a real effect towards nothing. That is a conservative failure when you are trying to prove a drug works, and a dangerous one when you are trying to prove a drug is no worse than another, which is why non-inferiority trials report both analyses and are believed only when the two agree.":
+    "随机化只买到一样东西：两组之间只因偶然而不同，包括在所有没人测量过的方面。试验的一切主张都建立在这一点上。麻烦在于试验做在人身上，人会交叉换组、拒绝手术、停药，或在治疗开始前死亡，于是人们很容易把这些人搁在一边，去看底下那个干净的比较。但一个人是否留在方案内本身就是一种结局。从药物交叉到手术的患者，必须活到能被开刀。被分配到手术却始终没做的患者，往往是病重到无法手术，或者已经死亡。把他们移走，就是按预后来挑选患者，而预后正是试验要测量的东西。意向性治疗分析把每个人留在随机分配给他的组里，当患者根本没接受过该治疗时这听起来很荒谬，而这恰恰是重点：它测量的是决定去治疗这一决策在真实条件下的效应，而这也正是医生实际面对的决定。它有已知的代价。交叉会把两组拉近，所以意向性治疗分析倾向于把真实效应缩小、趋向于零。当你想证明一种药有效时，这是一种保守的失败；当你想证明一种药不劣于另一种时，这就是危险的失败，这也是为什么非劣效性试验会同时报告两种分析，并且只有在两者一致时才被采信。",
+  "The same trap, without the verdict flipping":
+    "同样的陷阱，只是结论没有反转",
+  "A tuberculosis trial compared shorter regimens with the standard six-month one. In the group treated per protocol, the standard regimen appeared to fail in about 8 percent of patients. Counting everyone who was randomised and had an assessable outcome, it failed in about 16 percent. Almost everyone the per-protocol analysis removed had had an unfavourable outcome, because an unfavourable outcome was frequently the reason they left the protocol. Nothing about the trial's conclusion changed, and every failure rate in it halved.":
+    "一项结核病试验把更短的方案与标准的六个月方案作比较。在符合方案分析的人群中，标准方案约有 8% 的患者治疗失败。把所有随机化且结局可评估的人都计入，失败率约为 16%。符合方案分析剔除的人几乎都出现了不良结局，因为不良结局常常正是他们脱离方案的原因。试验的结论没有任何改变，而其中每一个失败率都减半了。",
+  "Intention to treat, a reasoning trap.":
+    "意向性治疗分析，一个推理陷阱。",
+  "A trial flips a coin so its two groups start out alike. Then real life happens: people switch treatments, refuse the operation, or die before it. It seems only fair to compare the ones who actually got what they were assigned. It is not, because whether someone stuck to the plan depends on how they were doing, and often on whether they survived. Dropping them quietly sorts the groups by prognosis, which is the very thing the trial is trying to measure. Count everyone where the coin put them, and the flattering result can vanish.":
+    "试验靠随机分配让两组一开始就相似。然后现实发生了：有人换治疗，有人拒绝手术，有人在手术前死亡。只比较那些真正接受了所分配治疗的人，看起来才公平。其实不然，因为一个人是否坚持了计划，取决于他当时的状况，往往还取决于他是否活了下来。把这些人剔除，等于悄悄按预后给两组分了类，而预后正是试验要测量的东西。把每个人都计入随机分配给他的组，那个漂亮的结果就可能消失。",
+  "The four counts in the first two panels are printed. The third panel is subtraction over those printed integers rather than figures of its own: 65 and 55 are 602 minus 537 and 610 minus 555, and 15 and 30 are 244 minus 229 and 218 minus 188. It closes three ways. The excluded patients reassemble the as-treated arms, 537 plus 55 and 555 plus 65 giving 592 and 620, which sum to the 1,212 randomised; and total deaths are conserved in every split, 244 plus 218 and 259 plus 203 both giving 462. Note also that the trial's P values, 0.12 as randomised and 0.005 per protocol, come from Cox proportional-hazards models over the whole follow-up, not from these four-cell tables, so they are quoted as the trial's own results and not recomputed here.":
+    "前两张图中的四个计数是原文印出的。第三张图是对这些印出的整数做减法，而不是另有一套数字：65 和 55 分别是 602 减 537 和 610 减 555，15 和 30 分别是 244 减 229 和 218 减 188。它在三个方向上都能对上。被排除的患者可以把实际接受治疗的两组重新拼回去，537 加 55 和 555 加 65 得到 592 和 620，两者相加正是随机化的 1,212 人；而在每一种拆分方式下死亡总数都守恒，244 加 218 与 259 加 203 都等于 462。另外要注意，试验的 P 值，按随机分组为 0.12、按符合方案为 0.005，来自覆盖整个随访期的 Cox 比例风险模型，而不是来自这些四格表，所以它们是作为试验自身的结果引用的，本文并未重新计算。",
+  "Women with melanoma report burning easily far more often than women without it. How much of that gap is their skin?":
+    "患黑色素瘤的女性报告皮肤容易晒伤的比例，远高于未患病的女性。这个差距有多少是来自她们的皮肤？",
+  "141 women who had been diagnosed with melanoma and 1,094 who had not, asked how their skin responds to the sun. 45 percent of the women with melanoma said they tan little or not at all, against 25 percent of the others. Pale, easily burned skin is a known risk factor, so the finding looks exactly as expected.":
+    "141 名已确诊黑色素瘤的女性和 1,094 名未确诊的女性，被问及皮肤对日晒的反应。患黑色素瘤的女性中 45% 说自己几乎不晒黑或完全不晒黑，其他人中这一比例为 25%。皮肤白皙、容易晒伤是已知的危险因素，所以这个结果看起来完全符合预期。",
+  "Is that twenty point gap what their skin was really like?":
+    "这二十个百分点的差距，真是她们皮肤本来的样子吗？",
+  "Said their skin tans little or not at all":
+    "自述皮肤几乎不晒黑或完全不晒黑",
+  "Women who developed melanoma":
+    "后来患黑色素瘤的女性",
+  "Melanoma":
+    "黑色素瘤",
+  "Women who did not":
+    "未患病的女性",
+  "No melanoma":
+    "无黑色素瘤",
+  "Asked after the diagnosis":
+    "确诊之后询问",
+  "Asked years before anyone knew":
+    "无人知情前数年询问",
+  "Yes, pale skin is a real risk factor":
+    "是，白皙皮肤确是危险因素",
+  "the gap is their skin":
+    "差距就是她们的皮肤",
+  "No, the whole association is an artefact":
+    "不，整个关联都是假象",
+  "they are reinterpreting their past":
+    "她们在重新解读自己的过去",
+  "Partly, and part of it appeared afterwards":
+    "部分是，另一部分是事后才出现的",
+  "real, but not this large":
+    "真实，但没有这么大",
+  "These same women had already answered, years earlier.":
+    "这些女性在数年前就已经回答过同一个问题。",
+  "The question was answered by a different person, in a sense":
+    "从某种意义上说，回答问题的已是另一个人",
+  "Every one of these women filled in the same question before anyone knew who would get melanoma. Back then the gap was thirteen points, not twenty. The women who went on to be diagnosed shifted seven points towards saying they burn; the women who were not diagnosed, answering over the same years, shifted a point the other way. Nobody's skin changed in between. What changed was that some of them had since been asked to explain a cancer:":
+    "在还没有人知道谁会患黑色素瘤之前，这些女性每一位都填过同样的问题。那时差距是十三个百分点，而不是二十。后来被确诊的女性向容易晒伤那一侧移动了七个百分点；同一段年份里作答、未被确诊的女性则向相反方向移动了一个百分点。这期间没有人的皮肤发生变化。变化的是，其中一些人此后被要求解释一场癌症：",
+  "The same women, asked twice":
+    "同一批女性，被问了两次",
+  "So the risk factor is real and the study still overstates it: the crude odds ratio these counts give is about 1.8 before the diagnosis and about 2.5 after it, so roughly a third of what the later study measured was not there beforehand. That is the awkward shape of recall bias. It rarely conjures an association out of nothing. It takes a true one and inflates it, which is far harder to spot, because the result still agrees with everything you already believed.":
+    "所以这个危险因素是真实的，而研究仍然高估了它：这些计数给出的粗比值比，确诊前约为 1.8，确诊后约为 2.5，因此后一次研究测到的东西里，大约三分之一在此之前并不存在。这就是回忆偏倚令人为难的形态。它很少凭空造出一个关联。它是把一个真实的关联放大，而这要难察觉得多，因为结果仍然与你原本相信的一切相符。",
+  "What the diagnosis changed":
+    "确诊改变了什么",
+  "Recall bias":
+    "回忆偏倚",
+  "People who know how their story ended remember the beginning differently, so asking about the past after the outcome is known measures the outcome as well as the past.":
+    "知道自己故事结局的人，会以不同的方式回忆开头，所以在结局已知之后询问过去，测到的既是过去，也是结局。",
+  "Nobody here is lying. Searching your memory harder because you have been given a reason to search it is an ordinary human thing to do, and the answers that come back are honestly meant. That is what makes it so hard to correct for: there is no dishonest group to exclude and no question you can ask that fixes it, because the more carefully someone thinks about it, the worse it gets.":
+    "这里没有人在说谎。因为有了搜寻的理由而更用力地搜寻记忆，是再普通不过的人之常情，回想出来的答案也是诚实的。这正是它难以校正的原因：没有一个不诚实的群体可以排除，也没有哪个问题问出来就能解决，因为一个人想得越仔细，情况反而越糟。",
+  "A case-control study starts from the outcome and works backwards, asking people who have a disease and people who do not what they were exposed to. It is fast, it is cheap, and for a rare disease it is often the only design that will ever be affordable. Its weakness is that one group has been given a reason to search their memory. A diagnosis prompts the question \"why me\", and the mind answers it, reaching for the sunburn, the chemical, the medicine, the difficult pregnancy. The other group has no such prompt and remembers no harder than anyone remembers anything. So the two groups are not just being compared on exposure, they are being compared on how hard they looked. The direction is usually predictable: it inflates whatever the person already suspects is to blame, which means it tends to confirm the hypothesis under test. The defences are all about not relying on memory. Take the exposure from a record written before the outcome, from a prescription database, a workplace log, a stored blood sample, a questionnaire filled in years earlier. Or build in a comparison the mechanism cannot touch, such as a second exposure question that nobody associates with the disease: if the groups drift equally on that one, the drift is not about the disease. What does not work is asking the question more carefully, and what does not work is telling people to be objective.":
+    "病例对照研究从结局出发向前回溯，询问患病的人和未患病的人各自暴露于什么。它快，它便宜，对罕见病来说往往是唯一负担得起的设计。它的弱点在于其中一组被给了搜寻记忆的理由。一次确诊会引出“为什么是我”这个问题，而大脑会去回答它，抓住那次晒伤、那种化学品、那种药、那次艰难的妊娠。另一组没有这样的提示，回忆得并不比人们平时回忆任何事情更用力。所以这两组被比较的不只是暴露，还有他们各自找得有多用力。方向通常可以预料：它会放大当事人本来就怀疑该负责的那个因素，也就意味着它倾向于确证正在被检验的假设。防御手段都围绕着不依赖记忆。从结局发生之前写下的记录中获取暴露信息：处方数据库、工作场所记录、留存的血样、数年前填写的问卷。或者设置一个该机制触及不到的比较，比如再问一个没有人会把它与该疾病联系起来的暴露问题：如果两组在这个问题上的漂移一样，那么漂移就与疾病无关。不起作用的做法是把问题问得更仔细，同样不起作用的是叮嘱人们要客观。",
+  "The study everyone credits for this does not show it":
+    "人人引用为源头的那项研究，其实并没有证明它",
+  "A 1967 Finnish study is cited across the literature as the origin of recall bias. It re-interviewed mothers whose answers had been recorded during pregnancy, and its own text reports no significant difference between the mothers of affected and healthy children in how often the replies disagreed. What it does show, and spectacularly, is something else: only about a quarter of the information collected prospectively reappeared identically at re-interview, and roughly two thirds of the retrospective positive answers had no prospective record behind them, in both groups alike. That is not recall bias, it is a warning that retrospective interviews are unreliable even when nobody is biased at all.":
+    "1967 年一项芬兰研究在文献中被广泛引作回忆偏倚的起源。该研究对妊娠期已记录过答案的母亲进行了再访谈，其正文报告：患病儿童的母亲与健康儿童的母亲在前后回答不一致的频率上没有显著差异。它确实显示出来的，而且相当惊人的，是另一件事：前瞻性收集的信息中只有约四分之一在再访谈时原样重现，而回顾性的阳性回答里大约三分之二背后没有任何前瞻性记录，两组都是如此。这不是回忆偏倚，而是一个警告：即使没有任何人存在偏倚，回顾性访谈也是不可靠的。",
+  "And the largest test of it found almost none":
+    "而对它最大规模的检验几乎没有发现它",
+  "The biggest study of this design compared what parents said in interview against what their family doctor had already written down, for 1,624 children with cancer and 2,524 without. Agreement with the records was poor in places, but it was poor in much the same way in both groups. The authors found essentially no evidence that having a sick child changed how the past was reported. Recall bias is a real mechanism and a reason to prefer records over memory. It is not a law that memory always bends, and a study is not discredited by the mere fact that it asked people to remember.":
+    "这一设计中规模最大的研究，把父母在访谈中的说法与家庭医生此前已经记录的内容作了比较，涉及 1,624 名患癌儿童和 2,524 名未患癌儿童。与记录的一致性在某些方面很差，但两组差得方式大致相同。作者基本上没有发现证据表明孩子患病会改变父母对过去的报告。回忆偏倚是一个真实存在的机制，也是优先采用记录而非记忆的理由。它并不是一条说记忆总会弯曲的定律，一项研究也不会仅仅因为要求人们回忆就被否定。",
+  "Recall bias, a reasoning trap.":
+    "回忆偏倚，一个推理陷阱。",
+  "Ask someone what they were exposed to before they got ill and you are not only asking about the past, you are asking someone who has been given a reason to search it. A diagnosis makes people look harder, and looking harder turns up more. In one study the same women answered the same question about their skin years apart, once before anyone knew and once after a melanoma diagnosis, and the ones who had been diagnosed had shifted. Their skin had not. This rarely invents a finding from nothing. It takes a true one and makes it look bigger, which is much harder to catch, because the answer still agrees with what you expected.":
+    "问一个人在患病之前暴露于什么，你问的不只是过去，你问的是一个已经被给了理由去搜寻过去的人。确诊会让人找得更用力，而找得更用力就会翻出更多东西。在一项研究中，同一批女性相隔数年回答了关于自己皮肤的同一个问题，一次在无人知情之前，一次在黑色素瘤确诊之后，被确诊的那些人的答案发生了移动。她们的皮肤没有。这很少会凭空造出一个发现。它是把一个真实的发现放大，而这要难察觉得多，因为答案仍然与你的预期相符。",
+  "Two things a careful reader should know. First, the reference standard is the woman's own questionnaire filled in before diagnosis, not an external record, so this shows that the answers moved rather than which of the two answers was correct, and the authors' own conclusion is appropriately hedged: tanning ability was the one host factor whose shift was significant in the cases and not in the controls. Second, the paper prints odds ratios of 1.90 and 3.01 for this comparison. Those are the authors' own estimates and are not the crude odds ratios of these four cells, which are 1.80 and 2.55. The two pairs move in the same direction by a similar factor but they are not the same quantity, so only the crude ones, which anyone can recompute from the counts shown, appear in the text above.":
+    "细心的读者需要知道两件事。第一，参照标准是这些女性自己在确诊前填写的问卷，而不是外部记录，所以这只能说明答案发生了移动，而不能说明两次答案中哪一次是正确的；作者自己的结论也做了恰当的保留：晒黑能力是唯一一个在病例组中移动显著、而在对照组中不显著的宿主因素。第二，论文对这一比较印出的比值比是 1.90 和 3.01。那是作者自己的估计值，并不是这四个格子的粗比值比，后者是 1.80 和 2.55。两组数值移动的方向相同、幅度相近，但它们不是同一个量，所以上文只采用了粗比值比，任何人都可以从所示计数中重新算出来。",
+  "Patients who were dispensed this drug died far less often than those who were not. Is the drug working?":
+    "配发过这种药的患者，死亡率远低于没有配发过的患者。是药起了作用吗？",
+  "A cohort is followed from the day each patient enters it. Anyone who is dispensed the drug at any point during follow-up counts as treated; everyone else counts as untreated. 49 percent of the treated died against 71 percent of the untreated, and the drug appears to halve the death rate.":
+    "一个队列从每位患者进入的那天开始随访。随访期间任何时点被配发过该药的人都算作用药组，其余人算作未用药组。用药组 49% 死亡，未用药组 71% 死亡，该药看上去把死亡率减半了。",
+  "Is that gap the drug?":
+    "这个差距是药造成的吗？",
+  "One patient from each group":
+    "每组各一名患者",
+  "months":
+    "月",
+  "entered the cohort":
+    "进入队列",
+  "first prescription dispensed":
+    "首次配药",
+  "follow-up credited to each group":
+    "计入各组的随访时间",
+  "Counted, but death was impossible":
+    "被计入，但死亡不可能发生",
+  "Follow-up credited to each group":
+    "计入各组的随访时间",
+  "Counted as on the drug":
+    "算作用药",
+  "Counted as not on the drug":
+    "算作未用药",
+  "As the study counted it":
+    "按研究的计法",
+  "Yes, the drug is keeping them alive":
+    "是，药物让他们活了下来",
+  "half the deaths":
+    "死亡少了一半",
+  "No, the untreated were sicker to begin with":
+    "不，未用药者本来就病得更重",
+  "they were never offered it":
+    "他们从未获得用药机会",
+  "No, some of that time could not contain a death":
+    "不，有些时间里不可能出现死亡",
+  "the clock was started too early":
+    "计时开始得太早",
+  "Half the treated group's follow-up was time in which nobody could die.":
+    "用药组一半的随访时间里，没有人可能死亡。",
+  "Surviving is what put them in the treated group":
+    "是活下来才让他们进了用药组",
+  "This patient was counted as treated from the day they entered, but the prescription was not dispensed until month 11. Those eleven months are immortal: had the patient died in month 6, no prescription would ever have been written and they would have been counted in the other group instead. Death was not merely unlikely in that stretch, it was impossible by the way the groups were defined, and it is credited to the drug all the same:":
+    "这位患者从进入队列那天起就被算作用药，但直到第 11 个月才配到药。这十一个月是永生的：如果该患者在第 6 个月死亡，就不会有任何处方开出，他会被算进另一组。在这段时间里死亡不只是不太可能，而是按分组定义根本不可能，可它仍然被算在了药物名下：",
+  "The same follow-up, marked":
+    "同一段随访，标注出来",
+  "Nothing about the patients has to differ for this to work. Give both groups exactly the same drug, the same illness and the same luck, and the treated group will still come out ahead, because it has been handed a run of guaranteed survival that the other group cannot have. In the published example this is drawn from, the treated group was credited with 291.1 immortal person-years against 276.3 person-years in which it was genuinely at risk: more of its follow-up was impossible-to-die time than was real. Correcting only that moved the hazard ratio from 0.48 to 0.91.":
+    "要产生这种效果，患者之间不需要有任何差异。给两组完全相同的药、相同的疾病和相同的运气，用药组仍然会占优，因为它被送了一段另一组不可能拥有的、必然存活的时间。在本例所依据的已发表研究中，用药组被计入 291.1 个永生人年，而真正处于风险中的只有 276.3 人年：它的随访里，不可能死亡的时间比真实的时间还多。仅仅纠正这一点，就把风险比从 0.48 变成了 0.91。",
+  "The stretch before the prescription":
+    "开药之前的那一段",
+  "Immortal time bias":
+    "永生时间偏倚",
+  "If being in a group requires surviving until something happens, then the time before it happened cannot contain a death, and counting it towards that group manufactures survival out of bookkeeping.":
+    "如果进入某一组的前提是活到某件事发生，那么这件事发生之前的时间里就不可能有死亡；把这段时间算给该组，等于用记账方式凭空造出生存。",
+  "The tell is a group defined by something that occurs after follow-up starts: filled the prescription, had the operation, responded to treatment, won the award, completed the course. Ask what happens to a person who dies the day before. If they land in the comparison group, the clock is wrong. The fix is not a cleverer adjustment: it is to count each person's time as unexposed until the moment they become exposed, and let them switch.":
+    "破绽在于：分组依据的是随访开始之后才发生的事情，比如取到药、做了手术、对治疗有反应、获了奖、完成了疗程。问一问，前一天死去的人会怎么样。如果他落进了对照组，那计时就错了。补救办法不是更聪明的校正，而是把每个人在暴露发生之前的时间都算作未暴露，并允许他在中途换组。",
+  "Cohort studies compare rates, and a rate is deaths divided by time at risk. That denominator is where this hides. Suppose you want to know whether a drug helps, so you follow everyone admitted to hospital and sort them afterwards by whether they were ever dispensed it. The sorting looks innocent, but it uses information from the future: to be dispensed a drug in month 11, you must be alive in month 11. So every patient in the treated group is guaranteed to have survived to their own first prescription, and if you start their clock at admission you credit the treated group with all of that guaranteed survival. The untreated group gets no such gift, because it is where the early deaths necessarily land. The bias is large, it always points the same way, it makes useless drugs look protective, and it does not shrink with a bigger sample, because it is not noise. It also has nothing to do with confounding, which is why adjusting for how ill the patients were does not touch it: you can simulate the whole thing with identical patients and a drug that does nothing. The correct handling is standard and unglamorous. Treat exposure as time-varying: every patient contributes unexposed time from entry until their first prescription and exposed time after it, so nobody is credited to a group before they belong to it. The same trap sits under any claim built on people who finished something, from Academy Award winners living longer than nominees to patients who completed a rehabilitation programme, and in each case the first question is the same: what happens in these numbers to the person who died in the middle?":
+    "队列研究比较的是率，而率是死亡数除以危险时间。这个分母就是它藏身之处。假设你想知道一种药是否有效，于是随访所有住院患者，事后按他们是否曾被配发过该药来分组。这种分组看起来无害，但它用到了来自未来的信息：要在第 11 个月拿到药，你必须在第 11 个月还活着。所以用药组里的每一位患者都必然活到了自己的首次处方，而如果你从入院开始给他们计时，就把这段必然存活的时间全都算给了用药组。未用药组得不到这份馈赠，因为早期死亡必然都落在那里。这个偏倚很大，方向始终一致，它让无用的药看起来有保护作用，而且不会因为样本更大而缩小，因为它不是随机误差。它也与混杂无关，这就是为什么校正患者病情轻重对它毫无作用：你可以用完全相同的患者和一种什么也不做的药，把整件事模拟出来。正确的处理方法是标准而不起眼的。把暴露当作时依变量：每位患者从进入队列到首次处方之间贡献未暴露时间，之后贡献暴露时间，这样就没有人会在归属某一组之前被算进该组。同样的陷阱潜伏在任何以完成了某件事的人为基础的说法之下，从奥斯卡获奖者比提名者更长寿，到完成了康复疗程的患者，而每一次要问的第一个问题都一样：在这些数字里，中途死去的那个人去哪儿了？",
+  "The Oscar winners who did not, after all, live longer":
+    "奥斯卡获奖者其实并没有更长寿",
+  "A well-known study reported that Academy Award winners outlived the actors merely nominated alongside them by nearly four years, and it was widely read as evidence that status is good for your health. But an actor cannot win an award while dead, so every winner was credited with all the years before their win, whereas a nominee who died young could only ever be a nominee. Reanalysing the same data with the award treated as something that happens partway through a life, rather than a property of the whole life, cut the advantage to about a year and it was no longer statistically significant. The original authors later published a null result of their own.":
+    "一项著名研究报告说，奥斯卡获奖者比与其一同获得提名的演员多活了将近四年，它被广泛解读为地位有益健康的证据。但演员不可能在死后获奖，所以每位获奖者获奖之前的全部年份都被算在获奖名下，而早逝的被提名者就只能永远是被提名者。把同一批数据重新分析，把获奖当作人生中途发生的一件事，而不是整段人生的一个属性，优势就降到约一年，并且不再有统计学意义。原作者后来自己发表了一个无差异的结果。",
+  "Immortal time bias, a reasoning trap.":
+    "永生时间偏倚，一个推理陷阱。",
+  "Sort people into groups by something that happens later, and one of those groups gets a hidden head start. To be counted as having taken the drug, you have to live long enough to be given it. So everybody in the treated group is guaranteed to have survived up to their first prescription, and if you count that stretch towards the drug, the drug is credited with survival it had nothing to do with. Anyone who died early is automatically filed under untreated. It works even when the drug does nothing at all, it always points the same way, and a bigger study only makes it more convincing.":
+    "按后来才发生的事情给人分组，其中一组就会得到一段隐藏的领先。要被算作用过药，你得活到有人给你开药。所以用药组里的每个人都必然活到了首次处方，而如果把这一段算给药物，药物就被记上了与它无关的生存。任何早期死亡的人都会自动被归入未用药组。哪怕这药什么作用也没有，它照样奏效；方向始终一致；研究规模越大，只会让它看起来越有说服力。",
+  "The figure above is schematic, like the bomber diagram: two illustrative patients rather than two rows of the dataset, with proportions chosen to echo the published ones (eleven immortal months out of twenty-two counted, against 291.1 immortal person-years out of 567.4 counted, which is 51.3 percent). The numbers that are claims about the world, the death counts and the two hazard ratios, are all in the citation above and none of them is recomputed here: the hazard ratios come from survival models rather than from any two-by-two table, and the paper is a methodological reanalysis in which several cohort definitions are applied to one dataset, so the row is named exactly.":
+    "上图是示意图，就像那张轰炸机图一样：画的是两名示例患者，而不是数据集中的两行，比例的选取是为了呼应已发表的数值（计入的二十二个月中有十一个月是永生时间，对应计入的 567.4 人年中有 291.1 人年是永生时间，即 51.3%）。那些对现实世界作出断言的数字，即死亡人数和两个风险比，都出自上面的引文，本文没有重新计算其中任何一个：风险比来自生存模型，而不是来自任何四格表；该论文是一项方法学再分析，对同一个数据集应用了若干种队列定义，因此这一行被精确指明。",
+  "A weight-loss trial randomly assigns 400 people to a programme or to usual care. It reports the average weight lost among the 180 programme participants who attended at least eight sessions, and among all 200 controls. The programme wins comfortably.":
+    "一项减重试验把 400 人随机分配到某项目组或常规照护组。它报告的是至少参加了八次课程的 180 名项目参与者的平均减重，以及全部 200 名对照者的平均减重。项目轻松胜出。",
+  "One arm has been filtered and the other has not. Attending eight sessions is something people who were doing well were more able to do, so the programme group has quietly been reduced to its successes while the control group keeps everybody.":
+    "一组被筛过，另一组没有。能参加八次课程的，更多是本来就进展顺利的人，所以项目组悄悄被缩减成了它的成功者，而对照组保留了所有人。",
+  "In a surgical trial, some patients assigned to medication deteriorate and are operated on anyway. The analysis counts each patient under the treatment they ended up receiving, and finds surgery ahead.":
+    "在一项外科试验中，部分被分配到药物治疗的患者病情恶化，最终还是做了手术。分析按每位患者最终接受的治疗来归组，发现手术占优。",
+  "Switching happened after the coin flip and for a reason: those patients had to survive long enough to reach the operating table. Counting people by what they received rather than what they were assigned sorts them by how they were doing, which is the thing being measured.":
+    "换组发生在随机分配之后，而且事出有因：那些患者必须活得足够久才能上手术台。按实际接受的治疗而不是按分配结果来归组，等于按患者当时的状况给他们分类，而这正是被测量的东西。",
+  "A trial of a daily tablet excludes anyone who took less than 80 percent of their doses, on the grounds that the question is whether the drug works when actually taken. Both arms are filtered the same way.":
+    "一项每日一片的药物试验排除了服药量不足 80% 的所有人，理由是问题在于这药在真正服用时是否有效。两组都用同样的方式筛过。",
+  "Filtering both arms identically does not repair it. Who manages to take 80 percent of their tablets differs by how well they are and by much else besides, so each arm loses a different kind of patient and the groups the coin made no longer exist.":
+    "对两组做同样的筛选并不能补救。谁能吃够 80% 的药片，取决于他的状况以及其他许多因素，所以两组各自失去的是不同类型的患者，随机分出来的两组已不复存在。",
+  "A trial reports that among patients who completed the full twelve months, the new drug halved relapses. A quarter of that arm withdrew before twelve months and are not counted.":
+    "一项试验报告说，在完成全部十二个月的患者中，新药把复发减少了一半。该组有四分之一的人在十二个月前退出，未被计入。",
+  "People usually withdraw for a reason, and relapsing is one of the commonest. An analysis of completers can turn the drug's failures into people who simply are not in the table.":
+    "人们退出通常是有原因的，复发就是最常见的原因之一。只分析完成者，会把药物的失败者变成根本不出现在表里的人。",
+  "Mothers of babies born with a heart defect are interviewed about what they took during pregnancy, alongside mothers of healthy babies. The mothers of affected babies report far more medicine use in the first trimester, and a report concludes the medicines are implicated.":
+    "出生时患有心脏缺陷的婴儿的母亲，与健康婴儿的母亲一起接受访谈，被问及孕期服用过什么。患病婴儿的母亲报告的孕早期用药明显更多，一份报告据此断定这些药物与之有关。",
+  "One group has spent months being asked what went wrong and searching for it. The other has had no reason to think about the first trimester at all. The comparison is partly of what was taken and partly of how hard each group looked.":
+    "一组已经花了好几个月被问哪里出了问题，并且一直在寻找答案。另一组则完全没有理由去回想孕早期。这个比较一部分比的是服用了什么，一部分比的是各组找得有多用力。",
+  "People with a brain tumour and people without are asked how many hours a week they used a mobile phone ten years ago, and on which side of the head. Those with a tumour report more hours, and more often on the side the tumour is on.":
+    "患脑肿瘤的人和未患病的人被问及十年前每周用手机多少小时，以及贴在头的哪一侧。患肿瘤的人报告的小时数更多，而且更常报告在肿瘤所在的那一侧。",
+  "Nobody can accurately recall a decade of phone habits, so the gap is filled in, and the tumour tells them which side to fill it in on. Billing records would settle it; memory cannot.":
+    "没有人能准确回忆十年的用手机习惯，于是空白被填补起来，而肿瘤告诉他们该往哪一侧填。话费记录能解决这个问题，记忆不能。",
+  "After a bowel cancer diagnosis, patients are asked to describe their diet over the previous twenty years, and their answers are compared with those of healthy volunteers of the same age.":
+    "在确诊肠癌之后，患者被要求描述此前二十年的饮食，他们的回答与同龄健康志愿者的回答作比较。",
+  "The patients have already been told which foods are suspected, and are reconstructing twenty years around a diagnosis. The volunteers are reconstructing twenty years around nothing in particular.":
+    "患者已经被告知哪些食物有嫌疑，他们是围绕一次确诊在重建这二十年。志愿者则是在没有任何特定线索的情况下重建这二十年。",
+  "Workers making a compensation claim for back pain are asked how heavy their lifting used to be, and their answers are compared with those of colleagues who made no claim.":
+    "因腰背痛提出工伤赔偿申请的工人被问及他们以前搬举的重量有多大，其回答与未提出申请的同事作比较。",
+  "Both groups did the same job. Only one has spent months assembling an account of how demanding it was, and that account is what is being measured.":
+    "两组做的是同样的工作。只有一组花了几个月整理出一套关于这份工作有多繁重的说法，而被测量的正是这套说法。",
+  "A registry compares patients who received a transplant with those on the waiting list who did not, counting each patient's survival from the day they joined the list. The transplanted group lives far longer.":
+    "一个登记系统把接受了移植的患者与仍在等待名单上未接受移植的患者作比较，每位患者的生存时间从他登记入列那天算起。移植组的生存时间长得多。",
+  "To be transplanted you must survive until an organ arrives, so everyone in that group is guaranteed to have lived from listing to surgery. Anyone who dies while waiting can only ever be in the other group.":
+    "要接受移植，你必须活到有器官可用，所以那一组里的每个人都必然从登记活到了手术。任何在等待中死亡的人，都只能落在另一组。",
+  "A hospital reports that patients who completed the full six-week rehabilitation course had better one-year survival than those who did not, measured from the day of admission.":
+    "一家医院报告说，完成了全部六周康复疗程的患者，一年生存率优于未完成者，生存时间从入院当天算起。",
+  "Completing six weeks requires being alive for six weeks. The comparison group collects everyone who died in the meantime, and the course is credited with those first six weeks of guaranteed survival.":
+    "完成六周的前提是活满六周。对照组收纳了这期间死亡的所有人，而这最初六周必然存活的时间被算在了疗程名下。",
+  "Using a prescription database, researchers classify each patient as a drug user if they were ever dispensed it during follow-up, and count follow-up from the date of their hospital discharge.":
+    "研究者利用处方数据库，把随访期间曾被配发过该药的患者归为用药者，并从其出院日期开始计算随访时间。",
+  "The classification uses the future. Time between discharge and the first dispensing cannot contain a death for anyone counted as a user, yet it is credited to the drug. Counting each patient as unexposed until their first prescription removes it.":
+    "这种分类用到了未来的信息。对任何被算作用药者的人来说，出院到首次配药之间的这段时间不可能出现死亡，却被算在了药物名下。把每位患者在首次处方之前都算作未暴露，就能消除它。",
+  "An oncology paper reports that patients whose tumour responded to chemotherapy survived longer than non-responders, timing survival from the start of treatment. Response was assessed after three cycles.":
+    "一篇肿瘤学论文报告说，肿瘤对化疗有反应的患者比无反应者生存更久，生存时间从治疗开始计算。疗效是在三个周期之后评估的。",
+  "You cannot be classed as a responder unless you live to the assessment after three cycles. Patients who die during the first two cycles are all non-responders by construction, so the responder group starts with survival built into it.":
+    "除非你活到三个周期后的评估，否则不可能被归为有反应者。在前两个周期中死亡的患者，按定义全都是无反应者，所以有反应组从一开始就把生存内置在里面了。",
+  "A drug-safety study counts each patient as untreated from enrolment until the day of their first prescription, and as treated from that day onwards, so a patient can contribute time to both groups.":
+    "一项药物安全性研究把每位患者从入组到首次处方当天之前的时间算作未用药，从那天起算作用药，因此一位患者可以同时向两组贡献时间。",
+  "Nobody is credited to a group before they belong to it, so no stretch of guaranteed survival is handed to the treated group. This is the standard fix, correctly applied.":
+    "没有人在归属某一组之前被算进该组，所以用药组不会被送上一段必然存活的时间。这是标准的补救办法，而且用得正确。",
+  "A study of patients who completed a course of treatment starts everyone's clock at the end of the course, and excludes anyone who died before that point from both groups alike.":
+    "一项针对完成疗程患者的研究，把所有人的计时起点都放在疗程结束时，并且对两组一视同仁地排除在此之前死亡的人。",
+  "Starting the clock after the point where group membership was settled means neither group can be credited with survival it was guaranteed. It costs some early data, and it removes the head start.":
+    "把计时起点放在分组已经确定之后，意味着两组都不会被记上必然获得的生存时间。这会损失一些早期数据，但消除了那段领先。",
+  "A study of a drug taken in pregnancy takes the exposure from the national prescription database rather than from interviews, then compares outcomes. Neither the mothers nor the researchers supplied the exposure data.":
+    "一项关于孕期用药的研究，从全国处方数据库而不是从访谈中获取暴露信息，然后比较结局。暴露数据既不是由母亲提供的，也不是由研究者提供的。",
+  "The exposure was written down before anyone knew the outcome, by someone with no stake in it. That is the standard defence against memory bending, and here it was used.":
+    "暴露是在任何人知道结局之前，由与此事无利害关系的人记录下来的。这是防止记忆变形的标准做法，这里用上了。",
+  "A case-control study asks about the suspected exposure and also about a second, unrelated one that nobody associates with the disease. Both groups report the second one at the same rate, and the authors say so before reporting the first.":
+    "一项病例对照研究既询问了可疑暴露，也询问了第二个无关的、没人会把它与该疾病联系起来的暴露。两组报告第二个暴露的比例相同，作者在报告第一个暴露之前先说明了这一点。",
+  "The second question is a control for the searching itself. If one group were simply remembering harder across the board, it would show up there too, and it did not.":
+    "第二个问题是对搜寻行为本身的对照。如果某一组只是整体上回忆得更用力，那在这个问题上也会显现出来，而事实并没有。",
+  "A trial's main result counts every patient in the group they were randomly assigned to, including the 40 who never started the treatment. A per-protocol analysis is reported alongside it, agrees with it, and is labelled as secondary.":
+    "一项试验的主要结果把每位患者都计入他被随机分配到的组，包括从未开始治疗的 40 人。符合方案分析与之并列报告，结果一致，并被标注为次要分析。",
+  "The randomised comparison is the one the conclusion rests on, the other is shown for completeness, and the two agree. That is how both analyses are supposed to be used.":
+    "结论依据的是随机比较，另一个只是为完整起见列出，两者一致。这正是两种分析本该被使用的方式。",
+  "A trial testing whether a simpler regimen is no worse than the standard one reports both analyses, notes that counting non-adherent patients in their assigned group tends to make two treatments look alike, and declines to claim non-inferiority because only one of the two analyses supports it.":
+    "一项检验更简单的方案是否不劣于标准方案的试验同时报告了两种分析，指出把依从性差的患者仍计入其分配组会倾向于让两种治疗看起来相似，并且因为两种分析中只有一种支持，而未宣称非劣效。",
+  "Counting everyone as assigned is conservative when you are trying to show a difference and permissive when you are trying to show similarity, so a non-inferiority claim needs both analyses to agree. Refusing to claim it when they disagree is the careful move, not the trap.":
+    "按分配计入所有人，在你想证明存在差异时是保守的，在你想证明相似时则是宽松的，所以非劣效的结论需要两种分析一致。当两者不一致时拒绝下这个结论，是审慎之举，而不是陷阱。",
 };

@@ -128,6 +128,17 @@ export const TimelineTrack = z.object({
   onsetAt: z.number().nonnegative(), // when the disease actually began
   detectedAt: z.number().nonnegative(), // when it was found
   diedAt: z.number().nonnegative(), // when the person died
+  /**
+   * The instant a person genuinely joined the group they were counted in, when
+   * that is later than the start of their track. Everything before it is
+   * IMMORTAL time: stretch counted towards a group during which the person
+   * could not possibly have died, because dying would have kept them out of
+   * that group.
+   *
+   * Optional, and absent from every existing puzzle. Lead-time and length-time
+   * have no such stretch; immortal time bias is nothing but that stretch.
+   */
+  immortalUntil: z.number().nonnegative().optional(),
 });
 export type TimelineTrack = z.infer<typeof TimelineTrack>;
 
@@ -140,6 +151,8 @@ const TimelineData = z.object({
   detectedLabel: LocalizedText, // "diagnosed"
   diedLabel: LocalizedText, // "died"
   survivalLabel: LocalizedText, // "survival after diagnosis"
+  /** Names the shaded stretch, e.g. "counted, but could not yet have died". */
+  immortalLabel: LocalizedText.optional(),
   tracks: z.array(TimelineTrack).min(2),
 });
 export type TimelineData = z.infer<typeof TimelineData>;
@@ -221,6 +234,8 @@ export const DataView = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("lifespan"), ...viewFields }),
   z.object({ kind: z.literal("relative"), ...viewFields }),
   z.object({ kind: z.literal("absolute"), ...viewFields }),
+  z.object({ kind: z.literal("counted"), ...viewFields }),
+  z.object({ kind: z.literal("immortal"), ...viewFields }),
 ]);
 export type DataView = z.infer<typeof DataView>;
 export type DataViewKind = DataView["kind"];
@@ -570,7 +585,32 @@ export const Puzzle = z
             message: `diedAt (${tr.diedAt}) runs past the axis span (${d.span})`,
           });
         }
+        // Immortal time is a stretch of the track, so it has to lie on it. A
+        // stretch running past the death would be claiming a person was
+        // guaranteed alive after they died.
+        if (tr.immortalUntil !== undefined) {
+          if (tr.immortalUntil < tr.onsetAt || tr.immortalUntil > tr.diedAt) {
+            ctx.addIssue({
+              code: z.ZodIssueCode.custom,
+              path: at("immortalUntil"),
+              message: `immortalUntil (${tr.immortalUntil}) falls outside the track (${tr.onsetAt} to ${tr.diedAt})`,
+            });
+          }
+        }
       });
+
+      // A view that shades immortal time needs at least one track to have some,
+      // or the reveal draws nothing and the beat is empty.
+      const shadesImmortal = [p.setup.initialView, p.reveal.view].some(
+        (v) => v.kind === "immortal",
+      );
+      if (shadesImmortal && !d.tracks.some((tr) => tr.immortalUntil !== undefined)) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ["setup", "data", "tracks"],
+          message: "an immortal view needs at least one track with immortalUntil",
+        });
+      }
     }
   });
 export type Puzzle = z.infer<typeof Puzzle>;

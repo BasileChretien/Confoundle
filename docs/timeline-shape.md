@@ -69,10 +69,11 @@ so the renderer should make that vertical line unmissable.
 5. `ShareCard.tsx`: `TimelineGlyph` on the dark plate and its dispatch branch.
 6. The puzzle data file, Trap Hunt items, nine translations.
 
-## What the next tenant needs
+## What the next tenant needed, and what it cost
 
 **Length-time bias** and **immortal time bias** reuse the shape but not the
-`lifespan` view, because their reveal is not an alignment:
+`lifespan` view, because their reveal is not an alignment. Both have since
+shipped, and the immortal-time prediction below turned out to be exactly right.
 
 - Length-time needs several tracks with *different* `onsetAt`-to-`diedAt`
   lengths, and a view that shows which ones a periodic screen is likely to
@@ -81,6 +82,38 @@ so the renderer should make that vertical line unmissable.
 - Immortal time needs a stretch of a track marked as "counted as exposed but
   could not have died yet". That is one more optional field on a track, plus a
   view that shades it.
+
+### What immortal time actually cost (puzzle #16)
+
+One optional field and two view kinds, with no existing puzzle touched:
+
+- `TimelineTrack.immortalUntil?: number`, the instant the person genuinely
+  joined the group they were being counted in. Optional, never `.default()`, so
+  lead-time and length-time are unaffected.
+- `TimelineData.immortalLabel?`, which names the hatched stretch in the legend.
+- Two `DataView` kinds, `counted` and `immortal`, plus their `scopeLabel`
+  entries. No new share-card glyph: `ShareCard` dispatches on the data *type*,
+  so every timeline puzzle already had one.
+
+Three decisions worth keeping:
+
+1. **The two views are one component with a flag**, not two components. They
+   draw the same bar from the same numbers; the only difference is whether the
+   guaranteed-alive stretch is struck out. If they could differ in any other
+   way, the puzzle would be showing two pictures rather than one picture twice,
+   which is the thing this whole engine exists to avoid.
+2. **Hatched, not merely paler.** The shaded stretch has to read as "this does
+   not count" in greyscale and in a screenshot, so it is a repeating gradient
+   rather than a lower opacity.
+3. **The schema refuses an `immortal` view with nothing to shade.** Otherwise
+   the reveal renders identically to the setup and the beat carries no
+   information, which is the same failure the registry test guards against at
+   the level of view kinds.
+
+The `counted` view deliberately has **no heading of its own**. The figure title
+and the scope tag beside it already name it, and a third label saying the same
+thing was just noise at 375px. An earlier draft had a `countedLabel` field for
+it; it was removed rather than shipped unused.
 
 ## Content: sourcing lead-time bias
 

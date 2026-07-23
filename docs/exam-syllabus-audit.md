@@ -315,9 +315,9 @@ consensus only · **X** absent from official documents.
 | Confounding (general) | A | A | O | X | via Simpson's, indication |
 | Selection bias (general) | X | A | O | X | via Berkson, survivorship |
 | Information / classification bias | X | A | O | X | **gap** |
-| Recall bias | X | **A** | O | X | **gap, sourcing** |
-| Attrition / loss to follow-up | X | **A** | O | X | **gap** |
-| Intention to treat vs per protocol | O | **A** | O | X | **gap, sourcing** |
+| Recall bias | X | **A** | O | X | **shipped** |
+| Attrition / loss to follow-up | X | **A** | O | X | **gap**; partly inside intention to treat |
+| Intention to treat vs per protocol | O | **A** | O | X | **shipped** |
 | Lead-time bias | X | **A** | O | (once) | shipped |
 | Length-time bias | X | **A** | O | X | **shipped**; also in Korea 2026 paper |
 | Overdiagnosis | X | **A** | T | **A** | inside length-time |
@@ -341,11 +341,78 @@ consensus only · **X** absent from official documents.
 | Spectrum bias | X | **X** | **X** | X | shipped (consensus only) |
 | Will Rogers phenomenon | X | X | X | X | shipped (consensus only) |
 | Prosecutor's fallacy | X | X | X | X | shipped (not a medical exam topic) |
-| Immortal time bias | X | **X** | T | X | **gap, sourced and ready** |
+| Immortal time bias | X | **X** | T | X | **shipped** |
 | Healthy worker / healthy user | X | X | T | X | partly inside indication |
 | Hawthorne effect | X | X | **O** | X | **gap** |
 | Neyman / prevalence-incidence | X | X | T | X | **gap** |
 | Cognitive: anchoring, availability, framing | named as a category | **X** | O | postgrad | **gap, needs a new beat** |
+
+## Built from this document
+
+Three of the entries below have since shipped as puzzles, from exactly the
+counts recorded here: **intention to treat versus per protocol** (STICH),
+**recall bias** (Norwegian Women and Cancer) and **immortal time bias**
+(Suissa). Two corrections came out of building them, and both are the kind this
+document exists to catch.
+
+- **The recall-bias odds ratios cannot be recomputed from the counts.** The
+  paper prints 1.90 and 3.01; the crude two-by-two odds ratios of the four cells
+  are 1.80 and 2.55. Both pairs move the same way by a similar factor, but they
+  are not the same quantity, so the puzzle quotes only the derived ones and its
+  provenance note says why. The direction of the lesson is unaffected.
+- **The intention-to-treat puzzle gained a third panel** that was not in the
+  plan: the 120 patients the per-protocol set excludes, at 15 of 65 and 30 of
+  55. It is pure subtraction over printed integers, it closes three ways, and it
+  is the mechanism made visible rather than asserted. Without it the reveal is
+  "the number changed"; with it, the reveal is why.
+
+Ready to build next, with counts verified this session and written up in full
+under `scratchpad/research/`:
+
+- **Nocebo / side effects on placebo.** StatinWISE, Herrett E et al, BMJ
+  2021;372:n135, Table 2, p. 5, CC BY. Muscle symptoms reported in 248 of 397
+  statin periods (62.5 percent) against 239 of 388 placebo periods (61.6
+  percent). All eight integers printed. **Denominators are two-month treatment
+  periods, not people**, and the puzzle must say so. ASCOT-LLA was checked and
+  rejected: its denominators are person-time, and deriving crude proportions
+  from its printed counts reverses the open-label finding.
+- **Attrition, as post-randomisation exclusion.** X:BOT, Lee JD et al, Lancet
+  2018;391(10118):309-318, free at PMC5806119, Table 2. Relapse among those who
+  actually started the drug: **106/204** on extended-release naltrexone against
+  **150/270** on buprenorphine-naloxone, which makes naltrexone look equal or
+  better. Among everyone randomised: **185/283** against **163/287**, and the
+  direction flips. The mechanism is unusually clean: only 204 of 283 could start
+  naltrexone against 270 of 287 for buprenorphine, because naltrexone requires
+  full detoxification first or it precipitates withdrawal, and **all 79 excluded
+  patients relapsed**. Every printed percentage and odds ratio reproduces from
+  the crude counts, and the denominators are independently confirmed by the
+  ClinicalTrials.gov posting for NCT02032433. The survival rows are medians and
+  hazard ratios and are not usable as counts. Word the lesson as
+  post-randomisation exclusion rather than classical loss to follow-up.
+- **Blinding, observer / detection bias.** The "same patients, two assessors"
+  design, where one assessor knew the allocation and the other did not.
+  Meta-analytic: Salazar J et al, J Clin Epidemiol 2025;183:111787, open access,
+  43 trials and 7,055 patients, pooled ratio of odds ratios **0.71 (0.55 to
+  0.92)**, so non-blinded assessors exaggerated by about 29 percent; the earlier
+  binary study is Hrobjartsson A et al, BMJ 2012;344:e1119, ROR 0.64 (0.43 to
+  0.96). **No per-trial raw counts exist** in either appendix, and the pooled
+  integers have no per-arm denominators, so no rates are derivable from them.
+  One constituent trial does print usable counts: Brandstrup B et al, Ann Surg
+  2003;238:641-648, free in PMC, the same 172 patients assessed twice, 27/86
+  against 47/86 unblinded and 28/86 against 44/86 blinded. Be honest that this
+  attenuates rather than vanishes. Noseworthy 1994 could not be reached and is
+  flagged do-not-ship.
+- **Ecological fallacy.** Robinson WS, Am Soc Rev 1950;15(3):351-357, Table 3
+  and Figure 3, p. 354, verified against two independent scans. **The sign
+  convention in the earlier note here was wrong**: Robinson's outcome is
+  ILLITERACY, not literacy, so the individual correlation is +.118 and the
+  ecological one is -.619 across divisions and -.526 across states. Individual
+  counts are printed (1,304 illiterate of 13,217 foreign born; 2,614 of 84,055
+  native born, in thousands) and reproduce the printed .118 exactly. No
+  per-state counts are printed, so the group-level view cannot be authored as
+  integers from Robinson alone. Note also te Grotenhuis et al, Int J Epidemiol
+  2011, which corrects the state-level figure to about -0.462 on weighting; the
+  reversal survives.
 
 ## Sourced and ready to build
 

@@ -46,6 +46,52 @@ export function leadTimeSpread(data: TimelineData): number {
   return Math.max(...durations) - Math.min(...durations);
 }
 
+/**
+ * Immortal time: the stretch a person was credited to a group during which
+ * they could not have died, because dying would have kept them out of it.
+ *
+ * The quantity that matters is not its length but its SHARE of the time the
+ * group was credited with, because that share is the factor by which the
+ * group's death rate is diluted. A group whose follow-up is half immortal has
+ * its rate halved before a single patient is treated.
+ */
+export function immortalTime(track: TimelineTrack): number {
+  return track.immortalUntil == null ? 0 : track.immortalUntil - track.onsetAt;
+}
+
+/** Time on the track during which the person genuinely could have died. */
+export function atRiskTime(track: TimelineTrack): number {
+  return track.diedAt - (track.immortalUntil ?? track.onsetAt);
+}
+
+/** Time the group was credited with, immortal stretch included. */
+export function countedTime(track: TimelineTrack): number {
+  return track.diedAt - track.onsetAt;
+}
+
+export interface ImmortalSummary {
+  counted: number;
+  immortal: number;
+  atRisk: number;
+  /** Immortal time as a share of what was counted, 0 when nothing was counted. */
+  share: number;
+}
+
+export function immortalSummary(data: TimelineData): ImmortalSummary {
+  let counted = 0;
+  let immortal = 0;
+  for (const track of data.tracks) {
+    counted += countedTime(track);
+    immortal += immortalTime(track);
+  }
+  return {
+    counted,
+    immortal,
+    atRisk: counted - immortal,
+    share: counted > 0 ? immortal / counted : 0,
+  };
+}
+
 /** Format a duration for display, dropping a trailing ".0". */
 export function formatDuration(value: number): string {
   return Number.isInteger(value) ? String(value) : value.toFixed(1);

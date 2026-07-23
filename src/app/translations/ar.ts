@@ -985,4 +985,278 @@ export const ar: Record<string, string> = {
     "يجد تصوير جديد من حالات سرطان ما ثلاثة أضعاف ما كان يُشخَّص سابقاً في السكان أنفسهم، ومن يجدهم تكون مآلاتهم ممتازة. أما الوفيات بذلك السرطان بين السكان فلم تتغير.",
   "More cases found, the same number of deaths, and excellent outcomes among the extra cases is the signature of finding disease that was never going to cause harm. The survival figures improve because the denominator filled up with people who were never in danger.":
     "اكتشاف حالات أكثر، مع العدد نفسه من الوفيات، ومآلات ممتازة بين الحالات الإضافية، هو بصمة اكتشاف مرض لم يكن ليسبب أي ضرر أصلاً. فأرقام البقاء تتحسن لأن المقام امتلأ بأشخاص لم يكونوا في خطر قط.",
+
+  // ---- intention to treat, recall bias, immortal time ----
+  "Among the patients who actually got the treatment they were assigned, surgery saved lives. Is that the trial's answer?":
+    "بين المرضى الذين تلقوا فعلاً العلاج المخصص لهم، أنقذت الجراحة أرواحاً. فهل هذه هي إجابة التجربة؟",
+  "1,212 people with heart failure, randomly assigned to medicine alone or to medicine plus bypass surgery. Analysing the ones who received what they were assigned, 43 percent of the medicine group died against 34 percent of the surgery group. The difference is statistically significant.":
+    "1,212 شخصاً مصاباً بقصور القلب، وُزّعوا عشوائياً إلى الدواء وحده أو إلى الدواء مع جراحة المجازة. وبتحليل من تلقّوا ما خُصّص لهم، تُوفي 43 بالمئة من مجموعة الدواء مقابل 34 بالمئة من مجموعة الجراحة. والفرق دال إحصائياً.",
+  "Does this trial show that surgery cuts deaths?":
+    "هل تُظهر هذه التجربة أن الجراحة تخفض الوفيات؟",
+  "Died during follow-up":
+    "تُوفّوا خلال المتابعة",
+  "Medicine alone":
+    "الدواء وحده",
+  "Medicine":
+    "الدواء",
+  "Surgery added":
+    "بإضافة الجراحة",
+  "Surgery":
+    "الجراحة",
+  "Only those who got what they were assigned":
+    "فقط من تلقّوا ما خُصّص لهم",
+  "Everyone, as the coin assigned them":
+    "الجميع، كما وزّعتهم القرعة",
+  "The patients left out of the first panel":
+    "المرضى المستبعدون من اللوحة الأولى",
+  "Those who followed the protocol":
+    "من التزموا بالبروتوكول",
+  "Yes, that is what surgery does":
+    "نعم، هذا ما تفعله الجراحة",
+  "nine points fewer deaths":
+    "تسع نقاط أقل في الوفيات",
+  "No, and it understates the benefit":
+    "لا، وهي تقلّل من شأن الفائدة",
+  "crossovers dilute a real effect":
+    "الانتقالات تُخفّف أثراً حقيقياً",
+  "No, that comparison is no longer randomised":
+    "لا، تلك المقارنة لم تعد معشّاة",
+  "dying is why some were left out":
+    "الوفاة هي سبب استبعاد بعضهم",
+  "Counting everyone the coin assigned, the difference is not significant.":
+    "بحساب كل من وزّعتهم القرعة، الفرق غير دال.",
+  "The surgical patients who were dropped had mostly died first":
+    "مرضى الجراحة المستبعدون كانوا في معظمهم قد ماتوا أولاً",
+  "The 120 patients missing from the first panel are not a random sample. Of the 55 dropped from the surgery group, 30 died, and most of them died before they ever reached an operating table. Of the 65 dropped from the medicine group, only 15 died, because crossing over to surgery required living long enough to have it. So the surgical arm shed its worst outcomes and the medical arm lost its best, and the gap nearly doubled without one patient's fate changing:":
+    "المرضى الـ 120 الغائبون عن اللوحة الأولى ليسوا عينة عشوائية. فمن بين 55 مستبعداً من مجموعة الجراحة، تُوفي 30، ومات معظمهم قبل أن يصلوا إلى طاولة العمليات أصلاً. ومن بين 65 مستبعداً من مجموعة الدواء، تُوفي 15 فقط، لأن الانتقال إلى الجراحة كان يتطلب البقاء حياً مدة تكفي لإجرائها. وهكذا تخلّص ذراع الجراحة من أسوأ نتائجه وفقد ذراع الدواء أفضل نتائجه، فتضاعفت الفجوة تقريباً دون أن يتغير مصير مريض واحد:",
+  "All three views of one trial":
+    "المشاهد الثلاثة لتجربة واحدة",
+  "A randomised comparison is only worth something while it is still random. The coin flip made the two groups alike; deciding afterwards who counts, on the basis of something that happened after the flip, undoes that. Here the deciding factor was survival itself, which is the outcome being measured. Counting everyone in the group they were assigned to, whatever happened next, is the analysis that keeps the coin flip intact.":
+    "المقارنة المعشّاة لا قيمة لها إلا ما دامت عشوائية. رمية القرعة جعلت المجموعتين متشابهتين، وتقرير من يُحتسب لاحقاً، بناءً على شيء حدث بعد الرمية، يُبطل ذلك. وهنا كان العامل الحاسم هو البقاء على قيد الحياة نفسه، وهو النتيجة المقاسة. أما احتساب كل شخص في المجموعة التي خُصّص لها، مهما حدث بعد ذلك، فهو التحليل الذي يُبقي رمية القرعة سليمة.",
+  "Who the analysis dropped":
+    "من استبعده التحليل",
+  "Intention to treat":
+    "تحليل قصد المعالجة",
+  "Once you exclude people for what happened after they were randomised, you are no longer comparing the groups the coin made, and the exclusions usually favour one side.":
+    "ما إن تستبعد أشخاصاً بسبب ما حدث بعد تعشيتهم، حتى تتوقف عن مقارنة المجموعتين اللتين صنعتهما القرعة، والاستبعادات عادةً ما تصبّ في مصلحة طرف واحد.",
+  "This is not a rule that per-protocol analysis is dishonest. It answers a different question, and there are trials where it is the right one to ask. The rule is narrower and harder: any analysis that drops people for something that happened after randomisation has to explain why those people were not different, and when the reason for dropping is entangled with the outcome, no explanation will do.":
+    "ليست هذه قاعدة تقول إن تحليل الالتزام بالبروتوكول غير نزيه. فهو يجيب عن سؤال مختلف، وثمة تجارب يكون فيها هو السؤال الصحيح. القاعدة أضيق وأصعب: أي تحليل يستبعد أشخاصاً بسبب شيء حدث بعد التعشية عليه أن يفسّر لماذا لم يكن هؤلاء مختلفين، وحين يتشابك سبب الاستبعاد مع النتيجة، لن يكفي أي تفسير.",
+  "Randomisation buys one thing: two groups that differ only by chance, including in all the ways nobody measured. Everything a trial claims rests on that. The trouble is that trials are run on people, who cross over, refuse the operation, stop the tablets or die before treatment starts, and it is tempting to set those people aside and look at the clean comparison underneath. But whether someone stayed on protocol is itself an outcome. Patients who cross from medicine to surgery must survive to be operated on. Patients assigned to surgery who never get it are often the ones too ill to be operated on, or already dead. Removing them is removing patients selected by prognosis, and prognosis is what the trial is measuring. Intention to treat keeps everyone in the arm the coin put them in, which sounds absurd when a patient never received the treatment, and is exactly the point: it measures the effect of the decision to treat, under real conditions, which is also the decision a doctor actually faces. It has a known cost. Crossovers pull the arms together, so intention to treat tends to shrink a real effect towards nothing. That is a conservative failure when you are trying to prove a drug works, and a dangerous one when you are trying to prove a drug is no worse than another, which is why non-inferiority trials report both analyses and are believed only when the two agree.":
+    "التعشية تشتري شيئاً واحداً: مجموعتين لا تختلفان إلا بالصدفة، بما في ذلك كل الوجوه التي لم يقسها أحد. وكل ما تدّعيه التجربة يقوم على ذلك. المشكلة أن التجارب تُجرى على بشر، ينتقلون بين الذراعين، ويرفضون العملية، ويتوقفون عن الأقراص، أو يموتون قبل بدء العلاج، ومن المغري أن تنحّي هؤلاء جانباً وتنظر إلى المقارنة النظيفة تحتهم. لكن بقاء الشخص ملتزماً بالبروتوكول هو نفسه نتيجة. فالمرضى الذين ينتقلون من الدواء إلى الجراحة عليهم أن يبقوا أحياء حتى تُجرى لهم. والمرضى المخصصون للجراحة الذين لا يخضعون لها هم غالباً الأشد مرضاً من أن يُجرى لهم عمل جراحي، أو الذين ماتوا بالفعل. وإزالتهم هي إزالة مرضى مُنتقين حسب الإنذار، والإنذار هو ما تقيسه التجربة. تحليل قصد المعالجة يُبقي كل شخص في الذراع الذي وضعته فيه القرعة، وهو ما يبدو سخيفاً حين لا يتلقى مريض العلاج إطلاقاً، وهذا بالضبط هو المقصود: فهو يقيس أثر قرار المعالجة، في ظروف واقعية، وهو أيضاً القرار الذي يواجهه الطبيب فعلاً. ولهذا كلفة معروفة. فالانتقالات تقرّب الذراعين من بعضهما، ولذلك يميل تحليل قصد المعالجة إلى تقليص أثر حقيقي نحو الصفر. وهذا إخفاق محافظ حين تحاول إثبات أن دواءً يعمل، وإخفاق خطر حين تحاول إثبات أن دواءً ليس أسوأ من آخر، ولهذا تُبلّغ تجارب عدم الدونية عن التحليلين معاً ولا تُصدَّق إلا حين يتفقان.",
+  "The same trap, without the verdict flipping":
+    "الفخّ نفسه، دون أن ينقلب الحكم",
+  "A tuberculosis trial compared shorter regimens with the standard six-month one. In the group treated per protocol, the standard regimen appeared to fail in about 8 percent of patients. Counting everyone who was randomised and had an assessable outcome, it failed in about 16 percent. Almost everyone the per-protocol analysis removed had had an unfavourable outcome, because an unfavourable outcome was frequently the reason they left the protocol. Nothing about the trial's conclusion changed, and every failure rate in it halved.":
+    "قارنت تجربة للسل أنظمة علاجية أقصر بالنظام المعياري ذي الستة أشهر. وفي المجموعة المعالجة وفق الالتزام بالبروتوكول، بدا أن النظام المعياري يفشل لدى نحو 8 بالمئة من المرضى. وباحتساب كل من عُشّي وكانت نتيجته قابلة للتقييم، فشل لدى نحو 16 بالمئة. فكل من أزالهم تحليل الالتزام بالبروتوكول تقريباً كانت نتيجتهم غير مواتية، لأن النتيجة غير المواتية كانت في كثير من الأحيان سبب خروجهم من البروتوكول. لم يتغير شيء في استنتاج التجربة، وانخفض كل معدل فشل فيها إلى النصف.",
+  "Intention to treat, a reasoning trap.":
+    "تحليل قصد المعالجة، فخّ في الاستدلال.",
+  "A trial flips a coin so its two groups start out alike. Then real life happens: people switch treatments, refuse the operation, or die before it. It seems only fair to compare the ones who actually got what they were assigned. It is not, because whether someone stuck to the plan depends on how they were doing, and often on whether they survived. Dropping them quietly sorts the groups by prognosis, which is the very thing the trial is trying to measure. Count everyone where the coin put them, and the flattering result can vanish.":
+    "ترمي التجربة قرعة كي تبدأ مجموعتاها متشابهتين. ثم تحدث الحياة الواقعية: يبدّل الناس علاجاتهم، أو يرفضون العملية، أو يموتون قبلها. ويبدو من الإنصاف أن تقارن من تلقّوا فعلاً ما خُصّص لهم. لكنه ليس إنصافاً، لأن التزام الشخص بالخطة يعتمد على حاله، وغالباً على بقائه حياً. واستبعادهم يفرز المجموعتين بهدوء حسب الإنذار، وهو عين ما تحاول التجربة قياسه. احسب الجميع حيث وضعتهم القرعة، وقد تتبخر النتيجة المُرضية.",
+  "The four counts in the first two panels are printed. The third panel is subtraction over those printed integers rather than figures of its own: 65 and 55 are 602 minus 537 and 610 minus 555, and 15 and 30 are 244 minus 229 and 218 minus 188. It closes three ways. The excluded patients reassemble the as-treated arms, 537 plus 55 and 555 plus 65 giving 592 and 620, which sum to the 1,212 randomised; and total deaths are conserved in every split, 244 plus 218 and 259 plus 203 both giving 462. Note also that the trial's P values, 0.12 as randomised and 0.005 per protocol, come from Cox proportional-hazards models over the whole follow-up, not from these four-cell tables, so they are quoted as the trial's own results and not recomputed here.":
+    "الأعداد الأربعة في اللوحتين الأوليين منشورة. أما اللوحة الثالثة فهي طرح على تلك الأعداد الصحيحة المنشورة لا أرقام خاصة بها: 65 و 55 هما 602 ناقص 537 و 610 ناقص 555، و 15 و 30 هما 244 ناقص 229 و 218 ناقص 188. وهي تُغلق من ثلاث جهات. فالمرضى المستبعدون يعيدون تكوين ذراعي التحليل حسب العلاج المتلقى، إذ 537 زائد 55 و 555 زائد 65 يعطيان 592 و 620، ومجموعهما 1,212 وهو عدد من عُشّوا؛ ومجموع الوفيات محفوظ في كل تقسيم، إذ 244 زائد 218 و 259 زائد 203 يعطيان 462 في الحالتين. ولاحظ أيضاً أن قيم P في التجربة، 0.12 حسب التعشية و 0.005 حسب الالتزام بالبروتوكول، مصدرها نماذج كوكس للمخاطر التناسبية على كامل مدة المتابعة، لا هذه الجداول ذات الخلايا الأربع، ولذلك تُنقل بوصفها نتائج التجربة نفسها ولا يُعاد حسابها هنا.",
+  "Women with melanoma report burning easily far more often than women without it. How much of that gap is their skin?":
+    "النساء المصابات بالميلانوما يقلن إن بشرتهن تحترق بسهولة أكثر بكثير مما تقوله غير المصابات. فكم من هذه الفجوة يعود إلى بشرتهن؟",
+  "141 women who had been diagnosed with melanoma and 1,094 who had not, asked how their skin responds to the sun. 45 percent of the women with melanoma said they tan little or not at all, against 25 percent of the others. Pale, easily burned skin is a known risk factor, so the finding looks exactly as expected.":
+    "141 امرأة شُخّصت لديهن الميلانوما و 1,094 لم تُشخّص لديهن، سُئلن كيف تستجيب بشرتهن للشمس. قالت 45 بالمئة من المصابات بالميلانوما إن بشرتهن تسمرّ قليلاً أو لا تسمرّ إطلاقاً، مقابل 25 بالمئة من الأخريات. والبشرة الفاتحة سريعة الاحتراق عامل خطر معروف، فتبدو النتيجة تماماً كما هو متوقع.",
+  "Is that twenty point gap what their skin was really like?":
+    "هل فجوة العشرين نقطة هذه تعكس حقيقة بشرتهن؟",
+  "Said their skin tans little or not at all":
+    "قلن إن بشرتهن تسمرّ قليلاً أو لا تسمرّ إطلاقاً",
+  "Women who developed melanoma":
+    "النساء اللواتي أصبن بالميلانوما",
+  "Melanoma":
+    "ميلانوما",
+  "Women who did not":
+    "النساء اللواتي لم يُصبن",
+  "No melanoma":
+    "دون ميلانوما",
+  "Asked after the diagnosis":
+    "سُئلن بعد التشخيص",
+  "Asked years before anyone knew":
+    "سُئلن قبل سنوات من علم أحد",
+  "Yes, pale skin is a real risk factor":
+    "نعم، البشرة الفاتحة عامل خطر حقيقي",
+  "the gap is their skin":
+    "الفجوة هي بشرتهن",
+  "No, the whole association is an artefact":
+    "لا، الارتباط كله مصطنع",
+  "they are reinterpreting their past":
+    "إنهن يعدن تفسير ماضيهن",
+  "Partly, and part of it appeared afterwards":
+    "جزئياً، وجزء منها ظهر لاحقاً",
+  "real, but not this large":
+    "حقيقي، لكن ليس بهذا الحجم",
+  "These same women had already answered, years earlier.":
+    "هؤلاء النساء أنفسهن كنّ قد أجبن من قبل، قبل سنوات.",
+  "The question was answered by a different person, in a sense":
+    "أجاب عن السؤال شخص مختلف، بمعنى ما",
+  "Every one of these women filled in the same question before anyone knew who would get melanoma. Back then the gap was thirteen points, not twenty. The women who went on to be diagnosed shifted seven points towards saying they burn; the women who were not diagnosed, answering over the same years, shifted a point the other way. Nobody's skin changed in between. What changed was that some of them had since been asked to explain a cancer:":
+    "كل واحدة من هؤلاء النساء أجابت عن السؤال نفسه قبل أن يعرف أحد من ستصاب بالميلانوما. وكانت الفجوة حينها ثلاث عشرة نقطة لا عشرين. النساء اللواتي شُخّصن لاحقاً انزحن سبع نقاط نحو القول إنهن يحترقن، أما اللواتي لم يُشخّصن، وقد أجبن خلال السنوات نفسها، فانزحن نقطة واحدة في الاتجاه الآخر. لم تتغير بشرة أي منهن في الأثناء. ما تغير أن بعضهن طُلب منهن منذ ذلك الحين تفسير سرطان:",
+  "The same women, asked twice":
+    "النساء أنفسهن، سُئلن مرتين",
+  "So the risk factor is real and the study still overstates it: the crude odds ratio these counts give is about 1.8 before the diagnosis and about 2.5 after it, so roughly a third of what the later study measured was not there beforehand. That is the awkward shape of recall bias. It rarely conjures an association out of nothing. It takes a true one and inflates it, which is far harder to spot, because the result still agrees with everything you already believed.":
+    "إذن عامل الخطر حقيقي ومع ذلك تبالغ فيه الدراسة: نسبة الأرجحية الخام التي تعطيها هذه الأعداد نحو 1.8 قبل التشخيص ونحو 2.5 بعده، أي أن نحو ثلث ما قاسته الدراسة اللاحقة لم يكن موجوداً قبلها. تلك هي الهيئة المُربكة لتحيز التذكر. فهو نادراً ما يخلق ارتباطاً من العدم. بل يأخذ ارتباطاً حقيقياً ويضخّمه، وهذا أصعب بكثير في الكشف، لأن النتيجة تظل متوافقة مع كل ما كنت تعتقده أصلاً.",
+  "What the diagnosis changed":
+    "ما غيّره التشخيص",
+  "Recall bias":
+    "تحيز التذكر",
+  "People who know how their story ended remember the beginning differently, so asking about the past after the outcome is known measures the outcome as well as the past.":
+    "من يعرفون كيف انتهت قصتهم يتذكرون البداية على نحو مختلف، فالسؤال عن الماضي بعد معرفة النتيجة يقيس النتيجة كما يقيس الماضي.",
+  "Nobody here is lying. Searching your memory harder because you have been given a reason to search it is an ordinary human thing to do, and the answers that come back are honestly meant. That is what makes it so hard to correct for: there is no dishonest group to exclude and no question you can ask that fixes it, because the more carefully someone thinks about it, the worse it gets.":
+    "لا أحد هنا يكذب. فأن تنقّب في ذاكرتك بجهد أكبر لأن سبباً للتنقيب أُعطي لك أمر إنساني عادي، والأجوبة العائدة صادقة القصد. وهذا ما يجعل تصحيحه بالغ الصعوبة: لا توجد مجموعة غير صادقة تُستبعد، ولا سؤال يمكنك طرحه فيُصلح الأمر، لأنه كلما فكّر المرء بعناية أكبر ازداد الأمر سوءاً.",
+  "A case-control study starts from the outcome and works backwards, asking people who have a disease and people who do not what they were exposed to. It is fast, it is cheap, and for a rare disease it is often the only design that will ever be affordable. Its weakness is that one group has been given a reason to search their memory. A diagnosis prompts the question \"why me\", and the mind answers it, reaching for the sunburn, the chemical, the medicine, the difficult pregnancy. The other group has no such prompt and remembers no harder than anyone remembers anything. So the two groups are not just being compared on exposure, they are being compared on how hard they looked. The direction is usually predictable: it inflates whatever the person already suspects is to blame, which means it tends to confirm the hypothesis under test. The defences are all about not relying on memory. Take the exposure from a record written before the outcome, from a prescription database, a workplace log, a stored blood sample, a questionnaire filled in years earlier. Or build in a comparison the mechanism cannot touch, such as a second exposure question that nobody associates with the disease: if the groups drift equally on that one, the drift is not about the disease. What does not work is asking the question more carefully, and what does not work is telling people to be objective.":
+    "تبدأ دراسة الحالات والشواهد من النتيجة وتعمل رجوعاً، فتسأل المصابين بمرض وغير المصابين به عمّا تعرضوا له. وهي سريعة وزهيدة، وبالنسبة لمرض نادر كثيراً ما تكون التصميم الوحيد الذي يبقى في متناول اليد. ونقطة ضعفها أن إحدى المجموعتين أُعطيت سبباً للتنقيب في ذاكرتها. فالتشخيص يستدعي سؤال «لماذا أنا»، والعقل يجيب عنه، متناولاً حروق الشمس، والمادة الكيميائية، والدواء، والحمل العسير. أما المجموعة الأخرى فلا حافز لديها ولا تتذكر بجهد أكبر مما يتذكر به أي أحد أي شيء. فالمجموعتان إذن لا تُقارنان على التعرض وحده، بل تُقارنان على مقدار الجهد الذي بذلتاه في البحث. والاتجاه عادةً متوقع: فهو يضخّم ما يشتبه الشخص أصلاً في أنه المسؤول، ما يعني أنه يميل إلى تأكيد الفرضية قيد الاختبار. والدفاعات كلها تدور حول عدم الاعتماد على الذاكرة. خذ التعرض من سجل كُتب قبل النتيجة، من قاعدة بيانات وصفات، أو سجل مكان عمل، أو عينة دم مخزّنة، أو استبيان مُلئ قبل سنوات. أو ضمّن مقارنة لا تستطيع الآلية أن تمسّها، مثل سؤال تعرض ثانٍ لا يربطه أحد بالمرض: فإذا انزاحت المجموعتان بالقدر نفسه فيه، فالانزياح ليس متعلقاً بالمرض. وما لا ينفع هو طرح السؤال بعناية أكبر، وما لا ينفع هو مطالبة الناس بأن يكونوا موضوعيين.",
+  "The study everyone credits for this does not show it":
+    "الدراسة التي ينسب إليها الجميع هذا لا تُظهره",
+  "A 1967 Finnish study is cited across the literature as the origin of recall bias. It re-interviewed mothers whose answers had been recorded during pregnancy, and its own text reports no significant difference between the mothers of affected and healthy children in how often the replies disagreed. What it does show, and spectacularly, is something else: only about a quarter of the information collected prospectively reappeared identically at re-interview, and roughly two thirds of the retrospective positive answers had no prospective record behind them, in both groups alike. That is not recall bias, it is a warning that retrospective interviews are unreliable even when nobody is biased at all.":
+    "تُستشهد دراسة فنلندية من عام 1967 عبر الأدبيات بوصفها أصل تحيز التذكر. أعادت مقابلة أمهات كانت أجوبتهن قد سُجّلت أثناء الحمل، ويذكر نصها نفسه أنه لا فرق دال بين أمهات الأطفال المصابين وأمهات الأطفال الأصحاء في عدد مرات تعارض الأجوبة. وما تُظهره فعلاً، وبصورة لافتة، شيء آخر: نحو ربع المعلومات التي جُمعت استباقياً فقط عاد ظهوره مطابقاً في إعادة المقابلة، ونحو ثلثي الأجوبة الإيجابية الاسترجاعية لم يكن خلفها سجل استباقي، في المجموعتين على السواء. هذا ليس تحيز التذكر، بل تحذير من أن المقابلات الاسترجاعية غير موثوقة حتى حين لا يكون أحد متحيزاً إطلاقاً.",
+  "And the largest test of it found almost none":
+    "وأكبر اختبار له لم يجد منه شيئاً يُذكر",
+  "The biggest study of this design compared what parents said in interview against what their family doctor had already written down, for 1,624 children with cancer and 2,524 without. Agreement with the records was poor in places, but it was poor in much the same way in both groups. The authors found essentially no evidence that having a sick child changed how the past was reported. Recall bias is a real mechanism and a reason to prefer records over memory. It is not a law that memory always bends, and a study is not discredited by the mere fact that it asked people to remember.":
+    "قارنت أكبر دراسة بهذا التصميم ما قاله الآباء في المقابلة بما كان طبيب الأسرة قد دوّنه من قبل، لدى 1,624 طفلاً مصاباً بالسرطان و 2,524 غير مصاب. وكان التوافق مع السجلات ضعيفاً في مواضع، لكنه كان ضعيفاً بالطريقة نفسها تقريباً في المجموعتين. ولم يجد الباحثون في الجوهر أي دليل على أن وجود طفل مريض غيّر طريقة الإبلاغ عن الماضي. تحيز التذكر آلية حقيقية وسبب لتفضيل السجلات على الذاكرة. لكنه ليس قانوناً يقضي بأن الذاكرة تنحني دائماً، ولا تفقد دراسة مصداقيتها لمجرد أنها طلبت من الناس أن يتذكروا.",
+  "Recall bias, a reasoning trap.":
+    "تحيز التذكر، فخّ في الاستدلال.",
+  "Ask someone what they were exposed to before they got ill and you are not only asking about the past, you are asking someone who has been given a reason to search it. A diagnosis makes people look harder, and looking harder turns up more. In one study the same women answered the same question about their skin years apart, once before anyone knew and once after a melanoma diagnosis, and the ones who had been diagnosed had shifted. Their skin had not. This rarely invents a finding from nothing. It takes a true one and makes it look bigger, which is much harder to catch, because the answer still agrees with what you expected.":
+    "اسأل شخصاً عمّا تعرض له قبل أن يمرض، فأنت لا تسأل عن الماضي فحسب، بل تسأل شخصاً أُعطي سبباً للتنقيب فيه. فالتشخيص يجعل الناس يبحثون بجهد أكبر، والبحث بجهد أكبر يُخرج المزيد. في إحدى الدراسات أجابت النساء أنفسهن عن السؤال نفسه عن بشرتهن بفارق سنوات، مرة قبل أن يعرف أحد ومرة بعد تشخيص ميلانوما، وكانت المشخّصات قد انزحن. أما بشرتهن فلم تتغير. وهذا نادراً ما يخترع نتيجة من العدم. بل يأخذ نتيجة حقيقية ويجعلها تبدو أكبر، وهو أصعب بكثير في الالتقاط، لأن الجواب يظل متوافقاً مع ما توقعته.",
+  "Two things a careful reader should know. First, the reference standard is the woman's own questionnaire filled in before diagnosis, not an external record, so this shows that the answers moved rather than which of the two answers was correct, and the authors' own conclusion is appropriately hedged: tanning ability was the one host factor whose shift was significant in the cases and not in the controls. Second, the paper prints odds ratios of 1.90 and 3.01 for this comparison. Those are the authors' own estimates and are not the crude odds ratios of these four cells, which are 1.80 and 2.55. The two pairs move in the same direction by a similar factor but they are not the same quantity, so only the crude ones, which anyone can recompute from the counts shown, appear in the text above.":
+    "أمران ينبغي أن يعرفهما القارئ المدقق. أولاً، المعيار المرجعي هو استبيان المرأة نفسها المُلئ قبل التشخيص، لا سجل خارجي، فهذا يُظهر أن الأجوبة تحركت لا أيّ الجوابين كان صحيحاً، واستنتاج الباحثين نفسه مُقيَّد بتحفظ مناسب: قابلية الاسمرار كانت العامل المضيفي الوحيد الذي كان انزياحه دالاً لدى الحالات وغير دال لدى الشواهد. ثانياً، تنشر الورقة نسب أرجحية قدرها 1.90 و 3.01 لهذه المقارنة. وهي تقديرات الباحثين أنفسهم وليست نسب الأرجحية الخام لهذه الخلايا الأربع، وهي 1.80 و 2.55. ويتحرك الزوجان في الاتجاه نفسه بعامل متقارب لكنهما ليسا الكمية نفسها، ولذلك لا يظهر في النص أعلاه إلا الخام، الذي يستطيع أي شخص إعادة حسابه من الأعداد المعروضة.",
+  "Patients who were dispensed this drug died far less often than those who were not. Is the drug working?":
+    "المرضى الذين صُرف لهم هذا الدواء ماتوا أقل بكثير ممن لم يُصرف لهم. فهل الدواء ناجع؟",
+  "A cohort is followed from the day each patient enters it. Anyone who is dispensed the drug at any point during follow-up counts as treated; everyone else counts as untreated. 49 percent of the treated died against 71 percent of the untreated, and the drug appears to halve the death rate.":
+    "تُتابَع مجموعة أترابية من اليوم الذي يدخلها فيه كل مريض. وكل من صُرف له الدواء في أي وقت خلال المتابعة يُحتسب معالجاً، وكل من عداه يُحتسب غير معالج. تُوفي 49 بالمئة من المعالجين مقابل 71 بالمئة من غير المعالجين، ويبدو أن الدواء يخفض معدل الوفاة إلى النصف.",
+  "Is that gap the drug?":
+    "هل تلك الفجوة هي الدواء؟",
+  "One patient from each group":
+    "مريض واحد من كل مجموعة",
+  "months":
+    "أشهر",
+  "entered the cohort":
+    "دخل المجموعة الأترابية",
+  "first prescription dispensed":
+    "صُرفت أول وصفة",
+  "follow-up credited to each group":
+    "المتابعة المنسوبة إلى كل مجموعة",
+  "Counted, but death was impossible":
+    "محتسبة، لكن الوفاة كانت مستحيلة",
+  "Follow-up credited to each group":
+    "المتابعة المنسوبة إلى كل مجموعة",
+  "Counted as on the drug":
+    "محتسب على أنه على الدواء",
+  "Counted as not on the drug":
+    "محتسب على أنه ليس على الدواء",
+  "As the study counted it":
+    "كما احتسبتها الدراسة",
+  "Yes, the drug is keeping them alive":
+    "نعم، الدواء يبقيهم أحياء",
+  "half the deaths":
+    "نصف الوفيات",
+  "No, the untreated were sicker to begin with":
+    "لا، غير المعالجين كانوا أشد مرضاً من البداية",
+  "they were never offered it":
+    "لم يُعرض عليهم قط",
+  "No, some of that time could not contain a death":
+    "لا، بعض ذلك الزمن لم يكن ليحتوي وفاة",
+  "the clock was started too early":
+    "بدأت الساعة مبكراً أكثر من اللازم",
+  "Half the treated group's follow-up was time in which nobody could die.":
+    "نصف متابعة المجموعة المعالجة كان زمناً لا يستطيع فيه أحد أن يموت.",
+  "Surviving is what put them in the treated group":
+    "البقاء حياً هو ما وضعهم في المجموعة المعالجة",
+  "This patient was counted as treated from the day they entered, but the prescription was not dispensed until month 11. Those eleven months are immortal: had the patient died in month 6, no prescription would ever have been written and they would have been counted in the other group instead. Death was not merely unlikely in that stretch, it was impossible by the way the groups were defined, and it is credited to the drug all the same:":
+    "احتُسب هذا المريض معالجاً من يوم دخوله، لكن الوصفة لم تُصرف حتى الشهر 11. تلك الأشهر الأحد عشر خالدة: فلو مات المريض في الشهر 6 لما كُتبت وصفة قط ولاحتُسب في المجموعة الأخرى بدلاً من ذلك. لم تكن الوفاة في تلك الفترة غير مرجحة فحسب، بل كانت مستحيلة بحكم طريقة تعريف المجموعتين، ومع ذلك تُنسب إلى الدواء:",
+  "The same follow-up, marked":
+    "المتابعة نفسها، معلَّمة",
+  "Nothing about the patients has to differ for this to work. Give both groups exactly the same drug, the same illness and the same luck, and the treated group will still come out ahead, because it has been handed a run of guaranteed survival that the other group cannot have. In the published example this is drawn from, the treated group was credited with 291.1 immortal person-years against 276.3 person-years in which it was genuinely at risk: more of its follow-up was impossible-to-die time than was real. Correcting only that moved the hazard ratio from 0.48 to 0.91.":
+    "لا يلزم أن يختلف شيء في المرضى كي ينجح هذا. أعطِ المجموعتين الدواء نفسه تماماً والمرض نفسه والحظ نفسه، وستخرج المجموعة المعالجة متقدمة رغم ذلك، لأنها مُنحت مدة من البقاء المضمون لا تستطيع المجموعة الأخرى الحصول عليها. وفي المثال المنشور الذي أُخذ منه هذا، نُسب إلى المجموعة المعالجة 291.1 شخص سنة خالدة مقابل 276.3 شخص سنة كانت فيها معرضة للخطر حقاً: أي أن ما كان من متابعتها زمناً يستحيل فيه الموت أكثر مما كان حقيقياً. وتصحيح ذلك وحده نقل نسبة الخطورة من 0.48 إلى 0.91.",
+  "The stretch before the prescription":
+    "الفترة السابقة للوصفة",
+  "Immortal time bias":
+    "تحيز الزمن الخالد",
+  "If being in a group requires surviving until something happens, then the time before it happened cannot contain a death, and counting it towards that group manufactures survival out of bookkeeping.":
+    "إذا كان الانتماء إلى مجموعة يستلزم البقاء حياً حتى يقع شيء ما، فالزمن السابق لوقوعه لا يمكن أن يحتوي وفاة، واحتسابه لصالح تلك المجموعة يصنع بقاءً على قيد الحياة من مجرد مسك الدفاتر.",
+  "The tell is a group defined by something that occurs after follow-up starts: filled the prescription, had the operation, responded to treatment, won the award, completed the course. Ask what happens to a person who dies the day before. If they land in the comparison group, the clock is wrong. The fix is not a cleverer adjustment: it is to count each person's time as unexposed until the moment they become exposed, and let them switch.":
+    "العلامة الفارقة هي مجموعة معرَّفة بشيء يقع بعد بدء المتابعة: صرف الوصفة، أو إجراء العملية، أو الاستجابة للعلاج، أو الفوز بالجائزة، أو إتمام الدورة. اسأل ماذا يحدث لشخص يموت في اليوم السابق. فإذا وقع في مجموعة المقارنة، فالساعة خاطئة. والحل ليس تعديلاً أذكى: بل احتساب زمن كل شخص غير معرَّض حتى اللحظة التي يصبح فيها معرَّضاً، والسماح له بالانتقال.",
+  "Cohort studies compare rates, and a rate is deaths divided by time at risk. That denominator is where this hides. Suppose you want to know whether a drug helps, so you follow everyone admitted to hospital and sort them afterwards by whether they were ever dispensed it. The sorting looks innocent, but it uses information from the future: to be dispensed a drug in month 11, you must be alive in month 11. So every patient in the treated group is guaranteed to have survived to their own first prescription, and if you start their clock at admission you credit the treated group with all of that guaranteed survival. The untreated group gets no such gift, because it is where the early deaths necessarily land. The bias is large, it always points the same way, it makes useless drugs look protective, and it does not shrink with a bigger sample, because it is not noise. It also has nothing to do with confounding, which is why adjusting for how ill the patients were does not touch it: you can simulate the whole thing with identical patients and a drug that does nothing. The correct handling is standard and unglamorous. Treat exposure as time-varying: every patient contributes unexposed time from entry until their first prescription and exposed time after it, so nobody is credited to a group before they belong to it. The same trap sits under any claim built on people who finished something, from Academy Award winners living longer than nominees to patients who completed a rehabilitation programme, and in each case the first question is the same: what happens in these numbers to the person who died in the middle?":
+    "تقارن الدراسات الأترابية معدلات، والمعدل هو الوفيات مقسومة على الزمن المعرَّض للخطر. وفي ذلك المقام يختبئ الأمر. لنفترض أنك تريد معرفة ما إذا كان دواء يفيد، فتتابع كل من أُدخل المستشفى ثم تفرزهم لاحقاً بحسب ما إذا كان قد صُرف لهم يوماً. يبدو الفرز بريئاً، لكنه يستخدم معلومة من المستقبل: فلكي يُصرف لك دواء في الشهر 11، عليك أن تكون حياً في الشهر 11. وهكذا فإن كل مريض في المجموعة المعالجة مضمون أنه بقي حياً حتى وصفته الأولى، وإذا بدأت ساعته عند الإدخال فأنت تنسب إلى المجموعة المعالجة كل ذلك البقاء المضمون. أما المجموعة غير المعالجة فلا تنال هذه الهدية، لأنها المكان الذي تقع فيه الوفيات المبكرة بالضرورة. والتحيز كبير، ويشير دائماً في الاتجاه نفسه، ويجعل أدوية عديمة الجدوى تبدو واقية، ولا يتقلص بعينة أكبر، لأنه ليس ضجيجاً. كما أنه لا علاقة له بالخلط، ولهذا فإن التعديل لدرجة مرض المرضى لا يمسّه: إذ يمكنك محاكاة الأمر كله بمرضى متطابقين ودواء لا يفعل شيئاً. أما المعالجة الصحيحة فقياسية وغير براقة. عامِل التعرض بوصفه متغيراً بالزمن: فكل مريض يسهم بزمن غير معرَّض من الدخول حتى وصفته الأولى وبزمن معرَّض بعدها، فلا يُنسب أحد إلى مجموعة قبل أن ينتمي إليها. والفخّ نفسه يقبع تحت أي ادعاء مبني على أشخاص أتموا شيئاً، من الفائزين بجائزة الأوسكار الذين يعيشون أطول من المرشحين إلى المرضى الذين أكملوا برنامج تأهيل، وفي كل حالة يكون السؤال الأول واحداً: ماذا يحدث في هذه الأرقام للشخص الذي مات في المنتصف؟",
+  "The Oscar winners who did not, after all, live longer":
+    "الفائزون بالأوسكار الذين لم يعيشوا أطول في نهاية المطاف",
+  "A well-known study reported that Academy Award winners outlived the actors merely nominated alongside them by nearly four years, and it was widely read as evidence that status is good for your health. But an actor cannot win an award while dead, so every winner was credited with all the years before their win, whereas a nominee who died young could only ever be a nominee. Reanalysing the same data with the award treated as something that happens partway through a life, rather than a property of the whole life, cut the advantage to about a year and it was no longer statistically significant. The original authors later published a null result of their own.":
+    "أفادت دراسة معروفة بأن الفائزين بجائزة الأوسكار عاشوا أطول من الممثلين المرشحين معهم فحسب بنحو أربع سنوات، وقُرئت على نطاق واسع بوصفها دليلاً على أن المكانة مفيدة للصحة. لكن الممثل لا يستطيع الفوز بجائزة وهو ميت، فنُسبت إلى كل فائز كل السنوات السابقة لفوزه، بينما المرشح الذي مات شاباً لا يمكن أن يكون إلا مرشحاً. وإعادة تحليل البيانات نفسها مع معاملة الجائزة بوصفها شيئاً يقع في منتصف الحياة، لا صفةً للحياة كلها، قلّصت الأفضلية إلى نحو سنة واحدة ولم تعد دالة إحصائياً. ونشر الباحثون الأصليون لاحقاً نتيجة صفرية خاصة بهم.",
+  "Immortal time bias, a reasoning trap.":
+    "تحيز الزمن الخالد، فخّ في الاستدلال.",
+  "Sort people into groups by something that happens later, and one of those groups gets a hidden head start. To be counted as having taken the drug, you have to live long enough to be given it. So everybody in the treated group is guaranteed to have survived up to their first prescription, and if you count that stretch towards the drug, the drug is credited with survival it had nothing to do with. Anyone who died early is automatically filed under untreated. It works even when the drug does nothing at all, it always points the same way, and a bigger study only makes it more convincing.":
+    "افرز الناس إلى مجموعات بحسب شيء يحدث لاحقاً، وستحصل إحدى تلك المجموعات على بداية سبق خفية. فلكي تُحتسب ممن تناولوا الدواء، عليك أن تعيش مدة تكفي لأن يُعطى لك. وهكذا فكل من في المجموعة المعالجة مضمون أنه بقي حياً حتى وصفته الأولى، وإذا احتسبت تلك الفترة لصالح الدواء، نُسب إلى الدواء بقاء لا علاقة له به. وكل من مات مبكراً يُصنَّف تلقائياً ضمن غير المعالجين. وهذا يعمل حتى حين لا يفعل الدواء شيئاً على الإطلاق، ويشير دائماً في الاتجاه نفسه، ودراسة أكبر لا تزيده إلا إقناعاً.",
+  "The figure above is schematic, like the bomber diagram: two illustrative patients rather than two rows of the dataset, with proportions chosen to echo the published ones (eleven immortal months out of twenty-two counted, against 291.1 immortal person-years out of 567.4 counted, which is 51.3 percent). The numbers that are claims about the world, the death counts and the two hazard ratios, are all in the citation above and none of them is recomputed here: the hazard ratios come from survival models rather than from any two-by-two table, and the paper is a methodological reanalysis in which several cohort definitions are applied to one dataset, so the row is named exactly.":
+    "الشكل أعلاه تخطيطي، مثل مخطط القاذفة: مريضان توضيحيان لا صفّان من مجموعة البيانات، بنسب اختيرت لتحاكي المنشورة (أحد عشر شهراً خالداً من أصل اثنين وعشرين محتسبة، مقابل 291.1 شخص سنة خالدة من أصل 567.4 محتسبة، أي 51.3 بالمئة). أما الأرقام التي هي ادعاءات عن العالم، أي أعداد الوفيات ونسبتا الخطورة، فكلها في الاستشهاد أعلاه ولا يُعاد حساب أي منها هنا: فنسب الخطورة تأتي من نماذج البقيا لا من أي جدول ثنائي، والورقة إعادة تحليل منهجية تُطبَّق فيها عدة تعريفات للأتراب على مجموعة بيانات واحدة، ولذلك يُسمّى الصف بدقة.",
+  "A weight-loss trial randomly assigns 400 people to a programme or to usual care. It reports the average weight lost among the 180 programme participants who attended at least eight sessions, and among all 200 controls. The programme wins comfortably.":
+    "تجربة لإنقاص الوزن تخصص عشوائياً 400 شخص لبرنامج أو للرعاية المعتادة. وتُبلّغ عن متوسط الوزن المفقود بين 180 مشاركاً في البرنامج حضروا ثماني جلسات على الأقل، وبين جميع الشواهد البالغ عددهم 200. ويفوز البرنامج بأريحية.",
+  "One arm has been filtered and the other has not. Attending eight sessions is something people who were doing well were more able to do, so the programme group has quietly been reduced to its successes while the control group keeps everybody.":
+    "ذراع واحدة رُشّحت والأخرى لا. وحضور ثماني جلسات أمر كان الأشخاص الذين يبلون حسناً أقدر عليه، فاختُزلت مجموعة البرنامج بهدوء إلى نجاحاتها بينما تحتفظ مجموعة الشواهد بالجميع.",
+  "In a surgical trial, some patients assigned to medication deteriorate and are operated on anyway. The analysis counts each patient under the treatment they ended up receiving, and finds surgery ahead.":
+    "في تجربة جراحية، تتدهور حال بعض المرضى المخصصين للدواء فتُجرى لهم العملية رغم ذلك. ويحتسب التحليل كل مريض تحت العلاج الذي تلقاه في النهاية، فيجد الجراحة متقدمة.",
+  "Switching happened after the coin flip and for a reason: those patients had to survive long enough to reach the operating table. Counting people by what they received rather than what they were assigned sorts them by how they were doing, which is the thing being measured.":
+    "حدث التبديل بعد رمية القرعة ولسبب: فقد كان على هؤلاء المرضى البقاء أحياء مدة تكفي للوصول إلى طاولة العمليات. واحتساب الناس بحسب ما تلقوه لا بحسب ما خُصّص لهم يفرزهم بحسب حالهم، وهو الشيء المقاس.",
+  "A trial of a daily tablet excludes anyone who took less than 80 percent of their doses, on the grounds that the question is whether the drug works when actually taken. Both arms are filtered the same way.":
+    "تجربة لقرص يومي تستبعد كل من تناول أقل من 80 بالمئة من جرعاته، بحجة أن السؤال هو ما إذا كان الدواء ينفع حين يُتناول فعلاً. وتُرشَّح الذراعان بالطريقة نفسها.",
+  "Filtering both arms identically does not repair it. Who manages to take 80 percent of their tablets differs by how well they are and by much else besides, so each arm loses a different kind of patient and the groups the coin made no longer exist.":
+    "ترشيح الذراعين بالطريقة نفسها لا يصلح الأمر. فمن ينجح في تناول 80 بالمئة من أقراصه يختلف بحسب حاله الصحية وبحسب أمور كثيرة غيرها، فتفقد كل ذراع نوعاً مختلفاً من المرضى ولا تعود المجموعتان اللتان صنعتهما القرعة موجودتين.",
+  "A trial reports that among patients who completed the full twelve months, the new drug halved relapses. A quarter of that arm withdrew before twelve months and are not counted.":
+    "تُبلّغ تجربة بأنه بين المرضى الذين أكملوا الاثني عشر شهراً كاملة، خفض الدواء الجديد الانتكاسات إلى النصف. وقد انسحب ربع تلك الذراع قبل اثني عشر شهراً ولم يُحتسبوا.",
+  "People usually withdraw for a reason, and relapsing is one of the commonest. An analysis of completers can turn the drug's failures into people who simply are not in the table.":
+    "ينسحب الناس عادةً لسبب، والانتكاس من أكثر الأسباب شيوعاً. وتحليل المُكملين قد يحوّل إخفاقات الدواء إلى أشخاص غير موجودين في الجدول ببساطة.",
+  "Mothers of babies born with a heart defect are interviewed about what they took during pregnancy, alongside mothers of healthy babies. The mothers of affected babies report far more medicine use in the first trimester, and a report concludes the medicines are implicated.":
+    "تُقابَل أمهات أطفال وُلدوا بعيب قلبي بشأن ما تناولنه أثناء الحمل، إلى جانب أمهات أطفال أصحاء. وتُبلّغ أمهات الأطفال المصابين عن استخدام أدوية أكثر بكثير في الثلث الأول من الحمل، ويستنتج تقرير أن الأدوية متورطة.",
+  "One group has spent months being asked what went wrong and searching for it. The other has had no reason to think about the first trimester at all. The comparison is partly of what was taken and partly of how hard each group looked.":
+    "قضت إحدى المجموعتين شهوراً وهي تُسأل عمّا حدث من خطأ وتبحث عنه. أما الأخرى فلم يكن لديها سبب للتفكير في الثلث الأول من الحمل إطلاقاً. والمقارنة هي جزئياً لما تم تناوله وجزئياً لمقدار الجهد الذي بذلته كل مجموعة في البحث.",
+  "People with a brain tumour and people without are asked how many hours a week they used a mobile phone ten years ago, and on which side of the head. Those with a tumour report more hours, and more often on the side the tumour is on.":
+    "يُسأل المصابون بورم دماغي وغير المصابين عن عدد الساعات أسبوعياً التي استخدموا فيها الهاتف المحمول قبل عشر سنوات، وعلى أي جانب من الرأس. ويُبلّغ المصابون بورم عن ساعات أكثر، وفي أغلب الأحيان على الجانب الذي يوجد فيه الورم.",
+  "Nobody can accurately recall a decade of phone habits, so the gap is filled in, and the tumour tells them which side to fill it in on. Billing records would settle it; memory cannot.":
+    "لا أحد يستطيع أن يتذكر بدقة عقداً من عادات الهاتف، فتُملأ الفجوة، والورم يخبرهم بأي جانب يملؤونها. سجلات الفوترة كفيلة بحسم الأمر، أما الذاكرة فلا.",
+  "After a bowel cancer diagnosis, patients are asked to describe their diet over the previous twenty years, and their answers are compared with those of healthy volunteers of the same age.":
+    "بعد تشخيص سرطان الأمعاء، يُطلب من المرضى وصف نظامهم الغذائي على مدى العشرين سنة الماضية، وتُقارن أجوبتهم بأجوبة متطوعين أصحاء في العمر نفسه.",
+  "The patients have already been told which foods are suspected, and are reconstructing twenty years around a diagnosis. The volunteers are reconstructing twenty years around nothing in particular.":
+    "قيل للمرضى بالفعل أي الأطعمة مشتبه بها، وهم يعيدون بناء عشرين سنة حول تشخيص. أما المتطوعون فيعيدون بناء عشرين سنة حول لا شيء بعينه.",
+  "Workers making a compensation claim for back pain are asked how heavy their lifting used to be, and their answers are compared with those of colleagues who made no claim.":
+    "يُسأل عمال يقدّمون مطالبة تعويض عن ألم الظهر عن مقدار ثقل ما كانوا يرفعونه، وتُقارن أجوبتهم بأجوبة زملاء لم يقدّموا مطالبة.",
+  "Both groups did the same job. Only one has spent months assembling an account of how demanding it was, and that account is what is being measured.":
+    "أدّت المجموعتان العمل نفسه. لكن واحدة منهما فقط قضت شهوراً في تركيب سرد عن مدى إرهاق ذلك العمل، وهذا السرد هو ما يُقاس.",
+  "A registry compares patients who received a transplant with those on the waiting list who did not, counting each patient's survival from the day they joined the list. The transplanted group lives far longer.":
+    "يقارن سجل مرضى تلقّوا زرعاً بمن كانوا على قائمة الانتظار ولم يتلقوه، محتسباً بقيا كل مريض من يوم انضمامه إلى القائمة. وتعيش مجموعة المزروعين أطول بكثير.",
+  "To be transplanted you must survive until an organ arrives, so everyone in that group is guaranteed to have lived from listing to surgery. Anyone who dies while waiting can only ever be in the other group.":
+    "لكي تتلقى زرعاً عليك أن تبقى حياً حتى يصل عضو، فكل من في تلك المجموعة مضمون أنه عاش من الإدراج في القائمة حتى الجراحة. وكل من يموت أثناء الانتظار لا يمكن أن يكون إلا في المجموعة الأخرى.",
+  "A hospital reports that patients who completed the full six-week rehabilitation course had better one-year survival than those who did not, measured from the day of admission.":
+    "يُبلّغ مستشفى بأن المرضى الذين أكملوا دورة التأهيل الكاملة ذات الستة أسابيع كانت بقياهم لسنة واحدة أفضل ممن لم يكملوها، مقيسةً من يوم الإدخال.",
+  "Completing six weeks requires being alive for six weeks. The comparison group collects everyone who died in the meantime, and the course is credited with those first six weeks of guaranteed survival.":
+    "إتمام ستة أسابيع يستلزم البقاء حياً ستة أسابيع. ومجموعة المقارنة تجمع كل من مات في الأثناء، وتُنسب إلى الدورة تلك الأسابيع الستة الأولى من البقاء المضمون.",
+  "Using a prescription database, researchers classify each patient as a drug user if they were ever dispensed it during follow-up, and count follow-up from the date of their hospital discharge.":
+    "باستخدام قاعدة بيانات وصفات، يصنّف الباحثون كل مريض مستخدماً للدواء إذا كان قد صُرف له يوماً خلال المتابعة، ويحتسبون المتابعة من تاريخ خروجه من المستشفى.",
+  "The classification uses the future. Time between discharge and the first dispensing cannot contain a death for anyone counted as a user, yet it is credited to the drug. Counting each patient as unexposed until their first prescription removes it.":
+    "التصنيف يستخدم المستقبل. فالزمن بين الخروج وأول صرف لا يمكن أن يحتوي وفاة لأي شخص يُحتسب مستخدماً، ومع ذلك يُنسب إلى الدواء. واحتساب كل مريض غير معرَّض حتى وصفته الأولى يزيله.",
+  "An oncology paper reports that patients whose tumour responded to chemotherapy survived longer than non-responders, timing survival from the start of treatment. Response was assessed after three cycles.":
+    "تُبلّغ ورقة في علم الأورام بأن المرضى الذين استجاب ورمهم للعلاج الكيميائي عاشوا أطول من غير المستجيبين، مع توقيت البقيا من بدء العلاج. وقُيّمت الاستجابة بعد ثلاث دورات.",
+  "You cannot be classed as a responder unless you live to the assessment after three cycles. Patients who die during the first two cycles are all non-responders by construction, so the responder group starts with survival built into it.":
+    "لا يمكن تصنيفك مستجيباً إلا إذا عشت حتى التقييم بعد ثلاث دورات. والمرضى الذين يموتون خلال الدورتين الأوليين كلهم غير مستجيبين بحكم البناء، فتبدأ مجموعة المستجيبين وقد بُني البقاء في داخلها.",
+  "A drug-safety study counts each patient as untreated from enrolment until the day of their first prescription, and as treated from that day onwards, so a patient can contribute time to both groups.":
+    "دراسة لسلامة الأدوية تحتسب كل مريض غير معالج من التسجيل حتى يوم وصفته الأولى، ومعالجاً من ذلك اليوم فصاعداً، فيستطيع المريض أن يسهم بزمن في المجموعتين معاً.",
+  "Nobody is credited to a group before they belong to it, so no stretch of guaranteed survival is handed to the treated group. This is the standard fix, correctly applied.":
+    "لا يُنسب أحد إلى مجموعة قبل أن ينتمي إليها، فلا تُمنح المجموعة المعالجة أي فترة من البقاء المضمون. هذا هو الحل القياسي، مطبَّقاً على نحو صحيح.",
+  "A study of patients who completed a course of treatment starts everyone's clock at the end of the course, and excludes anyone who died before that point from both groups alike.":
+    "دراسة لمرضى أكملوا دورة علاج تبدأ ساعة الجميع عند نهاية الدورة، وتستبعد كل من مات قبل تلك النقطة من المجموعتين على السواء.",
+  "Starting the clock after the point where group membership was settled means neither group can be credited with survival it was guaranteed. It costs some early data, and it removes the head start.":
+    "بدء الساعة بعد النقطة التي استقر عندها الانتماء إلى المجموعة يعني أنه لا يمكن أن يُنسب إلى أي من المجموعتين بقاء كان مضموناً لها. وهذا يكلّف بعض البيانات المبكرة، ويزيل بداية السبق.",
+  "A study of a drug taken in pregnancy takes the exposure from the national prescription database rather than from interviews, then compares outcomes. Neither the mothers nor the researchers supplied the exposure data.":
+    "دراسة لدواء يُتناول أثناء الحمل تأخذ التعرض من قاعدة بيانات الوصفات الوطنية لا من المقابلات، ثم تقارن النتائج. ولم تُقدَّم بيانات التعرض من الأمهات ولا من الباحثين.",
+  "The exposure was written down before anyone knew the outcome, by someone with no stake in it. That is the standard defence against memory bending, and here it was used.":
+    "دُوّن التعرض قبل أن يعرف أحد النتيجة، بيد شخص لا مصلحة له فيها. وهذا هو الدفاع القياسي ضد انحناء الذاكرة، وقد استُخدم هنا.",
+  "A case-control study asks about the suspected exposure and also about a second, unrelated one that nobody associates with the disease. Both groups report the second one at the same rate, and the authors say so before reporting the first.":
+    "دراسة حالات وشواهد تسأل عن التعرض المشتبه به وأيضاً عن تعرض ثانٍ غير ذي صلة لا يربطه أحد بالمرض. وتُبلّغ المجموعتان عن الثاني بالمعدل نفسه، ويذكر الباحثون ذلك قبل الإبلاغ عن الأول.",
+  "The second question is a control for the searching itself. If one group were simply remembering harder across the board, it would show up there too, and it did not.":
+    "السؤال الثاني ضابط للتنقيب نفسه. فلو كانت إحدى المجموعتين تتذكر بجهد أكبر على طول الخط، لظهر ذلك هناك أيضاً، ولم يظهر.",
+  "A trial's main result counts every patient in the group they were randomly assigned to, including the 40 who never started the treatment. A per-protocol analysis is reported alongside it, agrees with it, and is labelled as secondary.":
+    "النتيجة الرئيسية لتجربة تحتسب كل مريض في المجموعة التي خُصّص لها عشوائياً، بمن فيهم الـ 40 الذين لم يبدأوا العلاج قط. ويُبلَّغ عن تحليل الالتزام بالبروتوكول إلى جانبها، ويتفق معها، ويوسَم بأنه ثانوي.",
+  "The randomised comparison is the one the conclusion rests on, the other is shown for completeness, and the two agree. That is how both analyses are supposed to be used.":
+    "المقارنة المعشّاة هي التي يستند إليها الاستنتاج، والأخرى تُعرض للاكتمال، وهما متفقتان. وهكذا يُفترض أن يُستخدم التحليلان.",
+  "A trial testing whether a simpler regimen is no worse than the standard one reports both analyses, notes that counting non-adherent patients in their assigned group tends to make two treatments look alike, and declines to claim non-inferiority because only one of the two analyses supports it.":
+    "تجربة تختبر ما إذا كان نظام أبسط ليس أسوأ من النظام المعياري تُبلّغ عن التحليلين معاً، وتشير إلى أن احتساب المرضى غير الملتزمين في مجموعتهم المخصصة يميل إلى جعل علاجين يبدوان متشابهين، وتمتنع عن ادعاء عدم الدونية لأن واحداً فقط من التحليلين يدعمه.",
+  "Counting everyone as assigned is conservative when you are trying to show a difference and permissive when you are trying to show similarity, so a non-inferiority claim needs both analyses to agree. Refusing to claim it when they disagree is the careful move, not the trap.":
+    "احتساب الجميع حسب التخصيص محافظ حين تحاول إظهار فرق ومتساهل حين تحاول إظهار تشابه، فادعاء عدم الدونية يحتاج إلى اتفاق التحليلين. والامتناع عن ادعائه حين يختلفان هو التصرف المدقق، لا الفخّ.",
 };

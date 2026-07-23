@@ -565,4 +565,139 @@ export const fr: Record<string, string> = {
   "The whole life": "Toute la vie",
   A: "A",
   B: "B",
+
+  // ==== Spectrum bias (urine dipstick) ====
+  "This urine test catches 92% of infections. Your patient's symptoms are vague. How good is it now?":
+    "Ce test urinaire détecte 92 % des infections. Les symptômes de votre patient sont flous. Que vaut-il maintenant ?",
+  "A dipstick for urinary infection, checked against urine cultures in an emergency department and a walk-in clinic. Among patients whose doctor already thought an infection was likely, it caught 49 of the 53 who really had one. Sensitivity is normally quoted as a single number, as though it were a fixed property of the test.":
+    "Une bandelette urinaire pour repérer une infection, confrontée aux cultures d'urine dans un service d'urgences et dans un centre de consultation sans rendez-vous. Chez les patients dont le médecin jugeait déjà une infection probable, elle a détecté 49 des 53 patients qui en avaient réellement une. La sensibilité est d'ordinaire annoncée sous la forme d'un seul chiffre, comme s'il s'agissait d'une propriété fixe du test.",
+  "In patients the doctor thinks are unlikely to be infected, how often does it catch a real infection?":
+    "Chez les patients que le médecin juge peu susceptibles d'être infectés, à quelle fréquence détecte-t-elle une infection réelle ?",
+  "Times the dipstick was right": "Fois où la bandelette a vu juste",
+  "Doctor thought infection likely": "Le médecin jugeait l'infection probable",
+  Likely: "Probable",
+  "Doctor thought infection unlikely":
+    "Le médecin jugeait l'infection peu probable",
+  Unlikely: "Peu probable",
+  "Patients who really had an infection": "Patients réellement infectés",
+  "Patients who did not": "Patients qui ne l'étaient pas",
+  "The quoted figure": "Le chiffre annoncé",
+  "About the same, 92%": "À peu près pareil, 92 %",
+  "the test has not changed": "le test n'a pas changé",
+  "A little lower, around 80%": "Un peu moins, environ 80 %",
+  "some drop off": "une petite baisse",
+  "Barely half, 56%": "À peine la moitié, 56 %",
+  "it misses most of them": "il en manque la plupart",
+  "Barely half. And the other column flips the other way.":
+    "À peine la moitié. Et l'autre colonne bascule dans l'autre sens.",
+  "The patients changed, not the test":
+    "Ce sont les patients qui ont changé, pas le test",
+  "Patients their doctor already suspected had florid infections, the kind a dipstick spots easily. Patients thought unlikely to be infected had mild or early ones, and the test missed most of them. Now look at the second panel, the patients who had no infection at all: there the test was right 42% of the time in the first group and 78% in the second. Sensitivity and specificity are not properties of a test. They are properties of a test meeting a particular mix of people:":
+    "Les patients que leur médecin suspectait déjà avaient des infections franches, celles qu'une bandelette repère facilement. Les patients jugés peu susceptibles d'être infectés en avaient de discrètes ou de débutantes, et le test en a manqué la plupart. Regardez maintenant le second panneau, celui des patients qui n'avaient aucune infection : là, le test a vu juste 42 % du temps dans le premier groupe et 78 % dans le second. La sensibilité et la spécificité ne sont pas des propriétés d'un test. Ce sont les propriétés d'un test confronté à un mélange particulier de personnes :",
+  "Both groups": "Les deux groupes",
+  "The spectrum": "Le spectre",
+  "How many in each group really had an infection":
+    "Combien, dans chaque groupe, étaient réellement infectés",
+  "Spectrum bias": "Le biais de spectre",
+  "A test's accuracy is not fixed. It moves with how advanced, how typical and how obvious the disease is in the patients being tested.":
+    "La fiabilité d'un test n'est pas une valeur fixe. Elle varie avec le stade de la maladie, son caractère typique et son évidence chez les patients testés.",
+  "Before trusting a quoted sensitivity, ask who it was measured on. A figure from patients with unmistakable disease will flatter the test in a clinic full of milder cases, and a study that recruits only textbook cases and healthy volunteers will flatter it most of all.":
+    "Avant de faire confiance à une sensibilité annoncée, demandez sur qui elle a été mesurée. Un chiffre obtenu chez des patients à la maladie manifeste flattera le test dans un cabinet rempli de cas plus légers, et une étude qui ne recrute que des cas d'école et des volontaires en bonne santé le flattera plus encore.",
+  "Sensitivity is the share of truly ill people a test catches, and specificity is the share of healthy people it correctly clears. Both are quoted as though they belonged to the test, like its price. They do not. A test picks up a signal, and the signal is stronger in advanced disease than in early disease, so the sicker the ill people you test, the more of them it finds. The same logic runs the other way for the people without the disease: the more clearly healthy they are, the more easily the test clears them. That is why a test evaluated on obvious cases against obvious non-cases can look superb and then disappoint in a real clinic, where nearly everyone is somewhere in between. Two practical habits follow. Read the description of who was recruited before you read the accuracy figures. And be most suspicious of a study whose diseased and healthy groups were picked separately rather than being consecutive patients with the same presenting problem.":
+    "La sensibilité, c'est la part des personnes réellement malades qu'un test détecte, et la spécificité, la part des personnes saines qu'il déclare à juste titre indemnes. Les deux sont annoncées comme si elles appartenaient au test, comme son prix. Ce n'est pas le cas. Un test capte un signal, et ce signal est plus fort dans une maladie avancée que dans une maladie débutante : plus les malades que vous testez sont atteints, plus le test en trouve. La logique inverse vaut pour les personnes indemnes : plus elles sont manifestement en bonne santé, plus le test les déclare facilement indemnes. Voilà pourquoi un test évalué sur des cas évidents face à des non-cas évidents peut paraître superbe, puis décevoir dans une vraie consultation, où presque tout le monde se situe entre les deux. Deux habitudes pratiques en découlent. Lisez la description des personnes recrutées avant de lire les chiffres de fiabilité. Et méfiez-vous surtout d'une étude dont les groupes malades et sains ont été choisis séparément, plutôt que constitués de patients consécutifs venus pour le même motif.",
+  "The same test, sorted a different way": "Le même test, trié autrement",
+  "The same study split its patients again, this time by how many white cells were visible in the urine under a microscope. Where none were visible the dipstick caught 5 of the 10 real infections. Where a few were visible it caught 15 of 22. Where there were many it caught all 34 of 34. One test, one afternoon's samples, and a sensitivity anywhere from 50 to 100 percent depending only on which patients you counted.":
+    "La même étude a de nouveau ventilé ses patients, cette fois selon le nombre de globules blancs visibles au microscope dans les urines. Quand il n'y en avait aucun, la bandelette a détecté 5 des 10 infections réelles. Quand il y en avait quelques-uns, elle en a détecté 15 sur 22. Quand il y en avait beaucoup, elle les a toutes détectées, 34 sur 34. Un seul test, les prélèvements d'un même après-midi, et une sensibilité allant de 50 à 100 pour cent selon les seuls patients que l'on comptait.",
+  "Why promising tests keep disappointing":
+    "Pourquoi les tests prometteurs déçoivent si souvent",
+  "The problem was named in 1978, after a pattern of new tests arriving with excellent published accuracy and then underwhelming the doctors who used them. Two of the era's examples were the carcinoembryonic antigen test and the nitro-blue tetrazolium test. The authors traced the letdown to two things: accuracy measured on a patient mix far narrower than real practice, and the test result and the true diagnosis not being judged independently of each other.":
+    "Le problème a été nommé en 1978, devant la répétition d'un même scénario : de nouveaux tests arrivaient avec d'excellents chiffres de fiabilité publiés, puis décevaient les médecins qui les utilisaient. Deux exemples de l'époque : le dosage de l'antigène carcino-embryonnaire et le test au nitrobleu de tétrazolium. Les auteurs ont attribué cette déception à deux choses : une fiabilité mesurée sur un mélange de patients bien plus étroit que la pratique réelle, et un résultat du test et un diagnostic de référence qui n'étaient pas jugés indépendamment l'un de l'autre.",
+  "Spectrum bias, a reasoning trap.":
+    "Le biais de spectre, un piège de raisonnement.",
+  "Test accuracy sounds like a fact about the test, the way a car has a top speed. It is not. A test that catches 92% of infections in people who are obviously ill can catch barely half in people who are only slightly ill, because there is less to find. Whenever you are told a test is 95% accurate, the real question is who they measured that on, and whether those people look anything like you.":
+    "La fiabilité d'un test sonne comme un fait à propos du test, comme une voiture a une vitesse de pointe. Ce n'en est pas un. Un test qui détecte 92 % des infections chez des gens manifestement malades peut n'en détecter qu'à peine la moitié chez des gens à peine souffrants, parce qu'il y a moins à trouver. Chaque fois qu'on vous dit qu'un test est fiable à 95 %, la vraie question est de savoir sur qui on l'a mesuré, et si ces personnes vous ressemblent un tant soit peu.",
+  "The counts are Table 3, page 137: 49 of 53 and 21 of 50 in the high prior-probability group, 10 of 18 and 188 of 241 in the low one. A positive dipstick meant leukocyte esterase or nitrite or both; a positive culture meant more than 100,000 colonies per millilitre. The correction notes that the high prior-probability group holds 103 patients, not the 107 still printed in the abstract, and that the rates were computed on 103 and stand. The printed abstract also gives the 0.56 confidence interval as 0.03 to 0.79; the paper's own table gives 0.31 to 0.79.":
+    "Les effectifs sont ceux du tableau 3, page 137 : 49 sur 53 et 21 sur 50 dans le groupe à forte probabilité a priori, 10 sur 18 et 188 sur 241 dans le groupe à faible probabilité. Une bandelette positive signifiait leucocyte-estérase ou nitrites ou les deux ; une culture positive signifiait plus de 100 000 colonies par millilitre. Le rectificatif précise que le groupe à forte probabilité a priori compte 103 patients, et non les 107 encore imprimés dans le résumé, et que les taux avaient déjà été calculés sur 103 et restent valables. Le résumé imprimé donne aussi l'intervalle de confiance associé au 0,56 comme allant de 0,03 à 0,79 ; le tableau de l'article lui-même donne 0,31 à 0,79.",
+
+  // ==== Berkson's bias (hospital sample) ====
+  "Among hospital patients, lung trouble and joint trouble go together. Are the two diseases linked?":
+    "Chez les patients hospitalisés, les problèmes de poumons et les problèmes d'articulations vont de pair. Les deux maladies sont-elles liées ?",
+  "A survey knocked on doors and asked thousands of ordinary people what illnesses they had. Among those who had been in hospital in the previous six months, a quarter of the people with a respiratory disease also had a disease of the bones or joints, against well under a tenth of everyone else.":
+    "Une enquête a frappé aux portes et demandé à des milliers de gens ordinaires de quelles maladies ils souffraient. Parmi ceux qui avaient été hospitalisés dans les six mois précédents, un quart des personnes atteintes d'une maladie respiratoire avaient aussi une maladie des os ou des articulations, contre bien moins d'un dixième chez toutes les autres.",
+  "Are these two diseases actually related?":
+    "Ces deux maladies sont-elles réellement liées ?",
+  "Also had a bone or joint disease":
+    "Avaient aussi une maladie osseuse ou articulaire",
+  "Had a respiratory disease": "Avaient une maladie respiratoire",
+  Lungs: "Poumons",
+  "No respiratory disease": "Pas de maladie respiratoire",
+  "No lungs": "Sans poumons",
+  "In hospital in the last 6 months": "Hospitalisés dans les 6 derniers mois",
+  "Everyone the survey asked": "Toutes les personnes interrogées",
+  "Hospital patients": "Patients hospitalisés",
+  "Yes, one brings on the other": "Oui, l'une provoque l'autre",
+  "three times as common": "trois fois plus fréquente",
+  "Yes, but the other way round": "Oui, mais dans l'autre sens",
+  "the joint disease comes first": "la maladie articulaire vient en premier",
+  "No, the hospital made the link": "Non, c'est l'hôpital qui a créé le lien",
+  "it is about who gets admitted": "tout tient à qui est hospitalisé",
+  "Ask everyone, and the link disappears.":
+    "Interrogez tout le monde, et le lien disparaît.",
+  "Two illnesses are two chances to be admitted":
+    "Deux maladies, deux occasions d'être hospitalisé",
+  "The same survey, the same people, the same two diseases. Across everyone it asked, having a respiratory disease made a bone or joint disease no more likely at all. The hospital panel is not a finding about disease, it is a finding about admission. Either illness can put you in a hospital bed, so people with both turn up there far more often than people with one, and inside those walls the two look inseparable:":
+    "La même enquête, les mêmes personnes, les deux mêmes maladies. Sur l'ensemble des personnes interrogées, avoir une maladie respiratoire ne rendait pas du tout une maladie osseuse ou articulaire plus probable. Le panneau de l'hôpital n'est pas un résultat sur la maladie, c'est un résultat sur l'hospitalisation. Chacune des deux maladies peut vous conduire à un lit d'hôpital : les personnes qui ont les deux s'y retrouvent donc bien plus souvent que celles qui n'en ont qu'une, et entre ces murs les deux paraissent inséparables :",
+  "Hospital and community": "Hôpital et population générale",
+  "The filter": "Le filtre",
+  "Berkson's bias": "Le biais de Berkson",
+  "Studying only the people who made it through a filter can invent a relationship that does not exist outside it.":
+    "N'étudier que les personnes qui ont franchi un filtre peut inventer une relation qui n'existe pas en dehors de lui.",
+  "Hospitals are the obvious filter, and the reason case-control studies built on hospital patients are treated warily. But any selected group does it: people who answered the survey, users who stayed subscribed, applicants who got an interview. Ask what it took to get into the sample, and whether both things you are comparing help you get in.":
+    "L'hôpital est le filtre le plus évident, et la raison pour laquelle on se méfie des études cas-témoins bâties sur des patients hospitalisés. Mais n'importe quel groupe sélectionné produit le même effet : les gens qui ont répondu à l'enquête, les utilisateurs restés abonnés, les candidats convoqués en entretien. Demandez-vous ce qu'il fallait pour entrer dans l'échantillon, et si les deux choses que vous comparez aident toutes les deux à y entrer.",
+  "Suppose two illnesses are entirely unrelated, and either one on its own gives you some chance of being admitted to hospital. Someone unlucky enough to have both has two shots at admission, so they are much likelier to be in the ward than someone with only one. Now stand inside the ward and count. The people with the first illness are heavily enriched for also having the second, because that is what got many of them in. You have not discovered a link between the diseases. You have rediscovered the admission rule, and dressed it up as biology. The general shape of this is a collider: a thing that two causes both point into. Selecting on it, whether by studying only the admitted, only the tested, or only the successful, links the causes together in your data even when nothing links them in the world. The defence is a sample defined before the filter, which is exactly why population surveys and whole-population registries are worth their cost.":
+    "Supposons deux maladies totalement indépendantes, chacune donnant à elle seule une certaine probabilité d'être hospitalisé. Qui a la malchance d'avoir les deux dispose de deux occasions d'être admis : cette personne a donc bien plus de chances de se trouver dans le service que celle qui n'en a qu'une. Placez-vous maintenant dans le service et comptez. Les personnes atteintes de la première maladie ont bien plus souvent aussi la seconde, parce que c'est précisément ce qui a fait entrer beaucoup d'entre elles. Vous n'avez pas découvert un lien entre les maladies. Vous avez redécouvert la règle d'admission, et vous l'avez déguisée en biologie. La forme générale de tout cela est un facteur de collision, ce que l'on appelle aussi un collider : une variable vers laquelle pointent deux causes. Sélectionner sur ce facteur, en n'étudiant que les personnes hospitalisées, que les personnes testées ou que celles qui ont réussi, relie les causes entre elles dans vos données, même quand rien ne les relie dans le monde réel. La protection, c'est un échantillon défini avant le filtre, et c'est exactement pour cela que les enquêtes en population et les registres exhaustifs valent leur coût.",
+  "The bias that was theory for thirty years":
+    "Le biais resté théorique pendant trente ans",
+  "Joseph Berkson warned in 1946 that hospital-based comparisons could manufacture associations, but his argument was mathematical and his numbers were invented to illustrate it. He noted that the same artefact would appear if you sampled shuffled cards rather than patients. It took until this survey, three decades later, for anyone to demonstrate the effect in real people.":
+    "Joseph Berkson avertissait dès 1946 que les comparaisons faites à l'hôpital pouvaient fabriquer des associations, mais son raisonnement était mathématique et ses chiffres inventés pour l'illustrer. Il notait que le même artefact apparaîtrait si l'on échantillonnait des cartes battues plutôt que des patients. Il a fallu attendre cette enquête, trois décennies plus tard, pour que quelqu'un démontre l'effet chez de vraies personnes.",
+  "Why early covid studies disagreed":
+    "Pourquoi les premières études sur la covid se contredisaient",
+  "In 2020, studies of who caught covid and who fell severely ill could only recruit from people who had been tested or admitted, and early on those were mostly hospital staff, the already unwell and the elderly. Getting into the sample depended on the very things being studied. Analyses showed this alone could produce apparent risk factors, and even reverse the direction of a real one, without any biology behind it.":
+    "En 2020, les études sur qui attrapait la covid et qui faisait une forme grave ne pouvaient recruter que parmi les personnes testées ou hospitalisées, et au début il s'agissait surtout du personnel hospitalier, des personnes déjà malades et des personnes âgées. Entrer dans l'échantillon dépendait précisément de ce que l'on étudiait. Des analyses ont montré que cela suffisait à produire des facteurs de risque apparents, et même à inverser le sens d'un facteur réel, sans qu'aucune biologie ne soit en cause.",
+  "Berkson's bias, a reasoning trap.":
+    "Le biais de Berkson, un piège de raisonnement.",
+  "Look only at hospital patients and two completely unrelated illnesses can appear to travel together. The reason is not biology, it is the door. Either illness can get you admitted, so people who happen to have both are over-represented inside, and from in there the two look linked. Any filtered group does this: the people who got tested, the applicants who got an interview, the customers who stayed. Before believing a pattern, ask what it took to get into the data.":
+    "Ne regardez que les patients hospitalisés et deux maladies totalement indépendantes peuvent sembler voyager ensemble. La raison n'est pas biologique, c'est la porte d'entrée. Chacune des deux maladies peut vous faire hospitaliser : les personnes qui ont les deux sont donc surreprésentées à l'intérieur, et vues de là les deux paraissent liées. N'importe quel groupe filtré produit cet effet : les gens qui ont été testés, les candidats convoqués en entretien, les clients restés fidèles. Avant de croire à un schéma, demandez-vous ce qu'il fallait pour entrer dans les données.",
+  "The counts are Table 2: household interviews with 2,784 people, of whom 257 had been in hospital in the previous six months. The table's own relative odds are 1.06 in the general population and 4.06 among the hospitalised. The hospital figures rest on only 20 people with a respiratory disease, so this single table demonstrates the mechanism rather than measuring its size precisely.":
+    "Les effectifs sont ceux du tableau 2 : des entretiens à domicile auprès de 2 784 personnes, dont 257 avaient été hospitalisées dans les six mois précédents. Les cotes relatives données par le tableau lui-même sont de 1,06 dans la population générale et de 4,06 chez les personnes hospitalisées. Les chiffres hospitaliers ne reposent que sur 20 personnes atteintes d'une maladie respiratoire ; ce seul tableau démontre donc le mécanisme plutôt qu'il n'en mesure précisément l'ampleur.",
+
+  // ---- Trap Hunt items (spectrum bias) ----
+  "A rapid test is validated on patients admitted to hospital with severe disease and on healthy blood donors. It separates the two groups almost perfectly, and the maker reports 98% sensitivity. It is then sold to family doctors for patients with a mild cough.":
+    "Un test rapide est validé chez des patients hospitalisés pour une forme grave de la maladie et chez des donneurs de sang en bonne santé. Il sépare les deux groupes presque parfaitement, et le fabricant annonce 98 % de sensibilité. Il est ensuite vendu aux médecins généralistes pour des patients qui ont une simple toux.",
+  "Telling the obviously ill from the obviously well is the easiest task there is. A family doctor's patients are all somewhere in between, and that is precisely where the test has never been measured.":
+    "Distinguer les malades évidents des bien-portants évidents est la tâche la plus facile qui soit. Les patients d'un médecin généraliste se situent tous entre les deux, et c'est précisément là que le test n'a jamais été mesuré.",
+  "A textbook lists a scan as 90% sensitive. A clinic that sees mostly early, mild cases adopts it and finds it misses about a third of the cases later confirmed by specialists. The clinic concludes its machine must be faulty.":
+    "Un manuel indique qu'un examen d'imagerie a une sensibilité de 90 %. Un cabinet qui voit surtout des cas débutants et légers l'adopte et constate qu'il manque environ un tiers des cas confirmés ensuite par des spécialistes. Le cabinet en conclut que sa machine doit être défectueuse.",
+  "A quoted sensitivity comes attached to the patients it was measured on. Earlier and milder disease gives a test less to find, so a lower catch rate is what you should expect, not evidence of a broken machine.":
+    "Une sensibilité annoncée reste attachée aux patients sur lesquels elle a été mesurée. Une maladie plus précoce et plus légère donne moins à trouver au test : un taux de détection plus faible est donc ce à quoi il faut s'attendre, pas la preuve d'une machine en panne.",
+
+  // ---- Trap Hunt items (Berkson's bias) ----
+  "A study of one hospital's inpatients finds that those with a metabolic disease are far more likely to also have a gallbladder disease than the other inpatients. The authors conclude that the first disease brings on the second.":
+    "Une étude menée chez les patients hospitalisés d'un hôpital constate que ceux qui ont une maladie métabolique ont bien plus souvent aussi une maladie de la vésicule biliaire que les autres patients hospitalisés. Les auteurs en concluent que la première maladie provoque la seconde.",
+  "Either illness on its own can put someone in a hospital bed, so patients with both are over-represented among inpatients. The link may exist only inside the building.":
+    "Chacune des deux maladies peut à elle seule conduire quelqu'un à un lit d'hôpital : les patients qui ont les deux sont donc surreprésentés parmi les hospitalisés. Le lien n'existe peut-être qu'à l'intérieur du bâtiment.",
+  "Someone notices that among the people they have dated, the better looking ones were consistently less pleasant company. They conclude that good looks spoil the character.":
+    "Quelqu'un remarque que, parmi les personnes avec qui il est sorti, les plus jolies étaient systématiquement de moins agréable compagnie. Il en conclut que la beauté gâte le caractère.",
+  "People generally agree to a date because someone is good looking or because they are pleasant company. Selecting on that forces a trade-off between the two inside the sample, whatever the relationship is outside it.":
+    "On accepte généralement un rendez-vous parce que la personne est jolie ou parce qu'elle est de compagnie agréable. Sélectionner là-dessus impose un compromis entre les deux à l'intérieur de l'échantillon, quelle que soit la relation en dehors.",
+
+  // ---- Trap Hunt items (sound reasoning) ----
+  "A diagnostic test is evaluated on every consecutive patient arriving at a clinic with the same presenting complaint, whatever their eventual diagnosis, and the paper reports its accuracy separately for mild and for advanced disease. Another clinic with a similar caseload adopts the figures.":
+    "Un test diagnostique est évalué sur tous les patients consécutifs qui se présentent dans un cabinet pour le même motif, quel que soit le diagnostic final, et l'article rapporte sa fiabilité séparément pour les formes légères et pour les formes avancées. Un autre cabinet, au recrutement comparable, adopte ces chiffres.",
+  "This is how a diagnostic study should be built. Consecutive patients with one presenting problem, and accuracy broken down by severity, so a reader can find the subgroup that actually resembles their own patients.":
+    "Voilà comment une étude diagnostique doit être bâtie. Des patients consécutifs venus pour un même motif, et une fiabilité ventilée par gravité, de sorte qu'un lecteur puisse retrouver le sous-groupe qui ressemble vraiment à ses propres patients.",
+  "A company asks whether two things about its users go together. It samples at random from everyone who ever opened an account, including those who never came back and those who cancelled, and finds no relationship between them.":
+    "Une entreprise se demande si deux caractéristiques de ses utilisateurs vont de pair. Elle tire au hasard parmi toutes les personnes ayant un jour ouvert un compte, y compris celles qui ne sont jamais revenues et celles qui ont résilié, et ne trouve aucune relation entre les deux.",
+  "The sample was drawn before any filter that either of the two things could have influenced. Nothing about staying, succeeding or being admitted decided who got counted, so a selection artefact cannot be hiding in it.":
+    "L'échantillon a été tiré avant tout filtre que l'une ou l'autre de ces deux caractéristiques aurait pu influencer. Ni le fait de rester, ni celui de réussir, ni celui d'être admis n'a décidé qui serait compté ; aucun artefact de sélection ne peut donc s'y cacher.",
 };

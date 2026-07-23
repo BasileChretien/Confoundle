@@ -178,7 +178,71 @@ const items: TestItem[] = [
     },
   },
 
+  // ---- Spectrum bias ----
+  {
+    id: "sb-donors",
+    scenario: {
+      en: "A rapid test is validated on patients admitted to hospital with severe disease and on healthy blood donors. It separates the two groups almost perfectly, and the maker reports 98% sensitivity. It is then sold to family doctors for patients with a mild cough.",
+    },
+    trap: "spectrum-bias",
+    explanation: {
+      en: "Telling the obviously ill from the obviously well is the easiest task there is. A family doctor's patients are all somewhere in between, and that is precisely where the test has never been measured.",
+    },
+  },
+  {
+    id: "sb-faulty",
+    scenario: {
+      en: "A textbook lists a scan as 90% sensitive. A clinic that sees mostly early, mild cases adopts it and finds it misses about a third of the cases later confirmed by specialists. The clinic concludes its machine must be faulty.",
+    },
+    trap: "spectrum-bias",
+    explanation: {
+      en: "A quoted sensitivity comes attached to the patients it was measured on. Earlier and milder disease gives a test less to find, so a lower catch rate is what you should expect, not evidence of a broken machine.",
+    },
+  },
+
+  // ---- Berkson's bias ----
+  {
+    id: "bk-inpatients",
+    scenario: {
+      en: "A study of one hospital's inpatients finds that those with a metabolic disease are far more likely to also have a gallbladder disease than the other inpatients. The authors conclude that the first disease brings on the second.",
+    },
+    trap: "berksons-bias",
+    explanation: {
+      en: "Either illness on its own can put someone in a hospital bed, so patients with both are over-represented among inpatients. The link may exist only inside the building.",
+    },
+  },
+  {
+    id: "bk-dating",
+    scenario: {
+      en: "Someone notices that among the people they have dated, the better looking ones were consistently less pleasant company. They conclude that good looks spoil the character.",
+    },
+    trap: "berksons-bias",
+    explanation: {
+      en: "People generally agree to a date because someone is good looking or because they are pleasant company. Selecting on that forces a trade-off between the two inside the sample, whatever the relationship is outside it.",
+    },
+  },
+
   // ---- Genuinely sound reasoning (decoys) ----
+  {
+    id: "ok-consecutive-patients",
+    scenario: {
+      en: "A diagnostic test is evaluated on every consecutive patient arriving at a clinic with the same presenting complaint, whatever their eventual diagnosis, and the paper reports its accuracy separately for mild and for advanced disease. Another clinic with a similar caseload adopts the figures.",
+    },
+    trap: null,
+    explanation: {
+      en: "This is how a diagnostic study should be built. Consecutive patients with one presenting problem, and accuracy broken down by severity, so a reader can find the subgroup that actually resembles their own patients.",
+    },
+  },
+  {
+    id: "ok-sampled-before-filter",
+    scenario: {
+      en: "A company asks whether two things about its users go together. It samples at random from everyone who ever opened an account, including those who never came back and those who cancelled, and finds no relationship between them.",
+    },
+    trap: null,
+    explanation: {
+      en: "The sample was drawn before any filter that either of the two things could have influenced. Nothing about staying, succeeding or being admitted decided who got counted, so a selection artefact cannot be hiding in it.",
+    },
+  },
   {
     id: "ok-screening-mortality",
     scenario: {

@@ -6,6 +6,8 @@ import { survivorship } from "./data/survivorship";
 import { prosecutorsFallacy } from "./data/prosecutors-fallacy";
 import { willRogers } from "./data/will-rogers";
 import { leadTime } from "./data/lead-time";
+import { spectrumBias } from "./data/spectrum-bias";
+import { berkson } from "./data/berkson";
 
 /**
  * The puzzle registry. Adding a puzzle = import its data file and add it to
@@ -21,6 +23,8 @@ const rawPuzzles: unknown[] = [
   prosecutorsFallacy,
   willRogers,
   leadTime,
+  spectrumBias,
+  berkson,
 ];
 
 export const puzzles: PuzzleType[] = rawPuzzles.map((p, i) => {

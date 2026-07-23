@@ -557,4 +557,129 @@ export const ja: Record<string, string> = {
   B: "B",
   "From diagnosis": "診断から",
   "The whole life": "人生全体",
+
+  // ==== Spectrum bias (puzzle #8, urine dipstick) ====
+  "This urine test catches 92% of infections. Your patient's symptoms are vague. How good is it now?":
+    "この尿検査は感染症の92%を捉えます。あなたの患者の症状ははっきりしません。この検査は今どれほど当てになるでしょうか?",
+  "A dipstick for urinary infection, checked against urine cultures in an emergency department and a walk-in clinic. Among patients whose doctor already thought an infection was likely, it caught 49 of the 53 who really had one. Sensitivity is normally quoted as a single number, as though it were a fixed property of the test.":
+    "尿路感染症を調べる尿試験紙を、救急外来と予約なしで受診できる診療所で、尿培養と照らし合わせて検証しました。担当医がすでに感染症の可能性は高いと考えていた患者では、本当に感染していた53人のうち49人を捉えました。感度はふつう1つの数字として示され、まるで検査に固有の変わらない性質であるかのように扱われます。",
+  "In patients the doctor thinks are unlikely to be infected, how often does it catch a real infection?":
+    "医師が感染の可能性は低いと考えている患者では、本当の感染をどのくらいの割合で捉えるでしょうか?",
+  "Times the dipstick was right": "尿試験紙が正しかった割合",
+  "Doctor thought infection likely": "医師が感染を疑った",
+  Likely: "疑いあり",
+  "Doctor thought infection unlikely": "医師が感染を疑わなかった",
+  Unlikely: "疑いなし",
+  "Patients who really had an infection": "本当に感染していた患者",
+  "Patients who did not": "感染していなかった患者",
+  "The quoted figure": "引用される数字",
+  "About the same, 92%": "ほぼ同じ、92%",
+  "the test has not changed": "検査は変わっていない",
+  "A little lower, around 80%": "少し下がって、約80%",
+  "some drop off": "多少は落ちる",
+  "Barely half, 56%": "かろうじて半分、56%",
+  "it misses most of them": "大半を見逃す",
+  "Barely half. And the other column flips the other way.":
+    "かろうじて半分。しかも、もう一方の列は逆向きに動きます。",
+  "The patients changed, not the test":
+    "変わったのは患者であって、検査ではない",
+  "Patients their doctor already suspected had florid infections, the kind a dipstick spots easily. Patients thought unlikely to be infected had mild or early ones, and the test missed most of them. Now look at the second panel, the patients who had no infection at all: there the test was right 42% of the time in the first group and 78% in the second. Sensitivity and specificity are not properties of a test. They are properties of a test meeting a particular mix of people:":
+    "担当医がすでに疑っていた患者は、感染がはっきりと現れていました。尿試験紙が難なく見つけられる類のものです。感染の可能性は低いと考えられていた患者は、軽症または早期の感染で、検査はその大半を見逃しました。ここで2枚目のパネル、まったく感染していなかった患者を見てください。そこで検査が正しかった割合は、1つめの群で42%、2つめの群で78%でした。感度と特異度は、検査に固有の性質ではありません。それは、ある特定の顔ぶれの人々と出会った検査の性質なのです。",
+  "Both groups": "両方の群",
+  "The spectrum": "スペクトラム",
+  "How many in each group really had an infection":
+    "各群で本当に感染していた人の割合",
+  "Spectrum bias": "スペクトラムバイアス",
+  "A test's accuracy is not fixed. It moves with how advanced, how typical and how obvious the disease is in the patients being tested.":
+    "検査の精度は決まった値ではありません。検査を受ける患者の病気がどれだけ進んでいるか、どれだけ典型的か、どれだけはっきりしているかによって動きます。",
+  "Before trusting a quoted sensitivity, ask who it was measured on. A figure from patients with unmistakable disease will flatter the test in a clinic full of milder cases, and a study that recruits only textbook cases and healthy volunteers will flatter it most of all.":
+    "示された感度を信じる前に、それが誰を対象に測られたのかを問いましょう。誰が見ても病気とわかる患者から得られた数字は、より軽い症例ばかりの診療所では検査を実際より良く見せます。そして、教科書どおりの症例と健康なボランティアだけを集めた研究は、最も良く見せてしまいます。",
+  "Sensitivity is the share of truly ill people a test catches, and specificity is the share of healthy people it correctly clears. Both are quoted as though they belonged to the test, like its price. They do not. A test picks up a signal, and the signal is stronger in advanced disease than in early disease, so the sicker the ill people you test, the more of them it finds. The same logic runs the other way for the people without the disease: the more clearly healthy they are, the more easily the test clears them. That is why a test evaluated on obvious cases against obvious non-cases can look superb and then disappoint in a real clinic, where nearly everyone is somewhere in between. Two practical habits follow. Read the description of who was recruited before you read the accuracy figures. And be most suspicious of a study whose diseased and healthy groups were picked separately rather than being consecutive patients with the same presenting problem.":
+    "感度とは、本当に病気である人のうち検査が捉える割合であり、特異度とは、健康な人のうち検査が正しく陰性と判定する割合です。どちらも、値段のように検査そのものに備わっているかのように語られます。しかし、そうではありません。検査はある信号を拾い上げますが、その信号は早期の病気より進行した病気のほうが強く出ます。だから、検査にかける病人が重いほど、検査はその多くを見つけ出します。病気でない人については、同じ理屈が逆向きに働きます。はっきり健康であるほど、検査はたやすくその人を陰性と判定します。だからこそ、明らかな症例と明らかな非症例を突き合わせて評価された検査は見事に映り、そのあと、ほぼ全員がその中間のどこかにいる現実の診療所で期待を裏切るのです。ここから実践的な習慣が2つ導かれます。精度の数字を読む前に、誰が集められたのかという記述を読むこと。そして、同じ主訴で連続して受診した患者ではなく、病気の群と健康な群を別々に選び出した研究を、最も強く疑うことです。",
+  "The same test, sorted a different way": "同じ検査を、別のやり方で分けてみる",
+  "The same study split its patients again, this time by how many white cells were visible in the urine under a microscope. Where none were visible the dipstick caught 5 of the 10 real infections. Where a few were visible it caught 15 of 22. Where there were many it caught all 34 of 34. One test, one afternoon's samples, and a sensitivity anywhere from 50 to 100 percent depending only on which patients you counted.":
+    "同じ研究は、患者をもう一度分け直しました。今度は、顕微鏡で尿を見たときに白血球がどれだけ見えるかによってです。まったく見えない患者では、尿試験紙は本当の感染10件のうち5件を捉えました。少し見える患者では22件のうち15件、多く見える患者では34件のうち34件すべてを捉えました。検査は1つ、検体はある日の午後に集めた分。それなのに感度は、どの患者を数えたかだけで50から100パーセントまでのどこにでもなり得たのです。",
+  "Why promising tests keep disappointing":
+    "有望な検査が期待を裏切り続ける理由",
+  "The problem was named in 1978, after a pattern of new tests arriving with excellent published accuracy and then underwhelming the doctors who used them. Two of the era's examples were the carcinoembryonic antigen test and the nitro-blue tetrazolium test. The authors traced the letdown to two things: accuracy measured on a patient mix far narrower than real practice, and the test result and the true diagnosis not being judged independently of each other.":
+    "この問題は1978年に名前を与えられました。すぐれた精度が公表された新しい検査が次々と登場しては、実際に使った医師を失望させる、という繰り返しを受けてのことです。当時の例としては、癌胎児性抗原の検査とニトロブルーテトラゾリウム試験の2つがありました。著者らは、この期待外れの原因を2つに突き止めました。実際の診療よりはるかに狭い患者構成で精度が測られていたこと、そして検査の結果と本当の診断が互いに独立に判定されていなかったことです。",
+  "Spectrum bias, a reasoning trap.": "スペクトラムバイアス、推論の罠です。",
+  "Test accuracy sounds like a fact about the test, the way a car has a top speed. It is not. A test that catches 92% of infections in people who are obviously ill can catch barely half in people who are only slightly ill, because there is less to find. Whenever you are told a test is 95% accurate, the real question is who they measured that on, and whether those people look anything like you.":
+    "検査の精度は、車に最高速度があるのと同じように、検査そのものについての事実であるかのように聞こえます。しかし、そうではありません。誰が見ても病気とわかる人で感染の92%を捉える検査でも、ごく軽い人ではかろうじて半分しか捉えられないことがあります。見つけるべきものが少ないからです。この検査は95%の精度がある、と言われたときに本当に問うべきなのは、それを誰で測ったのか、そしてその人たちがあなたに少しでも似ているのか、ということです。",
+  "The counts are Table 3, page 137: 49 of 53 and 21 of 50 in the high prior-probability group, 10 of 18 and 188 of 241 in the low one. A positive dipstick meant leukocyte esterase or nitrite or both; a positive culture meant more than 100,000 colonies per millilitre. The correction notes that the high prior-probability group holds 103 patients, not the 107 still printed in the abstract, and that the rates were computed on 103 and stand. The printed abstract also gives the 0.56 confidence interval as 0.03 to 0.79; the paper's own table gives 0.31 to 0.79.":
+    "この数値は表3、137ページのものです。事前確率が高い群では53人中49人と50人中21人、低い群では18人中10人と241人中188人です。尿試験紙の陽性とは、白血球エステラーゼか亜硝酸塩、またはその両方が陽性であることを指し、尿培養の陽性とは1ミリリットルあたり100,000コロニーを超えることを指します。訂正記事は、事前確率が高い群が、抄録にいまだ印刷されている107人ではなく103人であること、そして各割合はすでに103人をもとに計算されており、そのまま有効であることを記しています。印刷された抄録は0.56の信頼区間を0.03から0.79としていますが、論文本体の表では0.31から0.79となっています。",
+
+  // ==== Berkson's bias (puzzle #9, hospital sample) ====
+  "Among hospital patients, lung trouble and joint trouble go together. Are the two diseases linked?":
+    "入院患者のあいだでは、肺の不調と関節の不調が一緒に現れます。この2つの病気には関連があるのでしょうか?",
+  "A survey knocked on doors and asked thousands of ordinary people what illnesses they had. Among those who had been in hospital in the previous six months, a quarter of the people with a respiratory disease also had a disease of the bones or joints, against well under a tenth of everyone else.":
+    "ある調査が一軒ずつ家を訪ね、数千人のふつうの人々に、どんな病気を持っているかを尋ねました。直前の6か月間に入院したことがある人のうち、呼吸器疾患を持つ人の4分の1が骨関節疾患も併せ持っていたのに対し、それ以外の人ではその割合は10分の1をかなり下回っていました。",
+  "Are these two diseases actually related?":
+    "この2つの病気は、実際に関連しているのでしょうか?",
+  "Also had a bone or joint disease": "骨関節疾患も併せ持っていた割合",
+  "Had a respiratory disease": "呼吸器疾患があった",
+  Lungs: "呼吸器あり",
+  "No respiratory disease": "呼吸器疾患がなかった",
+  "No lungs": "呼吸器なし",
+  "In hospital in the last 6 months": "直近6か月に入院した人",
+  "Everyone the survey asked": "調査が尋ねた全員",
+  "Hospital patients": "入院患者",
+  "Yes, one brings on the other": "はい、一方がもう一方を引き起こします",
+  "three times as common": "3倍も多い",
+  "Yes, but the other way round": "はい、ただし向きは逆です",
+  "the joint disease comes first": "関節の病気が先に来る",
+  "No, the hospital made the link": "いいえ、関連を作ったのは病院です",
+  "it is about who gets admitted": "問題は誰が入院するかだ",
+  "Ask everyone, and the link disappears.": "全員に尋ねると、関連は消えます。",
+  "Two illnesses are two chances to be admitted":
+    "病気が2つあれば、入院する機会も2つある",
+  "The same survey, the same people, the same two diseases. Across everyone it asked, having a respiratory disease made a bone or joint disease no more likely at all. The hospital panel is not a finding about disease, it is a finding about admission. Either illness can put you in a hospital bed, so people with both turn up there far more often than people with one, and inside those walls the two look inseparable:":
+    "同じ調査、同じ人々、同じ2つの病気です。尋ねた全員を通して見ると、呼吸器疾患があることで骨関節疾患を持つ可能性が高まることは、まったくありませんでした。入院患者のパネルは、病気についての知見ではなく、入院についての知見なのです。どちらの病気も、人を病院のベッドに送り込むことがあります。だから両方を持つ人は、片方だけの人よりもはるかに多くそこに現れ、その壁の内側では、2つの病気は切り離せないものに見えるのです。",
+  "Hospital and community": "病院と地域",
+  "The filter": "ふるい",
+  "Berkson's bias": "バークソンバイアス",
+  "Studying only the people who made it through a filter can invent a relationship that does not exist outside it.":
+    "ふるいを通り抜けた人だけを調べると、その外には存在しない関連を作り出してしまうことがあります。",
+  "Hospitals are the obvious filter, and the reason case-control studies built on hospital patients are treated warily. But any selected group does it: people who answered the survey, users who stayed subscribed, applicants who got an interview. Ask what it took to get into the sample, and whether both things you are comparing help you get in.":
+    "病院は最もわかりやすいふるいであり、入院患者をもとに組み立てられた症例対照研究が慎重に扱われるのも、そのためです。しかし、選び出された集団であれば何でも同じことをします。調査に回答した人、契約を続けた利用者、面接に呼ばれた応募者などです。その標本に入るには何が必要だったのか、そして比べようとしている2つのものが、どちらも標本に入る助けになっていないかを問いましょう。",
+  "Suppose two illnesses are entirely unrelated, and either one on its own gives you some chance of being admitted to hospital. Someone unlucky enough to have both has two shots at admission, so they are much likelier to be in the ward than someone with only one. Now stand inside the ward and count. The people with the first illness are heavily enriched for also having the second, because that is what got many of them in. You have not discovered a link between the diseases. You have rediscovered the admission rule, and dressed it up as biology. The general shape of this is a collider: a thing that two causes both point into. Selecting on it, whether by studying only the admitted, only the tested, or only the successful, links the causes together in your data even when nothing links them in the world. The defence is a sample defined before the filter, which is exactly why population surveys and whole-population registries are worth their cost.":
+    "2つの病気がまったく無関係で、そのどちらか一方だけでも入院する可能性がいくらか生じるとしましょう。運悪く両方を持つ人には、入院の機会が2つあります。だからその人は、片方だけの人よりもはるかに病棟にいる可能性が高くなります。ここで病棟の中に立って数えてみてください。1つめの病気を持つ人は、2つめの病気も併せ持つ割合が大きく偏って高くなっています。まさにそれが、多くの人を病棟に入れた理由だからです。あなたは病気どうしの関連を発見したのではありません。入院の決まりを発見し直し、それを生物学の装いで包んだだけなのです。これを一般化した形が合流点(コライダー)です。2つの原因がともに矢印を向けている先にあるもののことです。合流点で選抜すること、つまり入院した人だけ、検査を受けた人だけ、成功した人だけを調べることは、現実には何ひとつ結び付いていない原因どうしを、あなたのデータの中で結び付けてしまいます。備えとなるのは、ふるいにかけられる前の段階で定義された標本です。人口を対象とする調査や全人口の登録データが、その費用に見合う価値を持つのは、まさにそのためです。",
+  "The bias that was theory for thirty years":
+    "30年ものあいだ理論にとどまっていたバイアス",
+  "Joseph Berkson warned in 1946 that hospital-based comparisons could manufacture associations, but his argument was mathematical and his numbers were invented to illustrate it. He noted that the same artefact would appear if you sampled shuffled cards rather than patients. It took until this survey, three decades later, for anyone to demonstrate the effect in real people.":
+    "Joseph Berksonは1946年、病院を基盤とした比較が関連を作り出しうると警告しました。しかし、その議論は数学的なもので、示された数字も説明のために作られたものでした。彼は、患者ではなく切り混ぜたトランプを標本にしても、同じみせかけの関連が現れると指摘しています。この効果を実際の人間で示す者が現れるまでには、それから30年後のこの調査を待たねばなりませんでした。",
+  "Why early covid studies disagreed": "初期の新型コロナ研究が食い違った理由",
+  "In 2020, studies of who caught covid and who fell severely ill could only recruit from people who had been tested or admitted, and early on those were mostly hospital staff, the already unwell and the elderly. Getting into the sample depended on the very things being studied. Analyses showed this alone could produce apparent risk factors, and even reverse the direction of a real one, without any biology behind it.":
+    "2020年、誰が新型コロナに感染し、誰が重症化したのかを調べる研究は、検査を受けた人か入院した人からしか対象を集められませんでした。そして初期には、その大半が病院の職員、すでに体調を崩していた人、高齢者でした。標本に入れるかどうかが、まさに研究しようとしている当のものに左右されていたのです。解析によれば、これだけで、背後に生物学的な理由が何もないまま、見かけ上のリスク因子が生まれ、本物のリスク因子の向きさえ逆転しうることが示されました。",
+  "Berkson's bias, a reasoning trap.": "バークソンバイアス、推論の罠です。",
+  "Look only at hospital patients and two completely unrelated illnesses can appear to travel together. The reason is not biology, it is the door. Either illness can get you admitted, so people who happen to have both are over-represented inside, and from in there the two look linked. Any filtered group does this: the people who got tested, the applicants who got an interview, the customers who stayed. Before believing a pattern, ask what it took to get into the data.":
+    "入院患者だけを見ていると、まったく無関係な2つの病気が、連れ立って動いているように見えることがあります。理由は生物学ではなく、入口です。どちらの病気でも入院しうるので、たまたま両方を持つ人が院内では実際より多く現れ、その中から見ると2つは関連しているように見えます。ふるいにかけられた集団なら何でも同じことをします。検査を受けた人、面接に呼ばれた応募者、契約を続けた顧客などです。あるパターンを信じる前に、そのデータに入るには何が必要だったのかを問いましょう。",
+  "The counts are Table 2: household interviews with 2,784 people, of whom 257 had been in hospital in the previous six months. The table's own relative odds are 1.06 in the general population and 4.06 among the hospitalised. The hospital figures rest on only 20 people with a respiratory disease, so this single table demonstrates the mechanism rather than measuring its size precisely.":
+    "この数値は表2のものです。2,784人への家庭訪問による聞き取り調査で、そのうち257人が直前の6か月間に入院していました。表に示された相対オッズは、一般集団で1.06、入院した人で4.06です。入院に関する数値は、呼吸器疾患を持つわずか20人に基づいています。したがってこの1つの表は、仕組みの大きさを正確に測るというより、その仕組みが実在することを示すものです。",
+
+  // ---- Trap Hunt test items (spectrum bias, Berkson's bias) ----
+  "A rapid test is validated on patients admitted to hospital with severe disease and on healthy blood donors. It separates the two groups almost perfectly, and the maker reports 98% sensitivity. It is then sold to family doctors for patients with a mild cough.":
+    "ある迅速検査が、重症で入院した患者と、健康な献血者を対象に検証されました。この検査は2つの群をほぼ完璧に区別し、製造元は感度98%と報告しています。その後この検査は、軽いせきの患者に使うものとして家庭医に販売されました。",
+  "Telling the obviously ill from the obviously well is the easiest task there is. A family doctor's patients are all somewhere in between, and that is precisely where the test has never been measured.":
+    "明らかに病気の人と明らかに健康な人を見分けるのは、最もやさしい仕事です。家庭医の患者はみな、その中間のどこかにいます。そして、まさにその領域でこの検査は一度も測られていないのです。",
+  "A textbook lists a scan as 90% sensitive. A clinic that sees mostly early, mild cases adopts it and finds it misses about a third of the cases later confirmed by specialists. The clinic concludes its machine must be faulty.":
+    "ある教科書が、この画像検査の感度は90%だと記載しています。早期で軽い症例を主に診ている診療所がこれを導入したところ、後に専門医が確定した症例のおよそ3分の1を見逃していることがわかりました。診療所は、自院の装置が故障しているに違いないと結論づけました。",
+  "A quoted sensitivity comes attached to the patients it was measured on. Earlier and milder disease gives a test less to find, so a lower catch rate is what you should expect, not evidence of a broken machine.":
+    "示された感度は、それが測られた患者と切り離せません。より早期で、より軽い病気は、検査が見つけるべきものが少ないということです。だから捉える割合が下がるのは当然予想されることであって、装置の故障を示す証拠ではありません。",
+  "A study of one hospital's inpatients finds that those with a metabolic disease are far more likely to also have a gallbladder disease than the other inpatients. The authors conclude that the first disease brings on the second.":
+    "ある病院の入院患者を対象とした研究で、代謝疾患のある患者は、それ以外の入院患者に比べて胆嚢疾患も併せ持つ可能性がはるかに高いことがわかりました。著者らは、前者の病気が後者を引き起こすと結論づけました。",
+  "Either illness on its own can put someone in a hospital bed, so patients with both are over-represented among inpatients. The link may exist only inside the building.":
+    "どちらの病気も、それ単独で人を病院のベッドに送り込むことがあります。そのため両方を持つ患者は、入院患者のあいだで実際より多く現れます。この関連は、その建物の中にしか存在しないのかもしれません。",
+  "Someone notices that among the people they have dated, the better looking ones were consistently less pleasant company. They conclude that good looks spoil the character.":
+    "ある人が、これまで交際した相手を振り返り、見た目が良い人ほど決まって一緒にいて楽しくなかったことに気づきました。そしてこの人は、美貌は人柄を損なうと結論づけました。",
+  "People generally agree to a date because someone is good looking or because they are pleasant company. Selecting on that forces a trade-off between the two inside the sample, whatever the relationship is outside it.":
+    "人がデートに応じるのは、たいてい相手の見た目が良いからか、一緒にいて楽しいからです。そこで選抜が起こると、標本の外での関係がどうであれ、標本の中ではこの2つのあいだに必ず二律背反が生まれます。",
+  "A diagnostic test is evaluated on every consecutive patient arriving at a clinic with the same presenting complaint, whatever their eventual diagnosis, and the paper reports its accuracy separately for mild and for advanced disease. Another clinic with a similar caseload adopts the figures.":
+    "ある診断検査が、同じ主訴で診療所を訪れた連続する全患者を対象に、最終的な診断が何であれ評価され、論文は軽症の場合と進行例の場合とで精度を分けて報告しています。似た患者構成を持つ別の診療所が、この数値を採用しました。",
+  "This is how a diagnostic study should be built. Consecutive patients with one presenting problem, and accuracy broken down by severity, so a reader can find the subgroup that actually resembles their own patients.":
+    "これは、診断研究のあるべき組み立て方です。1つの主訴で連続して受診した患者を対象とし、精度を重症度別に分けて示しています。そうすれば読者は、自分の患者に実際に似たサブグループを見つけられます。",
+  "A company asks whether two things about its users go together. It samples at random from everyone who ever opened an account, including those who never came back and those who cancelled, and finds no relationship between them.":
+    "ある企業が、利用者に関する2つの事柄が一緒に現れるかどうかを調べました。二度と戻らなかった人も解約した人も含め、これまでに口座を開設したすべての人から無作為に標本を取ったところ、2つのあいだに関係は見られませんでした。",
+  "The sample was drawn before any filter that either of the two things could have influenced. Nothing about staying, succeeding or being admitted decided who got counted, so a selection artefact cannot be hiding in it.":
+    "この標本は、2つの事柄のどちらかが影響を及ぼしえたどんなふるいよりも前の段階で取られています。誰が数に入るかは、残ったかどうか、成功したかどうか、入院したかどうかでは決まっていません。したがって、選択バイアスによるみせかけの関連が、ここに潜んでいることはあり得ません。",
 };

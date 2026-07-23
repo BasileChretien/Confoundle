@@ -89,7 +89,9 @@ export function bestGroupId(
   rates: Rate[],
   higherIsBetter: boolean,
 ): string | null {
-  if (rates.length === 0) return null;
+  // A winner needs something to beat. A view showing a single group (a setup
+  // beat quoting one published figure) has no contest, so it crowns nobody.
+  if (rates.length < 2) return null;
   const best = rates.reduce((b, r) => {
     const better = higherIsBetter ? r.rate > b.rate : r.rate < b.rate;
     return better ? r : b;

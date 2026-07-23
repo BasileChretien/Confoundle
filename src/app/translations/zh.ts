@@ -559,4 +559,123 @@ export const zh: Record<string, string> = {
   "Performance & records": "表现与纪录",
   "The past & how we read it": "过去，以及我们如何解读它",
   "News & the numbers in it": "新闻，以及其中的数字",
+
+  // ==== Spectrum bias (puzzle #8, urine dipstick) ====
+  "This urine test catches 92% of infections. Your patient's symptoms are vague. How good is it now?":
+    "这项尿液检测能查出 92% 的感染。你的患者症状含糊不清。现在它还有多准？",
+  "A dipstick for urinary infection, checked against urine cultures in an emergency department and a walk-in clinic. Among patients whose doctor already thought an infection was likely, it caught 49 of the 53 who really had one. Sensitivity is normally quoted as a single number, as though it were a fixed property of the test.":
+    "一种用于尿路感染的尿试纸，在一家急诊科和一家免预约门诊里与尿培养结果作了对照。在医生本来就认为很可能有感染的患者中，真正有感染的 53 人里它查出了 49 人。敏感度通常被引用为一个单一的数字，仿佛它是这项检测固定不变的属性。",
+  "In patients the doctor thinks are unlikely to be infected, how often does it catch a real infection?":
+    "在医生认为不太可能有感染的患者中，它查出真正感染的比例是多少？",
+  "Times the dipstick was right": "尿试纸判断正确的次数",
+  "Doctor thought infection likely": "医生认为很可能有感染",
+  Likely: "可能性高",
+  "Doctor thought infection unlikely": "医生认为不太可能有感染",
+  Unlikely: "可能性低",
+  "Patients who really had an infection": "真正有感染的患者",
+  "Patients who did not": "没有感染的患者",
+  "The quoted figure": "被引用的数字",
+  "About the same, 92%": "差不多，还是 92%",
+  "the test has not changed": "检测本身没有变",
+  "A little lower, around 80%": "略低一些，大约 80%",
+  "some drop off": "会掉下来一点",
+  "Barely half, 56%": "勉强过半，56%",
+  "it misses most of them": "它漏掉了其中大部分",
+  "Barely half. And the other column flips the other way.":
+    "勉强过半。而另一栏则朝相反的方向翻转。",
+  "The patients changed, not the test": "变的是患者，不是检测",
+  "Patients their doctor already suspected had florid infections, the kind a dipstick spots easily. Patients thought unlikely to be infected had mild or early ones, and the test missed most of them. Now look at the second panel, the patients who had no infection at all: there the test was right 42% of the time in the first group and 78% in the second. Sensitivity and specificity are not properties of a test. They are properties of a test meeting a particular mix of people:":
+    "医生本来就怀疑有感染的患者，得的是症状明显的感染，正是尿试纸容易查出的那一类。被认为不太可能有感染的患者，得的是轻微或早期的感染，检测漏掉了其中大部分。再看第二组图，那些完全没有感染的患者：检测在第一组中判断正确的比例是 42%，在第二组中是 78%。敏感度和特异度并不是检测的属性，而是一项检测遇上某一特定人群构成时才呈现出来的属性：",
+  "Both groups": "两组合计",
+  "The spectrum": "疾病谱",
+  "How many in each group really had an infection": "每组中真正有感染的人数",
+  "Spectrum bias": "疾病谱偏倚",
+  "A test's accuracy is not fixed. It moves with how advanced, how typical and how obvious the disease is in the patients being tested.":
+    "一项检测的准确性并不是固定的。它会随着受检患者病情的进展程度、典型程度和明显程度而变化。",
+  "Before trusting a quoted sensitivity, ask who it was measured on. A figure from patients with unmistakable disease will flatter the test in a clinic full of milder cases, and a study that recruits only textbook cases and healthy volunteers will flatter it most of all.":
+    "在相信一个被引用的敏感度之前，先问一问它是在谁身上测出来的。来自病情一目了然的患者的数字，放到满是轻症的门诊里就会美化这项检测；而只招募教科书式病例和健康志愿者的研究，美化得最厉害。",
+  "Sensitivity is the share of truly ill people a test catches, and specificity is the share of healthy people it correctly clears. Both are quoted as though they belonged to the test, like its price. They do not. A test picks up a signal, and the signal is stronger in advanced disease than in early disease, so the sicker the ill people you test, the more of them it finds. The same logic runs the other way for the people without the disease: the more clearly healthy they are, the more easily the test clears them. That is why a test evaluated on obvious cases against obvious non-cases can look superb and then disappoint in a real clinic, where nearly everyone is somewhere in between. Two practical habits follow. Read the description of who was recruited before you read the accuracy figures. And be most suspicious of a study whose diseased and healthy groups were picked separately rather than being consecutive patients with the same presenting problem.":
+    "敏感度是一项检测能查出的真正患病者的比例，特异度是它能正确排除的健康人的比例。两者常常被说得好像属于这项检测本身，就像它的价格一样。其实并非如此。检测捕捉的是一个信号，而晚期病变的信号比早期病变更强，所以你检测的病人病得越重，被查出来的就越多。对于没有病的人，同样的逻辑反过来成立：他们越是明显健康，检测就越容易把他们排除掉。这就是为什么一项在典型病例与典型非病例之间做评价的检测可以看起来出色至极，到了真实门诊里却令人失望，因为那里几乎每个人都处在两者之间。由此可以养成两个实用习惯。在看准确性数字之前，先读一读研究究竟招募了哪些人。以及，对那种把患病组和健康组分别挑选、而不是连续纳入同一主诉患者的研究，要格外警惕。",
+  "The same test, sorted a different way": "同一项检测，换一种分组方式",
+  "The same study split its patients again, this time by how many white cells were visible in the urine under a microscope. Where none were visible the dipstick caught 5 of the 10 real infections. Where a few were visible it caught 15 of 22. Where there were many it caught all 34 of 34. One test, one afternoon's samples, and a sensitivity anywhere from 50 to 100 percent depending only on which patients you counted.":
+    "同一项研究又把患者重新分了一次组，这次按显微镜下尿液中可见的白细胞数量来分。看不到白细胞时，尿试纸在 10 例真实感染中查出 5 例。能看到少量白细胞时，查出 22 例中的 15 例。白细胞很多时，34 例全部查出。同一项检测，同一个下午的样本，敏感度却可以在 50% 到 100% 之间任意游走，差别只在于你统计的是哪些患者。",
+  "Why promising tests keep disappointing": "为什么被看好的检测总是让人失望",
+  "The problem was named in 1978, after a pattern of new tests arriving with excellent published accuracy and then underwhelming the doctors who used them. Two of the era's examples were the carcinoembryonic antigen test and the nitro-blue tetrazolium test. The authors traced the letdown to two things: accuracy measured on a patient mix far narrower than real practice, and the test result and the true diagnosis not being judged independently of each other.":
+    "这个问题在 1978 年被正式命名，起因是当时反复出现这样一种情形：新检测带着漂亮的已发表准确性登场，用起来却让医生大失所望。那个年代的两个例子是癌胚抗原检测和硝基蓝四氮唑检测。作者把这种落差追溯到两件事：准确性是在比真实临床窄得多的患者构成上测出来的，以及检测结果与真实诊断并没有彼此独立地判定。",
+  "Spectrum bias, a reasoning trap.": "疾病谱偏倚，一个推理陷阱。",
+  "Test accuracy sounds like a fact about the test, the way a car has a top speed. It is not. A test that catches 92% of infections in people who are obviously ill can catch barely half in people who are only slightly ill, because there is less to find. Whenever you are told a test is 95% accurate, the real question is who they measured that on, and whether those people look anything like you.":
+    "检测的准确性听上去像是关于这项检测本身的事实，就像一辆车有它的最高时速。其实不是。一项在明显病重的人身上能查出 92% 感染的检测，在只是轻微不适的人身上可能勉强查出一半，因为可供发现的东西更少了。每当有人告诉你某项检测有 95% 的准确率，真正该问的是：这是在谁身上测出来的，那些人和你像不像。",
+  "The counts are Table 3, page 137: 49 of 53 and 21 of 50 in the high prior-probability group, 10 of 18 and 188 of 241 in the low one. A positive dipstick meant leukocyte esterase or nitrite or both; a positive culture meant more than 100,000 colonies per millilitre. The correction notes that the high prior-probability group holds 103 patients, not the 107 still printed in the abstract, and that the rates were computed on 103 and stand. The printed abstract also gives the 0.56 confidence interval as 0.03 to 0.79; the paper's own table gives 0.31 to 0.79.":
+    "这些数字出自表 3，第 137 页：验前概率高的一组为 53 例中的 49 例和 50 例中的 21 例，验前概率低的一组为 18 例中的 10 例和 241 例中的 188 例。尿试纸阳性指白细胞酯酶或亚硝酸盐阳性，或两者皆阳性；尿培养阳性指每毫升菌落数超过 100,000。更正说明指出，验前概率高的一组共 103 例患者，而不是摘要中至今仍印着的 107 例，并说明这些比率是按 103 例算出的，结论不变。已印出的摘要还把 0.56 的置信区间写成 0.03 至 0.79；论文自己的表格给出的是 0.31 至 0.79。",
+
+  // ==== Berkson's bias (puzzle #9, hospital admission) ====
+  "Among hospital patients, lung trouble and joint trouble go together. Are the two diseases linked?":
+    "在住院患者中，肺部的毛病和关节的毛病总是结伴出现。这两种病之间有关联吗？",
+  "A survey knocked on doors and asked thousands of ordinary people what illnesses they had. Among those who had been in hospital in the previous six months, a quarter of the people with a respiratory disease also had a disease of the bones or joints, against well under a tenth of everyone else.":
+    "一项调查挨家挨户敲门，询问了数千名普通人患有哪些疾病。在过去六个月里住过院的人当中，患有呼吸系统疾病的人里有四分之一同时患有骨关节疾病，而其他人中这个比例远不到十分之一。",
+  "Are these two diseases actually related?": "这两种疾病之间真的有关系吗？",
+  "Also had a bone or joint disease": "同时患有骨关节疾病",
+  "Had a respiratory disease": "患有呼吸系统疾病",
+  Lungs: "有肺病",
+  "No respiratory disease": "没有呼吸系统疾病",
+  "No lungs": "无肺病",
+  "In hospital in the last 6 months": "过去 6 个月住过院",
+  "Everyone the survey asked": "调查问到的所有人",
+  "Hospital patients": "住院患者",
+  "Yes, one brings on the other": "是的，一个引发了另一个",
+  "three times as common": "常见程度是三倍",
+  "Yes, but the other way round": "是的，但方向反过来",
+  "the joint disease comes first": "先有的是关节病",
+  "No, the hospital made the link": "不，是医院造出了这种关联",
+  "it is about who gets admitted": "关键在于谁会住院",
+  "Ask everyone, and the link disappears.": "问遍所有人，这种关联就消失了。",
+  "Two illnesses are two chances to be admitted": "两种病，就是两次住院的机会",
+  "The same survey, the same people, the same two diseases. Across everyone it asked, having a respiratory disease made a bone or joint disease no more likely at all. The hospital panel is not a finding about disease, it is a finding about admission. Either illness can put you in a hospital bed, so people with both turn up there far more often than people with one, and inside those walls the two look inseparable:":
+    "同一项调查，同一批人，同样这两种疾病。在它问到的所有人当中，患有呼吸系统疾病完全没有让骨关节疾病变得更常见。住院那一组图讲的不是疾病，而是住院。这两种病中的任何一种都可能让你躺上病床，所以两病兼有的人出现在那里的机会远高于只有一种病的人，而在医院的墙内，这两者看上去密不可分：",
+  "Hospital and community": "医院与社区",
+  "The filter": "筛选机制",
+  "Berkson's bias": "伯克森偏倚",
+  "Studying only the people who made it through a filter can invent a relationship that does not exist outside it.":
+    "只研究那些通过了某道筛选的人，会凭空造出一种在筛选之外并不存在的关系。",
+  "Hospitals are the obvious filter, and the reason case-control studies built on hospital patients are treated warily. But any selected group does it: people who answered the survey, users who stayed subscribed, applicants who got an interview. Ask what it took to get into the sample, and whether both things you are comparing help you get in.":
+    "医院是最明显的那道筛选，这也是以住院患者为基础的病例对照研究总被谨慎对待的原因。但任何经过挑选的群体都会这样：应答了调查的人、一直没有退订的用户、拿到了面试机会的申请者。要问一问：进入这个样本需要什么条件，以及你正在比较的两样东西是不是都有助于进入。",
+  "Suppose two illnesses are entirely unrelated, and either one on its own gives you some chance of being admitted to hospital. Someone unlucky enough to have both has two shots at admission, so they are much likelier to be in the ward than someone with only one. Now stand inside the ward and count. The people with the first illness are heavily enriched for also having the second, because that is what got many of them in. You have not discovered a link between the diseases. You have rediscovered the admission rule, and dressed it up as biology. The general shape of this is a collider: a thing that two causes both point into. Selecting on it, whether by studying only the admitted, only the tested, or only the successful, links the causes together in your data even when nothing links them in the world. The defence is a sample defined before the filter, which is exactly why population surveys and whole-population registries are worth their cost.":
+    "假设有两种疾病完全无关，而其中任何一种单独存在都会让你有一定概率住院。倒霉到两种病都有的人，就有了两次住院的机会，所以他们出现在病房里的可能性远高于只有一种病的人。现在站在病房里数一数。患有第一种病的人当中，同时患有第二种病的比例被大大抬高了，因为正是这一点把他们中的许多人送了进来。你并没有发现两种疾病之间的关联。你只是重新发现了住院的规则，并把它打扮成了生物学。这件事的一般形态叫作对撞因子：两个原因共同指向的那个变量。按它来挑选样本，无论是只研究住院的人、只研究做过检测的人，还是只研究成功的人，都会在你的数据里把这两个原因绑在一起，哪怕在真实世界里它们毫无关系。防身之道是使用在筛选之前就已界定好的样本，而这正是人群调查和全人群登记系统值得付出成本的原因。",
+  "The bias that was theory for thirty years": "整整三十年只停留在理论上的偏倚",
+  "Joseph Berkson warned in 1946 that hospital-based comparisons could manufacture associations, but his argument was mathematical and his numbers were invented to illustrate it. He noted that the same artefact would appear if you sampled shuffled cards rather than patients. It took until this survey, three decades later, for anyone to demonstrate the effect in real people.":
+    "1946 年，Joseph Berkson 就警告说，以医院为基础的比较可能制造出关联，但他的论证是数学式的，用的数字也是为了举例而虚构的。他指出，如果你抽样的是洗过的扑克牌而不是患者，同样的假象照样会出现。直到三十年后这项调查出现，才有人在真实的人群中证实了这一效应。",
+  "Why early covid studies disagreed": "为什么 COVID 早期的研究彼此矛盾",
+  "In 2020, studies of who caught covid and who fell severely ill could only recruit from people who had been tested or admitted, and early on those were mostly hospital staff, the already unwell and the elderly. Getting into the sample depended on the very things being studied. Analyses showed this alone could produce apparent risk factors, and even reverse the direction of a real one, without any biology behind it.":
+    "2020 年，研究谁感染了 COVID、谁发展成重症时，只能从做过检测或住过院的人当中招募，而在早期，这些人大多是医院工作人员、本来就有病的人和老年人。能不能进入样本，恰恰取决于研究正在考察的那些因素。有分析表明，仅凭这一点就能制造出看似成立的危险因素，甚至把一个真实因素的方向反转过来，背后并没有任何生物学机制。",
+  "Berkson's bias, a reasoning trap.": "伯克森偏倚，一个推理陷阱。",
+  "Look only at hospital patients and two completely unrelated illnesses can appear to travel together. The reason is not biology, it is the door. Either illness can get you admitted, so people who happen to have both are over-represented inside, and from in there the two look linked. Any filtered group does this: the people who got tested, the applicants who got an interview, the customers who stayed. Before believing a pattern, ask what it took to get into the data.":
+    "只看住院患者，两种毫不相干的疾病就可能显得形影不离。原因不在生物学，而在那道门。这两种病中的任何一种都可能让你住院，于是两病兼有的人在院内的比例被大大抬高，站在里面看，两者就像有关联。任何经过筛选的群体都会这样：做过检测的人、拿到面试机会的申请者、留下来没走的客户。在相信一个模式之前，先问一问进入这份数据需要什么条件。",
+  "The counts are Table 2: household interviews with 2,784 people, of whom 257 had been in hospital in the previous six months. The table's own relative odds are 1.06 in the general population and 4.06 among the hospitalised. The hospital figures rest on only 20 people with a respiratory disease, so this single table demonstrates the mechanism rather than measuring its size precisely.":
+    "这些数字出自表 2：入户访谈了 2,784 人，其中 257 人在过去六个月里住过院。表中自己算出的比值比在一般人群中为 1.06，在住院人群中为 4.06。住院那部分数字只建立在 20 名呼吸系统疾病患者之上，所以这张表展示的是这一机制，而不是对其大小的精确测量。",
+
+  // Trap Hunt items for spectrum bias and Berkson's bias
+  "A rapid test is validated on patients admitted to hospital with severe disease and on healthy blood donors. It separates the two groups almost perfectly, and the maker reports 98% sensitivity. It is then sold to family doctors for patients with a mild cough.":
+    "一项快速检测在因重症住院的患者和健康献血者身上完成了验证。它几乎完美地把这两组人区分开，厂家报告的敏感度为 98%。随后它被卖给全科医生，用于只是轻微咳嗽的患者。",
+  "Telling the obviously ill from the obviously well is the easiest task there is. A family doctor's patients are all somewhere in between, and that is precisely where the test has never been measured.":
+    "把明显有病的人和明显健康的人区分开，是最容易的任务。全科医生的患者全都处在两者之间，而这项检测恰恰从未在这个区间里测量过。",
+  "A textbook lists a scan as 90% sensitive. A clinic that sees mostly early, mild cases adopts it and finds it misses about a third of the cases later confirmed by specialists. The clinic concludes its machine must be faulty.":
+    "一本教科书写着某项扫描的敏感度为 90%。一家主要接诊早期轻症的门诊采用了它，却发现它漏掉了后来经专科确诊的病例中的约三分之一。门诊由此断定自己的机器一定有毛病。",
+  "A quoted sensitivity comes attached to the patients it was measured on. Earlier and milder disease gives a test less to find, so a lower catch rate is what you should expect, not evidence of a broken machine.":
+    "一个被引用的敏感度，总是连着它当初测量所用的那批患者。更早期、更轻的病情留给检测可查的东西更少，所以查出率下降本来就在意料之中，并不能证明机器坏了。",
+  "A study of one hospital's inpatients finds that those with a metabolic disease are far more likely to also have a gallbladder disease than the other inpatients. The authors conclude that the first disease brings on the second.":
+    "一项针对某家医院住院患者的研究发现，患有代谢性疾病的人同时患有胆囊疾病的可能性远高于其他住院患者。作者由此得出结论：前一种病引发了后一种病。",
+  "Either illness on its own can put someone in a hospital bed, so patients with both are over-represented among inpatients. The link may exist only inside the building.":
+    "这两种病中的任何一种单独存在都可能把人送上病床，所以两病兼有的患者在住院人群中的比例被抬高了。这种关联可能只存在于这栋楼里。",
+  "Someone notices that among the people they have dated, the better looking ones were consistently less pleasant company. They conclude that good looks spoil the character.":
+    "有人注意到，在自己约会过的人里，长得越好看的，相处起来越不讨人喜欢。他由此断定，好看会毁掉一个人的性情。",
+  "People generally agree to a date because someone is good looking or because they are pleasant company. Selecting on that forces a trade-off between the two inside the sample, whatever the relationship is outside it.":
+    "人们答应约会，通常是因为对方好看，或者因为对方相处起来舒服。按这一点来挑选，就会在样本内部强行造出两者之间的此消彼长，而不论在样本之外二者究竟是什么关系。",
+  "A diagnostic test is evaluated on every consecutive patient arriving at a clinic with the same presenting complaint, whatever their eventual diagnosis, and the paper reports its accuracy separately for mild and for advanced disease. Another clinic with a similar caseload adopts the figures.":
+    "一项诊断检测在某家门诊以同一主诉就诊的每一位连续患者身上接受评价，无论他们最终诊断如何；论文还分别报告了轻症和晚期病情下的准确性。另一家病例构成相似的门诊采用了这些数字。",
+  "This is how a diagnostic study should be built. Consecutive patients with one presenting problem, and accuracy broken down by severity, so a reader can find the subgroup that actually resembles their own patients.":
+    "诊断研究本来就该这样设计。以同一主诉连续纳入患者，并按严重程度拆分准确性，读者就能找到真正与自己患者相像的那个亚组。",
+  "A company asks whether two things about its users go together. It samples at random from everyone who ever opened an account, including those who never came back and those who cancelled, and finds no relationship between them.":
+    "一家公司想知道用户身上的两个特征是不是相伴出现。它从所有开过账户的人中随机抽样，包括那些再也没回来的人和已经注销的人，结果发现两者之间没有关系。",
+  "The sample was drawn before any filter that either of the two things could have influenced. Nothing about staying, succeeding or being admitted decided who got counted, so a selection artefact cannot be hiding in it.":
+    "样本是在任何可能受这两个特征影响的筛选之前抽取的。是否留下、是否成功、是否被收治，都没有决定谁会被统计进来，所以里面藏不住选择偏倚造成的假象。",
 };

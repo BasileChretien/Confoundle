@@ -564,4 +564,130 @@ export const hi: Record<string, string> = {
   B: "B",
   "From diagnosis": "निदान से",
   "The whole life": "पूरी ज़िंदगी",
+
+  // ---- Spectrum bias (puzzle #8) ----
+  "This urine test catches 92% of infections. Your patient's symptoms are vague. How good is it now?":
+    "पेशाब की यह जाँच 92% संक्रमण पकड़ लेती है। आपके मरीज़ के लक्षण अस्पष्ट हैं। अब यह कितनी अच्छी है?",
+  "A dipstick for urinary infection, checked against urine cultures in an emergency department and a walk-in clinic. Among patients whose doctor already thought an infection was likely, it caught 49 of the 53 who really had one. Sensitivity is normally quoted as a single number, as though it were a fixed property of the test.":
+    "पेशाब के संक्रमण की एक डिपस्टिक जाँच, जिसे एक आपातकालीन विभाग और एक वॉक-इन क्लिनिक में पेशाब के कल्चर से मिलाकर परखा गया। जिन मरीज़ों के डॉक्टर पहले से मान रहे थे कि संक्रमण की संभावना है, उनमें जिन 53 को सचमुच संक्रमण था उनमें से 49 को इसने पकड़ लिया। संवेदनशीलता (sensitivity) आम तौर पर एक ही संख्या के रूप में बताई जाती है, मानो वह जाँच का कोई तय गुण हो।",
+  "In patients the doctor thinks are unlikely to be infected, how often does it catch a real infection?":
+    "जिन मरीज़ों के बारे में डॉक्टर को लगता है कि संक्रमण की संभावना कम है, उनमें यह असली संक्रमण को कितनी बार पकड़ती है?",
+  "Times the dipstick was right": "जितनी बार डिपस्टिक सही निकली",
+  "Doctor thought infection likely": "डॉक्टर को संक्रमण की संभावना लगी",
+  Likely: "संभावित",
+  "Doctor thought infection unlikely": "डॉक्टर को संक्रमण की संभावना कम लगी",
+  Unlikely: "कम संभावित",
+  "Patients who really had an infection": "जिन मरीज़ों को सचमुच संक्रमण था",
+  "Patients who did not": "जिन्हें नहीं था",
+  "The quoted figure": "बताया गया आँकड़ा",
+  "About the same, 92%": "लगभग उतनी ही, 92%",
+  "the test has not changed": "जाँच तो वही है",
+  "A little lower, around 80%": "थोड़ी कम, करीब 80%",
+  "some drop off": "कुछ गिरावट आती है",
+  "Barely half, 56%": "मुश्किल से आधी, 56%",
+  "it misses most of them": "वह ज़्यादातर को चूक जाती है",
+  "Barely half. And the other column flips the other way.":
+    "मुश्किल से आधी। और दूसरा स्तंभ उल्टी दिशा में पलट जाता है।",
+  "The patients changed, not the test": "मरीज़ बदले, जाँच नहीं",
+  "Patients their doctor already suspected had florid infections, the kind a dipstick spots easily. Patients thought unlikely to be infected had mild or early ones, and the test missed most of them. Now look at the second panel, the patients who had no infection at all: there the test was right 42% of the time in the first group and 78% in the second. Sensitivity and specificity are not properties of a test. They are properties of a test meeting a particular mix of people:":
+    "जिन मरीज़ों पर उनके डॉक्टर को पहले से शक था, उन्हें भड़के हुए संक्रमण थे, वैसे जिन्हें डिपस्टिक आसानी से पकड़ लेती है। जिनके बारे में संक्रमण की संभावना कम मानी गई थी, उन्हें हल्के या शुरुआती संक्रमण थे, और जाँच उनमें से ज़्यादातर को चूक गई। अब दूसरा पैनल देखिए, वे मरीज़ जिन्हें संक्रमण था ही नहीं: वहाँ जाँच पहले समूह में 42% बार सही रही और दूसरे में 78% बार। संवेदनशीलता और विशिष्टता किसी जाँच के गुण नहीं हैं। वे इस बात के गुण हैं कि जाँच किन लोगों के किस मिश्रण से मिलती है:",
+  "Both groups": "दोनों समूह",
+  "The spectrum": "स्पेक्ट्रम",
+  "How many in each group really had an infection":
+    "हर समूह में कितनों को सचमुच संक्रमण था",
+  "Spectrum bias": "स्पेक्ट्रम पूर्वाग्रह",
+  "A test's accuracy is not fixed. It moves with how advanced, how typical and how obvious the disease is in the patients being tested.":
+    "किसी जाँच की सटीकता तय नहीं होती। वह इस बात के साथ बदलती है कि जिन मरीज़ों की जाँच हो रही है उनमें बीमारी कितनी बढ़ी हुई, कितनी किताबी और कितनी ज़ाहिर है।",
+  "Before trusting a quoted sensitivity, ask who it was measured on. A figure from patients with unmistakable disease will flatter the test in a clinic full of milder cases, and a study that recruits only textbook cases and healthy volunteers will flatter it most of all.":
+    "बताई गई किसी संवेदनशीलता पर भरोसा करने से पहले पूछिए कि वह किन लोगों पर मापी गई थी। जिन मरीज़ों की बीमारी बिल्कुल साफ़ थी, उनसे निकला आँकड़ा हल्के मामलों से भरे किसी क्लिनिक में जाँच की छवि चमका देगा, और जो अध्ययन केवल किताबी मामले और स्वस्थ स्वयंसेवक शामिल करता है, वह उसकी छवि सबसे ज़्यादा चमकाएगा।",
+  "Sensitivity is the share of truly ill people a test catches, and specificity is the share of healthy people it correctly clears. Both are quoted as though they belonged to the test, like its price. They do not. A test picks up a signal, and the signal is stronger in advanced disease than in early disease, so the sicker the ill people you test, the more of them it finds. The same logic runs the other way for the people without the disease: the more clearly healthy they are, the more easily the test clears them. That is why a test evaluated on obvious cases against obvious non-cases can look superb and then disappoint in a real clinic, where nearly everyone is somewhere in between. Two practical habits follow. Read the description of who was recruited before you read the accuracy figures. And be most suspicious of a study whose diseased and healthy groups were picked separately rather than being consecutive patients with the same presenting problem.":
+    "संवेदनशीलता (sensitivity) उन सचमुच बीमार लोगों का हिस्सा है जिन्हें जाँच पकड़ लेती है, और विशिष्टता (specificity) उन स्वस्थ लोगों का हिस्सा है जिन्हें वह सही ढंग से नेगेटिव बता देती है। दोनों को यूँ बताया जाता है मानो वे जाँच की अपनी चीज़ हों, उसकी कीमत की तरह। पर वे ऐसी नहीं हैं। जाँच एक संकेत पकड़ती है, और यह संकेत शुरुआती बीमारी के मुकाबले बढ़ी हुई बीमारी में ज़्यादा मज़बूत होता है, इसलिए आप जितने ज़्यादा बीमार लोगों की जाँच करेंगे, उतने ही ज़्यादा वह खोज निकालेगी। जिन्हें बीमारी नहीं है, उनके लिए यही तर्क उल्टी दिशा में चलता है: वे जितने साफ़ तौर पर स्वस्थ होंगे, जाँच उतनी ही आसानी से उन्हें नेगेटिव बता देगी। यही वजह है कि साफ़ ज़ाहिर मामलों की साफ़ ज़ाहिर गैर मामलों से तुलना करके परखी गई जाँच शानदार लग सकती है और फिर किसी असली क्लिनिक में निराश कर सकती है, जहाँ लगभग हर कोई कहीं बीच में होता है। इससे दो व्यावहारिक आदतें निकलती हैं। सटीकता के आँकड़े पढ़ने से पहले यह विवरण पढ़िए कि अध्ययन में किन लोगों को शामिल किया गया था। और उस अध्ययन पर सबसे ज़्यादा शक कीजिए जिसमें बीमार और स्वस्थ समूह अलग अलग चुने गए हों, न कि एक ही शिकायत लेकर आए लगातार मरीज़ों में से बने हों।",
+  "The same test, sorted a different way": "वही जाँच, एक अलग तरह से बाँटी गई",
+  "The same study split its patients again, this time by how many white cells were visible in the urine under a microscope. Where none were visible the dipstick caught 5 of the 10 real infections. Where a few were visible it caught 15 of 22. Where there were many it caught all 34 of 34. One test, one afternoon's samples, and a sensitivity anywhere from 50 to 100 percent depending only on which patients you counted.":
+    "उसी अध्ययन ने अपने मरीज़ों को एक बार फिर बाँटा, इस बार इस हिसाब से कि माइक्रोस्कोप के नीचे पेशाब में कितनी श्वेत रक्त कोशिकाएँ दिखीं। जहाँ एक भी नहीं दिखी, वहाँ डिपस्टिक ने 10 में से 5 असली संक्रमण पकड़े। जहाँ कुछ दिखीं, वहाँ उसने 22 में से 15 पकड़े। जहाँ बहुत सारी थीं, वहाँ उसने पूरे 34 में से 34 पकड़े। एक ही जाँच, एक ही दोपहर के नमूने, और संवेदनशीलता 50 से 100 प्रतिशत के बीच कहीं भी, सिर्फ़ इस बात पर निर्भर कि आपने किन मरीज़ों को गिना।",
+  "Why promising tests keep disappointing":
+    "उम्मीद जगाने वाली जाँचें बार बार निराश क्यों करती हैं",
+  "The problem was named in 1978, after a pattern of new tests arriving with excellent published accuracy and then underwhelming the doctors who used them. Two of the era's examples were the carcinoembryonic antigen test and the nitro-blue tetrazolium test. The authors traced the letdown to two things: accuracy measured on a patient mix far narrower than real practice, and the test result and the true diagnosis not being judged independently of each other.":
+    "इस समस्या को नाम 1978 में मिला, जब बार बार यह होने लगा कि नई जाँचें प्रकाशित रूप में बेहतरीन सटीकता के साथ आतीं और फिर उन्हें इस्तेमाल करने वाले डॉक्टरों को निराश कर देतीं। उस दौर के दो उदाहरण थे कार्सिनोएम्ब्रियोनिक एंटीजन जाँच और नाइट्रो-ब्लू टेट्राज़ोलियम जाँच। लेखकों ने इस निराशा की जड़ में दो बातें पाईं: सटीकता ऐसे मरीज़ों के मिश्रण पर मापी गई थी जो असली चिकित्सा व्यवहार से कहीं ज़्यादा संकरा था, और जाँच का नतीजा तथा असली निदान एक दूसरे से स्वतंत्र रूप से नहीं आँके गए थे।",
+  "Spectrum bias, a reasoning trap.": "स्पेक्ट्रम पूर्वाग्रह, तर्क का एक जाल।",
+  "Test accuracy sounds like a fact about the test, the way a car has a top speed. It is not. A test that catches 92% of infections in people who are obviously ill can catch barely half in people who are only slightly ill, because there is less to find. Whenever you are told a test is 95% accurate, the real question is who they measured that on, and whether those people look anything like you.":
+    "जाँच की सटीकता जाँच के बारे में एक तथ्य जैसी लगती है, जैसे किसी कार की अधिकतम रफ़्तार होती है। पर वह ऐसी नहीं है। जो जाँच साफ़ तौर पर बीमार लोगों में 92% संक्रमण पकड़ लेती है, वह हल्के बीमार लोगों में मुश्किल से आधे ही पकड़ पाती है, क्योंकि वहाँ पकड़ने को कम है। जब भी आपसे कहा जाए कि कोई जाँच 95% सटीक है, असली सवाल यह है कि उन्होंने वह किन लोगों पर मापा, और क्या वे लोग ज़रा भी आप जैसे हैं।",
+  "The counts are Table 3, page 137: 49 of 53 and 21 of 50 in the high prior-probability group, 10 of 18 and 188 of 241 in the low one. A positive dipstick meant leukocyte esterase or nitrite or both; a positive culture meant more than 100,000 colonies per millilitre. The correction notes that the high prior-probability group holds 103 patients, not the 107 still printed in the abstract, and that the rates were computed on 103 and stand. The printed abstract also gives the 0.56 confidence interval as 0.03 to 0.79; the paper's own table gives 0.31 to 0.79.":
+    "ये आँकड़े तालिका 3, पृष्ठ 137 के हैं: जाँच से पहले ऊँची संभावना वाले समूह में 53 में से 49 और 50 में से 21, कम संभावना वाले समूह में 18 में से 10 और 241 में से 188। डिपस्टिक पॉज़िटिव का मतलब था ल्यूकोसाइट एस्टरेज़ या नाइट्राइट या दोनों; कल्चर पॉज़िटिव का मतलब था प्रति मिलीलिटर 100,000 से ज़्यादा कॉलोनियाँ। शुद्धिपत्र बताता है कि ऊँची संभावना वाले समूह में 103 मरीज़ हैं, न कि 107 जो सारांश में अब भी छपा है, और यह कि दरें 103 पर ही गिनी गई थीं और वही सही हैं। छपे हुए सारांश में 0.56 का विश्वास अंतराल 0.03 से 0.79 दिया गया है; शोधपत्र की अपनी तालिका 0.31 से 0.79 देती है।",
+
+  // ---- Berkson's bias (puzzle #9) ----
+  "Among hospital patients, lung trouble and joint trouble go together. Are the two diseases linked?":
+    "अस्पताल के मरीज़ों में फेफड़ों की तकलीफ़ और जोड़ों की तकलीफ़ साथ साथ चलती हैं। क्या ये दोनों बीमारियाँ आपस में जुड़ी हैं?",
+  "A survey knocked on doors and asked thousands of ordinary people what illnesses they had. Among those who had been in hospital in the previous six months, a quarter of the people with a respiratory disease also had a disease of the bones or joints, against well under a tenth of everyone else.":
+    "एक सर्वेक्षण ने घर घर दस्तक देकर हज़ारों आम लोगों से पूछा कि उन्हें कौन कौन सी बीमारियाँ हैं। जो लोग पिछले छह महीनों में अस्पताल में भर्ती रहे थे, उनमें साँस की बीमारी वाले लोगों में से एक चौथाई को हड्डी या जोड़ की भी बीमारी थी, जबकि बाकी सब में यह अनुपात दसवें हिस्से से भी काफ़ी कम था।",
+  "Are these two diseases actually related?":
+    "क्या ये दोनों बीमारियाँ सचमुच आपस में जुड़ी हैं?",
+  "Also had a bone or joint disease": "जिन्हें हड्डी या जोड़ की भी बीमारी थी",
+  "Had a respiratory disease": "जिन्हें साँस की बीमारी थी",
+  Lungs: "फेफड़े",
+  "No respiratory disease": "जिन्हें साँस की बीमारी नहीं थी",
+  "No lungs": "फेफड़े नहीं",
+  "In hospital in the last 6 months": "पिछले 6 महीनों में अस्पताल में भर्ती",
+  "Everyone the survey asked": "सर्वेक्षण में पूछे गए सभी लोग",
+  "Hospital patients": "अस्पताल के मरीज़",
+  "Yes, one brings on the other": "हाँ, एक दूसरी को पैदा करती है",
+  "three times as common": "तीन गुना ज़्यादा आम",
+  "Yes, but the other way round": "हाँ, पर उल्टी दिशा में",
+  "the joint disease comes first": "जोड़ की बीमारी पहले आती है",
+  "No, the hospital made the link": "नहीं, यह संबंध अस्पताल ने बनाया",
+  "it is about who gets admitted": "बात यह है कि भर्ती कौन होता है",
+  "Ask everyone, and the link disappears.":
+    "सबसे पूछिए, और यह संबंध गायब हो जाता है।",
+  "Two illnesses are two chances to be admitted":
+    "दो बीमारियाँ यानी भर्ती होने के दो मौके",
+  "The same survey, the same people, the same two diseases. Across everyone it asked, having a respiratory disease made a bone or joint disease no more likely at all. The hospital panel is not a finding about disease, it is a finding about admission. Either illness can put you in a hospital bed, so people with both turn up there far more often than people with one, and inside those walls the two look inseparable:":
+    "वही सर्वेक्षण, वही लोग, वही दो बीमारियाँ। उसने जितने लोगों से पूछा, उन सब में साँस की बीमारी होने से हड्डी या जोड़ की बीमारी की संभावना ज़रा भी नहीं बढ़ी। अस्पताल वाला पैनल बीमारी के बारे में कोई निष्कर्ष नहीं है, वह भर्ती के बारे में निष्कर्ष है। दोनों में से कोई भी बीमारी आपको अस्पताल के बिस्तर तक पहुँचा सकती है, इसलिए जिन्हें दोनों हैं वे वहाँ उनसे कहीं ज़्यादा बार मिलते हैं जिन्हें एक है, और उन दीवारों के भीतर दोनों अलग न होने वाली लगती हैं:",
+  "Hospital and community": "अस्पताल और समुदाय",
+  "The filter": "फ़िल्टर",
+  "Berkson's bias": "बर्कसन का पूर्वाग्रह",
+  "Studying only the people who made it through a filter can invent a relationship that does not exist outside it.":
+    "केवल उन लोगों का अध्ययन करना जो किसी फ़िल्टर से छनकर आए हैं, एक ऐसा संबंध गढ़ सकता है जो उस फ़िल्टर के बाहर मौजूद ही नहीं है।",
+  "Hospitals are the obvious filter, and the reason case-control studies built on hospital patients are treated warily. But any selected group does it: people who answered the survey, users who stayed subscribed, applicants who got an interview. Ask what it took to get into the sample, and whether both things you are comparing help you get in.":
+    "अस्पताल सबसे ज़ाहिर फ़िल्टर हैं, और यही वजह है कि अस्पताल के मरीज़ों पर बने केस-कंट्रोल अध्ययनों को सावधानी से देखा जाता है। पर कोई भी चुना हुआ समूह यही करता है: जिन लोगों ने सर्वेक्षण का जवाब दिया, जो उपभोक्ता सदस्यता बनाए रखते हैं, जिन आवेदकों को इंटरव्यू मिला। पूछिए कि नमूने में पहुँचने के लिए क्या ज़रूरी था, और क्या आप जिन दो चीज़ों की तुलना कर रहे हैं वे दोनों वहाँ पहुँचने में मदद करती हैं।",
+  "Suppose two illnesses are entirely unrelated, and either one on its own gives you some chance of being admitted to hospital. Someone unlucky enough to have both has two shots at admission, so they are much likelier to be in the ward than someone with only one. Now stand inside the ward and count. The people with the first illness are heavily enriched for also having the second, because that is what got many of them in. You have not discovered a link between the diseases. You have rediscovered the admission rule, and dressed it up as biology. The general shape of this is a collider: a thing that two causes both point into. Selecting on it, whether by studying only the admitted, only the tested, or only the successful, links the causes together in your data even when nothing links them in the world. The defence is a sample defined before the filter, which is exactly why population surveys and whole-population registries are worth their cost.":
+    "मान लीजिए दो बीमारियों का आपस में कोई नाता नहीं है, और उनमें से हर एक अपने आप में अस्पताल में भर्ती होने की कुछ संभावना पैदा करती है। जिस बदकिस्मत को दोनों हैं, उसके पास भर्ती होने के दो मौके हैं, इसलिए जिसे केवल एक बीमारी है उसके मुकाबले उसके वार्ड में होने की संभावना कहीं ज़्यादा है। अब वार्ड के भीतर खड़े होकर गिनिए। पहली बीमारी वाले लोगों में दूसरी बीमारी वालों का अनुपात बहुत ऊँचा है, क्योंकि उनमें से कई को अंदर पहुँचाया ही इसी बात ने। आपने बीमारियों के बीच कोई संबंध नहीं खोजा है। आपने भर्ती के नियम को दोबारा खोजा है, और उसे जीव विज्ञान का जामा पहना दिया है। इसका आम रूप एक कोलाइडर (collider) है: एक ऐसी चीज़ जिसकी ओर दो कारण इशारा करते हैं। उसी के आधार पर चयन करना, चाहे केवल भर्ती हुए लोगों का अध्ययन करके, केवल जाँच कराए लोगों का, या केवल कामयाब लोगों का, आपके आँकड़ों में उन कारणों को आपस में जोड़ देता है, भले ही दुनिया में उन्हें कुछ भी न जोड़ता हो। इसका बचाव है ऐसा नमूना जो फ़िल्टर से पहले तय हुआ हो, और ठीक इसीलिए आबादी के सर्वेक्षण और पूरी आबादी की रजिस्ट्रियाँ अपनी लागत के लायक हैं।",
+  "The bias that was theory for thirty years":
+    "वह पूर्वाग्रह जो तीस साल तक सिर्फ़ सिद्धांत रहा",
+  "Joseph Berkson warned in 1946 that hospital-based comparisons could manufacture associations, but his argument was mathematical and his numbers were invented to illustrate it. He noted that the same artefact would appear if you sampled shuffled cards rather than patients. It took until this survey, three decades later, for anyone to demonstrate the effect in real people.":
+    "जोसेफ बर्कसन ने 1946 में चेताया था कि अस्पताल पर टिकी तुलनाएँ संबंध गढ़ सकती हैं, पर उनकी दलील गणितीय थी और उनके आँकड़े उसे समझाने के लिए गढ़े गए थे। उन्होंने कहा था कि यही कृत्रिम असर तब भी दिखेगा जब आप मरीज़ों के बजाय फेंटे हुए ताश के पत्तों का नमूना लें। असल लोगों में यह असर किसी ने तब जाकर दिखाया, तीन दशक बाद, इसी सर्वेक्षण में।",
+  "Why early covid studies disagreed":
+    "शुरुआती कोविड अध्ययन आपस में क्यों टकराते थे",
+  "In 2020, studies of who caught covid and who fell severely ill could only recruit from people who had been tested or admitted, and early on those were mostly hospital staff, the already unwell and the elderly. Getting into the sample depended on the very things being studied. Analyses showed this alone could produce apparent risk factors, and even reverse the direction of a real one, without any biology behind it.":
+    "2020 में, यह अध्ययन कि कोविड किसे हुआ और कौन गंभीर रूप से बीमार पड़ा, केवल उन्हीं लोगों को शामिल कर सकते थे जिनकी जाँच हुई थी या जो अस्पताल में भर्ती हुए थे, और शुरुआती दिनों में वे ज़्यादातर अस्पताल का स्टाफ़, पहले से बीमार लोग और बुज़ुर्ग थे। नमूने में पहुँचना ठीक उन्हीं चीज़ों पर निर्भर था जिनका अध्ययन हो रहा था। विश्लेषणों ने दिखाया कि अकेली यही बात, बिना किसी जीव विज्ञान के, दिखावटी जोखिम कारक पैदा कर सकती थी और किसी असली जोखिम कारक की दिशा तक उलट सकती थी।",
+  "Berkson's bias, a reasoning trap.": "बर्कसन का पूर्वाग्रह, तर्क का एक जाल।",
+  "Look only at hospital patients and two completely unrelated illnesses can appear to travel together. The reason is not biology, it is the door. Either illness can get you admitted, so people who happen to have both are over-represented inside, and from in there the two look linked. Any filtered group does this: the people who got tested, the applicants who got an interview, the customers who stayed. Before believing a pattern, ask what it took to get into the data.":
+    "केवल अस्पताल के मरीज़ों को देखिए और दो बिल्कुल असंबंधित बीमारियाँ साथ साथ चलती दिख सकती हैं। इसकी वजह जीव विज्ञान नहीं है, दरवाज़ा है। दोनों में से कोई भी बीमारी आपको भर्ती करा सकती है, इसलिए जिन्हें संयोग से दोनों हैं वे अंदर कहीं ज़्यादा अनुपात में मौजूद होते हैं, और वहाँ से देखने पर दोनों जुड़ी हुई लगती हैं। कोई भी छाँटा हुआ समूह यही करता है: जिन लोगों की जाँच हुई, जिन आवेदकों को इंटरव्यू मिला, जो ग्राहक टिके रहे। किसी पैटर्न को मानने से पहले पूछिए कि आँकड़ों में पहुँचने के लिए क्या ज़रूरी था।",
+  "The counts are Table 2: household interviews with 2,784 people, of whom 257 had been in hospital in the previous six months. The table's own relative odds are 1.06 in the general population and 4.06 among the hospitalised. The hospital figures rest on only 20 people with a respiratory disease, so this single table demonstrates the mechanism rather than measuring its size precisely.":
+    "ये आँकड़े तालिका 2 के हैं: 2,784 लोगों से घरों में लिए गए साक्षात्कार, जिनमें से 257 पिछले छह महीनों में अस्पताल में भर्ती रहे थे। तालिका के अपने सापेक्ष ऑड्स आम आबादी में 1.06 और अस्पताल में भर्ती रहे लोगों में 4.06 हैं। अस्पताल वाले आँकड़े साँस की बीमारी वाले केवल 20 लोगों पर टिके हैं, इसलिए यह अकेली तालिका इस तंत्र को दिखाती भर है, उसका आकार ठीक ठीक मापती नहीं।",
+
+  // trap hunt items (spectrum bias, Berkson's bias)
+  "A rapid test is validated on patients admitted to hospital with severe disease and on healthy blood donors. It separates the two groups almost perfectly, and the maker reports 98% sensitivity. It is then sold to family doctors for patients with a mild cough.":
+    "एक रैपिड जाँच को गंभीर बीमारी के साथ अस्पताल में भर्ती मरीज़ों पर और स्वस्थ रक्तदाताओं पर परखा जाता है। वह दोनों समूहों को लगभग पूरी तरह अलग कर देती है, और बनाने वाली कंपनी 98% संवेदनशीलता बताती है। फिर उसे हल्की खाँसी वाले मरीज़ों के लिए पारिवारिक डॉक्टरों को बेचा जाता है।",
+  "Telling the obviously ill from the obviously well is the easiest task there is. A family doctor's patients are all somewhere in between, and that is precisely where the test has never been measured.":
+    "साफ़ तौर पर बीमार लोगों को साफ़ तौर पर स्वस्थ लोगों से अलग करना सबसे आसान काम है। पारिवारिक डॉक्टर के मरीज़ सब कहीं बीच में होते हैं, और ठीक वहीं इस जाँच को कभी मापा ही नहीं गया।",
+  "A textbook lists a scan as 90% sensitive. A clinic that sees mostly early, mild cases adopts it and finds it misses about a third of the cases later confirmed by specialists. The clinic concludes its machine must be faulty.":
+    "एक पाठ्यपुस्तक किसी स्कैन को 90% संवेदनशील बताती है। जिस क्लिनिक में ज़्यादातर शुरुआती, हल्के मामले आते हैं वह उसे अपनाता है और पाता है कि वह ऐसे करीब एक तिहाई मामले चूक जाता है जिनकी पुष्टि बाद में विशेषज्ञ करते हैं। क्लिनिक नतीजा निकालता है कि उसकी मशीन में ज़रूर कोई खराबी है।",
+  "A quoted sensitivity comes attached to the patients it was measured on. Earlier and milder disease gives a test less to find, so a lower catch rate is what you should expect, not evidence of a broken machine.":
+    "बताई गई संवेदनशीलता उन मरीज़ों से चिपकी आती है जिन पर वह मापी गई थी। शुरुआती और हल्की बीमारी में जाँच के लिए पकड़ने को कम होता है, इसलिए कम पकड़ दर की उम्मीद ही करनी चाहिए, यह खराब मशीन का सबूत नहीं है।",
+  "A study of one hospital's inpatients finds that those with a metabolic disease are far more likely to also have a gallbladder disease than the other inpatients. The authors conclude that the first disease brings on the second.":
+    "एक अस्पताल के भर्ती मरीज़ों के अध्ययन में पाया जाता है कि चयापचय की बीमारी वालों को बाकी भर्ती मरीज़ों के मुकाबले पित्ताशय की बीमारी भी होने की संभावना कहीं ज़्यादा है। लेखक निष्कर्ष निकालते हैं कि पहली बीमारी दूसरी को पैदा करती है।",
+  "Either illness on its own can put someone in a hospital bed, so patients with both are over-represented among inpatients. The link may exist only inside the building.":
+    "दोनों में से कोई भी बीमारी अपने आप किसी को अस्पताल के बिस्तर तक पहुँचा सकती है, इसलिए जिन्हें दोनों हैं वे भर्ती मरीज़ों में ज़्यादा अनुपात में मौजूद होते हैं। यह संबंध शायद केवल इमारत के भीतर ही मौजूद हो।",
+  "Someone notices that among the people they have dated, the better looking ones were consistently less pleasant company. They conclude that good looks spoil the character.":
+    "किसी को लगता है कि जिन लोगों के साथ उसने डेट की, उनमें जो ज़्यादा सुंदर थे उनका साथ हर बार कम सुखद रहा। वह नतीजा निकालता है कि सुंदरता चरित्र बिगाड़ देती है।",
+  "People generally agree to a date because someone is good looking or because they are pleasant company. Selecting on that forces a trade-off between the two inside the sample, whatever the relationship is outside it.":
+    "लोग आम तौर पर डेट के लिए इसलिए हाँ कहते हैं कि सामने वाला या तो सुंदर है या उसका साथ सुखद है। इसी आधार पर चयन करने से नमूने के भीतर इन दोनों के बीच एक उलटा रिश्ता बन जाता है, चाहे नमूने के बाहर उनका रिश्ता जो भी हो।",
+  "A diagnostic test is evaluated on every consecutive patient arriving at a clinic with the same presenting complaint, whatever their eventual diagnosis, and the paper reports its accuracy separately for mild and for advanced disease. Another clinic with a similar caseload adopts the figures.":
+    "एक नैदानिक जाँच को उन सभी लगातार मरीज़ों पर परखा जाता है जो एक ही शिकायत लेकर क्लिनिक आते हैं, चाहे आगे चलकर उनका निदान कुछ भी निकले, और शोधपत्र उसकी सटीकता हल्की और बढ़ी हुई बीमारी के लिए अलग अलग बताता है। इसी तरह के मरीज़ों वाला दूसरा क्लिनिक उन आँकड़ों को अपना लेता है।",
+  "This is how a diagnostic study should be built. Consecutive patients with one presenting problem, and accuracy broken down by severity, so a reader can find the subgroup that actually resembles their own patients.":
+    "नैदानिक अध्ययन ऐसे ही बनाया जाना चाहिए। एक ही शिकायत लेकर आए लगातार मरीज़, और गंभीरता के हिसाब से बाँटी गई सटीकता, ताकि पढ़ने वाला वह उपसमूह ढूँढ सके जो सचमुच उसके अपने मरीज़ों जैसा है।",
+  "A company asks whether two things about its users go together. It samples at random from everyone who ever opened an account, including those who never came back and those who cancelled, and finds no relationship between them.":
+    "एक कंपनी यह जानना चाहती है कि उसके उपभोक्ताओं की दो बातें साथ साथ चलती हैं या नहीं। वह उन सभी लोगों में से यादृच्छिक रूप से नमूना लेती है जिन्होंने कभी खाता खोला था, उन लोगों समेत जो दोबारा कभी नहीं लौटे और जिन्होंने खाता बंद कर दिया, और उन दोनों बातों के बीच कोई संबंध नहीं पाती।",
+  "The sample was drawn before any filter that either of the two things could have influenced. Nothing about staying, succeeding or being admitted decided who got counted, so a selection artefact cannot be hiding in it.":
+    "नमूना किसी भी ऐसे फ़िल्टर से पहले लिया गया जिस पर इन दो बातों में से कोई भी असर डाल सकती थी। टिके रहने, कामयाब होने या भर्ती होने से यह तय नहीं हुआ कि किसे गिना जाएगा, इसलिए इसमें चयन का कोई कृत्रिम असर छिपा नहीं हो सकता।",
 };

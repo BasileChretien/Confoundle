@@ -34,6 +34,8 @@ function humanize(category: string): string {
 
 /** True when the pooled winner differs from the (consistent) subgroup winner. */
 function hasReversal(data: RatesData): boolean {
+  // Pooling only means something when the strata partition one population.
+  if (data.strataAreSeparateSamples) return false;
   const agg = bestGroupId(aggregateRates(data), data.higherIsBetter);
   const winners = stratifiedRates(data).map((s) =>
     bestGroupId(s.rates, data.higherIsBetter),
@@ -345,6 +347,90 @@ function TimelineGlyph() {
 }
 
 /**
+ * Abstract relative-versus-absolute illustration for the card: the same drop,
+ * measured twice. On the left the treated bar is scaled against the untreated
+ * one and a third of it is gone. On the right both sit inside the whole
+ * population and the same drop is a sliver. No case-specific numbers.
+ */
+function RiskGlyph() {
+  const panel = (
+    label: string,
+    bars: Array<{ h: number; color: string }>,
+    framed: boolean,
+  ) => (
+    <div className="flex flex-1 flex-col items-center gap-1.5">
+      <div className="flex h-[62px] items-end justify-center gap-2">
+        {bars.map((b, i) => (
+          <div
+            key={i}
+            className="flex h-full w-5 items-end justify-center rounded-[2px]"
+            style={
+              framed
+                ? { border: `1px solid rgba(242,236,222,0.28)` }
+                : undefined
+            }
+          >
+            <div
+              className="w-full rounded-t-[2px]"
+              style={{
+                height: `${b.h}%`,
+                minHeight: 2,
+                backgroundColor: b.color,
+              }}
+            />
+          </div>
+        ))}
+      </div>
+      <span
+        className="text-[9px] font-semibold uppercase tracking-eyebrow"
+        style={{ color: CARD.muted }}
+      >
+        {label}
+      </span>
+    </div>
+  );
+
+  return (
+    <div
+      className="mt-4 rounded-lg p-3"
+      style={{ backgroundColor: "rgba(0,0,0,0.28)" }}
+    >
+      <div className="flex items-end justify-center gap-3">
+        {panel(
+          "a third lower",
+          [
+            { h: 100, color: CARD.teal },
+            { h: 67, color: CARD.rust },
+          ],
+          false,
+        )}
+        <span
+          className="pb-6 text-sm"
+          style={{ color: CARD.muted }}
+          aria-hidden="true"
+        >
+          =
+        </span>
+        {panel(
+          "same result",
+          [
+            { h: 8, color: CARD.teal },
+            { h: 5, color: CARD.rust },
+          ],
+          true,
+        )}
+      </div>
+      <div
+        className="mt-2.5 text-center text-[11px] font-semibold"
+        style={{ color: CARD.gold }}
+      >
+        Ask: a third of what?
+      </div>
+    </div>
+  );
+}
+
+/**
  * Beat 5: the shareable result card. The card node (cardRef) is what gets
  * rendered to PNG. It explains the reasoning skill itself (name + definition +
  * an abstract diagram) so it teaches anyone who sees it, independent of the
@@ -375,6 +461,7 @@ export function ShareCard({
   const causalGlyph = data.type === "causal";
   const survivorshipGlyph = data.type === "survivorship";
   const timelineGlyph = data.type === "timeline";
+  const riskGlyph = data.type === "risk";
 
   function selectFraming(next: Framing) {
     setFraming(next);
@@ -449,6 +536,8 @@ export function ShareCard({
             <SurvivorshipGlyph />
           ) : timelineGlyph ? (
             <TimelineGlyph />
+          ) : riskGlyph ? (
+            <RiskGlyph />
           ) : null}
 
           <p className="mt-4 font-display text-[17px] font-medium leading-snug">

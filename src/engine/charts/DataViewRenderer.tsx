@@ -9,6 +9,7 @@ import { FrequencyView } from "./FrequencyView";
 import { CausalView } from "./CausalView";
 import { SurvivorshipView } from "./SurvivorshipView";
 import { TimelineView } from "./TimelineView";
+import { RiskView } from "./RiskView";
 
 /**
  * The generic seam: dispatch on the data's `type` to the matching renderer.
@@ -45,6 +46,8 @@ export function DataViewRenderer({
       return <SurvivorshipView data={data} view={view.kind} animate={animate} />;
     case "timeline":
       return <TimelineView data={data} view={view.kind} animate={animate} />;
+    case "risk":
+      return <RiskView data={data} view={view.kind} animate={animate} />;
     default:
       return null;
   }
@@ -89,6 +92,10 @@ export function scopeLabel(kind: DataViewKind): string {
       return "From diagnosis";
     case "lifespan":
       return "The whole life";
+    case "relative":
+      return "Compared to the risk";
+    case "absolute":
+      return "Compared to the people";
     default:
       return "";
   }

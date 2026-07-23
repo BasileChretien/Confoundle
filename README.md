@@ -4,7 +4,11 @@
 
 Each puzzle runs in four beats: **setup → commit → reveal → lesson**, ending in a screenshot-able **share card**. You have to commit to an answer *before* the reveal — the small sting of being caught is the whole point.
 
-This repository is the **Phase 0 prototype**: four fully playable puzzles (Simpson's paradox, the base-rate fallacy, correlation ≠ causation, survivorship bias) on a generic engine, served one-per-day Wordle-style. Each new puzzle is just a data file — the engine renders it, no code changes. See [`PROJECT_PLAN.md`](./PROJECT_PLAN.md) for the full product vision.
+This repository is the **Phase 0 prototype**: nine fully playable puzzles on a generic engine, served one-per-day Wordle-style, in ten languages, plus a **Trap Hunt** item bank for testing whether you can spot a flaw when nobody has told you one is there.
+
+The puzzles so far: Simpson's paradox, the base-rate fallacy, correlation vs causation, survivorship bias, the prosecutor's fallacy, the Will Rogers phenomenon, lead-time bias, spectrum bias, and Berkson's bias.
+
+Most new puzzles are just a data file; the engine renders them with no code changes. A genuinely new *shape* of data (a timeline rather than a set of rates, say) adds one member to the schema union and one renderer. See [`PROJECT_PLAN.md`](./PROJECT_PLAN.md) for the full product vision and [`CONTRIBUTING.md`](./CONTRIBUTING.md) for the content bar, which is deliberately high.
 
 ---
 
@@ -91,7 +95,8 @@ A puzzle is one object validated by [`src/puzzles/schema.ts`](./src/puzzles/sche
 
 - **Every user-facing string is locale-keyed** (`{ en: "…" }`, other locales optional) — translatable from day one.
 - **Numbers live once.** You author raw `observations` (numerator / denominator per group × stratum); the engine *derives* the aggregate and stratified rates. The paradox lives in that derivation, so the pooled result can never disagree with the strata by accident.
-- **`data` is discriminated by `type`** (`"rates"` today) so future puzzles can add entirely new chart shapes without touching existing renderers.
+- **`data` is discriminated by `type`** (`"rates"`, `"frequencies"`, `"causal"`, `"survivorship"`, `"timeline"`) so a new puzzle can add an entirely new chart shape without touching existing renderers.
+- **A view can show part of the data.** `initialView` and `reveal.view` accept `groupIds` / `strataIds`, so the setup can show the one slice that creates the illusion and hold the rest back for the reveal. Omit them and the whole figure is drawn.
 - **`provenance` is required** on every puzzle (source + year + URL/DOI). `goDeeperUrl` is optional and kept off the main flow.
 
 Top-level shape (abridged):
@@ -115,7 +120,10 @@ Adding a puzzle requires **no engine changes** — only a new data file.
 
 1. Create `src/puzzles/data/<your-slug>.ts` exporting a `Puzzle` (import the type from `../schema` for full autocomplete and type-checking).
 2. Register it in [`src/puzzles/index.ts`](./src/puzzles/index.ts) (import it and add it to the array). Every puzzle is validated against the schema at load — a malformed or self-contradictory puzzle fails fast in dev, build, and tests.
-3. If your puzzle introduces a **new data shape** (not success/total `"rates"`), add a member to the `PuzzleData` union in `schema.ts` and a matching renderer branch in `src/engine/charts/DataViewRenderer.tsx`. Existing puzzles are unaffected.
+3. Add a test next to it asserting that your data actually produces the effect you claim (see `src/puzzles/data/*.test.ts`). This is the project's habit for a reason: it means a mistyped count fails CI instead of shipping a paradox that isn't one.
+4. Add two or three **Trap Hunt** items in [`src/puzzles/testItems.ts`](./src/puzzles/testItems.ts), including at least one where the same kind of reasoning is genuinely *sound*. Without those, players learn that the answer is always "trap".
+5. Translate. `pnpm test` fails if any authored English string is missing from any of the nine dictionaries in `src/app/translations/`, or if the dictionaries drift out of key parity.
+6. If your puzzle introduces a **new data shape** (not success/total `"rates"`), add a member to the `PuzzleData` union in `schema.ts`, a renderer, a branch in `src/engine/charts/DataViewRenderer.tsx`, and a glyph in `share/ShareCard.tsx`. Existing puzzles are unaffected.
 
 Please read [`CONTRIBUTING.md`](./CONTRIBUTING.md) first — the content bar (sourcing, no oversimplification, a politically balanced set) is the point of the project.
 

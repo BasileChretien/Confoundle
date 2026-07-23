@@ -565,4 +565,130 @@ export const ar: Record<string, string> = {
   B: "B",
   "From diagnosis": "من التشخيص",
   "The whole life": "الحياة كاملة",
+
+  // ==== Spectrum bias (puzzle #8) ====
+  "This urine test catches 92% of infections. Your patient's symptoms are vague. How good is it now?":
+    "اختبار البول هذا يكتشف 92% من حالات العدوى. أعراض مريضك غامضة. فما مدى جودته الآن؟",
+  "A dipstick for urinary infection, checked against urine cultures in an emergency department and a walk-in clinic. Among patients whose doctor already thought an infection was likely, it caught 49 of the 53 who really had one. Sensitivity is normally quoted as a single number, as though it were a fixed property of the test.":
+    "شريط فحص البول للكشف عن العدوى البولية، جرى التحقق منه بمقارنته بزرع البول في قسم للطوارئ وعيادة تستقبل المرضى بلا موعد. فمن بين المرضى الذين كان طبيبهم يرجّح إصابتهم بالعدوى أصلاً، التقط 49 من أصل 53 مريضاً كانوا مصابين بها فعلاً. وعادةً ما تُذكر الحساسية كرقم واحد، كأنها خاصية ثابتة في الاختبار.",
+  "In patients the doctor thinks are unlikely to be infected, how often does it catch a real infection?":
+    "لدى المرضى الذين يرى الطبيب أن إصابتهم بالعدوى مستبعدة، كم مرة يلتقط عدوى حقيقية؟",
+  "Times the dipstick was right": "المرات التي أصاب فيها الشريط",
+  "Doctor thought infection likely": "الطبيب رجّح وجود عدوى",
+  Likely: "مرجَّحة",
+  "Doctor thought infection unlikely": "الطبيب استبعد وجود عدوى",
+  Unlikely: "مستبعَدة",
+  "Patients who really had an infection": "المرضى المصابون بعدوى فعلاً",
+  "Patients who did not": "المرضى غير المصابين",
+  "The quoted figure": "الرقم المذكور",
+  "About the same, 92%": "نحو الرقم نفسه، 92%",
+  "the test has not changed": "الاختبار لم يتغير",
+  "A little lower, around 80%": "أقل قليلاً، نحو 80%",
+  "some drop off": "بعض التراجع",
+  "Barely half, 56%": "النصف بالكاد، 56%",
+  "it misses most of them": "يفوته معظمهم",
+  "Barely half. And the other column flips the other way.":
+    "النصف بالكاد. والعمود الآخر ينقلب في الاتجاه المعاكس.",
+  "The patients changed, not the test": "المرضى هم من تغيّروا، لا الاختبار",
+  "Patients their doctor already suspected had florid infections, the kind a dipstick spots easily. Patients thought unlikely to be infected had mild or early ones, and the test missed most of them. Now look at the second panel, the patients who had no infection at all: there the test was right 42% of the time in the first group and 78% in the second. Sensitivity and specificity are not properties of a test. They are properties of a test meeting a particular mix of people:":
+    "المرضى الذين اشتبه بهم طبيبهم أصلاً كانت لديهم عداوى صارخة، من النوع الذي يرصده شريط الفحص بسهولة. أما من رُئي أن إصابتهم مستبعدة فكانت لديهم عداوى خفيفة أو مبكرة، وقد فات الاختبارَ معظمُها. انظر الآن إلى اللوحة الثانية، أي المرضى الذين لم تكن لديهم أي عدوى: هناك كان الاختبار مصيباً في 42% من الحالات في المجموعة الأولى وفي 78% منها في المجموعة الثانية. الحساسية والنوعية ليستا خاصيتين في الاختبار. إنهما خاصيتان لاختبار يلتقي بمزيج معيّن من الناس:",
+  "Both groups": "المجموعتان معاً",
+  "The spectrum": "الطيف",
+  "How many in each group really had an infection":
+    "كم من كل مجموعة كان مصاباً بعدوى فعلاً",
+  "Spectrum bias": "تحيز الطيف",
+  "A test's accuracy is not fixed. It moves with how advanced, how typical and how obvious the disease is in the patients being tested.":
+    "دقة الاختبار ليست ثابتة. فهي تتغير بحسب مدى تقدّم المرض ومدى نمطيته ومدى وضوحه لدى المرضى الخاضعين للاختبار.",
+  "Before trusting a quoted sensitivity, ask who it was measured on. A figure from patients with unmistakable disease will flatter the test in a clinic full of milder cases, and a study that recruits only textbook cases and healthy volunteers will flatter it most of all.":
+    "قبل أن تثق بحساسية مذكورة، اسأل على من قِيست. فالرقم المأخوذ من مرضى مرضهم لا تخطئه العين سيجمّل الاختبار في عيادة مليئة بحالات أخف، أما الدراسة التي لا تجنّد سوى حالات نموذجية ومتطوعين أصحاء فتجمّله أكثر من الجميع.",
+  "Sensitivity is the share of truly ill people a test catches, and specificity is the share of healthy people it correctly clears. Both are quoted as though they belonged to the test, like its price. They do not. A test picks up a signal, and the signal is stronger in advanced disease than in early disease, so the sicker the ill people you test, the more of them it finds. The same logic runs the other way for the people without the disease: the more clearly healthy they are, the more easily the test clears them. That is why a test evaluated on obvious cases against obvious non-cases can look superb and then disappoint in a real clinic, where nearly everyone is somewhere in between. Two practical habits follow. Read the description of who was recruited before you read the accuracy figures. And be most suspicious of a study whose diseased and healthy groups were picked separately rather than being consecutive patients with the same presenting problem.":
+    "الحساسية هي نسبة المرضى الحقيقيين الذين يلتقطهم الاختبار، والنوعية هي نسبة الأصحاء الذين ينفي عنهم الاختبار المرض عن حق. وتُذكر النسبتان كأنهما ملك للاختبار، مثل سعره. وهما ليستا كذلك. فالاختبار يلتقط إشارة، والإشارة أقوى في المرض المتقدم منها في المرض المبكر، لذا كلما كان المرضى الذين تختبرهم أشد مرضاً، عثر الاختبار على عدد أكبر منهم. والمنطق نفسه يسري في الاتجاه المقابل على من لا مرض لديهم: كلما كانت صحتهم أوضح، كان نفي المرض عنهم أسهل على الاختبار. لهذا يمكن لاختبار قُيّم على حالات واضحة مقابل أشخاص أصحاء واضحي الصحة أن يبدو ممتازاً ثم يخيّب الأمل في عيادة حقيقية، حيث يقع الجميع تقريباً في مكان ما بين الطرفين. ومن هنا تنشأ عادتان عمليتان. اقرأ وصف من جرى تجنيدهم قبل أن تقرأ أرقام الدقة. وكن أشد ارتياباً بدراسة اختيرت فيها مجموعة المرضى ومجموعة الأصحاء كلٌّ على حدة، بدلاً من أن تكونا مرضى متعاقبين يشكون المشكلة نفسها.",
+  "The same test, sorted a different way":
+    "الاختبار نفسه، مصنَّفاً بطريقة أخرى",
+  "The same study split its patients again, this time by how many white cells were visible in the urine under a microscope. Where none were visible the dipstick caught 5 of the 10 real infections. Where a few were visible it caught 15 of 22. Where there were many it caught all 34 of 34. One test, one afternoon's samples, and a sensitivity anywhere from 50 to 100 percent depending only on which patients you counted.":
+    "قسّمت الدراسة نفسها مرضاها مرة أخرى، هذه المرة بحسب عدد الكريات البيض المرئية في البول تحت المجهر. فحيث لم تكن هناك أي كريات مرئية، التقط الشريط 5 من 10 حالات عدوى حقيقية. وحيث كانت قليلة، التقط 15 من 22. وحيث كانت كثيرة، التقطها كلها، 34 من 34. اختبار واحد، وعيّنات ظهيرة واحدة، وحساسية تتراوح من 50 إلى 100 بالمئة، ولا يتوقف ذلك إلا على من عددتَهم من المرضى.",
+  "Why promising tests keep disappointing":
+    "لماذا تظل الاختبارات الواعدة تخيّب الأمل",
+  "The problem was named in 1978, after a pattern of new tests arriving with excellent published accuracy and then underwhelming the doctors who used them. Two of the era's examples were the carcinoembryonic antigen test and the nitro-blue tetrazolium test. The authors traced the letdown to two things: accuracy measured on a patient mix far narrower than real practice, and the test result and the true diagnosis not being judged independently of each other.":
+    "سُمّيت المشكلة عام 1978، بعد نمط متكرر من اختبارات جديدة تصل بدقة منشورة ممتازة ثم تخيّب أمل الأطباء الذين يستخدمونها. ومن أمثلة تلك الحقبة اختبار المستضد السرطاني المضغي واختبار النيتروبلو تترازوليوم. وقد أرجع الباحثون خيبة الأمل إلى أمرين: دقة قِيست على مزيج من المرضى أضيق بكثير من الممارسة الواقعية، وعدم الحكم على نتيجة الاختبار والتشخيص الحقيقي كلٍّ باستقلال عن الآخر.",
+  "Spectrum bias, a reasoning trap.": "تحيز الطيف، فخ في الاستدلال.",
+  "Test accuracy sounds like a fact about the test, the way a car has a top speed. It is not. A test that catches 92% of infections in people who are obviously ill can catch barely half in people who are only slightly ill, because there is less to find. Whenever you are told a test is 95% accurate, the real question is who they measured that on, and whether those people look anything like you.":
+    "تبدو دقة الاختبار وكأنها حقيقة عن الاختبار نفسه، مثلما أن للسيارة سرعة قصوى. وهي ليست كذلك. فالاختبار الذي يلتقط 92% من حالات العدوى لدى من يبدو مرضهم واضحاً قد لا يلتقط سوى النصف بالكاد لدى من مرضهم خفيف، لأن ما يمكن العثور عليه أقل. وكلما قيل لك إن دقة اختبار ما 95%، فالسؤال الحقيقي هو: على من قاسوا ذلك، وهل يشبهك أولئك الناس في شيء.",
+  "The counts are Table 3, page 137: 49 of 53 and 21 of 50 in the high prior-probability group, 10 of 18 and 188 of 241 in the low one. A positive dipstick meant leukocyte esterase or nitrite or both; a positive culture meant more than 100,000 colonies per millilitre. The correction notes that the high prior-probability group holds 103 patients, not the 107 still printed in the abstract, and that the rates were computed on 103 and stand. The printed abstract also gives the 0.56 confidence interval as 0.03 to 0.79; the paper's own table gives 0.31 to 0.79.":
+    "الأعداد مأخوذة من الجدول 3، صفحة 137: 49 من 53 و21 من 50 في مجموعة الاحتمال المسبق المرتفع، و10 من 18 و188 من 241 في المجموعة المنخفضة. وكان الشريط يُعدّ إيجابياً عند وجود إستراز الكريات البيض أو النتريت أو كليهما، ويُعدّ الزرع إيجابياً عند أكثر من 100,000 مستعمرة لكل مليلتر. ويشير التصويب المنشور إلى أن مجموعة الاحتمال المسبق المرتفع تضم 103 مرضى، لا 107 كما لا يزال مطبوعاً في الملخص، وأن المعدلات حُسبت على 103 وتبقى صحيحة. كما يعطي الملخص المطبوع مجال الثقة للقيمة 0.56 على أنه من 0.03 إلى 0.79، بينما يعطي جدول البحث نفسه من 0.31 إلى 0.79.",
+
+  // ==== Berkson's bias (puzzle #9) ====
+  "Among hospital patients, lung trouble and joint trouble go together. Are the two diseases linked?":
+    "بين مرضى المستشفى، تسير متاعب الرئة ومتاعب المفاصل معاً. فهل المرضان مرتبطان؟",
+  "A survey knocked on doors and asked thousands of ordinary people what illnesses they had. Among those who had been in hospital in the previous six months, a quarter of the people with a respiratory disease also had a disease of the bones or joints, against well under a tenth of everyone else.":
+    "طرق مسحٌ ميداني الأبواب وسأل آلاف الناس العاديين عن الأمراض التي لديهم. فمن بين من دخلوا المستشفى في الأشهر الستة السابقة، كان لدى ربع المصابين بمرض تنفسي مرضٌ في العظام أو المفاصل أيضاً، مقابل أقل بكثير من العُشر لدى سائر الناس.",
+  "Are these two diseases actually related?":
+    "هل هذان المرضان مرتبطان فعلاً؟",
+  "Also had a bone or joint disease":
+    "لديهم أيضاً مرض في العظام أو المفاصل",
+  "Had a respiratory disease": "لديهم مرض تنفسي",
+  Lungs: "مرض رئوي",
+  "No respiratory disease": "لا مرض تنفسي",
+  "No lungs": "لا مرض رئوي",
+  "In hospital in the last 6 months": "دخلوا المستشفى في آخر 6 أشهر",
+  "Everyone the survey asked": "كل من سألهم المسح",
+  "Hospital patients": "مرضى المستشفى",
+  "Yes, one brings on the other": "نعم، أحدهما يجلب الآخر",
+  "three times as common": "الشيوع ثلاثة أضعاف",
+  "Yes, but the other way round": "نعم، لكن بالاتجاه المعاكس",
+  "the joint disease comes first": "مرض المفاصل يأتي أولاً",
+  "No, the hospital made the link": "لا، المستشفى هو من صنع الصلة",
+  "it is about who gets admitted": "المسألة في من يدخل المستشفى",
+  "Ask everyone, and the link disappears.": "اسأل الجميع، فتختفي الصلة.",
+  "Two illnesses are two chances to be admitted":
+    "مرضان يعنيان فرصتين لدخول المستشفى",
+  "The same survey, the same people, the same two diseases. Across everyone it asked, having a respiratory disease made a bone or joint disease no more likely at all. The hospital panel is not a finding about disease, it is a finding about admission. Either illness can put you in a hospital bed, so people with both turn up there far more often than people with one, and inside those walls the two look inseparable:":
+    "المسح نفسه، والناس أنفسهم، والمرضان نفساهما. فعبر كل من سألهم المسح، لم يجعل وجودُ مرض تنفسي مرضَ العظام أو المفاصل أرجح على الإطلاق. لوحة المستشفى ليست نتيجة عن المرض، بل نتيجة عن دخول المستشفى. فأيٌّ من المرضين قد يضعك في سرير مستشفى، لذا يظهر أصحاب المرضين معاً هناك أكثر بكثير من أصحاب مرض واحد، وداخل تلك الجدران يبدو المرضان لا ينفصلان:",
+  "Hospital and community": "المستشفى والمجتمع",
+  "The filter": "المِصفاة",
+  "Berkson's bias": "تحيز بيركسون",
+  "Studying only the people who made it through a filter can invent a relationship that does not exist outside it.":
+    "دراسة من عبروا مِصفاةً ما وحدهم قد تخترع علاقة لا وجود لها خارجها.",
+  "Hospitals are the obvious filter, and the reason case-control studies built on hospital patients are treated warily. But any selected group does it: people who answered the survey, users who stayed subscribed, applicants who got an interview. Ask what it took to get into the sample, and whether both things you are comparing help you get in.":
+    "المستشفيات هي المِصفاة الواضحة، وهي سبب التعامل بحذر مع دراسات الحالات والشواهد المبنية على مرضى المستشفيات. لكن أي مجموعة منتقاة تفعل الشيء نفسه: من أجابوا عن المسح، والمستخدمون الذين ظلوا مشتركين، والمتقدمون الذين حصلوا على مقابلة. اسأل عمّا يلزم للدخول إلى العينة، وعمّا إذا كان الأمران اللذان تقارن بينهما يساعدان كلاهما على الدخول.",
+  "Suppose two illnesses are entirely unrelated, and either one on its own gives you some chance of being admitted to hospital. Someone unlucky enough to have both has two shots at admission, so they are much likelier to be in the ward than someone with only one. Now stand inside the ward and count. The people with the first illness are heavily enriched for also having the second, because that is what got many of them in. You have not discovered a link between the diseases. You have rediscovered the admission rule, and dressed it up as biology. The general shape of this is a collider: a thing that two causes both point into. Selecting on it, whether by studying only the admitted, only the tested, or only the successful, links the causes together in your data even when nothing links them in the world. The defence is a sample defined before the filter, which is exactly why population surveys and whole-population registries are worth their cost.":
+    "افترض أن مرضين لا علاقة بينهما البتة، وأن كلاً منهما وحده يمنحك بعض احتمال الدخول إلى المستشفى. فمن يسوء حظه ويصاب بهما معاً تكون له فرصتان للدخول، لذا يكون وجوده في الجناح أرجح بكثير من وجود صاحب مرض واحد. قف الآن داخل الجناح وعُدّ. ستجد أن المصابين بالمرض الأول مشحونون بشدة بمن لديهم المرض الثاني أيضاً، لأن ذلك هو ما أدخل كثيراً منهم. أنت لم تكتشف صلة بين المرضين. لقد أعدت اكتشاف قاعدة الإدخال إلى المستشفى، وألبستها ثوب علم الأحياء. والشكل العام لهذا هو ما يسمى المُصادِم: أمر يشير إليه سببان معاً. والانتقاء بناءً عليه، سواء بدراسة من أُدخلوا وحدهم، أو من خضعوا للاختبار وحدهم، أو من نجحوا وحدهم، يربط السببين معاً في بياناتك حتى حين لا يربط بينهما شيء في الواقع. والحصانة هي عينة تُحدَّد قبل المِصفاة، وهذا بالضبط ما يجعل المسوح السكانية والسجلات الشاملة لكل السكان تستحق كلفتها.",
+  "The bias that was theory for thirty years":
+    "التحيز الذي ظل نظرياً ثلاثين عاماً",
+  "Joseph Berkson warned in 1946 that hospital-based comparisons could manufacture associations, but his argument was mathematical and his numbers were invented to illustrate it. He noted that the same artefact would appear if you sampled shuffled cards rather than patients. It took until this survey, three decades later, for anyone to demonstrate the effect in real people.":
+    "حذّر جوزيف بيركسون عام 1946 من أن المقارنات المبنية على مرضى المستشفيات قد تصنع ارتباطات مصطنعة، لكن حجته كانت رياضية وأرقامه موضوعة للتوضيح لا مقيسة. ولاحظ أن الأثر المصطنع نفسه سيظهر لو أخذت عينتك من أوراق لعب مخلوطة بدل المرضى. وقد لزم الانتظار حتى هذا المسح، بعد ثلاثة عقود، ليبرهن أحد على الأثر لدى بشر حقيقيين.",
+  "Why early covid studies disagreed": "لماذا تناقضت دراسات كوفيد المبكرة",
+  "In 2020, studies of who caught covid and who fell severely ill could only recruit from people who had been tested or admitted, and early on those were mostly hospital staff, the already unwell and the elderly. Getting into the sample depended on the very things being studied. Analyses showed this alone could produce apparent risk factors, and even reverse the direction of a real one, without any biology behind it.":
+    "في عام 2020، لم يكن بوسع الدراسات التي بحثت في من أصيب بكوفيد ومن اشتد مرضه أن تجنّد إلا من خضعوا للاختبار أو أُدخلوا المستشفى، وكان هؤلاء في البداية في معظمهم من العاملين في المستشفيات ومن المرضى أصلاً وكبار السن. فقد كان الدخول إلى العينة يتوقف على الأمور نفسها التي تجري دراستها. وأظهرت تحليلات أن هذا وحده قادر على إنتاج عوامل خطر ظاهرية، بل وعلى قلب اتجاه عامل خطر حقيقي، دون أي أساس بيولوجي وراء ذلك.",
+  "Berkson's bias, a reasoning trap.": "تحيز بيركسون، فخ في الاستدلال.",
+  "Look only at hospital patients and two completely unrelated illnesses can appear to travel together. The reason is not biology, it is the door. Either illness can get you admitted, so people who happen to have both are over-represented inside, and from in there the two look linked. Any filtered group does this: the people who got tested, the applicants who got an interview, the customers who stayed. Before believing a pattern, ask what it took to get into the data.":
+    "انظر إلى مرضى المستشفى وحدهم، فقد يبدو مرضان لا علاقة بينهما البتة وكأنهما يسيران معاً. والسبب ليس علم الأحياء، بل الباب. فأيٌّ من المرضين قد يُدخلك المستشفى، لذا يكون أصحاب المرضين معاً ممثَّلين تمثيلاً زائداً في الداخل، ومن هناك يبدو المرضان مرتبطين. وأي مجموعة مُصفّاة تفعل ذلك: من خضعوا للاختبار، والمتقدمون الذين حصلوا على مقابلة، والزبائن الذين بقوا. قبل أن تصدّق نمطاً ما، اسأل عمّا لزم للدخول إلى البيانات.",
+  "The counts are Table 2: household interviews with 2,784 people, of whom 257 had been in hospital in the previous six months. The table's own relative odds are 1.06 in the general population and 4.06 among the hospitalised. The hospital figures rest on only 20 people with a respiratory disease, so this single table demonstrates the mechanism rather than measuring its size precisely.":
+    "الأعداد مأخوذة من الجدول 2: مقابلات منزلية مع 2,784 شخصاً، منهم 257 دخلوا المستشفى في الأشهر الستة السابقة. والأرجحية النسبية في الجدول نفسه هي 1.06 في عموم السكان و4.06 بين من دخلوا المستشفى. وترتكز أرقام المستشفى على 20 شخصاً فقط لديهم مرض تنفسي، لذا فإن هذا الجدول الواحد يبرهن على الآلية أكثر مما يقيس حجمها بدقة.",
+
+  // ==== Trap Hunt test items (spectrum and Berkson) ====
+  "A rapid test is validated on patients admitted to hospital with severe disease and on healthy blood donors. It separates the two groups almost perfectly, and the maker reports 98% sensitivity. It is then sold to family doctors for patients with a mild cough.":
+    "يُتحقق من اختبار سريع على مرضى أُدخلوا المستشفى بمرض شديد وعلى متبرعين بالدم أصحاء. فيفصل بين المجموعتين فصلاً شبه تام، وتعلن الشركة الصانعة حساسية 98%. ثم يُباع لأطباء الأسرة من أجل مرضى يشكون سعالاً خفيفاً.",
+  "Telling the obviously ill from the obviously well is the easiest task there is. A family doctor's patients are all somewhere in between, and that is precisely where the test has never been measured.":
+    "تمييز المريض الواضح من السليم الواضح هو أسهل مهمة على الإطلاق. أما مرضى طبيب الأسرة فجميعهم في مكان ما بين الطرفين، وهذا بالضبط هو الموضع الذي لم يُقَس فيه الاختبار قط.",
+  "A textbook lists a scan as 90% sensitive. A clinic that sees mostly early, mild cases adopts it and finds it misses about a third of the cases later confirmed by specialists. The clinic concludes its machine must be faulty.":
+    "يذكر كتاب مرجعي أن حساسية تصوير ما 90%. فتعتمده عيادة تستقبل في معظمها حالات مبكرة خفيفة، فتجد أنه يفوته نحو ثلث الحالات التي يؤكدها الاختصاصيون لاحقاً. فتخلص العيادة إلى أن جهازها لا بد أن يكون معطلاً.",
+  "A quoted sensitivity comes attached to the patients it was measured on. Earlier and milder disease gives a test less to find, so a lower catch rate is what you should expect, not evidence of a broken machine.":
+    "الحساسية المذكورة تأتي مرتبطة بالمرضى الذين قِيست عليهم. والمرض الأبكر والأخف يترك للاختبار ما هو أقل ليجده، لذا فإن معدل التقاط أدنى هو ما ينبغي أن تتوقعه، لا دليلاً على جهاز معطل.",
+  "A study of one hospital's inpatients finds that those with a metabolic disease are far more likely to also have a gallbladder disease than the other inpatients. The authors conclude that the first disease brings on the second.":
+    "تجد دراسة على المرضى المقيمين في مستشفى واحد أن المصابين بمرض استقلابي أرجح بكثير أن يكون لديهم أيضاً مرض في المرارة مقارنة ببقية المرضى المقيمين. فيخلص الباحثون إلى أن المرض الأول يجلب الثاني.",
+  "Either illness on its own can put someone in a hospital bed, so patients with both are over-represented among inpatients. The link may exist only inside the building.":
+    "كلٌّ من المرضين وحده قد يضع صاحبه في سرير مستشفى، لذا يكون المرضى المصابون بهما معاً ممثَّلين تمثيلاً زائداً بين المرضى المقيمين. وقد لا تكون الصلة موجودة إلا داخل المبنى.",
+  "Someone notices that among the people they have dated, the better looking ones were consistently less pleasant company. They conclude that good looks spoil the character.":
+    "يلاحظ شخص أن الأجمل مظهراً بين من واعدهم كانوا دائماً أقل لطفاً في الصحبة. فيخلص إلى أن حسن المظهر يفسد الطباع.",
+  "People generally agree to a date because someone is good looking or because they are pleasant company. Selecting on that forces a trade-off between the two inside the sample, whatever the relationship is outside it.":
+    "يوافق الناس عادةً على موعد غرامي إما لأن الطرف الآخر حسن المظهر وإما لأنه لطيف الصحبة. والانتقاء على هذا الأساس يفرض مقايضة بين الأمرين داخل العينة، مهما كانت العلاقة بينهما خارجها.",
+  "A diagnostic test is evaluated on every consecutive patient arriving at a clinic with the same presenting complaint, whatever their eventual diagnosis, and the paper reports its accuracy separately for mild and for advanced disease. Another clinic with a similar caseload adopts the figures.":
+    "يُقيَّم اختبار تشخيصي على كل مريض متعاقب يصل إلى عيادة بالشكوى نفسها، أياً كان تشخيصه في النهاية، ويعرض البحث دقته منفصلةً للمرض الخفيف وللمرض المتقدم. وتعتمد تلك الأرقامَ عيادةٌ أخرى ذات حالات مشابهة.",
+  "This is how a diagnostic study should be built. Consecutive patients with one presenting problem, and accuracy broken down by severity, so a reader can find the subgroup that actually resembles their own patients.":
+    "هكذا ينبغي أن تُبنى الدراسة التشخيصية. مرضى متعاقبون يشكون مشكلة واحدة، ودقة مفصَّلة حسب الشدة، حتى يجد القارئ المجموعة الفرعية التي تشبه مرضاه فعلاً.",
+  "A company asks whether two things about its users go together. It samples at random from everyone who ever opened an account, including those who never came back and those who cancelled, and finds no relationship between them.":
+    "تسأل شركة عمّا إذا كان أمران يخصان مستخدميها يسيران معاً. فتأخذ عينة عشوائية من كل من فتح حساباً يوماً، بمن فيهم من لم يعودوا قط ومن ألغوا حساباتهم، فلا تجد أي علاقة بين الأمرين.",
+  "The sample was drawn before any filter that either of the two things could have influenced. Nothing about staying, succeeding or being admitted decided who got counted, so a selection artefact cannot be hiding in it.":
+    "سُحبت العينة قبل أي مِصفاة كان يمكن لأيٍّ من الأمرين أن يؤثر فيها. فلم يكن البقاء ولا النجاح ولا الدخول إلى المستشفى هو ما قرر من يُحتسب، لذا لا يمكن أن يختبئ فيها أثر انتقاء مصطنع.",
 };

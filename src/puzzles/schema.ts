@@ -144,6 +144,43 @@ const TimelineData = z.object({
 });
 export type TimelineData = z.infer<typeof TimelineData>;
 
+/**
+ * A two-arm risk comparison, for the relative-versus-absolute puzzles.
+ *
+ * This needs its own shape because one bar chart cannot be both things at
+ * once. The `relative` view scales the treated arm against the control arm, so
+ * a third fewer events fills a third of the bar, which is exactly how such a
+ * result gets sold. The `absolute` view puts both arms on a true 0 to 100
+ * scale, where the same result is two nearly identical slivers. Same counts,
+ * two honest pictures, opposite feelings.
+ *
+ * Everything shown is derived from the four integers (see engine/charts/risk.ts):
+ * the two risks, the relative reduction, the absolute reduction, and the number
+ * needed to treat. The captions are authored so no number is ever interpolated
+ * into a sentence, which keeps all ten locales grammatical.
+ */
+export const RiskArm = z.object({
+  label: LocalizedText, // "Placebo"
+  short: LocalizedText.optional(), // compact chart label
+  events: z.number().int().nonnegative(),
+  n: z.number().int().positive(),
+});
+export type RiskArm = z.infer<typeof RiskArm>;
+
+const RiskData = z.object({
+  type: z.literal("risk"),
+  label: LocalizedText, // figure title
+  outcomeLabel: LocalizedText, // "had a heart attack or died of heart disease"
+  control: RiskArm,
+  treated: RiskArm,
+  /** The "per how many people" the absolute view speaks in, e.g. 1000. */
+  scale: z.number().int().positive(),
+  relativeCaption: LocalizedText, // under the big relative number: "lower risk"
+  absoluteCaption: LocalizedText, // "spared, per 1,000 men"
+  nntCaption: LocalizedText, // "treated for five years to spare one"
+});
+export type RiskData = z.infer<typeof RiskData>;
+
 /** Discriminated by `type`. Add new members here to support new data shapes. */
 export const PuzzleData = z.discriminatedUnion("type", [
   RatesData,
@@ -151,6 +188,7 @@ export const PuzzleData = z.discriminatedUnion("type", [
   CausalData,
   SurvivorshipData,
   TimelineData,
+  RiskData,
 ]);
 export type PuzzleData = z.infer<typeof PuzzleData>;
 
@@ -181,6 +219,8 @@ export const DataView = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("armor"), ...viewFields }),
   z.object({ kind: z.literal("survival"), ...viewFields }),
   z.object({ kind: z.literal("lifespan"), ...viewFields }),
+  z.object({ kind: z.literal("relative"), ...viewFields }),
+  z.object({ kind: z.literal("absolute"), ...viewFields }),
 ]);
 export type DataView = z.infer<typeof DataView>;
 export type DataViewKind = DataView["kind"];
@@ -467,6 +507,28 @@ export const Puzzle = z
           code: z.ZodIssueCode.custom,
           path: [...path, "positiveGivenNoCondition"],
           message: `false positives (${d.positiveGivenNoCondition}) exceed those without the condition (${without})`,
+        });
+      }
+    }
+
+    if (p.setup.data.type === "risk") {
+      const d = p.setup.data;
+      for (const arm of ["control", "treated"] as const) {
+        if (d[arm].events > d[arm].n) {
+          ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            path: ["setup", "data", arm, "events"],
+            message: `events (${d[arm].events}) exceed the arm size (${d[arm].n})`,
+          });
+        }
+      }
+      // Without events in the control arm there is no risk to reduce, and the
+      // relative view would divide by zero.
+      if (d.control.events === 0) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ["setup", "data", "control", "events"],
+          message: "the control arm needs at least one event to compare against",
         });
       }
     }

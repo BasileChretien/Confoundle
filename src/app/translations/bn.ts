@@ -565,4 +565,132 @@ export const bn: Record<string, string> = {
   B: "B",
   "From diagnosis": "রোগনির্ণয় থেকে",
   "The whole life": "গোটা জীবন",
+
+  // ==== Spectrum bias (urine dipstick) ====
+  "This urine test catches 92% of infections. Your patient's symptoms are vague. How good is it now?":
+    "এই প্রস্রাব পরীক্ষা ৯২% সংক্রমণ ধরে ফেলে। আপনার রোগীর উপসর্গ অস্পষ্ট। এখন এটি কতটা ভালো?",
+  "A dipstick for urinary infection, checked against urine cultures in an emergency department and a walk-in clinic. Among patients whose doctor already thought an infection was likely, it caught 49 of the 53 who really had one. Sensitivity is normally quoted as a single number, as though it were a fixed property of the test.":
+    "মূত্রনালির সংক্রমণ ধরার একটি ডিপস্টিক, একটি জরুরি বিভাগ আর একটি ওয়াক-ইন ক্লিনিকে প্রস্রাবের কালচারের সঙ্গে মিলিয়ে যাচাই করা। যেসব রোগীর ক্ষেত্রে ডাক্তার আগে থেকেই সংক্রমণের সম্ভাবনা বেশি ভেবেছিলেন, তাঁদের মধ্যে যে ৫৩ জনের সত্যিই সংক্রমণ ছিল তাঁদের ৪৯ জনকেই এটি ধরে ফেলেছিল। সংবেদনশীলতা সাধারণত একটিমাত্র সংখ্যা হিসেবে বলা হয়, যেন এটি পরীক্ষাটির একটি স্থির বৈশিষ্ট্য।",
+  "In patients the doctor thinks are unlikely to be infected, how often does it catch a real infection?":
+    "ডাক্তার যাঁদের সংক্রমণের সম্ভাবনা কম বলে মনে করেন, তাঁদের ক্ষেত্রে এটি কতবার সত্যিকারের সংক্রমণ ধরতে পারে?",
+  "Times the dipstick was right": "ডিপস্টিক যতবার ঠিক ছিল",
+  "Doctor thought infection likely":
+    "ডাক্তার সংক্রমণের সম্ভাবনা বেশি ভেবেছিলেন",
+  Likely: "সম্ভাব্য",
+  "Doctor thought infection unlikely":
+    "ডাক্তার সংক্রমণের সম্ভাবনা কম ভেবেছিলেন",
+  Unlikely: "অসম্ভাব্য",
+  "Patients who really had an infection": "যেসব রোগীর সত্যিই সংক্রমণ ছিল",
+  "Patients who did not": "যেসব রোগীর ছিল না",
+  "The quoted figure": "উদ্ধৃত সংখ্যাটি",
+  "About the same, 92%": "প্রায় একই, ৯২%",
+  "the test has not changed": "পরীক্ষাটি তো বদলায়নি",
+  "A little lower, around 80%": "একটু কম, প্রায় ৮০%",
+  "some drop off": "কিছুটা কমে যায়",
+  "Barely half, 56%": "সবে অর্ধেক, ৫৬%",
+  "it misses most of them": "বেশিরভাগই ধরা পড়ে না",
+  "Barely half. And the other column flips the other way.":
+    "সবে অর্ধেক। আর অন্য স্তম্ভটি উল্টো দিকে ঘুরে যায়।",
+  "The patients changed, not the test": "রোগীরা বদলেছেন, পরীক্ষাটি নয়",
+  "Patients their doctor already suspected had florid infections, the kind a dipstick spots easily. Patients thought unlikely to be infected had mild or early ones, and the test missed most of them. Now look at the second panel, the patients who had no infection at all: there the test was right 42% of the time in the first group and 78% in the second. Sensitivity and specificity are not properties of a test. They are properties of a test meeting a particular mix of people:":
+    "ডাক্তার যাঁদের নিয়ে আগে থেকেই সন্দেহ করেছিলেন তাঁদের সংক্রমণ ছিল প্রকট, যে ধরনের সংক্রমণ ডিপস্টিক সহজেই ধরে ফেলে। যাঁদের সংক্রমণের সম্ভাবনা কম ভাবা হয়েছিল তাঁদের সংক্রমণ ছিল মৃদু কিংবা সবে শুরু হওয়া, আর পরীক্ষাটি তাঁদের বেশিরভাগকেই ধরতে পারেনি। এবার দ্বিতীয় প্যানেলটি দেখুন, যাঁদের আদৌ কোনো সংক্রমণ ছিল না: সেখানে প্রথম গোষ্ঠীতে পরীক্ষাটি ৪২% ক্ষেত্রে ঠিক ছিল আর দ্বিতীয় গোষ্ঠীতে ৭৮% ক্ষেত্রে। সংবেদনশীলতা আর নির্দিষ্টতা পরীক্ষাটির বৈশিষ্ট্য নয়। এগুলো একটি বিশেষ মানুষের মিশ্রণের মুখোমুখি হওয়া পরীক্ষার বৈশিষ্ট্য:",
+  "Both groups": "দুটি গোষ্ঠীই",
+  "The spectrum": "স্পেকট্রামটি",
+  "How many in each group really had an infection":
+    "প্রতিটি গোষ্ঠীতে কতজনের সত্যিই সংক্রমণ ছিল",
+  "Spectrum bias": "স্পেকট্রাম পক্ষপাত",
+  "A test's accuracy is not fixed. It moves with how advanced, how typical and how obvious the disease is in the patients being tested.":
+    "একটি পরীক্ষার নির্ভুলতা স্থির নয়। যাঁদের পরীক্ষা করা হচ্ছে তাঁদের রোগ কতটা অগ্রসর, কতটা চেনা ছাঁচের আর কতটা স্পষ্ট, তার সঙ্গে সঙ্গে এটি বদলায়।",
+  "Before trusting a quoted sensitivity, ask who it was measured on. A figure from patients with unmistakable disease will flatter the test in a clinic full of milder cases, and a study that recruits only textbook cases and healthy volunteers will flatter it most of all.":
+    "উদ্ধৃত কোনো সংবেদনশীলতাকে বিশ্বাস করার আগে জিজ্ঞাসা করুন, সেটি কাদের ওপর মাপা হয়েছিল। নিঃসন্দেহ, স্পষ্ট রোগে ভোগা রোগীদের থেকে পাওয়া একটি সংখ্যা মৃদু কেসে ভরা একটি ক্লিনিকে পরীক্ষাটিকে বাড়িয়ে দেখাবে; আর যে গবেষণা কেবল পাঠ্যবইয়ের মতো নিখুঁত কেস আর সুস্থ স্বেচ্ছাসেবক জোগাড় করে, সেটি বাড়িয়ে দেখাবে সবচেয়ে বেশি।",
+  "Sensitivity is the share of truly ill people a test catches, and specificity is the share of healthy people it correctly clears. Both are quoted as though they belonged to the test, like its price. They do not. A test picks up a signal, and the signal is stronger in advanced disease than in early disease, so the sicker the ill people you test, the more of them it finds. The same logic runs the other way for the people without the disease: the more clearly healthy they are, the more easily the test clears them. That is why a test evaluated on obvious cases against obvious non-cases can look superb and then disappoint in a real clinic, where nearly everyone is somewhere in between. Two practical habits follow. Read the description of who was recruited before you read the accuracy figures. And be most suspicious of a study whose diseased and healthy groups were picked separately rather than being consecutive patients with the same presenting problem.":
+    "সংবেদনশীলতা হলো সত্যিকারের অসুস্থ মানুষদের মধ্যে একটি পরীক্ষা কতজনকে ধরতে পারে তার অংশ, আর নির্দিষ্টতা হলো সুস্থ মানুষদের মধ্যে কতজনকে এটি ঠিকভাবে ছাড়পত্র দেয় তার অংশ। দুটিকেই এমনভাবে বলা হয় যেন এগুলো পরীক্ষাটিরই নিজস্ব বৈশিষ্ট্য, তার দামের মতো। আসলে তা নয়। একটি পরীক্ষা একটি সংকেত ধরে, আর সেই সংকেত সবে শুরু হওয়া রোগের চেয়ে অগ্রসর রোগে জোরালো; তাই আপনি যত বেশি অসুস্থ মানুষদের পরীক্ষা করবেন, এটি তত বেশি জনকে খুঁজে পাবে। যাঁদের রোগ নেই তাঁদের ক্ষেত্রে একই যুক্তি উল্টো দিকে চলে: তাঁরা যত স্পষ্টভাবে সুস্থ, পরীক্ষাটি তত সহজে তাঁদের ছাড়পত্র দেয়। এ কারণেই স্পষ্ট রোগীদের বিপরীতে স্পষ্ট সুস্থদের ওপর যাচাই করা একটি পরীক্ষা দুর্দান্ত মনে হতে পারে, অথচ সত্যিকারের একটি ক্লিনিকে হতাশ করে, যেখানে প্রায় সবাই কোথাও না কোথাও এই দুইয়ের মাঝখানে। এ থেকে দুটি বাস্তব অভ্যাস আসে। নির্ভুলতার সংখ্যাগুলো পড়ার আগে পড়ুন কাদের নেওয়া হয়েছিল তার বর্ণনা। আর সবচেয়ে বেশি সন্দেহ করুন সেই গবেষণাকে, যেখানে অসুস্থ আর সুস্থ গোষ্ঠীকে একই উপসর্গ নিয়ে আসা পরপর রোগীদের মধ্য থেকে না নিয়ে আলাদা আলাদাভাবে বেছে নেওয়া হয়েছে।",
+  "The same test, sorted a different way": "একই পরীক্ষা, অন্যভাবে ভাগ করা",
+  "The same study split its patients again, this time by how many white cells were visible in the urine under a microscope. Where none were visible the dipstick caught 5 of the 10 real infections. Where a few were visible it caught 15 of 22. Where there were many it caught all 34 of 34. One test, one afternoon's samples, and a sensitivity anywhere from 50 to 100 percent depending only on which patients you counted.":
+    "একই গবেষণা তার রোগীদের আবার ভাগ করল, এবার অণুবীক্ষণ যন্ত্রে প্রস্রাবে কতগুলো শ্বেত রক্তকণিকা দেখা যাচ্ছে তা দিয়ে। যেখানে একটিও দেখা যায়নি সেখানে ডিপস্টিক ১০টি সত্যিকারের সংক্রমণের মধ্যে ৫টি ধরল। যেখানে কয়েকটি দেখা যাচ্ছিল সেখানে ২২টির মধ্যে ১৫টি। আর যেখানে অনেকগুলো ছিল সেখানে ৩৪টির মধ্যে ৩৪টিই। একটিই পরীক্ষা, একটি বিকেলের নমুনা, অথচ কেবল কোন রোগীদের গোনা হচ্ছে তার ওপর নির্ভর করে সংবেদনশীলতা ৫০ থেকে ১০০ শতাংশের মধ্যে যেকোনো জায়গায়।",
+  "Why promising tests keep disappointing":
+    "প্রতিশ্রুতিশীল পরীক্ষাগুলো কেন বারবার হতাশ করে",
+  "The problem was named in 1978, after a pattern of new tests arriving with excellent published accuracy and then underwhelming the doctors who used them. Two of the era's examples were the carcinoembryonic antigen test and the nitro-blue tetrazolium test. The authors traced the letdown to two things: accuracy measured on a patient mix far narrower than real practice, and the test result and the true diagnosis not being judged independently of each other.":
+    "সমস্যাটির নামকরণ হয় ১৯৭৮ সালে, একটি ধারা চোখে পড়ার পরে: নতুন নতুন পরীক্ষা আসছে চমৎকার প্রকাশিত নির্ভুলতা নিয়ে, তারপর যেসব ডাক্তার সেগুলো ব্যবহার করছেন তাঁদের হতাশ করছে। ওই সময়ের দুটি উদাহরণ ছিল কার্সিনোএমব্রায়োনিক অ্যান্টিজেন পরীক্ষা আর নাইট্রো-ব্লু টেট্রাজোলিয়াম পরীক্ষা। লেখকরা এই হতাশার পেছনে দুটি কারণ খুঁজে পান: বাস্তব চিকিৎসার চেয়ে অনেক সংকীর্ণ একটি রোগীর মিশ্রণের ওপর মাপা নির্ভুলতা, আর পরীক্ষার ফল ও প্রকৃত রোগনির্ণয়কে একে অপরের থেকে স্বাধীনভাবে বিচার না করা।",
+  "Spectrum bias, a reasoning trap.": "স্পেকট্রাম পক্ষপাত, একটি যুক্তির ফাঁদ।",
+  "Test accuracy sounds like a fact about the test, the way a car has a top speed. It is not. A test that catches 92% of infections in people who are obviously ill can catch barely half in people who are only slightly ill, because there is less to find. Whenever you are told a test is 95% accurate, the real question is who they measured that on, and whether those people look anything like you.":
+    "পরীক্ষার নির্ভুলতা শুনতে মনে হয় পরীক্ষাটি সম্পর্কে একটি তথ্য, যেমন একটি গাড়ির একটি সর্বোচ্চ গতি থাকে। আসলে তা নয়। যে পরীক্ষা স্পষ্টভাবে অসুস্থ মানুষদের ৯২% সংক্রমণ ধরে ফেলে, সেটিই সামান্য অসুস্থ মানুষদের ক্ষেত্রে সবে অর্ধেক ধরতে পারে, কারণ খুঁজে পাওয়ার মতো কম কিছু থাকে। যখনই আপনাকে বলা হয় একটি পরীক্ষা ৯৫% নির্ভুল, আসল প্রশ্নটি হলো তাঁরা সেটি কাদের ওপর মেপেছিলেন, আর সেই মানুষগুলো আদৌ আপনার মতো কি না।",
+  "The counts are Table 3, page 137: 49 of 53 and 21 of 50 in the high prior-probability group, 10 of 18 and 188 of 241 in the low one. A positive dipstick meant leukocyte esterase or nitrite or both; a positive culture meant more than 100,000 colonies per millilitre. The correction notes that the high prior-probability group holds 103 patients, not the 107 still printed in the abstract, and that the rates were computed on 103 and stand. The printed abstract also gives the 0.56 confidence interval as 0.03 to 0.79; the paper's own table gives 0.31 to 0.79.":
+    "সংখ্যাগুলো সারণি ৩, পৃষ্ঠা ১৩৭ থেকে নেওয়া: উচ্চ পূর্ব-সম্ভাবনার গোষ্ঠীতে ৫৩ জনের মধ্যে ৪৯ আর ৫০ জনের মধ্যে ২১, আর নিম্ন গোষ্ঠীটিতে ১৮ জনের মধ্যে ১০ আর ২৪১ জনের মধ্যে ১৮৮। ডিপস্টিক পজিটিভ বলতে বোঝানো হয়েছে লিউকোসাইট এস্টারেজ কিংবা নাইট্রাইট কিংবা দুটোই; কালচার পজিটিভ বলতে প্রতি মিলিলিটারে ১,০০,০০০-এর বেশি কলোনি। সংশোধনীতে বলা হয়েছে যে উচ্চ পূর্ব-সম্ভাবনার গোষ্ঠীতে রোগী আছেন ১০৩ জন, অ্যাবস্ট্রাক্টে এখনও ছাপা থাকা ১০৭ জন নয়; আর হারগুলো ১০৩ ধরেই হিসাব করা হয়েছিল, সেগুলো ঠিক আছে। ছাপা অ্যাবস্ট্রাক্টে ০.৫৬-এর কনফিডেন্স ইন্টারভ্যাল দেওয়া আছে ০.০৩ থেকে ০.৭৯; গবেষণাপত্রের নিজস্ব সারণিতে আছে ০.৩১ থেকে ০.৭৯।",
+
+  // ==== Berkson's bias (hospital sample) ====
+  "Among hospital patients, lung trouble and joint trouble go together. Are the two diseases linked?":
+    "হাসপাতালের রোগীদের মধ্যে ফুসফুসের সমস্যা আর অস্থিসন্ধির সমস্যা একসঙ্গে চলে। রোগ দুটি কি পরস্পর জড়িত?",
+  "A survey knocked on doors and asked thousands of ordinary people what illnesses they had. Among those who had been in hospital in the previous six months, a quarter of the people with a respiratory disease also had a disease of the bones or joints, against well under a tenth of everyone else.":
+    "একটি জরিপ ঘরে ঘরে গিয়ে হাজার হাজার সাধারণ মানুষকে জিজ্ঞাসা করেছিল তাঁদের কী কী অসুখ আছে। আগের ছয় মাসে যাঁরা হাসপাতালে ছিলেন, তাঁদের মধ্যে শ্বাসতন্ত্রের রোগ থাকা মানুষদের এক-চতুর্থাংশের হাড় বা অস্থিসন্ধির রোগও ছিল, আর বাকি সবার ক্ষেত্রে তা ছিল এক-দশমাংশেরও অনেক কম।",
+  "Are these two diseases actually related?":
+    "রোগ দুটি কি আসলেই পরস্পর সম্পর্কিত?",
+  "Also had a bone or joint disease": "হাড় বা অস্থিসন্ধির রোগও ছিল",
+  "Had a respiratory disease": "শ্বাসতন্ত্রের রোগ ছিল",
+  Lungs: "ফুসফুস",
+  "No respiratory disease": "শ্বাসতন্ত্রের রোগ ছিল না",
+  "No lungs": "ফুসফুস নয়",
+  "In hospital in the last 6 months": "গত ৬ মাসে হাসপাতালে",
+  "Everyone the survey asked": "জরিপে জিজ্ঞাসা করা সবাই",
+  "Hospital patients": "হাসপাতালের রোগীরা",
+  "Yes, one brings on the other": "হ্যাঁ, একটি অন্যটিকে ডেকে আনে",
+  "three times as common": "তিন গুণ বেশি সাধারণ",
+  "Yes, but the other way round": "হ্যাঁ, তবে উল্টো দিকে",
+  "the joint disease comes first": "অস্থিসন্ধির রোগটি আগে আসে",
+  "No, the hospital made the link": "না, হাসপাতালই সম্পর্কটি বানিয়েছে",
+  "it is about who gets admitted": "ব্যাপারটা কারা ভর্তি হন তা নিয়ে",
+  "Ask everyone, and the link disappears.":
+    "সবাইকে জিজ্ঞাসা করুন, সম্পর্কটি মিলিয়ে যায়।",
+  "Two illnesses are two chances to be admitted":
+    "দুটি অসুখ মানে ভর্তি হওয়ার দুটি সুযোগ",
+  "The same survey, the same people, the same two diseases. Across everyone it asked, having a respiratory disease made a bone or joint disease no more likely at all. The hospital panel is not a finding about disease, it is a finding about admission. Either illness can put you in a hospital bed, so people with both turn up there far more often than people with one, and inside those walls the two look inseparable:":
+    "একই জরিপ, একই মানুষ, একই দুটি রোগ। জরিপটি যাঁদের জিজ্ঞাসা করেছিল তাঁদের সবাইকে ধরলে, শ্বাসতন্ত্রের রোগ থাকায় হাড় বা অস্থিসন্ধির রোগের সম্ভাবনা একটুও বাড়েনি। হাসপাতালের প্যানেলটি রোগ সম্পর্কে কোনো আবিষ্কার নয়, এটি ভর্তি হওয়া সম্পর্কে একটি আবিষ্কার। দুটি অসুখের যেকোনোটিই আপনাকে হাসপাতালের শয্যায় নিয়ে যেতে পারে, তাই যাঁদের দুটোই আছে তাঁরা সেখানে একটিমাত্র রোগ থাকা মানুষদের চেয়ে অনেক বেশিবার হাজির হন; আর ওই দেয়ালের ভেতরে দুটিকে অবিচ্ছেদ্য মনে হয়:",
+  "Hospital and community": "হাসপাতাল আর জনসমাজ",
+  "The filter": "ছাঁকনিটি",
+  "Berkson's bias": "বার্কসনের পক্ষপাত",
+  "Studying only the people who made it through a filter can invent a relationship that does not exist outside it.":
+    "কেবল যাঁরা একটি ছাঁকনি পেরিয়ে এসেছেন তাঁদের নিয়ে গবেষণা করলে এমন একটি সম্পর্ক বানিয়ে ফেলা যায়, যা ওই ছাঁকনির বাইরে নেই।",
+  "Hospitals are the obvious filter, and the reason case-control studies built on hospital patients are treated warily. But any selected group does it: people who answered the survey, users who stayed subscribed, applicants who got an interview. Ask what it took to get into the sample, and whether both things you are comparing help you get in.":
+    "হাসপাতালই সবচেয়ে স্পষ্ট ছাঁকনি, আর এ কারণেই হাসপাতালের রোগীদের ওপর দাঁড় করানো কেস-কন্ট্রোল গবেষণাকে সতর্কভাবে দেখা হয়। কিন্তু যেকোনো বাছাই করা গোষ্ঠীই এটি করে: যাঁরা জরিপের উত্তর দিয়েছেন, যেসব ব্যবহারকারী সাবস্ক্রিপশন ধরে রেখেছেন, যেসব প্রার্থী সাক্ষাৎকারের ডাক পেয়েছেন। জিজ্ঞাসা করুন, নমুনায় ঢুকতে কী কী লেগেছিল, আর আপনি যে দুটি জিনিসের তুলনা করছেন সে দুটিই ঢুকতে সাহায্য করে কি না।",
+  "Suppose two illnesses are entirely unrelated, and either one on its own gives you some chance of being admitted to hospital. Someone unlucky enough to have both has two shots at admission, so they are much likelier to be in the ward than someone with only one. Now stand inside the ward and count. The people with the first illness are heavily enriched for also having the second, because that is what got many of them in. You have not discovered a link between the diseases. You have rediscovered the admission rule, and dressed it up as biology. The general shape of this is a collider: a thing that two causes both point into. Selecting on it, whether by studying only the admitted, only the tested, or only the successful, links the causes together in your data even when nothing links them in the world. The defence is a sample defined before the filter, which is exactly why population surveys and whole-population registries are worth their cost.":
+    "ধরুন দুটি অসুখের মধ্যে কোনো সম্পর্কই নেই, আর যেকোনো একটি নিজে থেকেই আপনাকে হাসপাতালে ভর্তি হওয়ার কিছুটা সম্ভাবনা এনে দেয়। যাঁর দুর্ভাগ্যক্রমে দুটোই আছে তাঁর ভর্তি হওয়ার সুযোগ দুটি, তাই একটিমাত্র অসুখ থাকা মানুষের চেয়ে তাঁর ওয়ার্ডে থাকার সম্ভাবনা অনেক বেশি। এবার ওয়ার্ডের ভেতরে দাঁড়িয়ে গুনুন। প্রথম অসুখটি থাকা মানুষদের মধ্যে দ্বিতীয় অসুখটিও থাকার অনুপাত অনেক বেশি, কারণ ওটিই তো তাঁদের অনেককে ভেতরে এনেছে। আপনি রোগ দুটির মধ্যে কোনো সম্পর্ক আবিষ্কার করেননি। আপনি আবার আবিষ্কার করেছেন ভর্তির নিয়মটিকে, আর তাকে জীববিজ্ঞানের পোশাক পরিয়েছেন। এর সাধারণ চেহারাটির নাম কোলাইডার: এমন একটি জিনিস, যার দিকে দুটি কারণেরই তির যায়। কেবল ভর্তি হওয়াদের, কিংবা কেবল পরীক্ষা করানোদের, কিংবা কেবল সফলদের নিয়ে গবেষণা করে সেটির ওপর বাছাই করলে আপনার তথ্যের ভেতরে কারণ দুটি জুড়ে যায়, যদিও বাস্তব দুনিয়ায় কিছুই তাদের জোড়া লাগায় না। এর রক্ষাকবচ হলো ছাঁকনির আগেই ঠিক করে নেওয়া একটি নমুনা, আর ঠিক এ কারণেই জনসংখ্যা জরিপ আর গোটা জনগোষ্ঠীর রেজিস্ট্রি তাদের খরচের যোগ্য।",
+  "The bias that was theory for thirty years":
+    "যে পক্ষপাত ত্রিশ বছর ধরে কেবল তত্ত্ব ছিল",
+  "Joseph Berkson warned in 1946 that hospital-based comparisons could manufacture associations, but his argument was mathematical and his numbers were invented to illustrate it. He noted that the same artefact would appear if you sampled shuffled cards rather than patients. It took until this survey, three decades later, for anyone to demonstrate the effect in real people.":
+    "জোসেফ বার্কসন ১৯৪৬ সালে সতর্ক করেছিলেন যে হাসপাতালভিত্তিক তুলনা সম্পর্ক বানিয়ে তুলতে পারে, কিন্তু তাঁর যুক্তি ছিল গাণিতিক আর তাঁর সংখ্যাগুলো ছিল কেবল বোঝানোর জন্য বানানো। তিনি উল্লেখ করেছিলেন, রোগীদের বদলে ফেটে নেওয়া তাসের নমুনা নিলেও একই কৃত্রিম ফল দেখা যেত। সত্যিকারের মানুষের মধ্যে প্রভাবটি কেউ দেখিয়ে দিতে পেরেছিলেন কেবল তিন দশক পরে, এই জরিপে এসে।",
+  "Why early covid studies disagreed":
+    "কোভিডের শুরুর দিকের গবেষণাগুলো কেন একমত হচ্ছিল না",
+  "In 2020, studies of who caught covid and who fell severely ill could only recruit from people who had been tested or admitted, and early on those were mostly hospital staff, the already unwell and the elderly. Getting into the sample depended on the very things being studied. Analyses showed this alone could produce apparent risk factors, and even reverse the direction of a real one, without any biology behind it.":
+    "২০২০ সালে, কারা কোভিডে আক্রান্ত হলেন আর কারা গুরুতর অসুস্থ হলেন তা নিয়ে গবেষণাগুলো কেবল তাঁদেরই নিতে পারত যাঁদের পরীক্ষা হয়েছিল কিংবা যাঁরা হাসপাতালে ভর্তি হয়েছিলেন; আর শুরুর দিকে তাঁরা বেশিরভাগই ছিলেন হাসপাতালের কর্মী, আগে থেকেই অসুস্থ মানুষ আর বয়স্করা। নমুনায় ঢোকাটাই নির্ভর করছিল ঠিক যেসব বিষয় নিয়ে গবেষণা হচ্ছিল তার ওপর। বিশ্লেষণে দেখা গেল, পেছনে কোনো জীববিজ্ঞান ছাড়াই কেবল এটুকুই আপাত ঝুঁকির কারণ তৈরি করতে পারে, এমনকি একটি সত্যিকারের ঝুঁকির দিকও উল্টে দিতে পারে।",
+  "Berkson's bias, a reasoning trap.": "বার্কসনের পক্ষপাত, একটি যুক্তির ফাঁদ।",
+  "Look only at hospital patients and two completely unrelated illnesses can appear to travel together. The reason is not biology, it is the door. Either illness can get you admitted, so people who happen to have both are over-represented inside, and from in there the two look linked. Any filtered group does this: the people who got tested, the applicants who got an interview, the customers who stayed. Before believing a pattern, ask what it took to get into the data.":
+    "কেবল হাসপাতালের রোগীদের দিকে তাকান, তাহলে সম্পূর্ণ সম্পর্কহীন দুটি অসুখকেও একসঙ্গে চলতে দেখা যেতে পারে। এর কারণ জীববিজ্ঞান নয়, কারণ হলো দরজাটি। দুটি অসুখের যেকোনোটিই আপনাকে ভর্তি করিয়ে দিতে পারে, তাই যাঁদের ঘটনাচক্রে দুটোই আছে তাঁরা ভেতরে বেশি সংখ্যায় থাকেন, আর সেখান থেকে দেখলে দুটিকে জড়িত মনে হয়। ছাঁকনি পেরোনো যেকোনো গোষ্ঠীই এটি করে: যাঁদের পরীক্ষা হয়েছিল, যেসব প্রার্থী সাক্ষাৎকারের ডাক পেয়েছিলেন, যেসব ক্রেতা থেকে গেছেন। কোনো প্যাটার্ন বিশ্বাস করার আগে জিজ্ঞাসা করুন, তথ্যের ভেতরে ঢুকতে কী কী লেগেছিল।",
+  "The counts are Table 2: household interviews with 2,784 people, of whom 257 had been in hospital in the previous six months. The table's own relative odds are 1.06 in the general population and 4.06 among the hospitalised. The hospital figures rest on only 20 people with a respiratory disease, so this single table demonstrates the mechanism rather than measuring its size precisely.":
+    "সংখ্যাগুলো সারণি ২ থেকে নেওয়া: ২,৭৮৪ জন মানুষের সঙ্গে বাড়িতে গিয়ে সাক্ষাৎকার, যাঁদের মধ্যে ২৫৭ জন আগের ছয় মাসে হাসপাতালে ছিলেন। সারণিটির নিজস্ব আপেক্ষিক অডস সাধারণ জনগোষ্ঠীতে ১.০৬ আর হাসপাতালে ভর্তি হওয়াদের মধ্যে ৪.০৬। হাসপাতালের সংখ্যাগুলো দাঁড়িয়ে আছে শ্বাসতন্ত্রের রোগ থাকা মাত্র ২০ জন মানুষের ওপর, তাই এই একটিমাত্র সারণি প্রভাবটির আকার নিখুঁতভাবে মাপার বদলে প্রক্রিয়াটি দেখিয়ে দেয়।",
+
+  // Trap Hunt items for spectrum bias and Berkson's bias
+  "A rapid test is validated on patients admitted to hospital with severe disease and on healthy blood donors. It separates the two groups almost perfectly, and the maker reports 98% sensitivity. It is then sold to family doctors for patients with a mild cough.":
+    "একটি দ্রুত পরীক্ষা যাচাই করা হয় গুরুতর রোগ নিয়ে হাসপাতালে ভর্তি রোগীদের ওপর আর সুস্থ রক্তদাতাদের ওপর। এটি দুটি গোষ্ঠীকে প্রায় নিখুঁতভাবে আলাদা করে ফেলে, আর নির্মাতা জানায় ৯৮% সংবেদনশীলতা। তারপর সেটি বিক্রি করা হয় পারিবারিক ডাক্তারদের কাছে, মৃদু কাশি নিয়ে আসা রোগীদের জন্য।",
+  "Telling the obviously ill from the obviously well is the easiest task there is. A family doctor's patients are all somewhere in between, and that is precisely where the test has never been measured.":
+    "স্পষ্টভাবে অসুস্থদের থেকে স্পষ্টভাবে সুস্থদের আলাদা করা সবচেয়ে সহজ কাজ। একজন পারিবারিক ডাক্তারের রোগীরা সবাই এই দুইয়ের মাঝামাঝি কোথাও, আর ঠিক সেখানেই পরীক্ষাটি কখনো মাপা হয়নি।",
+  "A textbook lists a scan as 90% sensitive. A clinic that sees mostly early, mild cases adopts it and finds it misses about a third of the cases later confirmed by specialists. The clinic concludes its machine must be faulty.":
+    "একটি পাঠ্যবই একটি স্ক্যানকে ৯০% সংবেদনশীল বলে উল্লেখ করে। যে ক্লিনিকে বেশিরভাগ রোগীই আসেন রোগের শুরুর দিকে, মৃদু অবস্থায়, সেটি স্ক্যানটি চালু করে দেখে যে পরে বিশেষজ্ঞদের নিশ্চিত করা কেসগুলোর প্রায় এক-তৃতীয়াংশ এটি ধরতেই পারে না। ক্লিনিকটি সিদ্ধান্তে আসে যে তাদের যন্ত্রটিতে নিশ্চয়ই ত্রুটি আছে।",
+  "A quoted sensitivity comes attached to the patients it was measured on. Earlier and milder disease gives a test less to find, so a lower catch rate is what you should expect, not evidence of a broken machine.":
+    "উদ্ধৃত কোনো সংবেদনশীলতা যাঁদের ওপর মাপা হয়েছিল তাঁদের সঙ্গে জুড়েই আসে। আগের পর্যায়ের আর মৃদুতর রোগে পরীক্ষার খুঁজে পাওয়ার মতো কম কিছু থাকে, তাই কম ধরা পড়ার হারই প্রত্যাশিত, এটি যন্ত্র নষ্ট হওয়ার প্রমাণ নয়।",
+  "A study of one hospital's inpatients finds that those with a metabolic disease are far more likely to also have a gallbladder disease than the other inpatients. The authors conclude that the first disease brings on the second.":
+    "একটি হাসপাতালের ভর্তি রোগীদের নিয়ে একটি গবেষণা দেখে যে যাঁদের একটি বিপাকীয় রোগ আছে তাঁদের পিত্তথলির রোগও থাকার সম্ভাবনা বাকি ভর্তি রোগীদের চেয়ে অনেক বেশি। লেখকরা সিদ্ধান্তে আসেন যে প্রথম রোগটিই দ্বিতীয়টিকে ডেকে আনে।",
+  "Either illness on its own can put someone in a hospital bed, so patients with both are over-represented among inpatients. The link may exist only inside the building.":
+    "দুটি অসুখের যেকোনোটিই নিজে থেকে কাউকে হাসপাতালের শয্যায় নিয়ে যেতে পারে, তাই যাঁদের দুটোই আছে তাঁরা ভর্তি রোগীদের মধ্যে বেশি সংখ্যায় থাকেন। সম্পর্কটির অস্তিত্ব কেবল ওই ভবনের ভেতরেই থাকতে পারে।",
+  "Someone notices that among the people they have dated, the better looking ones were consistently less pleasant company. They conclude that good looks spoil the character.":
+    "একজন লক্ষ করেন যে তিনি যাঁদের সঙ্গে ডেটে গেছেন তাঁদের মধ্যে যাঁরা দেখতে বেশি সুন্দর ছিলেন তাঁদের সঙ্গ ধারাবাহিকভাবে কম উপভোগ্য ছিল। তিনি সিদ্ধান্তে আসেন যে সৌন্দর্য চরিত্র নষ্ট করে দেয়।",
+  "People generally agree to a date because someone is good looking or because they are pleasant company. Selecting on that forces a trade-off between the two inside the sample, whatever the relationship is outside it.":
+    "মানুষ সাধারণত ডেটে যেতে রাজি হয় দুটি কারণের একটিতে: হয় কেউ দেখতে সুন্দর, নয়তো তার সঙ্গ উপভোগ্য। এর ভিত্তিতে বাছাই করলে নমুনার ভেতরে দুটির একটি বাড়লে অন্যটি কমে যায়, বাইরের দুনিয়ায় সম্পর্কটি যেমনই হোক।",
+  "A diagnostic test is evaluated on every consecutive patient arriving at a clinic with the same presenting complaint, whatever their eventual diagnosis, and the paper reports its accuracy separately for mild and for advanced disease. Another clinic with a similar caseload adopts the figures.":
+    "একটি রোগনির্ণয় পরীক্ষা যাচাই করা হয় একই উপসর্গ নিয়ে একটি ক্লিনিকে আসা পরপর প্রত্যেক রোগীর ওপর, শেষ পর্যন্ত তাঁদের রোগনির্ণয় যা-ই হোক; আর গবেষণাপত্রটি মৃদু আর অগ্রসর রোগের জন্য আলাদা করে নির্ভুলতা জানায়। একই রকম রোগীর ভিড় সামলানো আরেকটি ক্লিনিক সংখ্যাগুলো কাজে লাগায়।",
+  "This is how a diagnostic study should be built. Consecutive patients with one presenting problem, and accuracy broken down by severity, so a reader can find the subgroup that actually resembles their own patients.":
+    "একটি রোগনির্ণয় গবেষণা এভাবেই দাঁড় করানো উচিত। একটিই উপসর্গ নিয়ে আসা পরপর রোগী, আর তীব্রতা অনুযায়ী ভাগ করা নির্ভুলতা, যাতে পাঠক সেই উপগোষ্ঠীটি খুঁজে নিতে পারেন যা আসলেই তাঁর নিজের রোগীদের মতো।",
+  "A company asks whether two things about its users go together. It samples at random from everyone who ever opened an account, including those who never came back and those who cancelled, and finds no relationship between them.":
+    "একটি কোম্পানি জানতে চায় তার ব্যবহারকারীদের দুটি বৈশিষ্ট্য একসঙ্গে চলে কি না। যাঁরা কখনো একটি অ্যাকাউন্ট খুলেছিলেন তাঁদের সবার মধ্য থেকে এটি এলোমেলোভাবে নমুনা নেয়, যাঁরা আর কখনো ফিরে আসেননি আর যাঁরা বাতিল করে দিয়েছেন তাঁদেরসহ, আর দুটির মধ্যে কোনো সম্পর্ক পায় না।",
+  "The sample was drawn before any filter that either of the two things could have influenced. Nothing about staying, succeeding or being admitted decided who got counted, so a selection artefact cannot be hiding in it.":
+    "দুটি জিনিসের যেকোনোটি প্রভাবিত করতে পারত এমন যেকোনো ছাঁকনির আগেই নমুনাটি নেওয়া হয়েছে। থেকে যাওয়া, সফল হওয়া কিংবা ভর্তি হওয়া, কোনোটিই ঠিক করেনি কারা গোনায় আসবেন; তাই এর ভেতরে কোনো বাছাইজনিত কৃত্রিম ফল লুকিয়ে থাকতে পারে না।",
 };

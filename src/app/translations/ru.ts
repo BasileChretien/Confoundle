@@ -566,4 +566,132 @@ export const ru: Record<string, string> = {
   "News & the numbers in it": "Новости и числа в них",
   "From diagnosis": "От диагноза",
   "The whole life": "Вся жизнь",
+
+  // ==== Spectrum bias (dipstick) ====
+  "This urine test catches 92% of infections. Your patient's symptoms are vague. How good is it now?":
+    "Этот анализ мочи выявляет 92 % инфекций. Симптомы у вашего пациента неопределённые. Насколько он хорош теперь?",
+  "A dipstick for urinary infection, checked against urine cultures in an emergency department and a walk-in clinic. Among patients whose doctor already thought an infection was likely, it caught 49 of the 53 who really had one. Sensitivity is normally quoted as a single number, as though it were a fixed property of the test.":
+    "Тест-полоска на инфекцию мочевых путей, сверенная с посевом мочи в приёмном отделении и в поликлинике, куда приходят без записи. Среди пациентов, у которых врач и так считал инфекцию вероятной, она выявила 49 из 53 тех, у кого инфекция действительно была. Чувствительность обычно приводят одним числом, как будто это неизменное свойство теста.",
+  "In patients the doctor thinks are unlikely to be infected, how often does it catch a real infection?":
+    "У пациентов, у которых врач считает инфекцию маловероятной, как часто она выявляет настоящую инфекцию?",
+  "Times the dipstick was right": "Сколько раз тест-полоска была права",
+  "Doctor thought infection likely": "Врач считал инфекцию вероятной",
+  Likely: "Вероятна",
+  "Doctor thought infection unlikely": "Врач считал инфекцию маловероятной",
+  Unlikely: "Маловероятна",
+  "Patients who really had an infection":
+    "Пациенты, у которых инфекция действительно была",
+  "Patients who did not": "Пациенты, у которых её не было",
+  "The quoted figure": "Приводимая цифра",
+  "About the same, 92%": "Примерно та же, 92 %",
+  "the test has not changed": "тест не изменился",
+  "A little lower, around 80%": "Немного ниже, около 80 %",
+  "some drop off": "небольшое снижение",
+  "Barely half, 56%": "Едва половина, 56 %",
+  "it misses most of them": "она пропускает большинство из них",
+  "Barely half. And the other column flips the other way.":
+    "Едва половина. А второй столбец переворачивается в другую сторону.",
+  "The patients changed, not the test": "Изменились пациенты, а не тест",
+  "Patients their doctor already suspected had florid infections, the kind a dipstick spots easily. Patients thought unlikely to be infected had mild or early ones, and the test missed most of them. Now look at the second panel, the patients who had no infection at all: there the test was right 42% of the time in the first group and 78% in the second. Sensitivity and specificity are not properties of a test. They are properties of a test meeting a particular mix of people:":
+    "У пациентов, которых врач и так подозревал, инфекции были яркими, из тех, что тест-полоска замечает легко. У пациентов, которых считали маловероятно инфицированными, инфекции были лёгкими или ранними, и тест пропустил большинство из них. Теперь посмотрите на вторую панель, на пациентов, у которых инфекции не было вовсе: там тест был прав в 42 % случаев в первой группе и в 78 % во второй. Чувствительность и специфичность, это не свойства теста. Это свойства теста, встретившегося с определённым составом людей:",
+  "Both groups": "Обе группы",
+  "The spectrum": "Спектр",
+  "How many in each group really had an infection":
+    "У скольких в каждой группе инфекция действительно была",
+  "Spectrum bias": "Ошибка спектра",
+  "A test's accuracy is not fixed. It moves with how advanced, how typical and how obvious the disease is in the patients being tested.":
+    "Точность теста не постоянна. Она меняется вместе с тем, насколько запущена, насколько типична и насколько очевидна болезнь у обследуемых пациентов.",
+  "Before trusting a quoted sensitivity, ask who it was measured on. A figure from patients with unmistakable disease will flatter the test in a clinic full of milder cases, and a study that recruits only textbook cases and healthy volunteers will flatter it most of all.":
+    "Прежде чем доверять приведённой чувствительности, спросите, на ком её измеряли. Цифра, полученная на пациентах с несомненной болезнью, приукрасит тест в клинике, полной более лёгких случаев, а исследование, набравшее только хрестоматийные случаи и здоровых добровольцев, приукрасит его сильнее всего.",
+  "Sensitivity is the share of truly ill people a test catches, and specificity is the share of healthy people it correctly clears. Both are quoted as though they belonged to the test, like its price. They do not. A test picks up a signal, and the signal is stronger in advanced disease than in early disease, so the sicker the ill people you test, the more of them it finds. The same logic runs the other way for the people without the disease: the more clearly healthy they are, the more easily the test clears them. That is why a test evaluated on obvious cases against obvious non-cases can look superb and then disappoint in a real clinic, where nearly everyone is somewhere in between. Two practical habits follow. Read the description of who was recruited before you read the accuracy figures. And be most suspicious of a study whose diseased and healthy groups were picked separately rather than being consecutive patients with the same presenting problem.":
+    "Чувствительность, это доля по-настоящему больных людей, которых тест выявляет, а специфичность, это доля здоровых людей, которых он верно признаёт здоровыми. И то и другое приводят так, будто это принадлежит тесту, как его цена. Это не так. Тест улавливает сигнал, а сигнал при запущенной болезни сильнее, чем при ранней, поэтому чем тяжелее больные, которых вы обследуете, тем больше их тест находит. Для людей без болезни та же логика работает в обратную сторону: чем очевиднее они здоровы, тем легче тест признаёт их здоровыми. Вот почему тест, оценённый на явных случаях против явно здоровых людей, может выглядеть превосходно, а затем разочаровать в настоящей клинике, где почти все находятся где-то посередине. Отсюда две практические привычки. Прочитайте описание того, кого набирали, прежде чем читать цифры точности. И относитесь с наибольшим подозрением к исследованию, в котором больную и здоровую группы подбирали по отдельности, а не брали подряд идущих пациентов с одной и той же жалобой.",
+  "The same test, sorted a different way":
+    "Тот же тест, разбитый по другому признаку",
+  "The same study split its patients again, this time by how many white cells were visible in the urine under a microscope. Where none were visible the dipstick caught 5 of the 10 real infections. Where a few were visible it caught 15 of 22. Where there were many it caught all 34 of 34. One test, one afternoon's samples, and a sensitivity anywhere from 50 to 100 percent depending only on which patients you counted.":
+    "То же исследование снова разделило своих пациентов, на этот раз по тому, сколько лейкоцитов было видно в моче под микроскопом. Там, где не было видно ни одного, тест-полоска выявила 5 настоящих инфекций из 10. Там, где было видно немного, она выявила 15 из 22. Там, где их было много, она выявила все 34 из 34. Один тест, образцы одного и того же дня, и чувствительность где угодно от 50 до 100 процентов только в зависимости от того, каких пациентов вы посчитали.",
+  "Why promising tests keep disappointing":
+    "Почему многообещающие тесты раз за разом разочаровывают",
+  "The problem was named in 1978, after a pattern of new tests arriving with excellent published accuracy and then underwhelming the doctors who used them. Two of the era's examples were the carcinoembryonic antigen test and the nitro-blue tetrazolium test. The authors traced the letdown to two things: accuracy measured on a patient mix far narrower than real practice, and the test result and the true diagnosis not being judged independently of each other.":
+    "Проблему назвали по имени в 1978 году, после того как раз за разом появлялись новые тесты с прекрасной опубликованной точностью, которые затем не оправдывали ожиданий применявших их врачей. Два примера той эпохи, это тест на раково-эмбриональный антиген и тест с нитросиним тетразолием. Авторы связали разочарование с двумя вещами: точность измеряли на составе пациентов, куда более узком, чем в реальной практике, а результат теста и истинный диагноз оценивали не независимо друг от друга.",
+  "Spectrum bias, a reasoning trap.": "Ошибка спектра, ловушка мышления.",
+  "Test accuracy sounds like a fact about the test, the way a car has a top speed. It is not. A test that catches 92% of infections in people who are obviously ill can catch barely half in people who are only slightly ill, because there is less to find. Whenever you are told a test is 95% accurate, the real question is who they measured that on, and whether those people look anything like you.":
+    "Точность теста звучит как факт о самом тесте, как максимальная скорость у автомобиля. Это не так. Тест, который выявляет 92 % инфекций у явно больных людей, может выявить едва половину у людей, больных лишь слегка, потому что находить там нечего. Всякий раз, когда вам говорят, что тест точен на 95 %, настоящий вопрос в том, на ком это измеряли и похожи ли те люди на вас хоть чем-то.",
+  "The counts are Table 3, page 137: 49 of 53 and 21 of 50 in the high prior-probability group, 10 of 18 and 188 of 241 in the low one. A positive dipstick meant leukocyte esterase or nitrite or both; a positive culture meant more than 100,000 colonies per millilitre. The correction notes that the high prior-probability group holds 103 patients, not the 107 still printed in the abstract, and that the rates were computed on 103 and stand. The printed abstract also gives the 0.56 confidence interval as 0.03 to 0.79; the paper's own table gives 0.31 to 0.79.":
+    "Числа взяты из таблицы 3 на странице 137: 49 из 53 и 21 из 50 в группе с высокой дотестовой вероятностью, 10 из 18 и 188 из 241 в группе с низкой. Положительная тест-полоска означала лейкоцитарную эстеразу, или нитриты, или и то и другое; положительный посев мочи означал более 100 000 колоний в миллилитре. В опубликованном исправлении отмечено, что в группе с высокой дотестовой вероятностью 103 пациента, а не 107, которые до сих пор напечатаны в резюме статьи, и что доли считали на 103 и они остаются в силе. В напечатанном резюме доверительный интервал для 0,56 указан как от 0,03 до 0,79; в самой таблице статьи он от 0,31 до 0,79.",
+
+  // ==== Berkson's bias (hospital sample) ====
+  "Among hospital patients, lung trouble and joint trouble go together. Are the two diseases linked?":
+    "Среди пациентов больницы проблемы с лёгкими и проблемы с суставами идут вместе. Связаны ли эти две болезни?",
+  "A survey knocked on doors and asked thousands of ordinary people what illnesses they had. Among those who had been in hospital in the previous six months, a quarter of the people with a respiratory disease also had a disease of the bones or joints, against well under a tenth of everyone else.":
+    "Опрос обходил дома и спрашивал тысячи обычных людей, какие у них есть болезни. Среди тех, кто за предыдущие полгода лежал в больнице, у четверти людей с болезнью органов дыхания была ещё и болезнь костей или суставов, против заметно менее одной десятой у всех остальных.",
+  "Are these two diseases actually related?":
+    "Действительно ли эти две болезни связаны между собой?",
+  "Also had a bone or joint disease": "Была ещё и болезнь костей или суставов",
+  "Had a respiratory disease": "Была болезнь органов дыхания",
+  Lungs: "Лёгкие",
+  "No respiratory disease": "Не было болезни органов дыхания",
+  "No lungs": "Без лёгких",
+  "In hospital in the last 6 months":
+    "Лежали в больнице за последние 6 месяцев",
+  "Everyone the survey asked": "Все опрошенные",
+  "Hospital patients": "Пациенты больницы",
+  "Yes, one brings on the other": "Да, одна вызывает другую",
+  "three times as common": "втрое чаще",
+  "Yes, but the other way round": "Да, но наоборот",
+  "the joint disease comes first": "сначала болезнь суставов",
+  "No, the hospital made the link": "Нет, связь создала больница",
+  "it is about who gets admitted": "дело в том, кого госпитализируют",
+  "Ask everyone, and the link disappears.": "Спросите всех, и связь исчезает.",
+  "Two illnesses are two chances to be admitted":
+    "Две болезни, это два шанса попасть в больницу",
+  "The same survey, the same people, the same two diseases. Across everyone it asked, having a respiratory disease made a bone or joint disease no more likely at all. The hospital panel is not a finding about disease, it is a finding about admission. Either illness can put you in a hospital bed, so people with both turn up there far more often than people with one, and inside those walls the two look inseparable:":
+    "Тот же опрос, те же люди, те же две болезни. У всех, кого он спросил, наличие болезни органов дыхания вовсе не делало болезнь костей или суставов более вероятной. Больничная панель, это факт не о болезни, а о госпитализации. Любая из двух болезней может уложить вас на больничную койку, поэтому люди с обеими попадают туда гораздо чаще, чем люди с одной, и внутри этих стен две болезни выглядят неразлучными:",
+  "Hospital and community": "Больница и население",
+  "The filter": "Фильтр",
+  "Berkson's bias": "Ошибка Берксона",
+  "Studying only the people who made it through a filter can invent a relationship that does not exist outside it.":
+    "Изучая только тех людей, кто прошёл через фильтр, можно выдумать связь, которой за его пределами не существует.",
+  "Hospitals are the obvious filter, and the reason case-control studies built on hospital patients are treated warily. But any selected group does it: people who answered the survey, users who stayed subscribed, applicants who got an interview. Ask what it took to get into the sample, and whether both things you are comparing help you get in.":
+    "Больницы, это очевидный фильтр, и именно поэтому к исследованиям случай-контроль, построенным на больничных пациентах, относятся с осторожностью. Но так делает любая отобранная группа: те, кто ответил на опрос, пользователи, оставшиеся с подпиской, кандидаты, которых позвали на собеседование. Спросите, что требовалось, чтобы попасть в выборку, и помогают ли туда попасть обе величины, которые вы сравниваете.",
+  "Suppose two illnesses are entirely unrelated, and either one on its own gives you some chance of being admitted to hospital. Someone unlucky enough to have both has two shots at admission, so they are much likelier to be in the ward than someone with only one. Now stand inside the ward and count. The people with the first illness are heavily enriched for also having the second, because that is what got many of them in. You have not discovered a link between the diseases. You have rediscovered the admission rule, and dressed it up as biology. The general shape of this is a collider: a thing that two causes both point into. Selecting on it, whether by studying only the admitted, only the tested, or only the successful, links the causes together in your data even when nothing links them in the world. The defence is a sample defined before the filter, which is exactly why population surveys and whole-population registries are worth their cost.":
+    "Допустим, две болезни совершенно не связаны между собой и каждая сама по себе даёт некоторый шанс попасть в больницу. У того, кому не повезло иметь обе, две попытки на госпитализацию, поэтому он окажется в палате гораздо вероятнее, чем человек с одной болезнью. Теперь встаньте внутри палаты и посчитайте. Среди людей с первой болезнью резко обогащена доля тех, у кого есть и вторая, потому что именно она многих из них сюда и привела. Вы не открыли связь между болезнями. Вы заново открыли правило госпитализации и выдали его за биологию. Общая форма этого, это коллайдер: то, во что упираются сразу две причины. Отбор по нему, будь то изучение одних лишь госпитализированных, одних лишь обследованных или одних лишь успешных, связывает причины между собой в ваших данных, даже когда в мире их не связывает ничто. Защита, это выборка, определённая до фильтра, и именно поэтому популяционные опросы и сплошные регистры населения стоят своих денег.",
+  "The bias that was theory for thirty years":
+    "Ошибка, которая тридцать лет оставалась теорией",
+  "Joseph Berkson warned in 1946 that hospital-based comparisons could manufacture associations, but his argument was mathematical and his numbers were invented to illustrate it. He noted that the same artefact would appear if you sampled shuffled cards rather than patients. It took until this survey, three decades later, for anyone to demonstrate the effect in real people.":
+    "Джозеф Берксон предупредил в 1946 году, что сравнения на больничном материале способны порождать связи, но его довод был математическим, а числа он придумал для иллюстрации. Он заметил, что тот же артефакт появится, если брать выборку из перетасованных карт, а не из пациентов. Только этот опрос, три десятилетия спустя, впервые показал такой эффект на настоящих людях.",
+  "Why early covid studies disagreed":
+    "Почему ранние исследования по ковиду противоречили друг другу",
+  "In 2020, studies of who caught covid and who fell severely ill could only recruit from people who had been tested or admitted, and early on those were mostly hospital staff, the already unwell and the elderly. Getting into the sample depended on the very things being studied. Analyses showed this alone could produce apparent risk factors, and even reverse the direction of a real one, without any biology behind it.":
+    "В 2020 году исследования того, кто заражался ковидом и кто тяжело заболевал, могли набирать людей только среди обследованных или госпитализированных, а поначалу это были в основном сотрудники больниц, уже нездоровые люди и пожилые. Попадание в выборку зависело как раз от того, что и изучали. Анализы показали, что одно это способно породить кажущиеся факторы риска и даже развернуть направление настоящего фактора, без всякой биологии за этим.",
+  "Berkson's bias, a reasoning trap.": "Ошибка Берксона, ловушка мышления.",
+  "Look only at hospital patients and two completely unrelated illnesses can appear to travel together. The reason is not biology, it is the door. Either illness can get you admitted, so people who happen to have both are over-represented inside, and from in there the two look linked. Any filtered group does this: the people who got tested, the applicants who got an interview, the customers who stayed. Before believing a pattern, ask what it took to get into the data.":
+    "Смотрите только на больничных пациентов, и две совершенно не связанные между собой болезни могут показаться идущими вместе. Причина не в биологии, а в двери. Любая из двух болезней может привести к госпитализации, поэтому люди, у которых оказались обе, представлены внутри избыточно, и изнутри эти две болезни выглядят связанными. Так делает любая отфильтрованная группа: те, кого обследовали, кандидаты, которых позвали на собеседование, клиенты, которые остались. Прежде чем поверить закономерности, спросите, что требовалось, чтобы попасть в данные.",
+  "The counts are Table 2: household interviews with 2,784 people, of whom 257 had been in hospital in the previous six months. The table's own relative odds are 1.06 in the general population and 4.06 among the hospitalised. The hospital figures rest on only 20 people with a respiratory disease, so this single table demonstrates the mechanism rather than measuring its size precisely.":
+    "Числа взяты из таблицы 2: опросы на дому 2784 человек, из которых 257 за предыдущие полгода лежали в больнице. Приведённое в самой таблице отношение шансов составляет 1,06 в общей популяции и 4,06 среди госпитализированных. Больничные цифры опираются всего на 20 человек с болезнью органов дыхания, поэтому эта единственная таблица показывает механизм, а не точно измеряет его величину.",
+
+  // ==== Trap Hunt items (spectrum bias, Berkson's bias, sound decoys) ====
+  "A rapid test is validated on patients admitted to hospital with severe disease and on healthy blood donors. It separates the two groups almost perfectly, and the maker reports 98% sensitivity. It is then sold to family doctors for patients with a mild cough.":
+    "Экспресс-тест проверяют на пациентах, госпитализированных с тяжёлой болезнью, и на здоровых донорах крови. Он разделяет эти две группы почти безупречно, и производитель заявляет чувствительность 98 %. Затем его продают семейным врачам для пациентов с лёгким кашлем.",
+  "Telling the obviously ill from the obviously well is the easiest task there is. A family doctor's patients are all somewhere in between, and that is precisely where the test has never been measured.":
+    "Отличить явно больного от явно здорового, это самая лёгкая задача, какая бывает. Пациенты семейного врача все находятся где-то посередине, а именно там тест никогда и не измеряли.",
+  "A textbook lists a scan as 90% sensitive. A clinic that sees mostly early, mild cases adopts it and finds it misses about a third of the cases later confirmed by specialists. The clinic concludes its machine must be faulty.":
+    "В учебнике для одного метода визуализации указана чувствительность 90 %. Клиника, где преобладают ранние, лёгкие случаи, начинает его применять и обнаруживает, что он пропускает около трети случаев, позже подтверждённых специалистами. Клиника заключает, что дело в неисправности её аппарата.",
+  "A quoted sensitivity comes attached to the patients it was measured on. Earlier and milder disease gives a test less to find, so a lower catch rate is what you should expect, not evidence of a broken machine.":
+    "Приводимая чувствительность неотделима от тех пациентов, на которых её измеряли. При более ранней и более лёгкой болезни тесту меньше что находить, поэтому более низкая доля выявления, это то, чего и следует ожидать, а не признак сломанного аппарата.",
+  "A study of one hospital's inpatients finds that those with a metabolic disease are far more likely to also have a gallbladder disease than the other inpatients. The authors conclude that the first disease brings on the second.":
+    "Исследование стационарных пациентов одной больницы обнаруживает, что у пациентов с метаболическим заболеванием болезнь желчного пузыря встречается гораздо чаще, чем у остальных стационарных пациентов. Авторы заключают, что первая болезнь вызывает вторую.",
+  "Either illness on its own can put someone in a hospital bed, so patients with both are over-represented among inpatients. The link may exist only inside the building.":
+    "Любая из двух болезней сама по себе может уложить человека на больничную койку, поэтому пациенты с обеими избыточно представлены среди стационарных больных. Связь может существовать только внутри этого здания.",
+  "Someone notices that among the people they have dated, the better looking ones were consistently less pleasant company. They conclude that good looks spoil the character.":
+    "Человек замечает, что среди тех, с кем он встречался, те, кто красивее, неизменно оказывались менее приятными в общении. Он заключает, что красота портит характер.",
+  "People generally agree to a date because someone is good looking or because they are pleasant company. Selecting on that forces a trade-off between the two inside the sample, whatever the relationship is outside it.":
+    "На свидание обычно соглашаются либо потому, что человек красив, либо потому, что с ним приятно общаться. Отбор по этому признаку навязывает внутри выборки размен между двумя качествами, каким бы ни было их соотношение за её пределами.",
+  "A diagnostic test is evaluated on every consecutive patient arriving at a clinic with the same presenting complaint, whatever their eventual diagnosis, and the paper reports its accuracy separately for mild and for advanced disease. Another clinic with a similar caseload adopts the figures.":
+    "Диагностический тест оценивают на всех подряд идущих пациентах, приходящих в клинику с одной и той же жалобой, каким бы ни оказался их окончательный диагноз, и статья приводит его точность отдельно для лёгкой и для запущенной болезни. Другая клиника с похожим потоком пациентов берёт эти цифры на вооружение.",
+  "This is how a diagnostic study should be built. Consecutive patients with one presenting problem, and accuracy broken down by severity, so a reader can find the subgroup that actually resembles their own patients.":
+    "Именно так и должно быть построено диагностическое исследование. Подряд идущие пациенты с одной жалобой и точность в разбивке по тяжести, чтобы читатель мог найти подгруппу, действительно похожую на его собственных пациентов.",
+  "A company asks whether two things about its users go together. It samples at random from everyone who ever opened an account, including those who never came back and those who cancelled, and finds no relationship between them.":
+    "Компания выясняет, связаны ли между собой две характеристики её пользователей. Она случайным образом отбирает людей из всех, кто когда-либо завёл учётную запись, включая тех, кто больше не вернулся, и тех, кто её закрыл, и никакой связи не находит.",
+  "The sample was drawn before any filter that either of the two things could have influenced. Nothing about staying, succeeding or being admitted decided who got counted, so a selection artefact cannot be hiding in it.":
+    "Выборку взяли до всякого фильтра, на который могла бы повлиять любая из двух характеристик. Кого посчитали, не зависело ни от того, остался ли человек, ни от его успеха, ни от госпитализации, поэтому артефакт отбора спрятаться в ней не может.",
 };

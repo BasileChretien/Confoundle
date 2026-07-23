@@ -53,6 +53,30 @@ describe("kidney-stones seed data, Simpson's paradox holds", () => {
   });
 });
 
+describe("bestGroupId", () => {
+  const rate = (groupId: string, r: number) => ({
+    groupId,
+    numerator: r,
+    denominator: 100,
+    rate: r / 100,
+  });
+
+  it("crowns nobody when there is nothing to beat", () => {
+    expect(bestGroupId([], true)).toBeNull();
+    expect(bestGroupId([rate("A", 92)], true)).toBeNull();
+  });
+
+  it("crowns nobody on a tie", () => {
+    expect(bestGroupId([rate("A", 55), rate("B", 55)], true)).toBeNull();
+  });
+
+  it("honours the metric's direction", () => {
+    const rates = [rate("A", 30), rate("B", 70)];
+    expect(bestGroupId(rates, true)).toBe("B");
+    expect(bestGroupId(rates, false)).toBe("A");
+  });
+});
+
 describe("restrictRates, drawing part of the data", () => {
   const data = kidneyStones.setup.data;
   if (data.type !== "rates") throw new Error("seed puzzle must be rates data");

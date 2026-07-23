@@ -30,7 +30,58 @@ what is actually required:
 | Korea, KMLE | done | Blueprint names no bias; the released 2026 paper names five in one question. |
 | China, 医师资格考试大纲 | done | Names exactly three biases. Textbooks teach the subtypes; the exam does not. |
 | Russia, первичная аккредитация | done | The clean negative. Zero named biases, with an internal control proving it is deliberate. |
-| Spain, Germany | pending | |
+| Spain, MIR | done | No blueprint exists at all. Evidence comes from five years of real papers. |
+| Germany | pending | |
+
+## Spain: no blueprint exists, so the papers are the only evidence
+
+This is settled in law rather than by inference. Real Decreto 589/2022 art. 21.1
+says the MIR "versará sobre los contenidos de las titulaciones universitarias",
+defining content by reference to the degree rather than by a list. The annual
+convocatoria specifies only mechanics (200 questions, four options, +3 correct,
+-1 wrong). Its Anexo II is titled "áreas temáticas" and **for Medicine it
+contains a single cross-reference to Orden ECI/332/2008 and no topics at all**,
+while Psychology, Biology, Chemistry and Physics all get real subject lists.
+
+Orden ECI/332/2008 requires epidemiología, bioestadística, interpreting
+statistical data in the medical literature, critically appraising scientific
+texts, and the principles of evidence-based medicine. It **names zero biases**.
+The strings sesgo, confusión, falacia, validez and causalidad do not appear in it.
+
+So the only hard evidence is the exams. Five years of official Ministry
+booklets (1,050 items) name:
+
+- **falacia ecológica** (ecological fallacy), the correct answer in the paper sat
+  January 2026, with **efecto Hawthorne**, **falacia de Neyman** (prevalence
+  -incidence) and **regresión a la media** as its three distractors
+- the **selección / información / análisis** taxonomy
+- **attrition** and **measurement error** as named risk-of-bias domains
+- **confusión**, explicitly distinguished from the Bradford Hill criteria
+- **sobrediagnóstico** and **prevención cuaternaria**
+
+Checked and **not evidenced in any of the 1,050 items**: sesgo de memoria
+(recall), sesgo de Berkson, paradoja de Simpson, sesgo de adelanto diagnóstico
+(lead-time), sesgo de duración (length-time), sesgo de publicación, sesgo del
+trabajador sano, and every cognitive bias. Also essentially absent: type I and
+type II error, statistical power, p-values. Confidence intervals and statistical
+significance appear only as *wrong* options.
+
+**What Spain does test, repeatedly, is our puzzle #10.** Two structurally
+identical items five years apart present the same relative halving of risk at
+two different baselines (10 to 5 percent against 8 to 4 percent), with the trap
+option being "equally effective in both, because it halves mortality in both".
+Another item computes a number needed to treat of 167 from PREDIMED event rates,
+and another catches the conversion error of reading a relative risk of 0.47 as
+a 47 percent reduction. Conditional-probability inversion is tested repeatedly
+by making every wrong option a flipped conditional, though the dependence of
+predictive value on prevalence is never stated outright.
+
+Two further unnamed traps worth stealing: **systematic error is not cured by a
+larger sample** (tested as a false statement to identify), and **precision is
+not validity**.
+
+Volume: roughly 8 to 12 of 210 items per paper, clustered around questions 40
+to 52.
 
 ## Russia: the clean negative, and a control group that proves it
 

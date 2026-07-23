@@ -13,18 +13,26 @@ const pwa = VitePWA({
   registerType: "autoUpdate",
   includeAssets: ["favicon.svg"],
   workbox: {
-    // The bundle crossed workbox's 2 MiB precache default once the tenth
-    // language landed: every dictionary is imported eagerly by
-    // app/translations/index.ts, so a reader in France downloads Bengali,
-    // Arabic, Hindi, Japanese, Chinese and Russian too.
+    // Dictionaries are code-split (see app/translations/index.ts), so keep
+    // them OUT of the precache manifest. Precaching them would undo the split:
+    // the install would still pull all ten languages down, just later.
     //
-    // Raising the ceiling keeps the app installable and fully offline, which
-    // is the property that matters, but it is a stopgap and not the fix. The
-    // fix is to load each dictionary on demand, which needs the locale
-    // resolved before first paint (or an accepted flash of English), so it is
-    // a real change rather than a config tweak. Revisit before adding an
-    // eleventh language.
-    maximumFileSizeToCacheInBytes: 4 * 1024 * 1024,
+    // Instead each dictionary is cached the first time it is actually used, so
+    // a reader in France ends up fully offline in French and never downloads
+    // Bengali at all. The locale chunk names are content-hashed, hence globs.
+    globIgnores: ["**/assets/{fr,es,pt,ja,zh,ru,hi,bn,ar}-*.js"],
+    runtimeCaching: [
+      {
+        urlPattern: /\/assets\/(fr|es|pt|ja|zh|ru|hi|bn|ar)-[^/]+\.js$/,
+        handler: "CacheFirst",
+        options: {
+          cacheName: "confoundle-locales",
+          // Ten languages, and hashed names mean a new entry per deploy.
+          expiration: { maxEntries: 30 },
+          cacheableResponse: { statuses: [0, 200] },
+        },
+      },
+    ],
   },
   manifest: {
     name: "Confoundle",

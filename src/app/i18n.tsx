@@ -9,7 +9,7 @@ import {
 } from "react";
 import type { LocalizedText } from "../puzzles/schema";
 import { localeInfo, matchLocale, LOCALE_CODES } from "./locales";
-import { DICTIONARIES } from "./translations";
+import { cachedDictionary, loadDictionary } from "./translations";
 
 export const DEFAULT_LOCALE = "en";
 const STORAGE_KEY = "cf.locale";
@@ -55,6 +55,36 @@ export function LocaleProvider({
     () => fixedLocale ?? initialLocale(),
   );
 
+  /**
+   * Dictionaries load on demand, so the first render in a non-English locale
+   * would otherwise paint English and then swap. We hold the paint instead.
+   *
+   * The trade is deliberate. Blocking costs one chunk fetch, and only on a
+   * first visit, because the service worker caches the chunk afterwards. Not
+   * blocking would cost every first-time non-English visitor a flash of the
+   * wrong language, and a first-time visitor is exactly who you least want to
+   * show it to. English readers wait for nothing either way, since English is
+   * the source text and has no dictionary.
+   */
+  const [ready, setReady] = useState(
+    () => cachedDictionary(locale) != null || locale === DEFAULT_LOCALE,
+  );
+
+  useEffect(() => {
+    if (cachedDictionary(locale) != null || locale === DEFAULT_LOCALE) {
+      setReady(true);
+      return;
+    }
+    let cancelled = false;
+    setReady(false);
+    loadDictionary(locale).then(() => {
+      if (!cancelled) setReady(true);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [locale]);
+
   const setLocale = useCallback((code: string) => {
     if (!LOCALE_CODES.includes(code)) return;
     setLocaleState(code);
@@ -74,7 +104,13 @@ export function LocaleProvider({
 
   const value = useMemo(() => ({ locale, setLocale }), [locale, setLocale]);
   return (
-    <LocaleContext.Provider value={value}>{children}</LocaleContext.Provider>
+    <LocaleContext.Provider value={value}>
+      {/* Held back only while a non-English dictionary is in flight, which is
+          a first visit in that language and nothing after it. The paper
+          background is already painted by the document, so this reads as the
+          page still loading rather than as a blank failure. */}
+      {ready ? children : null}
+    </LocaleContext.Provider>
   );
 }
 
@@ -95,7 +131,7 @@ export function useSetLocale(): (code: string) => void {
 export function translate(text: LocalizedText, locale: string): string {
   const inline = text[locale];
   if (inline != null) return inline;
-  const fromDict = DICTIONARIES[locale]?.[text[DEFAULT_LOCALE]];
+  const fromDict = cachedDictionary(locale)?.[text[DEFAULT_LOCALE]];
   if (fromDict != null) return fromDict;
   return text[DEFAULT_LOCALE];
 }

@@ -1,23 +1,13 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { defineConfig, type Plugin } from "vite";
+import { defineConfig, loadEnv, type Plugin } from "vite";
 import react from "@vitejs/plugin-react";
 import { VitePWA } from "vite-plugin-pwa";
 import { viteSingleFile } from "vite-plugin-singlefile";
 import { puzzles } from "./src/puzzles";
 import { ALL_DICTIONARIES } from "./src/app/translations/all";
 import { lessonPages, lessonSitemap } from "./src/server/prerender";
-
-/**
- * Where the lesson pages' absolute URLs point. Open Graph will not accept a
- * relative one, so this has to be decided at build time. Override for a fork or
- * a custom domain: SITE_ORIGIN=https://example.org pnpm build
- */
-const origin = (process.env.SITE_ORIGIN ?? "https://confoundle.pages.dev").replace(
-  /\/$/,
-  "",
-);
 
 /**
  * The controller's contact address on the privacy page.
@@ -32,7 +22,40 @@ const origin = (process.env.SITE_ORIGIN ?? "https://confoundle.pages.dev").repla
  * time, rather than shipping a policy with a dead link in silence.
  */
 const CONTACT_PLACEHOLDER = "CONTACT-EMAIL-PLACEHOLDER";
-const contactEmail = process.env.CONTACT_EMAIL?.trim();
+
+interface BuildVars {
+  /**
+   * Where the lesson pages' absolute URLs point. Open Graph will not accept a
+   * relative one, so this has to be decided at build time. Override for a fork
+   * or a custom domain.
+   */
+  origin: string;
+  /** The privacy page's contact address. Undefined leaves the placeholder. */
+  contactEmail: string | undefined;
+}
+
+/**
+ * The two settings a deployment supplies, read from the shell **and** from a
+ * gitignored `.env.local` (already covered by `*.local` in .gitignore).
+ *
+ * Reading the file matters more than it looks. Vite loads .env files into the
+ * app's `import.meta.env`, never into `process.env` for this config, so a
+ * build-time variable like these two has to ask for them explicitly. Left to
+ * the shell alone, the address has to be retyped on every single deploy, and
+ * the one time it is forgotten `pnpm run deploy` publishes a policy whose only
+ * contact link is dead, with the warning about it scrolled off the top of a
+ * hundred lines of build output. Written down once on the deploying machine, it
+ * cannot be forgotten. A real shell variable still wins over the file, which is
+ * what a Git-connected Pages build sets from the dashboard.
+ */
+function buildVars(mode: string): BuildVars {
+  const envDir = fileURLToPath(new URL(".", import.meta.url));
+  const env = loadEnv(mode, envDir, ["CONTACT_EMAIL", "SITE_ORIGIN"]);
+  return {
+    origin: (env.SITE_ORIGIN ?? "https://confoundle.pages.dev").replace(/\/$/, ""),
+    contactEmail: env.CONTACT_EMAIL?.trim() || undefined,
+  };
+}
 
 /**
  * Write one static HTML page per lesson per language, at /l/<slug>/[<locale>/].
@@ -54,7 +77,7 @@ const contactEmail = process.env.CONTACT_EMAIL?.trim();
  * dictionary map. It is a build script, not the app, so importing it cannot
  * undo the client's code splitting.
  */
-function lessonPagesPlugin(): Plugin {
+function lessonPagesPlugin({ origin, contactEmail }: BuildVars): Plugin {
   return {
     name: "confoundle-lesson-pages",
     apply: "build",
@@ -168,12 +191,12 @@ const pwa = VitePWA({
 });
 
 // https://vitejs.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   // Enables the in-app puzzle picker in the single-file demo build only.
   define: { __DEMO__: JSON.stringify(singleFile) },
   plugins: singleFile
     ? [react(), viteSingleFile()]
-    : [react(), pwa, lessonPagesPlugin()],
+    : [react(), pwa, lessonPagesPlugin(buildVars(mode))],
   resolve: singleFile
     ? {
         // No PWA plugin in single-file mode: point its virtual module at a stub.
@@ -197,4 +220,4 @@ export default defineConfig({
         },
       }
     : undefined,
-});
+}));

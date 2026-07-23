@@ -127,7 +127,7 @@
             </tr>
             <tr>
               <td>Your review schedule</td>
-              <td>Which reasoning skills you have met, what stage each is at, when it is next due, and which practice scenarios you have already seen.</td>
+              <td>Which reasoning skills you have met, what stage each is at, when it is next due, which practice scenarios you have already seen, a running count of how many reviews of that skill you got right and wrong, and whether the last one you got wrong was one you were sure about.</td>
               <td>Performance of a contract, art. 6(1)(b)</td>
               <td>Until you delete your account</td>
             </tr>
@@ -157,9 +157,9 @@
       <p>
         No name, no profile picture, no contacts, no location, no device
         fingerprint, no advertising identifier, no behavioural profile. The app's
-        analytics module is a stub that does nothing. Your puzzle answers, your
-        streak and your score stay on your own device even when you are signed
-        in: they are not part of what an account syncs.
+        analytics module is a stub that does nothing. Your daily puzzle answers,
+        your streak and your score stay on your own device even when you are
+        signed in: they are not part of what an account syncs.
       </p>
 
       <h2>Signing in with Google</h2>
@@ -213,7 +213,9 @@
         <li>
           <strong>Take a copy.</strong> Open the account panel and choose
           <em>Download my data</em>. The file contains everything the server
-          holds about you, in a format the app itself can read back.
+          holds about you, in a format the app itself can read back. The one
+          thing left out is the session record, because a one-way digest of a
+          token in your own cookie tells you nothing and expires by itself.
         </li>
         <li>
           <strong>Erase everything.</strong> Open the account panel and choose

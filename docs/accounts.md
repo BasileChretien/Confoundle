@@ -169,7 +169,7 @@ The privacy page has to name a way to reach the controller, or it does not do
 its job. That address is a **build variable**, not a line in the repo:
 
 ```bash
-CONTACT_EMAIL=privacy@yourdomain pnpm build
+CONTACT_EMAIL=privacy@yourdomain corepack pnpm build
 ```
 
 Two reasons it is not committed. A plain address in a public file is a
@@ -181,6 +181,37 @@ it wants to outlive any one mailbox. A free forwarding alias is enough.
 Left unset, the placeholder survives into `dist/privacy.html` and the build
 prints a warning every single time. Nothing else breaks, so a deployment
 without accounts is unaffected, but accounts must not go live in that state.
+
+**Write it down rather than retyping it.** `pnpm run deploy` builds and
+publishes in one command, so a variable that lives only in the shell prefix has
+to be remembered on every deploy, and the once it is not, the live policy's only
+contact link is dead and the warning saying so has scrolled off the top of the
+build output. Copy `.env.example` to `.env.local` and fill it in:
+
+```bash
+cp .env.example .env.local
+```
+
+`.env.local` is gitignored (`*.local`), so the address still never enters the
+repo, and every subsequent `corepack pnpm build` or `corepack pnpm run deploy`
+picks it up with no prefix. A shell variable of the same name still overrides
+the file, so a one-off build with a different address needs no edit.
+
+**If this project ever moves to Git-connected Pages builds**, `.env.local` is on
+your machine and not in the clone Cloudflare builds from, so it has no effect
+there. Set `CONTACT_EMAIL` as a **build environment variable** in the Pages
+dashboard instead (Settings, Environment variables, Production, and Preview if
+you use it). That is a plain variable, not a secret; it is going on a public
+page. The same applies to `SITE_ORIGIN` if a custom domain is added.
+
+To confirm the substitution landed, after a build:
+
+```bash
+grep -c CONTACT-EMAIL-PLACEHOLDER dist/privacy.html
+```
+
+Zero is the answer you want. Anything else means the policy shipped with a dead
+contact link.
 
 ### 6. Check it
 

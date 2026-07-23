@@ -301,4 +301,115 @@ export const hi: Record<string, string> = {
     "उत्तरजीविता पूर्वाग्रह, तर्क का एक जाल।",
   "It's easy to study the winners, the survivors, the successes, the things still standing, and copy what they have in common. But the failures are invisible: they dropped out of the data. Whatever helped the survivors survive looks far more powerful than it is, because you never see everyone it didn't save. Before copying the winners, ask who's missing.":
     "जीतने वालों, बचे हुओं, कामयाबियों और अब भी टिकी हुई चीज़ों का अध्ययन करना और उनमें जो समान है उसकी नकल करना आसान है। पर नाकामियाँ अदृश्य होती हैं: वे आँकड़ों से बाहर हो गईं। जिस चीज़ ने बचे हुओं को बचाया वह असल से कहीं ज़्यादा ताकतवर दिखती है, क्योंकि आप उन सबको कभी नहीं देखते जिन्हें उसने नहीं बचाया। जीतने वालों की नकल करने से पहले पूछें कि कौन गायब है।",
+
+  // ==== Prosecutor's fallacy (People v. Collins) ====
+  "A 1 in 12 million match. Case closed?":
+    "1.2 करोड़ में से 1 जैसा मिलान। मामला खत्म?",
+  "Los Angeles, 1964. A woman is knocked down and her purse is taken. Witnesses describe the pair who ran off: a blonde woman with a ponytail and a bearded Black man, in a partly yellow car. A couple who fit every detail are charged. At the trial an expert is asked to assume a frequency for each feature, multiplies them together, and gets 1 in 12 million. The prosecutor tells the jury that is the chance the two in the dock are innocent. Take the 1 in 12 million at face value, and picture the 12 million couples who could have been the ones.":
+    "लॉस एंजेलिस, 1964। एक महिला को गिराकर उसका पर्स छीन लिया जाता है। गवाह भागने वाली जोड़ी का हुलिया बताते हैं: पोनीटेल वाली सुनहरे बालों वाली एक महिला और दाढ़ी वाला एक अश्वेत पुरुष, आंशिक रूप से पीली कार में। एक जोड़ा, जो हर ब्योरे पर खरा उतरता है, आरोपित किया जाता है। मुकदमे में एक विशेषज्ञ से कहा जाता है कि वह हर विशेषता के लिए एक आवृत्ति मान ले; वह उन सबको आपस में गुणा करता है और 1.2 करोड़ में 1 का आँकड़ा निकालता है। अभियोजक जूरी से कहता है कि कठघरे में खड़े उन दोनों के निर्दोष होने की संभावना इतनी ही है। 1.2 करोड़ में 1 को जस का तस मान लीजिए, और उन 1.2 करोड़ जोड़ों की कल्पना कीजिए जो वे लोग हो सकते थे।",
+  "This couple fits the description. What are the odds they did it?":
+    "यह जोड़ा हुलिये पर खरा उतरता है। इनके ही यह करने की संभावना कितनी है?",
+  "In 12 million couples": "1.2 करोड़ जोड़ों में",
+  "did it": "असली अपराधी",
+  "fit the description": "हुलिये से मेल",
+  "Virtually certain": "लगभग निश्चित",
+  "12 million to one against them": "1.2 करोड़ बनाम 1, उनके खिलाफ़",
+  "Around 99%": "लगभग 99%",
+  "not quite proof, but close": "पूरा सबूत नहीं, पर उसके करीब",
+  "About a coin flip": "लगभग सिक्का उछालने जैसी",
+  "roughly 50/50": "करीब 50/50",
+  "One in 12 million, and still a coin flip.":
+    "1.2 करोड़ में 1, और फिर भी सिक्के का उछाल।",
+  "The flipped question": "उलटा हुआ सवाल",
+  "Rare evidence is common in a big crowd":
+    "बड़ी भीड़ में दुर्लभ सबूत भी आम हो जाता है",
+  "The 1 in 12 million answers one question: pick a couple at random, how likely are they to fit? The jury has to answer a different one: of all the couples who do fit, which pair did it? Line up 12 million couples. One pair are the robbers, and of course they fit. But at odds of 1 in 12 million, roughly one more couple in that crowd fits by pure chance. So a couple who fits is about as likely to be innocent as guilty.":
+    "1.2 करोड़ में 1 का आँकड़ा एक सवाल का जवाब देता है: कोई एक जोड़ा यूँ ही चुन लीजिए, उसके हुलिये से मेल खाने की संभावना कितनी है? जूरी को एक अलग सवाल का जवाब देना है: जितने भी जोड़े हुलिये से मेल खाते हैं, उनमें से यह किसने किया? 1.2 करोड़ जोड़ों को कतार में खड़ा कीजिए। एक जोड़ा लुटेरों का है, और ज़ाहिर है वह मेल खाता है। लेकिन 1.2 करोड़ में 1 की संभावना पर, उस भीड़ में करीब एक और जोड़ा महज़ इत्तेफ़ाक से मेल खा जाता है। इसलिए जो जोड़ा हुलिये से मेल खाता है, उसके निर्दोष होने की संभावना लगभग उतनी ही है जितनी दोषी होने की।",
+  "The California Supreme Court reversed the conviction in 1968. Working from the prosecution's own figures, it found a likelihood of over 40 percent that at least one other couple could have fitted the description just as well, and it warned that guilt cannot be settled by arithmetic like this.":
+    "कैलिफ़ोर्निया के सर्वोच्च न्यायालय ने 1968 में यह सज़ा पलट दी। अभियोजन पक्ष के अपने ही आँकड़ों पर काम करते हुए उसने पाया कि 40 प्रतिशत से ज़्यादा संभावना है कि कम से कम एक और जोड़ा उस हुलिये पर उतनी ही अच्छी तरह खरा उतरता, और उसने चेताया कि इस तरह के गणित से अपराध तय नहीं किया जा सकता।",
+  "The prosecutor's fallacy": "अभियोजक का भ्रम",
+  "“If he were innocent, this evidence would be that unlikely” is not the same as “this evidence makes him that unlikely to be innocent.” Swap the two and a coin flip starts to sound like certainty.":
+    "“अगर वह निर्दोष होता, तो यह सबूत इतना असंभव होता” कहना वही बात नहीं है जो “यह सबूत उसके निर्दोष होने को इतना असंभव बना देता है”। दोनों को आपस में बदल दीजिए और सिक्के का उछाल पक्के यकीन जैसा सुनाई देने लगता है।",
+  "Before you accept a one in a million match, ask how big the pool was. One in a million odds across a city of ten million throw up about ten matches, and only one of those people did it. The number means nothing until you say who was in the crowd.":
+    "दस लाख में 1 वाले किसी मिलान को मानने से पहले पूछिए कि पूल कितना बड़ा था। एक करोड़ की आबादी वाले शहर में दस लाख में 1 की संभावना करीब दस मिलान पैदा करती है, और उनमें से केवल एक व्यक्ति ने ही वह किया होता है। जब तक आप यह न बताएँ कि भीड़ में कौन कौन था, तब तक उस संख्या का कोई मतलब नहीं।",
+  "Two questions sound identical and are not. The first: if this person had nothing to do with it, how likely is this evidence? That is what a lab or an expert can actually measure, and it is where figures like 1 in 12 million come from. The second: given this evidence, how likely is it that this person did it? That is what a jury has to decide, and it depends on something no lab measures, namely how many people could have done it. Push odds of 1 in 12 million through a crowd of 12 million and you expect about one innocent match, so the match on its own is worth roughly a coin flip. Shrink the crowd, or add independent evidence, and the same match becomes powerful. Grow the crowd, and it becomes weak. The trap also runs in reverse: a defence lawyer can say that 2,000 people in the city share that blood type, so the evidence proves nothing, which quietly ignores that the other 1,999 were nowhere near the crime.":
+    "दो सवाल एक जैसे सुनाई देते हैं, पर हैं नहीं। पहला: अगर इस व्यक्ति का इससे कोई लेना देना न होता, तो यह सबूत मिलने की संभावना कितनी होती? यही वह चीज़ है जिसे कोई प्रयोगशाला या विशेषज्ञ सचमुच माप सकता है, और 1.2 करोड़ में 1 जैसे आँकड़े यहीं से आते हैं। दूसरा: यह सबूत देखते हुए, इस बात की संभावना कितनी है कि यह काम इसी व्यक्ति ने किया? यही वह चीज़ है जो जूरी को तय करनी होती है, और यह ऐसी बात पर निर्भर करती है जिसे कोई प्रयोगशाला नहीं मापती, यानी यह कि कितने लोग ऐसा कर सकते थे। 1.2 करोड़ में 1 की संभावना को 1.2 करोड़ की भीड़ में चलाइए और करीब एक निर्दोष मिलान की उम्मीद बनती है, इसलिए अकेला मिलान करीब सिक्के के उछाल जितना ही मूल्य रखता है। भीड़ छोटी कर दीजिए, या कोई स्वतंत्र सबूत जोड़ दीजिए, और वही मिलान ताकतवर हो जाता है। भीड़ बढ़ा दीजिए, और वह कमज़ोर पड़ जाता है। यह जाल उल्टी दिशा में भी चलता है: बचाव पक्ष का वकील कह सकता है कि शहर में 2,000 लोगों का खून का समूह वही है, इसलिए यह सबूत कुछ भी साबित नहीं करता, जो चुपचाप इस बात को नज़रअंदाज़ कर देता है कि बाकी 1,999 लोग अपराध के आसपास कहीं भी नहीं थे।",
+  "Two cot deaths, and a number that became guilt":
+    "पालने में दो मौतें, और एक संख्या जो अपराध बन गई",
+  "An English murder trial heard that the chance of two cot deaths in a family like the defendant's was 1 in 73 million. Press reports turned that into the chance the deaths were natural. The Royal Statistical Society said publicly that the figure had no statistical basis, because it assumed the two deaths were independent, and that reading it as a chance of innocence is the prosecutor's fallacy. What the jury needed was a comparison: two cot deaths and two murders are both rare, so which is rarer here?":
+    "इंग्लैंड के एक हत्या मुकदमे में कहा गया कि अभियुक्त जैसे परिवार में पालने में दो मौतों की संभावना 7.3 करोड़ में 1 है। अख़बारों की रिपोर्टों ने इसे यह संभावना बना दिया कि मौतें प्राकृतिक थीं। रॉयल स्टैटिस्टिकल सोसाइटी ने सार्वजनिक रूप से कहा कि इस आँकड़े का कोई सांख्यिकीय आधार नहीं है, क्योंकि इसमें मान लिया गया था कि दोनों मौतें एक दूसरे से स्वतंत्र थीं, और इसे निर्दोष होने की संभावना के रूप में पढ़ना ही अभियोजक का भ्रम है। जूरी को जिसकी ज़रूरत थी वह एक तुलना थी: पालने में दो मौतें और दो हत्याएँ, दोनों ही दुर्लभ हैं, तो यहाँ ज़्यादा दुर्लभ कौन सी है?",
+  "Almost nobody spots the swap": "अदला बदली को लगभग कोई नहीं पकड़ पाता",
+  "Researchers gave 73 students a murder case in which the killer's blood type is found in 1 person in 100, then showed them a prosecution argument built on the swapped question: only a 1 percent chance the blood came from someone else, so a 99 percent chance the suspect is guilty. 21 of the 73 rated that argument correct, and only 16 saw that it and the opposing defence argument were both wrong.":
+    "शोधकर्ताओं ने 73 छात्रों को हत्या का एक मामला दिया जिसमें हत्यारे का खून का समूह 100 में से 1 व्यक्ति में पाया जाता है, फिर उन्हें अभियोजन पक्ष की एक दलील दिखाई जो उलटे सवाल पर टिकी थी: केवल 1 प्रतिशत संभावना कि खून किसी और का था, इसलिए 99 प्रतिशत संभावना कि संदिग्ध दोषी है। 73 में से 21 ने उस दलील को सही ठहराया, और केवल 16 ही यह देख पाए कि वह दलील और उसके विपरीत बचाव पक्ष की दलील, दोनों गलत थीं।",
+  "The prosecutor's fallacy, a reasoning trap.":
+    "अभियोजक का भ्रम, तर्क का एक जाल।",
+  "When an expert says there is only a one in a million chance of a match by accident, that is a fact about the evidence, not about the person in the dock. Flip the two around and you get the prosecutor's fallacy. The cure is to ask how many people were in the pool: one in a million odds across a city of ten million produce about ten innocent matches, so on its own a match can be nowhere near proof.":
+    "जब कोई विशेषज्ञ कहता है कि इत्तेफ़ाक से मिलान होने की संभावना दस लाख में केवल 1 है, तो यह सबूत के बारे में एक तथ्य है, कठघरे में खड़े व्यक्ति के बारे में नहीं। दोनों को आपस में पलट दीजिए और आपको अभियोजक का भ्रम मिल जाता है। इसका इलाज है यह पूछना कि पूल में कितने लोग थे: एक करोड़ की आबादी वाले शहर में दस लाख में 1 की संभावना करीब दस निर्दोष मिलान पैदा करती है, इसलिए अकेला मिलान सबूत के आसपास भी नहीं होता।",
+  "Spotted the swap. Bet you don't.":
+    "अदला बदली पकड़ ली। देखें आप पकड़ पाते हैं क्या।",
+  "I'd have convicted on the spot.": "मैं तो वहीं के वहीं सज़ा सुना देता।",
+  "The court's appendix showed that on those same figures, with a pool of about 12 million couples, the chance that at least one other couple fitted the description was roughly 41 percent.":
+    "अदालत के परिशिष्ट ने दिखाया कि उन्हीं आँकड़ों पर, करीब 1.2 करोड़ जोड़ों के पूल के साथ, कम से कम एक और जोड़े के उस हुलिये से मेल खाने की संभावना करीब 41 प्रतिशत थी।",
+
+  // ==== Trap Hunt items (scenarios + explanations) ====
+  "Two schools publish exam results. School B has the higher pass rate overall, 75% against 70%. When results are split by student background, School A comes out ahead in every single group. The district praises School B.":
+    "दो स्कूल परीक्षा परिणाम प्रकाशित करते हैं। कुल मिलाकर स्कूल B की उत्तीर्ण दर ज़्यादा है, 75% बनाम 70%। जब परिणामों को छात्रों की पृष्ठभूमि के हिसाब से बाँटा जाता है, तो हर एक समूह में स्कूल A आगे निकलता है। ज़िला प्रशासन स्कूल B की तारीफ़ करता है।",
+  "A wins in every group but loses overall, which happens when the groups are mixed unevenly. The pooled number is the misleading one here.":
+    "A हर समूह में जीतता है पर कुल मिलाकर हार जाता है, जो तब होता है जब समूहों का मिश्रण असमान हो। यहाँ भ्रामक संख्या मिलीजुली कुल संख्या ही है।",
+  "A factory reports its new process has a lower defect rate than the old one, 3% against 4%. Looking at simple parts and complex parts separately, the old process had fewer defects in both.":
+    "एक कारखाना बताता है कि उसकी नई प्रक्रिया में पुरानी के मुकाबले खराबी की दर कम है, 3% बनाम 4%। सरल पुर्ज़ों और जटिल पुर्ज़ों को अलग अलग देखने पर, दोनों में पुरानी प्रक्रिया में कम खराबियाँ थीं।",
+  "Better in both categories yet worse overall means the two processes handled very different mixes of simple and complex parts.":
+    "दोनों श्रेणियों में बेहतर होकर भी कुल मिलाकर बदतर होने का मतलब है कि दोनों प्रक्रियाओं ने सरल और जटिल पुर्ज़ों के बहुत अलग अलग मिश्रण संभाले।",
+  "A condition affects about 1 in 2,000 people. A screening test is 99% accurate. A patient tests positive and is told they almost certainly have the condition.":
+    "एक बीमारी लगभग 2,000 में से 1 व्यक्ति को होती है। एक स्क्रीनिंग परीक्षण 99% सटीक है। एक मरीज़ की जाँच पॉज़िटिव आती है और उससे कहा जाता है कि उसे लगभग निश्चित रूप से यह बीमारी है।",
+  "With a condition this rare, the 1% error rate produces far more false positives than there are real cases, so a positive is still more likely to be a false alarm.":
+    "इतनी दुर्लभ बीमारी के साथ, 1% की त्रुटि दर असली मामलों से कहीं ज़्यादा झूठे पॉज़िटिव पैदा करती है, इसलिए पॉज़िटिव परिणाम के झूठा अलार्म होने की संभावना अब भी ज़्यादा है।",
+  "A system flags travellers as suspicious and is 95% accurate. About 1 in 1,000 travellers is actually a threat. An official states that a flagged traveller is 95% likely to be a threat.":
+    "एक प्रणाली यात्रियों को संदिग्ध के रूप में चिह्नित करती है और 95% सटीक है। लगभग 1,000 में से 1 यात्री सचमुच खतरा होता है। एक अधिकारी कहता है कि चिह्नित किए गए यात्री के खतरा होने की संभावना 95% है।",
+  "That confuses the test's accuracy with the odds after a flag. Because threats are rare, the overwhelming majority of flags are ordinary travellers.":
+    "यह परीक्षण की सटीकता को चिह्नित हो जाने के बाद की संभावना समझ लेना है। चूँकि खतरे दुर्लभ हैं, इसलिए चिह्नित लोगों में भारी बहुमत आम यात्रियों का ही होता है।",
+  "Neighbourhoods with more parks have lower obesity rates. A council report concludes that building parks will reduce obesity, and proposes a park-building programme.":
+    "जिन मोहल्लों में ज़्यादा पार्क हैं वहाँ मोटापे की दर कम है। नगर परिषद की एक रिपोर्ट यह निष्कर्ष निकालती है कि पार्क बनाने से मोटापा घटेगा, और पार्क बनाने का एक कार्यक्रम प्रस्तावित करती है।",
+  "Wealth and urban planning plausibly drive both park provision and health, so the link may not be the parks doing the work.":
+    "समृद्धि और शहरी नियोजन, दोनों ही पार्कों की उपलब्धता और सेहत को चला सकते हैं, इसलिए हो सकता है कि इस संबंध के पीछे पार्कों का काम न हो।",
+  "Students who visit the library more often get higher grades. A university announces mandatory weekly library visits to raise grades.":
+    "जो छात्र पुस्तकालय ज़्यादा बार जाते हैं उन्हें बेहतर अंक मिलते हैं। एक विश्वविद्यालय अंक बढ़ाने के लिए हर हफ़्ते पुस्तकालय जाना अनिवार्य करने की घोषणा करता है।",
+  "Motivated students both study more and visit the library. Forcing the visit does not import the motivation that produced the grades.":
+    "प्रेरित छात्र ज़्यादा पढ़ते भी हैं और पुस्तकालय भी जाते हैं। जाना अनिवार्य कर देने से वह प्रेरणा नहीं आ जाती जिसने वे अंक दिलाए थे।",
+  "A business book studies companies that have thrived for fifty years and finds nearly all had bold, risk-taking leaders. It concludes that bold leadership causes lasting success.":
+    "एक व्यावसायिक किताब उन कंपनियों का अध्ययन करती है जो पचास साल से फल फूल रही हैं और पाती है कि लगभग सभी के नेता साहसी और जोखिम लेने वाले थे। वह निष्कर्ष निकालती है कि साहसी नेतृत्व ही टिकाऊ कामयाबी का कारण है।",
+  "The bold companies that went under are not in the sample. Boldness may equally well cause spectacular failure, which the study cannot see.":
+    "जो साहसी कंपनियाँ डूब गईं वे इस नमूने में हैं ही नहीं। हो सकता है कि साहस उतनी ही आसानी से शानदार नाकामी का कारण भी बनता हो, जिसे यह अध्ययन देख ही नहीं सकता।",
+  "A clinic reviews patients who completed its demanding rehabilitation programme and finds excellent outcomes. It reports the programme as highly effective.":
+    "एक क्लिनिक उन मरीज़ों की समीक्षा करता है जिन्होंने उसका कठिन पुनर्वास कार्यक्रम पूरा किया और उनके नतीजे बेहतरीन पाता है। वह कार्यक्रम को बहुत असरदार बताता है।",
+  "Patients who dropped out are excluded, and they are likely the ones doing worst. Counting only finishers flatters the programme.":
+    "जो मरीज़ बीच में छोड़ गए उन्हें शामिल ही नहीं किया गया, और संभवतः उन्हीं के नतीजे सबसे खराब हैं। केवल पूरा करने वालों को गिनना कार्यक्रम की छवि चमका देता है।",
+  "A database search turns up one man whose DNA matches a crime-scene sample. The lab reports that the profile occurs in about 1 person in a million. The prosecutor tells the jury there is therefore about a one in a million chance that he is innocent.":
+    "एक डेटाबेस खोज में एक ऐसा व्यक्ति मिलता है जिसका डीएनए अपराध स्थल के नमूने से मेल खाता है। प्रयोगशाला बताती है कि यह प्रोफ़ाइल लगभग दस लाख में से 1 व्यक्ति में पाई जाती है। अभियोजक जूरी से कहता है कि इसलिए उसके निर्दोष होने की संभावना करीब दस लाख में 1 है।",
+  "The 1 in a million is the chance of a match if he is innocent, not the chance he is innocent given a match. In a large pool other people match too, so the two numbers are nowhere near the same.":
+    "दस लाख में 1 का आँकड़ा यह संभावना है कि अगर वह निर्दोष है तो भी मिलान हो जाए, न कि यह संभावना कि मिलान होने पर वह निर्दोष है। बड़े पूल में दूसरे लोग भी मेल खाते हैं, इसलिए ये दोनों संख्याएँ एक जैसी होने के आसपास भी नहीं हैं।",
+  "Fibres on a suspect's coat match the victim's carpet. An expert says only about 1 coat in 5,000 would carry such fibres. Counsel concludes the suspect is 4,999 times more likely to be guilty than innocent.":
+    "एक संदिग्ध के कोट पर लगे रेशे पीड़ित के कालीन से मेल खाते हैं। एक विशेषज्ञ कहता है कि 5,000 में से केवल लगभग 1 कोट पर ही ऐसे रेशे होंगे। वकील निष्कर्ष निकालता है कि संदिग्ध के दोषी होने की संभावना निर्दोष होने से 4,999 गुना ज़्यादा है।",
+  "A rarity figure describes the evidence, not the person. How many innocent people could have picked up those fibres depends on how many people were ever near that carpet.":
+    "दुर्लभता का आँकड़ा सबूत का वर्णन करता है, व्यक्ति का नहीं। कितने निर्दोष लोगों पर वे रेशे लग सकते थे, यह इस पर निर्भर करता है कि कितने लोग कभी उस कालीन के पास आए थे।",
+  "An expert testifies that the DNA profile occurs in roughly 1 person in a million, and adds that in a city of two million this means about two other people would be expected to match as well, so the match alone does not single out the defendant.":
+    "एक विशेषज्ञ गवाही देता है कि यह डीएनए प्रोफ़ाइल करीब दस लाख में से 1 व्यक्ति में पाई जाती है, और यह भी जोड़ता है कि बीस लाख की आबादी वाले शहर में इसका मतलब है कि करीब दो और लोगों के भी मेल खाने की उम्मीद होगी, इसलिए अकेला मिलान अभियुक्त को अलग से चिह्नित नहीं करता।",
+  "This is the rarity figure stated correctly. The expert converts it into expected matches in the population instead of flipping it into a probability of innocence.":
+    "यह दुर्लभता के आँकड़े को सही ढंग से रखना है। विशेषज्ञ उसे निर्दोष होने की संभावना में पलटने के बजाय आबादी में अपेक्षित मिलानों की संख्या में बदल देता है।",
+  "Patients are assigned at random to a drug or a placebo. The drug group has fewer strokes, and the difference holds within every age group. The researchers conclude the drug reduces strokes.":
+    "मरीज़ों को यादृच्छिक रूप से दवा या प्लेसिबो में बाँटा जाता है। दवा वाले समूह में स्ट्रोक कम होते हैं, और यह अंतर हर आयु वर्ग के भीतर भी बना रहता है। शोधकर्ता निष्कर्ष निकालते हैं कि दवा स्ट्रोक घटाती है।",
+  "Randomisation balances the hidden differences, and the effect survives splitting by age. This reasoning is sound.":
+    "यादृच्छिकीकरण छिपे हुए अंतरों को संतुलित कर देता है, और उम्र के हिसाब से बाँटने पर भी असर बना रहता है। यह तर्क सही है।",
+  "A test with a 1% false-positive rate is used in a clinic where about 40% of those tested genuinely have the condition. A doctor tells a patient that a positive result makes the condition much more likely.":
+    "1% झूठे पॉज़िटिव दर वाला एक परीक्षण ऐसे क्लिनिक में इस्तेमाल होता है जहाँ जाँच कराने वालों में से लगभग 40% को सचमुच वह बीमारी है। एक डॉक्टर मरीज़ से कहता है कि पॉज़िटिव परिणाम से बीमारी की संभावना काफ़ी बढ़ जाती है।",
+  "The base rate matters, and here it is high. With 40% prevalence a positive really is strong evidence, so applying the rare-disease lesson would be a mistake.":
+    "आधार दर मायने रखती है, और यहाँ वह ऊँची है। 40% व्यापकता के साथ पॉज़िटिव परिणाम सचमुच मज़बूत सबूत है, इसलिए यहाँ दुर्लभ बीमारी वाला सबक लगाना गलती होगी।",
+  "A city compares road deaths before and after lowering a speed limit, adjusts for traffic volume, and checks the national trend over the same years. The local drop is larger than the national trend.":
+    "एक शहर गति सीमा घटाने से पहले और बाद की सड़क मौतों की तुलना करता है, यातायात की मात्रा के लिए समायोजन करता है, और उन्हीं वर्षों की राष्ट्रीय प्रवृत्ति भी जाँचता है। स्थानीय गिरावट राष्ट्रीय प्रवृत्ति से ज़्यादा है।",
+  "They accounted for the obvious confounders and for the background trend, which is what makes a before-and-after comparison credible.":
+    "उन्होंने स्पष्ट भ्रामक कारकों का और पृष्ठभूमि की प्रवृत्ति का, दोनों का हिसाब रखा, और यही किसी पहले और बाद की तुलना को भरोसेमंद बनाता है।",
+  "A trial reports outcomes for everyone who was enrolled, including those who stopped treatment early, and states how many dropped out and why.":
+    "एक परीक्षण उन सभी के नतीजे बताता है जिन्हें उसमें शामिल किया गया था, उन लोगों समेत जिन्होंने इलाज बीच में ही रोक दिया, और यह भी बताता है कि कितने लोग बीच में छोड़ गए और क्यों।",
+  "Reporting the whole enrolled group, dropouts included, is exactly the defence against counting only the survivors.":
+    "पूरे शामिल किए गए समूह के नतीजे बताना, बीच में छोड़ने वालों समेत, ठीक वही बचाव है जो केवल बचे हुओं को गिनने के खिलाफ़ काम करता है।",
 };

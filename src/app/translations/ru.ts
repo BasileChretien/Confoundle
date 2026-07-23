@@ -301,4 +301,116 @@ export const ru: Record<string, string> = {
     "Ошибка выжившего, ловушка мышления.",
   "It's easy to study the winners, the survivors, the successes, the things still standing, and copy what they have in common. But the failures are invisible: they dropped out of the data. Whatever helped the survivors survive looks far more powerful than it is, because you never see everyone it didn't save. Before copying the winners, ask who's missing.":
     "Легко изучать победителей, выживших, успехи, то, что всё ещё держится, и копировать то, что у них общего. Но неудачи невидимы: они выбыли из данных. Всё, что помогло выжившим уцелеть, выглядит куда более действенным, чем оно есть, потому что вы никогда не видите всех тех, кого оно не спасло. Прежде чем копировать победителей, спросите, кого не хватает.",
+
+  // ==== Prosecutor's fallacy (People v. Collins) ====
+  "A 1 in 12 million match. Case closed?":
+    "Совпадение один к 12 миллионам. Дело закрыто?",
+  "Los Angeles, 1964. A woman is knocked down and her purse is taken. Witnesses describe the pair who ran off: a blonde woman with a ponytail and a bearded Black man, in a partly yellow car. A couple who fit every detail are charged. At the trial an expert is asked to assume a frequency for each feature, multiplies them together, and gets 1 in 12 million. The prosecutor tells the jury that is the chance the two in the dock are innocent. Take the 1 in 12 million at face value, and picture the 12 million couples who could have been the ones.":
+    "Лос-Анджелес, 1964 год. Женщину сбивают с ног и отнимают у неё сумочку. Свидетели описывают убежавшую пару: блондинка с хвостом и чернокожий мужчина с бородой, в машине, частично окрашенной в жёлтый. Обвинение предъявляют паре, которая подходит по каждой примете. На суде эксперта просят принять некоторую частоту для каждой приметы; он перемножает их и получает 1 к 12 миллионам. Прокурор говорит присяжным, что это и есть вероятность того, что двое на скамье подсудимых невиновны. Примите 1 к 12 миллионам за чистую монету и представьте себе 12 миллионов пар, которые могли бы оказаться теми самыми.",
+  "This couple fits the description. What are the odds they did it?":
+    "Эта пара подходит под описание. Каковы шансы, что это сделали именно они?",
+  "In 12 million couples": "Среди 12 миллионов пар",
+  "did it": "сделали это",
+  "fit the description": "подходят под описание",
+  "Virtually certain": "Практически наверняка",
+  "12 million to one against them": "12 миллионов к одному против них",
+  "Around 99%": "Около 99 %",
+  "not quite proof, but close": "не совсем доказательство, но близко",
+  "About a coin flip": "Примерно как бросок монетки",
+  "roughly 50/50": "примерно 50/50",
+  "One in 12 million, and still a coin flip.":
+    "Один шанс из 12 миллионов, и всё равно бросок монетки.",
+  "The flipped question": "Перевёрнутый вопрос",
+  "Rare evidence is common in a big crowd":
+    "Редкая улика становится обычной в большой толпе",
+  "The 1 in 12 million answers one question: pick a couple at random, how likely are they to fit? The jury has to answer a different one: of all the couples who do fit, which pair did it? Line up 12 million couples. One pair are the robbers, and of course they fit. But at odds of 1 in 12 million, roughly one more couple in that crowd fits by pure chance. So a couple who fits is about as likely to be innocent as guilty.":
+    "1 к 12 миллионам отвечает на один вопрос: если взять пару наугад, насколько вероятно, что она подойдёт под описание? Присяжным же нужно ответить на другой: из всех пар, которые подходят, какая именно это сделала? Выстройте в ряд 12 миллионов пар. Одна пара, это грабители, и они, конечно, подходят. Но при шансах 1 к 12 миллионам примерно ещё одна пара в этой толпе подходит по чистой случайности. Значит, подходящая под описание пара примерно с равной вероятностью невиновна и виновна.",
+  "The California Supreme Court reversed the conviction in 1968. Working from the prosecution's own figures, it found a likelihood of over 40 percent that at least one other couple could have fitted the description just as well, and it warned that guilt cannot be settled by arithmetic like this.":
+    "В 1968 году Верховный суд Калифорнии отменил обвинительный приговор. Исходя из цифр самого обвинения, он нашёл вероятность более 40 процентов того, что как минимум ещё одна пара подошла бы под описание ничуть не хуже, и предупредил, что виновность нельзя устанавливать подобной арифметикой.",
+  "The prosecutor's fallacy": "Ошибка прокурора",
+  "“If he were innocent, this evidence would be that unlikely” is not the same as “this evidence makes him that unlikely to be innocent.” Swap the two and a coin flip starts to sound like certainty.":
+    "«Если бы он был невиновен, такая улика была бы настолько маловероятна», это не то же самое, что «эта улика делает его невиновность настолько маловероятной». Поменяйте их местами, и бросок монетки начинает звучать как полная уверенность.",
+  "Before you accept a one in a million match, ask how big the pool was. One in a million odds across a city of ten million throw up about ten matches, and only one of those people did it. The number means nothing until you say who was in the crowd.":
+    "Прежде чем принять совпадение один на миллион, спросите, насколько велика была рассматриваемая совокупность. Шансы один на миллион в городе с десятью миллионами жителей дают около десяти совпадений, и лишь один из этих людей это сделал. Число ничего не значит, пока вы не скажете, кто был в толпе.",
+  "Two questions sound identical and are not. The first: if this person had nothing to do with it, how likely is this evidence? That is what a lab or an expert can actually measure, and it is where figures like 1 in 12 million come from. The second: given this evidence, how likely is it that this person did it? That is what a jury has to decide, and it depends on something no lab measures, namely how many people could have done it. Push odds of 1 in 12 million through a crowd of 12 million and you expect about one innocent match, so the match on its own is worth roughly a coin flip. Shrink the crowd, or add independent evidence, and the same match becomes powerful. Grow the crowd, and it becomes weak. The trap also runs in reverse: a defence lawyer can say that 2,000 people in the city share that blood type, so the evidence proves nothing, which quietly ignores that the other 1,999 were nowhere near the crime.":
+    "Два вопроса звучат одинаково, но это разные вопросы. Первый: если этот человек не имеет к делу никакого отношения, насколько вероятна такая улика? Именно это лаборатория или эксперт действительно могут измерить, и отсюда берутся цифры вроде 1 к 12 миллионам. Второй: с учётом этой улики, насколько вероятно, что это сделал именно он? Именно это предстоит решить присяжным, и это зависит от того, чего не измеряет ни одна лаборатория, а именно от того, сколько людей вообще могли это сделать. Пропустите шансы 1 к 12 миллионам через толпу в 12 миллионов, и вы ожидаете примерно одно совпадение с невиновным, так что само по себе совпадение стоит примерно броска монетки. Уменьшите толпу или добавьте независимые улики, и то же самое совпадение станет мощным. Увеличьте толпу, и оно ослабнет. Ловушка работает и в обратную сторону: адвокат защиты может сказать, что такая же группа крови есть у 2000 жителей города, а значит, улика ничего не доказывает, тихо умалчивая о том, что остальные 1999 человек и близко не были у места преступления.",
+  "Two cot deaths, and a number that became guilt":
+    "Две внезапные детские смерти и число, ставшее виновностью",
+  "An English murder trial heard that the chance of two cot deaths in a family like the defendant's was 1 in 73 million. Press reports turned that into the chance the deaths were natural. The Royal Statistical Society said publicly that the figure had no statistical basis, because it assumed the two deaths were independent, and that reading it as a chance of innocence is the prosecutor's fallacy. What the jury needed was a comparison: two cot deaths and two murders are both rare, so which is rarer here?":
+    "На процессе об убийстве в Англии прозвучало, что вероятность двух внезапных детских смертей в семье, подобной семье обвиняемой, составляет 1 к 73 миллионам. В прессе это превратили в вероятность того, что смерти были естественными. Королевское статистическое общество публично заявило, что у этой цифры нет статистических оснований, поскольку она предполагала независимость двух смертей, и что читать её как вероятность невиновности, значит совершать ошибку прокурора. Присяжным нужно было сравнение: две внезапные детские смерти и два убийства редки и то, и другое, так что же здесь реже?",
+  "Almost nobody spots the swap": "Почти никто не замечает подмену",
+  "Researchers gave 73 students a murder case in which the killer's blood type is found in 1 person in 100, then showed them a prosecution argument built on the swapped question: only a 1 percent chance the blood came from someone else, so a 99 percent chance the suspect is guilty. 21 of the 73 rated that argument correct, and only 16 saw that it and the opposing defence argument were both wrong.":
+    "Исследователи дали 73 студентам дело об убийстве, в котором группа крови убийцы встречается у 1 человека из 100, а затем показали им довод обвинения, построенный на подменённом вопросе: вероятность того, что кровь принадлежит кому-то другому, всего 1 процент, значит, вероятность вины подозреваемого 99 процентов. 21 студент из 73 счёл этот довод верным, и лишь 16 увидели, что и он, и противоположный довод защиты одинаково ошибочны.",
+  "The prosecutor's fallacy, a reasoning trap.":
+    "Ошибка прокурора, ловушка мышления.",
+  "When an expert says there is only a one in a million chance of a match by accident, that is a fact about the evidence, not about the person in the dock. Flip the two around and you get the prosecutor's fallacy. The cure is to ask how many people were in the pool: one in a million odds across a city of ten million produce about ten innocent matches, so on its own a match can be nowhere near proof.":
+    "Когда эксперт говорит, что случайное совпадение возможно лишь с вероятностью один на миллион, это факт об улике, а не о человеке на скамье подсудимых. Поменяйте их местами, и вы получите ошибку прокурора. Лекарство, это спросить, сколько людей было в рассматриваемой совокупности: шансы один на миллион в городе с десятью миллионами жителей дают около десяти совпадений с невиновными, так что само по себе совпадение может быть очень далеко от доказательства.",
+  "Spotted the swap. Bet you don't.":
+    "Я заметил подмену. Спорим, вы не заметите.",
+  "I'd have convicted on the spot.":
+    "Я бы вынес обвинительный приговор на месте.",
+  "The court's appendix showed that on those same figures, with a pool of about 12 million couples, the chance that at least one other couple fitted the description was roughly 41 percent.":
+    "Приложение к решению суда показало, что при тех же цифрах и совокупности примерно в 12 миллионов пар вероятность того, что под описание подходила хотя бы ещё одна пара, составляла около 41 процента.",
+
+  // ==== Trap Hunt items ====
+  "Two schools publish exam results. School B has the higher pass rate overall, 75% against 70%. When results are split by student background, School A comes out ahead in every single group. The district praises School B.":
+    "Две школы публикуют результаты экзаменов. У школы B выше общая доля сдавших, 75 % против 70 %. Когда результаты разбивают по социальному происхождению учеников, школа A оказывается впереди в каждой без исключения группе. Округ хвалит школу B.",
+  "A wins in every group but loses overall, which happens when the groups are mixed unevenly. The pooled number is the misleading one here.":
+    "A выигрывает в каждой группе, но проигрывает в целом, а так бывает, когда группы смешаны неравномерно. Вводит в заблуждение здесь именно объединённое число.",
+  "A factory reports its new process has a lower defect rate than the old one, 3% against 4%. Looking at simple parts and complex parts separately, the old process had fewer defects in both.":
+    "Завод сообщает, что у нового процесса доля брака ниже, чем у старого, 3 % против 4 %. Если посмотреть отдельно на простые и на сложные детали, у старого процесса брака было меньше и там, и там.",
+  "Better in both categories yet worse overall means the two processes handled very different mixes of simple and complex parts.":
+    "Лучше в обеих категориях и всё же хуже в целом, это значит, что через два процесса прошли очень разные наборы простых и сложных деталей.",
+  "A condition affects about 1 in 2,000 people. A screening test is 99% accurate. A patient tests positive and is told they almost certainly have the condition.":
+    "Заболевание встречается примерно у 1 человека из 2000. Скрининговый тест точен на 99 %. У пациента положительный результат, и ему говорят, что он почти наверняка болен.",
+  "With a condition this rare, the 1% error rate produces far more false positives than there are real cases, so a positive is still more likely to be a false alarm.":
+    "При такой редкости заболевания 1 % ошибок даёт куда больше ложноположительных результатов, чем есть настоящих случаев, поэтому положительный результат всё равно скорее ложная тревога.",
+  "A system flags travellers as suspicious and is 95% accurate. About 1 in 1,000 travellers is actually a threat. An official states that a flagged traveller is 95% likely to be a threat.":
+    "Система помечает пассажиров как подозрительных и точна на 95 %. На самом деле угрозу представляет примерно 1 пассажир из 1000. Чиновник заявляет, что помеченный пассажир с вероятностью 95 % является угрозой.",
+  "That confuses the test's accuracy with the odds after a flag. Because threats are rare, the overwhelming majority of flags are ordinary travellers.":
+    "Это путает точность системы с шансами уже после срабатывания метки. Поскольку угрозы редки, подавляющее большинство помеченных, это обычные пассажиры.",
+  "Neighbourhoods with more parks have lower obesity rates. A council report concludes that building parks will reduce obesity, and proposes a park-building programme.":
+    "В районах, где больше парков, ниже уровень ожирения. В докладе городского совета делается вывод, что строительство парков снизит ожирение, и предлагается программа создания парков.",
+  "Wealth and urban planning plausibly drive both park provision and health, so the link may not be the parks doing the work.":
+    "Достаток и градостроительная политика вполне правдоподобно влияют и на количество парков, и на здоровье, так что дело может быть вовсе не в парках.",
+  "Students who visit the library more often get higher grades. A university announces mandatory weekly library visits to raise grades.":
+    "Студенты, которые чаще ходят в библиотеку, получают более высокие оценки. Университет объявляет обязательные еженедельные посещения библиотеки, чтобы поднять оценки.",
+  "Motivated students both study more and visit the library. Forcing the visit does not import the motivation that produced the grades.":
+    "Мотивированные студенты и больше занимаются, и чаще ходят в библиотеку. Принудительное посещение не приносит с собой ту мотивацию, которая и дала эти оценки.",
+  "A business book studies companies that have thrived for fifty years and finds nearly all had bold, risk-taking leaders. It concludes that bold leadership causes lasting success.":
+    "Книга по бизнесу изучает компании, процветающие уже пятьдесят лет, и обнаруживает, что почти у всех были смелые, склонные к риску руководители. Из этого делается вывод, что смелое руководство ведёт к долгому успеху.",
+  "The bold companies that went under are not in the sample. Boldness may equally well cause spectacular failure, which the study cannot see.":
+    "Смелых компаний, которые разорились, в выборке нет. Смелость с тем же успехом может приводить к громкому провалу, но этого исследование увидеть не может.",
+  "A clinic reviews patients who completed its demanding rehabilitation programme and finds excellent outcomes. It reports the programme as highly effective.":
+    "Клиника анализирует пациентов, прошедших её тяжёлую программу реабилитации до конца, и получает отличные исходы. Она сообщает, что программа очень эффективна.",
+  "Patients who dropped out are excluded, and they are likely the ones doing worst. Counting only finishers flatters the programme.":
+    "Пациенты, бросившие программу, исключены, а именно у них дела, скорее всего, хуже всего. Подсчёт одних лишь дошедших до конца приукрашивает программу.",
+  "A database search turns up one man whose DNA matches a crime-scene sample. The lab reports that the profile occurs in about 1 person in a million. The prosecutor tells the jury there is therefore about a one in a million chance that he is innocent.":
+    "Поиск по базе данных находит одного мужчину, чья ДНК совпадает с образцом с места преступления. Лаборатория сообщает, что такой профиль встречается примерно у 1 человека из миллиона. Прокурор говорит присяжным, что, следовательно, вероятность его невиновности примерно один на миллион.",
+  "The 1 in a million is the chance of a match if he is innocent, not the chance he is innocent given a match. In a large pool other people match too, so the two numbers are nowhere near the same.":
+    "Один на миллион, это вероятность совпадения при условии, что он невиновен, а не вероятность его невиновности при условии совпадения. В большой совокупности совпадения находятся и у других людей, так что эти два числа совсем не одно и то же.",
+  "Fibres on a suspect's coat match the victim's carpet. An expert says only about 1 coat in 5,000 would carry such fibres. Counsel concludes the suspect is 4,999 times more likely to be guilty than innocent.":
+    "Волокна на пальто подозреваемого совпадают с ковром жертвы. Эксперт говорит, что такие волокна нашлись бы лишь примерно на 1 пальто из 5000. Адвокат заключает, что подозреваемый в 4999 раз вероятнее виновен, чем невиновен.",
+  "A rarity figure describes the evidence, not the person. How many innocent people could have picked up those fibres depends on how many people were ever near that carpet.":
+    "Цифра редкости описывает улику, а не человека. Сколько невиновных людей могли подцепить такие волокна, зависит от того, сколько людей вообще бывало рядом с этим ковром.",
+  "An expert testifies that the DNA profile occurs in roughly 1 person in a million, and adds that in a city of two million this means about two other people would be expected to match as well, so the match alone does not single out the defendant.":
+    "Эксперт свидетельствует, что профиль ДНК встречается примерно у 1 человека из миллиона, и добавляет, что в городе с двумя миллионами жителей это означает ожидаемое совпадение ещё примерно у двух человек, поэтому одно лишь совпадение не выделяет обвиняемого.",
+  "This is the rarity figure stated correctly. The expert converts it into expected matches in the population instead of flipping it into a probability of innocence.":
+    "Здесь цифра редкости изложена правильно. Эксперт переводит её в ожидаемое число совпадений в населении, а не переворачивает в вероятность невиновности.",
+  "Patients are assigned at random to a drug or a placebo. The drug group has fewer strokes, and the difference holds within every age group. The researchers conclude the drug reduces strokes.":
+    "Пациентов случайным образом распределяют на препарат или плацебо. В группе препарата меньше инсультов, и разница сохраняется в каждой возрастной группе. Исследователи заключают, что препарат снижает число инсультов.",
+  "Randomisation balances the hidden differences, and the effect survives splitting by age. This reasoning is sound.":
+    "Рандомизация уравновешивает скрытые различия, и эффект сохраняется при разбивке по возрасту. Это рассуждение верное.",
+  "A test with a 1% false-positive rate is used in a clinic where about 40% of those tested genuinely have the condition. A doctor tells a patient that a positive result makes the condition much more likely.":
+    "Тест с 1 % ложноположительных результатов применяют в клинике, где примерно у 40 % обследуемых заболевание действительно есть. Врач говорит пациенту, что положительный результат делает заболевание намного более вероятным.",
+  "The base rate matters, and here it is high. With 40% prevalence a positive really is strong evidence, so applying the rare-disease lesson would be a mistake.":
+    "Базовая частота важна, и здесь она высокая. При распространённости 40 % положительный результат действительно является сильным свидетельством, поэтому применять здесь урок о редких болезнях было бы ошибкой.",
+  "A city compares road deaths before and after lowering a speed limit, adjusts for traffic volume, and checks the national trend over the same years. The local drop is larger than the national trend.":
+    "Город сравнивает смертность на дорогах до и после снижения ограничения скорости, вносит поправку на интенсивность движения и проверяет общенациональную тенденцию за те же годы. Местное снижение оказывается больше общенациональной тенденции.",
+  "They accounted for the obvious confounders and for the background trend, which is what makes a before-and-after comparison credible.":
+    "Здесь учли очевидные искажающие факторы и фоновую тенденцию, а именно это и делает сравнение до и после заслуживающим доверия.",
+  "A trial reports outcomes for everyone who was enrolled, including those who stopped treatment early, and states how many dropped out and why.":
+    "Исследование сообщает исходы для всех включённых участников, в том числе для тех, кто прекратил лечение досрочно, и указывает, сколько человек выбыло и почему.",
+  "Reporting the whole enrolled group, dropouts included, is exactly the defence against counting only the survivors.":
+    "Отчёт по всей включённой группе, вместе с выбывшими, это и есть защита от подсчёта одних лишь выживших.",
 };

@@ -302,4 +302,117 @@ export const ar: Record<string, string> = {
     "تحيز الناجين، فخ في الاستدلال.",
   "It's easy to study the winners, the survivors, the successes, the things still standing, and copy what they have in common. But the failures are invisible: they dropped out of the data. Whatever helped the survivors survive looks far more powerful than it is, because you never see everyone it didn't save. Before copying the winners, ask who's missing.":
     "من السهل دراسة الفائزين، والناجين، والنجاحات، والأشياء التي ما زالت قائمة، ونسخ ما يشتركون فيه. لكن حالات الفشل غير مرئية: لقد سقطت من البيانات. وأياً كان ما ساعد الناجين على النجاة يبدو أقوى بكثير مما هو عليه، لأنك لا ترى قط كل من لم ينقذهم. قبل أن تنسخ الفائزين، اسأل من الغائب.",
+
+  // ==== Prosecutor's fallacy (People v. Collins) ====
+  "A 1 in 12 million match. Case closed?":
+    "تطابق باحتمال 1 من 12 مليون. هل أُغلقت القضية؟",
+  "Los Angeles, 1964. A woman is knocked down and her purse is taken. Witnesses describe the pair who ran off: a blonde woman with a ponytail and a bearded Black man, in a partly yellow car. A couple who fit every detail are charged. At the trial an expert is asked to assume a frequency for each feature, multiplies them together, and gets 1 in 12 million. The prosecutor tells the jury that is the chance the two in the dock are innocent. Take the 1 in 12 million at face value, and picture the 12 million couples who could have been the ones.":
+    "لوس أنجلوس، 1964. امرأة تُطرح أرضاً وتُسلب حقيبتها. يصف الشهود الثنائي الذي فرّ: امرأة شقراء بذيل حصان، ورجل أسود ملتحٍ، في سيارة صفراء جزئياً. ويُتهم ثنائي تنطبق عليه كل التفاصيل. في المحاكمة، يُطلب من خبير أن يفترض نسبة شيوع لكل صفة، فيضرب النسب بعضها ببعض ليحصل على 1 من 12 مليون. ويقول المدعي العام لهيئة المحلفين إن هذا هو احتمال أن يكون المتهمان بريئين. خذ رقم 1 من 12 مليون على ظاهره، وتخيّل الـ 12 مليون ثنائي الذين كان يمكن أن يكون الفاعل من بينهم.",
+  "This couple fits the description. What are the odds they did it?":
+    "هذا الثنائي تنطبق عليه الأوصاف. ما احتمال أن يكون هو الفاعل؟",
+  "In 12 million couples": "من كل 12 مليون ثنائي",
+  "did it": "ارتكبوا الجريمة",
+  "fit the description": "تنطبق عليهم الأوصاف",
+  "Virtually certain": "شبه مؤكد",
+  "12 million to one against them":
+    "الاحتمالات ضدهم 12 مليوناً إلى واحد",
+  "Around 99%": "نحو 99%",
+  "not quite proof, but close": "ليس دليلاً قاطعاً، لكنه قريب",
+  "About a coin flip": "أشبه برمية عملة",
+  "roughly 50/50": "تقريباً 50/50",
+  "One in 12 million, and still a coin flip.":
+    "واحد من 12 مليون، ومع ذلك يظل الأمر أشبه برمية عملة.",
+  "The flipped question": "السؤال المقلوب",
+  "Rare evidence is common in a big crowd":
+    "الدليل النادر يصبح شائعاً في حشد كبير",
+  "The 1 in 12 million answers one question: pick a couple at random, how likely are they to fit? The jury has to answer a different one: of all the couples who do fit, which pair did it? Line up 12 million couples. One pair are the robbers, and of course they fit. But at odds of 1 in 12 million, roughly one more couple in that crowd fits by pure chance. So a couple who fits is about as likely to be innocent as guilty.":
+    "رقم 1 من 12 مليون يجيب عن سؤال واحد: لو اخترت ثنائياً عشوائياً، فما احتمال أن تنطبق عليه الأوصاف؟ أما هيئة المحلفين فعليها أن تجيب عن سؤال آخر: من بين كل الثنائيات التي تنطبق عليها الأوصاف، أيها هو الفاعل؟ اصطفّ 12 مليون ثنائي. ثنائي واحد منها هو السارق، وتنطبق عليه الأوصاف بالطبع. لكن باحتمال 1 من 12 مليون، هناك تقريباً ثنائي آخر في ذلك الحشد تنطبق عليه الأوصاف بمحض المصادفة. لذا فإن ثنائياً تنطبق عليه الأوصاف يكون احتمال براءته قريباً من احتمال إدانته.",
+  "The California Supreme Court reversed the conviction in 1968. Working from the prosecution's own figures, it found a likelihood of over 40 percent that at least one other couple could have fitted the description just as well, and it warned that guilt cannot be settled by arithmetic like this.":
+    "نقضت المحكمة العليا في كاليفورنيا حكم الإدانة عام 1968. وانطلاقاً من أرقام النيابة نفسها، وجدت احتمالاً يتجاوز 40 بالمئة بأن ثنائياً آخر واحداً على الأقل كان يمكن أن تنطبق عليه الأوصاف بالقدر نفسه، وحذّرت من أن الإدانة لا يمكن أن تُحسم بحساب كهذا.",
+  "The prosecutor's fallacy": "مغالطة المدعي العام",
+  "“If he were innocent, this evidence would be that unlikely” is not the same as “this evidence makes him that unlikely to be innocent.” Swap the two and a coin flip starts to sound like certainty.":
+    "«لو كان بريئاً لكان هذا الدليل بهذه الندرة» ليست هي نفسها «هذا الدليل يجعل براءته بهذه الندرة». بدّل بين العبارتين، فتبدأ رمية العملة في أن تبدو يقيناً.",
+  "Before you accept a one in a million match, ask how big the pool was. One in a million odds across a city of ten million throw up about ten matches, and only one of those people did it. The number means nothing until you say who was in the crowd.":
+    "قبل أن تقبل تطابقاً باحتمال واحد في المليون، اسأل عن حجم المجموعة التي جرى البحث فيها. فاحتمال واحد في المليون في مدينة عدد سكانها عشرة ملايين ينتج نحو عشرة تطابقات، وواحد فقط من هؤلاء هو الفاعل. الرقم لا يعني شيئاً حتى تحدد من كان في ذلك الحشد.",
+  "Two questions sound identical and are not. The first: if this person had nothing to do with it, how likely is this evidence? That is what a lab or an expert can actually measure, and it is where figures like 1 in 12 million come from. The second: given this evidence, how likely is it that this person did it? That is what a jury has to decide, and it depends on something no lab measures, namely how many people could have done it. Push odds of 1 in 12 million through a crowd of 12 million and you expect about one innocent match, so the match on its own is worth roughly a coin flip. Shrink the crowd, or add independent evidence, and the same match becomes powerful. Grow the crowd, and it becomes weak. The trap also runs in reverse: a defence lawyer can say that 2,000 people in the city share that blood type, so the evidence proves nothing, which quietly ignores that the other 1,999 were nowhere near the crime.":
+    "سؤالان يبدوان متطابقين وهما ليسا كذلك. الأول: لو لم تكن لهذا الشخص أي صلة بالجريمة، فما احتمال ظهور هذا الدليل؟ هذا ما يستطيع مختبر أو خبير قياسه فعلاً، ومن هنا تأتي أرقام مثل 1 من 12 مليون. والثاني: بالنظر إلى هذا الدليل، ما احتمال أن يكون هذا الشخص هو الفاعل؟ هذا ما يتعين على هيئة المحلفين أن تبتّ فيه، وهو يتوقف على أمر لا يقيسه أي مختبر، ألا وهو عدد الأشخاص الذين كان يمكن أن يرتكبوا الجريمة. مرّر احتمال 1 من 12 مليون عبر حشد قوامه 12 مليوناً، فتتوقع تطابقاً واحداً تقريباً لشخص بريء، لذا فإن التطابق وحده لا يساوي أكثر من رمية عملة. صغّر الحشد، أو أضف دليلاً مستقلاً، فيصبح التطابق نفسه قوياً. ووسّع الحشد، فيصبح ضعيفاً. والفخ يعمل في الاتجاه المعاكس أيضاً: يمكن لمحامي دفاع أن يقول إن 2000 شخص في المدينة يتشاركون فصيلة الدم تلك، وبالتالي فإن الدليل لا يثبت شيئاً، وهو ما يتجاهل بهدوء أن الـ 1999 الآخرين لم يكونوا قريبين من مسرح الجريمة أصلاً.",
+  "Two cot deaths, and a number that became guilt":
+    "وفاتا مهد، ورقم تحوّل إلى إدانة",
+  "An English murder trial heard that the chance of two cot deaths in a family like the defendant's was 1 in 73 million. Press reports turned that into the chance the deaths were natural. The Royal Statistical Society said publicly that the figure had no statistical basis, because it assumed the two deaths were independent, and that reading it as a chance of innocence is the prosecutor's fallacy. What the jury needed was a comparison: two cot deaths and two murders are both rare, so which is rarer here?":
+    "سمعت محاكمة قتل في إنجلترا أن احتمال حدوث وفاتَي مهد في أسرة كأسرة المتهمة هو 1 من 73 مليون. وحوّلت التقارير الصحفية ذلك إلى احتمال أن تكون الوفاتان طبيعيتين. وأعلنت الجمعية الملكية للإحصاء علناً أن الرقم لا أساس إحصائياً له، لأنه افترض أن الوفاتين مستقلتان، وأن قراءته على أنه احتمال البراءة هي مغالطة المدعي العام. وما كانت هيئة المحلفين بحاجة إليه هو مقارنة: وفاتا المهد وجريمتا القتل كلتاهما نادرتان، فأيهما أندر هنا؟",
+  "Almost nobody spots the swap": "لا أحد تقريباً يلحظ التبديل",
+  "Researchers gave 73 students a murder case in which the killer's blood type is found in 1 person in 100, then showed them a prosecution argument built on the swapped question: only a 1 percent chance the blood came from someone else, so a 99 percent chance the suspect is guilty. 21 of the 73 rated that argument correct, and only 16 saw that it and the opposing defence argument were both wrong.":
+    "عرض باحثون على 73 طالباً قضية قتل توجد فيها فصيلة دم القاتل لدى شخص واحد من كل 100، ثم أطلعوهم على حجة للنيابة مبنية على السؤال المُبدَّل: هناك احتمال 1 بالمئة فقط أن يكون الدم قد جاء من شخص آخر، إذن هناك احتمال 99 بالمئة أن يكون المشتبه به مذنباً. اعتبر 21 من الـ 73 تلك الحجة صحيحة، ولم يدرك سوى 16 منهم أنها وحجة الدفاع المقابلة كلتيهما خاطئتان.",
+  "The prosecutor's fallacy, a reasoning trap.":
+    "مغالطة المدعي العام، فخ في الاستدلال.",
+  "When an expert says there is only a one in a million chance of a match by accident, that is a fact about the evidence, not about the person in the dock. Flip the two around and you get the prosecutor's fallacy. The cure is to ask how many people were in the pool: one in a million odds across a city of ten million produce about ten innocent matches, so on its own a match can be nowhere near proof.":
+    "عندما يقول خبير إن احتمال حدوث تطابق بالمصادفة هو واحد في المليون فقط، فتلك حقيقة عن الدليل، لا عن الشخص في قفص الاتهام. اقلب الاثنين، تحصل على مغالطة المدعي العام. والعلاج هو أن تسأل كم شخصاً كان في المجموعة المدروسة: احتمال واحد في المليون في مدينة عدد سكانها عشرة ملايين ينتج نحو عشرة تطابقات لأبرياء، لذا فإن التطابق وحده قد يكون أبعد ما يكون عن الدليل القاطع.",
+  "Spotted the swap. Bet you don't.":
+    "لحظتُ التبديل. أراهن أنك لن تلحظه.",
+  "I'd have convicted on the spot.":
+    "كنت سأصدر حكم الإدانة على الفور.",
+  "The court's appendix showed that on those same figures, with a pool of about 12 million couples, the chance that at least one other couple fitted the description was roughly 41 percent.":
+    "أظهر ملحق حكم المحكمة أنه بالأرقام نفسها، ومع مجموعة قوامها نحو 12 مليون ثنائي، كان احتمال أن تنطبق الأوصاف على ثنائي آخر واحد على الأقل نحو 41 بالمئة.",
+
+  // ==== Trap Hunt test items ====
+  "Two schools publish exam results. School B has the higher pass rate overall, 75% against 70%. When results are split by student background, School A comes out ahead in every single group. The district praises School B.":
+    "مدرستان تنشران نتائج الامتحانات. المدرسة B لديها معدل النجاح الأعلى إجمالاً، 75% مقابل 70%. وعند تقسيم النتائج حسب خلفية الطلاب، تتقدم المدرسة A في كل مجموعة على حدة. وتشيد إدارة المنطقة التعليمية بالمدرسة B.",
+  "A wins in every group but loses overall, which happens when the groups are mixed unevenly. The pooled number is the misleading one here.":
+    "تفوز A في كل مجموعة لكنها تخسر إجمالاً، وهو ما يحدث عندما تُمزج المجموعات بشكل غير متساوٍ. الرقم المجمَّع هو المضلِّل هنا.",
+  "A factory reports its new process has a lower defect rate than the old one, 3% against 4%. Looking at simple parts and complex parts separately, the old process had fewer defects in both.":
+    "يفيد مصنع بأن عمليته الجديدة لديها معدل عيوب أقل من القديمة، 3% مقابل 4%. وعند النظر إلى القطع البسيطة والقطع المعقدة كلٍّ على حدة، كانت عيوب العملية القديمة أقل في كلتيهما.",
+  "Better in both categories yet worse overall means the two processes handled very different mixes of simple and complex parts.":
+    "أن تكون أفضل في الفئتين ومع ذلك أسوأ إجمالاً يعني أن العمليتين تعاملتا مع مزيجين مختلفين جداً من القطع البسيطة والمعقدة.",
+  "A condition affects about 1 in 2,000 people. A screening test is 99% accurate. A patient tests positive and is told they almost certainly have the condition.":
+    "حالة مرضية تصيب نحو 1 من كل 2000 شخص. واختبار استقصائي دقته 99%. تأتي نتيجة مريض إيجابية، فيُقال له إنه مصاب بالحالة شبه مؤكد.",
+  "With a condition this rare, the 1% error rate produces far more false positives than there are real cases, so a positive is still more likely to be a false alarm.":
+    "مع حالة بهذه الندرة، ينتج معدل الخطأ البالغ 1% إيجابيات كاذبة أكثر بكثير من عدد الحالات الحقيقية، لذا تظل النتيجة الإيجابية أرجح أن تكون إنذاراً كاذباً.",
+  "A system flags travellers as suspicious and is 95% accurate. About 1 in 1,000 travellers is actually a threat. An official states that a flagged traveller is 95% likely to be a threat.":
+    "نظام يضع علامة اشتباه على المسافرين ودقته 95%. ونحو 1 من كل 1000 مسافر يشكّل تهديداً فعلياً. يصرّح مسؤول بأن احتمال أن يكون المسافر المُعلَّم تهديداً هو 95%.",
+  "That confuses the test's accuracy with the odds after a flag. Because threats are rare, the overwhelming majority of flags are ordinary travellers.":
+    "هذا يخلط بين دقة الاختبار وبين الاحتمال بعد وضع العلامة. ولأن التهديدات نادرة، فإن الغالبية الساحقة من العلامات تقع على مسافرين عاديين.",
+  "Neighbourhoods with more parks have lower obesity rates. A council report concludes that building parks will reduce obesity, and proposes a park-building programme.":
+    "الأحياء التي فيها حدائق أكثر لديها معدلات سمنة أقل. يخلص تقرير للمجلس البلدي إلى أن بناء الحدائق سيقلل السمنة، ويقترح برنامجاً لبناء الحدائق.",
+  "Wealth and urban planning plausibly drive both park provision and health, so the link may not be the parks doing the work.":
+    "من المعقول أن الثروة والتخطيط العمراني يحرّكان توفير الحدائق والصحة معاً، لذا قد لا تكون الحدائق هي التي تقوم بالعمل وراء هذه الصلة.",
+  "Students who visit the library more often get higher grades. A university announces mandatory weekly library visits to raise grades.":
+    "الطلاب الذين يزورون المكتبة أكثر يحصلون على درجات أعلى. تعلن جامعة عن زيارات أسبوعية إلزامية للمكتبة لرفع الدرجات.",
+  "Motivated students both study more and visit the library. Forcing the visit does not import the motivation that produced the grades.":
+    "الطلاب المتحفزون يدرسون أكثر ويزورون المكتبة أكثر في آن واحد. وفرض الزيارة لا يجلب معه الحافز الذي أنتج تلك الدرجات.",
+  "A business book studies companies that have thrived for fifty years and finds nearly all had bold, risk-taking leaders. It concludes that bold leadership causes lasting success.":
+    "كتاب في الأعمال يدرس شركات ازدهرت طوال خمسين عاماً فيجد أن قادتها جميعاً تقريباً كانوا جريئين ومُقدِمين على المخاطرة. ويخلص إلى أن القيادة الجريئة تُنتج نجاحاً دائماً.",
+  "The bold companies that went under are not in the sample. Boldness may equally well cause spectacular failure, which the study cannot see.":
+    "الشركات الجريئة التي انهارت ليست ضمن العينة. وقد تؤدي الجرأة بالقدر نفسه إلى فشل مدوٍّ، وهو ما لا تستطيع الدراسة رؤيته.",
+  "A clinic reviews patients who completed its demanding rehabilitation programme and finds excellent outcomes. It reports the programme as highly effective.":
+    "عيادة تراجع المرضى الذين أتموا برنامجها التأهيلي الشاق فتجد نتائج ممتازة. وتُبلغ عن البرنامج بوصفه شديد الفعالية.",
+  "Patients who dropped out are excluded, and they are likely the ones doing worst. Counting only finishers flatters the programme.":
+    "المرضى الذين انسحبوا مستبعَدون، وهم على الأرجح الأسوأ حالاً. واحتساب من أتموا البرنامج وحدهم يجمّل صورته.",
+  "A database search turns up one man whose DNA matches a crime-scene sample. The lab reports that the profile occurs in about 1 person in a million. The prosecutor tells the jury there is therefore about a one in a million chance that he is innocent.":
+    "بحث في قاعدة بيانات يكشف عن رجل يتطابق حمضه النووي مع عينة من مسرح الجريمة. ويفيد المختبر بأن هذه البصمة الوراثية توجد لدى شخص واحد تقريباً من كل مليون. فيقول المدعي العام لهيئة المحلفين إن احتمال براءته هو بالتالي نحو واحد في المليون.",
+  "The 1 in a million is the chance of a match if he is innocent, not the chance he is innocent given a match. In a large pool other people match too, so the two numbers are nowhere near the same.":
+    "رقم 1 في المليون هو احتمال حدوث تطابق لو كان بريئاً، لا احتمال أن يكون بريئاً بعد حدوث التطابق. ففي مجموعة كبيرة يتطابق أشخاص آخرون أيضاً، لذا فإن الرقمين أبعد ما يكونان عن التساوي.",
+  "Fibres on a suspect's coat match the victim's carpet. An expert says only about 1 coat in 5,000 would carry such fibres. Counsel concludes the suspect is 4,999 times more likely to be guilty than innocent.":
+    "ألياف على معطف مشتبه به تتطابق مع سجادة الضحية. يقول خبير إن نحو معطف واحد فقط من كل 5000 يحمل مثل هذه الألياف. فيخلص المحامي إلى أن احتمال إدانة المشتبه به يفوق احتمال براءته بـ 4999 مرة.",
+  "A rarity figure describes the evidence, not the person. How many innocent people could have picked up those fibres depends on how many people were ever near that carpet.":
+    "رقم الندرة يصف الدليل، لا الشخص. فعدد الأبرياء الذين كان يمكن أن تعلق بهم تلك الألياف يتوقف على عدد الأشخاص الذين اقتربوا يوماً من تلك السجادة.",
+  "An expert testifies that the DNA profile occurs in roughly 1 person in a million, and adds that in a city of two million this means about two other people would be expected to match as well, so the match alone does not single out the defendant.":
+    "يشهد خبير بأن البصمة الوراثية توجد لدى شخص واحد تقريباً من كل مليون، ويضيف أن هذا يعني في مدينة عدد سكانها مليونان أنه يُتوقع تطابق شخصين آخرين أيضاً، لذا فإن التطابق وحده لا يخص المتهم دون سواه.",
+  "This is the rarity figure stated correctly. The expert converts it into expected matches in the population instead of flipping it into a probability of innocence.":
+    "هذا هو رقم الندرة معروضاً على وجهه الصحيح. فقد حوّله الخبير إلى عدد متوقع من التطابقات بين السكان بدلاً من قلبه إلى احتمال براءة.",
+  "Patients are assigned at random to a drug or a placebo. The drug group has fewer strokes, and the difference holds within every age group. The researchers conclude the drug reduces strokes.":
+    "يوزَّع المرضى عشوائياً على دواء أو دواء وهمي. تسجل مجموعة الدواء سكتات دماغية أقل، ويصمد الفارق داخل كل فئة عمرية. يخلص الباحثون إلى أن الدواء يقلل السكتات الدماغية.",
+  "Randomisation balances the hidden differences, and the effect survives splitting by age. This reasoning is sound.":
+    "العشوائية توازن الفروق الخفية، والأثر يصمد عند التقسيم حسب العمر. هذا استدلال سليم.",
+  "A test with a 1% false-positive rate is used in a clinic where about 40% of those tested genuinely have the condition. A doctor tells a patient that a positive result makes the condition much more likely.":
+    "اختبار معدل إيجابياته الكاذبة 1% يُستخدم في عيادة يكون فيها نحو 40% ممن يخضعون للاختبار مصابين بالحالة فعلاً. يقول طبيب لمريض إن النتيجة الإيجابية تجعل الإصابة أرجح بكثير.",
+  "The base rate matters, and here it is high. With 40% prevalence a positive really is strong evidence, so applying the rare-disease lesson would be a mistake.":
+    "المعدل الأساسي مهم، وهو هنا مرتفع. فمع انتشار بنسبة 40% تكون النتيجة الإيجابية دليلاً قوياً فعلاً، لذا فإن تطبيق درس المرض النادر هنا سيكون خطأ.",
+  "A city compares road deaths before and after lowering a speed limit, adjusts for traffic volume, and checks the national trend over the same years. The local drop is larger than the national trend.":
+    "مدينة تقارن وفيات الطرق قبل خفض حد السرعة وبعده، وتصحّح لحجم حركة المرور، وتتحقق من الاتجاه الوطني خلال السنوات نفسها. الانخفاض المحلي أكبر من الاتجاه الوطني.",
+  "They accounted for the obvious confounders and for the background trend, which is what makes a before-and-after comparison credible.":
+    "لقد أخذوا في الحسبان العوامل المربِكة الواضحة والاتجاه العام في الخلفية، وهذا ما يجعل مقارنة ما قبل وما بعد جديرة بالثقة.",
+  "A trial reports outcomes for everyone who was enrolled, including those who stopped treatment early, and states how many dropped out and why.":
+    "تجربة سريرية تُبلغ عن نتائج كل من جرى تسجيلهم فيها، بمن فيهم من أوقفوا العلاج مبكراً، وتذكر عدد المنسحبين وأسباب انسحابهم.",
+  "Reporting the whole enrolled group, dropouts included, is exactly the defence against counting only the survivors.":
+    "الإبلاغ عن مجموعة المسجَّلين كاملة، بمن فيهم المنسحبون، هو بالضبط الحصانة ضد احتساب الناجين وحدهم.",
 };

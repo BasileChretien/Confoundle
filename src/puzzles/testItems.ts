@@ -112,7 +112,39 @@ const items: TestItem[] = [
     },
   },
 
+  // ---- Prosecutor's fallacy ----
+  {
+    id: "pf-dna",
+    scenario: {
+      en: "A database search turns up one man whose DNA matches a crime-scene sample. The lab reports that the profile occurs in about 1 person in a million. The prosecutor tells the jury there is therefore about a one in a million chance that he is innocent.",
+    },
+    trap: "prosecutors-fallacy",
+    explanation: {
+      en: "The 1 in a million is the chance of a match if he is innocent, not the chance he is innocent given a match. In a large pool other people match too, so the two numbers are nowhere near the same.",
+    },
+  },
+  {
+    id: "pf-fibres",
+    scenario: {
+      en: "Fibres on a suspect's coat match the victim's carpet. An expert says only about 1 coat in 5,000 would carry such fibres. Counsel concludes the suspect is 4,999 times more likely to be guilty than innocent.",
+    },
+    trap: "prosecutors-fallacy",
+    explanation: {
+      en: "A rarity figure describes the evidence, not the person. How many innocent people could have picked up those fibres depends on how many people were ever near that carpet.",
+    },
+  },
+
   // ---- Genuinely sound reasoning (decoys) ----
+  {
+    id: "ok-match-stated-well",
+    scenario: {
+      en: "An expert testifies that the DNA profile occurs in roughly 1 person in a million, and adds that in a city of two million this means about two other people would be expected to match as well, so the match alone does not single out the defendant.",
+    },
+    trap: null,
+    explanation: {
+      en: "This is the rarity figure stated correctly. The expert converts it into expected matches in the population instead of flipping it into a probability of innocence.",
+    },
+  },
   {
     id: "ok-rct",
     scenario: {

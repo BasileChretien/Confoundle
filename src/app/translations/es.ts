@@ -351,6 +351,55 @@ export const es: Record<string, string> = {
   "The court's appendix showed that on those same figures, with a pool of about 12 million couples, the chance that at least one other couple fitted the description was roughly 41 percent.":
     "El apéndice de la sentencia mostró que, con esas mismas cifras y un conjunto de unos 12 millones de parejas, la probabilidad de que al menos otra pareja encajara con la descripción era de aproximadamente el 41 por ciento.",
 
+  // ==== Fenómeno de Will Rogers (migración de estadios) ====
+  "Better survival in every single stage. Did anyone actually live longer?":
+    "Mejor supervivencia en todos y cada uno de los estadios. ¿Vivió alguien realmente más tiempo?",
+  "One group of 131 lung cancer patients, treated in 1977, sorted into stages twice. First using only the information older hospitals could gather, then again after new scans. Nobody was treated differently. Only the sorting changed.":
+    "Un mismo grupo de 131 pacientes con cáncer de pulmón, tratados en 1977, clasificados en estadios dos veces. Primero usando solo la información que podían reunir los hospitales de antes, y después de nuevo tras las nuevas pruebas de imagen. A nadie se le trató de forma distinta. Lo único que cambió fue la clasificación.",
+  "Did these patients actually do better?":
+    "¿Les fue realmente mejor a estos pacientes?",
+  "Six-month survival": "Supervivencia a seis meses",
+  "Sorted the old way": "Clasificados a la manera antigua",
+  "Old": "Antiguo",
+  "Sorted after the new scans":
+    "Clasificados tras las nuevas pruebas de imagen",
+  "New": "Nuevo",
+  "Stage I": "Estadio I",
+  "Stage II": "Estadio II",
+  "Stage III": "Estadio III",
+  "Yes, they did better": "Sí, les fue mejor",
+  "every stage improved": "todos los estadios mejoraron",
+  "There is no way to tell": "No hay manera de saberlo",
+  "too little to go on": "hay muy poco en lo que basarse",
+  "No, nothing changed": "No, no cambió nada",
+  "only the labels moved": "solo se movieron las etiquetas",
+  "Identical. Seventy two survivors either way.":
+    "Idéntico. Setenta y dos supervivientes en ambos casos.",
+  "The migration": "La migración",
+  "Patients moved between stages, and lifted both":
+    "Los pacientes cambiaron de estadio y elevaron los dos",
+  "The new scans spotted spread that the old workup had missed, so patients were moved out of better stages into worse ones. Each of them was among the sickest in the stage they left, so that stage's average rose. Each was also among the healthiest in the stage they joined, so that average rose too. Every stage improved and not one person's outcome changed:":
+    "Las nuevas pruebas de imagen detectaron una extensión de la enfermedad que el estudio antiguo había pasado por alto, así que algunos pacientes salieron de estadios mejores para pasar a otros peores. Cada uno de ellos estaba entre los más graves del estadio que dejaba, así que la media de ese estadio subió. Y cada uno estaba también entre los menos graves del estadio al que llegaba, así que esa media subió también. Todos los estadios mejoraron y no cambió el desenlace de ni una sola persona:",
+  "The Will Rogers phenomenon": "El fenómeno de Will Rogers",
+  "Move members from one group into another and you can lift the average of every group at once, while the overall picture stays exactly the same.":
+    "Traslada miembros de un grupo a otro y puedes elevar la media de todos los grupos a la vez, mientras el panorama general se mantiene exactamente igual.",
+  "Whenever a category's average improves, ask whether the category still holds the same kind of members. Better detection quietly reshuffles who counts as mild and who counts as severe, and a reshuffle on its own can make every column look better.":
+    "Siempre que mejore la media de una categoría, pregúntate si esa categoría sigue conteniendo el mismo tipo de miembros. Una mejor detección redistribuye calladamente quién cuenta como leve y quién como grave, y una redistribución por sí sola puede hacer que todas las columnas parezcan mejores.",
+  "Picture two buckets, one of good outcomes and one of bad. Take the worst items out of the good bucket and drop them into the bad one, where they are the best of a bad lot. The good bucket's average rises because its weakest members left. The bad bucket's average rises because it gained members better than its own. Both averages improve and nothing about any individual has changed. In medicine the reshuffling is done by better scans, which find disease that was always there but previously invisible. That is why survival by stage can improve across the board in a period when the treatments themselves did not get better, and it is why comparing stages across eras of different technology is treacherous.":
+    "Imagina dos cubos, uno de buenos resultados y otro de malos. Saca los peores elementos del cubo bueno y échalos en el malo, donde pasan a ser los mejores de un mal lote. La media del cubo bueno sube porque se han ido sus miembros más débiles. La media del cubo malo sube porque ha ganado miembros mejores que los suyos. Las dos medias mejoran y nada ha cambiado en ningún individuo. En medicina, la redistribución la hacen unas pruebas de imagen mejores, que encuentran enfermedad que siempre estuvo ahí pero antes era invisible. Por eso la supervivencia por estadios puede mejorar en todos los frentes en una época en la que los tratamientos en sí no mejoraron, y por eso comparar estadios entre épocas con tecnologías distintas resulta traicionero.",
+  "The check that gave it away": "La comprobación que lo delató",
+  "The same researchers sorted both eras of patients by their symptoms instead, a yardstick no scanner can shift. Judged that way the two groups survived at much the same rate, around 77 and 78 percent for those without symptoms, and 26 against 22 percent for the sickest. What had really changed was the mix, because the newer group held twice the proportion of the mildest patients.":
+    "Los mismos investigadores clasificaron a los pacientes de ambas épocas según sus síntomas, un criterio que ningún escáner puede alterar. Juzgados así, los dos grupos sobrevivieron a tasas muy parecidas, en torno al 77 y al 78 por ciento entre quienes no tenían síntomas, y del 26 frente al 22 por ciento entre los más graves. Lo que había cambiado de verdad era la composición, porque el grupo más reciente contenía el doble de proporción de pacientes leves.",
+  "It happened again with PET": "Volvió a ocurrir con la PET",
+  "As PET scanning spread through American hospitals, lung cancer patients were reclassified all over again. The share labelled most advanced grew, and survival within the stages duly ticked up, two year survival moving from 18 to 22 percent in one stage and 6 to 8 percent in another. The authors called their paper the phenomenon revisited.":
+    "A medida que la PET se extendía por los hospitales estadounidenses, los pacientes con cáncer de pulmón volvieron a reclasificarse. La proporción etiquetada como más avanzada creció, y la supervivencia dentro de los estadios subió como era de esperar: la supervivencia a dos años pasó del 18 al 22 por ciento en un estadio y del 6 al 8 por ciento en otro. Los autores titularon su artículo el fenómeno revisitado.",
+  "The Will Rogers phenomenon, a reasoning trap.":
+    "El fenómeno de Will Rogers, una trampa de razonamiento.",
+  "Take the worst members of a good group and move them into a bad group. The good group's average rises, because its weakest ones left. The bad group's average rises too, because the newcomers are better than what it already had. Every group improves and nothing real has happened. It is how sharper scans can make survival look better in every stage of a disease while exactly as many people live and die.":
+    "Coge a los peores miembros de un grupo bueno y pásalos a un grupo malo. La media del grupo bueno sube, porque se han ido los más flojos. La media del grupo malo sube también, porque los recién llegados son mejores que los que ya tenía. Todos los grupos mejoran y no ha ocurrido nada real. Así es como unas pruebas de imagen más finas pueden hacer que la supervivencia parezca mejor en todos los estadios de una enfermedad mientras vive y muere exactamente la misma gente.",
+  "The counts are Table 4: the 1977 cohort of 131 patients staged twice, once on the data the older cohort had and once with the new imaging. Both stagings give 72 survivors, a six-month survival of 55 percent.":
+    "Los recuentos son los de la tabla 4: la cohorte de 1977 de 131 pacientes clasificada en estadios dos veces, una con los datos de que disponía la cohorte anterior y otra con las nuevas pruebas de imagen. Las dos clasificaciones dan 72 supervivientes, una supervivencia a seis meses del 55 por ciento.",
+
   // ==== Caza de trampas: escenarios y explicaciones ====
   "Two schools publish exam results. School B has the higher pass rate overall, 75% against 70%. When results are split by student background, School A comes out ahead in every single group. The district praises School B.":
     "Dos colegios publican sus resultados de los exámenes. El colegio B tiene la tasa de aprobados más alta en total, un 75 % frente a un 70 %. Cuando los resultados se desglosan por origen social del alumnado, el colegio A queda por delante en todos y cada uno de los grupos. El distrito elogia al colegio B.",
@@ -412,4 +461,16 @@ export const es: Record<string, string> = {
     "Un ensayo informa de los resultados de todas las personas que fueron incluidas, incluidas las que interrumpieron el tratamiento antes de tiempo, e indica cuántas lo abandonaron y por qué.",
   "Reporting the whole enrolled group, dropouts included, is exactly the defence against counting only the survivors.":
     "Informar de todo el grupo incluido, con los abandonos dentro, es justamente lo que protege frente a contar solo a los supervivientes.",
+  "A hospital installs a more sensitive scanner. Over the next two years it reports that survival improved in every severity grade of the disease, from the mildest to the most advanced, and concludes that its care has got better.":
+    "Un hospital instala un escáner más sensible. En los dos años siguientes informa de que la supervivencia mejoró en todos los grados de gravedad de la enfermedad, desde el más leve hasta el más avanzado, y concluye que su atención ha mejorado.",
+  "A sharper scanner regrades patients. Those moved out of a mild grade were its sickest, and they arrive in a severe grade as its healthiest, so both averages rise without anyone doing better.":
+    "Un escáner más fino reclasifica a los pacientes. Los que salen de un grado leve eran los más graves de ese grado, y llegan a un grado severo como los que mejor están de él, así que las dos medias suben sin que a nadie le vaya mejor.",
+  "A school adopts a placement test that is much better at identifying struggling pupils, and uses it to sort them into a top and a bottom stream. The next year, average results rise in both streams. The head teacher credits the new teaching methods.":
+    "Un colegio adopta una prueba de nivel que identifica mucho mejor a los alumnos con dificultades y la usa para repartirlos entre un grupo avanzado y otro de refuerzo. Al año siguiente, los resultados medios suben en los dos grupos. El director lo atribuye a los nuevos métodos de enseñanza.",
+  "The pupils reclassified out of the top stream were its weakest and become the strongest of the bottom stream, so both averages climb on reshuffling alone.":
+    "Los alumnos que la reclasificación sacó del grupo avanzado eran los más flojos de ese grupo y pasan a ser los más fuertes del grupo de refuerzo, así que las dos medias suben solo por la redistribución.",
+  "A hospital reports that survival improved in every severity grade over five years. It also reports that the grading criteria did not change in that time, that no new diagnostic test was introduced, and that the number of patients in each grade stayed about the same.":
+    "Un hospital informa de que la supervivencia mejoró en todos los grados de gravedad a lo largo de cinco años. Informa además de que los criterios de clasificación no cambiaron en ese tiempo, de que no se introdujo ninguna prueba diagnóstica nueva y de que el número de pacientes de cada grado se mantuvo más o menos igual.",
+  "This is the case where the improvement is real. Nothing reclassified the patients, and the grades held the same share of people, so no reshuffling could have manufactured the gain.":
+    "Este es el caso en el que la mejora es real. Nada reclasificó a los pacientes, y los grados mantuvieron la misma proporción de personas, así que ninguna redistribución pudo fabricar esa ganancia.",
 };

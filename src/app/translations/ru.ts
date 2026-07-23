@@ -413,4 +413,66 @@ export const ru: Record<string, string> = {
     "Исследование сообщает исходы для всех включённых участников, в том числе для тех, кто прекратил лечение досрочно, и указывает, сколько человек выбыло и почему.",
   "Reporting the whole enrolled group, dropouts included, is exactly the defence against counting only the survivors.":
     "Отчёт по всей включённой группе, вместе с выбывшими, это и есть защита от подсчёта одних лишь выживших.",
+
+  // ==== Will Rogers phenomenon (stage migration) ====
+  "Better survival in every single stage. Did anyone actually live longer?":
+    "Выживаемость выше в каждой без исключения стадии. Но прожил ли кто-нибудь дольше?",
+  "One group of 131 lung cancer patients, treated in 1977, sorted into stages twice. First using only the information older hospitals could gather, then again after new scans. Nobody was treated differently. Only the sorting changed.":
+    "Одна группа из 131 пациента с раком лёгкого, лечившихся в 1977 году, была разнесена по стадиям дважды. Сначала только по тем сведениям, которые могли собрать больницы прежних лет, затем заново, после новых снимков. Никого не лечили иначе. Изменилось только распределение по стадиям.",
+  "Did these patients actually do better?":
+    "Действительно ли у этих пациентов дела пошли лучше?",
+  "Six-month survival": "Шестимесячная выживаемость",
+  "Sorted the old way": "Разнесены по стадиям по-старому",
+  Old: "По-старому",
+  "Sorted after the new scans": "Разнесены по стадиям после новых снимков",
+  New: "По-новому",
+  "Stage I": "Стадия I",
+  "Stage II": "Стадия II",
+  "Stage III": "Стадия III",
+  "Yes, they did better": "Да, у них дела пошли лучше",
+  "every stage improved": "улучшение в каждой стадии",
+  "There is no way to tell": "Понять невозможно",
+  "too little to go on": "слишком мало данных",
+  "No, nothing changed": "Нет, ничего не изменилось",
+  "only the labels moved": "сдвинулись только ярлыки",
+  "Identical. Seventy two survivors either way.":
+    "Одинаково. Семьдесят два выживших и так, и так.",
+  "The migration": "Миграция",
+  "Patients moved between stages, and lifted both":
+    "Пациенты перешли между стадиями и подняли обе",
+  "The new scans spotted spread that the old workup had missed, so patients were moved out of better stages into worse ones. Each of them was among the sickest in the stage they left, so that stage's average rose. Each was also among the healthiest in the stage they joined, so that average rose too. Every stage improved and not one person's outcome changed:":
+    "Новые снимки выявили распространение опухоли, которое прежнее обследование пропускало, поэтому пациентов переводили из более благоприятных стадий в менее благоприятные. Каждый из них был среди самых тяжёлых в той стадии, которую покидал, поэтому средний показатель этой стадии вырос. Каждый был также среди самых благополучных в той стадии, куда он попадал, поэтому и там средний показатель вырос. Улучшилась каждая стадия, и при этом ни у одного человека исход не изменился:",
+  "The Will Rogers phenomenon": "Феномен Уилла Роджерса",
+  "Move members from one group into another and you can lift the average of every group at once, while the overall picture stays exactly the same.":
+    "Переведите часть участников из одной группы в другую, и вы можете поднять средний показатель сразу всех групп, тогда как общая картина останется в точности прежней.",
+  "Whenever a category's average improves, ask whether the category still holds the same kind of members. Better detection quietly reshuffles who counts as mild and who counts as severe, and a reshuffle on its own can make every column look better.":
+    "Всякий раз, когда средний показатель категории улучшается, спросите, те же ли люди в ней остались. Более чувствительная диагностика незаметно перетасовывает, кто считается лёгким случаем, а кто тяжёлым, и одна лишь перетасовка способна сделать красивее каждый столбец.",
+  "Picture two buckets, one of good outcomes and one of bad. Take the worst items out of the good bucket and drop them into the bad one, where they are the best of a bad lot. The good bucket's average rises because its weakest members left. The bad bucket's average rises because it gained members better than its own. Both averages improve and nothing about any individual has changed. In medicine the reshuffling is done by better scans, which find disease that was always there but previously invisible. That is why survival by stage can improve across the board in a period when the treatments themselves did not get better, and it is why comparing stages across eras of different technology is treacherous.":
+    "Представьте два ведра, одно с хорошими исходами, другое с плохими. Возьмите худшее из хорошего ведра и переложите в плохое, где оно окажется лучшим из плохого. Средний показатель хорошего ведра вырастет, потому что из него ушли самые слабые. Средний показатель плохого ведра вырастет, потому что в нём прибавились те, кто лучше его собственных. Оба средних улучшились, и при этом ни с кем в отдельности ничего не произошло. В медицине такую перетасовку выполняют более чувствительные снимки, которые находят болезнь, всегда там бывшую, но прежде невидимую. Вот почему выживаемость по стадиям может расти повсеместно в тот период, когда сами методы лечения лучше не стали, и вот почему сравнивать стадии между эпохами с разной техникой опасно.",
+  "The check that gave it away": "Проверка, которая всё выдала",
+  "The same researchers sorted both eras of patients by their symptoms instead, a yardstick no scanner can shift. Judged that way the two groups survived at much the same rate, around 77 and 78 percent for those without symptoms, and 26 against 22 percent for the sickest. What had really changed was the mix, because the newer group held twice the proportion of the mildest patients.":
+    "Те же исследователи разнесли пациентов обеих эпох иначе, по симптомам, то есть по мерке, которую не сдвинет ни один томограф. При таком подходе обе группы выживали примерно одинаково: около 77 и 78 процентов у тех, кто был без симптомов, и 26 против 22 процентов у самых тяжёлых. По-настоящему изменился состав: в более поздней группе доля самых лёгких пациентов была вдвое выше.",
+  "It happened again with PET": "То же самое повторилось с ПЭТ",
+  "As PET scanning spread through American hospitals, lung cancer patients were reclassified all over again. The share labelled most advanced grew, and survival within the stages duly ticked up, two year survival moving from 18 to 22 percent in one stage and 6 to 8 percent in another. The authors called their paper the phenomenon revisited.":
+    "По мере того как ПЭТ распространялась по американским больницам, пациентов с раком лёгкого переклассифицировали заново. Доля тех, кому ставили самую запущенную стадию, выросла, и выживаемость внутри стадий закономерно подросла: двухлетняя выживаемость поднялась с 18 до 22 процентов в одной стадии и с 6 до 8 процентов в другой. Свою статью авторы назвали возвращением к этому феномену.",
+  "The Will Rogers phenomenon, a reasoning trap.":
+    "Феномен Уилла Роджерса, ловушка мышления.",
+  "Take the worst members of a good group and move them into a bad group. The good group's average rises, because its weakest ones left. The bad group's average rises too, because the newcomers are better than what it already had. Every group improves and nothing real has happened. It is how sharper scans can make survival look better in every stage of a disease while exactly as many people live and die.":
+    "Возьмите худших из хорошей группы и переведите их в плохую. Средний показатель хорошей группы вырастет, потому что из неё ушли самые слабые. Средний показатель плохой группы тоже вырастет, потому что новички лучше тех, кто в ней уже был. Улучшается каждая группа, а на деле не произошло ничего. Именно так более чувствительные снимки могут сделать выживаемость лучше на каждой стадии болезни, тогда как живут и умирают ровно столько же людей.",
+  "The counts are Table 4: the 1977 cohort of 131 patients staged twice, once on the data the older cohort had and once with the new imaging. Both stagings give 72 survivors, a six-month survival of 55 percent.":
+    "Числа взяты из таблицы 4: когорта 1977 года из 131 пациента, распределённая по стадиям дважды, один раз по тем данным, что были у более ранней когорты, и один раз с новой визуализацией. Оба распределения дают 72 выживших, то есть шестимесячную выживаемость 55 процентов.",
+
+  // ==== Trap Hunt items (Will Rogers, plus a sound decoy) ====
+  "A hospital installs a more sensitive scanner. Over the next two years it reports that survival improved in every severity grade of the disease, from the mildest to the most advanced, and concludes that its care has got better.":
+    "Больница устанавливает более чувствительный томограф. В следующие два года она сообщает, что выживаемость выросла в каждой степени тяжести болезни, от самой лёгкой до самой запущенной, и делает вывод, что её помощь стала лучше.",
+  "A sharper scanner regrades patients. Those moved out of a mild grade were its sickest, and they arrive in a severe grade as its healthiest, so both averages rise without anyone doing better.":
+    "Более чувствительный томограф переводит пациентов в другие степени тяжести. Те, кого вывели из лёгкой степени, были в ней самыми тяжёлыми, а в тяжёлую степень они приходят как самые благополучные, поэтому оба средних показателя растут, хотя ни у кого дела не пошли лучше.",
+  "A school adopts a placement test that is much better at identifying struggling pupils, and uses it to sort them into a top and a bottom stream. The next year, average results rise in both streams. The head teacher credits the new teaching methods.":
+    "Школа вводит распределительный тест, который гораздо лучше выявляет отстающих учеников, и по нему делит их на сильный и слабый потоки. На следующий год средние результаты растут в обоих потоках. Директор ставит это в заслугу новым методам преподавания.",
+  "The pupils reclassified out of the top stream were its weakest and become the strongest of the bottom stream, so both averages climb on reshuffling alone.":
+    "Ученики, переведённые из сильного потока, были в нём самыми слабыми, а в слабом потоке становятся самыми сильными, поэтому оба средних показателя растут от одной лишь перетасовки.",
+  "A hospital reports that survival improved in every severity grade over five years. It also reports that the grading criteria did not change in that time, that no new diagnostic test was introduced, and that the number of patients in each grade stayed about the same.":
+    "Больница сообщает, что за пять лет выживаемость выросла в каждой степени тяжести. Она также сообщает, что критерии определения тяжести за это время не менялись, что новых диагностических тестов не вводили и что число пациентов в каждой степени осталось примерно прежним.",
+  "This is the case where the improvement is real. Nothing reclassified the patients, and the grades held the same share of people, so no reshuffling could have manufactured the gain.":
+    "Это тот случай, когда улучшение настоящее. Пациентов ничто не переклассифицировало, и в степенях тяжести осталась та же доля людей, так что никакая перетасовка не могла создать этот прирост.",
 };

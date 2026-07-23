@@ -351,6 +351,54 @@ export const hi: Record<string, string> = {
   "The court's appendix showed that on those same figures, with a pool of about 12 million couples, the chance that at least one other couple fitted the description was roughly 41 percent.":
     "अदालत के परिशिष्ट ने दिखाया कि उन्हीं आँकड़ों पर, करीब 1.2 करोड़ जोड़ों के पूल के साथ, कम से कम एक और जोड़े के उस हुलिये से मेल खाने की संभावना करीब 41 प्रतिशत थी।",
 
+  // ==== Will Rogers phenomenon (stage migration) ====
+  "Better survival in every single stage. Did anyone actually live longer?":
+    "हर एक चरण में बेहतर उत्तरजीविता। पर क्या सचमुच कोई ज़्यादा जिया?",
+  "One group of 131 lung cancer patients, treated in 1977, sorted into stages twice. First using only the information older hospitals could gather, then again after new scans. Nobody was treated differently. Only the sorting changed.":
+    "फेफड़ों के कैंसर के 131 मरीज़ों का एक ही समूह, जिनका इलाज 1977 में हुआ, दो बार चरणों में बाँटा गया। पहली बार केवल उस जानकारी से जो पुराने अस्पताल जुटा सकते थे, फिर दोबारा नई स्कैन जाँचों के बाद। किसी का इलाज अलग तरह से नहीं किया गया। बदला सिर्फ़ बँटवारा।",
+  "Did these patients actually do better?":
+    "क्या इन मरीज़ों का नतीजा सचमुच बेहतर रहा?",
+  "Six-month survival": "छह महीने की उत्तरजीविता",
+  "Sorted the old way": "पुराने तरीके से बाँटा गया",
+  Old: "पुराना",
+  "Sorted after the new scans": "नई स्कैन जाँचों के बाद बाँटा गया",
+  New: "नया",
+  "Stage I": "चरण I",
+  "Stage II": "चरण II",
+  "Stage III": "चरण III",
+  "Yes, they did better": "हाँ, उनका नतीजा बेहतर रहा",
+  "every stage improved": "हर चरण में सुधार हुआ",
+  "There is no way to tell": "यह बताना नामुमकिन है",
+  "too little to go on": "फैसले के लिए बहुत कम जानकारी",
+  "No, nothing changed": "नहीं, कुछ नहीं बदला",
+  "only the labels moved": "सिर्फ़ लेबल इधर उधर हुए",
+  "Identical. Seventy two survivors either way.":
+    "बिल्कुल एक जैसा। दोनों ही तरह से बहत्तर लोग बचे।",
+  "The migration": "मरीज़ों का स्थानांतरण",
+  "Patients moved between stages, and lifted both":
+    "मरीज़ चरणों के बीच खिसके, और दोनों का औसत ऊपर उठा गए",
+  "The new scans spotted spread that the old workup had missed, so patients were moved out of better stages into worse ones. Each of them was among the sickest in the stage they left, so that stage's average rose. Each was also among the healthiest in the stage they joined, so that average rose too. Every stage improved and not one person's outcome changed:":
+    "नई स्कैन जाँचों ने कैंसर का वह फैलाव पकड़ लिया जो पुरानी जाँच से छूट गया था, इसलिए मरीज़ों को बेहतर चरणों से निकालकर बदतर चरणों में डाल दिया गया। उनमें से हर एक उस चरण के सबसे बीमार लोगों में था जिसे उसने छोड़ा, इसलिए उस चरण का औसत ऊपर उठ गया। वही हर एक उस चरण के सबसे स्वस्थ लोगों में भी था जिसमें वह पहुँचा, इसलिए उसका औसत भी ऊपर उठ गया। हर चरण में सुधार दिखा और किसी एक व्यक्ति का नतीजा नहीं बदला:",
+  "The Will Rogers phenomenon": "विल रोजर्स परिघटना",
+  "Move members from one group into another and you can lift the average of every group at once, while the overall picture stays exactly the same.":
+    "सदस्यों को एक समूह से दूसरे में खिसका दीजिए और आप एक साथ हर समूह का औसत ऊपर उठा सकते हैं, जबकि कुल तस्वीर बिल्कुल वैसी की वैसी रहती है।",
+  "Whenever a category's average improves, ask whether the category still holds the same kind of members. Better detection quietly reshuffles who counts as mild and who counts as severe, and a reshuffle on its own can make every column look better.":
+    "जब भी किसी श्रेणी का औसत सुधरे, पूछिए कि क्या उस श्रेणी में अब भी उसी तरह के सदस्य हैं। बेहतर पहचान चुपचाप यह फेरबदल कर देती है कि कौन हल्का माना जाए और कौन गंभीर, और अकेला यह फेरबदल ही हर खाने को बेहतर दिखा सकता है।",
+  "Picture two buckets, one of good outcomes and one of bad. Take the worst items out of the good bucket and drop them into the bad one, where they are the best of a bad lot. The good bucket's average rises because its weakest members left. The bad bucket's average rises because it gained members better than its own. Both averages improve and nothing about any individual has changed. In medicine the reshuffling is done by better scans, which find disease that was always there but previously invisible. That is why survival by stage can improve across the board in a period when the treatments themselves did not get better, and it is why comparing stages across eras of different technology is treacherous.":
+    "दो बाल्टियों की कल्पना कीजिए, एक अच्छे नतीजों की और एक बुरे नतीजों की। अच्छी बाल्टी में से सबसे खराब चीज़ें निकालकर बुरी बाल्टी में डाल दीजिए, जहाँ वे बुरों में सबसे अच्छी हैं। अच्छी बाल्टी का औसत इसलिए बढ़ता है क्योंकि उसके सबसे कमज़ोर सदस्य निकल गए। बुरी बाल्टी का औसत इसलिए बढ़ता है क्योंकि उसे अपने मौजूदा सदस्यों से बेहतर सदस्य मिल गए। दोनों औसत सुधर जाते हैं और किसी भी व्यक्ति के बारे में कुछ नहीं बदला। चिकित्सा में यह फेरबदल बेहतर स्कैन जाँचें करती हैं, जो उस बीमारी को खोज लेती हैं जो हमेशा से मौजूद थी पर पहले दिखती नहीं थी। यही वजह है कि जिस दौर में इलाज खुद बेहतर नहीं हुए, उसमें भी चरण दर चरण उत्तरजीविता हर जगह सुधरती दिख सकती है, और यही वजह है कि अलग अलग तकनीक के दौरों के चरणों की आपस में तुलना करना खतरनाक है।",
+  "The check that gave it away": "वह जाँच जिसने भेद खोल दिया",
+  "The same researchers sorted both eras of patients by their symptoms instead, a yardstick no scanner can shift. Judged that way the two groups survived at much the same rate, around 77 and 78 percent for those without symptoms, and 26 against 22 percent for the sickest. What had really changed was the mix, because the newer group held twice the proportion of the mildest patients.":
+    "उन्हीं शोधकर्ताओं ने दोनों दौर के मरीज़ों को इसके बजाय उनके लक्षणों के हिसाब से बाँटा, एक ऐसा पैमाना जिसे कोई स्कैनर हिला नहीं सकता। इस तरह आँकने पर दोनों समूहों की उत्तरजीविता लगभग एक जैसी थी, बिना लक्षण वालों के लिए करीब 77 और 78 प्रतिशत, और सबसे बीमार लोगों के लिए 26 बनाम 22 प्रतिशत। असल में जो बदला था वह था मिश्रण, क्योंकि नए समूह में सबसे हल्के मरीज़ों का अनुपात दोगुना था।",
+  "It happened again with PET": "यही सब PET के साथ फिर हुआ",
+  "As PET scanning spread through American hospitals, lung cancer patients were reclassified all over again. The share labelled most advanced grew, and survival within the stages duly ticked up, two year survival moving from 18 to 22 percent in one stage and 6 to 8 percent in another. The authors called their paper the phenomenon revisited.":
+    "जैसे जैसे PET स्कैन अमेरिकी अस्पतालों में फैला, फेफड़ों के कैंसर के मरीज़ों को एक बार फिर नए सिरे से वर्गीकृत किया गया। सबसे उन्नत अवस्था वाले मरीज़ों का हिस्सा बढ़ा, और चरणों के भीतर उत्तरजीविता उसी हिसाब से ऊपर खिसक गई: एक चरण में दो साल की उत्तरजीविता 18 से 22 प्रतिशत हुई और दूसरे में 6 से 8 प्रतिशत। लेखकों ने अपने शोधपत्र का नाम रखा, वही परिघटना दोबारा।",
+  "The Will Rogers phenomenon, a reasoning trap.":
+    "विल रोजर्स परिघटना, तर्क का एक जाल।",
+  "Take the worst members of a good group and move them into a bad group. The good group's average rises, because its weakest ones left. The bad group's average rises too, because the newcomers are better than what it already had. Every group improves and nothing real has happened. It is how sharper scans can make survival look better in every stage of a disease while exactly as many people live and die.":
+    "किसी अच्छे समूह के सबसे खराब सदस्यों को उठाकर एक बुरे समूह में डाल दीजिए। अच्छे समूह का औसत बढ़ जाता है, क्योंकि उसके सबसे कमज़ोर लोग निकल गए। बुरे समूह का औसत भी बढ़ जाता है, क्योंकि नए आने वाले उसके पहले से मौजूद लोगों से बेहतर हैं। हर समूह सुधर जाता है और असल में कुछ भी नहीं हुआ। इसी तरह पैनी स्कैन जाँचें किसी बीमारी के हर चरण में उत्तरजीविता को बेहतर दिखा सकती हैं, जबकि ठीक उतने ही लोग जीते और मरते हैं।",
+  "The counts are Table 4: the 1977 cohort of 131 patients staged twice, once on the data the older cohort had and once with the new imaging. Both stagings give 72 survivors, a six-month survival of 55 percent.":
+    "ये आँकड़े तालिका 4 के हैं: 1977 के 131 मरीज़ों के समूह को दो बार चरणों में बाँटा गया, एक बार उन्हीं आँकड़ों पर जो पुराने समूह के पास थे और एक बार नई इमेजिंग के साथ। दोनों बँटवारों में 72 मरीज़ बचते हैं, यानी छह महीने की 55 प्रतिशत उत्तरजीविता।",
+
   // ==== Trap Hunt items (scenarios + explanations) ====
   "Two schools publish exam results. School B has the higher pass rate overall, 75% against 70%. When results are split by student background, School A comes out ahead in every single group. The district praises School B.":
     "दो स्कूल परीक्षा परिणाम प्रकाशित करते हैं। कुल मिलाकर स्कूल B की उत्तीर्ण दर ज़्यादा है, 75% बनाम 70%। जब परिणामों को छात्रों की पृष्ठभूमि के हिसाब से बाँटा जाता है, तो हर एक समूह में स्कूल A आगे निकलता है। ज़िला प्रशासन स्कूल B की तारीफ़ करता है।",
@@ -412,4 +460,16 @@ export const hi: Record<string, string> = {
     "एक परीक्षण उन सभी के नतीजे बताता है जिन्हें उसमें शामिल किया गया था, उन लोगों समेत जिन्होंने इलाज बीच में ही रोक दिया, और यह भी बताता है कि कितने लोग बीच में छोड़ गए और क्यों।",
   "Reporting the whole enrolled group, dropouts included, is exactly the defence against counting only the survivors.":
     "पूरे शामिल किए गए समूह के नतीजे बताना, बीच में छोड़ने वालों समेत, ठीक वही बचाव है जो केवल बचे हुओं को गिनने के खिलाफ़ काम करता है।",
+  "A hospital installs a more sensitive scanner. Over the next two years it reports that survival improved in every severity grade of the disease, from the mildest to the most advanced, and concludes that its care has got better.":
+    "एक अस्पताल ज़्यादा संवेदनशील स्कैनर लगवाता है। अगले दो साल में वह बताता है कि बीमारी के हर गंभीरता स्तर में, सबसे हल्के से लेकर सबसे उन्नत तक, उत्तरजीविता सुधरी है, और निष्कर्ष निकालता है कि उसकी देखभाल बेहतर हो गई है।",
+  "A sharper scanner regrades patients. Those moved out of a mild grade were its sickest, and they arrive in a severe grade as its healthiest, so both averages rise without anyone doing better.":
+    "पैना स्कैनर मरीज़ों का दर्जा दोबारा तय कर देता है। जो हल्के स्तर से बाहर निकाले गए वे उसके सबसे बीमार मरीज़ थे, और गंभीर स्तर में वे उसके सबसे स्वस्थ मरीज़ बनकर पहुँचते हैं, इसलिए किसी का नतीजा बेहतर हुए बिना ही दोनों औसत बढ़ जाते हैं।",
+  "A school adopts a placement test that is much better at identifying struggling pupils, and uses it to sort them into a top and a bottom stream. The next year, average results rise in both streams. The head teacher credits the new teaching methods.":
+    "एक स्कूल ऐसा वर्गीकरण परीक्षण अपनाता है जो कमज़ोर विद्यार्थियों को पहचानने में कहीं बेहतर है, और उसी से उन्हें ऊपरी और निचली धारा में बाँटता है। अगले साल दोनों धाराओं में औसत परिणाम बढ़ जाते हैं। प्रधानाध्यापक इसका श्रेय नई शिक्षण पद्धतियों को देते हैं।",
+  "The pupils reclassified out of the top stream were its weakest and become the strongest of the bottom stream, so both averages climb on reshuffling alone.":
+    "जिन विद्यार्थियों को ऊपरी धारा से निकालकर दोबारा वर्गीकृत किया गया वे उसके सबसे कमज़ोर थे और निचली धारा के सबसे मज़बूत बन जाते हैं, इसलिए केवल फेरबदल से ही दोनों औसत चढ़ जाते हैं।",
+  "A hospital reports that survival improved in every severity grade over five years. It also reports that the grading criteria did not change in that time, that no new diagnostic test was introduced, and that the number of patients in each grade stayed about the same.":
+    "एक अस्पताल बताता है कि पाँच साल में हर गंभीरता स्तर में उत्तरजीविता सुधरी है। वह यह भी बताता है कि इस दौरान स्तर तय करने के मानदंड नहीं बदले, कोई नई नैदानिक जाँच शुरू नहीं की गई, और हर स्तर में मरीज़ों की संख्या लगभग वही रही।",
+  "This is the case where the improvement is real. Nothing reclassified the patients, and the grades held the same share of people, so no reshuffling could have manufactured the gain.":
+    "यह वह मामला है जहाँ सुधार असली है। किसी चीज़ ने मरीज़ों का वर्गीकरण नहीं बदला, और हर स्तर में लोगों का हिस्सा वही रहा, इसलिए कोई फेरबदल इस बढ़त को गढ़ नहीं सकता था।",
 };

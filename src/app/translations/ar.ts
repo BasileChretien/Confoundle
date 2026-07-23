@@ -354,6 +354,55 @@ export const ar: Record<string, string> = {
   "The court's appendix showed that on those same figures, with a pool of about 12 million couples, the chance that at least one other couple fitted the description was roughly 41 percent.":
     "أظهر ملحق حكم المحكمة أنه بالأرقام نفسها، ومع مجموعة قوامها نحو 12 مليون ثنائي، كان احتمال أن تنطبق الأوصاف على ثنائي آخر واحد على الأقل نحو 41 بالمئة.",
 
+  // ==== Will Rogers phenomenon (stage migration) ====
+  "Better survival in every single stage. Did anyone actually live longer?":
+    "بقاء أفضل على قيد الحياة في كل مرحلة على حدة. فهل عاش أحد فعلاً مدة أطول؟",
+  "One group of 131 lung cancer patients, treated in 1977, sorted into stages twice. First using only the information older hospitals could gather, then again after new scans. Nobody was treated differently. Only the sorting changed.":
+    "مجموعة واحدة من 131 مريضاً بسرطان الرئة، عولجوا عام 1977، صُنِّفوا إلى مراحل مرتين. أولاً باستخدام المعلومات التي كان بوسع المستشفيات الأقدم جمعها وحدها، ثم مرة أخرى بعد تصوير جديد. لم يُعالَج أحد بطريقة مختلفة. التصنيف وحده هو ما تغيّر.",
+  "Did these patients actually do better?":
+    "هل كانت حال هؤلاء المرضى أفضل فعلاً؟",
+  "Six-month survival": "البقاء على قيد الحياة بعد ستة أشهر",
+  "Sorted the old way": "مصنَّفون بالطريقة القديمة",
+  Old: "القديمة",
+  "Sorted after the new scans": "مصنَّفون بعد التصوير الجديد",
+  New: "الجديدة",
+  "Stage I": "المرحلة الأولى",
+  "Stage II": "المرحلة الثانية",
+  "Stage III": "المرحلة الثالثة",
+  "Yes, they did better": "نعم، كانت حالهم أفضل",
+  "every stage improved": "تحسّنت كل مرحلة",
+  "There is no way to tell": "لا سبيل إلى معرفة ذلك",
+  "too little to go on": "معطيات أقل من أن يُبنى عليها",
+  "No, nothing changed": "لا، لم يتغير شيء",
+  "only the labels moved": "التسميات وحدها هي التي تحركت",
+  "Identical. Seventy two survivors either way.":
+    "متطابقان. اثنان وسبعون ناجياً في الحالتين.",
+  "The migration": "الهجرة بين المراحل",
+  "Patients moved between stages, and lifted both":
+    "انتقل مرضى بين المراحل، فرفعوا متوسط الاثنتين",
+  "The new scans spotted spread that the old workup had missed, so patients were moved out of better stages into worse ones. Each of them was among the sickest in the stage they left, so that stage's average rose. Each was also among the healthiest in the stage they joined, so that average rose too. Every stage improved and not one person's outcome changed:":
+    "كشف التصوير الجديد انتشاراً للمرض كانت الفحوص القديمة قد أغفلته، فنُقل مرضى من مراحل أفضل إلى مراحل أسوأ. وكان كل منهم من بين الأشد مرضاً في المرحلة التي غادرها، فارتفع متوسط تلك المرحلة. وكان كل منهم أيضاً من بين الأوفر صحة في المرحلة التي انضم إليها، فارتفع ذلك المتوسط أيضاً. تحسّنت كل مرحلة ولم تتغير نتيجة أي شخص واحد:",
+  "The Will Rogers phenomenon": "ظاهرة ويل روجرز",
+  "Move members from one group into another and you can lift the average of every group at once, while the overall picture stays exactly the same.":
+    "انقل أفراداً من مجموعة إلى أخرى، فيمكنك أن ترفع متوسط كل مجموعة في آن واحد، بينما تبقى الصورة الإجمالية كما هي تماماً.",
+  "Whenever a category's average improves, ask whether the category still holds the same kind of members. Better detection quietly reshuffles who counts as mild and who counts as severe, and a reshuffle on its own can make every column look better.":
+    "كلما تحسّن متوسط فئة ما، اسأل عمّا إذا كانت الفئة ما زالت تضم النوع نفسه من الأفراد. فالكشف الأدق يعيد بهدوء خلط من يُعدّ حالته خفيفة ومن يُعدّ حالته شديدة، وإعادة الخلط وحدها كفيلة بأن تجعل كل عمود يبدو أفضل.",
+  "Picture two buckets, one of good outcomes and one of bad. Take the worst items out of the good bucket and drop them into the bad one, where they are the best of a bad lot. The good bucket's average rises because its weakest members left. The bad bucket's average rises because it gained members better than its own. Both averages improve and nothing about any individual has changed. In medicine the reshuffling is done by better scans, which find disease that was always there but previously invisible. That is why survival by stage can improve across the board in a period when the treatments themselves did not get better, and it is why comparing stages across eras of different technology is treacherous.":
+    "تخيّل سطلين، أحدهما للنتائج الجيدة والآخر للنتائج السيئة. أخرِج أسوأ العناصر من السطل الجيد وألقِ بها في السطل السيئ، حيث تكون هي الأفضل بين مجموعة رديئة. يرتفع متوسط السطل الجيد لأن أضعف عناصره قد غادرته. ويرتفع متوسط السطل السيئ لأنه كسب عناصر أفضل من عناصره. يتحسن المتوسطان ولم يتغير شيء يخص أي فرد. وفي الطب، تتولى إعادةَ الخلط أجهزةُ تصوير أفضل، تكشف مرضاً كان موجوداً دائماً لكنه كان غير مرئي من قبل. لهذا يمكن أن يتحسن البقاء على قيد الحياة في كل المراحل خلال فترة لم تتحسن فيها العلاجات نفسها، ولهذا فإن مقارنة المراحل عبر حقب ذات تقنيات مختلفة أمر غادر.",
+  "The check that gave it away": "التحقق الذي كشف الأمر",
+  "The same researchers sorted both eras of patients by their symptoms instead, a yardstick no scanner can shift. Judged that way the two groups survived at much the same rate, around 77 and 78 percent for those without symptoms, and 26 against 22 percent for the sickest. What had really changed was the mix, because the newer group held twice the proportion of the mildest patients.":
+    "صنّف الباحثون أنفسهم مرضى الحقبتين حسب أعراضهم بدلاً من ذلك، وهو مقياس لا يستطيع أي جهاز تصوير أن يزحزحه. وبهذا الحكم، نجت المجموعتان بمعدل متقارب إلى حد بعيد، نحو 77 و78 بالمئة لمن لا أعراض لديهم، و26 مقابل 22 بالمئة للأشد مرضاً. أما ما تغيّر فعلاً فهو تركيبة المجموعة، إذ ضمّت المجموعة الأحدث ضعف نسبة المرضى الأخف حالاً.",
+  "It happened again with PET":
+    "تكرر الأمر مع التصوير بالإصدار البوزيتروني (PET)",
+  "As PET scanning spread through American hospitals, lung cancer patients were reclassified all over again. The share labelled most advanced grew, and survival within the stages duly ticked up, two year survival moving from 18 to 22 percent in one stage and 6 to 8 percent in another. The authors called their paper the phenomenon revisited.":
+    "مع انتشار التصوير بالإصدار البوزيتروني في المستشفيات الأمريكية، أُعيد تصنيف مرضى سرطان الرئة من جديد. فزادت نسبة من صُنِّفوا في أكثر المراحل تقدماً، وارتفع البقاء على قيد الحياة داخل المراحل كما هو متوقع، إذ انتقل البقاء لسنتين من 18 إلى 22 بالمئة في إحدى المراحل، ومن 6 إلى 8 بالمئة في مرحلة أخرى. وقد سمّى المؤلفون بحثهم «عودة إلى الظاهرة».",
+  "The Will Rogers phenomenon, a reasoning trap.":
+    "ظاهرة ويل روجرز، فخ في الاستدلال.",
+  "Take the worst members of a good group and move them into a bad group. The good group's average rises, because its weakest ones left. The bad group's average rises too, because the newcomers are better than what it already had. Every group improves and nothing real has happened. It is how sharper scans can make survival look better in every stage of a disease while exactly as many people live and die.":
+    "خذ أسوأ أفراد مجموعة جيدة وانقلهم إلى مجموعة سيئة. يرتفع متوسط المجموعة الجيدة لأن أضعف أفرادها قد غادروها. ويرتفع متوسط المجموعة السيئة أيضاً لأن الوافدين إليها أفضل ممن كانوا فيها. تتحسن كل مجموعة ولم يحدث شيء حقيقي. وهكذا تستطيع أجهزة تصوير أدق أن تجعل البقاء على قيد الحياة يبدو أفضل في كل مرحلة من مراحل المرض، بينما يعيش ويموت العدد نفسه من الناس تماماً.",
+  "The counts are Table 4: the 1977 cohort of 131 patients staged twice, once on the data the older cohort had and once with the new imaging. Both stagings give 72 survivors, a six-month survival of 55 percent.":
+    "الأعداد مأخوذة من الجدول 4: فوج عام 1977 المؤلف من 131 مريضاً، صُنِّف إلى مراحل مرتين، مرة اعتماداً على البيانات التي كانت متاحة للفوج الأقدم، ومرة بالتصوير الجديد. ويعطي التصنيفان كلاهما 72 ناجياً، أي بقاءً على قيد الحياة بعد ستة أشهر بنسبة 55 بالمئة.",
+
   // ==== Trap Hunt test items ====
   "Two schools publish exam results. School B has the higher pass rate overall, 75% against 70%. When results are split by student background, School A comes out ahead in every single group. The district praises School B.":
     "مدرستان تنشران نتائج الامتحانات. المدرسة B لديها معدل النجاح الأعلى إجمالاً، 75% مقابل 70%. وعند تقسيم النتائج حسب خلفية الطلاب، تتقدم المدرسة A في كل مجموعة على حدة. وتشيد إدارة المنطقة التعليمية بالمدرسة B.",
@@ -415,4 +464,16 @@ export const ar: Record<string, string> = {
     "تجربة سريرية تُبلغ عن نتائج كل من جرى تسجيلهم فيها، بمن فيهم من أوقفوا العلاج مبكراً، وتذكر عدد المنسحبين وأسباب انسحابهم.",
   "Reporting the whole enrolled group, dropouts included, is exactly the defence against counting only the survivors.":
     "الإبلاغ عن مجموعة المسجَّلين كاملة، بمن فيهم المنسحبون، هو بالضبط الحصانة ضد احتساب الناجين وحدهم.",
+  "A hospital installs a more sensitive scanner. Over the next two years it reports that survival improved in every severity grade of the disease, from the mildest to the most advanced, and concludes that its care has got better.":
+    "يركّب مستشفى جهاز تصوير أعلى حساسية. وعلى مدى العامين التاليين يُبلغ عن تحسن البقاء على قيد الحياة في كل درجة من درجات شدة المرض، من الأخف إلى الأكثر تقدماً، ويخلص إلى أن رعايته قد تحسنت.",
+  "A sharper scanner regrades patients. Those moved out of a mild grade were its sickest, and they arrive in a severe grade as its healthiest, so both averages rise without anyone doing better.":
+    "جهاز التصوير الأدق يعيد تدريج المرضى. فمن نُقلوا خارج درجة خفيفة كانوا الأشد مرضاً فيها، ويصلون إلى درجة شديدة بوصفهم الأوفر صحة فيها، فيرتفع المتوسطان دون أن تتحسن حال أحد.",
+  "A school adopts a placement test that is much better at identifying struggling pupils, and uses it to sort them into a top and a bottom stream. The next year, average results rise in both streams. The head teacher credits the new teaching methods.":
+    "تعتمد مدرسة اختبار تصنيف أفضل بكثير في تحديد التلاميذ المتعثرين، وتستخدمه لتوزيعهم على مسار علوي ومسار سفلي. وفي العام التالي، ترتفع النتائج المتوسطة في المسارين معاً. فيعزو مدير المدرسة ذلك إلى أساليب التدريس الجديدة.",
+  "The pupils reclassified out of the top stream were its weakest and become the strongest of the bottom stream, so both averages climb on reshuffling alone.":
+    "التلاميذ الذين أُعيد تصنيفهم خارج المسار العلوي كانوا أضعف من فيه، ويصبحون الأقوى في المسار السفلي، فيصعد المتوسطان بفعل إعادة التوزيع وحدها.",
+  "A hospital reports that survival improved in every severity grade over five years. It also reports that the grading criteria did not change in that time, that no new diagnostic test was introduced, and that the number of patients in each grade stayed about the same.":
+    "يُبلغ مستشفى عن تحسن البقاء على قيد الحياة في كل درجة من درجات الشدة على مدى خمس سنوات. ويُبلغ أيضاً بأن معايير التدريج لم تتغير في تلك المدة، وأنه لم يُستحدث أي اختبار تشخيصي جديد، وأن عدد المرضى في كل درجة ظل على حاله تقريباً.",
+  "This is the case where the improvement is real. Nothing reclassified the patients, and the grades held the same share of people, so no reshuffling could have manufactured the gain.":
+    "هذه هي الحالة التي يكون فيها التحسن حقيقياً. فلا شيء أعاد تصنيف المرضى، وحافظت الدرجات على النسبة نفسها من الناس، لذا ما كان لإعادة توزيع أن تصنع هذا المكسب.",
 };

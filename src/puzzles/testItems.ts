@@ -134,7 +134,39 @@ const items: TestItem[] = [
     },
   },
 
+  // ---- Will Rogers phenomenon ----
+  {
+    id: "wr-scanner",
+    scenario: {
+      en: "A hospital installs a more sensitive scanner. Over the next two years it reports that survival improved in every severity grade of the disease, from the mildest to the most advanced, and concludes that its care has got better.",
+    },
+    trap: "will-rogers-phenomenon",
+    explanation: {
+      en: "A sharper scanner regrades patients. Those moved out of a mild grade were its sickest, and they arrive in a severe grade as its healthiest, so both averages rise without anyone doing better.",
+    },
+  },
+  {
+    id: "wr-streaming",
+    scenario: {
+      en: "A school adopts a placement test that is much better at identifying struggling pupils, and uses it to sort them into a top and a bottom stream. The next year, average results rise in both streams. The head teacher credits the new teaching methods.",
+    },
+    trap: "will-rogers-phenomenon",
+    explanation: {
+      en: "The pupils reclassified out of the top stream were its weakest and become the strongest of the bottom stream, so both averages climb on reshuffling alone.",
+    },
+  },
+
   // ---- Genuinely sound reasoning (decoys) ----
+  {
+    id: "ok-no-migration",
+    scenario: {
+      en: "A hospital reports that survival improved in every severity grade over five years. It also reports that the grading criteria did not change in that time, that no new diagnostic test was introduced, and that the number of patients in each grade stayed about the same.",
+    },
+    trap: null,
+    explanation: {
+      en: "This is the case where the improvement is real. Nothing reclassified the patients, and the grades held the same share of people, so no reshuffling could have manufactured the gain.",
+    },
+  },
   {
     id: "ok-match-stated-well",
     scenario: {

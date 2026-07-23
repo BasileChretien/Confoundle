@@ -412,4 +412,64 @@ export const fr: Record<string, string> = {
     "Un essai rapporte les résultats de toutes les personnes incluses, y compris celles qui ont arrêté le traitement en cours de route, et précise combien ont abandonné et pourquoi.",
   "Reporting the whole enrolled group, dropouts included, is exactly the defence against counting only the survivors.":
     "Rapporter l'ensemble du groupe inclus, abandons compris, c'est exactement la protection contre le fait de ne compter que les survivants.",
+  "A hospital installs a more sensitive scanner. Over the next two years it reports that survival improved in every severity grade of the disease, from the mildest to the most advanced, and concludes that its care has got better.":
+    "Un hôpital installe un scanner plus sensible. Au cours des deux années suivantes, il rapporte que la survie s'est améliorée dans chaque grade de gravité de la maladie, du plus léger au plus avancé, et en conclut que ses soins se sont améliorés.",
+  "A sharper scanner regrades patients. Those moved out of a mild grade were its sickest, and they arrive in a severe grade as its healthiest, so both averages rise without anyone doing better.":
+    "Un scanner plus précis reclasse les patients. Ceux qui sortent d'un grade léger en étaient les plus malades, et ils arrivent dans un grade grave comme les moins malades de celui-ci ; les deux moyennes montent donc sans que personne ne s'en sorte mieux.",
+  "A school adopts a placement test that is much better at identifying struggling pupils, and uses it to sort them into a top and a bottom stream. The next year, average results rise in both streams. The head teacher credits the new teaching methods.":
+    "Une école adopte un test d'orientation bien meilleur pour repérer les élèves en difficulté, et s'en sert pour les répartir entre une classe de niveau fort et une classe de niveau faible. L'année suivante, les résultats moyens montent dans les deux classes. Le chef d'établissement l'attribue aux nouvelles méthodes d'enseignement.",
+  "The pupils reclassified out of the top stream were its weakest and become the strongest of the bottom stream, so both averages climb on reshuffling alone.":
+    "Les élèves sortis de la classe forte en étaient les plus faibles et deviennent les plus forts de la classe faible ; les deux moyennes montent donc par la seule redistribution.",
+  "A hospital reports that survival improved in every severity grade over five years. It also reports that the grading criteria did not change in that time, that no new diagnostic test was introduced, and that the number of patients in each grade stayed about the same.":
+    "Un hôpital rapporte que la survie s'est améliorée dans chaque grade de gravité sur cinq ans. Il précise aussi que les critères de classement n'ont pas changé pendant cette période, qu'aucun nouveau test diagnostique n'a été introduit, et que le nombre de patients dans chaque grade est resté à peu près le même.",
+  "This is the case where the improvement is real. Nothing reclassified the patients, and the grades held the same share of people, so no reshuffling could have manufactured the gain.":
+    "Voilà le cas où l'amélioration est réelle. Rien n'a reclassé les patients, et les grades ont conservé la même part de personnes ; aucune redistribution n'a donc pu fabriquer ce gain.",
+
+  // ==== Will Rogers phenomenon (stage migration) ====
+  "Better survival in every single stage. Did anyone actually live longer?":
+    "Une meilleure survie dans chaque stade sans exception. Quelqu'un a-t-il réellement vécu plus longtemps ?",
+  "One group of 131 lung cancer patients, treated in 1977, sorted into stages twice. First using only the information older hospitals could gather, then again after new scans. Nobody was treated differently. Only the sorting changed.":
+    "Un même groupe de 131 patients atteints d'un cancer du poumon, traités en 1977, classés en stades à deux reprises. D'abord avec les seules informations que les hôpitaux d'autrefois pouvaient recueillir, puis de nouveau après de nouveaux examens d'imagerie. Personne n'a été soigné différemment. Seul le classement a changé.",
+  "Did these patients actually do better?":
+    "Ces patients s'en sont-ils réellement mieux sortis ?",
+  "Six-month survival": "Survie à six mois",
+  "Sorted the old way": "Classés à l'ancienne",
+  Old: "Ancien",
+  "Sorted after the new scans": "Classés après les nouveaux examens",
+  New: "Nouveau",
+  "Stage I": "Stade I",
+  "Stage II": "Stade II",
+  "Stage III": "Stade III",
+  "Yes, they did better": "Oui, ils s'en sont mieux sortis",
+  "every stage improved": "chaque stade s'est amélioré",
+  "There is no way to tell": "Impossible de le savoir",
+  "too little to go on": "trop peu d'éléments pour trancher",
+  "No, nothing changed": "Non, rien n'a changé",
+  "only the labels moved": "seules les étiquettes ont bougé",
+  "Identical. Seventy two survivors either way.":
+    "Identique. Soixante-douze survivants dans les deux cas.",
+  "The migration": "La migration",
+  "Patients moved between stages, and lifted both":
+    "Des patients ont changé de stade, et ont tiré les deux vers le haut",
+  "The new scans spotted spread that the old workup had missed, so patients were moved out of better stages into worse ones. Each of them was among the sickest in the stage they left, so that stage's average rose. Each was also among the healthiest in the stage they joined, so that average rose too. Every stage improved and not one person's outcome changed:":
+    "Les nouveaux examens ont repéré une extension de la maladie que le bilan d'autrefois avait manquée, si bien que des patients ont été déplacés de stades favorables vers des stades plus graves. Chacun d'eux comptait parmi les plus malades du stade qu'il quittait, donc la moyenne de ce stade a monté. Chacun comptait aussi parmi les moins malades du stade qu'il rejoignait, donc cette moyenne a monté elle aussi. Chaque stade s'est amélioré et le sort de personne n'a changé :",
+  "The Will Rogers phenomenon": "Le phénomène de Will Rogers",
+  "Move members from one group into another and you can lift the average of every group at once, while the overall picture stays exactly the same.":
+    "Déplacez des membres d'un groupe vers un autre et vous pouvez faire monter la moyenne de tous les groupes à la fois, alors que le tableau d'ensemble reste exactement le même.",
+  "Whenever a category's average improves, ask whether the category still holds the same kind of members. Better detection quietly reshuffles who counts as mild and who counts as severe, and a reshuffle on its own can make every column look better.":
+    "Chaque fois que la moyenne d'une catégorie s'améliore, demandez-vous si cette catégorie contient toujours le même type de membres. Une meilleure détection redistribue discrètement qui est compté comme léger et qui est compté comme grave, et cette redistribution suffit à elle seule à faire paraître chaque colonne meilleure.",
+  "Picture two buckets, one of good outcomes and one of bad. Take the worst items out of the good bucket and drop them into the bad one, where they are the best of a bad lot. The good bucket's average rises because its weakest members left. The bad bucket's average rises because it gained members better than its own. Both averages improve and nothing about any individual has changed. In medicine the reshuffling is done by better scans, which find disease that was always there but previously invisible. That is why survival by stage can improve across the board in a period when the treatments themselves did not get better, and it is why comparing stages across eras of different technology is treacherous.":
+    "Imaginez deux seaux, l'un de bons résultats et l'autre de mauvais. Retirez les pires éléments du bon seau et laissez-les tomber dans le mauvais, où ils sont les meilleurs d'un mauvais lot. La moyenne du bon seau monte parce que ses membres les plus faibles sont partis. La moyenne du mauvais seau monte parce qu'il a gagné des membres meilleurs que les siens. Les deux moyennes s'améliorent et rien n'a changé pour aucun individu. En médecine, cette redistribution est l'œuvre de meilleurs examens d'imagerie, qui découvrent une maladie qui était là depuis toujours mais restait invisible. Voilà pourquoi la survie par stade peut s'améliorer partout à la fois pendant une période où les traitements eux-mêmes n'ont pas progressé, et voilà pourquoi comparer des stades entre des époques aux technologies différentes est périlleux.",
+  "The check that gave it away": "La vérification qui a tout révélé",
+  "The same researchers sorted both eras of patients by their symptoms instead, a yardstick no scanner can shift. Judged that way the two groups survived at much the same rate, around 77 and 78 percent for those without symptoms, and 26 against 22 percent for the sickest. What had really changed was the mix, because the newer group held twice the proportion of the mildest patients.":
+    "Les mêmes chercheurs ont plutôt classé les patients des deux époques d'après leurs symptômes, une mesure qu'aucun scanner ne peut déplacer. Jugés ainsi, les deux groupes survivaient à peu près au même taux, environ 77 et 78 pour cent pour ceux sans symptômes, et 26 contre 22 pour cent pour les plus malades. Ce qui avait réellement changé, c'était la composition, car le groupe le plus récent comptait une proportion deux fois plus élevée des patients les plus légers.",
+  "It happened again with PET": "Cela s'est reproduit avec la TEP",
+  "As PET scanning spread through American hospitals, lung cancer patients were reclassified all over again. The share labelled most advanced grew, and survival within the stages duly ticked up, two year survival moving from 18 to 22 percent in one stage and 6 to 8 percent in another. The authors called their paper the phenomenon revisited.":
+    "À mesure que la TEP se répandait dans les hôpitaux américains, les patients atteints d'un cancer du poumon ont été reclassés une nouvelle fois. La part étiquetée au stade le plus avancé a grossi, et la survie à l'intérieur des stades a dûment progressé : la survie à deux ans est passée de 18 à 22 pour cent dans un stade, et de 6 à 8 pour cent dans un autre. Les auteurs ont intitulé leur article le phénomène revisité.",
+  "The Will Rogers phenomenon, a reasoning trap.":
+    "Le phénomène de Will Rogers, un piège de raisonnement.",
+  "Take the worst members of a good group and move them into a bad group. The good group's average rises, because its weakest ones left. The bad group's average rises too, because the newcomers are better than what it already had. Every group improves and nothing real has happened. It is how sharper scans can make survival look better in every stage of a disease while exactly as many people live and die.":
+    "Prenez les pires membres d'un bon groupe et déplacez-les dans un mauvais groupe. La moyenne du bon groupe monte, parce que ses éléments les plus faibles sont partis. La moyenne du mauvais groupe monte aussi, parce que les nouveaux venus valent mieux que ce qu'il avait déjà. Chaque groupe s'améliore et il ne s'est rien passé de réel. C'est ainsi que des examens plus précis peuvent faire paraître la survie meilleure à chaque stade d'une maladie alors qu'exactement autant de gens vivent et meurent.",
+  "The counts are Table 4: the 1977 cohort of 131 patients staged twice, once on the data the older cohort had and once with the new imaging. Both stagings give 72 survivors, a six-month survival of 55 percent.":
+    "Les effectifs sont ceux du tableau 4 : la cohorte de 1977, soit 131 patients classés deux fois, une fois sur les données dont disposait la cohorte plus ancienne et une fois avec la nouvelle imagerie. Les deux classements donnent 72 survivants, soit une survie à six mois de 55 pour cent.",
 };

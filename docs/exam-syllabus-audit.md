@@ -28,7 +28,102 @@ what is actually required:
 | France, EDN | done | The only layer that names biases is the intitulés de connaissance, not the arrêté. |
 | UK, MLA | done | Names essentially no statistical bias. The negative is the finding. |
 | Korea, KMLE | done | Blueprint names no bias; the released 2026 paper names five in one question. |
-| China, Spain, Germany, Russia | pending | |
+| China, 医师资格考试大纲 | done | Names exactly three biases. Textbooks teach the subtypes; the exam does not. |
+| Russia, первичная аккредитация | done | The clean negative. Zero named biases, with an internal control proving it is deliberate. |
+| Spain, Germany | pending | |
+
+## Russia: the clean negative, and a control group that proves it
+
+The ФГОС ВО for 31.05.01 Лечебное дело names **no bias and no appraisal skill**.
+Its nearest competency, ОПК-10, requires solving standard tasks *using*
+bibliographic resources; the verb stops at retrieval and never reaches judging
+whether a source is biased. No national ПООП supplying indicators could be found.
+
+The last officially published national test bank (4,011 items) was mined
+exhaustively:
+
+- **1 item** contains the words систематическая ошибка or конфаундер, and it
+  uses **both as wrong answers**. The candidate must only recognise that they
+  are not what a risk group is.
+- **0 items** test any named bias, any study design, any effect measure, or any
+  diagnostic-accuracy metric. No относительный риск, no ЧБНЛ, no доверительный
+  интервал, no p-значение anywhere in 4,011 items.
+- **9 items (0.22%)** contain any quantitative-methods vocabulary at all, and
+  all nine are Soviet-lineage sanitary statistics: экстенсивный versus
+  интенсивный показатели, ошибка репрезентативности, Student's coefficient.
+- Screening appears 16 times, always as protocol recall ("which test screens for
+  X"). **No item anywhere addresses the harms of screening**, or why earlier
+  detection can flatter survival.
+- The one OSCE station named for screening (Диспансеризация) states in its own
+  passport that interpretation of results **is not assessed**.
+
+**The control group is what makes this conclusive.** The same agency, in the
+same year, in the same format, produced the bank for Медико-профилактическое
+дело (sanitary physicians), which contains **48 genuine epidemiological-method
+items**: 21 on relative risk and odds ratios, 16 on cohort studies, 12 on
+case-control, 15 on placebo, and real reasoning items including a
+confidence-interval-crosses-one question and a correct reading of positive
+predictive value. So the concepts exist in Russian medical accreditation. They
+are **quarantined in the public-health degree**.
+
+Structural reason, worth knowing: Russian training splits what the Anglophone
+world fuses. Эпидемиология is historically infectious-disease control, and
+медицинская статистика sits inside общественное здоровье as health-service
+statistics. Clinical epidemiology, the discipline that generates the bias
+vocabulary, belongs to neither by default.
+
+Terminology trap for any future Russian localisation: **ошибка
+репрезентативности** is the standard error of a proportion, a *precision*
+concept, and translating it as "representativeness bias" would be wrong. Bias is
+систематическая ошибка, abbreviated СисО.
+
+## China: three families, and nothing below them
+
+The 临床执业医师 syllabus (2024 edition, still governing 2025 and 2026, since the
+2026 revision touched only the humanities part) puts every bias in a single
+细目, 偏倚控制及病因推断, and names exactly three:
+
+- **选择偏倚** selection bias
+- **信息偏倚** information bias
+- **混杂偏倚** confounding bias
+
+Plus, elsewhere, **假设检验的两类错误** (type I and type II error) and
+**因果关系判断标准** (criteria for causal inference).
+
+Checked individually and **absent from every official Chinese licensing
+syllabus, for every physician category**: 回忆偏倚 (recall), 领先时间偏倚
+(lead-time), 病程长短偏倚 (length-time), 过度诊断 (overdiagnosis), 发表偏倚
+(publication), 伯克森偏倚 (Berkson), 霍桑效应 (Hawthorne), 安慰剂效应 (placebo),
+认知偏倚 (cognitive). The words 随机化, 盲法 and 标准化 never appear as 要点 in
+the clinical preventive-medicine part either. The **assistant** physician
+syllabus does not contain the word 偏倚 at all.
+
+The public health physician syllabus is more granular and adds the only named
+subtype in Chinese licensing, **失访偏倚** (loss to follow-up), given
+parenthetically as an example of selection bias. It also hides
+**regression to the mean** in plain sight: its health-education evaluation unit
+lists threats to validity as 历史性因素, 熟练性, 失访 and **回归因素**, which is
+history effect, practice effect, attrition and regression to the mean, none of
+them named as biases.
+
+**The taxonomy everyone associates with Chinese epidemiology is textbook, not
+blueprint.** The 人民卫生出版社 textbooks teach 伯克森偏倚, 奈曼偏倚, 回忆偏倚,
+无应答偏倚, 志愿者偏倚, 报告偏倚, 诊断怀疑偏倚, 暴露怀疑偏倚 and 易感性偏倚 by
+name, attributing the three-family frame to Miettinen (1976). A Chinese-trained
+clinician has almost certainly met those names; they are only examined on the
+three families.
+
+Weighting: preventive medicine, statistics, epidemiology, screening and EBM
+together are a low single-digit share of a 600-item paper, and bias is one 细目
+within that. No official per-subject weighting is published.
+
+**Practical consequence for localisation.** Lead-time, length-time,
+overdiagnosis and publication bias are not revision for a Chinese doctor, they
+are new material. The best hooks into what they were taught are 收益 (yield) and
+提高试验效率的方法 for the base-rate puzzle, 混杂偏倚 with 分层分析 and 标准化法
+for confounding, and 因果关系判断标准 with 剂量反应关系 for causation. Register
+note for the dictionary: the syllabus uses 筛检 rather than 筛查, and 混杂偏倚
+rather than 混杂因素.
 
 ## Korea: the blueprint delegates, the paper delivers
 

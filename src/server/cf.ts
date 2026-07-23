@@ -47,4 +47,6 @@ export interface Env {
 export interface FunctionContext {
   request: Request;
   env: Env;
+  /** Path segments captured by a `[slug]` route file. */
+  params?: Record<string, string | string[]>;
 }

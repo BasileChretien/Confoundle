@@ -81,6 +81,50 @@ export const UI: Record<string, LocalizedText> = {
  * follow you" is the whole benefit; anything grander would be marketing, and
  * this is a project about not being fooled.
  */
+/**
+ * The "hand this to someone else" control on the lesson screen. Three strings,
+ * kept here rather than inline so ui.test.ts holds them to the same locale
+ * parity as everything else.
+ */
+export const LESSON_SHARE: Record<string, LocalizedText> = {
+  blurb: {
+    en: "Arguing with someone about this? Send them the explanation.",
+    fr: "Vous en discutez avec quelqu'un ? Envoyez-lui l'explication.",
+    es: "¿Lo estás discutiendo con alguien? Envíale la explicación.",
+    pt: "A discutir isto com alguém? Envie-lhe a explicação.",
+    ja: "この件で議論していますか。相手に解説を送れます。",
+    zh: "正在和别人争论这个问题？把解释发给对方。",
+    ru: "Спорите об этом с кем-то? Отправьте им объяснение.",
+    hi: "इस पर किसी से बहस हो रही है? उन्हें समझाने वाला पेज भेजें।",
+    bn: "এই নিয়ে কারও সঙ্গে তর্ক চলছে? তাঁকে ব্যাখ্যাটি পাঠান।",
+    ar: "تناقش أحدهم في هذا؟ أرسل له الشرح.",
+  },
+  copy: {
+    en: "Copy link",
+    fr: "Copier le lien",
+    es: "Copiar enlace",
+    pt: "Copiar ligação",
+    ja: "リンクをコピー",
+    zh: "复制链接",
+    ru: "Скопировать ссылку",
+    hi: "लिंक कॉपी करें",
+    bn: "লিঙ্ক কপি করুন",
+    ar: "نسخ الرابط",
+  },
+  copied: {
+    en: "Copied",
+    fr: "Copié",
+    es: "Copiado",
+    pt: "Copiado",
+    ja: "コピーしました",
+    zh: "已复制",
+    ru: "Скопировано",
+    hi: "कॉपी हो गया",
+    bn: "কপি হয়েছে",
+    ar: "تم النسخ",
+  },
+};
+
 export const ACCOUNT: Record<string, LocalizedText> = {
   signIn: {
     en: "Sign in",

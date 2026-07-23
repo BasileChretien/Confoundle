@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { ACCOUNT, UI } from "./ui";
+import { ACCOUNT, LESSON_SHARE, UI } from "./ui";
 import { LOCALES } from "./locales";
 
 /**
@@ -18,6 +18,7 @@ describe("interface strings", () => {
     for (const [name, block] of [
       ["UI", UI],
       ["ACCOUNT", ACCOUNT],
+      ["LESSON_SHARE", LESSON_SHARE],
     ] as const) {
       for (const [key, text] of Object.entries(block)) {
         const missing = CODES.filter((code) => !text[code]?.trim());

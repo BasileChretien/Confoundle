@@ -1,8 +1,65 @@
+import { mkdir, writeFile } from "node:fs/promises";
+import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { defineConfig } from "vite";
+import { defineConfig, type Plugin } from "vite";
 import react from "@vitejs/plugin-react";
 import { VitePWA } from "vite-plugin-pwa";
 import { viteSingleFile } from "vite-plugin-singlefile";
+import { puzzles } from "./src/puzzles";
+import { ALL_DICTIONARIES } from "./src/app/translations/all";
+import { lessonPages, lessonSitemap } from "./src/server/prerender";
+
+/**
+ * Where the lesson pages' absolute URLs point. Open Graph will not accept a
+ * relative one, so this has to be decided at build time. Override for a fork or
+ * a custom domain: SITE_ORIGIN=https://example.org pnpm build
+ */
+const origin = (process.env.SITE_ORIGIN ?? "https://confoundle.pages.dev").replace(
+  /\/$/,
+  "",
+);
+
+/**
+ * Write one static HTML page per lesson per language, at /l/<slug>/[<locale>/].
+ *
+ * These exist for a case the game cannot serve: someone is arguing on the
+ * internet and wants to hand over the explanation rather than retype it. A link
+ * into the puzzle would open something built to fool the reader first, which
+ * lands badly when it arrives from an opponent, and a single-page app returns
+ * the same empty shell to the crawler that builds the preview card, so every
+ * lesson would unfurl identically.
+ *
+ * Prerendered rather than served from a Pages Function because the Function
+ * version measured 910 KB gzipped, almost all of it the nine dictionaries,
+ * against a 1 MiB limit for the whole Functions bundle. Doing it here has no
+ * ceiling, costs nothing at runtime, and keeps the share links working on a
+ * plain static host.
+ *
+ * Note this is the one legitimate consumer of translations/all.ts, the eager
+ * dictionary map. It is a build script, not the app, so importing it cannot
+ * undo the client's code splitting.
+ */
+function lessonPagesPlugin(): Plugin {
+  return {
+    name: "confoundle-lesson-pages",
+    apply: "build",
+    async closeBundle() {
+      const outDir = "dist";
+      const pages = lessonPages({
+        puzzles,
+        dictionaries: ALL_DICTIONARIES,
+        origin,
+      });
+      for (const page of pages) {
+        const file = join(outDir, page.file);
+        await mkdir(dirname(file), { recursive: true });
+        await writeFile(file, page.html, "utf8");
+      }
+      await writeFile(join(outDir, "sitemap.xml"), lessonSitemap(pages), "utf8");
+      this.info?.(`prerendered ${pages.length} lesson pages for ${origin}`);
+    },
+  };
+}
 
 // `SINGLEFILE=1 vite build` inlines everything (JS, CSS, fonts) into one
 // self-contained dist-single/index.html, for publishing a playable build where
@@ -20,7 +77,27 @@ const pwa = VitePWA({
     // Instead each dictionary is cached the first time it is actually used, so
     // a reader in France ends up fully offline in French and never downloads
     // Bengali at all. The locale chunk names are content-hashed, hence globs.
-    globIgnores: ["**/assets/{fr,es,pt,ja,zh,ru,hi,bn,ar}-*.js"],
+    // The lesson pages are written after this manifest is built, but say so
+    // anyway: they are 160 standalone documents that no app shell ever needs,
+    // and precaching them would put the whole library into every install.
+    globIgnores: [
+      "**/assets/{fr,es,pt,ja,zh,ru,hi,bn,ar}-*.js",
+      "l/**",
+      "sitemap.xml",
+    ],
+    // Workbox answers every NAVIGATION it does not recognise with the app
+    // shell. That is right for the app, which is one URL, and wrong for these
+    // three, which are real pages and real responses:
+    //
+    //   /l/...        the shareable lesson pages. Without this, anyone who has
+    //                 opened the app once gets the puzzle instead of the
+    //                 explanation when they follow a shared link, which is the
+    //                 exact failure the pages exist to avoid. Found by
+    //                 following a link in a browser that had the app installed.
+    //   /api/account  the data export is an <a download>, which is a
+    //                 navigation, so it would download the app shell as JSON.
+    //   sitemap.xml   fetched by crawlers.
+    navigateFallbackDenylist: [/^\/l\//, /^\/api\//, /\.xml$/],
     runtimeCaching: [
       {
         urlPattern: /\/assets\/(fr|es|pt|ja|zh|ru|hi|bn|ar)-[^/]+\.js$/,
@@ -61,7 +138,9 @@ const pwa = VitePWA({
 export default defineConfig({
   // Enables the in-app puzzle picker in the single-file demo build only.
   define: { __DEMO__: JSON.stringify(singleFile) },
-  plugins: singleFile ? [react(), viteSingleFile()] : [react(), pwa],
+  plugins: singleFile
+    ? [react(), viteSingleFile()]
+    : [react(), pwa, lessonPagesPlugin()],
   resolve: singleFile
     ? {
         // No PWA plugin in single-file mode: point its virtual module at a stub.

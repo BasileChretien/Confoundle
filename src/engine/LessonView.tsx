@@ -2,6 +2,7 @@ import type { Provenance, Puzzle } from "../puzzles/schema";
 import { useT } from "../app/i18n";
 import { Badge, Button } from "./ui";
 import { TagChips } from "./TagChips";
+import { ShareLesson } from "./ShareLesson";
 
 function linkFor(p: Provenance): string | undefined {
   return p.url ?? (p.doi ? `https://doi.org/${p.doi}` : undefined);
@@ -48,6 +49,8 @@ export function LessonView({
           {t(lesson.body)}
         </p>
       ) : null}
+
+      <ShareLesson puzzle={puzzle} />
 
       <div className="rounded-lg border border-rule bg-paper-2 p-4 text-xs leading-relaxed text-ink-soft">
         <Badge tone="ink">{t({ en: "Source" })}</Badge>

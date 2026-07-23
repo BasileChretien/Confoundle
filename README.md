@@ -76,7 +76,21 @@ It runs on **Cloudflare D1**, not KV — the reasoning, along with the full setu
 
 Deletion and export are built in from day one and are in the panel, not behind a support request: **Download my data** returns everything held about you, and **Delete my account** erases it immediately, everywhere, with no grace period. Every field stored is listed in [`docs/data-inventory.md`](./docs/data-inventory.md); the policy users read is [`public/privacy.html`](./public/privacy.html).
 
-- **No SPA rewrite needed.** Puzzles are addressed with a query string (`?p=<slug>`), not a path, so every request resolves to `index.html` on any static host out of the box.
+### Shareable lesson pages
+
+`pnpm build` also writes **one static page per lesson per language** to `dist/l/<slug>/` (English) and `dist/l/<slug>/<locale>/`, plus a `sitemap.xml`. Sixteen puzzles across ten languages is 160 pages, about 10 KB each.
+
+These are for a case the game itself can't serve: someone is arguing on the internet and you want to hand them **the explanation**, not a puzzle. A link into the game opens something built to fool the reader first, which lands badly when it arrives from the person you're arguing with, and a single-page app returns the same empty shell to the crawler that builds the link preview — so every lesson would unfurl with the same title. Each page carries its own Open Graph and Twitter tags, works with JavaScript off, and links back into the puzzle for anyone who'd rather be fooled first.
+
+The lesson screen has a **Copy link** button that copies the skill, the one-line rule, and the link in the reader's current language.
+
+Absolute URLs (canonical, `hreflang`, Open Graph) are baked at build time. Override the default for a fork or a custom domain:
+
+```bash
+SITE_ORIGIN=https://example.org pnpm build
+```
+
+- **No SPA rewrite needed.** Puzzles are addressed with a query string (`?p=<slug>`), not a path, so every request resolves to `index.html` on any static host out of the box. The lesson pages are real directories with their own `index.html`, so they work on the same hosts with no configuration.
 - **Root vs. sub-path.** The default base path is `/` (root domains, incl. `*.pages.dev`). For a GitHub Pages project site served under `/<repo>/`, build with `--base=/<repo>/` instead.
 - **The daily** rotates deterministically by date across the registry, so every visitor sees the same puzzle on the same day.
 

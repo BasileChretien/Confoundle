@@ -6,6 +6,12 @@
       "runtimeExecutable": "corepack",
       "runtimeArgs": ["pnpm", "dev"],
       "port": 5173
+    },
+    {
+      "name": "confoundle-dev-alt",
+      "runtimeExecutable": "corepack",
+      "runtimeArgs": ["pnpm", "dev", "--port", "5174", "--strictPort"],
+      "port": 5174
     }
   ]
 }

@@ -39,7 +39,7 @@ pnpm gen:icons    # regenerate PWA icons from the brand motif
 
 ## Deploy
 
-`pnpm build` emits a fully static site to `dist/` — no server, no environment variables, no secrets, nothing collected about the visitor. Host it anywhere that serves static files.
+`pnpm build` emits a fully static site to `dist/` — no server, no environment variables, no secrets, nothing collected about the visitor. Host it anywhere that serves static files. The two optional Pages Functions below add a global percentile and accounts; skip them and everything else still works.
 
 **Cloudflare Pages** is the recommended host (free tier, unlimited bandwidth, global CDN). Two ways:
 
@@ -68,6 +68,14 @@ npx wrangler kv namespace create SCORES
 
 Then in the Cloudflare dashboard open the Pages project and go to **Settings → Functions → KV namespace bindings**, binding the new namespace to the variable name `SCORES` (for Production, and Preview if you use it). Redeploy with `pnpm run deploy`.
 
+### Optional: accounts
+
+Signing in (one click with Google, or a code emailed to you) makes your **spaced-repetition schedule follow you between devices**. That is the only thing it does: nothing is gated on an account, answers and streaks stay on your device either way, and a deployment without the bindings hides the panel entirely.
+
+It runs on **Cloudflare D1**, not KV — the reasoning, along with the full setup runbook, is in [`docs/accounts.md`](./docs/accounts.md). There is **no password column**: both routes prove control of an email address, so there is nothing worth stealing and nothing to reset.
+
+Deletion and export are built in from day one and are in the panel, not behind a support request: **Download my data** returns everything held about you, and **Delete my account** erases it immediately, everywhere, with no grace period. Every field stored is listed in [`docs/data-inventory.md`](./docs/data-inventory.md); the policy users read is [`public/privacy.html`](./public/privacy.html).
+
 - **No SPA rewrite needed.** Puzzles are addressed with a query string (`?p=<slug>`), not a path, so every request resolves to `index.html` on any static host out of the box.
 - **Root vs. sub-path.** The default base path is `/` (root domains, incl. `*.pages.dev`). For a GitHub Pages project site served under `/<repo>/`, build with `--base=/<repo>/` instead.
 - **The daily** rotates deterministically by date across the registry, so every visitor sees the same puzzle on the same day.
@@ -80,13 +88,18 @@ Then in the Cloudflare dashboard open the Pages project and go to **Settings →
 
 - **Vite + React + TypeScript**, **Tailwind CSS**, installable **PWA** (`vite-plugin-pwa`).
 - **Puzzles are data.** Each puzzle is a typed file validated by a single **zod** schema; the inferred TypeScript type is the one source of truth.
-- **The engine renders any puzzle generically** — no puzzle-specific code. Card image generation is client-side (`html-to-image`); there is no backend.
+- **The engine renders any puzzle generically** — no puzzle-specific code. Card image generation is client-side (`html-to-image`).
+- **The game needs no server.** `dist/` is a static site and plays fully offline. Two optional Cloudflare Pages Functions sit beside it: the anonymous score histogram, and accounts. Without their bindings the app hides those features rather than breaking.
 
 ```
 src/
-  app/        PWA shell, routing/state, i18n, session (localStorage), analytics stub
+  app/        PWA shell, routing/state, i18n, session (localStorage), analytics stub, sign-in
   engine/     components that render ANY puzzle from its data + the reveal animation
   puzzles/    the zod schema (the contract), the inferred type, and puzzle data files
+  srs/        spaced repetition: the schedule, the review picker, and the stores
+  server/     account logic (type-checked and unit-tested)
+functions/    thin Cloudflare Pages Function adapters over src/server
+migrations/   the D1 schema
 ```
 
 ---

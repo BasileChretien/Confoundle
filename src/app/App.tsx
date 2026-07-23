@@ -11,6 +11,8 @@ import { TrapHuntView } from "../engine/TrapHuntView";
 import { checkpointDue, reviewDue } from "../engine/trapHunt";
 import { LocaleProvider, useT } from "./i18n";
 import { LanguageSwitcher } from "./LanguageSwitcher";
+import { AccountPanel } from "./AccountPanel";
+import { AuthProvider } from "./auth";
 import { UI } from "./ui";
 
 /** Which puzzle to open first: an explicit ?p=<slug>, else today's daily. */
@@ -25,7 +27,9 @@ export default function App() {
   // The provider must wrap the content so the switcher and useT below it react.
   return (
     <LocaleProvider>
-      <AppShell />
+      <AuthProvider>
+        <AppShell />
+      </AuthProvider>
     </LocaleProvider>
   );
 }
@@ -72,6 +76,8 @@ function AppShell() {
             ) : null}
           </div>
         </header>
+
+        <AccountPanel />
 
         {__DEMO__ ? <DemoPicker current={slug} onPick={setSlug} /> : null}
 

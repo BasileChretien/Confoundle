@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="index, follow" />
+    <title>Privacy at Confoundle</title>
+    <style>
+      :root {
+        --paper: #f2ecde;
+        --paper-2: #e9dec8;
+        --ink: #221d15;
+        --ink-soft: #6b6154;
+        --ink-mute: #8a7e6a;
+        --rule: #d6c9ae;
+        --rust: #be4a2f;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      }
+      main { max-width: 42rem; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+      h1 { font-size: 1.6rem; line-height: 1.25; margin: 0 0 0.25rem; }
+      h2 { font-size: 1.05rem; margin: 2.25rem 0 0.5rem; }
+      h3 { font-size: 0.95rem; margin: 1.5rem 0 0.35rem; }
+      p, li { color: var(--ink-soft); }
+      strong { color: var(--ink); }
+      a { color: var(--rust); }
+      .eyebrow {
+        font-size: 0.7rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--ink-mute);
+        margin: 0 0 1.5rem;
+      }
+      .lede { font-size: 1.05rem; color: var(--ink); }
+      table { border-collapse: collapse; width: 100%; margin: 0.75rem 0; font-size: 0.9rem; }
+      th, td { border: 1px solid var(--rule); padding: 0.5rem 0.6rem; text-align: left; vertical-align: top; }
+      th { background: var(--paper-2); color: var(--ink); }
+      td { color: var(--ink-soft); }
+      .wrap { overflow-x: auto; }
+      footer {
+        margin-top: 3rem;
+        border-top: 1px solid var(--rule);
+        padding-top: 1rem;
+        font-size: 0.8rem;
+        color: var(--ink-mute);
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --paper: #17140f;
+          --paper-2: #201b14;
+          --ink: #f0e8d8;
+          --ink-soft: #c3b8a3;
+          --ink-mute: #948873;
+          --rule: #3a3227;
+          --rust: #e2775a;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="eyebrow">Confoundle</p>
+      <h1>What we store, and why</h1>
+      <p class="lede">
+        Confoundle works without an account. If you never sign in, this app sends
+        nothing about you anywhere, and there is no record of you to speak of.
+      </p>
+
+      <h2>The short version</h2>
+      <ul>
+        <li>
+          <strong>No account:</strong> your streak, your answers and your review
+          schedule live in your own browser's storage. They never leave the
+          device. There is nothing for us to look at, hand over or lose.
+        </li>
+        <li>
+          <strong>With an account:</strong> we store your email address and your
+          spaced-repetition schedule, so your reviews follow you between devices.
+          That is the entire list.
+        </li>
+        <li>
+          <strong>No advertising, no tracking, no profiling, no third-party
+          analytics</strong>, and nothing is ever sold or shared for marketing.
+        </li>
+        <li>
+          <strong>You can delete everything yourself</strong>, from inside the
+          app, immediately, with no request and no waiting period.
+        </li>
+      </ul>
+
+      <h2>Who is responsible</h2>
+      <p>
+        The data controller is <strong>Basile Chretien</strong>, who runs
+        Confoundle as an individual, non-commercial project. Contact for any
+        question or request about your data:
+        <a href="mailto:CONTACT-EMAIL-PLACEHOLDER">CONTACT-EMAIL-PLACEHOLDER</a>.
+      </p>
+
+      <h2>What is collected, and on what basis</h2>
+      <div class="wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>What</th>
+              <th>Why</th>
+              <th>Lawful basis (GDPR art. 6)</th>
+              <th>Kept for</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Email address</td>
+              <td>It is your account. It is how you sign in and how the two sign-in routes recognise you as the same person.</td>
+              <td>Performance of a contract, art. 6(1)(b)</td>
+              <td>Until you delete your account</td>
+            </tr>
+            <tr>
+              <td>Google account identifier</td>
+              <td>An opaque number Google gives us if you use the Google button, so that changing your Google email does not lock you out. It is not your email and cannot be used to reach you.</td>
+              <td>Performance of a contract, art. 6(1)(b)</td>
+              <td>Until you delete your account</td>
+            </tr>
+            <tr>
+              <td>Your review schedule</td>
+              <td>Which reasoning skills you have met, what stage each is at, when it is next due, and which practice scenarios you have already seen.</td>
+              <td>Performance of a contract, art. 6(1)(b)</td>
+              <td>Until you delete your account</td>
+            </tr>
+            <tr>
+              <td>Session record</td>
+              <td>A one-way digest of the sign-in token in your cookie, so we can tell that a request is yours. The token itself is never stored.</td>
+              <td>Performance of a contract, art. 6(1)(b)</td>
+              <td>90 days, or until you sign out</td>
+            </tr>
+            <tr>
+              <td>Sign-in code</td>
+              <td>A one-way digest of the six digit code we email you, with the address, so the code can be checked.</td>
+              <td>Performance of a contract, art. 6(1)(b)</td>
+              <td>10 minutes, then deleted</td>
+            </tr>
+            <tr>
+              <td>Abuse counter</td>
+              <td>A keyed one-way digest of the network address a sign-in request came from, so the code sender cannot be used to spam strangers. The address itself is never written down, and the digest cannot be reversed or matched to an address without a secret only the server holds.</td>
+              <td>Legitimate interests, art. 6(1)(f): keeping the service from being abused</td>
+              <td>Up to 24 hours</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>What is deliberately not collected</h3>
+      <p>
+        No name, no profile picture, no contacts, no location, no device
+        fingerprint, no advertising identifier, no behavioural profile. The app's
+        analytics module is a stub that does nothing. Your puzzle answers, your
+        streak and your score stay on your own device even when you are signed
+        in: they are not part of what an account syncs.
+      </p>
+
+      <h2>Signing in with Google</h2>
+      <p>
+        Google's sign-in script is loaded <strong>only</strong> when you open the
+        account panel on a deployment that offers it. If you never do, this app
+        never contacts Google at all. There is no automatic prompt.
+      </p>
+      <p>
+        If you do use it, Google hands the app a signed token identifying you.
+        We check that token, take the account identifier and the email address
+        from it, and discard the rest. We ask for no permissions on your Google
+        account, receive no access token, and can read nothing else from it. In
+        that exchange Google acts as an independent controller under its own
+        privacy policy.
+      </p>
+
+      <h2>Where the data sits, and who else touches it</h2>
+      <ul>
+        <li>
+          <strong>Cloudflare</strong> hosts the site and the database, as a
+          processor acting on our instructions. Like any web host it briefly sees
+          the usual request metadata, including network addresses, under its own
+          policy.
+        </li>
+        <li>
+          <strong>The email provider</strong> configured for this deployment
+          delivers the sign-in code, as a processor. It sees the address the code
+          is sent to.
+        </li>
+        <li>
+          <strong>Google</strong>, only if you choose the Google button, as
+          described above.
+        </li>
+      </ul>
+      <p>
+        These services operate globally, so data may be processed outside the
+        European Economic Area under the transfer safeguards in their own terms.
+        Nobody else receives any of it, and none of it is sold, rented or used
+        for advertising.
+      </p>
+
+      <h2>Your rights</h2>
+      <p>
+        Under the GDPR you may ask for access to your data, correction of it,
+        erasure, portability, restriction, and you may object to processing based
+        on legitimate interests. Two of those are wired into the app so you do
+        not have to ask anyone:
+      </p>
+      <ul>
+        <li>
+          <strong>Take a copy.</strong> Open the account panel and choose
+          <em>Download my data</em>. The file contains everything the server
+          holds about you, in a format the app itself can read back.
+        </li>
+        <li>
+          <strong>Erase everything.</strong> Open the account panel and choose
+          <em>Delete my account</em>. This removes your account, your reviews and
+          your sessions immediately, on the server and on the device you are
+          using. There is no soft delete, no grace period and no way for us to
+          restore it afterwards.
+        </li>
+      </ul>
+      <p>
+        For anything else, write to the address above. If you are in the EU or
+        EEA you may also complain to your national data protection authority; in
+        France that is the CNIL. Users in Japan have the equivalent rights of
+        disclosure, correction and deletion under the Act on the Protection of
+        Personal Information, and may contact the Personal Information Protection
+        Commission.
+      </p>
+
+      <h2>Children</h2>
+      <p>
+        Confoundle is not aimed at children and asks for no age information.
+        Please do not create an account if you are under 16, or under the age
+        your country sets for consenting to online services. The app itself is
+        fully playable without one.
+      </p>
+
+      <h2>Security</h2>
+      <p>
+        There is no password to steal: we store no password hashes, because
+        signing in means proving you control an email address rather than
+        remembering a secret. Sign-in tokens and email codes are stored only as
+        one-way digests, so a copy of the database would not let anyone sign in
+        as you. Traffic is encrypted in transit.
+      </p>
+
+      <h2>Changes</h2>
+      <p>
+        The app is open source, so every change to what it stores is visible in
+        its history. Material changes to this page will be noted here with a
+        date.
+      </p>
+
+      <footer>
+        <p>Last updated 23 July 2026. <a href="/">Back to Confoundle</a></p>
+      </footer>
+    </main>
+  </body>
+</html>

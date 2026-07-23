@@ -31,7 +31,56 @@ what is actually required:
 | China, 医师资格考试大纲 | done | Names exactly three biases. Textbooks teach the subtypes; the exam does not. |
 | Russia, первичная аккредитация | done | The clean negative. Zero named biases, with an internal control proving it is deliberate. |
 | Spain, MIR | done | No blueprint exists at all. Evidence comes from five years of real papers. |
-| Germany | pending | |
+| Germany, IMPP-GK | done | Three bias terms, but a rich set of *psychological* judgement errors nobody else has. |
+
+**All nine read.** No jurisdiction has been left pending.
+
+## Germany: three bias terms, and a psychology catalogue that is unique
+
+The legally operative documents are the Approbationsordnung für Ärzte (2002,
+amended 2012) and IMPP's Gegenstandskataloge. IMPP states its own catalogues are
+"ohne rechtliche Bindung" for the exams, and the NKLM 2.1 published in June 2026
+is explicitly non-binding, existing in two parallel variants because a new
+Approbationsordnung has stalled. So the operative catalogues are GK 1 (2010) and
+GK 2 (5.1, October 2021).
+
+Between them they name exactly three bias-family terms:
+
+- **Störfaktoren (Confounding)**, with control techniques
+- **Bias**, generic, with "Ursachen und Formen" but **no types enumerated**
+- **kognitive Verzerrungen**, generic, in the team safety-culture context
+
+Worth noting that IMPP glosses confounding as *Störfaktoren*, a rendering the
+German epidemiology community has criticised in print.
+
+**What Germany has that nobody else does** is a well-populated set of
+*psychological* judgement errors, inherited from the 2010 Medizinische
+Psychologie catalogue: **Haloeffekt, Primacy- und Recency-Effekt,
+Rosenthaleffekt, Placeboeffekt, Labeling, Urteilsheuristiken, Stereotypien,
+Beurteilungsfehler**, plus Störvariable, mediator and moderator variables,
+internal and external validity, and statistical versus substantive significance.
+
+A sharp asymmetry there: **Rosenthal (observer-expectancy) and placebo are named;
+Hawthorne is not.** So the German graduate meets the investigator-side effect
+without the subject-side one.
+
+Checked and **absent from every operative German catalogue**: Selektionsbias,
+Informationsbias, Recall-Bias, **Vorlaufzeit-Bias (lead-time)**, **Längenbias
+(length-time)**, **Regression zur Mitte**, Publikationsbias, Berkson,
+Healthy-Worker-Effekt, Hawthorne-Effekt, Simpson-Paradoxon, ökologischer
+Fehlschluss, immortal time, and confounding by indication. Overdiagnosis appears
+only in the non-operative competency catalogue; the operative one has just
+"Überversorgung".
+
+This denies the common assumption, which I had shared, that Germany owns
+lead-time and length bias outright. They are taught in the Q1 course and in
+commercial prep, and are defensible under the generic "Ursachen und Formen von
+Bias", but no official document names them.
+
+Weighting: M1 allocates **60 of 320 questions** to the psychology and sociology
+pot, the only one that can carry methodology, with no published sub-quota. M2 is
+320 questions with **no official per-subject quota at all**, so any published
+"Q1 is X% of M2" figure is a commercial reconstruction.
 
 ## Spain: no blueprint exists, so the papers are the only evidence
 

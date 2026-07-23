@@ -14,7 +14,17 @@ import { lessonPages, lessonSitemap } from "./src/server/prerender";
  * relative one, so this has to be decided at build time. Override for a fork or
  * a custom domain: SITE_ORIGIN=https://example.org pnpm build
  */
-const origin = (process.env.SITE_ORIGIN ?? "https://confoundle.pages.dev").replace(
+/**
+ * The canonical home. Defaults to the custom domain rather than the pages.dev
+ * host, because these URLs are baked into 170 lesson pages as canonical links,
+ * hreflang alternates and Open Graph tags, and those pages exist to be pasted
+ * into arguments. Whatever host they carry is the one that circulates.
+ *
+ * A default rather than a variable to remember on every deploy: forgetting it
+ * would silently publish the wrong origin, and this project has already lost an
+ * afternoon to a build variable that was easy to get wrong.
+ */
+const origin = (process.env.SITE_ORIGIN ?? "https://confoundle.org").replace(
   /\/$/,
   "",
 );
@@ -53,7 +63,6 @@ const PLACEHOLDER_PATTERNS = [
   /\bthe-real-address\b/i,
   /@(wherever|yourdomain|your-domain|example|domain)\b/i,
   /@(example|test|invalid|localhost)\.(com|org|net)$/i,
-  /^privacy@confoundle\.org$/i, // an example from a chat transcript, not a domain we hold
 ];
 
 function checkContactEmail(value: string | undefined): string | undefined {

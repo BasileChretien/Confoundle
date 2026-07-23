@@ -1,7 +1,14 @@
 import { useState } from "react";
 import { getPuzzleBySlug, getTodaysPuzzle, puzzles } from "../puzzles";
 import { PuzzleFlow } from "../engine/PuzzleFlow";
-import { hasPlayedToday } from "./session";
+import {
+  hasPlayedToday,
+  getLearned,
+  getHuntState,
+  todayDayNumber,
+} from "./session";
+import { TrapHuntView } from "../engine/TrapHuntView";
+import { checkpointDue, reviewDue } from "../engine/trapHunt";
 import { LocaleProvider, useT } from "./i18n";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { UI } from "./ui";
@@ -26,8 +33,17 @@ export default function App() {
 function AppShell() {
   const t = useT();
   const [slug, setSlug] = useState(initialSlug);
+  const [hunting, setHunting] = useState(false);
   const puzzle = getPuzzleBySlug(slug) ?? getTodaysPuzzle();
   const played = hasPlayedToday(puzzle.slug);
+
+  // A checkpoint opens once enough biases are learned; a review comes weekly.
+  const learned = getLearned();
+  const hunt = getHuntState();
+  const huntDue =
+    learned.length > 0 &&
+    (checkpointDue(learned.length, hunt.lastCheckpointAt) ||
+      reviewDue(hunt.lastReviewDay, todayDayNumber()));
 
   return (
     <div className="min-h-[100dvh] bg-paper">
@@ -60,8 +76,31 @@ function AppShell() {
         {__DEMO__ ? <DemoPicker current={slug} onPick={setSlug} /> : null}
 
         <div className="flex-1">
-          {/* Re-key on slug so switching puzzles resets the flow to its first beat. */}
-          <PuzzleFlow key={slug} puzzle={puzzle} />
+          {hunting ? (
+            <TrapHuntView onDone={() => setHunting(false)} />
+          ) : (
+            <>
+              {huntDue ? (
+                <button
+                  type="button"
+                  onClick={() => setHunting(true)}
+                  className="mb-4 flex w-full items-center gap-3 rounded-lg border border-gold/40 border-l-4 border-l-gold bg-gold/[0.08] p-3 text-left transition hover:bg-gold/[0.14] focus:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+                >
+                  <span className="text-xl">🎯</span>
+                  <span className="flex flex-col">
+                    <span className="font-display text-base font-semibold text-ink">
+                      {t({ en: "Trap Hunt unlocked" })}
+                    </span>
+                    <span className="text-[13px] text-ink-soft">
+                      {t({ en: "Can you still spot the traps?" })}
+                    </span>
+                  </span>
+                </button>
+              ) : null}
+              {/* Re-key on slug so switching puzzles resets the flow to its first beat. */}
+              <PuzzleFlow key={slug} puzzle={puzzle} />
+            </>
+          )}
         </div>
 
         <footer className="mt-6 border-t border-rule pt-3 text-center font-sans text-[10px] uppercase tracking-eyebrow text-ink-mute">

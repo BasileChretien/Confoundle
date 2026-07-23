@@ -1,4 +1,6 @@
-import { getStats } from "../app/session";
+import { useEffect, useState } from "react";
+import { getStats, todayDayNumber } from "../app/session";
+import { globalPercentile } from "../app/global";
 import { useT } from "../app/i18n";
 import { CONFIDENCE_LEVELS, type Confidence } from "./scoring";
 
@@ -30,6 +32,19 @@ export function StatsPanel({ todayScore }: { todayScore?: number }) {
   const t = useT();
   const s = getStats();
   const pct = (n: number) => Math.round(n * 100);
+
+  // Anonymous global comparison; stays hidden if the endpoint isn't deployed.
+  const [globalPct, setGlobalPct] = useState<number | null>(null);
+  useEffect(() => {
+    if (todayScore == null) return;
+    let alive = true;
+    globalPercentile(todayDayNumber(), todayScore).then((p) => {
+      if (alive) setGlobalPct(p);
+    });
+    return () => {
+      alive = false;
+    };
+  }, [todayScore]);
   const played = CONFIDENCE_LEVELS.filter((c) => s.byConfidence[c].played > 0);
 
   return (
@@ -70,6 +85,15 @@ export function StatsPanel({ todayScore }: { todayScore?: number }) {
             })}
           </div>
         </div>
+      ) : null}
+
+      {globalPct != null ? (
+        <p className="border-t border-rule pt-2.5 text-center font-sans text-[12px] text-ink-soft">
+          {t({ en: "You beat {pct}% of players today" }).replace(
+            "{pct}",
+            String(globalPct),
+          )}
+        </p>
       ) : null}
 
       <p className="text-center font-sans text-[11px] text-ink-mute">

@@ -50,6 +50,18 @@ pnpm run deploy
 
 Or **B) Git-connected** for auto-deploy on push: in the Cloudflare dashboard, *Workers & Pages → Create → Pages → Connect to Git*, then set **build command** `pnpm build` and **output directory** `dist`. Node version is pinned by [`.node-version`](./.node-version); caching/headers come from [`public/_headers`](./public/_headers).
 
+### Optional: the global percentile
+
+The results screen can show "you beat X% of players today". It is served by a Pages Function ([`functions/api/score.ts`](./functions/api/score.ts)) that stores **only an anonymous histogram of scores per day**: no names, no identifiers, nothing that can single a player out. Without the binding below the endpoint simply fails and the app hides the line, so the feature is entirely optional and nothing breaks without it.
+
+To enable it:
+
+```bash
+npx wrangler kv namespace create SCORES
+```
+
+Then in the Cloudflare dashboard open the Pages project and go to **Settings → Functions → KV namespace bindings**, binding the new namespace to the variable name `SCORES` (for Production, and Preview if you use it). Redeploy with `pnpm run deploy`.
+
 - **No SPA rewrite needed.** Puzzles are addressed with a query string (`?p=<slug>`), not a path, so every request resolves to `index.html` on any static host out of the box.
 - **Root vs. sub-path.** The default base path is `/` (root domains, incl. `*.pages.dev`). For a GitHub Pages project site served under `/<repo>/`, build with `--base=/<repo>/` instead.
 - **The daily** rotates deterministically by date across the registry, so every visitor sees the same puzzle on the same day.

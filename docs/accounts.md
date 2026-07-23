@@ -163,11 +163,24 @@ served to the browser from `/api/auth/session`, so there is exactly one place to
 configure it and no build-time copy that can drift out of step with the audience
 the server checks against.
 
-### 5. Fill in the contact address
+### 5. Set the contact address
 
-`public/privacy.html` contains `CONTACT-EMAIL-PLACEHOLDER` in two places. A
-privacy policy naming a controller with no way to reach them does not do its
-job. Replace both before deploying accounts.
+The privacy page has to name a way to reach the controller, or it does not do
+its job. That address is a **build variable**, not a line in the repo:
+
+```bash
+CONTACT_EMAIL=privacy@yourdomain pnpm build
+```
+
+Two reasons it is not committed. A plain address in a public file is a
+spam-harvesting target, and this is the only address on the site. And it should
+be a **dedicated address, not a personal one**: it goes on a public page, it
+will be scraped, and it is the address a data-protection request arrives at, so
+it wants to outlive any one mailbox. A free forwarding alias is enough.
+
+Left unset, the placeholder survives into `dist/privacy.html` and the build
+prints a warning every single time. Nothing else breaks, so a deployment
+without accounts is unaffected, but accounts must not go live in that state.
 
 ### 6. Check it
 

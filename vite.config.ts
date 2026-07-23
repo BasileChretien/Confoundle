@@ -1,4 +1,4 @@
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { defineConfig, type Plugin } from "vite";
@@ -18,6 +18,21 @@ const origin = (process.env.SITE_ORIGIN ?? "https://confoundle.pages.dev").repla
   /\/$/,
   "",
 );
+
+/**
+ * The controller's contact address on the privacy page.
+ *
+ * A build variable rather than a line in public/privacy.html because it is the
+ * one piece of that page nobody can write in advance, and a privacy policy
+ * naming a data controller with no way to reach them does not do its job. Kept
+ * out of the repo on purpose too: a plain address in a public file is a
+ * spam-harvesting target, and this is the only address on the site.
+ *
+ * Unset, the placeholder survives into the build and the build says so, every
+ * time, rather than shipping a policy with a dead link in silence.
+ */
+const CONTACT_PLACEHOLDER = "CONTACT-EMAIL-PLACEHOLDER";
+const contactEmail = process.env.CONTACT_EMAIL?.trim();
 
 /**
  * Write one static HTML page per lesson per language, at /l/<slug>/[<locale>/].
@@ -57,6 +72,24 @@ function lessonPagesPlugin(): Plugin {
       }
       await writeFile(join(outDir, "sitemap.xml"), lessonSitemap(pages), "utf8");
       this.info?.(`prerendered ${pages.length} lesson pages for ${origin}`);
+
+      // The privacy page's contact address, substituted here so the repo never
+      // carries it and so setting it later is one variable rather than an edit.
+      const policyPath = join(outDir, "privacy.html");
+      const policy = await readFile(policyPath, "utf8");
+      if (contactEmail) {
+        await writeFile(
+          policyPath,
+          policy.split(CONTACT_PLACEHOLDER).join(contactEmail),
+          "utf8",
+        );
+        this.info?.(`privacy contact set to ${contactEmail}`);
+      } else if (policy.includes(CONTACT_PLACEHOLDER)) {
+        this.warn?.(
+          "privacy.html still has CONTACT-EMAIL-PLACEHOLDER. Accounts must not " +
+            "go live without a contact address: build with CONTACT_EMAIL=... set.",
+        );
+      }
     },
   };
 }

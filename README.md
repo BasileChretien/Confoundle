@@ -74,6 +74,8 @@ Signing in (one click with Google, or a code emailed to you) makes your **spaced
 
 It runs on **Cloudflare D1**, not KV — the reasoning, along with the full setup runbook, is in [`docs/accounts.md`](./docs/accounts.md). There is **no password column**: both routes prove control of an email address, so there is nothing worth stealing and nothing to reset.
 
+Before accounts go live the privacy page needs a contact address, which is a build variable rather than a committed line (`CONTACT_EMAIL=privacy@yourdomain pnpm build`). Left unset the build warns on every run.
+
 Deletion and export are built in from day one and are in the panel, not behind a support request: **Download my data** returns everything held about you, and **Delete my account** erases it immediately, everywhere, with no grace period. Every field stored is listed in [`docs/data-inventory.md`](./docs/data-inventory.md); the policy users read is [`public/privacy.html`](./public/privacy.html).
 
 ### Shareable lesson pages

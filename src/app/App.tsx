@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { getPuzzleBySlug, getTodaysPuzzle, puzzles } from "../puzzles";
+import { getPuzzleBySlug, puzzles } from "../puzzles";
 import { PuzzleFlow } from "../engine/PuzzleFlow";
-import { hasPlayedToday } from "./session";
 import { ReviewView } from "../engine/ReviewView";
+import { LessonList } from "../engine/LessonList";
 import { reviews } from "./reviews";
 import { LocaleProvider, useT } from "./i18n";
 import { LanguageSwitcher } from "./LanguageSwitcher";
@@ -10,12 +10,17 @@ import { AccountPanel } from "./AccountPanel";
 import { AuthProvider } from "./auth";
 import { UI } from "./ui";
 
-/** Which puzzle to open first: an explicit ?p=<slug>, else today's daily. */
-function initialSlug(): string {
+/**
+ * Which lesson to open on arrival, or null for the list.
+ *
+ * A shared `?p=<slug>` link still opens straight into that lesson, which is the
+ * whole point of a shareable link. Everything else starts on the list now: the
+ * daily gate is gone, so there is no single puzzle the app can claim is today's.
+ */
+function initialSlug(): string | null {
   const requested = new URLSearchParams(window.location.search).get("p");
   if (requested && getPuzzleBySlug(requested)) return requested;
-  // Demo build opens on the flagship (Simpson's); real build follows the daily.
-  return __DEMO__ ? puzzles[0].slug : getTodaysPuzzle().slug;
+  return __DEMO__ ? puzzles[0].slug : null;
 }
 
 export default function App() {
@@ -31,16 +36,15 @@ export default function App() {
 
 function AppShell() {
   const t = useT();
-  const [slug, setSlug] = useState(initialSlug);
+  const [slug, setSlug] = useState<string | null>(initialSlug);
   const [reviewing, setReviewing] = useState(false);
   const [dueCount, setDueCount] = useState(0);
   // Bumped each time a session ends, so the next one draws a different scenario.
   const [round, setRound] = useState(0);
-  const puzzle = getPuzzleBySlug(slug) ?? getTodaysPuzzle();
-  const played = hasPlayedToday(puzzle.slug);
+  const puzzle = slug ? getPuzzleBySlug(slug) : undefined;
 
   // How many skills the scheduler says are due. Rechecked when a session ends
-  // (progress changed) and when the open puzzle changes (finishing one can
+  // (progress changed) and when the open lesson changes (finishing one can
   // enrol a new skill onto the ladder).
   useEffect(() => {
     let alive = true;
@@ -67,22 +71,15 @@ function AppShell() {
               />
             </div>
             <div className="mt-0.5 font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-mute">
-              {t(UI.daily)} · {t(UI.reasoning)}
+              {t(UI.lessons)} · {t(UI.reasoning)}
             </div>
           </div>
           <div className="flex flex-col items-end gap-1">
             <LanguageSwitcher />
-            {played ? (
-              <span className="font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-mute">
-                {t(UI.playedToday)}
-              </span>
-            ) : null}
           </div>
         </header>
 
         <AccountPanel />
-
-        {__DEMO__ ? <DemoPicker current={slug} onPick={setSlug} /> : null}
 
         <div className="flex-1">
           {reviewing ? (
@@ -93,6 +90,18 @@ function AppShell() {
                 setRound((r) => r + 1);
               }}
             />
+          ) : puzzle ? (
+            <>
+              <button
+                type="button"
+                onClick={() => setSlug(null)}
+                className="mb-3 -ml-1 inline-flex items-center gap-1.5 rounded-md px-1 py-1 font-sans text-[11px] font-semibold uppercase tracking-eyebrow text-ink-mute transition hover:text-ink focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand"
+              >
+                ← {t(UI.allLessons)}
+              </button>
+              {/* Re-key on slug so switching lessons resets the flow to its first beat. */}
+              <PuzzleFlow key={slug} puzzle={puzzle} />
+            </>
           ) : (
             <>
               {dueCount > 0 ? (
@@ -104,16 +113,15 @@ function AppShell() {
                   <span className="text-xl">🎯</span>
                   <span className="flex flex-col">
                     <span className="font-display text-base font-semibold text-ink">
-                      {t({ en: "Reviews due" })}: {dueCount}
+                      {t(UI.reviewsDue)}: {dueCount}
                     </span>
                     <span className="text-[13px] text-ink-soft">
-                      {t({ en: "Can you still spot the traps?" })}
+                      {t(UI.reviewsBlurb)}
                     </span>
                   </span>
                 </button>
               ) : null}
-              {/* Re-key on slug so switching puzzles resets the flow to its first beat. */}
-              <PuzzleFlow key={slug} puzzle={puzzle} />
+              <LessonList onOpen={setSlug} />
             </>
           )}
         </div>
@@ -122,48 +130,6 @@ function AppShell() {
           {t(UI.footer)}
         </footer>
       </main>
-    </div>
-  );
-}
-
-interface DemoPickerProps {
-  current: string;
-  onPick: (slug: string) => void;
-}
-
-/**
- * Demo-only affordance (single-file build): jump between all puzzles so a
- * one-off visitor can try every reasoning trap. The real daily build ships
- * without this, one puzzle a day is the point.
- */
-function DemoPicker({ current, onPick }: DemoPickerProps) {
-  const t = useT();
-  return (
-    <div className="mb-5 flex flex-col gap-2 rounded-lg border border-rule bg-paper-2 p-3">
-      <span className="font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-mute">
-        Demo · try any puzzle
-      </span>
-      <div className="flex flex-wrap gap-1.5">
-        {puzzles.map((p) => {
-          const active = p.slug === current;
-          return (
-            <button
-              key={p.slug}
-              type="button"
-              onClick={() => onPick(p.slug)}
-              aria-pressed={active}
-              className={
-                "rounded-md px-2.5 py-1 font-sans text-[12px] font-semibold transition " +
-                (active
-                  ? "bg-ink text-paper"
-                  : "border border-rule bg-paper text-ink hover:bg-paper-3")
-              }
-            >
-              {t(p.lesson.skillName)}
-            </button>
-          );
-        })}
-      </div>
     </div>
   );
 }

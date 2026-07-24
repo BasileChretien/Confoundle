@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import type { Choice, Puzzle } from "../puzzles/schema";
 import { track } from "../app/analytics";
 import { recordPlay, getStats, markLearned } from "../app/session";
+import { reviews } from "../app/reviews";
 import { ProgressDots } from "./ui";
 import { SetupView } from "./SetupView";
 import { RevealView } from "./RevealView";
@@ -44,8 +45,12 @@ export function PuzzleFlow({ puzzle }: { puzzle: Puzzle }) {
 
   function toLesson() {
     // Reaching the lesson is what counts as having been taught this bias; the
-    // Trap Hunt only ever tests biases the player has actually seen explained.
+    // reviews only ever test biases the player has actually seen explained.
     markLearned(puzzle.reasoningSkill);
+    // Put the skill on the spaced-repetition schedule the first time it is
+    // learned. Fire and forget: a storage hiccup must not block the beat, and
+    // enrolment is idempotent so a replay never disturbs progress already made.
+    void reviews.enrollSkill(puzzle.reasoningSkill);
     track("lesson_view", { slug: puzzle.slug });
     setBeat("lesson");
   }

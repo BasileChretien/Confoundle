@@ -235,47 +235,12 @@ export function markLearned(skill: string): void {
   }
 }
 
-const HUNT_KEY = "confoundle:hunt:v1";
-
-export interface HuntState {
-  lastCheckpointAt: number; // learned-count when the last checkpoint ran
-  lastReviewDay: number | null;
-  totalCorrect: number;
-  rounds: number;
-}
-
-const EMPTY_HUNT: HuntState = {
-  lastCheckpointAt: 0,
-  lastReviewDay: null,
-  totalCorrect: 0,
-  rounds: 0,
-};
-
-export function getHuntState(): HuntState {
-  try {
-    const raw = localStorage.getItem(HUNT_KEY);
-    return raw
-      ? { ...EMPTY_HUNT, ...(JSON.parse(raw) as Partial<HuntState>) }
-      : { ...EMPTY_HUNT };
-  } catch {
-    return { ...EMPTY_HUNT };
-  }
-}
-
-export function recordHunt(correct: number, learnedCount: number): void {
-  const s = getHuntState();
-  const next: HuntState = {
-    lastCheckpointAt: learnedCount,
-    lastReviewDay: dayNumber(todayISODate()),
-    totalCorrect: s.totalCorrect + correct,
-    rounds: s.rounds + 1,
-  };
-  try {
-    localStorage.setItem(HUNT_KEY, JSON.stringify(next));
-  } catch {
-    // storage unavailable, degrade silently
-  }
-}
+// The old Trap Hunt kept its own cadence state here (a checkpoint counter and a
+// weekly review day). It was replaced by the spaced-repetition scheduler in
+// src/srs, driven through src/app/reviews.ts, which schedules per skill and
+// syncs to an account, so that state and its helpers are gone. `markLearned`
+// stays: reaching a lesson still records the skill, and enrolling it on the
+// SRS ladder now happens alongside that in PuzzleFlow.
 
 export function todayDayNumber(): number {
   return dayNumber(todayISODate());

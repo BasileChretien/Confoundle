@@ -1,14 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getPuzzleBySlug, getTodaysPuzzle, puzzles } from "../puzzles";
 import { PuzzleFlow } from "../engine/PuzzleFlow";
-import {
-  hasPlayedToday,
-  getLearned,
-  getHuntState,
-  todayDayNumber,
-} from "./session";
-import { TrapHuntView } from "../engine/TrapHuntView";
-import { checkpointDue, reviewDue } from "../engine/trapHunt";
+import { hasPlayedToday } from "./session";
+import { ReviewView } from "../engine/ReviewView";
+import { reviews } from "./reviews";
 import { LocaleProvider, useT } from "./i18n";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { AccountPanel } from "./AccountPanel";
@@ -37,17 +32,25 @@ export default function App() {
 function AppShell() {
   const t = useT();
   const [slug, setSlug] = useState(initialSlug);
-  const [hunting, setHunting] = useState(false);
+  const [reviewing, setReviewing] = useState(false);
+  const [dueCount, setDueCount] = useState(0);
+  // Bumped each time a session ends, so the next one draws a different scenario.
+  const [round, setRound] = useState(0);
   const puzzle = getPuzzleBySlug(slug) ?? getTodaysPuzzle();
   const played = hasPlayedToday(puzzle.slug);
 
-  // A checkpoint opens once enough biases are learned; a review comes weekly.
-  const learned = getLearned();
-  const hunt = getHuntState();
-  const huntDue =
-    learned.length > 0 &&
-    (checkpointDue(learned.length, hunt.lastCheckpointAt) ||
-      reviewDue(hunt.lastReviewDay, todayDayNumber()));
+  // How many skills the scheduler says are due. Rechecked when a session ends
+  // (progress changed) and when the open puzzle changes (finishing one can
+  // enrol a new skill onto the ladder).
+  useEffect(() => {
+    let alive = true;
+    void reviews.reviewsDue().then((n) => {
+      if (alive) setDueCount(n);
+    });
+    return () => {
+      alive = false;
+    };
+  }, [reviewing, slug]);
 
   return (
     <div className="min-h-dvh bg-paper">
@@ -82,20 +85,26 @@ function AppShell() {
         {__DEMO__ ? <DemoPicker current={slug} onPick={setSlug} /> : null}
 
         <div className="flex-1">
-          {hunting ? (
-            <TrapHuntView onDone={() => setHunting(false)} />
+          {reviewing ? (
+            <ReviewView
+              seed={round}
+              onDone={() => {
+                setReviewing(false);
+                setRound((r) => r + 1);
+              }}
+            />
           ) : (
             <>
-              {huntDue ? (
+              {dueCount > 0 ? (
                 <button
                   type="button"
-                  onClick={() => setHunting(true)}
+                  onClick={() => setReviewing(true)}
                   className="mb-4 flex w-full items-center gap-3 rounded-lg border border-gold/40 border-l-4 border-l-gold bg-gold/8 p-3 text-left transition hover:bg-gold/[0.14] focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand"
                 >
                   <span className="text-xl">🎯</span>
                   <span className="flex flex-col">
                     <span className="font-display text-base font-semibold text-ink">
-                      {t({ en: "Trap Hunt unlocked" })}
+                      {t({ en: "Reviews due" })}: {dueCount}
                     </span>
                     <span className="text-[13px] text-ink-soft">
                       {t({ en: "Can you still spot the traps?" })}

@@ -6,6 +6,27 @@
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: geolocation=(), microphone=(), camera=(), interest-cohort=()
+  X-Frame-Options: DENY
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://accounts.google.com; style-src 'self' 'unsafe-inline' https://accounts.google.com; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://accounts.google.com; frame-src https://accounts.google.com; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+
+# Why each directive is what it is, since a wrong CSP breaks the site silently:
+#
+# script-src has no 'unsafe-inline' and needs none: the built index.html carries
+#   zero inline <script> blocks (Vite emits one external module, and the service
+#   worker registers from inside the bundle). accounts.google.com is the Google
+#   Identity Services client, the only third-party script the app loads, and it
+#   loads only when the account panel is opened.
+# style-src does need 'unsafe-inline', because React sets inline style
+#   ATTRIBUTES for every chart bar and progress bar. That is a far smaller risk
+#   than inline script, and removing it would mean rewriting every derived width
+#   as a class. GIS serves its button's stylesheet from the same origin.
+# img-src allows data: and blob: because the share card is rendered by
+#   html-to-image, which serialises the DOM to a data: URL and hands the canvas
+#   out as a blob. Without these two the card export fails.
+# frame-src is for the GIS sign-in iframe. frame-ancestors 'none' plus
+#   X-Frame-Options stops anyone else framing us.
+# connect-src covers our own /api routes plus the GIS token endpoint.
+# No external fonts exist, so font-src stays on 'self'.
 
 /assets/*
   Cache-Control: public, max-age=31536000, immutable

@@ -30,6 +30,12 @@ jobs:
           node-version-file: .node-version
       - run: corepack enable
 
+      # --frozen-lockfile also enforces the supply-chain policy in
+      # pnpm-workspace.yaml, so a dependency PR that bumps to a version
+      # published in the last three days fails HERE. On a private free-plan
+      # repository, where required status checks are a paid feature and
+      # nothing can hold a merge back, this is the one gate that genuinely
+      # runs unattended. See docs/dependencies.md.
       - run: pnpm install --frozen-lockfile
 
       # Type-check, tests, then a real production build, in that order: each

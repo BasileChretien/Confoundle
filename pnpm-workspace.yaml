@@ -1,2 +1,22 @@
+# Postinstall scripts do not run unless a package is listed here. That is
+# pnpm's default and it is worth keeping: an install is otherwise arbitrary
+# code execution from every package in the tree. esbuild genuinely needs its
+# script to fetch a platform binary; nothing else here does.
 allowBuilds:
   esbuild: true
+
+# Refuse any version published less than three days ago.
+#
+# This is the protection that actually fits this project's situation. The
+# repository is private on a free plan, so GitHub's required status checks and
+# auto-merge are unavailable, which means no automated gate can hold a merge
+# back. What CAN be held back is the install itself.
+#
+# The attack it addresses is a maintainer account compromise, where a malicious
+# version is published and then usually caught and pulled within hours. Waiting
+# three days means an automated weekly update never reaches for a version the
+# ecosystem has not had time to look at. The cost is that genuinely urgent
+# security patches also wait, which is the right trade for an unattended
+# process: an urgent patch gets applied by hand, deliberately, and nothing here
+# prevents that.
+minimumReleaseAge: 4320

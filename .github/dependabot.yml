@@ -20,9 +20,11 @@ updates:
       include: scope
 
     groups:
-      # Patch and minor bumps, batched into one PR. These are the ones the
-      # automerge workflow is allowed to land unattended once CI is green,
-      # so batching them keeps the noise to roughly one PR a week.
+      # Patch and minor bumps, batched into one PR, so merging the week's
+      # routine updates is one decision on one green check rather than
+      # fifteen. Nothing merges by itself: this repository is private on a
+      # free plan, so required status checks are unavailable and GitHub's
+      # auto-merge would have nothing to wait for. See docs/dependencies.md.
       routine:
         patterns: ["*"]
         update-types: [minor, patch]

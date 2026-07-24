@@ -145,7 +145,7 @@ function FrequencyGlyph({ data }: { data: FrequenciesData }) {
       >
         Everyone here tested positive
       </div>
-      <div className="mx-auto flex max-w-[15rem] flex-wrap justify-center gap-1">
+      <div className="mx-auto flex max-w-60 flex-wrap justify-center gap-1">
         {Array.from({ length: trueN }).map((_, i) => (
           <span
             key={`t${i}`}
@@ -582,7 +582,7 @@ export function ShareCard({
             {t(puzzle.lesson.skillName)}
           </div>
 
-          <p className="mt-2.5 text-[14px] leading-[1.5]" style={{ color: CARD.text }}>
+          <p className="mt-2.5 text-[14px] leading-normal" style={{ color: CARD.text }}>
             {t(puzzle.share.explainer)}
           </p>
 
@@ -637,7 +637,7 @@ export function ShareCard({
                 aria-pressed={active}
                 onClick={() => selectFraming(opt.key)}
                 className={
-                  "rounded-lg px-3 py-2 text-sm font-semibold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-paper " +
+                  "rounded-lg px-3 py-2 text-sm font-semibold transition focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-paper " +
                   (active
                     ? "bg-ink text-paper"
                     : "border border-rule bg-paper-2 text-ink hover:bg-paper-3")
@@ -654,7 +654,7 @@ export function ShareCard({
         {busy ? "Working…" : "Share / save card"}
       </Button>
       <p
-        className="min-h-[1.25rem] text-center text-sm text-ink-soft"
+        className="min-h-5 text-center text-sm text-ink-soft"
         aria-live="polite"
       >
         {status}

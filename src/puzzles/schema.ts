@@ -256,12 +256,12 @@ export const Provenance = z
   .object({
     source: z.string().min(1), // full primary-literature citation
     year: z.number().int(),
-    url: z.string().url().optional(),
+    url: z.url().optional(),
     doi: z.string().optional(),
     note: LocalizedText.optional(),
   })
   .refine((p) => Boolean(p.url || p.doi), {
-    message: "provenance requires a url or doi",
+    error: "provenance requires a url or doi",
   });
 export type Provenance = z.infer<typeof Provenance>;
 
@@ -375,21 +375,21 @@ export const Puzzle = z
     }),
 
     provenance: Provenance,
-    goDeeperUrl: z.string().url().optional(),
+    goDeeperUrl: z.url().optional(),
   })
   .superRefine((p, ctx) => {
     // exactly one correct choice, at least one trap
     const correct = p.choices.filter((c) => c.isCorrect);
     if (correct.length !== 1) {
       ctx.addIssue({
-        code: z.ZodIssueCode.custom,
+        code: "custom",
         path: ["choices"],
         message: `exactly one choice must have isCorrect: true (found ${correct.length})`,
       });
     }
     if (!p.choices.some((c) => c.isIntuitiveTrap)) {
       ctx.addIssue({
-        code: z.ZodIssueCode.custom,
+        code: "custom",
         path: ["choices"],
         message: "at least one choice must be flagged isIntuitiveTrap: true",
       });
@@ -404,21 +404,21 @@ export const Puzzle = z
       d.observations.forEach((o, i) => {
         if (o.numerator > o.denominator) {
           ctx.addIssue({
-            code: z.ZodIssueCode.custom,
+            code: "custom",
             path: ["setup", "data", "observations", i],
             message: `numerator ${o.numerator} exceeds denominator ${o.denominator}`,
           });
         }
         if (!groupIds.has(o.groupId)) {
           ctx.addIssue({
-            code: z.ZodIssueCode.custom,
+            code: "custom",
             path: ["setup", "data", "observations", i, "groupId"],
             message: `unknown group id "${o.groupId}"`,
           });
         }
         if (!stratumIds.has(o.stratumId)) {
           ctx.addIssue({
-            code: z.ZodIssueCode.custom,
+            code: "custom",
             path: ["setup", "data", "observations", i, "stratumId"],
             message: `unknown stratum id "${o.stratumId}"`,
           });
@@ -426,7 +426,7 @@ export const Puzzle = z
         const key = `${o.groupId}::${o.stratumId}`;
         if (seen.has(key)) {
           ctx.addIssue({
-            code: z.ZodIssueCode.custom,
+            code: "custom",
             path: ["setup", "data", "observations", i],
             message: `duplicate observation for ${key}`,
           });
@@ -439,7 +439,7 @@ export const Puzzle = z
         for (const s of d.strata) {
           if (!seen.has(`${g.id}::${s.id}`)) {
             ctx.addIssue({
-              code: z.ZodIssueCode.custom,
+              code: "custom",
               path: ["setup", "data", "observations"],
               message: `missing observation for group "${g.id}" × stratum "${s.id}"`,
             });
@@ -457,7 +457,7 @@ export const Puzzle = z
         ] as const) {
           if (view.kind === "aggregate") {
             ctx.addIssue({
-              code: z.ZodIssueCode.custom,
+              code: "custom",
               path: [where, "kind"],
               message:
                 "cannot pool strata that are separate samples (strataAreSeparateSamples is set)",
@@ -475,7 +475,7 @@ export const Puzzle = z
         for (const id of view.groupIds ?? []) {
           if (!groupIds.has(id)) {
             ctx.addIssue({
-              code: z.ZodIssueCode.custom,
+              code: "custom",
               path: [where, "groupIds"],
               message: `unknown group id "${id}"`,
             });
@@ -484,7 +484,7 @@ export const Puzzle = z
         for (const id of view.strataIds ?? []) {
           if (!stratumIds.has(id)) {
             ctx.addIssue({
-              code: z.ZodIssueCode.custom,
+              code: "custom",
               path: [where, "strataIds"],
               message: `unknown stratum id "${id}"`,
             });
@@ -504,14 +504,14 @@ export const Puzzle = z
       const path = ["setup", "data"] as const;
       if (d.withCondition > d.total) {
         ctx.addIssue({
-          code: z.ZodIssueCode.custom,
+          code: "custom",
           path: [...path, "withCondition"],
           message: `withCondition (${d.withCondition}) exceeds total (${d.total})`,
         });
       }
       if (d.positiveGivenCondition > d.withCondition) {
         ctx.addIssue({
-          code: z.ZodIssueCode.custom,
+          code: "custom",
           path: [...path, "positiveGivenCondition"],
           message: `true positives (${d.positiveGivenCondition}) exceed those with the condition (${d.withCondition})`,
         });
@@ -519,7 +519,7 @@ export const Puzzle = z
       const without = d.total - d.withCondition;
       if (d.positiveGivenNoCondition > without) {
         ctx.addIssue({
-          code: z.ZodIssueCode.custom,
+          code: "custom",
           path: [...path, "positiveGivenNoCondition"],
           message: `false positives (${d.positiveGivenNoCondition}) exceed those without the condition (${without})`,
         });
@@ -531,7 +531,7 @@ export const Puzzle = z
       for (const arm of ["control", "treated"] as const) {
         if (d[arm].events > d[arm].n) {
           ctx.addIssue({
-            code: z.ZodIssueCode.custom,
+            code: "custom",
             path: ["setup", "data", arm, "events"],
             message: `events (${d[arm].events}) exceed the arm size (${d[arm].n})`,
           });
@@ -541,7 +541,7 @@ export const Puzzle = z
       // relative view would divide by zero.
       if (d.control.events === 0) {
         ctx.addIssue({
-          code: z.ZodIssueCode.custom,
+          code: "custom",
           path: ["setup", "data", "control", "events"],
           message: "the control arm needs at least one event to compare against",
         });
@@ -555,7 +555,7 @@ export const Puzzle = z
         const at = (k: string) => ["setup", "data", "tracks", i, k];
         if (seen.has(tr.id)) {
           ctx.addIssue({
-            code: z.ZodIssueCode.custom,
+            code: "custom",
             path: at("id"),
             message: `duplicate track id "${tr.id}"`,
           });
@@ -566,21 +566,21 @@ export const Puzzle = z
         // (and its test's); that they are ordered at all is structural.
         if (!(tr.onsetAt <= tr.detectedAt)) {
           ctx.addIssue({
-            code: z.ZodIssueCode.custom,
+            code: "custom",
             path: at("detectedAt"),
             message: `detectedAt (${tr.detectedAt}) precedes onsetAt (${tr.onsetAt})`,
           });
         }
         if (!(tr.detectedAt <= tr.diedAt)) {
           ctx.addIssue({
-            code: z.ZodIssueCode.custom,
+            code: "custom",
             path: at("diedAt"),
             message: `diedAt (${tr.diedAt}) precedes detectedAt (${tr.detectedAt})`,
           });
         }
         if (!(tr.diedAt <= d.span)) {
           ctx.addIssue({
-            code: z.ZodIssueCode.custom,
+            code: "custom",
             path: at("diedAt"),
             message: `diedAt (${tr.diedAt}) runs past the axis span (${d.span})`,
           });
@@ -591,7 +591,7 @@ export const Puzzle = z
         if (tr.immortalUntil !== undefined) {
           if (tr.immortalUntil < tr.onsetAt || tr.immortalUntil > tr.diedAt) {
             ctx.addIssue({
-              code: z.ZodIssueCode.custom,
+              code: "custom",
               path: at("immortalUntil"),
               message: `immortalUntil (${tr.immortalUntil}) falls outside the track (${tr.onsetAt} to ${tr.diedAt})`,
             });
@@ -606,7 +606,7 @@ export const Puzzle = z
       );
       if (shadesImmortal && !d.tracks.some((tr) => tr.immortalUntil !== undefined)) {
         ctx.addIssue({
-          code: z.ZodIssueCode.custom,
+          code: "custom",
           path: ["setup", "data", "tracks"],
           message: "an immortal view needs at least one track with immortalUntil",
         });

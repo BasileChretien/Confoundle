@@ -98,7 +98,7 @@ export function RevealView({
               <button
                 type="button"
                 onClick={replay}
-                className="rounded font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-brand-ink hover:text-brand focus:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+                className="rounded font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-brand-ink hover:text-brand focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand"
               >
                 ↺ {t({ en: "Replay" })}
               </button>
@@ -116,7 +116,7 @@ export function RevealView({
         {data.type === "rates" ? <Legend data={data} view={view} /> : null}
       </figure>
 
-      <div className="rounded-lg border border-gold/40 border-l-4 border-l-gold bg-gold/[0.08] p-3.5">
+      <div className="rounded-lg border border-gold/40 border-l-4 border-l-gold bg-gold/8 p-3.5">
         <Badge tone="gold">
           {puzzle.reveal.mechanismLabel
             ? t(puzzle.reveal.mechanismLabel)

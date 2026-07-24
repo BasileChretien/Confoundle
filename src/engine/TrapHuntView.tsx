@@ -132,7 +132,7 @@ export function TrapHuntView({ onDone }: { onDone: () => void }) {
               key={slug}
               type="button"
               onClick={() => submit({ isTrap: true, trap: slug })}
-              className="rounded-lg border border-rule bg-paper-2 px-4 py-3 text-left font-semibold text-ink transition hover:border-ink/40 hover:bg-paper-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand active:scale-[.99]"
+              className="rounded-lg border border-rule bg-paper-2 px-4 py-3 text-left font-semibold text-ink transition hover:border-ink/40 hover:bg-paper-3 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand active:scale-[.99]"
             >
               {skillName(slug)}
             </button>
@@ -143,14 +143,14 @@ export function TrapHuntView({ onDone }: { onDone: () => void }) {
           <button
             type="button"
             onClick={() => submit({ isTrap: false })}
-            className="rounded-lg border border-rule bg-paper-2 px-4 py-3.5 font-semibold text-ink transition hover:border-ink/40 hover:bg-paper-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand active:scale-[.99]"
+            className="rounded-lg border border-rule bg-paper-2 px-4 py-3.5 font-semibold text-ink transition hover:border-ink/40 hover:bg-paper-3 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand active:scale-[.99]"
           >
             {t({ en: "Sound reasoning" })}
           </button>
           <button
             type="button"
             onClick={() => setNaming(true)}
-            className="rounded-lg border border-rule bg-paper-2 px-4 py-3.5 font-semibold text-ink transition hover:border-ink/40 hover:bg-paper-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand active:scale-[.99]"
+            className="rounded-lg border border-rule bg-paper-2 px-4 py-3.5 font-semibold text-ink transition hover:border-ink/40 hover:bg-paper-3 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand active:scale-[.99]"
           >
             {t({ en: "There's a trap" })}
           </button>

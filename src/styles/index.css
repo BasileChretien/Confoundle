@@ -1,6 +1,81 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/*
+  "Almanac" identity, a warm statistical data-plate. The data colours (brand
+  teal, rust, gold) are validated for colourblind separation and for contrast
+  on the paper surface. This block was tailwind.config.ts until v4 moved the
+  theme into CSS; the class names it generates are unchanged, so bg-paper-2,
+  text-ink-soft, text-brand-ink, border-rule and tracking-eyebrow all still
+  mean what they always did.
+
+  source(none) plus explicit @source paths, rather than Tailwind's automatic
+  detection. Automatic detection walks up from the CSS file and would scan
+  sibling git worktrees under .claude/, pulling classes from other branches
+  into this build: a class deleted here would keep its CSS because a worktree
+  still mentioned it. Naming the two real source roots keeps the output
+  honest.
+*/
+@import 'tailwindcss' source(none);
+@source '../../index.html';
+@source '../../src';
+
+@theme {
+  --color-paper-2: #e9dec8;
+  --color-paper-3: #e1d5bc;
+  --color-paper: #f2ecde;
+
+  --color-ink: #221d15;
+  --color-ink-soft: #6b6154;
+  --color-ink-mute: #8a7e6a;
+  --color-ink-card: #201b14;
+
+  --color-rule: #d6c9ae;
+
+  --color-brand: #0e8c7a;
+  --color-brand-ink: #0a6b5d;
+
+  --color-rust: #be4a2f;
+  --color-rust-ink: #a83a28;
+
+  --color-gold: #9a6b12;
+  --color-gold-ink: #8a5a0e;
+
+  --font-display: 'Fraunces Variable', Fraunces, ui-serif, Georgia, serif;
+  --font-sans:
+    'Space Grotesk Variable', 'Space Grotesk', ui-sans-serif, system-ui,
+    sans-serif;
+
+  --tracking-eyebrow: 0.18em;
+}
+
+/*
+  Two v4 default changes, both restored deliberately rather than left to
+  surprise someone later.
+
+  v4 made the default border colour `currentcolor`, where v3 used gray-200.
+  Every border in this app names its own colour (border-rule, border-gold/40),
+  so this shim should be removable, but "should be" is not "is": an element
+  that relied on the default would silently take on its text colour, which on
+  the ink-on-paper palette is a heavy dark line rather than a hairline. Left in
+  place until someone has looked at every screen. Removing it is a separate,
+  visually verified change.
+
+  v4 also gave buttons `cursor: default` to match the platform. This app is
+  mobile-first, where cursors do not exist, but on desktop the whole interface
+  is buttons, and losing the pointer makes it feel inert.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
+    cursor: pointer;
+  }
+}
 
 :root {
   color-scheme: light;

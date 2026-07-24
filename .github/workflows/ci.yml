@@ -1,0 +1,51 @@
+name: CI
+
+# Runs on every push and every pull request, including the ones Dependabot
+# opens. That is the point: an automated dependency bump is only safe if
+# something independent proves the project still builds and its tests still
+# pass, and this is that something.
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# A newer push to the same branch makes the older run pointless.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Corepack activates the pnpm pinned in package.json's packageManager
+      # field, so CI, the Cloudflare build image and a developer's machine all
+      # use the same one. This has already bitten once: .node-version said 20
+      # while the pinned pnpm needed 22.13, and only a clean-room build could
+      # reveal it, because every local machine here runs 24 and ignores the file.
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+      - run: corepack enable
+
+      # --frozen-lockfile also enforces the supply-chain policy in
+      # pnpm-workspace.yaml, so a dependency PR that bumps to a version
+      # published in the last three days fails HERE. On a private free-plan
+      # repository, where required status checks are a paid feature and
+      # nothing can hold a merge back, this is the one gate that genuinely
+      # runs unattended. See docs/dependencies.md.
+      - run: pnpm install --frozen-lockfile
+
+      # Type-check, tests, then a real production build, in that order: each
+      # catches a class of failure the previous one cannot see. The build is
+      # included because the lesson-page prerender runs there and nowhere else.
+      - run: pnpm exec tsc --noEmit
+      - run: pnpm test
+      - run: pnpm exec vite build
+        env:
+          # Any address that is not a placeholder, so the build's own guard is
+          # satisfied. The real one lives in the Cloudflare dashboard and never
+          # comes from here.
+          CONTACT_EMAIL: ci@confoundle.org

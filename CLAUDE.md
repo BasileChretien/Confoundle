@@ -35,4 +35,4 @@ pnpm is provisioned via Corepack (`packageManager` is pinned). If `pnpm` isn't o
 
 ## Stack
 
-Vite + React + TypeScript · Tailwind CSS v3 · vite-plugin-pwa · zod · motion (framer-motion) · html-to-image. **Node ≥ 22.13**, pinned in `.node-version`: the pinned pnpm uses `node:sqlite` internally, so an older Node fails at `pnpm install` with `ERR_UNKNOWN_BUILTIN_MODULE` before any project code runs. The server tests need the same builtin.
+Vite + React + TypeScript · **Tailwind CSS v4** (CSS-first: the theme lives in the `@theme` block of `src/styles/index.css`, there is no `tailwind.config.ts` and no PostCSS config, and `@tailwindcss/vite` replaces both) · vite-plugin-pwa · zod v4 · motion (framer-motion) · html-to-image. **Node ≥ 22.13**, pinned in `.node-version`: the pinned pnpm uses `node:sqlite` internally, so an older Node fails at `pnpm install` with `ERR_UNKNOWN_BUILTIN_MODULE` before any project code runs. The server tests need the same builtin.

@@ -1,0 +1,67 @@
+version: 2
+
+# Why Dependabot rather than Renovate: it is native to GitHub, needs no app
+# installed and no third-party access to the repository. Renovate is more
+# configurable, and if this project ever wants monorepo-aware grouping or
+# custom scheduling it is the better tool. For one small app, the thing that
+# matters is that updates arrive at all and that nothing merges without CI.
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: "06:00"
+      timezone: Europe/Paris
+    # Enough to keep things moving, few enough to actually read.
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "chore"
+      include: scope
+
+    groups:
+      # Patch and minor bumps, batched into one PR, so merging the week's
+      # routine updates is one decision on one green check rather than
+      # fifteen. Nothing merges by itself: this repository is private on a
+      # free plan, so required status checks are unavailable and GitHub's
+      # auto-merge would have nothing to wait for. See docs/dependencies.md.
+      routine:
+        patterns: ["*"]
+        update-types: [minor, patch]
+
+      # Majors are grouped by what breaks together rather than one PR each.
+      # This session learned that the hard way: React 19 could not land alone
+      # because @vitejs/plugin-react 6 refuses to load under Vite 5, so a
+      # single-package major PR would have failed CI for a reason that had
+      # nothing to do with React.
+      react:
+        patterns: ["react", "react-dom", "@types/react", "@types/react-dom", "@vitejs/plugin-react"]
+        update-types: [major]
+      build-tooling:
+        patterns: ["vite", "vitest", "vite-plugin-*", "typescript"]
+        update-types: [major]
+
+    # Majors that rewrite source files. Left out of every group above so each
+    # arrives as its own PR, which never automerges and gets read properly.
+    # Both of these define something the project's correctness rests on:
+    # zod is the schema every puzzle is validated against, and Tailwind owns
+    # the entire visual system.
+    ignore:
+      - dependency-name: zod
+        update-types: [version-update:semver-major]
+      - dependency-name: tailwindcss
+        update-types: [version-update:semver-major]
+      # Versioned in lockstep with tailwindcss. Without this, a future v5 of
+      # the plugin would arrive as its own major PR while tailwindcss stayed
+      # pinned at v4, producing a mismatched pair that fails for a reason that
+      # looks nothing like its cause.
+      - dependency-name: "@tailwindcss/*"
+        update-types: [version-update:semver-major]
+
+  # The Actions used by CI itself. Rarely change, worth not going stale.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    commit-message:
+      prefix: "ci"

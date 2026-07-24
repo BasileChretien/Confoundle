@@ -81,7 +81,7 @@ function ArmBar({
 
   return (
     <div className="flex min-w-0 flex-1 flex-col items-center gap-1">
-      <span className="min-h-[1.25rem] text-sm font-semibold tabular-nums text-ink">
+      <span className="min-h-5 text-sm font-semibold tabular-nums text-ink">
         {readout}
       </span>
       <div

@@ -87,7 +87,7 @@ export function FriendsBoard({ today }: { today: TodayResult }) {
           onChange={(e) => saveName(e.target.value)}
           placeholder={t({ en: "Your name" })}
           maxLength={24}
-          className="w-28 rounded-md border border-rule bg-paper px-2 py-1 text-right font-sans text-[12px] font-semibold text-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+          className="w-28 rounded-md border border-rule bg-paper px-2 py-1 text-right font-sans text-[12px] font-semibold text-ink placeholder:text-ink-mute focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand"
         />
       </div>
 
@@ -98,14 +98,14 @@ export function FriendsBoard({ today }: { today: TodayResult }) {
         <button
           type="button"
           onClick={copy}
-          className="rounded-lg bg-ink px-3 py-2 font-sans text-[13px] font-semibold text-paper transition hover:bg-ink/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand active:scale-[.98]"
+          className="rounded-lg bg-ink px-3 py-2 font-sans text-[13px] font-semibold text-paper transition hover:bg-ink/90 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand active:scale-[.98]"
         >
           {copied ? t({ en: "Copied" }) : t({ en: "Copy result" })}
         </button>
         <button
           type="button"
           onClick={share}
-          className="rounded-lg border border-rule bg-paper px-3 py-2 font-sans text-[13px] font-semibold text-ink transition hover:bg-paper-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand active:scale-[.98]"
+          className="rounded-lg border border-rule bg-paper px-3 py-2 font-sans text-[13px] font-semibold text-ink transition hover:bg-paper-3 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand active:scale-[.98]"
         >
           {t({ en: "Share" })}
         </button>
@@ -137,13 +137,13 @@ export function FriendsBoard({ today }: { today: TodayResult }) {
           onChange={(e) => setPaste(e.target.value)}
           rows={2}
           placeholder={t({ en: "Paste your friends' results here" })}
-          className="resize-none rounded-md border border-rule bg-paper px-3 py-2 font-sans text-[12px] text-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+          className="resize-none rounded-md border border-rule bg-paper px-3 py-2 font-sans text-[12px] text-ink placeholder:text-ink-mute focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand"
         />
         <button
           type="button"
           onClick={addFriends}
           disabled={parseResults(paste).length === 0}
-          className="self-end rounded-lg border border-rule bg-paper px-3 py-1.5 font-sans text-[12px] font-semibold text-ink transition enabled:hover:bg-paper-3 disabled:opacity-40 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+          className="self-end rounded-lg border border-rule bg-paper px-3 py-1.5 font-sans text-[12px] font-semibold text-ink transition enabled:hover:bg-paper-3 disabled:opacity-40 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand"
         >
           {t({ en: "Add to board" })}
         </button>

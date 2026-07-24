@@ -84,7 +84,53 @@ than fifteen:
 - **zod and tailwindcss majors are ignored entirely.** Not because they matter
   least but because they matter most: zod defines the schema every puzzle is
   validated against, and Tailwind owns the whole visual system. Both need a
-  deliberate migration, on a branch, with the upstream guide open.
+  deliberate migration, on a branch, with the upstream guide open. Both went to
+  v4 by hand in July 2026, and the Tailwind one is the case for this rule: its
+  official codemod is good but not sufficient, and two of the changes that
+  mattered most were ones no test could have caught. See the note below.
+
+### What the Tailwind 4 migration actually needed
+
+Recorded because the next major will be similar, and because it shows what the
+"ignore, migrate by hand" policy is buying.
+
+The official codemod (`npx @tailwindcss/upgrade`) did the bulk correctly: it
+translated the whole `tailwind.config.ts` palette into a CSS `@theme` block
+with every class name unchanged, and modernised arbitrary values
+(`min-h-[100dvh]` to `min-h-dvh`, `max-w-[17rem]` to `max-w-68`). Three things
+it did not do, in ascending order of how quietly they would have broken:
+
+1. **`postcss.config.js` and `autoprefixer` are gone**, replaced by
+   `@tailwindcss/vite` in both plugin arrays. Mechanical, and obvious if missed.
+2. **Placeholder colour and button cursor changed defaults.** v4 gives buttons
+   `cursor: default` and placeholders a different colour. Both restored
+   deliberately, the cursor in a base layer.
+3. **`outline-none` changed meaning, and this is the one worth remembering.**
+   In v3 it emitted a transparent 2px outline, which Windows High Contrast
+   turns into a visible focus ring. In v4 that behaviour is called
+   `outline-hidden`, and `outline-none` genuinely removes the outline. All 21
+   sites here pair it with `focus-visible:ring-*`, and ring utilities are not
+   rendered in forced-colors mode, so leaving them as `outline-none` would have
+   made keyboard focus **invisible to exactly the users who most depend on it**,
+   while compiling, passing all 304 tests and looking perfect in a screenshot.
+   Verified afterwards by checking the built CSS really contains
+   `@media (forced-colors:active)` for those selectors.
+
+One further trap the research caught before it landed: on some runs the codemod
+rewrites the string `"outline"` to `"outline-solid"` in
+`src/app/googleSignIn.ts`, where it is the Google Identity Services `theme`
+parameter and not a class at all. It compiles and the tests pass. Check that
+file after any future Tailwind codemod run.
+
+CSS cost, measured: 21.9 kB raw and 5.47 kB gzip becomes 30.5 kB and 6.77 kB,
+from the emitted theme variables, `@property` declarations and `color-mix`
+fallbacks. Small next to the main chunk, and worth knowing.
+
+The CSS entry uses `@import 'tailwindcss' source(none)` with explicit `@source`
+lines rather than automatic detection, because automatic detection walks up the
+directory tree and scans sibling git worktrees under `.claude/`, so a class
+deleted on this branch would keep its CSS because another branch still mentions
+it.
 
 ## The gap nothing here covers
 

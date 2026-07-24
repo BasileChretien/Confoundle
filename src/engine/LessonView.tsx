@@ -72,7 +72,7 @@ export function LessonView({
 
       {hasDeepDive ? (
         <details className="group rounded-lg border border-rule bg-paper-2">
-          <summary className="flex cursor-pointer list-none items-center justify-between gap-2 rounded-lg px-4 py-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand [&::-webkit-details-marker]:hidden">
+          <summary className="flex cursor-pointer list-none items-center justify-between gap-2 rounded-lg px-4 py-3 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand [&::-webkit-details-marker]:hidden">
             <span className="font-sans text-[11px] font-semibold uppercase tracking-eyebrow text-ink-soft">
               {t({ en: "See it in the wild" })}
             </span>

@@ -12,7 +12,7 @@ export function Button({
   ...rest
 }: ButtonProps) {
   const base =
-    "w-full rounded-lg px-5 py-3.5 text-center text-base font-semibold transition-[transform,background-color,border-color] duration-200 active:scale-[.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-paper disabled:opacity-50";
+    "w-full rounded-lg px-5 py-3.5 text-center text-base font-semibold transition-[transform,background-color,border-color] duration-200 active:scale-[.99] focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-paper disabled:opacity-50";
   const look =
     variant === "primary"
       ? "bg-ink text-paper hover:bg-ink/90"

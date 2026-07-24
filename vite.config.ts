@@ -3,6 +3,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { defineConfig, type Plugin } from "vite";
 import react from "@vitejs/plugin-react";
+import tailwindcss from "@tailwindcss/vite";
 import { VitePWA } from "vite-plugin-pwa";
 import { viteSingleFile } from "vite-plugin-singlefile";
 import { puzzles } from "./src/puzzles";
@@ -223,9 +224,12 @@ const pwa = VitePWA({
 export default defineConfig({
   // Enables the in-app puzzle picker in the single-file demo build only.
   define: { __DEMO__: JSON.stringify(singleFile) },
+  // Tailwind is a Vite plugin in v4 rather than a PostCSS plugin, which is why
+  // postcss.config.js and autoprefixer are gone: v4 handles vendor prefixing
+  // itself. Both build modes need it.
   plugins: singleFile
-    ? [react(), viteSingleFile()]
-    : [react(), pwa, lessonPagesPlugin()],
+    ? [react(), tailwindcss(), viteSingleFile()]
+    : [react(), tailwindcss(), pwa, lessonPagesPlugin()],
   resolve: singleFile
     ? {
         // No PWA plugin in single-file mode: point its virtual module at a stub.

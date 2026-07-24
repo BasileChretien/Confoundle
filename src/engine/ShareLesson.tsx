@@ -48,7 +48,7 @@ export function ShareLesson({ puzzle }: { puzzle: Puzzle }) {
         <button
           type="button"
           onClick={() => void copy()}
-          className="shrink-0 rounded-md border border-rule bg-paper px-3 py-1.5 font-sans text-[12px] font-semibold text-ink transition hover:bg-paper-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+          className="shrink-0 rounded-md border border-rule bg-paper px-3 py-1.5 font-sans text-[12px] font-semibold text-ink transition hover:bg-paper-3 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand"
         >
           {t(state === "copied" ? LESSON_SHARE.copied : LESSON_SHARE.copy)}
         </button>

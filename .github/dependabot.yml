@@ -51,6 +51,12 @@ updates:
         update-types: [version-update:semver-major]
       - dependency-name: tailwindcss
         update-types: [version-update:semver-major]
+      # Versioned in lockstep with tailwindcss. Without this, a future v5 of
+      # the plugin would arrive as its own major PR while tailwindcss stayed
+      # pinned at v4, producing a mismatched pair that fails for a reason that
+      # looks nothing like its cause.
+      - dependency-name: "@tailwindcss/*"
+        update-types: [version-update:semver-major]
 
   # The Actions used by CI itself. Rarely change, worth not going stale.
   - package-ecosystem: github-actions

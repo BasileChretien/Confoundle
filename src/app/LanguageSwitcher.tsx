@@ -18,7 +18,7 @@ export function LanguageSwitcher() {
         value={locale}
         onChange={(e) => setLocale(e.target.value)}
         aria-label={t(UI.language)}
-        className="cursor-pointer rounded-md border border-rule bg-paper-2 px-2 py-1 font-sans text-[11px] font-semibold text-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+        className="cursor-pointer rounded-md border border-rule bg-paper-2 px-2 py-1 font-sans text-[11px] font-semibold text-ink focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand"
       >
         {LOCALES.map((l) => (
           <option key={l.code} value={l.code}>

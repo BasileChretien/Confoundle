@@ -43,7 +43,7 @@ export function CommitView({
               onClick={() => setSelected(choice)}
               aria-pressed={active}
               className={
-                "group flex items-center justify-between gap-3 rounded-lg border px-5 py-3 text-left transition-[transform,background-color,border-color] duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-paper active:scale-[.99] " +
+                "group flex items-center justify-between gap-3 rounded-lg border px-5 py-3 text-left transition-[transform,background-color,border-color] duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-paper active:scale-[.99] " +
                 (active
                   ? "border-ink bg-paper-3 ring-1 ring-ink"
                   : "border-rule bg-paper-2 hover:border-ink/40 hover:bg-paper-3")
@@ -73,7 +73,7 @@ export function CommitView({
                 key={c}
                 type="button"
                 onClick={() => onCommit(selected, c)}
-                className="rounded-lg border border-rule bg-paper-2 px-2 py-2.5 font-sans text-[13px] font-semibold text-ink transition hover:border-ink/40 hover:bg-paper-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand active:scale-[.98]"
+                className="rounded-lg border border-rule bg-paper-2 px-2 py-2.5 font-sans text-[13px] font-semibold text-ink transition hover:border-ink/40 hover:bg-paper-3 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand active:scale-[.98]"
               >
                 {t({ en: CONFIDENCE_LABEL[c] })}
               </button>

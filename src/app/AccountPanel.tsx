@@ -42,11 +42,11 @@ function messageFor(code: string): LocalizedText {
 }
 
 const buttonBase =
-  "rounded-md px-3 py-2 font-sans text-[13px] font-semibold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-brand disabled:opacity-50";
+  "rounded-md px-3 py-2 font-sans text-[13px] font-semibold transition focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand disabled:opacity-50";
 const primaryButton = `${buttonBase} bg-ink text-paper hover:bg-ink-soft`;
 const quietButton = `${buttonBase} border border-rule bg-paper text-ink hover:bg-paper-3`;
 const inputStyle =
-  "w-full rounded-md border border-rule bg-paper px-3 py-2 font-sans text-[14px] text-ink placeholder:text-ink-mute focus:outline-none focus-visible:ring-2 focus-visible:ring-brand";
+  "w-full rounded-md border border-rule bg-paper px-3 py-2 font-sans text-[14px] text-ink placeholder:text-ink-mute focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand";
 
 export function AccountPanel() {
   const t = useT();
@@ -64,7 +64,7 @@ export function AccountPanel() {
         type="button"
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
-        className="font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-mute underline decoration-rule underline-offset-4 hover:text-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+        className="font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-mute underline decoration-rule underline-offset-4 hover:text-ink focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand"
       >
         {signedIn ? t(ACCOUNT.signedIn) : t(ACCOUNT.signIn)}
       </button>
@@ -270,7 +270,7 @@ function SignedIn({ onClose }: { onClose: () => void }) {
           <button
             type="button"
             onClick={() => setConfirming(true)}
-            className="font-sans text-[12px] font-semibold text-rust underline underline-offset-4 hover:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+            className="font-sans text-[12px] font-semibold text-rust underline underline-offset-4 hover:opacity-80 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand"
           >
             {t(ACCOUNT.delete)}
           </button>

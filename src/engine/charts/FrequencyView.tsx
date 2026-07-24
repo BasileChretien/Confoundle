@@ -62,7 +62,7 @@ function Breakdown({ data }: { data: FrequenciesData }) {
       </div>
 
       {asDots ? (
-        <div className="flex max-w-[17rem] flex-wrap justify-center gap-1">
+        <div className="flex max-w-68 flex-wrap justify-center gap-1">
           {Array.from({ length: b.truePositive }).map((_, i) => (
             <span
               key={`t${i}`}
@@ -80,7 +80,7 @@ function Breakdown({ data }: { data: FrequenciesData }) {
         </div>
       ) : (
         <div
-          className="h-3 w-full max-w-[17rem] overflow-hidden rounded-full ring-1 ring-inset ring-black/15"
+          className="h-3 w-full max-w-68 overflow-hidden rounded-full ring-1 ring-inset ring-black/15"
           style={{ backgroundColor: FALSE_COLOR }}
         >
           <div

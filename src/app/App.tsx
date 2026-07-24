@@ -50,8 +50,8 @@ function AppShell() {
       reviewDue(hunt.lastReviewDay, todayDayNumber()));
 
   return (
-    <div className="min-h-[100dvh] bg-paper">
-      <main className="mx-auto flex min-h-[100dvh] w-full max-w-md flex-col px-5 pb-6 pt-4">
+    <div className="min-h-dvh bg-paper">
+      <main className="mx-auto flex min-h-dvh w-full max-w-md flex-col px-5 pb-6 pt-4">
         <header className="mb-4 flex items-start justify-between gap-3 border-b border-rule pb-3">
           <div>
             <div className="flex items-center gap-1.5">
@@ -90,7 +90,7 @@ function AppShell() {
                 <button
                   type="button"
                   onClick={() => setHunting(true)}
-                  className="mb-4 flex w-full items-center gap-3 rounded-lg border border-gold/40 border-l-4 border-l-gold bg-gold/[0.08] p-3 text-left transition hover:bg-gold/[0.14] focus:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+                  className="mb-4 flex w-full items-center gap-3 rounded-lg border border-gold/40 border-l-4 border-l-gold bg-gold/8 p-3 text-left transition hover:bg-gold/[0.14] focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand"
                 >
                   <span className="text-xl">🎯</span>
                   <span className="flex flex-col">

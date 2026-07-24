@@ -18,7 +18,7 @@ Most new puzzles are just a data file; the engine renders them with no code chan
 
 ## Run it
 
-Requires **Node ≥ 18**. The repo pins **pnpm** via `packageManager`, so [Corepack](https://nodejs.org/api/corepack.html) will provision the right version automatically.
+Requires **Node ≥ 22.13**, which is what the pinned pnpm needs (it uses `node:sqlite` internally), and what the server tests need for the same reason. The version is pinned in [`.node-version`](./.node-version) so CI and the Cloudflare build image agree with your machine. The repo pins **pnpm** via `packageManager`, so [Corepack](https://nodejs.org/api/corepack.html) will provision the right version automatically.
 
 ```bash
 corepack enable          # once, to enable pnpm through Node's Corepack

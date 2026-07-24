@@ -5,24 +5,48 @@ import { accuracyOf, lessonProgressFor, type LessonProgress } from "../app/lesso
 import { getStats } from "../app/session";
 import { UI } from "../app/ui";
 import { puzzles } from "../puzzles";
+import {
+  BUCKETS,
+  bucketCounts,
+  reviewForecast,
+  stageName,
+  type BucketId,
+} from "../srs/buckets";
 import type { SkillProgress } from "../srs/schedule";
 import { CONFIDENCE_LEVELS, type Confidence } from "./scoring";
 import { Badge, Button } from "./ui";
 
 /**
- * The progress screen: what you have learned, how solid it is, and where your
- * confidence is miscalibrated.
+ * The progress screen, built the way WaniKani builds one, because the ladder
+ * underneath already is WaniKani's: the stages in schedule.ts are Apprentice I
+ * to IV, Guru I and II, Master, Enlightened, Burned.
  *
- * The mastery map goes on top because it is the thing nothing else showed. The
- * SRS has been quietly recording a stage, a due date, a lifetime tally and a
- * "was certain and wrong" flag per skill, and until now every bit of that was
- * invisible. Streaks and calibration sit underneath: they are the older, more
- * familiar numbers, and they are not the reason someone opens this screen.
+ * That means the same three questions get answered in the same order. What can
+ * I do right now (the two tiles). Where does my knowledge actually sit (the
+ * stage buckets). When does the next batch land (the forecast). Everything
+ * Confoundle-specific, calibration above all, sits below that, because it is
+ * the part you read occasionally rather than the part you act on.
  *
- * Calibration is the one panel worth the space it takes. Being wrong is
- * ordinary; being wrong while certain is the failure this whole project exists
- * to catch, so the screen states it plainly rather than burying it in an average.
+ * The colours are Confoundle's, not WaniKani's pink and purple, which would
+ * fight the editorial palette. The structure is what was worth borrowing.
  */
+
+const BUCKET_LABEL: Record<BucketId, keyof typeof UI> = {
+  apprentice: "bucketApprentice",
+  guru: "bucketGuru",
+  master: "bucketMaster",
+  enlightened: "bucketEnlightened",
+  burned: "bucketBurned",
+};
+
+/** Warm to cool as knowledge sets: recent and shaky in rust, permanent in ink. */
+const BUCKET_TONE: Record<BucketId, string> = {
+  apprentice: "bg-rust/12 border-rust/35 text-rust",
+  guru: "bg-gold/12 border-gold/40 text-ink",
+  master: "bg-brand/10 border-brand/35 text-ink",
+  enlightened: "bg-brand/16 border-brand/50 text-ink",
+  burned: "bg-ink/8 border-ink/25 text-ink-soft",
+};
 
 const CONFIDENCE_LABEL: Record<Confidence, { en: string }> = {
   hunch: { en: "Hunch" },
@@ -30,68 +54,78 @@ const CONFIDENCE_LABEL: Record<Confidence, { en: string }> = {
   certain: { en: "Certain" },
 };
 
-function pct(x: number): string {
-  return `${Math.round(x * 100)}%`;
+function pct(x: number | null): string {
+  return x == null ? "—" : `${Math.round(x * 100)}%`;
 }
 
-/** Localised "in 3 days" without hand-translating time units in ten languages. */
-function useDueLabel(): (dueAt: number | null) => string | null {
+function ActionTile({
+  label,
+  count,
+  tone,
+  onClick,
+  disabled,
+}: {
+  label: string;
+  count: number;
+  tone: "gold" | "brand";
+  onClick: () => void;
+  disabled: boolean;
+}) {
+  const live = !disabled && count > 0;
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      disabled={!live}
+      className={
+        "flex flex-1 flex-col items-center rounded-lg border px-3 py-3 transition focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand " +
+        (live
+          ? tone === "gold"
+            ? "border-gold/45 bg-gold/12 hover:bg-gold/20"
+            : "border-brand/45 bg-brand/10 hover:bg-brand/18"
+          : "border-rule bg-paper-2 opacity-55")
+      }
+    >
+      <span className="font-display text-2xl font-semibold leading-none text-ink">
+        {count}
+      </span>
+      <span className="mt-1 font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-mute">
+        {label}
+      </span>
+    </button>
+  );
+}
+
+function useRelative(): (ms: number) => string {
   const locale = useLocale();
   const t = useT();
   return useMemo(() => {
     const rtf = new Intl.RelativeTimeFormat(locale, { numeric: "auto" });
-    return (dueAt: number | null) => {
-      if (dueAt == null) return null;
-      const ms = dueAt - Date.now();
+    return (ms: number) => {
       if (ms <= 0) return t(UI.dueNow);
       const hours = Math.round(ms / 3_600_000);
-      if (hours < 24) return rtf.format(Math.max(hours, 1), "hour");
-      return rtf.format(Math.round(hours / 24), "day");
+      return hours < 24
+        ? rtf.format(Math.max(hours, 1), "hour")
+        : rtf.format(Math.round(hours / 24), "day");
     };
   }, [locale, t]);
 }
 
-function Metric({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="flex flex-col items-center rounded-lg border border-rule bg-paper-2 px-2 py-2.5">
-      <span className="font-display text-lg font-semibold text-ink">{value}</span>
-      <span className="mt-0.5 font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-mute">
-        {label}
-      </span>
-    </div>
-  );
-}
-
-function MasteryRow({
-  name,
-  progress,
-  dueLabel,
-}: {
-  name: string;
-  progress: LessonProgress;
-  dueLabel: string | null;
-}) {
+function MasteryRow({ name, progress }: { name: string; progress: LessonProgress }) {
   const t = useT();
   const acc = accuracyOf(progress);
   const width = Math.max(Math.round((progress.stage / progress.maxStage) * 100), 6);
   return (
-    <li className="rounded-lg border border-rule bg-paper-2 p-3">
-      <div className="flex items-start justify-between gap-3">
-        <span className="font-display text-[15px] font-semibold leading-tight text-ink">
+    <li className="rounded-lg border border-rule bg-paper-2 p-2.5">
+      <div className="flex items-baseline justify-between gap-3">
+        <span className="font-display text-[14px] font-semibold leading-tight text-ink">
           {name}
         </span>
-        {progress.state === "mastered" ? (
-          <span className="shrink-0">
-            <Badge tone="brand">{t(UI.stateMastered)}</Badge>
-          </span>
-        ) : dueLabel ? (
-          <span className="shrink-0 font-sans text-[11px] font-semibold uppercase tracking-eyebrow text-ink-mute">
-            {dueLabel}
-          </span>
-        ) : null}
+        <span className="shrink-0 font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-mute">
+          {stageName(progress.stage)}
+        </span>
       </div>
-
-      <div className="mt-2 h-1 w-full overflow-hidden rounded-full bg-rule">
+      <div className="mt-1.5 h-1 w-full overflow-hidden rounded-full bg-rule">
         <div
           className={
             "h-full rounded-full " +
@@ -100,8 +134,7 @@ function MasteryRow({
           style={{ width: `${width}%` }}
         />
       </div>
-
-      <div className="mt-1.5 flex items-center gap-2 text-[12px] text-ink-soft">
+      <div className="mt-1 flex items-center gap-2 text-[11px] text-ink-soft">
         {acc != null ? (
           <span>
             {pct(acc)} ({progress.lifetime.correct}/
@@ -116,9 +149,17 @@ function MasteryRow({
   );
 }
 
-export function DashboardView({ onDone }: { onDone: () => void }) {
+export function DashboardView({
+  onDone,
+  onStartReviews,
+  onOpenLesson,
+}: {
+  onDone: () => void;
+  onStartReviews: () => void;
+  onOpenLesson: (slug: string) => void;
+}) {
   const t = useT();
-  const dueLabel = useDueLabel();
+  const relative = useRelative();
   const [all, setAll] = useState<SkillProgress[]>([]);
   const stats = getStats();
 
@@ -132,25 +173,30 @@ export function DashboardView({ onDone }: { onDone: () => void }) {
     };
   }, []);
 
-  // One row per learned skill. Sorted so the things wanting attention come
-  // first: shaky beliefs, then whatever is due soonest, then the finished ones.
-  const rows = useMemo(() => {
-    return puzzles
-      .map((p) => ({
-        name: t(p.lesson.skillName),
-        progress: lessonProgressFor(p.reasoningSkill, all),
-      }))
-      .filter((r) => r.progress.state !== "new")
-      .sort((a, b) => {
-        if (a.progress.misconceived !== b.progress.misconceived) {
-          return a.progress.misconceived ? -1 : 1;
-        }
-        return (a.progress.dueAt ?? Infinity) - (b.progress.dueAt ?? Infinity);
-      });
-  }, [all, t]);
+  const rows = useMemo(
+    () =>
+      puzzles
+        .map((p) => ({
+          slug: p.slug,
+          name: t(p.lesson.skillName),
+          progress: lessonProgressFor(p.reasoningSkill, all),
+        }))
+        .filter((r) => r.progress.state !== "new")
+        .sort((a, b) => {
+          if (a.progress.misconceived !== b.progress.misconceived) {
+            return a.progress.misconceived ? -1 : 1;
+          }
+          return b.progress.stage - a.progress.stage;
+        }),
+    [all, t],
+  );
 
-  const mastered = rows.filter((r) => r.progress.state === "mastered").length;
-  const calibration = CONFIDENCE_LEVELS.filter((c) => stats.byConfidence[c].played > 0);
+  const counts = bucketCounts(all);
+  const forecast = reviewForecast(all, Date.now());
+  const dueNow = forecast[0]?.inMs === 0 ? forecast[0].count : 0;
+  const unlearned = puzzles.filter(
+    (p) => lessonProgressFor(p.reasoningSkill, all).state === "new",
+  );
 
   return (
     <section className="flex flex-col gap-5">
@@ -159,33 +205,83 @@ export function DashboardView({ onDone }: { onDone: () => void }) {
         <h2 className="font-display text-[28px] font-semibold leading-[1.05] text-ink">
           {rows.length} / {puzzles.length}
         </h2>
-        <p className="text-[15px] text-ink-soft">
-          {t(UI.stateLearned)}
-          {mastered > 0 ? ` · ${mastered} ${t(UI.stateMastered).toLowerCase()}` : ""}
-        </p>
       </header>
+
+      {/* The two things you can act on, exactly where WaniKani puts them. */}
+      <div className="flex gap-2">
+        <ActionTile
+          label={t(UI.lessons)}
+          count={unlearned.length}
+          tone="brand"
+          disabled={false}
+          onClick={() => unlearned[0] && onOpenLesson(unlearned[0].slug)}
+        />
+        <ActionTile
+          label={t(UI.reviewsShort)}
+          count={dueNow}
+          tone="gold"
+          disabled={false}
+          onClick={onStartReviews}
+        />
+      </div>
 
       <div>
         <h3 className="mb-2 font-sans text-[11px] font-semibold uppercase tracking-eyebrow text-ink-mute">
           {t(UI.mastery)}
         </h3>
-        {rows.length === 0 ? (
-          <p className="rounded-lg border border-rule bg-paper-2 p-3 text-[14px] text-ink-soft">
-            {t(UI.nothingLearnedYet)}
+        <div className="grid grid-cols-5 gap-1.5">
+          {BUCKETS.map((b) => (
+            <div
+              key={b.id}
+              className={`flex flex-col items-center rounded-md border px-1 py-2 ${BUCKET_TONE[b.id]}`}
+            >
+              <span className="font-display text-lg font-semibold leading-none">
+                {counts[b.id]}
+              </span>
+              <span className="mt-1 text-center font-sans text-[9px] font-semibold uppercase leading-tight tracking-eyebrow">
+                {t(UI[BUCKET_LABEL[b.id]])}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <h3 className="mb-2 font-sans text-[11px] font-semibold uppercase tracking-eyebrow text-ink-mute">
+          {t(UI.nextReviews)}
+        </h3>
+        {forecast.length === 0 ? (
+          <p className="rounded-lg border border-rule bg-paper-2 p-3 text-[13px] text-ink-soft">
+            {t(UI.nothingScheduled)}
           </p>
         ) : (
-          <ol className="flex flex-col gap-2">
-            {rows.map((r) => (
-              <MasteryRow
-                key={r.name}
-                name={r.name}
-                progress={r.progress}
-                dueLabel={dueLabel(r.progress.dueAt)}
-              />
+          <ul className="flex flex-col gap-1">
+            {forecast.map((slot) => (
+              <li
+                key={slot.inMs}
+                className="flex items-center justify-between rounded-md border border-rule bg-paper-2 px-3 py-1.5 text-[13px]"
+              >
+                <span className={slot.inMs === 0 ? "font-semibold text-ink" : "text-ink-soft"}>
+                  {relative(slot.inMs)}
+                </span>
+                <span className="font-mono tabular-nums text-ink">{slot.count}</span>
+              </li>
             ))}
-          </ol>
+          </ul>
         )}
       </div>
+
+      {rows.length > 0 ? (
+        <ol className="flex flex-col gap-2">
+          {rows.map((r) => (
+            <MasteryRow key={r.slug} name={r.name} progress={r.progress} />
+          ))}
+        </ol>
+      ) : (
+        <p className="rounded-lg border border-rule bg-paper-2 p-3 text-[14px] text-ink-soft">
+          {t(UI.nothingLearnedYet)}
+        </p>
+      )}
 
       <div className="grid grid-cols-3 gap-2">
         <Metric label={t(UI.streak)} value={`🔥 ${stats.currentStreak}`} />
@@ -193,13 +289,13 @@ export function DashboardView({ onDone }: { onDone: () => void }) {
         <Metric label={t(UI.caught)} value={pct(stats.catchRate)} />
       </div>
 
-      {calibration.length > 0 ? (
+      {CONFIDENCE_LEVELS.some((c) => stats.byConfidence[c].played > 0) ? (
         <div>
           <h3 className="mb-2 font-sans text-[11px] font-semibold uppercase tracking-eyebrow text-ink-mute">
             {t(UI.calibration)}
           </h3>
           <ul className="flex flex-col gap-1.5">
-            {calibration.map((c) => {
+            {CONFIDENCE_LEVELS.filter((c) => stats.byConfidence[c].played > 0).map((c) => {
               const b = stats.byConfidence[c];
               return (
                 <li
@@ -219,5 +315,16 @@ export function DashboardView({ onDone }: { onDone: () => void }) {
 
       <Button onClick={onDone}>{t(UI.back)}</Button>
     </section>
+  );
+}
+
+function Metric({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="flex flex-col items-center rounded-lg border border-rule bg-paper-2 px-2 py-2.5">
+      <span className="font-display text-lg font-semibold text-ink">{value}</span>
+      <span className="mt-0.5 font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-mute">
+        {label}
+      </span>
+    </div>
   );
 }

@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
 import { useT } from "../app/i18n";
-import { reviews } from "../app/reviews";
 import { lessonProgressFor, type LessonProgress } from "../app/lessonState";
 import { UI } from "../app/ui";
 import { puzzles } from "../puzzles";
@@ -101,19 +99,15 @@ function LessonCard({
   );
 }
 
-export function LessonList({ onOpen }: { onOpen: (slug: string) => void }) {
+export function LessonList({
+  onOpen,
+  progress,
+}: {
+  onOpen: (slug: string) => void;
+  /** Loaded once by the home screen, so list and header cannot disagree. */
+  progress: readonly SkillProgress[];
+}) {
   const t = useT();
-  const [all, setAll] = useState<SkillProgress[]>([]);
-
-  useEffect(() => {
-    let alive = true;
-    void reviews.progress().then((p) => {
-      if (alive) setAll(p);
-    });
-    return () => {
-      alive = false;
-    };
-  }, []);
 
   return (
     <section className="flex flex-col gap-3">
@@ -125,7 +119,7 @@ export function LessonList({ onOpen }: { onOpen: (slug: string) => void }) {
           <LessonCard
             key={p.slug}
             puzzle={p}
-            progress={lessonProgressFor(p.reasoningSkill, all)}
+            progress={lessonProgressFor(p.reasoningSkill, progress)}
             onOpen={onOpen}
           />
         ))}

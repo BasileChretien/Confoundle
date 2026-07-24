@@ -62,14 +62,17 @@ export interface ForecastSlot {
 /**
  * When the next reviews land, as WaniKani's forecast does. Everything already
  * due collapses into one slot at 0, because "three overdue" is one action, not
- * three future events. Burned skills never appear: they have left the schedule.
+ * three future events.
+ *
+ * Burned skills appear like any other now that they come back for an annual
+ * check. Hiding them was part of why a finished deck looked like a dead app.
  */
 export function reviewForecast(
   all: readonly SkillProgress[],
   now: number,
   limit = 6,
 ): ForecastSlot[] {
-  const pending = all.filter((p) => !isBurned(p));
+  const pending = all;
   const dueNow = pending.filter((p) => p.dueAt <= now).length;
 
   const upcoming = new Map<number, number>();

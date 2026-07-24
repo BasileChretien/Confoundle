@@ -81,3 +81,49 @@ export function ProgressDots({
     </div>
   );
 }
+
+/**
+ * Position on the SRS ladder, drawn as rungs rather than a percentage.
+ *
+ * A percentage bar was actively misleading here. Width was linear in the stage
+ * index while the intervals are exponential, so Apprentice IV drew a 44% bar
+ * after 36 hours of a journey whose last rung alone is a year. Reading "44%
+ * mastered" three days in manufactures exactly the false confidence this app
+ * exists to puncture, which made it the worst possible place to be sloppy.
+ *
+ * Rungs claim nothing about retention. They say which step you are on, out of
+ * how many, which is all the ladder actually knows.
+ */
+export function StageRungs({
+  stage,
+  max,
+  tone = "gold",
+  label,
+}: {
+  stage: number;
+  max: number;
+  tone?: "gold" | "brand";
+  label: string;
+}) {
+  return (
+    <div
+      className="mt-1.5 flex items-center gap-[3px]"
+      role="img"
+      aria-label={label}
+    >
+      {Array.from({ length: max }, (_, i) => (
+        <span
+          key={i}
+          className={
+            "h-1 flex-1 rounded-full " +
+            (i < stage
+              ? tone === "brand"
+                ? "bg-brand-ink"
+                : "bg-gold-ink"
+              : "bg-rule")
+          }
+        />
+      ))}
+    </div>
+  );
+}

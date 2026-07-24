@@ -27,11 +27,11 @@ describe("lesson progress", () => {
     expect(p.state).toBe("mastered");
   });
 
-  it("reports no due date for a mastered skill", () => {
-    // A burned skill has left the schedule, so showing a next-review date
-    // would promise a review that is never coming.
+  it("keeps the due date for a mastered skill, which now returns annually", () => {
+    // Burning used to end the schedule, so a date would have been a lie. Now
+    // it means an annual check, so hiding the date would be the lie instead.
     const p = lessonProgressFor("a", [at("a", BURNED, { dueAt: NOW + 5000 })]);
-    expect(p.dueAt).toBeNull();
+    expect(p.dueAt).toBe(NOW + 5000);
   });
 
   it("keeps the due date while a skill is still in progress", () => {

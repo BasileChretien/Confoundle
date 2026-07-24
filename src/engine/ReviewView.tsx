@@ -34,7 +34,16 @@ const CONFIDENCE_LABEL: Record<Confidence, { en: string }> = {
 const choiceButton =
   "rounded-lg border border-rule bg-paper-2 px-4 py-3.5 text-left font-semibold text-ink transition hover:border-ink/40 hover:bg-paper-3 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand active:scale-[.99]";
 
-export function ReviewView({ seed, onDone }: { seed: number; onDone: () => void }) {
+export function ReviewView({
+  seed,
+  onDone,
+  practice = false,
+}: {
+  seed: number;
+  onDone: () => void;
+  /** Practice draws from every learned skill and does not move the ladder. */
+  practice?: boolean;
+}) {
   const t = useT();
   const auth = useAuth();
 
@@ -47,13 +56,14 @@ export function ReviewView({ seed, onDone }: { seed: number; onDone: () => void 
   // Build the session once, from whatever the scheduler says is due.
   useEffect(() => {
     let alive = true;
-    void reviews.nextSession(seed).then((s) => {
+    const build = practice ? reviews.practiceSession(seed) : reviews.nextSession(seed);
+    void build.then((s) => {
       if (alive) setSession(s);
     });
     return () => {
       alive = false;
     };
-  }, [seed]);
+  }, [seed, practice]);
 
   const skillName = useMemo(
     () => (slug: string) => {
@@ -74,9 +84,12 @@ export function ReviewView({ seed, onDone }: { seed: number; onDone: () => void 
       // local streak/calibration record, which is what makes a review count
       // for anything the learner can see.
       recordReviewOutcomes(results);
-      void reviews.recordReviews(results).then(() => auth.syncProgress());
+      const persist = practice
+        ? reviews.recordPractice(results)
+        : reviews.recordReviews(results);
+      void persist.then(() => auth.syncProgress());
     }
-  }, [done, results, auth]);
+  }, [done, results, auth, practice]);
 
   if (session == null) {
     return (

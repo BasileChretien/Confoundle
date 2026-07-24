@@ -67,9 +67,12 @@ describe("review forecast", () => {
     expect(forecast[0]).toEqual({ inMs: 2 * HOUR, count: 2 });
   });
 
-  it("never forecasts a burned skill, which has left the schedule", () => {
+  it("forecasts burned skills too, now that they come back annually", () => {
+    // Hiding them was part of why a finished deck looked like a dead app.
     const all = [at("a", BURNED, NOW - HOUR), at("b", BURNED, NOW + HOUR)];
-    expect(reviewForecast(all, NOW)).toEqual([]);
+    const forecast = reviewForecast(all, NOW);
+    expect(forecast[0]).toEqual({ inMs: 0, count: 1 });
+    expect(forecast[1].count).toBe(1);
   });
 
   it("returns nothing when there is nothing scheduled", () => {

@@ -37,9 +37,9 @@ export function SetupView({
           <Badge tone="rust">{t({ en: humanize(puzzle.category) })}</Badge>
           <TagChips tags={puzzle.tags} />
         </div>
-        <h1 className="font-display text-[25px] font-semibold leading-[1.1] text-ink">
+        <h2 className="font-display text-[25px] font-semibold leading-[1.1] text-ink">
           {t(puzzle.setup.headline)}
-        </h1>
+        </h2>
         <p className="text-[15px] leading-snug text-ink-soft">
           {t(puzzle.setup.framing)}
         </p>

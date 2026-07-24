@@ -36,6 +36,8 @@ export interface ReviewResult {
 
 export interface Reviews {
   enrollSkill(skill: string, now?: number): Promise<void>;
+  /** Everything on the schedule, for the lesson list and the dashboard. */
+  progress(): Promise<SkillProgress[]>;
   reviewsDue(now?: number): Promise<number>;
   nextSession(seed: number, now?: number): Promise<Review[]>;
   recordReviews(results: readonly ReviewResult[], now?: number): Promise<SkillProgress[]>;
@@ -56,6 +58,11 @@ export function createReviews(
       const all = await store.load();
       if (all.some((p) => p.skill === skill)) return;
       await store.save([...all, newProgress(skill, now)]);
+    },
+
+    /** Everything on the schedule, for the lesson list and the dashboard. */
+    async progress() {
+      return store.load();
     },
 
     /** How many skills want reviewing right now. Drives the app's entry point. */

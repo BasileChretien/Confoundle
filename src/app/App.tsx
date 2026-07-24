@@ -3,6 +3,7 @@ import { getPuzzleBySlug, puzzles } from "../puzzles";
 import { PuzzleFlow } from "../engine/PuzzleFlow";
 import { ReviewView } from "../engine/ReviewView";
 import { LessonList } from "../engine/LessonList";
+import { DashboardView } from "../engine/DashboardView";
 import { reviews } from "./reviews";
 import { LocaleProvider, useT } from "./i18n";
 import { LanguageSwitcher } from "./LanguageSwitcher";
@@ -38,7 +39,9 @@ function AppShell() {
   const t = useT();
   const [slug, setSlug] = useState<string | null>(initialSlug);
   const [reviewing, setReviewing] = useState(false);
+  const [showProgress, setShowProgress] = useState(false);
   const [dueCount, setDueCount] = useState(0);
+  const [learnedCount, setLearnedCount] = useState(0);
   // Bumped each time a session ends, so the next one draws a different scenario.
   const [round, setRound] = useState(0);
   const puzzle = slug ? getPuzzleBySlug(slug) : undefined;
@@ -51,10 +54,13 @@ function AppShell() {
     void reviews.reviewsDue().then((n) => {
       if (alive) setDueCount(n);
     });
+    void reviews.progress().then((p) => {
+      if (alive) setLearnedCount(p.length);
+    });
     return () => {
       alive = false;
     };
-  }, [reviewing, slug]);
+  }, [reviewing, slug, showProgress]);
 
   return (
     <div className="min-h-dvh bg-paper">
@@ -102,8 +108,24 @@ function AppShell() {
               {/* Re-key on slug so switching lessons resets the flow to its first beat. */}
               <PuzzleFlow key={slug} puzzle={puzzle} />
             </>
+          ) : showProgress ? (
+            <DashboardView onDone={() => setShowProgress(false)} />
           ) : (
             <>
+              {learnedCount > 0 ? (
+                <button
+                  type="button"
+                  onClick={() => setShowProgress(true)}
+                  className="mb-3 flex w-full items-center justify-between gap-3 rounded-lg border border-rule bg-paper-2 px-3 py-2.5 text-left transition hover:border-ink/40 hover:bg-paper-3 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand"
+                >
+                  <span className="font-sans text-[11px] font-semibold uppercase tracking-eyebrow text-ink-mute">
+                    {t(UI.progress)}
+                  </span>
+                  <span className="font-display text-sm font-semibold text-ink">
+                    {learnedCount} / {puzzles.length} →
+                  </span>
+                </button>
+              ) : null}
               {dueCount > 0 ? (
                 <button
                   type="button"

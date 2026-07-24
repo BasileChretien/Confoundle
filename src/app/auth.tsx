@@ -50,6 +50,12 @@ export interface AuthApi {
   submitCode(email: string, code: string): Promise<string | null>;
   signOut(): Promise<void>;
   eraseAccount(): Promise<string | null>;
+  /**
+   * Push local review progress to the account, if signed in. Called after a
+   * review session so a device that just did some reviews carries them up
+   * without waiting for the next sign-in. A no-op, harmlessly, when signed out.
+   */
+  syncProgress(): Promise<void>;
   exportUrl: string;
 }
 
@@ -65,6 +71,7 @@ const AuthContext = createContext<AuthApi>({
   submitCode: async () => "unavailable",
   signOut: async () => {},
   eraseAccount: async () => "unavailable",
+  syncProgress: async () => {},
   exportUrl: "/api/account",
 });
 
@@ -198,8 +205,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         await refresh();
         return null;
       },
+
+      async syncProgress() {
+        if (status !== "signed-in") return;
+        await sync();
+      },
     }),
-    [status, account, methods, syncedSkills, afterSignIn, refresh, local],
+    [status, account, methods, syncedSkills, afterSignIn, refresh, local, sync],
   );
 
   return <AuthContext.Provider value={api}>{children}</AuthContext.Provider>;

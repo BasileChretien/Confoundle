@@ -1,3 +1,4 @@
+import { z } from "zod";
 import { Puzzle, type Puzzle as PuzzleType } from "./schema";
 import { kidneyStones } from "./data/kidney-stones";
 import { baseRate } from "./data/base-rate";
@@ -46,8 +47,11 @@ const rawPuzzles: unknown[] = [
 export const puzzles: PuzzleType[] = rawPuzzles.map((p, i) => {
   const result = Puzzle.safeParse(p);
   if (!result.success) {
+    // prettifyError reads far better than the old nested format() tree: it
+    // prints one line per problem with its path, which is what someone who has
+    // just mistyped a count in a data file actually needs to see.
     throw new Error(
-      `Invalid puzzle at index ${i}:\n${JSON.stringify(result.error.format(), null, 2)}`,
+      `Invalid puzzle at index ${i}:\n${z.prettifyError(result.error)}`,
     );
   }
   return result.data;

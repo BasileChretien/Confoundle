@@ -255,6 +255,34 @@ function CausalGlyph({ data }: { data: CausalData }) {
  * (engines/cockpit), the bullet holes only map where a plane can be hit and
  * still come home. No case specifics beyond the iconic bomber shape.
  */
+/**
+ * Two readings of the same people, drifting apart. The upper band is what was
+ * recorded at the time; the lower is what the same mouths said afterwards, with
+ * only a sliver surviving in teal and a rust block that was never there at all.
+ * Deliberately unlabelled: the card teases the shape, the lesson explains it.
+ */
+function AgreementGlyph() {
+  const STROKE = "rgba(242,236,222,0.4)";
+  const GHOST = "#4A4335";
+  return (
+    <div className="mt-4 rounded-lg p-3" style={{ backgroundColor: "rgba(0,0,0,0.28)" }}>
+      <svg
+        viewBox="0 0 200 120"
+        role="img"
+        aria-label="What people reported at the time, and how little of it survived when they were asked again"
+        style={{ display: "block", width: "100%", maxWidth: 200, margin: "0 auto" }}
+      >
+        <rect x="14" y="24" width="172" height="22" rx="4" fill={GHOST} stroke={STROKE} strokeWidth="1.5" />
+        <rect x="14" y="74" width="30" height="22" rx="4" fill={CARD.teal} />
+        <rect x="44" y="74" width="106" height="22" rx="0" fill="rgba(242,236,222,0.10)" stroke={STROKE} strokeWidth="1" />
+        <rect x="150" y="74" width="36" height="22" rx="4" fill={CARD.rust} />
+        <path d="M20 50 L20 70" stroke={CARD.gold} strokeWidth="1.5" strokeDasharray="3 3" />
+        <path d="M180 50 L180 70" stroke={CARD.gold} strokeWidth="1.5" strokeDasharray="3 3" />
+      </svg>
+    </div>
+  );
+}
+
 function SurvivorshipGlyph() {
   const FILL = "#4A4335";
   const STROKE = "rgba(242,236,222,0.4)";
@@ -518,6 +546,7 @@ export function ShareCard({
   const survivorshipGlyph = data.type === "survivorship";
   const timelineGlyph = data.type === "timeline";
   const riskGlyph = data.type === "risk";
+  const agreementGlyph = data.type === "agreement";
   const splitSampleGlyph =
     data.type === "rates" &&
     Boolean(data.strataAreSeparateSamples) &&
@@ -600,6 +629,8 @@ export function ShareCard({
             <TimelineGlyph />
           ) : riskGlyph ? (
             <RiskGlyph />
+          ) : agreementGlyph ? (
+            <AgreementGlyph />
           ) : null}
 
           <p className="mt-4 font-display text-[17px] font-medium leading-snug">

@@ -10,6 +10,7 @@ import { CausalView } from "./CausalView";
 import { SurvivorshipView } from "./SurvivorshipView";
 import { TimelineView } from "./TimelineView";
 import { RiskView } from "./RiskView";
+import { AgreementView } from "./AgreementView";
 
 /**
  * The generic seam: dispatch on the data's `type` to the matching renderer.
@@ -48,6 +49,12 @@ export function DataViewRenderer({
       return <TimelineView data={data} view={view.kind} animate={animate} />;
     case "risk":
       return <RiskView data={data} view={view.kind} animate={animate} />;
+    case "agreement":
+      // Only two of the view kinds mean anything to this shape; anything else
+      // is an authoring mistake and should draw nothing rather than guess.
+      return view.kind === "invented" || view.kind === "agreement" ? (
+        <AgreementView data={data} kind={view.kind} />
+      ) : null;
     default:
       return null;
   }
@@ -100,6 +107,10 @@ export function scopeLabel(kind: DataViewKind): string {
       return "As the study counted it";
     case "immortal":
       return "Time nobody could die in";
+    case "invented":
+      return "What they said afterwards";
+    case "agreement":
+      return "Against what they said before";
     default:
       return "";
   }

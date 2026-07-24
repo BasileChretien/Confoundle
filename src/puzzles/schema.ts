@@ -194,6 +194,69 @@ const RiskData = z.object({
 });
 export type RiskData = z.infer<typeof RiskData>;
 
+/**
+ * Two measurements of the same people, and how far apart they are.
+ *
+ * Needed because misclassification cannot be told with a rate chart. The claim
+ * is not "this group has a higher rate", it is "this group's answers changed",
+ * and the only way to show that honestly is to put each group's later answers
+ * next to what those same people said earlier. A rates chart can show one
+ * reading or the other, never the gap between them, so the reveal would just
+ * restate the setup.
+ *
+ * `repeated` is a subset of `reportedBefore`, so what was forgotten is derived
+ * rather than authored, and `invented` counts answers that appeared only at the
+ * second measurement with nothing behind them the first time.
+ */
+const AgreementGroup = z.object({
+  label: LocalizedText, // "Healthy child"
+  short: LocalizedText.optional(), // compact chart label
+  /** People in this group. */
+  n: z.number().int().positive(),
+  /** Positive answers at the first measurement. */
+  reportedBefore: z.number().int().nonnegative(),
+  /** Of those, the ones repeated identically at the second measurement. */
+  repeated: z.number().int().nonnegative(),
+  /** Positive answers at the second measurement with no first-measurement record. */
+  invented: z.number().int().nonnegative(),
+});
+export type AgreementGroup = z.infer<typeof AgreementGroup>;
+
+const AgreementData = z
+  .object({
+    type: z.literal("agreement"),
+    label: LocalizedText, // figure title
+    /** What each measurement was, named so the chart cannot imply a gold standard it lacks. */
+    beforeLabel: LocalizedText, // "Recorded during pregnancy"
+    afterLabel: LocalizedText, // "Recalled after delivery"
+    repeatedLabel: LocalizedText, // "Repeated identically"
+    forgottenLabel: LocalizedText, // "Not repeated"
+    inventedLabel: LocalizedText, // "Reported only afterwards"
+    /** What a positive answer was about, e.g. "took a drug in early pregnancy". */
+    itemLabel: LocalizedText,
+    groups: z.array(AgreementGroup).min(2),
+  })
+  .superRefine((data, ctx) => {
+    data.groups.forEach((g, i) => {
+      if (g.repeated > g.reportedBefore) {
+        ctx.addIssue({
+          code: "custom",
+          path: ["groups", i, "repeated"],
+          message:
+            "repeated counts answers that were also reported before, so it cannot exceed reportedBefore",
+        });
+      }
+      if (g.reportedBefore > g.n) {
+        ctx.addIssue({
+          code: "custom",
+          path: ["groups", i, "reportedBefore"],
+          message: "more positive answers than people in the group",
+        });
+      }
+    });
+  });
+export type AgreementData = z.infer<typeof AgreementData>;
+
 /** Discriminated by `type`. Add new members here to support new data shapes. */
 export const PuzzleData = z.discriminatedUnion("type", [
   RatesData,
@@ -202,6 +265,7 @@ export const PuzzleData = z.discriminatedUnion("type", [
   SurvivorshipData,
   TimelineData,
   RiskData,
+  AgreementData,
 ]);
 export type PuzzleData = z.infer<typeof PuzzleData>;
 
@@ -236,6 +300,8 @@ export const DataView = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("absolute"), ...viewFields }),
   z.object({ kind: z.literal("counted"), ...viewFields }),
   z.object({ kind: z.literal("immortal"), ...viewFields }),
+  z.object({ kind: z.literal("invented"), ...viewFields }),
+  z.object({ kind: z.literal("agreement"), ...viewFields }),
 ]);
 export type DataView = z.infer<typeof DataView>;
 export type DataViewKind = DataView["kind"];

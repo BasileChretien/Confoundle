@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useT } from "../app/i18n";
 import { useAuth } from "../app/auth";
 import { reviews, gradeReview, type ReviewResult } from "../app/reviews";
+import { recordReviewOutcomes } from "../app/session";
 import { puzzles } from "../puzzles";
 import type { Review } from "../srs/select";
 import { CONFIDENCE_LEVELS, reactionFor, type Confidence } from "./scoring";
@@ -69,6 +70,10 @@ export function ReviewView({ seed, onDone }: { seed: number; onDone: () => void 
   useEffect(() => {
     if (done && !recorded.current) {
       recorded.current = true;
+      // Two stores, deliberately: the ladder (synced to an account) and the
+      // local streak/calibration record, which is what makes a review count
+      // for anything the learner can see.
+      recordReviewOutcomes(results);
       void reviews.recordReviews(results).then(() => auth.syncProgress());
     }
   }, [done, results, auth]);

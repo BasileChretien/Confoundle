@@ -63,6 +63,62 @@ export function getTodaysPlay(slug: string): PlayRecord | undefined {
   return readAll()[keyFor(slug)];
 }
 
+/**
+ * Review outcomes, kept separately from puzzle plays and aggregated by day.
+ *
+ * Until this existed, every number on the progress screen came from
+ * `recordPlay`, which only fires when a PUZZLE is opened. So a learner who did
+ * their reviews faithfully every day had a streak of zero, while someone
+ * replaying a puzzle they had already solved inflated both their streak and
+ * their catch rate with answers they already knew. The incentive was exactly
+ * backwards: the behaviour that teaches nothing was the only one measured.
+ *
+ * Aggregated per day rather than logged per review, so this stays small, stays
+ * bounded by the number of active days, and holds no item identifiers. It is
+ * local-only, like the rest of session state.
+ */
+const REVIEW_KEY = "confoundle:reviews:v1";
+
+type ConfidenceTally = Record<Confidence, { played: number; caught: number }>;
+type ReviewMap = Record<string, ConfidenceTally>; // key: YYYY-MM-DD
+
+function emptyTally(): ConfidenceTally {
+  return {
+    hunch: { played: 0, caught: 0 },
+    sure: { played: 0, caught: 0 },
+    certain: { played: 0, caught: 0 },
+  };
+}
+
+function readReviews(): ReviewMap {
+  try {
+    const raw = localStorage.getItem(REVIEW_KEY);
+    return raw ? (JSON.parse(raw) as ReviewMap) : {};
+  } catch {
+    return {};
+  }
+}
+
+export function recordReviewOutcomes(
+  outcomes: ReadonlyArray<{ correct: boolean; confidence: Confidence }>,
+  todayIso: string = todayISODate(),
+): void {
+  if (outcomes.length === 0) return;
+  const map = readReviews();
+  const day = map[todayIso] ?? emptyTally();
+  for (const o of outcomes) {
+    const bucket = day[o.confidence];
+    if (!bucket) continue;
+    bucket.played += 1;
+    if (o.correct) bucket.caught += 1;
+  }
+  try {
+    localStorage.setItem(REVIEW_KEY, JSON.stringify({ ...map, [todayIso]: day }));
+  } catch {
+    // storage unavailable, degrade silently
+  }
+}
+
 export function hasPlayedToday(slug: string): boolean {
   return getTodaysPlay(slug) !== undefined;
 }
@@ -81,14 +137,22 @@ function dayNumber(iso: string): number {
   return Math.floor(Date.parse(`${iso}T00:00:00Z`) / 86_400_000);
 }
 
-/** Pure so it can be unit-tested: derive streaks and rates from the record map. */
-export function computeStats(map: ProgressMap, todayIso: string): Stats {
+/**
+ * Pure so it can be unit-tested: derive streaks and rates from both records.
+ *
+ * Reviews count for everything a play counts for. Retrieval practice is the
+ * behaviour worth measuring, and a screen that ignored it told the learner
+ * their reviews were worthless.
+ */
+export function computeStats(
+  map: ProgressMap,
+  todayIso: string,
+  reviewMap: ReviewMap = {},
+): Stats {
   const recs = Object.entries(map).map(([key, v]) => ({
     date: key.slice(key.indexOf("@") + 1),
     ...v,
   }));
-  const played = recs.length;
-  const caught = recs.filter((r) => r.correct).length;
 
   const byConfidence = {
     hunch: { played: 0, caught: 0 },
@@ -102,8 +166,24 @@ export function computeStats(map: ProgressMap, todayIso: string): Stats {
       if (r.correct) bucket.caught += 1;
     }
   }
+  for (const tally of Object.values(reviewMap)) {
+    for (const level of ["hunch", "sure", "certain"] as Confidence[]) {
+      const from = tally[level];
+      if (!from) continue;
+      byConfidence[level].played += from.played;
+      byConfidence[level].caught += from.caught;
+    }
+  }
 
-  const days = [...new Set(recs.map((r) => r.date))]
+  // Totals are derived from the merged breakdown, so they can never drift from
+  // the calibration panel that is drawn beside them.
+  const played = Object.values(byConfidence).reduce((n, b) => n + b.played, 0);
+  const caught = Object.values(byConfidence).reduce((n, b) => n + b.caught, 0);
+
+  const reviewDays = Object.entries(reviewMap)
+    .filter(([, t]) => Object.values(t).some((b) => b.played > 0))
+    .map(([date]) => date);
+  const days = [...new Set([...recs.map((r) => r.date), ...reviewDays])]
     .map(dayNumber)
     .sort((a, b) => a - b);
 
@@ -141,7 +221,7 @@ export function computeStats(map: ProgressMap, todayIso: string): Stats {
 }
 
 export function getStats(): Stats {
-  return computeStats(readAll(), todayISODate());
+  return computeStats(readAll(), todayISODate(), readReviews());
 }
 
 // ---- nickname (local only, for the friends board) ----

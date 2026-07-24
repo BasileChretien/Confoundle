@@ -66,7 +66,7 @@ function LessonCard({
       <button
         type="button"
         onClick={() => onOpen(puzzle.slug)}
-        className="flex w-full flex-col rounded-lg border border-rule bg-paper-2 p-3.5 text-left transition hover:border-ink/40 hover:bg-paper-3 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand active:scale-[.995]"
+        className="flex w-full flex-col rounded-lg border border-rule bg-paper-2 p-3.5 text-start transition hover:border-ink/40 hover:bg-paper-3 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand active:scale-[.995]"
       >
         <div className="flex items-start justify-between gap-3">
           {/* The hook, never the skill name: naming the bias here would hand
@@ -89,8 +89,8 @@ function LessonCard({
           // The one flag worth interrupting the layout for: this is a skill the
           // learner got wrong while certain, which is the failure mode the whole
           // project exists to catch.
-          <span className="mt-1.5 text-[12px] font-semibold text-rust">
-            ⚠ {t({ en: "You were sure, and wrong" })}
+          <span className="mt-1.5 text-[12px] font-semibold text-rust-ink">
+            ⚠ {t(UI.sureAndWrong)}
           </span>
         ) : null}
         <StageBar progress={progress} />

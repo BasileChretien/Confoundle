@@ -102,7 +102,7 @@ function AppShell() {
               <button
                 type="button"
                 onClick={() => setSlug(null)}
-                className="mb-3 -ml-1 inline-flex items-center gap-1.5 rounded-md px-1 py-1 font-sans text-[11px] font-semibold uppercase tracking-eyebrow text-ink-mute transition hover:text-ink focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand"
+                className="mb-3 -ms-2 inline-flex min-h-11 items-center gap-1.5 rounded-md px-2 py-2.5 font-sans text-[11px] font-semibold uppercase tracking-eyebrow text-ink-mute transition hover:text-ink focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand"
               >
                 ← {t(UI.allLessons)}
               </button>

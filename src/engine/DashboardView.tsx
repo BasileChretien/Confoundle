@@ -142,7 +142,7 @@ function MasteryRow({ name, progress }: { name: string; progress: LessonProgress
           </span>
         ) : null}
         {progress.misconceived ? (
-          <span className="font-semibold text-rust">⚠ {t(UI.sureAndWrong)}</span>
+          <span className="font-semibold text-rust-ink">⚠ {t(UI.sureAndWrong)}</span>
         ) : null}
       </div>
     </li>

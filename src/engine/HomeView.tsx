@@ -38,10 +38,10 @@ function PrimaryCard({
       type="button"
       onClick={onClick}
       className={
-        "flex w-full flex-col gap-1 rounded-lg border border-l-4 p-4 text-left transition focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand " +
+        "flex w-full flex-col gap-1 rounded-lg border border-s-4 p-4 text-start transition focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand " +
         (tone === "gold"
-          ? "border-gold/40 border-l-gold bg-gold/8 hover:bg-gold/[0.14]"
-          : "border-brand/35 border-l-brand bg-brand/[0.07] hover:bg-brand/[0.13]")
+          ? "border-gold/40 border-s-gold bg-gold/8 hover:bg-gold/[0.14]"
+          : "border-brand/35 border-s-brand bg-brand/[0.07] hover:bg-brand/[0.13]")
       }
     >
       <span className="font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-mute">
@@ -105,13 +105,13 @@ export function HomeView({
         <button
           type="button"
           onClick={onOpenProgress}
-          className="flex w-full items-center justify-between gap-3 rounded-lg border border-rule bg-paper-2 px-3 py-2.5 text-left transition hover:border-ink/40 hover:bg-paper-3 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand"
+          className="flex w-full items-center justify-between gap-3 rounded-lg border border-rule bg-paper-2 px-3 py-2.5 text-start transition hover:border-ink/40 hover:bg-paper-3 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand"
         >
           <span className="font-sans text-[11px] font-semibold uppercase tracking-eyebrow text-ink-mute">
             {t(UI.progress)}
           </span>
           <span className="font-display text-sm font-semibold text-ink">
-            {learned} / {puzzles.length} →
+            {learned} / {puzzles.length}
           </span>
         </button>
       ) : null}

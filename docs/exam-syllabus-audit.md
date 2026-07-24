@@ -528,6 +528,61 @@ access, is the largest study of this shape (1,624 cases, 2,524 controls against
 GP records) and finds **essentially no differential recall at all**. Worth citing
 so the deck does not teach that recall bias is universal.
 
+**Differential versus non-differential misclassification.** Klemetti A, Saxen L,
+Am J Public Health 1967;57(12):2071-2075, free full text on PMC (PMC1227998, page
+scans only, so the tables were read from the images rather than from text).
+
+Table 1, p. 2074, counts mothers. Two groups of 203, matched, all of whom had
+already been interviewed prospectively in the fifth month of pregnancy and were
+re-interviewed after delivery by the same midwife.
+
+| | Normal child (203) | Deaths and malformations (203) |
+|---|---|---|
+| Drug consumption reported prospectively | 182 | 187 |
+| Identical reply at re-interview | 33 | 23 |
+| Additional retrospective information ("false-positive?") | 41 | 57 |
+| Diseases reported prospectively | 34 | 43 |
+| Identical reply at re-interview | 1 | 7 |
+| Additional retrospective information | 11 | 15 |
+
+The arithmetic reconciles three independent ways. The prospective rows sum to the
+totals the prose states on p. 2072 (34 + 43 = 77 diseases, 182 + 187 = 369 drugs).
+The two false-positive cells sum to 98, which is exactly the "retrospective
+history only" figure printed in Figure 1 on p. 2073. And 98 of the 154 positive
+retrospective drug replies (98 + 33 + 23) had no identical prospective history,
+which is the "approximately two-thirds" the authors state on p. 2074.
+
+The puzzle this supports. The setup is what a retrospective study would see: 57
+drug exposures "remembered" by mothers of malformed or dead babies that their own
+pregnancy records never held, against 41 among mothers of healthy babies. That
+reads as textbook recall bias, grief manufacturing an explanation. The reveal is
+the same women's answers from before they knew the outcome: the malformation
+group repeated only 23 of their own 187 earlier reports (12.3 per cent) and the
+normal group only 33 of 182 (18.1 per cent). Both groups had forgotten the large
+majority of what they themselves had reported months earlier, and both invented
+new exposures. The authors' own analysis found no significant difference in the
+percentage of unidentical replies between the groups.
+
+So this is not memory bent by outcome. It is memory that barely works, roughly
+equally in everyone, which is non-differential misclassification, and its
+consequence is the opposite of the one people fear: it does not manufacture an
+association, it drags a real one toward the null.
+
+Three honesty constraints for whoever authors it. The false-positive counts are
+numerically higher in the case group (57 against 41) and the puzzle must not
+claim they are identical; what the paper establishes is that the difference in
+unidentical replies was not significant, on 203 per group. Figure 1 counts
+drug-replies (420 of them) while Table 1 counts mothers (369), so the two must
+never be mixed in one chart. And the correction already noted below stands: this
+paper is cited across the literature as the origin of recall bias and explicitly
+does not demonstrate it, which is itself worth saying in the lesson.
+
+Shape note: this wants the setup and reveal to be two views of one dataset, which
+they are, provided the authored observations are the full breakdown per group
+(identical, not-identical, additional) and the setup view shows only the
+additional slice. Whether that is a new `PuzzleData` member or an extension of
+the rates shape is an open decision, not a settled one.
+
 ### Three uncomfortable findings
 
 1. **Four of our thirteen puzzles teach traps that no blueprint names**, and the

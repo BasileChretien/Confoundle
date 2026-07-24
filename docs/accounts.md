@@ -166,13 +166,21 @@ the server checks against.
 ### 5. Set the contact address
 
 The privacy page has to name a way to reach the controller, or it does not do
-its job. That address is a **build variable**, not a line in the repo:
+its job. That address is a **build variable**, not a line in the repo. On the
+Git-connected Cloudflare build it is set once in the Pages dashboard. For a
+local build, either pass it inline or, better, put it in a gitignored
+`.env.local` so it is not retyped every time:
 
 ```bash
-CONTACT_EMAIL=privacy@yourdomain pnpm build
+cp .env.example .env.local   # then fill in CONTACT_EMAIL
 ```
 
-Two reasons it is not committed. A plain address in a public file is a
+```bash
+CONTACT_EMAIL=privacy@yourdomain corepack pnpm build   # or pass it inline
+```
+
+A shell variable overrides the file, so the dashboard and CI, which set the
+variable, are unaffected. Two reasons the address is not committed. A plain address in a public file is a
 spam-harvesting target, and this is the only address on the site. And it should
 be a **dedicated address, not a personal one**: it goes on a public page, it
 will be scraped, and it is the address a data-protection request arrives at, so

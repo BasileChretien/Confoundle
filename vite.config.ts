@@ -1,7 +1,7 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { defineConfig, type Plugin } from "vite";
+import { defineConfig, loadEnv, type Plugin } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import { VitePWA } from "vite-plugin-pwa";
@@ -9,26 +9,6 @@ import { viteSingleFile } from "vite-plugin-singlefile";
 import { puzzles } from "./src/puzzles";
 import { ALL_DICTIONARIES } from "./src/app/translations/all";
 import { lessonPages, lessonSitemap } from "./src/server/prerender";
-
-/**
- * Where the lesson pages' absolute URLs point. Open Graph will not accept a
- * relative one, so this has to be decided at build time. Override for a fork or
- * a custom domain: SITE_ORIGIN=https://example.org pnpm build
- */
-/**
- * The canonical home. Defaults to the custom domain rather than the pages.dev
- * host, because these URLs are baked into 170 lesson pages as canonical links,
- * hreflang alternates and Open Graph tags, and those pages exist to be pasted
- * into arguments. Whatever host they carry is the one that circulates.
- *
- * A default rather than a variable to remember on every deploy: forgetting it
- * would silently publish the wrong origin, and this project has already lost an
- * afternoon to a build variable that was easy to get wrong.
- */
-const origin = (process.env.SITE_ORIGIN ?? "https://confoundle.org").replace(
-  /\/$/,
-  "",
-);
 
 /**
  * The controller's contact address on the privacy page.
@@ -85,7 +65,39 @@ function checkContactEmail(value: string | undefined): string | undefined {
   return email;
 }
 
-const contactEmail = checkContactEmail(process.env.CONTACT_EMAIL);
+interface BuildVars {
+  /**
+   * Where the lesson pages' absolute URLs point. Open Graph rejects a relative
+   * one, so it is decided at build time. Defaults to the custom domain rather
+   * than the pages.dev host, because these URLs are baked into 170 lesson
+   * pages as canonical links, hreflang alternates and Open Graph tags, and
+   * those pages exist to be pasted into arguments: whatever host they carry is
+   * the one that circulates.
+   */
+  origin: string;
+  /** The validated controller contact address, or undefined when unset. */
+  contactEmail: string | undefined;
+}
+
+/**
+ * The two settings a deployment supplies, read from the shell AND from a
+ * gitignored .env.local (covered by *.local in .gitignore).
+ *
+ * Reading the file matters more than it looks. The earlier version read only
+ * process.env, so .env.local was silently ignored and the address had to be
+ * retyped, in the right shell dialect, on every local build. That is precisely
+ * the class of mistake that shipped a placeholder to production twice. loadEnv
+ * picks the file up; a shell variable of the same name still overrides it, so
+ * CI and the Cloudflare dashboard (which set the shell variable) are unchanged.
+ */
+function resolveBuildVars(mode: string): BuildVars {
+  const envDir = fileURLToPath(new URL(".", import.meta.url));
+  const env = loadEnv(mode, envDir, ["CONTACT_EMAIL", "SITE_ORIGIN"]);
+  return {
+    origin: (env.SITE_ORIGIN ?? "https://confoundle.org").replace(/\/$/, ""),
+    contactEmail: checkContactEmail(env.CONTACT_EMAIL),
+  };
+}
 
 /**
  * Write one static HTML page per lesson per language, at /l/<slug>/[<locale>/].
@@ -107,7 +119,7 @@ const contactEmail = checkContactEmail(process.env.CONTACT_EMAIL);
  * dictionary map. It is a build script, not the app, so importing it cannot
  * undo the client's code splitting.
  */
-function lessonPagesPlugin(): Plugin {
+function lessonPagesPlugin({ origin, contactEmail }: BuildVars): Plugin {
   return {
     name: "confoundle-lesson-pages",
     apply: "build",
@@ -221,7 +233,7 @@ const pwa = VitePWA({
 });
 
 // https://vitejs.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   // Enables the in-app puzzle picker in the single-file demo build only.
   define: { __DEMO__: JSON.stringify(singleFile) },
   // Tailwind is a Vite plugin in v4 rather than a PostCSS plugin, which is why
@@ -229,7 +241,7 @@ export default defineConfig({
   // itself. Both build modes need it.
   plugins: singleFile
     ? [react(), tailwindcss(), viteSingleFile()]
-    : [react(), tailwindcss(), pwa, lessonPagesPlugin()],
+    : [react(), tailwindcss(), pwa, lessonPagesPlugin(resolveBuildVars(mode))],
   resolve: singleFile
     ? {
         // No PWA plugin in single-file mode: point its virtual module at a stub.
@@ -253,4 +265,4 @@ export default defineConfig({
         },
       }
     : undefined,
-});
+}));

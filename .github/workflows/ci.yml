@@ -25,7 +25,7 @@ jobs:
       # use the same one. This has already bitten once: .node-version said 20
       # while the pinned pnpm needed 22.13, and only a clean-room build could
       # reveal it, because every local machine here runs 24 and ignores the file.
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version-file: .node-version
       - run: corepack enable

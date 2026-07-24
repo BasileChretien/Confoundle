@@ -4,7 +4,7 @@ import { UI } from "../app/ui";
 import { puzzles } from "../puzzles";
 import type { Puzzle } from "../puzzles/schema";
 import type { SkillProgress } from "../srs/schedule";
-import { Badge } from "./ui";
+import { Badge, StageRungs } from "./ui";
 
 /**
  * The course, browsable.
@@ -34,20 +34,13 @@ function StateBadge({ progress }: { progress: LessonProgress }) {
  */
 function StageBar({ progress }: { progress: LessonProgress }) {
   if (progress.state === "new") return null;
-  const pct = Math.round((progress.stage / progress.maxStage) * 100);
   return (
-    <div
-      className="mt-2 h-1 w-full overflow-hidden rounded-full bg-rule"
-      role="presentation"
-    >
-      <div
-        className={
-          "h-full rounded-full " +
-          (progress.state === "mastered" ? "bg-brand" : "bg-gold")
-        }
-        style={{ width: `${Math.max(pct, 6)}%` }}
-      />
-    </div>
+    <StageRungs
+      stage={progress.stage}
+      max={progress.maxStage}
+      tone={progress.state === "mastered" ? "brand" : "gold"}
+      label={`${progress.stage} / ${progress.maxStage}`}
+    />
   );
 }
 

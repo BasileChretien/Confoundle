@@ -1,5 +1,6 @@
 import { TEST_ITEMS } from "../puzzles/testItems";
 import {
+  applyPractice,
   applyReview,
   dueSkills,
   newProgress,
@@ -40,6 +41,9 @@ export interface Reviews {
   progress(): Promise<SkillProgress[]>;
   reviewsDue(now?: number): Promise<number>;
   nextSession(seed: number, now?: number): Promise<Review[]>;
+  /** A session drawn from every learned skill, ignoring what is due. */
+  practiceSession(seed: number, now?: number): Promise<Review[]>;
+  recordPractice(results: readonly ReviewResult[], now?: number): Promise<SkillProgress[]>;
   recordReviews(results: readonly ReviewResult[], now?: number): Promise<SkillProgress[]>;
 }
 
@@ -79,6 +83,51 @@ export function createReviews(
     async nextSession(seed, now = Date.now()) {
       const due = dueSkills(await store.load(), now);
       return buildSession(due, [...bank], seed);
+    },
+
+    /**
+     * A session that ignores the schedule entirely and draws from every skill
+     * the learner has met.
+     *
+     * Two problems it solves. A finished deck otherwise offers nothing to do
+     * between reviews, and most of the item bank was unreachable: a perfect run
+     * to Burned consumes about eight reviews, roughly a third of which draw
+     * sound decoys, so barely half the traps authored for a skill were ever
+     * seen. Practice makes the rest reachable without letting anyone grind the
+     * ladder, since recordPractice does not move a stage.
+     */
+    async practiceSession(seed, now = Date.now()) {
+      const all = await store.load();
+      if (all.length === 0) return [];
+      // Weakest first, so practice lands where it is most useful, then whatever
+      // has gone longest without being seen.
+      const ordered = [...all].sort((a, b) => {
+        const aTotal = a.lifetime.correct + a.lifetime.wrong;
+        const bTotal = b.lifetime.correct + b.lifetime.wrong;
+        const aAcc = aTotal === 0 ? 1 : a.lifetime.correct / aTotal;
+        const bAcc = bTotal === 0 ? 1 : b.lifetime.correct / bTotal;
+        if (a.misconceived !== b.misconceived) return a.misconceived ? -1 : 1;
+        if (aAcc !== bAcc) return aAcc - bAcc;
+        return a.updatedAt - b.updatedAt;
+      });
+      return buildSession(ordered, [...bank], seed + now);
+    },
+
+    /** Score practice: everything a review records except the ladder. */
+    async recordPractice(results, now = Date.now()) {
+      let all = await store.load();
+      for (const r of results) {
+        const idx = all.findIndex((p) => p.skill === r.skill);
+        if (idx < 0) continue; // practice never enrols; it only exercises
+        const next = applyPractice(
+          all[idx],
+          { correct: r.correct, confidence: r.confidence, itemId: r.itemId },
+          now,
+        );
+        all = all.map((p, i) => (i === idx ? next : p));
+      }
+      await store.save(all);
+      return all;
     },
 
     /**

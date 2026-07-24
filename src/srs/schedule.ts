@@ -30,7 +30,7 @@ export const STAGES = [
   { name: "Guru II", hours: 24 * 14 },
   { name: "Master", hours: 24 * 30 },
   { name: "Enlightened", hours: 24 * 120 },
-  { name: "Burned", hours: Number.POSITIVE_INFINITY },
+  { name: "Burned", hours: 24 * 365 },
 ] as const;
 
 export const FIRST_STAGE = 1;
@@ -134,17 +134,60 @@ export function applyReview(
   };
 }
 
+/**
+ * Score a practice attempt: everything applyReview records EXCEPT the ladder.
+ *
+ * Practice exists so there is always something to do and so the item bank is
+ * reachable. A perfect run to Burned consumes about eight reviews, of which
+ * roughly a third draw sound decoys, so a finisher sees barely half the traps
+ * authored for each skill. The rest were unreachable behind the scheduler.
+ *
+ * Deliberately does not touch stage or dueAt: practising must not let someone
+ * grind a skill to Burned in an afternoon, which would defeat the spacing that
+ * makes any of this work. It does record the attempt, the item seen, and a
+ * confident mistake, because those are true regardless of scheduling.
+ */
+export function applyPractice(
+  progress: SkillProgress,
+  outcome: ReviewOutcome,
+  now: number,
+): SkillProgress {
+  return {
+    ...progress,
+    seenItemIds: [
+      ...progress.seenItemIds.filter((id) => id !== outcome.itemId),
+      outcome.itemId,
+    ],
+    misconceived: outcome.correct
+      ? progress.misconceived
+      : progress.misconceived || outcome.confidence === "certain",
+    lifetime: {
+      correct: progress.lifetime.correct + (outcome.correct ? 1 : 0),
+      wrong: progress.lifetime.wrong + (outcome.correct ? 0 : 1),
+    },
+    updatedAt: now,
+  };
+}
+
 export function isBurned(progress: SkillProgress): boolean {
   return progress.stage >= BURNED;
 }
 
-/** Skills wanting review now, most overdue first. Burned skills never return. */
+/**
+ * Skills wanting review now, most overdue first.
+ *
+ * Burned skills are included once their year has elapsed. They used to be
+ * excluded permanently, which meant a learner who finished the deck met a dead
+ * app: nothing due, nothing scheduled, both tiles greyed out. "Burned" is a
+ * scheduling convention, not proof of permanent retention, so it now means an
+ * annual check rather than an exit.
+ */
 export function dueSkills(
   all: SkillProgress[],
   now: number,
 ): SkillProgress[] {
   return all
-    .filter((p) => !isBurned(p) && p.dueAt <= now)
+    .filter((p) => p.dueAt <= now)
     .sort((a, b) => a.dueAt - b.dueAt);
 }
 

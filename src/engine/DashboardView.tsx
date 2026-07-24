@@ -14,7 +14,7 @@ import {
 } from "../srs/buckets";
 import type { SkillProgress } from "../srs/schedule";
 import { CONFIDENCE_LEVELS, type Confidence } from "./scoring";
-import { Badge, Button } from "./ui";
+import { Badge, Button, StageRungs } from "./ui";
 
 /**
  * The progress screen, built the way WaniKani builds one, because the ladder
@@ -114,7 +114,6 @@ function useRelative(): (ms: number) => string {
 function MasteryRow({ name, progress }: { name: string; progress: LessonProgress }) {
   const t = useT();
   const acc = accuracyOf(progress);
-  const width = Math.max(Math.round((progress.stage / progress.maxStage) * 100), 6);
   return (
     <li className="rounded-lg border border-rule bg-paper-2 p-2.5">
       <div className="flex items-baseline justify-between gap-3">
@@ -125,15 +124,12 @@ function MasteryRow({ name, progress }: { name: string; progress: LessonProgress
           {stageName(progress.stage)}
         </span>
       </div>
-      <div className="mt-1.5 h-1 w-full overflow-hidden rounded-full bg-rule">
-        <div
-          className={
-            "h-full rounded-full " +
-            (progress.state === "mastered" ? "bg-brand" : "bg-gold")
-          }
-          style={{ width: `${width}%` }}
-        />
-      </div>
+      <StageRungs
+        stage={progress.stage}
+        max={progress.maxStage}
+        tone={progress.state === "mastered" ? "brand" : "gold"}
+        label={`${stageName(progress.stage)}, ${progress.stage} of ${progress.maxStage}`}
+      />
       <div className="mt-1 flex items-center gap-2 text-[11px] text-ink-soft">
         {acc != null ? (
           <span>
@@ -152,10 +148,13 @@ function MasteryRow({ name, progress }: { name: string; progress: LessonProgress
 export function DashboardView({
   onDone,
   onStartReviews,
+  onPractise,
   onOpenLesson,
 }: {
   onDone: () => void;
   onStartReviews: () => void;
+  /** Practice ignores the schedule, so there is always something to do. */
+  onPractise: () => void;
   onOpenLesson: (slug: string) => void;
 }) {
   const t = useT();
@@ -224,6 +223,24 @@ export function DashboardView({
           onClick={onStartReviews}
         />
       </div>
+
+      {rows.length > 0 && dueNow === 0 ? (
+        // The screen used to offer a finished learner nothing at all: both
+        // tiles grey, "nothing scheduled", and roughly half the authored
+        // scenarios unreachable behind the scheduler. Practice is the way out.
+        <button
+          type="button"
+          onClick={onPractise}
+          className="flex w-full items-center justify-between gap-3 rounded-lg border border-brand/35 bg-brand/[0.07] px-3 py-3 text-start transition hover:bg-brand/[0.13] focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand"
+        >
+          <span className="flex flex-col">
+            <span className="font-display text-[15px] font-semibold text-ink">
+              {t(UI.practise)}
+            </span>
+            <span className="text-[12px] text-ink-soft">{t(UI.practiseBlurb)}</span>
+          </span>
+        </button>
+      ) : null}
 
       <div>
         <h3 className="mb-2 font-sans text-[11px] font-semibold uppercase tracking-eyebrow text-ink-mute">

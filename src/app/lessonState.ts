@@ -24,7 +24,7 @@ export interface LessonProgress {
   maxStage: number;
   /** True when this skill was once answered wrongly while feeling certain. */
   misconceived: boolean;
-  /** When the next review comes due, null when new or mastered. */
+  /** When the next review comes due, null only when never learned. */
   dueAt: number | null;
   lifetime: { correct: number; wrong: number };
 }
@@ -50,8 +50,9 @@ export function lessonProgressFor(
     stage: p.stage,
     maxStage: BURNED,
     misconceived: p.misconceived,
-    // A mastered skill has left the schedule, so a due date would be a lie.
-    dueAt: mastered ? null : p.dueAt,
+    // Mastered skills keep a due date: burning now means an annual check
+    // rather than an exit, so hiding it would be the lie.
+    dueAt: p.dueAt,
     lifetime: p.lifetime,
   };
 }

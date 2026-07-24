@@ -19,7 +19,10 @@ describe("the stage ladder", () => {
     for (let i = FIRST_STAGE; i < BURNED - 1; i++) {
       expect(STAGES[i + 1].hours).toBeGreaterThan(STAGES[i].hours);
     }
-    expect(STAGES[BURNED].hours).toBe(Number.POSITIVE_INFINITY);
+    // Burned is no longer infinite: it is an annual check, still the longest
+    // interval on the ladder, so the sequence stays strictly increasing.
+    expect(STAGES[BURNED].hours).toBe(24 * 365);
+    expect(STAGES[BURNED].hours).toBeGreaterThan(STAGES[BURNED - 1].hours);
   });
 });
 
@@ -133,9 +136,16 @@ describe("what is due", () => {
     expect(dueSkills([a, b, c], T0).map((p) => p.skill)).toEqual(["b", "a"]);
   });
 
-  it("never asks for a burned skill again", () => {
+  it("brings a burned skill back once its year is up", () => {
+    // It used to be dropped forever, which is what made a finished deck a dead
+    // app. Burned is a scheduling convention, not proof of permanent retention.
     const burned = { ...newProgress("a", T0), stage: BURNED, dueAt: T0 - HOUR };
     expect(isBurned(burned)).toBe(true);
+    expect(dueSkills([burned], T0)).toHaveLength(1);
+  });
+
+  it("does not ask for a burned skill before its year is up", () => {
+    const burned = { ...newProgress("a", T0), stage: BURNED, dueAt: T0 + 200 * 24 * HOUR };
     expect(dueSkills([burned], T0)).toEqual([]);
   });
 
@@ -150,6 +160,8 @@ describe("what is due", () => {
     }
     expect(isBurned(p)).toBe(true);
     expect(reviews).toBe(BURNED - FIRST_STAGE);
-    expect(dueSkills([p], now + 1000 * 24 * 3600 * 1000)).toEqual([]);
+    // And then keeps it, at one review a year rather than never again.
+    expect(dueSkills([p], p.dueAt)).toHaveLength(1);
+    expect(p.dueAt - now).toBe(365 * 24 * HOUR);
   });
 });

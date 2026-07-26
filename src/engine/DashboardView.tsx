@@ -210,7 +210,9 @@ function MasteryRow({ name, progress }: { name: string; progress: LessonProgress
           </span>
         ) : null}
         {progress.misconceived ? (
-          <span className="font-semibold text-rust-ink">⚠ {t(UI.sureAndWrong)}</span>
+          <span className="font-semibold uppercase tracking-eyebrow text-[10px] text-rust-ink">
+            {t(UI.sureAndWrong)}
+          </span>
         ) : null}
       </div>
     </li>
@@ -333,7 +335,7 @@ export function DashboardView({
 
       {/* Standing: the satisfying numbers, in gold where they are wins. */}
       <div className="grid grid-cols-4 gap-2">
-        <Metric label={t(UI.streak)} value={`🔥 ${stats.currentStreak}`} />
+        <Metric label={t(UI.streak)} value={String(stats.currentStreak)} />
         <Metric label={t(UI.best)} value={String(stats.maxStreak)} />
         <Metric label={t(UI.caught)} value={pct(stats.catchRate)} />
         <Metric label={t(UI.bucketBurned)} value={String(counts.burned)} />

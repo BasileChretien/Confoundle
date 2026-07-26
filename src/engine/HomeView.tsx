@@ -1,32 +1,32 @@
+import { useMemo, useState } from "react";
 import { useT } from "../app/i18n";
 import { lessonProgressFor } from "../app/lessonState";
 import { UI } from "../app/ui";
 import { puzzles } from "../puzzles";
+import { TAGS } from "../puzzles/tags";
+import type { Puzzle, TagId } from "../puzzles/schema";
 import type { SkillProgress } from "../srs/schedule";
 import { AboutContent } from "./AboutView";
-import { LessonList } from "./LessonList";
+import { LessonResults } from "./LessonList";
+import { filterLessons, humanizeCategory } from "./lessons";
 
 /**
  * The home screen: what this is, and the one thing to do next.
  *
- * A first visit needs the pitch, so a newcomer (nothing learned yet) gets the
- * full About content inline, with its own "play today" call to action, and the
- * archive underneath for anyone who would rather browse. A returning learner has
- * heard the pitch, so home collapses to exactly one primary action (reviews when
- * the scheduler says so, otherwise the next unlearned lesson), a progress link,
- * and the list, with a small About link for anyone who wants the pitch again.
+ * A newcomer gets the full pitch inline with a play call to action; a returning
+ * learner gets one primary action (reviews when due, otherwise Learn now), a
+ * keyword search, and a way into the full catalogue. The whole lesson list no
+ * longer sits here: it is one tap away under All lessons, filtered by category.
  */
 
 function PrimaryCard({
   eyebrow,
   title,
-  blurb,
   tone,
   onClick,
 }: {
   eyebrow: string;
   title: string;
-  blurb?: string;
   tone: "gold" | "brand";
   onClick: () => void;
 }) {
@@ -47,7 +47,29 @@ function PrimaryCard({
       <span className="font-display text-[17px] font-semibold leading-snug text-ink">
         {title}
       </span>
-      {blurb ? <span className="text-[13px] text-ink-soft">{blurb}</span> : null}
+    </button>
+  );
+}
+
+function SecondaryButton({
+  label,
+  onClick,
+  grow,
+}: {
+  label: string;
+  onClick: () => void;
+  grow?: boolean;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={
+        (grow ? "flex-1 " : "") +
+        "rounded-lg border border-rule bg-paper-2 px-3 py-2.5 text-center font-sans text-[11px] font-semibold uppercase tracking-eyebrow text-ink-mute transition hover:border-ink/40 hover:bg-paper-3 hover:text-ink focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand"
+      }
+    >
+      {label}
     </button>
   );
 }
@@ -59,6 +81,7 @@ export function HomeView({
   onStartReviews,
   onOpenProgress,
   onOpenAbout,
+  onOpenLessons,
 }: {
   progress: readonly SkillProgress[];
   dueCount: number;
@@ -66,8 +89,10 @@ export function HomeView({
   onStartReviews: () => void;
   onOpenProgress: () => void;
   onOpenAbout: () => void;
+  onOpenLessons: () => void;
 }) {
   const t = useT();
+  const [query, setQuery] = useState("");
 
   const learned = progress.length;
   const next = puzzles.find(
@@ -75,12 +100,29 @@ export function HomeView({
   );
   const start = () => (next ? onOpenLesson(next.slug) : onStartReviews());
 
-  // A newcomer gets the whole pitch, then the archive to browse.
+  const searchable = useMemo(() => {
+    return (p: Puzzle): string =>
+      [
+        t(p.setup.headline),
+        t(p.lesson.skillName),
+        t({ en: humanizeCategory(p.category) }),
+        ...p.tags.map((id: TagId) => t(TAGS[id].label)),
+      ]
+        .join(" ")
+        .toLowerCase();
+  }, [t]);
+
+  const q = query.trim();
+  const results = q
+    ? filterLessons(puzzles, { category: null, query: q }, searchable)
+    : [];
+
+  // A newcomer gets the whole pitch, then a way into the catalogue.
   if (learned === 0) {
     return (
       <div className="flex flex-col gap-6">
         <AboutContent onStart={start} onOpenLesson={onOpenLesson} />
-        <LessonList onOpen={onOpenLesson} progress={progress} />
+        <SecondaryButton label={t(UI.allLessons)} onClick={onOpenLessons} grow />
       </div>
     );
   }
@@ -90,42 +132,48 @@ export function HomeView({
       {dueCount > 0 ? (
         <PrimaryCard
           tone="gold"
-          eyebrow={`🎯 ${t(UI.reviewsDue)}: ${dueCount}`}
+          eyebrow={`${t(UI.reviewsDue)}: ${dueCount}`}
           title={t(UI.reviewsBlurb)}
           onClick={onStartReviews}
         />
       ) : next ? (
         <PrimaryCard
           tone="brand"
-          eyebrow={t(UI.continueLabel)}
+          eyebrow={t(UI.learnNow)}
           title={t(next.setup.headline)}
           onClick={() => onOpenLesson(next.slug)}
         />
       ) : null}
 
-      <div className="flex gap-2">
-        <button
-          type="button"
-          onClick={onOpenProgress}
-          className="flex flex-1 items-center justify-between gap-3 rounded-lg border border-rule bg-paper-2 px-3 py-2.5 text-start transition hover:border-ink/40 hover:bg-paper-3 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand"
-        >
-          <span className="font-sans text-[11px] font-semibold uppercase tracking-eyebrow text-ink-mute">
-            {t(UI.progress)}
-          </span>
-          <span className="font-display text-sm font-semibold text-ink">
-            {learned} / {puzzles.length}
-          </span>
-        </button>
-        <button
-          type="button"
-          onClick={onOpenAbout}
-          className="rounded-lg border border-rule bg-paper-2 px-3 py-2.5 font-sans text-[11px] font-semibold uppercase tracking-eyebrow text-ink-mute transition hover:border-ink/40 hover:bg-paper-3 hover:text-ink focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand"
-        >
-          {t(UI.aboutLink)}
-        </button>
-      </div>
+      <input
+        type="search"
+        inputMode="search"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        placeholder={t(UI.searchPlaceholder)}
+        aria-label={t(UI.searchPlaceholder)}
+        className="w-full rounded-lg border border-rule bg-paper-2 px-3.5 py-2.5 font-sans text-[14px] text-ink placeholder:text-ink-mute focus:border-ink/40 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand"
+      />
 
-      <LessonList onOpen={onOpenLesson} progress={progress} />
+      {q ? (
+        results.length > 0 ? (
+          <LessonResults puzzles={results} progress={progress} onOpen={onOpenLesson} />
+        ) : (
+          <p className="rounded-lg border border-rule bg-paper-2 p-4 text-[14px] text-ink-soft">
+            {t(UI.searchNoResults)}
+          </p>
+        )
+      ) : (
+        <div className="flex gap-2">
+          <SecondaryButton label={t(UI.allLessons)} onClick={onOpenLessons} grow />
+          <SecondaryButton
+            label={`${t(UI.progress)} ${learned}/${puzzles.length}`}
+            onClick={onOpenProgress}
+            grow
+          />
+          <SecondaryButton label={t(UI.aboutLink)} onClick={onOpenAbout} />
+        </div>
+      )}
     </div>
   );
 }

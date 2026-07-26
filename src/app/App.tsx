@@ -4,6 +4,7 @@ import { PuzzleFlow } from "../engine/PuzzleFlow";
 import { ReviewView } from "../engine/ReviewView";
 import { HomeView } from "../engine/HomeView";
 import { AboutView } from "../engine/AboutView";
+import { LessonsView } from "../engine/LessonsView";
 import { DashboardView } from "../engine/DashboardView";
 import { reviews } from "./reviews";
 import { HOME, sameView, searchForView, viewFromSearch, type View } from "./navigation";
@@ -172,6 +173,12 @@ function AppShell() {
               onStart={() => go({ name: "lesson", slug: getTodaysPuzzle().slug })}
               onOpenLesson={(next) => go({ name: "lesson", slug: next })}
             />
+          ) : view.name === "lessons" ? (
+            <LessonsView
+              progress={progress}
+              onOpen={(next) => go({ name: "lesson", slug: next })}
+              onBack={() => go(HOME)}
+            />
           ) : (
             <HomeView
               progress={progress}
@@ -180,6 +187,7 @@ function AppShell() {
               onStartReviews={() => go({ name: "review", practice: false })}
               onOpenProgress={() => go({ name: "progress" })}
               onOpenAbout={() => go({ name: "about" })}
+              onOpenLessons={() => go({ name: "lessons" })}
             />
           )}
         </div>

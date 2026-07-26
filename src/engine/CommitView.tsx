@@ -49,11 +49,14 @@ export function CommitView({
                   : "border-rule bg-paper-2 hover:border-ink/40 hover:bg-paper-3")
               }
             >
-              <span className="text-base font-semibold text-ink">
+              <span className="min-w-0 text-base font-semibold text-ink">
                 {t(choice.label)}
               </span>
               {choice.sublabel ? (
-                <span className="shrink-0 tabular-nums text-sm text-ink-soft">
+                // min-w-0 + shrink lets a long, descriptive sublabel wrap instead
+                // of forcing the row wider than the phone; a short numeric one
+                // still sits on a single line to the right.
+                <span className="min-w-0 shrink text-right tabular-nums text-sm text-ink-soft">
                   {t(choice.sublabel)}
                 </span>
               ) : null}

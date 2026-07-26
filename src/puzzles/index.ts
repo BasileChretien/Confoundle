@@ -18,6 +18,7 @@ import { recallBias } from "./data/recall-bias";
 import { immortalTime } from "./data/immortal-time";
 import { nocebo } from "./data/nocebo";
 import { misclassification } from "./data/misclassification";
+import { regressionMean } from "./data/regression-mean";
 
 /**
  * The puzzle registry. Adding a puzzle = import its data file and add it to
@@ -44,6 +45,7 @@ const rawPuzzles: unknown[] = [
   immortalTime,
   nocebo,
   misclassification,
+  regressionMean,
 ];
 
 export const puzzles: PuzzleType[] = rawPuzzles.map((p, i) => {

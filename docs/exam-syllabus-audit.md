@@ -333,7 +333,7 @@ consensus only · **X** absent from official documents.
 | Statistical vs clinical significance | X | **A** | O | X | **gap** |
 | Power, type I and type II error | X | **A** | O | X | **gap** |
 | Sponsorship / conflict of interest | X | **A** | T | X | **gap** |
-| Regression to the mean | X | **X** | O | X | **gap** |
+| Regression to the mean | X | **X** | O | X | **shipped** (Galton 1886) |
 | Ecological fallacy | X | **X** | O | X | **gap** |
 | Simpson's paradox | X | **X** | **X** | X | shipped (consensus only) |
 | Berkson's bias | X | **X** | **X** | X | shipped; **named in Korea 2026 paper** |
@@ -582,6 +582,71 @@ they are, provided the authored observations are the full breakdown per group
 (identical, not-identical, additional) and the setup view shows only the
 additional slice. Whether that is a new `PuzzleData` member or an extension of
 the rates shape is an open decision, not a settled one.
+
+**Shipped.** Built on a new `agreement` `PuzzleData` member: each group carries
+`reportedBefore`, `repeated` (a subset of it) and `invented`, the setup view
+draws only the invented slice, and the reveal adds the repeated and forgotten
+parts, so both beats are one dataset. Registered with ten `nm-*` review items and
+three sound measurement decoys, and translated into all nine locales.
+
+## Regression to the mean, shipped this session (Galton 1886)
+
+Sourced to the paper that named the phenomenon. Galton F. Regression towards
+mediocrity in hereditary stature. J Anthropol Inst 1886;15:246-263, Table I; DOI
+10.2307/2841583. The counts were taken from the standard digitization of Table I
+(928 adult children, distributed as HistData::Galton, female heights times 1.08 as
+Galton did) and reconciled two ways: the per-group means below, and the overall
+parent-to-child regression slope of 0.65 computed across all 928 pairs, which
+reproduces Galton's own two-thirds finding.
+
+Grouped rather than taken from single one-inch bins, because the extreme bins hold
+only a handful of families and are noisy. Against a population average of about
+68.3 inches:
+
+- Tallest parents (mid-parent height 71 in or more, n = 66): parents averaged
+  71.9 in, their grown children 70.8 (from 3.6 above the mean to 2.5 above).
+- Shortest parents (65.5 in or less, n = 103): parents averaged 65.1 in, their
+  children 66.2 (from 3.2 below to 2.1 below).
+
+About a third of each gap closed on its own, in both directions, with nothing done
+to the children. Needed a new `regression` `PuzzleData` member (group means at two
+measurements against a fixed mean line, an `extremes` setup view and a `reversion`
+reveal view), a pure derivation module with a test, a renderer, a share-card
+glyph, and ten `rm-*` review items plus two sound decoys, all translated into the
+nine non-English locales. Clinical deep-dive example: Wang N et al, home BP
+regression, J Clin Hypertens 2020;22(7):1184-1191, DOI 10.1111/jch.13933.
+
+## Effect modification versus confounding: sourced to head-counts after all
+
+The first pass assumed this could not be told with printed head-counts, because
+the canonical alcohol x tobacco and asbestos x smoking sets use person-time. A
+deeper search found one that can, open access and arithmetically exact.
+
+Choi CK, Yang J, Kweon S-S, et al. Association between ALDH2 polymorphism and
+esophageal cancer risk in South Koreans: a case-control study. BMC Cancer
+2021;21:254; DOI 10.1186/s12885-021-07993-4; PMC7941978. Table 3, men's panel,
+integer cell counts (cases / controls), genotype GA+AA versus GG as the exposure,
+drinking status as the modifier:
+
+- Current drinkers: GG 211 / 1782, GA+AA 219 / 421. OR = (219 x 1782) / (211 x
+  421) = 4.39, matching the printed value.
+- Nondrinkers: GG 123 / 556, GA+AA 198 / 718. OR = (198 x 556) / (123 x 718) =
+  1.25, matching the printed value.
+- Pool the two and the crude OR is (417 x 2338) / (334 x 1139) = 2.56; the
+  Mantel-Haenszel adjusted OR is 2.44.
+
+So the single number you get by pooling, or by "adjusting drinking away", is about
+2.5 and reads as a moderate risk factor. The reveal is that the genotype does
+almost nothing in nondrinkers (1.25, its confidence interval crossing 1) and
+quadruples the odds in drinkers (4.39): a real subgroup effect that adjustment
+hides, which is exactly effect modification rather than confounding, and must be
+reported stratum by stratum, not averaged into one number. Interaction P < 0.001.
+
+Two honesty constraints for whoever authors it. Frame the genotype as the exposure
+and drinking as the modifier, as the paper does; framing alcohol as the exposure
+on these cells gives an implausible protective crude OR (an artefact of the
+sick-quitter nondrinkers and of not adjusting for smoking). And use the men's
+panel: the women's ORs are age-adjusted and do not reconcile from the raw cells.
 
 ### Three uncomfortable findings
 

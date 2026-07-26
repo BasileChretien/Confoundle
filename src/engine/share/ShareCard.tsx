@@ -515,6 +515,68 @@ function RiskGlyph() {
 }
 
 /**
+ * Abstract regression-to-the-mean illustration for the card: two groups picked
+ * for being extreme, one high and one low, each with an arrow pointing back
+ * toward the gold average line in the middle. No case specifics; the card
+ * teaches the move, that an extreme group drifts toward the average on its own.
+ */
+function RegressionGlyph() {
+  const W = 200;
+  const H = 120;
+  const midY = H / 2;
+  const col = (x: number, startY: number) => {
+    const down = startY < midY;
+    const endY = midY + (startY - midY) * 0.35; // lands about a third of the way back
+    return (
+      <g key={x}>
+        <circle cx={x} cy={startY} r={7} fill={CARD.teal} opacity={0.5} />
+        <line
+          x1={x}
+          y1={startY}
+          x2={x}
+          y2={endY + (down ? -8 : 8)}
+          stroke={CARD.rust}
+          strokeWidth={2.5}
+        />
+        <path
+          d={`M ${x} ${endY} l -4 ${down ? -6 : 6} l 8 0 z`}
+          fill={CARD.rust}
+        />
+        <circle cx={x} cy={endY} r={7} fill={CARD.rust} />
+      </g>
+    );
+  };
+  return (
+    <div className="mt-4 rounded-lg p-3" style={{ backgroundColor: "rgba(0,0,0,0.28)" }}>
+      <svg
+        viewBox={`0 0 ${W} ${H}`}
+        role="img"
+        aria-label="Two extreme groups, one high and one low, each drifting back toward the average on its own"
+        style={{ display: "block", width: "100%", maxWidth: W, margin: "0 auto" }}
+      >
+        <line
+          x1={0}
+          y1={midY}
+          x2={W}
+          y2={midY}
+          stroke={CARD.gold}
+          strokeWidth={1.5}
+          strokeDasharray="4 3"
+        />
+        {col(70, 24)}
+        {col(130, 96)}
+      </svg>
+      <div
+        className="mt-2 text-center text-[11px] font-semibold"
+        style={{ color: CARD.gold }}
+      >
+        The extreme drifts back on its own.
+      </div>
+    </div>
+  );
+}
+
+/**
  * Beat 5: the shareable result card. The card node (cardRef) is what gets
  * rendered to PNG. It explains the reasoning skill itself (name + definition +
  * an abstract diagram) so it teaches anyone who sees it, independent of the
@@ -547,6 +609,7 @@ export function ShareCard({
   const timelineGlyph = data.type === "timeline";
   const riskGlyph = data.type === "risk";
   const agreementGlyph = data.type === "agreement";
+  const regressionGlyph = data.type === "regression";
   const splitSampleGlyph =
     data.type === "rates" &&
     Boolean(data.strataAreSeparateSamples) &&
@@ -631,6 +694,8 @@ export function ShareCard({
             <RiskGlyph />
           ) : agreementGlyph ? (
             <AgreementGlyph />
+          ) : regressionGlyph ? (
+            <RegressionGlyph />
           ) : null}
 
           <p className="mt-4 font-display text-[17px] font-medium leading-snug">

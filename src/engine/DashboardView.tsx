@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useLocale, useT } from "../app/i18n";
 import { reviews } from "../app/reviews";
 import { accuracyOf, lessonProgressFor, type LessonProgress } from "../app/lessonState";
-import { getStats } from "../app/session";
+import { getActivity, getStats } from "../app/session";
 import { UI } from "../app/ui";
 import { puzzles } from "../puzzles";
 import {
@@ -10,25 +10,25 @@ import {
   bucketCounts,
   reviewForecast,
   stageName,
+  weeklyForecast,
   type BucketId,
 } from "../srs/buckets";
 import type { SkillProgress } from "../srs/schedule";
 import { CONFIDENCE_LEVELS, type Confidence } from "./scoring";
+import { Confounder, type ConfounderState } from "./Confounder";
 import { Badge, Button, StageRungs } from "./ui";
 
 /**
  * The progress screen, built the way WaniKani builds one, because the ladder
- * underneath already is WaniKani's: the stages in schedule.ts are Apprentice I
- * to IV, Guru I and II, Master, Enlightened, Burned.
+ * underneath already is WaniKani's: Apprentice I to IV, Guru I and II, Master,
+ * Enlightened, Burned. The same three questions get answered in the same order:
+ * what can I do now (tiles), where does my knowledge sit (buckets), when does
+ * the next batch land (the week ahead).
  *
- * That means the same three questions get answered in the same order. What can
- * I do right now (the two tiles). Where does my knowledge actually sit (the
- * stage buckets). When does the next batch land (the forecast). Everything
- * Confoundle-specific, calibration above all, sits below that, because it is
- * the part you read occasionally rather than the part you act on.
- *
- * The colours are Confoundle's, not WaniKani's pink and purple, which would
- * fight the editorial palette. The structure is what was worth borrowing.
+ * Livened up since: the Confounder narrates the whole thing as its own losing
+ * scoreboard, a standing strip and an activity heatmap give the satisfying
+ * numbers, and a nemeses section names the traps still catching you. The colours
+ * stay Confoundle's editorial palette; only the structure is borrowed.
  */
 
 const BUCKET_LABEL: Record<BucketId, keyof typeof UI> = {
@@ -39,7 +39,6 @@ const BUCKET_LABEL: Record<BucketId, keyof typeof UI> = {
   burned: "bucketBurned",
 };
 
-/** Warm to cool as knowledge sets: recent and shaky in rust, permanent in ink. */
 const BUCKET_TONE: Record<BucketId, string> = {
   apprentice: "bg-rust/12 border-rust/35 text-rust",
   guru: "bg-gold/12 border-gold/40 text-ink",
@@ -63,15 +62,13 @@ function ActionTile({
   count,
   tone,
   onClick,
-  disabled,
 }: {
   label: string;
   count: number;
   tone: "gold" | "brand";
   onClick: () => void;
-  disabled: boolean;
 }) {
-  const live = !disabled && count > 0;
+  const live = count > 0;
   return (
     <button
       type="button"
@@ -96,6 +93,17 @@ function ActionTile({
   );
 }
 
+function Metric({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="flex flex-col items-center rounded-lg border border-rule bg-paper-2 px-2 py-2.5">
+      <span className="font-display text-lg font-semibold text-ink">{value}</span>
+      <span className="mt-0.5 text-center font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-mute">
+        {label}
+      </span>
+    </div>
+  );
+}
+
 function useRelative(): (ms: number) => string {
   const locale = useLocale();
   const t = useT();
@@ -109,6 +117,70 @@ function useRelative(): (ms: number) => string {
         : rtf.format(Math.round(hours / 24), "day");
     };
   }, [locale, t]);
+}
+
+/** The week ahead as seven bars, weekday-labelled in the reader's locale. */
+function WeekAhead({ all }: { all: readonly SkillProgress[] }) {
+  const locale = useLocale();
+  const now = Date.now();
+  const days = weeklyForecast(all, now, 7);
+  const max = Math.max(1, ...days.map((d) => d.count));
+  const wd = new Intl.DateTimeFormat(locale, { weekday: "short" });
+
+  return (
+    <div className="flex items-end justify-between gap-1.5">
+      {days.map((d) => {
+        const label = wd.format(new Date(now + d.inDays * 86_400_000));
+        return (
+          <div key={d.inDays} className="flex flex-1 flex-col items-center gap-1">
+            <span className="font-mono text-[10px] tabular-nums text-ink-soft">
+              {d.count > 0 ? d.count : ""}
+            </span>
+            <div className="flex h-16 w-full items-end justify-center">
+              <div
+                className={
+                  "w-full rounded-t-[2px] " +
+                  (d.inDays === 0 ? "bg-gold/70" : "bg-brand/50")
+                }
+                style={{
+                  height: `${(d.count / max) * 100}%`,
+                  minHeight: d.count > 0 ? "3px" : "0",
+                }}
+              />
+            </div>
+            <span className="font-sans text-[9px] uppercase tracking-eyebrow text-ink-mute">
+              {label}
+            </span>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+/** GitHub-style activity heatmap: ten weeks of turning up. */
+function Heatmap() {
+  const days = getActivity(70); // 10 weeks
+  const tone = (n: number): string => {
+    if (n <= 0) return "bg-rule/50";
+    if (n <= 2) return "bg-gold/25";
+    if (n <= 5) return "bg-gold/50";
+    return "bg-gold/80";
+  };
+  return (
+    <div
+      className="grid grid-flow-col gap-[3px]"
+      style={{ gridTemplateRows: "repeat(7, minmax(0, 1fr))" }}
+    >
+      {days.map((d) => (
+        <span
+          key={d.date}
+          title={`${d.date}: ${d.count}`}
+          className={`h-2.5 w-2.5 rounded-[2px] ${tone(d.count)}`}
+        />
+      ))}
+    </div>
+  );
 }
 
 function MasteryRow({ name, progress }: { name: string; progress: LessonProgress }) {
@@ -153,7 +225,6 @@ export function DashboardView({
 }: {
   onDone: () => void;
   onStartReviews: () => void;
-  /** Practice ignores the schedule, so there is always something to do. */
   onPractise: () => void;
   onOpenLesson: (slug: string) => void;
 }) {
@@ -193,9 +264,30 @@ export function DashboardView({
   const counts = bucketCounts(all);
   const forecast = reviewForecast(all, Date.now());
   const dueNow = forecast[0]?.inMs === 0 ? forecast[0].count : 0;
+  const nextSlot = forecast.find((f) => f.inMs > 0);
   const unlearned = puzzles.filter(
     (p) => lessonProgressFor(p.reasoningSkill, all).state === "new",
   );
+
+  // A nemesis is a skill still catching you out: confidently wrong, or a losing
+  // record with enough attempts to mean something.
+  const nemeses = rows.filter((r) => {
+    const acc = accuracyOf(r.progress);
+    const attempts = r.progress.lifetime.correct + r.progress.lifetime.wrong;
+    return r.progress.misconceived || (acc != null && acc < 0.6 && attempts >= 2);
+  });
+  const conquered = rows.filter((r) => r.progress.state === "mastered");
+
+  const state: ConfounderState = {
+    learned: rows.length,
+    dueNow,
+    streak: stats.currentStreak,
+    catchRate: stats.catchRate,
+    played: stats.played,
+    burned: counts.burned,
+    misconceptions: rows.filter((r) => r.progress.misconceived).length,
+    allDone: rows.length === puzzles.length && counts.burned === puzzles.length,
+  };
 
   return (
     <section className="flex flex-col gap-5">
@@ -206,28 +298,25 @@ export function DashboardView({
         </h2>
       </header>
 
+      <Confounder state={state} />
+
       {/* The two things you can act on, exactly where WaniKani puts them. */}
       <div className="flex gap-2">
         <ActionTile
           label={t(UI.lessons)}
           count={unlearned.length}
           tone="brand"
-          disabled={false}
           onClick={() => unlearned[0] && onOpenLesson(unlearned[0].slug)}
         />
         <ActionTile
           label={t(UI.reviewsShort)}
           count={dueNow}
           tone="gold"
-          disabled={false}
           onClick={onStartReviews}
         />
       </div>
 
       {rows.length > 0 && dueNow === 0 ? (
-        // The screen used to offer a finished learner nothing at all: both
-        // tiles grey, "nothing scheduled", and roughly half the authored
-        // scenarios unreachable behind the scheduler. Practice is the way out.
         <button
           type="button"
           onClick={onPractise}
@@ -242,6 +331,15 @@ export function DashboardView({
         </button>
       ) : null}
 
+      {/* Standing: the satisfying numbers, in gold where they are wins. */}
+      <div className="grid grid-cols-4 gap-2">
+        <Metric label={t(UI.streak)} value={`🔥 ${stats.currentStreak}`} />
+        <Metric label={t(UI.best)} value={String(stats.maxStreak)} />
+        <Metric label={t(UI.caught)} value={pct(stats.catchRate)} />
+        <Metric label={t(UI.bucketBurned)} value={String(counts.burned)} />
+      </div>
+
+      {/* Where knowledge sits. */}
       <div>
         <h3 className="mb-2 font-sans text-[11px] font-semibold uppercase tracking-eyebrow text-ink-mute">
           {t(UI.mastery)}
@@ -263,31 +361,79 @@ export function DashboardView({
         </div>
       </div>
 
+      {/* The week ahead. */}
       <div>
-        <h3 className="mb-2 font-sans text-[11px] font-semibold uppercase tracking-eyebrow text-ink-mute">
-          {t(UI.nextReviews)}
-        </h3>
-        {forecast.length === 0 ? (
+        <div className="mb-2 flex items-baseline justify-between gap-2">
+          <h3 className="font-sans text-[11px] font-semibold uppercase tracking-eyebrow text-ink-mute">
+            {t(UI.weekAhead)}
+          </h3>
+          {dueNow === 0 && nextSlot ? (
+            <span className="font-sans text-[11px] text-ink-soft">
+              {relative(nextSlot.inMs)}
+            </span>
+          ) : null}
+        </div>
+        {all.length === 0 ? (
           <p className="rounded-lg border border-rule bg-paper-2 p-3 text-[13px] text-ink-soft">
             {t(UI.nothingScheduled)}
           </p>
         ) : (
-          <ul className="flex flex-col gap-1">
-            {forecast.map((slot) => (
-              <li
-                key={slot.inMs}
-                className="flex items-center justify-between rounded-md border border-rule bg-paper-2 px-3 py-1.5 text-[13px]"
-              >
-                <span className={slot.inMs === 0 ? "font-semibold text-ink" : "text-ink-soft"}>
-                  {relative(slot.inMs)}
-                </span>
-                <span className="font-mono tabular-nums text-ink">{slot.count}</span>
-              </li>
-            ))}
-          </ul>
+          <WeekAhead all={all} />
         )}
       </div>
 
+      {/* Turning up. */}
+      <div>
+        <h3 className="mb-2 font-sans text-[11px] font-semibold uppercase tracking-eyebrow text-ink-mute">
+          {t(UI.activityTitle)}
+        </h3>
+        <Heatmap />
+      </div>
+
+      {/* Nemeses: the traps still winning. */}
+      {rows.length > 0 ? (
+        <div>
+          <h3 className="mb-1 font-sans text-[11px] font-semibold uppercase tracking-eyebrow text-ink-mute">
+            {t(UI.nemesesTitle)}
+          </h3>
+          {nemeses.length > 0 ? (
+            <>
+              <p className="mb-2 text-[12px] text-ink-soft">{t(UI.nemesesBlurb)}</p>
+              <ol className="flex flex-col gap-2">
+                {nemeses.slice(0, 3).map((r) => (
+                  <MasteryRow key={r.slug} name={r.name} progress={r.progress} />
+                ))}
+              </ol>
+            </>
+          ) : (
+            <p className="rounded-lg border border-brand/30 bg-brand/[0.06] p-3 text-[13px] text-ink-soft">
+              {t(UI.nemesesNone)}
+            </p>
+          )}
+        </div>
+      ) : null}
+
+      {/* Conquered: burned for good. */}
+      {conquered.length > 0 ? (
+        <div>
+          <h3 className="mb-1 font-sans text-[11px] font-semibold uppercase tracking-eyebrow text-ink-mute">
+            {t(UI.conquestsTitle)}
+          </h3>
+          <p className="mb-2 text-[12px] text-ink-soft">{t(UI.conquestsBlurb)}</p>
+          <ul className="flex flex-wrap gap-1.5">
+            {conquered.map((r) => (
+              <li
+                key={r.slug}
+                className="rounded-md border border-ink/20 bg-ink/[0.05] px-2 py-1 text-[12px] font-medium text-ink-soft"
+              >
+                {r.name}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
+
+      {/* Every learned skill. */}
       {rows.length > 0 ? (
         <ol className="flex flex-col gap-2">
           {rows.map((r) => (
@@ -299,12 +445,6 @@ export function DashboardView({
           {t(UI.nothingLearnedYet)}
         </p>
       )}
-
-      <div className="grid grid-cols-3 gap-2">
-        <Metric label={t(UI.streak)} value={`🔥 ${stats.currentStreak}`} />
-        <Metric label={t(UI.best)} value={String(stats.maxStreak)} />
-        <Metric label={t(UI.caught)} value={pct(stats.catchRate)} />
-      </div>
 
       {CONFIDENCE_LEVELS.some((c) => stats.byConfidence[c].played > 0) ? (
         <div>
@@ -332,16 +472,5 @@ export function DashboardView({
 
       <Button onClick={onDone}>{t(UI.back)}</Button>
     </section>
-  );
-}
-
-function Metric({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="flex flex-col items-center rounded-lg border border-rule bg-paper-2 px-2 py-2.5">
-      <span className="font-display text-lg font-semibold text-ink">{value}</span>
-      <span className="mt-0.5 font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-mute">
-        {label}
-      </span>
-    </div>
   );
 }

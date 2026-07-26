@@ -1,8 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { getPuzzleBySlug } from "../puzzles";
+import { getPuzzleBySlug, getTodaysPuzzle } from "../puzzles";
 import { PuzzleFlow } from "../engine/PuzzleFlow";
 import { ReviewView } from "../engine/ReviewView";
 import { HomeView } from "../engine/HomeView";
+import { AboutView } from "../engine/AboutView";
 import { DashboardView } from "../engine/DashboardView";
 import { reviews } from "./reviews";
 import { HOME, sameView, searchForView, viewFromSearch, type View } from "./navigation";
@@ -165,6 +166,12 @@ function AppShell() {
               onPractise={() => go({ name: "review", practice: true })}
               onOpenLesson={(next) => go({ name: "lesson", slug: next })}
             />
+          ) : view.name === "about" ? (
+            <AboutView
+              onBack={() => go(HOME)}
+              onStart={() => go({ name: "lesson", slug: getTodaysPuzzle().slug })}
+              onOpenLesson={(next) => go({ name: "lesson", slug: next })}
+            />
           ) : (
             <HomeView
               progress={progress}
@@ -172,6 +179,7 @@ function AppShell() {
               onOpenLesson={(next) => go({ name: "lesson", slug: next })}
               onStartReviews={() => go({ name: "review", practice: false })}
               onOpenProgress={() => go({ name: "progress" })}
+              onOpenAbout={() => go({ name: "about" })}
             />
           )}
         </div>

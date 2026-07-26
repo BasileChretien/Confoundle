@@ -17,6 +17,7 @@ import { getPuzzleBySlug } from "../puzzles";
 
 export type View =
   | { name: "home" }
+  | { name: "about" }
   | { name: "lesson"; slug: string }
   | { name: "review"; practice: boolean }
   | { name: "progress" };
@@ -35,6 +36,7 @@ export function viewFromSearch(search: string): View {
   if (review === "practice") return { name: "review", practice: true };
 
   if (params.get("progress") === "1") return { name: "progress" };
+  if (params.get("about") === "1") return { name: "about" };
 
   return HOME;
 }
@@ -52,6 +54,8 @@ export function searchForView(view: View): string {
       return view.practice ? "?review=practice" : "?review=1";
     case "progress":
       return "?progress=1";
+    case "about":
+      return "?about=1";
     case "home":
       return ".";
   }

@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { computeStats } from "./session";
+import { activityByDay, computeStats } from "./session";
 import type { PlayRecord } from "./session";
 
 const rec = (correct: boolean, confidence: PlayRecord["confidence"] = "sure"): PlayRecord => ({
@@ -137,5 +137,39 @@ describe("reviews count towards the numbers the learner sees", () => {
       },
     });
     expect(stats.currentStreak).toBe(0);
+  });
+});
+
+describe("activityByDay", () => {
+  const tally = (played: number, caught: number) => ({
+    hunch: { played, caught },
+    sure: { played: 0, caught: 0 },
+    certain: { played: 0, caught: 0 },
+  });
+
+  it("sums plays and reviews per day, oldest first, filling gaps with zero", () => {
+    const map = {
+      "a@2026-07-10": rec(true),
+      "b@2026-07-10": rec(false),
+      "a@2026-07-08": rec(true),
+    };
+    const reviews = {
+      "2026-07-10": tally(3, 2),
+      "2026-07-09": tally(0, 0),
+    };
+    const out = activityByDay(4, "2026-07-10", map, reviews);
+    expect(out).toEqual([
+      { date: "2026-07-07", count: 0 },
+      { date: "2026-07-08", count: 1 },
+      { date: "2026-07-09", count: 0 },
+      { date: "2026-07-10", count: 5 },
+    ]);
+  });
+
+  it("returns exactly `days` entries ending today", () => {
+    const out = activityByDay(30, "2026-07-10", {}, {});
+    expect(out).toHaveLength(30);
+    expect(out[29].date).toBe("2026-07-10");
+    expect(out.every((d) => d.count === 0)).toBe(true);
   });
 });

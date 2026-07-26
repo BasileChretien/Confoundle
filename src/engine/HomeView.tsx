@@ -3,21 +3,18 @@ import { lessonProgressFor } from "../app/lessonState";
 import { UI } from "../app/ui";
 import { puzzles } from "../puzzles";
 import type { SkillProgress } from "../srs/schedule";
+import { AboutContent } from "./AboutView";
 import { LessonList } from "./LessonList";
 
 /**
  * The home screen: what this is, and the one thing to do next.
  *
- * Opening the archive fixed "there is nothing else to play" and created a new
- * problem, which is that a first visit landed on seventeen equal cards with no
- * pitch and no starting point. A list answers "what else is there" and neither
- * "what is this" nor "what now".
- *
- * So exactly one primary action is offered, and which one depends on where the
- * learner is: reviews when the scheduler says so, because a due review is worth
- * more than a new lesson; otherwise the next unlearned lesson, labelled Start
- * here on a first visit and Continue afterwards. The full list stays underneath
- * for anyone who would rather browse.
+ * A first visit needs the pitch, so a newcomer (nothing learned yet) gets the
+ * full About content inline, with its own "play today" call to action, and the
+ * archive underneath for anyone who would rather browse. A returning learner has
+ * heard the pitch, so home collapses to exactly one primary action (reviews when
+ * the scheduler says so, otherwise the next unlearned lesson), a progress link,
+ * and the list, with a small About link for anyone who wants the pitch again.
  */
 
 function PrimaryCard({
@@ -61,12 +58,14 @@ export function HomeView({
   onOpenLesson,
   onStartReviews,
   onOpenProgress,
+  onOpenAbout,
 }: {
   progress: readonly SkillProgress[];
   dueCount: number;
   onOpenLesson: (slug: string) => void;
   onStartReviews: () => void;
   onOpenProgress: () => void;
+  onOpenAbout: () => void;
 }) {
   const t = useT();
 
@@ -74,17 +73,20 @@ export function HomeView({
   const next = puzzles.find(
     (p) => lessonProgressFor(p.reasoningSkill, progress).state === "new",
   );
+  const start = () => (next ? onOpenLesson(next.slug) : onStartReviews());
+
+  // A newcomer gets the whole pitch, then the archive to browse.
+  if (learned === 0) {
+    return (
+      <div className="flex flex-col gap-6">
+        <AboutContent onStart={start} onOpenLesson={onOpenLesson} />
+        <LessonList onOpen={onOpenLesson} progress={progress} />
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col gap-4">
-      {learned === 0 ? (
-        // Only a newcomer needs telling what this is. Once you have played,
-        // the pitch is wasted space above the thing you came back for.
-        <p className="font-display text-[19px] font-semibold leading-snug text-ink">
-          {t(UI.pitch)}
-        </p>
-      ) : null}
-
       {dueCount > 0 ? (
         <PrimaryCard
           tone="gold"
@@ -95,17 +97,17 @@ export function HomeView({
       ) : next ? (
         <PrimaryCard
           tone="brand"
-          eyebrow={learned === 0 ? t(UI.startHere) : t(UI.continueLabel)}
+          eyebrow={t(UI.continueLabel)}
           title={t(next.setup.headline)}
           onClick={() => onOpenLesson(next.slug)}
         />
       ) : null}
 
-      {learned > 0 ? (
+      <div className="flex gap-2">
         <button
           type="button"
           onClick={onOpenProgress}
-          className="flex w-full items-center justify-between gap-3 rounded-lg border border-rule bg-paper-2 px-3 py-2.5 text-start transition hover:border-ink/40 hover:bg-paper-3 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand"
+          className="flex flex-1 items-center justify-between gap-3 rounded-lg border border-rule bg-paper-2 px-3 py-2.5 text-start transition hover:border-ink/40 hover:bg-paper-3 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand"
         >
           <span className="font-sans text-[11px] font-semibold uppercase tracking-eyebrow text-ink-mute">
             {t(UI.progress)}
@@ -114,7 +116,14 @@ export function HomeView({
             {learned} / {puzzles.length}
           </span>
         </button>
-      ) : null}
+        <button
+          type="button"
+          onClick={onOpenAbout}
+          className="rounded-lg border border-rule bg-paper-2 px-3 py-2.5 font-sans text-[11px] font-semibold uppercase tracking-eyebrow text-ink-mute transition hover:border-ink/40 hover:bg-paper-3 hover:text-ink focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand"
+        >
+          {t(UI.aboutLink)}
+        </button>
+      </div>
 
       <LessonList onOpen={onOpenLesson} progress={progress} />
     </div>

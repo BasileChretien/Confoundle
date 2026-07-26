@@ -2574,6 +2574,130 @@ const items: TestItem[] = [
       en: "Averaging repeated measurements cuts the random error that would otherwise blur participants together and weaken the association. Reducing non-differential error this way is exactly how to keep a real effect visible.",
     },
   },
+
+  // ---- Regression to the mean ----
+  {
+    id: "rm-speed-cameras",
+    scenario: {
+      en: "A council installs speed cameras at the twenty junctions with the most crashes last year. Over the next year crashes at those junctions fall, and the council reports the cameras as a clear success.",
+    },
+    trap: "regression-to-the-mean",
+    explanation: {
+      en: "The junctions were picked for an exceptionally bad year, which is partly bad luck that does not repeat. Crashes would have fallen at the worst sites anyway, so crediting the cameras needs junctions that were equally bad and left uncovered.",
+    },
+  },
+  {
+    id: "rm-worst-schools",
+    scenario: {
+      en: "A ministry gives extra funding to the fifty lowest-scoring schools. The next year their average results rise, and the funding is declared to have worked.",
+    },
+    trap: "regression-to-the-mean",
+    explanation: {
+      en: "Schools land at the very bottom partly through a bad year that will not recur, so the lowest scorers tend to climb on their own. Without a comparison of equally low-scoring schools that got nothing, the rise cannot be pinned on the money.",
+    },
+  },
+  {
+    id: "rm-cholesterol-diet",
+    scenario: {
+      en: "A clinic enrols the patients with the highest cholesterol readings onto a new diet. At the recheck their readings have dropped, and the clinic recommends the diet to everyone.",
+    },
+    trap: "regression-to-the-mean",
+    explanation: {
+      en: "People selected for the highest readings include many caught on an unusually high day, which the next test will not repeat. Their readings would fall without the diet, so only an equally high group left alone can show the diet did anything.",
+    },
+  },
+  {
+    id: "rm-manager-sacked",
+    scenario: {
+      en: "A football club sacks its manager after the worst run of results in years. Under the caretaker the team climbs the table, and the board congratulates itself on the decision.",
+    },
+    trap: "regression-to-the-mean",
+    explanation: {
+      en: "Clubs sack managers at their lowest ebb, and a lowest ebb is partly a run of bad luck that tends to end. The recovery is what a bad patch usually does next, so it is no proof the sacking helped.",
+    },
+  },
+  {
+    id: "rm-cold-remedy",
+    scenario: {
+      en: "People try a herbal remedy when their cold feels at its worst. Most feel much better within two days and recommend it to friends.",
+    },
+    trap: "regression-to-the-mean",
+    explanation: {
+      en: "A cold is usually taken on at its peak, and symptoms fade from a peak on their own. Feeling better after the worst day is what a cold does, with or without the remedy.",
+    },
+  },
+  {
+    id: "rm-sophomore-slump",
+    scenario: {
+      en: "An athlete voted best newcomer of the season plays less brilliantly the year after. Pundits conclude the fame went to his head.",
+    },
+    trap: "regression-to-the-mean",
+    explanation: {
+      en: "A best-newcomer season is a peak, and peaks are partly luck that does not hold. A more ordinary second year is what regression predicts, and it needs no story about character.",
+    },
+  },
+  {
+    id: "rm-worst-branches",
+    scenario: {
+      en: "A chain sends its consultants to the ten stores with the worst sales last quarter. Those stores do better the following quarter, and the consultancy is retained.",
+    },
+    trap: "regression-to-the-mean",
+    explanation: {
+      en: "The ten stores were chosen for an unusually bad quarter, which tends to be followed by a better one regardless. Judging the consultants fairly needs equally poor stores they never visited.",
+    },
+  },
+  {
+    id: "rm-bp-recall",
+    scenario: {
+      en: "A screening drive recalls everyone whose blood pressure read highest and gives them lifestyle advice. At the recall visit their pressure is lower, and the advice is judged effective.",
+    },
+    trap: "regression-to-the-mean",
+    explanation: {
+      en: "A single high reading is partly a bad moment, so the highest readers tend to read lower next time anyway. The fall is expected without any advice, and a comparison group is the only way to see the advice's own effect.",
+    },
+  },
+  {
+    id: "rm-driver-course",
+    scenario: {
+      en: "Drivers who collected the most penalty points in a year are required to attend a safety course. In the following year they collect far fewer points, and the course is expanded.",
+    },
+    trap: "regression-to-the-mean",
+    explanation: {
+      en: "Drivers are picked at a peak year of offences, and a peak is partly chance that eases off. Fewer points the next year is what regression predicts, so the drop does not by itself show the course worked.",
+    },
+  },
+  {
+    id: "rm-mock-exam",
+    scenario: {
+      en: "Students who scored worst on a mock exam are enrolled in a revision workshop. On the real exam they improve markedly, and the school makes the workshop compulsory for low scorers.",
+    },
+    trap: "regression-to-the-mean",
+    explanation: {
+      en: "The worst mock scores include students who simply had an off day, who tend to do better next time regardless. Only students who scored equally badly and skipped the workshop could show whether it added anything.",
+    },
+  },
+
+  // ---- Genuinely sound reasoning about extremes (more decoys) ----
+  {
+    id: "ok-rtm-control",
+    scenario: {
+      en: "A charity funds the lowest-attaining schools and evaluates the programme against an equally low-attaining set of schools, chosen the same way but left unfunded. The funded schools improved more than the unfunded ones.",
+    },
+    trap: null,
+    explanation: {
+      en: "Both sets were equally extreme, so both would drift upward by about the same amount on their own. Because the comparison schools absorb that drift, the extra improvement in the funded schools is a fair estimate of what the funding added.",
+    },
+  },
+  {
+    id: "ok-rtm-placebo",
+    scenario: {
+      en: "Patients with high blood pressure are randomly assigned to a drug or a dummy pill. Pressure falls in both groups, but it falls further on the drug, and the trial reports the difference between the two as the drug's effect.",
+    },
+    trap: null,
+    explanation: {
+      en: "Both arms started high and both drift back toward the average, so the fall in the dummy-pill arm measures that drift. Subtracting it leaves the part that is the drug, which is exactly why the comparison arm is there.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

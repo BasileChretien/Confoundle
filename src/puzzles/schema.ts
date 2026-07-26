@@ -257,6 +257,52 @@ const AgreementData = z
   });
 export type AgreementData = z.infer<typeof AgreementData>;
 
+/**
+ * Regression-to-the-mean data: one or more groups selected because their FIRST
+ * measurement was extreme, and where each landed on a SECOND measurement, both
+ * read against the population mean.
+ *
+ * Needed because regression to the mean cannot be told with a rate chart or a
+ * risk chart. The claim is not "one group beat another" but "a group picked for
+ * being extreme drifted back toward the average on its own, with nothing done to
+ * it". That needs the mean drawn as a fixed reference and each group shown at two
+ * measurements against it, so the reveal can show the second measurement sitting
+ * closer to the mean than the first. A single bar of either measurement cannot
+ * carry the pull toward the middle, so the reveal would only restate the setup.
+ *
+ * The values are group means on a real scale (Galton's inches), not counts, so
+ * `first` and `second` are plain numbers, and `mean` is the level everything
+ * reverts toward. `reverted` (how far back toward the mean the second
+ * measurement fell) is derived, never authored.
+ */
+export const RegressionGroup = z.object({
+  id: z.string().min(1),
+  label: LocalizedText, // "The tallest parents"
+  short: LocalizedText.optional(),
+  /** The first, selected-on measurement (the extreme one). */
+  first: z.number(),
+  /** The same group's second measurement. */
+  second: z.number(),
+  /** People in the group, shown for honesty about how solid each mean is. */
+  n: z.number().int().positive().optional(),
+});
+export type RegressionGroup = z.infer<typeof RegressionGroup>;
+
+const RegressionData = z.object({
+  type: z.literal("regression"),
+  label: LocalizedText, // figure title
+  unit: LocalizedText, // "inches"
+  axisMin: z.number(),
+  axisMax: z.number(),
+  /** The population average, the line the second measurement reverts toward. */
+  mean: z.number(),
+  meanLabel: LocalizedText, // "Everyone's average height"
+  firstLabel: LocalizedText, // "The parents"
+  secondLabel: LocalizedText, // "Their grown children"
+  groups: z.array(RegressionGroup).min(1),
+});
+export type RegressionData = z.infer<typeof RegressionData>;
+
 /** Discriminated by `type`. Add new members here to support new data shapes. */
 export const PuzzleData = z.discriminatedUnion("type", [
   RatesData,
@@ -266,6 +312,7 @@ export const PuzzleData = z.discriminatedUnion("type", [
   TimelineData,
   RiskData,
   AgreementData,
+  RegressionData,
 ]);
 export type PuzzleData = z.infer<typeof PuzzleData>;
 
@@ -302,6 +349,8 @@ export const DataView = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("immortal"), ...viewFields }),
   z.object({ kind: z.literal("invented"), ...viewFields }),
   z.object({ kind: z.literal("agreement"), ...viewFields }),
+  z.object({ kind: z.literal("extremes"), ...viewFields }),
+  z.object({ kind: z.literal("reversion"), ...viewFields }),
 ]);
 export type DataView = z.infer<typeof DataView>;
 export type DataViewKind = DataView["kind"];
@@ -677,6 +726,45 @@ export const Puzzle = z
           message: "an immortal view needs at least one track with immortalUntil",
         });
       }
+    }
+
+    if (p.setup.data.type === "regression") {
+      const d = p.setup.data;
+      const at = (...k: (string | number)[]) => ["setup", "data", ...k];
+      if (!(d.axisMin < d.axisMax)) {
+        ctx.addIssue({
+          code: "custom",
+          path: at("axisMax"),
+          message: `axisMax (${d.axisMax}) must be greater than axisMin (${d.axisMin})`,
+        });
+      }
+      if (d.mean < d.axisMin || d.mean > d.axisMax) {
+        ctx.addIssue({
+          code: "custom",
+          path: at("mean"),
+          message: `mean (${d.mean}) falls outside the axis (${d.axisMin} to ${d.axisMax})`,
+        });
+      }
+      const seen = new Set<string>();
+      d.groups.forEach((g, i) => {
+        if (seen.has(g.id)) {
+          ctx.addIssue({
+            code: "custom",
+            path: at("groups", i, "id"),
+            message: `duplicate group id "${g.id}"`,
+          });
+        }
+        seen.add(g.id);
+        for (const key of ["first", "second"] as const) {
+          if (g[key] < d.axisMin || g[key] > d.axisMax) {
+            ctx.addIssue({
+              code: "custom",
+              path: at("groups", i, key),
+              message: `${key} (${g[key]}) falls outside the axis (${d.axisMin} to ${d.axisMax})`,
+            });
+          }
+        }
+      });
     }
   });
 export type Puzzle = z.infer<typeof Puzzle>;

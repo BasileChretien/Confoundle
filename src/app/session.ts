@@ -224,6 +224,51 @@ export function getStats(): Stats {
   return computeStats(readAll(), todayISODate(), readReviews());
 }
 
+export interface DayActivity {
+  /** YYYY-MM-DD, local. */
+  date: string;
+  /** Puzzles played plus reviews answered that day. */
+  count: number;
+}
+
+/**
+ * Activity per calendar day for the last `days` days (oldest first, today
+ * last), for a GitHub-style heatmap. Pure so it can be unit-tested, and derived
+ * from the same two local logs everything else uses, so it invents no new
+ * storage and holds no item identifiers, only per-day totals.
+ */
+export function activityByDay(
+  days: number,
+  todayIso: string = todayISODate(),
+  map: ProgressMap = readAll(),
+  reviewMap: ReviewMap = readReviews(),
+): DayActivity[] {
+  const perDay = new Map<string, number>();
+  for (const key of Object.keys(map)) {
+    const date = key.slice(key.indexOf("@") + 1);
+    perDay.set(date, (perDay.get(date) ?? 0) + 1);
+  }
+  for (const [date, tally] of Object.entries(reviewMap)) {
+    const played = (["hunch", "sure", "certain"] as Confidence[]).reduce(
+      (n, c) => n + (tally[c]?.played ?? 0),
+      0,
+    );
+    if (played > 0) perDay.set(date, (perDay.get(date) ?? 0) + played);
+  }
+
+  const todayNum = dayNumber(todayIso);
+  const out: DayActivity[] = [];
+  for (let i = days - 1; i >= 0; i -= 1) {
+    const iso = new Date((todayNum - i) * 86_400_000).toISOString().slice(0, 10);
+    out.push({ date: iso, count: perDay.get(iso) ?? 0 });
+  }
+  return out;
+}
+
+export function getActivity(days: number): DayActivity[] {
+  return activityByDay(days);
+}
+
 // ---- nickname (local only, for the friends board) ----
 const NAME_KEY = "confoundle:name";
 

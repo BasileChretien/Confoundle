@@ -94,3 +94,39 @@ export function reviewForecast(
 export function stageName(stage: number): string {
   return STAGES[Math.min(Math.max(stage, 0), STAGES.length - 1)].name;
 }
+
+export interface DayForecast {
+  /** Whole days from today; 0 is today. */
+  inDays: number;
+  count: number;
+}
+
+/**
+ * How many reviews fall on each of the next `days` calendar days, for a small
+ * bar chart. Anything already overdue counts against today, because an overdue
+ * review is something to do today, not a past event. Complements
+ * `reviewForecast`, which answers "how soon" in hours; this answers "how my
+ * week looks" in days, and always returns one slot per day (zeros included) so
+ * the chart has a stable shape.
+ */
+export function weeklyForecast(
+  all: readonly SkillProgress[],
+  now: number,
+  days = 7,
+): DayForecast[] {
+  const startOfToday = new Date(now);
+  startOfToday.setHours(0, 0, 0, 0);
+  const base = startOfToday.getTime();
+
+  const slots: DayForecast[] = Array.from({ length: days }, (_, i) => ({
+    inDays: i,
+    count: 0,
+  }));
+  for (const p of all) {
+    const offset = Math.floor((p.dueAt - base) / 86_400_000);
+    const clamped = Math.max(0, Math.min(days - 1, offset));
+    // Only count things that land within the window (or are overdue -> today).
+    if (offset < days) slots[clamped].count += 1;
+  }
+  return slots;
+}

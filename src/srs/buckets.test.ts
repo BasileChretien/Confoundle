@@ -1,5 +1,12 @@
 import { describe, it, expect } from "vitest";
-import { BUCKETS, bucketCounts, bucketOf, reviewForecast, stageName } from "./buckets";
+import {
+  BUCKETS,
+  bucketCounts,
+  bucketOf,
+  reviewForecast,
+  stageName,
+  weeklyForecast,
+} from "./buckets";
 import { BURNED, newProgress, STAGES, type SkillProgress } from "./schedule";
 
 const NOW = 1_760_000_000_000;
@@ -84,5 +91,31 @@ describe("review forecast", () => {
     const forecast = reviewForecast(all, NOW, 3);
     expect(forecast).toHaveLength(3);
     expect(forecast.map((f) => f.inMs)).toEqual([HOUR, 2 * HOUR, 3 * HOUR]);
+  });
+});
+
+describe("weeklyForecast", () => {
+  const DAY = 86_400_000;
+  const base = (() => {
+    const d = new Date(NOW);
+    d.setHours(0, 0, 0, 0);
+    return d.getTime();
+  })();
+
+  it("buckets due dates into the next seven days, overdue folded into today", () => {
+    const all = [
+      at("overdue", 3, base - HOUR), // -> today (0)
+      at("today", 3, base + HOUR), // today (0)
+      at("tomorrow", 3, base + DAY + HOUR), // day 1
+      at("d3", 3, base + 3 * DAY + HOUR), // day 3
+      at("beyond", 3, base + 10 * DAY), // outside the window, dropped
+    ];
+    const f = weeklyForecast(all, NOW, 7);
+    expect(f).toHaveLength(7);
+    expect(f.map((s) => s.inDays)).toEqual([0, 1, 2, 3, 4, 5, 6]);
+    expect(f[0].count).toBe(2);
+    expect(f[1].count).toBe(1);
+    expect(f[3].count).toBe(1);
+    expect(f.reduce((n, s) => n + s.count, 0)).toBe(4);
   });
 });

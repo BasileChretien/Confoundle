@@ -26,6 +26,10 @@ describe("reading a view from the URL", () => {
     expect(viewFromSearch("?progress=1")).toEqual({ name: "progress" });
   });
 
+  it("reads the about screen", () => {
+    expect(viewFromSearch("?about=1")).toEqual({ name: "about" });
+  });
+
   it("falls back to home for anything unrecognised", () => {
     expect(viewFromSearch("")).toEqual(HOME);
     expect(viewFromSearch("?utm_source=twitter")).toEqual(HOME);
@@ -48,6 +52,7 @@ describe("writing a view to the URL", () => {
       { name: "review", practice: false },
       { name: "review", practice: true },
       { name: "progress" },
+      { name: "about" },
     ];
     for (const v of views) {
       const search = searchForView(v);

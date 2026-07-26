@@ -2698,6 +2698,130 @@ const items: TestItem[] = [
       en: "Both arms started high and both drift back toward the average, so the fall in the dummy-pill arm measures that drift. Subtracting it leaves the part that is the drug, which is exactly why the comparison arm is there.",
     },
   },
+
+  // ---- Effect modification versus confounding ----
+  {
+    id: "em-sunscreen-skintype",
+    scenario: {
+      en: "A study reports that regular sunscreen use cuts skin cancer risk by about a fifth on average, adjusting for skin type. The benefit is large in fair-skinned people and negligible in the darkest-skinned. The health message quotes only the one-fifth figure.",
+    },
+    trap: "effect-modification-vs-confounding",
+    explanation: {
+      en: "The effect genuinely differs by skin type, so a single averaged number describes neither group. Skin type here is not a nuisance to adjust away but the thing that decides how much sunscreen helps, and it should be reported separately.",
+    },
+  },
+  {
+    id: "em-bp-drug-age",
+    scenario: {
+      en: "A blood pressure drug is licensed with the claim that it lowers pressure by 8 mmHg. Split by age, it barely moves pressure under 50 and lowers it markedly over 70. Only the single average appears on the label.",
+    },
+    trap: "effect-modification-vs-confounding",
+    explanation: {
+      en: "Age changes the size of the effect, so the 8 mmHg is an average that fits no age group well. When an effect differs across subgroups it should be reported by subgroup, not collapsed into one figure.",
+    },
+  },
+  {
+    id: "em-painkiller-genotype",
+    scenario: {
+      en: "A painkiller relieves pain strongly in people with one liver-enzyme genotype and hardly at all in those with another. A review pools every patient and reports a modest average benefit.",
+    },
+    trap: "effect-modification-vs-confounding",
+    explanation: {
+      en: "The genotype decides whether the drug works, so pooling produces a number that overstates it for one group and invents it for the other. The genotype is the finding, not a variable to average over.",
+    },
+  },
+  {
+    id: "em-treatment-opposite",
+    scenario: {
+      en: "Researchers find a treatment helps men and harms women by about the same amount. To account for sex, they adjust for it and report a single near-zero effect, concluding the treatment does nothing.",
+    },
+    trap: "effect-modification-vs-confounding",
+    explanation: {
+      en: "Adjusting for sex has buried two real and opposite effects under an average of nearly zero. Sex is modifying the effect, not confounding it, so the honest report is the two subgroups apart, not one number that hides both.",
+    },
+  },
+  {
+    id: "em-fertiliser-soil",
+    scenario: {
+      en: "A fertiliser trial across many fields finds it raises yield on sandy soil and does nothing on clay. The report gives the average increase and recommends the fertiliser for all fields.",
+    },
+    trap: "effect-modification-vs-confounding",
+    explanation: {
+      en: "Soil type changes whether the fertiliser works at all, so an average across soils recommends it where it is useless. The effect should be reported by soil, which is the practical answer a farmer needs.",
+    },
+  },
+  {
+    id: "em-vaccine-age",
+    scenario: {
+      en: "A vaccine is highly protective in younger adults and only weakly protective in the elderly. A briefing note gives a single overall efficacy figure for the whole population.",
+    },
+    trap: "effect-modification-vs-confounding",
+    explanation: {
+      en: "Age modifies how well the vaccine works, so one figure overstates the protection the elderly can expect. A modifier like this belongs in the results split out, because the subgroups need different advice.",
+    },
+  },
+  {
+    id: "em-tutoring-baseline",
+    scenario: {
+      en: "A tutoring programme raises test scores sharply for pupils who started behind and not at all for those already ahead. The evaluation reports one average gain and rolls the programme out to everyone.",
+    },
+    trap: "effect-modification-vs-confounding",
+    explanation: {
+      en: "Starting level decides who benefits, so an average gain misdescribes both the pupils it helps and those it does not. This is an effect that differs by subgroup, to be reported by subgroup rather than averaged.",
+    },
+  },
+  {
+    id: "em-solvent-smoking",
+    scenario: {
+      en: "An occupational study finds a workplace solvent raises lung cancer risk steeply in smokers and not detectably in non-smokers. The authors adjust for smoking and present a single modest risk for the solvent.",
+    },
+    trap: "effect-modification-vs-confounding",
+    explanation: {
+      en: "Smoking is not just a confounder here, it decides whether the solvent does harm, so adjusting it into one number hides that the danger is concentrated in smokers. The two groups should be reported separately.",
+    },
+  },
+  {
+    id: "em-diet-diabetes",
+    scenario: {
+      en: "A dietary change lowers heart attacks in people with diabetes and has no effect in people without it. A meta-analysis pools all participants and concludes the diet has a small, marginal benefit.",
+    },
+    trap: "effect-modification-vs-confounding",
+    explanation: {
+      en: "The diet's effect depends on diabetes status, so pooling dilutes a real benefit for one group into a marginal-looking average for everyone. Diabetes is the modifier, and the strata carry the real message.",
+    },
+  },
+  {
+    id: "em-app-newusers",
+    scenario: {
+      en: "A feature raises spending a lot among brand-new users and not at all among long-standing ones. The product team reports the average uplift across all users and ships the feature to everybody.",
+    },
+    trap: "effect-modification-vs-confounding",
+    explanation: {
+      en: "How long someone has used the product decides whether the feature does anything, so the average uplift misleads about both groups. When an effect differs by subgroup, the subgroups are the result, not a detail to average over.",
+    },
+  },
+
+  // ---- Genuinely sound reasoning about subgroups and adjustment (more decoys) ----
+  {
+    id: "ok-confounder-adjusted",
+    scenario: {
+      en: "Coffee drinkers have more heart disease, but they also smoke more. After adjusting for smoking the association disappears, and the same near-zero link holds within smokers and within non-smokers alike. The authors report that coffee is not associated once smoking is accounted for.",
+    },
+    trap: null,
+    explanation: {
+      en: "Because the link is the same small thing in both smoking groups, smoking was a genuine confounder and adjusting for it is the right move. A single adjusted number is a fair summary precisely because the strata agree.",
+    },
+  },
+  {
+    id: "ok-subgroups-reported",
+    scenario: {
+      en: "A trial finds a drug clearly helps patients with a particular marker and does nothing for those without it. Rather than quoting one overall effect, the report gives the two groups separately and recommends the drug only for the marker-positive patients.",
+    },
+    trap: null,
+    explanation: {
+      en: "When an effect differs by subgroup, reporting the subgroups apart is exactly right, and pooling them into one average would have been the error. Prespecifying the marker and acting on it is careful practice, not a trap.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

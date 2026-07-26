@@ -303,6 +303,49 @@ const RegressionData = z.object({
 });
 export type RegressionData = z.infer<typeof RegressionData>;
 
+/**
+ * Effect-modification data: a 2x2 of exposure against outcome, given once per
+ * stratum of a third variable (the potential modifier), as raw head-counts.
+ *
+ * Needed because the difference between confounding and effect modification
+ * cannot be told with a rates chart or a risk chart. Both of those pool. The
+ * whole lesson is that pooling, or adjusting, is right for a confounder and
+ * wrong for a modifier: the claim is not "which group is higher" but "the effect
+ * itself differs across the strata, so a single number describes no one". That
+ * needs the odds ratio computed inside each stratum and set against the crude
+ * (pooled) one, so the reveal can show the stratum ratios flying apart while the
+ * crude sits uselessly between them.
+ *
+ * Counts are authored as the four cells of each stratum's 2x2; the odds ratios,
+ * the crude odds ratio, and the Mantel-Haenszel adjusted odds ratio are all
+ * derived (see engine/charts/interaction.ts), so nothing can drift.
+ */
+export const InteractionStratum = z.object({
+  id: z.string().min(1),
+  label: LocalizedText, // "Current drinkers"
+  short: LocalizedText.optional(),
+  exposedCases: z.number().int().nonnegative(),
+  exposedControls: z.number().int().nonnegative(),
+  unexposedCases: z.number().int().nonnegative(),
+  unexposedControls: z.number().int().nonnegative(),
+});
+export type InteractionStratum = z.infer<typeof InteractionStratum>;
+
+const InteractionData = z.object({
+  type: z.literal("interaction"),
+  label: LocalizedText, // figure title
+  exposureLabel: LocalizedText, // the chart eyebrow, e.g. "Odds of cancer with the variant"
+  modifierLabel: LocalizedText, // "Alcohol drinking"
+  /** Row label for the pooled (crude) odds ratio, e.g. "Ignoring drinking". */
+  crudeLabel: LocalizedText,
+  /** Row label for the Mantel-Haenszel adjusted odds ratio. */
+  adjustedLabel: LocalizedText,
+  /** Marks the odds-ratio-of-1 line, e.g. "no effect". */
+  noEffectLabel: LocalizedText,
+  strata: z.array(InteractionStratum).min(2),
+});
+export type InteractionData = z.infer<typeof InteractionData>;
+
 /** Discriminated by `type`. Add new members here to support new data shapes. */
 export const PuzzleData = z.discriminatedUnion("type", [
   RatesData,
@@ -313,6 +356,7 @@ export const PuzzleData = z.discriminatedUnion("type", [
   RiskData,
   AgreementData,
   RegressionData,
+  InteractionData,
 ]);
 export type PuzzleData = z.infer<typeof PuzzleData>;
 
@@ -351,6 +395,8 @@ export const DataView = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("agreement"), ...viewFields }),
   z.object({ kind: z.literal("extremes"), ...viewFields }),
   z.object({ kind: z.literal("reversion"), ...viewFields }),
+  z.object({ kind: z.literal("crude"), ...viewFields }),
+  z.object({ kind: z.literal("bystratum"), ...viewFields }),
 ]);
 export type DataView = z.infer<typeof DataView>;
 export type DataViewKind = DataView["kind"];
@@ -761,6 +807,39 @@ export const Puzzle = z
               code: "custom",
               path: at("groups", i, key),
               message: `${key} (${g[key]}) falls outside the axis (${d.axisMin} to ${d.axisMax})`,
+            });
+          }
+        }
+      });
+    }
+
+    if (p.setup.data.type === "interaction") {
+      const d = p.setup.data;
+      const seen = new Set<string>();
+      d.strata.forEach((s, i) => {
+        const at = (k: string) => ["setup", "data", "strata", i, k];
+        if (seen.has(s.id)) {
+          ctx.addIssue({
+            code: "custom",
+            path: at("id"),
+            message: `duplicate stratum id "${s.id}"`,
+          });
+        }
+        seen.add(s.id);
+        // The odds ratio divides by unexposedCases and exposedControls, and a
+        // zero in any cell makes an odds ratio 0 or infinite, which the chart
+        // cannot place. Real 2x2 modification data fills every cell.
+        for (const cell of [
+          "exposedCases",
+          "exposedControls",
+          "unexposedCases",
+          "unexposedControls",
+        ] as const) {
+          if (s[cell] <= 0) {
+            ctx.addIssue({
+              code: "custom",
+              path: at(cell),
+              message: `${cell} must be positive for an odds ratio to be defined`,
             });
           }
         }

@@ -577,6 +577,51 @@ function RegressionGlyph() {
 }
 
 /**
+ * Abstract effect-modification illustration for the card: a log odds-ratio axis
+ * with a "no effect" line, one dim marker for the single pooled number sitting
+ * in the middle, and two bright markers flying apart from it. No case specifics;
+ * the card teaches the move, that one averaged number can hide two.
+ */
+function InteractionGlyph() {
+  const W = 200;
+  const H = 96;
+  const x1 = 30; // no-effect line
+  const y = 44;
+  const dot = (cx: number, color: string, dim?: boolean) => (
+    <circle cx={cx} cy={y} r={7} fill={color} opacity={dim ? 0.45 : 1} />
+  );
+  return (
+    <div className="mt-4 rounded-lg p-3" style={{ backgroundColor: "rgba(0,0,0,0.28)" }}>
+      <svg
+        viewBox={`0 0 ${W} ${H}`}
+        role="img"
+        aria-label="One averaged number in the middle, hiding two very different real effects"
+        style={{ display: "block", width: "100%", maxWidth: W, margin: "0 auto" }}
+      >
+        {/* baseline axis */}
+        <line x1={14} y1={y} x2={W - 8} y2={y} stroke="rgba(242,236,222,0.25)" strokeWidth={1.5} />
+        {/* no-effect line */}
+        <line x1={x1} y1={18} x2={x1} y2={70} stroke={CARD.gold} strokeWidth={1.5} strokeDasharray="3 3" />
+        <text x={x1} y={84} fontSize={9} fill={CARD.gold} textAnchor="middle" fontWeight={600}>
+          no effect
+        </text>
+        {/* the pooled number, dim, stranded in the middle */}
+        {dot(96, CARD.muted, true)}
+        <text x={96} y={26} fontSize={9} fill={CARD.muted} textAnchor="middle">
+          one number
+        </text>
+        {/* the two real effects, flying apart */}
+        {dot(48, CARD.teal)}
+        {dot(168, CARD.rust)}
+      </svg>
+      <div className="mt-1 text-center text-[11px] font-semibold" style={{ color: CARD.gold }}>
+        One number can hide two.
+      </div>
+    </div>
+  );
+}
+
+/**
  * Beat 5: the shareable result card. The card node (cardRef) is what gets
  * rendered to PNG. It explains the reasoning skill itself (name + definition +
  * an abstract diagram) so it teaches anyone who sees it, independent of the
@@ -610,6 +655,7 @@ export function ShareCard({
   const riskGlyph = data.type === "risk";
   const agreementGlyph = data.type === "agreement";
   const regressionGlyph = data.type === "regression";
+  const interactionGlyph = data.type === "interaction";
   const splitSampleGlyph =
     data.type === "rates" &&
     Boolean(data.strataAreSeparateSamples) &&
@@ -696,6 +742,8 @@ export function ShareCard({
             <AgreementGlyph />
           ) : regressionGlyph ? (
             <RegressionGlyph />
+          ) : interactionGlyph ? (
+            <InteractionGlyph />
           ) : null}
 
           <p className="mt-4 font-display text-[17px] font-medium leading-snug">

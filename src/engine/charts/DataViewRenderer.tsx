@@ -12,6 +12,7 @@ import { TimelineView } from "./TimelineView";
 import { RiskView } from "./RiskView";
 import { AgreementView } from "./AgreementView";
 import { RegressionView } from "./RegressionView";
+import { InteractionView } from "./InteractionView";
 
 /**
  * The generic seam: dispatch on the data's `type` to the matching renderer.
@@ -59,6 +60,10 @@ export function DataViewRenderer({
     case "regression":
       return view.kind === "extremes" || view.kind === "reversion" ? (
         <RegressionView data={data} kind={view.kind} />
+      ) : null;
+    case "interaction":
+      return view.kind === "crude" || view.kind === "bystratum" ? (
+        <InteractionView data={data} kind={view.kind} />
       ) : null;
     default:
       return null;
@@ -120,6 +125,10 @@ export function scopeLabel(kind: DataViewKind): string {
       return "Where they started";
     case "reversion":
       return "Where they landed";
+    case "crude":
+      return "As one number";
+    case "bystratum":
+      return "Split by the third factor";
     default:
       return "";
   }

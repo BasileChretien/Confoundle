@@ -326,7 +326,7 @@ consensus only · **X** absent from official documents.
 | Relative vs absolute risk, NNT | A (x2) | A | O | X | shipped |
 | Blinding: performance + detection bias | X | **A** | O | X | **gap** |
 | Allocation concealment | X | **A** | O | X | **gap** |
-| Effect modification vs confounding | X | B | X | X | **gap, high value** |
+| Effect modification vs confounding | X | B | X | X | **shipped** (Choi 2021) |
 | Confounding by indication | X | B | T | X | shipped |
 | Differential vs non-differential misclassification | X | B | T | X | **gap** |
 | Placebo / nocebo | X | **A** | O | X | **shipped** |
@@ -616,7 +616,13 @@ glyph, and ten `rm-*` review items plus two sound decoys, all translated into th
 nine non-English locales. Clinical deep-dive example: Wang N et al, home BP
 regression, J Clin Hypertens 2020;22(7):1184-1191, DOI 10.1111/jch.13933.
 
-## Effect modification versus confounding: sourced to head-counts after all
+## Effect modification versus confounding: shipped this session (Choi 2021)
+
+Built on a new `interaction` `PuzzleData` member (a 2x2 of exposure against
+outcome per stratum of a modifier), with a forest-plot renderer on a log
+odds-ratio scale, a `crude` setup view and a `bystratum` reveal view, a pure
+derivation module with a test, a share-card glyph, ten `em-*` review items plus
+two sound decoys, and all ten locales.
 
 The first pass assumed this could not be told with printed head-counts, because
 the canonical alcohol x tobacco and asbestos x smoking sets use person-time. A

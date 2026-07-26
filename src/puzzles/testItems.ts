@@ -2440,6 +2440,140 @@ const items: TestItem[] = [
       en: "Both groups were equally unaware of what they were taking and equally primed to watch for side effects, so the gap between 44% and 6% is what the drug itself added.",
     },
   },
+
+  // ---- Non-differential misclassification ----
+  {
+    id: "nm-salt-ffq",
+    scenario: {
+      en: "A large study estimates each person's salt intake from a single question about how often they add table salt, then finds almost no link between salt and blood pressure. The authors conclude that salt does not affect blood pressure.",
+    },
+    trap: "non-differential-misclassification",
+    explanation: {
+      en: "A one-question estimate gets almost everyone's real salt intake wrong, and wrong in every direction rather than by group. Blurring the heavy and light salters together makes them look alike, which pushes any true link toward zero and can bury it.",
+    },
+  },
+  {
+    id: "nm-solvent-jobtitle",
+    scenario: {
+      en: "To study a factory solvent, researchers mark workers as exposed or not purely by job title, though people with the same title handle very different amounts. They find no excess disease in the exposed group and report the solvent as safe.",
+    },
+    trap: "non-differential-misclassification",
+    explanation: {
+      en: "Sorting by job title puts many truly exposed workers in the unexposed column and the reverse, roughly evenly. When each compared group is a mixture of the real ones, their disease rates move together, so a genuine hazard is watered down toward no difference.",
+    },
+  },
+  {
+    id: "nm-pedometer",
+    scenario: {
+      en: "A study tracks activity with a cheap clip-on counter that miscounts steps erratically for everyone, and finds no relationship between daily steps and weight change over a year. A columnist writes that step counts do not matter.",
+    },
+    trap: "non-differential-misclassification",
+    explanation: {
+      en: "A counter unreliable for every wearer scrambles the active and the inactive together. Noise spread evenly across the whole sample drags a correlation toward zero, so the missing relationship may be the instrument rather than the activity.",
+    },
+  },
+  {
+    id: "nm-pollution-postcode",
+    scenario: {
+      en: "An asthma study assigns each child the average air pollution of their postcode, though levels vary sharply from street to street. The link with asthma comes out weak, and a summary says local air quality has little effect.",
+    },
+    trap: "non-differential-misclassification",
+    explanation: {
+      en: "A postcode average is wrong for most individual children, and wrong in both directions rather than by who is ill. Measuring exposure this bluntly blends the high and low together and flattens a real gradient toward nothing.",
+    },
+  },
+  {
+    id: "nm-two-readers",
+    scenario: {
+      en: "Two overworked assessors grade a tissue feature from slides, making frequent slips that are just as likely for patients with the disease as for those without. The feature turns out only weakly linked to the disease, and a report calls it unimportant.",
+    },
+    trap: "non-differential-misclassification",
+    explanation: {
+      en: "Errors falling equally on cases and controls are non-differential. They shuffle people between feature-present and feature-absent on both sides, so the two groups look more alike than they are and a real link is dragged toward the null.",
+    },
+  },
+  {
+    id: "nm-survey-question",
+    scenario: {
+      en: "A health survey measures a habit with a confusingly worded question that people answer more or less at random. No link is found between the habit and an illness, and the survey concludes the habit is harmless.",
+    },
+    trap: "non-differential-misclassification",
+    explanation: {
+      en: "A question answered almost at random splits the true doers and non-doers evenly across both answers. That equal confusion mixes the groups and pulls any genuine link toward zero, so the null describes the question, not the habit.",
+    },
+  },
+  {
+    id: "nm-registry-coding",
+    scenario: {
+      en: "A study compares two treatments using a hospital database in which the outcome is coded inconsistently, with the same sloppiness for both treatment groups. The treatments look equally effective, and the paper reports no difference.",
+    },
+    trap: "non-differential-misclassification",
+    explanation: {
+      en: "When the outcome is recorded just as unreliably in both arms, the errors favour neither treatment. They blur any real gap between the arms, so no difference can be the coding rather than the treatments truly being alike.",
+    },
+  },
+  {
+    id: "nm-assay-sensitivity",
+    scenario: {
+      en: "A test for a blood marker misses about half of the true positives, at random and regardless of who is ill. Using it to classify people, a study finds the marker unrelated to the disease and drops it from further work.",
+    },
+    trap: "non-differential-misclassification",
+    explanation: {
+      en: "A test that mislabels exposure the same way in the sick and the well is non-differential. Filing half of the truly positive people as negative on both sides makes the two groups resemble each other, biasing the marker's apparent effect toward none.",
+    },
+  },
+  {
+    id: "nm-attendance-sheet",
+    scenario: {
+      en: "Researchers measure class attendance from a sign-in sheet that students fill in haphazardly, and find attendance unrelated to exam marks. The faculty concludes that turning up makes no difference.",
+    },
+    trap: "non-differential-misclassification",
+    explanation: {
+      en: "A haphazard sheet mislabels regular and irregular attenders alike, in no particular direction. The noise is spread evenly across everyone, which mixes the groups and pushes any real effect of attending toward zero.",
+    },
+  },
+  {
+    id: "nm-sleep-recall",
+    scenario: {
+      en: "A study estimates how much people sleep from one vague question and looks for a link with next-day reaction time. Everyone's estimate is off by an hour or two either way, unrelated to how they performed. No link appears, and the write-up says sleep length does not affect alertness.",
+    },
+    trap: "non-differential-misclassification",
+    explanation: {
+      en: "An estimate imprecise for everyone, and untied to performance, is non-differential error. It scrambles short and long sleepers together, and mixing them like this drags a real relationship toward nothing rather than inventing one.",
+    },
+  },
+
+  // ---- Genuinely sound reasoning about measurement (more decoys) ----
+  {
+    id: "ok-validated-null",
+    scenario: {
+      en: "A study measures an exposure with a method carefully validated to be accurate for nearly everyone, finds no association with the disease, and concludes the exposure probably has little effect, noting that because the measurement was reliable the null is unlikely to be hiding a large one.",
+    },
+    trap: null,
+    explanation: {
+      en: "A null is weak evidence only when the measurement is poor. Here the exposure was measured accurately, so blurring cannot explain the missing link, and reading the null as meaningful is the sound move.",
+    },
+  },
+  {
+    id: "ok-measurement-caveat",
+    scenario: {
+      en: "A study measured diet with a rough questionnaire and found no link to an illness. Rather than declaring the diet safe, the authors write that their crude measurement could have hidden a real effect, and call for a study with better dietary records.",
+    },
+    trap: null,
+    explanation: {
+      en: "They recognised that error spread across everyone tends to bury associations, so a null from a blunt instrument cannot prove there is nothing there. Declining to over-read it is the careful conclusion, not a trap.",
+    },
+  },
+  {
+    id: "ok-repeat-measures",
+    scenario: {
+      en: "Because a single blood-pressure reading is noisy, a study averages several readings taken on separate days for every participant before testing the link with the outcome, and reports the association from those averaged values.",
+    },
+    trap: null,
+    explanation: {
+      en: "Averaging repeated measurements cuts the random error that would otherwise blur participants together and weaken the association. Reducing non-differential error this way is exactly how to keep a real effect visible.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

@@ -90,6 +90,16 @@ export const relativeRisk: Puzzle = {
       id: "few",
       label: { en: "About 23" },
       sublabel: { en: "roughly 1 in 44" },
+      isCorrect: false,
+      isIntuitiveTrap: false,
+    },
+    {
+      // The hedge. Offered in nearly every puzzle so that picking it is a
+      // judgement rather than a tell, and correct here, because the setup
+      // withholds the very quantity the question asks for.
+      id: "cannot-tell",
+      label: { en: "There is no way to tell" },
+      sublabel: { en: "too little to go on" },
       isCorrect: true,
       isIntuitiveTrap: false,
     },

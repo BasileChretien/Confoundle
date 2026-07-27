@@ -2250,4 +2250,8 @@ export const zh: Record<string, string> = {
   "A blood-pressure study used a validated monitor that recorded each reading and uploaded it automatically, with no clinician deciding or transcribing the number, even though staff knew who was on the drug.": "一项血压研究使用了一台经过验证的监测仪，它会自动记录并上传每一次读数，不需要任何临床医生来判断或誊写这个数字，尽管工作人员知道谁在用药。",
   "No human judged the outcome, so knowing the group could not colour it. Automating the measurement removes the room for an assessor's expectation to creep in.": "没有人来判断这一结局，所以知道分组情况也无法给它染色。把测量过程自动化，就消除了评估者的预期渗入其中的空间。",
   "The same 172 patients (86 per arm) had their postoperative complications judged both by an assessor blinded to the fluid regimen and, unblinded, by the local investigators. The intention-to-treat Results print both: unblinded, 27 of 86 (31 percent) on restrictive fluid versus 47 of 86 (55 percent) on standard, P = 0.002; blinded, 28 (33 percent) versus 44 (51 percent), P = 0.013. Every count matches its printed percentage, at 86 patients per arm. Blinding narrows the difference from 24 to 18 percentage points and widens the p-value: it right-sizes a real effect rather than erasing it. The 36 percent figure in the deep-dive is Hrobjartsson 2012, which included this trial among its 21.": "同样的 172 名患者（每组 86 人），他们的术后并发症分别由一名对输液方案实行盲法的评估者，和非盲的本地研究者进行了判断。意向性治疗结果部分把两者都列了出来：非盲情况下，限制性输液组 86 人中 27 人（31%），标准组 86 人中 47 人（55%），P = 0.002；盲法情况下，28 人（33%）比 44 人（51%），P = 0.013。每一个计数都与所印出的百分比相符，每组86例。盲法把差距从 24 个百分点收窄到 18 个百分点，并使 P 值增大：这是把一个真实的效应调整到应有的大小，而不是把它抹去。深度解析里提到的 36% 这个数字来自 Hrobjartsson 2012 年的研究，该研究纳入的 21 项试验中就包括这一项。",
+
+  // ---- Simpson paradox: the third, cautious-sounding choice ----
+  "Not enough to go on": "依据不足",
+  "run a bigger trial first": "先做更大的试验",
 };

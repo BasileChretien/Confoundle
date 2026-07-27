@@ -72,6 +72,18 @@ export const kidneyStones: Puzzle = {
       isCorrect: true,
       isIntuitiveTrap: false,
     },
+    {
+      // The cautious-sounding third answer, and a wrong one. It is here because
+      // two options make the beat a coin toss, and because the hedge is worth
+      // refusing on its merits: this is not a shortage of data. The same 700
+      // patients already settle it once they stop being pooled, and a larger
+      // trial with the same case mix would reproduce the same reversal.
+      id: "more-data",
+      label: { en: "Not enough to go on" },
+      sublabel: { en: "run a bigger trial first" },
+      isCorrect: false,
+      isIntuitiveTrap: false,
+    },
   ],
 
   reveal: {

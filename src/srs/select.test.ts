@@ -100,7 +100,10 @@ describe("building a session", () => {
   });
 
   it("covers every due skill while items last", () => {
-    const session = buildSession(due, TEST_ITEMS, 7);
+    // Raise the per-session cap past the deck size: this test is about coverage
+    // when there is room, not about the default 20-review sitting limit (which
+    // the next test checks). The deck now teaches more skills than that default.
+    const session = buildSession(due, TEST_ITEMS, 7, SKILLS.length);
     expect(session.map((r) => r.skill)).toEqual(SKILLS);
   });
 

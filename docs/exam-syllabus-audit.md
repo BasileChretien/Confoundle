@@ -314,7 +314,7 @@ consensus only · **X** absent from official documents.
 |---|---|---|---|---|---|
 | Confounding (general) | A | A | O | X | via Simpson's, indication |
 | Selection bias (general) | X | A | O | X | via Berkson, survivorship |
-| Information / classification bias | X | A | O | X | **gap** |
+| Information / classification bias | X | A | O | X | **shipped** (via non-differential misclassification) |
 | Recall bias | X | **A** | O | X | **shipped** |
 | Attrition / loss to follow-up | X | **A** | O | X | inside intention to treat, deliberately; see below |
 | Intention to treat vs per protocol | O | **A** | O | X | **shipped** |
@@ -324,11 +324,11 @@ consensus only · **X** absent from official documents.
 | Publication bias | E | A(body) | O | X | **shipped this session** |
 | Base rate / predictive value vs prevalence | **E every year** | A | O | X | shipped |
 | Relative vs absolute risk, NNT | A (x2) | A | O | X | shipped |
-| Blinding: performance + detection bias | X | **A** | O | X | **gap** |
+| Blinding: performance + detection bias | X | **A** | O | X | **shipped** (detection; Brandstrup 2003) |
 | Allocation concealment | X | **A** | O | X | **gap** |
 | Effect modification vs confounding | X | B | X | X | **shipped** (Choi 2021) |
 | Confounding by indication | X | B | T | X | shipped |
-| Differential vs non-differential misclassification | X | B | T | X | **gap** |
+| Differential vs non-differential misclassification | X | B | T | X | **shipped** (non-differential; differential via recall bias) |
 | Placebo / nocebo | X | **A** | O | X | **shipped** |
 | Statistical vs clinical significance | X | **A** | O | X | **gap** |
 | Power, type I and type II error | X | **A** | O | X | **gap** |
@@ -420,8 +420,14 @@ under `scratchpad/research/`:
   ClinicalTrials.gov posting for NCT02032433. The survival rows are medians and
   hazard ratios and are not usable as counts. Word the lesson as
   post-randomisation exclusion rather than classical loss to follow-up.
-- **Blinding, observer / detection bias.** The "same patients, two assessors"
-  design, where one assessor knew the allocation and the other did not.
+- **Blinding, observer / detection bias.** ~~Ready to build~~ **Shipped** as the
+  `detection-bias` puzzle (`who-graded-it`), from Brandstrup 2003 below: the
+  unblinded panel (27/86 vs 47/86, P = 0.002) as the setup, the blinded panel
+  (28/86 vs 44/86, P = 0.013) beside it as the reveal, on the rates shape with
+  the two assessments as separate-sample strata. Deep-dive is Hrobjartsson 2012
+  (21 trials, 4,391 patients, ROR 0.64, 36 percent exaggeration). The "same
+  patients, two assessors" design, where one assessor knew the allocation and
+  the other did not.
   Meta-analytic: Salazar J et al, J Clin Epidemiol 2025;183:111787, open access,
   43 trials and 7,055 patients, pooled ratio of odds ratios **0.71 (0.55 to
   0.92)**, so non-blinded assessors exaggerated by about 29 percent; the earlier

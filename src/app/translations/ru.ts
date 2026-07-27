@@ -2346,6 +2346,6 @@ export const ru: Record<string, string> = {
   "Against what it should fix": "На фоне того, что должно быть исправлено",
 
   // ---- Simpson paradox: the third, cautious-sounding choice ----
-  "Not enough to go on": "Данных недостаточно",
-  "run a bigger trial first": "сначала исследование побольше",
+  "Neither yet": "Пока никакое",
+  "ask how the patients were split first": "сначала спросить, как распределили пациентов",
 };

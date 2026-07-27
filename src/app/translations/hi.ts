@@ -2341,6 +2341,6 @@ export const hi: Record<string, string> = {
   "Against what it should fix": "जिसे ठीक करना था उसके मुक़ाबले",
 
   // ---- Simpson paradox: the third, cautious-sounding choice ----
-  "Not enough to go on": "फ़ैसला करने के लिए काफ़ी नहीं",
-  "run a bigger trial first": "पहले बड़ा ट्रायल करें",
+  "Neither yet": "अभी कोई नहीं",
+  "ask how the patients were split first": "पहले पूछें कि मरीज़ कैसे बँटे थे",
 };

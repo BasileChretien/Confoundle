@@ -66,22 +66,30 @@ export const kidneyStones: Puzzle = {
       isIntuitiveTrap: true,
     },
     {
+      // Right treatment, but not a conclusion this beat's data supports. The
+      // aggregate view shows 78% against 83% and nothing else, so picking A is
+      // either recognising a famous dataset or guessing that the counterintuitive
+      // option wins. The reveal vindicates the choice; the setup never justified
+      // it, which is why it does not score as the skill.
       id: "A",
       label: { en: "Treatment A" },
       sublabel: { en: "78% overall" },
-      isCorrect: true,
+      isCorrect: false,
       isIntuitiveTrap: false,
     },
     {
-      // The cautious-sounding third answer, and a wrong one. It is here because
-      // two options make the beat a coin toss, and because the hedge is worth
-      // refusing on its merits: this is not a shortage of data. The same 700
-      // patients already settle it once they stop being pooled, and a larger
-      // trial with the same case mix would reproduce the same reversal.
-      id: "more-data",
-      label: { en: "Not enough to go on" },
-      sublabel: { en: "run a bigger trial first" },
-      isCorrect: false,
+      // The correct answer, and the only one the shown data supports. On a single
+      // pooled rate there is genuinely no way to tell, and the move that rescues
+      // you is refusing to choose until you know how the cases were divided. That
+      // is what the lesson asks for in as many words ("ask what got mixed
+      // together"), so scoring it as the skill is the honest answer key.
+      //
+      // Note it asks for the SPLIT, not for more data: this is not a sample-size
+      // problem, and a larger trial with the same case mix reverses the same way.
+      id: "split",
+      label: { en: "Neither yet" },
+      sublabel: { en: "ask how the patients were split first" },
+      isCorrect: true,
       isIntuitiveTrap: false,
     },
   ],

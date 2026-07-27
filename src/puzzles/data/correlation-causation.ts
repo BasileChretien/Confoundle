@@ -56,6 +56,16 @@ export const correlationCausation: Puzzle = {
       isCorrect: true,
       isIntuitiveTrap: false,
     },
+    {
+      // The hedge. Offered in nearly every puzzle so that picking it is a
+      // judgement rather than a tell, and wrong here, because the setup
+      // already gives you what you need to answer.
+      id: "cannot-tell",
+      label: { en: "There is no way to tell" },
+      sublabel: { en: "too little to go on" },
+      isCorrect: false,
+      isIntuitiveTrap: false,
+    },
   ],
 
   reveal: {

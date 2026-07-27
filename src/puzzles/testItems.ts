@@ -2822,6 +2822,140 @@ const items: TestItem[] = [
       en: "When an effect differs by subgroup, reporting the subgroups apart is exactly right, and pooling them into one average would have been the error. Prespecifying the marker and acting on it is careful practice, not a trap.",
     },
   },
+
+  // ---- Detection (observer) bias ----
+  {
+    id: "db-wound-photos",
+    scenario: {
+      en: "In an open trial of a new dressing, the surgeon who chose which patients got it also reviewed their wound photos and decided which counted as infected. The new dressing came out with far fewer infections.",
+    },
+    trap: "detection-bias",
+    explanation: {
+      en: "Whether a borderline wound is called infected is a judgement, and the person making it knew which dressing each patient had. Have someone blinded to the dressing grade the same photos before believing the size of the gap.",
+    },
+  },
+  {
+    id: "db-physio-scores",
+    scenario: {
+      en: "A physiotherapist testing her own new programme also scored each patient's mobility at the end. Her scores showed the new programme clearly beating usual care.",
+    },
+    trap: "detection-bias",
+    explanation: {
+      en: "The person hoping the programme works is the one rating the outcome, so ambiguous movements get scored generously for her group. A blinded assessor rating the same patients is what would settle it.",
+    },
+  },
+  {
+    id: "db-xray-progression",
+    scenario: {
+      en: "A radiologist was told which patients were on the new cancer drug before reading their follow-up scans. He marked the drug group as 'stable or improved' far more often than the comparison group.",
+    },
+    trap: "detection-bias",
+    explanation: {
+      en: "Reading a scan as progression or not takes interpretation, and knowing the arm tilts the close calls. Scans read blind, in a random order, are the only version worth trusting.",
+    },
+  },
+  {
+    id: "db-essay-grading",
+    scenario: {
+      en: "A teacher graded her pupils' essays knowing which of them had used a new writing app she had championed. The app users scored noticeably higher, and she reported the app as a success.",
+    },
+    trap: "detection-bias",
+    explanation: {
+      en: "Essay marks are a judgement, and the grader both knew the groups and wanted the app to work. Marking the essays blind, with names and app-use hidden, is what would show whether the gap is real.",
+    },
+  },
+  {
+    id: "db-gym-judging",
+    scenario: {
+      en: "At a gymnastics meet the judges could see which athletes came from a famous academy. Those athletes received higher marks for routines that, on video review by judges who could not tell where they trained, scored about the same as everyone else's.",
+    },
+    trap: "detection-bias",
+    explanation: {
+      en: "Scoring a routine is a judgement call, and knowing the prestigious academy nudged it upward. The blinded video review of the same routines is the unbiased measurement.",
+    },
+  },
+  {
+    id: "db-vet-lameness",
+    scenario: {
+      en: "A vet assessing whether horses were still lame knew which ones had been given a new joint supplement. She rated the supplement group as sounder, and the makers advertised the result.",
+    },
+    trap: "detection-bias",
+    explanation: {
+      en: "Grading lameness is a judgement, and the assessor knew which horses were supposed to improve. A vet blinded to which horses got the supplement, watching the same gaits, is what the claim needs.",
+    },
+  },
+  {
+    id: "db-diary-coding",
+    scenario: {
+      en: "A researcher read patients' free-text symptom diaries and coded each week as better or worse, with the treatment arm visible at the top of every page. Ambiguous weeks were coded 'better' more often for the treated patients.",
+    },
+    trap: "detection-bias",
+    explanation: {
+      en: "Turning a vague diary entry into better-or-worse is interpretation, and the arm label steered the doubtful ones. Coding the diaries with the arm hidden removes the tilt.",
+    },
+  },
+  {
+    id: "db-behaviour-observers",
+    scenario: {
+      en: "Observers scored children's classroom behaviour for a study of a new diet. They were told which children were on the diet, and recorded fewer disruptive episodes for that group.",
+    },
+    trap: "detection-bias",
+    explanation: {
+      en: "Whether a fidget counts as a disruptive episode is a judgement, and knowing who was on the diet shaded it. Observers blinded to the diet, scoring the same footage, are what a real test requires.",
+    },
+  },
+  {
+    id: "db-endoscopy-healing",
+    scenario: {
+      en: "An endoscopist assessing whether ulcers had healed could see, on each patient's chart, which drug they had received. He judged more ulcers 'healed' in the new-drug group.",
+    },
+    trap: "detection-bias",
+    explanation: {
+      en: "Calling an ulcer healed or not is an interpretation, and the visible drug name nudged the borderline ones. The images should be read by someone who cannot tell which drug the patient took.",
+    },
+  },
+  {
+    id: "db-rash-severity",
+    scenario: {
+      en: "A dermatologist rated the severity of patients' rashes on a ten-point scale, aware of which cream each had been given. The trial cream's patients were scored two points milder on average.",
+    },
+    trap: "detection-bias",
+    explanation: {
+      en: "A severity score is a judgement, and knowing the cream drew the ratings toward the hoped-for answer. A rater blinded to the cream, scoring the same rashes, is what would show the true difference.",
+    },
+  },
+
+  // ---- Sound assessment (more decoys) ----
+  {
+    id: "ok-blinded-committee",
+    scenario: {
+      en: "In a heart-drug trial, every suspected heart attack was judged by an independent committee working from anonymised records that never revealed which drug the patient had taken. The drug group had fewer confirmed heart attacks.",
+    },
+    trap: null,
+    explanation: {
+      en: "The people deciding the outcome could not tell the groups apart, so their judgement cannot have been swayed by expectation. This is exactly how a subjective outcome should be assessed.",
+    },
+  },
+  {
+    id: "ok-death-registry",
+    scenario: {
+      en: "An open-label trial could not blind patients or doctors, but its only outcome was death from any cause, taken from the national death registry. The treated group had fewer deaths.",
+    },
+    trap: null,
+    explanation: {
+      en: "Death recorded by a registry needs no interpretation, so it does not matter that everyone knew the assignment. For a hard endpoint like this, an unblinded assessor cannot bend the result.",
+    },
+  },
+  {
+    id: "ok-automated-readout",
+    scenario: {
+      en: "A blood-pressure study used a validated monitor that recorded each reading and uploaded it automatically, with no clinician deciding or transcribing the number, even though staff knew who was on the drug.",
+    },
+    trap: null,
+    explanation: {
+      en: "No human judged the outcome, so knowing the group could not colour it. Automating the measurement removes the room for an assessor's expectation to creep in.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

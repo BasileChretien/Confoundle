@@ -18,6 +18,7 @@ import { recallBias } from "./data/recall-bias";
 import { immortalTime } from "./data/immortal-time";
 import { nocebo } from "./data/nocebo";
 import { misclassification } from "./data/misclassification";
+import { detectionBias } from "./data/detection-bias";
 import { regressionMean } from "./data/regression-mean";
 import { effectModification } from "./data/effect-modification";
 
@@ -48,6 +49,7 @@ const rawPuzzles: unknown[] = [
   misclassification,
   regressionMean,
   effectModification,
+  detectionBias,
 ];
 
 export const puzzles: PuzzleType[] = rawPuzzles.map((p, i) => {

@@ -583,6 +583,42 @@ function RegressionGlyph() {
  * in the middle, and two bright markers flying apart from it. No case specifics;
  * the card teaches the move, that one averaged number can hide two.
  */
+/**
+ * Statistical against clinical significance: a long bar for the problem and the
+ * sliver of it the result actually removes, with the interval that made the
+ * sliver "certain" drawn beneath.
+ */
+function EffectGlyph() {
+  const W = 200;
+  const H = 96;
+  const barX = 14;
+  const barW = W - 28;
+  return (
+    <div className="mt-4 rounded-lg p-3" style={{ backgroundColor: "rgba(0,0,0,0.28)" }}>
+      <svg
+        viewBox={`0 0 ${W} ${H}`}
+        role="img"
+        aria-label="A tiny certain sliver against the whole of the problem it is meant to fix"
+        style={{ display: "block", width: "100%", maxWidth: W, margin: "0 auto" }}
+      >
+        {/* the whole problem */}
+        <rect x={barX} y={14} width={barW} height={16} rx={3} fill="rgba(242,236,222,0.28)" />
+        {/* the part the result removes, a tenth of it */}
+        <rect x={barX} y={14} width={barW * 0.1} height={16} rx={3} fill={CARD.gold} />
+        <text x={barX} y={46} fontSize={9} fill={CARD.gold} fontWeight={600}>
+          what it actually fixes
+        </text>
+        {/* the interval that made that sliver certain, clear of zero */}
+        <line x1={barX + 24} y1={70} x2={barX + 24} y2={88} stroke="rgba(242,236,222,0.45)" strokeWidth={1.5} strokeDasharray="3 3" />
+        <text x={barX + 24} y={66} fontSize={8} fill="rgba(242,236,222,0.6)" textAnchor="middle">
+          0
+        </text>
+        <rect x={barX + 60} y={76} width={90} height={7} rx={3.5} fill="rgba(242,236,222,0.8)" />
+      </svg>
+    </div>
+  );
+}
+
 function InteractionGlyph() {
   const W = 200;
   const H = 96;
@@ -659,6 +695,7 @@ export function ShareCard({
   const agreementGlyph = data.type === "agreement";
   const regressionGlyph = data.type === "regression";
   const interactionGlyph = data.type === "interaction";
+  const effectGlyph = data.type === "effect";
   const splitSampleGlyph =
     data.type === "rates" &&
     Boolean(data.strataAreSeparateSamples) &&
@@ -747,6 +784,8 @@ export function ShareCard({
             <RegressionGlyph />
           ) : interactionGlyph ? (
             <InteractionGlyph />
+          ) : effectGlyph ? (
+            <EffectGlyph />
           ) : null}
 
           <p className="mt-4 font-display text-[17px] font-medium leading-snug">

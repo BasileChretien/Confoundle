@@ -330,11 +330,11 @@ consensus only · **X** absent from official documents.
 | Confounding by indication | X | B | T | X | shipped |
 | Differential vs non-differential misclassification | X | B | T | X | **shipped** (non-differential; differential via recall bias) |
 | Placebo / nocebo | X | **A** | O | X | **shipped** |
-| Statistical vs clinical significance | X | **A** | O | X | **gap** |
+| Statistical vs clinical significance | X | **A** | O | X | **shipped** (oseltamivir) |
 | Power, type I and type II error | X | **A** | O | X | **gap** |
 | Sponsorship / conflict of interest | X | **A** | T | X | **gap** |
 | Regression to the mean | X | **X** | O | X | **shipped** (Galton 1886) |
-| Ecological fallacy | X | **X** | O | X | **gap** |
+| Ecological fallacy | X | **X** | O | X | sourced, ready to build |
 | Simpson's paradox | X | **X** | **X** | X | shipped (consensus only) |
 | Berkson's bias | X | **X** | **X** | X | shipped; **named in Korea 2026 paper** |
 | Survivorship bias | X | **X** | **X** | X | shipped (consensus only) |
@@ -450,6 +450,61 @@ under `scratchpad/research/`:
   integers from Robinson alone. Note also te Grotenhuis et al, Int J Epidemiol
   2011, which corrects the state-level figure to about -0.462 on weighting; the
   reversal survives.
+
+### Statistical versus clinical significance: shipped, and why on this source
+
+Shipped as the `statistical-vs-clinical-significance` puzzle (`certainly-tiny`) from
+Jefferson T, et al, BMJ 2014;348:g2545 (PMID 24811411), the review built on the full
+clinical study reports rather than the published papers. The abstract prints the
+adult treatment effect as **16.8 hours** saved (95% CI 8.4 to 25.1), **P < 0.001**,
+and the harms as nausea (risk difference 3.66%, NNTH 28) and vomiting (4.56%,
+NNTH 22). The Cochrane review of the same dataset states the benefit as a fall
+**from 7 days to 6.3 days**, which supplies the 168-hour illness the reveal is
+drawn against: 168 - 16.8 = 151.2 hours = 6.3 days, and 16.8 is exactly a tenth
+of 168. Needed a new `effect` shape (one estimate, its interval, and the quantity
+it is a slice of) with `significance` and `magnitude` views.
+
+**A source that was rejected, and the reason is worth keeping.** Kirsch I, et al,
+PLoS Med 2008;5(2):e45 is the cleaner teaching example on paper: a 1.80-point
+drug-placebo difference on the Hamilton scale against NICE's own 3-point
+threshold, with the authors stating outright that it falls short. It was rejected
+as the *puzzle* because antidepressant efficacy is contested rather than settled
+(Cipriani A, et al, Lancet 2018 found all 21 drugs beat placebo), and a puzzle
+that reads as "antidepressants do not work" could do real harm to a reader who
+takes them. It is used instead as the deep-dive example, where the point being
+made is about the threshold, not about the drugs. **Rule to carry forward: when a
+lesson can be taught on either of two sources, prefer the one where being
+misread does no damage.**
+
+### Ecological fallacy: sourced and ready, not yet built
+
+The gap recorded above (Robinson prints the individual-level counts but no
+per-state figures) **closes through the census underneath him**, not through the
+2011 re-analysis, which is paywalled and was not readable.
+
+- Individual level: Robinson WS, Am Soc Rev 1950;15(3):351-357, Table 3. Foreign
+  born 1,304 illiterate of 13,217; native born 2,614 of 84,055 (thousands),
+  reproducing his printed +.118.
+- Group level: *Fifteenth Census of the United States: 1930, Population, Vol. II*,
+  ch. 13, **Table 10** (p. 1229), free on census.gov, printing population and
+  illiterate counts per state and per census division.
+
+Triangulated rather than taken on trust. An independent transcription of the same
+census volume (the CRAN `stevedata` package's `illiteracy30`, 48 states plus DC)
+sums to foreign-born white 13,216,928 with 1,304,084 illiterate, matching
+Robinson's thousands digit for digit. Recomputing from those integers gives a
+**state-level r of -0.524 unweighted (-0.535 excluding DC)** against Robinson's
+printed **-.526**, and the same table reproduces Robinson's *other* worked example
+(race) at r = 0.771 state level against his .773.
+
+Two honesty constraints for whoever builds it. The **division-level** recompute
+came out at about -0.69 against Robinson's **-.619**, a real discrepancy most
+likely in the state-to-division mapping used, so either use the state level (which
+matches) or resolve the mapping before quoting a division figure. And the per-state
+rows were read from a scan: **re-verify the specific states the puzzle names**
+against a clean copy of p. 1229 before locking copy. Shape note: this wants an
+individual-level view and a group-level scatter of the same census, so it likely
+needs a new shape rather than an existing one.
 
 ## Sourced and ready to build
 

@@ -2315,6 +2315,6 @@ export const zh: Record<string, string> = {
   "Against what it should fix": "对照它本该解决的问题",
 
   // ---- Simpson paradox: the third, cautious-sounding choice ----
-  "Not enough to go on": "依据不足",
-  "run a bigger trial first": "先做更大的试验",
+  "Neither yet": "现在还不能选",
+  "ask how the patients were split first": "先问患者是怎么分配的",
 };

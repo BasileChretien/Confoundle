@@ -2342,6 +2342,6 @@ export const bn: Record<string, string> = {
   "Against what it should fix": "এটি যা ঠিক করার কথা তার বিপরীতে",
 
   // ---- Simpson paradox: the third, cautious-sounding choice ----
-  "Not enough to go on": "সিদ্ধান্ত নেওয়ার মতো যথেষ্ট নয়",
-  "run a bigger trial first": "আগে বড় ট্রায়াল করুন",
+  "Neither yet": "এখনই কোনোটিই নয়",
+  "ask how the patients were split first": "আগে জানুন রোগীরা কীভাবে ভাগ হয়েছিলেন",
 };

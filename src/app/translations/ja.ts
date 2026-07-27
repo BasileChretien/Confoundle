@@ -2314,6 +2314,6 @@ export const ja: Record<string, string> = {
   "Against what it should fix": "治すはずのものと比べた場合",
 
   // ---- Simpson paradox: the third, cautious-sounding choice ----
-  "Not enough to go on": "判断する材料が足りない",
-  "run a bigger trial first": "まず大規模な試験を",
+  "Neither yet": "まだ決められない",
+  "ask how the patients were split first": "まず患者の内訳を尋ねる",
 };

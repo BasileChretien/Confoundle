@@ -390,6 +390,20 @@ export const UI: Record<string, LocalizedText> = {
     bn: "ফিরে যান",
     ar: "رجوع",
   },
+  // Separator between the two ends of a confidence interval, e.g. "8.4 to 25.1".
+  // Chrome rather than content, so it lives here and not in a puzzle.
+  rangeTo: {
+    en: "to",
+    fr: "à",
+    es: "a",
+    pt: "a",
+    ja: "から",
+    zh: "至",
+    ru: "до",
+    hi: "से",
+    bn: "থেকে",
+    ar: "إلى",
+  },
   // A way out of a puzzle back to the home screen (which now carries the whole
   // progress dashboard), offered at the lesson and share beats where the flow ends.
   home: {

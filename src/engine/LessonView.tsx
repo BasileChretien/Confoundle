@@ -1,5 +1,6 @@
 import type { Provenance, Puzzle } from "../puzzles/schema";
 import { useT } from "../app/i18n";
+import { UI } from "../app/ui";
 import { Badge, Button } from "./ui";
 import { TagChips } from "./TagChips";
 import { ShareLesson } from "./ShareLesson";
@@ -17,9 +18,11 @@ function linkFor(p: Provenance): string | undefined {
 export function LessonView({
   puzzle,
   onNext,
+  onHome,
 }: {
   puzzle: Puzzle;
   onNext: () => void;
+  onHome: () => void;
 }) {
   const t = useT();
   const { lesson, provenance, goDeeperUrl } = puzzle;
@@ -150,6 +153,10 @@ export function LessonView({
           {t({ en: "Go deeper on this idea →" })}
         </a>
       ) : null}
+
+      <Button variant="ghost" onClick={onHome}>
+        {t(UI.home)}
+      </Button>
     </section>
   );
 }

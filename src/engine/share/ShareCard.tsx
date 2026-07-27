@@ -7,6 +7,7 @@ import type {
   RatesData,
 } from "../../puzzles/schema";
 import { useT } from "../../app/i18n";
+import { UI } from "../../app/ui";
 import { track } from "../../app/analytics";
 import { Badge, Button } from "../ui";
 import { aggregateRates, bestGroupId, stratifiedRates } from "../charts/rates";
@@ -631,10 +632,12 @@ export function ShareCard({
   puzzle,
   committed,
   onReplay,
+  onHome,
 }: {
   puzzle: Puzzle;
   committed: Choice;
   onReplay: () => void;
+  onHome: () => void;
 }) {
   const t = useT();
   const cardRef = useRef<HTMLDivElement>(null);
@@ -806,6 +809,10 @@ export function ShareCard({
 
       <Button variant="ghost" onClick={onReplay}>
         Play again
+      </Button>
+
+      <Button variant="ghost" onClick={onHome}>
+        {t(UI.home)}
       </Button>
     </section>
   );

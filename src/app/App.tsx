@@ -157,7 +157,7 @@ function AppShell() {
                 {t(UI.allLessons)}
               </button>
               {/* Re-key on slug so switching lessons resets the flow to its first beat. */}
-              <PuzzleFlow key={puzzle.slug} puzzle={puzzle} />
+              <PuzzleFlow key={puzzle.slug} puzzle={puzzle} onExit={() => go(HOME)} />
             </>
           ) : view.name === "about" ? (
             <AboutView

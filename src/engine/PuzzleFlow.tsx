@@ -21,7 +21,14 @@ const ORDER: Beat[] = ["setup", "reveal", "lesson", "share"];
  * Each beat is keyed so its CSS enter-animation replays on mount (see index.css);
  * reduced motion disables the animation but not the transition.
  */
-export function PuzzleFlow({ puzzle }: { puzzle: Puzzle }) {
+export function PuzzleFlow({
+  puzzle,
+  onExit,
+}: {
+  puzzle: Puzzle;
+  /** Leave the puzzle for the home screen (which carries the dashboard). */
+  onExit: () => void;
+}) {
   const [beat, setBeat] = useState<Beat>("setup");
   const [committed, setCommitted] = useState<Choice | null>(null);
   const [confidence, setConfidence] = useState<Confidence | null>(null);
@@ -82,7 +89,9 @@ export function PuzzleFlow({ puzzle }: { puzzle: Puzzle }) {
             onNext={toLesson}
           />
         )}
-        {beat === "lesson" && <LessonView puzzle={puzzle} onNext={toShare} />}
+        {beat === "lesson" && (
+          <LessonView puzzle={puzzle} onNext={toShare} onHome={onExit} />
+        )}
         {beat === "share" && committed && confidence && (
           <div className="flex flex-col gap-4">
             <StatsPanel todayScore={scoreFor(committed.isCorrect, confidence)} />
@@ -93,7 +102,12 @@ export function PuzzleFlow({ puzzle }: { puzzle: Puzzle }) {
                 streak: getStats().currentStreak,
               }}
             />
-            <ShareCard puzzle={puzzle} committed={committed} onReplay={replay} />
+            <ShareCard
+              puzzle={puzzle}
+              committed={committed}
+              onReplay={replay}
+              onHome={onExit}
+            />
           </div>
         )}
       </div>

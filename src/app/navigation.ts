@@ -20,8 +20,7 @@ export type View =
   | { name: "about" }
   | { name: "lessons" }
   | { name: "lesson"; slug: string }
-  | { name: "review"; practice: boolean }
-  | { name: "progress" };
+  | { name: "review"; practice: boolean };
 
 export const HOME: View = { name: "home" };
 
@@ -36,7 +35,6 @@ export function viewFromSearch(search: string): View {
   if (review === "1") return { name: "review", practice: false };
   if (review === "practice") return { name: "review", practice: true };
 
-  if (params.get("progress") === "1") return { name: "progress" };
   if (params.get("about") === "1") return { name: "about" };
   if (params.get("lessons") === "1") return { name: "lessons" };
 
@@ -54,8 +52,6 @@ export function searchForView(view: View): string {
       return `?p=${encodeURIComponent(view.slug)}`;
     case "review":
       return view.practice ? "?review=practice" : "?review=1";
-    case "progress":
-      return "?progress=1";
     case "about":
       return "?about=1";
     case "lessons":

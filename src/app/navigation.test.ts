@@ -22,10 +22,6 @@ describe("reading a view from the URL", () => {
     expect(viewFromSearch("?review=practice")).toEqual({ name: "review", practice: true });
   });
 
-  it("reads the progress screen", () => {
-    expect(viewFromSearch("?progress=1")).toEqual({ name: "progress" });
-  });
-
   it("reads the about screen", () => {
     expect(viewFromSearch("?about=1")).toEqual({ name: "about" });
   });
@@ -55,7 +51,6 @@ describe("writing a view to the URL", () => {
       { name: "lesson", slug: REAL_SLUG },
       { name: "review", practice: false },
       { name: "review", practice: true },
-      { name: "progress" },
       { name: "about" },
       { name: "lessons" },
     ];

@@ -2956,6 +2956,140 @@ const items: TestItem[] = [
       en: "No human judged the outcome, so knowing the group could not colour it. Automating the measurement removes the room for an assessor's expectation to creep in.",
     },
   },
+
+  // ---- Statistical versus clinical significance ----
+  {
+    id: "sc-app-loading",
+    scenario: {
+      en: "A company tested a redesign on 4 million users and reported that it loaded significantly faster, p < 0.0001. The press release calls it a major speed improvement. The measured difference is 3 milliseconds.",
+    },
+    trap: "statistical-vs-clinical-significance",
+    explanation: {
+      en: "With 4 million users even a 3 millisecond difference is far too consistent to be chance, so the tiny p-value is guaranteed. Nobody can perceive 3 milliseconds, so the result is certain and worthless.",
+    },
+  },
+  {
+    id: "sc-diet-kilo",
+    scenario: {
+      en: "A weight-loss programme trialled in 30,000 people reports that participants lost significantly more than controls, p < 0.001, and markets itself on that result. Over a year the difference averaged 400 grams.",
+    },
+    trap: "statistical-vs-clinical-significance",
+    explanation: {
+      en: "A 400 gram difference over a year is of no health consequence, but with 30,000 people it is measured precisely enough to be highly significant. The p-value confirms the difference is real, not that it is worth the effort.",
+    },
+  },
+  {
+    id: "sc-bp-half-point",
+    scenario: {
+      en: "A supplement lowered blood pressure by 0.6 mmHg more than placebo in a trial of 50,000 adults, p < 0.001. An advert says it is clinically proven to lower blood pressure, without naming the number.",
+    },
+    trap: "statistical-vs-clinical-significance",
+    explanation: {
+      en: "Guidelines treat blood pressure changes of a few mmHg as the smallest worth acting on, so 0.6 is negligible, but 50,000 people make it statistically certain. The claim leans entirely on significance and hides the size.",
+    },
+  },
+  {
+    id: "sc-tutoring-mark",
+    scenario: {
+      en: "An education study of 100,000 pupils found that an online tutoring add-on raised exam marks by a statistically significant amount, p < 0.001, and a minister cites it as proof the programme works. The gain was 0.3 marks out of 100.",
+    },
+    trap: "statistical-vs-clinical-significance",
+    explanation: {
+      en: "A third of a mark out of a hundred changes nothing for any pupil, yet 100,000 of them pin the estimate down tightly enough to be highly significant. Significance is being used as a stand-in for a benefit nobody has shown.",
+    },
+  },
+  {
+    id: "sc-biobank-correlation",
+    scenario: {
+      en: "Researchers report a significant association between a food and a blood marker in 500,000 people, with a vanishingly small p-value. A news story says the food strongly affects the marker. The correlation is 0.01.",
+    },
+    trap: "statistical-vs-clinical-significance",
+    explanation: {
+      en: "A correlation of 0.01 explains essentially none of the variation, but half a million people make even that distinguishable from zero many times over. The extreme p-value reflects the sample size, not the strength of the link.",
+    },
+  },
+  {
+    id: "sc-sleep-tracker",
+    scenario: {
+      en: "A mattress company's study of 80,000 sleepers found their model gave significantly more sleep than a standard one, p < 0.001, and the packaging says so. The extra sleep averaged 90 seconds a night.",
+    },
+    trap: "statistical-vs-clinical-significance",
+    explanation: {
+      en: "Ninety seconds is well below any amount a sleeper would notice or benefit from, yet 80,000 people make it a highly significant difference. The claim rests on the p-value and never mentions the size.",
+    },
+  },
+  {
+    id: "sc-fuel-additive",
+    scenario: {
+      en: "A fuel additive tested across 200,000 journeys significantly improved fuel economy, p < 0.001. The manufacturer advertises proven savings. The improvement was 0.1 percent, and the additive costs more than that.",
+    },
+    trap: "statistical-vs-clinical-significance",
+    explanation: {
+      en: "The improvement is real and precisely measured, which is what the p-value shows, but at 0.1 percent it costs more than it saves. Statistical significance says the effect exists, not that it is worth buying.",
+    },
+  },
+  {
+    id: "sc-wait-time",
+    scenario: {
+      en: "A hospital reports that a new triage system significantly reduced waiting times across 300,000 attendances, p < 0.001, and the board declares the rollout a success. Average waits fell from 247 minutes to 245.",
+    },
+    trap: "statistical-vs-clinical-significance",
+    explanation: {
+      en: "Two minutes off a four-hour wait is nothing to a patient, but 300,000 attendances make it statistically unmistakable. The board has read certainty as importance.",
+    },
+  },
+  {
+    id: "sc-pain-score",
+    scenario: {
+      en: "A painkiller beat placebo on a 0 to 100 pain scale in 25,000 patients, p < 0.001, and is promoted on that basis. The difference was 1.5 points, and researchers in the field treat about 10 points as the smallest change patients notice.",
+    },
+    trap: "statistical-vs-clinical-significance",
+    explanation: {
+      en: "The field already has a yardstick, roughly 10 points, and 1.5 falls far below it. The large trial makes that small difference statistically certain without making it perceptible to anyone.",
+    },
+  },
+  {
+    id: "sc-battery-life",
+    scenario: {
+      en: "A phone maker tested a software update on 2 million handsets and reported significantly longer battery life, p < 0.0001, headlining the update. Screen-on time rose by 40 seconds.",
+    },
+    trap: "statistical-vs-clinical-significance",
+    explanation: {
+      en: "Forty seconds of screen time is imperceptible over a day, yet two million handsets make the measurement precise enough for an extreme p-value. The headline reports how sure they are, not how much it helps.",
+    },
+  },
+
+  // ---- Sound reasoning about size and significance (more decoys) ----
+  {
+    id: "ok-reports-size-and-threshold",
+    scenario: {
+      en: "A trial reports that its drug improved walking distance by 68 metres, states that researchers in the field regard 30 metres as the smallest improvement patients notice, and concludes the benefit is both statistically and clinically meaningful.",
+    },
+    trap: null,
+    explanation: {
+      en: "The report gives the size of the effect, names an external yardstick, and shows the effect clears it. That is exactly the pair of questions a result should answer, so nothing is being smuggled past the reader.",
+    },
+  },
+  {
+    id: "ok-significant-but-declared-small",
+    scenario: {
+      en: "A very large study finds a statistically significant difference and its authors write that, although the p-value is small, the difference is too slight to change practice, and recommend against acting on it.",
+    },
+    trap: null,
+    explanation: {
+      en: "The authors separate the two questions properly: the effect is real, and it is not worth acting on. Declining to convert a small p-value into a recommendation is the careful move, not the trap.",
+    },
+  },
+  {
+    id: "ok-underpowered-honest",
+    scenario: {
+      en: "A small trial finds a promising-looking improvement that does not reach statistical significance, and the authors report the estimate with a wide confidence interval, saying the study cannot rule out either a useful benefit or no benefit at all.",
+    },
+    trap: null,
+    explanation: {
+      en: "A non-significant result from a small study means the question is unsettled, not that the treatment fails. Reporting the wide interval instead of claiming no effect is the honest reading.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

@@ -13,6 +13,7 @@ import { RiskView } from "./RiskView";
 import { AgreementView } from "./AgreementView";
 import { RegressionView } from "./RegressionView";
 import { InteractionView } from "./InteractionView";
+import { EffectView } from "./EffectView";
 
 /**
  * The generic seam: dispatch on the data's `type` to the matching renderer.
@@ -64,6 +65,10 @@ export function DataViewRenderer({
     case "interaction":
       return view.kind === "crude" || view.kind === "bystratum" ? (
         <InteractionView data={data} kind={view.kind} />
+      ) : null;
+    case "effect":
+      return view.kind === "significance" || view.kind === "magnitude" ? (
+        <EffectView data={data} kind={view.kind} />
       ) : null;
     default:
       return null;
@@ -129,6 +134,10 @@ export function scopeLabel(kind: DataViewKind): string {
       return "As one number";
     case "bystratum":
       return "Split by the third factor";
+    case "significance":
+      return "Against no difference";
+    case "magnitude":
+      return "Against what it should fix";
     default:
       return "";
   }

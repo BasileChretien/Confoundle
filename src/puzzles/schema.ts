@@ -346,6 +346,69 @@ const InteractionData = z.object({
 });
 export type InteractionData = z.infer<typeof InteractionData>;
 
+/**
+ * One estimated difference, its confidence interval, and the quantity it is a
+ * slice of.
+ *
+ * Needed because "statistically significant is not clinically significant"
+ * cannot be told with any shape that already exists. Every other shape compares
+ * groups; this lesson compares a result against TWO YARDSTICKS. Measured against
+ * zero, the interval sits clear of no-difference and the p-value is tiny, so the
+ * effect is certainly real. Measured against the thing it is supposed to fix, the
+ * same number is a sliver. Same estimate, same interval, two scales, opposite
+ * feelings, which is the design tenet exactly.
+ *
+ * It is deliberately NOT the relative-versus-absolute shape. That one is about
+ * expressing one effect two ways; this one is about a p-value answering "could
+ * this be chance" while saying nothing about "is this worth having", which is
+ * why a large enough study makes a trivial difference overwhelmingly significant.
+ *
+ * The p-value and the sample description are authored strings, not numbers to
+ * compute with: they come from the paper and are never recalculated here.
+ */
+const EffectData = z
+  .object({
+    type: z.literal("effect"),
+    label: LocalizedText, // figure title
+    unit: LocalizedText, // "hours"
+    /** The point estimate of the difference, in `unit`. */
+    estimate: z.number(),
+    ciLow: z.number(),
+    ciHigh: z.number(),
+    /** As printed in the source, e.g. "P < 0.001". Never derived. */
+    pValueLabel: LocalizedText,
+    /** How much evidence sits behind it, e.g. "20 trials, 9,623 people". */
+    sampleLabel: LocalizedText,
+    noEffectLabel: LocalizedText, // "No difference"
+    /** The whole quantity the effect is a slice of, in the same `unit`. */
+    reference: z.number().positive(),
+    referenceLabel: LocalizedText, // "Without the drug"
+    /** The same quantity with the effect applied; derived, never authored. */
+    treatedLabel: LocalizedText, // "With the drug"
+    /** Names the benchmark the magnitude view measures against. */
+    scaleLabel: LocalizedText, // "Against the whole illness"
+  })
+  .superRefine((d, ctx) => {
+    if (d.ciLow > d.estimate || d.ciHigh < d.estimate) {
+      ctx.addIssue({
+        code: "custom",
+        path: ["estimate"],
+        message: `estimate (${d.estimate}) must lie inside its interval (${d.ciLow} to ${d.ciHigh})`,
+      });
+    }
+    // The magnitude view draws the effect as a slice of the reference, so an
+    // effect larger than the whole would draw a negative bar and, worse, would
+    // mean the puzzle's own claim ("this is a sliver") is false.
+    if (Math.abs(d.estimate) > d.reference) {
+      ctx.addIssue({
+        code: "custom",
+        path: ["estimate"],
+        message: `estimate (${d.estimate}) exceeds the reference quantity (${d.reference})`,
+      });
+    }
+  });
+export type EffectData = z.infer<typeof EffectData>;
+
 /** Discriminated by `type`. Add new members here to support new data shapes. */
 export const PuzzleData = z.discriminatedUnion("type", [
   RatesData,
@@ -357,6 +420,7 @@ export const PuzzleData = z.discriminatedUnion("type", [
   AgreementData,
   RegressionData,
   InteractionData,
+  EffectData,
 ]);
 export type PuzzleData = z.infer<typeof PuzzleData>;
 
@@ -397,6 +461,8 @@ export const DataView = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("reversion"), ...viewFields }),
   z.object({ kind: z.literal("crude"), ...viewFields }),
   z.object({ kind: z.literal("bystratum"), ...viewFields }),
+  z.object({ kind: z.literal("significance"), ...viewFields }),
+  z.object({ kind: z.literal("magnitude"), ...viewFields }),
 ]);
 export type DataView = z.infer<typeof DataView>;
 export type DataViewKind = DataView["kind"];

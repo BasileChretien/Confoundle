@@ -1,6 +1,5 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 import { useLocale, useT } from "../app/i18n";
-import { reviews } from "../app/reviews";
 import { accuracyOf, lessonProgressFor, type LessonProgress } from "../app/lessonState";
 import { getActivity, getStats } from "../app/session";
 import { UI } from "../app/ui";
@@ -16,19 +15,19 @@ import {
 import type { SkillProgress } from "../srs/schedule";
 import { CONFIDENCE_LEVELS, type Confidence } from "./scoring";
 import { Confounder, type ConfounderState } from "./Confounder";
-import { Badge, Button, StageRungs } from "./ui";
+import { StageRungs } from "./ui";
 
 /**
- * The progress screen, built the way WaniKani builds one, because the ladder
- * underneath already is WaniKani's: Apprentice I to IV, Guru I and II, Master,
- * Enlightened, Burned. The same three questions get answered in the same order:
- * what can I do now (tiles), where does my knowledge sit (buckets), when does
- * the next batch land (the week ahead).
+ * The progress panel: everything the standalone dashboard used to show, now
+ * embedded directly in the home screen so there is one place to be. It is the
+ * data half only, the Confounder's scoreboard, the standing strip, the SRS
+ * buckets, the week ahead, the activity heatmap, the nemeses and conquests, the
+ * per-skill list and calibration. The action of learning or reviewing lives in
+ * the home controls above it, so this panel carries no tiles or buttons of its
+ * own beyond the one practice prompt.
  *
- * Livened up since: the Confounder narrates the whole thing as its own losing
- * scoreboard, a standing strip and an activity heatmap give the satisfying
- * numbers, and a nemeses section names the traps still catching you. The colours
- * stay Confoundle's editorial palette; only the structure is borrowed.
+ * Takes `progress` as a prop (the home already has it loaded), so there is no
+ * second async fetch and no loading flicker.
  */
 
 const BUCKET_LABEL: Record<BucketId, keyof typeof UI> = {
@@ -55,42 +54,6 @@ const CONFIDENCE_LABEL: Record<Confidence, { en: string }> = {
 
 function pct(x: number | null): string {
   return x == null ? "—" : `${Math.round(x * 100)}%`;
-}
-
-function ActionTile({
-  label,
-  count,
-  tone,
-  onClick,
-}: {
-  label: string;
-  count: number;
-  tone: "gold" | "brand";
-  onClick: () => void;
-}) {
-  const live = count > 0;
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      disabled={!live}
-      className={
-        "flex flex-1 flex-col items-center rounded-lg border px-3 py-3 transition focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand " +
-        (live
-          ? tone === "gold"
-            ? "border-gold/45 bg-gold/12 hover:bg-gold/20"
-            : "border-brand/45 bg-brand/10 hover:bg-brand/18"
-          : "border-rule bg-paper-2 opacity-55")
-      }
-    >
-      <span className="font-display text-2xl font-semibold leading-none text-ink">
-        {count}
-      </span>
-      <span className="mt-1 font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-mute">
-        {label}
-      </span>
-    </button>
-  );
 }
 
 function Metric({ label, value }: { label: string; value: string }) {
@@ -158,9 +121,9 @@ function WeekAhead({ all }: { all: readonly SkillProgress[] }) {
   );
 }
 
-/** GitHub-style activity heatmap: ten weeks of turning up. */
+/** Ten-week activity heatmap. */
 function Heatmap() {
-  const days = getActivity(70); // 10 weeks
+  const days = getActivity(70);
   const tone = (n: number): string => {
     if (n <= 0) return "bg-rule/50";
     if (n <= 2) return "bg-gold/25";
@@ -219,31 +182,16 @@ function MasteryRow({ name, progress }: { name: string; progress: LessonProgress
   );
 }
 
-export function DashboardView({
-  onDone,
-  onStartReviews,
+export function ProgressPanel({
+  progress,
   onPractise,
-  onOpenLesson,
 }: {
-  onDone: () => void;
-  onStartReviews: () => void;
+  progress: readonly SkillProgress[];
   onPractise: () => void;
-  onOpenLesson: (slug: string) => void;
 }) {
   const t = useT();
   const relative = useRelative();
-  const [all, setAll] = useState<SkillProgress[]>([]);
   const stats = getStats();
-
-  useEffect(() => {
-    let alive = true;
-    void reviews.progress().then((p) => {
-      if (alive) setAll(p);
-    });
-    return () => {
-      alive = false;
-    };
-  }, []);
 
   const rows = useMemo(
     () =>
@@ -251,7 +199,7 @@ export function DashboardView({
         .map((p) => ({
           slug: p.slug,
           name: t(p.lesson.skillName),
-          progress: lessonProgressFor(p.reasoningSkill, all),
+          progress: lessonProgressFor(p.reasoningSkill, progress),
         }))
         .filter((r) => r.progress.state !== "new")
         .sort((a, b) => {
@@ -260,19 +208,17 @@ export function DashboardView({
           }
           return b.progress.stage - a.progress.stage;
         }),
-    [all, t],
+    [progress, t],
   );
 
-  const counts = bucketCounts(all);
-  const forecast = reviewForecast(all, Date.now());
+  // Nothing learned yet: the panel would be all empty states, so show nothing.
+  if (rows.length === 0) return null;
+
+  const counts = bucketCounts(progress);
+  const forecast = reviewForecast(progress, Date.now());
   const dueNow = forecast[0]?.inMs === 0 ? forecast[0].count : 0;
   const nextSlot = forecast.find((f) => f.inMs > 0);
-  const unlearned = puzzles.filter(
-    (p) => lessonProgressFor(p.reasoningSkill, all).state === "new",
-  );
 
-  // A nemesis is a skill still catching you out: confidently wrong, or a losing
-  // record with enough attempts to mean something.
   const nemeses = rows.filter((r) => {
     const acc = accuracyOf(r.progress);
     const attempts = r.progress.lifetime.correct + r.progress.lifetime.wrong;
@@ -292,33 +238,10 @@ export function DashboardView({
   };
 
   return (
-    <section className="flex flex-col gap-5">
-      <header className="flex flex-col gap-2">
-        <Badge tone="brand">{t(UI.progress)}</Badge>
-        <h2 className="font-display text-[28px] font-semibold leading-[1.05] text-ink">
-          {rows.length} / {puzzles.length}
-        </h2>
-      </header>
-
+    <div className="flex flex-col gap-5">
       <Confounder state={state} />
 
-      {/* The two things you can act on, exactly where WaniKani puts them. */}
-      <div className="flex gap-2">
-        <ActionTile
-          label={t(UI.lessons)}
-          count={unlearned.length}
-          tone="brand"
-          onClick={() => unlearned[0] && onOpenLesson(unlearned[0].slug)}
-        />
-        <ActionTile
-          label={t(UI.reviewsShort)}
-          count={dueNow}
-          tone="gold"
-          onClick={onStartReviews}
-        />
-      </div>
-
-      {rows.length > 0 && dueNow === 0 ? (
+      {dueNow === 0 ? (
         <button
           type="button"
           onClick={onPractise}
@@ -333,7 +256,7 @@ export function DashboardView({
         </button>
       ) : null}
 
-      {/* Standing: the satisfying numbers, in gold where they are wins. */}
+      {/* Standing: the satisfying numbers. */}
       <div className="grid grid-cols-4 gap-2">
         <Metric label={t(UI.streak)} value={String(stats.currentStreak)} />
         <Metric label={t(UI.best)} value={String(stats.maxStreak)} />
@@ -343,8 +266,11 @@ export function DashboardView({
 
       {/* Where knowledge sits. */}
       <div>
-        <h3 className="mb-2 font-sans text-[11px] font-semibold uppercase tracking-eyebrow text-ink-mute">
-          {t(UI.mastery)}
+        <h3 className="mb-2 flex items-baseline justify-between font-sans text-[11px] font-semibold uppercase tracking-eyebrow text-ink-mute">
+          <span>{t(UI.mastery)}</span>
+          <span className="tabular-nums">
+            {rows.length} / {puzzles.length}
+          </span>
         </h3>
         <div className="grid grid-cols-5 gap-1.5">
           {BUCKETS.map((b) => (
@@ -375,13 +301,7 @@ export function DashboardView({
             </span>
           ) : null}
         </div>
-        {all.length === 0 ? (
-          <p className="rounded-lg border border-rule bg-paper-2 p-3 text-[13px] text-ink-soft">
-            {t(UI.nothingScheduled)}
-          </p>
-        ) : (
-          <WeekAhead all={all} />
-        )}
+        <WeekAhead all={progress} />
       </div>
 
       {/* Turning up. */}
@@ -393,27 +313,25 @@ export function DashboardView({
       </div>
 
       {/* Nemeses: the traps still winning. */}
-      {rows.length > 0 ? (
-        <div>
-          <h3 className="mb-1 font-sans text-[11px] font-semibold uppercase tracking-eyebrow text-ink-mute">
-            {t(UI.nemesesTitle)}
-          </h3>
-          {nemeses.length > 0 ? (
-            <>
-              <p className="mb-2 text-[12px] text-ink-soft">{t(UI.nemesesBlurb)}</p>
-              <ol className="flex flex-col gap-2">
-                {nemeses.slice(0, 3).map((r) => (
-                  <MasteryRow key={r.slug} name={r.name} progress={r.progress} />
-                ))}
-              </ol>
-            </>
-          ) : (
-            <p className="rounded-lg border border-brand/30 bg-brand/[0.06] p-3 text-[13px] text-ink-soft">
-              {t(UI.nemesesNone)}
-            </p>
-          )}
-        </div>
-      ) : null}
+      <div>
+        <h3 className="mb-1 font-sans text-[11px] font-semibold uppercase tracking-eyebrow text-ink-mute">
+          {t(UI.nemesesTitle)}
+        </h3>
+        {nemeses.length > 0 ? (
+          <>
+            <p className="mb-2 text-[12px] text-ink-soft">{t(UI.nemesesBlurb)}</p>
+            <ol className="flex flex-col gap-2">
+              {nemeses.slice(0, 3).map((r) => (
+                <MasteryRow key={r.slug} name={r.name} progress={r.progress} />
+              ))}
+            </ol>
+          </>
+        ) : (
+          <p className="rounded-lg border border-brand/30 bg-brand/[0.06] p-3 text-[13px] text-ink-soft">
+            {t(UI.nemesesNone)}
+          </p>
+        )}
+      </div>
 
       {/* Conquered: burned for good. */}
       {conquered.length > 0 ? (
@@ -436,17 +354,11 @@ export function DashboardView({
       ) : null}
 
       {/* Every learned skill. */}
-      {rows.length > 0 ? (
-        <ol className="flex flex-col gap-2">
-          {rows.map((r) => (
-            <MasteryRow key={r.slug} name={r.name} progress={r.progress} />
-          ))}
-        </ol>
-      ) : (
-        <p className="rounded-lg border border-rule bg-paper-2 p-3 text-[14px] text-ink-soft">
-          {t(UI.nothingLearnedYet)}
-        </p>
-      )}
+      <ol className="flex flex-col gap-2">
+        {rows.map((r) => (
+          <MasteryRow key={r.slug} name={r.name} progress={r.progress} />
+        ))}
+      </ol>
 
       {CONFIDENCE_LEVELS.some((c) => stats.byConfidence[c].played > 0) ? (
         <div>
@@ -471,8 +383,6 @@ export function DashboardView({
           </ul>
         </div>
       ) : null}
-
-      <Button onClick={onDone}>{t(UI.back)}</Button>
-    </section>
+    </div>
   );
 }

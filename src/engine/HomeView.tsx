@@ -8,15 +8,16 @@ import type { Puzzle, TagId } from "../puzzles/schema";
 import type { SkillProgress } from "../srs/schedule";
 import { AboutContent } from "./AboutView";
 import { LessonResults } from "./LessonList";
+import { ProgressPanel } from "./ProgressPanel";
 import { filterLessons, humanizeCategory } from "./lessons";
 
 /**
- * The home screen: what this is, and the one thing to do next.
+ * The home screen: what to do next, and where you stand, on one page.
  *
- * A newcomer gets the full pitch inline with a play call to action; a returning
+ * A newcomer gets the full pitch and a way into the catalogue. A returning
  * learner gets one primary action (reviews when due, otherwise Learn now), a
- * keyword search, and a way into the full catalogue. The whole lesson list no
- * longer sits here: it is one tap away under All lessons, filtered by category.
+ * keyword search, an All-lessons button, and then the whole progress panel
+ * inline, so there is no separate progress screen to visit.
  */
 
 function PrimaryCard({
@@ -79,7 +80,7 @@ export function HomeView({
   dueCount,
   onOpenLesson,
   onStartReviews,
-  onOpenProgress,
+  onPractise,
   onOpenAbout,
   onOpenLessons,
 }: {
@@ -87,7 +88,7 @@ export function HomeView({
   dueCount: number;
   onOpenLesson: (slug: string) => void;
   onStartReviews: () => void;
-  onOpenProgress: () => void;
+  onPractise: () => void;
   onOpenAbout: () => void;
   onOpenLessons: () => void;
 }) {
@@ -117,7 +118,8 @@ export function HomeView({
     ? filterLessons(puzzles, { category: null, query: q }, searchable)
     : [];
 
-  // A newcomer gets the whole pitch, then a way into the catalogue.
+  // A newcomer gets the whole pitch, then a way into the catalogue. There is no
+  // progress to show yet, so the panel is skipped.
   if (learned === 0) {
     return (
       <div className="flex flex-col gap-6">
@@ -164,15 +166,13 @@ export function HomeView({
           </p>
         )
       ) : (
-        <div className="flex gap-2">
-          <SecondaryButton label={t(UI.allLessons)} onClick={onOpenLessons} grow />
-          <SecondaryButton
-            label={`${t(UI.progress)} ${learned}/${puzzles.length}`}
-            onClick={onOpenProgress}
-            grow
-          />
-          <SecondaryButton label={t(UI.aboutLink)} onClick={onOpenAbout} />
-        </div>
+        <>
+          <div className="flex gap-2">
+            <SecondaryButton label={t(UI.allLessons)} onClick={onOpenLessons} grow />
+            <SecondaryButton label={t(UI.aboutLink)} onClick={onOpenAbout} grow />
+          </div>
+          <ProgressPanel progress={progress} onPractise={onPractise} />
+        </>
       )}
     </div>
   );

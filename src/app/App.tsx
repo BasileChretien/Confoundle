@@ -5,7 +5,6 @@ import { ReviewView } from "../engine/ReviewView";
 import { HomeView } from "../engine/HomeView";
 import { AboutView } from "../engine/AboutView";
 import { LessonsView } from "../engine/LessonsView";
-import { DashboardView } from "../engine/DashboardView";
 import { reviews } from "./reviews";
 import { HOME, sameView, searchForView, viewFromSearch, type View } from "./navigation";
 import type { SkillProgress } from "../srs/schedule";
@@ -160,13 +159,6 @@ function AppShell() {
               {/* Re-key on slug so switching lessons resets the flow to its first beat. */}
               <PuzzleFlow key={puzzle.slug} puzzle={puzzle} />
             </>
-          ) : view.name === "progress" ? (
-            <DashboardView
-              onDone={() => go(HOME)}
-              onStartReviews={() => go({ name: "review", practice: false })}
-              onPractise={() => go({ name: "review", practice: true })}
-              onOpenLesson={(next) => go({ name: "lesson", slug: next })}
-            />
           ) : view.name === "about" ? (
             <AboutView
               onBack={() => go(HOME)}
@@ -185,7 +177,7 @@ function AppShell() {
               dueCount={dueCount}
               onOpenLesson={(next) => go({ name: "lesson", slug: next })}
               onStartReviews={() => go({ name: "review", practice: false })}
-              onOpenProgress={() => go({ name: "progress" })}
+              onPractise={() => go({ name: "review", practice: true })}
               onOpenAbout={() => go({ name: "about" })}
               onOpenLessons={() => go({ name: "lessons" })}
             />

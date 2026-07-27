@@ -1,20 +1,15 @@
 import { useT } from "../app/i18n";
 import { lessonProgressFor, type LessonProgress } from "../app/lessonState";
 import { UI } from "../app/ui";
-import { puzzles } from "../puzzles";
 import type { Puzzle } from "../puzzles/schema";
 import type { SkillProgress } from "../srs/schedule";
 import { Badge, StageRungs } from "./ui";
 
 /**
- * The course, browsable.
- *
- * Confoundle used to serve exactly one puzzle a day and hide the other sixteen,
- * which meant a first-time visitor played for ninety seconds and then hit a
- * wall. That gate never made sense next to the lesson pages, which have always
- * published every lesson at /l/<slug>: the content was already public, it just
- * was not playable. So the list is open, and where you are on each one is the
- * only progression that remains.
+ * The lesson card and a list of them, reused by the home search results and the
+ * All-lessons browse screen. The full flat catalogue no longer sits on the home
+ * screen: it is reached through the All-lessons button and filtered by category,
+ * or found by keyword search.
  */
 
 function StateBadge({ progress }: { progress: LessonProgress }) {
@@ -44,7 +39,7 @@ function StageBar({ progress }: { progress: LessonProgress }) {
   );
 }
 
-function LessonCard({
+export function LessonCard({
   puzzle,
   progress,
   onOpen,
@@ -79,11 +74,10 @@ function LessonCard({
           </span>
         ) : null}
         {progress.misconceived ? (
-          // The one flag worth interrupting the layout for: this is a skill the
-          // learner got wrong while certain, which is the failure mode the whole
-          // project exists to catch.
-          <span className="mt-1.5 text-[12px] font-semibold text-rust-ink">
-            ⚠ {t(UI.sureAndWrong)}
+          // The one flag worth interrupting the layout for: a skill the learner
+          // got wrong while certain, the failure mode the project exists to catch.
+          <span className="mt-1.5 font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-rust-ink">
+            {t(UI.sureAndWrong)}
           </span>
         ) : null}
         <StageBar progress={progress} />
@@ -92,31 +86,26 @@ function LessonCard({
   );
 }
 
-export function LessonList({
-  onOpen,
+/** A ready-made list of cards, given the puzzles to show. */
+export function LessonResults({
+  puzzles,
   progress,
+  onOpen,
 }: {
-  onOpen: (slug: string) => void;
-  /** Loaded once by the home screen, so list and header cannot disagree. */
+  puzzles: readonly Puzzle[];
   progress: readonly SkillProgress[];
+  onOpen: (slug: string) => void;
 }) {
-  const t = useT();
-
   return (
-    <section className="flex flex-col gap-3">
-      <h2 className="font-sans text-[11px] font-semibold uppercase tracking-eyebrow text-ink-mute">
-        {t(UI.allLessons)}
-      </h2>
-      <ol className="flex flex-col gap-2.5">
-        {puzzles.map((p) => (
-          <LessonCard
-            key={p.slug}
-            puzzle={p}
-            progress={lessonProgressFor(p.reasoningSkill, progress)}
-            onOpen={onOpen}
-          />
-        ))}
-      </ol>
-    </section>
+    <ol className="flex flex-col gap-2.5">
+      {puzzles.map((p) => (
+        <LessonCard
+          key={p.slug}
+          puzzle={p}
+          progress={lessonProgressFor(p.reasoningSkill, progress)}
+          onOpen={onOpen}
+        />
+      ))}
+    </ol>
   );
 }

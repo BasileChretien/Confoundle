@@ -28,22 +28,18 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 function Step({ n, children }: { n: number; children: React.ReactNode }) {
   return (
     <li className="flex gap-3">
-      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-gold/50 bg-gold/10 font-display text-[13px] font-semibold text-ink">
+      <span className="w-6 shrink-0 font-display text-[26px] font-semibold leading-none tabular-nums text-gold">
         {n}
       </span>
-      <span className="pt-0.5 text-[14px] leading-snug text-ink-soft">{children}</span>
+      <span className="pt-1 text-[14px] leading-snug text-ink-soft">{children}</span>
     </li>
   );
 }
 
-function Promise_({ children }: { children: React.ReactNode }) {
+/** A ruled list item: the almanac ledger look, no bullet glyph. */
+function Point({ children }: { children: React.ReactNode }) {
   return (
-    <li className="flex gap-2.5">
-      <span aria-hidden="true" className="pt-0.5 font-semibold text-brand">
-        ✓
-      </span>
-      <span className="text-[14px] leading-snug text-ink-soft">{children}</span>
-    </li>
+    <li className="py-2.5 text-[14px] leading-snug text-ink-soft">{children}</li>
   );
 }
 
@@ -82,18 +78,18 @@ export function AboutContent({
       </Section>
 
       <Section title={t(UI.aboutWhoTitle)}>
-        <ul className="flex flex-col gap-2">
-          <Promise_>{t(UI.aboutWhoEveryday)}</Promise_>
-          <Promise_>{t(UI.aboutWhoClinical)}</Promise_>
+        <ul className="divide-y divide-rule border-y border-rule">
+          <Point>{t(UI.aboutWhoEveryday)}</Point>
+          <Point>{t(UI.aboutWhoClinical)}</Point>
         </ul>
       </Section>
 
       <Section title={t(UI.aboutWhyTitle)}>
-        <ul className="flex flex-col gap-2">
-          <Promise_>{t(UI.aboutWhyCited)}</Promise_>
-          <Promise_>{t(UI.aboutWhyFree)}</Promise_>
-          <Promise_>{t(UI.aboutWhyPrivate)}</Promise_>
-          <Promise_>{t(UI.aboutWhyOffline)}</Promise_>
+        <ul className="divide-y divide-rule border-y border-rule">
+          <Point>{t(UI.aboutWhyCited)}</Point>
+          <Point>{t(UI.aboutWhyFree)}</Point>
+          <Point>{t(UI.aboutWhyPrivate)}</Point>
+          <Point>{t(UI.aboutWhyOffline)}</Point>
         </ul>
         <button
           type="button"

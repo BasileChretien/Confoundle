@@ -52,43 +52,59 @@ export function pickQuip(s: ConfounderState): Quip {
   return { key: "confounderIdle" };
 }
 
-/** The creature, peeking between the two brand bars. Decorative. */
+/**
+ * The creature: a rounded-square gold head that echoes the app's own icon (a
+ * rounded square holding two bars), peeking up from behind the teal and rust
+ * data bars it hides among. Drawn on a strict grid with one stroke weight
+ * throughout, an asymmetric brow and off-centre pupils for a sidelong,
+ * knowing look. It is a character, not a UI icon, which is why it survives the
+ * otherwise icon-free interface.
+ */
 export function ConfounderMark({ size = 72 }: { size?: number }) {
   const teal = colorFor(0);
   const rust = colorFor(1);
   return (
     <svg
       width={size}
-      height={size * 0.9}
-      viewBox="0 0 80 72"
+      height={size}
+      viewBox="0 0 72 72"
       role="img"
       aria-label="The Confounder"
       style={{ display: "block", flexShrink: 0 }}
     >
-      {/* the two ascending bars from the brand motif, for it to hide behind */}
-      <rect x="6" y="38" width="12" height="28" rx="3" fill={teal} opacity="0.9" />
-      <rect x="62" y="26" width="12" height="40" rx="3" fill={rust} opacity="0.9" />
-      {/* gold body */}
-      <path
-        d="M40 12 C 23 12 15 27 15 44 C 15 59 26 67 40 67 C 54 67 65 59 65 44 C 65 27 57 12 40 12 Z"
+      {/* the two ascending bars of the brand motif, for it to hide among */}
+      <rect x="8" y="42" width="12" height="22" rx="3" fill={teal} />
+      <rect x="52" y="34" width="12" height="30" rx="3" fill={rust} />
+      {/* gold head, a rounded square like the app icon, peeking up from behind */}
+      <rect
+        x="16"
+        y="10"
+        width="40"
+        height="40"
+        rx="13"
         fill={WINNER_GOLD}
         stroke={INK}
-        strokeWidth="2.5"
+        strokeWidth="3"
       />
-      {/* eyes */}
-      <circle cx="31" cy="41" r="8.5" fill={PAPER} stroke={INK} strokeWidth="1.5" />
-      <circle cx="49" cy="41" r="8.5" fill={PAPER} stroke={INK} strokeWidth="1.5" />
-      <circle cx="33" cy="43" r="3.4" fill={INK} />
-      <circle cx="51" cy="43" r="3.4" fill={INK} />
-      {/* sly brows */}
-      <path d="M23 31 L37 35" stroke={INK} strokeWidth="2.4" strokeLinecap="round" />
-      <path d="M57 31 L43 35" stroke={INK} strokeWidth="2.4" strokeLinecap="round" />
-      {/* smirk */}
+      {/* eyes, pupils pushed to one side for a sidelong look */}
+      <circle cx="28" cy="30" r="7" fill={PAPER} stroke={INK} strokeWidth="2" />
+      <circle cx="44" cy="30" r="7" fill={PAPER} stroke={INK} strokeWidth="2" />
+      <circle cx="30.5" cy="31" r="3" fill={INK} />
+      <circle cx="46.5" cy="31" r="3" fill={INK} />
+      {/* one arched brow: the tell of someone enjoying your mistake */}
       <path
-        d="M33 55 Q40 60 48 54"
-        stroke={INK}
-        strokeWidth="2.4"
+        d="M22 20 Q28 16 34 20"
         fill="none"
+        stroke={INK}
+        strokeWidth="3"
+        strokeLinecap="round"
+      />
+      {/* a small, confident smirk */}
+      <path
+        d="M30 41 Q37 45 44 40"
+        fill="none"
+        stroke={INK}
+        strokeWidth="3"
         strokeLinecap="round"
       />
     </svg>

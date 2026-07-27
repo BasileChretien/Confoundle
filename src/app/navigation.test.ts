@@ -30,6 +30,10 @@ describe("reading a view from the URL", () => {
     expect(viewFromSearch("?about=1")).toEqual({ name: "about" });
   });
 
+  it("reads the all-lessons screen", () => {
+    expect(viewFromSearch("?lessons=1")).toEqual({ name: "lessons" });
+  });
+
   it("falls back to home for anything unrecognised", () => {
     expect(viewFromSearch("")).toEqual(HOME);
     expect(viewFromSearch("?utm_source=twitter")).toEqual(HOME);
@@ -53,6 +57,7 @@ describe("writing a view to the URL", () => {
       { name: "review", practice: true },
       { name: "progress" },
       { name: "about" },
+      { name: "lessons" },
     ];
     for (const v of views) {
       const search = searchForView(v);

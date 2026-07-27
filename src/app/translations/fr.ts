@@ -2352,4 +2352,8 @@ export const fr: Record<string, string> = {
   "A non-significant result from a small study means the question is unsettled, not that the treatment fails. Reporting the wide interval instead of claiming no effect is the honest reading.": "Un résultat non significatif issu d'une petite étude signifie que la question reste ouverte, pas que le traitement échoue. Rapporter le large intervalle plutôt que d'affirmer une absence d'effet est la lecture honnête.",
   "Against no difference": "Contre l'absence de différence",
   "Against what it should fix": "Contre ce qu'il est censé corriger",
+
+  // ---- Simpson paradox: the third, cautious-sounding choice ----
+  "Not enough to go on": "Pas de quoi trancher",
+  "run a bigger trial first": "faire d'abord un essai plus grand",
 };

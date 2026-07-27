@@ -2344,4 +2344,8 @@ export const ru: Record<string, string> = {
   "A non-significant result from a small study means the question is unsettled, not that the treatment fails. Reporting the wide interval instead of claiming no effect is the honest reading.": "Незначимый результат небольшого исследования означает, что вопрос остаётся открытым, а не то, что лечение не работает. Честное прочтение, это сообщить широкий интервал, а не заявить об отсутствии эффекта.",
   "Against no difference": "На фоне отсутствия разницы",
   "Against what it should fix": "На фоне того, что должно быть исправлено",
+
+  // ---- Simpson paradox: the third, cautious-sounding choice ----
+  "Not enough to go on": "Данных недостаточно",
+  "run a bigger trial first": "сначала исследование побольше",
 };

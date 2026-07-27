@@ -2313,4 +2313,8 @@ export const zh: Record<string, string> = {
   "A non-significant result from a small study means the question is unsettled, not that the treatment fails. Reporting the wide interval instead of claiming no effect is the honest reading.": "一项小型研究得出的不显著结果，意味着这个问题尚无定论，而不是说这种治疗无效。报告那个宽区间，而不是宣称没有效果，才是诚实的解读。",
   "Against no difference": "对照“无差异”",
   "Against what it should fix": "对照它本该解决的问题",
+
+  // ---- Simpson paradox: the third, cautious-sounding choice ----
+  "Not enough to go on": "依据不足",
+  "run a bigger trial first": "先做更大的试验",
 };

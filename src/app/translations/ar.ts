@@ -2331,4 +2331,8 @@ export const ar: Record<string, string> = {
   "A non-significant result from a small study means the question is unsettled, not that the treatment fails. Reporting the wide interval instead of claiming no effect is the honest reading.": "نتيجة غير ذات دلالة إحصائية من دراسة صغيرة تعني أن السؤال لا يزال مفتوحاً، لا أن العلاج فاشل. والإبلاغ عن الفاصل الواسع بدلاً من الادعاء بانعدام الأثر هو القراءة النزيهة.",
   "Against no difference": "مقابل انعدام الفرق",
   "Against what it should fix": "مقابل ما ينبغي أن يعالجه",
+
+  // ---- Simpson paradox: the third, cautious-sounding choice ----
+  "Not enough to go on": "لا يكفي للحسم",
+  "run a bigger trial first": "أجروا تجربة أكبر أولاً",
 };

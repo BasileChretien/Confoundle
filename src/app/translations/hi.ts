@@ -2339,4 +2339,8 @@ export const hi: Record<string, string> = {
   "A non-significant result from a small study means the question is unsettled, not that the treatment fails. Reporting the wide interval instead of claiming no effect is the honest reading.": "किसी छोटे अध्ययन से मिला ग़ैर-सार्थक नतीजा इसका मतलब है कि सवाल अभी अनसुलझा है, न कि यह कि इलाज नाकाम है। बिना किसी असर का दावा करने के बजाय चौड़ा अंतराल बताना ही ईमानदार पढ़त है।",
   "Against no difference": "'कोई अंतर नहीं' के मुक़ाबले",
   "Against what it should fix": "जिसे ठीक करना था उसके मुक़ाबले",
+
+  // ---- Simpson paradox: the third, cautious-sounding choice ----
+  "Not enough to go on": "फ़ैसला करने के लिए काफ़ी नहीं",
+  "run a bigger trial first": "पहले बड़ा ट्रायल करें",
 };

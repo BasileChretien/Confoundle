@@ -2312,4 +2312,8 @@ export const ja: Record<string, string> = {
   "A non-significant result from a small study means the question is unsettled, not that the treatment fails. Reporting the wide interval instead of claiming no effect is the honest reading.": "小規模な研究から得られた有意でない結果が意味するのは、問いがまだ決着していないということであり、治療が効かないということではありません。効果がないと主張する代わりに広い区間を報告するのが、誠実な読み方です。",
   "Against no difference": "差なしと比べた場合",
   "Against what it should fix": "治すはずのものと比べた場合",
+
+  // ---- Simpson paradox: the third, cautious-sounding choice ----
+  "Not enough to go on": "判断する材料が足りない",
+  "run a bigger trial first": "まず大規模な試験を",
 };

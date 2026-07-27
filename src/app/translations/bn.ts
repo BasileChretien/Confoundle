@@ -2340,4 +2340,8 @@ export const bn: Record<string, string> = {
   "A non-significant result from a small study means the question is unsettled, not that the treatment fails. Reporting the wide interval instead of claiming no effect is the honest reading.": "একটি ছোট গবেষণা থেকে পাওয়া একটি নন-সিগনিফিক্যান্ট ফলাফলের মানে হলো, প্রশ্নটা এখনও অমীমাংসিত, এটা নয় যে চিকিৎসাটা ব্যর্থ। কোনো প্রভাব নেই বলে দাবি করার বদলে চওড়া ইন্টারভালটি জানানোই সৎ পাঠ।",
   "Against no difference": "কোনো পার্থক্য না থাকার বিপরীতে",
   "Against what it should fix": "এটি যা ঠিক করার কথা তার বিপরীতে",
+
+  // ---- Simpson paradox: the third, cautious-sounding choice ----
+  "Not enough to go on": "সিদ্ধান্ত নেওয়ার মতো যথেষ্ট নয়",
+  "run a bigger trial first": "আগে বড় ট্রায়াল করুন",
 };

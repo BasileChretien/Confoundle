@@ -523,6 +523,51 @@ survives it.
 
 ## Sourced and ready to build
 
+**Framing effect. Verified from the primary source, ready to build, and it
+opens a new area.** Tversky A, Kahneman D. The framing of decisions and the
+psychology of choice. Science 1981;211(4481):453-458. Read directly from the
+paper (p. 453), not from a summary.
+
+Problem 1 [N = 152], the "Asian disease" expected to kill 600 people:
+"If Program A is adopted, 200 people will be saved. [72 percent]" against
+"If Program B is adopted, there is 1/3 probability that 600 people will be
+saved, and 2/3 probability that no people will be saved. [28 percent]".
+
+Problem 2 [N = 155], same cover story, outcomes reworded:
+"If Program C is adopted 400 people will die. [22 percent]" against
+"If Program D is adopted there is 1/3 probability that nobody will die, and 2/3
+probability that 600 people will die. [78 percent]".
+
+The two are arithmetically the same choice: of 600, saving 200 is 400 dying.
+The authors say so outright, that "the two problems are effectively identical.
+The only difference between them is that the outcomes are described in problem
+1 by the number of lives saved and in problem 2 by the number of lives lost",
+and that the shift runs "from risk aversion to risk taking". They also record
+having "observed this reversal in several groups of respondents, including
+university faculty and physicians", which is what makes it land for a clinical
+audience rather than reading as a student-lab curiosity.
+
+Three constraints for whoever builds it.
+
+**The paper prints percentages and N, never counts.** 72 per cent of 152 is
+109.44, so no integer numerator exists and the `rates` shape cannot take this
+honestly. Either author the published percentages in a shape that accepts them
+(the precedent is `effect` and `ecological`, which author printed coefficients),
+or do not build it. Rounding to a plausible count would be inventing data, which
+is the one thing this project does not do.
+
+**The setup and reveal are two framings of one choice**, which is a clean fit
+for the design tenet: show Problem 1's split, then Problem 2's split beside it,
+with the note that 200 saved of 600 IS 400 dying.
+
+**Non-partisan by construction**, which matters because this is the first
+lesson outside medicine and the direction of travel is media and politics. The
+open study on truncated y-axes (Correll et al 2020) was checked and rejected for
+now: it is verified and open access, but its worked example is a Fox News tax
+chart, and the project's non-partisanship rule wants a neutral chart substituted
+before that one can ship.
+
+
 Verified counts, so the next session can author straight from here rather than
 re-running the search.
 

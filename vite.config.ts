@@ -67,16 +67,24 @@ function checkContactEmail(value: string | undefined): string | undefined {
 
 interface BuildVars {
   /**
-   * Where the lesson pages' absolute URLs point. Open Graph rejects a relative
-   * one, so it is decided at build time. Defaults to the custom domain rather
-   * than the pages.dev host, because these URLs are baked into 170 lesson
-   * pages as canonical links, hreflang alternates and Open Graph tags, and
-   * those pages exist to be pasted into arguments: whatever host they carry is
-   * the one that circulates.
+   * Where the absolute URLs point. Open Graph rejects a relative one, so it is
+   * decided at build time. Defaults to confoundle.org rather than the pages.dev
+   * host, because these URLs are baked into every lesson page as canonical
+   * links, hreflang alternates and Open Graph tags, and into the app shell's
+   * own preview tags, and those pages exist to be pasted into arguments:
+   * whatever host they carry is the one that circulates.
    */
   origin: string;
   /** The validated controller contact address, or undefined when unset. */
   contactEmail: string | undefined;
+  /**
+   * Cloudflare Web Analytics site token, or undefined to ship no beacon at all.
+   *
+   * Opt-in per deployment rather than baked in, for the same reason the contact
+   * address is: a fork of this repo must not silently report its traffic to
+   * somebody else's dashboard. Unset is the honest default and costs nothing.
+   */
+  analyticsToken: string | undefined;
 }
 
 /**
@@ -92,10 +100,15 @@ interface BuildVars {
  */
 function resolveBuildVars(mode: string): BuildVars {
   const envDir = fileURLToPath(new URL(".", import.meta.url));
-  const env = loadEnv(mode, envDir, ["CONTACT_EMAIL", "SITE_ORIGIN"]);
+  const env = loadEnv(mode, envDir, [
+    "CONTACT_EMAIL",
+    "SITE_ORIGIN",
+    "CF_ANALYTICS_TOKEN",
+  ]);
   return {
     origin: (env.SITE_ORIGIN ?? "https://confoundle.org").replace(/\/$/, ""),
     contactEmail: checkContactEmail(env.CONTACT_EMAIL),
+    analyticsToken: env.CF_ANALYTICS_TOKEN?.trim() || undefined,
   };
 }
 
@@ -159,6 +172,60 @@ function lessonPagesPlugin({ origin, contactEmail }: BuildVars): Plugin {
   };
 }
 
+/**
+ * The app shell's own head: canonical URL, social preview tags, and the
+ * analytics beacon if this deployment has a token.
+ *
+ * The lesson pages have carried Open Graph tags since they existed, because
+ * they are the thing people paste into arguments. The app itself never did, so
+ * a link to the site root unfurled as a bare URL on every platform that builds
+ * a preview card. That matters more now than it did: the share card, the lesson
+ * links and any future social posting all point people at this origin, and a
+ * link with no picture and no title reads as spam.
+ *
+ * Injected here rather than written into index.html because the URLs have to be
+ * absolute (Open Graph rejects relative ones) and the origin is a build
+ * variable, so index.html cannot know it.
+ */
+function appHeadPlugin({ origin, analyticsToken }: BuildVars): Plugin {
+  const title = "Confoundle, spot the hidden variable";
+  const description =
+    "Spot the hidden variable. A daily reasoning puzzle that fools you, then shows you the trick.";
+  const image = `${origin}/icons/icon-512.png`;
+  const tags = [
+    `<link rel="canonical" href="${origin}/">`,
+    `<meta property="og:type" content="website">`,
+    `<meta property="og:site_name" content="Confoundle">`,
+    `<meta property="og:url" content="${origin}/">`,
+    `<meta property="og:title" content="${title}">`,
+    `<meta property="og:description" content="${description}">`,
+    `<meta property="og:image" content="${image}">`,
+    `<meta name="twitter:card" content="summary_large_image">`,
+    `<meta name="twitter:title" content="${title}">`,
+    `<meta name="twitter:description" content="${description}">`,
+    `<meta name="twitter:image" content="${image}">`,
+  ];
+  // Cloudflare's beacon is the only third-party script the app loads without
+  // the reader asking for it (the Google one waits for the account panel), so
+  // it is `defer` and it is the last thing in the head. It sets no cookie and
+  // reads no storage; see the "How visits are counted" section of privacy.html,
+  // which has to stay true to this line.
+  if (analyticsToken) {
+    tags.push(
+      `<script defer src="https://static.cloudflareinsights.com/beacon.min.js" ` +
+        `data-cf-beacon='${JSON.stringify({ token: analyticsToken })}'></script>`,
+    );
+  }
+  return {
+    name: "confoundle-app-head",
+    apply: "build",
+    transformIndexHtml: {
+      order: "post",
+      handler: (html) => html.replace("</head>", `${tags.join("\n    ")}\n  </head>`),
+    },
+  };
+}
+
 // `SINGLEFILE=1 vite build` inlines everything (JS, CSS, fonts) into one
 // self-contained dist-single/index.html, for publishing a playable build where
 // a static host isn't available. The PWA/service worker is dropped in that mode.
@@ -176,8 +243,9 @@ const pwa = VitePWA({
     // a reader in France ends up fully offline in French and never downloads
     // Bengali at all. The locale chunk names are content-hashed, hence globs.
     // The lesson pages are written after this manifest is built, but say so
-    // anyway: they are 160 standalone documents that no app shell ever needs,
-    // and precaching them would put the whole library into every install.
+    // anyway: they are a couple of hundred standalone documents that no app
+    // shell ever needs, and precaching them would put the whole library into
+    // every install.
     globIgnores: [
       "**/assets/{fr,es,pt,ja,zh,ru,hi,bn,ar}-*.js",
       "l/**",
@@ -233,15 +301,28 @@ const pwa = VitePWA({
 });
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
+export default defineConfig(({ mode }) => {
+  // Resolved once: reading it twice would run the contact-address validation
+  // twice and report the same failure twice.
+  const buildVars = singleFile ? null : resolveBuildVars(mode);
+  return {
   // Enables the in-app puzzle picker in the single-file demo build only.
   define: { __DEMO__: JSON.stringify(singleFile) },
   // Tailwind is a Vite plugin in v4 rather than a PostCSS plugin, which is why
   // postcss.config.js and autoprefixer are gone: v4 handles vendor prefixing
   // itself. Both build modes need it.
+  // The single-file build gets neither plugin on purpose: it is handed to
+  // someone as a file, has no origin to be canonical about, and must not phone
+  // home to an analytics endpoint from whatever machine opens it.
   plugins: singleFile
     ? [react(), tailwindcss(), viteSingleFile()]
-    : [react(), tailwindcss(), pwa, lessonPagesPlugin(resolveBuildVars(mode))],
+    : [
+        react(),
+        tailwindcss(),
+        pwa,
+        lessonPagesPlugin(buildVars!),
+        appHeadPlugin(buildVars!),
+      ],
   resolve: singleFile
     ? {
         // No PWA plugin in single-file mode: point its virtual module at a stub.
@@ -265,4 +346,5 @@ export default defineConfig(({ mode }) => ({
         },
       }
     : undefined,
-}));
+  };
+});

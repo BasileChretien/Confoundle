@@ -7,15 +7,22 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: geolocation=(), microphone=(), camera=(), interest-cohort=()
   X-Frame-Options: DENY
-  Content-Security-Policy: default-src 'self'; script-src 'self' https://accounts.google.com; style-src 'self' 'unsafe-inline' https://accounts.google.com; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://accounts.google.com; frame-src https://accounts.google.com; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://accounts.google.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://accounts.google.com; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://accounts.google.com https://cloudflareinsights.com; frame-src https://accounts.google.com; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
 
 # Why each directive is what it is, since a wrong CSP breaks the site silently:
 #
 # script-src has no 'unsafe-inline' and needs none: the built index.html carries
 #   zero inline <script> blocks (Vite emits one external module, and the service
 #   worker registers from inside the bundle). accounts.google.com is the Google
-#   Identity Services client, the only third-party script the app loads, and it
-#   loads only when the account panel is opened.
+#   Identity Services client, and it loads only when the account panel is
+#   opened. static.cloudflareinsights.com is the Cloudflare Web Analytics
+#   beacon, injected by vite.config.ts only when CF_ANALYTICS_TOKEN is set, and
+#   it is the one third-party script that loads without the reader asking. It
+#   carries its token in a data- attribute rather than an inline script, which
+#   is why no hash or nonce is needed here. Its own POST target is
+#   cloudflareinsights.com/cdn-cgi/rum, hence the connect-src entry; the two
+#   hostnames are different and BOTH are required, which is the usual way this
+#   gets half-configured and silently reports nothing.
 # style-src does need 'unsafe-inline', because React sets inline style
 #   ATTRIBUTES for every chart bar and progress bar. That is a far smaller risk
 #   than inline script, and removing it would mean rewriting every derived width

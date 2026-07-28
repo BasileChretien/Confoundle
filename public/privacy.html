@@ -84,8 +84,11 @@
           That is the entire list.
         </li>
         <li>
-          <strong>No advertising, no tracking, no profiling, no third-party
-          analytics</strong>, and nothing is ever sold or shared for marketing.
+          <strong>No advertising, no profiling, no cookies, and nothing that
+          follows you from one site to another</strong>, and nothing is ever sold
+          or shared for marketing. Page visits are counted in aggregate, with no
+          identifier attached to them at all: see
+          <a href="#counting">how visits are counted</a>.
         </li>
         <li>
           <strong>You can delete everything yourself</strong>, from inside the
@@ -156,10 +159,59 @@
       <h3>What is deliberately not collected</h3>
       <p>
         No name, no profile picture, no contacts, no location, no device
-        fingerprint, no advertising identifier, no behavioural profile. The app's
-        analytics module is a stub that does nothing. Your puzzle answers, your
-        streak and your score stay on your own device even when you are signed
-        in: they are not part of what an account syncs.
+        fingerprint, no advertising identifier, no behavioural profile. Your
+        puzzle answers, your streak and your score stay on your own device even
+        when you are signed in: they are not part of what an account syncs, and
+        they are not reported anywhere.
+      </p>
+
+      <h2 id="counting">How visits are counted</h2>
+      <p>
+        This site uses <strong>Cloudflare Web Analytics</strong> to count how
+        many people arrive, which pages they land on, and roughly where in the
+        world and on what kind of device. It is the only measurement on the site,
+        and it exists to answer one question the project genuinely needs an
+        answer to: whether any of this is being read.
+      </p>
+      <p>What that means in practice, stated precisely:</p>
+      <ul>
+        <li>
+          It sets <strong>no cookie</strong> and writes <strong>nothing</strong>
+          to your browser's storage.
+        </li>
+        <li>
+          It builds <strong>no identifier</strong> for you, neither a visitor id
+          nor a device fingerprint, so it cannot tell a returning reader from a
+          new one, and neither can we.
+        </li>
+        <li>
+          It works on <strong>this site only</strong>. There is no way for it, or
+          for us, to see anything you do anywhere else.
+        </li>
+        <li>
+          It reports <strong>page addresses, referrer, country, browser and
+          device type</strong>, in aggregate. Nothing you type, answer or choose
+          in the app is ever sent to it.
+        </li>
+        <li>
+          It cannot be connected to your account, because nothing identifying
+          goes into it in the first place.
+        </li>
+      </ul>
+      <p>
+        Because it stores nothing on your device and cannot single you out, it
+        needs no consent banner under the ePrivacy rules, and we would rather
+        show you this paragraph than a popup. If you would prefer not to be
+        counted at all, any content blocker will stop the beacon and the site
+        works exactly the same without it. The measurement is processed by
+        Cloudflare on our behalf, under the same processor arrangement as the
+        hosting described below.
+      </p>
+      <p>
+        <strong>Not used:</strong> the app carries an internal event module
+        (<code>src/app/analytics.ts</code>) that names the steps of a puzzle. It
+        is still a stub that sends nothing anywhere, and if that ever changes,
+        this page changes with it in the same commit.
       </p>
 
       <h2>Signing in with Google</h2>

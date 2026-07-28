@@ -70,9 +70,39 @@ still the right store for that and the wrong one for accounts, argued in
 
 No name, no profile picture, no Google scopes beyond identity, no access or
 refresh token, no IP address in any durable form, no device fingerprint, no
-advertising identifier, no behavioural profile, no third-party analytics.
+advertising identifier, no behavioural profile.
 `src/app/analytics.ts` is still a no-op stub with fixed event names and must
-stay one.
+stay one: the in-app funnel is deliberately not wired to anything.
+
+### Aggregate visit counting (the one exception, added 2026-07-28)
+
+`vite.config.ts` injects the **Cloudflare Web Analytics** beacon into
+`index.html` when `CF_ANALYTICS_TOKEN` is set, and injects nothing at all when
+it is not (so a fork reports nothing to anyone). Published as the "How visits
+are counted" section of `public/privacy.html`, which has to move with this.
+
+What makes it compatible with everything above: it sets no cookie, writes
+nothing to browser storage, derives no visitor id and no fingerprint, and is
+scoped to this origin. It collects page address, referrer, country, browser and
+device class, in aggregate. It cannot be joined to an account, and it is not
+personal data under this design, so an erasure request has nothing to erase in
+it. That last point is why it is documented here but has no row in
+`PERSONAL_TABLES`.
+
+**The limit worth knowing before anyone plans around it:** with no visitor
+identifier, it cannot measure returning readers, retention or a funnel. It
+answers "how many arrived and from where", not "did they finish the puzzle" or
+"did they come back on day 7". Answering those needs a first-party event store
+(Workers Analytics Engine is the option that keeps every promise above); it is
+not what this is.
+
+The beacon needs two CSP entries in `public/_headers` and they are different
+hostnames: `static.cloudflareinsights.com` in `script-src` (the script) and
+`cloudflareinsights.com` in `connect-src` (where it POSTs). Setting only the
+first is the standard way this ends up silently reporting nothing.
+
+The single-file build (`SINGLEFILE=1`) never gets the beacon: it is handed to
+people as a file and must not phone home from whatever machine opens it.
 
 ---
 
@@ -80,7 +110,7 @@ stay one.
 
 | Who | Role | Sees |
 |---|---|---|
-| Cloudflare | Processor | Hosting and the database. As any host does, request metadata including IP addresses, under its own terms |
+| Cloudflare | Processor | Hosting and the database. As any host does, request metadata including IP addresses, under its own terms. Also the aggregate visit counts described above |
 | The configured mail provider (Resend by default) | Processor | The address a sign-in code goes to, and the code |
 | Google | Independent controller | Only if the user presses the Google button: that they signed into this application |
 

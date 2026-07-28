@@ -10,6 +10,7 @@ import { AboutContent } from "./AboutView";
 import { LessonResults } from "./LessonList";
 import { ProgressPanel } from "./ProgressPanel";
 import { filterLessons, humanizeCategory } from "./lessons";
+import { filterByInterests, readInterests } from "../app/interests";
 
 /**
  * The home screen: what to do next, and where you stand, on one page.
@@ -96,9 +97,16 @@ export function HomeView({
   const [query, setQuery] = useState("");
 
   const learned = progress.length;
-  const next = puzzles.find(
-    (p) => lessonProgressFor(p.reasoningSkill, progress).state === "new",
-  );
+  // What to learn next follows the interests chosen on the browse screen, so
+  // the choice is about the course rather than one screen's view. Read on
+  // render: this component remounts whenever the learner comes back here.
+  const interests = readInterests(puzzles);
+  const wanted = filterByInterests(puzzles, interests);
+  const next =
+    wanted.find((p) => lessonProgressFor(p.reasoningSkill, progress).state === "new") ??
+    // Everything in the chosen areas is done, so offer the rest rather than
+    // dead-ending on a screen with nothing to do.
+    puzzles.find((p) => lessonProgressFor(p.reasoningSkill, progress).state === "new");
   const start = () => (next ? onOpenLesson(next.slug) : onStartReviews());
 
   const searchable = useMemo(() => {

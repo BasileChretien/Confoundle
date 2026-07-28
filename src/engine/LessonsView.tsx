@@ -6,12 +6,24 @@ import { TAGS } from "../puzzles/tags";
 import type { Puzzle, TagId } from "../puzzles/schema";
 import type { SkillProgress } from "../srs/schedule";
 import { LessonResults } from "./LessonList";
-import { filterLessons, humanizeCategory, lessonCategories } from "./lessons";
+import { filterLessons, humanizeCategory } from "./lessons";
+import {
+  availableInterests,
+  filterByInterests,
+  readInterests,
+  toggleInterest,
+  writeInterests,
+} from "../app/interests";
 
 /**
- * Browse and search the whole catalogue: a keyword box and a row of category
- * filters, reached from the home screen's All-lessons button. The home no
- * longer dumps the full list; this is where it lives, filterable.
+ * Browse and search the whole catalogue: a keyword box and the interest
+ * chooser, reached from the home screen's All-lessons button.
+ *
+ * The filter is by INTEREST (a tag: everyday, clinical, media) rather than by
+ * the internal category, because a tag is what a learner actually chooses
+ * along, and a lesson carries several at once. The choice persists and also
+ * decides which lesson the home screen offers next, so picking an interest is
+ * a statement about the course rather than a throwaway view setting.
  */
 export function LessonsView({
   progress,
@@ -24,9 +36,17 @@ export function LessonsView({
 }) {
   const t = useT();
   const [query, setQuery] = useState("");
-  const [category, setCategory] = useState<string | null>(null);
+  // Read once on mount, then kept here and mirrored to storage on every change.
+  const [interests, setInterests] = useState(() => readInterests(puzzles));
 
-  const categories = lessonCategories(puzzles);
+  // Only interests some lesson actually carries, so no choice empties the screen.
+  const offered = availableInterests(puzzles);
+
+  const choose = (tag: (typeof offered)[number] | null) => {
+    const next = tag === null ? [] : toggleInterest(interests, tag);
+    setInterests(next);
+    writeInterests(next);
+  };
 
   // Locale-aware search text: headline, the skill name, the category and the
   // tag labels, all in the reader's language.
@@ -42,7 +62,11 @@ export function LessonsView({
         .toLowerCase();
   }, [t]);
 
-  const results = filterLessons(puzzles, { category, query }, searchable);
+  const results = filterLessons(
+    filterByInterests(puzzles, interests),
+    { category: null, query },
+    searchable,
+  );
 
   const chip = (active: boolean) =>
     "rounded-full border px-3 py-1.5 font-sans text-[11px] font-semibold uppercase tracking-eyebrow transition focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand " +
@@ -74,20 +98,30 @@ export function LessonsView({
         className="w-full rounded-lg border border-rule bg-paper-2 px-3.5 py-2.5 font-sans text-[14px] text-ink placeholder:text-ink-mute focus:border-ink/40 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand"
       />
 
-      <div className="flex flex-wrap gap-2">
-        <button type="button" onClick={() => setCategory(null)} className={chip(category === null)}>
-          {t(UI.categoryAll)}
-        </button>
-        {categories.map((c) => (
+      <div className="flex flex-col gap-1.5">
+        <span className="font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-mute">
+          {t(UI.interestsTitle)}
+        </span>
+        <div className="flex flex-wrap gap-2">
           <button
-            key={c}
             type="button"
-            onClick={() => setCategory(c)}
-            className={chip(category === c)}
+            onClick={() => choose(null)}
+            className={chip(interests.length === 0)}
           >
-            {t({ en: humanizeCategory(c) })}
+            {t(UI.interestsAll)}
           </button>
-        ))}
+          {offered.map((id) => (
+            <button
+              key={id}
+              type="button"
+              onClick={() => choose(id)}
+              aria-pressed={interests.includes(id)}
+              className={chip(interests.includes(id))}
+            >
+              {t(TAGS[id].label)}
+            </button>
+          ))}
+        </div>
       </div>
 
       {results.length > 0 ? (

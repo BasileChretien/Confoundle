@@ -94,6 +94,16 @@ export const spectrumBias: Puzzle = {
       id: "half",
       label: { en: "Barely half, 56%" },
       sublabel: { en: "it misses most of them" },
+      isCorrect: false,
+      isIntuitiveTrap: false,
+    },
+    {
+      // The hedge. Offered in nearly every puzzle so that picking it is a
+      // judgement rather than a tell, and correct here, because the setup
+      // withholds the very quantity the question asks for.
+      id: "cannot-tell",
+      label: { en: "There is no way to tell" },
+      sublabel: { en: "too little to go on" },
       isCorrect: true,
       isIntuitiveTrap: false,
     },

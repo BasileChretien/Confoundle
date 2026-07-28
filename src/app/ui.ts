@@ -390,6 +390,46 @@ export const UI: Record<string, LocalizedText> = {
     bn: "ফিরে যান",
     ar: "رجوع",
   },
+  // The interest chooser: what the learner wants to study. Empty means
+  // everything, so the default costs no decision.
+  interestsTitle: {
+    en: "What do you want to learn?",
+    fr: "Que voulez-vous apprendre ?",
+    es: "¿Qué quieres aprender?",
+    pt: "O que você quer aprender?",
+    ja: "何を学びたいですか",
+    zh: "你想学什么？",
+    ru: "Что вы хотите изучать?",
+    hi: "आप क्या सीखना चाहते हैं?",
+    bn: "আপনি কী শিখতে চান?",
+    ar: "ماذا تريد أن تتعلم؟",
+  },
+  interestsAll: {
+    en: "Everything",
+    fr: "Tout",
+    es: "Todo",
+    pt: "Tudo",
+    ja: "すべて",
+    zh: "全部",
+    ru: "Всё",
+    hi: "सब कुछ",
+    bn: "সবকিছু",
+    ar: "كل شيء",
+  },
+  // Separator between the two ends of a confidence interval, e.g. "8.4 to 25.1".
+  // Chrome rather than content, so it lives here and not in a puzzle.
+  rangeTo: {
+    en: "to",
+    fr: "à",
+    es: "a",
+    pt: "a",
+    ja: "から",
+    zh: "至",
+    ru: "до",
+    hi: "से",
+    bn: "থেকে",
+    ar: "إلى",
+  },
   // A way out of a puzzle back to the home screen (which now carries the whole
   // progress dashboard), offered at the lesson and share beats where the flow ends.
   home: {

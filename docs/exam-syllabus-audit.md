@@ -330,11 +330,11 @@ consensus only · **X** absent from official documents.
 | Confounding by indication | X | B | T | X | shipped |
 | Differential vs non-differential misclassification | X | B | T | X | **shipped** (non-differential; differential via recall bias) |
 | Placebo / nocebo | X | **A** | O | X | **shipped** |
-| Statistical vs clinical significance | X | **A** | O | X | **gap** |
+| Statistical vs clinical significance | X | **A** | O | X | **shipped** (oseltamivir) |
 | Power, type I and type II error | X | **A** | O | X | **gap** |
 | Sponsorship / conflict of interest | X | **A** | T | X | **gap** |
 | Regression to the mean | X | **X** | O | X | **shipped** (Galton 1886) |
-| Ecological fallacy | X | **X** | O | X | **gap** |
+| Ecological fallacy | X | **X** | O | X | **shipped** (Robinson 1950) |
 | Simpson's paradox | X | **X** | **X** | X | shipped (consensus only) |
 | Berkson's bias | X | **X** | **X** | X | shipped; **named in Korea 2026 paper** |
 | Survivorship bias | X | **X** | **X** | X | shipped (consensus only) |
@@ -451,7 +451,122 @@ under `scratchpad/research/`:
   2011, which corrects the state-level figure to about -0.462 on weighting; the
   reversal survives.
 
+### Statistical versus clinical significance: shipped, and why on this source
+
+Shipped as the `statistical-vs-clinical-significance` puzzle (`certainly-tiny`) from
+Jefferson T, et al, BMJ 2014;348:g2545 (PMID 24811411), the review built on the full
+clinical study reports rather than the published papers. The abstract prints the
+adult treatment effect as **16.8 hours** saved (95% CI 8.4 to 25.1), **P < 0.001**,
+and the harms as nausea (risk difference 3.66%, NNTH 28) and vomiting (4.56%,
+NNTH 22). The Cochrane review of the same dataset states the benefit as a fall
+**from 7 days to 6.3 days**, which supplies the 168-hour illness the reveal is
+drawn against: 168 - 16.8 = 151.2 hours = 6.3 days, and 16.8 is exactly a tenth
+of 168. Needed a new `effect` shape (one estimate, its interval, and the quantity
+it is a slice of) with `significance` and `magnitude` views.
+
+**A source that was rejected, and the reason is worth keeping.** Kirsch I, et al,
+PLoS Med 2008;5(2):e45 is the cleaner teaching example on paper: a 1.80-point
+drug-placebo difference on the Hamilton scale against NICE's own 3-point
+threshold, with the authors stating outright that it falls short. It was rejected
+as the *puzzle* because antidepressant efficacy is contested rather than settled
+(Cipriani A, et al, Lancet 2018 found all 21 drugs beat placebo), and a puzzle
+that reads as "antidepressants do not work" could do real harm to a reader who
+takes them. It is used instead as the deep-dive example, where the point being
+made is about the threshold, not about the drugs. **Rule to carry forward: when a
+lesson can be taught on either of two sources, prefer the one where being
+misread does no damage.**
+
+### Ecological fallacy: SHIPPED, and how the group level was handled
+
+The gap recorded above (Robinson prints the individual-level counts but no
+per-state figures) **closes through the census underneath him**, not through the
+2011 re-analysis, which is paywalled and was not readable.
+
+- Individual level: Robinson WS, Am Soc Rev 1950;15(3):351-357, Table 3. Foreign
+  born 1,304 illiterate of 13,217; native born 2,614 of 84,055 (thousands),
+  reproducing his printed +.118.
+- Group level: *Fifteenth Census of the United States: 1930, Population, Vol. II*,
+  ch. 13, **Table 10** (p. 1229), free on census.gov, printing population and
+  illiterate counts per state and per census division.
+
+Triangulated rather than taken on trust. An independent transcription of the same
+census volume (the CRAN `stevedata` package's `illiteracy30`, 48 states plus DC)
+sums to foreign-born white 13,216,928 with 1,304,084 illiterate, matching
+Robinson's thousands digit for digit. Recomputing from those integers gives a
+**state-level r of -0.524 unweighted (-0.535 excluding DC)** against Robinson's
+printed **-.526**, and the same table reproduces Robinson's *other* worked example
+(race) at r = 0.771 state level against his .773.
+
+Two honesty constraints for whoever builds it. The **division-level** recompute
+came out at about -0.69 against Robinson's **-.619**, a real discrepancy most
+likely in the state-to-division mapping used, so either use the state level (which
+matches) or resolve the mapping before quoting a division figure. And the per-state
+rows were read from a scan: **re-verify the specific states the puzzle names**
+against a clean copy of p. 1229 before locking copy. Shape note: this wants an
+individual-level view and a group-level scatter of the same census, so it likely
+needs a new shape rather than an existing one.
+
+
+**Built, with one design decision worth recording.** Shipped as the
+`ecological-fallacy` puzzle (`states-and-people`) on a new `ecological` shape
+(`byplace` and `byperson` views). The person level uses Robinson's printed
+Table 3 counts, so its rates are derived and testable: 1,304 of 13,217 born
+abroad against 2,614 of 84,055 native born, which is 9.9 per cent against 3.1
+and reproduces the +.118 he prints. The state level is authored as the
+**coefficient** (-.526) and drawn as a slope, **not** as a scatter, because
+Robinson published the correlation and never the per-state figures. Plotting
+invented dots would have been inventing observations, so the figure says on
+its face that the slope is drawn rather than plotted. That sidesteps the census
+transcription entirely, and with it the unresolved division-level discrepancy
+noted above. The 2011 correction is the deep-dive example, since the reversal
+survives it.
+
 ## Sourced and ready to build
+
+**Framing effect. Verified from the primary source, ready to build, and it
+opens a new area.** Tversky A, Kahneman D. The framing of decisions and the
+psychology of choice. Science 1981;211(4481):453-458. Read directly from the
+paper (p. 453), not from a summary.
+
+Problem 1 [N = 152], the "Asian disease" expected to kill 600 people:
+"If Program A is adopted, 200 people will be saved. [72 percent]" against
+"If Program B is adopted, there is 1/3 probability that 600 people will be
+saved, and 2/3 probability that no people will be saved. [28 percent]".
+
+Problem 2 [N = 155], same cover story, outcomes reworded:
+"If Program C is adopted 400 people will die. [22 percent]" against
+"If Program D is adopted there is 1/3 probability that nobody will die, and 2/3
+probability that 600 people will die. [78 percent]".
+
+The two are arithmetically the same choice: of 600, saving 200 is 400 dying.
+The authors say so outright, that "the two problems are effectively identical.
+The only difference between them is that the outcomes are described in problem
+1 by the number of lives saved and in problem 2 by the number of lives lost",
+and that the shift runs "from risk aversion to risk taking". They also record
+having "observed this reversal in several groups of respondents, including
+university faculty and physicians", which is what makes it land for a clinical
+audience rather than reading as a student-lab curiosity.
+
+Three constraints for whoever builds it.
+
+**The paper prints percentages and N, never counts.** 72 per cent of 152 is
+109.44, so no integer numerator exists and the `rates` shape cannot take this
+honestly. Either author the published percentages in a shape that accepts them
+(the precedent is `effect` and `ecological`, which author printed coefficients),
+or do not build it. Rounding to a plausible count would be inventing data, which
+is the one thing this project does not do.
+
+**The setup and reveal are two framings of one choice**, which is a clean fit
+for the design tenet: show Problem 1's split, then Problem 2's split beside it,
+with the note that 200 saved of 600 IS 400 dying.
+
+**Non-partisan by construction**, which matters because this is the first
+lesson outside medicine and the direction of travel is media and politics. The
+open study on truncated y-axes (Correll et al 2020) was checked and rejected for
+now: it is verified and open access, but its worked example is a Fox News tax
+chart, and the project's non-partisanship rule wants a neutral chart substituted
+before that one can ship.
+
 
 Verified counts, so the next session can author straight from here rather than
 re-running the search.

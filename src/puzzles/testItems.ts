@@ -2956,6 +2956,274 @@ const items: TestItem[] = [
       en: "No human judged the outcome, so knowing the group could not colour it. Automating the measurement removes the room for an assessor's expectation to creep in.",
     },
   },
+
+  // ---- Statistical versus clinical significance ----
+  {
+    id: "sc-app-loading",
+    scenario: {
+      en: "A company tested a redesign on 4 million users and reported that it loaded significantly faster, p < 0.0001. The press release calls it a major speed improvement. The measured difference is 3 milliseconds.",
+    },
+    trap: "statistical-vs-clinical-significance",
+    explanation: {
+      en: "With 4 million users even a 3 millisecond difference is far too consistent to be chance, so the tiny p-value is guaranteed. Nobody can perceive 3 milliseconds, so the result is certain and worthless.",
+    },
+  },
+  {
+    id: "sc-diet-kilo",
+    scenario: {
+      en: "A weight-loss programme trialled in 30,000 people reports that participants lost significantly more than controls, p < 0.001, and markets itself on that result. Over a year the difference averaged 400 grams.",
+    },
+    trap: "statistical-vs-clinical-significance",
+    explanation: {
+      en: "A 400 gram difference over a year is of no health consequence, but with 30,000 people it is measured precisely enough to be highly significant. The p-value confirms the difference is real, not that it is worth the effort.",
+    },
+  },
+  {
+    id: "sc-bp-half-point",
+    scenario: {
+      en: "A supplement lowered blood pressure by 0.6 mmHg more than placebo in a trial of 50,000 adults, p < 0.001. An advert says it is clinically proven to lower blood pressure, without naming the number.",
+    },
+    trap: "statistical-vs-clinical-significance",
+    explanation: {
+      en: "Guidelines treat blood pressure changes of a few mmHg as the smallest worth acting on, so 0.6 is negligible, but 50,000 people make it statistically certain. The claim leans entirely on significance and hides the size.",
+    },
+  },
+  {
+    id: "sc-tutoring-mark",
+    scenario: {
+      en: "An education study of 100,000 pupils found that an online tutoring add-on raised exam marks by a statistically significant amount, p < 0.001, and a minister cites it as proof the programme works. The gain was 0.3 marks out of 100.",
+    },
+    trap: "statistical-vs-clinical-significance",
+    explanation: {
+      en: "A third of a mark out of a hundred changes nothing for any pupil, yet 100,000 of them pin the estimate down tightly enough to be highly significant. Significance is being used as a stand-in for a benefit nobody has shown.",
+    },
+  },
+  {
+    id: "sc-biobank-correlation",
+    scenario: {
+      en: "Researchers report a significant association between a food and a blood marker in 500,000 people, with a vanishingly small p-value. A news story says the food strongly affects the marker. The correlation is 0.01.",
+    },
+    trap: "statistical-vs-clinical-significance",
+    explanation: {
+      en: "A correlation of 0.01 explains essentially none of the variation, but half a million people make even that distinguishable from zero many times over. The extreme p-value reflects the sample size, not the strength of the link.",
+    },
+  },
+  {
+    id: "sc-sleep-tracker",
+    scenario: {
+      en: "A mattress company's study of 80,000 sleepers found their model gave significantly more sleep than a standard one, p < 0.001, and the packaging says so. The extra sleep averaged 90 seconds a night.",
+    },
+    trap: "statistical-vs-clinical-significance",
+    explanation: {
+      en: "Ninety seconds is well below any amount a sleeper would notice or benefit from, yet 80,000 people make it a highly significant difference. The claim rests on the p-value and never mentions the size.",
+    },
+  },
+  {
+    id: "sc-fuel-additive",
+    scenario: {
+      en: "A fuel additive tested across 200,000 journeys significantly improved fuel economy, p < 0.001. The manufacturer advertises proven savings. The improvement was 0.1 percent, and the additive costs more than that.",
+    },
+    trap: "statistical-vs-clinical-significance",
+    explanation: {
+      en: "The improvement is real and precisely measured, which is what the p-value shows, but at 0.1 percent it costs more than it saves. Statistical significance says the effect exists, not that it is worth buying.",
+    },
+  },
+  {
+    id: "sc-wait-time",
+    scenario: {
+      en: "A hospital reports that a new triage system significantly reduced waiting times across 300,000 attendances, p < 0.001, and the board declares the rollout a success. Average waits fell from 247 minutes to 245.",
+    },
+    trap: "statistical-vs-clinical-significance",
+    explanation: {
+      en: "Two minutes off a four-hour wait is nothing to a patient, but 300,000 attendances make it statistically unmistakable. The board has read certainty as importance.",
+    },
+  },
+  {
+    id: "sc-pain-score",
+    scenario: {
+      en: "A painkiller beat placebo on a 0 to 100 pain scale in 25,000 patients, p < 0.001, and is promoted on that basis. The difference was 1.5 points, and researchers in the field treat about 10 points as the smallest change patients notice.",
+    },
+    trap: "statistical-vs-clinical-significance",
+    explanation: {
+      en: "The field already has a yardstick, roughly 10 points, and 1.5 falls far below it. The large trial makes that small difference statistically certain without making it perceptible to anyone.",
+    },
+  },
+  {
+    id: "sc-battery-life",
+    scenario: {
+      en: "A phone maker tested a software update on 2 million handsets and reported significantly longer battery life, p < 0.0001, headlining the update. Screen-on time rose by 40 seconds.",
+    },
+    trap: "statistical-vs-clinical-significance",
+    explanation: {
+      en: "Forty seconds of screen time is imperceptible over a day, yet two million handsets make the measurement precise enough for an extreme p-value. The headline reports how sure they are, not how much it helps.",
+    },
+  },
+
+  // ---- Sound reasoning about size and significance (more decoys) ----
+  {
+    id: "ok-reports-size-and-threshold",
+    scenario: {
+      en: "A trial reports that its drug improved walking distance by 68 metres, states that researchers in the field regard 30 metres as the smallest improvement patients notice, and concludes the benefit is both statistically and clinically meaningful.",
+    },
+    trap: null,
+    explanation: {
+      en: "The report gives the size of the effect, names an external yardstick, and shows the effect clears it. That is exactly the pair of questions a result should answer, so nothing is being smuggled past the reader.",
+    },
+  },
+  {
+    id: "ok-significant-but-declared-small",
+    scenario: {
+      en: "A very large study finds a statistically significant difference and its authors write that, although the p-value is small, the difference is too slight to change practice, and recommend against acting on it.",
+    },
+    trap: null,
+    explanation: {
+      en: "The authors separate the two questions properly: the effect is real, and it is not worth acting on. Declining to convert a small p-value into a recommendation is the careful move, not the trap.",
+    },
+  },
+  {
+    id: "ok-underpowered-honest",
+    scenario: {
+      en: "A small trial finds a promising-looking improvement that does not reach statistical significance, and the authors report the estimate with a wide confidence interval, saying the study cannot rule out either a useful benefit or no benefit at all.",
+    },
+    trap: null,
+    explanation: {
+      en: "A non-significant result from a small study means the question is unsettled, not that the treatment fails. Reporting the wide interval instead of claiming no effect is the honest reading.",
+    },
+  },
+
+  // ---- The ecological fallacy ----
+  {
+    id: "ec-country-sugar",
+    scenario: {
+      en: "Countries that eat more sugar have higher rates of a disease. A columnist tells readers that eating sugar raises their personal risk, citing the country comparison as the evidence.",
+    },
+    trap: "ecological-fallacy",
+    explanation: {
+      en: "The rows in that table are countries, not people. Rich countries differ from poor ones in dozens of ways at once, so the line across them may not hold for any individual. A claim about a person needs data measured on people.",
+    },
+  },
+  {
+    id: "ec-school-funding",
+    scenario: {
+      en: "Schools with more spending per pupil get better average exam results, so a council concludes that spending more on any given child will raise that child's marks.",
+    },
+    trap: "ecological-fallacy",
+    explanation: {
+      en: "The comparison is between schools, and schools differ in intake as well as budget. Well-funded schools often sit in wealthier areas, so the pattern can be about which children attend rather than about what an extra pound does for one of them.",
+    },
+  },
+  {
+    id: "ec-region-income-vote",
+    scenario: {
+      en: "Richer regions vote for one party more often, so an analyst writes that richer voters back that party. No individual-level survey is cited.",
+    },
+    trap: "ecological-fallacy",
+    explanation: {
+      en: "A region's average income and an individual's income are different variables. The regional pattern can run one way while richer individuals inside those regions vote the other way, which is exactly what has been found in some countries.",
+    },
+  },
+  {
+    id: "ec-hospital-staffing",
+    scenario: {
+      en: "Hospitals with more nurses per bed have lower average death rates, and a manager concludes that any individual patient given more nursing attention is less likely to die.",
+    },
+    trap: "ecological-fallacy",
+    explanation: {
+      en: "The unit here is the hospital. Better staffed hospitals also tend to be better funded and to treat different case mixes, so the between-hospital pattern is not by itself a statement about what happens to one patient.",
+    },
+  },
+  {
+    id: "ec-air-quality-town",
+    scenario: {
+      en: "Towns with cleaner air have longer average life expectancy, so a report states that breathing cleaner air will add years to a reader's life, using only the town-level figures.",
+    },
+    trap: "ecological-fallacy",
+    explanation: {
+      en: "Towns with clean air differ from others in wealth, occupation and smoking as well. The town-level association can be produced by who lives where, so it cannot on its own quantify what cleaner air does for one person.",
+    },
+  },
+  {
+    id: "ec-country-chocolate-height",
+    scenario: {
+      en: "Across 30 countries, average height rises with average dairy consumption, and a magazine advises readers that drinking more milk will make them taller, citing that country chart.",
+    },
+    trap: "ecological-fallacy",
+    explanation: {
+      en: "Each point is a whole country, so the chart compares national averages shaped by genetics, wealth and childhood nutrition together. Turning it into personal advice treats a fact about countries as a fact about a body.",
+    },
+  },
+  {
+    id: "ec-postcode-crime",
+    scenario: {
+      en: "Neighbourhoods with more young men have more recorded crime, and a report concludes that a given young man is more likely to be an offender than a given older resident, using only the neighbourhood totals.",
+    },
+    trap: "ecological-fallacy",
+    explanation: {
+      en: "The data counts neighbourhoods, so it cannot say who committed the crimes. Areas with young populations also tend to differ in income and housing, and the individual claim needs individual records.",
+    },
+  },
+  {
+    id: "ec-team-experience",
+    scenario: {
+      en: "Teams with more experienced staff ship fewer bugs on average, so a director tells one junior engineer that their individual bug rate must be the reason their team struggles.",
+    },
+    trap: "ecological-fallacy",
+    explanation: {
+      en: "The pattern is measured across teams, which differ in the difficulty of what they build as well as in experience. Nothing in a team-level average identifies which person produced which defect.",
+    },
+  },
+  {
+    id: "ec-national-literacy-tv",
+    scenario: {
+      en: "Countries with more television sets per household report higher literacy, and an editorial argues that watching television makes an individual more literate.",
+    },
+    trap: "ecological-fallacy",
+    explanation: {
+      en: "Television ownership marks how wealthy a country is, and wealth brings schools. The country-level link is about national development, so it licenses no claim about what watching television does to one viewer.",
+    },
+  },
+  {
+    id: "ec-clinic-waiting",
+    scenario: {
+      en: "Clinics with longer average waiting times report higher patient satisfaction, and a board concludes that making an individual patient wait longer will make that patient happier.",
+    },
+    trap: "ecological-fallacy",
+    explanation: {
+      en: "Comparing clinics is not comparing patients. Busy, popular clinics can have both long queues and good care, so a clinic-level correlation cannot be read as what waiting does to one person, and here it is plainly implausible.",
+    },
+  },
+
+  // ---- Sound reasoning about levels (more decoys) ----
+  {
+    id: "ok-individual-level-data",
+    scenario: {
+      en: "Researchers wanted to know whether a diet affects one person's risk, so rather than comparing country averages they followed 40,000 individuals, recording each person's own diet and their own outcome, and reported the association among those people.",
+    },
+    trap: null,
+    explanation: {
+      en: "The question was about individuals and the data was measured on individuals, so the unit of analysis matches the claim. That is precisely the step the ecological fallacy skips.",
+    },
+  },
+  {
+    id: "ok-ecological-claim-kept-ecological",
+    scenario: {
+      en: "A study finds that countries with stricter seatbelt laws have fewer road deaths per head, and concludes that such laws are associated with lower national death rates, explicitly declining to say what any individual driver's risk would be.",
+    },
+    trap: null,
+    explanation: {
+      en: "The data is national and the conclusion is kept national. Policy questions are legitimately asked at the level of populations, and the authors do not smuggle the finding down to a person.",
+    },
+  },
+  {
+    id: "ok-multilevel-model",
+    scenario: {
+      en: "Analysts studying whether neighbourhood poverty affects individual health use records that hold both each person's own income and their neighbourhood's, and report the neighbourhood effect after accounting for the person's own circumstances.",
+    },
+    trap: null,
+    explanation: {
+      en: "Holding both levels in the same model is the standard way to separate what an area does from what a person's own situation does, so the group-level claim is not resting on individual-level guesswork.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

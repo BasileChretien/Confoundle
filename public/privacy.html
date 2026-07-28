@@ -147,6 +147,12 @@
               <td>10 minutes, then deleted</td>
             </tr>
             <tr>
+              <td>Reminder setting</td>
+              <td>Whether you asked to be emailed when reviews fall behind, the language to write it in, and when the last one was sent so that there is never more than one a day. Absent unless you tick the box.</td>
+              <td>Consent, art. 6(1)(a), withdrawable from any reminder or from the account panel</td>
+              <td>Until you delete your account</td>
+            </tr>
+            <tr>
               <td>Abuse counter</td>
               <td>A keyed one-way digest of the network address a sign-in request came from, so the code sender cannot be used to spam strangers. The address itself is never written down, and the digest cannot be reversed or matched to an address without a secret only the server holds.</td>
               <td>Legitimate interests, art. 6(1)(f): keeping the service from being abused</td>
@@ -212,6 +218,30 @@
         (<code>src/app/analytics.ts</code>) that names the steps of a puzzle. It
         is still a stub that sends nothing anywhere, and if that ever changes,
         this page changes with it in the same commit.
+      </p>
+
+      <h2>Email we send you</h2>
+      <p>There are exactly two kinds, and there will never be a third.</p>
+      <ul>
+        <li>
+          <strong>The sign-in code</strong>, sent because you just asked to sign
+          in. It carries no unsubscribe link because there is no list to leave.
+        </li>
+        <li>
+          <strong>Review reminders</strong>, sent only if you switched them on in
+          the account panel. <strong>At most one a day</strong>, and only when a
+          review has actually been overdue for at least half a day. If you have
+          used the app in the last day you get nothing, because you already know.
+        </li>
+      </ul>
+      <p>
+        Every reminder carries a one-click unsubscribe link that works
+        <strong>without signing in</strong>, and your mail app's own
+        "unsubscribe" button works too. Switching them off changes nothing else:
+        your account, your schedule and your progress are untouched. There is no
+        marketing email, no newsletter, no "we miss you" campaign, and no
+        announcement list. The reminder is the only recurring message that
+        exists, and its entire text is in this repository.
       </p>
 
       <h2>Signing in with Google</h2>

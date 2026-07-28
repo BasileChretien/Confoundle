@@ -11,21 +11,40 @@
  */
 
 export interface Mailer {
-  send(to: string, subject: string, text: string): Promise<void>;
+  /**
+   * `headers` carries the RFC 8058 List-Unsubscribe pair on the review
+   * reminders, and nothing else so far. Optional rather than required because
+   * the sign-in code must NOT advertise an unsubscribe: it is a transactional
+   * reply to something the reader just did, there is no list to leave, and
+   * offering one would be a lie that also trains people to distrust the real
+   * unsubscribe on the messages that do recur.
+   */
+  send(
+    to: string,
+    subject: string,
+    text: string,
+    headers?: Record<string, string>,
+  ): Promise<void>;
 }
 
 export class MailError extends Error {}
 
 export function resendMailer(apiKey: string, from: string): Mailer {
   return {
-    async send(to, subject, text) {
+    async send(to, subject, text, headers) {
       const response = await fetch("https://api.resend.com/emails", {
         method: "POST",
         headers: {
           authorization: `Bearer ${apiKey}`,
           "content-type": "application/json",
         },
-        body: JSON.stringify({ from, to, subject, text }),
+        body: JSON.stringify({
+          from,
+          to,
+          subject,
+          text,
+          ...(headers ? { headers } : {}),
+        }),
       });
       if (!response.ok) {
         // The provider's message can quote the address back, so it is not

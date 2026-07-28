@@ -12,6 +12,7 @@ import {
   sweepExpired,
 } from "./accounts";
 import { saveProgress } from "./progress";
+import { setReminderOptIn } from "./reminders";
 import { createTestDatabase, type TestDatabase } from "./testing/sqliteD1";
 import { loadMigration } from "./testing/schema";
 import { SESSION_TTL_MS } from "./http";
@@ -172,9 +173,18 @@ describe("erasure", () => {
       progressFor("berksons-bias", NOW),
       progressFor("lead-time-bias", NOW),
     ]);
+    // Every table in PERSONAL_TABLES needs a row here, or this test passes by
+    // finding nothing in a table it never populated. That is the failure mode
+    // the whole list exists to prevent.
+    await setReminderOptIn(db, account.id, true, "fr", NOW);
 
     const deleted = await deleteAccount(db, account.id);
-    expect(deleted).toEqual({ progress: 2, sessions: 2, accounts: 1 });
+    expect(deleted).toEqual({
+      reminder_prefs: 1,
+      progress: 2,
+      sessions: 2,
+      accounts: 1,
+    });
 
     for (const table of PERSONAL_TABLES) {
       const column = table === "accounts" ? "id" : "account_id";

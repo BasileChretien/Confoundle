@@ -49,6 +49,18 @@ learner between devices, so they stay local.
 | | `code_hash`, `expires_at`, `attempts`, `sent_at` | | 6(1)(b) | 10 minutes |
 | `rate_limits` | `bucket` | `ip:` plus a truncated HMAC of the client address under `SESSION_SECRET`, or `email:` plus a truncated SHA-256 | 6(1)(f) | 24 hours |
 | | `count`, `window_start` | | 6(1)(f) | 24 hours |
+| `reminder_prefs` | `opted_in` | Whether review reminders were asked for. No row at all until somebody opens the setting, so "never asked" and "asked then withdrew" stay distinguishable | 6(1)(a) | Until erased |
+| | `locale` | Which of the ten languages to write the reminder in. Captured when the box is ticked | 6(1)(a) | Until erased |
+| | `last_sent_at` | When the last reminder went out. This column IS the once-a-day guarantee | 6(1)(a) | Until erased |
+| | `created_at`, `updated_at` | Timestamps. `updated_at` is the record of when consent was given or withdrawn | 6(1)(a) | Until erased |
+
+Consent, not legitimate interests, for `reminder_prefs`: an unsolicited
+recurring email is exactly the case consent exists for, and the withdrawal path
+has to be as easy as the giving. It is, and then some, because the unsubscribe
+in each message needs no sign-in. There is no unsubscribe-token column: the
+token is `HMAC(SESSION_SECRET, "unsubscribe:" + account_id)`, recomputed to
+verify, so nothing extra is stored and rotating the secret invalidates every
+outstanding link at once.
 
 The legitimate-interests balancing for `rate_limits`: without a counter, the
 code endpoint mails arbitrary addresses on demand, which harms the people
@@ -111,7 +123,7 @@ people as a file and must not phone home from whatever machine opens it.
 | Who | Role | Sees |
 |---|---|---|
 | Cloudflare | Processor | Hosting and the database. As any host does, request metadata including IP addresses, under its own terms. Also the aggregate visit counts described above |
-| The configured mail provider (Resend by default) | Processor | The address a sign-in code goes to, and the code |
+| The configured mail provider (Resend by default) | Processor | The address a sign-in code goes to, and the code. Also the address a review reminder goes to, and how many skills are overdue, for anyone who opted in |
 | Google | Independent controller | Only if the user presses the Google button: that they signed into this application |
 
 Nobody else. Nothing is sold, rented or shared for marketing.

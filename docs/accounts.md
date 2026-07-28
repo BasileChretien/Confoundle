@@ -145,7 +145,51 @@ Then as plain environment variables (dashboard, or `wrangler pages deploy --var`
 
 Each route switches itself off cleanly if its configuration is absent: the
 `/api/auth/session` response reports which methods this deployment actually has,
-and the panel only draws the ones that work.
+and the panel only draws the ones that work. The same rule covers the reminder
+toggle, which `/api/reminders` reports as unavailable when there is no mail
+provider, so the panel hides it rather than accepting a preference nothing can
+honour.
+
+### 3b. Review reminders (the scheduled sender)
+
+Opt-in email when a review has been overdue for half a day, at most one per
+account per day. All the logic is in `src/server/reminders.ts`; what follows is
+only the deployment.
+
+**It is a separate Worker, because Pages Functions cannot carry a cron
+trigger.** It binds the same D1 database, so there is one accounts database with
+two consumers:
+
+```bash
+# 1. Apply the migration that adds reminder_prefs
+npx wrangler d1 migrations apply confoundle-accounts --remote
+
+# 2. Put the real database id into wrangler.reminders.toml
+npx wrangler d1 list
+
+# 3. Deploy the Worker
+corepack pnpm run deploy:reminders
+
+# 4. Its secrets live on the Worker, not on Pages
+npx wrangler secret put RESEND_API_KEY -c wrangler.reminders.toml
+npx wrangler secret put MAIL_FROM      -c wrangler.reminders.toml
+npx wrangler secret put SESSION_SECRET -c wrangler.reminders.toml
+```
+
+`SESSION_SECRET` **must be the same value the Pages project holds.** The Worker
+mints each unsubscribe link as an HMAC under it, and the Pages function at
+`/api/reminders/unsubscribe` verifies with its own copy. A mismatch produces
+links that look perfectly normal and silently never work, which is the one
+failure here that nothing else will surface.
+
+To watch a run without waiting for 08:00 UTC:
+
+```bash
+npx wrangler tail confoundle-reminders
+```
+
+The run logs counts only, never an address. `truncated: true` means the batch
+cap was reached and people were left waiting.
 
 ### 4. Google OAuth client
 
@@ -203,16 +247,17 @@ await (await fetch("/api/auth/session", { credentials: "same-origin" })).json()
 ```
 
 Then take an export, then delete the account and confirm the response reports a
-row removed from each of `progress`, `sessions` and `accounts`.
+row removed from each of `reminder_prefs`, `progress`, `sessions` and
+`accounts`.
 
 ---
 
 ## Known gaps, honestly
 
-- **No Content-Security-Policy header.** `public/_headers` sets the other
-  standard headers but no CSP, and the Google script would need to be allowed
-  explicitly. Worth adding, but it needs testing against the real deployment
-  rather than being guessed at.
+- **The reminder Worker is deployed separately** from Pages and holds its own
+  copy of `SESSION_SECRET`. Rotating the secret means rotating it in both
+  places, or the unsubscribe links the Worker mints stop verifying at the Pages
+  function that receives them. Nothing detects that mismatch automatically.
 - **The email provider is a single point of failure** for the non-Google route.
   If Resend is down, that route is down; Google keeps working.
 - **Rate limiting is a fixed window**, so a burst straddling the boundary can

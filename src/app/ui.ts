@@ -985,6 +985,30 @@ export const LESSON_SHARE: Record<string, LocalizedText> = {
 };
 
 export const ACCOUNT: Record<string, LocalizedText> = {
+  remindMe: {
+    en: "Email me when reviews are late",
+    zh: "复习逾期时给我发邮件",
+    hi: "रिवीज़न में देर होने पर मुझे ई-मेल करें",
+    es: "Avísame por correo cuando los repasos se retrasen",
+    fr: "M'envoyer un e-mail quand les révisions sont en retard",
+    ar: "راسلني بالبريد عند تأخر المراجعات",
+    bn: "পুনরাবৃত্তি দেরি হলে আমাকে ই-মেল করুন",
+    pt: "Enviar-me um e-mail quando as revisões estiverem atrasadas",
+    ru: "Писать мне, когда повторения просрочены",
+    ja: "復習が遅れたらメールで知らせる",
+  },
+  remindMeBlurb: {
+    en: "One email a day at most, and only when something is actually overdue. Stop it from any message, without signing in.",
+    zh: "每天最多一封，且仅在确实逾期时发送。任意一封邮件里都能退订，无需登录。",
+    hi: "दिन में अधिकतम एक ई-मेल, और केवल तभी जब वास्तव में कुछ बकाया हो। किसी भी संदेश से, बिना साइन इन किए, बंद किया जा सकता है।",
+    es: "Un correo al día como máximo, y solo cuando algo esté realmente atrasado. Puedes cancelarlo desde cualquier mensaje, sin iniciar sesión.",
+    fr: "Un e-mail par jour au maximum, et uniquement en cas de retard réel. Vous pouvez tout arrêter depuis n'importe quel message, sans vous connecter.",
+    ar: "رسالة واحدة يوميًا على الأكثر، وفقط عند وجود تأخير فعلي. يمكنك الإيقاف من أي رسالة دون تسجيل الدخول.",
+    bn: "দিনে সর্বোচ্চ একটি ই-মেল, এবং কেবল সত্যিই বকেয়া থাকলেই। যেকোনো বার্তা থেকে সাইন ইন ছাড়াই বন্ধ করা যায়।",
+    pt: "No máximo um e-mail por dia, e só quando houver mesmo atraso. Pode parar a partir de qualquer mensagem, sem iniciar sessão.",
+    ru: "Не более одного письма в день и только при реальной просрочке. Отключить можно из любого письма, не входя в аккаунт.",
+    ja: "メールは1日1通まで、実際に遅れているときだけ。どのメールからでも、ログインせずに停止できます。",
+  },
   signIn: {
     en: "Sign in",
     zh: "登录",

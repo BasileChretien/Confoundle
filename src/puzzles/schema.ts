@@ -409,6 +409,72 @@ const EffectData = z
   });
 export type EffectData = z.infer<typeof EffectData>;
 
+/**
+ * One relationship, measured at two different units of analysis.
+ *
+ * The ecological fallacy cannot be told with any existing shape, because every
+ * other shape compares groups of the SAME kind of thing. Here the setup counts
+ * places and the reveal counts people, and the whole lesson is that the answer
+ * flips when the unit does. A rates chart cannot change what a row means
+ * halfway through.
+ *
+ * The group level is authored as the correlation the source printed, drawn as a
+ * slope rather than as points, because the source publishes the coefficient and
+ * not the per-unit figures. Inventing plausible dots would be inventing data.
+ * The person level is authored as real counts and its rates are derived, so the
+ * two bars can never drift from the arithmetic.
+ */
+const EcologicalGroup = z.object({
+  label: LocalizedText, // "People born abroad"
+  short: LocalizedText.optional(),
+  /** People with the outcome, in whatever unit `scaleNote` declares. */
+  affected: z.number().int().nonnegative(),
+  total: z.number().int().positive(),
+});
+export type EcologicalGroup = z.infer<typeof EcologicalGroup>;
+
+const EcologicalData = z
+  .object({
+    type: z.literal("ecological"),
+    label: LocalizedText, // figure title
+    outcomeLabel: LocalizedText, // "could not read or write"
+    /** What one dot is at the group level, e.g. "one state". */
+    unitLabel: LocalizedText,
+    xLabel: LocalizedText, // "share of people born abroad"
+    yLabel: LocalizedText, // "share who could not read"
+    /** The printed group-level correlation, e.g. -0.53. */
+    groupCorrelation: z.number().min(-1).max(1),
+    /** The printed person-level correlation, e.g. 0.118. */
+    personCorrelation: z.number().min(-1).max(1),
+    /** Says plainly that the slope is drawn, not measured point by point. */
+    schematicNote: LocalizedText,
+    /** Names the unit the counts are in, e.g. "thousands of people". */
+    scaleNote: LocalizedText,
+    groups: z.array(EcologicalGroup).min(2),
+  })
+  .superRefine((d, ctx) => {
+    d.groups.forEach((g, i) => {
+      if (g.affected > g.total) {
+        ctx.addIssue({
+          code: "custom",
+          path: ["groups", i, "affected"],
+          message: `affected (${g.affected}) exceeds the group total (${g.total})`,
+        });
+      }
+    });
+    // The puzzle only exists when the two levels disagree in sign. If they ever
+    // agreed, the reveal would restate the setup and teach nothing.
+    if (Math.sign(d.groupCorrelation) === Math.sign(d.personCorrelation)) {
+      ctx.addIssue({
+        code: "custom",
+        path: ["groupCorrelation"],
+        message:
+          "the two levels must point opposite ways, otherwise there is no fallacy to show",
+      });
+    }
+  });
+export type EcologicalData = z.infer<typeof EcologicalData>;
+
 /** Discriminated by `type`. Add new members here to support new data shapes. */
 export const PuzzleData = z.discriminatedUnion("type", [
   RatesData,
@@ -421,6 +487,7 @@ export const PuzzleData = z.discriminatedUnion("type", [
   RegressionData,
   InteractionData,
   EffectData,
+  EcologicalData,
 ]);
 export type PuzzleData = z.infer<typeof PuzzleData>;
 
@@ -463,6 +530,8 @@ export const DataView = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("bystratum"), ...viewFields }),
   z.object({ kind: z.literal("significance"), ...viewFields }),
   z.object({ kind: z.literal("magnitude"), ...viewFields }),
+  z.object({ kind: z.literal("byplace"), ...viewFields }),
+  z.object({ kind: z.literal("byperson"), ...viewFields }),
 ]);
 export type DataView = z.infer<typeof DataView>;
 export type DataViewKind = DataView["kind"];

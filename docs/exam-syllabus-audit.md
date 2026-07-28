@@ -334,7 +334,7 @@ consensus only · **X** absent from official documents.
 | Power, type I and type II error | X | **A** | O | X | **gap** |
 | Sponsorship / conflict of interest | X | **A** | T | X | **gap** |
 | Regression to the mean | X | **X** | O | X | **shipped** (Galton 1886) |
-| Ecological fallacy | X | **X** | O | X | sourced, ready to build |
+| Ecological fallacy | X | **X** | O | X | **shipped** (Robinson 1950) |
 | Simpson's paradox | X | **X** | **X** | X | shipped (consensus only) |
 | Berkson's bias | X | **X** | **X** | X | shipped; **named in Korea 2026 paper** |
 | Survivorship bias | X | **X** | **X** | X | shipped (consensus only) |
@@ -476,7 +476,7 @@ made is about the threshold, not about the drugs. **Rule to carry forward: when 
 lesson can be taught on either of two sources, prefer the one where being
 misread does no damage.**
 
-### Ecological fallacy: sourced and ready, not yet built
+### Ecological fallacy: SHIPPED, and how the group level was handled
 
 The gap recorded above (Robinson prints the individual-level counts but no
 per-state figures) **closes through the census underneath him**, not through the
@@ -505,6 +505,21 @@ rows were read from a scan: **re-verify the specific states the puzzle names**
 against a clean copy of p. 1229 before locking copy. Shape note: this wants an
 individual-level view and a group-level scatter of the same census, so it likely
 needs a new shape rather than an existing one.
+
+
+**Built, with one design decision worth recording.** Shipped as the
+`ecological-fallacy` puzzle (`states-and-people`) on a new `ecological` shape
+(`byplace` and `byperson` views). The person level uses Robinson's printed
+Table 3 counts, so its rates are derived and testable: 1,304 of 13,217 born
+abroad against 2,614 of 84,055 native born, which is 9.9 per cent against 3.1
+and reproduces the +.118 he prints. The state level is authored as the
+**coefficient** (-.526) and drawn as a slope, **not** as a scatter, because
+Robinson published the correlation and never the per-state figures. Plotting
+invented dots would have been inventing observations, so the figure says on
+its face that the slope is drawn rather than plotted. That sidesteps the census
+transcription entirely, and with it the unresolved division-level discrepancy
+noted above. The 2011 correction is the deep-dive example, since the reversal
+survives it.
 
 ## Sourced and ready to build
 

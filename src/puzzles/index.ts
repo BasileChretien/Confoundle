@@ -20,6 +20,7 @@ import { nocebo } from "./data/nocebo";
 import { misclassification } from "./data/misclassification";
 import { detectionBias } from "./data/detection-bias";
 import { statisticalSignificance } from "./data/statistical-significance";
+import { ecologicalFallacy } from "./data/ecological-fallacy";
 import { regressionMean } from "./data/regression-mean";
 import { effectModification } from "./data/effect-modification";
 
@@ -52,6 +53,7 @@ const rawPuzzles: unknown[] = [
   effectModification,
   detectionBias,
   statisticalSignificance,
+  ecologicalFallacy,
 ];
 
 export const puzzles: PuzzleType[] = rawPuzzles.map((p, i) => {

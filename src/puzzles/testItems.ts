@@ -3090,6 +3090,140 @@ const items: TestItem[] = [
       en: "A non-significant result from a small study means the question is unsettled, not that the treatment fails. Reporting the wide interval instead of claiming no effect is the honest reading.",
     },
   },
+
+  // ---- The ecological fallacy ----
+  {
+    id: "ec-country-sugar",
+    scenario: {
+      en: "Countries that eat more sugar have higher rates of a disease. A columnist tells readers that eating sugar raises their personal risk, citing the country comparison as the evidence.",
+    },
+    trap: "ecological-fallacy",
+    explanation: {
+      en: "The rows in that table are countries, not people. Rich countries differ from poor ones in dozens of ways at once, so the line across them may not hold for any individual. A claim about a person needs data measured on people.",
+    },
+  },
+  {
+    id: "ec-school-funding",
+    scenario: {
+      en: "Schools with more spending per pupil get better average exam results, so a council concludes that spending more on any given child will raise that child's marks.",
+    },
+    trap: "ecological-fallacy",
+    explanation: {
+      en: "The comparison is between schools, and schools differ in intake as well as budget. Well-funded schools often sit in wealthier areas, so the pattern can be about which children attend rather than about what an extra pound does for one of them.",
+    },
+  },
+  {
+    id: "ec-region-income-vote",
+    scenario: {
+      en: "Richer regions vote for one party more often, so an analyst writes that richer voters back that party. No individual-level survey is cited.",
+    },
+    trap: "ecological-fallacy",
+    explanation: {
+      en: "A region's average income and an individual's income are different variables. The regional pattern can run one way while richer individuals inside those regions vote the other way, which is exactly what has been found in some countries.",
+    },
+  },
+  {
+    id: "ec-hospital-staffing",
+    scenario: {
+      en: "Hospitals with more nurses per bed have lower average death rates, and a manager concludes that any individual patient given more nursing attention is less likely to die.",
+    },
+    trap: "ecological-fallacy",
+    explanation: {
+      en: "The unit here is the hospital. Better staffed hospitals also tend to be better funded and to treat different case mixes, so the between-hospital pattern is not by itself a statement about what happens to one patient.",
+    },
+  },
+  {
+    id: "ec-air-quality-town",
+    scenario: {
+      en: "Towns with cleaner air have longer average life expectancy, so a report states that breathing cleaner air will add years to a reader's life, using only the town-level figures.",
+    },
+    trap: "ecological-fallacy",
+    explanation: {
+      en: "Towns with clean air differ from others in wealth, occupation and smoking as well. The town-level association can be produced by who lives where, so it cannot on its own quantify what cleaner air does for one person.",
+    },
+  },
+  {
+    id: "ec-country-chocolate-height",
+    scenario: {
+      en: "Across 30 countries, average height rises with average dairy consumption, and a magazine advises readers that drinking more milk will make them taller, citing that country chart.",
+    },
+    trap: "ecological-fallacy",
+    explanation: {
+      en: "Each point is a whole country, so the chart compares national averages shaped by genetics, wealth and childhood nutrition together. Turning it into personal advice treats a fact about countries as a fact about a body.",
+    },
+  },
+  {
+    id: "ec-postcode-crime",
+    scenario: {
+      en: "Neighbourhoods with more young men have more recorded crime, and a report concludes that a given young man is more likely to be an offender than a given older resident, using only the neighbourhood totals.",
+    },
+    trap: "ecological-fallacy",
+    explanation: {
+      en: "The data counts neighbourhoods, so it cannot say who committed the crimes. Areas with young populations also tend to differ in income and housing, and the individual claim needs individual records.",
+    },
+  },
+  {
+    id: "ec-team-experience",
+    scenario: {
+      en: "Teams with more experienced staff ship fewer bugs on average, so a director tells one junior engineer that their individual bug rate must be the reason their team struggles.",
+    },
+    trap: "ecological-fallacy",
+    explanation: {
+      en: "The pattern is measured across teams, which differ in the difficulty of what they build as well as in experience. Nothing in a team-level average identifies which person produced which defect.",
+    },
+  },
+  {
+    id: "ec-national-literacy-tv",
+    scenario: {
+      en: "Countries with more television sets per household report higher literacy, and an editorial argues that watching television makes an individual more literate.",
+    },
+    trap: "ecological-fallacy",
+    explanation: {
+      en: "Television ownership marks how wealthy a country is, and wealth brings schools. The country-level link is about national development, so it licenses no claim about what watching television does to one viewer.",
+    },
+  },
+  {
+    id: "ec-clinic-waiting",
+    scenario: {
+      en: "Clinics with longer average waiting times report higher patient satisfaction, and a board concludes that making an individual patient wait longer will make that patient happier.",
+    },
+    trap: "ecological-fallacy",
+    explanation: {
+      en: "Comparing clinics is not comparing patients. Busy, popular clinics can have both long queues and good care, so a clinic-level correlation cannot be read as what waiting does to one person, and here it is plainly implausible.",
+    },
+  },
+
+  // ---- Sound reasoning about levels (more decoys) ----
+  {
+    id: "ok-individual-level-data",
+    scenario: {
+      en: "Researchers wanted to know whether a diet affects one person's risk, so rather than comparing country averages they followed 40,000 individuals, recording each person's own diet and their own outcome, and reported the association among those people.",
+    },
+    trap: null,
+    explanation: {
+      en: "The question was about individuals and the data was measured on individuals, so the unit of analysis matches the claim. That is precisely the step the ecological fallacy skips.",
+    },
+  },
+  {
+    id: "ok-ecological-claim-kept-ecological",
+    scenario: {
+      en: "A study finds that countries with stricter seatbelt laws have fewer road deaths per head, and concludes that such laws are associated with lower national death rates, explicitly declining to say what any individual driver's risk would be.",
+    },
+    trap: null,
+    explanation: {
+      en: "The data is national and the conclusion is kept national. Policy questions are legitimately asked at the level of populations, and the authors do not smuggle the finding down to a person.",
+    },
+  },
+  {
+    id: "ok-multilevel-model",
+    scenario: {
+      en: "Analysts studying whether neighbourhood poverty affects individual health use records that hold both each person's own income and their neighbourhood's, and report the neighbourhood effect after accounting for the person's own circumstances.",
+    },
+    trap: null,
+    explanation: {
+      en: "Holding both levels in the same model is the standard way to separate what an area does from what a person's own situation does, so the group-level claim is not resting on individual-level guesswork.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

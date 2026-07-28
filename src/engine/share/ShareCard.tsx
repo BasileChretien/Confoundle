@@ -588,6 +588,39 @@ function RegressionGlyph() {
  * sliver of it the result actually removes, with the interval that made the
  * sliver "certain" drawn beneath.
  */
+/**
+ * The ecological fallacy: the line across places runs one way, the people
+ * inside them run the other.
+ */
+function EcologicalGlyph() {
+  const W = 200;
+  const H = 96;
+  return (
+    <div className="mt-4 rounded-lg p-3" style={{ backgroundColor: "rgba(0,0,0,0.28)" }}>
+      <svg
+        viewBox={`0 0 ${W} ${H}`}
+        role="img"
+        aria-label="A downward line across places, with the people inside pointing upward"
+        style={{ display: "block", width: "100%", maxWidth: W, margin: "0 auto" }}
+      >
+        <line x1={16} y1={12} x2={16} y2={78} stroke="rgba(242,236,222,0.25)" strokeWidth={1.5} />
+        <line x1={16} y1={78} x2={W - 12} y2={78} stroke="rgba(242,236,222,0.25)" strokeWidth={1.5} />
+        {/* the line you get by counting places */}
+        <line x1={26} y1={24} x2={W - 22} y2={66} stroke={CARD.rust} strokeWidth={3} strokeLinecap="round" />
+        <text x={W - 22} y={60} fontSize={9} fill={CARD.rust} textAnchor="end">
+          places
+        </text>
+        {/* the people inside, pointing the other way */}
+        <line x1={52} y1={64} x2={92} y2={40} stroke={CARD.teal} strokeWidth={2.5} strokeLinecap="round" strokeDasharray="4 3" />
+        <line x1={112} y1={58} x2={152} y2={34} stroke={CARD.teal} strokeWidth={2.5} strokeLinecap="round" strokeDasharray="4 3" />
+        <text x={20} y={92} fontSize={9} fill={CARD.teal}>
+          people
+        </text>
+      </svg>
+    </div>
+  );
+}
+
 function EffectGlyph() {
   const W = 200;
   const H = 96;
@@ -696,6 +729,7 @@ export function ShareCard({
   const regressionGlyph = data.type === "regression";
   const interactionGlyph = data.type === "interaction";
   const effectGlyph = data.type === "effect";
+  const ecologicalGlyph = data.type === "ecological";
   const splitSampleGlyph =
     data.type === "rates" &&
     Boolean(data.strataAreSeparateSamples) &&
@@ -786,6 +820,8 @@ export function ShareCard({
             <InteractionGlyph />
           ) : effectGlyph ? (
             <EffectGlyph />
+          ) : ecologicalGlyph ? (
+            <EcologicalGlyph />
           ) : null}
 
           <p className="mt-4 font-display text-[17px] font-medium leading-snug">

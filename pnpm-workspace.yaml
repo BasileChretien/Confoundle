@@ -20,3 +20,11 @@ allowBuilds:
 # process: an urgent patch gets applied by hand, deliberately, and nothing here
 # prevents that.
 minimumReleaseAge: 4320
+
+# Force the patched brace-expansion into the tree. It arrives only through the
+# build tooling (vite-plugin-pwa > workbox-build), never into the shipped
+# bundle, so the DoS advisory GHSA-mh99-v99m-4gvg cannot reach a reader. It is
+# pinned anyway because a high advisory left open is one nobody looks at twice,
+# and because the fix is a patch release with no API surface.
+overrides:
+  brace-expansion: ">=5.0.8"

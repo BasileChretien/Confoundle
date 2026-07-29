@@ -709,6 +709,58 @@ Two new leads checked on 2026-07-29, both failing the rules:
   convincingness and investment amounts. Worth one look through institutional
   access, but the outcome type already points at the same wall.
 
+### Illusory truth: sourced, verified, non-partisan, and worth building
+
+Searched on 2026-07-29, as the measurable mechanism underneath two techniques
+that were requested by name: the Big Lie and the firehose of falsehood. Neither
+is a lesson in itself. Both are applications of one effect that has been
+measured cleanly for fifty years, and naming the mechanism rather than the
+political label is the same call this document already made when question
+wording collapsed into the framing effect.
+
+**Hassan A, Barber SJ. The effects of repetition frequency on the illusory truth
+effect. Cognitive Research: Principles and Implications. 2021;6:38.**
+doi 10.1186/s41235-021-00301-5. Open access. Read in full from the publisher PDF,
+and both tables checked against it directly.
+
+**Stimuli are neutral trivia** of ambiguous plausibility, of the "gestation
+period of a giraffe" kind. No country, no party, no contested science. That is
+the property that rules out most of this literature, and it is the reason this
+paper beats the better-known illusory-truth work on political headlines.
+
+Truth ratings on a 1 to 6 scale, by how many times the statement had been seen a
+week earlier:
+
+- **Experiment 1** (n = 51), Table 1: 0 (new) **3.76**, then 4.27, 4.51, 4.49,
+  4.49, **4.69** at nine repetitions. Repeated against new overall, d = **1.00**.
+- **Experiment 2** (n = 57), Table 2: 0 (new) **3.64**, then 4.26, 4.78, 4.72,
+  **4.87** at twenty-seven repetitions. Repeated against new overall, d = **1.09**.
+
+**Why this is the reveal.** The whole 0 to 9 gain in Experiment 1 is 0.93 points,
+and the single first repetition is 0.51 of it, or **55 per cent**. In Experiment
+2 the whole 0 to 27 gain is 1.23 points and the first repetition is 0.62, or
+**50 per cent**. So hearing a thing once more does about as much as hearing it
+another twenty-six times. That is genuinely counterintuitive, and it is the
+opposite of what the firehose metaphor implies: the danger is not the volume, it
+is that the very first repeat has already done half the work.
+
+**Two honesty constraints for whoever builds it.** In Experiment 1 the only
+significant step between ADJACENT repetition counts is 0 to 1 (d = 0.59), and
+every later adjacent step is non-significant, which makes the plateau look total.
+Experiment 2 is weaker on that point: 1 against 9, 18 and 27 all remain
+significant (d = 0.62, 0.49, 0.80). So the defensible claim is the share of the
+effect that the first repetition carries, **not** that later repetitions do
+nothing. And the outcome is a rating mean rather than a count, so `rates` is out.
+
+Shape note: this needs a new one, and for the right reason. The lesson is the
+SHAPE of a dose-response curve, not the size of a gap. The setup can show only
+the endpoints, 0 and 27 repetitions, which reads as a tidy steady climb; the
+reveal adds the intermediate points and the climb turns out to be over almost
+immediately. That is two views of the same published data. Note that the
+endpoints alone do not let a player deduce the shape, so unless the framing
+supplies more, the hedge would be CORRECT here, which is a deliberate decision to
+make rather than to stumble into.
+
 **The structural obstacle, worth stating once because it should shape every
 future search.** This whole literature reports **rating means, not counts**.
 Confoundle's preferred form (raw integers, rates derived) only appears where the

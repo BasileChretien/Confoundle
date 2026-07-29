@@ -761,6 +761,61 @@ starts 8 x 7 while the ascending starts 1 x 2. The hedge would therefore be
 wrong. The size of the gap, and the fact that both groups were wildly under, is
 what the reveal supplies.
 
+### Gerrymandering: excellent source found, and REJECTED as the puzzle's data
+
+Searched on 2026-07-29. This is the sixth persuasion technique and the one that
+would complete the set, so the rejection matters and the reasoning is recorded
+in full.
+
+**Herschlag G, Kang HS, Luo J, Graves CV, Bangia S, Ravier R, Mattingly JC.
+Quantifying gerrymandering in North Carolina.** arXiv:1801.03783; published in
+Statistics and Public Policy, 2020, doi 10.1080/2330443X.2020.1796400. Open
+access, read from the arXiv PDF.
+
+**Why it is exactly the right shape of evidence.** It takes real votes and
+retallies them across **24,518** computer-generated redistricting plans, which
+is the deck's design tenet in its purest possible form: one set of votes, many
+maps, and the seat count moves without a single voter changing their mind. The
+enacted maps returned **4 of 13 seats** to one party on 2012 votes and **3 of
+13** on 2016 votes, and the paper states those outcomes occur in **less than one
+per cent** of the ensemble drawn on the same votes. Its most useful finding for
+this deck is not about either party: a plan drawn by a **bipartisan panel of
+retired judges behaved like a typical random plan** (mean interpolated seats
+7.01 across the ensemble on 2012 votes, against 6.28 for the judges' plan). That
+is the neutral lesson underneath, which is that the outcome tracks WHO HOLDS THE
+PEN rather than which party they belong to.
+
+**Why it is rejected anyway, on exactly the Boykoff ground.** The study is about
+maps drawn by one named party in one named US state, and it concludes those maps
+were extreme. Whatever the mathematics, the subject makes one side look uniquely
+foolish, which the project plan forbids as architecture rather than as taste.
+Authoring it would hand a critic the whole deck, and no amount of careful
+framing changes what the reader would see.
+
+Two things NOT verified, recorded so nobody assumes they were: Table 2's column
+mapping was not fully resolved from the text extraction, so its seat
+distribution is deliberately not quoted above, and the published Statistics and
+Public Policy version was not diffed against the arXiv preprint.
+
+**The route that would work, if this is ever built.** Gerrymandering is unusual
+among the wishlist techniques in that its mathematics is genuinely
+party-neutral and can be demonstrated exactly, with invented parties, on a
+schematic grid: the same votes, districted two ways, giving opposite majorities.
+The deck already has precedent for a constructed central figure, in the
+survivorship bomber diagram and the lead-time timeline, both of which carry
+provenance for the FACTUAL CLAIM rather than for the drawing. Herschlag would be
+that provenance, cited for the two things it establishes non-partisanly: that
+the effect is real and measurable at scale, and that a neutral drawing process
+produces neutral results.
+
+One caution for whoever takes it on, because it is harder than the bomber
+diagram. Those precedents are schematic about subjects nobody is defending.
+This one would be a constructed figure about an inherently political subject,
+so it is the first puzzle where the framing has to carry the non-partisanship on
+its own rather than inheriting it from the topic. Invented party names are
+necessary and probably not sufficient; the copy would need to say plainly, and
+show, that the trick works identically whoever is drawing.
+
 ### Cherry-picked baselines: still unsourced
 
 Two new leads checked on 2026-07-29, both failing the rules:

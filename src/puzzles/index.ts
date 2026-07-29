@@ -21,6 +21,7 @@ import { misclassification } from "./data/misclassification";
 import { detectionBias } from "./data/detection-bias";
 import { statisticalSignificance } from "./data/statistical-significance";
 import { ecologicalFallacy } from "./data/ecological-fallacy";
+import { framingEffect } from "./data/framing-effect";
 import { regressionMean } from "./data/regression-mean";
 import { effectModification } from "./data/effect-modification";
 
@@ -54,6 +55,7 @@ const rawPuzzles: unknown[] = [
   detectionBias,
   statisticalSignificance,
   ecologicalFallacy,
+  framingEffect,
 ];
 
 export const puzzles: PuzzleType[] = rawPuzzles.map((p, i) => {

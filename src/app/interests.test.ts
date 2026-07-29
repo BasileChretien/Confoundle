@@ -22,13 +22,18 @@ describe("what the chooser is allowed to offer", () => {
 
   it("leaves out the tags no puzzle carries yet", () => {
     const offered = availableInterests(puzzles);
-    // The expansion areas are in the vocabulary but have no lessons yet, so the
-    // chooser must not advertise them. This flips on its own once one lands.
-    expect(offered).not.toContain("media");
+    // Still nothing outside medicine and civic life yet, so these must not be
+    // advertised. Each flips on its own the moment a lesson claims it, which is
+    // exactly what happened to media and psychology when the framing puzzle
+    // landed: this assertion used to name them and had to be updated.
     expect(offered).not.toContain("politics");
+    expect(offered).not.toContain("economics");
     // ...while the areas the deck really covers are offered.
     expect(offered).toContain("everyday");
     expect(offered).toContain("clinical");
+    // The first lesson outside medicine opened these two up.
+    expect(offered).toContain("media");
+    expect(offered).toContain("psychology");
   });
 
   it("offers them in the canonical order, not registry order", () => {
@@ -65,7 +70,7 @@ describe("keeping a stored selection honest", () => {
   });
 
   it("drops a tag that has lost its last puzzle", () => {
-    expect(pruneInterests(["media"], puzzles)).toEqual([]);
+    expect(pruneInterests(["politics"], puzzles)).toEqual([]);
   });
 });
 

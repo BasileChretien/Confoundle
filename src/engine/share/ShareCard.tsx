@@ -677,6 +677,53 @@ function DistributionGlyph() {
   );
 }
 
+function DoseGlyph() {
+  const W = 200;
+  const H = 96;
+  // A curve that does almost all its climbing in the first sliver, with the
+  // points spaced by dose rather than evenly, same as the real chart.
+  const pts: Array<[number, number]> = [
+    [0, 3.64],
+    [1, 4.26],
+    [9, 4.78],
+    [18, 4.72],
+    [27, 4.87],
+  ];
+  const px = (d: number) => 16 + (d / 27) * (W - 32);
+  const py = (m: number) => H - 22 - ((m - 3.4) / 1.8) * (H - 44);
+  const path = pts.map(([d, m], i) => `${i === 0 ? "M" : "L"}${px(d)},${py(m)}`).join(" ");
+  return (
+    <div className="mt-4 rounded-lg p-3" style={{ backgroundColor: "rgba(0,0,0,0.28)" }}>
+      <svg
+        viewBox={`0 0 ${W} ${H}`}
+        role="img"
+        aria-label="Belief climbs almost entirely on the first repetition, then flattens"
+        style={{ display: "block", width: "100%", maxWidth: W, margin: "0 auto" }}
+      >
+        <path d={path} fill="none" stroke={CARD.teal} strokeWidth={2.5} strokeLinejoin="round" />
+        {pts.map(([d, m]) => (
+          <circle key={d} cx={px(d)} cy={py(m)} r={3} fill={CARD.teal} />
+        ))}
+        <line
+          x1={px(1)}
+          y1={py(3.4)}
+          x2={px(1)}
+          y2={py(4.4)}
+          stroke={CARD.gold}
+          strokeWidth={1.5}
+          strokeDasharray="3 2"
+        />
+        <text x={px(1) + 5} y={20} fontSize={9} fill={CARD.gold} fontWeight={600}>
+          one repeat
+        </text>
+        <text x={W - 8} y={H - 6} fontSize={9} fill={CARD.muted} textAnchor="end">
+          27 repeats
+        </text>
+      </svg>
+    </div>
+  );
+}
+
 function EcologicalGlyph() {
   const W = 200;
   const H = 96;
@@ -817,6 +864,7 @@ export function ShareCard({
   const ecologicalGlyph = data.type === "ecological";
   const framingGlyph = data.type === "framing";
   const distributionGlyph = data.type === "distribution";
+  const doseGlyph = data.type === "dose";
   const splitSampleGlyph =
     data.type === "rates" &&
     Boolean(data.strataAreSeparateSamples) &&
@@ -913,6 +961,8 @@ export function ShareCard({
             <FramingGlyph />
           ) : distributionGlyph ? (
             <DistributionGlyph />
+          ) : doseGlyph ? (
+            <DoseGlyph />
           ) : null}
 
           <p className="mt-4 font-display text-[17px] font-medium leading-snug">

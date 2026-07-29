@@ -26,6 +26,7 @@ import { regressionMean } from "./data/regression-mean";
 import { effectModification } from "./data/effect-modification";
 import { misleadingAxis } from "./data/misleading-axis";
 import { meanVsMedian } from "./data/mean-vs-median";
+import { illusoryTruth } from "./data/illusory-truth";
 
 /**
  * The puzzle registry. Adding a puzzle = import its data file and add it to
@@ -60,6 +61,7 @@ const rawPuzzles: unknown[] = [
   framingEffect,
   misleadingAxis,
   meanVsMedian,
+  illusoryTruth,
 ];
 
 export const puzzles: PuzzleType[] = rawPuzzles.map((p, i) => {

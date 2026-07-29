@@ -3636,6 +3636,140 @@ const items: TestItem[] = [
       en: "The mean is exactly the right tool here, because a total is what it is built from. It would be the wrong tool for describing a typical household, which is a different question.",
     },
   },
+
+  // ---- The illusory truth effect ----
+  {
+    id: "it-slogan-repeat",
+    scenario: {
+      en: "A campaign repeats one unsupported claim in every advert for six weeks. Polling afterwards finds more people rate the claim plausible than before, and the campaign concludes that the public examined the argument and found it convincing.",
+    },
+    trap: "illusory-truth",
+    explanation: {
+      en: "No argument was ever offered, so nothing was examined. Repetition on its own raises how true a claim feels, which means the poll measured exposure rather than persuasion by evidence.",
+    },
+  },
+  {
+    id: "it-rumour-familiar",
+    scenario: {
+      en: "A rumour circulates in an office for a month. Asked about it, staff say it must have something to it because they have heard it from several directions, though nobody can name an original source.",
+    },
+    trap: "illusory-truth",
+    explanation: {
+      en: "Hearing something from several directions feels like corroboration and is often just the same claim going round. Without an original source, the sense that it must have something to it is a memory of exposure, not evidence.",
+    },
+  },
+  {
+    id: "it-factcheck-restate",
+    scenario: {
+      en: "A newspaper runs a weekly column that restates a popular false claim in its headline and debunks it underneath. A survey a month later finds readers of the column more likely to believe the claim than non-readers.",
+    },
+    trap: "illusory-truth",
+    explanation: {
+      en: "Every restatement is another exposure, and the familiarity outlasts the correction attached to it. Leading with the falsehood is the risky format; leading with the true version and never headlining the false one avoids it.",
+    },
+  },
+  {
+    id: "it-ad-frequency",
+    scenario: {
+      en: "A brand runs the same claim about its product 40 times a week rather than 4, and reports that the higher frequency is what made audiences believe it, since belief was higher than in an unexposed region.",
+    },
+    trap: "illusory-truth",
+    explanation: {
+      en: "Comparing 40 exposures against zero cannot tell you what the extra 36 bought. Most of the shift in believability arrives on the first repeat, so the comparison the claim needs is 40 against 4, not 40 against none.",
+    },
+  },
+  {
+    id: "it-training-myth",
+    scenario: {
+      en: "A teaching myth is repeated in induction sessions year after year. Staff who first heard it as a caution, and were told at the time it was unproven, now cite it as established practice.",
+    },
+    trap: "illusory-truth",
+    explanation: {
+      en: "What survives repetition is the claim, not the caveat attached to it. People can dismiss something on first contact, forget where they met it, and later find it plausible purely because it feels familiar.",
+    },
+  },
+  {
+    id: "it-headline-skim",
+    scenario: {
+      en: "A reader scrolls past the same unverified headline on four platforms without opening any of them. Weeks later they repeat it in conversation as something they are fairly sure is true, and cannot say where they read it.",
+    },
+    trap: "illusory-truth",
+    explanation: {
+      en: "Not being able to name the source while feeling fairly sure is the signature of the effect. The confidence is built out of fluency from repeated exposure rather than out of anything anyone actually checked.",
+    },
+  },
+  {
+    id: "it-expert-knows",
+    scenario: {
+      en: "A team assumes its specialists are immune to a repeated falsehood about their own field, on the grounds that they know the correct answer and would simply notice.",
+    },
+    trap: "illusory-truth",
+    explanation: {
+      en: "Knowing the right answer does not prevent the feeling of familiarity, which arrives before any deliberate checking. People who can state the correct fact when asked directly still rate the repeated falsehood as more plausible.",
+    },
+  },
+  {
+    id: "it-review-echo",
+    scenario: {
+      en: "A product claim is quoted in a dozen blog posts, all of which trace back to a single press release. A buyer says the claim is well supported because it appears in so many places.",
+    },
+    trap: "illusory-truth",
+    explanation: {
+      en: "A dozen copies of one source is one source. Counting appearances measures how widely something was repeated, which is a fact about distribution and not about whether it is true.",
+    },
+  },
+  {
+    id: "it-slow-drip",
+    scenario: {
+      en: "An organisation decides that a rival's occasional, low-volume repetition of a false claim is harmless, because it is nothing like a saturation campaign and so cannot move anyone.",
+    },
+    trap: "illusory-truth",
+    explanation: {
+      en: "The dose response is heavily front-loaded, so the first repeat does most of the work and a low-volume drip is not proportionally harmless. Volume is not what makes repetition effective.",
+    },
+  },
+  {
+    id: "it-familiar-plausible",
+    scenario: {
+      en: "Sorting claims to investigate, a team puts the ones that sound plausible at the bottom of the list, reasoning that plausible-sounding claims are less likely to be worth checking.",
+    },
+    trap: "illusory-truth",
+    explanation: {
+      en: "Sounding plausible is partly just having been encountered before, so this rule deprioritises exactly the claims that have already circulated most. Familiarity and truth feel identical from the inside.",
+    },
+  },
+
+  // ---- Sound reasoning about repetition (more decoys) ----
+  {
+    id: "ok-repeat-with-evidence",
+    scenario: {
+      en: "A public health body repeats one message consistently for a year, and the message states a finding along with the trial it comes from, so that each repetition carries the evidence with it.",
+    },
+    trap: null,
+    explanation: {
+      en: "Repetition is a delivery choice and not a flaw in itself. What matters is whether the claim is supported, and here the support travels with it rather than being replaced by familiarity.",
+    },
+  },
+  {
+    id: "ok-independent-sources",
+    scenario: {
+      en: "A claim is reported by three outlets that each did their own reporting, naming different primary documents and interviewing different people, and an editor treats the agreement as genuine corroboration.",
+    },
+    trap: null,
+    explanation: {
+      en: "These are independent lines of evidence rather than one claim echoing, so their agreement really is corroboration. The problem arises only when repeated appearances all trace back to a single source.",
+    },
+  },
+  {
+    id: "ok-truth-sandwich",
+    scenario: {
+      en: "A broadcaster corrects a false claim by leading with the accurate version, describing the false one briefly and only once, and closing on the accurate version again.",
+    },
+    trap: null,
+    explanation: {
+      en: "This is the format designed around the problem: the true statement gets the repetitions and the false one gets as few as possible. Correcting is not the risk; headlining the falsehood repeatedly is.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

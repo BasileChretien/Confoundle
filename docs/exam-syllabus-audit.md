@@ -643,8 +643,79 @@ coverage has clean printed counts and was rejected anyway: its subject makes one
 side look uniquely foolish, which the project's plan forbids as architecture
 rather than as taste. Correll et al 2020 on truncated axes is well sourced and
 open, but its per-condition means are graphical rather than printed, and its
-worked example is a partisan chart. No usable source was found for manufactured
-doubt or for cherry-picked baselines; both need a dedicated search.
+worked example is a partisan chart. Correll is also now moot as a truncated-axis
+source: truncation is covered as the deep-dive example of the misleading-axis
+puzzle, from Pandey's own second result.
+
+### Manufactured doubt: sourced and non-partisan, but the effect is too small
+
+Searched properly on 2026-07-29. **Koehler DJ. Can journalistic "false balance"
+distort public perception of consensus in expert opinion? J Exp Psychol Appl.
+2016;22(1):24-38. doi 10.1037/xap0000073.** Read in full from the open copy on
+Zenodo (record 889605).
+
+**Why it looked ideal.** Study 1 (a, b and c) uses **anonymised film reviews**:
+2013 releases from Metacritic, with titles, actors, directors and writers
+stripped out and replaced by placeholders. No country, no party, no contested
+science, which is the property that rules out almost everything else in this
+literature. Participants see how many positive, mixed and negative reviews a film
+actually received and estimate its aggregate score out of 100. The **balance**
+condition additionally sees the single most positive and single most negative
+excerpt. Crucially, a **typical** condition sees two MODERATE excerpts and shows
+no effect, which isolates the mechanism exactly: it is not that quotes distract,
+it is that two EXTREME quotes manufacture the appearance of disagreement over
+counts the reader can already see. That is manufactured doubt in miniature.
+
+**Why it should not be built as it stands.** Table 1 (p. 6) prints means and
+standard deviations, never counts, so the `rates` shape is out:
+
+- Study 1a, good films: balance **88.4** (7.7) against control **90.0** (6.4).
+- Study 1b, good films: balance **87.1** (9.4), control **89.6** (8.0), typical
+  **89.8** (6.7).
+- Study 1c, good films: balance **84.0** (8.4), control **88.9** (12.1), typical
+  **87.1** (7.0). Mediocre films barely move in any study.
+
+The raw effect on the headline number is **1.6 points in 1a and 4.9 in 1c, on a
+0 to 100 scale**. Drawn as two bars that is a dead heat, which is the opposite of
+a reveal. The dramatic result lives in a **standardised discrimination score
+(z-diff)** that cannot be drawn honestly without inventing a picture, and 1a's
+test on it is p = .048, which is fragile. If it is ever built, the only honest
+framing is the narrowing of the good-minus-mediocre GAP (1c: 35.1 points in
+control against 30.5 in balance), that needs a new shape, and the copy must not
+dress a 13 per cent narrowing as a reversal.
+
+Study 2 has the stronger design but is out on partisanship: its four issues come
+from the IGM Economic Experts Panel and include a carbon tax and the minimum
+wage.
+
+**Verdict: sourced, verified, non-partisan, parked.** Do not build it until
+either a better source turns up or the deck gains a shape that can carry a small
+effect honestly. It is recorded here so nobody searches for it a third time.
+
+### Cherry-picked baselines: still unsourced
+
+Two new leads checked on 2026-07-29, both failing the rules:
+
+- **Nadib KA, Kogan M, Lex A, Lisnic M. Guardrail selection in line charts to
+  contextualize persuasive visualizations. Computer Graphics Forum (EuroVis)
+  2026;45(3). arXiv:2605.19017.** Open access and squarely on the problem, but
+  its scenarios are **COVID, elections and stocks**. Two of the three are exactly
+  the contested-science and partisan ground the project excludes, and the
+  outcomes are convincingness ratings and investment amounts rather than counts.
+- **Visualization guardrails: designing interventions against cherry-picking in
+  interactive data explorers. CHI 2025. doi 10.1145/3706598.3713385.** Could not
+  be read here: unlike Pandey, this one is not free access and ACM returned 403
+  to an unauthenticated fetch. 160 participants, four scenarios, outcomes again
+  convincingness and investment amounts. Worth one look through institutional
+  access, but the outcome type already points at the same wall.
+
+**The structural obstacle, worth stating once because it should shape every
+future search.** This whole literature reports **rating means, not counts**.
+Confoundle's preferred form (raw integers, rates derived) only appears where the
+dependent variable is a *judgement that can be right or wrong*, as in Pandey's
+inverted-axis arm. So a search for the next persuasion technique should target
+studies whose outcome is accuracy, not agreement on a Likert scale, and should
+treat "what percentage rated it higher" as a warning sign rather than a finding.
 
 
 **Framing effect. SHIPPED** as the `framing-effect` puzzle (`same-choice-other-words`)

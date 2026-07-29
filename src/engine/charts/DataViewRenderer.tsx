@@ -20,6 +20,8 @@ import { DistributionView } from "./DistributionView";
 import { restrictDistribution } from "./distribution";
 import { DoseView } from "./DoseView";
 import { restrictDose } from "./dose";
+import { EstimationView } from "./EstimationView";
+import { restrictEstimation } from "./estimation";
 
 /**
  * The generic seam: dispatch on the data's `type` to the matching renderer.
@@ -99,6 +101,15 @@ export function DataViewRenderer({
       return view.kind === "partial" || view.kind === "curve" ? (
         <DoseView
           data={restrictDose(data, { groupIds: view.groupIds })}
+          kind={view.kind}
+        />
+      ) : null;
+    case "estimation":
+      // Another slice-drawer: the setup quotes one group's guess and the reveal
+      // adds the other guess and the answer they were both aiming at.
+      return view.kind === "oneguess" || view.kind === "withtruth" ? (
+        <EstimationView
+          data={restrictEstimation(data, { groupIds: view.groupIds })}
           kind={view.kind}
         />
       ) : null;
@@ -186,6 +197,10 @@ export function scopeLabel(kind: DataViewKind): string {
       return "As far as it goes";
     case "curve":
       return "The whole curve";
+    case "oneguess":
+      return "What one group said";
+    case "withtruth":
+      return "Both, against the answer";
     default:
       return "";
   }

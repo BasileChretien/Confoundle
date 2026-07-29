@@ -9,6 +9,13 @@ audit the deck against the four blueprints a qualifying doctor is examined on:
 - **USA**: the USMLE Content Outline, plus the per-Step specifications.
 - **UK**: the GMC's MLA content map and Outcomes for Graduates.
 
+The persuasion track has its own companion audit,
+[`political-education-audit.md`](./political-education-audit.md), which asks the
+same question of the documents governing political and civic education. Read it
+before sourcing another persuasion technique: it is what establishes that most of
+the wishlist has no curricular backing at all, and therefore has to stand on its
+published evidence alone.
+
 Two tiers are kept apart throughout, because conflating them would overstate
 what is actually required:
 

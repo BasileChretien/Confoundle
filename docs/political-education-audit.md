@@ -265,7 +265,9 @@ approach is deliberate rather than accidental.
 
 ### Four gaps, each named by at least one official document
 
-Ranked by how well they fit the deck, not by how loudly they are named.
+Ranked by how well they fit the deck, not by how loudly they are named. All four
+now carry a source and a status in
+[`lesson-backlog.md`](./lesson-backlog.md), which is the single queue.
 
 1. **Self-selection in opinion data.** Named by the US framework as "opt-in
    polling (like on social media)". Confoundle has `survivorship` and

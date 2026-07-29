@@ -16,6 +16,12 @@ before sourcing another persuasion technique: it is what establishes that most o
 the wishlist has no curricular backing at all, and therefore has to stand on its
 published evidence alone.
 
+Everything either audit turned up that is not yet built now sits in one queue,
+[`lesson-backlog.md`](./lesson-backlog.md), with a verification status per entry.
+The six medical gaps below are deliberately **not** in that queue: they have
+their own deeper plan in [`plan-syllabus-gaps.md`](./plan-syllabus-gaps.md) and
+still outrank everything in it.
+
 Two tiers are kept apart throughout, because conflating them would overstate
 what is actually required:
 

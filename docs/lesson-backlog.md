@@ -17,7 +17,15 @@ duplicated here**. This file is everything else.
 | **SOURCED** | Primary source identified and its figures seen, but not yet read off the paper's own table. Must be verified at source before authoring. |
 | **LEAD** | A citation exists and looks right. Nothing has been read. |
 | **BLOCKED** | Wanted, but no source with usable counts has been found. |
+| **OPEN** | Under discussion or awaiting a citation. Not settled either way. |
 | **REJECTED** | Recorded so nobody proposes it twice. Reason given. |
+
+**A rule this file learned the hard way.** REJECTED requires a search that was
+actually run, and the reason must name **which** of the three tests in Tier 3 the
+candidate failed. "I could not think of a source" is not a rejection, it is an
+unsearched entry, and writing the first as though it were the second is the single
+worst thing this document can do, because a rejection here stops anyone looking
+again.
 
 Nothing here may be authored from this file. The project rule stands: read the
 table, reconcile more than one way, or do not ship it.
@@ -197,96 +205,146 @@ where a target was hit and the underlying thing did not move.
 
 ---
 
-## Tier 3: the nine persuasion techniques, adjudicated
+## Tier 3: the nine persuasion techniques
 
-The condition set was: **peer-reviewed scientific backing, and a historical case
-old enough that no living party or person is implicated.** Of nine, one yields a
-strong new puzzle, two are already shipped in mechanism, five are rejected and
-one is held. The rejections are the useful part.
+**Correction, 2026-07-29.** The first version of this section marked five of the
+nine REJECTED. That was not honest work. Of the nine, only **three** had actually
+been searched (fear appeals, astroturfing, and the Loftus redirect). The other six
+were adjudicated from memory and written up as though a search had been done. Two
+of those six were then searched, and **both turned up peer-reviewed randomised
+experiments within a single query**, which means the rejections were wrong on the
+facts, not merely premature. The section below is rewritten with each term's
+actual search state on the record.
 
-### Overton window: REDIRECT, already shipped in mechanism
+The failure had a specific shape worth naming, because it will recur: I collapsed
+three independent questions into one verdict. They are separate and are now kept
+separate.
 
-The Overton window is a political-consulting concept (Joseph Overton, Mackinac
-Center) with no experimental literature of its own. Its mechanism is anchoring,
-which shipped as `anchoring`. The nearest real science is Sherif and Hovland's
-social judgment theory (assimilation and contrast, latitude of acceptance, 1961),
-whose authors are long dead and whose subject is non-partisan. That could support
-a *second* puzzle on latitude of acceptance, but only if a source with counts
-turns up. Status: LEAD, low priority.
+| Test | Question |
+|---|---:|
+| **Evidence** | Does peer-reviewed experimental work establish the effect? |
+| **Neutral ground** | Is there a version whose parties and people are extinct? |
+| **Shape** | Is there a dataset with counts that can be shown two ways? |
 
-### The Big Lie: REJECT as a separate lesson
+A term fails only on the test it actually fails. "No neutral version" is not a
+reason to write "no science".
 
-The mechanism is repetition-induced truth, shipped as `illusory-truth` on Hasher,
-Goldstein and Toppino (1977). Building it again would put a second name on one
-reasoning move. The historical anchor is also a political text rather than data,
-so there is nothing to count.
+Basile is sourcing papers for several of these. Entries below marked **OPEN**
+should be treated as awaiting his citations rather than as settled.
 
-### Gaslighting: REDIRECT, and it produced Tier 1 item 2
+### Whataboutism: OPEN. The earlier rejection was wrong
 
-Gaslighting as interpersonal abuse has a real sociological literature (Sweet,
-*American Sociological Review*, 2019) but no countable dataset, and it is a
-clinical and abuse topic rather than a reasoning illusion. The mechanism
-underneath the "you are misremembering it" move does have a canonical
-experimental form with counts, and that is Loftus and Palmer. Build that, and do
-not call it gaslighting.
+Written up as "a fallacy of argument structure has no dataset". It has several.
 
-### Firehose of falsehood: REJECT
+- **van Eemeren, Garssen and Meuffels** and **Bhatia and Oaksford** both ran
+  experiments in which speaker A makes a one-sentence argument, speaker B replies
+  with either a *tu quoque*, another ad hominem, or a substantive counterargument,
+  and participants rate the reasonableness of B's reply.
+- **The Diplomacy of Whataboutism and US Foreign Policy Attitudes**,
+  *International Organization* (Cambridge). Randomised vignette experiments, with
+  a robustness study on **3,200 US adults**.
 
-The primary source is a RAND perspective paper (Paul and Matthews, 2016), which
-is not peer-reviewed, and it is explicitly about one named state's propaganda,
-which is the Boykoff partisanship ground the project excludes. The mechanism is
-`illusory-truth` again, with volume added.
+The reported pattern is itself a good reveal: whataboutist replies are rated
+*more* reasonable than plain ad hominem but *less* reasonable than a substantive
+answer, and the gap is significant for political and personal topics **but not for
+scientific ones**. That last clause is exactly the kind of stratified result this
+deck is built from, and it points at a non-partisan version rather than away from
+one.
 
-### Whataboutism: REJECT for now, reconsider with a source
+Evidence: **yes**. Neutral ground: plausible, via the argumentation studies rather
+than the IR one. Shape: needs the rating scales checked, since means on a
+reasonableness scale are not counts and this deck authors from counts.
 
-It is *tu quoque*, so its pedigree is ancient and entirely non-partisan
-(Aristotle, *Sophistical Refutations*). The problem is shape, not politics: a
-fallacy of argument structure has no dataset, and the deck's whole premise is
-two views of one dataset. Reconsider if an experiment turns up that measures how
-a whataboutist reply shifts a judgement, with counts, on non-partisan stimuli.
+### Dog whistling: OPEN. The earlier rejection conflated two different objections
 
-### Dog whistling: REJECT
+Written up as the clearest partisanship rejection on the list. The partisanship
+concern is real and stands. The claim that came with it, that there was nothing
+but live political material, was wrong: this is one of the better-replicated
+literatures in political psychology.
 
-The experimental literature is squarely about live racial politics in one
-country. There is no historical version with dead parties. This is the clearest
-Boykoff rejection on the list.
+- Mendelberg (2001); **Valentino, Hutchings and White (2002)**, the foundational
+  implicit-appeal experiments; White (2007).
+- **Valentino et al. (2018)**, four nationally representative survey experiments
+  finding implicit appeals are **no more effective than explicit ones**, argued to
+  reflect a changed environment rather than a failure of the original theory.
+- **Wetts and Willer (2019)**, *Socius*, two experiments, **1,797 white
+  Americans**, racial attitudes measured two weeks before exposure.
 
-### Fearmongering: REJECT, and this is the most useful rejection here
+The 2018 reversal is the interesting part for this deck, and it is not a lesson
+about race at all: it is a lesson about a well-established effect that stopped
+replicating because the world changed underneath it, which is a reasoning trap in
+its own right and a close cousin of the fear-appeal problem below.
 
-The famous result is Janis and Feshbach (1953): 200 high school students, 50 per
-group, and net conformity to dental recommendations of roughly 36 per cent in the
-minimal-fear group, 22 per cent in the moderate, and **8 per cent in the strong
-fear group**. Too much fear backfires. It is in every textbook, both authors are
-dead, and the subject is toothbrushing, so it passes every test the project
-usually applies.
+Evidence: **yes, and strong**. Neutral ground: **no**, and this remains the real
+obstacle. Shape: the outcomes are policy-preference scales, so counts need
+checking.
 
-**It is also contradicted by the current evidence.** Tannenbaum et al. (2015),
-*Psychological Bulletin*, meta-analysed 127 studies and 27,372 participants, found
-fear appeals effective overall (d = 0.29), and concluded there are **no identified
-circumstances under which they backfire**. Building the 1953 result would teach
-readers something the literature no longer supports, in a deck whose entire claim
-is rigor.
+### The Big Lie: OPEN, and previously mis-analysed
 
-**The salvageable version is a different lesson.** A single striking study that
-entered every textbook and did not survive meta-analysis is itself a reasoning
-trap, and one this deck is well placed to teach. It is closer to
-`publication-bias` than to persuasion, and it would need care not to become a
-lesson about one unlucky paper.
+Written up as "the mechanism is repetition, so it is `illusory-truth` again". That
+is not what the Big Lie claims. The claim is about **magnitude**, that a colossal
+lie is more credible than a small one because audiences cannot believe anyone
+would distort so audaciously. Magnitude and frequency are different variables, and
+the deck's own rule about not putting two names on one reasoning move does not
+apply if they are in fact two moves.
 
-### Astroturfing: HOLD, good history and no numbers
+Not searched. The specific question to put to the literature is whether the
+credibility of a claim is non-monotonic in its extremity, holding repetition
+constant.
+
+### Firehose of falsehood: OPEN, searched only as far as the RAND report
+
+The objection to Paul and Matthews (2016) stands on its own terms: it is a
+think-tank perspective paper, not peer-reviewed, and it is about one named state.
+But no search was done for the peer-reviewed work on its component claims, which
+are separable and testable: high volume, multiple channels, and **the absence of
+any commitment to consistency**. That third one is the distinctive claim and the
+one most worth a source, because it predicts that self-contradiction does not cost
+a communicator credibility, which is counterintuitive enough to be a puzzle.
+
+### Wedge issues: OPEN, not searched
+
+Written up as rejected. Nothing was looked at. The historical question was never
+asked, and it is the one that matters: nineteenth-century cleavages have the same
+structure and no living partisans.
+
+### Overton window: OPEN on the second puzzle
+
+The redirect to shipped `anchoring` stands for the mechanism. What was not done is
+any search for whether Sherif and Hovland's assimilation and contrast experiments
+report counts rather than scale means. Both authors are long dead and the stimuli
+are non-political, so if the counts exist this is a clean candidate.
+
+### Gaslighting: the redirect stands, the rejection under it was not searched
+
+**Loftus and Palmer remains a strong find and is Tier 1 item 2.** But the claim
+that gaslighting's own literature has "no countable dataset" was written without
+searching it. Sweet (2019) is sociological and qualitative, which is what that
+claim was based on, but it is one paper and no one looked further.
+
+### Fearmongering: the one substantive objection, and it is narrower than written
+
+This is the term that *was* searched, and the finding is real and should not be
+softened: **Tannenbaum et al. (2015)**, *Psychological Bulletin*, 127 studies and
+27,372 participants, d = 0.29, and no identified circumstances under which fear
+appeals backfire. Authoring Janis and Feshbach's 1953 result as current would ship
+a claim the literature does not support.
+
+But the objection is to **one framing**, not to the topic. Two live routes remain:
+
+1. Fear appeals paired with efficacy against fear appeals without it, which is the
+   EPPM's actual claim and is not the same as "too much fear backfires".
+2. The meta-analytic reversal itself as the lesson, which is a genuinely good
+   puzzle about a famous single study that did not survive, and which shares its
+   spine with the dog-whistle 2018 reversal above.
+
+### Astroturfing: HOLD stands, and it is a shape problem only
 
 Apollonio and Bero (2007), *American Journal of Public Health* 97(3):419-428, on
-RJ Reynolds creating "Get Government Off Our Back" in 1994 while keeping its
-involvement secret. Tobacco is the ideal non-partisan subject: nobody defends the
-industry's front groups. But it is a documents analysis, entirely qualitative,
-with no numerator and no denominator. Held until a source turns up that prints
-counts, for instance identical letters in a consultation response.
-
-### Wedge issues: REJECT
-
-Inherently about live partisan cleavages, with no historical version whose
-parties are extinct and no dataset shape. Nothing to build.
-
+RJ Reynolds creating "Get Government Off Our Back" in 1994 while concealing its
+involvement. Evidence: yes. Neutral ground: yes, tobacco is ideal. Shape: **no**,
+it is a documents analysis with no numerator and no denominator. This is the only
+one of the nine whose obstacle was correctly identified the first time.
 ---
 
 ## Tier 4: what the nine discipline audits found

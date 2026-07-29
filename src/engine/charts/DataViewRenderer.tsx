@@ -15,6 +15,7 @@ import { RegressionView } from "./RegressionView";
 import { InteractionView } from "./InteractionView";
 import { EffectView } from "./EffectView";
 import { EcologicalView } from "./EcologicalView";
+import { FramingView } from "./FramingView";
 
 /**
  * The generic seam: dispatch on the data's `type` to the matching renderer.
@@ -74,6 +75,10 @@ export function DataViewRenderer({
     case "ecological":
       return view.kind === "byplace" || view.kind === "byperson" ? (
         <EcologicalView data={data} kind={view.kind} />
+      ) : null;
+    case "framing":
+      return view.kind === "onewording" || view.kind === "bothwordings" ? (
+        <FramingView data={data} kind={view.kind} />
       ) : null;
     default:
       return null;
@@ -147,6 +152,10 @@ export function scopeLabel(kind: DataViewKind): string {
       return "Counting places";
     case "byperson":
       return "Counting people";
+    case "onewording":
+      return "As it was put to them";
+    case "bothwordings":
+      return "Both wordings";
     default:
       return "";
   }

@@ -523,8 +523,13 @@ survives it.
 
 ## Sourced and ready to build
 
-**Framing effect. Verified from the primary source, ready to build, and it
-opens a new area.** Tversky A, Kahneman D. The framing of decisions and the
+**Framing effect. SHIPPED** as the `framing-effect` puzzle (`same-choice-other-words`)
+on a new `framing` shape, and it is the deck's first lesson outside medicine.
+It carries the `psychology` and `media` tags, which is what opened those two
+interests in the chooser: the chooser only offers tags a lesson actually
+carries, so the guard test that asserted media was NOT offered had to be
+updated, exactly as it was written to be. Verified from the primary source, and
+it opens a new area. Tversky A, Kahneman D. The framing of decisions and the
 psychology of choice. Science 1981;211(4481):453-458. Read directly from the
 paper (p. 453), not from a summary.
 

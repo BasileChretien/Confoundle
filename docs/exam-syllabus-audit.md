@@ -523,34 +523,110 @@ survives it.
 
 ## Sourced and ready to build
 
-**Misleading chart axes. A CANDIDATE, NOT YET VERIFIED AT SOURCE. Do not author
-from this entry until the numbers below have been read off the paper itself.**
+Nothing currently sits here. The one entry that did, misleading chart axes, was
+verified and shipped; it is recorded below. The two gaps named at the end of
+this document (manufactured doubt, cherry-picked baselines) still have no usable
+source and need a dedicated search.
+
+**Misleading chart axes. VERIFIED AT SOURCE AND SHIPPED** as the
+`misleading-axis` puzzle (`which-way-is-up`), on the existing `rates` shape, as
+the deck's second persuasion lesson after the framing effect.
 
 Pandey AV, Rall K, Satterthwaite ML, Nov O, Bertini E. How deceptive are
-deceptive visualizations? An empirical analysis of common distortion
-techniques. CHI 2015. Reported figures, from a research pass that could not be
-independently confirmed here (two hosts failed: an arXiv id that turned out to
-be a physics paper, and an RPI mirror with a broken TLS configuration):
+deceptive visualizations?: an empirical analysis of common distortion
+techniques. CHI '15. 2015:1469-1478. doi 10.1145/2702123.2702608.
 
-- Inverted axis, message reversal. Of 40 shown a normal axis, 39 read the trend
-  correctly; of 38 shown the SAME data with the axis flipped, 7 read it
-  correctly and 30 concluded the opposite. Fisher's exact p < 0.0001.
-- Truncated axis. Deceptive 2.77 against control 1.45 on a 1 to 5 scale,
-  Mann-Whitney U = 1144, p = 0.0003.
+**How the earlier dead ends were cleared.** The two hosts that failed before (an
+arXiv id that was a physics paper, an RPI mirror with a broken TLS
+configuration) were not needed. The last author's own page links an author copy,
+and the ACM DL record is marked FREE ACCESS, so both the preprint and the
+published version were read. The preprint (NYU School of Law Public Law & Legal
+Theory Research Paper No. 15-03, February 2015, SSRN 2566968) was diffed against
+the published PDF: **the body text is identical**, the only differences being
+ACM's copyright boilerplate. So there is no preprint-versus-final discrepancy to
+worry about, and either copy can be cited as the paper.
 
-Why it is worth the verification pass. It would be the deck's first lesson on a
-technique that is VISUAL rather than verbal, which makes it a genuinely
-distinct reasoning move from the framing effect rather than another way of
-saying the same thing was worded differently. Its counts are integers, so
-unlike the framing puzzle it could be authored as raw counts with the rates
-derived, which is this project's preferred form. And the stimuli use invented
-town names, so it carries none of the partisanship risk that ruled out the
-other visualisation candidates.
+**Every figure in the old entry was confirmed, from the tables.**
 
-Shape note: probably needs no new shape. Two groups (normal axis, flipped
-axis), one outcome (read the trend correctly), which is the `rates` shape with
-`strataAreSeparateSamples` unset. The setup would show what the flipped-axis
-readers concluded and the reveal the same data drawn honestly.
+- Inverted axis, message reversal (Table 3, p. 1476). Of **40** shown a normal
+  axis, **39** read the trend correctly and 1 did not. Of **38** shown the same
+  data with the axis inverted, **7** read it correctly and **30** concluded the
+  opposite. Confirmed.
+- **The 38th response, which the old entry flagged as unreconciled: one
+  participant chose "I do not know".** 7 + 30 + 1 = 38 exactly, and 39 + 1 + 0 =
+  40 for the control. Not a loose end but the crux of the lesson, since it says
+  the inverted chart did not confuse people, it converted them.
+- Truncated axis, message exaggeration (Tables 1 and 2, p. 1475). Deceptive
+  **2.77** [95% CI 2.26 to 3.28] against control **1.45** [1.27 to 1.62], on a
+  scale the caption pins as minimum 1, maximum 5. **U = 1144, p = 0.0003**, with
+  Z = 3.36 and r = 0.37. Two details the old entry lacked: the test was
+  **one-tailed**, and the groups were unequal at **43 deceptive against 37
+  control**.
+- Design: **between-subjects**, confirmed in the paper's own words. Crowdsourced
+  on Amazon Mechanical Turk, United States workers with a prior approval rate of
+  99 per cent or better. 250 participants for the exaggeration study and 80 for
+  the reversal study, which is the 330 the Procedure section states.
+- Invented place names: **confirmed**. The stimuli are set in Silvatown and
+  Willowtown, and the inverted-axis chart plotted access to safe drinking water
+  over time. No real country, party or contested science.
+
+**One correction to the old entry.** It said "Fisher's exact p < 0.0001". The
+paper used the **Freeman-Halton extension** of Fisher's exact test, which is the
+generalisation for a table with more than two response categories, and needed it
+precisely because of the third answer option. The p value is as stated.
+
+**Reconciled more than one way, as required.**
+
+1. Both rows of Table 3 sum exactly to their group totals.
+2. Mann-Whitney rank sums: 37 x 31.08 + 43 x 48.60 = 3239.76 against the exact
+   total rank sum N(N+1)/2 = 3240.
+3. U recomputed from the printed mean ranks: 2089.80 - 43x44/2 = 1143.8, which
+   is the printed 1144; and U1 + U2 = 1590.76 against n1 x n2 = 1591.
+4. Effect size: r = Z/sqrt(N) = 3.36/sqrt(80) = 0.376, the printed 0.37.
+5. The Discussion's "between 58.5% and 129.5% bigger than the control condition"
+   independently pins Table 2's pairings: (3.19-1.39)/1.39 = 129.5% for the line
+   chart and (2.71-1.71)/1.71 = 58.5% for the bubble, with the bar pair sitting
+   between at 91.0%. This matters because pdftotext shifts that table's technique
+   column by one row, so the pairing needed a check that did not depend on layout.
+6. The same three checks reproduce the other two techniques' printed U values
+   (1409 for aspect ratio, 1121 for area as quantity), which validates the
+   reading of the tables rather than just of one row.
+
+**TWO ERRATA IN THE PAPER, and the second one is a trap.**
+
+- Table 3 prints the single uncertain response in the inverted-axis group as
+  **"1 (0.02%)"**. 1 of 38 is 2.63 per cent, which is also the only value that
+  makes that row sum to 100 (18.42 + 78.95 + 2.63). A typo. Authoring from the
+  counts sidesteps it, which this project does anyway.
+- **The Discussion (p. 1477) states the result backwards.** It says "the
+  deceptive condition led to 97.5% incorrect responses whereas the control
+  condition led to only 18.4% incorrect responses". Those are the two *correct*
+  percentages, with the conditions swapped and relabelled as errors. Table 3 and
+  the Results prose agree with each other independently, so they are right and
+  that sentence is garbled. **Anyone sourcing this paper from its Discussion
+  gets the lesson exactly inverted**, which is a pleasing hazard for a paper
+  about misreading, and the reason the puzzle's provenance note says so on the
+  record.
+
+**The winnability decision, written down because it is a judgement call.** The
+setup shows one arm only, which in this deck usually makes the hedge correct
+(publication-bias is the precedent). Here it is **wrong**, and deliberately so.
+Participants could answer improved, declined, or "I could not tell". A chart
+that is merely hard produces hedging or a coin flip, so somewhere between a
+third and a half of readers land on the truth by accident. 7 of 38 is far
+*below* chance, and below chance is not what difficulty looks like: it is the
+signature of a chart that is legible and pointing the wrong way. That inference
+is available from the setup alone, so long as the framing names the three
+options, which it does and which a puzzle test now enforces. The reveal still
+does real work rather than restating the setup, because it kills the two rival
+explanations the setup cannot: that the rise was slight, and that these
+particular readers were weak.
+
+Shape note, confirmed in the build: **no new shape needed**. Two groups, one
+outcome, one stratum, `strataAreSeparateSamples` unset, setup filtered to the
+inverted arm with `groupIds` and the reveal showing both. The truncated-axis
+result from the same paper became the lesson's deep-dive example, which is what
+lets the puzzle keep reversal and exaggeration apart as two distinct failures.
 
 ### Two techniques that turned out NOT to be separate lessons
 

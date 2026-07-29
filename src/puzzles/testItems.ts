@@ -3358,6 +3358,150 @@ const items: TestItem[] = [
       en: "Publishing the wording, and what a different wording produced, treats the framing as part of the finding. That is the honest way to report an opinion measurement.",
     },
   },
+
+  // ---- Misleading chart axes ----
+  {
+    id: "mx-injuries-inverted",
+    scenario: {
+      en: "A safety report charts workplace injuries by year, with the vertical axis running from 0 at the top down to 500 at the bottom. The plotted line climbs steadily up the page across five years. A local paper reports that injuries have risen sharply.",
+    },
+    trap: "misleading-axis",
+    explanation: {
+      en: "With zero at the top, a line climbing the page is a count falling towards zero. The paper read the shape of the line and not the direction of the axis, and printed the opposite of what the chart shows.",
+    },
+  },
+  {
+    id: "mx-truncated-scores",
+    scenario: {
+      en: "Two schools' average exam marks are drawn as bars on a vertical axis running from 68 to 72. One bar is more than twice the height of the other, and a campaign leaflet says the first school performs twice as well.",
+    },
+    trap: "misleading-axis",
+    explanation: {
+      en: "The two averages differ by about two marks out of a hundred. Starting the axis at 68 cuts away everything the schools have in common, so the remaining sliver fills the frame. Bar heights are only ratios when the axis starts at zero.",
+    },
+  },
+  {
+    id: "mx-aspect-stretch",
+    scenario: {
+      en: "A company plots monthly revenue on a chart four times taller than it is wide. The line looks close to vertical and the annual report describes explosive growth. Drawn on a square chart, the identical figures rise gently.",
+    },
+    trap: "misleading-axis",
+    explanation: {
+      en: "The same numbers cannot be both explosive and gentle. Steepness is a property of the frame a line is drawn in as much as of the data, so a rate of change read off the slope alone is not a measurement.",
+    },
+  },
+  {
+    id: "mx-no-labels",
+    scenario: {
+      en: "An infographic shows two bars, one clearly taller than the other, above a caption stating that the difference is dramatic. The vertical axis carries no numbers and no label.",
+    },
+    trap: "misleading-axis",
+    explanation: {
+      en: "With no scale the bars say nothing about size: the gap could be one percent or a hundredfold. An unlabelled axis turns an assertion into something drawn to look like evidence.",
+    },
+  },
+  {
+    id: "mx-dual-axis",
+    scenario: {
+      en: "A chart plots ice cream sales against a left-hand axis and library visits against a right-hand one, each scaled so the two lines sit almost on top of each other. The commentary says the two track each other almost perfectly.",
+    },
+    trap: "misleading-axis",
+    explanation: {
+      en: "Two independent axes can be scaled to make almost any pair of series overlap, and rescaling either one pulls the lines apart again. How closely they sit is a choice made by whoever drew the chart, not a finding.",
+    },
+  },
+  {
+    id: "mx-log-unsaid",
+    scenario: {
+      en: "A chart of cases over time uses a vertical axis where each gridline is ten times the one below it. The curve rises as a straight line, and a summary describes growth as steady.",
+    },
+    trap: "misleading-axis",
+    explanation: {
+      en: "On a scale where each step multiplies by ten, a straight line means the count is multiplying at a constant rate, so it is doubling again and again. That is the fastest kind of growth there is, and the summary read the shape as if the axis were an ordinary one.",
+    },
+  },
+  {
+    id: "mx-flattened",
+    scenario: {
+      en: "A regulator draws two regions' contamination readings as bars on an axis running from 0 to 10,000, although both regions sit between 40 and 90. The bars are indistinguishable, and the report concludes there is no meaningful difference between them.",
+    },
+    trap: "misleading-axis",
+    explanation: {
+      en: "One region reads about twice the other, and the chart has flattened that into invisibility by running the axis far past anything in the data. An axis can bury a real difference as easily as it can manufacture a fake one.",
+    },
+  },
+  {
+    id: "mx-satisfaction-zoom",
+    scenario: {
+      en: "A customer satisfaction tracker is charted on a vertical axis running from 44 to 48 percent. The line zigzags violently from the top of the frame to the bottom and back, and a commentary describes wild swings in how customers feel.",
+    },
+    trap: "misleading-axis",
+    explanation: {
+      en: "The whole chart is four points tall, so a movement of a point or so, which is inside the noise of most surveys, crosses the entire frame. The violence is in the axis rather than in the customers.",
+    },
+  },
+  {
+    id: "mx-waiting-times-inverted",
+    scenario: {
+      en: "A hospital dashboard shows average waiting times with the vertical axis running from 120 minutes at the top down to 0 at the bottom. The bars for the newest quarter are the tallest on the chart, and the newsletter reports the longest waits on record.",
+    },
+    trap: "misleading-axis",
+    explanation: {
+      en: "The axis is upside down, so the tallest bar is the shortest wait. The newsletter took height to mean magnitude, which is exactly the reflex this layout defeats.",
+    },
+  },
+  {
+    id: "mx-broken-axis-cropped",
+    scenario: {
+      en: "A chart of quarterly sales has a zigzag break drawn low on the vertical axis, marking a stretch of the scale that has been left out. A slide deck reproduces the chart with the break cropped off the bottom and presents the remaining bars as showing sales tripling.",
+    },
+    trap: "misleading-axis",
+    explanation: {
+      en: "The break was the chart's own warning that its heights are not proportional to its numbers. Cropping it away leaves bars that look like a ratio and are not one.",
+    },
+  },
+
+  // ---- Sound reasoning about axes (more decoys) ----
+  {
+    id: "ok-rank-axis-inverted",
+    scenario: {
+      en: "A league table is charted with position 1 at the top of the vertical axis and position 20 at the bottom, the axis labelled Position, so a line climbing the page is a team climbing the table.",
+    },
+    trap: null,
+    explanation: {
+      en: "The axis runs downwards because that is what the quantity means: first place is the top. The direction is labelled and agrees with the reader's intuition rather than fighting it, so nothing is being reversed.",
+    },
+  },
+  {
+    id: "ok-truncated-declared",
+    scenario: {
+      en: "A chart of body temperature through a day starts its vertical axis at 36 degrees rather than zero, prints the range on the axis, and the text reports the change in degrees rather than describing how tall the line got.",
+    },
+    trap: null,
+    explanation: {
+      en: "A zero baseline would be meaningless for a quantity that never goes near zero, and the claim is made in units rather than read off the height. The axis is doing its job and saying what it did.",
+    },
+  },
+  {
+    id: "ok-log-declared",
+    scenario: {
+      en: "An epidemic curve is drawn on a scale where each gridline is ten times the last, the axis says so in its label, and the accompanying text states that cases are doubling every nine days.",
+    },
+    trap: null,
+    explanation: {
+      en: "The scale is declared and the finding is given as a doubling time, a number the reader can check, rather than inferred from how steep the line looks. That is the right way to use a multiplying axis.",
+    },
+  },
+  {
+    id: "ok-both-axis-versions",
+    scenario: {
+      en: "A report prints the same figures twice, once on an axis starting at zero and once zoomed in on the range the data actually occupies, and says which question each version is there to answer.",
+    },
+    trap: null,
+    explanation: {
+      en: "Both framings are true and they answer different questions, one about the size of the difference and one about its shape. Showing both means the reader is not depending on someone else's choice of scale.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

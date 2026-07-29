@@ -164,6 +164,28 @@ by teaching something that puzzle cannot, most likely that the margin on a
 **difference** is wider than the margin on either number, which is the part
 almost nobody knows.
 
+### 12. Retraction does not undo it
+
+**Status: LEAD.** Promoted out of Tier 3, where it turned up while searching the
+firehose model's component claims. Nothing in the deck is like it.
+
+The **continued influence effect**: people keep using retracted misinformation in
+their reasoning after the retraction. Two reported findings make it a puzzle
+rather than a platitude. Retractions from low-trustworthiness sources are
+**entirely ineffective**, and substantial continued influence persists **even when
+the retraction is designed and rated as highly credible**. So the correction can
+be impeccable and still not work.
+
+Why it fits: the paradigm is a scripted incident with a retraction condition and a
+control, non-partisan by construction, and the outcome is usually a count of
+inferences that still rely on the retracted claim. That is a `rates` shape with
+two arms. It also does something no shipped puzzle does, which is to be about what
+happens **after** the reader has been corrected, and that is uncomfortably close
+to what this whole deck assumes about itself.
+
+Sources to read: *Memory and Cognition* (2021) on retraction source credibility,
+and *Cognition* (2024) on relative source credibility in the CIE.
+
 ---
 
 ## Tier 2: named by a curriculum, still needs a source
@@ -232,13 +254,21 @@ reason to write "no science".
 Basile is sourcing papers for several of these. Entries below marked **OPEN**
 should be treated as awaiting his citations rather than as settled.
 
-**Search state, so the ledger is visible.** Searched: fear appeals, astroturfing,
-gaslighting's redirect, whataboutism, dog whistling, the Big Lie. Of the five that
-had been marked REJECTED without a search, **three have now been searched and all
-three were overturned**. Still unsearched, with the question written out in each
-entry below: **firehose of falsehood**, **wedge issues**, and the Sherif and
-Hovland route under the Overton window. Those three are not rejections. They are
-work not yet done.
+**Search state, so the ledger is visible. All nine have now been searched.**
+
+Of the five originally marked REJECTED without a search, **four were overturned**
+(whataboutism, dog whistling, the Big Lie, firehose of falsehood) and **one
+survived** (wedge issues), which now carries a real reason instead of an invented
+one. Of the four that had been searched or partly searched, fear appeals keeps its
+rejection in narrowed form, astroturfing keeps its hold, gaslighting's redirect
+stands, and the Overton window's second route is now a live lead.
+
+Two entries were promoted out of this section entirely: the Big Lie, which looks
+like it may be the same puzzle as the Overton window, and the **continued
+influence effect**, which the firehose search turned up and which became Tier 1
+item 12. **A section written to close nine questions ended up opening two of the
+best candidates in the file**, which is the argument against writing rejections
+from memory, stated as compactly as it can be.
 
 ### Whataboutism: OPEN. The earlier rejection was wrong
 
@@ -314,21 +344,55 @@ Needs the primary paper: the finding was reached through a *Scientific American*
 account of the experiments and the underlying article has not been identified,
 still less read. Status: **LEAD**, and the highest-priority item in this section.
 
-### Firehose of falsehood: OPEN, searched only as far as the RAND report
+### Firehose of falsehood: SEARCHED, and one of its ingredients looks refuted
 
-The objection to Paul and Matthews (2016) stands on its own terms: it is a
-think-tank perspective paper, not peer-reviewed, and it is about one named state.
-But no search was done for the peer-reviewed work on its component claims, which
-are separable and testable: high volume, multiple channels, and **the absence of
-any commitment to consistency**. That third one is the distinctive claim and the
-one most worth a source, because it predicts that self-contradiction does not cost
-a communicator credibility, which is counterintuitive enough to be a puzzle.
+The objection to Paul and Matthews (2016) stands on its own terms: think-tank
+perspective paper, not peer-reviewed, about one named state. The component claims
+are separable and testable, and the search turned up three things, one of which
+is better than anything the model itself asserts.
 
-### Wedge issues: OPEN, not searched
+**The multi-channel claim appears to be false.** Foster and colleagues found that
+**repetition, not number of sources**, increases susceptibility to misinformation
+and confidence in eyewitness accuracy, and a later meta-analysis concluded that
+source variability "does not increase eyewitness suggestibility independently of
+repetition". If that holds, the firehose's "many channels" ingredient contributes
+nothing beyond saying the same thing more often. **A widely repeated model of
+manipulation with a component that does not survive testing is a very good
+Confoundle subject**, and it is about method rather than about any country.
 
-Written up as rejected. Nothing was looked at. The historical question was never
-asked, and it is the one that matters: nineteenth-century cleavages have the same
-structure and no living partisans.
+**Repetition buys the speaker, not just the claim.** Mattavelli, Brambilla and
+Unkelbach (2025), "Repeating Statements Increases Source Credibility". Repetition
+raised perceived truth *and* the source's credibility, and the credibility gain
+transferred to **novel** statements from that source. That is separable from
+shipped `illusory-truth`, which is about the repeated statement itself.
+
+**And the search surfaced a candidate the deck has nothing like: the continued
+influence effect.** Retracted misinformation keeps influencing reasoning after the
+retraction. Retractions from low-trustworthiness sources are reported as *entirely
+ineffective*, and substantial continued influence persists even when the
+retraction is designed and rated as highly credible. Sources include *Memory and
+Cognition* (2021) and *Cognition* (2024). **This is promoted out of Tier 3**: see
+Tier 1 item 12.
+
+### Wedge issues: SEARCHED, and this one really is thin
+
+The historical question was finally asked and it has an answer, just not a useful
+one. Seo (2011), "Wedge-issue dynamics and party position shifts", *Party
+Politics*, studies the Chinese exclusion issue of 1879 to 1882 as a
+nineteenth-century wedge, so historical treatments exist and the actors are long
+dead. Two problems remain, and they are the honest reasons rather than the
+made-up one.
+
+- **Shape.** It is congressional roll-call analysis of party position change, not
+  an experiment, and no controlled issue-salience manipulation turned up at all.
+  There is no dataset here that can be shown two ways.
+- **Neutral ground.** Chinese exclusion is racially charged even at 150 years'
+  distance, so the "extinct parties" trick that rescued gerrymandering does not
+  rescue this.
+
+Status: **REJECTED, now legitimately**, failing shape primarily and neutral ground
+secondarily. Reopen if an experiment surfaces that manipulates which of two issues
+is made salient and measures a choice with counts.
 
 ### Overton window: OPEN, and possibly the same puzzle as the Big Lie
 
@@ -338,9 +402,17 @@ shift on political claims, which is what the Overton window asserts and what
 `anchoring` demonstrates only on numbers. If one paper can carry both, build one
 puzzle, not two.
 
-**Still unsearched**: whether Sherif and Hovland's assimilation and contrast
-experiments report counts rather than scale means. Both authors are long dead and
-the stimuli are non-political, so if counts exist this is a clean second route.
+**Searched, and the subject is better than expected.** Sherif and Hovland,
+*Social Judgment: Assimilation and Contrast Effects in Communication and Attitude
+Change*, Yale University Press, 1961. The experiments used attitudes to the
+**prohibition of alcohol**, with subjects drawn from a dry state where it was
+still a live issue. Prohibition is the rare political topic with no living
+partisans at all, so this passes the neutral-ground test outright, better than
+1812 gerrymandering did.
+
+The obstacle is access, not politics: it is a book rather than an article, and the
+search did not reach the tables, so whether it reports **counts** rather than
+scale means is unknown. Status: **LEAD**, worth the interlibrary request.
 
 ### Gaslighting: the redirect stands, the rejection under it was not searched
 

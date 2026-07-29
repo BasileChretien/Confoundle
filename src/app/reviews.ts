@@ -78,11 +78,22 @@ export function createReviews(
      * Build one review session from whatever is due. Each review scores one
      * skill, with a scenario drawn fresh from the bank: a trap for that skill,
      * or a sound decoy, so the honest answer is not always "trap".
-     * Deterministic in the seed so a session can be replayed and tested.
+     *
+     * The clock is mixed into the seed, and that is load bearing rather than
+     * decorative. The caller's seed is a counter that starts at zero on every
+     * page load, so on its own it made each fresh visit replay the same draw:
+     * hash(1) is 0.2468, which is below SOUND_SHARE, so the first review of a
+     * session was ALWAYS a sound decoy and always the same one. A learner can
+     * notice that and answer the first card without reading it, which is
+     * exactly the free win the sound decoys exist to prevent. Practice already
+     * mixed in the clock for the same reason.
+     *
+     * Still deterministic in (seed, now), so a session can be replayed and
+     * tested by passing an explicit `now`.
      */
     async nextSession(seed, now = Date.now()) {
       const due = dueSkills(await store.load(), now);
-      return buildSession(due, [...bank], seed);
+      return buildSession(due, [...bank], seed + now);
     },
 
     /**

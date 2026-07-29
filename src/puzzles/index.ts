@@ -25,6 +25,7 @@ import { framingEffect } from "./data/framing-effect";
 import { regressionMean } from "./data/regression-mean";
 import { effectModification } from "./data/effect-modification";
 import { misleadingAxis } from "./data/misleading-axis";
+import { meanVsMedian } from "./data/mean-vs-median";
 
 /**
  * The puzzle registry. Adding a puzzle = import its data file and add it to
@@ -58,6 +59,7 @@ const rawPuzzles: unknown[] = [
   ecologicalFallacy,
   framingEffect,
   misleadingAxis,
+  meanVsMedian,
 ];
 
 export const puzzles: PuzzleType[] = rawPuzzles.map((p, i) => {

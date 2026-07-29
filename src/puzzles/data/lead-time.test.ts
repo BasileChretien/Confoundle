@@ -41,4 +41,20 @@ describe("lead-time seed data", () => {
     expect(onsets.size).toBe(1); // the disease starts when it starts
     expect(found.size).toBe(2); // screening is the only thing that moved
   });
+
+  it("refuses to teach that screening is useless, on the share card too", () => {
+    // The lesson beat has always carried this caveat. The SHARE CARD did not,
+    // and it is the one artefact built to travel with none of the surrounding
+    // context, so a reader meeting only the card could reasonably conclude that
+    // screening is a con. For a health behaviour that is a real harm, not an
+    // inelegance. Guarded here because prose is easy to tighten and lose.
+    expect(leadTime.share.explainer.en).toMatch(/genuinely do cut deaths/);
+    expect(leadTime.lesson.body?.en).toContain("does not mean early detection is worthless");
+    // And the counterexample where screening demonstrably worked must stay in
+    // the deep dive, since it is what makes the caveat evidence, not a hedge.
+    const worked = leadTime.lesson.examples?.some((e) =>
+      /Minnesota|fecal occult blood/i.test(e.provenance.source),
+    );
+    expect(worked).toBe(true);
+  });
 });

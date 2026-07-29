@@ -16,6 +16,8 @@ import { InteractionView } from "./InteractionView";
 import { EffectView } from "./EffectView";
 import { EcologicalView } from "./EcologicalView";
 import { FramingView } from "./FramingView";
+import { DistributionView } from "./DistributionView";
+import { restrictDistribution } from "./distribution";
 
 /**
  * The generic seam: dispatch on the data's `type` to the matching renderer.
@@ -79,6 +81,15 @@ export function DataViewRenderer({
     case "framing":
       return view.kind === "onewording" || view.kind === "bothwordings" ? (
         <FramingView data={data} kind={view.kind} />
+      ) : null;
+    case "distribution":
+      // Like rates, this shape can draw a slice: the setup quotes one published
+      // mean and the reveal sets every other journal beside it.
+      return view.kind === "average" || view.kind === "spread" ? (
+        <DistributionView
+          data={restrictDistribution(data, { groupIds: view.groupIds })}
+          kind={view.kind}
+        />
       ) : null;
     default:
       return null;
@@ -156,6 +167,10 @@ export function scopeLabel(kind: DataViewKind): string {
       return "As it was put to them";
     case "bothwordings":
       return "Both wordings";
+    case "average":
+      return "The average on its own";
+    case "spread":
+      return "Where that average sits";
     default:
       return "";
   }

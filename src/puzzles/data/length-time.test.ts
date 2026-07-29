@@ -101,4 +101,18 @@ describe("length-time seed data", () => {
     expect(lengthTime.setup.initialView.kind).not.toBe("aggregate");
     expect(lengthTime.reveal.view.kind).not.toBe("aggregate");
   });
+
+  it("refuses to teach that screening is useless, on the share card too", () => {
+    // This is the more negative of the two screening puzzles and it used to
+    // carry no counterweight at all: lesson, deep dive and both examples were
+    // negative, and so was the share card. Length-time bias says you cannot
+    // infer benefit by comparing screen-detected cases with symptom-detected
+    // ones, because those two groups were never the same disease. It does NOT
+    // say there is no benefit: where earlier-stage disease is genuinely more
+    // treatable, stage shift is a real mechanism and trials have shown it.
+    // Guarded because the share card travels with no surrounding context.
+    expect(lengthTime.share.explainer.en).toMatch(/does save lives|cannot work/);
+    expect(lengthTime.lesson.body?.en).toMatch(/genuinely more treatable/);
+    expect(lengthTime.lesson.howItWorks?.en).toMatch(/pass that test exist/);
+  });
 });

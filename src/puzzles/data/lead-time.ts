@@ -152,7 +152,7 @@ export const leadTime: Puzzle = {
   share: {
     title: { en: "Lead-time bias, a reasoning trap." },
     explainer: {
-      en: "Survival is counted from the day you are diagnosed. So a test that finds a disease earlier automatically makes survival look longer, even if it changes nothing about when the disease kills you. You simply spend more of your life as a patient. That is why a screening programme can raise five-year survival dramatically while exactly the same number of people die. The number that cannot be gamed is deaths in the whole population, not survival among the diagnosed.",
+      en: "Survival is counted from the day you are diagnosed. So a test that finds a disease earlier automatically makes survival look longer, even if it changes nothing about when the disease kills you. You simply spend more of your life as a patient. That is why a screening programme can raise five-year survival dramatically while exactly the same number of people die. None of which means screening is useless: some programmes genuinely do cut deaths, and this is exactly how you tell which ones. Count deaths in everyone invited, not survival among the diagnosed.",
     },
     captions: {
       competitive: { en: "Caught it. Bet you can't." },

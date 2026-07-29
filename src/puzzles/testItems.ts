@@ -3502,6 +3502,140 @@ const items: TestItem[] = [
       en: "Both framings are true and they answer different questions, one about the size of the difference and one about its shape. Showing both means the reader is not depending on someone else's choice of scale.",
     },
   },
+
+  // ---- Mean versus median ----
+  {
+    id: "mm-startup-salary",
+    scenario: {
+      en: "A startup with 30 staff advertises an average salary of 95,000. The founder and two executives take home over a million between them. A candidate is told they can expect to earn about the average.",
+    },
+    trap: "mean-vs-median",
+    explanation: {
+      en: "Three very large salaries pull the average far above what the other 27 people earn. The candidate should ask what the middle employee is paid, because that is the figure their own offer will sit near.",
+    },
+  },
+  {
+    id: "mm-waiting-time",
+    scenario: {
+      en: "A clinic reports a mean waiting time of 40 minutes. Most patients are seen within 15 minutes, but a handful wait several hours when an emergency comes in. A manager tells patients to expect a 40 minute wait.",
+    },
+    trap: "mean-vs-median",
+    explanation: {
+      en: "Waiting time has a floor of zero and no ceiling, so the rare multi-hour waits drag the mean well above the typical experience. The median wait describes what a patient should actually expect.",
+    },
+  },
+  {
+    id: "mm-house-prices",
+    scenario: {
+      en: "A district reports that the average house sold last year went for 780,000. Reporting notes that a small number of large estates changed hands. A council paper uses the 780,000 figure to argue ordinary families can afford to buy there.",
+    },
+    trap: "mean-vs-median",
+    explanation: {
+      en: "A few very expensive sales lift the mean without changing what an ordinary house costs. Housing affordability is normally reported as a median precisely because sale prices have such a long upper tail.",
+    },
+  },
+  {
+    id: "mm-charity-donation",
+    scenario: {
+      en: "A charity announces that its supporters give an average of 240 a year and asks members whether they are giving their fair share. One donor that year gave several million.",
+    },
+    trap: "mean-vs-median",
+    explanation: {
+      en: "A single enormous gift can lift the mean of a large group on its own. Asking ordinary members to measure themselves against that figure compares them with a number no ordinary member produced.",
+    },
+  },
+  {
+    id: "mm-hospital-stay",
+    scenario: {
+      en: "A ward reports a mean length of stay of 6.2 days and plans its bed numbers on the assumption that a typical patient occupies a bed for about six days. Most patients go home on day two or three; a few stay for months.",
+    },
+    trap: "mean-vs-median",
+    explanation: {
+      en: "The long-stay patients pull the mean upward while the typical patient leaves far sooner. Planning around the mean will misjudge both how fast beds turn over and how many are locked up long term.",
+    },
+  },
+  {
+    id: "mm-app-revenue",
+    scenario: {
+      en: "A marketplace tells prospective sellers that the average shop on the platform earns 3,400 a month. A handful of very large shops account for most of the platform's sales volume.",
+    },
+    trap: "mean-vs-median",
+    explanation: {
+      en: "With a few dominant shops, the mean describes almost none of the sellers. A prospective seller wants the middle shop's earnings, and would also want to know how many shops earn nothing at all.",
+    },
+  },
+  {
+    id: "mm-class-scores",
+    scenario: {
+      en: "A tutor reports that students improved by an average of 18 points. Of the 20 students, 17 gained about 4 points and 3 gained more than 90 each after starting from almost zero.",
+    },
+    trap: "mean-vs-median",
+    explanation: {
+      en: "The three large gains carry the average. Reporting 18 points as the typical improvement describes none of the 17 students who actually make up the bulk of the class.",
+    },
+  },
+  {
+    id: "mm-response-time",
+    scenario: {
+      en: "A support team advertises a mean first-response time of 2 hours. Almost all tickets are answered within 20 minutes, while a small number sit unanswered for days. The team treats the 2 hour figure as its service standard.",
+    },
+    trap: "mean-vs-median",
+    explanation: {
+      en: "The stalled tickets are what produce the 2 hour mean, and they are exactly the cases the standard should be about. A median plus a worst-case percentile would describe both the usual case and the failures.",
+    },
+  },
+  {
+    id: "mm-family-wealth",
+    scenario: {
+      en: "A report states that average household wealth in a country is 480,000 and concludes that most households have substantial savings to fall back on in a downturn.",
+    },
+    trap: "mean-vs-median",
+    explanation: {
+      en: "Wealth is among the most lopsided quantities there is, with a floor at zero and an extremely long tail, so the mean sits far above the middle household. Nothing about typical savings follows from it.",
+    },
+  },
+  {
+    id: "mm-average-citations",
+    scenario: {
+      en: "A department evaluates researchers by the average citations of the journals they publish in, treating a paper in a high-average journal as a stronger paper than one in a low-average journal.",
+    },
+    trap: "mean-vs-median",
+    explanation: {
+      en: "A journal's average is dragged up by a small number of very heavily cited papers, so most of its papers fall below it. The average of the container says remarkably little about any individual item in it.",
+    },
+  },
+
+  // ---- Sound reasoning about averages (more decoys) ----
+  {
+    id: "ok-median-reported",
+    scenario: {
+      en: "A statistics agency reports median household income and states the mean alongside it, noting that the gap between the two reflects how unevenly income is spread.",
+    },
+    trap: null,
+    explanation: {
+      en: "Both figures are given and the gap between them is explained rather than hidden. That is the standard honest way to report a quantity with a long tail.",
+    },
+  },
+  {
+    id: "ok-mean-symmetric",
+    scenario: {
+      en: "A factory reports the mean diameter of a machined part as 20.00 mm, with measurements clustered tightly and symmetrically either side of that value.",
+    },
+    trap: null,
+    explanation: {
+      en: "For a symmetric, tightly clustered quantity the mean and the median coincide, and the mean is the right summary. The problem only arises when the distribution is lopsided.",
+    },
+  },
+  {
+    id: "ok-mean-for-total",
+    scenario: {
+      en: "A utility multiplies the mean household consumption by the number of households to work out how much electricity it must generate in total.",
+    },
+    trap: null,
+    explanation: {
+      en: "The mean is exactly the right tool here, because a total is what it is built from. It would be the wrong tool for describing a typical household, which is a different question.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

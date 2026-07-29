@@ -18,6 +18,8 @@ import { EcologicalView } from "./EcologicalView";
 import { FramingView } from "./FramingView";
 import { DistributionView } from "./DistributionView";
 import { restrictDistribution } from "./distribution";
+import { DoseView } from "./DoseView";
+import { restrictDose } from "./dose";
 
 /**
  * The generic seam: dispatch on the data's `type` to the matching renderer.
@@ -88,6 +90,15 @@ export function DataViewRenderer({
       return view.kind === "average" || view.kind === "spread" ? (
         <DistributionView
           data={restrictDistribution(data, { groupIds: view.groupIds })}
+          kind={view.kind}
+        />
+      ) : null;
+    case "dose":
+      // Also draws a slice: the setup quotes as far along the curve as it wants
+      // the reader to see, and the reveal carries on to the end.
+      return view.kind === "partial" || view.kind === "curve" ? (
+        <DoseView
+          data={restrictDose(data, { groupIds: view.groupIds })}
           kind={view.kind}
         />
       ) : null;
@@ -171,6 +182,10 @@ export function scopeLabel(kind: DataViewKind): string {
       return "The average on its own";
     case "spread":
       return "Where that average sits";
+    case "partial":
+      return "As far as it goes";
+    case "curve":
+      return "The whole curve";
     default:
       return "";
   }

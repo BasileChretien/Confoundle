@@ -609,6 +609,116 @@ const DistributionData = z
   });
 export type DistributionData = z.infer<typeof DistributionData>;
 
+/**
+ * One outcome measured at several doses of the same thing.
+ *
+ * Needed because the lesson is the SHAPE of a curve rather than the size of a
+ * gap, and no existing shape can carry a shape. Every other shape compares two
+ * or three quantities; this one asks what happens between them. The setup can
+ * show the two ends, which read as a tidy steady climb, and the reveal adds the
+ * points in between, where the climb turns out to have been over almost
+ * immediately. Same published numbers, and the reveal is the middle of them.
+ *
+ * `dose` is the real quantity, not a position in a list, and the renderer must
+ * place points in proportion to it. Spacing doses evenly because they arrive
+ * evenly in the array would stretch the gap between 0 and 1 to the same width as
+ * the gap between 9 and 27, which is precisely the distortion the
+ * `misleading-axis` puzzle exists to teach. A test pins that.
+ *
+ * Authored as PUBLISHED MEANS on a stated scale, never as counts, in the same
+ * deliberate spirit as `framing` and `distribution`: the source reports rating
+ * means, and inventing the counts behind them would be inventing data.
+ */
+export const DoseStep = z.object({
+  id: z.string().min(1),
+  label: LocalizedText, // "seen 27 times"
+  short: LocalizedText.optional(),
+  /** How much of the thing, e.g. how many prior exposures. */
+  dose: z.number().nonnegative(),
+  /** The published mean outcome at this dose. */
+  mean: z.number(),
+  /** As printed, shown so the reader can see how solid each point is. */
+  sd: z.number().nonnegative().optional(),
+});
+export type DoseStep = z.infer<typeof DoseStep>;
+
+const DoseData = z
+  .object({
+    type: z.literal("dose"),
+    label: LocalizedText, // figure title
+    /** Names the horizontal quantity, e.g. "times seen a week earlier". */
+    doseLabel: LocalizedText,
+    /** Names the vertical one, e.g. "average rating that it is true". */
+    outcomeLabel: LocalizedText,
+    scaleMin: z.number(),
+    scaleMax: z.number(),
+    /** How much evidence sits behind it, e.g. "57 people". */
+    sampleLabel: LocalizedText,
+    /** Says on the figure that these are published means, not counts. */
+    meansNote: LocalizedText,
+    steps: z.array(DoseStep).min(3),
+  })
+  .superRefine((d, ctx) => {
+    if (!(d.scaleMin < d.scaleMax)) {
+      ctx.addIssue({
+        code: "custom",
+        path: ["scaleMax"],
+        message: `scaleMax (${d.scaleMax}) must exceed scaleMin (${d.scaleMin})`,
+      });
+    }
+    // The first step is the untreated baseline; without it there is no gain to
+    // take a share of, and the reveal has nothing to measure against.
+    if (d.steps[0]?.dose !== 0) {
+      ctx.addIssue({
+        code: "custom",
+        path: ["steps", 0, "dose"],
+        message: "the first step must be the zero-dose baseline",
+      });
+    }
+    const seen = new Set<number>();
+    d.steps.forEach((s, i) => {
+      if (seen.has(s.dose)) {
+        ctx.addIssue({
+          code: "custom",
+          path: ["steps", i, "dose"],
+          message: `duplicate dose ${s.dose}`,
+        });
+      }
+      seen.add(s.dose);
+      if (i > 0 && s.dose <= d.steps[i - 1].dose) {
+        ctx.addIssue({
+          code: "custom",
+          path: ["steps", i, "dose"],
+          message: `doses must ascend; ${s.dose} follows ${d.steps[i - 1].dose}`,
+        });
+      }
+      if (s.mean < d.scaleMin || s.mean > d.scaleMax) {
+        ctx.addIssue({
+          code: "custom",
+          path: ["steps", i, "mean"],
+          message: `mean (${s.mean}) falls outside the scale (${d.scaleMin} to ${d.scaleMax})`,
+        });
+      }
+    });
+    // The puzzle only exists when the curve front-loads. If the first step ever
+    // stopped carrying most of the climb, the reveal would show an ordinary
+    // straight line and the lesson would be false.
+    const first = d.steps[0];
+    const last = d.steps[d.steps.length - 1];
+    const total = last.mean - first.mean;
+    if (total > 0) {
+      const share = (d.steps[1].mean - first.mean) / total;
+      if (share < 0.4) {
+        ctx.addIssue({
+          code: "custom",
+          path: ["steps", 1, "mean"],
+          message: `the first step carries only ${Math.round(share * 100)} per cent of the climb, so there is no front-loading to reveal`,
+        });
+      }
+    }
+  });
+export type DoseData = z.infer<typeof DoseData>;
+
 /** Discriminated by `type`. Add new members here to support new data shapes. */
 export const PuzzleData = z.discriminatedUnion("type", [
   RatesData,
@@ -624,6 +734,7 @@ export const PuzzleData = z.discriminatedUnion("type", [
   EcologicalData,
   FramingData,
   DistributionData,
+  DoseData,
 ]);
 export type PuzzleData = z.infer<typeof PuzzleData>;
 
@@ -672,6 +783,8 @@ export const DataView = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("bothwordings"), ...viewFields }),
   z.object({ kind: z.literal("average"), ...viewFields }),
   z.object({ kind: z.literal("spread"), ...viewFields }),
+  z.object({ kind: z.literal("partial"), ...viewFields }),
+  z.object({ kind: z.literal("curve"), ...viewFields }),
 ]);
 export type DataView = z.infer<typeof DataView>;
 export type DataViewKind = DataView["kind"];

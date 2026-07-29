@@ -26,7 +26,6 @@ describe("what the chooser is allowed to offer", () => {
     // advertised. Each flips on its own the moment a lesson claims it, which is
     // exactly what happened to media and psychology when the framing puzzle
     // landed: this assertion used to name them and had to be updated.
-    expect(offered).not.toContain("politics");
     expect(offered).not.toContain("economics");
     // ...while the areas the deck really covers are offered.
     expect(offered).toContain("everyday");
@@ -34,6 +33,12 @@ describe("what the chooser is allowed to offer", () => {
     // The first lesson outside medicine opened these two up.
     expect(offered).toContain("media");
     expect(offered).toContain("psychology");
+    // ...and the 1812 gerrymander opened politics and history, exactly as this
+    // assertion is designed to force. The lesson is deliberately built on two
+    // parties that have been extinct for two centuries, so offering "politics"
+    // as an interest does not mean offering anybody's current politics.
+    expect(offered).toContain("politics");
+    expect(offered).toContain("history");
   });
 
   it("offers them in the canonical order, not registry order", () => {
@@ -70,7 +75,10 @@ describe("keeping a stored selection honest", () => {
   });
 
   it("drops a tag that has lost its last puzzle", () => {
-    expect(pruneInterests(["politics"], puzzles)).toEqual([]);
+    // Uses a tag no puzzle carries. This used to be "politics", until the 1812
+    // gerrymander claimed it; pick a fresh unclaimed tag if this ever fails
+    // rather than weakening the assertion.
+    expect(pruneInterests(["economics"], puzzles)).toEqual([]);
   });
 });
 

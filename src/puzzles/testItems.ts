@@ -3904,6 +3904,140 @@ const items: TestItem[] = [
       en: "Testing whether the answer survives a different starting point is exactly how you find out whether you were reasoning or decorating an anchor. The conclusion here does not depend on where it began.",
     },
   },
+
+  // ---- Gerrymandering ----
+  {
+    id: "gm-seats-vs-votes",
+    scenario: {
+      en: "A party wins 48 percent of the votes cast across a region and takes 70 percent of the seats. The party's chairman says the result shows the public clearly preferred them.",
+    },
+    trap: "gerrymandering",
+    explanation: {
+      en: "Fewer than half the voters chose them, so the seat count is a fact about how the boundaries gathered votes rather than about what the public preferred. Seats and votes are two different countings.",
+    },
+  },
+  {
+    id: "gm-who-drew",
+    scenario: {
+      en: "Boundaries for the next election are drawn by a committee controlled by one of the parties contesting it. That party then outperforms its vote share, and a spokesman calls the outcome a neutral consequence of geography.",
+    },
+    trap: "gerrymandering",
+    explanation: {
+      en: "Geography may well matter, but it cannot be assumed when the people who drew the lines had a stake in the result. The way to separate the two is to compare the enacted map against many maps drawn without a stake.",
+    },
+  },
+  {
+    id: "gm-shape-proof",
+    scenario: {
+      en: "A commentator points to a district with a strange snaking outline and says its shape proves the map was manipulated.",
+    },
+    trap: "gerrymandering",
+    explanation: {
+      en: "Shape is a weak clue in both directions: an odd outline can follow a river or a coastline, and a tidy rectangle can split a community deliberately. What settles it is how the map performs against alternatives, not how it looks.",
+    },
+  },
+  {
+    id: "gm-sales-regions",
+    scenario: {
+      en: "A manager redraws the sales regions, then reports that his own team now leads on the share of regions hitting target, even though total sales per person are unchanged.",
+    },
+    trap: "gerrymandering",
+    explanation: {
+      en: "The underlying performance did not move; only the boundaries the performance is counted inside did. Whenever results are measured within units somebody chose, the choice of unit is part of the result.",
+    },
+  },
+  {
+    id: "gm-packed-district",
+    scenario: {
+      en: "One district returns a candidate with 91 percent of its vote while six neighbouring districts are lost by two or three points each. A report describes the 91 percent as a stronghold and evidence of deep support.",
+    },
+    trap: "gerrymandering",
+    explanation: {
+      en: "A 91 percent result means tens of thousands of votes elected exactly one representative, while the narrow losses next door elected none. That pattern is the signature of packing, and it converts real support into very few seats.",
+    },
+  },
+  {
+    id: "gm-school-catchment",
+    scenario: {
+      en: "A council redraws school catchment boundaries and afterwards reports that the proportion of schools meeting the intake target has improved, with no change in the number of pupils or places.",
+    },
+    trap: "gerrymandering",
+    explanation: {
+      en: "Nothing about the pupils or the schools changed, so the improvement is entirely in where the lines were put. This is the same move as an electoral gerrymander, applied to catchments.",
+    },
+  },
+  {
+    id: "gm-both-sides",
+    scenario: {
+      en: "A researcher finds that in the states where one party controlled redistricting, its seat share exceeded its vote share, and concludes that this party is uniquely willing to manipulate boundaries.",
+    },
+    trap: "gerrymandering",
+    explanation: {
+      en: "The comparison needed is against states where the other party controlled the process, not against nothing. Without it, the finding is about who held the pen in the sample examined rather than about any party's character.",
+    },
+  },
+  {
+    id: "gm-efficiency",
+    scenario: {
+      en: "Asked whether a new map is fair, an official replies that every district contains almost exactly the same number of people, so the map cannot favour anyone.",
+    },
+    trap: "gerrymandering",
+    explanation: {
+      en: "Equal population is necessary and nowhere near sufficient. Maps with perfectly equal districts can produce almost any seat outcome, because what matters is which voters are grouped together, not how many.",
+    },
+  },
+  {
+    id: "gm-hospital-trusts",
+    scenario: {
+      en: "A regulator reorganises hospitals into new trusts and then reports that fewer trusts are now failing its standard, using the same underlying hospital-level data as before.",
+    },
+    trap: "gerrymandering",
+    explanation: {
+      en: "The hospitals performed the same before and after; only the groupings they are judged in changed. Counting failures at the level of a boundary somebody redrew measures the redrawing as much as the performance.",
+    },
+  },
+  {
+    id: "gm-one-election",
+    scenario: {
+      en: "A single election produces a large gap between one party's vote share and its seat share, and an analyst treats this as proof that the map was drawn to produce that gap.",
+    },
+    trap: "gerrymandering",
+    explanation: {
+      en: "One election cannot separate the map from the geography, since supporters of a party may genuinely be concentrated in cities whoever draws the lines. Establishing intent needs the same votes retallied on many alternative maps.",
+    },
+  },
+
+  // ---- Sound reasoning about boundaries (more decoys) ----
+  {
+    id: "ok-ensemble-comparison",
+    scenario: {
+      en: "Before judging a district map, a team generates thousands of alternative maps by computer under the jurisdiction's own stated rules, retallies the same real votes on each, and reports where the enacted map falls in that distribution.",
+    },
+    trap: null,
+    explanation: {
+      en: "This is the method designed for the question: it holds the votes and the rules fixed and varies only the boundaries, so an unusual result cannot be explained away by geography. It is also blind to which party drew the map.",
+    },
+  },
+  {
+    id: "ok-independent-commission",
+    scenario: {
+      en: "Boundaries are drawn by a commission whose members are barred from standing in the elections concerned and who are given the population and geography data without party registration or past results.",
+    },
+    trap: null,
+    explanation: {
+      en: "The people drawing the lines have no stake in the outcome and lack the information needed to favour anyone even if they wished to. That is a process designed against the problem rather than a claim of good intentions.",
+    },
+  },
+  {
+    id: "ok-votes-reported",
+    scenario: {
+      en: "An election report gives both the seat totals and the vote totals for each party side by side, and notes the size of the gap between them without asserting a cause.",
+    },
+    trap: null,
+    explanation: {
+      en: "Publishing both countings and declining to explain the gap without evidence is exactly right. The gap is real and worth showing; attributing it to the map would need the comparison this report does not claim to have made.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

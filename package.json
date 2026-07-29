@@ -17,7 +17,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "gen:icons": "node scripts/gen-icons.mjs",
-    "deploy": "tsc && vite build && npx -y wrangler pages deploy dist --project-name confoundle"
+    "deploy": "tsc && vite build && npx -y wrangler pages deploy dist --project-name confoundle",
+    "deploy:reminders": "tsc && npx -y wrangler deploy -c wrangler.reminders.toml"
   },
   "dependencies": {
     "@fontsource-variable/fraunces": "^5.3.0",

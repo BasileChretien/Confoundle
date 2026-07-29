@@ -6,21 +6,29 @@ import type { LocalizedText } from "../puzzles/schema";
  * locales are corrected on feedback. Anything missing falls back to English.
  */
 export const UI: Record<string, LocalizedText> = {
-  // An account is optional and buys exactly one thing, so the footer says that
+  // Reworded a second time, and for the same reason as the first. It used to
+  // say "no accounts, no tracking", which stopped being true the day sign-in
+  // shipped. It then said "No tracking", which stops being strictly true the
+  // moment the Cloudflare Web Analytics beacon is switched on: that beacon is
+  // cookieless and holds no visitor identifier, but it is still a request to a
+  // third party on every page. What has not changed, and is what a reader
+  // actually wants promised, is that nothing here is sold, profiled or used to
+  // follow anybody. A promise a project has outgrown is worse than no promise:
+  // it teaches people to discount the ones that still hold.
   // rather than the old "no accounts, no tracking", which stopped being true
   // the day sign-in shipped. A promise a project has outgrown is worse than no
   // promise: it teaches people to discount the ones that still hold.
   footer: {
-    en: "No tracking. An account only carries your reviews",
-    fr: "Aucun suivi. Un compte ne transporte que vos révisions",
-    es: "Sin rastreo. Una cuenta solo lleva tus repasos",
-    pt: "Sem rastreamento. Uma conta só carrega as suas revisões",
-    ja: "追跡なし。アカウントは復習だけを引き継ぎます",
-    zh: "无追踪。账户只承载你的复习进度",
-    ru: "Без слежки. Аккаунт хранит только ваши повторения",
-    hi: "कोई ट्रैकिंग नहीं। खाता केवल आपके रिवीज़न रखता है",
-    bn: "কোনো ট্র্যাকিং নেই। অ্যাকাউন্ট শুধু আপনার পুনরাবৃত্তি বহন করে",
-    ar: "بلا تتبّع. الحساب يحمل مراجعاتك فقط",
+    en: "No ads, no profiles. An account only carries your reviews",
+    fr: "Pas de publicité, pas de profilage. Un compte ne transporte que vos révisions",
+    es: "Sin anuncios, sin perfiles. Una cuenta solo lleva tus repasos",
+    pt: "Sem anúncios, sem perfis. Uma conta só carrega as suas revisões",
+    ja: "広告なし、プロファイリングなし。アカウントは復習だけを引き継ぎます",
+    zh: "无广告，无用户画像。账户只承载你的复习进度",
+    ru: "Без рекламы и профилирования. Аккаунт хранит только ваши повторения",
+    hi: "कोई विज्ञापन नहीं, कोई प्रोफ़ाइल नहीं। खाता केवल आपके रिवीज़न रखता है",
+    bn: "কোনো বিজ্ঞাপন নেই, কোনো প্রোফাইল নেই। অ্যাকাউন্ট শুধু আপনার পুনরাবৃত্তি বহন করে",
+    ar: "بلا إعلانات ولا ملفات تعريف. الحساب يحمل مراجعاتك فقط",
   },
   // The header eyebrow. Confoundle stopped being a one-a-day game when the
   // whole set was opened up, so this replaces "Daily" rather than sitting
@@ -773,16 +781,16 @@ export const UI: Record<string, LocalizedText> = {
     ar: "مجاني للأفراد، وسيبقى كذلك دائمًا.",
   },
   aboutWhyPrivate: {
-    en: "No ads and no tracking. Your answers, streaks and scores never leave your device.",
-    fr: "Pas de publicité, pas de suivi. Vos réponses, séries et scores ne quittent jamais votre appareil.",
-    es: "Sin anuncios y sin rastreo. Tus respuestas, rachas y puntuaciones nunca salen de tu dispositivo.",
-    pt: "Sem anúncios e sem rastreamento. Suas respostas, sequências e pontuações nunca saem do seu dispositivo.",
-    ja: "広告も追跡もありません。あなたの回答、連続記録、スコアは端末の外に出ません。",
-    zh: "无广告，无追踪。你的答案、连续天数和分数从不离开你的设备。",
-    ru: "Никакой рекламы и слежки. Ваши ответы, серии и результаты никогда не покидают устройство.",
-    hi: "न विज्ञापन, न ट्रैकिंग। आपके जवाब, लगातार दिन और स्कोर कभी आपकी डिवाइस से बाहर नहीं जाते।",
-    bn: "কোনো বিজ্ঞাপন নেই, কোনো ট্র্যাকিং নেই। আপনার উত্তর, ধারাবাহিক ও স্কোর কখনও আপনার ডিভাইস ছেড়ে যায় না।",
-    ar: "بلا إعلانات وبلا تتبّع. إجاباتك وسلاسلك ونتائجك لا تغادر جهازك أبدًا.",
+    en: "No ads and no profiles. Your answers, streaks and scores never leave your device.",
+    fr: "Pas de publicité, pas de profilage. Vos réponses, séries et scores ne quittent jamais votre appareil.",
+    es: "Sin anuncios y sin perfiles. Tus respuestas, rachas y puntuaciones nunca salen de tu dispositivo.",
+    pt: "Sem anúncios e sem perfis. Suas respostas, sequências e pontuações nunca saem do seu dispositivo.",
+    ja: "広告もプロファイリングもありません。あなたの回答、連続記録、スコアは端末の外に出ません。",
+    zh: "无广告，无用户画像。你的答案、连续天数和分数从不离开你的设备。",
+    ru: "Никакой рекламы и профилирования. Ваши ответы, серии и результаты никогда не покидают устройство.",
+    hi: "न विज्ञापन, न प्रोफ़ाइलिंग। आपके जवाब, लगातार दिन और स्कोर कभी आपकी डिवाइस से बाहर नहीं जाते।",
+    bn: "কোনো বিজ্ঞাপন নেই, কোনো প্রোফাইলিং নেই। আপনার উত্তর, ধারাবাহিক ও স্কোর কখনও আপনার ডিভাইস ছেড়ে যায় না।",
+    ar: "بلا إعلانات وبلا ملفات تعريف. إجاباتك وسلاسلك ونتائجك لا تغادر جهازك أبدًا.",
   },
   aboutWhyOffline: {
     en: "Works offline once loaded, and installs like an app.",
@@ -1011,6 +1019,30 @@ export const LESSON_SHARE: Record<string, LocalizedText> = {
 };
 
 export const ACCOUNT: Record<string, LocalizedText> = {
+  remindMe: {
+    en: "Email me when reviews are late",
+    zh: "复习逾期时给我发邮件",
+    hi: "रिवीज़न में देर होने पर मुझे ई-मेल करें",
+    es: "Avísame por correo cuando los repasos se retrasen",
+    fr: "M'envoyer un e-mail quand les révisions sont en retard",
+    ar: "راسلني بالبريد عند تأخر المراجعات",
+    bn: "পুনরাবৃত্তি দেরি হলে আমাকে ই-মেল করুন",
+    pt: "Enviar-me um e-mail quando as revisões estiverem atrasadas",
+    ru: "Писать мне, когда повторения просрочены",
+    ja: "復習が遅れたらメールで知らせる",
+  },
+  remindMeBlurb: {
+    en: "One email a day at most, and only when something is actually overdue. Stop it from any message, without signing in.",
+    zh: "每天最多一封，且仅在确实逾期时发送。任意一封邮件里都能退订，无需登录。",
+    hi: "दिन में अधिकतम एक ई-मेल, और केवल तभी जब वास्तव में कुछ बकाया हो। किसी भी संदेश से, बिना साइन इन किए, बंद किया जा सकता है।",
+    es: "Un correo al día como máximo, y solo cuando algo esté realmente atrasado. Puedes cancelarlo desde cualquier mensaje, sin iniciar sesión.",
+    fr: "Un e-mail par jour au maximum, et uniquement en cas de retard réel. Vous pouvez tout arrêter depuis n'importe quel message, sans vous connecter.",
+    ar: "رسالة واحدة يوميًا على الأكثر، وفقط عند وجود تأخير فعلي. يمكنك الإيقاف من أي رسالة دون تسجيل الدخول.",
+    bn: "দিনে সর্বোচ্চ একটি ই-মেল, এবং কেবল সত্যিই বকেয়া থাকলেই। যেকোনো বার্তা থেকে সাইন ইন ছাড়াই বন্ধ করা যায়।",
+    pt: "No máximo um e-mail por dia, e só quando houver mesmo atraso. Pode parar a partir de qualquer mensagem, sem iniciar sessão.",
+    ru: "Не более одного письма в день и только при реальной просрочке. Отключить можно из любого письма, не входя в аккаунт.",
+    ja: "メールは1日1通まで、実際に遅れているときだけ。どのメールからでも、ログインせずに停止できます。",
+  },
   signIn: {
     en: "Sign in",
     zh: "登录",

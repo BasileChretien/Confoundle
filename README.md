@@ -82,17 +82,19 @@ Deletion and export are built in from day one and are in the panel, not behind a
 
 ### Shareable lesson pages
 
-`pnpm build` also writes **one static page per lesson per language** to `dist/l/<slug>/` (English) and `dist/l/<slug>/<locale>/`, plus a `sitemap.xml`. Sixteen puzzles across ten languages is 160 pages, about 10 KB each.
+`pnpm build` also writes **one static page per lesson per language** to `dist/l/<slug>/` (English) and `dist/l/<slug>/<locale>/`, plus a `sitemap.xml`. Twenty-three puzzles across ten languages is 230 pages, about 10 KB each.
 
 These are for a case the game itself can't serve: someone is arguing on the internet and you want to hand them **the explanation**, not a puzzle. A link into the game opens something built to fool the reader first, which lands badly when it arrives from the person you're arguing with, and a single-page app returns the same empty shell to the crawler that builds the link preview — so every lesson would unfurl with the same title. Each page carries its own Open Graph and Twitter tags, works with JavaScript off, and links back into the puzzle for anyone who'd rather be fooled first.
 
 The lesson screen has a **Copy link** button that copies the skill, the one-line rule, and the link in the reader's current language.
 
-Absolute URLs (canonical, `hreflang`, Open Graph) are baked at build time. Override the default for a fork or a custom domain:
+Absolute URLs (canonical, `hreflang`, Open Graph) are baked at build time. **The default origin is `https://confoundle.org`,** which is production, so a normal build needs no configuration. Override it only for a fork or a different domain:
 
 ```bash
-SITE_ORIGIN=https://example.org pnpm build
+SITE_ORIGIN=https://your-fork.example pnpm build
 ```
+
+The app shell gets the same treatment: its canonical link and Open Graph tags are injected at build time from the same origin, so a link to the site root unfurls with a title and a picture instead of as a bare URL.
 
 - **No SPA rewrite needed.** Puzzles are addressed with a query string (`?p=<slug>`), not a path, so every request resolves to `index.html` on any static host out of the box. The lesson pages are real directories with their own `index.html`, so they work on the same hosts with no configuration.
 - **Root vs. sub-path.** The default base path is `/` (root domains, incl. `*.pages.dev`). For a GitHub Pages project site served under `/<repo>/`, build with `--base=/<repo>/` instead.

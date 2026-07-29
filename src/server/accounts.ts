@@ -249,8 +249,19 @@ export async function revokeSession(
  * Erasure
  * ---------------------------------------------------------------------- */
 
-/** Every table that holds anything keyed to an account. Erasure walks this list. */
-export const PERSONAL_TABLES = ["progress", "sessions", "accounts"] as const;
+/**
+ * Every table that holds anything keyed to an account. Erasure walks this list.
+ *
+ * accounts is deliberately last: the others carry a foreign key into it, so
+ * deleting it first would rely on cascade behaviour this function exists not to
+ * depend on.
+ */
+export const PERSONAL_TABLES = [
+  "reminder_prefs",
+  "progress",
+  "sessions",
+  "accounts",
+] as const;
 export type PersonalTable = (typeof PERSONAL_TABLES)[number];
 
 /**

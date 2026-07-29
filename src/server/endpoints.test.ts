@@ -409,7 +409,7 @@ describe("taking your data and deleting it", () => {
 
     const response = await eraseAccount({ request: request("/api/account", { method: "DELETE", cookie }), env });
     expect(await body(response)).toEqual({
-      deleted: { progress: 1, sessions: 1, accounts: 1 },
+      deleted: { reminder_prefs: 0, progress: 1, sessions: 1, accounts: 1 },
     });
     expect(response.headers.get("set-cookie")).toContain("Max-Age=0");
 

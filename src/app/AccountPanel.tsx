@@ -3,6 +3,7 @@ import type { LocalizedText } from "../puzzles/schema";
 import { useT } from "./i18n";
 import { useAuth } from "./auth";
 import { renderGoogleButton } from "./googleSignIn";
+import { ReminderToggle } from "./ReminderToggle";
 import { ACCOUNT } from "./ui";
 
 /**
@@ -241,6 +242,8 @@ function SignedIn({ onClose }: { onClose: () => void }) {
           {t(ACCOUNT.signOut)}
         </button>
       </div>
+
+      <ReminderToggle />
 
       <div className="border-t border-rule pt-3">
         {confirming ? (

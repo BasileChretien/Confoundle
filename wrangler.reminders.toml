@@ -1,0 +1,42 @@
+# The scheduled reminder sender.
+#
+# Separate from the Pages project on purpose: Pages Functions cannot carry a
+# cron trigger, so the daily job has to be a Worker. It binds the SAME D1
+# database the Pages project uses, so there is one accounts database with two
+# consumers rather than two databases drifting apart.
+#
+#   npx wrangler deploy -c wrangler.reminders.toml
+#
+# Secrets are set on this Worker, once, and are NOT shared with Pages
+# automatically:
+#
+#   npx wrangler secret put RESEND_API_KEY -c wrangler.reminders.toml
+#   npx wrangler secret put MAIL_FROM      -c wrangler.reminders.toml
+#   npx wrangler secret put SESSION_SECRET -c wrangler.reminders.toml
+#
+# SESSION_SECRET must be byte-identical to the one the Pages project holds.
+# This Worker mints the unsubscribe HMACs and the Pages function verifies them,
+# so a mismatch produces links that look fine and silently never work.
+
+name = "confoundle-reminders"
+main = "worker/reminders.ts"
+compatibility_date = "2026-07-01"
+
+# 08:00 UTC daily. A single fixed hour, because no timezone is stored for
+# anybody and inventing one from an IP address would be collecting a location
+# to solve a politeness problem. This lands mid-morning in western Europe and
+# evening in Japan, which are the two places most readers are. If a per-person
+# send hour is ever wanted, it is a column on reminder_prefs and a change to
+# this expression, not a redesign.
+[triggers]
+crons = ["0 8 * * *"]
+
+[vars]
+SITE_ORIGIN = "https://confoundle.org"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "confoundle-accounts"
+# Filled in from `npx wrangler d1 list`. Same database as the Pages project's
+# DB binding.
+database_id = "REPLACE_WITH_D1_DATABASE_ID"

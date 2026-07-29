@@ -204,7 +204,7 @@ ${howItWorks}
   )}</a>
 
 <footer>${escapeHtml(
-    t({ en: "Confoundle is free and open source. No tracking." }),
+    t({ en: "Confoundle is free. No ads, no profiles." }),
   )} <a href="/">${escapeHtml(t({ en: "A new puzzle every day" }))}</a></footer>
 </main>
 </body>

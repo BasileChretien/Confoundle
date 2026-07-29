@@ -523,6 +523,54 @@ survives it.
 
 ## Sourced and ready to build
 
+**Misleading chart axes. A CANDIDATE, NOT YET VERIFIED AT SOURCE. Do not author
+from this entry until the numbers below have been read off the paper itself.**
+
+Pandey AV, Rall K, Satterthwaite ML, Nov O, Bertini E. How deceptive are
+deceptive visualizations? An empirical analysis of common distortion
+techniques. CHI 2015. Reported figures, from a research pass that could not be
+independently confirmed here (two hosts failed: an arXiv id that turned out to
+be a physics paper, and an RPI mirror with a broken TLS configuration):
+
+- Inverted axis, message reversal. Of 40 shown a normal axis, 39 read the trend
+  correctly; of 38 shown the SAME data with the axis flipped, 7 read it
+  correctly and 30 concluded the opposite. Fisher's exact p < 0.0001.
+- Truncated axis. Deceptive 2.77 against control 1.45 on a 1 to 5 scale,
+  Mann-Whitney U = 1144, p = 0.0003.
+
+Why it is worth the verification pass. It would be the deck's first lesson on a
+technique that is VISUAL rather than verbal, which makes it a genuinely
+distinct reasoning move from the framing effect rather than another way of
+saying the same thing was worded differently. Its counts are integers, so
+unlike the framing puzzle it could be authored as raw counts with the rates
+derived, which is this project's preferred form. And the stimuli use invented
+town names, so it carries none of the partisanship risk that ruled out the
+other visualisation candidates.
+
+Shape note: probably needs no new shape. Two groups (normal axis, flipped
+axis), one outcome (read the trend correctly), which is the `rates` shape with
+`strataAreSeparateSamples` unset. The setup would show what the flipped-axis
+readers concluded and the reveal the same data drawn honestly.
+
+### Two techniques that turned out NOT to be separate lessons
+
+Recorded so nobody sources them twice. **Question wording** effects (Rugg's
+1941 forbid versus allow, "welfare" versus "assistance to the poor") are the
+framing effect again: same thing, other words. Building them as their own
+puzzles would put two names on one reasoning move, which is the mistake this
+document already records being avoided once, for attrition against intention
+to treat. They belong in the framing puzzle's review bank or as its deep-dive
+examples, not as lessons.
+
+**Rejected on partisanship.** Boykoff and Boykoff 2004 on balanced climate
+coverage has clean printed counts and was rejected anyway: its subject makes one
+side look uniquely foolish, which the project's plan forbids as architecture
+rather than as taste. Correll et al 2020 on truncated axes is well sourced and
+open, but its per-condition means are graphical rather than printed, and its
+worked example is a partisan chart. No usable source was found for manufactured
+doubt or for cherry-picked baselines; both need a dedicated search.
+
+
 **Framing effect. SHIPPED** as the `framing-effect` puzzle (`same-choice-other-words`)
 on a new `framing` shape, and it is the deck's first lesson outside medicine.
 It carries the `psychology` and `media` tags, which is what opened those two

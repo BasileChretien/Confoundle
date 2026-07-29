@@ -592,6 +592,42 @@ function RegressionGlyph() {
  * The ecological fallacy: the line across places runs one way, the people
  * inside them run the other.
  */
+/**
+ * The framing effect: one identical choice, two wordings, and the majority
+ * swapping sides without a single outcome changing.
+ */
+function FramingGlyph() {
+  const W = 200;
+  const H = 96;
+  const bar = (x: number, y: number, w: number, fill: string) => (
+    <rect x={x} y={y} width={w} height={11} rx={3} fill={fill} />
+  );
+  return (
+    <div className="mt-4 rounded-lg p-3" style={{ backgroundColor: "rgba(0,0,0,0.28)" }}>
+      <svg
+        viewBox={`0 0 ${W} ${H}`}
+        role="img"
+        aria-label="The same choice worded two ways, with the majority swapping sides"
+        style={{ display: "block", width: "100%", maxWidth: W, margin: "0 auto" }}
+      >
+        <text x={10} y={14} fontSize={9} fill={CARD.muted}>
+          worded one way
+        </text>
+        {bar(10, 20, 120, CARD.teal)}
+        {bar(10, 35, 48, CARD.rust)}
+        <text x={10} y={62} fontSize={9} fill={CARD.muted}>
+          worded the other
+        </text>
+        {bar(10, 68, 38, CARD.teal)}
+        {bar(10, 83, 130, CARD.rust)}
+        <text x={W - 8} y={48} fontSize={9} fill={CARD.gold} textAnchor="end" fontWeight={600}>
+          same choice
+        </text>
+      </svg>
+    </div>
+  );
+}
+
 function EcologicalGlyph() {
   const W = 200;
   const H = 96;
@@ -730,6 +766,7 @@ export function ShareCard({
   const interactionGlyph = data.type === "interaction";
   const effectGlyph = data.type === "effect";
   const ecologicalGlyph = data.type === "ecological";
+  const framingGlyph = data.type === "framing";
   const splitSampleGlyph =
     data.type === "rates" &&
     Boolean(data.strataAreSeparateSamples) &&
@@ -822,6 +859,8 @@ export function ShareCard({
             <EffectGlyph />
           ) : ecologicalGlyph ? (
             <EcologicalGlyph />
+          ) : framingGlyph ? (
+            <FramingGlyph />
           ) : null}
 
           <p className="mt-4 font-display text-[17px] font-medium leading-snug">

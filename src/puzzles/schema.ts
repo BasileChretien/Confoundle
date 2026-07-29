@@ -475,6 +475,78 @@ const EcologicalData = z
   });
 export type EcologicalData = z.infer<typeof EcologicalData>;
 
+/**
+ * One choice, put to people twice in different words.
+ *
+ * Needed because no existing shape can hold this. Every other shape compares
+ * outcomes; here the outcomes are IDENTICAL by construction and the only thing
+ * that differs is the wording, so what is being measured is the audience, not
+ * the world. The reveal is not new data, it is the same decision reworded.
+ *
+ * Authored as PERCENTAGES with the sample size, not as counts, and that is a
+ * deliberate exception to this project's usual rule. The source prints
+ * percentages and N and never the numerators: 72 per cent of 152 is 109.44, so
+ * there is no integer to author. Rounding to a plausible count would be
+ * inventing data, so the shape takes what was actually published and
+ * `percentNote` states that on the figure.
+ */
+const FramingFrame = z.object({
+  id: z.string().min(1),
+  /** How this version was worded, e.g. "Described as lives saved". */
+  label: LocalizedText,
+  short: LocalizedText.optional(),
+  /** The certain option as this version put it. */
+  sureText: LocalizedText,
+  /** The gamble as this version put it. */
+  gambleText: LocalizedText,
+  /** Percentages as printed in the source, never recomputed. */
+  surePercent: z.number().min(0).max(100),
+  gamblePercent: z.number().min(0).max(100),
+  n: z.number().int().positive(),
+});
+export type FramingFrame = z.infer<typeof FramingFrame>;
+
+const FramingData = z
+  .object({
+    type: z.literal("framing"),
+    label: LocalizedText, // figure title
+    /** What is at stake, identical in both versions. */
+    stakeLabel: LocalizedText,
+    sureLabel: LocalizedText, // "The certain option"
+    gambleLabel: LocalizedText, // "The gamble"
+    /** Says on the figure that these are published percentages, not counts. */
+    percentNote: LocalizedText,
+    frames: z.array(FramingFrame).length(2),
+  })
+  .superRefine((d, ctx) => {
+    d.frames.forEach((f, i) => {
+      // Respondents chose one or the other, so the two shares account for
+      // everyone. Allow a point of slack: sources round each share separately.
+      const total = f.surePercent + f.gamblePercent;
+      if (Math.abs(total - 100) > 1) {
+        ctx.addIssue({
+          code: "custom",
+          path: ["frames", i, "surePercent"],
+          message: `the two shares come to ${total}, which is not everyone`,
+        });
+      }
+    });
+    // Without a reversal there is no lesson: the puzzle exists to show that
+    // rewording the SAME choice flips which option wins.
+    const [a, b] = d.frames;
+    const aPrefersSure = a.surePercent > a.gamblePercent;
+    const bPrefersSure = b.surePercent > b.gamblePercent;
+    if (aPrefersSure === bPrefersSure) {
+      ctx.addIssue({
+        code: "custom",
+        path: ["frames"],
+        message:
+          "both wordings favour the same option, so there is no reversal to reveal",
+      });
+    }
+  });
+export type FramingData = z.infer<typeof FramingData>;
+
 /** Discriminated by `type`. Add new members here to support new data shapes. */
 export const PuzzleData = z.discriminatedUnion("type", [
   RatesData,
@@ -488,6 +560,7 @@ export const PuzzleData = z.discriminatedUnion("type", [
   InteractionData,
   EffectData,
   EcologicalData,
+  FramingData,
 ]);
 export type PuzzleData = z.infer<typeof PuzzleData>;
 
@@ -532,6 +605,8 @@ export const DataView = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("magnitude"), ...viewFields }),
   z.object({ kind: z.literal("byplace"), ...viewFields }),
   z.object({ kind: z.literal("byperson"), ...viewFields }),
+  z.object({ kind: z.literal("onewording"), ...viewFields }),
+  z.object({ kind: z.literal("bothwordings"), ...viewFields }),
 ]);
 export type DataView = z.infer<typeof DataView>;
 export type DataViewKind = DataView["kind"];

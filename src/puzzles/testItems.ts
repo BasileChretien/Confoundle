@@ -3224,6 +3224,140 @@ const items: TestItem[] = [
       en: "Holding both levels in the same model is the standard way to separate what an area does from what a person's own situation does, so the group-level claim is not resting on individual-level guesswork.",
     },
   },
+
+  // ---- The framing effect ----
+  {
+    id: "fr-surgery-survival",
+    scenario: {
+      en: "A surgeon tells patients the operation has a 90 percent survival rate, and most agree to it. A colleague who tells the identical patients it has a 10 percent death rate finds far fewer agree. The hospital concludes the first surgeon is better at reassuring people.",
+    },
+    trap: "framing-effect",
+    explanation: {
+      en: "Ninety percent survival and ten percent mortality are the same number said two ways, so nothing about the operation differed. What differed was the wording, and it moved the decision.",
+    },
+  },
+  {
+    id: "fr-yoghurt-fat",
+    scenario: {
+      en: "A yoghurt sells far better labelled 90 percent fat free than the identical product labelled 10 percent fat. The company reports that shoppers are choosing the healthier option.",
+    },
+    trap: "framing-effect",
+    explanation: {
+      en: "It is one product with one fat content, described two ways. The shoppers did not choose a healthier yoghurt, they responded to a label written to sound like a gain.",
+    },
+  },
+  {
+    id: "fr-tax-relief",
+    scenario: {
+      en: "A policy polls well when described as keeping money in your pocket and badly when the identical policy is described as reducing what is collected for services. The pollster reports the public is broadly in favour.",
+    },
+    trap: "framing-effect",
+    explanation: {
+      en: "Two descriptions of the same policy produced two verdicts, so the poll measured the wording as much as the opinion. A finding like this has to report how the question was put.",
+    },
+  },
+  {
+    id: "fr-employment-rate",
+    scenario: {
+      en: "A government announces that 94 percent of people are in work. The opposition announces that 6 percent are out of work. A commentator says the two sides cannot agree on the figures.",
+    },
+    trap: "framing-effect",
+    explanation: {
+      en: "They agree completely on the figure, which is one number stated from two ends. The disagreement is over which end to say out loud, and that choice does the persuading.",
+    },
+  },
+  {
+    id: "fr-vaccine-effect",
+    scenario: {
+      en: "A leaflet says a vaccine lets 99 in 100 get through the season without the illness. A rival leaflet says 1 in 100 still catch it despite the vaccine. A survey finds people who read the first are much likelier to take it, and concludes the first leaflet is more accurate.",
+    },
+    trap: "framing-effect",
+    explanation: {
+      en: "Both leaflets state the identical result, one as a gain and one as a residual loss. Being more persuasive is not the same as being more accurate, and here neither is wrong.",
+    },
+  },
+  {
+    id: "fr-discount-surcharge",
+    scenario: {
+      en: "A shop charges less for cash than for card. Customers barely object when it is called a cash discount and complain loudly when the identical price gap is called a card surcharge. The owner concludes customers dislike card fees.",
+    },
+    trap: "framing-effect",
+    explanation: {
+      en: "The two prices are the same either way. Calling the gap a discount makes the lower price the bonus, calling it a surcharge makes the higher price a penalty, and the objection follows the word.",
+    },
+  },
+  {
+    id: "fr-crime-drop",
+    scenario: {
+      en: "One newspaper reports that crime fell by 5 percent. Another reports that 95 percent of last year's crime is still happening. Readers of the second are far gloomier, and an editor concludes the public mood has shifted.",
+    },
+    trap: "framing-effect",
+    explanation: {
+      en: "Both sentences describe the same change. The mood tracked which sentence a reader met, so it is evidence about the two write-ups rather than about the public.",
+    },
+  },
+  {
+    id: "fr-battery-warning",
+    scenario: {
+      en: "An app tells one group of users their battery is at 20 percent and another group that 80 percent is used. The second group plugs in sooner, and the designer reports that users respond better to usage information.",
+    },
+    trap: "framing-effect",
+    explanation: {
+      en: "The two readouts carry identical information about the battery. The behaviour changed with the wording, which tells you about the framing rather than about what users understand.",
+    },
+  },
+  {
+    id: "fr-donation-ask",
+    scenario: {
+      en: "A charity asks one group to give 2 pounds and tells another that 2 pounds is all it takes to stop a child going without. The second group gives far more often, and the charity concludes those donors care more.",
+    },
+    trap: "framing-effect",
+    explanation: {
+      en: "The sum asked for is identical, and the donors were not selected for anything. The difference is entirely in how the ask was worded, so it says nothing about who cares more.",
+    },
+  },
+  {
+    id: "fr-exam-pass",
+    scenario: {
+      en: "A school reports that 7 in 10 pupils passed. A local paper reports that 3 in 10 failed. Parents surveyed after reading the paper rate the school much worse, and a governor concludes the paper uncovered a real decline.",
+    },
+    trap: "framing-effect",
+    explanation: {
+      en: "Nothing was uncovered, because the two reports carry one result. The parents were reacting to whether the number was given as passes or as failures.",
+    },
+  },
+
+  // ---- Sound reasoning about wording (more decoys) ----
+  {
+    id: "ok-both-framings-given",
+    scenario: {
+      en: "A consent leaflet states that the operation has a 90 percent survival rate and, in the same paragraph, that 10 percent of patients die, so that the reader meets the result stated both ways before deciding.",
+    },
+    trap: null,
+    explanation: {
+      en: "Giving both statements of the identical figure is the standard defence against framing, since the reader cannot be steered by whichever end was chosen for them.",
+    },
+  },
+  {
+    id: "ok-real-difference-not-wording",
+    scenario: {
+      en: "Two treatments were described to patients in the same words, using the same survival framing for both, and patients still chose one far more often. The report concludes patients prefer that treatment.",
+    },
+    trap: null,
+    explanation: {
+      en: "The wording was held constant across the two options, so the difference in choices cannot be an artefact of framing. The preference is about the treatments.",
+    },
+  },
+  {
+    id: "ok-wording-reported",
+    scenario: {
+      en: "A polling company publishes the exact question wording alongside its result, and notes that an alternative wording tested at the same time produced a different level of support, so readers can see how sensitive the finding is.",
+    },
+    trap: null,
+    explanation: {
+      en: "Publishing the wording, and what a different wording produced, treats the framing as part of the finding. That is the honest way to report an opinion measurement.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

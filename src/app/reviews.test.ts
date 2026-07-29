@@ -82,6 +82,34 @@ describe("building a session", () => {
     const [review] = await reviews.nextSession(3, NOW + 5 * HOUR);
     expect(review.item.trap === "skill-a" || review.item.trap === null).toBe(true);
   });
+
+  it("does not replay the same draw on every fresh page load", async () => {
+    // The caller's seed is a counter that restarts at zero each load, so with
+    // the seed alone every visit drew the identical first card. Worse, hash(1)
+    // sits below SOUND_SHARE, so that card was always a SOUND one: answer "not
+    // a trap" without reading and you were right every time. The clock is what
+    // breaks the tie, so two loads at different moments must be able to differ.
+    const store = new MemoryStore();
+    const reviews = createReviews(store, BANK);
+    await reviews.enrollSkill("skill-a", NOW);
+
+    const draws = new Set<string>();
+    for (let i = 0; i < 40; i++) {
+      const [review] = await reviews.nextSession(0, NOW + 5 * HOUR + i * 60_000);
+      if (review) draws.add(`${review.item.id}|${review.item.trap === null}`);
+    }
+    expect(draws.size).toBeGreaterThan(1);
+  });
+
+  it("stays replayable when the clock is pinned, so sessions remain testable", async () => {
+    const store = new MemoryStore();
+    const reviews = createReviews(store, BANK);
+    await reviews.enrollSkill("skill-a", NOW);
+    const at = NOW + 5 * HOUR;
+    const a = await reviews.nextSession(7, at);
+    const b = await reviews.nextSession(7, at);
+    expect(a.map((r) => r.item.id)).toEqual(b.map((r) => r.item.id));
+  });
 });
 
 describe("grading", () => {

@@ -547,6 +547,68 @@ const FramingData = z
   });
 export type FramingData = z.infer<typeof FramingData>;
 
+/**
+ * One published arithmetic mean, and how much of the thing it summarises falls
+ * below it.
+ *
+ * Needed because no existing shape can hold this. Every other shape compares
+ * two or more quantities; this lesson compares ONE number against the spread it
+ * came from. The claim is not "this group beat that group" but "this single
+ * number sits in the wrong place inside its own distribution", and the reveal is
+ * not new data, it is the position of the number already shown. A rates chart
+ * can draw the mean or the share, never the mean's place among the values, so
+ * the reveal would only restate the setup.
+ *
+ * Authored as the PERCENTAGE below the mean, with the mean, exactly as the
+ * source prints them, and never as counts. That is the same deliberate
+ * exception the `framing` shape makes: recovering counts would need the number
+ * of items behind each percentage, which is not published per journal here, and
+ * multiplying a percentage by an assumed denominator would be inventing data.
+ * `percentNote` states that on the figure.
+ */
+export const DistributionGroup = z.object({
+  id: z.string().min(1),
+  label: LocalizedText, // "Science"
+  short: LocalizedText.optional(),
+  /** The published arithmetic mean, e.g. a journal impact factor. */
+  mean: z.number().positive(),
+  /** Share of items falling BELOW that mean, as printed in the source. */
+  percentBelowMean: z.number().min(0).max(100),
+});
+export type DistributionGroup = z.infer<typeof DistributionGroup>;
+
+const DistributionData = z
+  .object({
+    type: z.literal("distribution"),
+    label: LocalizedText, // figure title
+    /** What one item is, e.g. "papers published in 2013 and 2014". */
+    itemLabel: LocalizedText,
+    /** What is counted per item, e.g. "citations received in 2015". */
+    valueLabel: LocalizedText,
+    /** Names the mean on the figure, e.g. "the journal's impact factor". */
+    meanLabel: LocalizedText,
+    belowLabel: LocalizedText, // "below their own journal's average"
+    aboveLabel: LocalizedText, // "reached it"
+    /** Says on the figure that these are published percentages, not counts. */
+    percentNote: LocalizedText,
+    groups: z.array(DistributionGroup).min(1),
+  })
+  .superRefine((d, ctx) => {
+    d.groups.forEach((g, i) => {
+      // The whole lesson is that the mean describes a minority. If a group ever
+      // had most of its items at or above the mean, the puzzle's own claim would
+      // be false for that group and the reveal would contradict the lesson.
+      if (g.percentBelowMean <= 50) {
+        ctx.addIssue({
+          code: "custom",
+          path: ["groups", i, "percentBelowMean"],
+          message: `${g.percentBelowMean} per cent below the mean means the mean is not unrepresentative here, so there is nothing to reveal`,
+        });
+      }
+    });
+  });
+export type DistributionData = z.infer<typeof DistributionData>;
+
 /** Discriminated by `type`. Add new members here to support new data shapes. */
 export const PuzzleData = z.discriminatedUnion("type", [
   RatesData,
@@ -561,6 +623,7 @@ export const PuzzleData = z.discriminatedUnion("type", [
   EffectData,
   EcologicalData,
   FramingData,
+  DistributionData,
 ]);
 export type PuzzleData = z.infer<typeof PuzzleData>;
 
@@ -607,6 +670,8 @@ export const DataView = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("byperson"), ...viewFields }),
   z.object({ kind: z.literal("onewording"), ...viewFields }),
   z.object({ kind: z.literal("bothwordings"), ...viewFields }),
+  z.object({ kind: z.literal("average"), ...viewFields }),
+  z.object({ kind: z.literal("spread"), ...viewFields }),
 ]);
 export type DataView = z.infer<typeof DataView>;
 export type DataViewKind = DataView["kind"];

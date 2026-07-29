@@ -628,6 +628,55 @@ function FramingGlyph() {
   );
 }
 
+function DistributionGlyph() {
+  const W = 200;
+  const H = 96;
+  // Three stacked bars, each mostly the "below" colour, with the average marked
+  // well to the right of where most of the mass sits.
+  const row = (y: number, belowPct: number) => (
+    <>
+      <rect x={10} y={y} width={(W - 40) * belowPct} height={13} rx={3} fill={CARD.rust} />
+      <rect
+        x={10 + (W - 40) * belowPct}
+        y={y}
+        width={(W - 40) * (1 - belowPct)}
+        height={13}
+        rx={3}
+        fill={CARD.teal}
+      />
+    </>
+  );
+  return (
+    <div className="mt-4 rounded-lg p-3" style={{ backgroundColor: "rgba(0,0,0,0.28)" }}>
+      <svg
+        viewBox={`0 0 ${W} ${H}`}
+        role="img"
+        aria-label="Most items fall below their own average, which sits far to the right"
+        style={{ display: "block", width: "100%", maxWidth: W, margin: "0 auto" }}
+      >
+        <text x={10} y={12} fontSize={9} fill={CARD.muted}>
+          below the average
+        </text>
+        {row(18, 0.755)}
+        {row(37, 0.748)}
+        {row(56, 0.722)}
+        <line
+          x1={10 + (W - 40) * 0.742}
+          y1={14}
+          x2={10 + (W - 40) * 0.742}
+          y2={73}
+          stroke={CARD.gold}
+          strokeWidth={2}
+          strokeDasharray="3 2"
+        />
+        <text x={W - 8} y={88} fontSize={9} fill={CARD.gold} textAnchor="end" fontWeight={600}>
+          the average
+        </text>
+      </svg>
+    </div>
+  );
+}
+
 function EcologicalGlyph() {
   const W = 200;
   const H = 96;
@@ -767,6 +816,7 @@ export function ShareCard({
   const effectGlyph = data.type === "effect";
   const ecologicalGlyph = data.type === "ecological";
   const framingGlyph = data.type === "framing";
+  const distributionGlyph = data.type === "distribution";
   const splitSampleGlyph =
     data.type === "rates" &&
     Boolean(data.strataAreSeparateSamples) &&
@@ -861,6 +911,8 @@ export function ShareCard({
             <EcologicalGlyph />
           ) : framingGlyph ? (
             <FramingGlyph />
+          ) : distributionGlyph ? (
+            <DistributionGlyph />
           ) : null}
 
           <p className="mt-4 font-display text-[17px] font-medium leading-snug">

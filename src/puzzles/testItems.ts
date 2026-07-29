@@ -3770,6 +3770,140 @@ const items: TestItem[] = [
       en: "This is the format designed around the problem: the true statement gets the repetitions and the false one gets as few as possible. Correcting is not the risk; headlining the falsehood repeatedly is.",
     },
   },
+
+  // ---- Anchoring ----
+  {
+    id: "an-salary-first",
+    scenario: {
+      en: "A recruiter opens by naming a figure far above anything the role has ever paid. The final agreed salary lands well above the usual range, and the employer concludes the candidate negotiated unusually well.",
+    },
+    trap: "anchoring",
+    explanation: {
+      en: "The opening figure set the scale on which every later number was judged, so the settlement drifted toward it. That is a fact about who spoke first, not about anyone's negotiating skill.",
+    },
+  },
+  {
+    id: "an-charity-ladder",
+    scenario: {
+      en: "A donation page offers preset amounts starting at 500. Average gifts rise compared with the previous page, which started at 20, and the charity reports that supporters have become more generous.",
+    },
+    trap: "anchoring",
+    explanation: {
+      en: "The same supporters met a different first number. Presets are anchors, so the shift measures the design of the page rather than any change in generosity.",
+    },
+  },
+  {
+    id: "an-price-was-now",
+    scenario: {
+      en: "A shop labels an item as reduced from 200 to 90. Shoppers rate it better value than the identical item labelled simply as 90, and the shop concludes they prefer the discounted version.",
+    },
+    trap: "anchoring",
+    explanation: {
+      en: "The struck-through 200 is a reference point rather than information about the item, and value judgements are made relative to it. The product and the price paid are the same in both cases.",
+    },
+  },
+  {
+    id: "an-estimate-meeting",
+    scenario: {
+      en: "In a planning meeting the most senior person says a task will take about two weeks before anyone else speaks. The team's estimates cluster near two weeks, and the manager treats the agreement as independent confirmation.",
+    },
+    trap: "anchoring",
+    explanation: {
+      en: "Once a number is in the room, later estimates adjust from it rather than being formed independently. Agreement reached this way is not corroboration; the estimates should be written down before anyone speaks.",
+    },
+  },
+  {
+    id: "an-house-listing",
+    scenario: {
+      en: "Two groups of appraisers tour the same house with identical information packs, except that the listed asking price differs. Their valuations differ in the same direction, and the agency concludes one group was better at spotting the property's potential.",
+    },
+    trap: "anchoring",
+    explanation: {
+      en: "The house was identical, so the difference tracks the listing price and nothing about the property. Expertise does not remove the pull; it mostly makes people more confident that it did not apply to them.",
+    },
+  },
+  {
+    id: "an-budget-lastyear",
+    scenario: {
+      en: "A department builds next year's budget by starting from last year's figure and adjusting. When challenged, the finance lead says the process is evidence-based because every adjustment was justified line by line.",
+    },
+    trap: "anchoring",
+    explanation: {
+      en: "Justifying each step away from a starting point does not test the starting point itself, and adjustments from an anchor are systematically too small. A zero-based estimate would answer a different and better question.",
+    },
+  },
+  {
+    id: "an-random-number",
+    scenario: {
+      en: "Before estimating an unfamiliar quantity, participants are asked to write down the last two digits of their phone number. Estimates correlate with those digits, and the researcher concludes the sample must be unrepresentative.",
+    },
+    trap: "anchoring",
+    explanation: {
+      en: "An anchor does not have to be relevant or even plausible to work, and participants can know it is arbitrary and still be moved by it. The correlation is the expected result, not a sign of a bad sample.",
+    },
+  },
+  {
+    id: "an-sentencing-demand",
+    scenario: {
+      en: "Two panels assess the same case file, given different suggested figures for the penalty by a party with no expertise. Their recommendations track the suggestions, and a reviewer concludes the panels disagreed about the facts.",
+    },
+    trap: "anchoring",
+    explanation: {
+      en: "The file was identical, so there was nothing factual to disagree about. What differed was the number each panel was handed before it started, which set the range their adjustments moved within.",
+    },
+  },
+  {
+    id: "an-extreme-demand",
+    scenario: {
+      en: "A group repeatedly voices a position far outside anything previously considered normal. Over time, positions that once looked extreme are described as moderate, and commentators say public opinion has genuinely moved to meet them.",
+    },
+    trap: "anchoring",
+    explanation: {
+      en: "Where the middle appears to be depends on what the endpoints are, and repeating a distant position moves the endpoints without any argument being made. That is a change in the frame rather than demonstrated movement in what people believe.",
+    },
+  },
+  {
+    id: "an-first-quote",
+    scenario: {
+      en: "A buyer collects three quotes for a job and judges the second and third as cheap or expensive relative to the first, which happened to arrive first for no particular reason.",
+    },
+    trap: "anchoring",
+    explanation: {
+      en: "The first quote arrived first by accident, yet it is doing the work of a benchmark. Cheap and expensive should be measured against what the job is worth, which none of the three quotes establishes on its own.",
+    },
+  },
+
+  // ---- Sound reasoning about reference points (more decoys) ----
+  {
+    id: "ok-independent-estimates",
+    scenario: {
+      en: "A team asks every member to write down their estimate privately before any figure is spoken aloud, then reveals all of them at once and discusses the spread.",
+    },
+    trap: null,
+    explanation: {
+      en: "This is the standard defence: estimates formed before anyone hears a number are genuinely independent, so their spread carries information and their agreement is real corroboration.",
+    },
+  },
+  {
+    id: "ok-informative-baseline",
+    scenario: {
+      en: "An engineer estimates the cost of a new bridge by starting from the recorded cost of three comparable bridges and adjusting for size and materials, stating the comparators used.",
+    },
+    trap: null,
+    explanation: {
+      en: "Here the starting point is relevant evidence rather than an arbitrary number, and it is declared so the reader can judge it. Adjusting from an informative baseline is estimation working as intended.",
+    },
+  },
+  {
+    id: "ok-sensitivity-check",
+    scenario: {
+      en: "Before accepting a forecast, an analyst redoes it from a starting figure twice as large and again from one half as large, and reports that the conclusion holds in all three cases.",
+    },
+    trap: null,
+    explanation: {
+      en: "Testing whether the answer survives a different starting point is exactly how you find out whether you were reasoning or decorating an anchor. The conclusion here does not depend on where it began.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

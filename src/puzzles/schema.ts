@@ -719,6 +719,74 @@ const DoseData = z
   });
 export type DoseData = z.infer<typeof DoseData>;
 
+/**
+ * Two groups estimating the SAME quantity, and the answer they were both
+ * reaching for.
+ *
+ * Needed because no existing shape can hold an estimate against a known truth.
+ * Every other shape either compares groups to each other (`rates`, `framing`)
+ * or one estimate to a benchmark (`effect`), and this lesson needs both at
+ * once: the two guesses differ from each other, and both are hopeless against
+ * the real answer. Drawing only the first is the setup; adding the second is
+ * the reveal, and it is the same published numbers throughout.
+ *
+ * The scale does the teaching. Laid out against the true value, two guesses
+ * that differ from each other by a factor of four both collapse into slivers,
+ * which is the second half of the point and cannot be shown any other way.
+ *
+ * Authored as the PUBLISHED central estimates, never as counts, in the same
+ * deliberate spirit as `framing`, `distribution` and `dose`. `statNote` states
+ * on the figure what kind of average they are and what the source did not
+ * print, because a source that gives no spread must not be drawn as though it
+ * had.
+ */
+export const EstimateGroup = z.object({
+  id: z.string().min(1),
+  label: LocalizedText, // "Shown the numbers ascending"
+  short: LocalizedText.optional(),
+  /** How the same quantity was put to this group, e.g. the expression as written. */
+  promptText: LocalizedText,
+  /** The published central estimate for this group. */
+  estimate: z.number().positive(),
+});
+export type EstimateGroup = z.infer<typeof EstimateGroup>;
+
+const EstimationData = z
+  .object({
+    type: z.literal("estimation"),
+    label: LocalizedText, // figure title
+    /** The checkable right answer both groups were estimating. */
+    trueValue: z.number().positive(),
+    trueLabel: LocalizedText, // "The actual product"
+    /** Says what kind of average these are, and what the source did not print. */
+    statNote: LocalizedText,
+    groups: z.array(EstimateGroup).length(2),
+  })
+  .superRefine((d, ctx) => {
+    const [a, b] = d.groups;
+    // Both groups were estimating the same thing, so if their estimates ever
+    // matched there would be no ordering effect to reveal.
+    if (a.estimate === b.estimate) {
+      ctx.addIssue({
+        code: "custom",
+        path: ["groups"],
+        message: "both groups gave the same estimate, so there is nothing to reveal",
+      });
+    }
+    // The second half of the lesson is that both guesses are far below the
+    // truth. If either ever reached it, the figure would contradict the copy.
+    d.groups.forEach((g, i) => {
+      if (g.estimate >= d.trueValue) {
+        ctx.addIssue({
+          code: "custom",
+          path: ["groups", i, "estimate"],
+          message: `estimate (${g.estimate}) is not below the true value (${d.trueValue}), so there is no underestimation to show`,
+        });
+      }
+    });
+  });
+export type EstimationData = z.infer<typeof EstimationData>;
+
 /** Discriminated by `type`. Add new members here to support new data shapes. */
 export const PuzzleData = z.discriminatedUnion("type", [
   RatesData,
@@ -735,6 +803,7 @@ export const PuzzleData = z.discriminatedUnion("type", [
   FramingData,
   DistributionData,
   DoseData,
+  EstimationData,
 ]);
 export type PuzzleData = z.infer<typeof PuzzleData>;
 
@@ -785,6 +854,8 @@ export const DataView = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("spread"), ...viewFields }),
   z.object({ kind: z.literal("partial"), ...viewFields }),
   z.object({ kind: z.literal("curve"), ...viewFields }),
+  z.object({ kind: z.literal("oneguess"), ...viewFields }),
+  z.object({ kind: z.literal("withtruth"), ...viewFields }),
 ]);
 export type DataView = z.infer<typeof DataView>;
 export type DataViewKind = DataView["kind"];

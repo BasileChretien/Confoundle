@@ -724,6 +724,34 @@ function DoseGlyph() {
   );
 }
 
+function EstimationGlyph() {
+  const W = 200;
+  const H = 96;
+  // Two guesses that differ fourfold, both vanishing against the real answer.
+  const bar = (y: number, frac: number, fill: string, label: string) => (
+    <>
+      <text x={10} y={y - 3} fontSize={8} fill={CARD.muted}>
+        {label}
+      </text>
+      <rect x={10} y={y} width={Math.max((W - 30) * frac, 2)} height={11} rx={3} fill={fill} />
+    </>
+  );
+  return (
+    <div className="mt-4 rounded-lg p-3" style={{ backgroundColor: "rgba(0,0,0,0.28)" }}>
+      <svg
+        viewBox={`0 0 ${W} ${H}`}
+        role="img"
+        aria-label="Two guesses four times apart, both tiny beside the true answer"
+        style={{ display: "block", width: "100%", maxWidth: W, margin: "0 auto" }}
+      >
+        {bar(16, 512 / 40320, CARD.teal, "guessed 512")}
+        {bar(45, 2250 / 40320, CARD.rust, "guessed 2,250")}
+        {bar(74, 1, CARD.gold, "actually 40,320")}
+      </svg>
+    </div>
+  );
+}
+
 function EcologicalGlyph() {
   const W = 200;
   const H = 96;
@@ -865,6 +893,7 @@ export function ShareCard({
   const framingGlyph = data.type === "framing";
   const distributionGlyph = data.type === "distribution";
   const doseGlyph = data.type === "dose";
+  const estimationGlyph = data.type === "estimation";
   const splitSampleGlyph =
     data.type === "rates" &&
     Boolean(data.strataAreSeparateSamples) &&
@@ -963,6 +992,8 @@ export function ShareCard({
             <DistributionGlyph />
           ) : doseGlyph ? (
             <DoseGlyph />
+          ) : estimationGlyph ? (
+            <EstimationGlyph />
           ) : null}
 
           <p className="mt-4 font-display text-[17px] font-medium leading-snug">

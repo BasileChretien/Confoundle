@@ -1,0 +1,89 @@
+import { describe, it, expect } from "vitest";
+import type { EstimationData } from "../../puzzles/schema";
+import {
+  barFraction,
+  formatTimes,
+  formatValue,
+  higherGroup,
+  lowerGroup,
+  ratioBetween,
+  restrictEstimation,
+  shareOfTruth,
+  truthOverBest,
+} from "./estimation";
+
+const text = (en: string) => ({ en });
+
+const data: EstimationData = {
+  type: "estimation",
+  label: text("What people guessed"),
+  trueValue: 40320,
+  trueLabel: text("The actual product"),
+  statNote: text("published medians"),
+  groups: [
+    {
+      id: "ascending",
+      label: text("Ascending"),
+      promptText: text("1 x 2 x 3 x 4 x 5 x 6 x 7 x 8"),
+      estimate: 512,
+    },
+    {
+      id: "descending",
+      label: text("Descending"),
+      promptText: text("8 x 7 x 6 x 5 x 4 x 3 x 2 x 1"),
+      estimate: 2250,
+    },
+  ],
+};
+
+describe("estimation derivation", () => {
+  it("derives how far apart the two guesses are", () => {
+    expect(ratioBetween(data)).toBeCloseTo(2250 / 512, 10);
+    expect(formatTimes(ratioBetween(data))).toBe("4.4x");
+  });
+
+  it("derives how far short of the answer each one falls", () => {
+    expect(shareOfTruth(data.groups[0], data)).toBeCloseTo(512 / 40320, 10);
+    expect(shareOfTruth(data.groups[1], data)).toBeCloseTo(2250 / 40320, 10);
+    // Both are a rounding error against the truth, which is the second reveal.
+    expect(shareOfTruth(data.groups[0], data)).toBeLessThan(0.02);
+    expect(shareOfTruth(data.groups[1], data)).toBeLessThan(0.06);
+  });
+
+  it("says how far out even the more generous guess was", () => {
+    expect(truthOverBest(data)).toBeCloseTo(40320 / 2250, 10);
+    expect(formatTimes(truthOverBest(data))).toBe("17.9x");
+  });
+
+  it("names which group guessed higher without the caller assuming an order", () => {
+    expect(higherGroup(data).id).toBe("descending");
+    expect(lowerGroup(data).id).toBe("ascending");
+  });
+
+  it("collapses both guesses to slivers once the truth shares the axis", () => {
+    // This is the whole reason the shape exists. Against each other the two
+    // guesses are visibly different; against the answer they are both nothing.
+    const aloneHi = barFraction(2250, data, false);
+    const aloneLo = barFraction(512, data, false);
+    expect(aloneHi).toBe(1);
+    expect(aloneLo).toBeCloseTo(512 / 2250, 10);
+
+    const truthHi = barFraction(2250, data, true);
+    const truthLo = barFraction(512, data, true);
+    expect(truthHi).toBeLessThan(0.06);
+    expect(truthLo).toBeLessThan(0.02);
+    expect(barFraction(40320, data, true)).toBe(1);
+  });
+
+  it("restricts to one guess without touching the authored data", () => {
+    const one = restrictEstimation(data, { groupIds: ["ascending"] });
+    expect(one.groups.map((g) => g.id)).toEqual(["ascending"]);
+    expect(data.groups).toHaveLength(2);
+    expect(restrictEstimation(data).groups).toHaveLength(2);
+  });
+
+  it("formats big numbers so they read as numbers", () => {
+    expect(formatValue(40320)).toBe("40,320");
+    expect(formatValue(512)).toBe("512");
+  });
+});

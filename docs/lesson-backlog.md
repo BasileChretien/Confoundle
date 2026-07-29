@@ -232,6 +232,14 @@ reason to write "no science".
 Basile is sourcing papers for several of these. Entries below marked **OPEN**
 should be treated as awaiting his citations rather than as settled.
 
+**Search state, so the ledger is visible.** Searched: fear appeals, astroturfing,
+gaslighting's redirect, whataboutism, dog whistling, the Big Lie. Of the five that
+had been marked REJECTED without a search, **three have now been searched and all
+three were overturned**. Still unsearched, with the question written out in each
+entry below: **firehose of falsehood**, **wedge issues**, and the Sherif and
+Hovland route under the Overton window. Those three are not rejections. They are
+work not yet done.
+
 ### Whataboutism: OPEN. The earlier rejection was wrong
 
 Written up as "a fallacy of argument structure has no dataset". It has several.
@@ -279,18 +287,32 @@ Evidence: **yes, and strong**. Neutral ground: **no**, and this remains the real
 obstacle. Shape: the outcomes are policy-preference scales, so counts need
 checking.
 
-### The Big Lie: OPEN, and previously mis-analysed
+### The Big Lie: PROMOTE. Searched, and the rejection was wrong twice over
 
 Written up as "the mechanism is repetition, so it is `illusory-truth` again". That
-is not what the Big Lie claims. The claim is about **magnitude**, that a colossal
-lie is more credible than a small one because audiences cannot believe anyone
-would distort so audaciously. Magnitude and frequency are different variables, and
-the deck's own rule about not putting two names on one reasoning move does not
-apply if they are in fact two moves.
+was wrong on two counts, and the search took one query.
 
-Not searched. The specific question to put to the literature is whether the
-credibility of a claim is non-monotonic in its extremity, holding repetition
-constant.
+Wrong once because that is not what the Big Lie claims. The claim is about
+**magnitude**, that a colossal lie is more credible than a small one, and
+magnitude and frequency are different variables. The deck's rule against putting
+two names on one reasoning move does not apply when they are two moves.
+
+Wrong twice because there is an experimental literature and it reports something
+better than the folk claim. The finding is **not** that the big lie is itself
+believed. It is that **exposure to highly implausible claims raises belief in the
+less implausible ones**: big lies make little lies more convincing. Participants
+shown more highly implausible headlines went on to rate milder falsehoods as more
+plausible, and the effect held whether they identified as liberal or conservative,
+which is the non-partisanship test passing rather than failing.
+
+**That mechanism is a scale shift, not a repetition effect**, which puts it in the
+same family as shipped `anchoring` and makes it the closest thing anyone has to an
+experimental Overton window. The two OPEN entries for the Big Lie and the Overton
+window may therefore be **one** puzzle, and it is a good one.
+
+Needs the primary paper: the finding was reached through a *Scientific American*
+account of the experiments and the underlying article has not been identified,
+still less read. Status: **LEAD**, and the highest-priority item in this section.
 
 ### Firehose of falsehood: OPEN, searched only as far as the RAND report
 
@@ -308,12 +330,17 @@ Written up as rejected. Nothing was looked at. The historical question was never
 asked, and it is the one that matters: nineteenth-century cleavages have the same
 structure and no living partisans.
 
-### Overton window: OPEN on the second puzzle
+### Overton window: OPEN, and possibly the same puzzle as the Big Lie
 
-The redirect to shipped `anchoring` stands for the mechanism. What was not done is
-any search for whether Sherif and Hovland's assimilation and contrast experiments
-report counts rather than scale means. Both authors are long dead and the stimuli
-are non-political, so if the counts exist this is a clean candidate.
+The redirect to shipped `anchoring` stands for the mechanism. But see the Big Lie
+entry above: the implausibility-calibration finding is an experimental scale
+shift on political claims, which is what the Overton window asserts and what
+`anchoring` demonstrates only on numbers. If one paper can carry both, build one
+puzzle, not two.
+
+**Still unsearched**: whether Sherif and Hovland's assimilation and contrast
+experiments report counts rather than scale means. Both authors are long dead and
+the stimuli are non-political, so if counts exist this is a clean second route.
 
 ### Gaslighting: the redirect stands, the rejection under it was not searched
 

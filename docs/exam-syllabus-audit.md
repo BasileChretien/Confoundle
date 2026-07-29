@@ -761,11 +761,12 @@ starts 8 x 7 while the ascending starts 1 x 2. The hedge would therefore be
 wrong. The size of the gap, and the fact that both groups were wildly under, is
 what the reveal supplies.
 
-### Gerrymandering: excellent source found, and REJECTED as the puzzle's data
+### Gerrymandering: SHIPPED, on an 1812 source, after the modern one was rejected
 
 Searched on 2026-07-29. This is the sixth persuasion technique and the one that
-would complete the set, so the rejection matters and the reasoning is recorded
-in full.
+would complete the set, so both the rejection and the route around it matter and
+the reasoning is recorded in full. **Outcome: built as `more-votes-fewer-seats`,
+with Griffith 1907 as the puzzle's data and Herschlag 2020 as the deep dive.**
 
 **Herschlag G, Kang HS, Luo J, Graves CV, Bangia S, Ravier R, Mattingly JC.
 Quantifying gerrymandering in North Carolina.** arXiv:1801.03783; published in
@@ -797,24 +798,46 @@ mapping was not fully resolved from the text extraction, so its seat
 distribution is deliberately not quoted above, and the published Statistics and
 Public Policy version was not diffed against the arXiv preprint.
 
-**The route that would work, if this is ever built.** Gerrymandering is unusual
-among the wishlist techniques in that its mathematics is genuinely
-party-neutral and can be demonstrated exactly, with invented parties, on a
-schematic grid: the same votes, districted two ways, giving opposite majorities.
-The deck already has precedent for a constructed central figure, in the
-survivorship bomber diagram and the lead-time timeline, both of which carry
-provenance for the FACTUAL CLAIM rather than for the drawing. Herschlag would be
-that provenance, cited for the two things it establishes non-partisanly: that
-the effect is real and measurable at scale, and that a neutral drawing process
-produces neutral results.
+**The route that was taken instead: go back far enough that both parties are
+extinct.** A schematic grid with invented parties was the obvious fallback and
+was not needed. The episode that gave the technique its name is old enough that
+neither party in it still exists, so the arithmetic arrives with no partisan
+charge at all and no invention is required.
 
-One caution for whoever takes it on, because it is harder than the bomber
-diagram. Those precedents are schematic about subjects nobody is defending.
-This one would be a constructed figure about an inherently political subject,
-so it is the first puzzle where the framing has to carry the non-partisanship on
-its own rather than inheriting it from the topic. Invented party names are
-necessary and probably not sufficient; the copy would need to say plainly, and
-show, that the trick works identically whoever is drawing.
+**Griffith EC. The rise and development of the gerrymander.** Chicago: Scott,
+Foresman, 1907; pages 72 to 73. Read at source on 2026-07-29 from the full text
+at `archive.org/stream/risedevelopmento00grif/risedevelopmento00grif_djvu.txt`.
+The relevant passage reports the 1812 Massachusetts state senate election under
+the map the legislature had redrawn and Governor Gerry had signed: twenty-nine
+senators elected from the party that drew it and eleven from the party that did
+not, on a total senate vote of **101,930**, of which the Federalists took
+**51,766** and the Democratic-Republicans **50,164**.
+
+**Reconciled two ways, as the rules require.** 51,766 + 50,164 = 101,930, which
+matches the total printed independently in the same passage, and 11 + 29 = 40,
+which is the size of the chamber. So the per-party figures are corroborated by a
+total that was stated separately from them, and the seat figures by the known
+chamber size.
+
+**Three limitations, recorded rather than smoothed over.** The party Griffith
+calls the Democrats is Jefferson and Madison's Democratic-Republican party, not
+the ancestor of any single modern party, and the puzzle's provenance note says
+so explicitly. Griffith is a 1907 secondary account resting on 1812 materials:
+it is the standard scholarly account of the episode's origin, not a modern
+reanalysis of the returns. And a single election cannot show that the map rather
+than the geography produced the gap.
+
+That third limitation is exactly what the modern ensemble methods exist to
+answer, which is why **Herschlag survives as the deep dive rather than as a
+footnote**, cited only for its two non-partisan findings: that the effect is
+real and measurable at scale, and that the retired-judges plan behaved like a
+typical plan, so the question about an enacted map is who drew it rather than
+which party they belonged to.
+
+**No new shape was needed.** Votes-versus-seats is the existing `rates` shape
+with `strataAreSeparateSamples: true`: two strata that are emphatically not a
+partition of one population, which is precisely what that flag forbids pooling.
+The setup shows the votes stratum alone; the reveal adds the seats.
 
 ### Cherry-picked baselines: still unsourced
 

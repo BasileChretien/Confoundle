@@ -360,7 +360,7 @@ consensus only · **X** absent from official documents.
 | Neyman / prevalence-incidence | X | X | T | X | covered by length-time and survivorship; review items only |
 | Cognitive: anchoring | named as a category | **X** | O | postgrad | **shipped** (Tversky & Kahneman 1974) |
 | Cognitive: framing | named as a category | **X** | O | postgrad | **shipped** |
-| Cognitive: availability | named as a category | **X** | O | postgrad | **gap**; no new beat needed, source not yet read |
+| Cognitive: availability | named as a category | **X** | O | postgrad | **shipped** (Lichtenstein et al. 1978) |
 
 ## Built from this document
 

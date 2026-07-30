@@ -4887,6 +4887,140 @@ const items: TestItem[] = [
       en: "Planning the comparison in advance and publishing both figures lets the reader see whether funding made a difference here rather than assuming it did or did not. That is the specific fix for pooling evidence of mixed provenance.",
     },
   },
+
+  // ---- The availability heuristic ----
+  {
+    id: "av-drives-instead",
+    scenario: {
+      en: "After a widely reported airliner crash, someone cancels a short flight and drives the distance instead, saying flying suddenly feels too risky.",
+    },
+    trap: "availability-heuristic",
+    explanation: {
+      en: "The crash changed how easily a crash comes to mind, not how often one happens, and the comparison that matters is against the risk of the drive. A single reported event moves the feeling and leaves the rates exactly where they were.",
+    },
+  },
+  {
+    id: "av-crime-feels-worse",
+    scenario: {
+      en: "A resident is sure crime in their town is climbing, because they can recall several recent incidents from the local news. Recorded offences have fallen for four years.",
+    },
+    trap: "availability-heuristic",
+    explanation: {
+      en: "What they are counting is stories they remember, and a newsroom prints what is unusual rather than what is typical. Recall is a measure of coverage and salience, not of frequency.",
+    },
+  },
+  {
+    id: "av-missed-diagnosis",
+    scenario: {
+      en: "A doctor missed a rare but serious diagnosis last month. Since then they have ordered the test for it on almost every patient with vaguely similar symptoms.",
+    },
+    trap: "availability-heuristic",
+    explanation: {
+      en: "The recent case has made that diagnosis easy to picture, which is not the same as it having become more common. Testing should follow how likely the condition is in the patient in front of them, and that has not changed.",
+    },
+  },
+  {
+    id: "av-stranger-danger",
+    scenario: {
+      en: "A parent, unsettled by a reported child abduction, rules out walking to school alone, while the unfenced garden pond stays as it is.",
+    },
+    trap: "availability-heuristic",
+    explanation: {
+      en: "The two hazards are being weighed by how vividly each can be imagined rather than by how often each kills a child. Abduction is reported nationally and drowning usually is not, so the quieter risk is the one that gets left alone.",
+    },
+  },
+  {
+    id: "av-safety-meeting",
+    scenario: {
+      en: "A safety committee ranks the plant's hazards by asking each member which incidents they can remember, then funds the top three.",
+    },
+    trap: "availability-heuristic",
+    explanation: {
+      en: "Memorable incidents are the dramatic ones and the recent ones, which is a different list from the frequent ones. The incident log already holds the counts, and asking the room instead substitutes recall for the record.",
+    },
+  },
+  {
+    id: "av-side-effect-headline",
+    scenario: {
+      en: "A patient refuses a drug because of a side effect they read about in a newspaper feature, and does not ask how often it occurs.",
+    },
+    trap: "availability-heuristic",
+    explanation: {
+      en: "A side effect is written about because it is striking, and the frequency is the part the article usually omits. Knowing that something can happen says nothing about whether it is likelier than the illness being treated.",
+    },
+  },
+  {
+    id: "av-sharks",
+    scenario: {
+      en: "Asked whether shark attacks or falling coconuts kill more people, someone picks sharks, explaining that they can name three attacks and no coconut deaths.",
+    },
+    trap: "availability-heuristic",
+    explanation: {
+      en: "Being able to name examples measures what was reported to you, and a shark attack is filmed while other deaths are not. The count of stories you hold is the output of a news filter rather than a sample of events.",
+    },
+  },
+  {
+    id: "av-fund-picks",
+    scenario: {
+      en: "An investor estimates how well technology funds have done from the two funds whose names they recognise, both of which have been in the papers for their returns.",
+    },
+    trap: "availability-heuristic",
+    explanation: {
+      en: "Funds become nameable by doing something worth writing about, which is usually doing unusually well. Recognition is the selection filter here, and the ones that closed quietly never entered the reckoning.",
+    },
+  },
+  {
+    id: "av-recent-outage",
+    scenario: {
+      en: "After a noisy outage in one system, a team reallocates most of its reliability budget to that system, having not looked at where the year's downtime actually accumulated.",
+    },
+    trap: "availability-heuristic",
+    explanation: {
+      en: "The loud failure is the one everybody can describe, and loudness is not duration. Slow, quiet degradation in a less visible service can account for far more lost time and generate no story at all.",
+    },
+  },
+  {
+    id: "av-terror-vs-road",
+    scenario: {
+      en: "A traveller judges a destination unsafe on the strength of an attack there two years ago, without comparing it with the road risk of the journey they take every day.",
+    },
+    trap: "availability-heuristic",
+    explanation: {
+      en: "One vivid event is being weighed against a background risk so routine that no instance of it is memorable at all. The comparison is between one thing you can picture and one thing you cannot, and that is not a comparison of sizes.",
+    },
+  },
+
+  // ---- Sound handling of frequency questions (decoys) ----
+  {
+    id: "ok-looked-up-the-rate",
+    scenario: {
+      en: "Before choosing, someone looks up how many deaths each cause produced last year and how many people were exposed to each, rather than going by which one they have heard more about.",
+    },
+    trap: null,
+    explanation: {
+      en: "A published count and a population at risk answer the frequency question directly, and neither depends on what anyone happens to remember. Replacing recall with a rate is the specific fix.",
+    },
+  },
+  {
+    id: "ok-incident-register",
+    scenario: {
+      en: "A safety committee ranks hazards from the incident register, which logs every event whether or not anybody found it memorable, and notes that the register may under-record near misses.",
+    },
+    trap: null,
+    explanation: {
+      en: "A record kept as events occur is not filtered by what stuck in anyone's mind, so it measures frequency rather than salience. Flagging that near misses are probably under-recorded names the one filter it does have.",
+    },
+  },
+  {
+    id: "ok-names-own-recency",
+    scenario: {
+      en: "A doctor who recently missed a rare diagnosis says so aloud, notes that the case is making them want to test everybody, and goes back to the guideline's criteria to decide.",
+    },
+    trap: null,
+    explanation: {
+      en: "Noticing that a recent case is inflating your sense of how common something is does not make the feeling go away, but it does stop the feeling from being used as evidence. Deferring to a pre-written criterion is what turns that noticing into a decision.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

@@ -770,7 +770,8 @@ const EstimationData = z
       ctx.addIssue({
         code: "custom",
         path: ["groups"],
-        message: "both groups gave the same estimate, so there is nothing to reveal",
+        message:
+          "both groups gave the same estimate, so there is nothing to reveal",
       });
     }
     // The second half of the lesson is that both guesses are far below the
@@ -786,6 +787,77 @@ const EstimationData = z
     });
   });
 export type EstimationData = z.infer<typeof EstimationData>;
+
+/**
+ * Salience data: head-to-head comparisons the public was asked to make, with
+ * how the answers split and which side was actually right.
+ *
+ * `estimation` cannot hold this. It carries two groups estimating one quantity
+ * against one true value, which is the anchoring design. Here each comparison
+ * is its own question with its own answer, and the lesson lives in the pattern
+ * across several of them: which ones the public got right, and what the ones
+ * they got wrong have in common. The setup draws the split alone, naming no
+ * winner, so the reader sees exactly what a survey result looks like before
+ * anybody checks it against the world.
+ *
+ * Shares are authored as the percentage who picked the side that is in fact
+ * more frequent, because that is what the source prints. The other side's share
+ * is derived, never authored, so the two can never fail to sum to 100.
+ */
+export const SalienceComparison = z.object({
+  id: z.string().min(1),
+  /** The two options, worded as they were put to the subjects. */
+  optionA: LocalizedText,
+  optionB: LocalizedText,
+  /** Which of the two actually happens more often. */
+  commoner: z.enum(["a", "b"]),
+  /** How many times more often, as the source prints it. */
+  trueRatio: z.number().positive(),
+  /** Percentage of subjects who picked the one that actually happens more. */
+  percentCorrect: z.number().min(0).max(100),
+});
+export type SalienceComparison = z.infer<typeof SalienceComparison>;
+
+const SalienceData = z
+  .object({
+    type: z.literal("salience"),
+    label: LocalizedText, // figure title
+    /** What the bars measure, e.g. "Share of people who picked each one". */
+    splitLabel: LocalizedText,
+    /** What the reveal adds, e.g. "Which one actually kills more". */
+    truthLabel: LocalizedText,
+    /** Says whose answers these are and what the source did not print. */
+    statNote: LocalizedText,
+    comparisons: z.array(SalienceComparison).min(2),
+  })
+  .superRefine((d, ctx) => {
+    // A tie has no right answer, so `commoner` would be asserting something the
+    // data does not support.
+    d.comparisons.forEach((c, i) => {
+      if (c.trueRatio === 1) {
+        ctx.addIssue({
+          code: "custom",
+          path: ["comparisons", i, "trueRatio"],
+          message:
+            "a ratio of 1 means neither option is commoner, so there is nothing to be right about",
+        });
+      }
+    });
+    // The whole lesson is the contrast between the ones the public got right
+    // and the ones it got wrong. With no majority on each side there is no
+    // pattern to find, and the reveal would only restate the setup.
+    const missed = d.comparisons.filter((c) => c.percentCorrect < 50);
+    const hit = d.comparisons.filter((c) => c.percentCorrect > 50);
+    if (missed.length === 0 || hit.length === 0) {
+      ctx.addIssue({
+        code: "custom",
+        path: ["comparisons"],
+        message:
+          "needs at least one comparison the majority got right and one it got wrong, or there is no pattern to reveal",
+      });
+    }
+  });
+export type SalienceData = z.infer<typeof SalienceData>;
 
 /** Discriminated by `type`. Add new members here to support new data shapes. */
 export const PuzzleData = z.discriminatedUnion("type", [
@@ -804,6 +876,7 @@ export const PuzzleData = z.discriminatedUnion("type", [
   DistributionData,
   DoseData,
   EstimationData,
+  SalienceData,
 ]);
 export type PuzzleData = z.infer<typeof PuzzleData>;
 
@@ -856,6 +929,8 @@ export const DataView = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("curve"), ...viewFields }),
   z.object({ kind: z.literal("oneguess"), ...viewFields }),
   z.object({ kind: z.literal("withtruth"), ...viewFields }),
+  z.object({ kind: z.literal("asguessed"), ...viewFields }),
+  z.object({ kind: z.literal("againstfact"), ...viewFields }),
 ]);
 export type DataView = z.infer<typeof DataView>;
 export type DataViewKind = DataView["kind"];
@@ -1163,7 +1238,8 @@ export const Puzzle = z
         ctx.addIssue({
           code: "custom",
           path: ["setup", "data", "control", "events"],
-          message: "the control arm needs at least one event to compare against",
+          message:
+            "the control arm needs at least one event to compare against",
         });
       }
     }
@@ -1224,11 +1300,15 @@ export const Puzzle = z
       const shadesImmortal = [p.setup.initialView, p.reveal.view].some(
         (v) => v.kind === "immortal",
       );
-      if (shadesImmortal && !d.tracks.some((tr) => tr.immortalUntil !== undefined)) {
+      if (
+        shadesImmortal &&
+        !d.tracks.some((tr) => tr.immortalUntil !== undefined)
+      ) {
         ctx.addIssue({
           code: "custom",
           path: ["setup", "data", "tracks"],
-          message: "an immortal view needs at least one track with immortalUntil",
+          message:
+            "an immortal view needs at least one track with immortalUntil",
         });
       }
     }

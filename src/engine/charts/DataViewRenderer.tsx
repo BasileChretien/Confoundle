@@ -22,6 +22,8 @@ import { DoseView } from "./DoseView";
 import { restrictDose } from "./dose";
 import { EstimationView } from "./EstimationView";
 import { restrictEstimation } from "./estimation";
+import { SalienceView } from "./SalienceView";
+import { restrictSalience } from "./salience";
 
 /**
  * The generic seam: dispatch on the data's `type` to the matching renderer.
@@ -55,7 +57,9 @@ export function DataViewRenderer({
     case "causal":
       return <CausalView data={data} view={view.kind} animate={animate} />;
     case "survivorship":
-      return <SurvivorshipView data={data} view={view.kind} animate={animate} />;
+      return (
+        <SurvivorshipView data={data} view={view.kind} animate={animate} />
+      );
     case "timeline":
       return <TimelineView data={data} view={view.kind} animate={animate} />;
     case "risk":
@@ -110,6 +114,15 @@ export function DataViewRenderer({
       return view.kind === "oneguess" || view.kind === "withtruth" ? (
         <EstimationView
           data={restrictEstimation(data, { groupIds: view.groupIds })}
+          kind={view.kind}
+        />
+      ) : null;
+    case "salience":
+      // Same again: the setup draws the split with no verdict on it, the reveal
+      // keeps the identical bars and ticks the side that was actually right.
+      return view.kind === "asguessed" || view.kind === "againstfact" ? (
+        <SalienceView
+          data={restrictSalience(data, { groupIds: view.groupIds })}
           kind={view.kind}
         />
       ) : null;
@@ -201,6 +214,10 @@ export function scopeLabel(kind: DataViewKind): string {
       return "What one group said";
     case "withtruth":
       return "Both, against the answer";
+    case "asguessed":
+      return "What people picked";
+    case "againstfact":
+      return "Against what happens";
     default:
       return "";
   }

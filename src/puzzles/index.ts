@@ -35,6 +35,7 @@ import { statisticalPower } from "./data/statistical-power";
 import { allocationConcealment } from "./data/allocation-concealment";
 import { hawthorneEffect } from "./data/hawthorne-effect";
 import { sponsorshipBias } from "./data/sponsorship-bias";
+import { availabilityHeuristic } from "./data/availability-heuristic";
 
 /**
  * The puzzle registry. Adding a puzzle = import its data file and add it to
@@ -78,6 +79,7 @@ const rawPuzzles: unknown[] = [
   allocationConcealment,
   hawthorneEffect,
   sponsorshipBias,
+  availabilityHeuristic,
 ];
 
 export const puzzles: PuzzleType[] = rawPuzzles.map((p, i) => {

@@ -3832,4 +3832,115 @@ export const zh: Record<string, string> = {
     "一篇荟萃分析在方案中写明将比较业界资助试验与独立资助试验的结果，并在汇总估计值旁同时报告两个估计值。",
   "Planning the comparison in advance and publishing both figures lets the reader see whether funding made a difference here rather than assuming it did or did not. That is the specific fix for pooling evidence of mixed provenance.":
     "事先规划这项比较并公布两个数字，让读者能够看出资助在这里是否造成了差异，而不是先入为主地认定有或没有。这正是汇总来源混杂的证据时的具体补救办法。",
+  "One hundred and eleven people were asked which of two things kills more Americans. Here is how they split.":
+    "一百一十一个人被问到两样东西里哪一样害死的美国人更多。他们是这样分的。",
+  "Researchers took 41 causes of death, paired them up, and asked people which of each pair kills more people in the United States in a year. The true annual rates came from national health statistics, so every pair has a checkable answer. Four of those pairs are below, with the share of people who picked each side. Three of the four went the wrong way.":
+    "研究者取了41种死因，两两配对，问人们每一对里哪一种在美国一年内害死的人更多。真实的年死亡率来自国家卫生统计，所以每一对都有可核对的答案。下面是其中四对，附上选择各方的人所占的比例。四对里有三对倒向了错的一边。",
+  "What do the three they got wrong have in common?":
+    "他们答错的那三对有什么共同点？",
+  "Which one kills more Americans in a year?": "哪一种一年内害死的美国人更多？",
+  "How 111 people split. Nothing here says which side is right.":
+    "111个人是怎么分的。这里没有任何东西说明哪一边是对的。",
+  "The tick marks the one that actually kills more, and by how many times.":
+    "对勾标出实际害死更多人的那一种，并注明是多少倍。",
+  "Shares are percentages of subjects, as the paper prints them. Ratios are of true annual death rates per 100 million residents, from national statistics for 1968 to 1973.":
+    "比例是受试者的百分数，与论文所印一致。倍数是真实年死亡率之比，按每一亿居民计，来自1968年至1973年的国家统计。",
+  Diabetes: "糖尿病",
+  "Motor vehicle accident": "交通事故",
+  "All accidents": "全部事故",
+  Stroke: "中风",
+  Tornado: "龙卷风",
+  Asthma: "哮喘",
+  Botulism: "肉毒中毒",
+  Lightning: "雷击",
+  "What people picked": "人们选了什么",
+  "The two were too close together to call": "两者太接近，分不出来",
+  "nobody can split hairs about mortality from memory":
+    "没人能凭记忆把死亡率分得这么细",
+  "They involve causes too rare for anyone to have met":
+    "里面的死因太罕见，谁也没遇到过",
+  "you cannot know what you have never encountered":
+    "你无法了解从未碰见过的东西",
+  "The side they picked is the side that gets reported":
+    "他们选的那一边，正是被报道的那一边",
+  "ask which one you have read a headline about":
+    "想一想你读过哪一个的新闻标题",
+  "Stroke, asthma and lightning. All three lost.":
+    "中风、哮喘和雷击。三个都输了。",
+  "The easier something is to bring to mind, the commoner it seems":
+    "越容易想起来的东西，看上去就越常见",
+  "Stroke kills 1.85 times as many people as every accident combined, and 80 per cent picked accidents. Asthma kills 20.9 times as many as tornadoes, and 58 per cent picked tornadoes. Lightning kills 52 times as many as botulism, and 63 per cent picked botulism. In each case the loser is the one you have read a headline about.":
+    "中风害死的人是所有事故加起来的1.85倍，而80%的人选了事故。哮喘害死的人是龙卷风的20.9倍，而58%的人选了龙卷风。雷击害死的人是肉毒中毒的52倍，而63%的人选了肉毒中毒。每一对里输掉的那一个，都是你读过新闻标题的那一个。",
+  "Against what actually happens": "对照实际发生的情况",
+  "Now look at the pair they got right, because it is the one that settles the question. Motor vehicle accidents kill 1.42 times as many people as diabetes, a narrower margin than the 1.85 between stroke and accidents, and 99 per cent got it right. So it cannot be that people fail when the margin is close. In that pair the dramatic cause genuinely is the bigger killer, so the thing that comes to mind first and the thing that actually happens point the same way, and the crowd looks well informed. Availability is not a bias that makes you wrong. It is a bias that makes you right for a reason that will not hold, and gives you no way of telling the two cases apart from the inside.":
+    "现在看他们答对的那一对，因为正是它了结了这个问题。交通事故害死的人是糖尿病的1.42倍，比中风与事故之间的1.85更接近，而99%的人答对了。所以不可能是人们在差距接近时才出错。在那一对里，戏剧性的那一个确实就是害死人更多的那一个，于是最先想到的东西和实际发生的东西指向同一个方向，人群看上去消息灵通。可得性并不是一种让你出错的偏误。它是一种让你因为一个撑不住的理由而答对的偏误，并且不给你任何从内部区分这两种情形的办法。",
+  "What people picked, against what happens":
+    "人们选了什么，对照实际发生的情况",
+  "The availability heuristic": "可得性启发",
+  "How easily something comes to mind stands in for how often it happens, and what comes to mind is what got reported. The trap is not that the estimate is noisy. It is that the error has a direction: whatever is dramatic, recent or filmable is overweighted, and whatever kills quietly is underweighted.":
+    "一样东西有多容易想起来，被拿来代替它有多常发生，而想起来的正是被报道过的。陷阱不在于估计有噪声，而在于误差有方向：戏剧性的、新近的、能拍成画面的会被高估，悄无声息害死人的会被低估。",
+  "The researchers went looking for what was doing this, and one of the things they measured was newspapers. Over 184 days of a daily paper, 19 of their 41 causes of death were never mentioned once, among them diabetes, breast cancer, tuberculosis and cancer of the digestive system. Homicide, which kills 23 per cent fewer people than suicide, was reported 9.6 times as often and given fifteen times as much space. Their summary of it is that news coverage was a decent predictor of what people believed and a poor predictor of what was true. That is the whole mechanism in one sentence, and it does not require anybody to be lying: a newspaper prints what is unusual, which is its job, and a reader who counts what they remember is counting the output of that filter rather than the world.":
+    "研究者去找是什么造成了这一点，他们测量的东西之一是报纸。在一份日报的184天里，他们那41种死因中有19种一次也没有被提到，其中包括糖尿病、乳腺癌、结核病和消化道癌。凶杀害死的人比自杀少23%，被报道的次数却是9.6倍，占的版面是十五倍。他们的总结是：新闻报道量能相当好地预测人们相信什么，却很差地预测什么是真的。整套机制一句话就说完了，而且它不需要任何人说谎：报纸印的是不寻常的事，这是它的本职，而一个数着自己所记得的事的读者，数的是这个过滤器的输出而不是这个世界。",
+  "The useful move is to notice when you are answering a frequency question from memory, because memory is not a frequency table and was never assembled to be one. Three habits follow. First, when you catch yourself judging how common something is, ask where your examples came from: if they arrived through a screen, they were selected for being worth reporting, which is close to the opposite of being typical. Second, look for the quiet side of the comparison, because the thing with no footage attached is the thing you will underweight, and it is often the bigger number. Third, prefer a denominator to an anecdote: the question is never whether a shark attack happened, it is how many happened out of how many swimmers, and the second half is the half nobody films. This is also worth knowing about yourself in the other direction. A doctor who has just missed a rare diagnosis will overtest for it for months, and a driver who has just passed a crash slows down for a mile. Neither reaction is irrational exactly, but neither is a measurement, and treating it as one is how a single vivid case ends up setting policy.":
+    "有用的做法是察觉自己正在凭记忆回答一个关于频率的问题，因为记忆不是频率表，也从来不是为此建起来的。由此有三个习惯。第一，当你发觉自己在判断某件事有多常见时，问问你的例子从哪儿来：如果它们是从屏幕上来的，那它们是因为值得报道而被挑出来的，这几乎是「典型」的反面。第二，去找这组比较里安静的那一边，因为没有画面附着的那个东西正是你会低估的，而它往往是更大的那个数。第三，宁要分母不要轶事：问题从来不是有没有发生过鲨鱼袭击，而是在多少游泳者中发生了多少起，而后半截正是没人拍摄的部分。反过来，这一点也值得你了解自己。一位刚漏诊了罕见病的医生会在往后几个月里过度检查它，一位刚开车经过事故现场的司机会减速一公里。两种反应都不能说完全不理性，但两种都不是测量，把它们当作测量，正是一个鲜活个案最终定下一项政策的路径。",
+  "Getting the direction right and the size absurd": "方向答对，量级荒唐",
+  "The subjects were not only asked which of a pair was commoner, they were asked by how many times, and those answers are worse than the pick-a-side ones. Take the pair almost everybody got right. Motor vehicle accidents do kill more people than diabetes, and 99 per cent said so, but the students' average answer to how much more was 356 times. The true figure is 1.4. The League of Women Voters members said 100 times. Getting the direction right bought nobody an accurate picture: the same crowd that identified the bigger killer overstated the gap by a factor of about two hundred and fifty. Now the pair they got wrong. On stroke against all accidents the students' average was 0.04, meaning they believed accidents killed 25 times as many people as stroke, when stroke in fact kills 1.85 times as many. That is one comparison wrong by a factor of about forty-six. The direction of an availability error is easy to state; the magnitude is what makes it dangerous when somebody budgets against it.":
+    "受试者不仅被问到一对中哪一个更常见，还被问到多多少倍，而后一类回答比选边站的回答更糟。看那一对几乎人人答对的。交通事故确实比糖尿病害死更多的人，99%的人也这么说了，但学生们对「多多少倍」的平均回答是356倍。真值是1.4。女性选民联盟的成员说100倍。答对方向并没有给任何人换来一幅准确的图景：那个认出了更大杀手的同一群人，把差距夸大了大约二百五十倍。再看他们答错的那一对。在中风对全部事故上，学生的平均值是0.04，也就是说他们相信事故害死的人是中风的25倍，而实际上中风害死的人是事故的1.85倍。这是一次比较错了大约四十六倍。可得性误差的方向很容易说清；真正危险的是它的量级，尤其当有人据此编制预算的时候。",
+  "The availability heuristic, a reasoning trap.": "可得性启发，一个推理陷阱。",
+  "Asked which of two causes kills more Americans, 80 per cent picked all accidents over stroke, which kills 1.85 times as many. 58 per cent picked tornadoes over asthma, which kills 20.9 times as many. 63 per cent picked botulism over lightning, which kills 52 times as many. But 99 per cent correctly picked motor vehicle accidents over diabetes, a narrower margin than the first one. So it is not that people fail when it is close. They fail when the memorable side is not the deadly one.":
+    "被问到两种死因里哪一种害死的美国人更多时，80%的人选了全部事故而不是中风，而中风害死的人是前者的1.85倍。58%的人选了龙卷风而不是哮喘，而哮喘害死的人是前者的20.9倍。63%的人选了肉毒中毒而不是雷击，而雷击害死的人是前者的52倍。但有99%的人正确地选了交通事故而不是糖尿病，这一对的差距比第一对还要接近。所以并不是人们在势均力敌时才出错，而是在容易记住的那一边不是致命的那一边时才出错。",
+  "Read from the copy the last author's own institution publishes, the University of Oregon Scholars' Bank, under CC BY-NC-ND. Every figure used here appears twice in the paper, once in Table 2 and once discussed in the Results prose, and the two agree to the digit; the prose is the cross-check that makes a transcribed table trustworthy. Five things a careful reader should hold against this. First, it is 1974 and 1975, and both the death rates and what the news covers have moved since; the effect has been replicated many times, but these particular pairs are a period photograph and the puzzle should not be read as current mortality. Second, the subjects were 111 people who answered a University of Oregon campus newspaper advertisement, which is not a sample of anybody; the paper also ran 77 members of the local League of Women Voters, who did better on some pairs and no better on others, and neither group is the public. Third, percentages are what the paper prints, so no head counts are authored anywhere here, and the second share in each split is derived rather than authored so the two cannot drift apart. Fourth, the newspaper study in the lesson counted one local daily over 184 days, which is enough to show the shape of the filter and not enough to measure it, and the authors say as much. Fifth, and most usefully, a commentary printed in the same issue argues that a deviation from a true frequency is a response error rather than necessarily a judgemental bias, because these subjects were being asked about things they had never directly experienced, so a psychological explanation is being offered for an inaccuracy whose origin has not been established. The authors themselves also note that official records probably undercount suicide. This puzzle claims the pattern in the answers, which is not in dispute; the mechanism behind it is the part the field has spent the decades since testing.":
+    "读自最后一位作者所在机构自己公开的版本，俄勒冈大学的Scholars' Bank，采用CC BY-NC-ND许可。这里用到的每一个数字都在论文中出现两次，一次在表2，一次在结果正文的叙述里，两者逐位吻合；正是这种与正文的相互印证，才让一张转录的表格可以信赖。细心的读者应对这项研究保留五点。第一，这是1974和1975年，死亡率和新闻所关注的东西此后都变了；这一效应已被多次重复，但这几对具体的比较是一张时代照片，本谜题不应被当作当下的死亡状况来读。第二，受试者是111位应俄勒冈大学校园报广告而来的人，这不是任何群体的样本；论文还测试了当地女性选民联盟的77位成员，她们在有些对上更好、在另一些上并不更好，两组都不是「公众」。第三，论文印出的是百分数，所以这里没有写下任何计数，每一次划分的第二个比例是推导出来的而不是写下的，好让两者不可能彼此偏离。第四，课文中引用的报纸研究只清点了一份地方日报的184天，这足以显示这个过滤器的形状而不足以测量它，作者们也这么说。第五，也是最有用的一点，同一期上刊出的一则评论主张，与真实频率之间的偏离是一种反应误差，而不必然是判断偏误，因为这些受试者被问的是他们从未直接经历过的事情，于是有人为一种来源尚未查明的不准确提供了心理学解释。作者自己也指出，官方记录很可能少计了自杀。本谜题主张的是答案中呈现的那个型态，这一点没有争议；其背后的机制，才是这一领域此后几十年一直在检验的部分。",
+  "After a widely reported airliner crash, someone cancels a short flight and drives the distance instead, saying flying suddenly feels too risky.":
+    "在一起被广泛报道的空难之后，某人取消了一趟短途航班，改开车走完这段距离，说坐飞机忽然让人觉得太危险了。",
+  "The crash changed how easily a crash comes to mind, not how often one happens, and the comparison that matters is against the risk of the drive. A single reported event moves the feeling and leaves the rates exactly where they were.":
+    "这场空难改变的是空难有多容易被想起来，而不是它有多常发生，而真正重要的比较是与这趟车程的风险相比。一件被报道的事件挪动的是感受，把发生率原封不动地留在原地。",
+  "A resident is sure crime in their town is climbing, because they can recall several recent incidents from the local news. Recorded offences have fallen for four years.":
+    "一位居民确信本地治安在恶化，因为他能记起地方新闻里好几起近期案件。登记在案的犯罪已经连降四年。",
+  "What they are counting is stories they remember, and a newsroom prints what is unusual rather than what is typical. Recall is a measure of coverage and salience, not of frequency.":
+    "他清点的是自己记得的报道，而新闻编辑部印的是不寻常的事而不是典型的事。回想测量的是报道量和显著性，不是频率。",
+  "A doctor missed a rare but serious diagnosis last month. Since then they have ordered the test for it on almost every patient with vaguely similar symptoms.":
+    "一位医生上个月漏诊了一种罕见但严重的病。此后他几乎给每一位症状略微相似的患者都开了那项检查。",
+  "The recent case has made that diagnosis easy to picture, which is not the same as it having become more common. Testing should follow how likely the condition is in the patient in front of them, and that has not changed.":
+    "最近这个病例让那个诊断变得容易想象，但这与它变得更常见并不是一回事。开检查应当依据眼前这位患者患该病的可能性，而这一点并没有改变。",
+  "A parent, unsettled by a reported child abduction, rules out walking to school alone, while the unfenced garden pond stays as it is.":
+    "一位家长因为一则报道过的儿童绑架案而心神不宁，禁止孩子独自步行上学，而院子里没有围栏的水塘依旧如故。",
+  "The two hazards are being weighed by how vividly each can be imagined rather than by how often each kills a child. Abduction is reported nationally and drowning usually is not, so the quieter risk is the one that gets left alone.":
+    "这两种危险是按各自能被想象得多鲜明来衡量的，而不是按各自多常夺去一个孩子的性命。绑架会上全国新闻，溺水通常不会，于是安静的那种风险就被放着不管。",
+  "A safety committee ranks the plant's hazards by asking each member which incidents they can remember, then funds the top three.":
+    "一个安全委员会通过询问每位成员记得哪些事故来给工厂的危险排序，然后给排前三的拨款。",
+  "Memorable incidents are the dramatic ones and the recent ones, which is a different list from the frequent ones. The incident log already holds the counts, and asking the room instead substitutes recall for the record.":
+    "记得住的事故是戏剧性的和新近的，这与频繁发生的是另一份名单。事故登记簿里已经有了计数，改为问在场的人，等于用回想替换了记录。",
+  "A patient refuses a drug because of a side effect they read about in a newspaper feature, and does not ask how often it occurs.":
+    "一位患者因为在报纸特写里读到的一种副作用而拒绝用药，并没有问它发生的频率是多少。",
+  "A side effect is written about because it is striking, and the frequency is the part the article usually omits. Knowing that something can happen says nothing about whether it is likelier than the illness being treated.":
+    "一种副作用之所以被写，是因为它触目惊心，而频率恰恰是文章通常略去的部分。知道一件事可能发生，丝毫没有说明它是否比正在治疗的那种病更可能发生。",
+  "Asked whether shark attacks or falling coconuts kill more people, someone picks sharks, explaining that they can name three attacks and no coconut deaths.":
+    "被问到鲨鱼袭击和椰子坠落哪一个害死的人更多时，某人选了鲨鱼，理由是他能说出三起袭击，却说不出一起被椰子砸死的。",
+  "Being able to name examples measures what was reported to you, and a shark attack is filmed while other deaths are not. The count of stories you hold is the output of a news filter rather than a sample of events.":
+    "能举出例子，测量的是什么被报道给了你，而鲨鱼袭击会被拍下来，别的死亡不会。你手里握着的故事数目，是一个新闻过滤器的输出，而不是事件的样本。",
+  "An investor estimates how well technology funds have done from the two funds whose names they recognise, both of which have been in the papers for their returns.":
+    "一位投资者根据自己认得名字的两只基金来估计科技类基金的表现，而这两只都因为收益率上过报纸。",
+  "Funds become nameable by doing something worth writing about, which is usually doing unusually well. Recognition is the selection filter here, and the ones that closed quietly never entered the reckoning.":
+    "一只基金之所以变得叫得出名字，是因为它做了值得写的事，而那通常意味着表现得异常好。这里认得出名字就是筛选过滤器，而那些悄无声息清盘的从来没有进入过这笔账。",
+  "After a noisy outage in one system, a team reallocates most of its reliability budget to that system, having not looked at where the year's downtime actually accumulated.":
+    "在某个系统发生一次响动很大的故障之后，一个团队把大部分可靠性预算调拨给了这个系统，却没有看过这一年的停机时间实际累积在哪里。",
+  "The loud failure is the one everybody can describe, and loudness is not duration. Slow, quiet degradation in a less visible service can account for far more lost time and generate no story at all.":
+    "响动大的故障是人人都能描述的那一个，而响动不等于时长。一个不太显眼的服务上缓慢而安静的劣化，可能造成多得多的时间损失，却不产生任何故事。",
+  "A traveller judges a destination unsafe on the strength of an attack there two years ago, without comparing it with the road risk of the journey they take every day.":
+    "一位旅行者根据两年前当地发生的一起袭击断定某个目的地不安全，却不拿它与自己每天出行的道路风险作比较。",
+  "One vivid event is being weighed against a background risk so routine that no instance of it is memorable at all. The comparison is between one thing you can picture and one thing you cannot, and that is not a comparison of sizes.":
+    "这是把一件鲜活的事件与一种日常到没有任何一次值得记住的背景风险放在一起衡量。这场比较的两边，一边是你能想象的，一边是你想象不出来的，而那不是量级的比较。",
+  "Before choosing, someone looks up how many deaths each cause produced last year and how many people were exposed to each, rather than going by which one they have heard more about.":
+    "在做选择之前，某人查了去年每种死因造成多少人死亡、各有多少人暴露其中，而不是凭自己听得更多的那一种来判断。",
+  "A published count and a population at risk answer the frequency question directly, and neither depends on what anyone happens to remember. Replacing recall with a rate is the specific fix.":
+    "一个公布的计数和一个暴露人口直接回答了频率这个问题，而两者都不依赖任何人恰好记得什么。用率替换回想，正是针对性的补救办法。",
+  "A safety committee ranks hazards from the incident register, which logs every event whether or not anybody found it memorable, and notes that the register may under-record near misses.":
+    "一个安全委员会依据事故登记簿给危险排序，登记簿记录每一起事件，无论是否有人觉得它值得记住，并指出登记簿很可能少记了未遂事件。",
+  "A record kept as events occur is not filtered by what stuck in anyone's mind, so it measures frequency rather than salience. Flagging that near misses are probably under-recorded names the one filter it does have.":
+    "随事件发生而记下的记录，不会被留在谁脑子里的东西所过滤，因此它测量的是频率而不是显著性。点明未遂事件很可能被少记，正是把这份记录唯一的过滤说了出来。",
+  "A doctor who recently missed a rare diagnosis says so aloud, notes that the case is making them want to test everybody, and goes back to the guideline's criteria to decide.":
+    "一位刚漏诊了罕见病的医生把这件事说了出来，指出这个病例正让他想给所有人都做检查，然后回到指南的标准上去做决定。",
+  "Noticing that a recent case is inflating your sense of how common something is does not make the feeling go away, but it does stop the feeling from being used as evidence. Deferring to a pre-written criterion is what turns that noticing into a decision.":
+    "察觉到一个近期病例正在夸大你对某事有多常见的感觉，并不会让这感觉消失，但能阻止这感觉被当成证据使用。回到事先写好的标准上，正是把这份察觉变成决定的那一步。",
 };

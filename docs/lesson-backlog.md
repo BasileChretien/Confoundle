@@ -39,36 +39,102 @@ two-views-of-one-dataset shape.
 
 ### 1. The sample that was too big to be right, 1936
 
-**Status: SOURCED.** The best candidate in this document by some distance.
+**Status: VERIFIED AT SOURCE, 2026-07-30.** Squire read in full from the *Public
+Opinion Quarterly* scan. The strongest candidate in this document, and the
+verification changed the lesson.
 
-The *Literary Digest* mailed **10,000,000** ballots for the 1936 US presidential
-election and got **2,376,523** back, the largest poll ever taken at that point.
-It predicted Landon over Roosevelt by roughly 3 to 2. Roosevelt won with about
-61 per cent. Gallup, with a sample in the tens of thousands, got it right.
+#### What the *Literary Digest* published
 
-**Why it is the best one.** The reveal is that the enormous number was the
-problem, not the reassurance, which is exactly the deck's shape: one dataset,
-two readings, and the intuition that more data is safer dies on contact.
-Confoundle has `survivorship` and `publication-bias` as cousins but nothing where
-the *respondents chose themselves*. The US framework names this gap explicitly
-as "opt-in polling (like on social media)".
+Its final count before the election, from more than **10,000,000** ballots mailed
+to names drawn mainly from automobile registration lists and telephone books:
 
-**On partisanship.** Weaker than the 1812 gerrymandering solution, because both
-modern US parties existed in 1936, but far weaker than a live case: nobody alive
-identifies with Alf Landon, and the lesson does not favour either side. It says
-who answered a questionnaire, not who was right.
+| | Ballots | Per cent |
+|---|---:|---:|
+| Landon | 1,293,669 | 55 |
+| Roosevelt | 972,897 | 41 |
+| Lemke | 83,610 | 4 |
+| **Total** | **2,350,176** | **100** |
 
-**The rigor trap, which must not be smoothed over.** The popular telling is that
-the Digest polled only rich car and telephone owners. Squire's reanalysis found
-**sample bias and response bias acting jointly**, using a 1937 Gallup survey that
-asked people whether they had taken part. Non-response was the larger part.
-Authoring only the folk version would teach a half-truth, which is worse here
-than in most puzzles because the half-truth is the famous one.
+Roosevelt won the election with **61 per cent** against Landon's **37**.
+
+**Reconciled three ways.** The three counts sum to 2,350,176, and each printed
+percentage recomputes from that total (55.05, 41.40, 3.56), and the percentages
+sum to 100. Independently, 2,350,176 against "more than 10 million" mailed gives
+23.5 per cent, matching Squire's "less than a 25% participation rate".
+
+**One correction to this file's earlier entry.** It gave returns as **2,376,523**,
+taken from a secondary summary. That figure is **not in Squire**, whose text says
+"over 2.3 million" and whose own table sums to 2,350,176. Author from 2,350,176
+and from the three counts, not from the round number that circulates.
+
+#### What the verification changed
+
+The received story, and the one this file told a day ago, is that the Digest
+polled rich car and telephone owners and so missed Roosevelt's base. **Squire's
+evidence says that story is wrong**, and this is now the lesson rather than a
+footnote to it.
+
+Using Gallup's May 1937 survey (AIPO 83), which asked respondents whether they had
+received a Digest ballot and whether they had returned it:
+
+**Table 1, vote by car and telephone ownership.** Even respondents owning **both**
+a car and a telephone went for Roosevelt, 55 to 45. The other three groups backed
+him by more (68/30 car only, 69/30 phone only, 79/19 neither). N = 946, 447, 236,
+657.
+
+**Table 2, vote by whether a ballot was received.** Those who received one went
+Roosevelt 55, Landon 44. N = 780 against 1,339 who received none.
+
+**Table 3, vote by whether it was returned.** Those who returned it went Landon
+**51**, Roosevelt **48**. N = 493 against 288 who did not return.
+
+So the Digest's *sample* would have called Roosevelt the winner. What lost it was
+**who bothered to reply**. Squire's decomposition runs 66 to 55 to 48: Gallup's
+overall estimate 66 per cent Roosevelt, 55 among those sent a ballot, 48 among
+those who sent one back, giving **about 11 points of sampling bias and about 7 of
+non-response bias**. Both subtractions check against Tables 2 and 3 exactly.
+
+#### The discrepancy, recorded rather than smoothed over
+
+Table 3's cells total **829** (493 + 288 + 48), but Table 2 gives **780** as the
+number who received a ballot, and Table 3 must be a subset of Table 2. The two
+disagree by **49 respondents**. Squire does not comment on it. Most likely the two
+tables handle item non-response on the vote question differently, but that is a
+guess and it has not been checked. **Any puzzle built on this must not quote both
+Ns as though they nest**, and the provenance note should say so.
+
+#### Why it is the best candidate
+
+The reveal is that the enormous number was the problem rather than the
+reassurance, which is exactly the deck's shape. Confoundle has `survivorship` and
+`publication-bias` as cousins but nothing where the **respondents chose
+themselves**, and the AP US Government framework names precisely this gap as
+"opt-in polling (like on social media)".
+
+The corrected version is a better puzzle than the folk version, because it has two
+reveals rather than one. First that the huge poll was wrong. Then that the reason
+everybody gives for it being wrong is also wrong.
+
+#### Limits
+
+Squire states them and so must the puzzle. Gallup's 1937 quota sample was itself
+flawed, it overestimates the winner's vote by about 5 points, and it
+overrepresents both telephone and car owners and the number of people who returned
+a ballot. Squire argues the last of these would if anything inflate Roosevelt's
+share, so it does not rescue the folk story. All the 1937 figures are recalled
+behaviour six months after the event.
+
+**On partisanship.** Weaker than the 1812 gerrymandering solution, since both
+modern US parties existed in 1936, but far from a live case: nobody alive
+identifies with Alf Landon, and the finding is about who returns a questionnaire,
+not about who was right.
 
 - Squire P. Why the 1936 *Literary Digest* poll failed. *Public Opinion
   Quarterly* 1988;52(1):125-133.
-- Shape: probably `rates`, two strata that are separate samples (poll returns
-  against the actual vote), with `strataAreSeparateSamples` set. No new shape.
+- *Literary Digest*, 31 October 1936, pp. 5-6, for the counts, cited in Squire.
+- Shape: `rates` with `strataAreSeparateSamples` set. Strata are the Digest's
+  returns and the actual vote; the ownership and response tables belong in the
+  deep dive. No new shape needed.
 
 ### 2. The word that put glass on the road
 

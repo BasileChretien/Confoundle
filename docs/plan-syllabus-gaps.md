@@ -238,6 +238,41 @@ distinguishable in the reveal.** If the reveal restates one of those, the audit
 row should be marked "covered by" rather than a new puzzle being forced. That
 judgement should be made honestly before any work starts.
 
+---
+
+#### JUDGED 2026-07-30. COVERED BY `length-time` AND `survivorship`. Not built.
+
+The check the plan asked for was made against the shipped reveals rather than
+from memory, and it fails. Neyman's mechanism is **duration-biased sampling**:
+you sample prevalent cases, so cases that end quickly are under-represented, and
+an exposure that kills quickly removes its own cases and looks protective.
+
+`length-time` already reveals exactly that, in its own words:
+
+> A test applied every few months catches the slow-growing tumours, because slow
+> ones sit in the detectable stage for years waiting to be found, while fast ones
+> surface between visits.
+
+That is the same sentence a Neyman puzzle would have to write. And the "you never
+see the ones who died" framing is `survivorship`'s reveal, in its own words: *You
+only see the survivors.*
+
+**What Neyman adds is a setting, not a reveal.** The case-control study of a fatal
+disease is a new costume; the sign reversal, a harmful factor appearing
+protective, is striking but the deck already teaches sign reversal in
+`kidney-stones`. Building it would put a third name on one reasoning move, which
+this project has refused twice before on exactly this ground: attrition against
+intention-to-treat, and question wording against framing.
+
+**Decision.** Mark the audit row "covered by length-time and survivorship", and
+give readers the setting through the **review bank** instead of a puzzle. Four
+scenarios are drafted (`nb-prevalent-cases`, `nb-clinic-attenders` and
+`nb-survivor-interviews` as traps against those two skills, plus a sound decoy
+`ok-incident-cases` on sampling incident rather than prevalent cases). They are
+deliberately **not** in this commit: new item strings need nine translations
+each, and they will ride along with the next puzzle's translation pass rather
+than triggering one of their own.
+
 ### 6. Hawthorne effect
 
 **The sourcing problem, stated up front.** The original Hawthorne studies do not
@@ -252,6 +287,111 @@ measurably changed behaviour and the counts are printed, and treat the
 historical study as a cautionary note in the deep-dive rather than as the
 data, or **do not ship it and record why**. A documented refusal is a legitimate
 outcome here and is more valuable than a weak puzzle.
+
+---
+
+#### SOURCED 2026-07-30, on the first route. Not a refusal after all.
+
+The plan's worry was that the *historical* studies do not support the effect.
+That worry stands and belongs in the deep dive. But the modern effect is real,
+large, and measured, and the search was for a source that prints it as counts.
+Two candidates failed on number type before one worked, and the failures are
+recorded so nobody repeats them.
+
+- **Srigley et al., BMJ Qual Saf 2014;23(12):974-980.** Electronic monitoring on
+  transplant units: hand hygiene events ran at **3.75 per dispenser per hour**
+  within sight of an auditor against **1.48** with none visible, and **1.07** the
+  week before. A threefold effect, beautifully measured, and reported as *rates
+  per dispenser-hour*, with the 562,304 dispenses never broken down by condition.
+  No proportions, so nothing this deck can author.
+- **Eckmanns et al., Infect Control Hosp Epidemiol 2006;27(9):931-934.** 2,808
+  indications, compliance **29 per cent** unaware against **45 per cent** aware.
+  The per-period denominators are not in the abstract, the full text is paywalled
+  and Cambridge reports this institution has no access, and **back-calculating
+  the denominators from the confidence-interval widths is exactly the
+  reconstruction this project forbids**. Not used.
+
+**The source that works.** Wu K-S, Lee SS-J, Chen J-K, et al. Identifying
+heterogeneity in the Hawthorne effect on hand hygiene observation: a cohort study
+of overtly and covertly observed results. *BMC Infect Dis* 2018;18:369. Open
+access. 31,522 opportunities observed, 4,581 overtly and 26,941 covertly, matched
+1:1 into **3,047 pairs**.
+
+**And the counts are decodable, which is not the same as reconstructed.** Table 2
+prints pair counts as integers and compliance to one decimal place. For the small
+subgroups, exactly one integer numerator produces the printed percentage, so the
+count is *determined* by the published data rather than guessed. Verified
+computationally:
+
+| Row | Pairs | Overt | Covert | Numerators |
+|---|---:|---:|---:|---|
+| Outpatient department | 133 | 64.7% | 24.1% | **86** and **32**, both unique |
+| Intensive care unit | 880 | 80.6% | 69.2% | **709** and **609**, both unique |
+| Physician | 619 | 67.9% | 57.4% | **420** and **355**, both unique |
+| Nurse | 2,105 | 84.2% | 54.2% | 2 candidates each, **unusable** |
+| Overall | 3,047 | 78.2% | 54.6% | 3 candidates each, **unusable** |
+
+**So build on the Location rows and never on the overall row.** A test must assert
+the uniqueness, which turns the decoding from a liberty into a checked property.
+
+**And the lesson is better than plain Hawthorne.** Setup shows the ICU pair, 80.6
+against 69.2, a gap of 11 points that reads as "being watched barely matters".
+The reveal adds the outpatient pair, 64.7 against 24.1, a gap of 41 points. The
+effect is nearly four times larger in one setting than the other, so the useful
+claim is not that observation changes behaviour but that **how much it changes
+behaviour is itself unstable**, which is what makes an audited compliance figure
+hard to compare across wards.
+
+#### SHIPPED 2026-07-30 as `when-the-auditor-is-watching`. Decoded, not reconstructed.
+
+Puzzle 34, skill `hawthorne-effect`, tags clinical / research / everyday, on the
+existing `rates` shape with `strataAreSeparateSamples` set: the ICU's 880 pairs
+and the clinic's 133 are two separate matched samples and must never be pooled.
+No schema change, no engine change, one data file and one line in `index.ts`,
+exactly as the shape rule intends.
+
+**What the setup shows and what it must not.** The setup is filtered to the
+intensive care stratum alone, 709/880 against 609/880, an eleven point gap that
+reads as "being watched barely matters". The reveal drops the filter and adds
+the clinic, 86/133 against 32/133, forty-one points. Verified in the browser at
+375x812 that the setup leaks neither 86/133 nor 32/133.
+
+**Winnability.** Deliberately winnable-but-tempting rather than a trick. The
+three wrong options are the three honest intuitions: same size, smaller because
+clinics are calmer, and the reused hedge "There is no way to tell" carried over
+verbatim from an existing puzzle so it carries no lexical tell. Nothing in the
+setup states the clinic's answer, but the framing does say the ICU staff work
+"within sight of one another all day" and clinic staff "move between rooms
+alone", which is the whole reasoning chain if you notice it.
+
+**The decoding is a checked property, not a liberty.** `hawthorne-effect.test.ts`
+recomputes, for each denominator, every integer numerator whose rate rounds to
+the printed one decimal place, and asserts the candidate list has length one for
+all four figures used. It also asserts the opposite for the two rows the table
+prints but this puzzle refuses, 3,047 and 2,105, and that neither denominator
+appears anywhere in the data. Independent check: the decoded counts reproduce
+the paper's own Hawthorne-effect column at 11.4 and 40.6 percentage points.
+
+**The historical caution is in the lesson, not the data.** The lesson body says
+plainly that the illumination experiments have been reanalysed since the original
+data resurfaced, that the tidy pattern largely dissolves, and that the effect is
+real while "the study it is named after is not that evidence". Srigley 2014 is
+the deep dive, where its rates per dispenser-hour are an asset rather than the
+disqualification they were as puzzle data: measured by hardware, it kills the
+objection that the covert observer was simply missing things.
+
+**Review items.** Ten `he-*` traps and three sound decoys, the decoys being
+electronic dispenser counts, routinely collected billing data, and a report that
+states its own method and declines to invent a correction. Gap 5's four Neyman
+items ride along in the same file, tagged to `length-time-bias` and
+`survivorship-bias`, per the covered-by judgement above.
+
+**Limits, in the reveal note.** One hospital; the clinic row rests on 133 pairs,
+few enough that forty-one points is imprecise even though its direction is clear;
+covert observation has its own practical and ethical difficulties and an observer
+who goes unnoticed may also be worse placed to see; and matched pairs are not
+randomisation, so residual differences between the compared moments remain
+possible.
 
 ---
 

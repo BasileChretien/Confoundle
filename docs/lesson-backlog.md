@@ -39,7 +39,7 @@ two-views-of-one-dataset shape.
 
 ### 1. The sample that was too big to be right, 1936
 
-**Status: VERIFIED AT SOURCE, 2026-07-30.** Squire read in full from the *Public
+**Status: VERIFIED AT SOURCE, both sources, 2026-07-30. READY TO AUTHOR.** Squire read in full from the *Public
 Opinion Quarterly* scan. The strongest candidate in this document, and the
 verification changed the lesson.
 
@@ -136,7 +136,59 @@ not about who was right.
   returns and the actual vote; the ownership and response tables belong in the
   deep dive. No new shape needed.
 
-#### STAGE 2 IS BLOCKED, and on exactly the rule that makes this deck worth trusting
+#### UNBLOCKED 2026-07-30, and the discrepancy was a finding rather than an error
+
+The official return was obtained and read: **Statistics of the Congressional
+Election of November 3, 1936**, compiled by Leroy D. Brandon under the direction of
+South Trimble, Clerk of the House, corrected to 18 December 1936. It is a 1998
+scan with no text layer, so it was read page by page. The national recapitulation,
+"Popular vote for President and Vice President", is on pp. 42 to 43.
+
+| | Votes |
+|---|---:|
+| Roosevelt (Democratic) | 27,476,673 |
+| Landon (Republican) | 16,679,583 |
+| Lemke (Union) | 882,479 |
+| Thomas (Socialist) | 187,720 |
+| Browder (Communist) | 80,159 |
+| Other | 340,203 |
+| **Printed total** | **45,646,817** |
+
+**Reconciled two ways.** The six party columns sum to exactly the printed grand
+total, to the vote. And Landon's 16,679,583 of 45,646,817 is **36.54 per cent**,
+matching Squire's "37 per cent" independently.
+
+**The 275,000-vote discrepancy that blocked this is not an error. It is the
+American Labor Party.** The official return gives Roosevelt **27,476,673**, which
+is **60.19 per cent**. Almost every compilation gives about 27,751,841, which is
+the familiar **60.8 per cent**. The gap is New York, where Roosevelt also ran on
+the American Labor Party line, created in 1936 so that voters could back him
+without voting Democratic. The House return lists those **274,924** votes
+separately under "Other". Add them and Roosevelt has 27,751,597, which is
+**60.80 per cent**, the number everyone quotes.
+
+So two defensible national totals exist for the same election, differing by a
+quarter of a million votes, and the difference is a definitional choice about
+whether a fusion line counts as a vote for the candidate. **That belongs in the
+provenance note**, and it is a small Confoundle lesson in its own right.
+
+**Decision for authoring.** Use the official return as printed, Democratic line
+only, because it is the figure that reconciles with its own grand total: Roosevelt
+27,476,673 and Landon 16,679,583 of 45,646,817. State the American Labor Party
+point in the note so the reader who checks against Wikipedia is not left thinking
+the puzzle is wrong.
+
+Authored data, all four numbers exact and no percentage hardcoded:
+
+| Stratum | Landon | Roosevelt | Denominator |
+|---|---:|---:|---:|
+| Ballots returned to the magazine | 1,293,669 | 972,897 | 2,350,176 |
+| Votes cast on election day | 16,679,583 | 27,476,673 | 45,646,817 |
+
+Derived shares: 55.05 against 41.40 in the poll, 36.54 against 60.19 in the
+election. The winner reverses and the margin swings by more than thirty points.
+
+#### The blocker as it stood, kept for the record
 
 Attempted 2026-07-30 and stopped. The blocker is small, specific, and must not be
 worked around.

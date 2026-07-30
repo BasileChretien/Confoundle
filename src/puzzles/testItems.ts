@@ -4172,6 +4172,140 @@ const items: TestItem[] = [
       en: "This is a count of everybody rather than a sample of anybody, so nobody selected themselves into it and no sampling error applies. Reporting it without a margin of error is correct.",
     },
   },
+
+  // ---- The misinformation effect ----
+  {
+    id: "me-leading-detail",
+    scenario: {
+      en: "An investigator asks a witness how far away the man in the grey jacket was standing. The witness later describes a man in a grey jacket, and the investigator treats the agreement as corroboration.",
+    },
+    trap: "misinformation-effect",
+    explanation: {
+      en: "The grey jacket entered the account in the question, not in the answer. A detail supplied by the interviewer and handed back later is not independent confirmation of anything.",
+    },
+  },
+  {
+    id: "me-confidence-as-accuracy",
+    scenario: {
+      en: "A witness who has been interviewed four times now recalls the scene in vivid detail and says she is completely certain. The report cites her certainty as a reason to rely on the account.",
+    },
+    trap: "misinformation-effect",
+    explanation: {
+      en: "Repeated interviewing gives a memory more chances to absorb detail from the questions, and rehearsal raises confidence whether or not it raises accuracy. Certainty grows with retelling, so it cannot vouch for the retelling.",
+    },
+  },
+  {
+    id: "me-group-discussion",
+    scenario: {
+      en: "Six people who saw the same incident discuss it together for an hour before giving statements. Their accounts turn out to agree closely, which the report describes as strong evidence.",
+    },
+    trap: "misinformation-effect",
+    explanation: {
+      en: "After an hour of discussion the six accounts are no longer six independent observations. Agreement produced by conversation looks identical to agreement produced by everyone having seen the same thing.",
+    },
+  },
+  {
+    id: "me-photo-first",
+    scenario: {
+      en: "Before an identity parade, an officer shows a witness a single photograph of the suspect to check they are on the right lines. The witness then picks that person out of the parade.",
+    },
+    trap: "misinformation-effect",
+    explanation: {
+      en: "The face in the photograph is now in the witness's memory alongside whatever they saw at the scene, and nothing labels which is which. The parade is testing recognition of the photograph.",
+    },
+  },
+  {
+    id: "me-news-before-statement",
+    scenario: {
+      en: "A bystander reads three days of news coverage of the incident, including a description of the vehicle, and then gives a formal statement that matches that description.",
+    },
+    trap: "misinformation-effect",
+    explanation: {
+      en: "Post-event information gets absorbed into recollection without a marker saying where it came from. The match tells you the statement is consistent with the coverage, not that it is consistent with the event.",
+    },
+  },
+  {
+    id: "me-questionnaire-wording",
+    scenario: {
+      en: "A hospital asks patients whether they experienced the sharp pain in the first week after surgery, and reports the proportion who say yes as the incidence of sharp pain.",
+    },
+    trap: "misinformation-effect",
+    explanation: {
+      en: "The question presupposes the sharp pain rather than asking whether there was any pain and what it was like. A presupposition in a question is a detail offered to the person answering.",
+    },
+  },
+  {
+    id: "me-therapy-recovered",
+    scenario: {
+      en: "A questionnaire asks respondents to describe how they felt when they got lost in a shopping centre as a young child. Most produce an account, and the researchers report it as a common childhood experience.",
+    },
+    trap: "misinformation-effect",
+    explanation: {
+      en: "Asking somebody to describe an event asserts that it happened, and people can generate a plausible account of something that did not. Without an independent record of who actually got lost, the responses measure suggestion as much as memory.",
+    },
+  },
+  {
+    id: "me-no-control",
+    scenario: {
+      en: "A study finds that witnesses given a strongly worded question afterwards reported a detail 30 percent of the time, against 14 percent for a neutral question, and concludes the strong wording created the memory in three of ten people.",
+    },
+    trap: "misinformation-effect",
+    explanation: {
+      en: "There is no group that was asked nothing, so the background rate of reporting that detail unprompted is unknown. The comparison shows a difference between two wordings, not how much either added to nothing at all.",
+    },
+  },
+  {
+    id: "me-consistent-detail",
+    scenario: {
+      en: "A researcher argues that because a suggested detail was accepted by many participants, a question could be used to make people remember almost anything about the scene.",
+    },
+    trap: "misinformation-effect",
+    explanation: {
+      en: "The details that get absorbed are ones that fit the scene already, which is why they slip in without friction. Extending the finding to details that contradict what somebody saw goes well past what the evidence supports.",
+    },
+  },
+  {
+    id: "me-own-memory",
+    scenario: {
+      en: "After discussing an old argument with a friend who was present, someone says they now clearly remember a remark the friend described, and takes the clarity of the recollection as proof it happened.",
+    },
+    trap: "misinformation-effect",
+    explanation: {
+      en: "The friend's description is post-event information like any other, and clarity is not a marker of origin. A reconstructed detail can feel exactly like a remembered one, which is precisely what makes this hard to catch in yourself.",
+    },
+  },
+
+  // ---- Sound handling of a witness account (decoys) ----
+  {
+    id: "ok-free-recall-first",
+    scenario: {
+      en: "An interviewer asks the witness to describe everything they remember in their own words, without interruption, and only afterwards asks specific questions about points the witness raised.",
+    },
+    trap: null,
+    explanation: {
+      en: "Free recall before specific questions is the standard protection: nothing has been supplied yet, so anything in the first account came from the witness. Asking about points they themselves raised adds no new detail.",
+    },
+  },
+  {
+    id: "ok-recorded-before",
+    scenario: {
+      en: "A researcher compares statements recorded on the night of the incident with statements from the same witnesses six months later, and reports where the two diverge.",
+    },
+    trap: null,
+    explanation: {
+      en: "The early statement is a record made before the intervening months could add anything, so the comparison measures drift rather than assuming it. This is the right way to study how an account changes.",
+    },
+  },
+  {
+    id: "ok-physical-evidence",
+    scenario: {
+      en: "Investigators find that a witness's account of the vehicle's colour matches paint traces recovered from the scene, and treat the paint as the evidence rather than the account.",
+    },
+    trap: null,
+    explanation: {
+      en: "The paint was not produced by anybody's memory and cannot have been suggested by a question. Corroborating an account against a physical record is exactly the check that recollection alone cannot provide.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

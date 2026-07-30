@@ -133,6 +133,52 @@ odds ratio, not head counts. Prefer a single trial with a published baseline
 imbalance traceable to an unconcealed sequence. This is the sourcing risk on
 this one and it should be settled before any writing.
 
+---
+
+#### SHIPPED 2026-07-30 as `randomised-in-name-only`. The sourcing risk was real.
+
+Both candidates the plan named failed for the reason it feared. Schulz gives
+odds ratios. And the one clean historical case study, **Kennedy et al., Trials
+2017;18:204**, which ran the same surgical trial under sealed envelopes and then
+under central telephone randomisation and watched the age imbalance vanish, is
+structurally perfect and reports **medians and interquartile ranges**. This deck
+authors from counts, so it could not be used as the data. It became the deep
+dive instead, where medians are quotable prose.
+
+**The source that worked puts the subversion in the arm sizes themselves.**
+
+Alam N, Oskam E, Stassen PM, et al. Prehospital antibiotics in the ambulance for
+sepsis: a multicentre, open label, randomised trial (PHANTASi). *Lancet
+Respiratory Medicine* 2018;6(1):40-50.
+
+Randomised 1:1 in blocks of four. 2,672 analysed: **1,535** to antibiotics and
+**1,137** to usual care. At 28 days, **120 of 1,535** and **93 of 1,137** died,
+relative risk 0.95. Some crews had been opening sealed envelopes and setting
+aside the ones that said usual care.
+
+**Reconciled five ways**, all asserted in the test file: the arms sum to 2,672;
+1,535 of 2,672 is 57.4 per cent, matching the 57 per cent reported for this trial
+in the methodological literature; 120 of 1,535 and 93 of 1,137 both round to the
+printed 8 per cent; and the two rates give the printed relative risk of 0.95.
+
+**Why it is impossible by chance.** Expectation 1,336 per arm, standard deviation
+25.9, observed excess 199, so **7.7 standard deviations**. That is deliberately
+conservative: blocking in fours constrains imbalance far more tightly than a free
+coin toss, so the true departure is larger. The puzzle says "more than seven"
+rather than quoting a p value, because the exact tail under blocking is not
+something the paper computes.
+
+**The setup shows the allocation, not the outcome, and that ordering is forced.**
+The mortality stratum carries 1,535 and 1,137 as its denominators, so showing it
+first would print the arm sizes and hand over the answer. A test asserts it.
+
+**Guarded against becoming an accusation.** The crews believed antibiotics helped
+and were trying to help patients, which is exactly what concealment exists to
+prevent; the investigators found the problem, reported it in the paper, and
+retrained the crews. Tests assert the reveal keeps both of those sentences, and
+the note records that an unequal ratio proves non-randomness without measuring
+prognostic imbalance.
+
 ### 3. Sponsorship and conflict of interest
 
 **The illusion.** Two sets of trials of the same drug reach different

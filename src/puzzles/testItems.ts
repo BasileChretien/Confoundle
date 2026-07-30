@@ -4440,6 +4440,140 @@ const items: TestItem[] = [
       en: "The authors report what the data could not rule out instead of converting a null result into a negative one. A small study that says the question is open has reported itself correctly.",
     },
   },
+
+  // ---- Allocation concealment ----
+  {
+    id: "ac-randomised-word",
+    scenario: {
+      en: "A trial report says only that patients were randomised to the two arms, with nothing about how the sequence was generated or how it was kept from the enrolling clinicians.",
+    },
+    trap: "allocation-concealment",
+    explanation: {
+      en: "Randomised on its own describes an intention, not a safeguard. Without knowing how the sequence was concealed there is no way to judge whether the groups were formed by chance or by somebody's judgement.",
+    },
+  },
+  {
+    id: "ac-open-envelopes",
+    scenario: {
+      en: "Allocations are supplied to each recruiting site as a stack of sealed envelopes, and a site reports that it sometimes opens the next one to plan staffing before deciding whether the patient is eligible.",
+    },
+    trap: "allocation-concealment",
+    explanation: {
+      en: "Once the next allocation is known before eligibility is settled, the decision to enrol can depend on it. That is the whole failure, and it needs no dishonesty: a clinician who thinks one arm is better will hesitate over the wrong patient.",
+    },
+  },
+  {
+    id: "ac-alternate-days",
+    scenario: {
+      en: "A study assigns patients arriving on odd-numbered days to the new treatment and those arriving on even days to the old one, and describes the allocation as random.",
+    },
+    trap: "allocation-concealment",
+    explanation: {
+      en: "Alternating by date is predictable, so anybody who knows the rule knows tomorrow's assignment and can time an admission. A sequence that can be forecast is not concealed, whatever else it is.",
+    },
+  },
+  {
+    id: "ac-blinding-confused",
+    scenario: {
+      en: "Asked about concealment, an investigator answers that the trial was double blind, so the allocation could not have influenced who was enrolled.",
+    },
+    trap: "allocation-concealment",
+    explanation: {
+      en: "Blinding starts after assignment and protects the measurement of the outcome. Concealment operates before assignment and protects the formation of the groups. A trial can be perfectly blinded and still have had its groups selected at the door.",
+    },
+  },
+  {
+    id: "ac-ratio-off",
+    scenario: {
+      en: "A trial that randomised 1:1 with blocks of six reports 940 patients in one arm and 762 in the other, and does not comment on the difference.",
+    },
+    trap: "allocation-concealment",
+    explanation: {
+      en: "Blocking exists to hold the arms level, so a gap that size cannot come from the allocation process working as described. An unexplained ratio is one of the few fingerprints a concealment failure leaves in a published report.",
+    },
+  },
+  {
+    id: "ac-baseline-sicker",
+    scenario: {
+      en: "The baseline table of an unblinded trial shows the control arm was older and had more advanced disease at entry, and the discussion attributes this to the play of chance in randomisation.",
+    },
+    trap: "allocation-concealment",
+    explanation: {
+      en: "Chance is a possible explanation and so is a sequence somebody could see, and the baseline table cannot distinguish them on its own. Whether to believe the chance explanation depends on how the allocation was concealed, which is the thing to go and check.",
+    },
+  },
+  {
+    id: "ac-central-not-used",
+    scenario: {
+      en: "A multicentre trial generates its sequence centrally with a validated computer program, then posts the full list to each site at the start of recruitment.",
+    },
+    trap: "allocation-concealment",
+    explanation: {
+      en: "A perfectly generated sequence that everyone can read is not concealed at all. Generation and concealment are separate safeguards, and doing the first impeccably does nothing for the second.",
+    },
+  },
+  {
+    id: "ac-retrospective-fix",
+    scenario: {
+      en: "After discovering that some sites had subverted the allocation, a team adjusts the analysis for the baseline characteristics that turned out to be imbalanced, and reports the adjusted result as unbiased.",
+    },
+    trap: "allocation-concealment",
+    explanation: {
+      en: "Adjustment can only handle the imbalances that were measured and recorded. The reason randomisation is valuable is that it balances the things nobody thought to measure, and once it has failed that protection cannot be restored afterwards.",
+    },
+  },
+  {
+    id: "ac-consent-after",
+    scenario: {
+      en: "In an unblinded trial, clinicians learn the allocation and then seek consent, and rather more patients decline in the arm the clinicians consider less desirable.",
+    },
+    trap: "allocation-concealment",
+    explanation: {
+      en: "Consent sought after the assignment is known lets the assignment influence who stays in the trial, which produces two groups that differ by more than the treatment. Seeking consent before allocation removes the opportunity entirely.",
+    },
+  },
+  {
+    id: "ac-small-trial-imbalance",
+    scenario: {
+      en: "A trial of 40 patients with a properly concealed central allocation ends up with 24 in one arm and 16 in the other, and a reader treats this as evidence that the concealment failed.",
+    },
+    trap: "allocation-concealment",
+    explanation: {
+      en: "In forty patients a 24 to 16 split is well within what chance produces, so this ratio is no evidence of anything. The arithmetic fingerprint only becomes readable when the numbers are large enough that chance cannot reach the observed gap.",
+    },
+  },
+
+  // ---- Sound handling of allocation (decoys) ----
+  {
+    id: "ok-central-randomisation",
+    scenario: {
+      en: "Clinicians enrol a patient by calling a central service, confirming eligibility first, and receiving the allocation only once the patient is irrevocably in the trial.",
+    },
+    trap: null,
+    explanation: {
+      en: "The allocation cannot be seen before the decision to enrol and cannot be undone afterwards, which is exactly what concealment means. This is the standard the method exists to reach.",
+    },
+  },
+  {
+    id: "ok-reports-method",
+    scenario: {
+      en: "A trial report states that the sequence was computer generated by a statistician with no clinical contact, held centrally, and released one patient at a time after eligibility was confirmed.",
+    },
+    trap: null,
+    explanation: {
+      en: "Generation and concealment are both described, separately and specifically, so a reader can judge them rather than take the word randomised on trust. This is what an adequate methods section looks like.",
+    },
+  },
+  {
+    id: "ok-unblinded-but-concealed",
+    scenario: {
+      en: "A surgical trial cannot be blinded, since the surgeon knows which operation they performed, but allocation is issued centrally after consent and the outcome is assessed by someone who does not know the assignment.",
+    },
+    trap: null,
+    explanation: {
+      en: "Blinding the treatment is impossible here and that is not the failure. Concealing the allocation before enrolment and blinding the outcome assessment afterwards cover the two things that were still available.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

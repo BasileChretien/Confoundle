@@ -338,7 +338,7 @@ consensus only · **X** absent from official documents.
 | Base rate / predictive value vs prevalence | **E every year** | A | O | X | shipped |
 | Relative vs absolute risk, NNT | A (x2) | A | O | X | shipped |
 | Blinding: performance + detection bias | X | **A** | O | X | **shipped** (detection; Brandstrup 2003) |
-| Allocation concealment | X | **A** | O | X | **gap** |
+| Allocation concealment | X | **A** | O | X | **shipped** (PHANTASi 2018) |
 | Effect modification vs confounding | X | B | X | X | **shipped** (Choi 2021) |
 | Confounding by indication | X | B | T | X | shipped |
 | Differential vs non-differential misclassification | X | B | T | X | **shipped** (non-differential; differential via recall bias) |
@@ -356,8 +356,8 @@ consensus only · **X** absent from official documents.
 | Prosecutor's fallacy | X | X | X | X | shipped (not a medical exam topic) |
 | Immortal time bias | X | **X** | T | X | **shipped** |
 | Healthy worker / healthy user | X | X | T | X | partly inside indication |
-| Hawthorne effect | X | X | **O** | X | **gap** |
-| Neyman / prevalence-incidence | X | X | T | X | **gap** |
+| Hawthorne effect | X | X | **O** | X | **shipped** (Wu 2018) |
+| Neyman / prevalence-incidence | X | X | T | X | covered by length-time and survivorship; review items only |
 | Cognitive: anchoring, availability, framing | named as a category | **X** | O | postgrad | **gap, needs a new beat** |
 
 ## Built from this document

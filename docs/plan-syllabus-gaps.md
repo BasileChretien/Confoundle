@@ -342,6 +342,57 @@ claim is not that observation changes behaviour but that **how much it changes
 behaviour is itself unstable**, which is what makes an audited compliance figure
 hard to compare across wards.
 
+#### SHIPPED 2026-07-30 as `when-the-auditor-is-watching`. Decoded, not reconstructed.
+
+Puzzle 34, skill `hawthorne-effect`, tags clinical / research / everyday, on the
+existing `rates` shape with `strataAreSeparateSamples` set: the ICU's 880 pairs
+and the clinic's 133 are two separate matched samples and must never be pooled.
+No schema change, no engine change, one data file and one line in `index.ts`,
+exactly as the shape rule intends.
+
+**What the setup shows and what it must not.** The setup is filtered to the
+intensive care stratum alone, 709/880 against 609/880, an eleven point gap that
+reads as "being watched barely matters". The reveal drops the filter and adds
+the clinic, 86/133 against 32/133, forty-one points. Verified in the browser at
+375x812 that the setup leaks neither 86/133 nor 32/133.
+
+**Winnability.** Deliberately winnable-but-tempting rather than a trick. The
+three wrong options are the three honest intuitions: same size, smaller because
+clinics are calmer, and the reused hedge "There is no way to tell" carried over
+verbatim from an existing puzzle so it carries no lexical tell. Nothing in the
+setup states the clinic's answer, but the framing does say the ICU staff work
+"within sight of one another all day" and clinic staff "move between rooms
+alone", which is the whole reasoning chain if you notice it.
+
+**The decoding is a checked property, not a liberty.** `hawthorne-effect.test.ts`
+recomputes, for each denominator, every integer numerator whose rate rounds to
+the printed one decimal place, and asserts the candidate list has length one for
+all four figures used. It also asserts the opposite for the two rows the table
+prints but this puzzle refuses, 3,047 and 2,105, and that neither denominator
+appears anywhere in the data. Independent check: the decoded counts reproduce
+the paper's own Hawthorne-effect column at 11.4 and 40.6 percentage points.
+
+**The historical caution is in the lesson, not the data.** The lesson body says
+plainly that the illumination experiments have been reanalysed since the original
+data resurfaced, that the tidy pattern largely dissolves, and that the effect is
+real while "the study it is named after is not that evidence". Srigley 2014 is
+the deep dive, where its rates per dispenser-hour are an asset rather than the
+disqualification they were as puzzle data: measured by hardware, it kills the
+objection that the covert observer was simply missing things.
+
+**Review items.** Ten `he-*` traps and three sound decoys, the decoys being
+electronic dispenser counts, routinely collected billing data, and a report that
+states its own method and declines to invent a correction. Gap 5's four Neyman
+items ride along in the same file, tagged to `length-time-bias` and
+`survivorship-bias`, per the covered-by judgement above.
+
+**Limits, in the reveal note.** One hospital; the clinic row rests on 133 pairs,
+few enough that forty-one points is imprecise even though its direction is clear;
+covert observation has its own practical and ethical difficulties and an observer
+who goes unnoticed may also be worse placed to see; and matched pairs are not
+randomisation, so residual differences between the compared moments remain
+possible.
+
 ---
 
 ## The pipeline each one goes through

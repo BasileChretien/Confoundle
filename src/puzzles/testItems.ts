@@ -4574,6 +4574,185 @@ const items: TestItem[] = [
       en: "Blinding the treatment is impossible here and that is not the failure. Concealing the allocation before enrolment and blinding the outcome assessment afterwards cover the two things that were still available.",
     },
   },
+
+  // ---- The Hawthorne effect ----
+  {
+    id: "he-audited-compliance",
+    scenario: {
+      en: "A hospital publishes hand hygiene compliance of 94 per cent, collected by trained auditors who stand on the ward with a clipboard, and uses it to reassure the board.",
+    },
+    trap: "hawthorne-effect",
+    explanation: {
+      en: "The figure describes behaviour while an auditor was standing there, which is not the behaviour the patients received the rest of the time. Open observation measures the observed state, and that is the only state it measures.",
+    },
+  },
+  {
+    id: "he-ward-league-table",
+    scenario: {
+      en: "A trust ranks its wards by audited hand hygiene and puts the bottom three into an improvement programme. All the audits used the same method and the same auditors.",
+    },
+    trap: "hawthorne-effect",
+    explanation: {
+      en: "Identical methods do not give identical inflation, because the auditor is a bigger change on some wards than others. A ranking built from audited figures can put wards in an order their real performance never had.",
+    },
+  },
+  {
+    id: "he-before-after",
+    scenario: {
+      en: "After a training campaign, observed compliance rises from 62 to 89 per cent, and the report attributes the improvement to the training.",
+    },
+    trap: "hawthorne-effect",
+    explanation: {
+      en: "A campaign tells everyone that this behaviour is being watched, so it raises both the behaviour and the awareness of being measured at once. Without a measure that does not depend on being noticed, the two cannot be separated.",
+    },
+  },
+  {
+    id: "he-inspection-day",
+    scenario: {
+      en: "A restaurant chain reports that 97 per cent of its kitchens met hygiene standards at their last scheduled inspection, with dates agreed in advance.",
+    },
+    trap: "hawthorne-effect",
+    explanation: {
+      en: "An inspection whose date is known measures the kitchen on the day it was expecting to be measured. The interesting number is what an unannounced visit would find, and that is a different number.",
+    },
+  },
+  {
+    id: "he-pilot-enthusiasm",
+    scenario: {
+      en: "A new procedure is piloted on one enthusiastic unit with researchers frequently present, works well, and is rolled out on the strength of the pilot.",
+    },
+    trap: "hawthorne-effect",
+    explanation: {
+      en: "During the pilot the staff knew they were part of something being watched, and that attention is not part of the rollout. Pilots routinely outperform the thing they are piloting for reasons that have nothing to do with the procedure.",
+    },
+  },
+  {
+    id: "he-driving-test",
+    scenario: {
+      en: "A study of a road safety measure reports that drivers signalled correctly 98 per cent of the time, based on observers riding in the passenger seat.",
+    },
+    trap: "hawthorne-effect",
+    explanation: {
+      en: "A driver with an observer beside them is driving a test, not a commute. The number is real and it describes a situation that almost never occurs on the road.",
+    },
+  },
+  {
+    id: "he-self-report-diary",
+    scenario: {
+      en: "Participants asked to keep a daily food diary for a study of snacking report far less snacking in week four than week one, and the authors conclude the habit was declining.",
+    },
+    trap: "hawthorne-effect",
+    explanation: {
+      en: "Writing down what you eat is itself an intervention, and it also makes you conscious of being assessed. Either the snacking changed or the recording did, and a diary cannot tell you which.",
+    },
+  },
+  {
+    id: "he-comparing-audited",
+    scenario: {
+      en: "Two countries report audited surgical checklist compliance of 91 and 68 per cent, and a commentary concludes the first has a stronger safety culture.",
+    },
+    trap: "hawthorne-effect",
+    explanation: {
+      en: "Both figures were lifted by being collected, and there is no reason the lift was the same size in each. Subtracting two observed numbers does not cancel the bias, because the bias is not a constant.",
+    },
+  },
+  {
+    id: "he-teacher-observation",
+    scenario: {
+      en: "An inspectorate grades teaching quality from announced lesson observations and reports that 88 per cent of lessons were good or better.",
+    },
+    trap: "hawthorne-effect",
+    explanation: {
+      en: "An announced observation samples the lesson a teacher prepares when they know somebody is coming. That is worth knowing, but it is not an estimate of the lessons nobody watched.",
+    },
+  },
+  {
+    id: "he-more-auditors",
+    scenario: {
+      en: "Concerned that its compliance figures may be inflated, a hospital responds by increasing the number of audits and the number of auditors on the wards.",
+    },
+    trap: "hawthorne-effect",
+    explanation: {
+      en: "More open observation produces more observed behaviour, so the figure rises and the gap it was hiding stays hidden. The fix has to be a measure that does not depend on anyone noticing, not more of the measure that failed.",
+    },
+  },
+
+  // ---- Sound handling of measurement under observation (decoys) ----
+  {
+    id: "ok-electronic-counts",
+    scenario: {
+      en: "A hospital fits its gel dispensers with electronic counters and reports usage from the hardware, without anyone standing on the ward to record it.",
+    },
+    trap: null,
+    explanation: {
+      en: "Nobody has to be noticed for the count to happen, so the measurement does not create the behaviour it measures. Instrumenting the process rather than observing it is the standard answer to this problem.",
+    },
+  },
+  {
+    id: "ok-routine-records",
+    scenario: {
+      en: "Researchers evaluate a policy using prescribing data that was collected for billing long before the study was designed, and that nobody knew would be analysed.",
+    },
+    trap: null,
+    explanation: {
+      en: "Data gathered for another purpose, before anyone knew it would be looked at, cannot have been shaped by the knowledge of being studied. This is one of the genuine advantages of routinely collected records.",
+    },
+  },
+  {
+    id: "ok-states-the-method",
+    scenario: {
+      en: "A report gives audited compliance of 93 per cent and states plainly that the audits were overt, that overt figures are known to exceed unobserved behaviour, and that the true rate is likely lower by an unknown margin.",
+    },
+    trap: null,
+    explanation: {
+      en: "The number is reported with the thing that limits it, and the limit is not quantified because the report cannot quantify it. Saying the margin is unknown is more honest than inventing a correction.",
+    },
+  },
+
+  // ---- Neyman, or prevalence-incidence bias. Deliberately NOT a puzzle of its
+  // own: its reveal is duration-biased sampling, which is what length-time
+  // already reveals, and its "you never see the ones who died" framing is what
+  // survivorship already reveals. See plan-syllabus-gaps.md gap 5.
+  {
+    id: "nb-prevalent-cases",
+    scenario: {
+      en: "Researchers recruit patients currently living with a fatal heart condition and compare their past exposures with healthy controls. A factor known to make the condition kill quickly comes out looking protective.",
+    },
+    trap: "length-time-bias",
+    explanation: {
+      en: "Recruiting people who currently have the disease samples them in proportion to how long they have it, so the fast-killing cases are largely absent. A factor that shortens survival removes its own cases from the study and therefore looks protective.",
+    },
+  },
+  {
+    id: "nb-clinic-attenders",
+    scenario: {
+      en: "A study of an aggressive cancer draws its cases from patients attending a specialist clinic in a given month, and reports which lifestyle factors are commoner among them than among controls.",
+    },
+    trap: "length-time-bias",
+    explanation: {
+      en: "A snapshot of who is attending in one month is a sample weighted by how long people survive to keep attending. Anything that shortens the illness is under-represented, so the exposure profile describes long survivors rather than the disease.",
+    },
+  },
+  {
+    id: "nb-survivor-interviews",
+    scenario: {
+      en: "To find out what caused an outbreak, investigators interview everyone still in hospital three weeks later about what they ate, and note that one dish was eaten less often than expected.",
+    },
+    trap: "survivorship-bias",
+    explanation: {
+      en: "The people interviewed are those who were still there to be interviewed. If a dish carried a heavier dose, its victims left the sample first, by discharge or by death, and it will look less dangerous than it was.",
+    },
+  },
+  {
+    id: "ok-incident-cases",
+    scenario: {
+      en: "A study enrols every patient at the moment they are first diagnosed, follows them forwards, and compares exposures between those who go on to die quickly and those who do not.",
+    },
+    trap: null,
+    explanation: {
+      en: "Enrolling at diagnosis catches the fast and slow cases alike, because nobody has had time to leave the pool. Sampling incident rather than prevalent cases is the specific fix for this whole family of problems.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

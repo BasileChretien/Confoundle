@@ -136,6 +136,46 @@ not about who was right.
   returns and the actual vote; the ownership and response tables belong in the
   deep dive. No new shape needed.
 
+#### STAGE 2 IS BLOCKED, and on exactly the rule that makes this deck worth trusting
+
+Attempted 2026-07-30 and stopped. The blocker is small, specific, and must not be
+worked around.
+
+**The second stratum has no verified counts.** `rates` authors integers and derives
+every percentage, so the "actual vote" stratum needs a numerator and a denominator.
+Squire prints only **61 per cent and 37 per cent**. The readily reachable secondary
+sources disagree with each other by roughly **275,000 votes** on Roosevelt's total
+(27,751,841 against 27,476,673), which is precisely the situation the
+reconcile-more-than-one-way rule exists to catch. The official return, *Statistics
+of the Presidential and Congressional Election of November 3, 1936*, is published
+by the Clerk of the House at
+`history.house.gov/Institution/Election-Statistics/1936election/` and returned 403
+to every fetch route available here.
+
+**Three redesigns were considered and all fail the same way.**
+
+- Reconstruct counts from Squire's Tables 2 and 3 as *per cent times N*. Rejected:
+  55 per cent of 780 is 429 and 44 per cent of 780 is 343.2, so the integers would
+  be invented, with up to half a per cent of rounding error, and the deck's rule is
+  that counts are authored and percentages derived, never the reverse.
+- Use the `estimation` shape, with the Digest's forecast and Gallup's as two
+  estimates against a true value. The constraint fits neatly, since both forecasts
+  sat below Roosevelt's actual share. Rejected: Squire gives **no number** for
+  Gallup's 1936 forecast, only that it was "reasonably accurate", so the second
+  estimate would be unsourced.
+- Use the 1932 Digest poll as the comparison stratum, since Squire says the
+  magazine called that one within a point. Rejected: he prints no 1932 counts.
+
+**To unblock, one of two things is needed.** Either the official Clerk of the House
+figure, read from that PDF, which an ordinary browser can reach even though this
+environment cannot; or an explicit decision to cite a named compilation such as
+*Congressional Quarterly's Guide to U.S. Elections* and record in the provenance
+note that the total is a compiler's figure rather than an official return.
+
+Everything else is ready: the verified Digest counts, the winnability decision, the
+shape, the deep-dive material, and the 49-respondent caveat. This is the last
+number standing between Stage 1 and a shipped puzzle.
+
 ### 2. The word that put glass on the road
 
 **Status: SOURCED.** Arrived at by way of gaslighting, and much better than

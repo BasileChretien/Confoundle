@@ -4753,6 +4753,140 @@ const items: TestItem[] = [
       en: "Enrolling at diagnosis catches the fast and slow cases alike, because nobody has had time to leave the pool. Sampling incident rather than prevalent cases is the specific fix for this whole family of problems.",
     },
   },
+
+  // ---- Sponsorship and conflict of interest ----
+  {
+    id: "sb-good-methods",
+    scenario: {
+      en: "A trial funded entirely by the company that makes the drug reports a clear benefit. It was randomised, double blind, published in a major journal, and a clinician accepts the result on those grounds.",
+    },
+    trap: "sponsorship-bias",
+    explanation: {
+      en: "Those are the checks that catch sloppiness, and sponsored trials routinely pass them; the difference shows up in what was compared, what was measured and how the conclusion was worded. Good methods do not answer the funding question, they only make it harder to see.",
+    },
+  },
+  {
+    id: "sb-inconclusive",
+    scenario: {
+      en: "A review of whether a chemical harms health concludes that the evidence remains inconclusive and that more research is needed. Its author has consulted for the manufacturer for a decade.",
+    },
+    trap: "sponsorship-bias",
+    explanation: {
+      en: "Doubt is the useful product here, not a favourable finding, and the evidence on almost any question can honestly be called inconclusive. When the party who benefits from delay is the one calling for more research, that call is a position rather than a neutral observation.",
+    },
+  },
+  {
+    id: "sb-head-to-head",
+    scenario: {
+      en: "Two trials compare the same two drugs against each other and reach opposite conclusions about which is better. Each was funded by one of the two manufacturers.",
+    },
+    trap: "sponsorship-bias",
+    explanation: {
+      en: "The comparison is identical and the answers are not, so something other than the drugs is driving the conclusion. Choice of dose, of endpoint and of how to phrase the summary can each move a head to head trial without any step in it being wrong.",
+    },
+  },
+  {
+    id: "sb-guideline-panel",
+    scenario: {
+      en: "A treatment guideline recommends a newer, costlier drug as first line. Most of the panel members have consulting arrangements with its manufacturers, which are listed in an appendix.",
+    },
+    trap: "sponsorship-bias",
+    explanation: {
+      en: "Disclosure records the conflict, it does not neutralise it, and a guideline is exactly the judgement call that funding shifts. The useful question is whether an independent panel reading the same evidence reached the same recommendation.",
+    },
+  },
+  {
+    id: "sb-no-role-statement",
+    scenario: {
+      en: "An industry funded review states that the sponsor played no part in selecting the studies, assessing them, or interpreting the results, and a reader concludes the funding therefore cannot have mattered.",
+    },
+    trap: "sponsorship-bias",
+    explanation: {
+      en: "The association between funding and conclusions holds even among reviews carrying exactly this statement, which means the mechanism does not require the sponsor to touch the manuscript. Who was commissioned, and what they already thought, are decided before anyone writes anything.",
+    },
+  },
+  {
+    id: "sb-counting-papers",
+    scenario: {
+      en: "A newspaper reports that scientists are split on a health question, and supports it by counting how many published reviews land on each side.",
+    },
+    trap: "sponsorship-bias",
+    explanation: {
+      en: "Counting reviews measures how many were written and published, not how much evidence there is, and anyone with money can raise the count on one side. A split in the literature and a split in the evidence are different things.",
+    },
+  },
+  {
+    id: "sb-conclusion-outruns-results",
+    scenario: {
+      en: "A sponsored trial finds no significant difference on its primary outcome, and its discussion concludes that the drug offers meaningful benefit in this population.",
+    },
+    trap: "sponsorship-bias",
+    explanation: {
+      en: "The gap between what a study found and what it says it found is wider in sponsored work, and the abstract is the part most people read. Read the results table against the conclusion rather than the conclusion alone.",
+    },
+  },
+  {
+    id: "sb-pooled-without-split",
+    scenario: {
+      en: "A meta-analysis pools thirty trials of a drug, most of them manufacturer funded, and reports a single overall effect with no breakdown by who paid.",
+    },
+    trap: "sponsorship-bias",
+    explanation: {
+      en: "If sponsored and independent trials give different answers, pooling them averages the two and hides the disagreement. A funding subgroup analysis costs nothing and its absence leaves the reader unable to check.",
+    },
+  },
+  {
+    id: "sb-nothing-to-declare",
+    scenario: {
+      en: "A paper on a device carries the line that the authors have nothing to declare. The lead author's previous three studies were funded by the manufacturer, and the company pays for their travel to conferences.",
+    },
+    trap: "sponsorship-bias",
+    explanation: {
+      en: "Disclosure rules usually cover the work in hand and a short window before it, so a long relationship can end up invisible in the one place a reader looks. An empty statement means the rules were satisfied, not that there is no interest.",
+    },
+  },
+  {
+    id: "sb-agreeable-funder",
+    scenario: {
+      en: "A study funded by a campaign group confirms exactly the harm the group was founded to publicise, and a reader who shares its aims passes over the funding line without pausing.",
+    },
+    trap: "sponsorship-bias",
+    explanation: {
+      en: "The mechanism does not care which direction the interest points, and an organisation whose existence depends on an answer has a stake in it. Applying the test only to conclusions you dislike converts a real check into a way of keeping the ones you already hold.",
+    },
+  },
+
+  // ---- Sound handling of funded evidence (decoys) ----
+  {
+    id: "ok-registered-protocol",
+    scenario: {
+      en: "A reader notes that a trial was manufacturer funded, then checks the public registry and finds the primary outcome and analysis plan posted before recruitment began and unchanged in the published paper.",
+    },
+    trap: null,
+    explanation: {
+      en: "Fixing the outcome and the analysis in public beforehand removes most of the room in which a sponsor's preferences could operate. Noting the funding and then checking what it could actually have changed is the whole method.",
+    },
+  },
+  {
+    id: "ok-independent-replication",
+    scenario: {
+      en: "A promising result from a company funded trial is treated as provisional until a publicly funded group with no commercial interest runs its own trial and gets the same answer.",
+    },
+    trap: null,
+    explanation: {
+      en: "Independent replication is the one check that does not depend on trusting anybody's motives, because a shared interest cannot explain agreement between parties who do not share one.",
+    },
+  },
+  {
+    id: "ok-funding-subgroup",
+    scenario: {
+      en: "A meta-analysis states in its protocol that it will compare results from industry funded and independently funded trials, and reports both estimates alongside the pooled one.",
+    },
+    trap: null,
+    explanation: {
+      en: "Planning the comparison in advance and publishing both figures lets the reader see whether funding made a difference here rather than assuming it did or did not. That is the specific fix for pooling evidence of mixed provenance.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

@@ -345,7 +345,7 @@ consensus only · **X** absent from official documents.
 | Placebo / nocebo | X | **A** | O | X | **shipped** |
 | Statistical vs clinical significance | X | **A** | O | X | **shipped** (oseltamivir) |
 | Power, type I and type II error | X | **A** | O | X | **gap** |
-| Sponsorship / conflict of interest | X | **A** | T | X | **gap** |
+| Sponsorship / conflict of interest | X | **A** | T | X | **shipped** (Barnes & Bero 1998) |
 | Regression to the mean | X | **X** | O | X | **shipped** (Galton 1886) |
 | Ecological fallacy | X | **X** | O | X | **shipped** (Robinson 1950) |
 | Simpson's paradox | X | **X** | **X** | X | shipped (consensus only) |
@@ -358,7 +358,9 @@ consensus only · **X** absent from official documents.
 | Healthy worker / healthy user | X | X | T | X | partly inside indication |
 | Hawthorne effect | X | X | **O** | X | **shipped** (Wu 2018) |
 | Neyman / prevalence-incidence | X | X | T | X | covered by length-time and survivorship; review items only |
-| Cognitive: anchoring, availability, framing | named as a category | **X** | O | postgrad | **gap, needs a new beat** |
+| Cognitive: anchoring | named as a category | **X** | O | postgrad | **shipped** (Tversky & Kahneman 1974) |
+| Cognitive: framing | named as a category | **X** | O | postgrad | **shipped** |
+| Cognitive: availability | named as a category | **X** | O | postgrad | **gap**; no new beat needed, source not yet read |
 
 ## Built from this document
 

@@ -13,8 +13,7 @@ export const zh: Record<string, string> = {
   Source: "来源",
   "Make my card →": "生成我的卡片 →",
   "Go deeper on this idea →": "深入了解这个概念 →",
-  "Commit to see the reveal. No peeking.":
-    "先做出选择才能看到答案。不许偷看。",
+  "Commit to see the reveal. No peeking.": "先做出选择才能看到答案。不许偷看。",
   "Reveal the answer": "揭晓答案",
   "Name the skill →": "说出这项技能 →",
   "Play again": "再玩一次",
@@ -27,8 +26,7 @@ export const zh: Record<string, string> = {
   "Most people miss this": "大多数人都没看出来",
   "You picked": "你选择了",
   Replay: "重玩",
-  "Who each treatment actually treated":
-    "每种治疗方案实际治的是谁",
+  "Who each treatment actually treated": "每种治疗方案实际治的是谁",
   "So what's the skill? →": "那么，这是什么技能？ →",
   // scope tags (right of the figure caption)
   Overall: "总体",
@@ -80,26 +78,22 @@ export const zh: Record<string, string> = {
   Hunch: "直觉",
   "Fairly sure": "比较确定",
   Certain: "十分确定",
-  "Pick one, then stake how sure you are":
-    "先选一个，再押上你的确定程度",
+  "Pick one, then stake how sure you are": "先选一个，再押上你的确定程度",
   pts: "分",
   Today: "今天",
   Streak: "连胜",
   Best: "最佳",
   Caught: "识破",
   Calibration: "校准",
-  "You beat {pct}% of players today":
-    "你今天击败了 {pct}% 的玩家",
+  "You beat {pct}% of players today": "你今天击败了 {pct}% 的玩家",
   "A new puzzle every day. Keep the streak alive.":
     "每天一道新谜题。别让连胜中断。",
-  "Sharp eye, and you called it.":
-    "眼光敏锐，而且你早就料到了。",
+  "Sharp eye, and you called it.": "眼光敏锐，而且你早就料到了。",
   "Nicely spotted.": "发现得漂亮。",
   "Good instinct.": "直觉不错。",
   "Ouch. Confidently wrong, the classic trap.":
     "哎哟。自信满满却答错了，经典的陷阱。",
-  "So does almost everyone. That's the trap.":
-    "几乎所有人都一样。这就是陷阱。",
+  "So does almost everyone. That's the trap.": "几乎所有人都一样。这就是陷阱。",
   "You sensed something was off, but went with it anyway.":
     "你察觉到有些不对劲，却还是照着选了。",
   // friends board
@@ -108,8 +102,7 @@ export const zh: Record<string, string> = {
   "Copy result": "复制结果",
   Copied: "已复制",
   Share: "分享",
-  "Paste your friends' results here":
-    "把好友的结果粘贴到这里",
+  "Paste your friends' results here": "把好友的结果粘贴到这里",
   "Add to board": "加入榜单",
   // trap hunt
   "Trap Hunt": "陷阱狩猎",
@@ -121,8 +114,7 @@ export const zh: Record<string, string> = {
   Rank: "段位",
   Done: "完成",
   "Trap Hunt unlocked": "陷阱狩猎已解锁",
-  "Can you still spot the traps?":
-    "你还能识破这些陷阱吗？",
+  "Can you still spot the traps?": "你还能识破这些陷阱吗？",
   Novice: "新手",
   Sceptic: "怀疑者",
   Detective: "侦探",
@@ -150,8 +142,7 @@ export const zh: Record<string, string> = {
   "78% overall": "总体 78%",
   "Treatment A actually wins, for both stone sizes.":
     "实际上，无论结石大小，都是治疗方案 A 胜出。",
-  "Stone size (case severity)":
-    "结石大小（病例严重程度）",
+  "Stone size (case severity)": "结石大小（病例严重程度）",
   "A and B weren't treating the same patients. A got mostly the hard cases (large stones), while B got mostly the easy ones. Everyone does worse on hard cases, so A's overall average sinks even though A wins in each group:":
     "A 和 B 治疗的并不是同一批患者。A 主要接手了疑难病例（大结石），而 B 主要接手了容易的病例。所有人在疑难病例上的表现都更差，因此即便 A 在每个组里都胜出，它的总体平均值仍被拉低：",
   "Simpson's paradox": "辛普森悖论",
@@ -170,8 +161,7 @@ export const zh: Record<string, string> = {
   "COVID-19 death rates": "COVID-19 死亡率",
   "Early in 2020, the reported death rate among COVID cases was higher in Italy than in China overall. But broken down by age, Italy's rate was lower in every age group. Italy simply had far more older patients, who are at higher risk, so pooling all ages together made Italy look worse than a fair, age-for-age comparison showed.":
     "2020 年初，在 COVID 病例中，意大利报告的总体死亡率高于中国。但按年龄段拆分后，意大利在每一个年龄段的死亡率都更低。原因只是意大利的老年患者多得多，而老年人风险更高，因此把所有年龄段合在一起，就让意大利显得比按同龄对比更糟。",
-  "Simpson's paradox, a reasoning trap.":
-    "辛普森悖论，一个推理陷阱。",
+  "Simpson's paradox, a reasoning trap.": "辛普森悖论，一个推理陷阱。",
   "One choice can win in every single group, yet lose the moment you lump all the groups together. It sounds impossible, but it's real. It happens when the groups aren't a fair comparison: one side quietly got the easy cases, the other got the hard ones. So the big combined number says one thing while the group-by-group numbers say the opposite, and it's the big number that fools you.":
     "一个选项可以在每一个单独的组里都获胜，却在你把所有组合并到一起的那一刻输掉。这听起来不可能，但确实存在。它出现在各组并非公平比较的时候：一方悄悄拿到了容易的病例，另一方拿到了疑难的病例。于是，那个庞大的合并数字说的是一回事，而逐组的数字说的却正好相反，真正骗到你的正是那个大数字。",
   "The 350/350 two-treatment table is as presented by Julious & Mullee (1994), drawn from the Charig et al. (1986) clinical series (which originally compared three modalities).":
@@ -196,8 +186,7 @@ export const zh: Record<string, string> = {
   "Positive, but almost certainly a false alarm.":
     "阳性，但几乎可以肯定是一次误报。",
   "The base rate": "基础概率",
-  "A rare disease flips the odds":
-    "罕见的疾病会颠覆概率",
+  "A rare disease flips the odds": "罕见的疾病会颠覆概率",
   "Because almost nobody has the disease, the test's small error rate does the heavy lifting. In 1,000 people, only 1 is truly sick, but about 50 healthy people also get a positive. So among the ~51 positive results, just 1 is real. A positive barely nudges you from “very unlikely” to “still unlikely.”":
     "因为几乎没有人真正患病，检测那一点点的错误率就起了决定性作用。在 1,000 人中，只有 1 人真正患病，但大约 50 名健康人也会得到阳性结果。所以在约 51 个阳性结果中，只有 1 个是真的。一个阳性结果只是把你从“极不可能”勉强推到“仍然不太可能”而已。",
   "The base-rate fallacy": "基础概率谬误",
@@ -210,12 +199,10 @@ export const zh: Record<string, string> = {
   "Even doctors slip": "连医生也会出错",
   "Researchers put this exact question to doctors and medical staff: a disease in 1 in 1,000, a test with a 5% false-alarm rate. The most common answer was 95%. The average was 56%. Only about 1 in 5 gave the correct answer of roughly 2%.":
     "研究者把这个完全相同的问题拿去问医生和医护人员：一种每 1,000 人中有 1 人患病的疾病，一项误报率为 5% 的检测。最常见的回答是 95%。平均答案是 56%。只有大约五分之一的人给出了大约 2% 这个正确答案。",
-  "Think in people, not percentages":
-    "用人数思考，而不是百分比",
+  "Think in people, not percentages": "用人数思考，而不是百分比",
   "The simplest cure is wording. Pose the same problem in natural frequencies (“1 in 1,000 people” and “about 50 false alarms” rather than “0.1%” and “5%”), and far more people, doctors included, get it right.":
     "最简单的解药是换一种表述。用自然频率来提出同一个问题（说“每 1,000 人中有 1 人”和“大约 50 次误报”，而不是“0.1%”和“5%”），会有多得多的人，包括医生在内，答对它。",
-  "The base-rate fallacy, a reasoning trap.":
-    "基础概率谬误，一个推理陷阱。",
+  "The base-rate fallacy, a reasoning trap.": "基础概率谬误，一个推理陷阱。",
   "A test can be 95% accurate and a positive result can still mean you're almost certainly fine. The trick is how rare the thing is. If only 1 in 1,000 people have a disease, then among everyone who tests positive, the few real cases are buried under a pile of false alarms. Accuracy isn't the same as your actual odds; you have to ask how common it is first.":
     "一项检测可以有 95% 的准确率，而一个阳性结果仍然可能意味着你几乎肯定没事。关键在于这件事有多罕见。如果每 1,000 人中只有 1 人患病，那么在所有检测呈阳性的人当中，寥寥几个真实病例会被埋在一大堆误报之下。准确率并不等于你的真实概率，你得先问一问它到底有多常见。",
 
@@ -231,18 +218,15 @@ export const zh: Record<string, string> = {
   "Nobel prizes": "诺贝尔奖",
   "A country's wealth": "国家的财富",
   "r ≈ 0.79": "r ≈ 0.79",
-  "Yes, chocolate boosts brainpower":
-    "是的，巧克力能提升脑力",
+  "Yes, chocolate boosts brainpower": "是的，巧克力能提升脑力",
   "the trend is strong": "趋势很明显",
   "No, it's a pure fluke": "不，纯属侥幸巧合",
   coincidence: "巧合",
-  "No, a third thing drives both":
-    "不，有第三个因素同时驱动两者",
+  "No, a third thing drives both": "不，有第三个因素同时驱动两者",
   "a common cause": "一个共同原因",
   "The chocolate isn't doing anything.": "巧克力其实什么作用都没有。",
   "The common cause": "共同原因",
-  "A country's wealth pulls both up":
-    "国家的财富把两者一同拉高",
+  "A country's wealth pulls both up": "国家的财富把两者一同拉高",
   "Wealthier countries can afford more chocolate AND fund more universities, labs and research, which is what actually wins Nobel Prizes. Wealth drives both, so chocolate and Nobels rise together without one causing the other. Hand out free chocolate and you'd get sweeter teeth, not more laureates.":
     "更富裕的国家既买得起更多巧克力，也能资助更多大学、实验室和科研，而后者才是真正赢得诺贝尔奖的原因。财富同时驱动着两者，于是巧克力和诺贝尔奖一起上升，却并非谁导致了谁。免费发放巧克力，你只会收获更甜的牙齿，而不是更多的获奖者。",
   "Correlation ≠ causation": "相关性 ≠ 因果性",
@@ -271,16 +255,14 @@ export const zh: Record<string, string> = {
   "Where should the armour go?": "装甲应该加在哪里？",
   "Returning bombers": "返航的轰炸机",
   "hits on planes that came back": "飞回来的飞机上的中弹处",
-  "armour here, the lost planes' hits":
-    "把装甲加在这里，即坠毁飞机的中弹处",
+  "armour here, the lost planes' hits": "把装甲加在这里，即坠毁飞机的中弹处",
   "The wings and body": "机翼和机身",
   "where the holes are": "弹孔所在之处",
   "Spread it evenly": "均匀分布",
   "play it safe": "稳妥起见",
   "The engines and cockpit": "发动机和驾驶舱",
   "where there are no holes": "没有弹孔的地方",
-  "Armour where the holes aren't.":
-    "把装甲加在没有弹孔的地方。",
+  "Armour where the holes aren't.": "把装甲加在没有弹孔的地方。",
   "The missing planes": "那些没能返航的飞机",
   "You only see the survivors": "你只看到了幸存者",
   "These are the planes that made it home. The ones hit in the engine or cockpit didn't, so their damage never shows up in the data. The holes on the survivors map out exactly where a bomber can be shot and still fly. The clean spots are the fatal ones: armour those.":
@@ -298,8 +280,7 @@ export const zh: Record<string, string> = {
   "Star mutual funds": "明星共同基金",
   "Look at the funds still on offer today and active management looks great. But funds that did badly get quietly closed and dropped from the records, so the survivors flatter the whole industry. Counting the dead funds cuts the average return by over a percentage point a year.":
     "只看今天仍在发售的基金，主动管理看起来棒极了。但那些业绩糟糕的基金被悄悄清盘、从记录中剔除，于是幸存者美化了整个行业。把那些已经消失的基金也算进来，平均年回报率会下降一个百分点以上。",
-  "Survivorship bias, a reasoning trap.":
-    "幸存者偏差，一个推理陷阱。",
+  "Survivorship bias, a reasoning trap.": "幸存者偏差，一个推理陷阱。",
   "It's easy to study the winners, the survivors, the successes, the things still standing, and copy what they have in common. But the failures are invisible: they dropped out of the data. Whatever helped the survivors survive looks far more powerful than it is, because you never see everyone it didn't save. Before copying the winners, ask who's missing.":
     "研究赢家、幸存者、成功案例、那些依然屹立的事物，并去模仿它们的共同点，是很容易的。但失败者是隐形的：他们已经从数据里消失了。任何帮助幸存者存活下来的东西，看上去都比实际上强大得多，因为你从来看不到所有那些它没能拯救的对象。在模仿赢家之前，先问一问少了谁。",
 
@@ -322,8 +303,7 @@ export const zh: Record<string, string> = {
   "One in 12 million, and still a coin flip.":
     "一千二百万分之一，却依然只是五五开。",
   "The flipped question": "被调换的问题",
-  "Rare evidence is common in a big crowd":
-    "罕见的证据在庞大的人群里并不罕见",
+  "Rare evidence is common in a big crowd": "罕见的证据在庞大的人群里并不罕见",
   "The 1 in 12 million answers one question: pick a couple at random, how likely are they to fit? The jury has to answer a different one: of all the couples who do fit, which pair did it? Line up 12 million couples. One pair are the robbers, and of course they fit. But at odds of 1 in 12 million, roughly one more couple in that crowd fits by pure chance. So a couple who fits is about as likely to be innocent as guilty.":
     "一千二百万分之一回答的是这样一个问题：随机挑出一对情侣，他们符合描述的可能性有多大？而陪审团要回答的是另一个问题：在所有符合描述的情侣当中，究竟哪一对作了案？把一千二百万对情侣排成一列。其中一对是劫匪，他们当然符合描述。但按照一千二百万分之一的概率，这群人里大约还会有另外一对纯属偶然地符合描述。所以，一对符合描述的情侣，清白的可能性和有罪的可能性差不多。",
   "The California Supreme Court reversed the conviction in 1968. Working from the prosecution's own figures, it found a likelihood of over 40 percent that at least one other couple could have fitted the description just as well, and it warned that guilt cannot be settled by arithmetic like this.":
@@ -722,7 +702,7 @@ export const zh: Record<string, string> = {
     "把同一个结果用具体人数说出来，每 1,000 人中多少人对每 1,000 人中多少人，患者和医生对它的判断都会比听到一个百分比下降时准确得多。相对风险属于一小类总能把人绕晕的表述方式，同类的还有单次事件概率，以及像检测敏感度这样的条件概率。它们都没有错。只是容易被误读，而同样的意思有更清楚的说法。",
   "Relative versus absolute risk, a reasoning trap.":
     "相对风险与绝对风险，一个推理陷阱。",
-  "\"Cuts your risk by a third\" sounds enormous. But a third of what? If the risk was 75 in 1,000, a third of it is 23 people. If the risk was 3 in 1,000, a third of it is one. The percentage tells you how much of the risk went away and says nothing at all about how much risk there was, which is the part that decides whether it matters to you. Ask for the plain numbers: how many out of 1,000, and how many people have to take it for one of them to benefit.":
+  '"Cuts your risk by a third" sounds enormous. But a third of what? If the risk was 75 in 1,000, a third of it is 23 people. If the risk was 3 in 1,000, a third of it is one. The percentage tells you how much of the risk went away and says nothing at all about how much risk there was, which is the part that decides whether it matters to you. Ask for the plain numbers: how many out of 1,000, and how many people have to take it for one of them to benefit.':
     "“把你的风险降低三分之一”听上去大得惊人。但是什么的三分之一？如果风险是每 1,000 人中 75 人，它的三分之一就是 23 个人。如果风险是每 1,000 人中 3 人，它的三分之一就是 1 个人。百分比告诉你风险消失了多少，却完全没有说原本有多少风险，而后者才决定这件事对你是否重要。去要那些朴素的数字：每 1,000 人中有多少，以及要多少人服药才能让其中 1 人获益。",
   "The counts are the trial's primary endpoint, a definite nonfatal heart attack or death from coronary heart disease: 248 events among the men on placebo and 174 among those on pravastatin, over an average of 4.9 years. The paper reports a 31 percent relative risk reduction, estimated from a proportional-hazards model; the crude counts give 30 percent. Every figure this puzzle shows is derived from the counts, so it quotes about a third rather than a number the chart would contradict.":
     "这些数字是该试验的主要终点，即确定的非致死性心脏病发作或冠心病死亡：安慰剂组的男性中有 248 例事件，普伐他汀组中有 174 例，平均随访 4.9 年。论文报告的相对风险降低为 31%，是用比例风险模型估计出来的；按粗计数计算则为 30%。这道谜题展示的每一个数字都由这些计数推导而来，所以它引用的是“大约三分之一”，而不是一个会与图表相矛盾的数字。",
@@ -784,7 +764,7 @@ export const zh: Record<string, string> = {
   "Confounding by indication": "适应证混杂",
   "When a doctor decides who gets a treatment, the treated differ from the untreated in ways the data never recorded, and the treatment takes the blame, or the credit, for the reason it was given.":
     "当由医生来决定谁接受治疗时，接受治疗的人与没接受的人，在数据从未记录下来的方面本来就已经不同，于是治疗替它被开出的理由背了黑锅，或者领了功劳。",
-  "This is why observational comparisons between treated and untreated patients are read so warily, and why \"we adjusted for that\" does not end the argument. Adjustment can only remove what was written down. The judgement that led to the prescription usually was not.":
+  'This is why observational comparisons between treated and untreated patients are read so warily, and why "we adjusted for that" does not end the argument. Adjustment can only remove what was written down. The judgement that led to the prescription usually was not.':
     "这就是为什么在观察性研究里，治疗组与未治疗组之间的比较总被谨慎对待，也是为什么“我们已经对此做了校正”并不能终结争论。校正只能去掉写下来的东西。而促成那张处方的判断，通常没有被写下来。",
   "Treatments are not handed out at random. A doctor prescribes because of something about the patient: they are sicker, or frailer, or their symptoms are worse. That something also affects how they were going to do anyway. So the treated group starts out different, and any comparison with the untreated measures both the drug and the reason it was chosen, tangled together. It runs both ways. A drug given to the sickest looks harmful; a drug given to the fittest, or one that only patients well enough to attend a clinic can receive, looks miraculous. The standard defence is to adjust for the differences, and it helps, but only for the differences someone thought to record. The clinician's impression that this particular patient was going downhill is real information, it is why the prescription happened, and it is almost never in the dataset. That is the whole reason randomised trials are worth their expense: a coin flip cannot know anything about the patient, so it cannot smuggle the reason into the comparison. When a trial and an observational study disagree about the same drug, this is usually why.":
     "治疗不是随机发放的。医生开药，是因为患者身上的某些情况：病得更重，或者更虚弱，或者症状更糟。而这些情况本来也会影响他们的结局。于是接受治疗的那一组从一开始就与众不同，任何与未治疗组的比较，测到的都是药物和选择用药的理由，两者纠缠在一起。它朝两个方向都会起作用。给病得最重的人用的药看上去有害；给身体最好的人用的药，或者只有健康到能来门诊的患者才拿得到的药，看上去神效非凡。标准的应对办法是对这些差异做校正，这确实有帮助，但只对那些有人想到要记录下来的差异有效。临床医生觉得这个患者正在走下坡路，这是真实的信息，正是它促成了那张处方，而它几乎从不出现在数据集里。这就是随机对照试验值得花那么多钱的全部理由：抛硬币不可能知道患者的任何情况，所以它无法把用药的理由偷偷带进比较之中。当一项试验和一项观察性研究对同一种药得出相反的结论时，原因通常就在这里。",
@@ -872,7 +852,8 @@ export const zh: Record<string, string> = {
   "the cases changed, not the deaths": "变的是病例，不是死亡",
   "Count everyone, and the screened arm did no better.":
     "把所有人都算进来，筛查组并没有更好。",
-  "Screening changed who counted as having cancer": "筛查改变了谁被算作癌症患者",
+  "Screening changed who counted as having cancer":
+    "筛查改变了谁被算作癌症患者",
   "The screened men were diagnosed far more often, 206 against 160, in a trial that split them evenly. The extra cancers were not a random sample of the disease. A test applied every few months catches the slow-growing tumours, because slow ones sit in the detectable stage for years waiting to be found, while fast ones surface between visits. Slow tumours also do better whatever you do, and some would never have surfaced at all. Those cases join the pool of people with lung cancer and survive it, so the share dying falls. Nobody was saved:":
     "接受筛查的男性被诊断出肺癌的人数多得多，206 例对 160 例，而这项试验把人数平均分成了两组。多出来的那些癌症并不是这种疾病的随机样本。每隔几个月做一次的检查，查出的是生长缓慢的肿瘤，因为长得慢的病灶会在可被查出的阶段停留数年，等着被发现，而长得快的则在两次检查之间冒出来。生长缓慢的肿瘤无论你做什么，预后本来就更好，其中有些甚至永远不会显露出来。这些病例加入了肺癌患者的行列，并且活了下来，于是死亡的比例下降了。没有任何人因此获救：",
   "Both ways of counting": "两种统计方式",
@@ -885,7 +866,8 @@ export const zh: Record<string, string> = {
   "The trial's own explanation": "试验自己的解释",
   "The authors did not attribute the gap to better treatment. They noted that similar mortality alongside better survival points to lesions of limited clinical relevance being found in the screened arm. Twenty years of follow-up did not rescue the result: deaths from lung cancer were 337 among 4,607 screened men and 303 among 4,585 others, a difference in the wrong direction and not statistically significant.":
     "作者并没有把这道差距归功于更好的治疗。他们指出，死亡率相近而生存率更好，说明筛查组查出了一些临床意义有限的病灶。二十年的随访也没能挽救这个结果：肺癌死亡在 4,607 名接受筛查的男性中为 337 例，在另外 4,585 人中为 303 例，差异的方向是反的，而且没有统计学意义。",
-  "Why screening is judged on deaths, not survival": "为什么筛查要看死亡，而不是生存",
+  "Why screening is judged on deaths, not survival":
+    "为什么筛查要看死亡，而不是生存",
   "This is not a historical curiosity. National screening programmes are assessed on whether they lower deaths from the disease in the whole invited population, precisely because survival among detected cases can be lifted by three separate artefacts without a single life being extended. A programme that raises five-year survival and leaves mortality untouched has, on the evidence, done nothing except give more people the label.":
     "这不是一桩历史趣闻。全国性的筛查项目要看的是它能否降低整个受邀人群中死于该病的人数，原因恰恰在于：被查出的病例的生存率可以被三种各自独立的假象抬高，而没有一条生命因此延长。一个提高了五年生存率、却让死亡率纹丝不动的项目，从证据上看，除了给更多人贴上标签之外什么也没做。",
   "Length-time bias, a reasoning trap.": "病程长短偏倚，一个推理陷阱。",
@@ -967,62 +949,42 @@ export const zh: Record<string, string> = {
     "1,212 名心力衰竭患者，随机分配到单纯药物治疗组或药物加搭桥手术组。只分析那些实际接受了所分配治疗的人，药物组 43% 死亡，手术组 34% 死亡。差异有统计学意义。",
   "Does this trial show that surgery cuts deaths?":
     "这项试验能说明手术降低了死亡吗？",
-  "Died during follow-up":
-    "随访期间死亡",
-  "Medicine alone":
-    "单纯药物",
-  "Medicine":
-    "药物",
-  "Surgery added":
-    "加做手术",
-  "Surgery":
-    "手术",
-  "Only those who got what they were assigned":
-    "仅限实际接受所分配治疗者",
-  "Everyone, as the coin assigned them":
-    "全部，按随机分配归组",
-  "The patients left out of the first panel":
-    "第一张图中被排除的患者",
-  "Those who followed the protocol":
-    "遵守方案的人",
-  "Yes, that is what surgery does":
-    "是，手术就是有这个效果",
-  "nine points fewer deaths":
-    "死亡少九个百分点",
-  "No, and it understates the benefit":
-    "不，而且它低估了获益",
-  "crossovers dilute a real effect":
-    "交叉治疗稀释了真实效应",
-  "No, that comparison is no longer randomised":
-    "不，这个比较已不再是随机的",
-  "dying is why some were left out":
-    "有些人被排除正是因为死亡",
+  "Died during follow-up": "随访期间死亡",
+  "Medicine alone": "单纯药物",
+  Medicine: "药物",
+  "Surgery added": "加做手术",
+  Surgery: "手术",
+  "Only those who got what they were assigned": "仅限实际接受所分配治疗者",
+  "Everyone, as the coin assigned them": "全部，按随机分配归组",
+  "The patients left out of the first panel": "第一张图中被排除的患者",
+  "Those who followed the protocol": "遵守方案的人",
+  "Yes, that is what surgery does": "是，手术就是有这个效果",
+  "nine points fewer deaths": "死亡少九个百分点",
+  "No, and it understates the benefit": "不，而且它低估了获益",
+  "crossovers dilute a real effect": "交叉治疗稀释了真实效应",
+  "No, that comparison is no longer randomised": "不，这个比较已不再是随机的",
+  "dying is why some were left out": "有些人被排除正是因为死亡",
   "Counting everyone the coin assigned, the difference is not significant.":
     "把随机分配的所有人都计入，差异没有统计学意义。",
   "The surgical patients who were dropped had mostly died first":
     "被剔除的手术组患者多数是先死亡了",
   "The 120 patients missing from the first panel are not a random sample. Of the 55 dropped from the surgery group, 30 died, and most of them died before they ever reached an operating table. Of the 65 dropped from the medicine group, only 15 died, because crossing over to surgery required living long enough to have it. So the surgical arm shed its worst outcomes and the medical arm lost its best, and the gap nearly doubled without one patient's fate changing:":
     "第一张图中缺失的 120 名患者不是随机样本。手术组被剔除的 55 人中有 30 人死亡，其中多数在上手术台之前就已死亡。药物组被剔除的 65 人中只有 15 人死亡，因为交叉去做手术的前提是活得足够久。于是手术组甩掉了它最差的结局，药物组失去了它最好的结局，差距几乎翻倍，而没有任何一名患者的命运发生改变：",
-  "All three views of one trial":
-    "同一项试验的三种看法",
+  "All three views of one trial": "同一项试验的三种看法",
   "A randomised comparison is only worth something while it is still random. The coin flip made the two groups alike; deciding afterwards who counts, on the basis of something that happened after the flip, undoes that. Here the deciding factor was survival itself, which is the outcome being measured. Counting everyone in the group they were assigned to, whatever happened next, is the analysis that keeps the coin flip intact.":
     "随机比较只有在仍然随机的时候才有价值。随机分配让两组变得相似；事后再根据分配之后发生的事情来决定谁算数，就把这一点抹掉了。这里的决定因素正是生存本身，而生存就是被测量的结局。无论之后发生什么，都把每个人计入他被分配到的组，这样的分析才能保住随机分配。",
-  "Who the analysis dropped":
-    "分析剔除了谁",
-  "Intention to treat":
-    "意向性治疗分析",
+  "Who the analysis dropped": "分析剔除了谁",
+  "Intention to treat": "意向性治疗分析",
   "Once you exclude people for what happened after they were randomised, you are no longer comparing the groups the coin made, and the exclusions usually favour one side.":
     "一旦你因为随机化之后发生的事情而排除某些人，你比较的就不再是随机分出来的两组，而且这些排除通常偏向其中一方。",
   "This is not a rule that per-protocol analysis is dishonest. It answers a different question, and there are trials where it is the right one to ask. The rule is narrower and harder: any analysis that drops people for something that happened after randomisation has to explain why those people were not different, and when the reason for dropping is entangled with the outcome, no explanation will do.":
     "这并不是说符合方案分析不诚实。它回答的是另一个问题，有些试验里那正是该问的问题。规则更窄也更难：任何因随机化之后发生的事情而剔除人群的分析，都必须解释为什么被剔除的这些人没有不同；而当剔除的理由与结局纠缠在一起时，任何解释都无济于事。",
   "Randomisation buys one thing: two groups that differ only by chance, including in all the ways nobody measured. Everything a trial claims rests on that. The trouble is that trials are run on people, who cross over, refuse the operation, stop the tablets or die before treatment starts, and it is tempting to set those people aside and look at the clean comparison underneath. But whether someone stayed on protocol is itself an outcome. Patients who cross from medicine to surgery must survive to be operated on. Patients assigned to surgery who never get it are often the ones too ill to be operated on, or already dead. Removing them is removing patients selected by prognosis, and prognosis is what the trial is measuring. Intention to treat keeps everyone in the arm the coin put them in, which sounds absurd when a patient never received the treatment, and is exactly the point: it measures the effect of the decision to treat, under real conditions, which is also the decision a doctor actually faces. It has a known cost. Crossovers pull the arms together, so intention to treat tends to shrink a real effect towards nothing. That is a conservative failure when you are trying to prove a drug works, and a dangerous one when you are trying to prove a drug is no worse than another, which is why non-inferiority trials report both analyses and are believed only when the two agree.":
     "随机化只买到一样东西：两组之间只因偶然而不同，包括在所有没人测量过的方面。试验的一切主张都建立在这一点上。麻烦在于试验做在人身上，人会交叉换组、拒绝手术、停药，或在治疗开始前死亡，于是人们很容易把这些人搁在一边，去看底下那个干净的比较。但一个人是否留在方案内本身就是一种结局。从药物交叉到手术的患者，必须活到能被开刀。被分配到手术却始终没做的患者，往往是病重到无法手术，或者已经死亡。把他们移走，就是按预后来挑选患者，而预后正是试验要测量的东西。意向性治疗分析把每个人留在随机分配给他的组里，当患者根本没接受过该治疗时这听起来很荒谬，而这恰恰是重点：它测量的是决定去治疗这一决策在真实条件下的效应，而这也正是医生实际面对的决定。它有已知的代价。交叉会把两组拉近，所以意向性治疗分析倾向于把真实效应缩小、趋向于零。当你想证明一种药有效时，这是一种保守的失败；当你想证明一种药不劣于另一种时，这就是危险的失败，这也是为什么非劣效性试验会同时报告两种分析，并且只有在两者一致时才被采信。",
-  "The same trap, without the verdict flipping":
-    "同样的陷阱，只是结论没有反转",
+  "The same trap, without the verdict flipping": "同样的陷阱，只是结论没有反转",
   "A tuberculosis trial compared shorter regimens with the standard six-month one. In the group treated per protocol, the standard regimen appeared to fail in about 8 percent of patients. Counting everyone who was randomised and had an assessable outcome, it failed in about 16 percent. Almost everyone the per-protocol analysis removed had had an unfavourable outcome, because an unfavourable outcome was frequently the reason they left the protocol. Nothing about the trial's conclusion changed, and every failure rate in it halved.":
     "一项结核病试验把更短的方案与标准的六个月方案作比较。在符合方案分析的人群中，标准方案约有 8% 的患者治疗失败。把所有随机化且结局可评估的人都计入，失败率约为 16%。符合方案分析剔除的人几乎都出现了不良结局，因为不良结局常常正是他们脱离方案的原因。试验的结论没有任何改变，而其中每一个失败率都减半了。",
-  "Intention to treat, a reasoning trap.":
-    "意向性治疗分析，一个推理陷阱。",
+  "Intention to treat, a reasoning trap.": "意向性治疗分析，一个推理陷阱。",
   "A trial flips a coin so its two groups start out alike. Then real life happens: people switch treatments, refuse the operation, or die before it. It seems only fair to compare the ones who actually got what they were assigned. It is not, because whether someone stuck to the plan depends on how they were doing, and often on whether they survived. Dropping them quietly sorts the groups by prognosis, which is the very thing the trial is trying to measure. Count everyone where the coin put them, and the flattering result can vanish.":
     "试验靠随机分配让两组一开始就相似。然后现实发生了：有人换治疗，有人拒绝手术，有人在手术前死亡。只比较那些真正接受了所分配治疗的人，看起来才公平。其实不然，因为一个人是否坚持了计划，取决于他当时的状况，往往还取决于他是否活了下来。把这些人剔除，等于悄悄按预后给两组分了类，而预后正是试验要测量的东西。把每个人都计入随机分配给他的组，那个漂亮的结果就可能消失。",
   "The four counts in the first two panels are printed. The third panel is subtraction over those printed integers rather than figures of its own: 65 and 55 are 602 minus 537 and 610 minus 555, and 15 and 30 are 244 minus 229 and 218 minus 188. It closes three ways. The excluded patients reassemble the as-treated arms, 537 plus 55 and 555 plus 65 giving 592 and 620, which sum to the 1,212 randomised; and total deaths are conserved in every split, 244 plus 218 and 259 plus 203 both giving 462. Note also that the trial's P values, 0.12 as randomised and 0.005 per protocol, come from Cox proportional-hazards models over the whole follow-up, not from these four-cell tables, so they are quoted as the trial's own results and not recomputed here.":
@@ -1033,51 +995,36 @@ export const zh: Record<string, string> = {
     "141 名已确诊黑色素瘤的女性和 1,094 名未确诊的女性，被问及皮肤对日晒的反应。患黑色素瘤的女性中 45% 说自己几乎不晒黑或完全不晒黑，其他人中这一比例为 25%。皮肤白皙、容易晒伤是已知的危险因素，所以这个结果看起来完全符合预期。",
   "Is that twenty point gap what their skin was really like?":
     "这二十个百分点的差距，真是她们皮肤本来的样子吗？",
-  "Said their skin tans little or not at all":
-    "自述皮肤几乎不晒黑或完全不晒黑",
-  "Women who developed melanoma":
-    "后来患黑色素瘤的女性",
-  "Melanoma":
-    "黑色素瘤",
-  "Women who did not":
-    "未患病的女性",
-  "No melanoma":
-    "无黑色素瘤",
-  "Asked after the diagnosis":
-    "确诊之后询问",
-  "Asked years before anyone knew":
-    "无人知情前数年询问",
-  "Yes, pale skin is a real risk factor":
-    "是，白皙皮肤确是危险因素",
-  "the gap is their skin":
-    "差距就是她们的皮肤",
-  "No, the whole association is an artefact":
-    "不，整个关联都是假象",
-  "they are reinterpreting their past":
-    "她们在重新解读自己的过去",
+  "Said their skin tans little or not at all": "自述皮肤几乎不晒黑或完全不晒黑",
+  "Women who developed melanoma": "后来患黑色素瘤的女性",
+  Melanoma: "黑色素瘤",
+  "Women who did not": "未患病的女性",
+  "No melanoma": "无黑色素瘤",
+  "Asked after the diagnosis": "确诊之后询问",
+  "Asked years before anyone knew": "无人知情前数年询问",
+  "Yes, pale skin is a real risk factor": "是，白皙皮肤确是危险因素",
+  "the gap is their skin": "差距就是她们的皮肤",
+  "No, the whole association is an artefact": "不，整个关联都是假象",
+  "they are reinterpreting their past": "她们在重新解读自己的过去",
   "Partly, and part of it appeared afterwards":
     "部分是，另一部分是事后才出现的",
-  "real, but not this large":
-    "真实，但没有这么大",
+  "real, but not this large": "真实，但没有这么大",
   "These same women had already answered, years earlier.":
     "这些女性在数年前就已经回答过同一个问题。",
   "The question was answered by a different person, in a sense":
     "从某种意义上说，回答问题的已是另一个人",
   "Every one of these women filled in the same question before anyone knew who would get melanoma. Back then the gap was thirteen points, not twenty. The women who went on to be diagnosed shifted seven points towards saying they burn; the women who were not diagnosed, answering over the same years, shifted a point the other way. Nobody's skin changed in between. What changed was that some of them had since been asked to explain a cancer:":
     "在还没有人知道谁会患黑色素瘤之前，这些女性每一位都填过同样的问题。那时差距是十三个百分点，而不是二十。后来被确诊的女性向容易晒伤那一侧移动了七个百分点；同一段年份里作答、未被确诊的女性则向相反方向移动了一个百分点。这期间没有人的皮肤发生变化。变化的是，其中一些人此后被要求解释一场癌症：",
-  "The same women, asked twice":
-    "同一批女性，被问了两次",
+  "The same women, asked twice": "同一批女性，被问了两次",
   "So the risk factor is real and the study still overstates it: the crude odds ratio these counts give is about 1.8 before the diagnosis and about 2.5 after it, so roughly a third of what the later study measured was not there beforehand. That is the awkward shape of recall bias. It rarely conjures an association out of nothing. It takes a true one and inflates it, which is far harder to spot, because the result still agrees with everything you already believed.":
     "所以这个危险因素是真实的，而研究仍然高估了它：这些计数给出的粗比值比，确诊前约为 1.8，确诊后约为 2.5，因此后一次研究测到的东西里，大约三分之一在此之前并不存在。这就是回忆偏倚令人为难的形态。它很少凭空造出一个关联。它是把一个真实的关联放大，而这要难察觉得多，因为结果仍然与你原本相信的一切相符。",
-  "What the diagnosis changed":
-    "确诊改变了什么",
-  "Recall bias":
-    "回忆偏倚",
+  "What the diagnosis changed": "确诊改变了什么",
+  "Recall bias": "回忆偏倚",
   "People who know how their story ended remember the beginning differently, so asking about the past after the outcome is known measures the outcome as well as the past.":
     "知道自己故事结局的人，会以不同的方式回忆开头，所以在结局已知之后询问过去，测到的既是过去，也是结局。",
   "Nobody here is lying. Searching your memory harder because you have been given a reason to search it is an ordinary human thing to do, and the answers that come back are honestly meant. That is what makes it so hard to correct for: there is no dishonest group to exclude and no question you can ask that fixes it, because the more carefully someone thinks about it, the worse it gets.":
     "这里没有人在说谎。因为有了搜寻的理由而更用力地搜寻记忆，是再普通不过的人之常情，回想出来的答案也是诚实的。这正是它难以校正的原因：没有一个不诚实的群体可以排除，也没有哪个问题问出来就能解决，因为一个人想得越仔细，情况反而越糟。",
-  "A case-control study starts from the outcome and works backwards, asking people who have a disease and people who do not what they were exposed to. It is fast, it is cheap, and for a rare disease it is often the only design that will ever be affordable. Its weakness is that one group has been given a reason to search their memory. A diagnosis prompts the question \"why me\", and the mind answers it, reaching for the sunburn, the chemical, the medicine, the difficult pregnancy. The other group has no such prompt and remembers no harder than anyone remembers anything. So the two groups are not just being compared on exposure, they are being compared on how hard they looked. The direction is usually predictable: it inflates whatever the person already suspects is to blame, which means it tends to confirm the hypothesis under test. The defences are all about not relying on memory. Take the exposure from a record written before the outcome, from a prescription database, a workplace log, a stored blood sample, a questionnaire filled in years earlier. Or build in a comparison the mechanism cannot touch, such as a second exposure question that nobody associates with the disease: if the groups drift equally on that one, the drift is not about the disease. What does not work is asking the question more carefully, and what does not work is telling people to be objective.":
+  'A case-control study starts from the outcome and works backwards, asking people who have a disease and people who do not what they were exposed to. It is fast, it is cheap, and for a rare disease it is often the only design that will ever be affordable. Its weakness is that one group has been given a reason to search their memory. A diagnosis prompts the question "why me", and the mind answers it, reaching for the sunburn, the chemical, the medicine, the difficult pregnancy. The other group has no such prompt and remembers no harder than anyone remembers anything. So the two groups are not just being compared on exposure, they are being compared on how hard they looked. The direction is usually predictable: it inflates whatever the person already suspects is to blame, which means it tends to confirm the hypothesis under test. The defences are all about not relying on memory. Take the exposure from a record written before the outcome, from a prescription database, a workplace log, a stored blood sample, a questionnaire filled in years earlier. Or build in a comparison the mechanism cannot touch, such as a second exposure question that nobody associates with the disease: if the groups drift equally on that one, the drift is not about the disease. What does not work is asking the question more carefully, and what does not work is telling people to be objective.':
     "病例对照研究从结局出发向前回溯，询问患病的人和未患病的人各自暴露于什么。它快，它便宜，对罕见病来说往往是唯一负担得起的设计。它的弱点在于其中一组被给了搜寻记忆的理由。一次确诊会引出“为什么是我”这个问题，而大脑会去回答它，抓住那次晒伤、那种化学品、那种药、那次艰难的妊娠。另一组没有这样的提示，回忆得并不比人们平时回忆任何事情更用力。所以这两组被比较的不只是暴露，还有他们各自找得有多用力。方向通常可以预料：它会放大当事人本来就怀疑该负责的那个因素，也就意味着它倾向于确证正在被检验的假设。防御手段都围绕着不依赖记忆。从结局发生之前写下的记录中获取暴露信息：处方数据库、工作场所记录、留存的血样、数年前填写的问卷。或者设置一个该机制触及不到的比较，比如再问一个没有人会把它与该疾病联系起来的暴露问题：如果两组在这个问题上的漂移一样，那么漂移就与疾病无关。不起作用的做法是把问题问得更仔细，同样不起作用的是叮嘱人们要客观。",
   "The study everyone credits for this does not show it":
     "人人引用为源头的那项研究，其实并没有证明它",
@@ -1087,8 +1034,7 @@ export const zh: Record<string, string> = {
     "而对它最大规模的检验几乎没有发现它",
   "The biggest study of this design compared what parents said in interview against what their family doctor had already written down, for 1,624 children with cancer and 2,524 without. Agreement with the records was poor in places, but it was poor in much the same way in both groups. The authors found essentially no evidence that having a sick child changed how the past was reported. Recall bias is a real mechanism and a reason to prefer records over memory. It is not a law that memory always bends, and a study is not discredited by the mere fact that it asked people to remember.":
     "这一设计中规模最大的研究，把父母在访谈中的说法与家庭医生此前已经记录的内容作了比较，涉及 1,624 名患癌儿童和 2,524 名未患癌儿童。与记录的一致性在某些方面很差，但两组差得方式大致相同。作者基本上没有发现证据表明孩子患病会改变父母对过去的报告。回忆偏倚是一个真实存在的机制，也是优先采用记录而非记忆的理由。它并不是一条说记忆总会弯曲的定律，一项研究也不会仅仅因为要求人们回忆就被否定。",
-  "Recall bias, a reasoning trap.":
-    "回忆偏倚，一个推理陷阱。",
+  "Recall bias, a reasoning trap.": "回忆偏倚，一个推理陷阱。",
   "Ask someone what they were exposed to before they got ill and you are not only asking about the past, you are asking someone who has been given a reason to search it. A diagnosis makes people look harder, and looking harder turns up more. In one study the same women answered the same question about their skin years apart, once before anyone knew and once after a melanoma diagnosis, and the ones who had been diagnosed had shifted. Their skin had not. This rarely invents a finding from nothing. It takes a true one and makes it look bigger, which is much harder to catch, because the answer still agrees with what you expected.":
     "问一个人在患病之前暴露于什么，你问的不只是过去，你问的是一个已经被给了理由去搜寻过去的人。确诊会让人找得更用力，而找得更用力就会翻出更多东西。在一项研究中，同一批女性相隔数年回答了关于自己皮肤的同一个问题，一次在无人知情之前，一次在黑色素瘤确诊之后，被确诊的那些人的答案发生了移动。她们的皮肤没有。这很少会凭空造出一个发现。它是把一个真实的发现放大，而这要难察觉得多，因为答案仍然与你的预期相符。",
   "Two things a careful reader should know. First, the reference standard is the woman's own questionnaire filled in before diagnosis, not an external record, so this shows that the answers moved rather than which of the two answers was correct, and the authors' own conclusion is appropriately hedged: tanning ability was the one host factor whose shift was significant in the cases and not in the controls. Second, the paper prints odds ratios of 1.90 and 3.01 for this comparison. Those are the authors' own estimates and are not the crude odds ratios of these four cells, which are 1.80 and 2.55. The two pairs move in the same direction by a similar factor but they are not the same quantity, so only the crude ones, which anyone can recompute from the counts shown, appear in the text above.":
@@ -1097,54 +1043,35 @@ export const zh: Record<string, string> = {
     "配发过这种药的患者，死亡率远低于没有配发过的患者。是药起了作用吗？",
   "A cohort is followed from the day each patient enters it. Anyone who is dispensed the drug at any point during follow-up counts as treated; everyone else counts as untreated. 49 percent of the treated died against 71 percent of the untreated, and the drug appears to halve the death rate.":
     "一个队列从每位患者进入的那天开始随访。随访期间任何时点被配发过该药的人都算作用药组，其余人算作未用药组。用药组 49% 死亡，未用药组 71% 死亡，该药看上去把死亡率减半了。",
-  "Is that gap the drug?":
-    "这个差距是药造成的吗？",
-  "One patient from each group":
-    "每组各一名患者",
-  "months":
-    "月",
-  "entered the cohort":
-    "进入队列",
-  "first prescription dispensed":
-    "首次配药",
-  "follow-up credited to each group":
-    "计入各组的随访时间",
-  "Counted, but death was impossible":
-    "被计入，但死亡不可能发生",
-  "Follow-up credited to each group":
-    "计入各组的随访时间",
-  "Counted as on the drug":
-    "算作用药",
-  "Counted as not on the drug":
-    "算作未用药",
-  "As the study counted it":
-    "按研究的计法",
-  "Yes, the drug is keeping them alive":
-    "是，药物让他们活了下来",
-  "half the deaths":
-    "死亡少了一半",
-  "No, the untreated were sicker to begin with":
-    "不，未用药者本来就病得更重",
-  "they were never offered it":
-    "他们从未获得用药机会",
+  "Is that gap the drug?": "这个差距是药造成的吗？",
+  "One patient from each group": "每组各一名患者",
+  months: "月",
+  "entered the cohort": "进入队列",
+  "first prescription dispensed": "首次配药",
+  "follow-up credited to each group": "计入各组的随访时间",
+  "Counted, but death was impossible": "被计入，但死亡不可能发生",
+  "Follow-up credited to each group": "计入各组的随访时间",
+  "Counted as on the drug": "算作用药",
+  "Counted as not on the drug": "算作未用药",
+  "As the study counted it": "按研究的计法",
+  "Yes, the drug is keeping them alive": "是，药物让他们活了下来",
+  "half the deaths": "死亡少了一半",
+  "No, the untreated were sicker to begin with": "不，未用药者本来就病得更重",
+  "they were never offered it": "他们从未获得用药机会",
   "No, some of that time could not contain a death":
     "不，有些时间里不可能出现死亡",
-  "the clock was started too early":
-    "计时开始得太早",
+  "the clock was started too early": "计时开始得太早",
   "Half the treated group's follow-up was time in which nobody could die.":
     "用药组一半的随访时间里，没有人可能死亡。",
   "Surviving is what put them in the treated group":
     "是活下来才让他们进了用药组",
   "This patient was counted as treated from the day they entered, but the prescription was not dispensed until month 11. Those eleven months are immortal: had the patient died in month 6, no prescription would ever have been written and they would have been counted in the other group instead. Death was not merely unlikely in that stretch, it was impossible by the way the groups were defined, and it is credited to the drug all the same:":
     "这位患者从进入队列那天起就被算作用药，但直到第 11 个月才配到药。这十一个月是永生的：如果该患者在第 6 个月死亡，就不会有任何处方开出，他会被算进另一组。在这段时间里死亡不只是不太可能，而是按分组定义根本不可能，可它仍然被算在了药物名下：",
-  "The same follow-up, marked":
-    "同一段随访，标注出来",
+  "The same follow-up, marked": "同一段随访，标注出来",
   "Nothing about the patients has to differ for this to work. Give both groups exactly the same drug, the same illness and the same luck, and the treated group will still come out ahead, because it has been handed a run of guaranteed survival that the other group cannot have. In the published example this is drawn from, the treated group was credited with 291.1 immortal person-years against 276.3 person-years in which it was genuinely at risk: more of its follow-up was impossible-to-die time than was real. Correcting only that moved the hazard ratio from 0.48 to 0.91.":
     "要产生这种效果，患者之间不需要有任何差异。给两组完全相同的药、相同的疾病和相同的运气，用药组仍然会占优，因为它被送了一段另一组不可能拥有的、必然存活的时间。在本例所依据的已发表研究中，用药组被计入 291.1 个永生人年，而真正处于风险中的只有 276.3 人年：它的随访里，不可能死亡的时间比真实的时间还多。仅仅纠正这一点，就把风险比从 0.48 变成了 0.91。",
-  "The stretch before the prescription":
-    "开药之前的那一段",
-  "Immortal time bias":
-    "永生时间偏倚",
+  "The stretch before the prescription": "开药之前的那一段",
+  "Immortal time bias": "永生时间偏倚",
   "If being in a group requires surviving until something happens, then the time before it happened cannot contain a death, and counting it towards that group manufactures survival out of bookkeeping.":
     "如果进入某一组的前提是活到某件事发生，那么这件事发生之前的时间里就不可能有死亡；把这段时间算给该组，等于用记账方式凭空造出生存。",
   "The tell is a group defined by something that occurs after follow-up starts: filled the prescription, had the operation, responded to treatment, won the award, completed the course. Ask what happens to a person who dies the day before. If they land in the comparison group, the clock is wrong. The fix is not a cleverer adjustment: it is to count each person's time as unexposed until the moment they become exposed, and let them switch.":
@@ -1155,8 +1082,7 @@ export const zh: Record<string, string> = {
     "奥斯卡获奖者其实并没有更长寿",
   "A well-known study reported that Academy Award winners outlived the actors merely nominated alongside them by nearly four years, and it was widely read as evidence that status is good for your health. But an actor cannot win an award while dead, so every winner was credited with all the years before their win, whereas a nominee who died young could only ever be a nominee. Reanalysing the same data with the award treated as something that happens partway through a life, rather than a property of the whole life, cut the advantage to about a year and it was no longer statistically significant. The original authors later published a null result of their own.":
     "一项著名研究报告说，奥斯卡获奖者比与其一同获得提名的演员多活了将近四年，它被广泛解读为地位有益健康的证据。但演员不可能在死后获奖，所以每位获奖者获奖之前的全部年份都被算在获奖名下，而早逝的被提名者就只能永远是被提名者。把同一批数据重新分析，把获奖当作人生中途发生的一件事，而不是整段人生的一个属性，优势就降到约一年，并且不再有统计学意义。原作者后来自己发表了一个无差异的结果。",
-  "Immortal time bias, a reasoning trap.":
-    "永生时间偏倚，一个推理陷阱。",
+  "Immortal time bias, a reasoning trap.": "永生时间偏倚，一个推理陷阱。",
   "Sort people into groups by something that happens later, and one of those groups gets a hidden head start. To be counted as having taken the drug, you have to live long enough to be given it. So everybody in the treated group is guaranteed to have survived up to their first prescription, and if you count that stretch towards the drug, the drug is credited with survival it had nothing to do with. Anyone who died early is automatically filed under untreated. It works even when the drug does nothing at all, it always points the same way, and a bigger study only makes it more convincing.":
     "按后来才发生的事情给人分组，其中一组就会得到一段隐藏的领先。要被算作用过药，你得活到有人给你开药。所以用药组里的每个人都必然活到了首次处方，而如果把这一段算给药物，药物就被记上了与它无关的生存。任何早期死亡的人都会自动被归入未用药组。哪怕这药什么作用也没有，它照样奏效；方向始终一致；研究规模越大，只会让它看起来越有说服力。",
   "The figure above is schematic, like the bomber diagram: two illustrative patients rather than two rows of the dataset, with proportions chosen to echo the published ones (eleven immortal months out of twenty-two counted, against 291.1 immortal person-years out of 567.4 counted, which is 51.3 percent). The numbers that are claims about the world, the death counts and the two hazard ratios, are all in the citation above and none of them is recomputed here: the hazard ratios come from survival models rather than from any two-by-two table, and the paper is a methodological reanalysis in which several cohort definitions are applied to one dataset, so the row is named exactly.":
@@ -1881,58 +1807,40 @@ export const zh: Record<string, string> = {
     "人们服用这种药的月份里，将近三分之二出现了肌肉疼痛。是这种药造成的吗？",
   "152 people who had all had muscle trouble on a statin before took part. Each spent up to six two-month stretches on either atorvastatin or an identical dummy tablet, in a random order, without knowing which was which, and said at the end of each stretch whether they had muscle symptoms. Muscle symptoms were reported in 62.5 percent of the stretches on the drug.":
     "152名此前都曾在服用他汀时出现肌肉不适的人参加了试验。每人以随机顺序，最多经历六个为期两个月的阶段，分别服用阿托伐他汀或外观完全相同的安慰剂药片，本人并不知道是哪一种，并在每个阶段结束时说明自己有没有肌肉症状。在服药的阶段中，62.5%报告了肌肉症状。",
-  "Is the statin causing the pain?":
-    "是他汀造成了这些疼痛吗？",
-  "Two-month stretches with muscle symptoms":
-    "出现肌肉症状的两个月阶段",
-  "Stretches on the statin":
-    "服用他汀的阶段",
-  "Stretches on the dummy tablet":
-    "服用安慰剂药片的阶段",
-  "Dummy":
-    "安慰剂",
-  "All stretches":
-    "全部阶段",
-  "On the drug":
-    "服药期间",
-  "Yes, the drug is causing it":
-    "是的，就是这种药造成的",
-  "two thirds of the time":
-    "三分之二的阶段都如此",
-  "No, the pain is not real":
-    "不，这些疼痛不是真的",
-  "they are imagining it":
-    "是他们想象出来的",
+  "Is the statin causing the pain?": "是他汀造成了这些疼痛吗？",
+  "Two-month stretches with muscle symptoms": "出现肌肉症状的两个月阶段",
+  "Stretches on the statin": "服用他汀的阶段",
+  "Stretches on the dummy tablet": "服用安慰剂药片的阶段",
+  Dummy: "安慰剂",
+  "All stretches": "全部阶段",
+  "On the drug": "服药期间",
+  "Yes, the drug is causing it": "是的，就是这种药造成的",
+  "two thirds of the time": "三分之二的阶段都如此",
+  "No, the pain is not real": "不，这些疼痛不是真的",
+  "they are imagining it": "是他们想象出来的",
   "The pain is real, and the drug is not causing it":
     "疼痛是真的，而造成它的不是这种药",
-  "compare it with something":
-    "需要一个对照来比较",
+  "compare it with something": "需要一个对照来比较",
   "The dummy tablet did almost exactly the same thing.":
     "安慰剂药片的结果几乎一模一样。",
-  "There was nothing in the other tablet":
-    "另一种药片里什么都没有",
+  "There was nothing in the other tablet": "另一种药片里什么都没有",
   "The same people, in the same months, taking a tablet with no drug in it, reported muscle symptoms 61.6 percent of the time. Nobody knew which tablet they were on. So the pain was there either way, and the 62.5 percent on the statin is almost entirely a rate of muscle pain in people who ache, not a rate of pain caused by the drug:":
     "同样这些人，在同样的月份里，服用不含药的片剂时，61.6%的阶段报告了肌肉症状。没有人知道自己吃的是哪一种。也就是说，两种情况下疼痛都在，而他汀的那个62.5%几乎完全是一群本就容易疼痛的人身上的肌肉疼痛发生率，不是这种药造成的疼痛的发生率：",
-  "Both tablets":
-    "两种药片",
+  "Both tablets": "两种药片",
   "That is what a control group is for, and why a rate on its own can never answer the question. Muscle pain is common. It is commoner still in people who have had it before, who are watching for it, and who have been handed a leaflet listing it. The only way to find out what the drug adds is to run the same months without it, which is what this trial did.":
     "对照组的用处正在于此，这也是单独一个发生率永远无法回答问题的原因。肌肉疼痛本来就常见。在那些以前有过、正在留意它、又拿到了列有这一条的说明书的人身上，就更常见。要弄清这种药本身增加了多少，唯一的办法是让同样的月份在没有它的情况下再走一遍，这项试验做的正是这件事。",
-  "What the second bar is for":
-    "第二根柱子的用处",
-  "The nocebo effect":
-    "反安慰剂效应",
+  "What the second bar is for": "第二根柱子的用处",
+  "The nocebo effect": "反安慰剂效应",
   "A symptom that appears after you start a drug is not evidence the drug caused it, until you know how often the same symptom appears in people taking nothing.":
     "开始服药之后出现的症状，并不能证明是这种药造成的，除非你知道同样的症状在什么都没吃的人当中出现得有多频繁。",
   "Note carefully what this does not say. The pain is real: these people hurt, and were not pretending. Rare genuine statin muscle injury exists and is a different thing, diagnosed differently. Everyone here had already had muscle trouble on a statin, so this is a selected group rather than the general population. And the trial says nothing at all about whether statins do their job. What it settles is narrower and more useful: for this common complaint, the tablet and the dummy behaved the same.":
     "请仔细看清这里没有说什么。疼痛是真实的：这些人确实在痛，并没有假装。他汀确实存在罕见的真正肌肉损伤，那是另一回事，诊断方式也不同。这里的每个人此前都曾在服用他汀时出现肌肉不适，所以这是一个经过筛选的人群，而不是普通人群。而且这项试验完全没有说他汀是否有效。它确定下来的结论更窄，也更有用：对于这种常见的不适，药片和安慰剂表现相同。",
   "Expecting a side effect helps produce it, and being told to watch for one makes you notice sensations you would otherwise have let pass. That is the nocebo effect, the unhappy twin of the placebo effect, and it is not lying or weakness: attention genuinely changes what a body reports, and aches are ordinary enough that everyone has some to find. The reasoning trap around it is simpler than the psychology. Someone starts a drug, a symptom appears, and the two get joined up, because a story with a cause in it is easier to hold than a coincidence. The missing number is always the same one: how often does that symptom turn up in people who did not take the drug? Without it, a side-effect rate is not a measurement of the drug at all, it is a measurement of how common the symptom is in the kind of person who gets prescribed it. This is why blinding matters so much for anything a patient reports. Once someone knows they are on the drug, their symptom reports are partly about the drug and partly about knowing, and the two cannot be separated afterwards. The effect is large enough to reverse conclusions: in trials of the same drug, side-effect rates measured while nobody knew who was taking what are routinely far lower than the rates measured once everyone knows. None of which means a reported side effect should be waved away. It means the question of whether this is the drug gets answered by taking the drug away and putting it back, not by counting how many people on it have the symptom.":
     "预期会有某种副作用，本身就有助于让它出现；被叮嘱要留意某种感觉，你就会注意到那些原本会被放过去的感觉。这就是反安慰剂效应，安慰剂效应不讨喜的孪生兄弟，它既不是撒谎也不是软弱：注意力确实会改变身体所报告的内容，而酸痛又足够平常，人人身上都能找出一些。围绕它的推理陷阱比其中的心理机制简单。有人开始服药，一个症状出现了，两者就被连到了一起，因为一个带原因的故事比一次巧合更容易被记住。缺的那个数字永远是同一个：这种症状在没有服药的人当中出现得有多频繁？没有它，副作用发生率根本不是对这种药的测量，而是对这种症状在被开这类药的人群里有多常见的测量。这就是为什么对任何由患者自己报告的内容，盲法都如此重要。一旦有人知道自己在服药，他的症状报告就一部分来自药，一部分来自知道，事后再也分不开。这种影响大到足以颠倒结论：在同一种药的试验里，无人知晓谁服了什么时测得的副作用发生率，通常远低于所有人都知道之后测得的发生率。这一切都不意味着患者报告的副作用可以被随手打发掉。它的意思是，要回答这到底是不是药的问题，靠的是把药停掉再加回来，而不是数一数服药的人里有多少人有这个症状。",
-  "The months with no tablet at all":
-    "完全不吃药片的那些月份",
+  "The months with no tablet at all": "完全不吃药片的那些月份",
   "A companion trial went one better and added a third condition: months on the statin, months on an identical dummy, and months taking nothing whatsoever, all in a random order, with participants rating their symptoms every day. The months on the dummy tablet were nearly as bad as the months on the statin. The months with no tablet were far better than either. Most of the symptom burden, in other words, came from the act of taking a tablet rather than from what was in it, and half the participants restarted a statin afterwards.":
     "一项配套试验更进一步，加上了第三种情况：服他汀的月份、服外观相同的安慰剂药片的月份，以及什么都不吃的月份，全部随机排序，参与者每天为自己的症状打分。服安慰剂药片的月份几乎和服他汀的月份一样难受。什么都不吃的月份则比这两者都好得多。换句话说，大部分症状负担来自吃药片这个动作，而不是药片里的东西，事后有一半参与者重新开始服用他汀。",
-  "The nocebo effect, a reasoning trap.":
-    "反安慰剂效应，一个推理陷阱。",
+  "The nocebo effect, a reasoning trap.": "反安慰剂效应，一个推理陷阱。",
   "You start a new tablet, and a week later your legs ache. The tablet did it, obviously. Except that aches are common, and expecting one helps you find it. In one trial, people took a statin for some months and an identical tablet with nothing in it for others, without knowing which. They reported muscle pain in 62.5 percent of the months on the drug, and 61.6 percent of the months on the dummy. The pain was real. The drug was not what was causing it. A side-effect rate with nothing to compare it against tells you how common the symptom is, not what the drug does.":
     "你开始吃一种新药片，一周后腿开始酸痛。显然是这药片干的。只是酸痛本来就常见，而预期它会来，本身就帮你把它找出来。在一项试验里，人们有些月份服他汀，有些月份服外观相同、里面什么都没有的药片，自己并不知道哪个是哪个。他们在服药的月份里62.5%报告了肌肉疼痛，在服安慰剂的月份里是61.6%。疼痛是真实的。造成它的不是这种药。一个没有对照可比的副作用发生率，告诉你的是这种症状有多常见，而不是这种药做了什么。",
   "The denominators are two-month treatment periods, not people: 152 participants each completed up to six blinded periods, three of atorvastatin 20 mg and three of matching placebo, so 785 periods come from 152 individuals. The paper's own column heading says participants, which is loose wording on its part, and the figures are presented here as periods because that is what they are. For the same reason the paper's odds ratio cannot be recomputed from these four numbers, since one person contributes several periods, so it is not quoted. A person-level figure is also printed: 18 of 200 randomised participants withdrew because of intolerable muscle symptoms while on atorvastatin, against 13 of 200 while on placebo. Participants were recruited precisely because they had had muscle symptoms on a statin before, so this is a selected group and its rates should not be read as rates in the general population.":
@@ -1995,75 +1903,126 @@ export const zh: Record<string, string> = {
     "两组同样不知道自己服的是什么，也同样被提示要留意副作用，所以44%和6%之间的差距，就是这种药本身增加的部分。",
 
   // ---- Non-differential misclassification (puzzle, review items, scope labels) ----
-  "Mothers of babies born damaged recalled more drugs in pregnancy than their own records held. Is grief rewriting their memory?": "孩子出生时夭折或畸形的母亲，回忆起孕期服用的药物比自己当时的记录还多。是悲伤在改写她们的记忆吗？",
-  "Two matched groups of 203 Finnish mothers were asked after delivery which drugs they had taken in early pregnancy. Some named drugs that nothing in their pregnancy record supported.": "两组经过匹配、各有203名芬兰母亲的样本，在分娩后被问及孕早期服用过哪些药物。有些人提到的药物，在她们的孕期记录里完全没有依据。",
+  "Mothers of babies born damaged recalled more drugs in pregnancy than their own records held. Is grief rewriting their memory?":
+    "孩子出生时夭折或畸形的母亲，回忆起孕期服用的药物比自己当时的记录还多。是悲伤在改写她们的记忆吗？",
+  "Two matched groups of 203 Finnish mothers were asked after delivery which drugs they had taken in early pregnancy. Some named drugs that nothing in their pregnancy record supported.":
+    "两组经过匹配、各有203名芬兰母亲的样本，在分娩后被问及孕早期服用过哪些药物。有些人提到的药物，在她们的孕期记录里完全没有依据。",
   "What is going on here?": "这里到底是怎么回事？",
-  "Drugs named after delivery with no earlier record": "分娩后才提到、此前并无记录的药物",
-  "Asked in month five, before anyone knew the outcome": "第五个月时的询问，那时结局还未知",
-  "Asked again after delivery, same form, same midwife": "分娩后的再次询问，同样的表格，同样的助产士",
+  "Drugs named after delivery with no earlier record":
+    "分娩后才提到、此前并无记录的药物",
+  "Asked in month five, before anyone knew the outcome":
+    "第五个月时的询问，那时结局还未知",
+  "Asked again after delivery, same form, same midwife":
+    "分娩后的再次询问，同样的表格，同样的助产士",
   "Repeated identically": "原样复述",
   "Not repeated": "未获复述",
   "Named only afterwards": "仅事后提及",
   "took a drug in early pregnancy": "孕早期服用过药物",
   "Healthy child": "健康婴儿",
   "Death or malformation": "夭折或畸形",
-  "A mother searching for a reason digs harder and remembers more": "急于寻找原因的母亲，回忆得更用力，也就记起了更多",
+  "A mother searching for a reason digs harder and remembers more":
+    "急于寻找原因的母亲，回忆得更用力，也就记起了更多",
   "The drugs really were taken more often": "这些药物确实被服用得更频繁",
-  "The extra reports are true, and the records are incomplete": "这些额外的报告是真的，是记录不完整",
+  "The extra reports are true, and the records are incomplete":
+    "这些额外的报告是真的，是记录不完整",
   "Memory is this bad in both groups": "两组的记忆都同样糟糕",
-  "Error in every direction, at roughly the same rate": "误差各个方向都有，两组的比例也大致相同",
-  "Both groups had already forgotten most of what they told the same midwife months earlier.": "两组母亲都已经忘记了她们几个月前告诉同一位助产士的大部分内容。",
+  "Error in every direction, at roughly the same rate":
+    "误差各个方向都有，两组的比例也大致相同",
+  "Both groups had already forgotten most of what they told the same midwife months earlier.":
+    "两组母亲都已经忘记了她们几个月前告诉同一位助产士的大部分内容。",
   "Error that does not take sides": "不偏不倚的误差",
-  "Mothers of healthy babies repeated just 33 of their own 182 earlier reports. Mothers of damaged babies repeated 23 of 187. Both groups lost around 85 percent of what they themselves had said, and both added drugs that were never recorded. The authors tested it and found no significant difference between the groups in the share of replies that failed to match.": "健康婴儿的母亲，在自己此前182条报告里，只有33条被原样复述。患儿的母亲则是187条里复述了23条。两组都丢失了自己此前所说内容中大约85%的部分，也都添加了从未被记录过的药物。作者做了检验，发现两组之间在“回答不吻合”的比例上并无显著差异。",
-  "So the extra reports in the second group are not memory bending toward an explanation. They are the same broken recall that both groups show, and the difference between 57 and 41 sits inside the noise that unreliability of this size produces. When error hits both groups alike, it does not manufacture an association. It smears the exposed and unexposed into each other, which drags any real difference toward no difference at all.": "所以第二组里那些额外的报告，并不是记忆为了凑出一个解释而发生的扭曲。它们只是两组共有的那种失灵的回忆，57和41之间的差距，就落在这种规模的不可靠性所产生的噪音范围之内。当误差同等地落在两组身上时，它不会制造出关联。它会把暴露组和非暴露组彼此混同，把任何真实的差异都拉向毫无差异。",
+  "Mothers of healthy babies repeated just 33 of their own 182 earlier reports. Mothers of damaged babies repeated 23 of 187. Both groups lost around 85 percent of what they themselves had said, and both added drugs that were never recorded. The authors tested it and found no significant difference between the groups in the share of replies that failed to match.":
+    "健康婴儿的母亲，在自己此前182条报告里，只有33条被原样复述。患儿的母亲则是187条里复述了23条。两组都丢失了自己此前所说内容中大约85%的部分，也都添加了从未被记录过的药物。作者做了检验，发现两组之间在“回答不吻合”的比例上并无显著差异。",
+  "So the extra reports in the second group are not memory bending toward an explanation. They are the same broken recall that both groups show, and the difference between 57 and 41 sits inside the noise that unreliability of this size produces. When error hits both groups alike, it does not manufacture an association. It smears the exposed and unexposed into each other, which drags any real difference toward no difference at all.":
+    "所以第二组里那些额外的报告，并不是记忆为了凑出一个解释而发生的扭曲。它们只是两组共有的那种失灵的回忆，57和41之间的差距，就落在这种规模的不可靠性所产生的噪音范围之内。当误差同等地落在两组身上时，它不会制造出关联。它会把暴露组和非暴露组彼此混同，把任何真实的差异都拉向毫无差异。",
   "What the earlier answers show": "早先的回答说明了什么",
   "Non-differential misclassification": "无差异性错误分类",
-  "When a measurement is equally wrong in every group, it does not invent an effect. It hides one. The usual result is a real association flattened toward nothing, so a null finding from a badly measured exposure is not evidence of no effect.": "当一项测量在各组中都同等程度地出错时，它不会凭空造出一种效应，而是会把真实的效应藏起来。通常的结果是：一个真实的关联被拉平、趋向于零，所以一次因暴露测量拙劣而得出的无效结果，并不能证明真的没有效应。",
-  "Ask two questions of any measurement, not one. First, is the error different between the groups? That is the bias everyone is taught to look for. Second, and far more often the answer, is the error simply enormous in all of them? That one is rarely mentioned, is much more common, and pushes findings toward the null, which means it quietly protects wrong beliefs from being disproved.": "对任何一项测量，都要问两个问题，而不是一个。第一，误差在各组之间是否不同？这是人人都被教导要提防的那种偏倚。第二，而且答案往往更常是这一个：误差是不是在所有组里都同样巨大？这一种很少被人提起，却远比第一种常见，它会把结果推向无效，也就悄悄地保护了错误的信念不被推翻。",
-  "Picture an exposure that truly doubles risk. Now measure it with a method that gets it right only a fifth of the time, in exposed and unexposed alike. Many genuinely exposed people are filed as unexposed and the reverse, so the two groups you end up comparing are both mixtures of the real ones. Mixtures differ less than their ingredients, so the measured ratio slides toward 1. Push the error far enough and a real effect disappears entirely. That is why this paper's headline finding is not that mothers were biased, but that a retrospective interview about early pregnancy is close to unusable as a measurement, whoever is answering.": "设想一种暴露真的会让风险加倍。现在用一种方法去测量它，这种方法在暴露组和非暴露组里都只有五分之一的机会测对。许多真正暴露的人被归入了非暴露一栏，反过来也一样，于是你最终比较的两组，其实都是真实两组的混合物。混合物之间的差异，总是小于各自成分之间的差异，所以测得的比值会滑向1。把误差推得足够大，一个真实的效应就会彻底消失。这正是这篇论文最重要的发现：不是母亲们存在偏倚，而是关于孕早期的回顾性访谈，无论由谁来回答，作为一种测量手段都几乎不堪使用。",
-  "The largest test of this, and it found no bias either": "对此规模最大的一次检验，同样没有发现偏倚",
-  "The United Kingdom Childhood Cancer Study compared what 1,624 case mothers and 2,524 control mothers reported against their own general-practice records. Differential recall, the effect everyone expects, was essentially absent. It is worth knowing that the bias people reach for first is often not the one present.": "英国儿童癌症研究将1,624名病例组母亲和2,524名对照组母亲的回答，与她们各自的全科医生记录作了比较。差异性回忆，也就是人人都预期会出现的那种效应，基本上并不存在。值得记住的是：人们第一个想到的偏倚，往往并不是实际存在的那一个。",
-  "Non-differential misclassification, a reasoning trap.": "无差异性错误分类，一个推理陷阱。",
-  "If a measurement is wrong in the same way for everybody, it does not create a fake result. It buries a real one. Bad measurement makes things look like they do not matter.": "如果一项测量对每个人都以同样的方式出错，它不会制造出一个虚假的结果，而是会把一个真实的结果埋起来。糟糕的测量，会让本来重要的东西看起来毫不相干。",
-  "Everyone says recall bias. The real answer is worse.": "人人都说是回忆偏倚。真正的答案更糟。",
-  "I confidently diagnosed recall bias. It was not recall bias.": "我信心满满地诊断为回忆偏倚。结果并不是回忆偏倚。",
-  "Every count is printed in Table 1 and reconciles three ways: the prospective rows sum to the totals the authors state in prose (34 + 43 = 77 diseases, 182 + 187 = 369 drugs), the two additional-information cells sum to 98, which Figure 1 prints separately, and 98 of the 154 positive retrospective drug replies lacking any prospective history is the approximately two thirds the authors report. Two honesty notes. The additional reports are numerically higher in the damaged-child group, 57 against 41; what the paper establishes is that the difference in the share of non-identical replies was not statistically significant on 203 mothers per group, not that the two groups were identical. And Figure 1 counts individual drug replies (420 of them) while Table 1 counts mothers (369), so the two sets of numbers are never mixed here. The reference standard for the earlier answers is the maternity welfare centre record and the mothers' own month-five interview, not an independent audit.": "每一个数字都印在表1中，并以三种方式相互印证：前瞻性各行相加，等于作者在正文中所说的总数（34 + 43 = 77种疾病，182 + 187 = 369种药物）；两个“额外信息”单元格相加为98，这一数字图1中单独印出；而在154条缺乏任何前瞻性记录支持的阳性回顾性用药回答中，98条约合作者所说的三分之二。这里有两点诚实说明。额外报告在患儿组的数量上确实更高，57对41；但论文确立的是：在每组203名母亲的样本下，“回答不一致”比例上的这一差异并未达到统计学显著性，而不是说两组完全相同。另外，图1统计的是单条药物回答（共420条），表1统计的是母亲人数（369人），本文从未把这两套数字混用。早先回答所对照的基准，是产科福利中心的记录和母亲们自己在第五个月所做的访谈，而不是一次独立的核查。",
-  "A large study estimates each person's salt intake from a single question about how often they add table salt, then finds almost no link between salt and blood pressure. The authors conclude that salt does not affect blood pressure.": "一项大型研究通过一个单一问题，也就是询问加餐桌盐的频率，来估计每个人的盐摄入量，结果发现盐与血压之间几乎没有关联。作者据此得出结论：盐并不影响血压。",
-  "A one-question estimate gets almost everyone's real salt intake wrong, and wrong in every direction rather than by group. Blurring the heavy and light salters together makes them look alike, which pushes any true link toward zero and can bury it.": "一个问题得出的估计，几乎让每个人的真实盐摄入量都出了错，而且各个方向都有偏差，并不按组别偏向哪一边。把重口味和轻口味的人混在一起，会让他们看起来彼此相似，从而把任何真实的关联都推向零，并可能将其掩盖。",
-  "To study a factory solvent, researchers mark workers as exposed or not purely by job title, though people with the same title handle very different amounts. They find no excess disease in the exposed group and report the solvent as safe.": "为了研究一种工厂溶剂，研究者仅凭职位名称把工人标记为暴露或非暴露，尽管职位相同的人接触的量可能相差很大。他们发现暴露组并没有额外的疾病，于是报告称这种溶剂是安全的。",
-  "Sorting by job title puts many truly exposed workers in the unexposed column and the reverse, roughly evenly. When each compared group is a mixture of the real ones, their disease rates move together, so a genuine hazard is watered down toward no difference.": "按职位名称分类，会把许多真正暴露的工人归入非暴露一栏，反过来也一样，而且大致均衡。当被比较的每一组都是真实两组的混合体时，它们的患病率就会趋于一致，于是一个真实存在的危害就被稀释到看不出差异。",
-  "A study tracks activity with a cheap clip-on counter that miscounts steps erratically for everyone, and finds no relationship between daily steps and weight change over a year. A columnist writes that step counts do not matter.": "一项研究用一款廉价的夹式计步器来追踪活动量，这款计步器对每个人的步数都计错，且错得毫无规律，结果发现每日步数与一年内的体重变化之间没有关系。一位专栏作者写道，步数并不重要。",
-  "A counter unreliable for every wearer scrambles the active and the inactive together. Noise spread evenly across the whole sample drags a correlation toward zero, so the missing relationship may be the instrument rather than the activity.": "一款对每个佩戴者都不可靠的计步器，会把活跃的人和不活跃的人搅在一起。均匀分布在整个样本中的噪音，会把相关性拉向零，所以缺失的关系，可能出在仪器身上，而不是出在活动本身。",
-  "An asthma study assigns each child the average air pollution of their postcode, though levels vary sharply from street to street. The link with asthma comes out weak, and a summary says local air quality has little effect.": "一项哮喘研究把每个孩子所在邮政编码区域的平均空气污染水平分配给该儿童，尽管污染程度在街与街之间差异很大。得出的与哮喘的关联很弱，一份总结称本地空气质量影响不大。",
-  "A postcode average is wrong for most individual children, and wrong in both directions rather than by who is ill. Measuring exposure this bluntly blends the high and low together and flattens a real gradient toward nothing.": "邮政编码区域的平均值，对大多数个体儿童来说都是错的，而且两个方向上都会出错，并不按谁患病来偏向哪一边。用这么粗糙的方式测量暴露，会把高暴露和低暴露混在一起，把一个真实的梯度拉平到几乎消失。",
-  "Two overworked assessors grade a tissue feature from slides, making frequent slips that are just as likely for patients with the disease as for those without. The feature turns out only weakly linked to the disease, and a report calls it unimportant.": "两位超负荷工作的评估者根据切片给一项组织特征打分，经常出现失误，而这些失误对患病者和未患病者同样可能发生。这项特征最终只与疾病表现出微弱的关联，一份报告称它并不重要。",
-  "Errors falling equally on cases and controls are non-differential. They shuffle people between feature-present and feature-absent on both sides, so the two groups look more alike than they are and a real link is dragged toward the null.": "同等地落在病例和对照身上的误差，是无差异性的。它们会在两侧都把人在“有该特征”和“无该特征”之间打乱，使两组看起来比实际更相似，把一个真实的关联拉向无效。",
-  "A health survey measures a habit with a confusingly worded question that people answer more or less at random. No link is found between the habit and an illness, and the survey concludes the habit is harmless.": "一项健康调查用一个措辞令人困惑的问题来衡量某种习惯，人们的回答或多或少近乎随机。调查没有发现这种习惯与某种疾病之间存在关联，于是得出结论：这种习惯无害。",
-  "A question answered almost at random splits the true doers and non-doers evenly across both answers. That equal confusion mixes the groups and pulls any genuine link toward zero, so the null describes the question, not the habit.": "一个几乎被随机作答的问题，会把真正有这种习惯和没有这种习惯的人，均匀地分散到两种答案里。这种同等程度的混淆，把两组混在了一起，把任何真实的关联都拉向零，所以这个无效结果描述的是这个问题本身，而不是这种习惯。",
-  "A study compares two treatments using a hospital database in which the outcome is coded inconsistently, with the same sloppiness for both treatment groups. The treatments look equally effective, and the paper reports no difference.": "一项研究利用一个医院数据库比较两种治疗方法，该数据库对结局的编码并不一致，但两个治疗组的这种草率程度是一样的。两种治疗看起来同样有效，论文报告两者没有差异。",
-  "When the outcome is recorded just as unreliably in both arms, the errors favour neither treatment. They blur any real gap between the arms, so no difference can be the coding rather than the treatments truly being alike.": "当两个组的结局记录同样不可靠时，这些误差不会偏向任何一种治疗。它们会模糊两组之间任何真实的差距，所以“没有差异”这个结果，可能出在编码上，而不是两种治疗真的一样。",
-  "A test for a blood marker misses about half of the true positives, at random and regardless of who is ill. Using it to classify people, a study finds the marker unrelated to the disease and drops it from further work.": "一项血液标志物检测漏掉了大约一半的真阳性，出错是随机的，与谁患病无关。用它来给人分类，一项研究发现该标志物与疾病无关，于是不再对其做进一步研究。",
-  "A test that mislabels exposure the same way in the sick and the well is non-differential. Filing half of the truly positive people as negative on both sides makes the two groups resemble each other, biasing the marker's apparent effect toward none.": "一项在病人和健康人身上以同样方式误判暴露的检测，是无差异性的。把两侧真正阳性的人各有一半都归为阴性，会让两组彼此更相似，使该标志物看起来的效应被拉向无效。",
-  "Researchers measure class attendance from a sign-in sheet that students fill in haphazardly, and find attendance unrelated to exam marks. The faculty concludes that turning up makes no difference.": "研究者通过一张学生随意填写的签到表来衡量出勤率，发现出勤与考试成绩无关。院系由此得出结论：来不来上课并无影响。",
-  "A haphazard sheet mislabels regular and irregular attenders alike, in no particular direction. The noise is spread evenly across everyone, which mixes the groups and pushes any real effect of attending toward zero.": "一张随意填写的签到表，会以没有特定方向的方式，把经常出勤和不常出勤的人都记错。这种噪音均匀分布在所有人身上，把两组混在了一起，把出勤的任何真实效应都推向零。",
-  "A study estimates how much people sleep from one vague question and looks for a link with next-day reaction time. Everyone's estimate is off by an hour or two either way, unrelated to how they performed. No link appears, and the write-up says sleep length does not affect alertness.": "一项研究通过一个含糊的问题来估计人们的睡眠时长，并寻找它与次日反应时间之间的关系。每个人的估计都可能相差一两个小时，方向不定，也与他们的表现无关。结果没有发现关联，报告称睡眠时长不影响警觉性。",
-  "An estimate imprecise for everyone, and untied to performance, is non-differential error. It scrambles short and long sleepers together, and mixing them like this drags a real relationship toward nothing rather than inventing one.": "一个对每个人都不精确、又与表现无关的估计，属于无差异性误差。它把睡得少和睡得多的人搅在一起，这样的混合会把一段真实的关系拉向消失，而不是凭空造出一段关系。",
-  "A study measures an exposure with a method carefully validated to be accurate for nearly everyone, finds no association with the disease, and concludes the exposure probably has little effect, noting that because the measurement was reliable the null is unlikely to be hiding a large one.": "一项研究用一种经过仔细验证、对几乎所有人都准确的方法来测量某种暴露，没有发现它与疾病存在关联，于是得出结论：该暴露的影响可能很小，并指出正因为测量可靠，这个无效结果不太可能是在掩盖一个很大的真实效应。",
-  "A null is weak evidence only when the measurement is poor. Here the exposure was measured accurately, so blurring cannot explain the missing link, and reading the null as meaningful is the sound move.": "只有当测量很差时，一个无效结果才是薄弱的证据。这里的暴露被准确地测量了，所以模糊化解释不了这个缺失的关联，把这个无效结果当真，才是稳妥的判断。",
-  "A study measured diet with a rough questionnaire and found no link to an illness. Rather than declaring the diet safe, the authors write that their crude measurement could have hidden a real effect, and call for a study with better dietary records.": "一项研究用一份粗略的问卷来测量饮食，没有发现它与某种疾病有关联。作者并没有宣称这种饮食是安全的，而是写道：他们粗糙的测量方式可能掩盖了一个真实的效应，并呼吁开展一项饮食记录更完善的研究。",
-  "They recognised that error spread across everyone tends to bury associations, so a null from a blunt instrument cannot prove there is nothing there. Declining to over-read it is the careful conclusion, not a trap.": "他们意识到，均匀分布在所有人身上的误差往往会掩盖关联，所以一个来自粗钝工具的无效结果，不能证明什么都不存在。不去过度解读它，才是审慎的结论，而不是一个陷阱。",
-  "Because a single blood-pressure reading is noisy, a study averages several readings taken on separate days for every participant before testing the link with the outcome, and reports the association from those averaged values.": "由于单次血压读数存在噪音，一项研究在检验其与结局的关联之前，先对每位参与者在不同日子测得的多次读数取平均，并根据这些平均值来报告关联。",
-  "Averaging repeated measurements cuts the random error that would otherwise blur participants together and weaken the association. Reducing non-differential error this way is exactly how to keep a real effect visible.": "对重复测量取平均，能减少本来会把参与者混在一起、削弱关联的随机误差。用这种方式减少无差异性误差，正是让真实效应保持可见的正确做法。",
+  "When a measurement is equally wrong in every group, it does not invent an effect. It hides one. The usual result is a real association flattened toward nothing, so a null finding from a badly measured exposure is not evidence of no effect.":
+    "当一项测量在各组中都同等程度地出错时，它不会凭空造出一种效应，而是会把真实的效应藏起来。通常的结果是：一个真实的关联被拉平、趋向于零，所以一次因暴露测量拙劣而得出的无效结果，并不能证明真的没有效应。",
+  "Ask two questions of any measurement, not one. First, is the error different between the groups? That is the bias everyone is taught to look for. Second, and far more often the answer, is the error simply enormous in all of them? That one is rarely mentioned, is much more common, and pushes findings toward the null, which means it quietly protects wrong beliefs from being disproved.":
+    "对任何一项测量，都要问两个问题，而不是一个。第一，误差在各组之间是否不同？这是人人都被教导要提防的那种偏倚。第二，而且答案往往更常是这一个：误差是不是在所有组里都同样巨大？这一种很少被人提起，却远比第一种常见，它会把结果推向无效，也就悄悄地保护了错误的信念不被推翻。",
+  "Picture an exposure that truly doubles risk. Now measure it with a method that gets it right only a fifth of the time, in exposed and unexposed alike. Many genuinely exposed people are filed as unexposed and the reverse, so the two groups you end up comparing are both mixtures of the real ones. Mixtures differ less than their ingredients, so the measured ratio slides toward 1. Push the error far enough and a real effect disappears entirely. That is why this paper's headline finding is not that mothers were biased, but that a retrospective interview about early pregnancy is close to unusable as a measurement, whoever is answering.":
+    "设想一种暴露真的会让风险加倍。现在用一种方法去测量它，这种方法在暴露组和非暴露组里都只有五分之一的机会测对。许多真正暴露的人被归入了非暴露一栏，反过来也一样，于是你最终比较的两组，其实都是真实两组的混合物。混合物之间的差异，总是小于各自成分之间的差异，所以测得的比值会滑向1。把误差推得足够大，一个真实的效应就会彻底消失。这正是这篇论文最重要的发现：不是母亲们存在偏倚，而是关于孕早期的回顾性访谈，无论由谁来回答，作为一种测量手段都几乎不堪使用。",
+  "The largest test of this, and it found no bias either":
+    "对此规模最大的一次检验，同样没有发现偏倚",
+  "The United Kingdom Childhood Cancer Study compared what 1,624 case mothers and 2,524 control mothers reported against their own general-practice records. Differential recall, the effect everyone expects, was essentially absent. It is worth knowing that the bias people reach for first is often not the one present.":
+    "英国儿童癌症研究将1,624名病例组母亲和2,524名对照组母亲的回答，与她们各自的全科医生记录作了比较。差异性回忆，也就是人人都预期会出现的那种效应，基本上并不存在。值得记住的是：人们第一个想到的偏倚，往往并不是实际存在的那一个。",
+  "Non-differential misclassification, a reasoning trap.":
+    "无差异性错误分类，一个推理陷阱。",
+  "If a measurement is wrong in the same way for everybody, it does not create a fake result. It buries a real one. Bad measurement makes things look like they do not matter.":
+    "如果一项测量对每个人都以同样的方式出错，它不会制造出一个虚假的结果，而是会把一个真实的结果埋起来。糟糕的测量，会让本来重要的东西看起来毫不相干。",
+  "Everyone says recall bias. The real answer is worse.":
+    "人人都说是回忆偏倚。真正的答案更糟。",
+  "I confidently diagnosed recall bias. It was not recall bias.":
+    "我信心满满地诊断为回忆偏倚。结果并不是回忆偏倚。",
+  "Every count is printed in Table 1 and reconciles three ways: the prospective rows sum to the totals the authors state in prose (34 + 43 = 77 diseases, 182 + 187 = 369 drugs), the two additional-information cells sum to 98, which Figure 1 prints separately, and 98 of the 154 positive retrospective drug replies lacking any prospective history is the approximately two thirds the authors report. Two honesty notes. The additional reports are numerically higher in the damaged-child group, 57 against 41; what the paper establishes is that the difference in the share of non-identical replies was not statistically significant on 203 mothers per group, not that the two groups were identical. And Figure 1 counts individual drug replies (420 of them) while Table 1 counts mothers (369), so the two sets of numbers are never mixed here. The reference standard for the earlier answers is the maternity welfare centre record and the mothers' own month-five interview, not an independent audit.":
+    "每一个数字都印在表1中，并以三种方式相互印证：前瞻性各行相加，等于作者在正文中所说的总数（34 + 43 = 77种疾病，182 + 187 = 369种药物）；两个“额外信息”单元格相加为98，这一数字图1中单独印出；而在154条缺乏任何前瞻性记录支持的阳性回顾性用药回答中，98条约合作者所说的三分之二。这里有两点诚实说明。额外报告在患儿组的数量上确实更高，57对41；但论文确立的是：在每组203名母亲的样本下，“回答不一致”比例上的这一差异并未达到统计学显著性，而不是说两组完全相同。另外，图1统计的是单条药物回答（共420条），表1统计的是母亲人数（369人），本文从未把这两套数字混用。早先回答所对照的基准，是产科福利中心的记录和母亲们自己在第五个月所做的访谈，而不是一次独立的核查。",
+  "A large study estimates each person's salt intake from a single question about how often they add table salt, then finds almost no link between salt and blood pressure. The authors conclude that salt does not affect blood pressure.":
+    "一项大型研究通过一个单一问题，也就是询问加餐桌盐的频率，来估计每个人的盐摄入量，结果发现盐与血压之间几乎没有关联。作者据此得出结论：盐并不影响血压。",
+  "A one-question estimate gets almost everyone's real salt intake wrong, and wrong in every direction rather than by group. Blurring the heavy and light salters together makes them look alike, which pushes any true link toward zero and can bury it.":
+    "一个问题得出的估计，几乎让每个人的真实盐摄入量都出了错，而且各个方向都有偏差，并不按组别偏向哪一边。把重口味和轻口味的人混在一起，会让他们看起来彼此相似，从而把任何真实的关联都推向零，并可能将其掩盖。",
+  "To study a factory solvent, researchers mark workers as exposed or not purely by job title, though people with the same title handle very different amounts. They find no excess disease in the exposed group and report the solvent as safe.":
+    "为了研究一种工厂溶剂，研究者仅凭职位名称把工人标记为暴露或非暴露，尽管职位相同的人接触的量可能相差很大。他们发现暴露组并没有额外的疾病，于是报告称这种溶剂是安全的。",
+  "Sorting by job title puts many truly exposed workers in the unexposed column and the reverse, roughly evenly. When each compared group is a mixture of the real ones, their disease rates move together, so a genuine hazard is watered down toward no difference.":
+    "按职位名称分类，会把许多真正暴露的工人归入非暴露一栏，反过来也一样，而且大致均衡。当被比较的每一组都是真实两组的混合体时，它们的患病率就会趋于一致，于是一个真实存在的危害就被稀释到看不出差异。",
+  "A study tracks activity with a cheap clip-on counter that miscounts steps erratically for everyone, and finds no relationship between daily steps and weight change over a year. A columnist writes that step counts do not matter.":
+    "一项研究用一款廉价的夹式计步器来追踪活动量，这款计步器对每个人的步数都计错，且错得毫无规律，结果发现每日步数与一年内的体重变化之间没有关系。一位专栏作者写道，步数并不重要。",
+  "A counter unreliable for every wearer scrambles the active and the inactive together. Noise spread evenly across the whole sample drags a correlation toward zero, so the missing relationship may be the instrument rather than the activity.":
+    "一款对每个佩戴者都不可靠的计步器，会把活跃的人和不活跃的人搅在一起。均匀分布在整个样本中的噪音，会把相关性拉向零，所以缺失的关系，可能出在仪器身上，而不是出在活动本身。",
+  "An asthma study assigns each child the average air pollution of their postcode, though levels vary sharply from street to street. The link with asthma comes out weak, and a summary says local air quality has little effect.":
+    "一项哮喘研究把每个孩子所在邮政编码区域的平均空气污染水平分配给该儿童，尽管污染程度在街与街之间差异很大。得出的与哮喘的关联很弱，一份总结称本地空气质量影响不大。",
+  "A postcode average is wrong for most individual children, and wrong in both directions rather than by who is ill. Measuring exposure this bluntly blends the high and low together and flattens a real gradient toward nothing.":
+    "邮政编码区域的平均值，对大多数个体儿童来说都是错的，而且两个方向上都会出错，并不按谁患病来偏向哪一边。用这么粗糙的方式测量暴露，会把高暴露和低暴露混在一起，把一个真实的梯度拉平到几乎消失。",
+  "Two overworked assessors grade a tissue feature from slides, making frequent slips that are just as likely for patients with the disease as for those without. The feature turns out only weakly linked to the disease, and a report calls it unimportant.":
+    "两位超负荷工作的评估者根据切片给一项组织特征打分，经常出现失误，而这些失误对患病者和未患病者同样可能发生。这项特征最终只与疾病表现出微弱的关联，一份报告称它并不重要。",
+  "Errors falling equally on cases and controls are non-differential. They shuffle people between feature-present and feature-absent on both sides, so the two groups look more alike than they are and a real link is dragged toward the null.":
+    "同等地落在病例和对照身上的误差，是无差异性的。它们会在两侧都把人在“有该特征”和“无该特征”之间打乱，使两组看起来比实际更相似，把一个真实的关联拉向无效。",
+  "A health survey measures a habit with a confusingly worded question that people answer more or less at random. No link is found between the habit and an illness, and the survey concludes the habit is harmless.":
+    "一项健康调查用一个措辞令人困惑的问题来衡量某种习惯，人们的回答或多或少近乎随机。调查没有发现这种习惯与某种疾病之间存在关联，于是得出结论：这种习惯无害。",
+  "A question answered almost at random splits the true doers and non-doers evenly across both answers. That equal confusion mixes the groups and pulls any genuine link toward zero, so the null describes the question, not the habit.":
+    "一个几乎被随机作答的问题，会把真正有这种习惯和没有这种习惯的人，均匀地分散到两种答案里。这种同等程度的混淆，把两组混在了一起，把任何真实的关联都拉向零，所以这个无效结果描述的是这个问题本身，而不是这种习惯。",
+  "A study compares two treatments using a hospital database in which the outcome is coded inconsistently, with the same sloppiness for both treatment groups. The treatments look equally effective, and the paper reports no difference.":
+    "一项研究利用一个医院数据库比较两种治疗方法，该数据库对结局的编码并不一致，但两个治疗组的这种草率程度是一样的。两种治疗看起来同样有效，论文报告两者没有差异。",
+  "When the outcome is recorded just as unreliably in both arms, the errors favour neither treatment. They blur any real gap between the arms, so no difference can be the coding rather than the treatments truly being alike.":
+    "当两个组的结局记录同样不可靠时，这些误差不会偏向任何一种治疗。它们会模糊两组之间任何真实的差距，所以“没有差异”这个结果，可能出在编码上，而不是两种治疗真的一样。",
+  "A test for a blood marker misses about half of the true positives, at random and regardless of who is ill. Using it to classify people, a study finds the marker unrelated to the disease and drops it from further work.":
+    "一项血液标志物检测漏掉了大约一半的真阳性，出错是随机的，与谁患病无关。用它来给人分类，一项研究发现该标志物与疾病无关，于是不再对其做进一步研究。",
+  "A test that mislabels exposure the same way in the sick and the well is non-differential. Filing half of the truly positive people as negative on both sides makes the two groups resemble each other, biasing the marker's apparent effect toward none.":
+    "一项在病人和健康人身上以同样方式误判暴露的检测，是无差异性的。把两侧真正阳性的人各有一半都归为阴性，会让两组彼此更相似，使该标志物看起来的效应被拉向无效。",
+  "Researchers measure class attendance from a sign-in sheet that students fill in haphazardly, and find attendance unrelated to exam marks. The faculty concludes that turning up makes no difference.":
+    "研究者通过一张学生随意填写的签到表来衡量出勤率，发现出勤与考试成绩无关。院系由此得出结论：来不来上课并无影响。",
+  "A haphazard sheet mislabels regular and irregular attenders alike, in no particular direction. The noise is spread evenly across everyone, which mixes the groups and pushes any real effect of attending toward zero.":
+    "一张随意填写的签到表，会以没有特定方向的方式，把经常出勤和不常出勤的人都记错。这种噪音均匀分布在所有人身上，把两组混在了一起，把出勤的任何真实效应都推向零。",
+  "A study estimates how much people sleep from one vague question and looks for a link with next-day reaction time. Everyone's estimate is off by an hour or two either way, unrelated to how they performed. No link appears, and the write-up says sleep length does not affect alertness.":
+    "一项研究通过一个含糊的问题来估计人们的睡眠时长，并寻找它与次日反应时间之间的关系。每个人的估计都可能相差一两个小时，方向不定，也与他们的表现无关。结果没有发现关联，报告称睡眠时长不影响警觉性。",
+  "An estimate imprecise for everyone, and untied to performance, is non-differential error. It scrambles short and long sleepers together, and mixing them like this drags a real relationship toward nothing rather than inventing one.":
+    "一个对每个人都不精确、又与表现无关的估计，属于无差异性误差。它把睡得少和睡得多的人搅在一起，这样的混合会把一段真实的关系拉向消失，而不是凭空造出一段关系。",
+  "A study measures an exposure with a method carefully validated to be accurate for nearly everyone, finds no association with the disease, and concludes the exposure probably has little effect, noting that because the measurement was reliable the null is unlikely to be hiding a large one.":
+    "一项研究用一种经过仔细验证、对几乎所有人都准确的方法来测量某种暴露，没有发现它与疾病存在关联，于是得出结论：该暴露的影响可能很小，并指出正因为测量可靠，这个无效结果不太可能是在掩盖一个很大的真实效应。",
+  "A null is weak evidence only when the measurement is poor. Here the exposure was measured accurately, so blurring cannot explain the missing link, and reading the null as meaningful is the sound move.":
+    "只有当测量很差时，一个无效结果才是薄弱的证据。这里的暴露被准确地测量了，所以模糊化解释不了这个缺失的关联，把这个无效结果当真，才是稳妥的判断。",
+  "A study measured diet with a rough questionnaire and found no link to an illness. Rather than declaring the diet safe, the authors write that their crude measurement could have hidden a real effect, and call for a study with better dietary records.":
+    "一项研究用一份粗略的问卷来测量饮食，没有发现它与某种疾病有关联。作者并没有宣称这种饮食是安全的，而是写道：他们粗糙的测量方式可能掩盖了一个真实的效应，并呼吁开展一项饮食记录更完善的研究。",
+  "They recognised that error spread across everyone tends to bury associations, so a null from a blunt instrument cannot prove there is nothing there. Declining to over-read it is the careful conclusion, not a trap.":
+    "他们意识到，均匀分布在所有人身上的误差往往会掩盖关联，所以一个来自粗钝工具的无效结果，不能证明什么都不存在。不去过度解读它，才是审慎的结论，而不是一个陷阱。",
+  "Because a single blood-pressure reading is noisy, a study averages several readings taken on separate days for every participant before testing the link with the outcome, and reports the association from those averaged values.":
+    "由于单次血压读数存在噪音，一项研究在检验其与结局的关联之前，先对每位参与者在不同日子测得的多次读数取平均，并根据这些平均值来报告关联。",
+  "Averaging repeated measurements cuts the random error that would otherwise blur participants together and weaken the association. Reducing non-differential error this way is exactly how to keep a real effect visible.":
+    "对重复测量取平均，能减少本来会把参与者混在一起、削弱关联的随机误差。用这种方式减少无差异性误差，正是让真实效应保持可见的正确做法。",
   "What they said afterwards": "他们事后所说的",
   "Against what they said before": "对照他们事前所说的",
-  "Measurement": "测量",
+  Measurement: "测量",
 
   // ---- Regression to the mean (Galton puzzle, review items, scope labels) ----
-  "The tallest parents have tall children. So the tallest parents of all should have the tallest children of all, surely?": "最高的父母生出高个子的孩子。那么，最高的那些父母，理应生出最高的孩子，不是吗？",
-  "In 1886 Francis Galton grouped 928 grown children by their parents' height. The tallest parents averaged about 72 inches, well above the roughly 68 inch average of the day; the shortest averaged about 65. Nobody did anything to the children. They grew up and were measured.": "1886年，弗朗西斯·高尔顿（Francis Galton）将928名成年子女按父母身高分组。最高的一组父母平均身高约72英寸，远高于当时约68英寸的平均水平；最矮的一组父母平均约65英寸。没有人对这些孩子做过任何事，他们只是长大，然后被测量。",
-  "What became of the children of these extreme-height parents?": "这些身高极端的父母，他们的孩子后来怎么样了？",
-  "Galton's 928 grown children, grouped by their parents' height": "高尔顿的928名成年子女，按父母身高分组",
-  "inches": "英寸",
+  "The tallest parents have tall children. So the tallest parents of all should have the tallest children of all, surely?":
+    "最高的父母生出高个子的孩子。那么，最高的那些父母，理应生出最高的孩子，不是吗？",
+  "In 1886 Francis Galton grouped 928 grown children by their parents' height. The tallest parents averaged about 72 inches, well above the roughly 68 inch average of the day; the shortest averaged about 65. Nobody did anything to the children. They grew up and were measured.":
+    "1886年，弗朗西斯·高尔顿（Francis Galton）将928名成年子女按父母身高分组。最高的一组父母平均身高约72英寸，远高于当时约68英寸的平均水平；最矮的一组父母平均约65英寸。没有人对这些孩子做过任何事，他们只是长大，然后被测量。",
+  "What became of the children of these extreme-height parents?":
+    "这些身高极端的父母，他们的孩子后来怎么样了？",
+  "Galton's 928 grown children, grouped by their parents' height":
+    "高尔顿的928名成年子女，按父母身高分组",
+  inches: "英寸",
   "Average height": "平均身高",
   "The parents": "父母",
   "Their grown children": "他们的成年子女",
@@ -2072,124 +2031,201 @@ export const zh: Record<string, string> = {
   "The shortest parents": "最矮的父母",
   "Shortest parents": "最矮父母组",
   "Just as extreme as their parents": "和父母一样极端",
-  "the tallest parents' children the tallest of all": "最高父母的孩子仍是所有人中最高的",
+  "the tallest parents' children the tallest of all":
+    "最高父母的孩子仍是所有人中最高的",
   "Some influence closed the gap": "某种影响缩小了差距",
-  "diet, mixing or the times narrowed the difference": "饮食、通婚或时代变化缩小了差异",
+  "diet, mixing or the times narrowed the difference":
+    "饮食、通婚或时代变化缩小了差异",
   "Both landed nearer the average": "两者都更接近平均值",
-  "less extreme than their parents, with nothing done to them": "比父母更不极端，而没有人对他们做过什么",
-  "The tallest parents' children were shorter than them; the shortest parents' children were taller. Both landed nearer the average.": "最高父母的孩子比父母矮；最矮父母的孩子比父母高。两者都更接近平均值。",
+  "less extreme than their parents, with nothing done to them":
+    "比父母更不极端，而没有人对他们做过什么",
+  "The tallest parents' children were shorter than them; the shortest parents' children were taller. Both landed nearer the average.":
+    "最高父母的孩子比父母矮；最矮父母的孩子比父母高。两者都更接近平均值。",
   "Regression to the mean": "向均值回归",
-  "The tallest parents averaged 71.9 inches, about 3.6 above the 68.3 inch average. Their grown children averaged 70.8, only 2.5 above. The shortest parents averaged 65.1, about 3.2 below; their children 66.2, only 2.1 below. Roughly a third of each gap closed on its own, in both directions, and nobody touched the children. This is the pattern that gave regression its name.": "最高的父母平均身高为71.9英寸，比68.3英寸的平均值高出约3.6；他们的成年子女平均70.8，只高出2.5。最矮的父母平均65.1，比平均值低约3.2；他们的子女66.2，只低2.1。两个方向上，每个差距都自行缩小了大约三分之一，而没有人碰过这些孩子。正是这种模式，让“回归”这个词由此得名。",
-  "An unusually tall pair of parents is unusual partly for solid, heritable reasons and partly by luck, the fortunate end of many small things. The heritable part passes on; the luck does not, because it was luck. So the children keep the real part and shed the fluke, and land closer to the middle, and the shortest parents' children rise for the mirror reason. No force reaches in to even people out. It is only that an extreme is hard to repeat.": "一对异常高的父母之所以异常，一部分出于扎实的、可遗传的原因，一部分只是运气，是许多细小因素凑巧都往同一个方向走的幸运结果。可遗传的部分会传下去；运气不会，因为它本来就是运气。于是孩子保留了真实的那部分，甩掉了侥幸的那部分，落到了更接近中间的位置；最矮父母的孩子出于镜像的原因而上升。没有任何力量伸手把人拉平。只是极端本身很难重复罢了。",
+  "The tallest parents averaged 71.9 inches, about 3.6 above the 68.3 inch average. Their grown children averaged 70.8, only 2.5 above. The shortest parents averaged 65.1, about 3.2 below; their children 66.2, only 2.1 below. Roughly a third of each gap closed on its own, in both directions, and nobody touched the children. This is the pattern that gave regression its name.":
+    "最高的父母平均身高为71.9英寸，比68.3英寸的平均值高出约3.6；他们的成年子女平均70.8，只高出2.5。最矮的父母平均65.1，比平均值低约3.2；他们的子女66.2，只低2.1。两个方向上，每个差距都自行缩小了大约三分之一，而没有人碰过这些孩子。正是这种模式，让“回归”这个词由此得名。",
+  "An unusually tall pair of parents is unusual partly for solid, heritable reasons and partly by luck, the fortunate end of many small things. The heritable part passes on; the luck does not, because it was luck. So the children keep the real part and shed the fluke, and land closer to the middle, and the shortest parents' children rise for the mirror reason. No force reaches in to even people out. It is only that an extreme is hard to repeat.":
+    "一对异常高的父母之所以异常，一部分出于扎实的、可遗传的原因，一部分只是运气，是许多细小因素凑巧都往同一个方向走的幸运结果。可遗传的部分会传下去；运气不会，因为它本来就是运气。于是孩子保留了真实的那部分，甩掉了侥幸的那部分，落到了更接近中间的位置；最矮父母的孩子出于镜像的原因而上升。没有任何力量伸手把人拉平。只是极端本身很难重复罢了。",
   "What pulls the extremes in": "把极端值拉回来的力量",
-  "Pick a group because it sits at an extreme and its next measurement will usually be less extreme, even if you do nothing. The worst cases tend to improve and the best tend to fade on their own, so a change in a hand-picked extreme group is not, by itself, evidence that anything worked.": "因为一个群体处于极端而挑选它，它下一次的测量结果通常会不那么极端，即便你什么都不做。最差的案例往往会自行好转，最好的案例往往会自行回落，所以一个被挑出来的极端群体发生了变化，本身并不能证明有什么起了作用。",
-  "Whenever a group was chosen for being at an extreme, the sickest patients, the worst-performing schools, the accident black spots, the record-breaking quarter, expect it to move toward the average next time by itself. To show that a treatment, a policy or a new coach did the work, you need a comparison group that was equally extreme and left alone. Without one you may be measuring the weather rather than the climate.": "每当一个群体因为处于极端而被挑中，无论是病情最重的患者、成绩最差的学校、事故黑点，还是创纪录的一个季度，都可以预期它下一次会自行朝平均值靠拢。要证明是某种治疗、某项政策或一位新教练起了作用，你需要一个同样极端、却未被干预的对照组。没有它，你测量的可能只是天气，而不是气候。",
-  "Any one measurement is part signal and part noise. Selecting the extremes selects the cases where the noise happened to pile up in the same direction as the signal. Measure again and the noise redraws itself, so the value falls back toward the average, and the noisier the measurement the further it falls. This quietly manufactures success stories wherever a decision follows a bad patch. Speed cameras go up after a cluster of crashes that was never going to repeat, so crashes fall and the camera takes the credit. A struggling team sacks its manager at its lowest point and recovers, as it would have anyway. A patient starts a remedy on their worst day and feels better by the next. Each improvement is real, and none of it shows the action caused anything, until you find the group that had the same bad patch and did nothing.": "任何一次测量，都一部分是信号，一部分是噪音。挑选极端值，挑的正是噪音恰好与信号叠加在同一方向上的那些情况。再测一次，噪音会重新洗牌，数值就会回落向平均值，而测量越嘈杂，回落得就越多。这就悄悄制造出了成功故事，只要某个决策紧跟在一段糟糕时期之后。测速摄像头在一连串本就不会重演的事故之后架起，于是事故减少，摄像头得了功劳。一支挣扎中的球队在最低谷解雇了经理，随后回暖，而这本来就会发生。一位患者在病情最重的那天开始服用某种偏方，第二天就感觉好些了。每一次好转都是真实的，但没有一次能证明是那个行动导致的，除非你找到了那个经历了同样糟糕时期、却什么都没做的群体。",
+  "Pick a group because it sits at an extreme and its next measurement will usually be less extreme, even if you do nothing. The worst cases tend to improve and the best tend to fade on their own, so a change in a hand-picked extreme group is not, by itself, evidence that anything worked.":
+    "因为一个群体处于极端而挑选它，它下一次的测量结果通常会不那么极端，即便你什么都不做。最差的案例往往会自行好转，最好的案例往往会自行回落，所以一个被挑出来的极端群体发生了变化，本身并不能证明有什么起了作用。",
+  "Whenever a group was chosen for being at an extreme, the sickest patients, the worst-performing schools, the accident black spots, the record-breaking quarter, expect it to move toward the average next time by itself. To show that a treatment, a policy or a new coach did the work, you need a comparison group that was equally extreme and left alone. Without one you may be measuring the weather rather than the climate.":
+    "每当一个群体因为处于极端而被挑中，无论是病情最重的患者、成绩最差的学校、事故黑点，还是创纪录的一个季度，都可以预期它下一次会自行朝平均值靠拢。要证明是某种治疗、某项政策或一位新教练起了作用，你需要一个同样极端、却未被干预的对照组。没有它，你测量的可能只是天气，而不是气候。",
+  "Any one measurement is part signal and part noise. Selecting the extremes selects the cases where the noise happened to pile up in the same direction as the signal. Measure again and the noise redraws itself, so the value falls back toward the average, and the noisier the measurement the further it falls. This quietly manufactures success stories wherever a decision follows a bad patch. Speed cameras go up after a cluster of crashes that was never going to repeat, so crashes fall and the camera takes the credit. A struggling team sacks its manager at its lowest point and recovers, as it would have anyway. A patient starts a remedy on their worst day and feels better by the next. Each improvement is real, and none of it shows the action caused anything, until you find the group that had the same bad patch and did nothing.":
+    "任何一次测量，都一部分是信号，一部分是噪音。挑选极端值，挑的正是噪音恰好与信号叠加在同一方向上的那些情况。再测一次，噪音会重新洗牌，数值就会回落向平均值，而测量越嘈杂，回落得就越多。这就悄悄制造出了成功故事，只要某个决策紧跟在一段糟糕时期之后。测速摄像头在一连串本就不会重演的事故之后架起，于是事故减少，摄像头得了功劳。一支挣扎中的球队在最低谷解雇了经理，随后回暖，而这本来就会发生。一位患者在病情最重的那天开始服用某种偏方，第二天就感觉好些了。每一次好转都是真实的，但没有一次能证明是那个行动导致的，除非你找到了那个经历了同样糟糕时期、却什么都没做的群体。",
   "The same trap at the bedside": "病床边同样的陷阱",
-  "Enrol patients because their blood pressure is high and it tends to fall by the next visit even on a dummy pill, because the reading that got them in was partly a high day. When home monitoring was repeated over a year, the group with the highest starting readings fell the most, from about 156 to 143, and the group with the lowest rose, from about 113 to 120, the movement driven by regression rather than by anything done to them. An uncontrolled before-and-after look would have credited a treatment for both.": "因为血压高而把患者纳入研究，即便只服用安慰剂，血压到下次就诊时也往往会下降，因为让他们入选的那个读数，本身就有几分是撞上了偏高的一天。当居家监测在一年里重复进行时，起始读数最高的一组下降最多，从约156降到143；起始读数最低的一组则上升，从约113升到120，这一变化由回归驱动，而不是由任何针对他们的干预造成的。一个未设对照的前后对比研究，会把这两种变化都归功于某种治疗。",
+  "Enrol patients because their blood pressure is high and it tends to fall by the next visit even on a dummy pill, because the reading that got them in was partly a high day. When home monitoring was repeated over a year, the group with the highest starting readings fell the most, from about 156 to 143, and the group with the lowest rose, from about 113 to 120, the movement driven by regression rather than by anything done to them. An uncontrolled before-and-after look would have credited a treatment for both.":
+    "因为血压高而把患者纳入研究，即便只服用安慰剂，血压到下次就诊时也往往会下降，因为让他们入选的那个读数，本身就有几分是撞上了偏高的一天。当居家监测在一年里重复进行时，起始读数最高的一组下降最多，从约156降到143；起始读数最低的一组则上升，从约113升到120，这一变化由回归驱动，而不是由任何针对他们的干预造成的。一个未设对照的前后对比研究，会把这两种变化都归功于某种治疗。",
   "Regression to the mean, a reasoning trap.": "向均值回归，一个推理陷阱。",
-  "Anything measured at its extreme, the sickest patients, the worst month, the record score, tends to look more ordinary next time, all on its own. The unusual value was partly a fluke, and flukes do not repeat. So when you act on a group precisely because it was extreme and it then improves, the improvement may be nothing more than the fluke fading. To know your action did anything, you need a group that was just as extreme and left alone.": "任何在极端时刻被测量的事物，无论是病情最重的患者、最差的一个月，还是创纪录的分数，下一次往往会自行显得更普通一些。那个异常值一部分是巧合，而巧合不会重演。所以，当你正因为一个群体处于极端而对它采取行动，随后它有所改善时，这种改善可能只是巧合褪去而已。要知道你的行动是否真的起了作用，你需要一个同样极端、却未被干预的群体。",
+  "Anything measured at its extreme, the sickest patients, the worst month, the record score, tends to look more ordinary next time, all on its own. The unusual value was partly a fluke, and flukes do not repeat. So when you act on a group precisely because it was extreme and it then improves, the improvement may be nothing more than the fluke fading. To know your action did anything, you need a group that was just as extreme and left alone.":
+    "任何在极端时刻被测量的事物，无论是病情最重的患者、最差的一个月，还是创纪录的分数，下一次往往会自行显得更普通一些。那个异常值一部分是巧合，而巧合不会重演。所以，当你正因为一个群体处于极端而对它采取行动，随后它有所改善时，这种改善可能只是巧合褪去而已。要知道你的行动是否真的起了作用，你需要一个同样极端、却未被干预的群体。",
   "Caught the fluke. Bet you can't.": "我识破了这个巧合。你未必行。",
   "I gave the credit to the wrong thing.": "我把功劳归错了对象。",
-  "The figures are group means computed from Galton's 928 tabulated adult children, the standard digitization of his Table I (distributed as HistData::Galton), with female heights multiplied by 1.08 exactly as Galton did. The population average was about 68.3 inches. The tallest parents, those with a mid-parent height of 71 inches or more (66 children), averaged 71.9 inches and their children 70.8; the shortest, 65.5 inches or less (103 children), averaged 65.1 and their children 66.2. These are means of the tabulated data rather than verbatim printed cell values, and they are grouped because the single one-inch bins at the extremes hold only a handful of families and are noisy. Computed across all 928 pairs, the parent-to-child regression slope is about 0.65, which reproduces Galton's own finding that a child's deviation from the mean is roughly two-thirds of the mid-parent's, the result from which the word regression descends.": "这些数字是根据高尔顿928名列表中的成年子女计算出的组均值，采用的是他“表一”的标准数字化版本（以 HistData::Galton 的形式发布），并按高尔顿本人的做法，把女性身高乘以1.08。总体平均身高约为68.3英寸。最高的父母，即中亲身高（mid-parent height）达到71英寸及以上的那组（66名子女），平均身高71.9英寸，其子女平均70.8；最矮的一组，中亲身高65.5英寸及以下（103名子女），平均65.1，其子女66.2。这些是表列数据的均值，而非逐格照抄的印刷数值；之所以分组呈现，是因为极端处单独一英寸宽的区间里只有寥寥数个家庭，噪音很大。以全部928对数据计算，父母与子女之间的回归斜率约为0.65，这与高尔顿本人的发现一致：子女偏离均值的幅度，大约是中亲偏离幅度的三分之二，“回归”一词正是由此而来。",
-  "A council installs speed cameras at the twenty junctions with the most crashes last year. Over the next year crashes at those junctions fall, and the council reports the cameras as a clear success.": "市议会在去年事故最多的二十个路口安装了测速摄像头。接下来一年里，这些路口的事故减少了，议会将摄像头报告为明显的成功。",
-  "The junctions were picked for an exceptionally bad year, which is partly bad luck that does not repeat. Crashes would have fallen at the worst sites anyway, so crediting the cameras needs junctions that were equally bad and left uncovered.": "这些路口是因为有异常糟糕的一年而被挑中的，而这在一定程度上是不会重演的坏运气。即便没有摄像头，事故最多的地点也会自行减少，所以要把功劳归给摄像头，需要找到同样糟糕、却没有安装摄像头的路口。",
-  "A ministry gives extra funding to the fifty lowest-scoring schools. The next year their average results rise, and the funding is declared to have worked.": "教育部向成绩最差的五十所学校提供额外资金。第二年，这些学校的平均成绩上升了，该资金被宣布为奏效。",
-  "Schools land at the very bottom partly through a bad year that will not recur, so the lowest scorers tend to climb on their own. Without a comparison of equally low-scoring schools that got nothing, the rise cannot be pinned on the money.": "学校落到垫底，一部分是因为一个不会重演的糟糕年份，所以成绩最差的学校往往会自行回升。如果没有一组成绩同样垫底、却什么都没得到的学校作对照，这次回升就无法归功于这笔资金。",
-  "A clinic enrols the patients with the highest cholesterol readings onto a new diet. At the recheck their readings have dropped, and the clinic recommends the diet to everyone.": "一家诊所把胆固醇读数最高的患者纳入一种新饮食方案。复查时，他们的读数下降了，诊所向所有人推荐这种饮食。",
-  "People selected for the highest readings include many caught on an unusually high day, which the next test will not repeat. Their readings would fall without the diet, so only an equally high group left alone can show the diet did anything.": "被挑中的高读数人群里，有不少人只是恰好撞上了异常偏高的一天，下一次检测不会重演这一点。即便没有这种饮食，他们的读数也会下降，所以只有一个同样偏高、却未采用该饮食的对照组，才能说明这种饮食是否真的起了作用。",
-  "A football club sacks its manager after the worst run of results in years. Under the caretaker the team climbs the table, and the board congratulates itself on the decision.": "一家足球俱乐部在多年来最差的一段战绩后解雇了主教练。在临时教练带领下，球队排名回升，董事会为这一决定沾沾自喜。",
-  "Clubs sack managers at their lowest ebb, and a lowest ebb is partly a run of bad luck that tends to end. The recovery is what a bad patch usually does next, so it is no proof the sacking helped.": "俱乐部往往在状态最低谷时解雇教练，而这个低谷本身部分源于一段终将结束的坏运气。回暖正是一段低谷期接下来通常会发生的事，所以它并不能证明解雇起了作用。",
-  "People try a herbal remedy when their cold feels at its worst. Most feel much better within two days and recommend it to friends.": "人们通常在感冒最严重的时候尝试一种草药偏方。大多数人在两天内感觉明显好转，并推荐给朋友。",
-  "A cold is usually taken on at its peak, and symptoms fade from a peak on their own. Feeling better after the worst day is what a cold does, with or without the remedy.": "感冒通常是在症状最重的时候才被人注意到的，而症状会从这个峰值自行消退。最难受的那天过后感觉好转，是感冒本身的规律，无论有没有那种偏方。",
-  "An athlete voted best newcomer of the season plays less brilliantly the year after. Pundits conclude the fame went to his head.": "一名被评为本赛季最佳新秀的运动员，第二年表现不再那么出色。评论员认为是名气冲昏了他的头脑。",
-  "A best-newcomer season is a peak, and peaks are partly luck that does not hold. A more ordinary second year is what regression predicts, and it needs no story about character.": "最佳新秀赛季本身就是一个高峰，而高峰的一部分是不会持续的运气。第二年表现更普通，正是回归所预测的结果，无需借助任何关于性格的说法。",
-  "A chain sends its consultants to the ten stores with the worst sales last quarter. Those stores do better the following quarter, and the consultancy is retained.": "一家连锁企业把顾问派到上季度销售最差的十家门店。下一季度，这些门店表现更好，该咨询公司因此被续约。",
-  "The ten stores were chosen for an unusually bad quarter, which tends to be followed by a better one regardless. Judging the consultants fairly needs equally poor stores they never visited.": "这十家门店是因为一个异常糟糕的季度而被挑中的，而这样的季度之后往往会迎来好转，无论如何都会如此。要公正地评判顾问的作用，需要一组同样糟糕、他们从未到访过的门店作对照。",
-  "A screening drive recalls everyone whose blood pressure read highest and gives them lifestyle advice. At the recall visit their pressure is lower, and the advice is judged effective.": "一项筛查活动把血压读数最高的人全部召回，并给予生活方式建议。复诊时，他们的血压降低了，这条建议被判定为有效。",
-  "A single high reading is partly a bad moment, so the highest readers tend to read lower next time anyway. The fall is expected without any advice, and a comparison group is the only way to see the advice's own effect.": "单次偏高的读数，一部分只是当时状态不好，所以读数最高的人下一次的读数往往会自行降低。即便没有任何建议，这种下降也在预料之中；只有一个对照组，才能看清这条建议本身的效果。",
-  "Drivers who collected the most penalty points in a year are required to attend a safety course. In the following year they collect far fewer points, and the course is expanded.": "一年中累计违章记分最多的司机被要求参加安全课程。第二年，他们的记分大幅减少，该课程因此被推广。",
-  "Drivers are picked at a peak year of offences, and a peak is partly chance that eases off. Fewer points the next year is what regression predicts, so the drop does not by itself show the course worked.": "司机是在违章行为达到高峰的那一年被挑中的，而这个高峰一部分是终将回落的偶然。第二年记分减少，正是回归所预测的结果，所以这一下降本身并不能证明课程起了作用。",
-  "Students who scored worst on a mock exam are enrolled in a revision workshop. On the real exam they improve markedly, and the school makes the workshop compulsory for low scorers.": "模拟考试中成绩最差的学生被安排参加复习工作坊。在正式考试中，他们的成绩明显提高，学校因此将该工作坊定为低分学生的必修项目。",
-  "The worst mock scores include students who simply had an off day, who tend to do better next time regardless. Only students who scored equally badly and skipped the workshop could show whether it added anything.": "模拟考最差的成绩里，包含了一些只是当天状态不佳的学生，他们无论如何下一次都往往会考得更好。只有找到一组成绩同样差、却没有参加工作坊的学生，才能说明这个工作坊到底有没有额外作用。",
-  "A charity funds the lowest-attaining schools and evaluates the programme against an equally low-attaining set of schools, chosen the same way but left unfunded. The funded schools improved more than the unfunded ones.": "一家慈善机构资助了成绩最差的一批学校，并用另一批以同样方式挑选、但未获资助的成绩同样最差的学校作为对照来评估该项目。获得资助的学校，进步幅度超过了未获资助的学校。",
-  "Both sets were equally extreme, so both would drift upward by about the same amount on their own. Because the comparison schools absorb that drift, the extra improvement in the funded schools is a fair estimate of what the funding added.": "两组学校同样极端，所以都会自行上升大致相同的幅度。由于对照学校吸收了这部分自然回升，获得资助的学校多出来的那部分进步，才是对这笔资金实际贡献的公正估计。",
-  "Patients with high blood pressure are randomly assigned to a drug or a dummy pill. Pressure falls in both groups, but it falls further on the drug, and the trial reports the difference between the two as the drug's effect.": "高血压患者被随机分配到药物组或安慰剂组。两组的血压都下降了，但药物组下降得更多，试验将两组之间的差异报告为该药物的效果。",
-  "Both arms started high and both drift back toward the average, so the fall in the dummy-pill arm measures that drift. Subtracting it leaves the part that is the drug, which is exactly why the comparison arm is there.": "两组一开始的读数都偏高，也都会自行回落向平均值，所以安慰剂组的下降幅度，衡量的正是这种自然回落。减去它之后剩下的部分，才是药物本身的效果，而这正是设立对照组的意义所在。",
+  "The figures are group means computed from Galton's 928 tabulated adult children, the standard digitization of his Table I (distributed as HistData::Galton), with female heights multiplied by 1.08 exactly as Galton did. The population average was about 68.3 inches. The tallest parents, those with a mid-parent height of 71 inches or more (66 children), averaged 71.9 inches and their children 70.8; the shortest, 65.5 inches or less (103 children), averaged 65.1 and their children 66.2. These are means of the tabulated data rather than verbatim printed cell values, and they are grouped because the single one-inch bins at the extremes hold only a handful of families and are noisy. Computed across all 928 pairs, the parent-to-child regression slope is about 0.65, which reproduces Galton's own finding that a child's deviation from the mean is roughly two-thirds of the mid-parent's, the result from which the word regression descends.":
+    "这些数字是根据高尔顿928名列表中的成年子女计算出的组均值，采用的是他“表一”的标准数字化版本（以 HistData::Galton 的形式发布），并按高尔顿本人的做法，把女性身高乘以1.08。总体平均身高约为68.3英寸。最高的父母，即中亲身高（mid-parent height）达到71英寸及以上的那组（66名子女），平均身高71.9英寸，其子女平均70.8；最矮的一组，中亲身高65.5英寸及以下（103名子女），平均65.1，其子女66.2。这些是表列数据的均值，而非逐格照抄的印刷数值；之所以分组呈现，是因为极端处单独一英寸宽的区间里只有寥寥数个家庭，噪音很大。以全部928对数据计算，父母与子女之间的回归斜率约为0.65，这与高尔顿本人的发现一致：子女偏离均值的幅度，大约是中亲偏离幅度的三分之二，“回归”一词正是由此而来。",
+  "A council installs speed cameras at the twenty junctions with the most crashes last year. Over the next year crashes at those junctions fall, and the council reports the cameras as a clear success.":
+    "市议会在去年事故最多的二十个路口安装了测速摄像头。接下来一年里，这些路口的事故减少了，议会将摄像头报告为明显的成功。",
+  "The junctions were picked for an exceptionally bad year, which is partly bad luck that does not repeat. Crashes would have fallen at the worst sites anyway, so crediting the cameras needs junctions that were equally bad and left uncovered.":
+    "这些路口是因为有异常糟糕的一年而被挑中的，而这在一定程度上是不会重演的坏运气。即便没有摄像头，事故最多的地点也会自行减少，所以要把功劳归给摄像头，需要找到同样糟糕、却没有安装摄像头的路口。",
+  "A ministry gives extra funding to the fifty lowest-scoring schools. The next year their average results rise, and the funding is declared to have worked.":
+    "教育部向成绩最差的五十所学校提供额外资金。第二年，这些学校的平均成绩上升了，该资金被宣布为奏效。",
+  "Schools land at the very bottom partly through a bad year that will not recur, so the lowest scorers tend to climb on their own. Without a comparison of equally low-scoring schools that got nothing, the rise cannot be pinned on the money.":
+    "学校落到垫底，一部分是因为一个不会重演的糟糕年份，所以成绩最差的学校往往会自行回升。如果没有一组成绩同样垫底、却什么都没得到的学校作对照，这次回升就无法归功于这笔资金。",
+  "A clinic enrols the patients with the highest cholesterol readings onto a new diet. At the recheck their readings have dropped, and the clinic recommends the diet to everyone.":
+    "一家诊所把胆固醇读数最高的患者纳入一种新饮食方案。复查时，他们的读数下降了，诊所向所有人推荐这种饮食。",
+  "People selected for the highest readings include many caught on an unusually high day, which the next test will not repeat. Their readings would fall without the diet, so only an equally high group left alone can show the diet did anything.":
+    "被挑中的高读数人群里，有不少人只是恰好撞上了异常偏高的一天，下一次检测不会重演这一点。即便没有这种饮食，他们的读数也会下降，所以只有一个同样偏高、却未采用该饮食的对照组，才能说明这种饮食是否真的起了作用。",
+  "A football club sacks its manager after the worst run of results in years. Under the caretaker the team climbs the table, and the board congratulates itself on the decision.":
+    "一家足球俱乐部在多年来最差的一段战绩后解雇了主教练。在临时教练带领下，球队排名回升，董事会为这一决定沾沾自喜。",
+  "Clubs sack managers at their lowest ebb, and a lowest ebb is partly a run of bad luck that tends to end. The recovery is what a bad patch usually does next, so it is no proof the sacking helped.":
+    "俱乐部往往在状态最低谷时解雇教练，而这个低谷本身部分源于一段终将结束的坏运气。回暖正是一段低谷期接下来通常会发生的事，所以它并不能证明解雇起了作用。",
+  "People try a herbal remedy when their cold feels at its worst. Most feel much better within two days and recommend it to friends.":
+    "人们通常在感冒最严重的时候尝试一种草药偏方。大多数人在两天内感觉明显好转，并推荐给朋友。",
+  "A cold is usually taken on at its peak, and symptoms fade from a peak on their own. Feeling better after the worst day is what a cold does, with or without the remedy.":
+    "感冒通常是在症状最重的时候才被人注意到的，而症状会从这个峰值自行消退。最难受的那天过后感觉好转，是感冒本身的规律，无论有没有那种偏方。",
+  "An athlete voted best newcomer of the season plays less brilliantly the year after. Pundits conclude the fame went to his head.":
+    "一名被评为本赛季最佳新秀的运动员，第二年表现不再那么出色。评论员认为是名气冲昏了他的头脑。",
+  "A best-newcomer season is a peak, and peaks are partly luck that does not hold. A more ordinary second year is what regression predicts, and it needs no story about character.":
+    "最佳新秀赛季本身就是一个高峰，而高峰的一部分是不会持续的运气。第二年表现更普通，正是回归所预测的结果，无需借助任何关于性格的说法。",
+  "A chain sends its consultants to the ten stores with the worst sales last quarter. Those stores do better the following quarter, and the consultancy is retained.":
+    "一家连锁企业把顾问派到上季度销售最差的十家门店。下一季度，这些门店表现更好，该咨询公司因此被续约。",
+  "The ten stores were chosen for an unusually bad quarter, which tends to be followed by a better one regardless. Judging the consultants fairly needs equally poor stores they never visited.":
+    "这十家门店是因为一个异常糟糕的季度而被挑中的，而这样的季度之后往往会迎来好转，无论如何都会如此。要公正地评判顾问的作用，需要一组同样糟糕、他们从未到访过的门店作对照。",
+  "A screening drive recalls everyone whose blood pressure read highest and gives them lifestyle advice. At the recall visit their pressure is lower, and the advice is judged effective.":
+    "一项筛查活动把血压读数最高的人全部召回，并给予生活方式建议。复诊时，他们的血压降低了，这条建议被判定为有效。",
+  "A single high reading is partly a bad moment, so the highest readers tend to read lower next time anyway. The fall is expected without any advice, and a comparison group is the only way to see the advice's own effect.":
+    "单次偏高的读数，一部分只是当时状态不好，所以读数最高的人下一次的读数往往会自行降低。即便没有任何建议，这种下降也在预料之中；只有一个对照组，才能看清这条建议本身的效果。",
+  "Drivers who collected the most penalty points in a year are required to attend a safety course. In the following year they collect far fewer points, and the course is expanded.":
+    "一年中累计违章记分最多的司机被要求参加安全课程。第二年，他们的记分大幅减少，该课程因此被推广。",
+  "Drivers are picked at a peak year of offences, and a peak is partly chance that eases off. Fewer points the next year is what regression predicts, so the drop does not by itself show the course worked.":
+    "司机是在违章行为达到高峰的那一年被挑中的，而这个高峰一部分是终将回落的偶然。第二年记分减少，正是回归所预测的结果，所以这一下降本身并不能证明课程起了作用。",
+  "Students who scored worst on a mock exam are enrolled in a revision workshop. On the real exam they improve markedly, and the school makes the workshop compulsory for low scorers.":
+    "模拟考试中成绩最差的学生被安排参加复习工作坊。在正式考试中，他们的成绩明显提高，学校因此将该工作坊定为低分学生的必修项目。",
+  "The worst mock scores include students who simply had an off day, who tend to do better next time regardless. Only students who scored equally badly and skipped the workshop could show whether it added anything.":
+    "模拟考最差的成绩里，包含了一些只是当天状态不佳的学生，他们无论如何下一次都往往会考得更好。只有找到一组成绩同样差、却没有参加工作坊的学生，才能说明这个工作坊到底有没有额外作用。",
+  "A charity funds the lowest-attaining schools and evaluates the programme against an equally low-attaining set of schools, chosen the same way but left unfunded. The funded schools improved more than the unfunded ones.":
+    "一家慈善机构资助了成绩最差的一批学校，并用另一批以同样方式挑选、但未获资助的成绩同样最差的学校作为对照来评估该项目。获得资助的学校，进步幅度超过了未获资助的学校。",
+  "Both sets were equally extreme, so both would drift upward by about the same amount on their own. Because the comparison schools absorb that drift, the extra improvement in the funded schools is a fair estimate of what the funding added.":
+    "两组学校同样极端，所以都会自行上升大致相同的幅度。由于对照学校吸收了这部分自然回升，获得资助的学校多出来的那部分进步，才是对这笔资金实际贡献的公正估计。",
+  "Patients with high blood pressure are randomly assigned to a drug or a dummy pill. Pressure falls in both groups, but it falls further on the drug, and the trial reports the difference between the two as the drug's effect.":
+    "高血压患者被随机分配到药物组或安慰剂组。两组的血压都下降了，但药物组下降得更多，试验将两组之间的差异报告为该药物的效果。",
+  "Both arms started high and both drift back toward the average, so the fall in the dummy-pill arm measures that drift. Subtracting it leaves the part that is the drug, which is exactly why the comparison arm is there.":
+    "两组一开始的读数都偏高，也都会自行回落向平均值，所以安慰剂组的下降幅度，衡量的正是这种自然回落。减去它之后剩下的部分，才是药物本身的效果，而这正是设立对照组的意义所在。",
   "Where they started": "起点",
   "Where they landed": "落点",
 
   // ---- Effect modification versus confounding (Choi puzzle, review items, scope labels) ----
-  "A gene variant carried by millions goes with about 2.5 times the odds of esophageal cancer, and adjusting for alcohol barely changes it. A modest risk gene, then?": "一种数百万人携带的基因变异，与约2.5倍的食管癌几率相关，而对饮酒进行校正后这一数值几乎不变。难道这只是个温和的风险基因？",
-  "In South Korean men, researchers compared the ALDH2 gene variant between esophageal cancer patients and healthy controls. Carriers had roughly 2.5 times the odds of cancer, and adjusting for whether the men drank alcohol left that almost unchanged, which usually means a factor is standing on its own.": "在韩国男性中，研究者比较了食管癌患者与健康对照者携带ALDH2基因变异的情况。携带者患癌的几率约为2.5倍，而按这些男性是否饮酒做校正后，这一数值几乎不变，这通常意味着某个因素是独立起作用的。",
+  "A gene variant carried by millions goes with about 2.5 times the odds of esophageal cancer, and adjusting for alcohol barely changes it. A modest risk gene, then?":
+    "一种数百万人携带的基因变异，与约2.5倍的食管癌几率相关，而对饮酒进行校正后这一数值几乎不变。难道这只是个温和的风险基因？",
+  "In South Korean men, researchers compared the ALDH2 gene variant between esophageal cancer patients and healthy controls. Carriers had roughly 2.5 times the odds of cancer, and adjusting for whether the men drank alcohol left that almost unchanged, which usually means a factor is standing on its own.":
+    "在韩国男性中，研究者比较了食管癌患者与健康对照者携带ALDH2基因变异的情况。携带者患癌的几率约为2.5倍，而按这些男性是否饮酒做校正后，这一数值几乎不变，这通常意味着某个因素是独立起作用的。",
   "What is the gene really doing?": "这个基因到底在做什么？",
-  "The ALDH2 variant and esophageal cancer in Korean men": "ALDH2变异与韩国男性食管癌",
+  "The ALDH2 variant and esophageal cancer in Korean men":
+    "ALDH2变异与韩国男性食管癌",
   "Odds of esophageal cancer with the variant": "携带该变异者的食管癌几率",
   "alcohol drinking": "饮酒",
   "Ignoring drinking": "忽略饮酒",
   "Adjusted for drinking": "校正饮酒后",
   "no effect": "无效应",
   "Current drinkers": "目前饮酒者",
-  "Drinkers": "饮酒者",
+  Drinkers: "饮酒者",
   "Non-drinkers": "不饮酒者",
   "A modest risk factor in its own right": "本身就是一个温和的风险因素",
-  "about 2.5 times the odds, with or without drinking": "无论是否饮酒，几率都约为2.5倍",
+  "about 2.5 times the odds, with or without drinking":
+    "无论是否饮酒，几率都约为2.5倍",
   "An illusion, drinking is the real cause": "这是一种假象，饮酒才是真正的原因",
   "adjust it away and nothing is left": "一经校正，它就荡然无存",
   "It only matters in people who drink": "只在饮酒者身上才起作用",
   "the effect depends on the drinking": "效应的大小取决于是否饮酒",
-  "In men who do not drink the variant does almost nothing (1.25). In men who drink it quadruples the odds (4.39). The 2.5 was the average of two different worlds.": "在不饮酒的男性中，该变异几乎没有作用（1.25）。在饮酒的男性中，它使几率增至约四倍（4.39）。2.5这个数字，只是两个截然不同世界的平均值。",
+  "In men who do not drink the variant does almost nothing (1.25). In men who drink it quadruples the odds (4.39). The 2.5 was the average of two different worlds.":
+    "在不饮酒的男性中，该变异几乎没有作用（1.25）。在饮酒的男性中，它使几率增至约四倍（4.39）。2.5这个数字，只是两个截然不同世界的平均值。",
   "Effect modification": "效应修饰",
-  "Split by drinking, the odds ratio is 1.25 in non-drinkers, its confidence interval crossing 1, and 4.39 in drinkers. The crude 2.6, and the drinking-adjusted 2.4, sit between the two and describe neither group. The variant slows the clearance of acetaldehyde, a carcinogen the body makes from alcohol, so it can only do harm when there is alcohol to process. Adjusting for drinking treats it as a nuisance to subtract, but here drinking is the very thing that switches the gene's danger on.": "按饮酒与否分层后，比值比在不饮酒者中为1.25（其置信区间跨过1），在饮酒者中为4.39。未校正的粗比值比2.6，以及按饮酒校正后的2.4，都介于两者之间，对哪一组的描述都不准确。该变异会减慢乙醛的清除，而乙醛正是身体代谢酒精所产生的一种致癌物，因此只有在需要处理酒精时，它才会造成伤害。把饮酒当作需要剔除的干扰因素来校正，恰恰忽略了饮酒正是打开这个基因危险性的开关。",
-  "This is the line between a confounder and an effect modifier. A confounder is a rival explanation you remove by adjustment, and once it is removed the single adjusted number is your answer. An effect modifier is not a nuisance, it is the finding, and the right move is not to average the strata but to report them apart. \"The variant quadruples the odds in drinkers and does nothing otherwise\" is true and useful. \"The variant raises the odds about 2.5-fold\" is true of no one.": "这就是混杂因素与效应修饰因素之间的分界线。混杂因素是一个可以通过校正来消除的竞争性解释，一旦被消除，那个单一的校正后数字就是答案。效应修饰因素不是需要剔除的干扰，它本身就是发现，正确的做法不是把各分层平均起来，而是把它们分开报告。“该变异使饮酒者的几率增至四倍，对其他人则毫无作用”，这句话既真实又有用。“该变异使几率提高约2.5倍”，这句话对谁都不成立。",
+  "Split by drinking, the odds ratio is 1.25 in non-drinkers, its confidence interval crossing 1, and 4.39 in drinkers. The crude 2.6, and the drinking-adjusted 2.4, sit between the two and describe neither group. The variant slows the clearance of acetaldehyde, a carcinogen the body makes from alcohol, so it can only do harm when there is alcohol to process. Adjusting for drinking treats it as a nuisance to subtract, but here drinking is the very thing that switches the gene's danger on.":
+    "按饮酒与否分层后，比值比在不饮酒者中为1.25（其置信区间跨过1），在饮酒者中为4.39。未校正的粗比值比2.6，以及按饮酒校正后的2.4，都介于两者之间，对哪一组的描述都不准确。该变异会减慢乙醛的清除，而乙醛正是身体代谢酒精所产生的一种致癌物，因此只有在需要处理酒精时，它才会造成伤害。把饮酒当作需要剔除的干扰因素来校正，恰恰忽略了饮酒正是打开这个基因危险性的开关。",
+  'This is the line between a confounder and an effect modifier. A confounder is a rival explanation you remove by adjustment, and once it is removed the single adjusted number is your answer. An effect modifier is not a nuisance, it is the finding, and the right move is not to average the strata but to report them apart. "The variant quadruples the odds in drinkers and does nothing otherwise" is true and useful. "The variant raises the odds about 2.5-fold" is true of no one.':
+    "这就是混杂因素与效应修饰因素之间的分界线。混杂因素是一个可以通过校正来消除的竞争性解释，一旦被消除，那个单一的校正后数字就是答案。效应修饰因素不是需要剔除的干扰，它本身就是发现，正确的做法不是把各分层平均起来，而是把它们分开报告。“该变异使饮酒者的几率增至四倍，对其他人则毫无作用”，这句话既真实又有用。“该变异使几率提高约2.5倍”，这句话对谁都不成立。",
   "Confounder, or modifier?": "混杂因素，还是效应修饰因素？",
   "Effect modification versus confounding": "效应修饰与混杂",
-  "When a factor's effect differs sharply between subgroups, do not adjust it into a single number. Adjustment answers the confounding question, what is the effect once we account for the other variable. It cannot answer the modification question, does the effect depend on that variable. An average can be true of the whole and describe no one in it.": "当一个因素的效应在各亚组之间差异悬殊时，不要把它校正成一个单一数字。校正回答的是混杂问题，即在考虑另一个变量之后，效应是多少。它回答不了修饰问题，即效应是否取决于那个变量。一个平均值可以对整体成立，却对其中任何一个个体都不成立。",
-  "Faced with a third variable, two different moves are possible. If it distorts the comparison but the effect is really the same in everyone, it is a confounder: adjust for it and report one number. If the effect genuinely differs across its levels, it is an effect modifier: report each level on its own. The tell is in the stratified table. If the stratum-specific effects are close to each other but differ from the crude, you had confounding. If they differ from each other, you have modification, and the crude or adjusted figure is an average that can mislead about everybody.": "面对第三变量，有两种不同的应对方式。如果它扭曲了比较，而效应在每个人身上其实是一样的，那它就是混杂因素：对它做校正，并报告一个数字。如果效应在它的各个水平上确实存在差异，那它就是效应修饰因素：把每个水平分开报告。破绽就在分层表里。如果各分层特有的效应彼此接近，却都与粗效应不同，那就是混杂。如果各分层的效应彼此不同，那就是修饰，而粗值或校正值只是一个可能误导所有人的平均数。",
-  "Adjustment and stratification begin the same way, by splitting the data on the third variable, and then they part. Adjustment recombines the strata into one weighted number, which is exactly right when they agree and exactly wrong when they do not, because it buries the disagreement inside an average. So look at the strata before you pool them. When they tell the same story, one number is a fair summary. When they tell different stories, that number is a fiction of the middle, and the honest report is the split. Effect modification is not a bias to scrub out, it is often the most useful thing a study finds, the map of who is affected and who is not. It is also why a treatment can be worthless on average and life-saving in a subgroup, and why \"no overall effect\" and \"no effect\" are not the same sentence.": "校正与分层的起点是一样的，都是按第三变量拆分数据，随后二者才分道扬镳。校正把各分层重新合并成一个加权数字，当各分层意见一致时这完全正确，当它们不一致时这就完全错误，因为它把分歧掩埋进了一个平均值里。所以，在合并分层之前先看看它们。当它们讲的是同一个故事时，一个数字就是公正的概括。当它们讲的是不同的故事时，那个数字就是中间地带虚构出来的产物，诚实的报告应当是分开呈现。效应修饰不是需要清除的偏倚，它往往是一项研究能给出的最有用的东西，一张标明谁受影响、谁不受影响的地图。这也是为什么一种治疗可以在平均意义上毫无价值，却能在某个亚组里救命，也是为什么“总体无效应”和“无效应”并不是同一句话。",
+  "When a factor's effect differs sharply between subgroups, do not adjust it into a single number. Adjustment answers the confounding question, what is the effect once we account for the other variable. It cannot answer the modification question, does the effect depend on that variable. An average can be true of the whole and describe no one in it.":
+    "当一个因素的效应在各亚组之间差异悬殊时，不要把它校正成一个单一数字。校正回答的是混杂问题，即在考虑另一个变量之后，效应是多少。它回答不了修饰问题，即效应是否取决于那个变量。一个平均值可以对整体成立，却对其中任何一个个体都不成立。",
+  "Faced with a third variable, two different moves are possible. If it distorts the comparison but the effect is really the same in everyone, it is a confounder: adjust for it and report one number. If the effect genuinely differs across its levels, it is an effect modifier: report each level on its own. The tell is in the stratified table. If the stratum-specific effects are close to each other but differ from the crude, you had confounding. If they differ from each other, you have modification, and the crude or adjusted figure is an average that can mislead about everybody.":
+    "面对第三变量，有两种不同的应对方式。如果它扭曲了比较，而效应在每个人身上其实是一样的，那它就是混杂因素：对它做校正，并报告一个数字。如果效应在它的各个水平上确实存在差异，那它就是效应修饰因素：把每个水平分开报告。破绽就在分层表里。如果各分层特有的效应彼此接近，却都与粗效应不同，那就是混杂。如果各分层的效应彼此不同，那就是修饰，而粗值或校正值只是一个可能误导所有人的平均数。",
+  'Adjustment and stratification begin the same way, by splitting the data on the third variable, and then they part. Adjustment recombines the strata into one weighted number, which is exactly right when they agree and exactly wrong when they do not, because it buries the disagreement inside an average. So look at the strata before you pool them. When they tell the same story, one number is a fair summary. When they tell different stories, that number is a fiction of the middle, and the honest report is the split. Effect modification is not a bias to scrub out, it is often the most useful thing a study finds, the map of who is affected and who is not. It is also why a treatment can be worthless on average and life-saving in a subgroup, and why "no overall effect" and "no effect" are not the same sentence.':
+    "校正与分层的起点是一样的，都是按第三变量拆分数据，随后二者才分道扬镳。校正把各分层重新合并成一个加权数字，当各分层意见一致时这完全正确，当它们不一致时这就完全错误，因为它把分歧掩埋进了一个平均值里。所以，在合并分层之前先看看它们。当它们讲的是同一个故事时，一个数字就是公正的概括。当它们讲的是不同的故事时，那个数字就是中间地带虚构出来的产物，诚实的报告应当是分开呈现。效应修饰不是需要清除的偏倚，它往往是一项研究能给出的最有用的东西，一张标明谁受影响、谁不受影响的地图。这也是为什么一种治疗可以在平均意义上毫无价值，却能在某个亚组里救命，也是为什么“总体无效应”和“无效应”并不是同一句话。",
   "A drug that works only for some tumours": "一种只对部分肿瘤起作用的药物",
-  "Trastuzumab, added to chemotherapy, improved survival in metastatic breast cancer that overexpresses the HER2 protein. It is given only to patients whose tumour is HER2-positive, because that marker is what its benefit depends on. Averaging its effect across all breast cancers would understate it for the women it helps and invent a benefit for those it does not. So the tumour marker is tested for before the drug is prescribed, which is effect modification turned into routine practice rather than adjusted away.": "曲妥珠单抗联合化疗，改善了HER2蛋白过表达的转移性乳腺癌患者的生存。它只用于肿瘤HER2阳性的患者，因为这项标志物正是其疗效所依赖的东西。如果把它的效应平均到所有乳腺癌患者身上，就会低估它对能从中获益的女性的作用，又为那些不能获益的人凭空造出一份疗效。因此，在开具这种药物之前会先检测肿瘤标志物，这是把效应修饰变成常规做法，而不是把它校正掉。",
-  "Effect modification versus confounding, a reasoning trap.": "效应修饰与混杂，一个推理陷阱。",
-  "A single adjusted number assumes a factor works the same for everyone. Often it does not. A gene, a drug or a policy can do a great deal in one group and nothing in another, and averaging the two gives a figure that is true of no one. When the effect differs across groups, the groups are the answer, not a nuisance to average away.": "一个单一的校正后数字，假定某个因素对每个人的作用都一样。但情况往往并非如此。一个基因、一种药物或一项政策，可以在一个群体里发挥巨大作用，在另一个群体里却毫无作用，把两者平均起来得到的数字，对谁都不成立。当效应在各群体之间存在差异时，答案就是这些群体本身，而不是需要平均掉的干扰。",
+  "Trastuzumab, added to chemotherapy, improved survival in metastatic breast cancer that overexpresses the HER2 protein. It is given only to patients whose tumour is HER2-positive, because that marker is what its benefit depends on. Averaging its effect across all breast cancers would understate it for the women it helps and invent a benefit for those it does not. So the tumour marker is tested for before the drug is prescribed, which is effect modification turned into routine practice rather than adjusted away.":
+    "曲妥珠单抗联合化疗，改善了HER2蛋白过表达的转移性乳腺癌患者的生存。它只用于肿瘤HER2阳性的患者，因为这项标志物正是其疗效所依赖的东西。如果把它的效应平均到所有乳腺癌患者身上，就会低估它对能从中获益的女性的作用，又为那些不能获益的人凭空造出一份疗效。因此，在开具这种药物之前会先检测肿瘤标志物，这是把效应修饰变成常规做法，而不是把它校正掉。",
+  "Effect modification versus confounding, a reasoning trap.":
+    "效应修饰与混杂，一个推理陷阱。",
+  "A single adjusted number assumes a factor works the same for everyone. Often it does not. A gene, a drug or a policy can do a great deal in one group and nothing in another, and averaging the two gives a figure that is true of no one. When the effect differs across groups, the groups are the answer, not a nuisance to average away.":
+    "一个单一的校正后数字，假定某个因素对每个人的作用都一样。但情况往往并非如此。一个基因、一种药物或一项政策，可以在一个群体里发挥巨大作用，在另一个群体里却毫无作用，把两者平均起来得到的数字，对谁都不成立。当效应在各群体之间存在差异时，答案就是这些群体本身，而不是需要平均掉的干扰。",
   "Caught the average that fooled everyone.": "识破了那个骗过所有人的平均值。",
   "I adjusted away the whole point.": "我把关键所在校正掉了。",
-  "The four cells of each stratum are read from Table 3, men's panel. Among current drinkers, 219 of 640 variant carriers were cancer patients against 211 of 1,993 non-carriers; among non-drinkers, 198 of 916 carriers against 123 of 679 non-carriers. The stratum odds ratios reproduce the paper's printed 4.39 and 1.25 exactly, the pooled cells give a crude 2.56, and the Mantel-Haenszel adjustment gives 2.44, consistent with the paper's finding that the association differs by drinking (interaction P < 0.001). Two honesty notes. The men's panel is used because the women's odds ratios in the same table are age-adjusted and do not reconcile from the raw cells. And the exposure is framed as the paper frames it, the genotype, with drinking as the modifier; framing alcohol as the exposure on these same cells would give a misleading apparently protective odds ratio, an artefact of non-drinkers who abstain because of ill health and of not adjusting for tobacco.": "每个分层的四格数据均取自原文表3的男性部分。在目前饮酒者中，640名携带变异者里有219人是癌症患者，而1993名未携带者中有211人；在不饮酒者中，916名携带者里有198人，679名未携带者里有123人。各分层的比值比与原文印出的4.39和1.25完全一致，合并后的粗比值比为2.56，Mantel-Haenszel（曼特尔-亨塞尔）校正后为2.44，与原文关于该关联因饮酒而异（交互作用P<0.001）的结论相符。这里有两点诚实说明。之所以采用男性部分，是因为同一张表中女性的比值比经过了年龄校正，无法用原始格数据还原。此外，暴露按原文的框架处理，即以基因型为暴露、饮酒为修饰因素；若用同样这些格子把饮酒当作暴露，会得出一个看似保护性的、具有误导性的比值比，那不过是因病戒酒的不饮酒者，加上未对吸烟做校正所造成的假象。",
-  "A study reports that regular sunscreen use cuts skin cancer risk by about a fifth on average, adjusting for skin type. The benefit is large in fair-skinned people and negligible in the darkest-skinned. The health message quotes only the one-fifth figure.": "一项研究报告称，在对肤色类型做校正后，经常使用防晒霜平均可将皮肤癌风险降低约五分之一。这一益处在肤色较浅的人群中很大，在肤色最深的人群中则微乎其微。健康宣传只引用了这五分之一的数字。",
-  "The effect genuinely differs by skin type, so a single averaged number describes neither group. Skin type here is not a nuisance to adjust away but the thing that decides how much sunscreen helps, and it should be reported separately.": "效应确实因肤色类型而异，因此一个平均后的单一数字对哪个群体都描述不准。这里的肤色类型不是需要校正掉的干扰因素，而是决定防晒霜能帮上多少忙的关键，应当分开报告。",
-  "A blood pressure drug is licensed with the claim that it lowers pressure by 8 mmHg. Split by age, it barely moves pressure under 50 and lowers it markedly over 70. Only the single average appears on the label.": "一种降压药获批时的宣称是能把血压降低8 mmHg。按年龄分层后可见，它在50岁以下人群中几乎不改变血压，在70岁以上人群中则显著降低血压。标签上只标出了那一个平均数。",
-  "Age changes the size of the effect, so the 8 mmHg is an average that fits no age group well. When an effect differs across subgroups it should be reported by subgroup, not collapsed into one figure.": "年龄改变了效应的大小，因此这8 mmHg是一个对任何年龄组都不太贴切的平均值。当效应在各亚组之间存在差异时，应当按亚组报告，而不是压缩成一个数字。",
-  "A painkiller relieves pain strongly in people with one liver-enzyme genotype and hardly at all in those with another. A review pools every patient and reports a modest average benefit.": "一种止痛药对某种肝酶基因型的人镇痛效果很强，对另一种基因型的人则几乎没有效果。一篇综述把所有患者合并在一起，报告了一个中等程度的平均获益。",
-  "The genotype decides whether the drug works, so pooling produces a number that overstates it for one group and invents it for the other. The genotype is the finding, not a variable to average over.": "基因型决定了这种药是否有效，因此合并数据得出的数字，对一组人高估了疗效，对另一组人则凭空造出了疗效。基因型本身就是发现，而不是一个应当被平均掉的变量。",
-  "Researchers find a treatment helps men and harms women by about the same amount. To account for sex, they adjust for it and report a single near-zero effect, concluding the treatment does nothing.": "研究者发现，一种治疗对男性有帮助，对女性则造成大致相同程度的伤害。为了考虑性别的影响，他们对其做了校正，报告了一个接近于零的单一效应，并得出该治疗毫无作用的结论。",
-  "Adjusting for sex has buried two real and opposite effects under an average of nearly zero. Sex is modifying the effect, not confounding it, so the honest report is the two subgroups apart, not one number that hides both.": "对性别做校正，把两个真实而方向相反的效应，掩埋进了一个接近于零的平均值里。性别是在修饰这个效应，而不是在混杂它，因此诚实的报告应当是把两个亚组分开呈现，而不是用一个数字把两者都藏起来。",
-  "A fertiliser trial across many fields finds it raises yield on sandy soil and does nothing on clay. The report gives the average increase and recommends the fertiliser for all fields.": "一项在多块田地开展的肥料试验发现，它在沙质土壤上能提高产量，在黏土上则毫无作用。报告给出的是平均增产幅度，并建议所有田地都使用这种肥料。",
-  "Soil type changes whether the fertiliser works at all, so an average across soils recommends it where it is useless. The effect should be reported by soil, which is the practical answer a farmer needs.": "土壤类型决定了这种肥料是否管用，因此跨土壤类型的平均值，会在它毫无用处的地方也推荐使用它。效应应当按土壤类型报告，这才是农户真正需要的实用答案。",
-  "A vaccine is highly protective in younger adults and only weakly protective in the elderly. A briefing note gives a single overall efficacy figure for the whole population.": "一种疫苗对年轻成年人保护力很强，对老年人保护力则很弱。一份简报只给出了针对整个人群的单一总体有效率数字。",
-  "Age modifies how well the vaccine works, so one figure overstates the protection the elderly can expect. A modifier like this belongs in the results split out, because the subgroups need different advice.": "年龄修饰了这种疫苗的效力，因此单一数字高估了老年人能获得的保护。像这样的修饰因素，应当在结果中被拆分呈现，因为不同亚组需要不同的建议。",
-  "A tutoring programme raises test scores sharply for pupils who started behind and not at all for those already ahead. The evaluation reports one average gain and rolls the programme out to everyone.": "一项课外辅导项目，使起点落后的学生成绩大幅提高，对本就领先的学生则毫无作用。评估报告给出了一个平均提升幅度，并将该项目推广到所有学生。",
-  "Starting level decides who benefits, so an average gain misdescribes both the pupils it helps and those it does not. This is an effect that differs by subgroup, to be reported by subgroup rather than averaged.": "起点水平决定了谁能从中受益，因此平均提升幅度，对它帮到的学生和没帮到的学生都描述不准。这是一种因亚组而异的效应，应当按亚组报告，而不是平均掉。",
-  "An occupational study finds a workplace solvent raises lung cancer risk steeply in smokers and not detectably in non-smokers. The authors adjust for smoking and present a single modest risk for the solvent.": "一项职业研究发现，某种工作场所使用的溶剂，在吸烟者中会大幅提高肺癌风险，在非吸烟者中则检测不到明显影响。作者对吸烟做了校正，给出了该溶剂一个中等程度的单一风险数字。",
-  "Smoking is not just a confounder here, it decides whether the solvent does harm, so adjusting it into one number hides that the danger is concentrated in smokers. The two groups should be reported separately.": "在这里，吸烟不只是一个混杂因素，它决定了这种溶剂是否会造成伤害，因此把它校正进一个数字里，掩盖了危险其实集中在吸烟者身上这一事实。这两个群体应当分开报告。",
-  "A dietary change lowers heart attacks in people with diabetes and has no effect in people without it. A meta-analysis pools all participants and concludes the diet has a small, marginal benefit.": "一项饮食改变，能降低糖尿病患者的心脏病发作风险，对没有糖尿病的人则毫无作用。一项荟萃分析合并了所有参与者，得出该饮食有一个微小、边际性获益的结论。",
-  "The diet's effect depends on diabetes status, so pooling dilutes a real benefit for one group into a marginal-looking average for everyone. Diabetes is the modifier, and the strata carry the real message.": "这种饮食的效应取决于是否患有糖尿病，因此合并数据会把对一个群体真实存在的获益，稀释成看起来对所有人都只是边际性的平均值。糖尿病是修饰因素，而各分层才承载着真正的信息。",
-  "A feature raises spending a lot among brand-new users and not at all among long-standing ones. The product team reports the average uplift across all users and ships the feature to everybody.": "某项功能大幅提高了全新用户的消费，对老用户则毫无影响。产品团队报告的是全体用户的平均提升幅度，并将该功能推送给所有人。",
-  "How long someone has used the product decides whether the feature does anything, so the average uplift misleads about both groups. When an effect differs by subgroup, the subgroups are the result, not a detail to average over.": "使用产品的时长决定了这项功能是否有作用，因此平均提升幅度对两个群体都具有误导性。当效应因亚组而异时，这些亚组本身才是结果，而不是一个可以被平均掉的细节。",
-  "Coffee drinkers have more heart disease, but they also smoke more. After adjusting for smoking the association disappears, and the same near-zero link holds within smokers and within non-smokers alike. The authors report that coffee is not associated once smoking is accounted for.": "喝咖啡的人心脏病更多，但他们吸烟也更多。对吸烟做校正后，这种关联消失了，在吸烟者和非吸烟者内部，都同样呈现出接近于零的关联。作者报告说，一旦考虑了吸烟，咖啡与心脏病就不再相关。",
-  "Because the link is the same small thing in both smoking groups, smoking was a genuine confounder and adjusting for it is the right move. A single adjusted number is a fair summary precisely because the strata agree.": "因为这种关联在两个吸烟分组里都同样微小，吸烟在这里是真正的混杂因素，对它做校正是正确的做法。一个单一的校正后数字之所以是公正的概括，恰恰是因为各分层的结果是一致的。",
-  "A trial finds a drug clearly helps patients with a particular marker and does nothing for those without it. Rather than quoting one overall effect, the report gives the two groups separately and recommends the drug only for the marker-positive patients.": "一项试验发现，某种药物对携带特定标志物的患者明显有效，对不携带该标志物的患者则毫无作用。报告没有引用一个总体效应，而是把两个群体分开呈现，并建议只对标志物阳性的患者使用该药物。",
-  "When an effect differs by subgroup, reporting the subgroups apart is exactly right, and pooling them into one average would have been the error. Prespecifying the marker and acting on it is careful practice, not a trap.": "当效应因亚组而异时，把各亚组分开报告正是正确做法，而把它们合并成一个平均值才是错误。事先设定好标志物并据此行动，是审慎的做法，而不是一个陷阱。",
+  "The four cells of each stratum are read from Table 3, men's panel. Among current drinkers, 219 of 640 variant carriers were cancer patients against 211 of 1,993 non-carriers; among non-drinkers, 198 of 916 carriers against 123 of 679 non-carriers. The stratum odds ratios reproduce the paper's printed 4.39 and 1.25 exactly, the pooled cells give a crude 2.56, and the Mantel-Haenszel adjustment gives 2.44, consistent with the paper's finding that the association differs by drinking (interaction P < 0.001). Two honesty notes. The men's panel is used because the women's odds ratios in the same table are age-adjusted and do not reconcile from the raw cells. And the exposure is framed as the paper frames it, the genotype, with drinking as the modifier; framing alcohol as the exposure on these same cells would give a misleading apparently protective odds ratio, an artefact of non-drinkers who abstain because of ill health and of not adjusting for tobacco.":
+    "每个分层的四格数据均取自原文表3的男性部分。在目前饮酒者中，640名携带变异者里有219人是癌症患者，而1993名未携带者中有211人；在不饮酒者中，916名携带者里有198人，679名未携带者里有123人。各分层的比值比与原文印出的4.39和1.25完全一致，合并后的粗比值比为2.56，Mantel-Haenszel（曼特尔-亨塞尔）校正后为2.44，与原文关于该关联因饮酒而异（交互作用P<0.001）的结论相符。这里有两点诚实说明。之所以采用男性部分，是因为同一张表中女性的比值比经过了年龄校正，无法用原始格数据还原。此外，暴露按原文的框架处理，即以基因型为暴露、饮酒为修饰因素；若用同样这些格子把饮酒当作暴露，会得出一个看似保护性的、具有误导性的比值比，那不过是因病戒酒的不饮酒者，加上未对吸烟做校正所造成的假象。",
+  "A study reports that regular sunscreen use cuts skin cancer risk by about a fifth on average, adjusting for skin type. The benefit is large in fair-skinned people and negligible in the darkest-skinned. The health message quotes only the one-fifth figure.":
+    "一项研究报告称，在对肤色类型做校正后，经常使用防晒霜平均可将皮肤癌风险降低约五分之一。这一益处在肤色较浅的人群中很大，在肤色最深的人群中则微乎其微。健康宣传只引用了这五分之一的数字。",
+  "The effect genuinely differs by skin type, so a single averaged number describes neither group. Skin type here is not a nuisance to adjust away but the thing that decides how much sunscreen helps, and it should be reported separately.":
+    "效应确实因肤色类型而异，因此一个平均后的单一数字对哪个群体都描述不准。这里的肤色类型不是需要校正掉的干扰因素，而是决定防晒霜能帮上多少忙的关键，应当分开报告。",
+  "A blood pressure drug is licensed with the claim that it lowers pressure by 8 mmHg. Split by age, it barely moves pressure under 50 and lowers it markedly over 70. Only the single average appears on the label.":
+    "一种降压药获批时的宣称是能把血压降低8 mmHg。按年龄分层后可见，它在50岁以下人群中几乎不改变血压，在70岁以上人群中则显著降低血压。标签上只标出了那一个平均数。",
+  "Age changes the size of the effect, so the 8 mmHg is an average that fits no age group well. When an effect differs across subgroups it should be reported by subgroup, not collapsed into one figure.":
+    "年龄改变了效应的大小，因此这8 mmHg是一个对任何年龄组都不太贴切的平均值。当效应在各亚组之间存在差异时，应当按亚组报告，而不是压缩成一个数字。",
+  "A painkiller relieves pain strongly in people with one liver-enzyme genotype and hardly at all in those with another. A review pools every patient and reports a modest average benefit.":
+    "一种止痛药对某种肝酶基因型的人镇痛效果很强，对另一种基因型的人则几乎没有效果。一篇综述把所有患者合并在一起，报告了一个中等程度的平均获益。",
+  "The genotype decides whether the drug works, so pooling produces a number that overstates it for one group and invents it for the other. The genotype is the finding, not a variable to average over.":
+    "基因型决定了这种药是否有效，因此合并数据得出的数字，对一组人高估了疗效，对另一组人则凭空造出了疗效。基因型本身就是发现，而不是一个应当被平均掉的变量。",
+  "Researchers find a treatment helps men and harms women by about the same amount. To account for sex, they adjust for it and report a single near-zero effect, concluding the treatment does nothing.":
+    "研究者发现，一种治疗对男性有帮助，对女性则造成大致相同程度的伤害。为了考虑性别的影响，他们对其做了校正，报告了一个接近于零的单一效应，并得出该治疗毫无作用的结论。",
+  "Adjusting for sex has buried two real and opposite effects under an average of nearly zero. Sex is modifying the effect, not confounding it, so the honest report is the two subgroups apart, not one number that hides both.":
+    "对性别做校正，把两个真实而方向相反的效应，掩埋进了一个接近于零的平均值里。性别是在修饰这个效应，而不是在混杂它，因此诚实的报告应当是把两个亚组分开呈现，而不是用一个数字把两者都藏起来。",
+  "A fertiliser trial across many fields finds it raises yield on sandy soil and does nothing on clay. The report gives the average increase and recommends the fertiliser for all fields.":
+    "一项在多块田地开展的肥料试验发现，它在沙质土壤上能提高产量，在黏土上则毫无作用。报告给出的是平均增产幅度，并建议所有田地都使用这种肥料。",
+  "Soil type changes whether the fertiliser works at all, so an average across soils recommends it where it is useless. The effect should be reported by soil, which is the practical answer a farmer needs.":
+    "土壤类型决定了这种肥料是否管用，因此跨土壤类型的平均值，会在它毫无用处的地方也推荐使用它。效应应当按土壤类型报告，这才是农户真正需要的实用答案。",
+  "A vaccine is highly protective in younger adults and only weakly protective in the elderly. A briefing note gives a single overall efficacy figure for the whole population.":
+    "一种疫苗对年轻成年人保护力很强，对老年人保护力则很弱。一份简报只给出了针对整个人群的单一总体有效率数字。",
+  "Age modifies how well the vaccine works, so one figure overstates the protection the elderly can expect. A modifier like this belongs in the results split out, because the subgroups need different advice.":
+    "年龄修饰了这种疫苗的效力，因此单一数字高估了老年人能获得的保护。像这样的修饰因素，应当在结果中被拆分呈现，因为不同亚组需要不同的建议。",
+  "A tutoring programme raises test scores sharply for pupils who started behind and not at all for those already ahead. The evaluation reports one average gain and rolls the programme out to everyone.":
+    "一项课外辅导项目，使起点落后的学生成绩大幅提高，对本就领先的学生则毫无作用。评估报告给出了一个平均提升幅度，并将该项目推广到所有学生。",
+  "Starting level decides who benefits, so an average gain misdescribes both the pupils it helps and those it does not. This is an effect that differs by subgroup, to be reported by subgroup rather than averaged.":
+    "起点水平决定了谁能从中受益，因此平均提升幅度，对它帮到的学生和没帮到的学生都描述不准。这是一种因亚组而异的效应，应当按亚组报告，而不是平均掉。",
+  "An occupational study finds a workplace solvent raises lung cancer risk steeply in smokers and not detectably in non-smokers. The authors adjust for smoking and present a single modest risk for the solvent.":
+    "一项职业研究发现，某种工作场所使用的溶剂，在吸烟者中会大幅提高肺癌风险，在非吸烟者中则检测不到明显影响。作者对吸烟做了校正，给出了该溶剂一个中等程度的单一风险数字。",
+  "Smoking is not just a confounder here, it decides whether the solvent does harm, so adjusting it into one number hides that the danger is concentrated in smokers. The two groups should be reported separately.":
+    "在这里，吸烟不只是一个混杂因素，它决定了这种溶剂是否会造成伤害，因此把它校正进一个数字里，掩盖了危险其实集中在吸烟者身上这一事实。这两个群体应当分开报告。",
+  "A dietary change lowers heart attacks in people with diabetes and has no effect in people without it. A meta-analysis pools all participants and concludes the diet has a small, marginal benefit.":
+    "一项饮食改变，能降低糖尿病患者的心脏病发作风险，对没有糖尿病的人则毫无作用。一项荟萃分析合并了所有参与者，得出该饮食有一个微小、边际性获益的结论。",
+  "The diet's effect depends on diabetes status, so pooling dilutes a real benefit for one group into a marginal-looking average for everyone. Diabetes is the modifier, and the strata carry the real message.":
+    "这种饮食的效应取决于是否患有糖尿病，因此合并数据会把对一个群体真实存在的获益，稀释成看起来对所有人都只是边际性的平均值。糖尿病是修饰因素，而各分层才承载着真正的信息。",
+  "A feature raises spending a lot among brand-new users and not at all among long-standing ones. The product team reports the average uplift across all users and ships the feature to everybody.":
+    "某项功能大幅提高了全新用户的消费，对老用户则毫无影响。产品团队报告的是全体用户的平均提升幅度，并将该功能推送给所有人。",
+  "How long someone has used the product decides whether the feature does anything, so the average uplift misleads about both groups. When an effect differs by subgroup, the subgroups are the result, not a detail to average over.":
+    "使用产品的时长决定了这项功能是否有作用，因此平均提升幅度对两个群体都具有误导性。当效应因亚组而异时，这些亚组本身才是结果，而不是一个可以被平均掉的细节。",
+  "Coffee drinkers have more heart disease, but they also smoke more. After adjusting for smoking the association disappears, and the same near-zero link holds within smokers and within non-smokers alike. The authors report that coffee is not associated once smoking is accounted for.":
+    "喝咖啡的人心脏病更多，但他们吸烟也更多。对吸烟做校正后，这种关联消失了，在吸烟者和非吸烟者内部，都同样呈现出接近于零的关联。作者报告说，一旦考虑了吸烟，咖啡与心脏病就不再相关。",
+  "Because the link is the same small thing in both smoking groups, smoking was a genuine confounder and adjusting for it is the right move. A single adjusted number is a fair summary precisely because the strata agree.":
+    "因为这种关联在两个吸烟分组里都同样微小，吸烟在这里是真正的混杂因素，对它做校正是正确的做法。一个单一的校正后数字之所以是公正的概括，恰恰是因为各分层的结果是一致的。",
+  "A trial finds a drug clearly helps patients with a particular marker and does nothing for those without it. Rather than quoting one overall effect, the report gives the two groups separately and recommends the drug only for the marker-positive patients.":
+    "一项试验发现，某种药物对携带特定标志物的患者明显有效，对不携带该标志物的患者则毫无作用。报告没有引用一个总体效应，而是把两个群体分开呈现，并建议只对标志物阳性的患者使用该药物。",
+  "When an effect differs by subgroup, reporting the subgroups apart is exactly right, and pooling them into one average would have been the error. Prespecifying the marker and acting on it is careful practice, not a trap.":
+    "当效应因亚组而异时，把各亚组分开报告正是正确做法，而把它们合并成一个平均值才是错误。事先设定好标志物并据此行动，是审慎的做法，而不是一个陷阱。",
   "As one number": "作为一个数字",
   "Split by the third factor": "按第三个因素拆分",
 
   // ---- Detection (observer) bias puzzle + review items ----
-  "Give surgical patients far less IV fluid and complications seem to plummet. A clear win for less fluid?": "给外科患者输液量大幅减少后，并发症似乎骤减。这是否明确证明少输液更好？",
-  "In a trial, an assessor recorded which patients had a postoperative complication. In the restrictive-fluid group 31 percent did, against 55 percent on the standard regimen, and the difference was highly significant (P = 0.002).": "在一项试验中，一名评估者记录了哪些患者出现了术后并发症。限制性输液组中 31% 的患者出现并发症，而标准输液组为 55%，差异高度显著（P = 0.002）。",
-  "How much should you trust the size of that benefit?": "你应该在多大程度上相信这一获益的大小？",
+  "Give surgical patients far less IV fluid and complications seem to plummet. A clear win for less fluid?":
+    "给外科患者输液量大幅减少后，并发症似乎骤减。这是否明确证明少输液更好？",
+  "In a trial, an assessor recorded which patients had a postoperative complication. In the restrictive-fluid group 31 percent did, against 55 percent on the standard regimen, and the difference was highly significant (P = 0.002).":
+    "在一项试验中，一名评估者记录了哪些患者出现了术后并发症。限制性输液组中 31% 的患者出现并发症，而标准输液组为 55%，差异高度显著（P = 0.002）。",
+  "How much should you trust the size of that benefit?":
+    "你应该在多大程度上相信这一获益的大小？",
   "Had a postoperative complication": "出现术后并发症",
   "Restrictive fluid": "限制性输液",
-  "Restrictive": "限制性",
+  Restrictive: "限制性",
   "Standard fluid": "标准输液",
-  "Standard": "标准",
+  Standard: "标准",
   "Graded by an assessor who knew the regimen": "由知晓治疗方案的评估者评定",
   "Graded by an assessor kept unaware": "由不知情的评估者评定",
   "As the unblinded assessor graded them": "按非盲评估者的评定结果",
@@ -2199,56 +2235,97 @@ export const zh: Record<string, string> = {
   "something other than the fluid": "输液量之外的其他因素",
   "The grader knew the assignment": "评定者知道分组情况",
   "grade it blind and it shrinks": "以盲法评定，差距就会缩小",
-  "Grade the same patients blind, and the gap narrows.": "对同一批患者做盲法评定，差距就会缩小。",
+  "Grade the same patients blind, and the gap narrows.":
+    "对同一批患者做盲法评定，差距就会缩小。",
   "What the grader knew": "评定者知道什么",
-  "The same 172 patients, judged again by an assessor kept unaware of who got which regimen: 28 of 86 with a complication on restrictive fluid (33 percent) against 44 of 86 on standard (51 percent). Restrictive fluid still helped, but the gap is 18 points rather than the 24 the unblinded grader recorded, and the p-value slips from 0.002 to 0.013.": "同样的 172 名患者，再次由一名不知道谁分到哪种方案的评估者进行评定：限制性输液组 86 人中 28 人出现并发症（33%），标准组 86 人中 44 人（51%）。限制性输液仍然显示出获益，但差距是 18 个百分点，而不是非盲评定者记录的 24 个百分点，P 值也从 0.002 升到 0.013。",
+  "The same 172 patients, judged again by an assessor kept unaware of who got which regimen: 28 of 86 with a complication on restrictive fluid (33 percent) against 44 of 86 on standard (51 percent). Restrictive fluid still helped, but the gap is 18 points rather than the 24 the unblinded grader recorded, and the p-value slips from 0.002 to 0.013.":
+    "同样的 172 名患者，再次由一名不知道谁分到哪种方案的评估者进行评定：限制性输液组 86 人中 28 人出现并发症（33%），标准组 86 人中 44 人（51%）。限制性输液仍然显示出获益，但差距是 18 个百分点，而不是非盲评定者记录的 24 个百分点，P 值也从 0.002 升到 0.013。",
   "Unblinded, then blinded": "先非盲，后盲法",
-  "The randomisation was fine and the groups were comparable. What changed is who held the pen. When the person deciding whether an ambiguous case counts as a complication knows which arm the patient was in, the borderline calls drift toward the expected answer. That drift did not invent the benefit, restrictive fluid genuinely did better, but it stretched it and made it look more certain than the blinded record supports.": "随机化没有问题，两组也具有可比性。改变的是谁拿着笔做判断。当决定一个模糊病例是否算作并发症的人知道患者属于哪个组时，边界情况的判断就会向预期的答案倾斜。这种倾斜并没有凭空制造出这一获益，限制性输液确实效果更好，但它把获益夸大了，让它看起来比盲法记录所支持的更加确定。",
+  "The randomisation was fine and the groups were comparable. What changed is who held the pen. When the person deciding whether an ambiguous case counts as a complication knows which arm the patient was in, the borderline calls drift toward the expected answer. That drift did not invent the benefit, restrictive fluid genuinely did better, but it stretched it and made it look more certain than the blinded record supports.":
+    "随机化没有问题，两组也具有可比性。改变的是谁拿着笔做判断。当决定一个模糊病例是否算作并发症的人知道患者属于哪个组时，边界情况的判断就会向预期的答案倾斜。这种倾斜并没有凭空制造出这一获益，限制性输液确实效果更好，但它把获益夸大了，让它看起来比盲法记录所支持的更加确定。",
   "Blinded against not": "盲法对非盲",
   "Detection bias": "检测偏倚",
-  "When whoever judges the outcome knows who got the treatment, their judgement drifts toward the expected result. It rarely conjures an effect from nothing; it exaggerates a real one and lends it false certainty. The defence is to blind the assessor, which is separate from blinding patients and clinicians.": "当判断结局的人知道谁接受了治疗时，他们的判断就会向预期结果倾斜。这种偏倚很少凭空制造出一个效应，而是会夸大一个真实存在的效应，并赋予它虚假的确定性。防范的办法是对评估者实行盲法，这与对患者和临床医生实行盲法是两回事。",
-  "Detection bias bites hardest on outcomes that take judgement: a wound called infected or not, a scan read as progression or not, a symptom scored on a scale. It barely touches a hard endpoint like death, taken from a registry. So the question to ask of an impressive result is not only whether the patients were blinded, but whether the person recording the outcome was.": "检测偏倚在需要判断的结局上影响最大：一处伤口算不算感染，一次扫描算不算病情进展，一个症状在量表上打多少分。它几乎影响不到死亡这类硬终点，因为死亡直接取自登记系统。所以面对一个亮眼的结果，该问的不只是患者是否接受了盲法，还要问记录结局的人是否也接受了盲法。",
-  "Blinding is not one thing. Patients can be blinded so their own reports are not swayed by knowing they got the real treatment; clinicians can be blinded so the care they give does not differ; and the outcome assessor can be blinded so their reading of who improved is not coloured by which arm they are grading. A trial can manage the first two and still leak bias through the third, because most outcomes worth measuring need a human to interpret them. That is why assessor-blinding is its own line in a methods section, and why an open-label trial with a subjective endpoint should have the size of its effect discounted, not just its direction doubted.": "“盲法”并不是单一的一件事。可以对患者实行盲法，使他们自己的报告不会因为知道自己接受的是真实治疗而受到影响；可以对临床医生实行盲法，使他们提供的护理不会因此而不同；也可以对结局评估者实行盲法，使他们对谁有所改善的判断不会因所评定的是哪个组而染上色彩。一项试验可以做到前两点，却仍然可能在第三点上漏出偏倚，因为大多数值得测量的结局都需要人来解读。这正是为什么“评估者盲法”要在方法学部分单独成行，也是为什么一项采用主观终点的开放标签试验，其效应的大小应当被打折扣，而不只是对其方向表示怀疑。",
+  "When whoever judges the outcome knows who got the treatment, their judgement drifts toward the expected result. It rarely conjures an effect from nothing; it exaggerates a real one and lends it false certainty. The defence is to blind the assessor, which is separate from blinding patients and clinicians.":
+    "当判断结局的人知道谁接受了治疗时，他们的判断就会向预期结果倾斜。这种偏倚很少凭空制造出一个效应，而是会夸大一个真实存在的效应，并赋予它虚假的确定性。防范的办法是对评估者实行盲法，这与对患者和临床医生实行盲法是两回事。",
+  "Detection bias bites hardest on outcomes that take judgement: a wound called infected or not, a scan read as progression or not, a symptom scored on a scale. It barely touches a hard endpoint like death, taken from a registry. So the question to ask of an impressive result is not only whether the patients were blinded, but whether the person recording the outcome was.":
+    "检测偏倚在需要判断的结局上影响最大：一处伤口算不算感染，一次扫描算不算病情进展，一个症状在量表上打多少分。它几乎影响不到死亡这类硬终点，因为死亡直接取自登记系统。所以面对一个亮眼的结果，该问的不只是患者是否接受了盲法，还要问记录结局的人是否也接受了盲法。",
+  "Blinding is not one thing. Patients can be blinded so their own reports are not swayed by knowing they got the real treatment; clinicians can be blinded so the care they give does not differ; and the outcome assessor can be blinded so their reading of who improved is not coloured by which arm they are grading. A trial can manage the first two and still leak bias through the third, because most outcomes worth measuring need a human to interpret them. That is why assessor-blinding is its own line in a methods section, and why an open-label trial with a subjective endpoint should have the size of its effect discounted, not just its direction doubted.":
+    "“盲法”并不是单一的一件事。可以对患者实行盲法，使他们自己的报告不会因为知道自己接受的是真实治疗而受到影响；可以对临床医生实行盲法，使他们提供的护理不会因此而不同；也可以对结局评估者实行盲法，使他们对谁有所改善的判断不会因所评定的是哪个组而染上色彩。一项试验可以做到前两点，却仍然可能在第三点上漏出偏倚，因为大多数值得测量的结局都需要人来解读。这正是为什么“评估者盲法”要在方法学部分单独成行，也是为什么一项采用主观终点的开放标签试验，其效应的大小应当被打折扣，而不只是对其方向表示怀疑。",
   "Not one unlucky trial": "不只是一次运气不好的试验",
-  "A review paired blinded and non-blinded judgements of the same yes-or-no outcome across 21 trials and 4,391 patients. On average the non-blinded assessors exaggerated the odds ratio by 36 percent (ratio of odds ratios 0.64, 95 percent confidence interval 0.43 to 0.96). The fluid trial here was one of the 21.": "一项系统综述在 21 项试验、4,391 名患者中，将同一个是非结局的盲法判断与非盲判断两两配对比较。平均而言，非盲评估者把比值比夸大了 36%（比值比之比为 0.64，95% 置信区间 0.43 至 0.96）。这里的这项输液试验正是这 21 项试验之一。",
+  "A review paired blinded and non-blinded judgements of the same yes-or-no outcome across 21 trials and 4,391 patients. On average the non-blinded assessors exaggerated the odds ratio by 36 percent (ratio of odds ratios 0.64, 95 percent confidence interval 0.43 to 0.96). The fluid trial here was one of the 21.":
+    "一项系统综述在 21 项试验、4,391 名患者中，将同一个是非结局的盲法判断与非盲判断两两配对比较。平均而言，非盲评估者把比值比夸大了 36%（比值比之比为 0.64，95% 置信区间 0.43 至 0.96）。这里的这项输液试验正是这 21 项试验之一。",
   "Detection bias, a reasoning trap.": "检测偏倚，一个推理陷阱。",
-  "When the person scoring the result knows who got the treatment, the borderline calls slide toward the hoped-for answer. Grade the same patients blind and the effect shrinks and loses certainty. It rarely conjures a result from nothing, but it inflates one. Before believing the size of a benefit, ask who measured the outcome, and whether they knew which group they were looking at.": "当给结果打分的人知道谁接受了治疗时，边界情况的判断就会滑向他们所希望的答案。对同一批患者做盲法评定，效应就会缩小，确定性也随之下降。它很少凭空制造出一个结果，但会把一个真实的结果放大。在相信某个获益的大小之前，先问一问是谁测量了这个结局，以及他知不知道自己看的是哪一组。",
-  "Everyone trusts the number. Fewer ask who measured it.": "所有人都相信这个数字。很少有人问是谁测量出来的。",
-  "I trusted the number. Nobody had blinded the grader.": "我相信了这个数字。却没有人对评定者实行盲法。",
-  "In an open trial of a new dressing, the surgeon who chose which patients got it also reviewed their wound photos and decided which counted as infected. The new dressing came out with far fewer infections.": "在一项关于新型敷料的开放试验中，决定哪些患者使用该敷料的外科医生，同时也负责查看他们的伤口照片，并判定哪些算作感染。新型敷料组的感染例数明显更少。",
-  "Whether a borderline wound is called infected is a judgement, and the person making it knew which dressing each patient had. Have someone blinded to the dressing grade the same photos before believing the size of the gap.": "一处边界情况的伤口算不算感染是一种判断，而做这个判断的人知道每位患者用的是哪种敷料。在相信这一差距的大小之前，应该让一个不知道所用敷料的人来评定同样的照片。",
-  "A physiotherapist testing her own new programme also scored each patient's mobility at the end. Her scores showed the new programme clearly beating usual care.": "一名物理治疗师在测试自己设计的新方案时，也在最后为每位患者的活动能力打分。她打出的分数显示，新方案明显优于常规护理。",
-  "The person hoping the programme works is the one rating the outcome, so ambiguous movements get scored generously for her group. A blinded assessor rating the same patients is what would settle it.": "希望这个方案奏效的人，正是给结局打分的人，所以模棱两可的动作会被对她那一组更宽松地打分。让一名盲法评估者给同一批患者打分，才能解决这个问题。",
-  "A radiologist was told which patients were on the new cancer drug before reading their follow-up scans. He marked the drug group as 'stable or improved' far more often than the comparison group.": "一名放射科医生在读取随访扫描之前，被告知了哪些患者在使用新的抗癌药物。他把用药组标记为“稳定或好转”的次数，远多于对照组。",
-  "Reading a scan as progression or not takes interpretation, and knowing the arm tilts the close calls. Scans read blind, in a random order, are the only version worth trusting.": "判断一次扫描算不算病情进展需要解读，而知道分组情况会让接近临界的判断产生倾斜。只有以盲法、按随机顺序读取的扫描结果才值得信赖。",
-  "A teacher graded her pupils' essays knowing which of them had used a new writing app she had championed. The app users scored noticeably higher, and she reported the app as a success.": "一名教师在批改学生作文时，知道其中哪些人使用了她大力推荐的新写作应用。使用该应用的学生分数明显更高，她因此把这款应用报告为成功案例。",
-  "Essay marks are a judgement, and the grader both knew the groups and wanted the app to work. Marking the essays blind, with names and app-use hidden, is what would show whether the gap is real.": "作文分数是一种判断，而评分者既知道分组情况，又希望这款应用能奏效。以盲法批改作文，隐去姓名和是否使用应用的信息，才能看出这一差距是否真实。",
-  "At a gymnastics meet the judges could see which athletes came from a famous academy. Those athletes received higher marks for routines that, on video review by judges who could not tell where they trained, scored about the same as everyone else's.": "在一场体操比赛中，裁判能看出哪些运动员来自一所知名训练学校。这些运动员的动作得分更高，但由分不清运动员训练来源的裁判通过录像回看评分时，这些动作的得分与其他人大致相当。",
-  "Scoring a routine is a judgement call, and knowing the prestigious academy nudged it upward. The blinded video review of the same routines is the unbiased measurement.": "给一套动作打分是一种判断，而知道对方来自名校会把分数往上推。对同一套动作进行盲法录像回看评分，才是无偏的测量方式。",
-  "A vet assessing whether horses were still lame knew which ones had been given a new joint supplement. She rated the supplement group as sounder, and the makers advertised the result.": "一名兽医在评估马匹是否仍然跛行时，知道哪些马服用了新的关节补充剂。她把补充剂组评为步态更健全，制造商随后拿这一结果做了广告。",
-  "Grading lameness is a judgement, and the assessor knew which horses were supposed to improve. A vet blinded to which horses got the supplement, watching the same gaits, is what the claim needs.": "判断跛行程度是一种判断，而评估者知道哪些马“应该”会好转。要验证这一说法，需要一名不知道哪些马服用了补充剂的兽医，来观察同样的步态。",
-  "A researcher read patients' free-text symptom diaries and coded each week as better or worse, with the treatment arm visible at the top of every page. Ambiguous weeks were coded 'better' more often for the treated patients.": "一名研究者阅读患者以自由文本记录的症状日记，并把每一周标记为好转或恶化，而每一页顶部都清楚标着治疗分组。对于接受治疗的患者，含糊不清的那些周更常被标记为“好转”。",
-  "Turning a vague diary entry into better-or-worse is interpretation, and the arm label steered the doubtful ones. Coding the diaries with the arm hidden removes the tilt.": "把一条含糊的日记内容变成“好转”或“恶化”需要解读，而分组标签左右了那些拿不准的判断。隐去分组信息再对日记编码，就能消除这种倾斜。",
-  "Observers scored children's classroom behaviour for a study of a new diet. They were told which children were on the diet, and recorded fewer disruptive episodes for that group.": "在一项关于新饮食方案的研究中，观察员为儿童的课堂行为打分。他们被告知了哪些孩子在采用这种饮食，并为这一组记录了更少的扰乱课堂事件。",
-  "Whether a fidget counts as a disruptive episode is a judgement, and knowing who was on the diet shaded it. Observers blinded to the diet, scoring the same footage, are what a real test requires.": "一个小动作算不算扰乱课堂事件是一种判断，而知道谁在采用这种饮食会给这个判断蒙上一层色彩。真正的检验需要不知道饮食分组的观察员，来给同样的录像打分。",
-  "An endoscopist assessing whether ulcers had healed could see, on each patient's chart, which drug they had received. He judged more ulcers 'healed' in the new-drug group.": "一名内镜医生在评估溃疡是否已经愈合时，能在每位患者的病历上看到他们用的是哪种药物。他判定新药组“已愈合”的溃疡例数更多。",
-  "Calling an ulcer healed or not is an interpretation, and the visible drug name nudged the borderline ones. The images should be read by someone who cannot tell which drug the patient took.": "判断一处溃疡是否已经愈合是一种解读，而看得见的药物名称会把边界情况的判断往一个方向推。这些图像应当由分不清患者用了哪种药物的人来阅读。",
-  "A dermatologist rated the severity of patients' rashes on a ten-point scale, aware of which cream each had been given. The trial cream's patients were scored two points milder on average.": "一名皮肤科医生在十分制量表上为患者的皮疹严重程度打分，同时知道每位患者用的是哪种药膏。试验药膏组患者的平均得分低两分。",
-  "A severity score is a judgement, and knowing the cream drew the ratings toward the hoped-for answer. A rater blinded to the cream, scoring the same rashes, is what would show the true difference.": "严重程度评分是一种判断，而知道用的是哪种药膏会把评分拉向人们所希望的答案。让一名不知道药膏分组的评分者对同样的皮疹打分，才能显示出真正的差异。",
-  "In a heart-drug trial, every suspected heart attack was judged by an independent committee working from anonymised records that never revealed which drug the patient had taken. The drug group had fewer confirmed heart attacks.": "在一项心脏病药物试验中，每一例疑似心脏病发作都由一个独立委员会根据匿名化的病历进行判断，这些病历从未透露患者用的是哪种药物。用药组确诊的心脏病发作例数更少。",
-  "The people deciding the outcome could not tell the groups apart, so their judgement cannot have been swayed by expectation. This is exactly how a subjective outcome should be assessed.": "决定这一结局的人无法分辨两组，因此他们的判断不可能受到预期的左右。这正是主观结局应有的评估方式。",
-  "An open-label trial could not blind patients or doctors, but its only outcome was death from any cause, taken from the national death registry. The treated group had fewer deaths.": "一项开放标签试验无法对患者或医生实行盲法，但它唯一的结局是全因死亡，数据取自全国死亡登记系统。治疗组的死亡人数更少。",
-  "Death recorded by a registry needs no interpretation, so it does not matter that everyone knew the assignment. For a hard endpoint like this, an unblinded assessor cannot bend the result.": "登记系统记录的死亡不需要任何解读，所以每个人都知道分组情况其实并不要紧。对于这样一个硬终点，非盲评估者也无法扭曲结果。",
-  "A blood-pressure study used a validated monitor that recorded each reading and uploaded it automatically, with no clinician deciding or transcribing the number, even though staff knew who was on the drug.": "一项血压研究使用了一台经过验证的监测仪，它会自动记录并上传每一次读数，不需要任何临床医生来判断或誊写这个数字，尽管工作人员知道谁在用药。",
-  "No human judged the outcome, so knowing the group could not colour it. Automating the measurement removes the room for an assessor's expectation to creep in.": "没有人来判断这一结局，所以知道分组情况也无法给它染色。把测量过程自动化，就消除了评估者的预期渗入其中的空间。",
-  "The same 172 patients (86 per arm) had their postoperative complications judged both by an assessor blinded to the fluid regimen and, unblinded, by the local investigators. The intention-to-treat Results print both: unblinded, 27 of 86 (31 percent) on restrictive fluid versus 47 of 86 (55 percent) on standard, P = 0.002; blinded, 28 (33 percent) versus 44 (51 percent), P = 0.013. Every count matches its printed percentage, at 86 patients per arm. Blinding narrows the difference from 24 to 18 percentage points and widens the p-value: it right-sizes a real effect rather than erasing it. The 36 percent figure in the deep-dive is Hrobjartsson 2012, which included this trial among its 21.": "同样的 172 名患者（每组 86 人），他们的术后并发症分别由一名对输液方案实行盲法的评估者，和非盲的本地研究者进行了判断。意向性治疗结果部分把两者都列了出来：非盲情况下，限制性输液组 86 人中 27 人（31%），标准组 86 人中 47 人（55%），P = 0.002；盲法情况下，28 人（33%）比 44 人（51%），P = 0.013。每一个计数都与所印出的百分比相符，每组86例。盲法把差距从 24 个百分点收窄到 18 个百分点，并使 P 值增大：这是把一个真实的效应调整到应有的大小，而不是把它抹去。深度解析里提到的 36% 这个数字来自 Hrobjartsson 2012 年的研究，该研究纳入的 21 项试验中就包括这一项。",
+  "When the person scoring the result knows who got the treatment, the borderline calls slide toward the hoped-for answer. Grade the same patients blind and the effect shrinks and loses certainty. It rarely conjures a result from nothing, but it inflates one. Before believing the size of a benefit, ask who measured the outcome, and whether they knew which group they were looking at.":
+    "当给结果打分的人知道谁接受了治疗时，边界情况的判断就会滑向他们所希望的答案。对同一批患者做盲法评定，效应就会缩小，确定性也随之下降。它很少凭空制造出一个结果，但会把一个真实的结果放大。在相信某个获益的大小之前，先问一问是谁测量了这个结局，以及他知不知道自己看的是哪一组。",
+  "Everyone trusts the number. Fewer ask who measured it.":
+    "所有人都相信这个数字。很少有人问是谁测量出来的。",
+  "I trusted the number. Nobody had blinded the grader.":
+    "我相信了这个数字。却没有人对评定者实行盲法。",
+  "In an open trial of a new dressing, the surgeon who chose which patients got it also reviewed their wound photos and decided which counted as infected. The new dressing came out with far fewer infections.":
+    "在一项关于新型敷料的开放试验中，决定哪些患者使用该敷料的外科医生，同时也负责查看他们的伤口照片，并判定哪些算作感染。新型敷料组的感染例数明显更少。",
+  "Whether a borderline wound is called infected is a judgement, and the person making it knew which dressing each patient had. Have someone blinded to the dressing grade the same photos before believing the size of the gap.":
+    "一处边界情况的伤口算不算感染是一种判断，而做这个判断的人知道每位患者用的是哪种敷料。在相信这一差距的大小之前，应该让一个不知道所用敷料的人来评定同样的照片。",
+  "A physiotherapist testing her own new programme also scored each patient's mobility at the end. Her scores showed the new programme clearly beating usual care.":
+    "一名物理治疗师在测试自己设计的新方案时，也在最后为每位患者的活动能力打分。她打出的分数显示，新方案明显优于常规护理。",
+  "The person hoping the programme works is the one rating the outcome, so ambiguous movements get scored generously for her group. A blinded assessor rating the same patients is what would settle it.":
+    "希望这个方案奏效的人，正是给结局打分的人，所以模棱两可的动作会被对她那一组更宽松地打分。让一名盲法评估者给同一批患者打分，才能解决这个问题。",
+  "A radiologist was told which patients were on the new cancer drug before reading their follow-up scans. He marked the drug group as 'stable or improved' far more often than the comparison group.":
+    "一名放射科医生在读取随访扫描之前，被告知了哪些患者在使用新的抗癌药物。他把用药组标记为“稳定或好转”的次数，远多于对照组。",
+  "Reading a scan as progression or not takes interpretation, and knowing the arm tilts the close calls. Scans read blind, in a random order, are the only version worth trusting.":
+    "判断一次扫描算不算病情进展需要解读，而知道分组情况会让接近临界的判断产生倾斜。只有以盲法、按随机顺序读取的扫描结果才值得信赖。",
+  "A teacher graded her pupils' essays knowing which of them had used a new writing app she had championed. The app users scored noticeably higher, and she reported the app as a success.":
+    "一名教师在批改学生作文时，知道其中哪些人使用了她大力推荐的新写作应用。使用该应用的学生分数明显更高，她因此把这款应用报告为成功案例。",
+  "Essay marks are a judgement, and the grader both knew the groups and wanted the app to work. Marking the essays blind, with names and app-use hidden, is what would show whether the gap is real.":
+    "作文分数是一种判断，而评分者既知道分组情况，又希望这款应用能奏效。以盲法批改作文，隐去姓名和是否使用应用的信息，才能看出这一差距是否真实。",
+  "At a gymnastics meet the judges could see which athletes came from a famous academy. Those athletes received higher marks for routines that, on video review by judges who could not tell where they trained, scored about the same as everyone else's.":
+    "在一场体操比赛中，裁判能看出哪些运动员来自一所知名训练学校。这些运动员的动作得分更高，但由分不清运动员训练来源的裁判通过录像回看评分时，这些动作的得分与其他人大致相当。",
+  "Scoring a routine is a judgement call, and knowing the prestigious academy nudged it upward. The blinded video review of the same routines is the unbiased measurement.":
+    "给一套动作打分是一种判断，而知道对方来自名校会把分数往上推。对同一套动作进行盲法录像回看评分，才是无偏的测量方式。",
+  "A vet assessing whether horses were still lame knew which ones had been given a new joint supplement. She rated the supplement group as sounder, and the makers advertised the result.":
+    "一名兽医在评估马匹是否仍然跛行时，知道哪些马服用了新的关节补充剂。她把补充剂组评为步态更健全，制造商随后拿这一结果做了广告。",
+  "Grading lameness is a judgement, and the assessor knew which horses were supposed to improve. A vet blinded to which horses got the supplement, watching the same gaits, is what the claim needs.":
+    "判断跛行程度是一种判断，而评估者知道哪些马“应该”会好转。要验证这一说法，需要一名不知道哪些马服用了补充剂的兽医，来观察同样的步态。",
+  "A researcher read patients' free-text symptom diaries and coded each week as better or worse, with the treatment arm visible at the top of every page. Ambiguous weeks were coded 'better' more often for the treated patients.":
+    "一名研究者阅读患者以自由文本记录的症状日记，并把每一周标记为好转或恶化，而每一页顶部都清楚标着治疗分组。对于接受治疗的患者，含糊不清的那些周更常被标记为“好转”。",
+  "Turning a vague diary entry into better-or-worse is interpretation, and the arm label steered the doubtful ones. Coding the diaries with the arm hidden removes the tilt.":
+    "把一条含糊的日记内容变成“好转”或“恶化”需要解读，而分组标签左右了那些拿不准的判断。隐去分组信息再对日记编码，就能消除这种倾斜。",
+  "Observers scored children's classroom behaviour for a study of a new diet. They were told which children were on the diet, and recorded fewer disruptive episodes for that group.":
+    "在一项关于新饮食方案的研究中，观察员为儿童的课堂行为打分。他们被告知了哪些孩子在采用这种饮食，并为这一组记录了更少的扰乱课堂事件。",
+  "Whether a fidget counts as a disruptive episode is a judgement, and knowing who was on the diet shaded it. Observers blinded to the diet, scoring the same footage, are what a real test requires.":
+    "一个小动作算不算扰乱课堂事件是一种判断，而知道谁在采用这种饮食会给这个判断蒙上一层色彩。真正的检验需要不知道饮食分组的观察员，来给同样的录像打分。",
+  "An endoscopist assessing whether ulcers had healed could see, on each patient's chart, which drug they had received. He judged more ulcers 'healed' in the new-drug group.":
+    "一名内镜医生在评估溃疡是否已经愈合时，能在每位患者的病历上看到他们用的是哪种药物。他判定新药组“已愈合”的溃疡例数更多。",
+  "Calling an ulcer healed or not is an interpretation, and the visible drug name nudged the borderline ones. The images should be read by someone who cannot tell which drug the patient took.":
+    "判断一处溃疡是否已经愈合是一种解读，而看得见的药物名称会把边界情况的判断往一个方向推。这些图像应当由分不清患者用了哪种药物的人来阅读。",
+  "A dermatologist rated the severity of patients' rashes on a ten-point scale, aware of which cream each had been given. The trial cream's patients were scored two points milder on average.":
+    "一名皮肤科医生在十分制量表上为患者的皮疹严重程度打分，同时知道每位患者用的是哪种药膏。试验药膏组患者的平均得分低两分。",
+  "A severity score is a judgement, and knowing the cream drew the ratings toward the hoped-for answer. A rater blinded to the cream, scoring the same rashes, is what would show the true difference.":
+    "严重程度评分是一种判断，而知道用的是哪种药膏会把评分拉向人们所希望的答案。让一名不知道药膏分组的评分者对同样的皮疹打分，才能显示出真正的差异。",
+  "In a heart-drug trial, every suspected heart attack was judged by an independent committee working from anonymised records that never revealed which drug the patient had taken. The drug group had fewer confirmed heart attacks.":
+    "在一项心脏病药物试验中，每一例疑似心脏病发作都由一个独立委员会根据匿名化的病历进行判断，这些病历从未透露患者用的是哪种药物。用药组确诊的心脏病发作例数更少。",
+  "The people deciding the outcome could not tell the groups apart, so their judgement cannot have been swayed by expectation. This is exactly how a subjective outcome should be assessed.":
+    "决定这一结局的人无法分辨两组，因此他们的判断不可能受到预期的左右。这正是主观结局应有的评估方式。",
+  "An open-label trial could not blind patients or doctors, but its only outcome was death from any cause, taken from the national death registry. The treated group had fewer deaths.":
+    "一项开放标签试验无法对患者或医生实行盲法，但它唯一的结局是全因死亡，数据取自全国死亡登记系统。治疗组的死亡人数更少。",
+  "Death recorded by a registry needs no interpretation, so it does not matter that everyone knew the assignment. For a hard endpoint like this, an unblinded assessor cannot bend the result.":
+    "登记系统记录的死亡不需要任何解读，所以每个人都知道分组情况其实并不要紧。对于这样一个硬终点，非盲评估者也无法扭曲结果。",
+  "A blood-pressure study used a validated monitor that recorded each reading and uploaded it automatically, with no clinician deciding or transcribing the number, even though staff knew who was on the drug.":
+    "一项血压研究使用了一台经过验证的监测仪，它会自动记录并上传每一次读数，不需要任何临床医生来判断或誊写这个数字，尽管工作人员知道谁在用药。",
+  "No human judged the outcome, so knowing the group could not colour it. Automating the measurement removes the room for an assessor's expectation to creep in.":
+    "没有人来判断这一结局，所以知道分组情况也无法给它染色。把测量过程自动化，就消除了评估者的预期渗入其中的空间。",
+  "The same 172 patients (86 per arm) had their postoperative complications judged both by an assessor blinded to the fluid regimen and, unblinded, by the local investigators. The intention-to-treat Results print both: unblinded, 27 of 86 (31 percent) on restrictive fluid versus 47 of 86 (55 percent) on standard, P = 0.002; blinded, 28 (33 percent) versus 44 (51 percent), P = 0.013. Every count matches its printed percentage, at 86 patients per arm. Blinding narrows the difference from 24 to 18 percentage points and widens the p-value: it right-sizes a real effect rather than erasing it. The 36 percent figure in the deep-dive is Hrobjartsson 2012, which included this trial among its 21.":
+    "同样的 172 名患者（每组 86 人），他们的术后并发症分别由一名对输液方案实行盲法的评估者，和非盲的本地研究者进行了判断。意向性治疗结果部分把两者都列了出来：非盲情况下，限制性输液组 86 人中 27 人（31%），标准组 86 人中 47 人（55%），P = 0.002；盲法情况下，28 人（33%）比 44 人（51%），P = 0.013。每一个计数都与所印出的百分比相符，每组86例。盲法把差距从 24 个百分点收窄到 18 个百分点，并使 P 值增大：这是把一个真实的效应调整到应有的大小，而不是把它抹去。深度解析里提到的 36% 这个数字来自 Hrobjartsson 2012 年的研究，该研究纳入的 21 项试验中就包括这一项。",
 
   // ---- Statistical versus clinical significance puzzle + review items ----
-  "A flu drug beats placebo with P < 0.001, from every trial ever run on it. Governments stockpiled billions. Convinced?": "一种流感药物，在为它做过的每一项试验中都以 P < 0.001 击败了安慰剂。各国政府因此囤积了数十亿剂。你被说服了吗？",
-  "Reviewers obtained the full clinical study reports, not just the published papers, and pooled them. Adults given the drug got better sooner than adults given placebo, and the whole confidence interval sits clear of no difference.": "审阅者拿到的是完整的临床研究报告，而不只是已发表的论文，并把它们合并在一起分析。服药的成年人比服用安慰剂的成年人更快好转，而且整个置信区间都完全落在“无差异”之外。",
-  "How much should this change what you do?": "这应该在多大程度上改变你的做法？",
-  "Time to first relief of flu symptoms, hours saved": "流感症状首次缓解所需时间，节省的小时数",
-  "hours": "小时",
+  "A flu drug beats placebo with P < 0.001, from every trial ever run on it. Governments stockpiled billions. Convinced?":
+    "一种流感药物，在为它做过的每一项试验中都以 P < 0.001 击败了安慰剂。各国政府因此囤积了数十亿剂。你被说服了吗？",
+  "Reviewers obtained the full clinical study reports, not just the published papers, and pooled them. Adults given the drug got better sooner than adults given placebo, and the whole confidence interval sits clear of no difference.":
+    "审阅者拿到的是完整的临床研究报告，而不只是已发表的论文，并把它们合并在一起分析。服药的成年人比服用安慰剂的成年人更快好转，而且整个置信区间都完全落在“无差异”之外。",
+  "How much should this change what you do?":
+    "这应该在多大程度上改变你的做法？",
+  "Time to first relief of flu symptoms, hours saved":
+    "流感症状首次缓解所需时间，节省的小时数",
+  hours: "小时",
   "P < 0.001": "P < 0.001",
   "From the full trial reports, adults": "根据完整的试验报告，成年人",
   "No difference": "无差异",
@@ -2261,48 +2338,87 @@ export const zh: Record<string, string> = {
   "no real effect at all": "根本没有真实效应",
   "Real, and far too small to matter": "真实存在，但小到无关紧要",
   "certain is not the same as useful": "确定不等于有用",
-  "It is certainly real. It is also about sixteen hours.": "它确实是真实的。也不过大约十六个小时。",
+  "It is certainly real. It is also about sixteen hours.":
+    "它确实是真实的。也不过大约十六个小时。",
   "Significant answers a different question": "显著回答的是另一个问题",
-  "Flu runs about seven days. The drug takes it to six and a bit: 16.8 hours off 168, which is a tenth of the illness. The reviewers put it plainly, that the drug modestly shortens symptoms, and in the same breath that it causes nausea and vomiting. One extra person vomits for every 22 treated.": "流感大约持续七天。这种药把病程缩短到六天多一点：从 168 小时中减去 16.8 小时，正好是病程的十分之一。审阅者说得很直白，这种药能适度缩短症状，但同一句话里也说它会引起恶心和呕吐。每治疗 22 人，就多出 1 人呕吐。",
-  "Nothing was recalculated between these two pictures. The estimate, the interval and the p-value are identical; only what they are measured against changed. A p-value answers whether a difference could plausibly be chance, and with enough patients even a trivial difference cannot be. It never answers whether the difference is worth having. That question needs a size and a yardstick, and the yardstick has to come from outside the statistics.": "这两幅图之间没有重新计算过任何东西。估计值、区间和 P 值完全相同，变化的只是它们所对照的对象。P 值回答的是这个差异是否有可能只是巧合，而只要患者足够多，哪怕微不足道的差异也不可能只是巧合。它从来回答不了这个差异是否值得拥有。那个问题需要一个大小，还需要一把尺子，而这把尺子必须来自统计学之外。",
+  "Flu runs about seven days. The drug takes it to six and a bit: 16.8 hours off 168, which is a tenth of the illness. The reviewers put it plainly, that the drug modestly shortens symptoms, and in the same breath that it causes nausea and vomiting. One extra person vomits for every 22 treated.":
+    "流感大约持续七天。这种药把病程缩短到六天多一点：从 168 小时中减去 16.8 小时，正好是病程的十分之一。审阅者说得很直白，这种药能适度缩短症状，但同一句话里也说它会引起恶心和呕吐。每治疗 22 人，就多出 1 人呕吐。",
+  "Nothing was recalculated between these two pictures. The estimate, the interval and the p-value are identical; only what they are measured against changed. A p-value answers whether a difference could plausibly be chance, and with enough patients even a trivial difference cannot be. It never answers whether the difference is worth having. That question needs a size and a yardstick, and the yardstick has to come from outside the statistics.":
+    "这两幅图之间没有重新计算过任何东西。估计值、区间和 P 值完全相同，变化的只是它们所对照的对象。P 值回答的是这个差异是否有可能只是巧合，而只要患者足够多，哪怕微不足道的差异也不可能只是巧合。它从来回答不了这个差异是否值得拥有。那个问题需要一个大小，还需要一把尺子，而这把尺子必须来自统计学之外。",
   "The same number, other ruler": "同一个数字，另一把尺子",
   "Statistical versus clinical significance": "统计学显著性与临床意义",
-  "A small p-value means an effect is probably not chance. It says nothing about whether the effect is big enough to care about. Sample size buys certainty, never importance, so always ask for the size of the difference and what would count as a difference worth having.": "一个很小的 P 值意味着某种效应大概不是巧合。它丝毫说明不了这个效应是否大到值得在意。样本量买来的是确定性，从来买不来重要性，所以永远都要追问差异的大小，以及多大的差异才算得上值得拥有。",
-  "The two questions get answered by different numbers. Could this be chance is answered by the p-value and the confidence interval. Is this worth having is answered by the effect size, set against something that matters: how long the illness lasts, how bad the symptoms are, what the treatment costs you in side effects. A result can be emphatic on the first and pitiful on the second, and press releases have every incentive to quote only the first.": "这两个问题由不同的数字来回答。“这会不会只是巧合”由 P 值和置信区间来回答。“这值不值得拥有”则由效应量来回答，而且要拿它去对照某个真正重要的东西：病程有多长、症状有多严重、治疗带来的副作用要付出什么代价。一个结果可能在第一个问题上斩钉截铁，在第二个问题上却乏善可陈，而新闻通稿有充分的动机只引用第一个。",
-  "A p-value is a statement about how easily chance could produce the difference you saw, and it depends on the size of the study as much as on the size of the effect. Quadruple the patients and the same trivial difference has a p-value four times more impressive, because the estimate is that much more precisely pinned down. Push the numbers far enough and any difference at all, however meaningless, becomes highly significant. That is not a flaw in the arithmetic, it is what the arithmetic was built to do: separate signal from noise, and nothing more. The consequence is a habit worth keeping for life. When you meet a significant result, do not ask how significant. Ask how big, in units you can picture, and against what. If nobody has told you what size of difference would have been worth the trouble, the significance on its own has not told you anything you can act on.": "P 值说明的是巧合有多容易产生你看到的这个差异，它既取决于效应的大小，也同样取决于研究的规模。把患者人数翻两番，同样微不足道的差异，P 值会显得漂亮四倍，因为估计值被固定得精确了那么多。把数字推得足够远，任何差异，不管多么没有意义，都会变得高度显著。这不是算术上的缺陷，而正是这套算术被设计出来要做的事：把信号从噪声中分离出来，仅此而已。由此得到的一个终身受用的习惯是：遇到一个显著的结果时，不要问它有多显著。要问它有多大，用你能想象出来的单位来衡量，并且对照着什么。如果没有人告诉过你多大的差异才算值得费这个劲，那么单凭“显著”本身，并没有告诉你任何可以据以行动的东西。",
-  "The bar the field set, and the result that missed it": "这个领域自己定下的门槛，以及没能达到它的结果",
-  "A meta-analysis of every antidepressant trial submitted to the American regulator found the drugs beat placebo with high confidence, by 1.80 points on a depression scale. The guideline body's own threshold for a difference that matters clinically was three points, so the authors reported an effect that was statistically certain and below the bar its own field had set. Two questions, two answers, and only one of them was in the headline.": "一项针对提交给美国监管机构的每一项抗抑郁药试验所做的荟萃分析发现，这些药物以很高的置信度胜过安慰剂，在一个抑郁量表上高出 1.80 分。而指南制定机构自己定下的、具有临床意义的差异门槛是 3 分，所以作者报告的效应在统计上确定无疑，却低于这个领域自己设下的门槛。两个问题，两个答案，而标题里只出现了其中一个。",
-  "Statistical versus clinical significance, a reasoning trap.": "统计学显著性与临床意义，一个推理陷阱。",
-  "A tiny p-value means a difference is probably not a fluke. It does not mean the difference is big enough to bother with. Study enough people and even a pointless difference becomes highly significant, because certainty is what sample size buys. Before believing a result matters, ask how large it is in units you can picture, and what size would have been worth having.": "一个极小的 P 值意味着某个差异大概不是侥幸。它并不意味着这个差异大到值得费心。研究的人数足够多，哪怕毫无意义的差异也会变得高度显著，因为样本量买来的正是确定性。在相信一个结果真的重要之前，先问一问它用你能想象的单位衡量有多大，以及多大的差异才算得上值得拥有。",
-  "Everyone reads the p-value. Almost nobody asks how big.": "所有人都会去看 P 值。几乎没有人会问它有多大。",
-  "P less than 0.001, I said. It was sixteen hours.": "我说过，P 小于 0.001。它是十六个小时。",
-  "The BMJ abstract prints the treatment effect in adults as a reduction in time to first alleviation of symptoms of 16.8 hours (95 percent confidence interval 8.4 to 25.1), P < 0.001, and the harms as nausea (risk difference 3.66 percent, number needed to harm 28) and vomiting (4.56 percent, number needed to harm 22). The Cochrane review of the same dataset expresses the same benefit as a fall from 7 days to 6.3 days, which is where the 168-hour illness in the figure comes from; 168 minus 16.8 is 151.2 hours, or 6.3 days, and 16.8 is exactly a tenth of 168. Two honesty notes. The 7-day figure is the review's own description of the untreated illness rather than a separately measured mean with its own interval, so the second panel is drawn to the review's stated baseline. And the reviewers' conclusion is that the drug modestly shortens symptoms while causing nausea and vomiting, not that it does nothing: the lesson here is about the size of a real effect, not about denying it.": "《英国医学杂志》（BMJ）的摘要把成年人身上的治疗效果记为：症状首次缓解时间缩短 16.8 小时（95% 置信区间 8.4 至 25.1），P < 0.001；危害则为恶心（风险差 3.66%，需要伤害的人数为 28）和呕吐（4.56%，需要伤害的人数为 22）。Cochrane 对同一数据集的综述，把同样的获益表述为病程从 7 天缩短到 6.3 天，图中那个 168 小时的病程正是由此而来：168 减去 16.8 等于 151.2 小时，也就是 6.3 天，而 16.8 恰好是 168 的十分之一。这里有两点需要坦白说明。7 天这个数字是该综述对未治疗病程的自述，而不是另有一个带着自己置信区间的实测均值，所以第二幅图是按综述所给的基线画出来的。而且审阅者的结论是这种药能适度缩短症状，同时引起恶心和呕吐，而不是它毫无作用：这里的教训是关于一个真实效应的大小，而不是要否认它。",
-  "A company tested a redesign on 4 million users and reported that it loaded significantly faster, p < 0.0001. The press release calls it a major speed improvement. The measured difference is 3 milliseconds.": "一家公司在400万名用户身上测试了一次改版，报告称页面加载速度显著更快，p < 0.0001。新闻稿称其为一次重大的速度提升。而实测的差异是3毫秒。",
-  "With 4 million users even a 3 millisecond difference is far too consistent to be chance, so the tiny p-value is guaranteed. Nobody can perceive 3 milliseconds, so the result is certain and worthless.": "在400万用户的规模下，哪怕是3毫秒的差异也太过一致，不可能是巧合，所以那个微小的 P 值是必然的。没有人能感知到3毫秒，所以这个结果确定无疑，却毫无价值。",
-  "A weight-loss programme trialled in 30,000 people reports that participants lost significantly more than controls, p < 0.001, and markets itself on that result. Over a year the difference averaged 400 grams.": "一项在 30,000 人中试验的减重项目报告说，参与者比对照组减重显著更多，p < 0.001，并以此作为营销卖点。一年下来，平均差异是400克。",
-  "A 400 gram difference over a year is of no health consequence, but with 30,000 people it is measured precisely enough to be highly significant. The p-value confirms the difference is real, not that it is worth the effort.": "一年下来400克的差异对健康毫无影响，但在 30,000 人的规模下，它被测量得足够精确，从而变得高度显著。P 值证实的是这个差异确实存在，而不是它值得为此付出努力。",
-  "A supplement lowered blood pressure by 0.6 mmHg more than placebo in a trial of 50,000 adults, p < 0.001. An advert says it is clinically proven to lower blood pressure, without naming the number.": "一项针对 50,000 名成年人的试验发现，一种保健品比安慰剂多降低了0.6 mmHg的血压，p < 0.001。广告称其“经临床证实可以降低血压”，却没有说出这个数字。",
-  "Guidelines treat blood pressure changes of a few mmHg as the smallest worth acting on, so 0.6 is negligible, but 50,000 people make it statistically certain. The claim leans entirely on significance and hides the size.": "指南把几个 mmHg 的血压变化视为值得采取行动的最小幅度，所以0.6可以忽略不计，但 50,000 人的规模让它在统计上确定无疑。这个宣传完全依赖“显著性”，却把大小藏了起来。",
-  "An education study of 100,000 pupils found that an online tutoring add-on raised exam marks by a statistically significant amount, p < 0.001, and a minister cites it as proof the programme works. The gain was 0.3 marks out of 100.": "一项涵盖 100,000 名学生的教育研究发现，一项在线辅导附加课程把考试分数提高了具有统计学意义的幅度，p < 0.001，一位部长以此作为该项目有效的证据。而这个提升是 100 分中的 0.3 分。",
-  "A third of a mark out of a hundred changes nothing for any pupil, yet 100,000 of them pin the estimate down tightly enough to be highly significant. Significance is being used as a stand-in for a benefit nobody has shown.": "满分 100 分中 0.3 分的提升，对任何一名学生来说都不会有什么改变，但 100,000 人的规模，让这项估计被钉得足够精确，使其变得高度显著。“显著”被用来冒充一个从未被真正证明过的好处。",
-  "Researchers report a significant association between a food and a blood marker in 500,000 people, with a vanishingly small p-value. A news story says the food strongly affects the marker. The correlation is 0.01.": "研究者在 500,000 人中报告了一种食物与某项血液指标之间存在显著关联，P 值小到近乎消失。一则新闻报道说这种食物会强烈影响该指标。而相关系数是0.01。",
-  "A correlation of 0.01 explains essentially none of the variation, but half a million people make even that distinguishable from zero many times over. The extreme p-value reflects the sample size, not the strength of the link.": "0.01的相关系数几乎解释不了任何变异，但五十万人的规模，能把这么小的一个数字与零区分开来，而且能反复区分很多次。这个极端的 P 值反映的是样本量，而不是这种关联的强弱。",
-  "A mattress company's study of 80,000 sleepers found their model gave significantly more sleep than a standard one, p < 0.001, and the packaging says so. The extra sleep averaged 90 seconds a night.": "一家床垫公司对 80,000 名睡眠者做的研究发现，他们的床垫型号比标准型号能显著增加睡眠时间，p < 0.001，包装上也这么写着。平均每晚多睡90秒。",
-  "Ninety seconds is well below any amount a sleeper would notice or benefit from, yet 80,000 people make it a highly significant difference. The claim rests on the p-value and never mentions the size.": "90秒远远低于任何睡眠者能察觉或受益的量，但 80,000 人的规模，让它变成了一个高度显著的差异。这个宣传全靠 P 值撑腰，却始终没有提到差异的大小。",
-  "A fuel additive tested across 200,000 journeys significantly improved fuel economy, p < 0.001. The manufacturer advertises proven savings. The improvement was 0.1 percent, and the additive costs more than that.": "一种燃油添加剂在 200,000 次行程中做了测试，显著改善了燃油经济性，p < 0.001。制造商宣传这是经过验证的省油效果。而这个改善幅度是0.1%，添加剂本身的成本却比省下来的还要高。",
-  "The improvement is real and precisely measured, which is what the p-value shows, but at 0.1 percent it costs more than it saves. Statistical significance says the effect exists, not that it is worth buying.": "这个改善是真实的，而且测量得很精确，这正是 P 值所显示的，但按0.1%来算，它花掉的钱比省下来的还多。统计学显著性说明的是这种效应存在，而不是它值得购买。",
-  "A hospital reports that a new triage system significantly reduced waiting times across 300,000 attendances, p < 0.001, and the board declares the rollout a success. Average waits fell from 247 minutes to 245.": "一家医院报告说，一套新的分诊系统在 300,000 人次就诊中显著缩短了等待时间，p < 0.001，董事会宣布此次推行取得成功。平均等待时间从247分钟降到245分钟。",
-  "Two minutes off a four-hour wait is nothing to a patient, but 300,000 attendances make it statistically unmistakable. The board has read certainty as importance.": "从近四小时的等待中减去两分钟，对患者来说什么都不算，但 300,000 人次的规模，让它在统计上明白无误。董事会把“确定”误读成了“重要”。",
-  "A painkiller beat placebo on a 0 to 100 pain scale in 25,000 patients, p < 0.001, and is promoted on that basis. The difference was 1.5 points, and researchers in the field treat about 10 points as the smallest change patients notice.": "一种止痛药在 25,000 名患者中，于一个 0 到 100 的疼痛量表上胜过了安慰剂，p < 0.001，并以此作为宣传依据。差异是 1.5 分，而该领域的研究者认为大约 10 分才是患者能察觉的最小变化。",
-  "The field already has a yardstick, roughly 10 points, and 1.5 falls far below it. The large trial makes that small difference statistically certain without making it perceptible to anyone.": "这个领域早已有了一把尺子，大约 10 分，而 1.5 分远远达不到这个门槛。这项大型试验让这个微小的差异在统计上确定无疑，却没有让它变得任何人都能察觉。",
-  "A phone maker tested a software update on 2 million handsets and reported significantly longer battery life, p < 0.0001, headlining the update. Screen-on time rose by 40 seconds.": "一家手机厂商在200万部手机上测试了一次软件更新，报告称电池续航显著延长，p < 0.0001，并把它作为这次更新的头条卖点。屏幕点亮时间增加了40秒。",
-  "Forty seconds of screen time is imperceptible over a day, yet two million handsets make the measurement precise enough for an extreme p-value. The headline reports how sure they are, not how much it helps.": "40秒的屏幕点亮时间，摊到一整天里根本感觉不出来，但200万部手机的规模，让这次测量精确得足以产生一个极端的 P 值。这条头条讲的是他们有多确定，而不是这能带来多大帮助。",
-  "A trial reports that its drug improved walking distance by 68 metres, states that researchers in the field regard 30 metres as the smallest improvement patients notice, and concludes the benefit is both statistically and clinically meaningful.": "一项试验报告说，它的药物把步行距离提高了68米，并说明该领域的研究者认为30米是患者能察觉的最小改善，由此得出结论：这个获益在统计学上和临床上都有意义。",
-  "The report gives the size of the effect, names an external yardstick, and shows the effect clears it. That is exactly the pair of questions a result should answer, so nothing is being smuggled past the reader.": "这份报告给出了效应的大小，指明了一把外部的尺子，并证明这个效应越过了它。这正是一个结果应该回答的那一对问题，所以没有任何东西被偷偷绕过了读者。",
-  "A very large study finds a statistically significant difference and its authors write that, although the p-value is small, the difference is too slight to change practice, and recommend against acting on it.": "一项规模很大的研究发现了一个具有统计学意义的差异，作者写道，虽然 P 值很小，但这个差异太过微小，不足以改变临床实践，因此不建议据此采取行动。",
-  "The authors separate the two questions properly: the effect is real, and it is not worth acting on. Declining to convert a small p-value into a recommendation is the careful move, not the trap.": "作者把这两个问题恰当地分开了：这个效应是真实的，但不值得据此采取行动。拒绝把一个很小的 P 值直接换算成一条建议，这才是谨慎的做法，而不是陷阱。",
-  "A small trial finds a promising-looking improvement that does not reach statistical significance, and the authors report the estimate with a wide confidence interval, saying the study cannot rule out either a useful benefit or no benefit at all.": "一项小型试验发现了一个看起来很有希望的改善，但没有达到统计学意义，作者用一个很宽的置信区间报告了这个估计值，并说明这项研究既不能排除存在有用的获益，也不能排除完全没有获益。",
-  "A non-significant result from a small study means the question is unsettled, not that the treatment fails. Reporting the wide interval instead of claiming no effect is the honest reading.": "一项小型研究得出的不显著结果，意味着这个问题尚无定论，而不是说这种治疗无效。报告那个宽区间，而不是宣称没有效果，才是诚实的解读。",
+  "A small p-value means an effect is probably not chance. It says nothing about whether the effect is big enough to care about. Sample size buys certainty, never importance, so always ask for the size of the difference and what would count as a difference worth having.":
+    "一个很小的 P 值意味着某种效应大概不是巧合。它丝毫说明不了这个效应是否大到值得在意。样本量买来的是确定性，从来买不来重要性，所以永远都要追问差异的大小，以及多大的差异才算得上值得拥有。",
+  "The two questions get answered by different numbers. Could this be chance is answered by the p-value and the confidence interval. Is this worth having is answered by the effect size, set against something that matters: how long the illness lasts, how bad the symptoms are, what the treatment costs you in side effects. A result can be emphatic on the first and pitiful on the second, and press releases have every incentive to quote only the first.":
+    "这两个问题由不同的数字来回答。“这会不会只是巧合”由 P 值和置信区间来回答。“这值不值得拥有”则由效应量来回答，而且要拿它去对照某个真正重要的东西：病程有多长、症状有多严重、治疗带来的副作用要付出什么代价。一个结果可能在第一个问题上斩钉截铁，在第二个问题上却乏善可陈，而新闻通稿有充分的动机只引用第一个。",
+  "A p-value is a statement about how easily chance could produce the difference you saw, and it depends on the size of the study as much as on the size of the effect. Quadruple the patients and the same trivial difference has a p-value four times more impressive, because the estimate is that much more precisely pinned down. Push the numbers far enough and any difference at all, however meaningless, becomes highly significant. That is not a flaw in the arithmetic, it is what the arithmetic was built to do: separate signal from noise, and nothing more. The consequence is a habit worth keeping for life. When you meet a significant result, do not ask how significant. Ask how big, in units you can picture, and against what. If nobody has told you what size of difference would have been worth the trouble, the significance on its own has not told you anything you can act on.":
+    "P 值说明的是巧合有多容易产生你看到的这个差异，它既取决于效应的大小，也同样取决于研究的规模。把患者人数翻两番，同样微不足道的差异，P 值会显得漂亮四倍，因为估计值被固定得精确了那么多。把数字推得足够远，任何差异，不管多么没有意义，都会变得高度显著。这不是算术上的缺陷，而正是这套算术被设计出来要做的事：把信号从噪声中分离出来，仅此而已。由此得到的一个终身受用的习惯是：遇到一个显著的结果时，不要问它有多显著。要问它有多大，用你能想象出来的单位来衡量，并且对照着什么。如果没有人告诉过你多大的差异才算值得费这个劲，那么单凭“显著”本身，并没有告诉你任何可以据以行动的东西。",
+  "The bar the field set, and the result that missed it":
+    "这个领域自己定下的门槛，以及没能达到它的结果",
+  "A meta-analysis of every antidepressant trial submitted to the American regulator found the drugs beat placebo with high confidence, by 1.80 points on a depression scale. The guideline body's own threshold for a difference that matters clinically was three points, so the authors reported an effect that was statistically certain and below the bar its own field had set. Two questions, two answers, and only one of them was in the headline.":
+    "一项针对提交给美国监管机构的每一项抗抑郁药试验所做的荟萃分析发现，这些药物以很高的置信度胜过安慰剂，在一个抑郁量表上高出 1.80 分。而指南制定机构自己定下的、具有临床意义的差异门槛是 3 分，所以作者报告的效应在统计上确定无疑，却低于这个领域自己设下的门槛。两个问题，两个答案，而标题里只出现了其中一个。",
+  "Statistical versus clinical significance, a reasoning trap.":
+    "统计学显著性与临床意义，一个推理陷阱。",
+  "A tiny p-value means a difference is probably not a fluke. It does not mean the difference is big enough to bother with. Study enough people and even a pointless difference becomes highly significant, because certainty is what sample size buys. Before believing a result matters, ask how large it is in units you can picture, and what size would have been worth having.":
+    "一个极小的 P 值意味着某个差异大概不是侥幸。它并不意味着这个差异大到值得费心。研究的人数足够多，哪怕毫无意义的差异也会变得高度显著，因为样本量买来的正是确定性。在相信一个结果真的重要之前，先问一问它用你能想象的单位衡量有多大，以及多大的差异才算得上值得拥有。",
+  "Everyone reads the p-value. Almost nobody asks how big.":
+    "所有人都会去看 P 值。几乎没有人会问它有多大。",
+  "P less than 0.001, I said. It was sixteen hours.":
+    "我说过，P 小于 0.001。它是十六个小时。",
+  "The BMJ abstract prints the treatment effect in adults as a reduction in time to first alleviation of symptoms of 16.8 hours (95 percent confidence interval 8.4 to 25.1), P < 0.001, and the harms as nausea (risk difference 3.66 percent, number needed to harm 28) and vomiting (4.56 percent, number needed to harm 22). The Cochrane review of the same dataset expresses the same benefit as a fall from 7 days to 6.3 days, which is where the 168-hour illness in the figure comes from; 168 minus 16.8 is 151.2 hours, or 6.3 days, and 16.8 is exactly a tenth of 168. Two honesty notes. The 7-day figure is the review's own description of the untreated illness rather than a separately measured mean with its own interval, so the second panel is drawn to the review's stated baseline. And the reviewers' conclusion is that the drug modestly shortens symptoms while causing nausea and vomiting, not that it does nothing: the lesson here is about the size of a real effect, not about denying it.":
+    "《英国医学杂志》（BMJ）的摘要把成年人身上的治疗效果记为：症状首次缓解时间缩短 16.8 小时（95% 置信区间 8.4 至 25.1），P < 0.001；危害则为恶心（风险差 3.66%，需要伤害的人数为 28）和呕吐（4.56%，需要伤害的人数为 22）。Cochrane 对同一数据集的综述，把同样的获益表述为病程从 7 天缩短到 6.3 天，图中那个 168 小时的病程正是由此而来：168 减去 16.8 等于 151.2 小时，也就是 6.3 天，而 16.8 恰好是 168 的十分之一。这里有两点需要坦白说明。7 天这个数字是该综述对未治疗病程的自述，而不是另有一个带着自己置信区间的实测均值，所以第二幅图是按综述所给的基线画出来的。而且审阅者的结论是这种药能适度缩短症状，同时引起恶心和呕吐，而不是它毫无作用：这里的教训是关于一个真实效应的大小，而不是要否认它。",
+  "A company tested a redesign on 4 million users and reported that it loaded significantly faster, p < 0.0001. The press release calls it a major speed improvement. The measured difference is 3 milliseconds.":
+    "一家公司在400万名用户身上测试了一次改版，报告称页面加载速度显著更快，p < 0.0001。新闻稿称其为一次重大的速度提升。而实测的差异是3毫秒。",
+  "With 4 million users even a 3 millisecond difference is far too consistent to be chance, so the tiny p-value is guaranteed. Nobody can perceive 3 milliseconds, so the result is certain and worthless.":
+    "在400万用户的规模下，哪怕是3毫秒的差异也太过一致，不可能是巧合，所以那个微小的 P 值是必然的。没有人能感知到3毫秒，所以这个结果确定无疑，却毫无价值。",
+  "A weight-loss programme trialled in 30,000 people reports that participants lost significantly more than controls, p < 0.001, and markets itself on that result. Over a year the difference averaged 400 grams.":
+    "一项在 30,000 人中试验的减重项目报告说，参与者比对照组减重显著更多，p < 0.001，并以此作为营销卖点。一年下来，平均差异是400克。",
+  "A 400 gram difference over a year is of no health consequence, but with 30,000 people it is measured precisely enough to be highly significant. The p-value confirms the difference is real, not that it is worth the effort.":
+    "一年下来400克的差异对健康毫无影响，但在 30,000 人的规模下，它被测量得足够精确，从而变得高度显著。P 值证实的是这个差异确实存在，而不是它值得为此付出努力。",
+  "A supplement lowered blood pressure by 0.6 mmHg more than placebo in a trial of 50,000 adults, p < 0.001. An advert says it is clinically proven to lower blood pressure, without naming the number.":
+    "一项针对 50,000 名成年人的试验发现，一种保健品比安慰剂多降低了0.6 mmHg的血压，p < 0.001。广告称其“经临床证实可以降低血压”，却没有说出这个数字。",
+  "Guidelines treat blood pressure changes of a few mmHg as the smallest worth acting on, so 0.6 is negligible, but 50,000 people make it statistically certain. The claim leans entirely on significance and hides the size.":
+    "指南把几个 mmHg 的血压变化视为值得采取行动的最小幅度，所以0.6可以忽略不计，但 50,000 人的规模让它在统计上确定无疑。这个宣传完全依赖“显著性”，却把大小藏了起来。",
+  "An education study of 100,000 pupils found that an online tutoring add-on raised exam marks by a statistically significant amount, p < 0.001, and a minister cites it as proof the programme works. The gain was 0.3 marks out of 100.":
+    "一项涵盖 100,000 名学生的教育研究发现，一项在线辅导附加课程把考试分数提高了具有统计学意义的幅度，p < 0.001，一位部长以此作为该项目有效的证据。而这个提升是 100 分中的 0.3 分。",
+  "A third of a mark out of a hundred changes nothing for any pupil, yet 100,000 of them pin the estimate down tightly enough to be highly significant. Significance is being used as a stand-in for a benefit nobody has shown.":
+    "满分 100 分中 0.3 分的提升，对任何一名学生来说都不会有什么改变，但 100,000 人的规模，让这项估计被钉得足够精确，使其变得高度显著。“显著”被用来冒充一个从未被真正证明过的好处。",
+  "Researchers report a significant association between a food and a blood marker in 500,000 people, with a vanishingly small p-value. A news story says the food strongly affects the marker. The correlation is 0.01.":
+    "研究者在 500,000 人中报告了一种食物与某项血液指标之间存在显著关联，P 值小到近乎消失。一则新闻报道说这种食物会强烈影响该指标。而相关系数是0.01。",
+  "A correlation of 0.01 explains essentially none of the variation, but half a million people make even that distinguishable from zero many times over. The extreme p-value reflects the sample size, not the strength of the link.":
+    "0.01的相关系数几乎解释不了任何变异，但五十万人的规模，能把这么小的一个数字与零区分开来，而且能反复区分很多次。这个极端的 P 值反映的是样本量，而不是这种关联的强弱。",
+  "A mattress company's study of 80,000 sleepers found their model gave significantly more sleep than a standard one, p < 0.001, and the packaging says so. The extra sleep averaged 90 seconds a night.":
+    "一家床垫公司对 80,000 名睡眠者做的研究发现，他们的床垫型号比标准型号能显著增加睡眠时间，p < 0.001，包装上也这么写着。平均每晚多睡90秒。",
+  "Ninety seconds is well below any amount a sleeper would notice or benefit from, yet 80,000 people make it a highly significant difference. The claim rests on the p-value and never mentions the size.":
+    "90秒远远低于任何睡眠者能察觉或受益的量，但 80,000 人的规模，让它变成了一个高度显著的差异。这个宣传全靠 P 值撑腰，却始终没有提到差异的大小。",
+  "A fuel additive tested across 200,000 journeys significantly improved fuel economy, p < 0.001. The manufacturer advertises proven savings. The improvement was 0.1 percent, and the additive costs more than that.":
+    "一种燃油添加剂在 200,000 次行程中做了测试，显著改善了燃油经济性，p < 0.001。制造商宣传这是经过验证的省油效果。而这个改善幅度是0.1%，添加剂本身的成本却比省下来的还要高。",
+  "The improvement is real and precisely measured, which is what the p-value shows, but at 0.1 percent it costs more than it saves. Statistical significance says the effect exists, not that it is worth buying.":
+    "这个改善是真实的，而且测量得很精确，这正是 P 值所显示的，但按0.1%来算，它花掉的钱比省下来的还多。统计学显著性说明的是这种效应存在，而不是它值得购买。",
+  "A hospital reports that a new triage system significantly reduced waiting times across 300,000 attendances, p < 0.001, and the board declares the rollout a success. Average waits fell from 247 minutes to 245.":
+    "一家医院报告说，一套新的分诊系统在 300,000 人次就诊中显著缩短了等待时间，p < 0.001，董事会宣布此次推行取得成功。平均等待时间从247分钟降到245分钟。",
+  "Two minutes off a four-hour wait is nothing to a patient, but 300,000 attendances make it statistically unmistakable. The board has read certainty as importance.":
+    "从近四小时的等待中减去两分钟，对患者来说什么都不算，但 300,000 人次的规模，让它在统计上明白无误。董事会把“确定”误读成了“重要”。",
+  "A painkiller beat placebo on a 0 to 100 pain scale in 25,000 patients, p < 0.001, and is promoted on that basis. The difference was 1.5 points, and researchers in the field treat about 10 points as the smallest change patients notice.":
+    "一种止痛药在 25,000 名患者中，于一个 0 到 100 的疼痛量表上胜过了安慰剂，p < 0.001，并以此作为宣传依据。差异是 1.5 分，而该领域的研究者认为大约 10 分才是患者能察觉的最小变化。",
+  "The field already has a yardstick, roughly 10 points, and 1.5 falls far below it. The large trial makes that small difference statistically certain without making it perceptible to anyone.":
+    "这个领域早已有了一把尺子，大约 10 分，而 1.5 分远远达不到这个门槛。这项大型试验让这个微小的差异在统计上确定无疑，却没有让它变得任何人都能察觉。",
+  "A phone maker tested a software update on 2 million handsets and reported significantly longer battery life, p < 0.0001, headlining the update. Screen-on time rose by 40 seconds.":
+    "一家手机厂商在200万部手机上测试了一次软件更新，报告称电池续航显著延长，p < 0.0001，并把它作为这次更新的头条卖点。屏幕点亮时间增加了40秒。",
+  "Forty seconds of screen time is imperceptible over a day, yet two million handsets make the measurement precise enough for an extreme p-value. The headline reports how sure they are, not how much it helps.":
+    "40秒的屏幕点亮时间，摊到一整天里根本感觉不出来，但200万部手机的规模，让这次测量精确得足以产生一个极端的 P 值。这条头条讲的是他们有多确定，而不是这能带来多大帮助。",
+  "A trial reports that its drug improved walking distance by 68 metres, states that researchers in the field regard 30 metres as the smallest improvement patients notice, and concludes the benefit is both statistically and clinically meaningful.":
+    "一项试验报告说，它的药物把步行距离提高了68米，并说明该领域的研究者认为30米是患者能察觉的最小改善，由此得出结论：这个获益在统计学上和临床上都有意义。",
+  "The report gives the size of the effect, names an external yardstick, and shows the effect clears it. That is exactly the pair of questions a result should answer, so nothing is being smuggled past the reader.":
+    "这份报告给出了效应的大小，指明了一把外部的尺子，并证明这个效应越过了它。这正是一个结果应该回答的那一对问题，所以没有任何东西被偷偷绕过了读者。",
+  "A very large study finds a statistically significant difference and its authors write that, although the p-value is small, the difference is too slight to change practice, and recommend against acting on it.":
+    "一项规模很大的研究发现了一个具有统计学意义的差异，作者写道，虽然 P 值很小，但这个差异太过微小，不足以改变临床实践，因此不建议据此采取行动。",
+  "The authors separate the two questions properly: the effect is real, and it is not worth acting on. Declining to convert a small p-value into a recommendation is the careful move, not the trap.":
+    "作者把这两个问题恰当地分开了：这个效应是真实的，但不值得据此采取行动。拒绝把一个很小的 P 值直接换算成一条建议，这才是谨慎的做法，而不是陷阱。",
+  "A small trial finds a promising-looking improvement that does not reach statistical significance, and the authors report the estimate with a wide confidence interval, saying the study cannot rule out either a useful benefit or no benefit at all.":
+    "一项小型试验发现了一个看起来很有希望的改善，但没有达到统计学意义，作者用一个很宽的置信区间报告了这个估计值，并说明这项研究既不能排除存在有用的获益，也不能排除完全没有获益。",
+  "A non-significant result from a small study means the question is unsettled, not that the treatment fails. Reporting the wide interval instead of claiming no effect is the honest reading.":
+    "一项小型研究得出的不显著结果，意味着这个问题尚无定论，而不是说这种治疗无效。报告那个宽区间，而不是宣称没有效果，才是诚实的解读。",
   "Against no difference": "对照“无差异”",
   "Against what it should fix": "对照它本该解决的问题",
 
@@ -2311,16 +2427,21 @@ export const zh: Record<string, string> = {
   "ask how the patients were split first": "先问患者是怎么分配的",
 
   // ---- Ecological fallacy puzzle + review items ----
-  "In 1930, American states with more immigrants had less illiteracy. So immigrants could read better than the locals?": "1930 年，美国移民较多的州文盲率更低。难道移民比本地人更识字？",
-  "One census, 48 states. For each state, the share of people born abroad and the share who could not read. The more foreign born a state was, the lower its illiteracy, and the pattern is strong enough that people have been quoting it ever since.": "同一次人口普查，48 个州。对每个州，分别统计在外国出生者的比例与不识字者的比例。一个州的外国出生者比例越高，文盲率就越低，这一模式强到人们至今仍在引用它。",
+  "In 1930, American states with more immigrants had less illiteracy. So immigrants could read better than the locals?":
+    "1930 年，美国移民较多的州文盲率更低。难道移民比本地人更识字？",
+  "One census, 48 states. For each state, the share of people born abroad and the share who could not read. The more foreign born a state was, the lower its illiteracy, and the pattern is strong enough that people have been quoting it ever since.":
+    "同一次人口普查，48 个州。对每个州，分别统计在外国出生者的比例与不识字者的比例。一个州的外国出生者比例越高，文盲率就越低，这一模式强到人们至今仍在引用它。",
   "What does that tell you about immigrants?": "这告诉了你关于移民的什么？",
-  "Born abroad and unable to read, 1930 census": "在外国出生与不识字，1930 年人口普查",
+  "Born abroad and unable to read, 1930 census":
+    "在外国出生与不识字，1930 年人口普查",
   "Could not read or write": "不会读也不会写",
   "One dot would be one state": "每个点代表一个州",
   "Share of the state born abroad": "该州在外国出生者的比例",
-  "Illiteracy": "文盲率",
-  "The slope is drawn from the published correlation. Robinson printed the coefficient, never the figures for each state, so plotting dots here would be inventing them.": "这条斜线是依据已发表的相关系数画出的。罗宾逊只公布了这个系数，从未公布各州的具体数字，因此在这里画出散点等于是在凭空捏造它们。",
-  "Counts in thousands of people, from the paper's own table.": "人数以千人为单位，数据取自论文本身的表格。",
+  Illiteracy: "文盲率",
+  "The slope is drawn from the published correlation. Robinson printed the coefficient, never the figures for each state, so plotting dots here would be inventing them.":
+    "这条斜线是依据已发表的相关系数画出的。罗宾逊只公布了这个系数，从未公布各州的具体数字，因此在这里画出散点等于是在凭空捏造它们。",
+  "Counts in thousands of people, from the paper's own table.":
+    "人数以千人为单位，数据取自论文本身的表格。",
   "People born abroad": "在外国出生的人",
   "Born abroad": "在外国出生",
   "People born in the country": "在本国出生的人",
@@ -2331,200 +2452,336 @@ export const zh: Record<string, string> = {
   "a coincidence across 48 states": "只是 48 个州之间的巧合",
   "Nothing about any person": "对任何个人都说明不了什么",
   "this compares places, not people": "这比较的是地方，不是人",
-  "Count people instead of states and it turns the other way.": "换成按人计数而不是按州计数，结果就反过来了。",
+  "Count people instead of states and it turns the other way.":
+    "换成按人计数而不是按州计数，结果就反过来了。",
   "Places are not people": "地方不是人",
-  "In the same census, 1,304 of every 13,217 people born abroad could not read, against 2,614 of every 84,055 born in the country. That is about 10 per cent against 3, so immigrants were around three times as likely to be illiterate, not less. Across states the correlation is -.53; across people it is +.12.": "在同一次人口普查中，每 13,217 名在外国出生的人里有 1,304 人不识字，而每 84,055 名在本国出生的人里只有 2,614 人不识字。那大约是 10% 对 3，所以移民不识字的可能性大约是本地人的三倍，而不是更低。按州计算，相关系数是 -.53；按人计算，则是 +.12。",
-  "Both numbers are right, and they are answers to different questions. Immigrants settled where the work was, and those states also had the money and the schools that kept everyone else's illiteracy low. So a state's immigrant share tracked its wealth, and its wealth tracked its literacy, while inside every state the immigrants themselves were the ones more likely to be unable to read. Nothing about the state-level line was ever a claim about a person.": "两个数字都没有错，它们只是在回答不同的问题。移民定居在有工作机会的地方，而这些州恰好也有更多的钱和学校，使其他所有人的文盲率保持在低水平。于是一个州的移民比例与它的财富同步，它的财富又与它的识字率同步，而在每一个州内部，移民自己恰恰是更可能不识字的那一群人。州一级的那条线，从来都不是在对某个人下结论。",
+  "In the same census, 1,304 of every 13,217 people born abroad could not read, against 2,614 of every 84,055 born in the country. That is about 10 per cent against 3, so immigrants were around three times as likely to be illiterate, not less. Across states the correlation is -.53; across people it is +.12.":
+    "在同一次人口普查中，每 13,217 名在外国出生的人里有 1,304 人不识字，而每 84,055 名在本国出生的人里只有 2,614 人不识字。那大约是 10% 对 3，所以移民不识字的可能性大约是本地人的三倍，而不是更低。按州计算，相关系数是 -.53；按人计算，则是 +.12。",
+  "Both numbers are right, and they are answers to different questions. Immigrants settled where the work was, and those states also had the money and the schools that kept everyone else's illiteracy low. So a state's immigrant share tracked its wealth, and its wealth tracked its literacy, while inside every state the immigrants themselves were the ones more likely to be unable to read. Nothing about the state-level line was ever a claim about a person.":
+    "两个数字都没有错，它们只是在回答不同的问题。移民定居在有工作机会的地方，而这些州恰好也有更多的钱和学校，使其他所有人的文盲率保持在低水平。于是一个州的移民比例与它的财富同步，它的财富又与它的识字率同步，而在每一个州内部，移民自己恰恰是更可能不识字的那一群人。州一级的那条线，从来都不是在对某个人下结论。",
   "Same census, other unit": "同一次人口普查，另一种单位",
   "The ecological fallacy": "生态学谬误",
-  "A relationship measured between groups need not hold, and can run backwards, inside them. If the rows in your table are places, schools or countries, the finding is about places, schools or countries, and carrying it down to a person is a separate claim that needs its own evidence.": "在群体之间测得的一种关系，未必在群体内部依然成立，甚至可能方向相反。如果表格中的每一行是地方、学校或国家，那么这个发现说的就是地方、学校或国家，把它套用到某个人身上是另一个独立的主张，需要自己的证据。",
-  "The tell is the unit of analysis: ask what one row of the data actually is. Averages per country, per region, per hospital or per school are convenient because they are published, but a pattern among averages can be produced entirely by which people ended up where. The same trap runs the other way too, so a pattern among individuals need not reappear when they are grouped.": "识破它的关键是分析单位：问一问数据里的每一行到底是什么。按国家、按地区、按医院或按学校计算的平均值之所以方便，是因为它们是公开发表的，但平均值之间的模式完全可能只是由哪些人恰好落在了哪里所造成的。同样的陷阱反过来也成立，个体之间的模式，在被分组之后也未必会重新出现。",
-  "Picture two states. One is rich, with good schools, and attracts most of the immigrants; almost everyone there can read, immigrants slightly less often than the rest. The other is poor, has few immigrants, and much of its population never finished school. Plot the two states and you get a clean downward line: more immigrants, less illiteracy. Now pool the people and count them one by one, and the immigrants come out worse, because within each state they always were. The state-level line was never measuring immigrants at all. It was measuring the difference between a rich state and a poor one, with the immigrant share acting as a marker for which was which. This is why the fallacy is so easy to commit with published statistics: aggregated tables are what governments release, so the temptation is to answer a question about people using the only data on the shelf.": "设想两个州。一个富裕，学校办得好，吸引了大部分移民；那里几乎人人识字，移民识字率只比其他人略低一点。另一个贫穷，移民很少，很大一部分人口从未读完学业。把这两个州画出来，你会得到一条干净的下降线：移民越多，文盲率越低。现在把人合并起来一个一个地数，移民反而表现更差，因为在每一个州内部，他们一直都是更差的那一群。州一级的那条线，从来都不是在衡量移民本身，它衡量的是一个富州和一个穷州之间的差异，移民比例只是标记哪个州是哪个州的一个记号。这正是为什么用已发表的统计数据很容易犯下这种谬误：汇总表格正是政府发布的东西，于是人们很容易忍不住，用手头唯一的数据去回答一个关于人的问题。",
-  "The correction that left the lesson standing": "更正了数字，却没有推翻这堂课",
-  "In 2011 a re-analysis found Robinson had used the wrong state-level figures, and that the correlation across states is nearer -0.46 than the -0.53 he printed. The number moved, the reversal did not: across states the relationship still runs one way and across people the other. A textbook case is more useful when its arithmetic has been checked than when it is merely repeated.": "2011 年一项重新分析发现，罗宾逊当年使用的州一级数字有误，各州之间的相关系数更接近 -0.46，而不是他公布的 -0.53。数字变了，反转没有变：按州计算，这种关系仍朝一个方向走；按人计算，则朝另一个方向走。一个教科书式的案例，在算术被核实过之后，比仅仅被反复引用更有价值。",
+  "A relationship measured between groups need not hold, and can run backwards, inside them. If the rows in your table are places, schools or countries, the finding is about places, schools or countries, and carrying it down to a person is a separate claim that needs its own evidence.":
+    "在群体之间测得的一种关系，未必在群体内部依然成立，甚至可能方向相反。如果表格中的每一行是地方、学校或国家，那么这个发现说的就是地方、学校或国家，把它套用到某个人身上是另一个独立的主张，需要自己的证据。",
+  "The tell is the unit of analysis: ask what one row of the data actually is. Averages per country, per region, per hospital or per school are convenient because they are published, but a pattern among averages can be produced entirely by which people ended up where. The same trap runs the other way too, so a pattern among individuals need not reappear when they are grouped.":
+    "识破它的关键是分析单位：问一问数据里的每一行到底是什么。按国家、按地区、按医院或按学校计算的平均值之所以方便，是因为它们是公开发表的，但平均值之间的模式完全可能只是由哪些人恰好落在了哪里所造成的。同样的陷阱反过来也成立，个体之间的模式，在被分组之后也未必会重新出现。",
+  "Picture two states. One is rich, with good schools, and attracts most of the immigrants; almost everyone there can read, immigrants slightly less often than the rest. The other is poor, has few immigrants, and much of its population never finished school. Plot the two states and you get a clean downward line: more immigrants, less illiteracy. Now pool the people and count them one by one, and the immigrants come out worse, because within each state they always were. The state-level line was never measuring immigrants at all. It was measuring the difference between a rich state and a poor one, with the immigrant share acting as a marker for which was which. This is why the fallacy is so easy to commit with published statistics: aggregated tables are what governments release, so the temptation is to answer a question about people using the only data on the shelf.":
+    "设想两个州。一个富裕，学校办得好，吸引了大部分移民；那里几乎人人识字，移民识字率只比其他人略低一点。另一个贫穷，移民很少，很大一部分人口从未读完学业。把这两个州画出来，你会得到一条干净的下降线：移民越多，文盲率越低。现在把人合并起来一个一个地数，移民反而表现更差，因为在每一个州内部，他们一直都是更差的那一群。州一级的那条线，从来都不是在衡量移民本身，它衡量的是一个富州和一个穷州之间的差异，移民比例只是标记哪个州是哪个州的一个记号。这正是为什么用已发表的统计数据很容易犯下这种谬误：汇总表格正是政府发布的东西，于是人们很容易忍不住，用手头唯一的数据去回答一个关于人的问题。",
+  "The correction that left the lesson standing":
+    "更正了数字，却没有推翻这堂课",
+  "In 2011 a re-analysis found Robinson had used the wrong state-level figures, and that the correlation across states is nearer -0.46 than the -0.53 he printed. The number moved, the reversal did not: across states the relationship still runs one way and across people the other. A textbook case is more useful when its arithmetic has been checked than when it is merely repeated.":
+    "2011 年一项重新分析发现，罗宾逊当年使用的州一级数字有误，各州之间的相关系数更接近 -0.46，而不是他公布的 -0.53。数字变了，反转没有变：按州计算，这种关系仍朝一个方向走；按人计算，则朝另一个方向走。一个教科书式的案例，在算术被核实过之后，比仅仅被反复引用更有价值。",
   "The ecological fallacy, a reasoning trap.": "生态学谬误，一个推理陷阱。",
-  "A pattern found by comparing places can reverse completely when you count people instead. Areas with more immigrants had less illiteracy, yet immigrants themselves were three times likelier to be unable to read, because they settled where the schools were good. Before believing a statistic about people, check whether the rows in the table were people at all.": "通过比较地方而找到的一种模式，一旦换成按人计数，可能会完全反转。移民更多的地区文盲率更低，然而移民自己不识字的可能性却是别人的三倍，因为他们定居在学校办得好的地方。在相信一个关于人的统计数字之前，先查一查表格里的每一行是不是真的是人。",
-  "Same census, opposite answer. Depends what you count.": "同一次人口普查，答案却相反。取决于你数的是什么。",
-  "I read a fact about states as a fact about people.": "我把一个关于州的事实，当成了一个关于人的事实。",
-  "The person-level counts are Robinson's own, in thousands: 1,304 illiterate of 13,217 born abroad and 2,614 of 84,055 born in the country, which give 9.9 per cent against 3.1 and reproduce the +.118 he prints. The outcome is illiteracy, not literacy, which is why the individual figure is positive. Robinson prints -.526 across the 48 states and -.619 across the nine census divisions. Two honesty notes. The state-level figure is authored here as the coefficient rather than as points, because he published the correlation and never the per-state figures, so the setup draws a slope and says so on the figure rather than inventing a scatter. And te Grotenhuis and colleagues showed in 2011 that his state-level data were wrong and the correlation is nearer -0.46; the reversal between the two levels survives the correction, which is the only thing this puzzle claims.": "个体层面的数字是罗宾逊本人给出的，以千人为单位：在外国出生的 13,217 人中有 1,304 人不识字，在本国出生的 84,055 人中有 2,614 人不识字，得出 9.9% 对 3.1，重现了他公布的 +.118。结局变量是文盲率而不是识字率，这就是为什么个体层面的数字是正的。罗宾逊公布的相关系数，在 48 个州之间是 -.526，在九个人口普查分区之间是 -.619。这里有两点诚实说明。州一级的数字，在这里是以系数的形式呈现，而不是以散点的形式，因为他公布的是相关系数，从未公布各州的具体数字，所以本设置画出的是一条斜线，并在图上明确说明这一点，而不是凭空编造一组散点。另外，te Grotenhuis 及其同事在 2011 年指出，他的州一级数据有误，相关系数更接近 -0.46；这一反转经过更正后，在两个层面之间依然成立，而这正是本谜题唯一要证明的事。",
-  "Countries that eat more sugar have higher rates of a disease. A columnist tells readers that eating sugar raises their personal risk, citing the country comparison as the evidence.": "吃糖更多的国家，某种疾病的发病率更高。一位专栏作者告诉读者，吃糖会提高他们的个人患病风险，并把国家间的比较作为证据。",
-  "The rows in that table are countries, not people. Rich countries differ from poor ones in dozens of ways at once, so the line across them may not hold for any individual. A claim about a person needs data measured on people.": "那张表格里的每一行是国家，不是人。富国和穷国同时在几十个方面存在差异，所以国家之间的这条线未必对任何一个人成立。一个关于人的主张，需要以人为单位测得的数据。",
-  "Schools with more spending per pupil get better average exam results, so a council concludes that spending more on any given child will raise that child's marks.": "生均经费更高的学校，平均考试成绩更好，于是一个教育委员会得出结论：给任何一个孩子多花钱，都会提高这个孩子的分数。",
-  "The comparison is between schools, and schools differ in intake as well as budget. Well-funded schools often sit in wealthier areas, so the pattern can be about which children attend rather than about what an extra pound does for one of them.": "这里比较的是学校，而学校之间的差异不只在预算，也在生源。经费充足的学校往往位于更富裕的地区，所以这个模式可能反映的是哪些孩子在这所学校就读，而不是多花一英镑对其中某个孩子的作用。",
-  "Richer regions vote for one party more often, so an analyst writes that richer voters back that party. No individual-level survey is cited.": "更富裕的地区更常投票给某一个政党，于是一位分析师写道，更富裕的选民支持这个政党。文中没有引用任何个体层面的调查。",
-  "A region's average income and an individual's income are different variables. The regional pattern can run one way while richer individuals inside those regions vote the other way, which is exactly what has been found in some countries.": "一个地区的平均收入和一个人的收入，是两个不同的变量。地区层面的模式可以朝一个方向走，而这些地区内部更富裕的个人投票却朝另一个方向走，这正是一些国家已经发现的情况。",
-  "Hospitals with more nurses per bed have lower average death rates, and a manager concludes that any individual patient given more nursing attention is less likely to die.": "每张病床配备护士更多的医院，平均死亡率更低，一位管理者据此得出结论：给任何一个病人更多的护理关注，都会降低这个病人的死亡风险。",
-  "The unit here is the hospital. Better staffed hospitals also tend to be better funded and to treat different case mixes, so the between-hospital pattern is not by itself a statement about what happens to one patient.": "这里的分析单位是医院。人手更充足的医院往往也资金更充裕，收治的病例构成也不同，所以医院之间的这个模式，本身并不能说明发生在某一个病人身上的事。",
-  "Towns with cleaner air have longer average life expectancy, so a report states that breathing cleaner air will add years to a reader's life, using only the town-level figures.": "空气更清洁的城镇，平均预期寿命更长，一份报告仅凭镇一级的数字就宣称，呼吸更清洁的空气会为读者的寿命多添几年。",
-  "Towns with clean air differ from others in wealth, occupation and smoking as well. The town-level association can be produced by who lives where, so it cannot on its own quantify what cleaner air does for one person.": "空气清洁的城镇，在财富、职业和吸烟状况上也与其他城镇不同。镇一级的这种关联，可能只是由谁住在哪里造成的，因此它本身无法量化更清洁的空气对某一个人到底有什么作用。",
-  "Across 30 countries, average height rises with average dairy consumption, and a magazine advises readers that drinking more milk will make them taller, citing that country chart.": "在 30 个国家之间，平均身高随人均乳制品消费量上升而升高，一本杂志援引这张国家图表，建议读者多喝牛奶会让他们长得更高。",
-  "Each point is a whole country, so the chart compares national averages shaped by genetics, wealth and childhood nutrition together. Turning it into personal advice treats a fact about countries as a fact about a body.": "图上的每一个点都是一整个国家，所以这张图比较的是由基因、财富和童年营养共同塑造出来的国家平均值。把它变成个人建议，就是把一个关于国家的事实，当成了一个关于某个身体的事实。",
-  "Neighbourhoods with more young men have more recorded crime, and a report concludes that a given young man is more likely to be an offender than a given older resident, using only the neighbourhood totals.": "年轻男性更多的社区，记录在案的犯罪也更多，一份报告仅凭社区总量数据就得出结论：一个特定的年轻男性，比一个特定的年长居民更可能是罪犯。",
-  "The data counts neighbourhoods, so it cannot say who committed the crimes. Areas with young populations also tend to differ in income and housing, and the individual claim needs individual records.": "这些数据统计的是社区，因此说不出是谁犯下了这些罪行。年轻人口较多的地区，在收入和住房上往往也存在差异，个体层面的主张需要个体层面的记录。",
-  "Teams with more experienced staff ship fewer bugs on average, so a director tells one junior engineer that their individual bug rate must be the reason their team struggles.": "员工经验更丰富的团队，平均发布的缺陷更少，一位总监告诉一名初级工程师，他个人的缺陷率一定就是他所在团队表现不佳的原因。",
-  "The pattern is measured across teams, which differ in the difficulty of what they build as well as in experience. Nothing in a team-level average identifies which person produced which defect.": "这个模式是在团队之间测得的，而团队之间不仅经验不同，所做工作的难度也不同。团队层面的平均值里，没有任何信息能指出是哪个人产生了哪个缺陷。",
-  "Countries with more television sets per household report higher literacy, and an editorial argues that watching television makes an individual more literate.": "户均电视机数量更多的国家，报告的识字率更高，一篇社论主张，看电视会让一个人变得更识字。",
-  "Television ownership marks how wealthy a country is, and wealth brings schools. The country-level link is about national development, so it licenses no claim about what watching television does to one viewer.": "电视机的拥有量标志着一个国家有多富裕，而财富带来学校。国家层面的这种关联说的是国家发展水平，它不能为看电视对某一个观众的作用提供任何依据。",
-  "Clinics with longer average waiting times report higher patient satisfaction, and a board concludes that making an individual patient wait longer will make that patient happier.": "平均等待时间更长的诊所，报告的患者满意度更高，一个董事会据此得出结论：让某一个病人等得更久，会让这个病人更满意。",
-  "Comparing clinics is not comparing patients. Busy, popular clinics can have both long queues and good care, so a clinic-level correlation cannot be read as what waiting does to one person, and here it is plainly implausible.": "比较诊所不等于比较病人。繁忙、受欢迎的诊所可以同时拥有长队和优质的照护，所以诊所层面的这种相关性不能被解读为等待对某一个人的作用，而在这里，这种解读明显站不住脚。",
-  "Researchers wanted to know whether a diet affects one person's risk, so rather than comparing country averages they followed 40,000 individuals, recording each person's own diet and their own outcome, and reported the association among those people.": "研究者想知道一种饮食是否会影响某一个人的风险，因此他们没有比较国家平均值，而是追踪了 40,000 个人，记录每个人自己的饮食和自己的结局，并报告了这些人之间的关联。",
-  "The question was about individuals and the data was measured on individuals, so the unit of analysis matches the claim. That is precisely the step the ecological fallacy skips.": "这里的问题问的是个体，数据也是在个体身上测得的，所以分析单位与结论相匹配。而这正是生态学谬误所跳过的那一步。",
-  "A study finds that countries with stricter seatbelt laws have fewer road deaths per head, and concludes that such laws are associated with lower national death rates, explicitly declining to say what any individual driver's risk would be.": "一项研究发现，安全带法规更严格的国家，人均道路死亡人数更少，并得出结论：这类法规与更低的全国死亡率相关，同时明确表示不对任何一名个体驾驶员的风险作出判断。",
-  "The data is national and the conclusion is kept national. Policy questions are legitimately asked at the level of populations, and the authors do not smuggle the finding down to a person.": "这里的数据是全国层面的，结论也保持在全国层面。政策问题本来就可以合理地在人群层面提出，作者也没有把这个发现偷偷下放到某一个人身上。",
-  "Analysts studying whether neighbourhood poverty affects individual health use records that hold both each person's own income and their neighbourhood's, and report the neighbourhood effect after accounting for the person's own circumstances.": "研究社区贫困是否影响个体健康的分析师，使用的记录既包含每个人自己的收入，也包含其所在社区的收入，并在校正了个人自身状况之后，报告了社区层面的效应。",
-  "Holding both levels in the same model is the standard way to separate what an area does from what a person's own situation does, so the group-level claim is not resting on individual-level guesswork.": "在同一个模型里同时纳入这两个层面，是区分一个地区的作用与一个人自身处境的作用的标准做法，因此群体层面的结论并不建立在对个体层面的臆测之上。",
+  "A pattern found by comparing places can reverse completely when you count people instead. Areas with more immigrants had less illiteracy, yet immigrants themselves were three times likelier to be unable to read, because they settled where the schools were good. Before believing a statistic about people, check whether the rows in the table were people at all.":
+    "通过比较地方而找到的一种模式，一旦换成按人计数，可能会完全反转。移民更多的地区文盲率更低，然而移民自己不识字的可能性却是别人的三倍，因为他们定居在学校办得好的地方。在相信一个关于人的统计数字之前，先查一查表格里的每一行是不是真的是人。",
+  "Same census, opposite answer. Depends what you count.":
+    "同一次人口普查，答案却相反。取决于你数的是什么。",
+  "I read a fact about states as a fact about people.":
+    "我把一个关于州的事实，当成了一个关于人的事实。",
+  "The person-level counts are Robinson's own, in thousands: 1,304 illiterate of 13,217 born abroad and 2,614 of 84,055 born in the country, which give 9.9 per cent against 3.1 and reproduce the +.118 he prints. The outcome is illiteracy, not literacy, which is why the individual figure is positive. Robinson prints -.526 across the 48 states and -.619 across the nine census divisions. Two honesty notes. The state-level figure is authored here as the coefficient rather than as points, because he published the correlation and never the per-state figures, so the setup draws a slope and says so on the figure rather than inventing a scatter. And te Grotenhuis and colleagues showed in 2011 that his state-level data were wrong and the correlation is nearer -0.46; the reversal between the two levels survives the correction, which is the only thing this puzzle claims.":
+    "个体层面的数字是罗宾逊本人给出的，以千人为单位：在外国出生的 13,217 人中有 1,304 人不识字，在本国出生的 84,055 人中有 2,614 人不识字，得出 9.9% 对 3.1，重现了他公布的 +.118。结局变量是文盲率而不是识字率，这就是为什么个体层面的数字是正的。罗宾逊公布的相关系数，在 48 个州之间是 -.526，在九个人口普查分区之间是 -.619。这里有两点诚实说明。州一级的数字，在这里是以系数的形式呈现，而不是以散点的形式，因为他公布的是相关系数，从未公布各州的具体数字，所以本设置画出的是一条斜线，并在图上明确说明这一点，而不是凭空编造一组散点。另外，te Grotenhuis 及其同事在 2011 年指出，他的州一级数据有误，相关系数更接近 -0.46；这一反转经过更正后，在两个层面之间依然成立，而这正是本谜题唯一要证明的事。",
+  "Countries that eat more sugar have higher rates of a disease. A columnist tells readers that eating sugar raises their personal risk, citing the country comparison as the evidence.":
+    "吃糖更多的国家，某种疾病的发病率更高。一位专栏作者告诉读者，吃糖会提高他们的个人患病风险，并把国家间的比较作为证据。",
+  "The rows in that table are countries, not people. Rich countries differ from poor ones in dozens of ways at once, so the line across them may not hold for any individual. A claim about a person needs data measured on people.":
+    "那张表格里的每一行是国家，不是人。富国和穷国同时在几十个方面存在差异，所以国家之间的这条线未必对任何一个人成立。一个关于人的主张，需要以人为单位测得的数据。",
+  "Schools with more spending per pupil get better average exam results, so a council concludes that spending more on any given child will raise that child's marks.":
+    "生均经费更高的学校，平均考试成绩更好，于是一个教育委员会得出结论：给任何一个孩子多花钱，都会提高这个孩子的分数。",
+  "The comparison is between schools, and schools differ in intake as well as budget. Well-funded schools often sit in wealthier areas, so the pattern can be about which children attend rather than about what an extra pound does for one of them.":
+    "这里比较的是学校，而学校之间的差异不只在预算，也在生源。经费充足的学校往往位于更富裕的地区，所以这个模式可能反映的是哪些孩子在这所学校就读，而不是多花一英镑对其中某个孩子的作用。",
+  "Richer regions vote for one party more often, so an analyst writes that richer voters back that party. No individual-level survey is cited.":
+    "更富裕的地区更常投票给某一个政党，于是一位分析师写道，更富裕的选民支持这个政党。文中没有引用任何个体层面的调查。",
+  "A region's average income and an individual's income are different variables. The regional pattern can run one way while richer individuals inside those regions vote the other way, which is exactly what has been found in some countries.":
+    "一个地区的平均收入和一个人的收入，是两个不同的变量。地区层面的模式可以朝一个方向走，而这些地区内部更富裕的个人投票却朝另一个方向走，这正是一些国家已经发现的情况。",
+  "Hospitals with more nurses per bed have lower average death rates, and a manager concludes that any individual patient given more nursing attention is less likely to die.":
+    "每张病床配备护士更多的医院，平均死亡率更低，一位管理者据此得出结论：给任何一个病人更多的护理关注，都会降低这个病人的死亡风险。",
+  "The unit here is the hospital. Better staffed hospitals also tend to be better funded and to treat different case mixes, so the between-hospital pattern is not by itself a statement about what happens to one patient.":
+    "这里的分析单位是医院。人手更充足的医院往往也资金更充裕，收治的病例构成也不同，所以医院之间的这个模式，本身并不能说明发生在某一个病人身上的事。",
+  "Towns with cleaner air have longer average life expectancy, so a report states that breathing cleaner air will add years to a reader's life, using only the town-level figures.":
+    "空气更清洁的城镇，平均预期寿命更长，一份报告仅凭镇一级的数字就宣称，呼吸更清洁的空气会为读者的寿命多添几年。",
+  "Towns with clean air differ from others in wealth, occupation and smoking as well. The town-level association can be produced by who lives where, so it cannot on its own quantify what cleaner air does for one person.":
+    "空气清洁的城镇，在财富、职业和吸烟状况上也与其他城镇不同。镇一级的这种关联，可能只是由谁住在哪里造成的，因此它本身无法量化更清洁的空气对某一个人到底有什么作用。",
+  "Across 30 countries, average height rises with average dairy consumption, and a magazine advises readers that drinking more milk will make them taller, citing that country chart.":
+    "在 30 个国家之间，平均身高随人均乳制品消费量上升而升高，一本杂志援引这张国家图表，建议读者多喝牛奶会让他们长得更高。",
+  "Each point is a whole country, so the chart compares national averages shaped by genetics, wealth and childhood nutrition together. Turning it into personal advice treats a fact about countries as a fact about a body.":
+    "图上的每一个点都是一整个国家，所以这张图比较的是由基因、财富和童年营养共同塑造出来的国家平均值。把它变成个人建议，就是把一个关于国家的事实，当成了一个关于某个身体的事实。",
+  "Neighbourhoods with more young men have more recorded crime, and a report concludes that a given young man is more likely to be an offender than a given older resident, using only the neighbourhood totals.":
+    "年轻男性更多的社区，记录在案的犯罪也更多，一份报告仅凭社区总量数据就得出结论：一个特定的年轻男性，比一个特定的年长居民更可能是罪犯。",
+  "The data counts neighbourhoods, so it cannot say who committed the crimes. Areas with young populations also tend to differ in income and housing, and the individual claim needs individual records.":
+    "这些数据统计的是社区，因此说不出是谁犯下了这些罪行。年轻人口较多的地区，在收入和住房上往往也存在差异，个体层面的主张需要个体层面的记录。",
+  "Teams with more experienced staff ship fewer bugs on average, so a director tells one junior engineer that their individual bug rate must be the reason their team struggles.":
+    "员工经验更丰富的团队，平均发布的缺陷更少，一位总监告诉一名初级工程师，他个人的缺陷率一定就是他所在团队表现不佳的原因。",
+  "The pattern is measured across teams, which differ in the difficulty of what they build as well as in experience. Nothing in a team-level average identifies which person produced which defect.":
+    "这个模式是在团队之间测得的，而团队之间不仅经验不同，所做工作的难度也不同。团队层面的平均值里，没有任何信息能指出是哪个人产生了哪个缺陷。",
+  "Countries with more television sets per household report higher literacy, and an editorial argues that watching television makes an individual more literate.":
+    "户均电视机数量更多的国家，报告的识字率更高，一篇社论主张，看电视会让一个人变得更识字。",
+  "Television ownership marks how wealthy a country is, and wealth brings schools. The country-level link is about national development, so it licenses no claim about what watching television does to one viewer.":
+    "电视机的拥有量标志着一个国家有多富裕，而财富带来学校。国家层面的这种关联说的是国家发展水平，它不能为看电视对某一个观众的作用提供任何依据。",
+  "Clinics with longer average waiting times report higher patient satisfaction, and a board concludes that making an individual patient wait longer will make that patient happier.":
+    "平均等待时间更长的诊所，报告的患者满意度更高，一个董事会据此得出结论：让某一个病人等得更久，会让这个病人更满意。",
+  "Comparing clinics is not comparing patients. Busy, popular clinics can have both long queues and good care, so a clinic-level correlation cannot be read as what waiting does to one person, and here it is plainly implausible.":
+    "比较诊所不等于比较病人。繁忙、受欢迎的诊所可以同时拥有长队和优质的照护，所以诊所层面的这种相关性不能被解读为等待对某一个人的作用，而在这里，这种解读明显站不住脚。",
+  "Researchers wanted to know whether a diet affects one person's risk, so rather than comparing country averages they followed 40,000 individuals, recording each person's own diet and their own outcome, and reported the association among those people.":
+    "研究者想知道一种饮食是否会影响某一个人的风险，因此他们没有比较国家平均值，而是追踪了 40,000 个人，记录每个人自己的饮食和自己的结局，并报告了这些人之间的关联。",
+  "The question was about individuals and the data was measured on individuals, so the unit of analysis matches the claim. That is precisely the step the ecological fallacy skips.":
+    "这里的问题问的是个体，数据也是在个体身上测得的，所以分析单位与结论相匹配。而这正是生态学谬误所跳过的那一步。",
+  "A study finds that countries with stricter seatbelt laws have fewer road deaths per head, and concludes that such laws are associated with lower national death rates, explicitly declining to say what any individual driver's risk would be.":
+    "一项研究发现，安全带法规更严格的国家，人均道路死亡人数更少，并得出结论：这类法规与更低的全国死亡率相关，同时明确表示不对任何一名个体驾驶员的风险作出判断。",
+  "The data is national and the conclusion is kept national. Policy questions are legitimately asked at the level of populations, and the authors do not smuggle the finding down to a person.":
+    "这里的数据是全国层面的，结论也保持在全国层面。政策问题本来就可以合理地在人群层面提出，作者也没有把这个发现偷偷下放到某一个人身上。",
+  "Analysts studying whether neighbourhood poverty affects individual health use records that hold both each person's own income and their neighbourhood's, and report the neighbourhood effect after accounting for the person's own circumstances.":
+    "研究社区贫困是否影响个体健康的分析师，使用的记录既包含每个人自己的收入，也包含其所在社区的收入，并在校正了个人自身状况之后，报告了社区层面的效应。",
+  "Holding both levels in the same model is the standard way to separate what an area does from what a person's own situation does, so the group-level claim is not resting on individual-level guesswork.":
+    "在同一个模型里同时纳入这两个层面，是区分一个地区的作用与一个人自身处境的作用的标准做法，因此群体层面的结论并不建立在对个体层面的臆测之上。",
   "Counting places": "按地方计数",
   "Counting people": "按人计数",
 
   // ---- Framing effect puzzle + review items ----
-  "Asked to choose a plan against an outbreak, most people took the certain option. A sensible, cautious public?": "面对一场疫情爆发，要在两套方案中选择，大多数人选择了确定的那一个。这是一个理性又谨慎的公众吗？",
-  "An unusual disease is expected to kill 600 people. Two programmes are proposed, and the exact consequences of each are given. People were asked which they would favour.": "一种不寻常的疾病预计将造成600人死亡。现提出两套应对方案，并给出了每套方案的确切后果。人们被问及会倾向于哪一套。",
+  "Asked to choose a plan against an outbreak, most people took the certain option. A sensible, cautious public?":
+    "面对一场疫情爆发，要在两套方案中选择，大多数人选择了确定的那一个。这是一个理性又谨慎的公众吗？",
+  "An unusual disease is expected to kill 600 people. Two programmes are proposed, and the exact consequences of each are given. People were asked which they would favour.":
+    "一种不寻常的疾病预计将造成600人死亡。现提出两套应对方案，并给出了每套方案的确切后果。人们被问及会倾向于哪一套。",
   "What does this tell you about what people want?": "这能说明人们想要什么吗？",
   "Which programme people favoured": "人们倾向于哪套方案",
-  "An outbreak expected to kill 600 people, with the consequences of each programme stated exactly.": "一场预计造成600人死亡的疫情，每套方案的后果都被确切给出。",
+  "An outbreak expected to kill 600 people, with the consequences of each programme stated exactly.":
+    "一场预计造成600人死亡的疫情，每套方案的后果都被确切给出。",
   "The majority took the certain option": "多数人选择了确定的选项",
   "The majority took the gamble": "多数人选择了赌一把的选项",
-  "Shares as the paper printed them. It reports percentages and the number asked, never the raw counts.": "占比按论文原始刊出的数字给出。论文只报告了百分比和受访人数，从未给出原始人数。",
+  "Shares as the paper printed them. It reports percentages and the number asked, never the raw counts.":
+    "占比按论文原始刊出的数字给出。论文只报告了百分比和受访人数，从未给出原始人数。",
   "Outcomes described as lives saved": "以“挽救的生命”描述的结果",
   "Lives saved": "挽救的生命",
   "200 people will be saved": "200人将获救",
-  "A one in three chance that all 600 are saved, and two in three that nobody is": "3分之1的概率是600人全部获救，3分之2的概率是无人获救",
+  "A one in three chance that all 600 are saved, and two in three that nobody is":
+    "3分之1的概率是600人全部获救，3分之2的概率是无人获救",
   "Outcomes described as lives lost": "以“失去的生命”描述的结果",
   "Lives lost": "失去的生命",
   "400 people will die": "400人将死亡",
-  "A one in three chance that nobody dies, and two in three that all 600 do": "3分之1的概率是无人死亡，3分之2的概率是600人全部死亡",
+  "A one in three chance that nobody dies, and two in three that all 600 do":
+    "3分之1的概率是无人死亡，3分之2的概率是600人全部死亡",
   "People prefer certainty": "人们偏好确定性",
   "a settled preference, nearly three to one": "一种稳定的偏好，比例接近3比1",
   "They cannot do the arithmetic": "他们不会算术",
   "the odds were beyond them": "概率超出了他们的理解能力",
   "It depends how it was worded": "这取决于问题是怎么问的",
   "ask again in other words and it moves": "换一种说法再问一次，答案就变了",
-  "The same choice, reworded, and the majority swaps sides.": "同一个选择，换一种措辞，多数人就换边站队。",
+  "The same choice, reworded, and the majority swaps sides.":
+    "同一个选择，换一种措辞，多数人就换边站队。",
   "Saved and lost are the same thing": "“获救”与“死亡”是同一回事",
-  "Of 600 people, saving 200 is the same as 400 dying. Nothing about the outcomes changed between these two versions, only whether they were counted in lives saved or lives lost. Put as saving, 72 per cent took the certain option; put as dying, 22 per cent did. The authors call the two problems effectively identical.": "在600人中，救活200人和400人死亡是同一回事。这两个版本之间，结果本身没有任何变化，变的只是这些人是被算作挽救的生命还是失去的生命。表述为“救活”时，72%的人选择了确定的选项；表述为“死亡”时，这一比例是22%。作者称这两个问题实际上是等价的。",
-  "So there was no settled public preference to discover. A gain that is described as a gain invites caution, because a sure win feels worth keeping; the identical outcome described as a loss invites a gamble, because a sure loss feels worth escaping. The researchers saw the same reversal in university faculty and in physicians, so this is not a failure of arithmetic by people unused to numbers. It is what the question does to the answer.": "所以，并不存在什么需要被发现的、稳定的公众偏好。被描述为收益的收益会招来谨慎，因为确定到手的胜利让人觉得值得保住；而同样的结果一旦被描述为损失，就会招来冒险，因为确定的损失让人觉得值得去规避。研究者在大学教员和医生身上都看到了同样的逆转，所以这不是不熟悉数字的人在算术上出了错，而是问题本身在左右答案。",
+  "Of 600 people, saving 200 is the same as 400 dying. Nothing about the outcomes changed between these two versions, only whether they were counted in lives saved or lives lost. Put as saving, 72 per cent took the certain option; put as dying, 22 per cent did. The authors call the two problems effectively identical.":
+    "在600人中，救活200人和400人死亡是同一回事。这两个版本之间，结果本身没有任何变化，变的只是这些人是被算作挽救的生命还是失去的生命。表述为“救活”时，72%的人选择了确定的选项；表述为“死亡”时，这一比例是22%。作者称这两个问题实际上是等价的。",
+  "So there was no settled public preference to discover. A gain that is described as a gain invites caution, because a sure win feels worth keeping; the identical outcome described as a loss invites a gamble, because a sure loss feels worth escaping. The researchers saw the same reversal in university faculty and in physicians, so this is not a failure of arithmetic by people unused to numbers. It is what the question does to the answer.":
+    "所以，并不存在什么需要被发现的、稳定的公众偏好。被描述为收益的收益会招来谨慎，因为确定到手的胜利让人觉得值得保住；而同样的结果一旦被描述为损失，就会招来冒险，因为确定的损失让人觉得值得去规避。研究者在大学教员和医生身上都看到了同样的逆转，所以这不是不熟悉数字的人在算术上出了错，而是问题本身在左右答案。",
   "One decision, two wordings": "同一个决定，两种措辞",
   "The framing effect": "框架效应",
-  "How a choice is worded changes which option people take, even when the outcomes are identical. A survey, a label or a headline that reports what people prefer is partly reporting how they were asked, so the wording is part of the finding and belongs in the report.": "一个选择如何被措辞，会改变人们选取哪个选项，即便结果完全相同。一份调查、一个标签或一条标题在报告人们的偏好时，其实也在部分地报告他们是被如何提问的，所以措辞本身就是发现的一部分，理应写进报告。",
-  "The practical test is to restate the same fact the other way round and see whether you still feel the same. Ninety per cent survival and ten per cent mortality are one number; a treatment that saves nine in ten and one that kills one in ten are one treatment. If your preference moves, it was following the wording rather than the outcome, and that is worth knowing before you decide.": "实用的检验方法是把同一个事实反过来说一遍，看看自己的感受是否还一样。90%的生存率和10%的死亡率是同一个数字；能救活10人中9人的治疗，和会害死10人中1人的治疗，是同一种治疗。如果你的偏好因此变了，那说明它跟随的是措辞而不是结果，而这一点值得在你做决定之前弄清楚。",
-  "People do not judge outcomes from a blank slate. They judge them as gains or losses against whatever the question treats as normal, and losses weigh heavier than equivalent gains. Describe the outcome as lives saved and the reference point becomes everybody dying, so 200 saved is a gain worth locking in, and gambling with it feels reckless. Describe the identical outcome as 400 dying and the reference point becomes everybody living, so those deaths are a loss, and a chance of avoiding them entirely feels worth taking. Nothing about the world moved; the question moved the baseline people measured from. This is why the framing is not a presentational detail that a careful reader can ignore. Whoever chooses the wording chooses the baseline, and the baseline does much of the deciding, which is exactly why advertising, campaigning and even consent conversations are fought over adjectives.": "人们并不是从一张白纸出发去判断结果的。他们是把结果当作收益或损失，去衡量问题所设定的“正常状态”，而损失在心理上比等量的收益更重。把结果描述为“挽救的生命”，参照点就变成了所有人都会死，于是获救的200人就成了一份值得锁定的收益，拿它去冒险显得鲁莽。把同样的结果描述为“400人死亡”，参照点就变成了所有人都能活下来，于是这些死亡就成了一份损失，而彻底避开它的机会显得值得一试。世界本身什么都没变，变的是问题为人们设定的衡量基线。这正是为什么框架不是一个细心的读者可以忽略的表述细节。谁选择了措辞，谁就选择了基线，而基线在很大程度上决定了结论，这也正是广告、竞选宣传乃至知情同意的谈话都要在形容词上争夺的原因。",
-  "The same trick, thirty years on and in the clinic": "同样的把戏，三十年后出现在了诊室里",
-  "Doctors, patients and students were told about lung cancer treatments described either by survival rates or by the mortality rates that say the identical thing. Surgery looked far more attractive when its outcomes were given as survival. The effect held among the physicians, so training in the numbers was not protection against the wording.": "医生、患者和学生被告知肺癌治疗方案的结果，一种表述用生存率，另一种表述用意思完全相同的死亡率。当手术的结果以生存率给出时，它看起来要吸引人得多。这一效应在医生群体中同样存在，说明受过数字训练也无法防住措辞的影响。",
+  "How a choice is worded changes which option people take, even when the outcomes are identical. A survey, a label or a headline that reports what people prefer is partly reporting how they were asked, so the wording is part of the finding and belongs in the report.":
+    "一个选择如何被措辞，会改变人们选取哪个选项，即便结果完全相同。一份调查、一个标签或一条标题在报告人们的偏好时，其实也在部分地报告他们是被如何提问的，所以措辞本身就是发现的一部分，理应写进报告。",
+  "The practical test is to restate the same fact the other way round and see whether you still feel the same. Ninety per cent survival and ten per cent mortality are one number; a treatment that saves nine in ten and one that kills one in ten are one treatment. If your preference moves, it was following the wording rather than the outcome, and that is worth knowing before you decide.":
+    "实用的检验方法是把同一个事实反过来说一遍，看看自己的感受是否还一样。90%的生存率和10%的死亡率是同一个数字；能救活10人中9人的治疗，和会害死10人中1人的治疗，是同一种治疗。如果你的偏好因此变了，那说明它跟随的是措辞而不是结果，而这一点值得在你做决定之前弄清楚。",
+  "People do not judge outcomes from a blank slate. They judge them as gains or losses against whatever the question treats as normal, and losses weigh heavier than equivalent gains. Describe the outcome as lives saved and the reference point becomes everybody dying, so 200 saved is a gain worth locking in, and gambling with it feels reckless. Describe the identical outcome as 400 dying and the reference point becomes everybody living, so those deaths are a loss, and a chance of avoiding them entirely feels worth taking. Nothing about the world moved; the question moved the baseline people measured from. This is why the framing is not a presentational detail that a careful reader can ignore. Whoever chooses the wording chooses the baseline, and the baseline does much of the deciding, which is exactly why advertising, campaigning and even consent conversations are fought over adjectives.":
+    "人们并不是从一张白纸出发去判断结果的。他们是把结果当作收益或损失，去衡量问题所设定的“正常状态”，而损失在心理上比等量的收益更重。把结果描述为“挽救的生命”，参照点就变成了所有人都会死，于是获救的200人就成了一份值得锁定的收益，拿它去冒险显得鲁莽。把同样的结果描述为“400人死亡”，参照点就变成了所有人都能活下来，于是这些死亡就成了一份损失，而彻底避开它的机会显得值得一试。世界本身什么都没变，变的是问题为人们设定的衡量基线。这正是为什么框架不是一个细心的读者可以忽略的表述细节。谁选择了措辞，谁就选择了基线，而基线在很大程度上决定了结论，这也正是广告、竞选宣传乃至知情同意的谈话都要在形容词上争夺的原因。",
+  "The same trick, thirty years on and in the clinic":
+    "同样的把戏，三十年后出现在了诊室里",
+  "Doctors, patients and students were told about lung cancer treatments described either by survival rates or by the mortality rates that say the identical thing. Surgery looked far more attractive when its outcomes were given as survival. The effect held among the physicians, so training in the numbers was not protection against the wording.":
+    "医生、患者和学生被告知肺癌治疗方案的结果，一种表述用生存率，另一种表述用意思完全相同的死亡率。当手术的结果以生存率给出时，它看起来要吸引人得多。这一效应在医生群体中同样存在，说明受过数字训练也无法防住措辞的影响。",
   "The framing effect, a reasoning trap.": "框架效应，一个推理陷阱。",
-  "Ask people to choose between the same two outcomes twice, once worded as lives saved and once as lives lost, and the majority swaps sides. Nothing about the outcomes changes, only the words. Whoever writes the question is quietly choosing the answer, which is why it is worth restating any claim the other way round before you decide what you think.": "让人们在同样两个结果之间选择两次，一次表述为“挽救的生命”，一次表述为“失去的生命”，多数人就会换边站队。结果本身没有任何变化，变的只是措辞。写问题的人其实在悄悄地选择答案，这就是为什么在你下判断之前，值得把任何一个说法反过来再说一遍。",
-  "Same choice, other words. Watch the majority swap sides.": "同一个选择，换一种说法。看着多数人换边站队。",
-  "I had a firm opinion. It was about the wording.": "我曾有一个坚定的看法。而它其实是关于措辞的。",
-  "Read from the paper itself. Problem 1, put to 152 people, offered 200 saved for certain against a one in three chance of saving all 600: 72 per cent took the certain option and 28 per cent the gamble. Problem 2, put to 155 people, reworded the identical outcomes as 400 dying against a one in three chance that nobody dies: 22 per cent took the certain option and 78 per cent the gamble. The authors write that the two problems are effectively identical and that the only difference is whether outcomes are given as lives saved or lives lost, and they report having seen the reversal in several groups including university faculty and physicians. One honesty note that shapes the figure. The paper prints percentages and the number asked, never the raw counts, and 72 per cent of 152 is not a whole number, so no integer numerator exists. The shares here are therefore the published ones rather than counts, and the chart says so, because rounding to a plausible count would have invented data the source never reported.": "数据直接引自论文本身。问题一被提给152人，选项是确定救活200人，对上3分之1的概率救活600人全部：72%选择了确定的选项，28%选择了赌一把。问题二被提给155人，把完全相同的结果改写为确定400人死亡，对上3分之1的概率无人死亡：22%选择了确定的选项，78%选择了赌一把。作者写道，这两个问题实际上是等价的，唯一的区别在于结果是以“挽救的生命”还是“失去的生命”给出，而且他们报告说在包括大学教员和医生在内的多个群体中都看到了同样的逆转。有一点诚实的说明会影响这张图。论文只印出了百分比和受访人数，从未给出原始人数，而152人的72%并不是一个整数，所以并不存在一个整数分子。因此这里的占比是论文发表时的原始比例，而不是换算出的人数，图表也如实说明了这一点，因为把它凑整成一个看似合理的人数，等于是编造了原始资料从未报告过的数据。",
-  "A surgeon tells patients the operation has a 90 percent survival rate, and most agree to it. A colleague who tells the identical patients it has a 10 percent death rate finds far fewer agree. The hospital concludes the first surgeon is better at reassuring people.": "一位外科医生告诉患者，这台手术的生存率是90%，大多数人同意接受手术。另一位同事把同样的手术告诉同样的患者，说它的死亡率是10%，结果同意的人少了很多。医院据此得出结论：第一位医生更擅长安抚患者。",
-  "Ninety percent survival and ten percent mortality are the same number said two ways, so nothing about the operation differed. What differed was the wording, and it moved the decision.": "90%的生存率和10%的死亡率是同一个数字的两种说法，手术本身没有任何不同。不同的是措辞，而正是措辞左右了决定。",
-  "A yoghurt sells far better labelled 90 percent fat free than the identical product labelled 10 percent fat. The company reports that shoppers are choosing the healthier option.": "一款酸奶标注“90%脱脂”时卖得远比标注“含10%脂肪”的同一款产品好。公司报告说，购物者正在选择更健康的那个选项。",
-  "It is one product with one fat content, described two ways. The shoppers did not choose a healthier yoghurt, they responded to a label written to sound like a gain.": "这是同一款产品、同一个脂肪含量，只是被描述成了两种说法。购物者并没有选中一款更健康的酸奶，他们只是对一个被写得像是收益的标签做出了反应。",
-  "A policy polls well when described as keeping money in your pocket and badly when the identical policy is described as reducing what is collected for services. The pollster reports the public is broadly in favour.": "一项政策在被描述为“让钱留在你自己口袋里”时民调支持率很高，而在同一项政策被描述为“减少用于公共服务的征收款”时支持率很低。民调机构报告说，公众普遍表示支持。",
-  "Two descriptions of the same policy produced two verdicts, so the poll measured the wording as much as the opinion. A finding like this has to report how the question was put.": "同一项政策的两种描述得出了两种结论，所以这份民调衡量的既是意见，也同样是措辞。这样的发现必须说明问题当初是怎么问的。",
-  "A government announces that 94 percent of people are in work. The opposition announces that 6 percent are out of work. A commentator says the two sides cannot agree on the figures.": "政府宣布94%的人有工作。反对党宣布6%的人失业。一位评论员说，双方在数字上无法达成一致。",
-  "They agree completely on the figure, which is one number stated from two ends. The disagreement is over which end to say out loud, and that choice does the persuading.": "双方在数字上其实完全一致，这只是同一个数字从两端说出来而已。分歧在于该大声说出哪一端，而正是这个选择在起说服作用。",
-  "A leaflet says a vaccine lets 99 in 100 get through the season without the illness. A rival leaflet says 1 in 100 still catch it despite the vaccine. A survey finds people who read the first are much likelier to take it, and concludes the first leaflet is more accurate.": "一份传单说，接种疫苗后每100人中有99人能安然度过流行季而不患病。另一份对立的传单说，即便接种了疫苗，每100人中仍有1人会染病。一项调查发现，读到第一份传单的人接种意愿明显更高，并据此得出结论：第一份传单更准确。",
-  "Both leaflets state the identical result, one as a gain and one as a residual loss. Being more persuasive is not the same as being more accurate, and here neither is wrong.": "两份传单陈述的是完全相同的结果，一份表述为收益，一份表述为剩余的损失。更有说服力并不等于更准确，而这里两者都没有说错。",
-  "A shop charges less for cash than for card. Customers barely object when it is called a cash discount and complain loudly when the identical price gap is called a card surcharge. The owner concludes customers dislike card fees.": "一家商店对现金支付收费更低，对刷卡支付收费更高。当这个价差被称为“现金折扣”时，顾客几乎没有异议；而当完全相同的价差被称为“刷卡附加费”时，顾客却大声抱怨。店主据此得出结论：顾客不喜欢刷卡手续费。",
-  "The two prices are the same either way. Calling the gap a discount makes the lower price the bonus, calling it a surcharge makes the higher price a penalty, and the objection follows the word.": "无论怎么称呼，两个价格都是一样的。把价差叫作折扣，会让较低的那个价格显得是额外的优惠；把它叫作附加费，会让较高的那个价格显得是一种惩罚，而抱怨正是跟着这个词走的。",
-  "One newspaper reports that crime fell by 5 percent. Another reports that 95 percent of last year's crime is still happening. Readers of the second are far gloomier, and an editor concludes the public mood has shifted.": "一家报纸报道犯罪率下降了5%。另一家报道去年95%的犯罪仍在发生。读到第二篇报道的人情绪要低落得多，一位编辑据此得出结论：公众情绪发生了变化。",
-  "Both sentences describe the same change. The mood tracked which sentence a reader met, so it is evidence about the two write-ups rather than about the public.": "两句话描述的是同一个变化。情绪的变化跟随的是读者读到了哪一句话，所以这是关于这两篇报道的证据，而不是关于公众的证据。",
-  "An app tells one group of users their battery is at 20 percent and another group that 80 percent is used. The second group plugs in sooner, and the designer reports that users respond better to usage information.": "一款应用告诉一组用户，电池还剩20%；告诉另一组用户，电池已用掉80%。第二组用户更早去充电，设计师据此报告说，用户对“已用量”信息反应更好。",
-  "The two readouts carry identical information about the battery. The behaviour changed with the wording, which tells you about the framing rather than about what users understand.": "这两种读数所携带的电池信息是完全相同的。行为随措辞而改变，这说明的是框架的作用，而不是用户理解了什么。",
-  "A charity asks one group to give 2 pounds and tells another that 2 pounds is all it takes to stop a child going without. The second group gives far more often, and the charity concludes those donors care more.": "一家慈善机构请一组捐赠者捐2英镑，告诉另一组：只要2英镑，就能让一个孩子不再匮乏。第二组的捐赠频率高得多，慈善机构据此得出结论：这些捐赠者更有爱心。",
-  "The sum asked for is identical, and the donors were not selected for anything. The difference is entirely in how the ask was worded, so it says nothing about who cares more.": "所求的金额完全相同，两组捐赠者也没有经过任何特别的筛选。差异完全在于请求是怎么措辞的，所以这说明不了谁更有爱心。",
-  "A school reports that 7 in 10 pupils passed. A local paper reports that 3 in 10 failed. Parents surveyed after reading the paper rate the school much worse, and a governor concludes the paper uncovered a real decline.": "一所学校报告说，10名学生中有7人通过了考试。当地一家报纸报道说，10人中有3人不及格。读过这篇报道后接受调查的家长对学校的评价明显更差，一位校董据此得出结论：报纸揭露了一次真实的滑坡。",
-  "Nothing was uncovered, because the two reports carry one result. The parents were reacting to whether the number was given as passes or as failures.": "什么也没被揭露，因为这两份报道说的是同一个结果。家长的反应，取决于这个数字是以“及格”还是以“不及格”的方式给出的。",
-  "A consent leaflet states that the operation has a 90 percent survival rate and, in the same paragraph, that 10 percent of patients die, so that the reader meets the result stated both ways before deciding.": "一份知情同意书说明这台手术的生存率是90%，并在同一段落里说明10%的患者会死亡，让读者在做决定之前，同时看到这个结果的两种说法。",
-  "Giving both statements of the identical figure is the standard defence against framing, since the reader cannot be steered by whichever end was chosen for them.": "把同一个数字的两种说法都给出来，是抵御框架效应的标准做法，因为这样一来，读者就不会被别人替他选定的那一端牵着走。",
-  "Two treatments were described to patients in the same words, using the same survival framing for both, and patients still chose one far more often. The report concludes patients prefer that treatment.": "两种治疗方案被用完全相同的措辞介绍给患者，两者都采用相同的生存框架，而患者仍然更频繁地选择其中一种。报告据此得出结论：患者更偏好那种治疗方案。",
-  "The wording was held constant across the two options, so the difference in choices cannot be an artefact of framing. The preference is about the treatments.": "两个选项的措辞保持不变，所以选择上的差异不可能是框架造成的假象。这份偏好说的是治疗方案本身。",
-  "A polling company publishes the exact question wording alongside its result, and notes that an alternative wording tested at the same time produced a different level of support, so readers can see how sensitive the finding is.": "一家民调公司在公布结果的同时，一并公布了问题的确切措辞，并说明同一时间测试的另一种措辞产生了不同的支持率，好让读者看清这个结果对措辞有多敏感。",
-  "Publishing the wording, and what a different wording produced, treats the framing as part of the finding. That is the honest way to report an opinion measurement.": "把措辞连同不同措辞所产生的结果一并公布，是把框架当作发现的一部分来对待。这才是报告一次民意测量的诚实方式。",
+  "Ask people to choose between the same two outcomes twice, once worded as lives saved and once as lives lost, and the majority swaps sides. Nothing about the outcomes changes, only the words. Whoever writes the question is quietly choosing the answer, which is why it is worth restating any claim the other way round before you decide what you think.":
+    "让人们在同样两个结果之间选择两次，一次表述为“挽救的生命”，一次表述为“失去的生命”，多数人就会换边站队。结果本身没有任何变化，变的只是措辞。写问题的人其实在悄悄地选择答案，这就是为什么在你下判断之前，值得把任何一个说法反过来再说一遍。",
+  "Same choice, other words. Watch the majority swap sides.":
+    "同一个选择，换一种说法。看着多数人换边站队。",
+  "I had a firm opinion. It was about the wording.":
+    "我曾有一个坚定的看法。而它其实是关于措辞的。",
+  "Read from the paper itself. Problem 1, put to 152 people, offered 200 saved for certain against a one in three chance of saving all 600: 72 per cent took the certain option and 28 per cent the gamble. Problem 2, put to 155 people, reworded the identical outcomes as 400 dying against a one in three chance that nobody dies: 22 per cent took the certain option and 78 per cent the gamble. The authors write that the two problems are effectively identical and that the only difference is whether outcomes are given as lives saved or lives lost, and they report having seen the reversal in several groups including university faculty and physicians. One honesty note that shapes the figure. The paper prints percentages and the number asked, never the raw counts, and 72 per cent of 152 is not a whole number, so no integer numerator exists. The shares here are therefore the published ones rather than counts, and the chart says so, because rounding to a plausible count would have invented data the source never reported.":
+    "数据直接引自论文本身。问题一被提给152人，选项是确定救活200人，对上3分之1的概率救活600人全部：72%选择了确定的选项，28%选择了赌一把。问题二被提给155人，把完全相同的结果改写为确定400人死亡，对上3分之1的概率无人死亡：22%选择了确定的选项，78%选择了赌一把。作者写道，这两个问题实际上是等价的，唯一的区别在于结果是以“挽救的生命”还是“失去的生命”给出，而且他们报告说在包括大学教员和医生在内的多个群体中都看到了同样的逆转。有一点诚实的说明会影响这张图。论文只印出了百分比和受访人数，从未给出原始人数，而152人的72%并不是一个整数，所以并不存在一个整数分子。因此这里的占比是论文发表时的原始比例，而不是换算出的人数，图表也如实说明了这一点，因为把它凑整成一个看似合理的人数，等于是编造了原始资料从未报告过的数据。",
+  "A surgeon tells patients the operation has a 90 percent survival rate, and most agree to it. A colleague who tells the identical patients it has a 10 percent death rate finds far fewer agree. The hospital concludes the first surgeon is better at reassuring people.":
+    "一位外科医生告诉患者，这台手术的生存率是90%，大多数人同意接受手术。另一位同事把同样的手术告诉同样的患者，说它的死亡率是10%，结果同意的人少了很多。医院据此得出结论：第一位医生更擅长安抚患者。",
+  "Ninety percent survival and ten percent mortality are the same number said two ways, so nothing about the operation differed. What differed was the wording, and it moved the decision.":
+    "90%的生存率和10%的死亡率是同一个数字的两种说法，手术本身没有任何不同。不同的是措辞，而正是措辞左右了决定。",
+  "A yoghurt sells far better labelled 90 percent fat free than the identical product labelled 10 percent fat. The company reports that shoppers are choosing the healthier option.":
+    "一款酸奶标注“90%脱脂”时卖得远比标注“含10%脂肪”的同一款产品好。公司报告说，购物者正在选择更健康的那个选项。",
+  "It is one product with one fat content, described two ways. The shoppers did not choose a healthier yoghurt, they responded to a label written to sound like a gain.":
+    "这是同一款产品、同一个脂肪含量，只是被描述成了两种说法。购物者并没有选中一款更健康的酸奶，他们只是对一个被写得像是收益的标签做出了反应。",
+  "A policy polls well when described as keeping money in your pocket and badly when the identical policy is described as reducing what is collected for services. The pollster reports the public is broadly in favour.":
+    "一项政策在被描述为“让钱留在你自己口袋里”时民调支持率很高，而在同一项政策被描述为“减少用于公共服务的征收款”时支持率很低。民调机构报告说，公众普遍表示支持。",
+  "Two descriptions of the same policy produced two verdicts, so the poll measured the wording as much as the opinion. A finding like this has to report how the question was put.":
+    "同一项政策的两种描述得出了两种结论，所以这份民调衡量的既是意见，也同样是措辞。这样的发现必须说明问题当初是怎么问的。",
+  "A government announces that 94 percent of people are in work. The opposition announces that 6 percent are out of work. A commentator says the two sides cannot agree on the figures.":
+    "政府宣布94%的人有工作。反对党宣布6%的人失业。一位评论员说，双方在数字上无法达成一致。",
+  "They agree completely on the figure, which is one number stated from two ends. The disagreement is over which end to say out loud, and that choice does the persuading.":
+    "双方在数字上其实完全一致，这只是同一个数字从两端说出来而已。分歧在于该大声说出哪一端，而正是这个选择在起说服作用。",
+  "A leaflet says a vaccine lets 99 in 100 get through the season without the illness. A rival leaflet says 1 in 100 still catch it despite the vaccine. A survey finds people who read the first are much likelier to take it, and concludes the first leaflet is more accurate.":
+    "一份传单说，接种疫苗后每100人中有99人能安然度过流行季而不患病。另一份对立的传单说，即便接种了疫苗，每100人中仍有1人会染病。一项调查发现，读到第一份传单的人接种意愿明显更高，并据此得出结论：第一份传单更准确。",
+  "Both leaflets state the identical result, one as a gain and one as a residual loss. Being more persuasive is not the same as being more accurate, and here neither is wrong.":
+    "两份传单陈述的是完全相同的结果，一份表述为收益，一份表述为剩余的损失。更有说服力并不等于更准确，而这里两者都没有说错。",
+  "A shop charges less for cash than for card. Customers barely object when it is called a cash discount and complain loudly when the identical price gap is called a card surcharge. The owner concludes customers dislike card fees.":
+    "一家商店对现金支付收费更低，对刷卡支付收费更高。当这个价差被称为“现金折扣”时，顾客几乎没有异议；而当完全相同的价差被称为“刷卡附加费”时，顾客却大声抱怨。店主据此得出结论：顾客不喜欢刷卡手续费。",
+  "The two prices are the same either way. Calling the gap a discount makes the lower price the bonus, calling it a surcharge makes the higher price a penalty, and the objection follows the word.":
+    "无论怎么称呼，两个价格都是一样的。把价差叫作折扣，会让较低的那个价格显得是额外的优惠；把它叫作附加费，会让较高的那个价格显得是一种惩罚，而抱怨正是跟着这个词走的。",
+  "One newspaper reports that crime fell by 5 percent. Another reports that 95 percent of last year's crime is still happening. Readers of the second are far gloomier, and an editor concludes the public mood has shifted.":
+    "一家报纸报道犯罪率下降了5%。另一家报道去年95%的犯罪仍在发生。读到第二篇报道的人情绪要低落得多，一位编辑据此得出结论：公众情绪发生了变化。",
+  "Both sentences describe the same change. The mood tracked which sentence a reader met, so it is evidence about the two write-ups rather than about the public.":
+    "两句话描述的是同一个变化。情绪的变化跟随的是读者读到了哪一句话，所以这是关于这两篇报道的证据，而不是关于公众的证据。",
+  "An app tells one group of users their battery is at 20 percent and another group that 80 percent is used. The second group plugs in sooner, and the designer reports that users respond better to usage information.":
+    "一款应用告诉一组用户，电池还剩20%；告诉另一组用户，电池已用掉80%。第二组用户更早去充电，设计师据此报告说，用户对“已用量”信息反应更好。",
+  "The two readouts carry identical information about the battery. The behaviour changed with the wording, which tells you about the framing rather than about what users understand.":
+    "这两种读数所携带的电池信息是完全相同的。行为随措辞而改变，这说明的是框架的作用，而不是用户理解了什么。",
+  "A charity asks one group to give 2 pounds and tells another that 2 pounds is all it takes to stop a child going without. The second group gives far more often, and the charity concludes those donors care more.":
+    "一家慈善机构请一组捐赠者捐2英镑，告诉另一组：只要2英镑，就能让一个孩子不再匮乏。第二组的捐赠频率高得多，慈善机构据此得出结论：这些捐赠者更有爱心。",
+  "The sum asked for is identical, and the donors were not selected for anything. The difference is entirely in how the ask was worded, so it says nothing about who cares more.":
+    "所求的金额完全相同，两组捐赠者也没有经过任何特别的筛选。差异完全在于请求是怎么措辞的，所以这说明不了谁更有爱心。",
+  "A school reports that 7 in 10 pupils passed. A local paper reports that 3 in 10 failed. Parents surveyed after reading the paper rate the school much worse, and a governor concludes the paper uncovered a real decline.":
+    "一所学校报告说，10名学生中有7人通过了考试。当地一家报纸报道说，10人中有3人不及格。读过这篇报道后接受调查的家长对学校的评价明显更差，一位校董据此得出结论：报纸揭露了一次真实的滑坡。",
+  "Nothing was uncovered, because the two reports carry one result. The parents were reacting to whether the number was given as passes or as failures.":
+    "什么也没被揭露，因为这两份报道说的是同一个结果。家长的反应，取决于这个数字是以“及格”还是以“不及格”的方式给出的。",
+  "A consent leaflet states that the operation has a 90 percent survival rate and, in the same paragraph, that 10 percent of patients die, so that the reader meets the result stated both ways before deciding.":
+    "一份知情同意书说明这台手术的生存率是90%，并在同一段落里说明10%的患者会死亡，让读者在做决定之前，同时看到这个结果的两种说法。",
+  "Giving both statements of the identical figure is the standard defence against framing, since the reader cannot be steered by whichever end was chosen for them.":
+    "把同一个数字的两种说法都给出来，是抵御框架效应的标准做法，因为这样一来，读者就不会被别人替他选定的那一端牵着走。",
+  "Two treatments were described to patients in the same words, using the same survival framing for both, and patients still chose one far more often. The report concludes patients prefer that treatment.":
+    "两种治疗方案被用完全相同的措辞介绍给患者，两者都采用相同的生存框架，而患者仍然更频繁地选择其中一种。报告据此得出结论：患者更偏好那种治疗方案。",
+  "The wording was held constant across the two options, so the difference in choices cannot be an artefact of framing. The preference is about the treatments.":
+    "两个选项的措辞保持不变，所以选择上的差异不可能是框架造成的假象。这份偏好说的是治疗方案本身。",
+  "A polling company publishes the exact question wording alongside its result, and notes that an alternative wording tested at the same time produced a different level of support, so readers can see how sensitive the finding is.":
+    "一家民调公司在公布结果的同时，一并公布了问题的确切措辞，并说明同一时间测试的另一种措辞产生了不同的支持率，好让读者看清这个结果对措辞有多敏感。",
+  "Publishing the wording, and what a different wording produced, treats the framing as part of the finding. That is the honest way to report an opinion measurement.":
+    "把措辞连同不同措辞所产生的结果一并公布，是把框架当作发现的一部分来对待。这才是报告一次民意测量的诚实方式。",
   "As it was put to them": "原始措辞",
   "Both wordings": "两种措辞",
 
   // ---- Misleading chart axes ----
-  "Only 7 of the 38 people shown this chart read its trend correctly.": "在看过这张图表的38人中，只有7人正确读出了它的趋势。",
-  "Researchers drew a chart of one quantity rising steadily over time, then redrew it with the vertical axis upside down, so that larger values sat lower on the page. The numbers themselves were untouched. They showed the upside-down version to 38 people recruited at random online, asked what the quantity had done over the period, and let them answer that it had improved, that it had declined, or that they could not tell. Seven of the 38 answered correctly.": "研究者先画了一张图，显示某个数量随时间稳步上升，然后把纵轴上下颠倒重画了一遍，让数值越大的位置反而越靠近页面下方。数字本身丝毫未改。他们把颠倒版拿给网上随机招募的38个人看，问这个数量在这段时期里发生了什么变化，并让他们从「上升了」「下降了」「说不准」中作答。38人里有7人答对。",
-  "What does a score that low tell you about the chart?": "这么低的正确率，说明了这张图表的什么问题？",
+  "Only 7 of the 38 people shown this chart read its trend correctly.":
+    "在看过这张图表的38人中，只有7人正确读出了它的趋势。",
+  "Researchers drew a chart of one quantity rising steadily over time, then redrew it with the vertical axis upside down, so that larger values sat lower on the page. The numbers themselves were untouched. They showed the upside-down version to 38 people recruited at random online, asked what the quantity had done over the period, and let them answer that it had improved, that it had declined, or that they could not tell. Seven of the 38 answered correctly.":
+    "研究者先画了一张图，显示某个数量随时间稳步上升，然后把纵轴上下颠倒重画了一遍，让数值越大的位置反而越靠近页面下方。数字本身丝毫未改。他们把颠倒版拿给网上随机招募的38个人看，问这个数量在这段时期里发生了什么变化，并让他们从「上升了」「下降了」「说不准」中作答。38人里有7人答对。",
+  "What does a score that low tell you about the chart?":
+    "这么低的正确率，说明了这张图表的什么问题？",
   "Read the trend correctly": "正确读出趋势",
   "Shown the chart with the axis upside down": "看到纵轴上下颠倒的图表",
   "Upside down": "上下颠倒",
-  "Shown the same numbers, axis the normal way up": "看到同样的数字，纵轴方向正常",
-  "Normal": "正常",
+  "Shown the same numbers, axis the normal way up":
+    "看到同样的数字，纵轴方向正常",
+  Normal: "正常",
   "People shown a chart": "看过图表的人",
   "The upside-down version": "上下颠倒的版本",
-  "It was a hard chart, and most people struggled with it": "这是一张难读的图表，多数人都读得很吃力",
+  "It was a hard chart, and most people struggled with it":
+    "这是一张难读的图表，多数人都读得很吃力",
   "too fiddly to read": "读起来太费劲",
-  "The rise in the data was too slight to call": "数据里的上升幅度太小，无法下结论",
+  "The rise in the data was too slight to call":
+    "数据里的上升幅度太小，无法下结论",
   "an honest near-tie": "一次诚实的平局",
-  "It read clearly, and what it said was backwards": "它读起来很清楚，只是说反了",
+  "It read clearly, and what it said was backwards":
+    "它读起来很清楚，只是说反了",
   "legible, and wrong": "看得懂，却是错的",
-  "Drawn the normal way up, the same numbers were read correctly by 39 of 40.": "以正常方向绘制时，同样的数字有40人中的39人读对了。",
-  "Nothing was wrong with the readers, or with the data": "读图的人没问题，数据也没问题",
-  "Forty other people, recruited the same way and shown the identical numbers with the vertical axis the usual way up, read the trend correctly 39 times out of 40. So the rise was not slight and the readers were not weak. Look too at how the other 38 got it wrong: just one of them said they could not tell, and 30 stated flatly that the quantity had declined:": "另外四十个人以同样方式招募，看到的是完全相同的数字，只是纵轴方向正常，结果40人中有39人正确读出了趋势。可见上升幅度并不小，读图的人也不差。再看看另外38人是怎么错的：只有一个人说自己说不准，30个人斩钉截铁地说这个数量下降了。",
+  "Drawn the normal way up, the same numbers were read correctly by 39 of 40.":
+    "以正常方向绘制时，同样的数字有40人中的39人读对了。",
+  "Nothing was wrong with the readers, or with the data":
+    "读图的人没问题，数据也没问题",
+  "Forty other people, recruited the same way and shown the identical numbers with the vertical axis the usual way up, read the trend correctly 39 times out of 40. So the rise was not slight and the readers were not weak. Look too at how the other 38 got it wrong: just one of them said they could not tell, and 30 stated flatly that the quantity had declined:":
+    "另外四十个人以同样方式招募，看到的是完全相同的数字，只是纵轴方向正常，结果40人中有39人正确读出了趋势。可见上升幅度并不小，读图的人也不差。再看看另外38人是怎么错的：只有一个人说自己说不准，30个人斩钉截铁地说这个数量下降了。",
   "Both versions of the same numbers": "同一组数字的两个版本",
-  "That is the tell, and it is worth keeping. A chart that is merely hard makes people hesitate. They hedge, they split, they say they are not sure, and enough of them land on the right answer by accident that the score stays near what guessing would give. Scoring well below guessing is a different thing altogether, and it happens when a chart is perfectly legible and pointing the wrong way. Difficulty scatters answers. Steering lines them up.": "这正是关键的线索，值得记住。一张仅仅是难读的图表会让人犹豫。人们会含糊其辞，会出现分歧，会说自己拿不准，而且总有足够多的人蒙对，使正确率停留在瞎猜的水平附近。得分远低于瞎猜则完全是另一回事，它只会发生在图表清晰可读却指向错误方向的时候。难度会让答案分散，诱导则会让答案整齐地指向同一边。",
+  "That is the tell, and it is worth keeping. A chart that is merely hard makes people hesitate. They hedge, they split, they say they are not sure, and enough of them land on the right answer by accident that the score stays near what guessing would give. Scoring well below guessing is a different thing altogether, and it happens when a chart is perfectly legible and pointing the wrong way. Difficulty scatters answers. Steering lines them up.":
+    "这正是关键的线索，值得记住。一张仅仅是难读的图表会让人犹豫。人们会含糊其辞，会出现分歧，会说自己拿不准，而且总有足够多的人蒙对，使正确率停留在瞎猜的水平附近。得分远低于瞎猜则完全是另一回事，它只会发生在图表清晰可读却指向错误方向的时候。难度会让答案分散，诱导则会让答案整齐地指向同一边。",
   "What the other 40 saw": "另外40人看到的是什么",
   "Misleading chart axes": "具有误导性的图表坐标轴",
-  "An axis is a claim, not a container. Change how it runs and you do not make the chart harder to read, you change what a careful reader confidently concludes from it. Read the axis before you read the shape.": "坐标轴是一种主张，而不只是一个容器。改变它的方向，并不会让图表更难读，而是会改变一个细心的读者从中自信得出的结论。先读坐标轴，再读图形。",
-  "Note what this does and does not establish. It is one chart, one distortion and 78 paid online workers, not a representative public, and the chart was built for the experiment rather than lifted from a newspaper. What it does settle is the part people find hardest to believe: the effect is enormous, and it does not depend on the reader being careless or innumerate. The same readers, given the same numbers drawn honestly, were right almost every time.": "要分清这项研究确立了什么，又没有确立什么。它只涉及一张图表、一种扭曲手法和78名有偿的线上作业者，而不是具有代表性的公众，而且这张图是为实验专门制作的，并非取自报纸。但它确实说清了最难让人相信的那一点：这种效应极其巨大，而且并不取决于读者是否粗心或不擅长数字。同样这些读者，面对同样的数字诚实绘制的图表时，几乎每次都答对了。",
-  "Up means more. That mapping is fixed long before anyone reads a label, and it is doing the work of understanding a chart at a speed conscious checking cannot match: you take in the shape of a line in a single glance and the axis text a beat later, if at all. Invert the axis and the two disagree, and the glance wins. This is why the failure is so lopsided. It is not that people find the chart confusing and give up; it is that they read it fluently and arrive somewhere false, with no sense that anything needed checking. That is also why the effect survives expertise. Knowing about the trick does not stop the glance from happening, it only gives you a reason to go back and check afterwards. Axis distortions come in more than one flavour and they fail differently, which is worth keeping straight. Inverting an axis reverses the message: the reader concludes the opposite of the truth. Cutting the bottom off an axis, so bars start at some value well above zero instead of at zero, does not reverse anything, it exaggerates: a small real difference fills most of the frame and reads as a large one. The same study measured that second effect separately and found it substantial but milder, which fits, because an exaggerated gap is still a gap in the right direction. Stretching or squashing the shape of a line chart does the same kind of thing to a rate of change, making a gentle climb look like a spike or a spike look gentle. The defence is a habit rather than a skill, and it takes about two seconds. Before you look at the shape, look at the axis: find which way it runs, find where it starts, and check whether the starting point is zero. If the chart has no axis labels at all, that is the finding. And be most careful with the charts that confirm what you already think, because those are the ones you will read at a glance and never go back to.": "向上代表更多。这种对应关系在任何人读到标签之前就已经固定下来，并且以有意识的核对根本追不上的速度完成对图表的理解：你一眼就吸收了线条的形状，坐标轴上的文字要慢一拍才进来，甚至根本不会被读到。把坐标轴反转，两者就互相矛盾，而胜出的是那一眼。这正是失败为何如此一边倒的原因。并不是人们觉得图表看不懂而放弃，而是他们读得非常顺畅，却抵达了一个错误的地方，而且丝毫不觉得有什么需要核对。这也是这种效应为何能在专业训练面前存活。知道这个把戏并不能阻止那一眼发生，只是给了你事后回头核对的理由。坐标轴的扭曲不止一种，失败的方式也各不相同，值得分清楚。反转坐标轴会让信息颠倒：读者得出与事实相反的结论。把坐标轴的下端截掉，让柱子从远高于零的某个值开始而不是从零开始，则不会颠倒任何东西，而是夸大：一个微小的真实差异会填满画面的大部分，读起来就像一个巨大的差异。同一项研究单独测量了第二种效应，发现它相当可观但比反转温和，这说得通，因为被夸大的差距方向毕竟还是对的。把折线图的画面拉长或压扁，对变化速率会造成同样的事情，让平缓的上升看起来像暴涨，或者让暴涨看起来平缓。防范之道与其说是一项技能，不如说是一个习惯，只需大约两秒钟。在看图形之前先看坐标轴：看清它朝哪个方向走，从哪里开始，起点是不是零。如果这张图连坐标轴标签都没有，那本身就是结论。而且，对那些印证了你既有想法的图表要格外小心，因为你恰恰会一眼扫过它们，再也不回头看。",
+  "An axis is a claim, not a container. Change how it runs and you do not make the chart harder to read, you change what a careful reader confidently concludes from it. Read the axis before you read the shape.":
+    "坐标轴是一种主张，而不只是一个容器。改变它的方向，并不会让图表更难读，而是会改变一个细心的读者从中自信得出的结论。先读坐标轴，再读图形。",
+  "Note what this does and does not establish. It is one chart, one distortion and 78 paid online workers, not a representative public, and the chart was built for the experiment rather than lifted from a newspaper. What it does settle is the part people find hardest to believe: the effect is enormous, and it does not depend on the reader being careless or innumerate. The same readers, given the same numbers drawn honestly, were right almost every time.":
+    "要分清这项研究确立了什么，又没有确立什么。它只涉及一张图表、一种扭曲手法和78名有偿的线上作业者，而不是具有代表性的公众，而且这张图是为实验专门制作的，并非取自报纸。但它确实说清了最难让人相信的那一点：这种效应极其巨大，而且并不取决于读者是否粗心或不擅长数字。同样这些读者，面对同样的数字诚实绘制的图表时，几乎每次都答对了。",
+  "Up means more. That mapping is fixed long before anyone reads a label, and it is doing the work of understanding a chart at a speed conscious checking cannot match: you take in the shape of a line in a single glance and the axis text a beat later, if at all. Invert the axis and the two disagree, and the glance wins. This is why the failure is so lopsided. It is not that people find the chart confusing and give up; it is that they read it fluently and arrive somewhere false, with no sense that anything needed checking. That is also why the effect survives expertise. Knowing about the trick does not stop the glance from happening, it only gives you a reason to go back and check afterwards. Axis distortions come in more than one flavour and they fail differently, which is worth keeping straight. Inverting an axis reverses the message: the reader concludes the opposite of the truth. Cutting the bottom off an axis, so bars start at some value well above zero instead of at zero, does not reverse anything, it exaggerates: a small real difference fills most of the frame and reads as a large one. The same study measured that second effect separately and found it substantial but milder, which fits, because an exaggerated gap is still a gap in the right direction. Stretching or squashing the shape of a line chart does the same kind of thing to a rate of change, making a gentle climb look like a spike or a spike look gentle. The defence is a habit rather than a skill, and it takes about two seconds. Before you look at the shape, look at the axis: find which way it runs, find where it starts, and check whether the starting point is zero. If the chart has no axis labels at all, that is the finding. And be most careful with the charts that confirm what you already think, because those are the ones you will read at a glance and never go back to.":
+    "向上代表更多。这种对应关系在任何人读到标签之前就已经固定下来，并且以有意识的核对根本追不上的速度完成对图表的理解：你一眼就吸收了线条的形状，坐标轴上的文字要慢一拍才进来，甚至根本不会被读到。把坐标轴反转，两者就互相矛盾，而胜出的是那一眼。这正是失败为何如此一边倒的原因。并不是人们觉得图表看不懂而放弃，而是他们读得非常顺畅，却抵达了一个错误的地方，而且丝毫不觉得有什么需要核对。这也是这种效应为何能在专业训练面前存活。知道这个把戏并不能阻止那一眼发生，只是给了你事后回头核对的理由。坐标轴的扭曲不止一种，失败的方式也各不相同，值得分清楚。反转坐标轴会让信息颠倒：读者得出与事实相反的结论。把坐标轴的下端截掉，让柱子从远高于零的某个值开始而不是从零开始，则不会颠倒任何东西，而是夸大：一个微小的真实差异会填满画面的大部分，读起来就像一个巨大的差异。同一项研究单独测量了第二种效应，发现它相当可观但比反转温和，这说得通，因为被夸大的差距方向毕竟还是对的。把折线图的画面拉长或压扁，对变化速率会造成同样的事情，让平缓的上升看起来像暴涨，或者让暴涨看起来平缓。防范之道与其说是一项技能，不如说是一个习惯，只需大约两秒钟。在看图形之前先看坐标轴：看清它朝哪个方向走，从哪里开始，起点是不是零。如果这张图连坐标轴标签都没有，那本身就是结论。而且，对那些印证了你既有想法的图表要格外小心，因为你恰恰会一眼扫过它们，再也不回头看。",
   "The gentler trick in the same experiment": "同一实验中更温和的那个把戏",
-  "The same researchers tested cutting the bottom off an axis rather than flipping it. Readers saw a bar chart comparing two places, either with the axis starting at zero or with it starting high enough that a small real difference filled the frame, and rated how much bigger one was than the other on a scale of 1 to 5. The group given the truncated axis averaged 2.77; the group given the honest one averaged 1.45. The gap held up statistically, but notice how it differs from the inverted axis: nobody was led to the opposite conclusion, only to a wildly inflated sense of how big the difference was. Reversal and exaggeration are two distinct failures, and the second is far more common in the wild because it can happen entirely by accident.": "同一批研究者还测试了截掉坐标轴下端、而不是把它翻转的做法。读者看到的是比较两个地方的柱状图，纵轴要么从零开始，要么从足够高的位置开始，使一个微小的真实差异填满整个画面，然后请他们在1到5的量表上评价一个比另一个大多少。看到截断坐标轴的那一组平均给出2.77分，看到诚实版本的那一组平均给出1.45分。这个差距在统计上是站得住的，但请注意它与反转坐标轴的不同：没有人被引向相反的结论，只是对差异有多大产生了严重夸张的印象。反转和夸大是两种不同的失败，而后者在现实中常见得多，因为它完全可能是无心之失。",
-  "Misleading chart axes, a reasoning trap.": "具有误导性的图表坐标轴，一种推理陷阱。",
-  "You do not really read a chart, you glance at it. Up means more, and that lands before the axis labels do. So when researchers took a chart of something steadily improving and simply turned the vertical axis upside down, the people who saw it did not get confused and did not give up: 30 of 38 confidently reported the opposite of what the numbers said, and exactly one admitted to being unsure. Shown the same numbers drawn the normal way up, 39 of 40 got it right. Nothing about the data changed, and nothing about the readers changed. Before you read the shape of a chart, spend two seconds on the axis: which way does it run, and where does it start?": "你其实并没有在读图表，你只是扫了一眼。向上代表更多，这个感觉比坐标轴标签先一步到达。所以，当研究者把一张显示某事物稳步改善的图表的纵轴单纯上下颠倒之后，看到它的人既没有困惑，也没有放弃：38人中有30人自信地报告了与数字所说完全相反的内容，而承认自己拿不准的恰好只有一个人。面对以正常方向绘制的同样数字，40人中有39人答对了。数据没有任何变化，读图的人也没有任何变化。在读一张图的形状之前，请花两秒钟看看坐标轴：它朝哪个方向走，又从哪里开始？",
-  "A between-subjects experiment run on Amazon Mechanical Turk with workers who reported a United States location and had a prior task approval rate of 99 percent or better. Eighty people were recruited for this arm and 78 passed the attention check, leaving groups of 40 and 38. The chart plotted access to safe drinking water over time in invented places, so the stimulus carries no real country, party or contested science; the true trend was an improvement, and the inverted axis gave the impression of a decline. The difference was tested with the Freeman-Halton extension of Fisher's exact test, which is the version for a table with more than two response categories, at p < 0.0001. Two slips in the paper are worth flagging, because both trip a quick reader. Table 3 prints the single uncertain response in the inverted-axis group as 0.02 percent, where 1 of 38 is 2.63 percent, which is also what makes that row sum to 100. And the discussion section restates the result with the two conditions swapped and the correct percentages labelled as incorrect. The table and the results text agree with each other, and this puzzle follows them.": "这是一项在 Amazon Mechanical Turk 上开展的组间实验，参与者自报身处美国，且以往任务通过率不低于99%。这一部分共招募了80人，其中78人通过了注意力检验，形成40人和38人两组。图表呈现的是虚构地名中安全饮用水普及率随时间的变化，因此实验材料不涉及任何真实国家、任何政党或任何有争议的科学；真实的趋势是改善，而反转的坐标轴给人以下降的印象。差异检验使用了费希尔精确检验的弗里曼-哈尔顿扩展，即适用于回答类别多于两类的列联表的版本，p < 0.0001。论文中有两处疏漏值得指出，因为两处都会让读得快的人栽跟头。表3把反转组中唯一一个「说不准」的回答印成了0.02%，而38分之1是2.63%，也只有这样那一行才能加总到100。此外，讨论部分在复述结果时把两个条件对调了，还把正确率标注成了错误率。表格与结果正文彼此一致，本谜题依据的正是它们。",
-  "A safety report charts workplace injuries by year, with the vertical axis running from 0 at the top down to 500 at the bottom. The plotted line climbs steadily up the page across five years. A local paper reports that injuries have risen sharply.": "一份安全报告按年份绘制工伤事故数量，纵轴从顶端的0一直到底端的500。所绘的线在五年间稳步向页面上方攀升。一家地方报纸报道说工伤事故大幅上升。",
-  "With zero at the top, a line climbing the page is a count falling towards zero. The paper read the shape of the line and not the direction of the axis, and printed the opposite of what the chart shows.": "零在顶端，因此向页面上方攀升的线代表数量正在向零下降。这家报纸只读了线条的形状，没有读坐标轴的方向，于是印出了与图表所示完全相反的结论。",
-  "Two schools' average exam marks are drawn as bars on a vertical axis running from 68 to 72. One bar is more than twice the height of the other, and a campaign leaflet says the first school performs twice as well.": "两所学校的考试平均分被画成柱子，纵轴从68到72。其中一根柱子的高度是另一根的两倍多，一份宣传单据此声称第一所学校的成绩好一倍。",
-  "The two averages differ by about two marks out of a hundred. Starting the axis at 68 cuts away everything the schools have in common, so the remaining sliver fills the frame. Bar heights are only ratios when the axis starts at zero.": "两个平均分在百分制下相差约两分。让坐标轴从68开始，就把两所学校共有的部分全部切掉了，剩下的那一小条便填满了整个画面。只有当坐标轴从零开始时，柱子的高度才代表比例。",
-  "A company plots monthly revenue on a chart four times taller than it is wide. The line looks close to vertical and the annual report describes explosive growth. Drawn on a square chart, the identical figures rise gently.": "某公司把月度营收画在一张高是宽四倍的图上。线条看起来近乎垂直，年报称之为爆发式增长。同样的数字画在正方形的图上，只是平缓上升。",
-  "The same numbers cannot be both explosive and gentle. Steepness is a property of the frame a line is drawn in as much as of the data, so a rate of change read off the slope alone is not a measurement.": "同样的数字不可能既是爆发式的又是平缓的。陡峭程度既取决于数据，也同样取决于线条被画进的那个画框，因此仅凭斜率读出的变化速率并不是一项测量。",
-  "An infographic shows two bars, one clearly taller than the other, above a caption stating that the difference is dramatic. The vertical axis carries no numbers and no label.": "一张信息图展示了两根柱子，其中一根明显比另一根高，下方的说明文字称这一差异极为惊人。纵轴上既没有数字，也没有标签。",
-  "With no scale the bars say nothing about size: the gap could be one percent or a hundredfold. An unlabelled axis turns an assertion into something drawn to look like evidence.": "没有刻度，柱子就完全说明不了大小：这个差距可能是百分之一，也可能是一百倍。没有标签的坐标轴，会把一个主张变成看起来像证据的东西。",
-  "A chart plots ice cream sales against a left-hand axis and library visits against a right-hand one, each scaled so the two lines sit almost on top of each other. The commentary says the two track each other almost perfectly.": "一张图把冰淇淋销量画在左侧坐标轴上，把图书馆到访人次画在右侧坐标轴上，两轴的刻度各自调整到让两条线几乎重合。评论称两者的走势几乎完全一致。",
-  "Two independent axes can be scaled to make almost any pair of series overlap, and rescaling either one pulls the lines apart again. How closely they sit is a choice made by whoever drew the chart, not a finding.": "两条互相独立的坐标轴，几乎总能通过调整刻度让任意一对数据序列重合，而只要重新调整其中任何一条，两条线就又会分开。它们靠得有多近，是画图者的选择，而不是一项发现。",
-  "A chart of cases over time uses a vertical axis where each gridline is ten times the one below it. The curve rises as a straight line, and a summary describes growth as steady.": "一张病例随时间变化的图，其纵轴上每一条网格线都是下面一条的十倍。曲线呈一条直线上升，而摘要把这种增长描述为平稳。",
-  "On a scale where each step multiplies by ten, a straight line means the count is multiplying at a constant rate, so it is doubling again and again. That is the fastest kind of growth there is, and the summary read the shape as if the axis were an ordinary one.": "在每一格都乘以十的刻度上，一条直线意味着数量正在以恒定的倍率增长，也就是一次又一次地翻倍。这是世上最快的增长方式，而这份摘要把坐标轴当成普通坐标轴来读形状了。",
-  "A regulator draws two regions' contamination readings as bars on an axis running from 0 to 10,000, although both regions sit between 40 and 90. The bars are indistinguishable, and the report concludes there is no meaningful difference between them.": "某监管机构把两个地区的污染读数画成柱子，坐标轴从0到10,000，而两个地区的读数其实都在40到90之间。柱子看不出区别，报告因此得出结论说两地之间没有实质差异。",
-  "One region reads about twice the other, and the chart has flattened that into invisibility by running the axis far past anything in the data. An axis can bury a real difference as easily as it can manufacture a fake one.": "一个地区的读数约为另一个的两倍，而这张图把坐标轴一路拉到远超数据中任何数值的地方，硬是把这个差异压平到看不见。坐标轴既能凭空制造一个假的差异，也同样容易把一个真实的差异埋掉。",
-  "A customer satisfaction tracker is charted on a vertical axis running from 44 to 48 percent. The line zigzags violently from the top of the frame to the bottom and back, and a commentary describes wild swings in how customers feel.": "一份客户满意度追踪数据被画在从44%到48%的纵轴上。线条从画面顶端到底端剧烈地来回锯齿状波动，一段评论据此描述客户感受出现了剧烈起伏。",
-  "The whole chart is four points tall, so a movement of a point or so, which is inside the noise of most surveys, crosses the entire frame. The violence is in the axis rather than in the customers.": "整张图只有四个百分点高，因此哪怕只有一个百分点左右的变动，也就是大多数调查的噪声范围之内的变动，都会横穿整个画面。剧烈的是坐标轴，而不是客户。",
-  "A hospital dashboard shows average waiting times with the vertical axis running from 120 minutes at the top down to 0 at the bottom. The bars for the newest quarter are the tallest on the chart, and the newsletter reports the longest waits on record.": "某医院的仪表板显示平均候诊时间，纵轴从顶端的120分钟到底端的0分钟。最近一个季度的柱子是全图最高的，院刊据此报道候诊时间创下历史最长纪录。",
-  "The axis is upside down, so the tallest bar is the shortest wait. The newsletter took height to mean magnitude, which is exactly the reflex this layout defeats.": "坐标轴是上下颠倒的，所以最高的柱子恰恰是最短的候诊时间。院刊把高度当成了大小，而这正是这种版式所利用的下意识反应。",
-  "A chart of quarterly sales has a zigzag break drawn low on the vertical axis, marking a stretch of the scale that has been left out. A slide deck reproduces the chart with the break cropped off the bottom and presents the remaining bars as showing sales tripling.": "一张季度销售额图表的纵轴下方画有一个锯齿状的断裂符号，标示出被略去的一段刻度。某份幻灯片转载这张图时把底部的断裂符号裁掉了，并把剩下的柱子当作销售额翻了三倍的证据。",
-  "The break was the chart's own warning that its heights are not proportional to its numbers. Cropping it away leaves bars that look like a ratio and are not one.": "那个断裂符号正是图表对自己发出的警告：柱高与数字并不成比例。把它裁掉之后，剩下的柱子看起来像一个比例，实际上却不是。",
-  "A league table is charted with position 1 at the top of the vertical axis and position 20 at the bottom, the axis labelled Position, so a line climbing the page is a team climbing the table.": "一张联赛积分榜以纵轴顶端为第1名、底端为第20名绘制，坐标轴标注为「名次」，因此一条向页面上方攀升的线代表某支球队排名正在上升。",
-  "The axis runs downwards because that is what the quantity means: first place is the top. The direction is labelled and agrees with the reader's intuition rather than fighting it, so nothing is being reversed.": "坐标轴向下延伸，是因为这个量本身就是这个意思：第一名就是最高。方向已经标注出来，而且顺应读者的直觉而非与之作对，所以并没有什么被反转。",
-  "A chart of body temperature through a day starts its vertical axis at 36 degrees rather than zero, prints the range on the axis, and the text reports the change in degrees rather than describing how tall the line got.": "一张一整天体温变化的图，纵轴从36度而不是零开始，并在轴上标明了范围，正文以度数报告变化幅度，而不是描述线条升到了多高。",
-  "A zero baseline would be meaningless for a quantity that never goes near zero, and the claim is made in units rather than read off the height. The axis is doing its job and saying what it did.": "对于一个从不接近零的量来说，以零为基准毫无意义，而且结论是以单位表述的，不是从高度上读出来的。这条坐标轴既尽了本分，也说清了自己做了什么。",
-  "An epidemic curve is drawn on a scale where each gridline is ten times the last, the axis says so in its label, and the accompanying text states that cases are doubling every nine days.": "一条流行病曲线画在每一条网格线都是前一条十倍的刻度上，坐标轴的标签对此作了说明，随附的正文指出病例数每九天翻一番。",
-  "The scale is declared and the finding is given as a doubling time, a number the reader can check, rather than inferred from how steep the line looks. That is the right way to use a multiplying axis.": "刻度已经声明，而结论是以翻倍时间这个读者可以核对的数字给出的，而不是从线条看起来有多陡推断出来的。这才是使用倍增坐标轴的正确方式。",
-  "A report prints the same figures twice, once on an axis starting at zero and once zoomed in on the range the data actually occupies, and says which question each version is there to answer.": "一份报告把同一组数字印了两遍，一遍用从零开始的坐标轴，一遍聚焦在数据实际所处的区间上，并说明每个版本各自是为了回答什么问题。",
-  "Both framings are true and they answer different questions, one about the size of the difference and one about its shape. Showing both means the reader is not depending on someone else's choice of scale.": "两种呈现方式都是真实的，只是回答的问题不同，一个关于差异有多大，一个关于差异的形状。两个都给出来，读者就不必依赖别人替他挑好的刻度了。",
+  "The same researchers tested cutting the bottom off an axis rather than flipping it. Readers saw a bar chart comparing two places, either with the axis starting at zero or with it starting high enough that a small real difference filled the frame, and rated how much bigger one was than the other on a scale of 1 to 5. The group given the truncated axis averaged 2.77; the group given the honest one averaged 1.45. The gap held up statistically, but notice how it differs from the inverted axis: nobody was led to the opposite conclusion, only to a wildly inflated sense of how big the difference was. Reversal and exaggeration are two distinct failures, and the second is far more common in the wild because it can happen entirely by accident.":
+    "同一批研究者还测试了截掉坐标轴下端、而不是把它翻转的做法。读者看到的是比较两个地方的柱状图，纵轴要么从零开始，要么从足够高的位置开始，使一个微小的真实差异填满整个画面，然后请他们在1到5的量表上评价一个比另一个大多少。看到截断坐标轴的那一组平均给出2.77分，看到诚实版本的那一组平均给出1.45分。这个差距在统计上是站得住的，但请注意它与反转坐标轴的不同：没有人被引向相反的结论，只是对差异有多大产生了严重夸张的印象。反转和夸大是两种不同的失败，而后者在现实中常见得多，因为它完全可能是无心之失。",
+  "Misleading chart axes, a reasoning trap.":
+    "具有误导性的图表坐标轴，一种推理陷阱。",
+  "You do not really read a chart, you glance at it. Up means more, and that lands before the axis labels do. So when researchers took a chart of something steadily improving and simply turned the vertical axis upside down, the people who saw it did not get confused and did not give up: 30 of 38 confidently reported the opposite of what the numbers said, and exactly one admitted to being unsure. Shown the same numbers drawn the normal way up, 39 of 40 got it right. Nothing about the data changed, and nothing about the readers changed. Before you read the shape of a chart, spend two seconds on the axis: which way does it run, and where does it start?":
+    "你其实并没有在读图表，你只是扫了一眼。向上代表更多，这个感觉比坐标轴标签先一步到达。所以，当研究者把一张显示某事物稳步改善的图表的纵轴单纯上下颠倒之后，看到它的人既没有困惑，也没有放弃：38人中有30人自信地报告了与数字所说完全相反的内容，而承认自己拿不准的恰好只有一个人。面对以正常方向绘制的同样数字，40人中有39人答对了。数据没有任何变化，读图的人也没有任何变化。在读一张图的形状之前，请花两秒钟看看坐标轴：它朝哪个方向走，又从哪里开始？",
+  "A between-subjects experiment run on Amazon Mechanical Turk with workers who reported a United States location and had a prior task approval rate of 99 percent or better. Eighty people were recruited for this arm and 78 passed the attention check, leaving groups of 40 and 38. The chart plotted access to safe drinking water over time in invented places, so the stimulus carries no real country, party or contested science; the true trend was an improvement, and the inverted axis gave the impression of a decline. The difference was tested with the Freeman-Halton extension of Fisher's exact test, which is the version for a table with more than two response categories, at p < 0.0001. Two slips in the paper are worth flagging, because both trip a quick reader. Table 3 prints the single uncertain response in the inverted-axis group as 0.02 percent, where 1 of 38 is 2.63 percent, which is also what makes that row sum to 100. And the discussion section restates the result with the two conditions swapped and the correct percentages labelled as incorrect. The table and the results text agree with each other, and this puzzle follows them.":
+    "这是一项在 Amazon Mechanical Turk 上开展的组间实验，参与者自报身处美国，且以往任务通过率不低于99%。这一部分共招募了80人，其中78人通过了注意力检验，形成40人和38人两组。图表呈现的是虚构地名中安全饮用水普及率随时间的变化，因此实验材料不涉及任何真实国家、任何政党或任何有争议的科学；真实的趋势是改善，而反转的坐标轴给人以下降的印象。差异检验使用了费希尔精确检验的弗里曼-哈尔顿扩展，即适用于回答类别多于两类的列联表的版本，p < 0.0001。论文中有两处疏漏值得指出，因为两处都会让读得快的人栽跟头。表3把反转组中唯一一个「说不准」的回答印成了0.02%，而38分之1是2.63%，也只有这样那一行才能加总到100。此外，讨论部分在复述结果时把两个条件对调了，还把正确率标注成了错误率。表格与结果正文彼此一致，本谜题依据的正是它们。",
+  "A safety report charts workplace injuries by year, with the vertical axis running from 0 at the top down to 500 at the bottom. The plotted line climbs steadily up the page across five years. A local paper reports that injuries have risen sharply.":
+    "一份安全报告按年份绘制工伤事故数量，纵轴从顶端的0一直到底端的500。所绘的线在五年间稳步向页面上方攀升。一家地方报纸报道说工伤事故大幅上升。",
+  "With zero at the top, a line climbing the page is a count falling towards zero. The paper read the shape of the line and not the direction of the axis, and printed the opposite of what the chart shows.":
+    "零在顶端，因此向页面上方攀升的线代表数量正在向零下降。这家报纸只读了线条的形状，没有读坐标轴的方向，于是印出了与图表所示完全相反的结论。",
+  "Two schools' average exam marks are drawn as bars on a vertical axis running from 68 to 72. One bar is more than twice the height of the other, and a campaign leaflet says the first school performs twice as well.":
+    "两所学校的考试平均分被画成柱子，纵轴从68到72。其中一根柱子的高度是另一根的两倍多，一份宣传单据此声称第一所学校的成绩好一倍。",
+  "The two averages differ by about two marks out of a hundred. Starting the axis at 68 cuts away everything the schools have in common, so the remaining sliver fills the frame. Bar heights are only ratios when the axis starts at zero.":
+    "两个平均分在百分制下相差约两分。让坐标轴从68开始，就把两所学校共有的部分全部切掉了，剩下的那一小条便填满了整个画面。只有当坐标轴从零开始时，柱子的高度才代表比例。",
+  "A company plots monthly revenue on a chart four times taller than it is wide. The line looks close to vertical and the annual report describes explosive growth. Drawn on a square chart, the identical figures rise gently.":
+    "某公司把月度营收画在一张高是宽四倍的图上。线条看起来近乎垂直，年报称之为爆发式增长。同样的数字画在正方形的图上，只是平缓上升。",
+  "The same numbers cannot be both explosive and gentle. Steepness is a property of the frame a line is drawn in as much as of the data, so a rate of change read off the slope alone is not a measurement.":
+    "同样的数字不可能既是爆发式的又是平缓的。陡峭程度既取决于数据，也同样取决于线条被画进的那个画框，因此仅凭斜率读出的变化速率并不是一项测量。",
+  "An infographic shows two bars, one clearly taller than the other, above a caption stating that the difference is dramatic. The vertical axis carries no numbers and no label.":
+    "一张信息图展示了两根柱子，其中一根明显比另一根高，下方的说明文字称这一差异极为惊人。纵轴上既没有数字，也没有标签。",
+  "With no scale the bars say nothing about size: the gap could be one percent or a hundredfold. An unlabelled axis turns an assertion into something drawn to look like evidence.":
+    "没有刻度，柱子就完全说明不了大小：这个差距可能是百分之一，也可能是一百倍。没有标签的坐标轴，会把一个主张变成看起来像证据的东西。",
+  "A chart plots ice cream sales against a left-hand axis and library visits against a right-hand one, each scaled so the two lines sit almost on top of each other. The commentary says the two track each other almost perfectly.":
+    "一张图把冰淇淋销量画在左侧坐标轴上，把图书馆到访人次画在右侧坐标轴上，两轴的刻度各自调整到让两条线几乎重合。评论称两者的走势几乎完全一致。",
+  "Two independent axes can be scaled to make almost any pair of series overlap, and rescaling either one pulls the lines apart again. How closely they sit is a choice made by whoever drew the chart, not a finding.":
+    "两条互相独立的坐标轴，几乎总能通过调整刻度让任意一对数据序列重合，而只要重新调整其中任何一条，两条线就又会分开。它们靠得有多近，是画图者的选择，而不是一项发现。",
+  "A chart of cases over time uses a vertical axis where each gridline is ten times the one below it. The curve rises as a straight line, and a summary describes growth as steady.":
+    "一张病例随时间变化的图，其纵轴上每一条网格线都是下面一条的十倍。曲线呈一条直线上升，而摘要把这种增长描述为平稳。",
+  "On a scale where each step multiplies by ten, a straight line means the count is multiplying at a constant rate, so it is doubling again and again. That is the fastest kind of growth there is, and the summary read the shape as if the axis were an ordinary one.":
+    "在每一格都乘以十的刻度上，一条直线意味着数量正在以恒定的倍率增长，也就是一次又一次地翻倍。这是世上最快的增长方式，而这份摘要把坐标轴当成普通坐标轴来读形状了。",
+  "A regulator draws two regions' contamination readings as bars on an axis running from 0 to 10,000, although both regions sit between 40 and 90. The bars are indistinguishable, and the report concludes there is no meaningful difference between them.":
+    "某监管机构把两个地区的污染读数画成柱子，坐标轴从0到10,000，而两个地区的读数其实都在40到90之间。柱子看不出区别，报告因此得出结论说两地之间没有实质差异。",
+  "One region reads about twice the other, and the chart has flattened that into invisibility by running the axis far past anything in the data. An axis can bury a real difference as easily as it can manufacture a fake one.":
+    "一个地区的读数约为另一个的两倍，而这张图把坐标轴一路拉到远超数据中任何数值的地方，硬是把这个差异压平到看不见。坐标轴既能凭空制造一个假的差异，也同样容易把一个真实的差异埋掉。",
+  "A customer satisfaction tracker is charted on a vertical axis running from 44 to 48 percent. The line zigzags violently from the top of the frame to the bottom and back, and a commentary describes wild swings in how customers feel.":
+    "一份客户满意度追踪数据被画在从44%到48%的纵轴上。线条从画面顶端到底端剧烈地来回锯齿状波动，一段评论据此描述客户感受出现了剧烈起伏。",
+  "The whole chart is four points tall, so a movement of a point or so, which is inside the noise of most surveys, crosses the entire frame. The violence is in the axis rather than in the customers.":
+    "整张图只有四个百分点高，因此哪怕只有一个百分点左右的变动，也就是大多数调查的噪声范围之内的变动，都会横穿整个画面。剧烈的是坐标轴，而不是客户。",
+  "A hospital dashboard shows average waiting times with the vertical axis running from 120 minutes at the top down to 0 at the bottom. The bars for the newest quarter are the tallest on the chart, and the newsletter reports the longest waits on record.":
+    "某医院的仪表板显示平均候诊时间，纵轴从顶端的120分钟到底端的0分钟。最近一个季度的柱子是全图最高的，院刊据此报道候诊时间创下历史最长纪录。",
+  "The axis is upside down, so the tallest bar is the shortest wait. The newsletter took height to mean magnitude, which is exactly the reflex this layout defeats.":
+    "坐标轴是上下颠倒的，所以最高的柱子恰恰是最短的候诊时间。院刊把高度当成了大小，而这正是这种版式所利用的下意识反应。",
+  "A chart of quarterly sales has a zigzag break drawn low on the vertical axis, marking a stretch of the scale that has been left out. A slide deck reproduces the chart with the break cropped off the bottom and presents the remaining bars as showing sales tripling.":
+    "一张季度销售额图表的纵轴下方画有一个锯齿状的断裂符号，标示出被略去的一段刻度。某份幻灯片转载这张图时把底部的断裂符号裁掉了，并把剩下的柱子当作销售额翻了三倍的证据。",
+  "The break was the chart's own warning that its heights are not proportional to its numbers. Cropping it away leaves bars that look like a ratio and are not one.":
+    "那个断裂符号正是图表对自己发出的警告：柱高与数字并不成比例。把它裁掉之后，剩下的柱子看起来像一个比例，实际上却不是。",
+  "A league table is charted with position 1 at the top of the vertical axis and position 20 at the bottom, the axis labelled Position, so a line climbing the page is a team climbing the table.":
+    "一张联赛积分榜以纵轴顶端为第1名、底端为第20名绘制，坐标轴标注为「名次」，因此一条向页面上方攀升的线代表某支球队排名正在上升。",
+  "The axis runs downwards because that is what the quantity means: first place is the top. The direction is labelled and agrees with the reader's intuition rather than fighting it, so nothing is being reversed.":
+    "坐标轴向下延伸，是因为这个量本身就是这个意思：第一名就是最高。方向已经标注出来，而且顺应读者的直觉而非与之作对，所以并没有什么被反转。",
+  "A chart of body temperature through a day starts its vertical axis at 36 degrees rather than zero, prints the range on the axis, and the text reports the change in degrees rather than describing how tall the line got.":
+    "一张一整天体温变化的图，纵轴从36度而不是零开始，并在轴上标明了范围，正文以度数报告变化幅度，而不是描述线条升到了多高。",
+  "A zero baseline would be meaningless for a quantity that never goes near zero, and the claim is made in units rather than read off the height. The axis is doing its job and saying what it did.":
+    "对于一个从不接近零的量来说，以零为基准毫无意义，而且结论是以单位表述的，不是从高度上读出来的。这条坐标轴既尽了本分，也说清了自己做了什么。",
+  "An epidemic curve is drawn on a scale where each gridline is ten times the last, the axis says so in its label, and the accompanying text states that cases are doubling every nine days.":
+    "一条流行病曲线画在每一条网格线都是前一条十倍的刻度上，坐标轴的标签对此作了说明，随附的正文指出病例数每九天翻一番。",
+  "The scale is declared and the finding is given as a doubling time, a number the reader can check, rather than inferred from how steep the line looks. That is the right way to use a multiplying axis.":
+    "刻度已经声明，而结论是以翻倍时间这个读者可以核对的数字给出的，而不是从线条看起来有多陡推断出来的。这才是使用倍增坐标轴的正确方式。",
+  "A report prints the same figures twice, once on an axis starting at zero and once zoomed in on the range the data actually occupies, and says which question each version is there to answer.":
+    "一份报告把同一组数字印了两遍，一遍用从零开始的坐标轴，一遍聚焦在数据实际所处的区间上，并说明每个版本各自是为了回答什么问题。",
+  "Both framings are true and they answer different questions, one about the size of the difference and one about its shape. Showing both means the reader is not depending on someone else's choice of scale.":
+    "两种呈现方式都是真实的，只是回答的问题不同，一个关于差异有多大，一个关于差异的形状。两个都给出来，读者就不必依赖别人替他挑好的刻度了。",
 
   // ---- Mean versus median ----
-  "Survival is counted from the day you are diagnosed. So a test that finds a disease earlier automatically makes survival look longer, even if it changes nothing about when the disease kills you. You simply spend more of your life as a patient. That is why a screening programme can raise five-year survival dramatically while exactly the same number of people die. None of which means screening is useless: some programmes genuinely do cut deaths, and this is exactly how you tell which ones. Count deaths in everyone invited, not survival among the diagnosed.": "生存期是从确诊那天开始计算的。因此，一项能更早发现疾病的检查会自动让生存期看起来更长，哪怕它完全没有改变疾病夺走生命的时间。你只是把人生中更长的一段时间过成了病人而已。这就是为什么一个筛查项目可以让五年生存率大幅上升，而死亡的人数分毫未变。但这绝不意味着筛查毫无用处：确实有一些项目真正降低了死亡，而分辨哪些项目做到了，靠的正是这个方法。去数所有被邀请者中的死亡人数，而不是已确诊者中的生存期。",
-  "A journal's impact factor is just the average citations its papers got. Science scored 34.7.": "一本期刊的影响因子，不过是它所刊论文获得引用次数的平均值。Science 是34.7。",
-  "The impact factor is an arithmetic mean and nothing more: take every paper a journal published in two years, count the citations each one picked up the following year, and average them. For Science that came to 34.7. Two things are worth holding on to before you answer. A paper cannot be cited fewer than zero times, so there is a floor. And the citations run over two to three orders of magnitude, so a handful of papers are cited hundreds or thousands of times while most are cited a few.": "影响因子无非就是一个算术平均：把一本期刊两年内发表的全部论文拿来，数一数每篇在次年获得了多少引用，然后求平均。对 Science 来说，这个数是34.7。回答之前有两件事值得记住。一篇论文的被引次数不可能少于零，所以存在一个下限。而引用次数的跨度有两到三个数量级，因此少数论文被引用几百甚至几千次，而多数只被引用几次。",
-  "What share of Science papers actually reached that average of 34.7?": "Science 的论文中，真正达到34.7这个平均值的占多大比例？",
-  "Citations per paper against the journal's own average": "每篇论文的引用数，对照期刊自身的平均值",
+  "Survival is counted from the day you are diagnosed. So a test that finds a disease earlier automatically makes survival look longer, even if it changes nothing about when the disease kills you. You simply spend more of your life as a patient. That is why a screening programme can raise five-year survival dramatically while exactly the same number of people die. None of which means screening is useless: some programmes genuinely do cut deaths, and this is exactly how you tell which ones. Count deaths in everyone invited, not survival among the diagnosed.":
+    "生存期是从确诊那天开始计算的。因此，一项能更早发现疾病的检查会自动让生存期看起来更长，哪怕它完全没有改变疾病夺走生命的时间。你只是把人生中更长的一段时间过成了病人而已。这就是为什么一个筛查项目可以让五年生存率大幅上升，而死亡的人数分毫未变。但这绝不意味着筛查毫无用处：确实有一些项目真正降低了死亡，而分辨哪些项目做到了，靠的正是这个方法。去数所有被邀请者中的死亡人数，而不是已确诊者中的生存期。",
+  "A journal's impact factor is just the average citations its papers got. Science scored 34.7.":
+    "一本期刊的影响因子，不过是它所刊论文获得引用次数的平均值。Science 是34.7。",
+  "The impact factor is an arithmetic mean and nothing more: take every paper a journal published in two years, count the citations each one picked up the following year, and average them. For Science that came to 34.7. Two things are worth holding on to before you answer. A paper cannot be cited fewer than zero times, so there is a floor. And the citations run over two to three orders of magnitude, so a handful of papers are cited hundreds or thousands of times while most are cited a few.":
+    "影响因子无非就是一个算术平均：把一本期刊两年内发表的全部论文拿来，数一数每篇在次年获得了多少引用，然后求平均。对 Science 来说，这个数是34.7。回答之前有两件事值得记住。一篇论文的被引次数不可能少于零，所以存在一个下限。而引用次数的跨度有两到三个数量级，因此少数论文被引用几百甚至几千次，而多数只被引用几次。",
+  "What share of Science papers actually reached that average of 34.7?":
+    "Science 的论文中，真正达到34.7这个平均值的占多大比例？",
+  "Citations per paper against the journal's own average":
+    "每篇论文的引用数，对照期刊自身的平均值",
   "papers published in 2013 and 2014": "2013年和2014年发表的论文",
-  "The average is citations received during 2015 by papers published in 2013 and 2014.": "这个平均值指的是2013年和2014年发表的论文在2015年内获得的引用次数。",
-  "Average citations per paper, as published": "每篇论文的平均引用数，按已发表的数据",
+  "The average is citations received during 2015 by papers published in 2013 and 2014.":
+    "这个平均值指的是2013年和2014年发表的论文在2015年内获得的引用次数。",
+  "Average citations per paper, as published":
+    "每篇论文的平均引用数，按已发表的数据",
   "below their own journal's average": "低于自己所在期刊的平均值",
   "reached it": "达到了平均值",
-  "These are the percentages the source printed, not counts. The share reaching the average is derived from the share below it, so the two always account for every paper.": "这些是原始文献印出的百分比，不是计数。达到平均值的那部分比例是由低于平均值的比例推导出来的，因此两者始终能把所有论文交代完整。",
-  "Science": "Science",
-  "Nature": "Nature",
+  "These are the percentages the source printed, not counts. The share reaching the average is derived from the share below it, so the two always account for every paper.":
+    "这些是原始文献印出的百分比，不是计数。达到平均值的那部分比例是由低于平均值的比例推导出来的，因此两者始终能把所有论文交代完整。",
+  Science: "Science",
+  Nature: "Nature",
   "Nature Communications": "Nature Communications",
   "Nature Comm.": "Nature Comm.",
   "Scientific Reports": "Scientific Reports",
   "Sci. Rep.": "Sci. Rep.",
   "PLOS ONE": "PLOS ONE",
-  "eLife": "eLife",
+  eLife: "eLife",
   "Journal of Informetrics": "Journal of Informetrics",
   "J. Informetrics": "J. Informetrics",
   "The EMBO Journal": "The EMBO Journal",
@@ -2538,72 +2795,120 @@ export const zh: Record<string, string> = {
   "The number everyone quotes": "人人都在引用的那个数字",
   "More than half of them": "超过一半",
   "it is a strong journal": "这是一本顶尖期刊",
-  "About half, which is what an average means": "大约一半，平均值不就是这个意思吗",
+  "About half, which is what an average means":
+    "大约一半，平均值不就是这个意思吗",
   "half above, half below": "一半在上，一半在下",
   "Well under half": "远低于一半",
   "the floor and the tail": "下限加长尾",
-  "About a quarter. Three papers in four never reached their own journal's average.": "大约四分之一。四篇里有三篇从未达到过自己所在期刊的平均值。",
-  "A long tail drags the average above almost everything it summarises": "一条长尾把平均值拽到了它本应概括的几乎所有内容之上",
-  "75.5 per cent of the papers Science published in those two years were cited fewer than 34.7 times, so under a quarter reached the number the journal is ranked by. And this is not a quirk of one journal: across all eleven examined, between 65.3 and 75.5 per cent of papers fell below their own average. The bars below are the same published figures, with each journal's average now shown in its place:": "Science 在那两年发表的论文中，有75.5%的引用次数不足34.7次，也就是说，达到这本期刊赖以排名的那个数字的论文还不到四分之一。而且这并非某一本期刊的怪现象：在考察的全部十一本期刊中，都有65.3%到75.5%的论文低于自己所在期刊的平均值。下面这些条形用的是同一批已发表的数据，只是这次把每本期刊的平均值放到了它真正所在的位置：",
+  "About a quarter. Three papers in four never reached their own journal's average.":
+    "大约四分之一。四篇里有三篇从未达到过自己所在期刊的平均值。",
+  "A long tail drags the average above almost everything it summarises":
+    "一条长尾把平均值拽到了它本应概括的几乎所有内容之上",
+  "75.5 per cent of the papers Science published in those two years were cited fewer than 34.7 times, so under a quarter reached the number the journal is ranked by. And this is not a quirk of one journal: across all eleven examined, between 65.3 and 75.5 per cent of papers fell below their own average. The bars below are the same published figures, with each journal's average now shown in its place:":
+    "Science 在那两年发表的论文中，有75.5%的引用次数不足34.7次，也就是说，达到这本期刊赖以排名的那个数字的论文还不到四分之一。而且这并非某一本期刊的怪现象：在考察的全部十一本期刊中，都有65.3%到75.5%的论文低于自己所在期刊的平均值。下面这些条形用的是同一批已发表的数据，只是这次把每本期刊的平均值放到了它真正所在的位置：",
   "All eleven journals": "全部十一本期刊",
-  "Notice what follows for free. Since more than half the papers sit below the average, the median paper does too, whatever its exact value happens to be. That is the general shape of the problem: when a quantity has a floor it cannot go under and no ceiling to stop it, a few enormous values haul the mean upward while the median stays down among the ordinary cases. The mean is still a perfectly correct number. It is just not a typical one, and quoting it as though it described a normal paper, salary or waiting time describes almost nobody.": "请注意这里可以白得的一个推论。既然超过一半的论文低于平均值，那么处于中位的那篇论文也必然低于平均值，无论它的具体数值是多少。这就是问题的一般形态：当一个量有一个无法跌破的下限，却没有任何上限来拦住它时，少数极大的数值会把平均值往上拽，而中位数仍然留在下面，处在那些普通的个案之中。平均值依然是一个完全正确的数字。它只是不是一个典型的数字，把它当作在描述一篇普通论文、一份普通薪水或一次普通等待来引用，几乎描述不到任何人。",
+  "Notice what follows for free. Since more than half the papers sit below the average, the median paper does too, whatever its exact value happens to be. That is the general shape of the problem: when a quantity has a floor it cannot go under and no ceiling to stop it, a few enormous values haul the mean upward while the median stays down among the ordinary cases. The mean is still a perfectly correct number. It is just not a typical one, and quoting it as though it described a normal paper, salary or waiting time describes almost nobody.":
+    "请注意这里可以白得的一个推论。既然超过一半的论文低于平均值，那么处于中位的那篇论文也必然低于平均值，无论它的具体数值是多少。这就是问题的一般形态：当一个量有一个无法跌破的下限，却没有任何上限来拦住它时，少数极大的数值会把平均值往上拽，而中位数仍然留在下面，处在那些普通的个案之中。平均值依然是一个完全正确的数字。它只是不是一个典型的数字，把它当作在描述一篇普通论文、一份普通薪水或一次普通等待来引用，几乎描述不到任何人。",
   "Where the average actually sits": "平均值实际落在哪里",
   "Mean versus median": "平均数与中位数",
-  "An average is a number, not a typical case. Whenever a quantity has a floor and a long tail, the average is dragged above most of what it summarises, and the median is the honest summary to ask for.": "平均值是一个数字，不是一个典型个案。只要一个量既有下限又有长尾，平均值就会被拽到它所概括的大部分内容之上，而中位数才是应该去索取的那个诚实的概括。",
-  "Be careful what this does and does not say. It does not say the impact factor is miscalculated: 34.7 really is the mean, and the arithmetic is not in dispute. It says the mean answers a different question from the one people use it for. Ranking journals by it is one thing; inferring anything about a particular paper from it is another, and the overlap between journals is so large that a paper in a journal with a mean of 5 is routinely cited more than a paper in one with a mean of 35.": "要留意这说了什么、又没说什么。它没有说影响因子算错了：34.7确实就是平均值，算术上并无争议。它说的是，平均值回答的问题与人们拿它来回答的问题并不是同一个。用它给期刊排序是一回事；由它推断某一篇具体论文如何，则是另一回事，而且期刊之间的重叠如此之大，以致于一本平均值为5的期刊上的论文，被引用得比一本平均值为35的期刊上的论文更多，是家常便饭。",
-  "The mean and the median answer different questions, and on a symmetric distribution they happen to give the same answer, which is why the difference is so easy to forget. The mean is the balancing point: every value pulls on it in proportion to how far away it is, so a single value a thousand times bigger than the rest moves it a long way. The median is the middle person in the queue, and it does not care how rich the richest is, only how many people there are. So the gap between them is a direct measure of how lopsided the data is. Any quantity that cannot go below zero and has no upper bound tends to come out lopsided in the same direction: incomes, wealth, house prices, citations, hospital length of stay, time spent waiting on hold, downloads, deaths per outbreak, followers per account. In every one of those, the mean sits above the median, and the more extreme the tail the wider the gap. Which one gets quoted is therefore a choice, and it is not always an innocent one. If you want a figure to sound generous, use the mean of something with a long tail. If you want the same data to sound modest, use the median. Neither is a lie. The practical habit is short. When you meet an average of anything that could have a long tail, ask three things: what is the median, how big is the biggest value, and how many of the cases actually sit near the average? If nobody can tell you the median, that is itself informative. And if you are the one reporting the number, give both, because the pair takes one extra clause and removes the whole ambiguity.": "平均数和中位数回答的是不同的问题，而在对称分布上它们恰好给出相同的答案，这正是这个区别如此容易被遗忘的原因。平均数是平衡点：每一个数值都按照自己离得多远的比例去拉它，因此只要有一个数值比其余的大上一千倍，就能把它拉出很远。中位数则是队伍正中间的那个人，它并不在乎最富的人有多富，只在乎一共有多少人。所以两者之间的差距，直接度量了数据有多偏斜。任何不能低于零又没有上限的量，都倾向于朝同一个方向偏斜：收入、财富、房价、引用次数、住院天数、电话等待时长、下载量、每次疫情的死亡人数、每个账号的粉丝数。在所有这些里，平均数都高于中位数，而且尾巴越极端，差距越大。因此引用哪一个是一种选择，而且这种选择并不总是无辜的。想让一个数字听起来慷慨，就用长尾事物的平均数。想让同一批数据听起来朴素，就用中位数。两者都不算撒谎。实用的习惯很简短。当你遇到任何可能有长尾之物的平均值时，问三件事：中位数是多少，最大的那个值有多大，以及真正落在平均值附近的个案有多少。如果没有人能告诉你中位数，这本身就是信息。而如果报数字的人是你，那就两个都给出来，因为这一对只多花一个从句，却把全部含糊一扫而空。",
-  "The same finding, peer reviewed, twenty years earlier": "同一个发现，二十年前就已通过同行评议",
-  "This is not a new or contested observation. Two decades before the citation-distribution work, a study in the BMJ argued that journal impact factors should not be used to evaluate research, on exactly this ground: citations within a journal are so unevenly spread that the journal's average says very little about any particular paper in it. It reported that roughly the most cited 15 per cent of articles collect half of all a journal's citations, and that the articles actually earning a high impact factor are a small minority. The later work, using a much larger and more recent dataset, put a precise share on it for eleven named journals and found the same picture.": "这既不是新的观察，也不是有争议的观察。在引用分布的研究之前二十年，BMJ 上的一项研究就主张影响因子不应被用来评价研究，理由恰恰在此：一本期刊内部的引用分布极不均匀，以致期刊的平均值几乎说明不了其中任何一篇具体论文。该研究报告说，被引用最多的大约15%的论文汇集了一本期刊全部引用的一半，而真正撑起高影响因子的论文只是极少数。后来的工作使用了大得多也新得多的数据集，为十一本点名的期刊给出了这一比例的精确数值，看到的是同一幅图景。",
+  "An average is a number, not a typical case. Whenever a quantity has a floor and a long tail, the average is dragged above most of what it summarises, and the median is the honest summary to ask for.":
+    "平均值是一个数字，不是一个典型个案。只要一个量既有下限又有长尾，平均值就会被拽到它所概括的大部分内容之上，而中位数才是应该去索取的那个诚实的概括。",
+  "Be careful what this does and does not say. It does not say the impact factor is miscalculated: 34.7 really is the mean, and the arithmetic is not in dispute. It says the mean answers a different question from the one people use it for. Ranking journals by it is one thing; inferring anything about a particular paper from it is another, and the overlap between journals is so large that a paper in a journal with a mean of 5 is routinely cited more than a paper in one with a mean of 35.":
+    "要留意这说了什么、又没说什么。它没有说影响因子算错了：34.7确实就是平均值，算术上并无争议。它说的是，平均值回答的问题与人们拿它来回答的问题并不是同一个。用它给期刊排序是一回事；由它推断某一篇具体论文如何，则是另一回事，而且期刊之间的重叠如此之大，以致于一本平均值为5的期刊上的论文，被引用得比一本平均值为35的期刊上的论文更多，是家常便饭。",
+  "The mean and the median answer different questions, and on a symmetric distribution they happen to give the same answer, which is why the difference is so easy to forget. The mean is the balancing point: every value pulls on it in proportion to how far away it is, so a single value a thousand times bigger than the rest moves it a long way. The median is the middle person in the queue, and it does not care how rich the richest is, only how many people there are. So the gap between them is a direct measure of how lopsided the data is. Any quantity that cannot go below zero and has no upper bound tends to come out lopsided in the same direction: incomes, wealth, house prices, citations, hospital length of stay, time spent waiting on hold, downloads, deaths per outbreak, followers per account. In every one of those, the mean sits above the median, and the more extreme the tail the wider the gap. Which one gets quoted is therefore a choice, and it is not always an innocent one. If you want a figure to sound generous, use the mean of something with a long tail. If you want the same data to sound modest, use the median. Neither is a lie. The practical habit is short. When you meet an average of anything that could have a long tail, ask three things: what is the median, how big is the biggest value, and how many of the cases actually sit near the average? If nobody can tell you the median, that is itself informative. And if you are the one reporting the number, give both, because the pair takes one extra clause and removes the whole ambiguity.":
+    "平均数和中位数回答的是不同的问题，而在对称分布上它们恰好给出相同的答案，这正是这个区别如此容易被遗忘的原因。平均数是平衡点：每一个数值都按照自己离得多远的比例去拉它，因此只要有一个数值比其余的大上一千倍，就能把它拉出很远。中位数则是队伍正中间的那个人，它并不在乎最富的人有多富，只在乎一共有多少人。所以两者之间的差距，直接度量了数据有多偏斜。任何不能低于零又没有上限的量，都倾向于朝同一个方向偏斜：收入、财富、房价、引用次数、住院天数、电话等待时长、下载量、每次疫情的死亡人数、每个账号的粉丝数。在所有这些里，平均数都高于中位数，而且尾巴越极端，差距越大。因此引用哪一个是一种选择，而且这种选择并不总是无辜的。想让一个数字听起来慷慨，就用长尾事物的平均数。想让同一批数据听起来朴素，就用中位数。两者都不算撒谎。实用的习惯很简短。当你遇到任何可能有长尾之物的平均值时，问三件事：中位数是多少，最大的那个值有多大，以及真正落在平均值附近的个案有多少。如果没有人能告诉你中位数，这本身就是信息。而如果报数字的人是你，那就两个都给出来，因为这一对只多花一个从句，却把全部含糊一扫而空。",
+  "The same finding, peer reviewed, twenty years earlier":
+    "同一个发现，二十年前就已通过同行评议",
+  "This is not a new or contested observation. Two decades before the citation-distribution work, a study in the BMJ argued that journal impact factors should not be used to evaluate research, on exactly this ground: citations within a journal are so unevenly spread that the journal's average says very little about any particular paper in it. It reported that roughly the most cited 15 per cent of articles collect half of all a journal's citations, and that the articles actually earning a high impact factor are a small minority. The later work, using a much larger and more recent dataset, put a precise share on it for eleven named journals and found the same picture.":
+    "这既不是新的观察，也不是有争议的观察。在引用分布的研究之前二十年，BMJ 上的一项研究就主张影响因子不应被用来评价研究，理由恰恰在此：一本期刊内部的引用分布极不均匀，以致期刊的平均值几乎说明不了其中任何一篇具体论文。该研究报告说，被引用最多的大约15%的论文汇集了一本期刊全部引用的一半，而真正撑起高影响因子的论文只是极少数。后来的工作使用了大得多也新得多的数据集，为十一本点名的期刊给出了这一比例的精确数值，看到的是同一幅图景。",
   "Mean versus median, a reasoning trap.": "平均数与中位数，一种推理陷阱。",
-  "An average sounds like it describes a typical case. Often it describes almost nobody. Scientific journals are ranked by their impact factor, which is simply the average number of citations their papers get. When someone actually checked, three quarters of the papers in Science and in Nature had fewer citations than their own journal's average, and the same held for all eleven journals examined. Nothing was miscalculated. It is just what an average does to any quantity that has a floor and a long tail, which includes incomes, house prices and waiting times. Ask for the median.": "平均值听上去像是在描述一个典型个案。它往往几乎描述不到任何人。科学期刊按影响因子排名，而影响因子不过是其论文获得引用次数的平均数。当真的有人去核对时，Science 和 Nature 中有四分之三的论文，引用次数都低于自己所在期刊的平均值，考察的全部十一本期刊都是如此。没有任何东西算错了。这只不过是平均值对任何一个既有下限又有长尾的量所做的事，而收入、房价和等待时间都属于此列。去要中位数。",
-  "Stated plainly because it matters: this source is a preprint and was not peer reviewed. It is used anyway, for three reasons given here so the reader can weigh them. Its authors are the editors of Nature, Science, PLOS, EMBO, eLife and the Royal Society, working from Thomson Reuters citation data, and it is published under CC BY. Its own prose independently restates the table, saying that typically 65 to 75 per cent of articles have fewer citations than the impact factor indicates, so the figures have a second reading inside the same document. And the underlying finding is older and peer reviewed, which is what the deep-dive example is for. Two limits on the numbers themselves. They cover citable items only, meaning research and review articles as classified by Thomson Reuters, because journals publish very different amounts of editorial and news material. And the counts come from a window matched to the impact factor, citations received during 2015 by papers published in 2013 and 2014, so they will not match a journal's published impact factor to the decimal. The paper prints no medians, so this puzzle states none; that the median lies below the mean is a deduction from more than half the papers doing so, not a figure taken from the source.": "这一点必须说清楚：本文献是预印本，未经过同行评议。之所以仍然采用，有三个理由，列在这里供读者自行掂量。其作者是 Nature、Science、PLOS、EMBO、eLife 和 Royal Society 的编辑负责人，所用的是 Thomson Reuters 的引用数据，并以 CC BY 许可发表。其正文又独立地复述了该表格，指出通常有65%到75%的论文获得的引用少于影响因子所显示的数值，因此这些数字在同一份文件里有第二次呈现。而且这一底层发现更为久远，并且经过同行评议，深度阅读的例子正是为此而设。数字本身还有两处限制。它们只覆盖 citable items，即 Thomson Reuters 分类下的研究论文与综述，因为各期刊刊登的社论与新闻类内容数量差异极大。而且计数取自与影响因子相匹配的时间窗，即2013年和2014年发表的论文在2015年内获得的引用，因此不会与某期刊公布的影响因子小数位完全吻合。该文没有印出任何中位数，所以本谜题也不给出中位数；说中位数低于平均值，是从超过一半的论文低于平均值这一点推导出来的，而不是取自原始文献。",
-  "A startup with 30 staff advertises an average salary of 95,000. The founder and two executives take home over a million between them. A candidate is told they can expect to earn about the average.": "一家有30名员工的初创公司宣称平均薪资为95,000。创始人和两名高管三人合计拿走了超过一百万。有人告诉一位应聘者，她大致可以拿到平均水平的薪资。",
-  "Three very large salaries pull the average far above what the other 27 people earn. The candidate should ask what the middle employee is paid, because that is the figure their own offer will sit near.": "三份极高的薪资把平均值拽到了远高于另外27人所得的位置。这位应聘者该问的是排在中间的那名员工拿多少，因为她自己拿到的报价会靠近那个数字。",
-  "A clinic reports a mean waiting time of 40 minutes. Most patients are seen within 15 minutes, but a handful wait several hours when an emergency comes in. A manager tells patients to expect a 40 minute wait.": "某门诊报告平均候诊时间为40分钟。多数患者在15分钟内就诊，但遇到急诊时会有少数人等上好几个小时。一位管理者告诉患者，预计要等40分钟。",
-  "Waiting time has a floor of zero and no ceiling, so the rare multi-hour waits drag the mean well above the typical experience. The median wait describes what a patient should actually expect.": "候诊时间下限为零而没有上限，因此那些罕见的数小时等待把平均值拽到远高于通常体验的位置。真正描述患者应当预期什么的，是候诊时间的中位数。",
-  "A district reports that the average house sold last year went for 780,000. Reporting notes that a small number of large estates changed hands. A council paper uses the 780,000 figure to argue ordinary families can afford to buy there.": "某地区报告说去年售出的住宅平均成交价为780,000。报道提到有少数几处大庄园易主。一份市政文件用780,000这个数字论证普通家庭在那里也买得起房。",
-  "A few very expensive sales lift the mean without changing what an ordinary house costs. Housing affordability is normally reported as a median precisely because sale prices have such a long upper tail.": "少数几笔极其昂贵的成交抬高了平均值，却丝毫没有改变一套普通住宅的价格。住房可负担性通常以中位数报告，原因恰恰在于成交价有一条很长的上尾。",
-  "A charity announces that its supporters give an average of 240 a year and asks members whether they are giving their fair share. One donor that year gave several million.": "某慈善机构宣布其支持者平均每年捐赠240，并询问会员是否尽到了应尽的一份。那一年有一位捐赠者捐了数百万。",
-  "A single enormous gift can lift the mean of a large group on its own. Asking ordinary members to measure themselves against that figure compares them with a number no ordinary member produced.": "仅仅一笔巨额捐赠就足以抬高一个大群体的平均值。让普通会员拿这个数字衡量自己，等于是拿一个没有任何普通会员产生过的数字去比。",
-  "A ward reports a mean length of stay of 6.2 days and plans its bed numbers on the assumption that a typical patient occupies a bed for about six days. Most patients go home on day two or three; a few stay for months.": "某病区报告平均住院日为6.2天，并据此按典型患者约占用病床六天来规划床位数。多数患者第二或第三天就回家了，少数患者住了好几个月。",
-  "The long-stay patients pull the mean upward while the typical patient leaves far sooner. Planning around the mean will misjudge both how fast beds turn over and how many are locked up long term.": "长期住院的患者把平均值往上拽，而典型患者离开的时间要早得多。按平均值规划，会同时误判病床周转的速度和被长期占用的床位数量。",
-  "A marketplace tells prospective sellers that the average shop on the platform earns 3,400 a month. A handful of very large shops account for most of the platform's sales volume.": "某电商平台告诉潜在卖家，平台上平均每家店铺月入3,400。少数几家非常大的店铺占据了平台绝大部分销售额。",
-  "With a few dominant shops, the mean describes almost none of the sellers. A prospective seller wants the middle shop's earnings, and would also want to know how many shops earn nothing at all.": "当存在少数几家主导性店铺时，平均值几乎描述不了任何一位卖家。潜在卖家想知道的是排在中间那家店铺的收入，并且还会想知道有多少家店铺根本没有任何收入。",
-  "A tutor reports that students improved by an average of 18 points. Of the 20 students, 17 gained about 4 points and 3 gained more than 90 each after starting from almost zero.": "某位教师报告说学生平均提高了18分。20名学生中，有17人提高了大约4分，另外3人从接近零分起步，各自提高了90分以上。",
-  "The three large gains carry the average. Reporting 18 points as the typical improvement describes none of the 17 students who actually make up the bulk of the class.": "撑起这个平均值的是那三次大幅提高。把18分说成典型的提高幅度，描述不了构成班级主体的那17名学生中的任何一个。",
-  "A support team advertises a mean first-response time of 2 hours. Almost all tickets are answered within 20 minutes, while a small number sit unanswered for days. The team treats the 2 hour figure as its service standard.": "某客服团队宣称首次响应的平均时间为2小时。几乎所有工单都在20分钟内得到答复，而少数工单会连着好几天无人处理。团队把2小时这个数字当作自己的服务标准。",
-  "The stalled tickets are what produce the 2 hour mean, and they are exactly the cases the standard should be about. A median plus a worst-case percentile would describe both the usual case and the failures.": "产生这个2小时平均值的正是那些积压的工单，而它们恰恰是服务标准本该管的情形。中位数再配上一个极端百分位，才能把通常情况和失败情况都描述清楚。",
-  "A report states that average household wealth in a country is 480,000 and concludes that most households have substantial savings to fall back on in a downturn.": "某报告称一国家庭的平均财富为480,000，并据此断定多数家庭在经济下行时都有相当可观的储蓄可供依靠。",
-  "Wealth is among the most lopsided quantities there is, with a floor at zero and an extremely long tail, so the mean sits far above the middle household. Nothing about typical savings follows from it.": "财富是现存最偏斜的量之一，下限为零而尾巴极长，因此平均值远高于处在中位的那个家庭。由它推不出任何关于典型储蓄的结论。",
-  "A department evaluates researchers by the average citations of the journals they publish in, treating a paper in a high-average journal as a stronger paper than one in a low-average journal.": "某院系以研究者所发表期刊的平均引用数来评价他们，认为发在高平均值期刊上的论文优于发在低平均值期刊上的论文。",
-  "A journal's average is dragged up by a small number of very heavily cited papers, so most of its papers fall below it. The average of the container says remarkably little about any individual item in it.": "一本期刊的平均值是被少数几篇被引极多的论文抬上去的，因此它的多数论文都低于这个平均值。容器的平均值，对于其中任何一件具体内容所能说明的，少得惊人。",
-  "A statistics agency reports median household income and states the mean alongside it, noting that the gap between the two reflects how unevenly income is spread.": "某统计机构公布家庭收入的中位数，并在旁边一并给出平均数，同时注明两者之间的差距反映了收入分布有多不均。",
-  "Both figures are given and the gap between them is explained rather than hidden. That is the standard honest way to report a quantity with a long tail.": "两个数字都给了出来，而两者的差距是被解释而不是被隐藏。这正是报告一个长尾量的标准而诚实的做法。",
-  "A factory reports the mean diameter of a machined part as 20.00 mm, with measurements clustered tightly and symmetrically either side of that value.": "某工厂报告一个机加工零件的平均直径为20.00 mm，测量值紧密且对称地分布在该值两侧。",
-  "For a symmetric, tightly clustered quantity the mean and the median coincide, and the mean is the right summary. The problem only arises when the distribution is lopsided.": "对于对称且紧密聚集的量，平均数与中位数重合，平均数就是恰当的概括。只有当分布偏斜时问题才会出现。",
-  "A utility multiplies the mean household consumption by the number of households to work out how much electricity it must generate in total.": "某电力公司用每户的平均用电量乘以户数，算出自己总共需要发多少电。",
-  "The mean is exactly the right tool here, because a total is what it is built from. It would be the wrong tool for describing a typical household, which is a different question.": "在这里平均数恰恰是正确的工具，因为总量本来就是平均数据以构成的东西。用它来描述一个典型家庭则是错的工具，那是另一个问题。",
+  "An average sounds like it describes a typical case. Often it describes almost nobody. Scientific journals are ranked by their impact factor, which is simply the average number of citations their papers get. When someone actually checked, three quarters of the papers in Science and in Nature had fewer citations than their own journal's average, and the same held for all eleven journals examined. Nothing was miscalculated. It is just what an average does to any quantity that has a floor and a long tail, which includes incomes, house prices and waiting times. Ask for the median.":
+    "平均值听上去像是在描述一个典型个案。它往往几乎描述不到任何人。科学期刊按影响因子排名，而影响因子不过是其论文获得引用次数的平均数。当真的有人去核对时，Science 和 Nature 中有四分之三的论文，引用次数都低于自己所在期刊的平均值，考察的全部十一本期刊都是如此。没有任何东西算错了。这只不过是平均值对任何一个既有下限又有长尾的量所做的事，而收入、房价和等待时间都属于此列。去要中位数。",
+  "Stated plainly because it matters: this source is a preprint and was not peer reviewed. It is used anyway, for three reasons given here so the reader can weigh them. Its authors are the editors of Nature, Science, PLOS, EMBO, eLife and the Royal Society, working from Thomson Reuters citation data, and it is published under CC BY. Its own prose independently restates the table, saying that typically 65 to 75 per cent of articles have fewer citations than the impact factor indicates, so the figures have a second reading inside the same document. And the underlying finding is older and peer reviewed, which is what the deep-dive example is for. Two limits on the numbers themselves. They cover citable items only, meaning research and review articles as classified by Thomson Reuters, because journals publish very different amounts of editorial and news material. And the counts come from a window matched to the impact factor, citations received during 2015 by papers published in 2013 and 2014, so they will not match a journal's published impact factor to the decimal. The paper prints no medians, so this puzzle states none; that the median lies below the mean is a deduction from more than half the papers doing so, not a figure taken from the source.":
+    "这一点必须说清楚：本文献是预印本，未经过同行评议。之所以仍然采用，有三个理由，列在这里供读者自行掂量。其作者是 Nature、Science、PLOS、EMBO、eLife 和 Royal Society 的编辑负责人，所用的是 Thomson Reuters 的引用数据，并以 CC BY 许可发表。其正文又独立地复述了该表格，指出通常有65%到75%的论文获得的引用少于影响因子所显示的数值，因此这些数字在同一份文件里有第二次呈现。而且这一底层发现更为久远，并且经过同行评议，深度阅读的例子正是为此而设。数字本身还有两处限制。它们只覆盖 citable items，即 Thomson Reuters 分类下的研究论文与综述，因为各期刊刊登的社论与新闻类内容数量差异极大。而且计数取自与影响因子相匹配的时间窗，即2013年和2014年发表的论文在2015年内获得的引用，因此不会与某期刊公布的影响因子小数位完全吻合。该文没有印出任何中位数，所以本谜题也不给出中位数；说中位数低于平均值，是从超过一半的论文低于平均值这一点推导出来的，而不是取自原始文献。",
+  "A startup with 30 staff advertises an average salary of 95,000. The founder and two executives take home over a million between them. A candidate is told they can expect to earn about the average.":
+    "一家有30名员工的初创公司宣称平均薪资为95,000。创始人和两名高管三人合计拿走了超过一百万。有人告诉一位应聘者，她大致可以拿到平均水平的薪资。",
+  "Three very large salaries pull the average far above what the other 27 people earn. The candidate should ask what the middle employee is paid, because that is the figure their own offer will sit near.":
+    "三份极高的薪资把平均值拽到了远高于另外27人所得的位置。这位应聘者该问的是排在中间的那名员工拿多少，因为她自己拿到的报价会靠近那个数字。",
+  "A clinic reports a mean waiting time of 40 minutes. Most patients are seen within 15 minutes, but a handful wait several hours when an emergency comes in. A manager tells patients to expect a 40 minute wait.":
+    "某门诊报告平均候诊时间为40分钟。多数患者在15分钟内就诊，但遇到急诊时会有少数人等上好几个小时。一位管理者告诉患者，预计要等40分钟。",
+  "Waiting time has a floor of zero and no ceiling, so the rare multi-hour waits drag the mean well above the typical experience. The median wait describes what a patient should actually expect.":
+    "候诊时间下限为零而没有上限，因此那些罕见的数小时等待把平均值拽到远高于通常体验的位置。真正描述患者应当预期什么的，是候诊时间的中位数。",
+  "A district reports that the average house sold last year went for 780,000. Reporting notes that a small number of large estates changed hands. A council paper uses the 780,000 figure to argue ordinary families can afford to buy there.":
+    "某地区报告说去年售出的住宅平均成交价为780,000。报道提到有少数几处大庄园易主。一份市政文件用780,000这个数字论证普通家庭在那里也买得起房。",
+  "A few very expensive sales lift the mean without changing what an ordinary house costs. Housing affordability is normally reported as a median precisely because sale prices have such a long upper tail.":
+    "少数几笔极其昂贵的成交抬高了平均值，却丝毫没有改变一套普通住宅的价格。住房可负担性通常以中位数报告，原因恰恰在于成交价有一条很长的上尾。",
+  "A charity announces that its supporters give an average of 240 a year and asks members whether they are giving their fair share. One donor that year gave several million.":
+    "某慈善机构宣布其支持者平均每年捐赠240，并询问会员是否尽到了应尽的一份。那一年有一位捐赠者捐了数百万。",
+  "A single enormous gift can lift the mean of a large group on its own. Asking ordinary members to measure themselves against that figure compares them with a number no ordinary member produced.":
+    "仅仅一笔巨额捐赠就足以抬高一个大群体的平均值。让普通会员拿这个数字衡量自己，等于是拿一个没有任何普通会员产生过的数字去比。",
+  "A ward reports a mean length of stay of 6.2 days and plans its bed numbers on the assumption that a typical patient occupies a bed for about six days. Most patients go home on day two or three; a few stay for months.":
+    "某病区报告平均住院日为6.2天，并据此按典型患者约占用病床六天来规划床位数。多数患者第二或第三天就回家了，少数患者住了好几个月。",
+  "The long-stay patients pull the mean upward while the typical patient leaves far sooner. Planning around the mean will misjudge both how fast beds turn over and how many are locked up long term.":
+    "长期住院的患者把平均值往上拽，而典型患者离开的时间要早得多。按平均值规划，会同时误判病床周转的速度和被长期占用的床位数量。",
+  "A marketplace tells prospective sellers that the average shop on the platform earns 3,400 a month. A handful of very large shops account for most of the platform's sales volume.":
+    "某电商平台告诉潜在卖家，平台上平均每家店铺月入3,400。少数几家非常大的店铺占据了平台绝大部分销售额。",
+  "With a few dominant shops, the mean describes almost none of the sellers. A prospective seller wants the middle shop's earnings, and would also want to know how many shops earn nothing at all.":
+    "当存在少数几家主导性店铺时，平均值几乎描述不了任何一位卖家。潜在卖家想知道的是排在中间那家店铺的收入，并且还会想知道有多少家店铺根本没有任何收入。",
+  "A tutor reports that students improved by an average of 18 points. Of the 20 students, 17 gained about 4 points and 3 gained more than 90 each after starting from almost zero.":
+    "某位教师报告说学生平均提高了18分。20名学生中，有17人提高了大约4分，另外3人从接近零分起步，各自提高了90分以上。",
+  "The three large gains carry the average. Reporting 18 points as the typical improvement describes none of the 17 students who actually make up the bulk of the class.":
+    "撑起这个平均值的是那三次大幅提高。把18分说成典型的提高幅度，描述不了构成班级主体的那17名学生中的任何一个。",
+  "A support team advertises a mean first-response time of 2 hours. Almost all tickets are answered within 20 minutes, while a small number sit unanswered for days. The team treats the 2 hour figure as its service standard.":
+    "某客服团队宣称首次响应的平均时间为2小时。几乎所有工单都在20分钟内得到答复，而少数工单会连着好几天无人处理。团队把2小时这个数字当作自己的服务标准。",
+  "The stalled tickets are what produce the 2 hour mean, and they are exactly the cases the standard should be about. A median plus a worst-case percentile would describe both the usual case and the failures.":
+    "产生这个2小时平均值的正是那些积压的工单，而它们恰恰是服务标准本该管的情形。中位数再配上一个极端百分位，才能把通常情况和失败情况都描述清楚。",
+  "A report states that average household wealth in a country is 480,000 and concludes that most households have substantial savings to fall back on in a downturn.":
+    "某报告称一国家庭的平均财富为480,000，并据此断定多数家庭在经济下行时都有相当可观的储蓄可供依靠。",
+  "Wealth is among the most lopsided quantities there is, with a floor at zero and an extremely long tail, so the mean sits far above the middle household. Nothing about typical savings follows from it.":
+    "财富是现存最偏斜的量之一，下限为零而尾巴极长，因此平均值远高于处在中位的那个家庭。由它推不出任何关于典型储蓄的结论。",
+  "A department evaluates researchers by the average citations of the journals they publish in, treating a paper in a high-average journal as a stronger paper than one in a low-average journal.":
+    "某院系以研究者所发表期刊的平均引用数来评价他们，认为发在高平均值期刊上的论文优于发在低平均值期刊上的论文。",
+  "A journal's average is dragged up by a small number of very heavily cited papers, so most of its papers fall below it. The average of the container says remarkably little about any individual item in it.":
+    "一本期刊的平均值是被少数几篇被引极多的论文抬上去的，因此它的多数论文都低于这个平均值。容器的平均值，对于其中任何一件具体内容所能说明的，少得惊人。",
+  "A statistics agency reports median household income and states the mean alongside it, noting that the gap between the two reflects how unevenly income is spread.":
+    "某统计机构公布家庭收入的中位数，并在旁边一并给出平均数，同时注明两者之间的差距反映了收入分布有多不均。",
+  "Both figures are given and the gap between them is explained rather than hidden. That is the standard honest way to report a quantity with a long tail.":
+    "两个数字都给了出来，而两者的差距是被解释而不是被隐藏。这正是报告一个长尾量的标准而诚实的做法。",
+  "A factory reports the mean diameter of a machined part as 20.00 mm, with measurements clustered tightly and symmetrically either side of that value.":
+    "某工厂报告一个机加工零件的平均直径为20.00 mm，测量值紧密且对称地分布在该值两侧。",
+  "For a symmetric, tightly clustered quantity the mean and the median coincide, and the mean is the right summary. The problem only arises when the distribution is lopsided.":
+    "对于对称且紧密聚集的量，平均数与中位数重合，平均数就是恰当的概括。只有当分布偏斜时问题才会出现。",
+  "A utility multiplies the mean household consumption by the number of households to work out how much electricity it must generate in total.":
+    "某电力公司用每户的平均用电量乘以户数，算出自己总共需要发多少电。",
+  "The mean is exactly the right tool here, because a total is what it is built from. It would be the wrong tool for describing a typical household, which is a different question.":
+    "在这里平均数恰恰是正确的工具，因为总量本来就是平均数据以构成的东西。用它来描述一个典型家庭则是错的工具，那是另一个问题。",
   "The average on its own": "只看平均值",
   "Where that average sits": "这个平均值落在哪里",
 
   // ---- Length-time bias, reworded ----
-  "Whenever a screening programme is defended with how well its detected cases do, ask what kind of disease a periodic test can catch. A tumour that takes years to declare itself is available to be found on many visits; one that goes from nothing to symptoms in three months is available on almost none. The only fair question is whether deaths fall in everyone offered screening. None of which says screening cannot work. Where disease caught earlier is genuinely more treatable, so that the stage it is found at changes what treatment can achieve, finding it early does save lives, and randomised trials have shown exactly that for several cancers. What this bias says is narrower: you cannot demonstrate that benefit by comparing how screen-detected cases fare against symptom-detected ones, because those two groups were never the same kind of disease to begin with.": "每当有人用筛查项目所检出病例的良好结局来为它辩护时，请先问一问：一项定期检查究竟能抓到哪一类疾病。一个要花好几年才显露出来的肿瘤，在许多次就诊中都处于可被发现的状态；而一个从毫无迹象到出现症状只用三个月的肿瘤，几乎在任何一次就诊中都不处于那种状态。唯一公平的问题是：在所有被提供筛查的人当中，死亡是否减少了。但这一切都没有说筛查不可能起作用。凡是更早发现的疾病确实更易治疗，以致于发现时所处的分期改变了治疗所能达到的效果，那么早发现确实能挽救生命，而随机试验对若干种癌症正好证明了这一点。这一偏倚所说的要窄得多：你无法通过比较筛查检出病例与症状检出病例的结局来证明那种获益，因为这两组从一开始就根本不是同一类疾病。",
-  "Picture the same disease arriving in two speeds. Slow tumours spend years in the window where a test could find them but the patient feels nothing. Fast ones cross that window in weeks. Now sample the population every six months. You will find nearly all the slow ones and almost none of the fast ones, because the fast ones announce themselves between your visits. So the pile of screen-detected cases is loaded with indolent disease, and the pile of symptom-detected cases is loaded with aggressive disease, before treatment enters the story at all. Compare their outcomes and screening looks wonderful. At the extreme edge of this sits overdiagnosis: disease so slow it would never have troubled the person in their lifetime, which counts as a cancer found and cured while doing nothing but harm through the treatment. The defence is the same one that beats lead-time bias, and it is the reason screening programmes are judged the way they are: randomise who is invited, then count deaths in everyone invited, attended or not, diagnosed or not. Programmes that pass that test exist, which is the other half of the point. Where catching disease at an earlier stage genuinely changes what treatment can do, the benefit is real and it shows up as fewer deaths in the invited group; the test is simply what tells you which programmes those are.": "设想同一种疾病以两种速度到来。生长缓慢的肿瘤会在那个检查本可发现、而患者毫无感觉的窗口里停留数年。生长快速的则在数周内穿过那个窗口。现在每六个月对人群筛查一次。你会找到几乎全部缓慢的，却几乎找不到快速的，因为快速的那些会在两次就诊之间自己宣告存在。于是筛查检出的那一堆病例塞满了惰性疾病，症状检出的那一堆塞满了侵袭性疾病，而这一切在治疗登场之前就已经发生了。比较两者的结局，筛查看起来棒极了。这一现象的极端处坐落着过度诊断：疾病缓慢到在此人一生中根本不会带来任何麻烦，却被算作一例被发现并治愈的癌症，而治疗除了造成伤害之外什么也没做。应对之道与击破前置时间偏倚的方法相同，这也正是筛查项目为何要那样评判的原因：随机决定邀请谁，然后统计所有被邀请者中的死亡人数，无论其是否前来、是否被诊断。确实存在通过这一检验的项目，而这正是问题的另一半。凡是在更早分期发现疾病真正改变了治疗所能做到的事情，获益就是真实的，并且会以被邀请组死亡更少的形式显现出来；这项检验不过是告诉你哪些项目属于此类。",
-  "A test you run every few months finds slow-growing disease far more easily than fast-growing disease, because slow disease sits there for years waiting to be found while fast disease erupts between visits. Slow disease also has a better outlook whatever anyone does. So the cases a screening programme catches are the gentle ones, and they do well, and the programme takes the credit. None of this means screening cannot work: where disease caught earlier is genuinely more treatable, catching it early does save lives, and randomised trials have shown it. It means you cannot prove it by comparing the cases the screen caught against the cases that walked in. The only number that cannot be gamed this way is deaths in everyone offered screening, whether or not they attended.": "一项每隔几个月做一次的检查，找到生长缓慢的疾病要比找到生长快速的疾病容易得多，因为缓慢的疾病会在那里等上好几年等着被发现，而快速的疾病则在两次就诊之间突然爆发。而且无论谁做什么，缓慢的疾病本来预后就更好。所以筛查项目抓到的病例都是温和的那些，他们结局良好，于是项目把功劳揽了过去。但这并不意味着筛查不可能起作用：凡是更早发现的疾病确实更易治疗，早发现确实能挽救生命，随机试验也已经证明了这一点。它的意思是，你无法通过把筛查抓到的病例和自己走进门来的病例相比较来证明这一点。唯一无法用这种方式做手脚的数字，是所有被提供筛查的人当中的死亡人数，无论他们是否真的来过。",
+  "Whenever a screening programme is defended with how well its detected cases do, ask what kind of disease a periodic test can catch. A tumour that takes years to declare itself is available to be found on many visits; one that goes from nothing to symptoms in three months is available on almost none. The only fair question is whether deaths fall in everyone offered screening. None of which says screening cannot work. Where disease caught earlier is genuinely more treatable, so that the stage it is found at changes what treatment can achieve, finding it early does save lives, and randomised trials have shown exactly that for several cancers. What this bias says is narrower: you cannot demonstrate that benefit by comparing how screen-detected cases fare against symptom-detected ones, because those two groups were never the same kind of disease to begin with.":
+    "每当有人用筛查项目所检出病例的良好结局来为它辩护时，请先问一问：一项定期检查究竟能抓到哪一类疾病。一个要花好几年才显露出来的肿瘤，在许多次就诊中都处于可被发现的状态；而一个从毫无迹象到出现症状只用三个月的肿瘤，几乎在任何一次就诊中都不处于那种状态。唯一公平的问题是：在所有被提供筛查的人当中，死亡是否减少了。但这一切都没有说筛查不可能起作用。凡是更早发现的疾病确实更易治疗，以致于发现时所处的分期改变了治疗所能达到的效果，那么早发现确实能挽救生命，而随机试验对若干种癌症正好证明了这一点。这一偏倚所说的要窄得多：你无法通过比较筛查检出病例与症状检出病例的结局来证明那种获益，因为这两组从一开始就根本不是同一类疾病。",
+  "Picture the same disease arriving in two speeds. Slow tumours spend years in the window where a test could find them but the patient feels nothing. Fast ones cross that window in weeks. Now sample the population every six months. You will find nearly all the slow ones and almost none of the fast ones, because the fast ones announce themselves between your visits. So the pile of screen-detected cases is loaded with indolent disease, and the pile of symptom-detected cases is loaded with aggressive disease, before treatment enters the story at all. Compare their outcomes and screening looks wonderful. At the extreme edge of this sits overdiagnosis: disease so slow it would never have troubled the person in their lifetime, which counts as a cancer found and cured while doing nothing but harm through the treatment. The defence is the same one that beats lead-time bias, and it is the reason screening programmes are judged the way they are: randomise who is invited, then count deaths in everyone invited, attended or not, diagnosed or not. Programmes that pass that test exist, which is the other half of the point. Where catching disease at an earlier stage genuinely changes what treatment can do, the benefit is real and it shows up as fewer deaths in the invited group; the test is simply what tells you which programmes those are.":
+    "设想同一种疾病以两种速度到来。生长缓慢的肿瘤会在那个检查本可发现、而患者毫无感觉的窗口里停留数年。生长快速的则在数周内穿过那个窗口。现在每六个月对人群筛查一次。你会找到几乎全部缓慢的，却几乎找不到快速的，因为快速的那些会在两次就诊之间自己宣告存在。于是筛查检出的那一堆病例塞满了惰性疾病，症状检出的那一堆塞满了侵袭性疾病，而这一切在治疗登场之前就已经发生了。比较两者的结局，筛查看起来棒极了。这一现象的极端处坐落着过度诊断：疾病缓慢到在此人一生中根本不会带来任何麻烦，却被算作一例被发现并治愈的癌症，而治疗除了造成伤害之外什么也没做。应对之道与击破前置时间偏倚的方法相同，这也正是筛查项目为何要那样评判的原因：随机决定邀请谁，然后统计所有被邀请者中的死亡人数，无论其是否前来、是否被诊断。确实存在通过这一检验的项目，而这正是问题的另一半。凡是在更早分期发现疾病真正改变了治疗所能做到的事情，获益就是真实的，并且会以被邀请组死亡更少的形式显现出来；这项检验不过是告诉你哪些项目属于此类。",
+  "A test you run every few months finds slow-growing disease far more easily than fast-growing disease, because slow disease sits there for years waiting to be found while fast disease erupts between visits. Slow disease also has a better outlook whatever anyone does. So the cases a screening programme catches are the gentle ones, and they do well, and the programme takes the credit. None of this means screening cannot work: where disease caught earlier is genuinely more treatable, catching it early does save lives, and randomised trials have shown it. It means you cannot prove it by comparing the cases the screen caught against the cases that walked in. The only number that cannot be gamed this way is deaths in everyone offered screening, whether or not they attended.":
+    "一项每隔几个月做一次的检查，找到生长缓慢的疾病要比找到生长快速的疾病容易得多，因为缓慢的疾病会在那里等上好几年等着被发现，而快速的疾病则在两次就诊之间突然爆发。而且无论谁做什么，缓慢的疾病本来预后就更好。所以筛查项目抓到的病例都是温和的那些，他们结局良好，于是项目把功劳揽了过去。但这并不意味着筛查不可能起作用：凡是更早发现的疾病确实更易治疗，早发现确实能挽救生命，随机试验也已经证明了这一点。它的意思是，你无法通过把筛查抓到的病例和自己走进门来的病例相比较来证明这一点。唯一无法用这种方式做手脚的数字，是所有被提供筛查的人当中的死亡人数，无论他们是否真的来过。",
 
   // ---- The illusory truth effect ----
-  "Seeing a claim once, a week ago, already made it feel truer. What does seeing it 27 times do?": "一周前只看过一次，这个说法就已经让人觉得更可信了。那么看27次会怎样？",
-  "Fifty-seven people were shown trivia statements, the sort nobody can check off the top of their head, like which country invented the zipper. A week later they rated how true each one seemed, from 1 to 6. Statements they had never seen scored 3.64. Statements they had seen exactly once, seven days earlier, scored 4.26. Nothing about the statements changed in between, and no evidence for any of them was ever offered. The only difference was having met them before.": "五十七个人被展示了一些常识性说法，就是那种谁也没法当场核实的，比如拉链是哪个国家发明的。一周之后，他们按1到6给每一条打分，表示它看起来有多真。从没见过的说法得了3.64分。七天前恰好见过一次的说法得了4.26分。这期间说法本身没有任何变化，也从未为其中任何一条提供过证据。唯一的差别，就是此前是否遇到过。",
-  "Some statements had been shown 27 times. Where did those land?": "有些说法被展示了27次。那些落在了哪里？",
-  "How true a statement seemed, by how often it had been seen": "一个说法看起来有多真，取决于它被看过多少次",
+  "Seeing a claim once, a week ago, already made it feel truer. What does seeing it 27 times do?":
+    "一周前只看过一次，这个说法就已经让人觉得更可信了。那么看27次会怎样？",
+  "Fifty-seven people were shown trivia statements, the sort nobody can check off the top of their head, like which country invented the zipper. A week later they rated how true each one seemed, from 1 to 6. Statements they had never seen scored 3.64. Statements they had seen exactly once, seven days earlier, scored 4.26. Nothing about the statements changed in between, and no evidence for any of them was ever offered. The only difference was having met them before.":
+    "五十七个人被展示了一些常识性说法，就是那种谁也没法当场核实的，比如拉链是哪个国家发明的。一周之后，他们按1到6给每一条打分，表示它看起来有多真。从没见过的说法得了3.64分。七天前恰好见过一次的说法得了4.26分。这期间说法本身没有任何变化，也从未为其中任何一条提供过证据。唯一的差别，就是此前是否遇到过。",
+  "Some statements had been shown 27 times. Where did those land?":
+    "有些说法被展示了27次。那些落在了哪里？",
+  "How true a statement seemed, by how often it had been seen":
+    "一个说法看起来有多真，取决于它被看过多少次",
   "times seen, a week earlier": "一周前看过的次数",
-  "Average rating that the statement is true, from 1 to 6": "该说法为真的平均评分，1到6",
-  "57 people, rating trivia statements a week after seeing them.": "57人，在看过一周之后为常识性说法打分。",
-  "These are the average ratings the source printed, on its 1 to 6 scale, not counts of people. The share of the climb bought by the first showing is derived from them rather than authored.": "这些是原始文献印出的平均评分，用的是它自己的1到6量表，而不是人数统计。第一次重复所买下的上升幅度占比，是由这些数值推导出来的，而不是手写上去的。",
+  "Average rating that the statement is true, from 1 to 6":
+    "该说法为真的平均评分，1到6",
+  "57 people, rating trivia statements a week after seeing them.":
+    "57人，在看过一周之后为常识性说法打分。",
+  "These are the average ratings the source printed, on its 1 to 6 scale, not counts of people. The share of the climb bought by the first showing is derived from them rather than authored.":
+    "这些是原始文献印出的平均评分，用的是它自己的1到6量表，而不是人数统计。第一次重复所买下的上升幅度占比，是由这些数值推导出来的，而不是手写上去的。",
   "Never seen": "从未见过",
-  "Never": "从未",
+  Never: "从未",
   "Seen once": "见过一次",
-  "Once": "一次",
+  Once: "一次",
   "Seen 9 times": "见过9次",
   "9 times": "9次",
   "Seen 18 times": "见过18次",
@@ -2611,303 +2916,514 @@ export const zh: Record<string, string> = {
   "Seen 27 times": "见过27次",
   "27 times": "27次",
   "Never seen, against seen once": "从未见过，对比见过一次",
-  "Far higher, roughly in proportion to the repetitions": "高得多，大致与重复次数成正比",
+  "Far higher, roughly in proportion to the repetitions":
+    "高得多，大致与重复次数成正比",
   "27 times is a different order of thing": "27次完全是另一个量级",
-  "Lower, because hearing it over and over breeds suspicion": "更低，因为反复听会让人起疑",
+  "Lower, because hearing it over and over breeds suspicion":
+    "更低，因为反复听会让人起疑",
   "people resent being drummed at": "人们讨厌被反复灌输",
   "Barely higher than seeing it once": "只比看过一次略高一点点",
   "check what the scale allows": "看看这个量表允许什么",
-  "4.87. Twenty-six further showings did about what the first one did.": "4.87。之后那二十六次展示，所起的作用大致等于第一次。",
-  "Repetition buys almost all of its effect on the very first repeat": "重复几乎在第一次重复时就买下了它的全部效果",
-  "One showing lifted the rating by 0.62, from 3.64 to 4.26. Going on to twenty-seven showings lifted it by 0.61 more, to 4.87. So the entire climb is 1.23 points and the single first showing bought half of it, with the other half spread across twenty-six more. Drawn against the number of showings rather than as a tidy row, the curve is almost all cliff and then almost all plateau:": "仅仅展示一次，评分就上升了0.62，从3.64升到4.26。一路增加到二十七次，也只再上升了0.61，达到4.87。也就是说，整段上升是1.23分，而仅仅第一次展示就买下了其中一半，另一半由另外二十六次分摊。若按展示次数来作图，而不是排成整齐的一行，这条曲线几乎全是悬崖，然后几乎全是平台：",
+  "4.87. Twenty-six further showings did about what the first one did.":
+    "4.87。之后那二十六次展示，所起的作用大致等于第一次。",
+  "Repetition buys almost all of its effect on the very first repeat":
+    "重复几乎在第一次重复时就买下了它的全部效果",
+  "One showing lifted the rating by 0.62, from 3.64 to 4.26. Going on to twenty-seven showings lifted it by 0.61 more, to 4.87. So the entire climb is 1.23 points and the single first showing bought half of it, with the other half spread across twenty-six more. Drawn against the number of showings rather than as a tidy row, the curve is almost all cliff and then almost all plateau:":
+    "仅仅展示一次，评分就上升了0.62，从3.64升到4.26。一路增加到二十七次，也只再上升了0.61，达到4.87。也就是说，整段上升是1.23分，而仅仅第一次展示就买下了其中一半，另一半由另外二十六次分摊。若按展示次数来作图，而不是排成整齐的一行，这条曲线几乎全是悬崖，然后几乎全是平台：",
   "Every number of showings they tested": "他们测试过的每一个展示次数",
-  "Be careful what this does and does not say, because the flat-looking tail is easy to overstate. The later showings were not doing nothing: in this experiment, nine, eighteen and twenty-seven showings all scored reliably above one showing. What the data says is about proportion, not about nothing, and it is quite strong enough. If you wanted to make a false statement feel true, the expensive part of the campaign, the twenty-six extra repetitions, bought you roughly what the very first cheap repeat did.": "要留意这说了什么、又没说什么，因为这条看似平坦的尾巴很容易被夸大。后面那些展示并非什么都没做：在这项实验中，九次、十八次和二十七次的评分都可靠地高于仅仅一次。数据讲的是比例，不是毫无作用，而这已经足够有分量了。如果你想让一个虚假的说法显得为真，那么这场宣传中昂贵的部分，也就是额外那二十六次重复，给你带来的大致相当于最初那一次廉价的重复。",
+  "Be careful what this does and does not say, because the flat-looking tail is easy to overstate. The later showings were not doing nothing: in this experiment, nine, eighteen and twenty-seven showings all scored reliably above one showing. What the data says is about proportion, not about nothing, and it is quite strong enough. If you wanted to make a false statement feel true, the expensive part of the campaign, the twenty-six extra repetitions, bought you roughly what the very first cheap repeat did.":
+    "要留意这说了什么、又没说什么，因为这条看似平坦的尾巴很容易被夸大。后面那些展示并非什么都没做：在这项实验中，九次、十八次和二十七次的评分都可靠地高于仅仅一次。数据讲的是比例，不是毫无作用，而这已经足够有分量了。如果你想让一个虚假的说法显得为真，那么这场宣传中昂贵的部分，也就是额外那二十六次重复，给你带来的大致相当于最初那一次廉价的重复。",
   "The rest of the curve": "曲线的其余部分",
   "The illusory truth effect": "真相错觉效应",
-  "Familiarity feels like truth. A claim you have met before is rated truer than one you have not, with no new evidence and no argument, and most of that lift arrives the second time you meet it.": "熟悉感尝起来就像真相。一个你此前遇到过的说法，会比没遇到过的被评为更真，哪怕没有任何新证据、没有任何论证。而且这份提升的绝大部分，在你第二次遇到它时就已经到位了。",
-  "The practical consequence is uncomfortable and worth sitting with. It means your sense that a claim is plausible is partly a memory of having encountered it, and you cannot tell those two feelings apart from the inside. It also means the defence is not scepticism in the moment, since the feeling arrives before any thinking does. The defence is asking where you first met a claim, and noticing when the honest answer is that you cannot remember, only that it sounds familiar.": "实际后果令人不安，值得停下来想一想。它意味着，你觉得某个说法可信这一感受，有一部分只是你曾经遇到过它的记忆，而你无法从内部把这两种感觉区分开。它还意味着，当场的怀疑并不构成防线，因为那份感觉在任何思考之前就已抵达。真正的防线，是去问自己第一次是在哪里遇到这个说法的，并在诚实的答案是「记不得了，只是听着耳熟」时察觉到这一点。",
-  "The mechanism is processing fluency. Something you have seen before is easier for your brain to take in the second time, and that ease registers as a small, wordless signal of rightness. Your mind then has to explain the signal, and truth is the readiest explanation available, since true things do tend to be the ones you hear repeated. So the feeling is not stupid, it is a decent heuristic being fed the wrong input. What makes it dangerous is that it does not require you to believe anything on first contact. You can hear a claim, dismiss it as nonsense, forget where you heard it, and still find it slightly more plausible a week later, because what survives is the fluency and not the dismissal. That is also why the effect is largely immune to knowing about it, and why it works even on people who could state the correct answer if asked directly. Three things follow. Repetition is a persuasion technique in its own right, independent of evidence, which is why propaganda has always been repetitive and why advertising repeats rather than argues. Correcting a falsehood by restating it, as fact checks must, carries a real cost, since the restatement is itself another exposure. And the front-loading matters for how you read a flood of identical claims: the flood is not what convinced people, it convinced them early and then mostly wasted its own ammunition. If you want a habit out of this, it is to separate two questions that feel like one. Does this sound right, and what is the evidence for it? The first question is answered partly by how many times you have heard it, which is not evidence about the world at all.": "其机制是加工流畅性。你此前见过的东西，第二次更容易被大脑接收，而这份轻松会被登记为一个微小的、无言的「对劲」信号。你的心智接着必须解释这个信号，而最顺手的解释就是「因为它是真的」，毕竟真的事情确实往往是你反复听到的那些。所以这种感觉并不愚蠢，它是一条不错的经验法则被喂了错误的输入。真正危险之处在于，它并不要求你在第一次接触时相信任何东西。你可以听到一个说法，把它当成胡说而否定，忘记自己在哪儿听过，然后在一周后仍然觉得它稍微更可信一些，因为存活下来的是那份流畅性，而不是那次否定。这也是为什么知道有这种效应几乎无法免疫，为什么它对那些被直接询问时能说出正确答案的人同样奏效。由此有三点推论。重复本身就是一种独立于证据的说服技术，这正是宣传历来反复、而广告靠重复而非论证的原因。通过复述来纠正谬误，而事实核查又不得不复述，是有真实代价的，因为复述本身就是又一次曝光。而效果的前置，改变了我们该如何看待同一说法的洪流：让人们信服的并不是那场洪流，它很早就完成了说服，之后大体上只是在浪费自己的弹药。如果要从中提炼一个习惯，那就是把两个看似同一的问题分开。这听上去对吗，以及它的证据是什么？前一个问题的答案，有一部分取决于你听过它多少次，而那根本不是关于世界的证据。",
+  "Familiarity feels like truth. A claim you have met before is rated truer than one you have not, with no new evidence and no argument, and most of that lift arrives the second time you meet it.":
+    "熟悉感尝起来就像真相。一个你此前遇到过的说法，会比没遇到过的被评为更真，哪怕没有任何新证据、没有任何论证。而且这份提升的绝大部分，在你第二次遇到它时就已经到位了。",
+  "The practical consequence is uncomfortable and worth sitting with. It means your sense that a claim is plausible is partly a memory of having encountered it, and you cannot tell those two feelings apart from the inside. It also means the defence is not scepticism in the moment, since the feeling arrives before any thinking does. The defence is asking where you first met a claim, and noticing when the honest answer is that you cannot remember, only that it sounds familiar.":
+    "实际后果令人不安，值得停下来想一想。它意味着，你觉得某个说法可信这一感受，有一部分只是你曾经遇到过它的记忆，而你无法从内部把这两种感觉区分开。它还意味着，当场的怀疑并不构成防线，因为那份感觉在任何思考之前就已抵达。真正的防线，是去问自己第一次是在哪里遇到这个说法的，并在诚实的答案是「记不得了，只是听着耳熟」时察觉到这一点。",
+  "The mechanism is processing fluency. Something you have seen before is easier for your brain to take in the second time, and that ease registers as a small, wordless signal of rightness. Your mind then has to explain the signal, and truth is the readiest explanation available, since true things do tend to be the ones you hear repeated. So the feeling is not stupid, it is a decent heuristic being fed the wrong input. What makes it dangerous is that it does not require you to believe anything on first contact. You can hear a claim, dismiss it as nonsense, forget where you heard it, and still find it slightly more plausible a week later, because what survives is the fluency and not the dismissal. That is also why the effect is largely immune to knowing about it, and why it works even on people who could state the correct answer if asked directly. Three things follow. Repetition is a persuasion technique in its own right, independent of evidence, which is why propaganda has always been repetitive and why advertising repeats rather than argues. Correcting a falsehood by restating it, as fact checks must, carries a real cost, since the restatement is itself another exposure. And the front-loading matters for how you read a flood of identical claims: the flood is not what convinced people, it convinced them early and then mostly wasted its own ammunition. If you want a habit out of this, it is to separate two questions that feel like one. Does this sound right, and what is the evidence for it? The first question is answered partly by how many times you have heard it, which is not evidence about the world at all.":
+    "其机制是加工流畅性。你此前见过的东西，第二次更容易被大脑接收，而这份轻松会被登记为一个微小的、无言的「对劲」信号。你的心智接着必须解释这个信号，而最顺手的解释就是「因为它是真的」，毕竟真的事情确实往往是你反复听到的那些。所以这种感觉并不愚蠢，它是一条不错的经验法则被喂了错误的输入。真正危险之处在于，它并不要求你在第一次接触时相信任何东西。你可以听到一个说法，把它当成胡说而否定，忘记自己在哪儿听过，然后在一周后仍然觉得它稍微更可信一些，因为存活下来的是那份流畅性，而不是那次否定。这也是为什么知道有这种效应几乎无法免疫，为什么它对那些被直接询问时能说出正确答案的人同样奏效。由此有三点推论。重复本身就是一种独立于证据的说服技术，这正是宣传历来反复、而广告靠重复而非论证的原因。通过复述来纠正谬误，而事实核查又不得不复述，是有真实代价的，因为复述本身就是又一次曝光。而效果的前置，改变了我们该如何看待同一说法的洪流：让人们信服的并不是那场洪流，它很早就完成了说服，之后大体上只是在浪费自己的弹药。如果要从中提炼一个习惯，那就是把两个看似同一的问题分开。这听上去对吗，以及它的证据是什么？前一个问题的答案，有一部分取决于你听过它多少次，而那根本不是关于世界的证据。",
   "The same effect, forty-four years earlier": "同样的效应，四十四年前就有",
-  "This is one of the older findings in the field and it has replicated steadily. In the original study, people rated plausible statements for truth on three occasions two weeks apart. Some statements were repeated across the sessions and some appeared only once. Ratings for the repeated statements climbed each time, while ratings for the ones seen only once did not move, and the climb happened for false statements exactly as it did for true ones. The authors concluded that how often something has been encountered is used as a criterion for whether it is true.": "这是该领域较早的发现之一，并且一直稳定地被重复验证。在最初的研究中，人们分三次、每次相隔两周，对一些看似合理的说法评估真伪。有些说法在各次之间重复出现，有些只出现一次。重复出现的说法评分每次都上升，而只见过一次的评分纹丝不动，并且这种上升在虚假说法上与在真实说法上完全一样。作者由此得出结论：一个人遇到某事的频率，被用作判断它是否为真的一条标准。",
-  "The illusory truth effect, a reasoning trap.": "真相错觉效应，一种推理陷阱。",
-  "A claim you have met before feels truer than one you have not, even with no evidence attached and even if you dismissed it the first time. In one experiment people rated trivia statements from 1 to 6 a week after seeing them. Never seen: 3.64. Seen once: 4.26. Seen twenty-seven times: 4.87. So a single repeat bought half the total effect and the other twenty-six bought the rest between them. That is worth knowing about propaganda, which has always been repetitive, and about your own sense of plausibility, which is partly just a memory of having heard something before. Ask where you first met a claim. If the answer is that it merely sounds familiar, that is not evidence.": "一个你此前遇到过的说法，会比没遇到过的显得更真，哪怕没有附带任何证据，哪怕你第一次就否定过它。在一项实验中，人们在看过一些常识性说法一周后按1到6打分。从未见过：3.64。见过一次：4.26。见过二十七次：4.87。也就是说，仅仅一次重复就买下了总效果的一半，另外二十六次一起分掉了剩下的一半。这一点值得用来理解宣传，它历来就是反复的；也值得用来理解你自己的「可信感」，它有一部分不过是曾经听过某件事的记忆。去问问自己第一次在哪里遇到这个说法。如果答案只是「听着耳熟」，那不是证据。",
-  "The stimuli are neutral trivia statements of ambiguous plausibility, of the gestation-period-of-a-giraffe kind, which is why this paper was chosen over the better known illusory-truth work that runs on political headlines: the evidence stays non-partisan even though the applications are not. Three limits are worth stating. The outcome is a published mean on a 1 to 6 rating scale rather than a count of people, so no number of individuals can be recovered from it, and the figure says so. The plateau is real but must not be overstated: in this experiment nine, eighteen and twenty-seven showings each still scored reliably above a single showing, with effect sizes of 0.62, 0.49 and 0.80, so the honest claim is about the share of the climb the first showing carries and not about later showings doing nothing. The paper's Experiment 1, which ran only to nine showings, is the one in which every later step between adjacent counts was non-significant. And the samples are modest, 51 and 57 people, though the overall effect of repetition was large in both, at d = 1.00 and d = 1.09.": "实验材料是可信度模糊的中性常识性说法，属于「长颈鹿的妊娠期」这一类，这也正是选择本文而非那些以政治性标题为材料的、更为人熟知的真相错觉研究的原因：即便应用是政治性的，证据本身仍保持非党派。有三点限制值得说明。所测的是在1到6评分量表上公布的平均值，而不是人数统计，因此无法从中还原出任何个体数目，图上也写明了这一点。那段平台是真实的，但绝不可夸大：在这项实验中，九次、十八次和二十七次的评分各自都可靠地高于仅仅一次，效应量分别为0.62、0.49和0.80，所以诚实的说法是关于第一次展示所占的上升比例，而不是说后面的展示毫无作用。相邻次数之间每一步都不显著的，是该文只做到九次的实验1。此外样本规模不大，分别为51人和57人，尽管两项实验中重复的总体效应都很大，d = 1.00 和 d = 1.09。",
-  "A campaign repeats one unsupported claim in every advert for six weeks. Polling afterwards finds more people rate the claim plausible than before, and the campaign concludes that the public examined the argument and found it convincing.": "某宣传活动连续六周在每一条广告中重复同一个没有依据的说法。事后的民调发现，认为该说法可信的人比以前更多，宣传方由此断定公众审视了论据并觉得有说服力。",
-  "No argument was ever offered, so nothing was examined. Repetition on its own raises how true a claim feels, which means the poll measured exposure rather than persuasion by evidence.": "从头到尾没有提出过任何论据，所以并没有什么被审视。仅仅重复本身就会提高一个说法给人的真实感，这意味着这次民调测到的是曝光，而不是被证据说服。",
-  "A rumour circulates in an office for a month. Asked about it, staff say it must have something to it because they have heard it from several directions, though nobody can name an original source.": "某个传言在一间办公室里流传了一个月。被问到时，员工说这事总该有点根据吧，因为他们从好几个方向都听说了，可是没有人能说出最初的出处。",
-  "Hearing something from several directions feels like corroboration and is often just the same claim going round. Without an original source, the sense that it must have something to it is a memory of exposure, not evidence.": "从好几个方向听到某件事，感觉像是相互印证，而往往只是同一个说法在打转。没有最初出处，那种「总该有点根据」的感觉是曝光留下的记忆，而不是证据。",
-  "A newspaper runs a weekly column that restates a popular false claim in its headline and debunks it underneath. A survey a month later finds readers of the column more likely to believe the claim than non-readers.": "某报开设每周专栏，把一个流行的虚假说法放在标题里，然后在下面加以驳斥。一个月后的调查发现，该专栏的读者比不读的人更相信那个说法。",
-  "Every restatement is another exposure, and the familiarity outlasts the correction attached to it. Leading with the falsehood is the risky format; leading with the true version and never headlining the false one avoids it.": "每一次复述都是又一次曝光，而熟悉感比随附的更正活得更久。把谬误放在标题里是危险的格式；把正确的版本放在前面、绝不为虚假版本做标题，才能避开它。",
-  "A brand runs the same claim about its product 40 times a week rather than 4, and reports that the higher frequency is what made audiences believe it, since belief was higher than in an unexposed region.": "某品牌把关于自家产品的同一说法从每周4次改为每周40次投放，并报告说正是这种更高的频率让受众相信了它，因为相信的人比未投放地区更多。",
-  "Comparing 40 exposures against zero cannot tell you what the extra 36 bought. Most of the shift in believability arrives on the first repeat, so the comparison the claim needs is 40 against 4, not 40 against none.": "拿40次曝光和零次相比，说不出多出来的那36次买到了什么。可信度的变化大部分在第一次重复时就已到位，所以真正需要的比较是40次对4次，而不是40次对没有。",
-  "A teaching myth is repeated in induction sessions year after year. Staff who first heard it as a caution, and were told at the time it was unproven, now cite it as established practice.": "某个教学上的迷思年复一年在入职培训中被重复。当年第一次听到时它是作为一条提醒讲的，而且当时就被告知未经证实，如今这些员工却把它当作既定做法来引用。",
-  "What survives repetition is the claim, not the caveat attached to it. People can dismiss something on first contact, forget where they met it, and later find it plausible purely because it feels familiar.": "在重复中存活下来的是那个说法，而不是随附的保留意见。人可以在第一次接触时就否定某事，忘记自己在哪儿遇到过它，之后仅仅因为它显得耳熟而觉得它可信。",
-  "A reader scrolls past the same unverified headline on four platforms without opening any of them. Weeks later they repeat it in conversation as something they are fairly sure is true, and cannot say where they read it.": "某位读者在四个平台上刷过同一条未经核实的标题，一条都没点开。几周之后，他在聊天中把它当作自己相当有把握的事情说了出来，却说不上在哪儿读到的。",
-  "Not being able to name the source while feeling fairly sure is the signature of the effect. The confidence is built out of fluency from repeated exposure rather than out of anything anyone actually checked.": "说不出出处却又觉得相当有把握，这正是该效应的标志。这份笃定是由重复曝光带来的流畅感搭起来的，而不是由任何人真正核实过的东西搭起来的。",
-  "A team assumes its specialists are immune to a repeated falsehood about their own field, on the grounds that they know the correct answer and would simply notice.": "某团队认定，自家专家对本领域内一个被反复重复的谬误是免疫的，理由是他们知道正确答案，自然会察觉。",
-  "Knowing the right answer does not prevent the feeling of familiarity, which arrives before any deliberate checking. People who can state the correct fact when asked directly still rate the repeated falsehood as more plausible.": "知道正确答案并不能阻止熟悉感的产生，而熟悉感先于任何有意的核查抵达。那些被直接询问时能说出正确事实的人，依然会把重复过的谬误评为更可信。",
-  "A product claim is quoted in a dozen blog posts, all of which trace back to a single press release. A buyer says the claim is well supported because it appears in so many places.": "关于某产品的一个说法被十几篇博客文章引用，而这些文章全都可以追溯到同一份新闻稿。一位买家说这个说法很有依据，因为它出现在那么多地方。",
-  "A dozen copies of one source is one source. Counting appearances measures how widely something was repeated, which is a fact about distribution and not about whether it is true.": "同一个出处的十几份复制，仍然只是一个出处。清点出现次数衡量的是某事被重复得多广，这是关于传播的事实，而不是关于它是否为真的事实。",
-  "An organisation decides that a rival's occasional, low-volume repetition of a false claim is harmless, because it is nothing like a saturation campaign and so cannot move anyone.": "某组织认为，竞争对手偶尔、低强度地重复一个虚假说法是无害的，因为这完全不像饱和式宣传，因而打动不了任何人。",
-  "The dose response is heavily front-loaded, so the first repeat does most of the work and a low-volume drip is not proportionally harmless. Volume is not what makes repetition effective.": "剂量反应严重前置，第一次重复就完成了大部分工作，所以低强度的涓滴式重复并不会按强度比例地无害。让重复奏效的并不是量。",
-  "Sorting claims to investigate, a team puts the ones that sound plausible at the bottom of the list, reasoning that plausible-sounding claims are less likely to be worth checking.": "在排序该核查哪些说法时，某团队把听上去可信的放在名单末尾，理由是听上去可信的说法大概不太值得核查。",
-  "Sounding plausible is partly just having been encountered before, so this rule deprioritises exactly the claims that have already circulated most. Familiarity and truth feel identical from the inside.": "听上去可信，有一部分不过是此前遇到过而已，所以这条规则恰恰把流传最广的那些说法排到了最后。熟悉与真实，从内部感觉起来一模一样。",
-  "A public health body repeats one message consistently for a year, and the message states a finding along with the trial it comes from, so that each repetition carries the evidence with it.": "某公共卫生机构在一年里始终如一地重复同一条讯息，而这条讯息在陈述一项发现的同时也给出它所依据的试验，因此每一次重复都把证据一并带上。",
-  "Repetition is a delivery choice and not a flaw in itself. What matters is whether the claim is supported, and here the support travels with it rather than being replaced by familiarity.": "重复是一种传播上的选择，本身并不是缺陷。要紧的是这个说法有没有依据，而这里依据是随它一起传播的，而不是被熟悉感取代了。",
-  "A claim is reported by three outlets that each did their own reporting, naming different primary documents and interviewing different people, and an editor treats the agreement as genuine corroboration.": "某个说法被三家媒体报道，它们各自独立采访，援引了不同的原始文件，采访了不同的人，一位编辑把这种一致视为真正的相互印证。",
-  "These are independent lines of evidence rather than one claim echoing, so their agreement really is corroboration. The problem arises only when repeated appearances all trace back to a single source.": "这是彼此独立的证据线，而不是同一个说法在回响，所以它们的一致确实构成印证。问题只在于重复出现的内容全都追溯到同一个出处时才会产生。",
-  "A broadcaster corrects a false claim by leading with the accurate version, describing the false one briefly and only once, and closing on the accurate version again.": "某电视台在纠正一个虚假说法时，先讲正确的版本，只简短地提一次虚假版本，最后再以正确版本收尾。",
-  "This is the format designed around the problem: the true statement gets the repetitions and the false one gets as few as possible. Correcting is not the risk; headlining the falsehood repeatedly is.": "这正是围绕这个问题设计出来的格式：真实的陈述拿到重复，虚假的那个尽可能少出现。风险不在于纠正，而在于反复把谬误放进标题。",
+  "This is one of the older findings in the field and it has replicated steadily. In the original study, people rated plausible statements for truth on three occasions two weeks apart. Some statements were repeated across the sessions and some appeared only once. Ratings for the repeated statements climbed each time, while ratings for the ones seen only once did not move, and the climb happened for false statements exactly as it did for true ones. The authors concluded that how often something has been encountered is used as a criterion for whether it is true.":
+    "这是该领域较早的发现之一，并且一直稳定地被重复验证。在最初的研究中，人们分三次、每次相隔两周，对一些看似合理的说法评估真伪。有些说法在各次之间重复出现，有些只出现一次。重复出现的说法评分每次都上升，而只见过一次的评分纹丝不动，并且这种上升在虚假说法上与在真实说法上完全一样。作者由此得出结论：一个人遇到某事的频率，被用作判断它是否为真的一条标准。",
+  "The illusory truth effect, a reasoning trap.":
+    "真相错觉效应，一种推理陷阱。",
+  "A claim you have met before feels truer than one you have not, even with no evidence attached and even if you dismissed it the first time. In one experiment people rated trivia statements from 1 to 6 a week after seeing them. Never seen: 3.64. Seen once: 4.26. Seen twenty-seven times: 4.87. So a single repeat bought half the total effect and the other twenty-six bought the rest between them. That is worth knowing about propaganda, which has always been repetitive, and about your own sense of plausibility, which is partly just a memory of having heard something before. Ask where you first met a claim. If the answer is that it merely sounds familiar, that is not evidence.":
+    "一个你此前遇到过的说法，会比没遇到过的显得更真，哪怕没有附带任何证据，哪怕你第一次就否定过它。在一项实验中，人们在看过一些常识性说法一周后按1到6打分。从未见过：3.64。见过一次：4.26。见过二十七次：4.87。也就是说，仅仅一次重复就买下了总效果的一半，另外二十六次一起分掉了剩下的一半。这一点值得用来理解宣传，它历来就是反复的；也值得用来理解你自己的「可信感」，它有一部分不过是曾经听过某件事的记忆。去问问自己第一次在哪里遇到这个说法。如果答案只是「听着耳熟」，那不是证据。",
+  "The stimuli are neutral trivia statements of ambiguous plausibility, of the gestation-period-of-a-giraffe kind, which is why this paper was chosen over the better known illusory-truth work that runs on political headlines: the evidence stays non-partisan even though the applications are not. Three limits are worth stating. The outcome is a published mean on a 1 to 6 rating scale rather than a count of people, so no number of individuals can be recovered from it, and the figure says so. The plateau is real but must not be overstated: in this experiment nine, eighteen and twenty-seven showings each still scored reliably above a single showing, with effect sizes of 0.62, 0.49 and 0.80, so the honest claim is about the share of the climb the first showing carries and not about later showings doing nothing. The paper's Experiment 1, which ran only to nine showings, is the one in which every later step between adjacent counts was non-significant. And the samples are modest, 51 and 57 people, though the overall effect of repetition was large in both, at d = 1.00 and d = 1.09.":
+    "实验材料是可信度模糊的中性常识性说法，属于「长颈鹿的妊娠期」这一类，这也正是选择本文而非那些以政治性标题为材料的、更为人熟知的真相错觉研究的原因：即便应用是政治性的，证据本身仍保持非党派。有三点限制值得说明。所测的是在1到6评分量表上公布的平均值，而不是人数统计，因此无法从中还原出任何个体数目，图上也写明了这一点。那段平台是真实的，但绝不可夸大：在这项实验中，九次、十八次和二十七次的评分各自都可靠地高于仅仅一次，效应量分别为0.62、0.49和0.80，所以诚实的说法是关于第一次展示所占的上升比例，而不是说后面的展示毫无作用。相邻次数之间每一步都不显著的，是该文只做到九次的实验1。此外样本规模不大，分别为51人和57人，尽管两项实验中重复的总体效应都很大，d = 1.00 和 d = 1.09。",
+  "A campaign repeats one unsupported claim in every advert for six weeks. Polling afterwards finds more people rate the claim plausible than before, and the campaign concludes that the public examined the argument and found it convincing.":
+    "某宣传活动连续六周在每一条广告中重复同一个没有依据的说法。事后的民调发现，认为该说法可信的人比以前更多，宣传方由此断定公众审视了论据并觉得有说服力。",
+  "No argument was ever offered, so nothing was examined. Repetition on its own raises how true a claim feels, which means the poll measured exposure rather than persuasion by evidence.":
+    "从头到尾没有提出过任何论据，所以并没有什么被审视。仅仅重复本身就会提高一个说法给人的真实感，这意味着这次民调测到的是曝光，而不是被证据说服。",
+  "A rumour circulates in an office for a month. Asked about it, staff say it must have something to it because they have heard it from several directions, though nobody can name an original source.":
+    "某个传言在一间办公室里流传了一个月。被问到时，员工说这事总该有点根据吧，因为他们从好几个方向都听说了，可是没有人能说出最初的出处。",
+  "Hearing something from several directions feels like corroboration and is often just the same claim going round. Without an original source, the sense that it must have something to it is a memory of exposure, not evidence.":
+    "从好几个方向听到某件事，感觉像是相互印证，而往往只是同一个说法在打转。没有最初出处，那种「总该有点根据」的感觉是曝光留下的记忆，而不是证据。",
+  "A newspaper runs a weekly column that restates a popular false claim in its headline and debunks it underneath. A survey a month later finds readers of the column more likely to believe the claim than non-readers.":
+    "某报开设每周专栏，把一个流行的虚假说法放在标题里，然后在下面加以驳斥。一个月后的调查发现，该专栏的读者比不读的人更相信那个说法。",
+  "Every restatement is another exposure, and the familiarity outlasts the correction attached to it. Leading with the falsehood is the risky format; leading with the true version and never headlining the false one avoids it.":
+    "每一次复述都是又一次曝光，而熟悉感比随附的更正活得更久。把谬误放在标题里是危险的格式；把正确的版本放在前面、绝不为虚假版本做标题，才能避开它。",
+  "A brand runs the same claim about its product 40 times a week rather than 4, and reports that the higher frequency is what made audiences believe it, since belief was higher than in an unexposed region.":
+    "某品牌把关于自家产品的同一说法从每周4次改为每周40次投放，并报告说正是这种更高的频率让受众相信了它，因为相信的人比未投放地区更多。",
+  "Comparing 40 exposures against zero cannot tell you what the extra 36 bought. Most of the shift in believability arrives on the first repeat, so the comparison the claim needs is 40 against 4, not 40 against none.":
+    "拿40次曝光和零次相比，说不出多出来的那36次买到了什么。可信度的变化大部分在第一次重复时就已到位，所以真正需要的比较是40次对4次，而不是40次对没有。",
+  "A teaching myth is repeated in induction sessions year after year. Staff who first heard it as a caution, and were told at the time it was unproven, now cite it as established practice.":
+    "某个教学上的迷思年复一年在入职培训中被重复。当年第一次听到时它是作为一条提醒讲的，而且当时就被告知未经证实，如今这些员工却把它当作既定做法来引用。",
+  "What survives repetition is the claim, not the caveat attached to it. People can dismiss something on first contact, forget where they met it, and later find it plausible purely because it feels familiar.":
+    "在重复中存活下来的是那个说法，而不是随附的保留意见。人可以在第一次接触时就否定某事，忘记自己在哪儿遇到过它，之后仅仅因为它显得耳熟而觉得它可信。",
+  "A reader scrolls past the same unverified headline on four platforms without opening any of them. Weeks later they repeat it in conversation as something they are fairly sure is true, and cannot say where they read it.":
+    "某位读者在四个平台上刷过同一条未经核实的标题，一条都没点开。几周之后，他在聊天中把它当作自己相当有把握的事情说了出来，却说不上在哪儿读到的。",
+  "Not being able to name the source while feeling fairly sure is the signature of the effect. The confidence is built out of fluency from repeated exposure rather than out of anything anyone actually checked.":
+    "说不出出处却又觉得相当有把握，这正是该效应的标志。这份笃定是由重复曝光带来的流畅感搭起来的，而不是由任何人真正核实过的东西搭起来的。",
+  "A team assumes its specialists are immune to a repeated falsehood about their own field, on the grounds that they know the correct answer and would simply notice.":
+    "某团队认定，自家专家对本领域内一个被反复重复的谬误是免疫的，理由是他们知道正确答案，自然会察觉。",
+  "Knowing the right answer does not prevent the feeling of familiarity, which arrives before any deliberate checking. People who can state the correct fact when asked directly still rate the repeated falsehood as more plausible.":
+    "知道正确答案并不能阻止熟悉感的产生，而熟悉感先于任何有意的核查抵达。那些被直接询问时能说出正确事实的人，依然会把重复过的谬误评为更可信。",
+  "A product claim is quoted in a dozen blog posts, all of which trace back to a single press release. A buyer says the claim is well supported because it appears in so many places.":
+    "关于某产品的一个说法被十几篇博客文章引用，而这些文章全都可以追溯到同一份新闻稿。一位买家说这个说法很有依据，因为它出现在那么多地方。",
+  "A dozen copies of one source is one source. Counting appearances measures how widely something was repeated, which is a fact about distribution and not about whether it is true.":
+    "同一个出处的十几份复制，仍然只是一个出处。清点出现次数衡量的是某事被重复得多广，这是关于传播的事实，而不是关于它是否为真的事实。",
+  "An organisation decides that a rival's occasional, low-volume repetition of a false claim is harmless, because it is nothing like a saturation campaign and so cannot move anyone.":
+    "某组织认为，竞争对手偶尔、低强度地重复一个虚假说法是无害的，因为这完全不像饱和式宣传，因而打动不了任何人。",
+  "The dose response is heavily front-loaded, so the first repeat does most of the work and a low-volume drip is not proportionally harmless. Volume is not what makes repetition effective.":
+    "剂量反应严重前置，第一次重复就完成了大部分工作，所以低强度的涓滴式重复并不会按强度比例地无害。让重复奏效的并不是量。",
+  "Sorting claims to investigate, a team puts the ones that sound plausible at the bottom of the list, reasoning that plausible-sounding claims are less likely to be worth checking.":
+    "在排序该核查哪些说法时，某团队把听上去可信的放在名单末尾，理由是听上去可信的说法大概不太值得核查。",
+  "Sounding plausible is partly just having been encountered before, so this rule deprioritises exactly the claims that have already circulated most. Familiarity and truth feel identical from the inside.":
+    "听上去可信，有一部分不过是此前遇到过而已，所以这条规则恰恰把流传最广的那些说法排到了最后。熟悉与真实，从内部感觉起来一模一样。",
+  "A public health body repeats one message consistently for a year, and the message states a finding along with the trial it comes from, so that each repetition carries the evidence with it.":
+    "某公共卫生机构在一年里始终如一地重复同一条讯息，而这条讯息在陈述一项发现的同时也给出它所依据的试验，因此每一次重复都把证据一并带上。",
+  "Repetition is a delivery choice and not a flaw in itself. What matters is whether the claim is supported, and here the support travels with it rather than being replaced by familiarity.":
+    "重复是一种传播上的选择，本身并不是缺陷。要紧的是这个说法有没有依据，而这里依据是随它一起传播的，而不是被熟悉感取代了。",
+  "A claim is reported by three outlets that each did their own reporting, naming different primary documents and interviewing different people, and an editor treats the agreement as genuine corroboration.":
+    "某个说法被三家媒体报道，它们各自独立采访，援引了不同的原始文件，采访了不同的人，一位编辑把这种一致视为真正的相互印证。",
+  "These are independent lines of evidence rather than one claim echoing, so their agreement really is corroboration. The problem arises only when repeated appearances all trace back to a single source.":
+    "这是彼此独立的证据线，而不是同一个说法在回响，所以它们的一致确实构成印证。问题只在于重复出现的内容全都追溯到同一个出处时才会产生。",
+  "A broadcaster corrects a false claim by leading with the accurate version, describing the false one briefly and only once, and closing on the accurate version again.":
+    "某电视台在纠正一个虚假说法时，先讲正确的版本，只简短地提一次虚假版本，最后再以正确版本收尾。",
+  "This is the format designed around the problem: the true statement gets the repetitions and the false one gets as few as possible. Correcting is not the risk; headlining the falsehood repeatedly is.":
+    "这正是围绕这个问题设计出来的格式：真实的陈述拿到重复，虚假的那个尽可能少出现。风险不在于纠正，而在于反复把谬误放进标题。",
   "As far as it goes": "目前画到哪里",
   "The whole curve": "完整的曲线",
 
   // ---- Anchoring ----
-  "Five seconds to estimate 1 x 2 x 3 x 4 x 5 x 6 x 7 x 8. This group's typical answer was 512.": "五秒钟估算 1 x 2 x 3 x 4 x 5 x 6 x 7 x 8。这组人给出的典型答案是512。",
-  "High school students were shown a multiplication on a blackboard and given five seconds to estimate the answer. Five seconds is nowhere near enough to actually multiply eight numbers, so what people do is work through the first two or three steps and then guess upward from where they have got to. The typical answer from this group was 512. A second group of students, given the same five seconds, saw the identical eight numbers written in the opposite order: 8 x 7 x 6 x 5 x 4 x 3 x 2 x 1.": "研究者在黑板上给中学生看一道乘法题，给他们五秒钟估算结果。五秒远远不够真正把八个数乘出来，所以人们实际会做的是算出前两三步，然后从算到的地方往上外推。这组人给出的典型答案是512。另一组学生，同样只有五秒，看到的是完全相同的八个数字，只是顺序反过来写：8 x 7 x 6 x 5 x 4 x 3 x 2 x 1。",
-  "The second group was estimating exactly the same product. What was their typical answer?": "第二组估算的是完全相同的乘积。他们给出的典型答案是多少？",
-  "Estimating the same product, written two ways": "估算同一个乘积，写成两种样子",
+  "Five seconds to estimate 1 x 2 x 3 x 4 x 5 x 6 x 7 x 8. This group's typical answer was 512.":
+    "五秒钟估算 1 x 2 x 3 x 4 x 5 x 6 x 7 x 8。这组人给出的典型答案是512。",
+  "High school students were shown a multiplication on a blackboard and given five seconds to estimate the answer. Five seconds is nowhere near enough to actually multiply eight numbers, so what people do is work through the first two or three steps and then guess upward from where they have got to. The typical answer from this group was 512. A second group of students, given the same five seconds, saw the identical eight numbers written in the opposite order: 8 x 7 x 6 x 5 x 4 x 3 x 2 x 1.":
+    "研究者在黑板上给中学生看一道乘法题，给他们五秒钟估算结果。五秒远远不够真正把八个数乘出来，所以人们实际会做的是算出前两三步，然后从算到的地方往上外推。这组人给出的典型答案是512。另一组学生，同样只有五秒，看到的是完全相同的八个数字，只是顺序反过来写：8 x 7 x 6 x 5 x 4 x 3 x 2 x 1。",
+  "The second group was estimating exactly the same product. What was their typical answer?":
+    "第二组估算的是完全相同的乘积。他们给出的典型答案是多少？",
+  "Estimating the same product, written two ways":
+    "估算同一个乘积，写成两种样子",
   "The actual product": "实际的乘积",
-  "These are the median estimates the source printed. It gives no group sizes, no spread around either median and no test statistic for this demonstration, so nothing else is drawn here.": "这些是原始文献印出的中位数估计。对于这项演示，它没有给出各组人数，没有给出任何一个中位数的离散程度，也没有给出检验统计量，所以这里不再画别的东西。",
+  "These are the median estimates the source printed. It gives no group sizes, no spread around either median and no test statistic for this demonstration, so nothing else is drawn here.":
+    "这些是原始文献印出的中位数估计。对于这项演示，它没有给出各组人数，没有给出任何一个中位数的离散程度，也没有给出检验统计量，所以这里不再画别的东西。",
   "Shown the numbers ascending": "看到的数字是升序排列",
-  "Ascending": "升序",
+  Ascending: "升序",
   "1 x 2 x 3 x 4 x 5 x 6 x 7 x 8": "1 x 2 x 3 x 4 x 5 x 6 x 7 x 8",
   "Shown the numbers descending": "看到的数字是降序排列",
-  "Descending": "降序",
+  Descending: "降序",
   "8 x 7 x 6 x 5 x 4 x 3 x 2 x 1": "8 x 7 x 6 x 5 x 4 x 3 x 2 x 1",
   "The ascending group only": "只看升序那一组",
-  "About the same, since it is the same product": "差不多一样，因为本来就是同一个乘积",
+  "About the same, since it is the same product":
+    "差不多一样，因为本来就是同一个乘积",
   "the order cannot matter": "顺序不可能有影响",
   "Lower, because starting at 8 is intimidating": "更低，因为从8开始让人发怵",
   "big numbers make people cautious": "大数字让人变得保守",
   "Higher, and by a lot": "更高，而且高很多",
   "look at where each one starts": "看看每一个是从什么开始的",
-  "2,250. The same eight numbers, backwards, and the typical guess more than quadrupled.": "2,250。同样的八个数字倒过来写，典型答案就翻了四倍还多。",
-  "You anchor on the first few steps and adjust far too little from there": "人会锚在最初几步上，然后从那里调整得远远不够",
-  "Nobody multiplied anything. In five seconds you get through 1 x 2 x 3, which is 6, or through 8 x 7 x 6, which is 336, and then you scale up from whatever number you are holding. That starting point is the anchor, the adjustment upward is never anywhere near enough, and the order of the digits is the only thing that differed. Now put the real answer on the same axis:": "没有人真的做了乘法。五秒钟里你能算到 1 x 2 x 3，也就是6，或者算到 8 x 7 x 6，也就是336，然后就从手上这个数往上放大。那个起点就是锚，向上的调整从来都远远不够，而唯一不同的只是数字的排列顺序。现在把真正的答案放到同一根轴上：",
+  "2,250. The same eight numbers, backwards, and the typical guess more than quadrupled.":
+    "2,250。同样的八个数字倒过来写，典型答案就翻了四倍还多。",
+  "You anchor on the first few steps and adjust far too little from there":
+    "人会锚在最初几步上，然后从那里调整得远远不够",
+  "Nobody multiplied anything. In five seconds you get through 1 x 2 x 3, which is 6, or through 8 x 7 x 6, which is 336, and then you scale up from whatever number you are holding. That starting point is the anchor, the adjustment upward is never anywhere near enough, and the order of the digits is the only thing that differed. Now put the real answer on the same axis:":
+    "没有人真的做了乘法。五秒钟里你能算到 1 x 2 x 3，也就是6，或者算到 8 x 7 x 6，也就是336，然后就从手上这个数往上放大。那个起点就是锚，向上的调整从来都远远不够，而唯一不同的只是数字的排列顺序。现在把真正的答案放到同一根轴上：",
   "Both guesses, and the answer": "两个估计，和答案",
-  "The second thing the chart does is more sobering than the first. The two groups look far apart from each other, 512 against 2,250, but against 40,320 they are both rounding errors: 1.3 and 5.6 per cent of the answer. Even the group that guessed higher was out by a factor of eighteen. So the anchor did not just tilt the estimate, it set the entire scale of the answer, and the adjustment afterwards never had a chance of escaping it.": "这张图做的第二件事比第一件更让人清醒。两组人看起来相距甚远，512对2,250，但放到40,320面前，两者都只是舍入误差：分别是答案的1.3%和5.6%。就连估得更高的那一组也差了十八倍。所以锚不只是让估计偏了一点，它直接定下了整个答案的量级，而之后的调整从一开始就没有机会挣脱出来。",
+  "The second thing the chart does is more sobering than the first. The two groups look far apart from each other, 512 against 2,250, but against 40,320 they are both rounding errors: 1.3 and 5.6 per cent of the answer. Even the group that guessed higher was out by a factor of eighteen. So the anchor did not just tilt the estimate, it set the entire scale of the answer, and the adjustment afterwards never had a chance of escaping it.":
+    "这张图做的第二件事比第一件更让人清醒。两组人看起来相距甚远，512对2,250，但放到40,320面前，两者都只是舍入误差：分别是答案的1.3%和5.6%。就连估得更高的那一组也差了十八倍。所以锚不只是让估计偏了一点，它直接定下了整个答案的量级，而之后的调整从一开始就没有机会挣脱出来。",
   "What five seconds actually buys": "五秒钟真正能买到什么",
-  "Anchoring": "锚定效应",
-  "The first number in the room sets the scale for every number that follows it, including numbers that have nothing to do with it. Adjustment away from an anchor is almost always too small.": "最先说出口的那个数字，会为其后所有数字定下量级，哪怕那些数字与它毫无关系。从锚出发的调整，几乎总是太小。",
-  "The uncomfortable part is that the anchor does not have to be relevant, or credible, or even offered in good faith. In the same paper, an anchor generated by spinning a wheel of fortune in front of the participants, who could see it was random, still moved their estimates: median guesses of the percentage of African countries in the United Nations were 25 and 45 for groups that had watched the wheel land on 10 and 65. The authors add that paying people for accuracy did not reduce the effect.": "令人不安的地方在于，锚不需要相关，不需要可信，甚至不需要出于善意。在同一篇论文里，研究者当着参与者的面转动幸运轮盘产生一个锚，参与者明明看得出那是随机的，估计值仍然被它带偏：看到轮盘停在10和65的两组人，对非洲国家占联合国成员比例的中位数估计分别是25和45。作者还补充说，为准确性付钱并不能减弱这一效应。",
-  "Anchoring works because estimating is expensive and comparing is cheap. Faced with a quantity you do not know, the mind does not build an answer from nothing; it grabs whatever number is nearby and asks whether the true value is bigger or smaller than that. This is a sensible strategy when the nearby number is informative. The trouble is that the grabbing happens whether or not it is informative, and the adjustment that follows is throttled by the effort it takes: you move away from the anchor until the answer stops feeling obviously wrong, and stopping there is almost always stopping too early. Three consequences are worth carrying around. First, whoever speaks first in a negotiation is not merely stating a position, they are setting the scale on which every later number will be judged, which is why an opening offer that seems absurd is often working exactly as intended. Second, an anchor does not need to be a number: the first proposal, the first draft, the first estimate anyone says out loud in a meeting does the same job to everything said afterwards. Third, and this is what the political version of the idea trades on, repeatedly voicing a position far outside what is currently normal shifts where the middle appears to be, without a single argument being made for it. The defences are unglamorous and they work. Make your own estimate before you hear anyone else's, and write it down, because an unstated estimate quietly rewrites itself. Ask what the answer would be if the anchor were doubled or halved, which is a way of testing whether you are reasoning or just decorating a number you were handed. And when you catch yourself adjusting from a figure, adjust further than feels right, because the pull is always toward stopping too soon.": "锚定之所以奏效，是因为估算代价高昂而比较代价低廉。面对一个你并不知道的量，大脑不会从零开始搭出一个答案，它会抓住手边现成的那个数，然后问真值比它大还是小。当手边那个数确实有信息时，这是个明智的策略。麻烦在于，无论它有没有信息，这一抓都会发生，而随后的调整又被所需的努力卡住：你从锚往外挪，挪到答案不再明显离谱就停下，而停在那里几乎总是停得太早。有三点后果值得随身带着。第一，在谈判中先开口的人不只是在陈述立场，他是在设定此后所有数字被评判的量级，这就是为什么一个看似荒唐的开价往往正按其意图在起作用。第二，锚不必是个数字：第一份提案、第一稿、会议上第一个被说出口的估计，对之后的一切起的是同样的作用。第三，这个想法的政治版本靠的正是这一点：反复表达一个远离当下常态的立场，会挪动中间看起来所在的位置，而其间可以一个论据都没提出。防范之道并不花哨，而且有效。在听到任何人的估计之前先做出你自己的估计，并且写下来，因为没写下来的估计会悄悄自我改写。问一句：如果锚翻倍或者减半，答案会是什么？这是检验你到底是在推理，还是只是在给别人递来的数字做装饰。而当你发现自己正从某个数字往外调整时，调得比感觉上应该的更多一些，因为那股拉力永远把人往过早停下的方向拽。",
-  "It holds up, and it is not confined to students in a hurry": "它站得住，而且不限于赶时间的学生",
-  "The effect has been examined many times since 1974 across very different tasks and populations, and a meta-analysis pooling that literature found it robust, with a large average effect size. That matters here because the blackboard demonstration on its own is a single result from 1974 on school students under time pressure, with no sample sizes or spread printed. The general phenomenon does not rest on it. What the blackboard version supplies that most later studies do not is a case where the right answer is exactly knowable, so the size of the error can be seen rather than inferred.": "自1974年以来，这一效应在差异极大的任务和人群中被反复检验过，一项汇总该文献的元分析发现它相当稳健，平均效应量很大。这在这里很重要，因为黑板演示本身只是1974年在时间压力下对中学生做的一个单一结果，既没印出样本量也没印出离散程度。这个普遍现象并不靠它撑着。这个版本拥有而后来大多数研究所没有的，是一个正确答案完全可知的情形，因而误差有多大是看得见的，而不是推断出来的。",
+  Anchoring: "锚定效应",
+  "The first number in the room sets the scale for every number that follows it, including numbers that have nothing to do with it. Adjustment away from an anchor is almost always too small.":
+    "最先说出口的那个数字，会为其后所有数字定下量级，哪怕那些数字与它毫无关系。从锚出发的调整，几乎总是太小。",
+  "The uncomfortable part is that the anchor does not have to be relevant, or credible, or even offered in good faith. In the same paper, an anchor generated by spinning a wheel of fortune in front of the participants, who could see it was random, still moved their estimates: median guesses of the percentage of African countries in the United Nations were 25 and 45 for groups that had watched the wheel land on 10 and 65. The authors add that paying people for accuracy did not reduce the effect.":
+    "令人不安的地方在于，锚不需要相关，不需要可信，甚至不需要出于善意。在同一篇论文里，研究者当着参与者的面转动幸运轮盘产生一个锚，参与者明明看得出那是随机的，估计值仍然被它带偏：看到轮盘停在10和65的两组人，对非洲国家占联合国成员比例的中位数估计分别是25和45。作者还补充说，为准确性付钱并不能减弱这一效应。",
+  "Anchoring works because estimating is expensive and comparing is cheap. Faced with a quantity you do not know, the mind does not build an answer from nothing; it grabs whatever number is nearby and asks whether the true value is bigger or smaller than that. This is a sensible strategy when the nearby number is informative. The trouble is that the grabbing happens whether or not it is informative, and the adjustment that follows is throttled by the effort it takes: you move away from the anchor until the answer stops feeling obviously wrong, and stopping there is almost always stopping too early. Three consequences are worth carrying around. First, whoever speaks first in a negotiation is not merely stating a position, they are setting the scale on which every later number will be judged, which is why an opening offer that seems absurd is often working exactly as intended. Second, an anchor does not need to be a number: the first proposal, the first draft, the first estimate anyone says out loud in a meeting does the same job to everything said afterwards. Third, and this is what the political version of the idea trades on, repeatedly voicing a position far outside what is currently normal shifts where the middle appears to be, without a single argument being made for it. The defences are unglamorous and they work. Make your own estimate before you hear anyone else's, and write it down, because an unstated estimate quietly rewrites itself. Ask what the answer would be if the anchor were doubled or halved, which is a way of testing whether you are reasoning or just decorating a number you were handed. And when you catch yourself adjusting from a figure, adjust further than feels right, because the pull is always toward stopping too soon.":
+    "锚定之所以奏效，是因为估算代价高昂而比较代价低廉。面对一个你并不知道的量，大脑不会从零开始搭出一个答案，它会抓住手边现成的那个数，然后问真值比它大还是小。当手边那个数确实有信息时，这是个明智的策略。麻烦在于，无论它有没有信息，这一抓都会发生，而随后的调整又被所需的努力卡住：你从锚往外挪，挪到答案不再明显离谱就停下，而停在那里几乎总是停得太早。有三点后果值得随身带着。第一，在谈判中先开口的人不只是在陈述立场，他是在设定此后所有数字被评判的量级，这就是为什么一个看似荒唐的开价往往正按其意图在起作用。第二，锚不必是个数字：第一份提案、第一稿、会议上第一个被说出口的估计，对之后的一切起的是同样的作用。第三，这个想法的政治版本靠的正是这一点：反复表达一个远离当下常态的立场，会挪动中间看起来所在的位置，而其间可以一个论据都没提出。防范之道并不花哨，而且有效。在听到任何人的估计之前先做出你自己的估计，并且写下来，因为没写下来的估计会悄悄自我改写。问一句：如果锚翻倍或者减半，答案会是什么？这是检验你到底是在推理，还是只是在给别人递来的数字做装饰。而当你发现自己正从某个数字往外调整时，调得比感觉上应该的更多一些，因为那股拉力永远把人往过早停下的方向拽。",
+  "It holds up, and it is not confined to students in a hurry":
+    "它站得住，而且不限于赶时间的学生",
+  "The effect has been examined many times since 1974 across very different tasks and populations, and a meta-analysis pooling that literature found it robust, with a large average effect size. That matters here because the blackboard demonstration on its own is a single result from 1974 on school students under time pressure, with no sample sizes or spread printed. The general phenomenon does not rest on it. What the blackboard version supplies that most later studies do not is a case where the right answer is exactly knowable, so the size of the error can be seen rather than inferred.":
+    "自1974年以来，这一效应在差异极大的任务和人群中被反复检验过，一项汇总该文献的元分析发现它相当稳健，平均效应量很大。这在这里很重要，因为黑板演示本身只是1974年在时间压力下对中学生做的一个单一结果，既没印出样本量也没印出离散程度。这个普遍现象并不靠它撑着。这个版本拥有而后来大多数研究所没有的，是一个正确答案完全可知的情形，因而误差有多大是看得见的，而不是推断出来的。",
   "Anchoring, a reasoning trap.": "锚定效应，一种推理陷阱。",
-  "Two groups of students got five seconds to estimate a product on a blackboard. One saw 1 x 2 x 3 x 4 x 5 x 6 x 7 x 8 and typically guessed 512. The other saw the identical eight numbers written backwards, 8 x 7 x 6 x 5 x 4 x 3 x 2 x 1, and typically guessed 2,250. Same numbers, same answer, more than four times the guess. And both were nowhere close: the real answer is 40,320. Nobody had time to multiply, so everyone anchored on the first few steps and adjusted up far too little. Whoever says a number first is not stating a position, they are setting the scale. Make your own estimate before you hear theirs.": "两组学生有五秒钟估算黑板上的一个乘积。一组看到 1 x 2 x 3 x 4 x 5 x 6 x 7 x 8，典型答案是512。另一组看到完全相同的八个数字倒着写，8 x 7 x 6 x 5 x 4 x 3 x 2 x 1，典型答案是2,250。同样的数字，同样的答案，估计值却差了四倍多。而且两者都离得远得离谱：真正的答案是40,320。没有人来得及做乘法，于是所有人都锚在了最初几步上，向上调整得远远不够。先说出数字的人不是在表达立场，而是在设定量级。在听到对方的估计之前，先做出你自己的。",
-  "Three limits, stated because the figure would otherwise imply more than the source contains. The paper prints no group sizes, no spread around either median and no test statistic for this demonstration, so the chart draws two medians and the true value and nothing else. The participants were high school students working under a five-second deadline, which is a deliberately extreme version of the ordinary condition of estimating without time to compute, so the size of the error here should not be read as typical of unhurried judgement. And it is a single 1974 result, which is why the deep-dive example points at the later replication literature rather than leaving this one demonstration to carry the general claim. What this version has that better-powered later studies mostly lack is an exactly knowable right answer: 8 factorial is 40,320, so the shortfall can be measured rather than estimated. The same page carries the better-known wheel-of-fortune demonstration, quoted in the lesson, whose target quantity is a historical fact that has since changed, which is why it is not what the puzzle is scored on.": "要说明三点限制，否则这张图会让人以为原始文献包含了更多东西。该论文对这项演示没有印出各组人数，没有印出任何一个中位数的离散程度，也没有印出检验统计量，所以图上只画了两个中位数和真值，别无其他。参与者是受五秒限制的中学生，这是「来不及计算就得估算」这一寻常处境的一个刻意极端的版本，因此这里误差的大小不应被读作从容判断时的典型情形。而且这是1974年的单一结果，正因如此，深度阅读的例子指向的是后来的重复验证文献，而不是让这一个演示独自承担普遍性主张。这个版本拥有而后来大多数样本更充分的研究所缺少的，是一个可以精确知道的正确答案：8的阶乘是40,320，因而差距可以被测量而不是被估计。同一页上还有更为人熟知的幸运轮盘演示，课程中有所引用，但它针对的量是一个此后已经变化的历史事实，所以本谜题并不以它计分。",
-  "A recruiter opens by naming a figure far above anything the role has ever paid. The final agreed salary lands well above the usual range, and the employer concludes the candidate negotiated unusually well.": "一位招聘者一开口就报出一个远高于这个岗位历来薪资的数字。最终谈定的薪资明显高于通常区间，雇主由此断定这位候选人谈判能力特别强。",
-  "The opening figure set the scale on which every later number was judged, so the settlement drifted toward it. That is a fact about who spoke first, not about anyone's negotiating skill.": "开场那个数字设定了此后每一个数字被评判的量级，于是最终结果朝它漂移。这是关于谁先开口的事实，而不是关于任何人谈判本事的事实。",
-  "A donation page offers preset amounts starting at 500. Average gifts rise compared with the previous page, which started at 20, and the charity reports that supporters have become more generous.": "某捐款页面提供的预设金额从500起。与之前从20起的页面相比，平均捐款额上升，该机构据此报告说支持者变得更慷慨了。",
-  "The same supporters met a different first number. Presets are anchors, so the shift measures the design of the page rather than any change in generosity.": "还是同一批支持者，只是遇到了不同的第一个数字。预设金额就是锚，所以这个变化衡量的是页面的设计，而不是慷慨程度的变化。",
-  "A shop labels an item as reduced from 200 to 90. Shoppers rate it better value than the identical item labelled simply as 90, and the shop concludes they prefer the discounted version.": "某商店把一件商品标为由200降到90。相比只标90的同一件商品，顾客认为前者更划算，商店据此断定顾客更喜欢打折版本。",
-  "The struck-through 200 is a reference point rather than information about the item, and value judgements are made relative to it. The product and the price paid are the same in both cases.": "划掉的那个200是一个参照点，而不是关于这件商品的信息，而价值判断正是相对于它做出的。两种情况下商品和实付价格完全相同。",
-  "In a planning meeting the most senior person says a task will take about two weeks before anyone else speaks. The team's estimates cluster near two weeks, and the manager treats the agreement as independent confirmation.": "在一次规划会议上，职级最高的人在别人开口之前说这项任务大约要两周。团队的估计都聚在两周附近，主管把这种一致当作独立的印证。",
-  "Once a number is in the room, later estimates adjust from it rather than being formed independently. Agreement reached this way is not corroboration; the estimates should be written down before anyone speaks.": "一旦房间里出现了一个数字，之后的估计就会从它出发做调整，而不是独立形成。这样得来的一致不是印证；估计应当在任何人开口之前先写下来。",
-  "Two groups of appraisers tour the same house with identical information packs, except that the listed asking price differs. Their valuations differ in the same direction, and the agency concludes one group was better at spotting the property's potential.": "两组估价师带着完全相同的资料包看同一栋房子，唯一的差别是标示的挂牌价不同。他们的估值朝同一方向出现差异，中介据此断定其中一组更能看出这处物业的潜力。",
-  "The house was identical, so the difference tracks the listing price and nothing about the property. Expertise does not remove the pull; it mostly makes people more confident that it did not apply to them.": "房子是同一栋，所以差异跟着挂牌价走，与物业本身无关。专业经验并不能消除这股拉力，它主要让人更确信这拉力对自己不起作用。",
-  "A department builds next year's budget by starting from last year's figure and adjusting. When challenged, the finance lead says the process is evidence-based because every adjustment was justified line by line.": "某部门以去年的数字为起点做调整，编制明年的预算。被质疑时，财务负责人说这个流程是有依据的，因为每一处调整都逐条做了论证。",
-  "Justifying each step away from a starting point does not test the starting point itself, and adjustments from an anchor are systematically too small. A zero-based estimate would answer a different and better question.": "为偏离起点的每一步做论证，并不能检验那个起点本身，而从锚出发的调整系统性地偏小。一份零基预算所回答的是另一个、也是更好的问题。",
-  "Before estimating an unfamiliar quantity, participants are asked to write down the last two digits of their phone number. Estimates correlate with those digits, and the researcher concludes the sample must be unrepresentative.": "在估算一个不熟悉的量之前，参与者被要求先写下自己电话号码的最后两位。估计值与这些数字相关，研究者由此断定这个样本一定不具代表性。",
-  "An anchor does not have to be relevant or even plausible to work, and participants can know it is arbitrary and still be moved by it. The correlation is the expected result, not a sign of a bad sample.": "锚并不需要相关，甚至不需要看起来合理就能起作用，参与者可以明知它是随意的却仍被它带动。这个相关正是预期中的结果，而不是样本不好的迹象。",
-  "Two panels assess the same case file, given different suggested figures for the penalty by a party with no expertise. Their recommendations track the suggestions, and a reviewer concludes the panels disagreed about the facts.": "两个专家小组评估同一份案卷，由一个毫无专业背景的一方分别向它们提示了不同的处罚数额。两组的建议都跟着各自收到的提示走，一位复核者据此断定两组对事实有分歧。",
-  "The file was identical, so there was nothing factual to disagree about. What differed was the number each panel was handed before it started, which set the range their adjustments moved within.": "案卷是同一份，所以本就没有事实层面可以分歧的东西。不同的是各组在开始之前拿到的那个数字，是它划定了各自调整所能移动的范围。",
-  "A group repeatedly voices a position far outside anything previously considered normal. Over time, positions that once looked extreme are described as moderate, and commentators say public opinion has genuinely moved to meet them.": "某个群体反复表达一个远离此前一切常态的立场。随着时间推移，曾经显得极端的立场被描述为温和，评论者说公众舆论真的朝他们靠拢了。",
-  "Where the middle appears to be depends on what the endpoints are, and repeating a distant position moves the endpoints without any argument being made. That is a change in the frame rather than demonstrated movement in what people believe.": "中间看起来在哪里，取决于两端在哪里，而反复重复一个遥远的立场会挪动两端，其间并不需要提出任何论据。这是框架的变化，而不是人们信念确实发生位移的证据。",
-  "A buyer collects three quotes for a job and judges the second and third as cheap or expensive relative to the first, which happened to arrive first for no particular reason.": "一位买家为一项工程收了三份报价，并以碰巧最先送到、并无特别缘由的第一份为参照，判断第二份和第三份是贵还是便宜。",
-  "The first quote arrived first by accident, yet it is doing the work of a benchmark. Cheap and expensive should be measured against what the job is worth, which none of the three quotes establishes on its own.": "第一份报价最先送到纯属偶然，可它却在充当基准。贵与便宜应当相对于这项工程本身值多少来衡量，而三份报价中没有任何一份能单独确立这一点。",
-  "A team asks every member to write down their estimate privately before any figure is spoken aloud, then reveals all of them at once and discusses the spread.": "某团队要求每位成员在任何数字被说出口之前，先私下写下自己的估计，然后一次性全部揭晓并讨论其离散程度。",
-  "This is the standard defence: estimates formed before anyone hears a number are genuinely independent, so their spread carries information and their agreement is real corroboration.": "这正是标准的防御手段：在听到任何数字之前形成的估计是真正独立的，因而它们的离散程度带有信息，它们的一致也是真正的印证。",
-  "An engineer estimates the cost of a new bridge by starting from the recorded cost of three comparable bridges and adjusting for size and materials, stating the comparators used.": "一位工程师以三座可比桥梁的实际造价为起点，按规模和材料加以调整，来估算一座新桥的造价，并写明所用的比较对象。",
-  "Here the starting point is relevant evidence rather than an arbitrary number, and it is declared so the reader can judge it. Adjusting from an informative baseline is estimation working as intended.": "这里的起点是相关证据而不是随意的数字，而且被明确说出以便读者判断。从有信息的基准出发做调整，正是估算本该有的样子。",
-  "Before accepting a forecast, an analyst redoes it from a starting figure twice as large and again from one half as large, and reports that the conclusion holds in all three cases.": "在采纳一份预测之前，分析师分别以两倍大和一半大的初始数字重做了一遍，并报告说三种情况下结论都成立。",
-  "Testing whether the answer survives a different starting point is exactly how you find out whether you were reasoning or decorating an anchor. The conclusion here does not depend on where it began.": "检验答案能否在不同的起点下存活，正是弄清自己究竟是在推理还是在给锚做装饰的办法。这里的结论并不取决于它从哪里开始。",
+  "Two groups of students got five seconds to estimate a product on a blackboard. One saw 1 x 2 x 3 x 4 x 5 x 6 x 7 x 8 and typically guessed 512. The other saw the identical eight numbers written backwards, 8 x 7 x 6 x 5 x 4 x 3 x 2 x 1, and typically guessed 2,250. Same numbers, same answer, more than four times the guess. And both were nowhere close: the real answer is 40,320. Nobody had time to multiply, so everyone anchored on the first few steps and adjusted up far too little. Whoever says a number first is not stating a position, they are setting the scale. Make your own estimate before you hear theirs.":
+    "两组学生有五秒钟估算黑板上的一个乘积。一组看到 1 x 2 x 3 x 4 x 5 x 6 x 7 x 8，典型答案是512。另一组看到完全相同的八个数字倒着写，8 x 7 x 6 x 5 x 4 x 3 x 2 x 1，典型答案是2,250。同样的数字，同样的答案，估计值却差了四倍多。而且两者都离得远得离谱：真正的答案是40,320。没有人来得及做乘法，于是所有人都锚在了最初几步上，向上调整得远远不够。先说出数字的人不是在表达立场，而是在设定量级。在听到对方的估计之前，先做出你自己的。",
+  "Three limits, stated because the figure would otherwise imply more than the source contains. The paper prints no group sizes, no spread around either median and no test statistic for this demonstration, so the chart draws two medians and the true value and nothing else. The participants were high school students working under a five-second deadline, which is a deliberately extreme version of the ordinary condition of estimating without time to compute, so the size of the error here should not be read as typical of unhurried judgement. And it is a single 1974 result, which is why the deep-dive example points at the later replication literature rather than leaving this one demonstration to carry the general claim. What this version has that better-powered later studies mostly lack is an exactly knowable right answer: 8 factorial is 40,320, so the shortfall can be measured rather than estimated. The same page carries the better-known wheel-of-fortune demonstration, quoted in the lesson, whose target quantity is a historical fact that has since changed, which is why it is not what the puzzle is scored on.":
+    "要说明三点限制，否则这张图会让人以为原始文献包含了更多东西。该论文对这项演示没有印出各组人数，没有印出任何一个中位数的离散程度，也没有印出检验统计量，所以图上只画了两个中位数和真值，别无其他。参与者是受五秒限制的中学生，这是「来不及计算就得估算」这一寻常处境的一个刻意极端的版本，因此这里误差的大小不应被读作从容判断时的典型情形。而且这是1974年的单一结果，正因如此，深度阅读的例子指向的是后来的重复验证文献，而不是让这一个演示独自承担普遍性主张。这个版本拥有而后来大多数样本更充分的研究所缺少的，是一个可以精确知道的正确答案：8的阶乘是40,320，因而差距可以被测量而不是被估计。同一页上还有更为人熟知的幸运轮盘演示，课程中有所引用，但它针对的量是一个此后已经变化的历史事实，所以本谜题并不以它计分。",
+  "A recruiter opens by naming a figure far above anything the role has ever paid. The final agreed salary lands well above the usual range, and the employer concludes the candidate negotiated unusually well.":
+    "一位招聘者一开口就报出一个远高于这个岗位历来薪资的数字。最终谈定的薪资明显高于通常区间，雇主由此断定这位候选人谈判能力特别强。",
+  "The opening figure set the scale on which every later number was judged, so the settlement drifted toward it. That is a fact about who spoke first, not about anyone's negotiating skill.":
+    "开场那个数字设定了此后每一个数字被评判的量级，于是最终结果朝它漂移。这是关于谁先开口的事实，而不是关于任何人谈判本事的事实。",
+  "A donation page offers preset amounts starting at 500. Average gifts rise compared with the previous page, which started at 20, and the charity reports that supporters have become more generous.":
+    "某捐款页面提供的预设金额从500起。与之前从20起的页面相比，平均捐款额上升，该机构据此报告说支持者变得更慷慨了。",
+  "The same supporters met a different first number. Presets are anchors, so the shift measures the design of the page rather than any change in generosity.":
+    "还是同一批支持者，只是遇到了不同的第一个数字。预设金额就是锚，所以这个变化衡量的是页面的设计，而不是慷慨程度的变化。",
+  "A shop labels an item as reduced from 200 to 90. Shoppers rate it better value than the identical item labelled simply as 90, and the shop concludes they prefer the discounted version.":
+    "某商店把一件商品标为由200降到90。相比只标90的同一件商品，顾客认为前者更划算，商店据此断定顾客更喜欢打折版本。",
+  "The struck-through 200 is a reference point rather than information about the item, and value judgements are made relative to it. The product and the price paid are the same in both cases.":
+    "划掉的那个200是一个参照点，而不是关于这件商品的信息，而价值判断正是相对于它做出的。两种情况下商品和实付价格完全相同。",
+  "In a planning meeting the most senior person says a task will take about two weeks before anyone else speaks. The team's estimates cluster near two weeks, and the manager treats the agreement as independent confirmation.":
+    "在一次规划会议上，职级最高的人在别人开口之前说这项任务大约要两周。团队的估计都聚在两周附近，主管把这种一致当作独立的印证。",
+  "Once a number is in the room, later estimates adjust from it rather than being formed independently. Agreement reached this way is not corroboration; the estimates should be written down before anyone speaks.":
+    "一旦房间里出现了一个数字，之后的估计就会从它出发做调整，而不是独立形成。这样得来的一致不是印证；估计应当在任何人开口之前先写下来。",
+  "Two groups of appraisers tour the same house with identical information packs, except that the listed asking price differs. Their valuations differ in the same direction, and the agency concludes one group was better at spotting the property's potential.":
+    "两组估价师带着完全相同的资料包看同一栋房子，唯一的差别是标示的挂牌价不同。他们的估值朝同一方向出现差异，中介据此断定其中一组更能看出这处物业的潜力。",
+  "The house was identical, so the difference tracks the listing price and nothing about the property. Expertise does not remove the pull; it mostly makes people more confident that it did not apply to them.":
+    "房子是同一栋，所以差异跟着挂牌价走，与物业本身无关。专业经验并不能消除这股拉力，它主要让人更确信这拉力对自己不起作用。",
+  "A department builds next year's budget by starting from last year's figure and adjusting. When challenged, the finance lead says the process is evidence-based because every adjustment was justified line by line.":
+    "某部门以去年的数字为起点做调整，编制明年的预算。被质疑时，财务负责人说这个流程是有依据的，因为每一处调整都逐条做了论证。",
+  "Justifying each step away from a starting point does not test the starting point itself, and adjustments from an anchor are systematically too small. A zero-based estimate would answer a different and better question.":
+    "为偏离起点的每一步做论证，并不能检验那个起点本身，而从锚出发的调整系统性地偏小。一份零基预算所回答的是另一个、也是更好的问题。",
+  "Before estimating an unfamiliar quantity, participants are asked to write down the last two digits of their phone number. Estimates correlate with those digits, and the researcher concludes the sample must be unrepresentative.":
+    "在估算一个不熟悉的量之前，参与者被要求先写下自己电话号码的最后两位。估计值与这些数字相关，研究者由此断定这个样本一定不具代表性。",
+  "An anchor does not have to be relevant or even plausible to work, and participants can know it is arbitrary and still be moved by it. The correlation is the expected result, not a sign of a bad sample.":
+    "锚并不需要相关，甚至不需要看起来合理就能起作用，参与者可以明知它是随意的却仍被它带动。这个相关正是预期中的结果，而不是样本不好的迹象。",
+  "Two panels assess the same case file, given different suggested figures for the penalty by a party with no expertise. Their recommendations track the suggestions, and a reviewer concludes the panels disagreed about the facts.":
+    "两个专家小组评估同一份案卷，由一个毫无专业背景的一方分别向它们提示了不同的处罚数额。两组的建议都跟着各自收到的提示走，一位复核者据此断定两组对事实有分歧。",
+  "The file was identical, so there was nothing factual to disagree about. What differed was the number each panel was handed before it started, which set the range their adjustments moved within.":
+    "案卷是同一份，所以本就没有事实层面可以分歧的东西。不同的是各组在开始之前拿到的那个数字，是它划定了各自调整所能移动的范围。",
+  "A group repeatedly voices a position far outside anything previously considered normal. Over time, positions that once looked extreme are described as moderate, and commentators say public opinion has genuinely moved to meet them.":
+    "某个群体反复表达一个远离此前一切常态的立场。随着时间推移，曾经显得极端的立场被描述为温和，评论者说公众舆论真的朝他们靠拢了。",
+  "Where the middle appears to be depends on what the endpoints are, and repeating a distant position moves the endpoints without any argument being made. That is a change in the frame rather than demonstrated movement in what people believe.":
+    "中间看起来在哪里，取决于两端在哪里，而反复重复一个遥远的立场会挪动两端，其间并不需要提出任何论据。这是框架的变化，而不是人们信念确实发生位移的证据。",
+  "A buyer collects three quotes for a job and judges the second and third as cheap or expensive relative to the first, which happened to arrive first for no particular reason.":
+    "一位买家为一项工程收了三份报价，并以碰巧最先送到、并无特别缘由的第一份为参照，判断第二份和第三份是贵还是便宜。",
+  "The first quote arrived first by accident, yet it is doing the work of a benchmark. Cheap and expensive should be measured against what the job is worth, which none of the three quotes establishes on its own.":
+    "第一份报价最先送到纯属偶然，可它却在充当基准。贵与便宜应当相对于这项工程本身值多少来衡量，而三份报价中没有任何一份能单独确立这一点。",
+  "A team asks every member to write down their estimate privately before any figure is spoken aloud, then reveals all of them at once and discusses the spread.":
+    "某团队要求每位成员在任何数字被说出口之前，先私下写下自己的估计，然后一次性全部揭晓并讨论其离散程度。",
+  "This is the standard defence: estimates formed before anyone hears a number are genuinely independent, so their spread carries information and their agreement is real corroboration.":
+    "这正是标准的防御手段：在听到任何数字之前形成的估计是真正独立的，因而它们的离散程度带有信息，它们的一致也是真正的印证。",
+  "An engineer estimates the cost of a new bridge by starting from the recorded cost of three comparable bridges and adjusting for size and materials, stating the comparators used.":
+    "一位工程师以三座可比桥梁的实际造价为起点，按规模和材料加以调整，来估算一座新桥的造价，并写明所用的比较对象。",
+  "Here the starting point is relevant evidence rather than an arbitrary number, and it is declared so the reader can judge it. Adjusting from an informative baseline is estimation working as intended.":
+    "这里的起点是相关证据而不是随意的数字，而且被明确说出以便读者判断。从有信息的基准出发做调整，正是估算本该有的样子。",
+  "Before accepting a forecast, an analyst redoes it from a starting figure twice as large and again from one half as large, and reports that the conclusion holds in all three cases.":
+    "在采纳一份预测之前，分析师分别以两倍大和一半大的初始数字重做了一遍，并报告说三种情况下结论都成立。",
+  "Testing whether the answer survives a different starting point is exactly how you find out whether you were reasoning or decorating an anchor. The conclusion here does not depend on where it began.":
+    "检验答案能否在不同的起点下存活，正是弄清自己究竟是在推理还是在给锚做装饰的办法。这里的结论并不取决于它从哪里开始。",
   "What one group said": "其中一组的回答",
   "Both, against the answer": "两者，对照答案",
 
   // ---- Gerrymandering ----
-  "In this election one party won more votes than the other. Just barely, but it won them.": "这场选举中，一个政党得到的票数多于另一个。差距很小，但确实更多。",
-  "Massachusetts, 1812, electing the forty members of the state senate. Months before the vote, the legislature had redrawn the senate districts and the governor had signed the new map into law. Both the legislature and the governor belonged to one of the two parties, and that party drew the boundaries. When the votes were counted, 101,930 had been cast for senators, and the OTHER party, the one that had not drawn the map, came out narrowly ahead.": "1812年的马萨诸塞州，要选出州参议院的四十名议员。投票前几个月，州议会重新划定了参议院的选区，州长签署了这份新地图使其成为法律。议会和州长都属于两党中的一方，地图正是由这一方划定的。计票结束后，投给参议员候选人的选票共101,930张，而票数略多的是没有划地图的另一方。",
-  "How many of the 40 senate seats did the party with more votes win?": "票数较多的那个政党，在参议院的40个席位中赢得了多少席？",
+  "In this election one party won more votes than the other. Just barely, but it won them.":
+    "这场选举中，一个政党得到的票数多于另一个。差距很小，但确实更多。",
+  "Massachusetts, 1812, electing the forty members of the state senate. Months before the vote, the legislature had redrawn the senate districts and the governor had signed the new map into law. Both the legislature and the governor belonged to one of the two parties, and that party drew the boundaries. When the votes were counted, 101,930 had been cast for senators, and the OTHER party, the one that had not drawn the map, came out narrowly ahead.":
+    "1812年的马萨诸塞州，要选出州参议院的四十名议员。投票前几个月，州议会重新划定了参议院的选区，州长签署了这份新地图使其成为法律。议会和州长都属于两党中的一方，地图正是由这一方划定的。计票结束后，投给参议员候选人的选票共101,930张，而票数略多的是没有划地图的另一方。",
+  "How many of the 40 senate seats did the party with more votes win?":
+    "票数较多的那个政党，在参议院的40个席位中赢得了多少席？",
   "Share won": "所占比例",
   "Federalists, who did not draw the map": "联邦党，没有划定地图的一方",
-  "Federalists": "联邦党",
+  Federalists: "联邦党",
   "Democratic-Republicans, who drew the map": "民主共和党，划定地图的一方",
   "Democratic-Republicans": "民主共和党",
   "Votes cast for senators": "投给参议员候选人的选票",
   "Senate seats won": "赢得的参议院席位",
   "The votes, and nothing else yet": "只有选票，其他暂时还不给你看",
-  "About half, close to their share of the vote": "大约一半，与他们的得票比例相近",
+  "About half, close to their share of the vote":
+    "大约一半，与他们的得票比例相近",
   "seats should follow votes": "席位应当跟着选票走",
   "A majority, since they won the most votes": "多数席位，毕竟他们票数最多",
   "they did win, after all": "他们确实赢了选举",
   "Far fewer than half": "远远不到一半",
   "consider who drew the districts": "想一想是谁划的选区",
-  "Eleven of forty. The party with fewer votes took twenty-nine seats.": "四十席中的十一席。票数较少的政党拿下了二十九席。",
-  "The same votes, sorted into different boxes, give a different parliament": "同样的选票，分进不同的箱子，就产生了不同的议会",
-  "Not one voter changed their mind, and not one ballot was miscounted. The Federalists received 51,766 votes and the Democratic-Republicans 50,164, so the Federalists genuinely won the election by about 1,600 votes out of 101,930. They then received eleven of the forty seats. The party that had drawn the districts took the other twenty-nine, which is nearly three quarters of the chamber on slightly under half the vote:": "没有一个选民改变主意，也没有一张选票被算错。联邦党得51,766票，民主共和党得50,164票，所以在这101,930张票中联邦党确实赢了选举，领先约1,600票。他们由此获得了四十席中的十一席。划定地图的政党拿走了另外二十九席，用略少于一半的选票占据了议场近四分之三。",
+  "Eleven of forty. The party with fewer votes took twenty-nine seats.":
+    "四十席中的十一席。票数较少的政党拿下了二十九席。",
+  "The same votes, sorted into different boxes, give a different parliament":
+    "同样的选票，分进不同的箱子，就产生了不同的议会",
+  "Not one voter changed their mind, and not one ballot was miscounted. The Federalists received 51,766 votes and the Democratic-Republicans 50,164, so the Federalists genuinely won the election by about 1,600 votes out of 101,930. They then received eleven of the forty seats. The party that had drawn the districts took the other twenty-nine, which is nearly three quarters of the chamber on slightly under half the vote:":
+    "没有一个选民改变主意，也没有一张选票被算错。联邦党得51,766票，民主共和党得50,164票，所以在这101,930张票中联邦党确实赢了选举，领先约1,600票。他们由此获得了四十席中的十一席。划定地图的政党拿走了另外二十九席，用略少于一半的选票占据了议场近四分之三。",
   "Votes, and the seats they produced": "选票，以及它们产生的席位",
-  "The trick is in how the lines gather people up. Pack as many of your opponent's voters as possible into a handful of districts they win overwhelmingly, so those votes pile up far beyond what is needed, and spread the rest thinly across many districts they lose narrowly. Their votes are then either wasted on enormous majorities or wasted on near misses, and yours are spent efficiently. One of the new Massachusetts districts was drawn in such a contorted shape that a newspaper cartoon added wings and claws and called it a salamander, after the governor who signed it: Elbridge Gerry. That is where the word comes from, and the word has outlived both of the parties involved.": "诀窍在于这些线条如何把人们归拢在一起。把对方的支持者尽量塞进少数几个选区，让他们在那里以压倒性优势获胜，于是堆积起远超所需的选票。剩下的人则摊薄进许多选区，让他们在那里以微弱差距落败。这样一来，对方的选票要么浪费在巨大的多数上，要么浪费在惜败上，而你自己的选票每一张都用在了刀刃上。马萨诸塞的一个新选区形状极其扭曲，一幅报纸漫画给它添上翅膀和利爪，称之为蝾螈，并冠以签署这份地图的州长埃尔布里奇·格里的姓氏。这个词就是这样来的，它比创造它的那两个政党活得都久。",
+  "The trick is in how the lines gather people up. Pack as many of your opponent's voters as possible into a handful of districts they win overwhelmingly, so those votes pile up far beyond what is needed, and spread the rest thinly across many districts they lose narrowly. Their votes are then either wasted on enormous majorities or wasted on near misses, and yours are spent efficiently. One of the new Massachusetts districts was drawn in such a contorted shape that a newspaper cartoon added wings and claws and called it a salamander, after the governor who signed it: Elbridge Gerry. That is where the word comes from, and the word has outlived both of the parties involved.":
+    "诀窍在于这些线条如何把人们归拢在一起。把对方的支持者尽量塞进少数几个选区，让他们在那里以压倒性优势获胜，于是堆积起远超所需的选票。剩下的人则摊薄进许多选区，让他们在那里以微弱差距落败。这样一来，对方的选票要么浪费在巨大的多数上，要么浪费在惜败上，而你自己的选票每一张都用在了刀刃上。马萨诸塞的一个新选区形状极其扭曲，一幅报纸漫画给它添上翅膀和利爪，称之为蝾螈，并冠以签署这份地图的州长埃尔布里奇·格里的姓氏。这个词就是这样来的，它比创造它的那两个政党活得都久。",
   "What the boundaries did": "这些边界做了什么",
-  "Gerrymandering": "选区划分操纵",
-  "When votes are counted inside districts, whoever draws the districts is choosing part of the answer before anyone votes. A result can be arithmetically correct at every step and still not reflect what people chose.": "当选票是在选区内部计数时，划定选区的人在任何人投票之前就已经选好了一部分答案。一个结果可以在每一步计算上都准确无误，却依然没有反映人们的选择。",
-  "Note what this is not. It is not a claim about any living party: this practice has been used by whichever side happened to hold the pen, in many countries and in every century since, and the two parties in this example both ceased to exist long ago. It is also not an argument that districts are a mistake. Drawing boundaries is unavoidable in any system with local representation, and someone has to do it. What the example shows is narrower and harder to argue with: the drawing is not a neutral technical step, and asking who did it is a reasonable question about any districted result.": "请注意这不是什么。这不是在指控任何现存的政党：这套手法凡是当时握笔的一方都用过，在许多国家、此后的每一个世纪里都能见到，而本例中的两个政党早已不复存在。这也不是在说选区本身是个错误：只要按地域产生代表，边界就必须存在，而且总得有人来划。这个例子说明的是更窄、也更难反驳的一点，就是划线不是中立的技术工作，因此对任何基于选区的结果，追问是谁划的都是合理的。",
-  "The mechanism has a name in the modern literature: wasted votes. Every vote cast for a losing candidate is wasted, and so is every vote for a winner beyond the number needed to win. A map maker who wants a particular result arranges the boundaries so that the other side wastes as many votes as possible, and there are exactly two ways to do it. Packing puts their supporters into a small number of districts where they win by enormous margins, so tens of thousands of their votes elect one representative. Cracking splits the rest across many districts where they lose by a little, so those votes elect nobody at all. Both are legal, both leave every individual count accurate, and together they let a minority of voters elect a majority of seats. Two consequences are worth carrying. First, the shape of a district is a weak clue, not proof, and this cuts both ways: a bizarre outline can be the innocent result of a river or a city boundary, while a tidy rectangle can be carefully drawn to split a community in half. That is why the serious modern work does not look at shapes at all. Instead it generates many thousands of alternative maps by computer under the state's own stated rules, retallies the same real votes on each one, and asks where the enacted map falls in that distribution. A map that produces a result almost no neutral map produces is the finding, and this method has caught maps drawn by more than one party. Second, and more transferable, the same reasoning applies far outside politics. Whenever performance is measured inside units that somebody chose, whether those are sales regions, school catchments, hospital trusts or department boundaries, the choice of unit is part of the result. Ask who drew the boundary and when, and whether the answer would survive being drawn differently.": "这套机制在现代文献里有一个名字：废票。投给落选者的每一张票都是废票，投给当选者但超出当选所需数量的每一张票同样是废票。想要某种结果的制图者会这样安排边界，使对方尽可能多的选票变成废票，而做到这一点的方法恰好只有两种。集中，是把对方的支持者堆进少数几个选区，让他们在那里以巨大优势获胜，于是数万张票只换来一名代表。分散，是把其余的人摊进许多选区，让他们在那里以微弱差距落败，于是这些票一个人也选不出来。两者都合法，两者都保持每一次计票本身准确无误，而合在一起就能让少数选民选出多数席位。有两点值得带走。第一，选区的形状是微弱的线索而非证据，而且这在两个方向上都成立：怪异的轮廓可能只是无辜地跟随河流或市界，而规整的矩形也可能是被精心划来把一个社区一分为二。正因如此，严肃的现代研究根本不看形状，而是让计算机按照该州自己的规则生成成千上万份替代地图，在每一份上重新计算同一批真实选票，然后追问实际采用的那份落在这个分布的什么位置。研究发现，有些地图产生的结果是中立划法几乎不会产生的，而这套方法已经指认出由不止一个政党划定的地图。第二，也是更可迁移的一点，同样的推理在政治之外同样成立。只要一项成绩是在别人选定的单位内部被衡量的，无论那是销售区域、学区、医院集团还是部门划分，单位的选择就是结果的一部分。请追问是谁划的这些边界、什么时候划的，以及换一种划法这个答案是否还站得住。",
+  Gerrymandering: "选区划分操纵",
+  "When votes are counted inside districts, whoever draws the districts is choosing part of the answer before anyone votes. A result can be arithmetically correct at every step and still not reflect what people chose.":
+    "当选票是在选区内部计数时，划定选区的人在任何人投票之前就已经选好了一部分答案。一个结果可以在每一步计算上都准确无误，却依然没有反映人们的选择。",
+  "Note what this is not. It is not a claim about any living party: this practice has been used by whichever side happened to hold the pen, in many countries and in every century since, and the two parties in this example both ceased to exist long ago. It is also not an argument that districts are a mistake. Drawing boundaries is unavoidable in any system with local representation, and someone has to do it. What the example shows is narrower and harder to argue with: the drawing is not a neutral technical step, and asking who did it is a reasonable question about any districted result.":
+    "请注意这不是什么。这不是在指控任何现存的政党：这套手法凡是当时握笔的一方都用过，在许多国家、此后的每一个世纪里都能见到，而本例中的两个政党早已不复存在。这也不是在说选区本身是个错误：只要按地域产生代表，边界就必须存在，而且总得有人来划。这个例子说明的是更窄、也更难反驳的一点，就是划线不是中立的技术工作，因此对任何基于选区的结果，追问是谁划的都是合理的。",
+  "The mechanism has a name in the modern literature: wasted votes. Every vote cast for a losing candidate is wasted, and so is every vote for a winner beyond the number needed to win. A map maker who wants a particular result arranges the boundaries so that the other side wastes as many votes as possible, and there are exactly two ways to do it. Packing puts their supporters into a small number of districts where they win by enormous margins, so tens of thousands of their votes elect one representative. Cracking splits the rest across many districts where they lose by a little, so those votes elect nobody at all. Both are legal, both leave every individual count accurate, and together they let a minority of voters elect a majority of seats. Two consequences are worth carrying. First, the shape of a district is a weak clue, not proof, and this cuts both ways: a bizarre outline can be the innocent result of a river or a city boundary, while a tidy rectangle can be carefully drawn to split a community in half. That is why the serious modern work does not look at shapes at all. Instead it generates many thousands of alternative maps by computer under the state's own stated rules, retallies the same real votes on each one, and asks where the enacted map falls in that distribution. A map that produces a result almost no neutral map produces is the finding, and this method has caught maps drawn by more than one party. Second, and more transferable, the same reasoning applies far outside politics. Whenever performance is measured inside units that somebody chose, whether those are sales regions, school catchments, hospital trusts or department boundaries, the choice of unit is part of the result. Ask who drew the boundary and when, and whether the answer would survive being drawn differently.":
+    "这套机制在现代文献里有一个名字：废票。投给落选者的每一张票都是废票，投给当选者但超出当选所需数量的每一张票同样是废票。想要某种结果的制图者会这样安排边界，使对方尽可能多的选票变成废票，而做到这一点的方法恰好只有两种。集中，是把对方的支持者堆进少数几个选区，让他们在那里以巨大优势获胜，于是数万张票只换来一名代表。分散，是把其余的人摊进许多选区，让他们在那里以微弱差距落败，于是这些票一个人也选不出来。两者都合法，两者都保持每一次计票本身准确无误，而合在一起就能让少数选民选出多数席位。有两点值得带走。第一，选区的形状是微弱的线索而非证据，而且这在两个方向上都成立：怪异的轮廓可能只是无辜地跟随河流或市界，而规整的矩形也可能是被精心划来把一个社区一分为二。正因如此，严肃的现代研究根本不看形状，而是让计算机按照该州自己的规则生成成千上万份替代地图，在每一份上重新计算同一批真实选票，然后追问实际采用的那份落在这个分布的什么位置。研究发现，有些地图产生的结果是中立划法几乎不会产生的，而这套方法已经指认出由不止一个政党划定的地图。第二，也是更可迁移的一点，同样的推理在政治之外同样成立。只要一项成绩是在别人选定的单位内部被衡量的，无论那是销售区域、学区、医院集团还是部门划分，单位的选择就是结果的一部分。请追问是谁划的这些边界、什么时候划的，以及换一种划法这个答案是否还站得住。",
   "How the same question is answered today": "今天如何回答同一个问题",
-  "Modern work replaces argument about shapes with a distribution. One study generated 24,518 alternative district maps for a US state by computer, following that state's own stated redistricting rules, then retallied the same real votes on every one of them. The enacted maps produced a seat split that appeared in less than one per cent of those alternatives, while a map drawn separately by a bipartisan panel of retired judges behaved like a typical map from the pile. That second finding is the useful one for this lesson: a drawing process without a stake in the outcome produced an unremarkable outcome, which is what makes the question about the enacted map a question about who drew it rather than about which party they belonged to.": "现代研究用一个分布取代了关于形状的争论。一项研究针对美国的一个州，按照该州自己的选区规则用计算机生成了24,518份替代地图，并在每一份上重新计算同一批真实选票。实际采用的那份地图所产生的席位分配，在这些替代方案中出现的比例低于百分之一。与此同时，一个由退休法官组成的跨党派委员会另外划出的一份地图，其表现与这堆方案中的典型一份并无二致。第二个发现才是这一课真正有用的部分：一个对结果没有利害关系的划线过程，产出了一个完全平常的结果。这也正是为什么关于那份采用地图的问题是谁划的它，而不是划它的人属于哪个政党。",
+  "Modern work replaces argument about shapes with a distribution. One study generated 24,518 alternative district maps for a US state by computer, following that state's own stated redistricting rules, then retallied the same real votes on every one of them. The enacted maps produced a seat split that appeared in less than one per cent of those alternatives, while a map drawn separately by a bipartisan panel of retired judges behaved like a typical map from the pile. That second finding is the useful one for this lesson: a drawing process without a stake in the outcome produced an unremarkable outcome, which is what makes the question about the enacted map a question about who drew it rather than about which party they belonged to.":
+    "现代研究用一个分布取代了关于形状的争论。一项研究针对美国的一个州，按照该州自己的选区规则用计算机生成了24,518份替代地图，并在每一份上重新计算同一批真实选票。实际采用的那份地图所产生的席位分配，在这些替代方案中出现的比例低于百分之一。与此同时，一个由退休法官组成的跨党派委员会另外划出的一份地图，其表现与这堆方案中的典型一份并无二致。第二个发现才是这一课真正有用的部分：一个对结果没有利害关系的划线过程，产出了一个完全平常的结果。这也正是为什么关于那份采用地图的问题是谁划的它，而不是划它的人属于哪个政党。",
   "Gerrymandering, a reasoning trap.": "选区划分操纵，一个推理陷阱。",
-  "Massachusetts, 1812. One party won the popular vote for the state senate, 51,766 against 50,164. It received eleven of the forty seats. The other party, which had redrawn the district boundaries a few months earlier, took twenty-nine. Nobody miscounted anything: when votes are tallied inside districts, whoever draws the districts has already chosen part of the answer. A newspaper thought one of the new districts looked like a salamander and named it after the governor who signed it, Elbridge Gerry. Both those parties are long gone and the practice is not. Whenever a result is measured inside units that someone chose, ask who chose them.": "1812年的马萨诸塞州。一个政党赢得了州参议院选举的普选票，51,766票对50,164票。它拿到了四十席中的十一席。几个月前重新划定选区边界的另一方拿走了二十九席。没有人算错任何一张票。当选票是在选区内部汇总时，划定选区的人已经选好了一部分答案。一家报纸觉得其中一个新选区像一只蝾螈，就用签署它的州长埃尔布里奇·格里的姓氏来称呼它。那两个政党早已消失，这套手法没有。凡是看到某项成绩是在别人选定的单位内部被衡量时，请追问是谁选的。",
-  "The four figures are printed together on one page and reconcile two ways: 51,766 plus 50,164 is exactly the 101,930 total the same sentence gives, and 11 plus 29 is the 40 seats of the chamber, so the party numbers are confirmed by a total stated independently of them. This case was chosen over far better modern evidence for one reason. The rigorous contemporary work analyses maps drawn by a named living party and concludes they were extreme, which would make one side look uniquely foolish; here both parties have been extinct for two centuries, so the same mathematics carries no partisan charge. Three limits. The party Griffith calls the Democrats is the Democratic-Republican party of Jefferson and Madison, which is not the ancestor of any single modern party and should not be read as one. Griffith is a 1907 secondary work on 1812 sources, which is the standard scholarly account of the episode's origin but is not a modern reanalysis of the returns. And a single election cannot show that the map caused the gap rather than the geography, which is precisely the question the modern ensemble method exists to answer, and why it is the deep-dive example rather than a footnote.": "这四个数字印在同一页上，并且能以两种方式对上。51,766加50,164正好等于同一句话给出的总数101,930，而11加29等于议场的40个席位。也就是说，分党派的数字有一个独立陈述的总数为其背书。选用这个案例而非好得多的现代证据，只有一个理由：严谨的现代研究分析的是由具名且仍然存在的政党划定的地图，并断定它极端，那会让其中一方显得愚蠢。而这里的两个政党都在两个世纪前消亡了，同样的算术因此不带任何党派电荷。有三点局限。格里菲斯所称的民主党，是杰斐逊和麦迪逊的民主共和党，不是今天任何单一政党的前身，不应被这样解读。格里菲斯是1907年基于1812年材料写成的二手记述，它是关于这一事件起源的标准学术叙述，但不是对选举结果的现代重新分析。而单独一次选举无法证明造成这一落差的是地图而非地理，那正是现代集合方法存在的意义，也正是为什么它出现在深入阅读的例子里，而不是一条脚注。",
-  "A party wins 48 percent of the votes cast across a region and takes 70 percent of the seats. The party's chairman says the result shows the public clearly preferred them.": "一个政党在某地区赢得了所投选票的48%，并拿下70%的席位。其领袖表示，这一结果显示选民明确地选择了该党。",
-  "Fewer than half the voters chose them, so the seat count is a fact about how the boundaries gathered votes rather than about what the public preferred. Seats and votes are two different countings.": "选择他们的选民不到一半，所以席位数说明的是边界如何把选票归拢起来，而不是选民选择了什么。席位和选票是两种不同的计数方式。",
-  "Boundaries for the next election are drawn by a committee controlled by one of the parties contesting it. That party then outperforms its vote share, and a spokesman calls the outcome a neutral consequence of geography.": "下一次选举的边界由一个委员会划定，而该委员会由参加这场选举的政党之一控制。此后该党的席位表现优于其得票比例，其发言人称这一结果是地理造成的中性后果。",
-  "Geography may well matter, but it cannot be assumed when the people who drew the lines had a stake in the result. The way to separate the two is to compare the enacted map against many maps drawn without a stake.": "地理确实可能起作用，但当划线的人对结果有利害关系时就不能想当然。要把两者分开，办法是把采用的地图和许多在没有利害关系的情况下划出的地图做比较。",
-  "A commentator points to a district with a strange snaking outline and says its shape proves the map was manipulated.": "一位评论者指着一个轮廓蜿蜒古怪的选区，说这个形状就是地图被操纵的证据。",
-  "Shape is a weak clue in both directions: an odd outline can follow a river or a coastline, and a tidy rectangle can split a community deliberately. What settles it is how the map performs against alternatives, not how it looks.": "形状在两个方向上都是微弱线索：古怪的轮廓可能只是沿着一条河或一段海岸线，而规整的矩形也可能是刻意把一个社区分开。起决定作用的是这份地图相对于替代方案的表现，而不是它看起来什么样。",
-  "A manager redraws the sales regions, then reports that his own team now leads on the share of regions hitting target, even though total sales per person are unchanged.": "一位经理重新划分了销售区域，随后报告说按达标区域的比例计算，他的团队现在排名第一。人均销售额并没有变化。",
-  "The underlying performance did not move; only the boundaries the performance is counted inside did. Whenever results are measured within units somebody chose, the choice of unit is part of the result.": "底层的业绩没有变动，变动的只是衡量业绩的边界。凡是成绩在别人选定的单位内部被衡量的时候，单位的选择就是结果的一部分。",
-  "One district returns a candidate with 91 percent of its vote while six neighbouring districts are lost by two or three points each. A report describes the 91 percent as a stronghold and evidence of deep support.": "一个选区以91%的得票率选出候选人，而相邻的六个选区都以两三个百分点的差距落败。一份报告称这个91%是铁票仓，是支持度深厚的证据。",
-  "A 91 percent result means tens of thousands of votes elected exactly one representative, while the narrow losses next door elected none. That pattern is the signature of packing, and it converts real support into very few seats.": "91%这个结果意味着数万张票只选出了恰好一名代表，而旁边那些惜败一个人也没选出来。这种模式是集中手法的签名，它把真实存在的支持变成了极少的席位。",
-  "A council redraws school catchment boundaries and afterwards reports that the proportion of schools meeting the intake target has improved, with no change in the number of pupils or places.": "某市议会重新划定了学区边界，随后报告说达到招生目标的学校比例有所改善。学生人数和学位数都没有变化。",
-  "Nothing about the pupils or the schools changed, so the improvement is entirely in where the lines were put. This is the same move as an electoral gerrymander, applied to catchments.": "关于学生和学校的一切都没有改变，所以这份改善完全在于线画在了哪里。这就是选举中的选区操纵那一手，原样搬到了学区上。",
-  "A researcher finds that in the states where one party controlled redistricting, its seat share exceeded its vote share, and concludes that this party is uniquely willing to manipulate boundaries.": "一位研究者发现，在由某个政党控制选区重划的那些州里，该党的席位比例高于其得票比例，于是断定只有这个政党会试图操纵边界。",
-  "The comparison needed is against states where the other party controlled the process, not against nothing. Without it, the finding is about who held the pen in the sample examined rather than about any party's character.": "需要的比较对象是由另一个政党控制这一过程的那些州，而不是不作任何比较。缺了这一步，这个发现说的是在所考察的样本里谁握着笔，而不是任何一个政党的本性。",
-  "Asked whether a new map is fair, an official replies that every district contains almost exactly the same number of people, so the map cannot favour anyone.": "被问及一份新地图是否公平时，一位官员回答说每个选区所含人口几乎完全相同，因此这份地图不可能偏袒任何人。",
-  "Equal population is necessary and nowhere near sufficient. Maps with perfectly equal districts can produce almost any seat outcome, because what matters is which voters are grouped together, not how many.": "人口相等是必要条件，但远远不够。由人口完全相等的选区构成的地图几乎可以产出任何一种席位分配，因为关键在于哪些选民被归拢在一起，而不是有多少人。",
-  "A regulator reorganises hospitals into new trusts and then reports that fewer trusts are now failing its standard, using the same underlying hospital-level data as before.": "一家监管机构把医院重组进新的集团，随后报告说未达其标准的集团数量减少了。它用的是与之前完全相同的医院层面的数据。",
-  "The hospitals performed the same before and after; only the groupings they are judged in changed. Counting failures at the level of a boundary somebody redrew measures the redrawing as much as the performance.": "这些医院前后的表现完全一样，改变的只是评判它们的分组。在某人重新划定的边界这一层面上统计不达标，衡量的是这次重划，其程度不亚于衡量表现。",
-  "A single election produces a large gap between one party's vote share and its seat share, and an analyst treats this as proof that the map was drawn to produce that gap.": "一次选举在某党的得票比例和席位比例之间产生了很大落差，一位分析者把这当作地图正是为制造这一落差而划的证据。",
-  "One election cannot separate the map from the geography, since supporters of a party may genuinely be concentrated in cities whoever draws the lines. Establishing intent needs the same votes retallied on many alternative maps.": "一次选举无法把地图和地理分开，因为某个政党的支持者确实可能真的集中在城市里。要证明意图，必须在许多份替代地图上重新计算同一批选票。",
-  "Before judging a district map, a team generates thousands of alternative maps by computer under the jurisdiction's own stated rules, retallies the same real votes on each, and reports where the enacted map falls in that distribution.": "在评判一份选区地图之前，某团队按照该辖区自己的规则用计算机生成了成千上万份替代地图，在每一份上重新计算同一批真实选票，然后报告采用的那份落在这个分布的什么位置。",
-  "This is the method designed for the question: it holds the votes and the rules fixed and varies only the boundaries, so an unusual result cannot be explained away by geography. It is also blind to which party drew the map.": "这正是为这个问题而设计的方法：它固定住选票和规则，只改变边界，因此无法把异常结果推给地理，而且它对地图由谁划定是盲的。",
-  "Boundaries are drawn by a commission whose members are barred from standing in the elections concerned and who are given the population and geography data without party registration or past results.": "边界由一个委员会划定，其成员被禁止参选相关席位，他们拿到的是人口和地理数据，但看不到政党登记和以往的选举结果。",
-  "The people drawing the lines have no stake in the outcome and lack the information needed to favour anyone even if they wished to. That is a process designed against the problem rather than a claim of good intentions.": "划线的人对结果没有利害关系，而且即便想偏袒某一方也缺少所需的信息。这不是一份良好意愿的声明，而是一套针对这个问题设计出来的程序。",
-  "An election report gives both the seat totals and the vote totals for each party side by side, and notes the size of the gap between them without asserting a cause.": "一份选举报道同时给出各党的席位总数和得票总数，指出两者之间落差的大小，但没有断言其成因。",
-  "Publishing both countings and declining to explain the gap without evidence is exactly right. The gap is real and worth showing; attributing it to the map would need the comparison this report does not claim to have made.": "公布两种计数、并在没有证据时拒绝解释落差，这完全正确。落差是真实的，值得展示。要把它归因于地图，需要做一项这份报道并未声称自己做过的比较。",
-  "The largest opinion poll anyone had ever run said the challenger would win comfortably.": "有史以来规模最大的民意调查宣布，挑战者将轻松获胜。",
-  "The United States, 1936. A magazine called the Literary Digest had forecast the winner of every presidential election since 1920, once to within a single point, and this time it went bigger than ever. It posted more than ten million ballots to names taken mainly from automobile registration lists and telephone books. About a quarter came back, 2,350,176 of them, which was still more people than any survey had ever reached. The magazine said the returns were not weighted, adjusted, nor interpreted, and printed them as they stood.": "1936年的美国。一份名为《文学文摘》的杂志自1920年以来预测对了每一次总统选举的赢家，有一次误差仅一个百分点，而这一回它做得更大。它把一千多万张选票寄给了主要取自汽车登记名单和电话簿的人名。大约四分之一寄了回来，共2,350,176张，这仍然比任何一次调查所触及的人数都多。杂志说这些回函没有加权、没有调整、也没有解读，就照原样刊登了出来。",
+  "Massachusetts, 1812. One party won the popular vote for the state senate, 51,766 against 50,164. It received eleven of the forty seats. The other party, which had redrawn the district boundaries a few months earlier, took twenty-nine. Nobody miscounted anything: when votes are tallied inside districts, whoever draws the districts has already chosen part of the answer. A newspaper thought one of the new districts looked like a salamander and named it after the governor who signed it, Elbridge Gerry. Both those parties are long gone and the practice is not. Whenever a result is measured inside units that someone chose, ask who chose them.":
+    "1812年的马萨诸塞州。一个政党赢得了州参议院选举的普选票，51,766票对50,164票。它拿到了四十席中的十一席。几个月前重新划定选区边界的另一方拿走了二十九席。没有人算错任何一张票。当选票是在选区内部汇总时，划定选区的人已经选好了一部分答案。一家报纸觉得其中一个新选区像一只蝾螈，就用签署它的州长埃尔布里奇·格里的姓氏来称呼它。那两个政党早已消失，这套手法没有。凡是看到某项成绩是在别人选定的单位内部被衡量时，请追问是谁选的。",
+  "The four figures are printed together on one page and reconcile two ways: 51,766 plus 50,164 is exactly the 101,930 total the same sentence gives, and 11 plus 29 is the 40 seats of the chamber, so the party numbers are confirmed by a total stated independently of them. This case was chosen over far better modern evidence for one reason. The rigorous contemporary work analyses maps drawn by a named living party and concludes they were extreme, which would make one side look uniquely foolish; here both parties have been extinct for two centuries, so the same mathematics carries no partisan charge. Three limits. The party Griffith calls the Democrats is the Democratic-Republican party of Jefferson and Madison, which is not the ancestor of any single modern party and should not be read as one. Griffith is a 1907 secondary work on 1812 sources, which is the standard scholarly account of the episode's origin but is not a modern reanalysis of the returns. And a single election cannot show that the map caused the gap rather than the geography, which is precisely the question the modern ensemble method exists to answer, and why it is the deep-dive example rather than a footnote.":
+    "这四个数字印在同一页上，并且能以两种方式对上。51,766加50,164正好等于同一句话给出的总数101,930，而11加29等于议场的40个席位。也就是说，分党派的数字有一个独立陈述的总数为其背书。选用这个案例而非好得多的现代证据，只有一个理由：严谨的现代研究分析的是由具名且仍然存在的政党划定的地图，并断定它极端，那会让其中一方显得愚蠢。而这里的两个政党都在两个世纪前消亡了，同样的算术因此不带任何党派电荷。有三点局限。格里菲斯所称的民主党，是杰斐逊和麦迪逊的民主共和党，不是今天任何单一政党的前身，不应被这样解读。格里菲斯是1907年基于1812年材料写成的二手记述，它是关于这一事件起源的标准学术叙述，但不是对选举结果的现代重新分析。而单独一次选举无法证明造成这一落差的是地图而非地理，那正是现代集合方法存在的意义，也正是为什么它出现在深入阅读的例子里，而不是一条脚注。",
+  "A party wins 48 percent of the votes cast across a region and takes 70 percent of the seats. The party's chairman says the result shows the public clearly preferred them.":
+    "一个政党在某地区赢得了所投选票的48%，并拿下70%的席位。其领袖表示，这一结果显示选民明确地选择了该党。",
+  "Fewer than half the voters chose them, so the seat count is a fact about how the boundaries gathered votes rather than about what the public preferred. Seats and votes are two different countings.":
+    "选择他们的选民不到一半，所以席位数说明的是边界如何把选票归拢起来，而不是选民选择了什么。席位和选票是两种不同的计数方式。",
+  "Boundaries for the next election are drawn by a committee controlled by one of the parties contesting it. That party then outperforms its vote share, and a spokesman calls the outcome a neutral consequence of geography.":
+    "下一次选举的边界由一个委员会划定，而该委员会由参加这场选举的政党之一控制。此后该党的席位表现优于其得票比例，其发言人称这一结果是地理造成的中性后果。",
+  "Geography may well matter, but it cannot be assumed when the people who drew the lines had a stake in the result. The way to separate the two is to compare the enacted map against many maps drawn without a stake.":
+    "地理确实可能起作用，但当划线的人对结果有利害关系时就不能想当然。要把两者分开，办法是把采用的地图和许多在没有利害关系的情况下划出的地图做比较。",
+  "A commentator points to a district with a strange snaking outline and says its shape proves the map was manipulated.":
+    "一位评论者指着一个轮廓蜿蜒古怪的选区，说这个形状就是地图被操纵的证据。",
+  "Shape is a weak clue in both directions: an odd outline can follow a river or a coastline, and a tidy rectangle can split a community deliberately. What settles it is how the map performs against alternatives, not how it looks.":
+    "形状在两个方向上都是微弱线索：古怪的轮廓可能只是沿着一条河或一段海岸线，而规整的矩形也可能是刻意把一个社区分开。起决定作用的是这份地图相对于替代方案的表现，而不是它看起来什么样。",
+  "A manager redraws the sales regions, then reports that his own team now leads on the share of regions hitting target, even though total sales per person are unchanged.":
+    "一位经理重新划分了销售区域，随后报告说按达标区域的比例计算，他的团队现在排名第一。人均销售额并没有变化。",
+  "The underlying performance did not move; only the boundaries the performance is counted inside did. Whenever results are measured within units somebody chose, the choice of unit is part of the result.":
+    "底层的业绩没有变动，变动的只是衡量业绩的边界。凡是成绩在别人选定的单位内部被衡量的时候，单位的选择就是结果的一部分。",
+  "One district returns a candidate with 91 percent of its vote while six neighbouring districts are lost by two or three points each. A report describes the 91 percent as a stronghold and evidence of deep support.":
+    "一个选区以91%的得票率选出候选人，而相邻的六个选区都以两三个百分点的差距落败。一份报告称这个91%是铁票仓，是支持度深厚的证据。",
+  "A 91 percent result means tens of thousands of votes elected exactly one representative, while the narrow losses next door elected none. That pattern is the signature of packing, and it converts real support into very few seats.":
+    "91%这个结果意味着数万张票只选出了恰好一名代表，而旁边那些惜败一个人也没选出来。这种模式是集中手法的签名，它把真实存在的支持变成了极少的席位。",
+  "A council redraws school catchment boundaries and afterwards reports that the proportion of schools meeting the intake target has improved, with no change in the number of pupils or places.":
+    "某市议会重新划定了学区边界，随后报告说达到招生目标的学校比例有所改善。学生人数和学位数都没有变化。",
+  "Nothing about the pupils or the schools changed, so the improvement is entirely in where the lines were put. This is the same move as an electoral gerrymander, applied to catchments.":
+    "关于学生和学校的一切都没有改变，所以这份改善完全在于线画在了哪里。这就是选举中的选区操纵那一手，原样搬到了学区上。",
+  "A researcher finds that in the states where one party controlled redistricting, its seat share exceeded its vote share, and concludes that this party is uniquely willing to manipulate boundaries.":
+    "一位研究者发现，在由某个政党控制选区重划的那些州里，该党的席位比例高于其得票比例，于是断定只有这个政党会试图操纵边界。",
+  "The comparison needed is against states where the other party controlled the process, not against nothing. Without it, the finding is about who held the pen in the sample examined rather than about any party's character.":
+    "需要的比较对象是由另一个政党控制这一过程的那些州，而不是不作任何比较。缺了这一步，这个发现说的是在所考察的样本里谁握着笔，而不是任何一个政党的本性。",
+  "Asked whether a new map is fair, an official replies that every district contains almost exactly the same number of people, so the map cannot favour anyone.":
+    "被问及一份新地图是否公平时，一位官员回答说每个选区所含人口几乎完全相同，因此这份地图不可能偏袒任何人。",
+  "Equal population is necessary and nowhere near sufficient. Maps with perfectly equal districts can produce almost any seat outcome, because what matters is which voters are grouped together, not how many.":
+    "人口相等是必要条件，但远远不够。由人口完全相等的选区构成的地图几乎可以产出任何一种席位分配，因为关键在于哪些选民被归拢在一起，而不是有多少人。",
+  "A regulator reorganises hospitals into new trusts and then reports that fewer trusts are now failing its standard, using the same underlying hospital-level data as before.":
+    "一家监管机构把医院重组进新的集团，随后报告说未达其标准的集团数量减少了。它用的是与之前完全相同的医院层面的数据。",
+  "The hospitals performed the same before and after; only the groupings they are judged in changed. Counting failures at the level of a boundary somebody redrew measures the redrawing as much as the performance.":
+    "这些医院前后的表现完全一样，改变的只是评判它们的分组。在某人重新划定的边界这一层面上统计不达标，衡量的是这次重划，其程度不亚于衡量表现。",
+  "A single election produces a large gap between one party's vote share and its seat share, and an analyst treats this as proof that the map was drawn to produce that gap.":
+    "一次选举在某党的得票比例和席位比例之间产生了很大落差，一位分析者把这当作地图正是为制造这一落差而划的证据。",
+  "One election cannot separate the map from the geography, since supporters of a party may genuinely be concentrated in cities whoever draws the lines. Establishing intent needs the same votes retallied on many alternative maps.":
+    "一次选举无法把地图和地理分开，因为某个政党的支持者确实可能真的集中在城市里。要证明意图，必须在许多份替代地图上重新计算同一批选票。",
+  "Before judging a district map, a team generates thousands of alternative maps by computer under the jurisdiction's own stated rules, retallies the same real votes on each, and reports where the enacted map falls in that distribution.":
+    "在评判一份选区地图之前，某团队按照该辖区自己的规则用计算机生成了成千上万份替代地图，在每一份上重新计算同一批真实选票，然后报告采用的那份落在这个分布的什么位置。",
+  "This is the method designed for the question: it holds the votes and the rules fixed and varies only the boundaries, so an unusual result cannot be explained away by geography. It is also blind to which party drew the map.":
+    "这正是为这个问题而设计的方法：它固定住选票和规则，只改变边界，因此无法把异常结果推给地理，而且它对地图由谁划定是盲的。",
+  "Boundaries are drawn by a commission whose members are barred from standing in the elections concerned and who are given the population and geography data without party registration or past results.":
+    "边界由一个委员会划定，其成员被禁止参选相关席位，他们拿到的是人口和地理数据，但看不到政党登记和以往的选举结果。",
+  "The people drawing the lines have no stake in the outcome and lack the information needed to favour anyone even if they wished to. That is a process designed against the problem rather than a claim of good intentions.":
+    "划线的人对结果没有利害关系，而且即便想偏袒某一方也缺少所需的信息。这不是一份良好意愿的声明，而是一套针对这个问题设计出来的程序。",
+  "An election report gives both the seat totals and the vote totals for each party side by side, and notes the size of the gap between them without asserting a cause.":
+    "一份选举报道同时给出各党的席位总数和得票总数，指出两者之间落差的大小，但没有断言其成因。",
+  "Publishing both countings and declining to explain the gap without evidence is exactly right. The gap is real and worth showing; attributing it to the map would need the comparison this report does not claim to have made.":
+    "公布两种计数、并在没有证据时拒绝解释落差，这完全正确。落差是真实的，值得展示。要把它归因于地图，需要做一项这份报道并未声称自己做过的比较。",
+  "The largest opinion poll anyone had ever run said the challenger would win comfortably.":
+    "有史以来规模最大的民意调查宣布，挑战者将轻松获胜。",
+  "The United States, 1936. A magazine called the Literary Digest had forecast the winner of every presidential election since 1920, once to within a single point, and this time it went bigger than ever. It posted more than ten million ballots to names taken mainly from automobile registration lists and telephone books. About a quarter came back, 2,350,176 of them, which was still more people than any survey had ever reached. The magazine said the returns were not weighted, adjusted, nor interpreted, and printed them as they stood.":
+    "1936年的美国。一份名为《文学文摘》的杂志自1920年以来预测对了每一次总统选举的赢家，有一次误差仅一个百分点，而这一回它做得更大。它把一千多万张选票寄给了主要取自汽车登记名单和电话簿的人名。大约四分之一寄了回来，共2,350,176张，这仍然比任何一次调查所触及的人数都多。杂志说这些回函没有加权、没有调整、也没有解读，就照原样刊登了出来。",
   "What happened on election day?": "选举日那天发生了什么？",
   "Share of the vote": "得票比例",
   "Landon, who led the magazine's ballots": "兰登，在杂志的回函中领先的一方",
-  "Landon": "兰登",
+  Landon: "兰登",
   "Roosevelt, the sitting president": "罗斯福，在任总统",
-  "Roosevelt": "罗斯福",
+  Roosevelt: "罗斯福",
   "Ballots returned to the magazine": "寄回杂志的选票",
   "Votes cast on election day": "选举日投下的票",
-  "Two and a third million ballots, and nothing else yet": "两百三十五万张选票，其他暂时还不给你看",
+  "Two and a third million ballots, and nothing else yet":
+    "两百三十五万张选票，其他暂时还不给你看",
   "Landon won, much as the ballots said": "兰登赢了，和回函所显示的差不多",
   "two million replies is a great many replies": "两百万份回复是非常多的回复",
   "Roosevelt won, but narrowly": "罗斯福赢了，但只是险胜",
   "a sample that big cannot be far out": "这么大的样本不可能差得太远",
   "Roosevelt won comfortably": "罗斯福赢得很轻松",
-  "ask who owns a car, then ask who posts a reply": "想想谁拥有汽车，再想想谁会去寄回一封信",
-  "Roosevelt took 46 of the 48 states. The poll had him losing by fourteen points.": "罗斯福拿下四十八个州中的四十六个。而调查说他会以十四个百分点落败。",
-  "The people who answer are not the people you asked": "回答你的人，并不是你问过的那些人",
-  "The magazine's ballots gave Landon 1,293,669 against Roosevelt's 972,897, a lead of fourteen points on the largest sample ever gathered. The country gave Roosevelt 27,476,673 against Landon's 16,679,583. The poll did not merely miss the margin, it named the wrong winner, and the error runs to more than thirty points. The magazine folded in 1938.": "杂志的回函给了兰登1,293,669票，罗斯福972,897票，在有史以来最大的样本上领先十四个百分点。全国的结果是罗斯福27,476,673票，兰登16,679,583票。这次调查不只是弄错了差距，它弄错了赢家，误差超过三十个百分点。该杂志于1938年停刊。",
-  "The magazine's returns, and the election itself": "杂志收到的回函，以及选举本身",
-  "Nothing was miscounted, and the sample was not too small. It was too self-selected. More than ten million ballots went out and only about a quarter came back, and the people who chose to post one back were not a miniature of the people who received one. A larger pile of returns does not fix that, because every extra ballot arrives by the same self-selecting route as the last. This is why a modern poll of a thousand people, chosen rather than volunteering, beats a website survey with a hundred thousand responses. The number that matters is not how many answered. It is who was left out, and whether their absence was random.": "没有任何数字被算错，样本也不是太小。它是自我选择得太厉害了。一千多万张选票寄出去，回来的大约只有四分之一，而选择把选票寄回来的人，并不是收到选票那群人的缩影。把回函堆得更高也无法解决这一点，因为每一张新增的选票都是沿着和上一张同样的自我选择路径抵达的。这就是为什么一项从一千个被选中的人那里得来的现代调查，胜过一份有十万条回复的网络问卷。真正要紧的数字不是有多少人回答了，而是谁被漏掉了，以及这种缺席是不是随机的。",
+  "ask who owns a car, then ask who posts a reply":
+    "想想谁拥有汽车，再想想谁会去寄回一封信",
+  "Roosevelt took 46 of the 48 states. The poll had him losing by fourteen points.":
+    "罗斯福拿下四十八个州中的四十六个。而调查说他会以十四个百分点落败。",
+  "The people who answer are not the people you asked":
+    "回答你的人，并不是你问过的那些人",
+  "The magazine's ballots gave Landon 1,293,669 against Roosevelt's 972,897, a lead of fourteen points on the largest sample ever gathered. The country gave Roosevelt 27,476,673 against Landon's 16,679,583. The poll did not merely miss the margin, it named the wrong winner, and the error runs to more than thirty points. The magazine folded in 1938.":
+    "杂志的回函给了兰登1,293,669票，罗斯福972,897票，在有史以来最大的样本上领先十四个百分点。全国的结果是罗斯福27,476,673票，兰登16,679,583票。这次调查不只是弄错了差距，它弄错了赢家，误差超过三十个百分点。该杂志于1938年停刊。",
+  "The magazine's returns, and the election itself":
+    "杂志收到的回函，以及选举本身",
+  "Nothing was miscounted, and the sample was not too small. It was too self-selected. More than ten million ballots went out and only about a quarter came back, and the people who chose to post one back were not a miniature of the people who received one. A larger pile of returns does not fix that, because every extra ballot arrives by the same self-selecting route as the last. This is why a modern poll of a thousand people, chosen rather than volunteering, beats a website survey with a hundred thousand responses. The number that matters is not how many answered. It is who was left out, and whether their absence was random.":
+    "没有任何数字被算错，样本也不是太小。它是自我选择得太厉害了。一千多万张选票寄出去，回来的大约只有四分之一，而选择把选票寄回来的人，并不是收到选票那群人的缩影。把回函堆得更高也无法解决这一点，因为每一张新增的选票都是沿着和上一张同样的自我选择路径抵达的。这就是为什么一项从一千个被选中的人那里得来的现代调查，胜过一份有十万条回复的网络问卷。真正要紧的数字不是有多少人回答了，而是谁被漏掉了，以及这种缺席是不是随机的。",
   "What the returns were made of": "这些回函是由什么构成的",
   "Self-selection": "自我选择",
-  "When people decide for themselves whether to be counted, the size of the sample stops protecting you. A bigger pile of volunteers is still a pile of volunteers, and no amount of it tells you about the people who stayed silent.": "当人们自己决定要不要被计入时，样本的大小就不再保护你了。志愿者的堆再大，也仍然是一堆志愿者，无论堆多高，它都不会告诉你任何关于那些保持沉默的人的事。",
-  "The explanation almost everyone gives for this failure is that the magazine drew its names from car registrations and telephone books and so missed the poor, who were Roosevelt's people. That explanation is the famous one and it is not what the evidence shows. Squire tested it against a Gallup survey from 1937 that asked people whether they had received a Literary Digest ballot and whether they had sent it back. Respondents who owned both a car and a telephone still backed Roosevelt, by 55 to 45. More decisively, everyone who reported receiving a ballot backed Roosevelt by 55 to 44. The mailing list would have called the winner correctly. Only among the people who actually returned a ballot does Landon lead, by 51 to 48. The list was skewed and it mattered, but the thing that reversed the result was who replied.": "几乎所有人对这次失败给出的解释是：杂志从汽车登记和电话簿里取名单，因此漏掉了穷人，而穷人正是罗斯福的选民。这个解释最有名，却不是证据所显示的。斯夸尔用1937年的一份盖洛普调查来检验它，那份调查询问人们是否收到过《文学文摘》的选票，以及是否寄了回去。同时拥有汽车和电话的受访者仍然支持罗斯福，比例是55比45。更具决定性的是，所有声称收到过选票的人以55比44支持罗斯福。仅凭这份名单，结果就会说对赢家。只有在真正寄回选票的人当中兰登才领先，比例是51比48。名单确实有偏，这也确实起了作用，但真正让结果反转的，是谁回复了。",
-  "The formal name for the second failure is non-response bias, and the useful thing about this case is that the two failures can be separated and measured. Squire's decomposition runs 66 to 55 to 48. The Gallup survey put Roosevelt's support at 66 per cent overall; among people sent a Digest ballot it was 55 per cent; among people who returned one it was 48. The first drop, of about eleven points, is the mailing list. The second, of about seven points, is who chose to reply. Both are real and the second is the one nobody talks about. Why should replying correlate with how you vote? Because posting a ballot back is an act of enthusiasm, and in 1936 the people most eager to register an opinion were the ones who wanted a change. A sample can be flawless and still fail this way. That is the part worth carrying: randomising who you approach does nothing about who agrees to answer, and the two problems need separate fixes. Serious surveys therefore report their response rate, chase non-responders, and weight for the ones they cannot reach, and a survey that reports none of these has not told you whether it has this problem. The everyday version is easy to spot once you know the shape. Online polls, reviews on a product page, phone-ins, petitions, satisfaction cards left on a table: in all of them the respondent volunteered. So the question to ask is never how many answered. It is what would make somebody bother, and whether that reason has anything to do with the thing being measured. If it does, the sample size is decoration.": "第二个缺陷的正式名称是无应答偏倚，而这个案例有用之处在于两个缺陷可以被分开并加以度量。斯夸尔的分解是从66到55再到48。盖洛普调查显示罗斯福的支持率整体为百分之六十六；在收到过文摘选票的人中为百分之五十五；在寄回过选票的人中为四十八。第一次下降约十一个百分点，来自那份名单。第二次下降约七个百分点，来自谁选择回复。两者都真实存在，而后者是没人谈论的那个。回复为什么会和投票倾向相关呢？因为把选票寄回去是一种热情的行动，而在1936年，最急于表达意见的正是想要改变的那一方。样本可以无可挑剔，却依然以这种方式失败。这才是值得带走的部分：把接触谁随机化，对于谁愿意回答毫无作用，这两个问题需要各自的解决办法。因此认真的调查会公布应答率、追访未应答者，并为那些无法触及的人加权；一份对这些只字不提的调查，并没有告诉你它是否存在这个问题。日常版本一旦知道了形状就很容易辨认。网络投票、商品页面上的评价、听众来电、请愿书、放在桌上的满意度卡片：在所有这些里，回答者都是自愿的。所以要问的问题从来不是有多少人回答了，而是什么会促使一个人费这个事，以及那个理由是否和被测量的东西有关。如果有关，样本量不过是装饰。",
+  "When people decide for themselves whether to be counted, the size of the sample stops protecting you. A bigger pile of volunteers is still a pile of volunteers, and no amount of it tells you about the people who stayed silent.":
+    "当人们自己决定要不要被计入时，样本的大小就不再保护你了。志愿者的堆再大，也仍然是一堆志愿者，无论堆多高，它都不会告诉你任何关于那些保持沉默的人的事。",
+  "The explanation almost everyone gives for this failure is that the magazine drew its names from car registrations and telephone books and so missed the poor, who were Roosevelt's people. That explanation is the famous one and it is not what the evidence shows. Squire tested it against a Gallup survey from 1937 that asked people whether they had received a Literary Digest ballot and whether they had sent it back. Respondents who owned both a car and a telephone still backed Roosevelt, by 55 to 45. More decisively, everyone who reported receiving a ballot backed Roosevelt by 55 to 44. The mailing list would have called the winner correctly. Only among the people who actually returned a ballot does Landon lead, by 51 to 48. The list was skewed and it mattered, but the thing that reversed the result was who replied.":
+    "几乎所有人对这次失败给出的解释是：杂志从汽车登记和电话簿里取名单，因此漏掉了穷人，而穷人正是罗斯福的选民。这个解释最有名，却不是证据所显示的。斯夸尔用1937年的一份盖洛普调查来检验它，那份调查询问人们是否收到过《文学文摘》的选票，以及是否寄了回去。同时拥有汽车和电话的受访者仍然支持罗斯福，比例是55比45。更具决定性的是，所有声称收到过选票的人以55比44支持罗斯福。仅凭这份名单，结果就会说对赢家。只有在真正寄回选票的人当中兰登才领先，比例是51比48。名单确实有偏，这也确实起了作用，但真正让结果反转的，是谁回复了。",
+  "The formal name for the second failure is non-response bias, and the useful thing about this case is that the two failures can be separated and measured. Squire's decomposition runs 66 to 55 to 48. The Gallup survey put Roosevelt's support at 66 per cent overall; among people sent a Digest ballot it was 55 per cent; among people who returned one it was 48. The first drop, of about eleven points, is the mailing list. The second, of about seven points, is who chose to reply. Both are real and the second is the one nobody talks about. Why should replying correlate with how you vote? Because posting a ballot back is an act of enthusiasm, and in 1936 the people most eager to register an opinion were the ones who wanted a change. A sample can be flawless and still fail this way. That is the part worth carrying: randomising who you approach does nothing about who agrees to answer, and the two problems need separate fixes. Serious surveys therefore report their response rate, chase non-responders, and weight for the ones they cannot reach, and a survey that reports none of these has not told you whether it has this problem. The everyday version is easy to spot once you know the shape. Online polls, reviews on a product page, phone-ins, petitions, satisfaction cards left on a table: in all of them the respondent volunteered. So the question to ask is never how many answered. It is what would make somebody bother, and whether that reason has anything to do with the thing being measured. If it does, the sample size is decoration.":
+    "第二个缺陷的正式名称是无应答偏倚，而这个案例有用之处在于两个缺陷可以被分开并加以度量。斯夸尔的分解是从66到55再到48。盖洛普调查显示罗斯福的支持率整体为百分之六十六；在收到过文摘选票的人中为百分之五十五；在寄回过选票的人中为四十八。第一次下降约十一个百分点，来自那份名单。第二次下降约七个百分点，来自谁选择回复。两者都真实存在，而后者是没人谈论的那个。回复为什么会和投票倾向相关呢？因为把选票寄回去是一种热情的行动，而在1936年，最急于表达意见的正是想要改变的那一方。样本可以无可挑剔，却依然以这种方式失败。这才是值得带走的部分：把接触谁随机化，对于谁愿意回答毫无作用，这两个问题需要各自的解决办法。因此认真的调查会公布应答率、追访未应答者，并为那些无法触及的人加权；一份对这些只字不提的调查，并没有告诉你它是否存在这个问题。日常版本一旦知道了形状就很容易辨认。网络投票、商品页面上的评价、听众来电、请愿书、放在桌上的满意度卡片：在所有这些里，回答者都是自愿的。所以要问的问题从来不是有多少人回答了，而是什么会促使一个人费这个事，以及那个理由是否和被测量的东西有关。如果有关，样本量不过是装饰。",
   "The two totals for the same election": "同一场选举的两个总数",
-  "A small illustration of how a number becomes contested. The official return of the Clerk of the House gives Roosevelt 27,476,673 votes, which is 60.19 per cent of the 45,646,817 cast. Almost every later compilation gives him about 27,751,841, or 60.8 per cent. Neither is wrong. The difference is New York, where Roosevelt also stood on the ticket of the American Labor Party, founded that year so that voters could support him without voting Democratic. The official return lists those 274,924 votes in a separate column; the compilations add them to his total. Two defensible national figures for one election, a quarter of a million votes apart, and the gap is not an error in anyone's arithmetic but a decision about what counts as a vote for a candidate. It is worth knowing that such decisions exist before quoting any total to the last digit.": "这是一个数字如何变得有争议的小例子。众议院书记官的官方结果给罗斯福27,476,673票，占所投45,646,817票的百分之六十点一九。后来几乎所有的汇编都给他约27,751,841票，即百分之六十点八。两者都不算错。差别在纽约州，罗斯福同时以美国劳工党的名义参选，该党正是那一年成立的，为的是让选民不必投民主党也能支持他。官方结果把那274,924票单列一栏，而汇编则把它们加进他的总数。同一场选举有两个都站得住脚的全国数字，相差二十五万票，而这个差距不是任何人的算术错误，而是关于什么算作投给一位候选人的一票的决定。在把任何总数引用到最后一位数字之前，值得知道这类决定是存在的。",
+  "A small illustration of how a number becomes contested. The official return of the Clerk of the House gives Roosevelt 27,476,673 votes, which is 60.19 per cent of the 45,646,817 cast. Almost every later compilation gives him about 27,751,841, or 60.8 per cent. Neither is wrong. The difference is New York, where Roosevelt also stood on the ticket of the American Labor Party, founded that year so that voters could support him without voting Democratic. The official return lists those 274,924 votes in a separate column; the compilations add them to his total. Two defensible national figures for one election, a quarter of a million votes apart, and the gap is not an error in anyone's arithmetic but a decision about what counts as a vote for a candidate. It is worth knowing that such decisions exist before quoting any total to the last digit.":
+    "这是一个数字如何变得有争议的小例子。众议院书记官的官方结果给罗斯福27,476,673票，占所投45,646,817票的百分之六十点一九。后来几乎所有的汇编都给他约27,751,841票，即百分之六十点八。两者都不算错。差别在纽约州，罗斯福同时以美国劳工党的名义参选，该党正是那一年成立的，为的是让选民不必投民主党也能支持他。官方结果把那274,924票单列一栏，而汇编则把它们加进他的总数。同一场选举有两个都站得住脚的全国数字，相差二十五万票，而这个差距不是任何人的算术错误，而是关于什么算作投给一位候选人的一票的决定。在把任何总数引用到最后一位数字之前，值得知道这类决定是存在的。",
   "Self-selection, a reasoning trap.": "自我选择，一个推理陷阱。",
-  "In 1936 a magazine posted more than ten million ballots and got 2,350,176 back, the largest poll ever taken. It said Landon would beat Roosevelt by fourteen points. Roosevelt won by more than twenty. The sample was not too small, it was self-selected: only about a quarter replied, and people who bother to reply are not a miniature of everybody. A modern poll of a thousand chosen people beats a website survey with a hundred thousand volunteers. The number to ask about is never how many answered. It is what would make somebody bother.": "1936年，一份杂志寄出一千多万张选票，收回2,350,176张，是当时有史以来最大的民意调查。它说兰登会以十四个百分点击败罗斯福。结果罗斯福以超过二十个百分点获胜。样本不是太小，而是自我选择的：大约只有四分之一回复，而愿意费事回复的人并不是所有人的缩影。一项从一千个被选中的人那里得来的现代调查，胜过一份有十万名自愿者的网络问卷。该追问的数字从来不是有多少人回答了，而是什么会促使一个人费这个事。",
-  "Both sides reconcile two ways. The magazine's three counts sum to 2,350,176 and each of its printed percentages recomputes from that total, while 2,350,176 against more than ten million mailed gives 23.5 per cent, matching Squire's less than 25 per cent participation. On the official side the six party columns sum to the printed grand total of 45,646,817 to the vote, and Landon's resulting 36.54 per cent independently matches the 37 per cent Squire quotes from a different source. Three things a careful reader should know. First, the official return gives Roosevelt 60.19 per cent while most books give 60.8; the difference is his New York votes on the American Labor Party line, which the official return lists separately, and the deep dive explains it. Second, Squire's evidence rests on a Gallup survey from May 1937, whose quota sample was itself imperfect, which overstates the winner's vote by about five points, and which asks people to recall six months later whether they returned a ballot; Squire argues that the overstatement would if anything favour Roosevelt and so cannot rescue the mailing-list explanation. Third, his tables do not quite nest: the returned and not-returned cells total 829 respondents while the table of those who received a ballot gives 780, a difference of 49 that he does not comment on and that is most likely item non-response, so the two should not be quoted as though one is a subset of the other.": "两个来源各自都能以两种方式对上。杂志的三项计数合计为2,350,176，它印出的每一个百分比都能从这个总数重新算出；而2,350,176对照一千多万张的寄出量得出百分之二十三点五，与斯夸尔所说的参与率低于百分之二十五相符。官方一侧，六个政党栏的合计与印出的总计45,646,817分毫不差，由此得出的兰登百分之三十六点五四，独立地与斯夸尔引自另一来源的百分之三十七相符。有三点需要知道。第一，官方结果给罗斯福百分之六十点一九，而多数书籍给的是六十点八；差别是他在纽约州美国劳工党名单上的得票，官方结果将其单独列出，深入阅读部分对此作了说明。第二，斯夸尔的证据依赖于1937年5月的一份盖洛普调查，其配额样本本身并不完美，把获胜者的得票高估了约五个百分点，而且要求人们在半年之后回忆自己是否寄回了选票；斯夸尔认为这种高估如果说有什么影响的话也是有利于罗斯福，因此救不了那个关于名单的解释。第三，他的各表并不完全嵌套：寄回与未寄回两栏合计829名受访者，而收到过选票的那张表给出的是780，相差49，他没有作出说明，最可能是条目无应答，因此两者不应被当作一个是另一个的子集来引用。",
-  "A newspaper puts a question on its website and reports that of 340,000 people who clicked, 78 percent agreed. It notes that this is far more responses than any conventional poll could gather.": "一家报纸在网站上提出一个问题，报道说在点击的34万人中有百分之七十八表示赞同。它指出这远多于传统民调所能收集到的回复数。",
-  "Everyone in that 340,000 chose to click, and the thing that makes somebody bother to click is usually feeling strongly. The count is large and tells you nothing about the people who scrolled past.": "那34万人中的每一个都是自己选择点击的，而促使一个人去点击的，通常是感受强烈。数字很庞大，却完全不能告诉你那些滑过去的人是怎么想的。",
-  "A survey of doctors reports its sample size, its confidence intervals and its margin of error, but nowhere states how many of those approached agreed to take part.": "一项针对医生的调查报告了样本量、置信区间和误差范围，却没有任何地方说明被联系的人当中有多少同意参加。",
-  "A margin of error describes sampling variability among those who answered. It says nothing at all about the ones who did not, so a missing response rate leaves the largest possible bias unmeasured.": "误差范围描述的是回答者之间的抽样变异。它对没有回答的人只字未提，因此缺失的应答率会让最大的一种可能偏倚完全未被度量。",
-  "A researcher worries that a volunteer survey may be unrepresentative and decides the fix is to keep it open longer and gather four times as many responses.": "一位研究者担心一项志愿者调查可能不具代表性，于是决定把调查延长开放时间，收集四倍的回复作为解决办法。",
-  "Every extra response arrives through the same self-selecting door as the ones before it, so the bias is reproduced rather than diluted. More volunteers is a bigger pile of volunteers.": "每一份新增的回复都是从与此前相同的那扇自我选择的门进来的，所以偏倚是被复制而不是被稀释。更多的志愿者，只是更大的一堆志愿者。",
-  "A product carries 4,000 reviews averaging 4.6 stars, and the seller cites the number of reviews as evidence that the rating is reliable.": "某商品有4,000条评价，平均4.6星，卖家援引评价数量作为该评分可靠的证据。",
-  "People write reviews when they are delighted or furious, and mostly stay silent in between. The number of reviews measures how many people were moved to write, not how the product performs.": "人们在极为满意或极为愤怒时才会写评价，处在中间状态时大多沉默。评价数量衡量的是有多少人被触动去写，而不是这件商品表现如何。",
-  "A radio programme invites listeners to call in about a proposed law and reports that callers ran nine to one against it.": "一档广播节目邀请听众就一项立法提案来电，并报道来电者以九比一反对该提案。",
-  "Calling a radio station costs time and effort, which people spend when they are angry. A nine to one split among callers is evidence about intensity, not about how the audience divides.": "给电台打电话要花时间和力气，而人们在生气时才会花。来电者中的九比一是关于情绪强度的证据，不是关于听众如何分化的证据。",
-  "A hospital leaves satisfaction cards at the exit and reports that 92 percent of returned cards rated the visit good or excellent.": "一家医院在出口处放置满意度卡片，并报道收回的卡片中有百分之九十二把就诊评为好或很好。",
-  "The people most upset by a visit are often the least likely to stop at a table and fill in a card on the way out. The returned cards are a sample of who chose to stay and write.": "对就诊最为不满的人，往往最不愿意在离开时停在桌前填一张卡片。收回的卡片是那些选择留下来书写的人的样本。",
-  "A polling firm is criticised for an unrepresentative contact list, so it buys a properly random list of the whole population and mails everyone on it. A fifth reply, and it publishes the result as a random sample.": "一家民调公司因联系名单不具代表性而受到批评，于是买来一份真正随机的全人口名单并寄给每一个人。五分之一作了回复，公司便把结果作为随机样本发布。",
-  "Randomising who you approach does nothing about who agrees to answer. A random list with a one in five reply rate yields a self-selected fifth, and the two problems need separate fixes.": "把接触谁随机化，对于谁愿意回答毫无作用。一份应答率为五分之一的随机名单，得到的是自我选择的五分之一，而这两个问题需要各自的解决办法。",
-  "A trial of a fitness programme advertises for participants and finds that those who enrolled improved substantially over six months, concluding the programme works.": "一项健身计划的试验通过广告招募，发现报名者在六个月内有显著改善，于是得出该计划有效的结论。",
-  "People who answer an advertisement for a fitness programme are already motivated to get fitter, and some would have improved anyway. The comparison needed is against similar volunteers who were not given the programme.": "会去回应健身计划广告的人本来就有变健康的动力，其中一些人无论如何都会有所改善。所需要的比较对象，是同样的志愿者中没有获得该计划的那些人。",
-  "A campaign presents a petition with 60,000 signatures and describes it as showing what the county thinks.": "一场运动提交了一份有六万个签名的请愿书，并称其显示了本县的想法。",
-  "A petition counts only people who agreed and were reached and bothered to sign; there is no denominator and no way for a disagreeing person to be recorded. It measures organisation, not opinion.": "请愿书只计入那些赞同、被触及、并且愿意花力气签名的人；它没有分母，也没有任何办法记录一个持不同意见的人。它衡量的是组织能力，不是民意。",
-  "A university reports median graduate earnings from a survey its alumni office sent out, noting proudly that it received several thousand replies.": "一所大学根据校友办公室发出的一份调查公布毕业生收入中位数，并自豪地指出收到了数千份回复。",
-  "Graduates who are doing well are more willing to tell their university what they earn. The several thousand replies are drawn disproportionately from the successful, which pushes the median up.": "过得好的毕业生更愿意告诉母校自己挣多少。这数千份回复不成比例地来自成功者，这会把中位数往上推。",
-  "A survey states that 4,200 households were approached, that 2,900 took part, and that the results are weighted to match census figures for age, region and housing tenure.": "一项调查说明接触了4,200个家庭，其中2,900个参加，并说结果已按年龄、地区和住房产权状况加权以匹配普查数据。",
-  "The response rate is disclosed and the known imbalances are corrected. That does not guarantee the non-responders were like the responders, but it is exactly what a careful survey can do and report.": "应答率已经披露，已知的失衡也作了校正。这并不能保证未应答者与应答者相似，但这恰恰是一项审慎的调查所能做到并如实报告的。",
-  "Researchers follow up a sample of people who did not reply to their questionnaire, interview them in person, and report that their answers closely matched those of the original responders.": "研究者追访了一部分没有回复问卷的人，当面访谈他们，并报告说他们的回答与最初的应答者高度一致。",
-  "This is the direct test for non-response bias rather than an assurance about it. Sampling the silent group and comparing is the only way to learn whether their absence mattered.": "这是对无应答偏倚的直接检验，而不是对它的一句保证。抽取沉默的那一组并加以比较，是唯一能知道他们的缺席是否要紧的办法。",
-  "A council reports the number of children enrolled in its schools from its own enrolment records rather than from a survey, and gives the figure without a margin of error.": "一个市议会根据自己的注册记录而非调查，公布其学校在读儿童的人数，并给出这个数字而不附误差范围。",
-  "This is a count of everybody rather than a sample of anybody, so nobody selected themselves into it and no sampling error applies. Reporting it without a margin of error is correct.": "这是对所有人的清点，而不是对任何人的抽样，所以没有人把自己选进去，抽样误差也不适用。不附误差范围地公布它是正确的。",
-  "One word, heard once, a week before anybody was asked what they had seen.": "一个词，只听过一次，而且是在有人被问起看见了什么的一周之前。",
-  "A hundred and fifty students watched a short film of a multiple car accident and then filled in a questionnaire. Fifty of them were asked how fast the cars were going when they smashed into each other. Fifty were asked the same question with one word changed, when they hit each other. Fifty were not asked about speed at all. The verb mattered: in an earlier run of this experiment the word smashed pulled the average speed estimate up to 40.5 miles an hour against 34.0 for hit, and broken glass is the sort of thing you expect from a fast crash. A week later, without seeing the film again, everyone answered ten more questions. One of them, sitting in a random position in the list, asked whether they had seen any broken glass. There was no broken glass in the film.": "一百五十名学生看了一段连环车祸的短片，然后填写问卷。其中五十人被问：那些车猛撞在一起时开得有多快？五十人被问的是同一个问题，只换了一个词：那些车碰到一起时。另外五十人根本没有被问及速度。动词是有分量的：在这个实验的前一个版本里，猛撞这个词把平均速度估计拉高到每小时40.5英里，而碰到只有34.0，而碎玻璃正是人们预期高速撞车会有的东西。一周之后，在没有重看影片的情况下，所有人又回答了十个问题。其中一个问题被随机排在这份清单里，问他们是否看见了碎玻璃。影片里并没有碎玻璃。",
-  "How many of the fifty who had heard the word smashed said they saw broken glass?": "在听到猛撞这个词的五十人中，有多少人说自己看见了碎玻璃？",
+  "In 1936 a magazine posted more than ten million ballots and got 2,350,176 back, the largest poll ever taken. It said Landon would beat Roosevelt by fourteen points. Roosevelt won by more than twenty. The sample was not too small, it was self-selected: only about a quarter replied, and people who bother to reply are not a miniature of everybody. A modern poll of a thousand chosen people beats a website survey with a hundred thousand volunteers. The number to ask about is never how many answered. It is what would make somebody bother.":
+    "1936年，一份杂志寄出一千多万张选票，收回2,350,176张，是当时有史以来最大的民意调查。它说兰登会以十四个百分点击败罗斯福。结果罗斯福以超过二十个百分点获胜。样本不是太小，而是自我选择的：大约只有四分之一回复，而愿意费事回复的人并不是所有人的缩影。一项从一千个被选中的人那里得来的现代调查，胜过一份有十万名自愿者的网络问卷。该追问的数字从来不是有多少人回答了，而是什么会促使一个人费这个事。",
+  "Both sides reconcile two ways. The magazine's three counts sum to 2,350,176 and each of its printed percentages recomputes from that total, while 2,350,176 against more than ten million mailed gives 23.5 per cent, matching Squire's less than 25 per cent participation. On the official side the six party columns sum to the printed grand total of 45,646,817 to the vote, and Landon's resulting 36.54 per cent independently matches the 37 per cent Squire quotes from a different source. Three things a careful reader should know. First, the official return gives Roosevelt 60.19 per cent while most books give 60.8; the difference is his New York votes on the American Labor Party line, which the official return lists separately, and the deep dive explains it. Second, Squire's evidence rests on a Gallup survey from May 1937, whose quota sample was itself imperfect, which overstates the winner's vote by about five points, and which asks people to recall six months later whether they returned a ballot; Squire argues that the overstatement would if anything favour Roosevelt and so cannot rescue the mailing-list explanation. Third, his tables do not quite nest: the returned and not-returned cells total 829 respondents while the table of those who received a ballot gives 780, a difference of 49 that he does not comment on and that is most likely item non-response, so the two should not be quoted as though one is a subset of the other.":
+    "两个来源各自都能以两种方式对上。杂志的三项计数合计为2,350,176，它印出的每一个百分比都能从这个总数重新算出；而2,350,176对照一千多万张的寄出量得出百分之二十三点五，与斯夸尔所说的参与率低于百分之二十五相符。官方一侧，六个政党栏的合计与印出的总计45,646,817分毫不差，由此得出的兰登百分之三十六点五四，独立地与斯夸尔引自另一来源的百分之三十七相符。有三点需要知道。第一，官方结果给罗斯福百分之六十点一九，而多数书籍给的是六十点八；差别是他在纽约州美国劳工党名单上的得票，官方结果将其单独列出，深入阅读部分对此作了说明。第二，斯夸尔的证据依赖于1937年5月的一份盖洛普调查，其配额样本本身并不完美，把获胜者的得票高估了约五个百分点，而且要求人们在半年之后回忆自己是否寄回了选票；斯夸尔认为这种高估如果说有什么影响的话也是有利于罗斯福，因此救不了那个关于名单的解释。第三，他的各表并不完全嵌套：寄回与未寄回两栏合计829名受访者，而收到过选票的那张表给出的是780，相差49，他没有作出说明，最可能是条目无应答，因此两者不应被当作一个是另一个的子集来引用。",
+  "A newspaper puts a question on its website and reports that of 340,000 people who clicked, 78 percent agreed. It notes that this is far more responses than any conventional poll could gather.":
+    "一家报纸在网站上提出一个问题，报道说在点击的34万人中有百分之七十八表示赞同。它指出这远多于传统民调所能收集到的回复数。",
+  "Everyone in that 340,000 chose to click, and the thing that makes somebody bother to click is usually feeling strongly. The count is large and tells you nothing about the people who scrolled past.":
+    "那34万人中的每一个都是自己选择点击的，而促使一个人去点击的，通常是感受强烈。数字很庞大，却完全不能告诉你那些滑过去的人是怎么想的。",
+  "A survey of doctors reports its sample size, its confidence intervals and its margin of error, but nowhere states how many of those approached agreed to take part.":
+    "一项针对医生的调查报告了样本量、置信区间和误差范围，却没有任何地方说明被联系的人当中有多少同意参加。",
+  "A margin of error describes sampling variability among those who answered. It says nothing at all about the ones who did not, so a missing response rate leaves the largest possible bias unmeasured.":
+    "误差范围描述的是回答者之间的抽样变异。它对没有回答的人只字未提，因此缺失的应答率会让最大的一种可能偏倚完全未被度量。",
+  "A researcher worries that a volunteer survey may be unrepresentative and decides the fix is to keep it open longer and gather four times as many responses.":
+    "一位研究者担心一项志愿者调查可能不具代表性，于是决定把调查延长开放时间，收集四倍的回复作为解决办法。",
+  "Every extra response arrives through the same self-selecting door as the ones before it, so the bias is reproduced rather than diluted. More volunteers is a bigger pile of volunteers.":
+    "每一份新增的回复都是从与此前相同的那扇自我选择的门进来的，所以偏倚是被复制而不是被稀释。更多的志愿者，只是更大的一堆志愿者。",
+  "A product carries 4,000 reviews averaging 4.6 stars, and the seller cites the number of reviews as evidence that the rating is reliable.":
+    "某商品有4,000条评价，平均4.6星，卖家援引评价数量作为该评分可靠的证据。",
+  "People write reviews when they are delighted or furious, and mostly stay silent in between. The number of reviews measures how many people were moved to write, not how the product performs.":
+    "人们在极为满意或极为愤怒时才会写评价，处在中间状态时大多沉默。评价数量衡量的是有多少人被触动去写，而不是这件商品表现如何。",
+  "A radio programme invites listeners to call in about a proposed law and reports that callers ran nine to one against it.":
+    "一档广播节目邀请听众就一项立法提案来电，并报道来电者以九比一反对该提案。",
+  "Calling a radio station costs time and effort, which people spend when they are angry. A nine to one split among callers is evidence about intensity, not about how the audience divides.":
+    "给电台打电话要花时间和力气，而人们在生气时才会花。来电者中的九比一是关于情绪强度的证据，不是关于听众如何分化的证据。",
+  "A hospital leaves satisfaction cards at the exit and reports that 92 percent of returned cards rated the visit good or excellent.":
+    "一家医院在出口处放置满意度卡片，并报道收回的卡片中有百分之九十二把就诊评为好或很好。",
+  "The people most upset by a visit are often the least likely to stop at a table and fill in a card on the way out. The returned cards are a sample of who chose to stay and write.":
+    "对就诊最为不满的人，往往最不愿意在离开时停在桌前填一张卡片。收回的卡片是那些选择留下来书写的人的样本。",
+  "A polling firm is criticised for an unrepresentative contact list, so it buys a properly random list of the whole population and mails everyone on it. A fifth reply, and it publishes the result as a random sample.":
+    "一家民调公司因联系名单不具代表性而受到批评，于是买来一份真正随机的全人口名单并寄给每一个人。五分之一作了回复，公司便把结果作为随机样本发布。",
+  "Randomising who you approach does nothing about who agrees to answer. A random list with a one in five reply rate yields a self-selected fifth, and the two problems need separate fixes.":
+    "把接触谁随机化，对于谁愿意回答毫无作用。一份应答率为五分之一的随机名单，得到的是自我选择的五分之一，而这两个问题需要各自的解决办法。",
+  "A trial of a fitness programme advertises for participants and finds that those who enrolled improved substantially over six months, concluding the programme works.":
+    "一项健身计划的试验通过广告招募，发现报名者在六个月内有显著改善，于是得出该计划有效的结论。",
+  "People who answer an advertisement for a fitness programme are already motivated to get fitter, and some would have improved anyway. The comparison needed is against similar volunteers who were not given the programme.":
+    "会去回应健身计划广告的人本来就有变健康的动力，其中一些人无论如何都会有所改善。所需要的比较对象，是同样的志愿者中没有获得该计划的那些人。",
+  "A campaign presents a petition with 60,000 signatures and describes it as showing what the county thinks.":
+    "一场运动提交了一份有六万个签名的请愿书，并称其显示了本县的想法。",
+  "A petition counts only people who agreed and were reached and bothered to sign; there is no denominator and no way for a disagreeing person to be recorded. It measures organisation, not opinion.":
+    "请愿书只计入那些赞同、被触及、并且愿意花力气签名的人；它没有分母，也没有任何办法记录一个持不同意见的人。它衡量的是组织能力，不是民意。",
+  "A university reports median graduate earnings from a survey its alumni office sent out, noting proudly that it received several thousand replies.":
+    "一所大学根据校友办公室发出的一份调查公布毕业生收入中位数，并自豪地指出收到了数千份回复。",
+  "Graduates who are doing well are more willing to tell their university what they earn. The several thousand replies are drawn disproportionately from the successful, which pushes the median up.":
+    "过得好的毕业生更愿意告诉母校自己挣多少。这数千份回复不成比例地来自成功者，这会把中位数往上推。",
+  "A survey states that 4,200 households were approached, that 2,900 took part, and that the results are weighted to match census figures for age, region and housing tenure.":
+    "一项调查说明接触了4,200个家庭，其中2,900个参加，并说结果已按年龄、地区和住房产权状况加权以匹配普查数据。",
+  "The response rate is disclosed and the known imbalances are corrected. That does not guarantee the non-responders were like the responders, but it is exactly what a careful survey can do and report.":
+    "应答率已经披露，已知的失衡也作了校正。这并不能保证未应答者与应答者相似，但这恰恰是一项审慎的调查所能做到并如实报告的。",
+  "Researchers follow up a sample of people who did not reply to their questionnaire, interview them in person, and report that their answers closely matched those of the original responders.":
+    "研究者追访了一部分没有回复问卷的人，当面访谈他们，并报告说他们的回答与最初的应答者高度一致。",
+  "This is the direct test for non-response bias rather than an assurance about it. Sampling the silent group and comparing is the only way to learn whether their absence mattered.":
+    "这是对无应答偏倚的直接检验，而不是对它的一句保证。抽取沉默的那一组并加以比较，是唯一能知道他们的缺席是否要紧的办法。",
+  "A council reports the number of children enrolled in its schools from its own enrolment records rather than from a survey, and gives the figure without a margin of error.":
+    "一个市议会根据自己的注册记录而非调查，公布其学校在读儿童的人数，并给出这个数字而不附误差范围。",
+  "This is a count of everybody rather than a sample of anybody, so nobody selected themselves into it and no sampling error applies. Reporting it without a margin of error is correct.":
+    "这是对所有人的清点，而不是对任何人的抽样，所以没有人把自己选进去，抽样误差也不适用。不附误差范围地公布它是正确的。",
+  "One word, heard once, a week before anybody was asked what they had seen.":
+    "一个词，只听过一次，而且是在有人被问起看见了什么的一周之前。",
+  "A hundred and fifty students watched a short film of a multiple car accident and then filled in a questionnaire. Fifty of them were asked how fast the cars were going when they smashed into each other. Fifty were asked the same question with one word changed, when they hit each other. Fifty were not asked about speed at all. The verb mattered: in an earlier run of this experiment the word smashed pulled the average speed estimate up to 40.5 miles an hour against 34.0 for hit, and broken glass is the sort of thing you expect from a fast crash. A week later, without seeing the film again, everyone answered ten more questions. One of them, sitting in a random position in the list, asked whether they had seen any broken glass. There was no broken glass in the film.":
+    "一百五十名学生看了一段连环车祸的短片，然后填写问卷。其中五十人被问：那些车猛撞在一起时开得有多快？五十人被问的是同一个问题，只换了一个词：那些车碰到一起时。另外五十人根本没有被问及速度。动词是有分量的：在这个实验的前一个版本里，猛撞这个词把平均速度估计拉高到每小时40.5英里，而碰到只有34.0，而碎玻璃正是人们预期高速撞车会有的东西。一周之后，在没有重看影片的情况下，所有人又回答了十个问题。其中一个问题被随机排在这份清单里，问他们是否看见了碎玻璃。影片里并没有碎玻璃。",
+  "How many of the fifty who had heard the word smashed said they saw broken glass?":
+    "在听到猛撞这个词的五十人中，有多少人说自己看见了碎玻璃？",
   "Said they saw broken glass": "说自己看见了碎玻璃",
   "Never asked about speed": "从未被问及速度",
   "Not asked": "未被问",
   "Asked how fast when they hit each other": "被问到碰到一起时的速度",
-  "hit": "碰到",
-  "Asked how fast when they smashed into each other": "被问到猛撞在一起时的速度",
-  "smashed": "猛撞",
+  hit: "碰到",
+  "Asked how fast when they smashed into each other":
+    "被问到猛撞在一起时的速度",
+  smashed: "猛撞",
   "Asked one week later": "一周之后被问",
   "The two groups we can show you so far": "目前我们能给你看的两组",
   "About the same, six or seven of them": "差不多一样，六七个人",
-  "the film was the film, whatever they were asked": "不管问他们什么，影片就是那段影片",
+  "the film was the film, whatever they were asked":
+    "不管问他们什么，影片就是那段影片",
   "A little more, nine or ten": "稍微多一些，九个或十个",
   "one word can only nudge a memory": "一个词最多只能轻轻推动一段记忆",
   "More than twice as many": "两倍还不止",
   "the word changed what the crash had been": "那个词改变了这场车祸本来的样子",
-  "Sixteen of the fifty. More than twice the seven who had heard hit.": "五十人中有十六人。是听到碰到的那七人的两倍还不止。",
-  "The question did not retrieve the memory, it edited it": "那个问题没有取出记忆，它修改了记忆",
-  "Six of the fifty who were never asked about speed reported broken glass, and seven of the fifty asked about hitting. Those two are the same answer. Sixteen of the fifty asked about smashing reported it. Every one of the hundred and fifty watched the identical film, and none of them saw any broken glass, because there was none to see.": "从未被问及速度的五十人中有六人报告看见碎玻璃，被问到碰到的五十人中有七人。这两个是同一个答案。而被问到猛撞的五十人中有十六人报告看见。这一百五十人看的是同一段影片，没有一个人看见过碎玻璃，因为那里根本没有碎玻璃可看。",
+  "Sixteen of the fifty. More than twice the seven who had heard hit.":
+    "五十人中有十六人。是听到碰到的那七人的两倍还不止。",
+  "The question did not retrieve the memory, it edited it":
+    "那个问题没有取出记忆，它修改了记忆",
+  "Six of the fifty who were never asked about speed reported broken glass, and seven of the fifty asked about hitting. Those two are the same answer. Sixteen of the fifty asked about smashing reported it. Every one of the hundred and fifty watched the identical film, and none of them saw any broken glass, because there was none to see.":
+    "从未被问及速度的五十人中有六人报告看见碎玻璃，被问到碰到的五十人中有七人。这两个是同一个答案。而被问到猛撞的五十人中有十六人报告看见。这一百五十人看的是同一段影片，没有一个人看见过碎玻璃，因为那里根本没有碎玻璃可看。",
   "All three groups, watching the same film": "三组人，看的是同一段影片",
-  "Notice what the control group tells you. Six people in fifty will report broken glass with no prompting at all, which is the background rate of misremembering an ordinary crash. Asking about speed with a neutral verb adds almost nothing to that. It is the choice of smashed over hit, one word in one question, that more than doubles it. And the effect is not a slip of the tongue in the moment. The question was asked immediately after the film; the glass was reported a week later, by people who never saw the film again. Whatever the word did, it did to the memory itself, and it survived seven days.": "请注意对照组说了什么。在完全没有任何暗示的情况下，每五十人里也会有六个人报告碎玻璃，这就是记错一场普通车祸的基础发生率。用一个中性动词去问速度，几乎没有在这个基础上添加什么。真正让它翻了一倍还不止的，是选择猛撞而不是碰到，是一个问题里的一个词。而且这个效应并不是当场的口误。问题是在看完影片后立刻问的；碎玻璃是在一周之后被报告的，报告的人再也没有看过那段影片。无论那个词做了什么，它是对记忆本身做的，而且撑过了七天。",
+  "Notice what the control group tells you. Six people in fifty will report broken glass with no prompting at all, which is the background rate of misremembering an ordinary crash. Asking about speed with a neutral verb adds almost nothing to that. It is the choice of smashed over hit, one word in one question, that more than doubles it. And the effect is not a slip of the tongue in the moment. The question was asked immediately after the film; the glass was reported a week later, by people who never saw the film again. Whatever the word did, it did to the memory itself, and it survived seven days.":
+    "请注意对照组说了什么。在完全没有任何暗示的情况下，每五十人里也会有六个人报告碎玻璃，这就是记错一场普通车祸的基础发生率。用一个中性动词去问速度，几乎没有在这个基础上添加什么。真正让它翻了一倍还不止的，是选择猛撞而不是碰到，是一个问题里的一个词。而且这个效应并不是当场的口误。问题是在看完影片后立刻问的；碎玻璃是在一周之后被报告的，报告的人再也没有看过那段影片。无论那个词做了什么，它是对记忆本身做的，而且撑过了七天。",
   "What one word did to a memory": "一个词对一段记忆做了什么",
   "The misinformation effect": "错误信息效应",
-  "A memory is not a recording you play back. It is rebuilt each time, from what you saw and from whatever has reached you since, and the two are not labelled differently on the way in. So a question can add to a memory rather than only draw from it, and the person answering cannot feel the difference.": "记忆不是一段可以回放的录像。它每一次都要重新搭建，材料是你看见的东西，以及此后传到你这里的一切，而这两者在进来的时候并没有贴上不同的标签。所以一个问题可以往记忆里添加东西，而不只是从中提取，而回答的人感觉不到这个差别。",
-  "This is worth separating from a close relative. The framing effect is about two equivalent descriptions of the same choice, presented at the moment you choose, and it changes what you prefer. This changes what you remember having seen, and it does so a week after the fact, about an object that was never present. The people who reported the glass were not lying and were not being agreeable; there is no reason to think they could tell their reconstruction from a recollection. That is the uncomfortable part, and it is why the effect matters well beyond the laboratory. It is also why the study is a fixture of the literature on eyewitness testimony: a witness interviewed repeatedly, by people who already have a theory about what happened, is being asked questions that carry information, and each one is an opportunity for that information to be absorbed into the account.": "值得把这件事和一个近亲区分开来。框架效应说的是同一个选择的两种等价描述，在你做选择的当下呈现给你，它改变的是你偏好什么。而这里改变的是你记得自己看见过什么，而且是在事情过去一周之后，关于一件从来不存在的东西。那些报告碎玻璃的人不是在撒谎，也不是在讨好谁；没有理由认为他们能分辨自己的重建和自己的回忆。这才是让人不安的部分，也是这个效应远远超出实验室的原因。这也是为什么这项研究是目击证词文献里的常客：一名证人被反复询问，而询问的人心里已经有了一套关于事情经过的说法，那么他收到的每一个问题都携带着信息，每一个都是让这些信息被吸收进供述的机会。",
-  "The mechanism has a name, the misinformation effect, and the design here is what makes it visible. The control group is doing the work that a control group is for. Without it you would be comparing smashed against hit and could conclude that a strong verb inflates reports. With it you can see that hit sits on top of the background rate, at seven against six, and that essentially all of the movement comes from the one word. Two cautions about reading it, both of which the paper itself supports. First, the effect is about a detail that fits the scene rather than one that contradicts it. Broken glass belongs at a fast crash, which is exactly why it slots into a memory of a fast crash without friction; the finding does not say a question can install any belief at all. Second, this is one study of students in 1974 with fifty per group, and the puzzle rests on it because the counts are clean, not because a single experiment settles a science. What has held up broadly is the general phenomenon, that post-event information gets absorbed into recollection. The practical version is a habit rather than a fact. When you need an accurate account from somebody, ask them to tell it before you tell them anything, ask open questions before specific ones, and notice that every detail you supply in a question is a detail they may hand back to you later believing it was theirs. The same applies to your own memory of an argument, an incident, or a conversation you have since discussed at length with somebody who was there.": "这个机制有名字，叫错误信息效应，而让它显形的正是这里的实验设计。对照组做的恰恰是对照组该做的事。没有它，你就只能拿猛撞和碰到相比，可能得出强动词会夸大报告的结论。有了它，就能看到碰到只是停在基础发生率之上，七比六，几乎全部的变动都来自那一个词。阅读时有两点需要谨慎，而这两点论文自己都支持。第一，这个效应针对的是与场景相符的细节，而不是与场景相矛盾的细节。碎玻璃本就属于高速撞车，这正是它能毫无阻力地嵌进一段高速撞车记忆的原因；这个发现并没有说一个问题可以植入任何信念。第二，这是一项1974年针对学生、每组五十人的单一研究，这道题依赖它是因为计数干净，而不是因为一次实验就能给一门科学下结论。经受住广泛检验的是那个一般现象：事后信息会被吸收进回忆。实用的版本是一个习惯，而不是一条事实。当你需要从别人那里得到准确的叙述时，先让他讲，你自己什么都别先讲；先问开放式问题，再问具体问题；并且要意识到，你放进问题里的每一个细节，都可能在日后被对方当作自己的东西还给你。这同样适用于你自己对一场争吵、一起事件，或一次事后与在场者长谈过的对话的记忆。",
-  "How bad the speed estimates were in the first place": "那些速度估计原本就有多糟",
-  "The same paper contains a smaller result that is almost a lesson of its own. In the first experiment, four of the seven films were staged crashes filmed at known speeds, one at 20 miles an hour, one at 30, and two at 40. The average estimates given for those four films were 37.7, 36.2, 39.7 and 36.1 miles an hour. The crash at 20 and the crashes at 40 drew almost the same number, and the estimates barely track the truth at all. So the verb was shifting a judgement that was close to worthless to begin with, which makes it easier to shift and harder to notice. Worth remembering whenever a witness, or you, produces a confident number for how fast something was moving. One caution on that first experiment: it had 45 students and nine per verb, so its figures are indicative and the puzzle above is built on the second experiment instead.": "同一篇论文里还有一个更小的结果，几乎可以自成一课。在第一个实验里，七段影片中有四段是以已知速度拍摄的撞车，一段是每小时20英里，一段是30，两段是40。这四段影片得到的平均估计是37.7、36.2、39.7和36.1英里每小时。20英里那一次和40英里那两次得到的数字几乎一样，估计值根本没怎么跟上真相。也就是说，那个动词所推动的，本来就是一个几乎毫无价值的判断，这让它更容易被推动，也更难被察觉。每当一位证人，或者你自己，对某物的速度给出一个笃定的数字时，这一点值得记起。关于第一个实验有一点提醒：它只有45名学生，每个动词九个人，所以它的数字只是提示性的，上面那道题依据的是第二个实验。",
-  "The misinformation effect, a reasoning trap.": "错误信息效应，一个推理陷阱。",
-  "A hundred and fifty people watched the same film of a car crash. There was no broken glass in it. A week later, asked whether they had seen any, six of fifty said yes if they had never been questioned about speed, and seven of fifty if they had been asked how fast the cars were going when they hit each other. Sixteen of fifty said yes if that one word had been smashed. A memory is not a recording. It is rebuilt from what you saw and whatever has reached you since, and nothing labels which is which.": "一百五十人看了同一段车祸影片。里面没有碎玻璃。一周之后被问及是否看见碎玻璃时，从未被问过速度的人里，每五十人有六人说看见了；被问过那些车碰到一起时开得多快的人里，每五十人有七人说看见了。而如果那个词是猛撞，每五十人里有十六人说看见了。记忆不是录像。它是用你看见的东西和此后传到你这里的东西重新搭起来的，而没有任何标记告诉你哪个是哪个。",
-  "Read from the journal scan rather than from a reproduction, which mattered. The counts reconcile three ways: each row of Table 2 sums to 50, the three rows sum to the 150 the Method section states, and the paper's own prose gives the probability of a yes as .32 for smashed and .14 for hit, which recompute exactly from 16 of 50 and 7 of 50. The chi-square is 7.76, significant beyond the .025 level. Three things a careful reader should know. First, the framing quotes 40.5 miles an hour for smashed, which is what Table 1 prints; many reproductions give 40.8, and the page was read as an image to be certain. Second, that first experiment had only 45 students and nine per verb, so nothing here is authored from it and it appears as context and as the deep dive alone. Third, the participants were students in groups of various sizes rather than a random sample, and this is a single experiment from 1974, so the counts are exact but the generalisation rests on the wider literature on post-event information rather than on this study by itself. One design detail is worth stating in the study's favour: the broken-glass question sat in a random position among ten questions, so it was not the salient thing being asked.": "这是从期刊扫描件读的，而不是从转录本，这一点很重要。计数能以三种方式对上：表2的每一行都合计为50，三行合计为方法部分所说的150名学生，而论文自己的正文给出说是的概率为猛撞0.32、碰到0.14，这正好能从16/50和7/50重新算出来。卡方为7.76，在0.025水平之上显著。有三件事值得知道。第一，题面引用猛撞为每小时40.5英里，这是表1印出来的数字；许多转录本给的是40.8，为稳妥起见这一页是当作图像来读的。第二，那第一个实验只有45名学生、每个动词九人，所以这里没有任何数据取自它，它只作为背景和深入阅读出现。第三，参与者是被分成不同规模小组的学生，而不是随机样本，而且这是1974年的单一实验，所以计数是精确的，但推广依靠的是关于事后信息的更广泛文献，而不是这一项研究本身。有一个设计细节值得替它说一句：关于碎玻璃的那个问题被随机排在十个问题当中，因此它并不是被凸显出来问的。",
-  "An investigator asks a witness how far away the man in the grey jacket was standing. The witness later describes a man in a grey jacket, and the investigator treats the agreement as corroboration.": "一名调查员问证人，那个穿灰色夹克的男人当时站得有多远。证人后来描述了一个穿灰色夹克的男人，而调查员把这种一致当作旁证。",
-  "The grey jacket entered the account in the question, not in the answer. A detail supplied by the interviewer and handed back later is not independent confirmation of anything.": "灰色夹克是从问题进入这份供述的，不是从回答。由询问者提供、后来又被交回来的细节，并不能独立证实任何事。",
-  "A witness who has been interviewed four times now recalls the scene in vivid detail and says she is completely certain. The report cites her certainty as a reason to rely on the account.": "一名被询问过四次的证人现在能生动地回忆整个场景，并说自己完全确定。报告援引她的确定性作为可以采信这份供述的理由。",
-  "Repeated interviewing gives a memory more chances to absorb detail from the questions, and rehearsal raises confidence whether or not it raises accuracy. Certainty grows with retelling, so it cannot vouch for the retelling.": "反复询问给了记忆更多机会从问题里吸收细节，而复述会提高信心，无论它是否提高准确性。确定性随着一遍遍讲述而增长，因此它无法为这些讲述背书。",
-  "Six people who saw the same incident discuss it together for an hour before giving statements. Their accounts turn out to agree closely, which the report describes as strong evidence.": "六个目击同一起事件的人在做笔录之前一起讨论了一个小时。他们的叙述最终高度一致，报告称之为有力证据。",
-  "After an hour of discussion the six accounts are no longer six independent observations. Agreement produced by conversation looks identical to agreement produced by everyone having seen the same thing.": "经过一个小时的讨论，这六份叙述已经不再是六个独立的观察。由交谈产生的一致，和由大家确实看见同一件事产生的一致，看上去一模一样。",
-  "Before an identity parade, an officer shows a witness a single photograph of the suspect to check they are on the right lines. The witness then picks that person out of the parade.": "在指认之前，一名警员给证人看了嫌疑人的一张照片，说是确认一下方向对不对。证人随后在指认中挑出了这个人。",
-  "The face in the photograph is now in the witness's memory alongside whatever they saw at the scene, and nothing labels which is which. The parade is testing recognition of the photograph.": "照片上的那张脸现在已经和证人在现场可能看见的东西一起存在于记忆里，而没有任何东西区分二者。这场指认测试的是对那张照片的辨认。",
-  "A bystander reads three days of news coverage of the incident, including a description of the vehicle, and then gives a formal statement that matches that description.": "一名路人读了三天关于这起事件的新闻报道，其中包括对车辆的描述，随后做了一份与该描述吻合的正式笔录。",
-  "Post-event information gets absorbed into recollection without a marker saying where it came from. The match tells you the statement is consistent with the coverage, not that it is consistent with the event.": "事后信息会被吸收进回忆，而不会带上任何标明来源的记号。这种吻合告诉你的是笔录与报道一致，而不是笔录与事件一致。",
-  "A hospital asks patients whether they experienced the sharp pain in the first week after surgery, and reports the proportion who say yes as the incidence of sharp pain.": "一家医院询问患者术后第一周是否感到了那种剧痛，并把回答是的比例作为剧痛的发生率报告出来。",
-  "The question presupposes the sharp pain rather than asking whether there was any pain and what it was like. A presupposition in a question is a detail offered to the person answering.": "这个问题预设了剧痛的存在，而不是询问是否有过疼痛以及是什么样的疼痛。问题里的预设，就是递给回答者的一个细节。",
-  "A questionnaire asks respondents to describe how they felt when they got lost in a shopping centre as a young child. Most produce an account, and the researchers report it as a common childhood experience.": "一份问卷请受访者描述小时候在商场里走丢时的感受。大多数人都写出了一段叙述，研究者据此报告这是一种常见的童年经历。",
-  "Asking somebody to describe an event asserts that it happened, and people can generate a plausible account of something that did not. Without an independent record of who actually got lost, the responses measure suggestion as much as memory.": "请某人描述一件事，就是在断言这件事发生过，而人们确实能为没有发生过的事编出一段像样的叙述。在没有独立记录说明谁真正走丢过的情况下，这些回答衡量暗示的程度不亚于衡量记忆。",
-  "A study finds that witnesses given a strongly worded question afterwards reported a detail 30 percent of the time, against 14 percent for a neutral question, and concludes the strong wording created the memory in three of ten people.": "一项研究发现，事后被问了措辞强烈问题的证人有30%报告了某个细节，而中性问题下为14%，于是结论说强烈措辞在十个人里为三个人制造了记忆。",
-  "There is no group that was asked nothing, so the background rate of reporting that detail unprompted is unknown. The comparison shows a difference between two wordings, not how much either added to nothing at all.": "没有一个什么都没被问的组，所以无人知道这个细节在没有任何提示时被自发报告的基础发生率。这个比较显示的是两种措辞之间的差别，而不是各自在零之上添加了多少。",
-  "A researcher argues that because a suggested detail was accepted by many participants, a question could be used to make people remember almost anything about the scene.": "一名研究者主张，既然许多参与者接受了一个被暗示的细节，那么一个问题就可以让人记住关于这个场景的几乎任何事。",
-  "The details that get absorbed are ones that fit the scene already, which is why they slip in without friction. Extending the finding to details that contradict what somebody saw goes well past what the evidence supports.": "能被吸收进去的细节，是那些本就与场景相符的细节，这正是它们能毫无阻力地溜进去的原因。把这个发现推广到与人们所见相矛盾的细节上，远远超出了证据所能支撑的范围。",
-  "After discussing an old argument with a friend who was present, someone says they now clearly remember a remark the friend described, and takes the clarity of the recollection as proof it happened.": "在与一位当时在场的朋友聊起一场旧日争吵之后，某人说自己现在清楚地记得朋友描述过的一句话，并把这份清晰当作它确实发生过的证明。",
-  "The friend's description is post-event information like any other, and clarity is not a marker of origin. A reconstructed detail can feel exactly like a remembered one, which is precisely what makes this hard to catch in yourself.": "朋友的描述和其他任何事后信息一样，而清晰程度并不标示来源。一个重建出来的细节，感觉上可以和一个真正回忆起来的细节完全一样，这正是它在自己身上最难被抓住的原因。",
-  "An interviewer asks the witness to describe everything they remember in their own words, without interruption, and only afterwards asks specific questions about points the witness raised.": "一名询问者请证人用自己的话把记得的一切讲一遍，中间不打断，之后才就证人自己提到的几点提出具体问题。",
-  "Free recall before specific questions is the standard protection: nothing has been supplied yet, so anything in the first account came from the witness. Asking about points they themselves raised adds no new detail.": "在具体问题之前先自由陈述是标准的防护：此时还什么都没有被提供，所以第一份叙述里的一切都来自证人。只就他本人提到的点发问，不会添加任何新细节。",
-  "A researcher compares statements recorded on the night of the incident with statements from the same witnesses six months later, and reports where the two diverge.": "一名研究者把事发当晚记录的笔录，与同一批证人六个月后的笔录作比较，并报告两者出现分歧的地方。",
-  "The early statement is a record made before the intervening months could add anything, so the comparison measures drift rather than assuming it. This is the right way to study how an account changes.": "最早的那份笔录是在中间这几个月还来不及添加任何东西之前留下的记录，所以这个比较是在测量偏移，而不是假定偏移。这才是研究一份叙述如何变化的正确方法。",
-  "Investigators find that a witness's account of the vehicle's colour matches paint traces recovered from the scene, and treat the paint as the evidence rather than the account.": "调查人员发现，某证人关于车辆颜色的说法与在现场提取的油漆残留相符，于是把油漆当作证据，而不是把那份说法当作证据。",
-  "The paint was not produced by anybody's memory and cannot have been suggested by a question. Corroborating an account against a physical record is exactly the check that recollection alone cannot provide.": "油漆不是任何人的记忆产生的，也不可能被一个问题暗示出来。拿一份叙述去与物证核对，正是单靠回忆永远无法提供的那一道检验。",
-  "Seventy-one trials, and every one of them concluded the new treatment was no better.": "七十一项试验，每一项都得出结论说新疗法并不更好。",
-  "In 1978 four researchers went back through seventy-one published randomised trials which had all reported no significant difference between the treatment and the control. They were not checking whether the results were honest, or whether the analysis was right. They asked one question only: was each trial large enough that, if the treatment really had worked, it would have shown up? They set the bar at a twenty-five per cent improvement, which is a large effect, and asked how many of the trials had a good chance, better than nine in ten, of detecting one that size.": "1978年，四位研究者重新翻阅了七十一项已发表的随机试验，这些试验都报告说治疗组与对照组之间没有显著差异。他们要核查的既不是结果是否诚实，也不是分析是否正确。他们只问一个问题：每一项试验的规模是否足够大，以至于如果这种疗法真的有效，那效果就会显现出来？他们把门槛设在百分之二十五的改善，这是一个相当大的效应，然后问有多少项试验有很好的机会，也就是高于十分之九的把握，能够检出这么大的改善。",
-  "How many of the seventy-one were big enough to have shown a twenty-five per cent improvement?": "这七十一项里，有多少项大到足以显示出百分之二十五的改善？",
+  "A memory is not a recording you play back. It is rebuilt each time, from what you saw and from whatever has reached you since, and the two are not labelled differently on the way in. So a question can add to a memory rather than only draw from it, and the person answering cannot feel the difference.":
+    "记忆不是一段可以回放的录像。它每一次都要重新搭建，材料是你看见的东西，以及此后传到你这里的一切，而这两者在进来的时候并没有贴上不同的标签。所以一个问题可以往记忆里添加东西，而不只是从中提取，而回答的人感觉不到这个差别。",
+  "This is worth separating from a close relative. The framing effect is about two equivalent descriptions of the same choice, presented at the moment you choose, and it changes what you prefer. This changes what you remember having seen, and it does so a week after the fact, about an object that was never present. The people who reported the glass were not lying and were not being agreeable; there is no reason to think they could tell their reconstruction from a recollection. That is the uncomfortable part, and it is why the effect matters well beyond the laboratory. It is also why the study is a fixture of the literature on eyewitness testimony: a witness interviewed repeatedly, by people who already have a theory about what happened, is being asked questions that carry information, and each one is an opportunity for that information to be absorbed into the account.":
+    "值得把这件事和一个近亲区分开来。框架效应说的是同一个选择的两种等价描述，在你做选择的当下呈现给你，它改变的是你偏好什么。而这里改变的是你记得自己看见过什么，而且是在事情过去一周之后，关于一件从来不存在的东西。那些报告碎玻璃的人不是在撒谎，也不是在讨好谁；没有理由认为他们能分辨自己的重建和自己的回忆。这才是让人不安的部分，也是这个效应远远超出实验室的原因。这也是为什么这项研究是目击证词文献里的常客：一名证人被反复询问，而询问的人心里已经有了一套关于事情经过的说法，那么他收到的每一个问题都携带着信息，每一个都是让这些信息被吸收进供述的机会。",
+  "The mechanism has a name, the misinformation effect, and the design here is what makes it visible. The control group is doing the work that a control group is for. Without it you would be comparing smashed against hit and could conclude that a strong verb inflates reports. With it you can see that hit sits on top of the background rate, at seven against six, and that essentially all of the movement comes from the one word. Two cautions about reading it, both of which the paper itself supports. First, the effect is about a detail that fits the scene rather than one that contradicts it. Broken glass belongs at a fast crash, which is exactly why it slots into a memory of a fast crash without friction; the finding does not say a question can install any belief at all. Second, this is one study of students in 1974 with fifty per group, and the puzzle rests on it because the counts are clean, not because a single experiment settles a science. What has held up broadly is the general phenomenon, that post-event information gets absorbed into recollection. The practical version is a habit rather than a fact. When you need an accurate account from somebody, ask them to tell it before you tell them anything, ask open questions before specific ones, and notice that every detail you supply in a question is a detail they may hand back to you later believing it was theirs. The same applies to your own memory of an argument, an incident, or a conversation you have since discussed at length with somebody who was there.":
+    "这个机制有名字，叫错误信息效应，而让它显形的正是这里的实验设计。对照组做的恰恰是对照组该做的事。没有它，你就只能拿猛撞和碰到相比，可能得出强动词会夸大报告的结论。有了它，就能看到碰到只是停在基础发生率之上，七比六，几乎全部的变动都来自那一个词。阅读时有两点需要谨慎，而这两点论文自己都支持。第一，这个效应针对的是与场景相符的细节，而不是与场景相矛盾的细节。碎玻璃本就属于高速撞车，这正是它能毫无阻力地嵌进一段高速撞车记忆的原因；这个发现并没有说一个问题可以植入任何信念。第二，这是一项1974年针对学生、每组五十人的单一研究，这道题依赖它是因为计数干净，而不是因为一次实验就能给一门科学下结论。经受住广泛检验的是那个一般现象：事后信息会被吸收进回忆。实用的版本是一个习惯，而不是一条事实。当你需要从别人那里得到准确的叙述时，先让他讲，你自己什么都别先讲；先问开放式问题，再问具体问题；并且要意识到，你放进问题里的每一个细节，都可能在日后被对方当作自己的东西还给你。这同样适用于你自己对一场争吵、一起事件，或一次事后与在场者长谈过的对话的记忆。",
+  "How bad the speed estimates were in the first place":
+    "那些速度估计原本就有多糟",
+  "The same paper contains a smaller result that is almost a lesson of its own. In the first experiment, four of the seven films were staged crashes filmed at known speeds, one at 20 miles an hour, one at 30, and two at 40. The average estimates given for those four films were 37.7, 36.2, 39.7 and 36.1 miles an hour. The crash at 20 and the crashes at 40 drew almost the same number, and the estimates barely track the truth at all. So the verb was shifting a judgement that was close to worthless to begin with, which makes it easier to shift and harder to notice. Worth remembering whenever a witness, or you, produces a confident number for how fast something was moving. One caution on that first experiment: it had 45 students and nine per verb, so its figures are indicative and the puzzle above is built on the second experiment instead.":
+    "同一篇论文里还有一个更小的结果，几乎可以自成一课。在第一个实验里，七段影片中有四段是以已知速度拍摄的撞车，一段是每小时20英里，一段是30，两段是40。这四段影片得到的平均估计是37.7、36.2、39.7和36.1英里每小时。20英里那一次和40英里那两次得到的数字几乎一样，估计值根本没怎么跟上真相。也就是说，那个动词所推动的，本来就是一个几乎毫无价值的判断，这让它更容易被推动，也更难被察觉。每当一位证人，或者你自己，对某物的速度给出一个笃定的数字时，这一点值得记起。关于第一个实验有一点提醒：它只有45名学生，每个动词九个人，所以它的数字只是提示性的，上面那道题依据的是第二个实验。",
+  "The misinformation effect, a reasoning trap.":
+    "错误信息效应，一个推理陷阱。",
+  "A hundred and fifty people watched the same film of a car crash. There was no broken glass in it. A week later, asked whether they had seen any, six of fifty said yes if they had never been questioned about speed, and seven of fifty if they had been asked how fast the cars were going when they hit each other. Sixteen of fifty said yes if that one word had been smashed. A memory is not a recording. It is rebuilt from what you saw and whatever has reached you since, and nothing labels which is which.":
+    "一百五十人看了同一段车祸影片。里面没有碎玻璃。一周之后被问及是否看见碎玻璃时，从未被问过速度的人里，每五十人有六人说看见了；被问过那些车碰到一起时开得多快的人里，每五十人有七人说看见了。而如果那个词是猛撞，每五十人里有十六人说看见了。记忆不是录像。它是用你看见的东西和此后传到你这里的东西重新搭起来的，而没有任何标记告诉你哪个是哪个。",
+  "Read from the journal scan rather than from a reproduction, which mattered. The counts reconcile three ways: each row of Table 2 sums to 50, the three rows sum to the 150 the Method section states, and the paper's own prose gives the probability of a yes as .32 for smashed and .14 for hit, which recompute exactly from 16 of 50 and 7 of 50. The chi-square is 7.76, significant beyond the .025 level. Three things a careful reader should know. First, the framing quotes 40.5 miles an hour for smashed, which is what Table 1 prints; many reproductions give 40.8, and the page was read as an image to be certain. Second, that first experiment had only 45 students and nine per verb, so nothing here is authored from it and it appears as context and as the deep dive alone. Third, the participants were students in groups of various sizes rather than a random sample, and this is a single experiment from 1974, so the counts are exact but the generalisation rests on the wider literature on post-event information rather than on this study by itself. One design detail is worth stating in the study's favour: the broken-glass question sat in a random position among ten questions, so it was not the salient thing being asked.":
+    "这是从期刊扫描件读的，而不是从转录本，这一点很重要。计数能以三种方式对上：表2的每一行都合计为50，三行合计为方法部分所说的150名学生，而论文自己的正文给出说是的概率为猛撞0.32、碰到0.14，这正好能从16/50和7/50重新算出来。卡方为7.76，在0.025水平之上显著。有三件事值得知道。第一，题面引用猛撞为每小时40.5英里，这是表1印出来的数字；许多转录本给的是40.8，为稳妥起见这一页是当作图像来读的。第二，那第一个实验只有45名学生、每个动词九人，所以这里没有任何数据取自它，它只作为背景和深入阅读出现。第三，参与者是被分成不同规模小组的学生，而不是随机样本，而且这是1974年的单一实验，所以计数是精确的，但推广依靠的是关于事后信息的更广泛文献，而不是这一项研究本身。有一个设计细节值得替它说一句：关于碎玻璃的那个问题被随机排在十个问题当中，因此它并不是被凸显出来问的。",
+  "An investigator asks a witness how far away the man in the grey jacket was standing. The witness later describes a man in a grey jacket, and the investigator treats the agreement as corroboration.":
+    "一名调查员问证人，那个穿灰色夹克的男人当时站得有多远。证人后来描述了一个穿灰色夹克的男人，而调查员把这种一致当作旁证。",
+  "The grey jacket entered the account in the question, not in the answer. A detail supplied by the interviewer and handed back later is not independent confirmation of anything.":
+    "灰色夹克是从问题进入这份供述的，不是从回答。由询问者提供、后来又被交回来的细节，并不能独立证实任何事。",
+  "A witness who has been interviewed four times now recalls the scene in vivid detail and says she is completely certain. The report cites her certainty as a reason to rely on the account.":
+    "一名被询问过四次的证人现在能生动地回忆整个场景，并说自己完全确定。报告援引她的确定性作为可以采信这份供述的理由。",
+  "Repeated interviewing gives a memory more chances to absorb detail from the questions, and rehearsal raises confidence whether or not it raises accuracy. Certainty grows with retelling, so it cannot vouch for the retelling.":
+    "反复询问给了记忆更多机会从问题里吸收细节，而复述会提高信心，无论它是否提高准确性。确定性随着一遍遍讲述而增长，因此它无法为这些讲述背书。",
+  "Six people who saw the same incident discuss it together for an hour before giving statements. Their accounts turn out to agree closely, which the report describes as strong evidence.":
+    "六个目击同一起事件的人在做笔录之前一起讨论了一个小时。他们的叙述最终高度一致，报告称之为有力证据。",
+  "After an hour of discussion the six accounts are no longer six independent observations. Agreement produced by conversation looks identical to agreement produced by everyone having seen the same thing.":
+    "经过一个小时的讨论，这六份叙述已经不再是六个独立的观察。由交谈产生的一致，和由大家确实看见同一件事产生的一致，看上去一模一样。",
+  "Before an identity parade, an officer shows a witness a single photograph of the suspect to check they are on the right lines. The witness then picks that person out of the parade.":
+    "在指认之前，一名警员给证人看了嫌疑人的一张照片，说是确认一下方向对不对。证人随后在指认中挑出了这个人。",
+  "The face in the photograph is now in the witness's memory alongside whatever they saw at the scene, and nothing labels which is which. The parade is testing recognition of the photograph.":
+    "照片上的那张脸现在已经和证人在现场可能看见的东西一起存在于记忆里，而没有任何东西区分二者。这场指认测试的是对那张照片的辨认。",
+  "A bystander reads three days of news coverage of the incident, including a description of the vehicle, and then gives a formal statement that matches that description.":
+    "一名路人读了三天关于这起事件的新闻报道，其中包括对车辆的描述，随后做了一份与该描述吻合的正式笔录。",
+  "Post-event information gets absorbed into recollection without a marker saying where it came from. The match tells you the statement is consistent with the coverage, not that it is consistent with the event.":
+    "事后信息会被吸收进回忆，而不会带上任何标明来源的记号。这种吻合告诉你的是笔录与报道一致，而不是笔录与事件一致。",
+  "A hospital asks patients whether they experienced the sharp pain in the first week after surgery, and reports the proportion who say yes as the incidence of sharp pain.":
+    "一家医院询问患者术后第一周是否感到了那种剧痛，并把回答是的比例作为剧痛的发生率报告出来。",
+  "The question presupposes the sharp pain rather than asking whether there was any pain and what it was like. A presupposition in a question is a detail offered to the person answering.":
+    "这个问题预设了剧痛的存在，而不是询问是否有过疼痛以及是什么样的疼痛。问题里的预设，就是递给回答者的一个细节。",
+  "A questionnaire asks respondents to describe how they felt when they got lost in a shopping centre as a young child. Most produce an account, and the researchers report it as a common childhood experience.":
+    "一份问卷请受访者描述小时候在商场里走丢时的感受。大多数人都写出了一段叙述，研究者据此报告这是一种常见的童年经历。",
+  "Asking somebody to describe an event asserts that it happened, and people can generate a plausible account of something that did not. Without an independent record of who actually got lost, the responses measure suggestion as much as memory.":
+    "请某人描述一件事，就是在断言这件事发生过，而人们确实能为没有发生过的事编出一段像样的叙述。在没有独立记录说明谁真正走丢过的情况下，这些回答衡量暗示的程度不亚于衡量记忆。",
+  "A study finds that witnesses given a strongly worded question afterwards reported a detail 30 percent of the time, against 14 percent for a neutral question, and concludes the strong wording created the memory in three of ten people.":
+    "一项研究发现，事后被问了措辞强烈问题的证人有30%报告了某个细节，而中性问题下为14%，于是结论说强烈措辞在十个人里为三个人制造了记忆。",
+  "There is no group that was asked nothing, so the background rate of reporting that detail unprompted is unknown. The comparison shows a difference between two wordings, not how much either added to nothing at all.":
+    "没有一个什么都没被问的组，所以无人知道这个细节在没有任何提示时被自发报告的基础发生率。这个比较显示的是两种措辞之间的差别，而不是各自在零之上添加了多少。",
+  "A researcher argues that because a suggested detail was accepted by many participants, a question could be used to make people remember almost anything about the scene.":
+    "一名研究者主张，既然许多参与者接受了一个被暗示的细节，那么一个问题就可以让人记住关于这个场景的几乎任何事。",
+  "The details that get absorbed are ones that fit the scene already, which is why they slip in without friction. Extending the finding to details that contradict what somebody saw goes well past what the evidence supports.":
+    "能被吸收进去的细节，是那些本就与场景相符的细节，这正是它们能毫无阻力地溜进去的原因。把这个发现推广到与人们所见相矛盾的细节上，远远超出了证据所能支撑的范围。",
+  "After discussing an old argument with a friend who was present, someone says they now clearly remember a remark the friend described, and takes the clarity of the recollection as proof it happened.":
+    "在与一位当时在场的朋友聊起一场旧日争吵之后，某人说自己现在清楚地记得朋友描述过的一句话，并把这份清晰当作它确实发生过的证明。",
+  "The friend's description is post-event information like any other, and clarity is not a marker of origin. A reconstructed detail can feel exactly like a remembered one, which is precisely what makes this hard to catch in yourself.":
+    "朋友的描述和其他任何事后信息一样，而清晰程度并不标示来源。一个重建出来的细节，感觉上可以和一个真正回忆起来的细节完全一样，这正是它在自己身上最难被抓住的原因。",
+  "An interviewer asks the witness to describe everything they remember in their own words, without interruption, and only afterwards asks specific questions about points the witness raised.":
+    "一名询问者请证人用自己的话把记得的一切讲一遍，中间不打断，之后才就证人自己提到的几点提出具体问题。",
+  "Free recall before specific questions is the standard protection: nothing has been supplied yet, so anything in the first account came from the witness. Asking about points they themselves raised adds no new detail.":
+    "在具体问题之前先自由陈述是标准的防护：此时还什么都没有被提供，所以第一份叙述里的一切都来自证人。只就他本人提到的点发问，不会添加任何新细节。",
+  "A researcher compares statements recorded on the night of the incident with statements from the same witnesses six months later, and reports where the two diverge.":
+    "一名研究者把事发当晚记录的笔录，与同一批证人六个月后的笔录作比较，并报告两者出现分歧的地方。",
+  "The early statement is a record made before the intervening months could add anything, so the comparison measures drift rather than assuming it. This is the right way to study how an account changes.":
+    "最早的那份笔录是在中间这几个月还来不及添加任何东西之前留下的记录，所以这个比较是在测量偏移，而不是假定偏移。这才是研究一份叙述如何变化的正确方法。",
+  "Investigators find that a witness's account of the vehicle's colour matches paint traces recovered from the scene, and treat the paint as the evidence rather than the account.":
+    "调查人员发现，某证人关于车辆颜色的说法与在现场提取的油漆残留相符，于是把油漆当作证据，而不是把那份说法当作证据。",
+  "The paint was not produced by anybody's memory and cannot have been suggested by a question. Corroborating an account against a physical record is exactly the check that recollection alone cannot provide.":
+    "油漆不是任何人的记忆产生的，也不可能被一个问题暗示出来。拿一份叙述去与物证核对，正是单靠回忆永远无法提供的那一道检验。",
+  "Seventy-one trials, and every one of them concluded the new treatment was no better.":
+    "七十一项试验，每一项都得出结论说新疗法并不更好。",
+  "In 1978 four researchers went back through seventy-one published randomised trials which had all reported no significant difference between the treatment and the control. They were not checking whether the results were honest, or whether the analysis was right. They asked one question only: was each trial large enough that, if the treatment really had worked, it would have shown up? They set the bar at a twenty-five per cent improvement, which is a large effect, and asked how many of the trials had a good chance, better than nine in ten, of detecting one that size.":
+    "1978年，四位研究者重新翻阅了七十一项已发表的随机试验，这些试验都报告说治疗组与对照组之间没有显著差异。他们要核查的既不是结果是否诚实，也不是分析是否正确。他们只问一个问题：每一项试验的规模是否足够大，以至于如果这种疗法真的有效，那效果就会显现出来？他们把门槛设在百分之二十五的改善，这是一个相当大的效应，然后问有多少项试验有很好的机会，也就是高于十分之九的把握，能够检出这么大的改善。",
+  "How many of the seventy-one were big enough to have shown a twenty-five per cent improvement?":
+    "这七十一项里，有多少项大到足以显示出百分之二十五的改善？",
   "Share of the seventy-one trials": "占这七十一项试验的比例",
-  "Reported that the treatment made no difference": "报告说这种疗法没有带来差异",
+  "Reported that the treatment made no difference":
+    "报告说这种疗法没有带来差异",
   "Found nothing": "什么都没发现",
-  "Were large enough to have shown a 25 per cent improvement": "大到足以显示出百分之二十五的改善",
+  "Were large enough to have shown a 25 per cent improvement":
+    "大到足以显示出百分之二十五的改善",
   "Could have found it": "本来能发现它",
   "The 71 trials re-examined": "被重新检查的71项试验",
   "What all seventy-one of them concluded": "这七十一项全都得出的结论",
@@ -2916,167 +3432,404 @@ export const zh: Record<string, string> = {
   "Roughly half": "大约一半",
   "some trials are small, some are not": "有的试验小，有的不小",
   "A handful. Fewer than one in ten": "寥寥数项。不到十分之一",
-  "ask what a small trial can actually rule out": "想一想一项小试验究竟能排除什么",
-  "Four. Sixty-seven of the seventy-one could have missed a twenty-five per cent improvement entirely.": "四项。七十一项里有六十七项可能完全错过了百分之二十五的改善。",
-  "Finding nothing is not the same as there being nothing to find": "什么都没找到，和根本没有东西可找，不是一回事",
-  "All seventy-one reported no significant difference, and all seventy-one were read as evidence that the treatment did not work. But only four of them were large enough to have had a better than nine in ten chance of detecting a twenty-five per cent improvement. In the other sixty-seven, a real and substantial benefit could have been sitting there and the trial would still, more often than one time in ten, have come back with nothing.": "七十一项全都报告没有显著差异，七十一项也全都被读成疗法无效的证据。但其中只有四项规模足够大，有超过十分之九的把握检出百分之二十五的改善。在其余六十七项里，即便真的存在一项实实在在的可观益处，试验仍会有超过十分之一的机会两手空空地回来。",
-  "What they concluded, and what they could have detected": "它们得出的结论，以及它们本来能检出的东西",
-  "The result of a small trial that finds nothing is not a finding of no effect. It is an absence of information. The authors made this concrete a second way, by computing what each trial's confidence interval still permitted: in fifty-seven of the seventy-one, a twenty-five per cent improvement was still consistent with the data, and in thirty-four of them so was an improvement of fifty per cent. These are treatments that were written up as no different from control while the evidence remained compatible with cutting the bad outcome in half. The trials had not shown the treatments did not work. They had failed to show anything.": "一项小试验什么都没找到，这个结果不是「没有效应」的发现，而是信息的缺失。作者们用第二种方式把这一点变得具体：他们计算了每项试验的置信区间还允许多大的效应。七十一项中有五十七项，百分之二十五的改善仍然与数据相容；有三十四项，连百分之五十的改善也仍然相容。也就是说，在证据仍与「把坏结局减半」相容的情况下，这些疗法被写成了与对照无异。这些试验并没有证明疗法无效，它们什么也没证明。",
+  "ask what a small trial can actually rule out":
+    "想一想一项小试验究竟能排除什么",
+  "Four. Sixty-seven of the seventy-one could have missed a twenty-five per cent improvement entirely.":
+    "四项。七十一项里有六十七项可能完全错过了百分之二十五的改善。",
+  "Finding nothing is not the same as there being nothing to find":
+    "什么都没找到，和根本没有东西可找，不是一回事",
+  "All seventy-one reported no significant difference, and all seventy-one were read as evidence that the treatment did not work. But only four of them were large enough to have had a better than nine in ten chance of detecting a twenty-five per cent improvement. In the other sixty-seven, a real and substantial benefit could have been sitting there and the trial would still, more often than one time in ten, have come back with nothing.":
+    "七十一项全都报告没有显著差异，七十一项也全都被读成疗法无效的证据。但其中只有四项规模足够大，有超过十分之九的把握检出百分之二十五的改善。在其余六十七项里，即便真的存在一项实实在在的可观益处，试验仍会有超过十分之一的机会两手空空地回来。",
+  "What they concluded, and what they could have detected":
+    "它们得出的结论，以及它们本来能检出的东西",
+  "The result of a small trial that finds nothing is not a finding of no effect. It is an absence of information. The authors made this concrete a second way, by computing what each trial's confidence interval still permitted: in fifty-seven of the seventy-one, a twenty-five per cent improvement was still consistent with the data, and in thirty-four of them so was an improvement of fifty per cent. These are treatments that were written up as no different from control while the evidence remained compatible with cutting the bad outcome in half. The trials had not shown the treatments did not work. They had failed to show anything.":
+    "一项小试验什么都没找到，这个结果不是「没有效应」的发现，而是信息的缺失。作者们用第二种方式把这一点变得具体：他们计算了每项试验的置信区间还允许多大的效应。七十一项中有五十七项，百分之二十五的改善仍然与数据相容；有三十四项，连百分之五十的改善也仍然相容。也就是说，在证据仍与「把坏结局减半」相容的情况下，这些疗法被写成了与对照无异。这些试验并没有证明疗法无效，它们什么也没证明。",
   "What the trials could and could not see": "这些试验看得见什么，看不见什么",
   "Statistical power": "统计效能",
-  "A study that reports no significant difference has told you what it did not find, not what is not there. Whether that absence means anything depends entirely on whether the study was large enough to have found the effect if it existed, and that is a separate question with a separate answer.": "一项报告「没有显著差异」的研究，告诉你的是它没有发现什么，而不是什么不存在。这种缺失是否有意义，完全取决于该研究的规模是否足以在效应存在时把它找出来，而那是另一个问题，有另一个答案。",
-  "The phrase that causes the damage is no significant difference, because it sounds like a finding and is often only a shrug. Two different situations produce it. In the first, the study was large, the estimate is precise, and the data rule out any effect worth caring about; that is genuine evidence of absence and it is useful. In the second, the study was small, the estimate is surrounded by an interval wide enough to contain a substantial benefit, and the data rule out almost nothing. Both get written up in the same words, and often in the same words in the abstract, which is the only part most readers see. Freiman and colleagues showed that in the trials they surveyed the second situation was overwhelmingly the common one: sixty-seven of seventy-one. The point of the paper was not that those treatments worked. It was that nobody had found out.": "真正造成伤害的说法是「没有显著差异」，因为它听上去像一项发现，而往往只是耸了耸肩。有两种截然不同的情形都会产生这句话。第一种情形里，研究规模大，估计精确，数据排除了任何值得在意的效应；这是真正的「不存在的证据」，而且有用。第二种情形里，研究规模小，估计值周围的区间宽到足以容纳一份可观的益处，数据几乎什么都没排除。两者用同样的措辞写出来，而且常常写在摘要里，那是大多数读者唯一会看的部分。弗赖曼等人指出，在他们检查的这批试验中，第二种情形占压倒多数：七十一项中的六十七项。这篇论文的主张并不是那些疗法有效，而是没有人查清楚过。",
-  "The formal machinery has two error types and it is worth keeping them apart, because everybody guards against one and forgets the other. A type I error is concluding there is an effect when there is not, and the p value and the five per cent threshold exist to control it. A type II error is concluding there is no effect when there is one, and nothing in a p value protects you from it at all. The probability of avoiding a type II error is the power of the study, and power depends on how many people you enrolled, how common the outcome is, and how big an effect you were looking for. Notice that last one, because it is the part people skip: power is never a property of a study alone, only of a study against a specified effect size. Freiman's trials were not underpowered in the abstract; they were underpowered to detect a twenty-five per cent improvement, and even fewer could have detected something smaller. So the useful question to carry is never was this study big enough, it is what could this study have ruled out, and the confidence interval answers it directly: read its far end, and ask whether an effect that size would matter to you. If it would, the study has not settled anything. Two practical notes. Absence of evidence is evidence of absence only when the evidence would have shown up, which is why a well-powered null result is genuinely informative and a small one is not. And this cuts against a habit worth naming: pooling many small negative trials into a claim that a treatment does not work is not the same as one adequately sized trial, though a meta-analysis done properly is exactly the tool for combining them.": "形式化的机制里有两类错误，值得把它们分开来记，因为人人都在防范其中一个而忘了另一个。第一类错误是在没有效应时断定有效应，p值和百分之五的阈值正是为了控制它而存在。第二类错误是在有效应时断定没有效应，而p值里没有任何东西能保护你不犯它。避免第二类错误的概率就是研究的效能，它取决于你纳入了多少人、结局有多常见，以及你要寻找的效应有多大。请注意最后这一点，因为这正是人们跳过去的地方：效能从来不是一项研究本身的属性，而是一项研究相对于某个指定效应量的属性。弗赖曼笔下的试验并不是抽象意义上的效能不足；它们是不足以检出百分之二十五的改善，而更小的效应，能检出的试验只会更少。所以真正有用的问题从来不是「这项研究是否足够大」，而是「这项研究能排除什么」，置信区间直接回答了它：读它离零最远的那一端，然后问一问，那么大的效应对你是否重要。如果重要，这项研究什么也没有定论。两点实务提醒。证据的缺失只有在证据本会出现时才是缺失的证据，这就是为什么一个效能充足的阴性结果确实有信息量，而一个小样本的阴性结果没有。另外，这与一个值得点名的习惯相抵触：把许多小型阴性试验累加起来，宣称某种疗法无效，并不等同于一项规模恰当的试验；不过一项做得规范的荟萃分析，恰恰就是把它们合并起来的正确工具。",
+  "A study that reports no significant difference has told you what it did not find, not what is not there. Whether that absence means anything depends entirely on whether the study was large enough to have found the effect if it existed, and that is a separate question with a separate answer.":
+    "一项报告「没有显著差异」的研究，告诉你的是它没有发现什么，而不是什么不存在。这种缺失是否有意义，完全取决于该研究的规模是否足以在效应存在时把它找出来，而那是另一个问题，有另一个答案。",
+  "The phrase that causes the damage is no significant difference, because it sounds like a finding and is often only a shrug. Two different situations produce it. In the first, the study was large, the estimate is precise, and the data rule out any effect worth caring about; that is genuine evidence of absence and it is useful. In the second, the study was small, the estimate is surrounded by an interval wide enough to contain a substantial benefit, and the data rule out almost nothing. Both get written up in the same words, and often in the same words in the abstract, which is the only part most readers see. Freiman and colleagues showed that in the trials they surveyed the second situation was overwhelmingly the common one: sixty-seven of seventy-one. The point of the paper was not that those treatments worked. It was that nobody had found out.":
+    "真正造成伤害的说法是「没有显著差异」，因为它听上去像一项发现，而往往只是耸了耸肩。有两种截然不同的情形都会产生这句话。第一种情形里，研究规模大，估计精确，数据排除了任何值得在意的效应；这是真正的「不存在的证据」，而且有用。第二种情形里，研究规模小，估计值周围的区间宽到足以容纳一份可观的益处，数据几乎什么都没排除。两者用同样的措辞写出来，而且常常写在摘要里，那是大多数读者唯一会看的部分。弗赖曼等人指出，在他们检查的这批试验中，第二种情形占压倒多数：七十一项中的六十七项。这篇论文的主张并不是那些疗法有效，而是没有人查清楚过。",
+  "The formal machinery has two error types and it is worth keeping them apart, because everybody guards against one and forgets the other. A type I error is concluding there is an effect when there is not, and the p value and the five per cent threshold exist to control it. A type II error is concluding there is no effect when there is one, and nothing in a p value protects you from it at all. The probability of avoiding a type II error is the power of the study, and power depends on how many people you enrolled, how common the outcome is, and how big an effect you were looking for. Notice that last one, because it is the part people skip: power is never a property of a study alone, only of a study against a specified effect size. Freiman's trials were not underpowered in the abstract; they were underpowered to detect a twenty-five per cent improvement, and even fewer could have detected something smaller. So the useful question to carry is never was this study big enough, it is what could this study have ruled out, and the confidence interval answers it directly: read its far end, and ask whether an effect that size would matter to you. If it would, the study has not settled anything. Two practical notes. Absence of evidence is evidence of absence only when the evidence would have shown up, which is why a well-powered null result is genuinely informative and a small one is not. And this cuts against a habit worth naming: pooling many small negative trials into a claim that a treatment does not work is not the same as one adequately sized trial, though a meta-analysis done properly is exactly the tool for combining them.":
+    "形式化的机制里有两类错误，值得把它们分开来记，因为人人都在防范其中一个而忘了另一个。第一类错误是在没有效应时断定有效应，p值和百分之五的阈值正是为了控制它而存在。第二类错误是在有效应时断定没有效应，而p值里没有任何东西能保护你不犯它。避免第二类错误的概率就是研究的效能，它取决于你纳入了多少人、结局有多常见，以及你要寻找的效应有多大。请注意最后这一点，因为这正是人们跳过去的地方：效能从来不是一项研究本身的属性，而是一项研究相对于某个指定效应量的属性。弗赖曼笔下的试验并不是抽象意义上的效能不足；它们是不足以检出百分之二十五的改善，而更小的效应，能检出的试验只会更少。所以真正有用的问题从来不是「这项研究是否足够大」，而是「这项研究能排除什么」，置信区间直接回答了它：读它离零最远的那一端，然后问一问，那么大的效应对你是否重要。如果重要，这项研究什么也没有定论。两点实务提醒。证据的缺失只有在证据本会出现时才是缺失的证据，这就是为什么一个效能充足的阴性结果确实有信息量，而一个小样本的阴性结果没有。另外，这与一个值得点名的习惯相抵触：把许多小型阴性试验累加起来，宣称某种疗法无效，并不等同于一项规模恰当的试验；不过一项做得规范的荟萃分析，恰恰就是把它们合并起来的正确工具。",
   "How the same authors made the point twice": "同一批作者如何把这一点说了两遍",
-  "Counting underpowered trials is one way to show this, and the paper used a second that is easier to check by eye. For each of the seventy-one trials the authors computed a ninety per cent confidence interval for the true difference and drew all seventy-one of them stacked on one axis. Most of the intervals straddle zero, which is what makes them non-significant, but they are wide, and they stretch a long way into the half of the chart the authors labelled favouring treatment. Read as counts: in fifty-seven of the seventy-one the interval still allowed a twenty-five per cent improvement, and in thirty-four it still allowed fifty per cent. That figure is the whole argument in one picture, and the two methods agree in their ordering, since more trials fail the stricter power criterion than the interval one. Worth knowing that this is the standard way the question is answered now, and that a modern trial report is expected to give the interval precisely so a reader can do this without recomputing anything.": "清点效能不足的试验是一种做法，而这篇论文还用了第二种，更容易用眼睛核对。作者为七十一项试验中的每一项计算了真实差异的百分之九十置信区间，并把七十一条区间叠在同一条坐标轴上画了出来。大多数区间跨过零，这正是它们不显著的原因，但它们很宽，而且向作者标注为「有利于治疗」的那半边伸出很远。换成计数来说：七十一项中有五十七项，区间仍然允许百分之二十五的改善；有三十四项，仍然允许百分之五十。这张图把整个论证浓缩成一幅画面，而两种方法在次序上是一致的，因为落在更严格的效能标准之外的试验，比落在区间标准之外的更多。还值得知道的是，如今这个问题就是这样回答的，而现代的试验报告被要求给出置信区间，正是为了让读者不必重新计算就能这样做。",
+  "Counting underpowered trials is one way to show this, and the paper used a second that is easier to check by eye. For each of the seventy-one trials the authors computed a ninety per cent confidence interval for the true difference and drew all seventy-one of them stacked on one axis. Most of the intervals straddle zero, which is what makes them non-significant, but they are wide, and they stretch a long way into the half of the chart the authors labelled favouring treatment. Read as counts: in fifty-seven of the seventy-one the interval still allowed a twenty-five per cent improvement, and in thirty-four it still allowed fifty per cent. That figure is the whole argument in one picture, and the two methods agree in their ordering, since more trials fail the stricter power criterion than the interval one. Worth knowing that this is the standard way the question is answered now, and that a modern trial report is expected to give the interval precisely so a reader can do this without recomputing anything.":
+    "清点效能不足的试验是一种做法，而这篇论文还用了第二种，更容易用眼睛核对。作者为七十一项试验中的每一项计算了真实差异的百分之九十置信区间，并把七十一条区间叠在同一条坐标轴上画了出来。大多数区间跨过零，这正是它们不显著的原因，但它们很宽，而且向作者标注为「有利于治疗」的那半边伸出很远。换成计数来说：七十一项中有五十七项，区间仍然允许百分之二十五的改善；有三十四项，仍然允许百分之五十。这张图把整个论证浓缩成一幅画面，而两种方法在次序上是一致的，因为落在更严格的效能标准之外的试验，比落在区间标准之外的更多。还值得知道的是，如今这个问题就是这样回答的，而现代的试验报告被要求给出置信区间，正是为了让读者不必重新计算就能这样做。",
   "Statistical power, a reasoning trap.": "统计效能，一个推理陷阱。",
-  "Seventy-one published trials all reported that a treatment made no significant difference. When somebody went back and asked whether the trials were big enough to have detected a twenty-five per cent improvement if there had been one, the answer was four of them. Sixty-seven could have missed a real and substantial benefit entirely. No significant difference tells you what a study did not find, not what is not there. Whether the absence means anything depends on whether the study could have found it, which is a separate question.": "七十一项已发表的试验全都报告某种疗法没有带来显著差异。当有人回过头去问，这些试验是否大到足以在真有百分之二十五改善时把它检出来，答案是其中四项。六十七项可能完全错过了一份实实在在的可观益处。「没有显著差异」告诉你的是一项研究没有发现什么，而不是什么不存在。这种缺失是否有意义，取决于这项研究是否有能力发现它，而那是另一个问题。",
-  "Read from images of the journal page itself, the abstract and Figure 2, rather than from a summary. A survey has no external figure to reconcile against, so the checks here are internal orderings that all have to hold, and all three do: 67 exceeds 50, because a smaller improvement is harder to detect and so more trials could have missed it; 57 exceeds 34, the same ordering under the confidence interval criterion; and 67 exceeds 57 while 50 exceeds 34, because the power criterion is the stricter of the two. Three limits belong with this. It is 1978, and trial reporting has improved a great deal since, partly because of this paper, so the figure of four in seventy-one describes the literature of that period and not of today; what has not changed is the reasoning error it illustrates. The seventy-one are a set the authors assembled rather than a random sample of all negative trials, so the proportion is indicative rather than an estimate of a population. And a twenty-five per cent improvement here means a relative improvement in the response rate, not a difference of twenty-five percentage points, which is a distinction worth holding on to and one this deck teaches separately.": "这是从期刊页面本身的图像读来的，即摘要与图2，而不是从别人的转述。这类调查没有可供对照的外部数字，因此核验依靠的是内部次序关系，而它们必须全部成立，三条也确实都成立：67大于50，因为更小的改善更难检出，所以能错过它的试验更多；57大于34，在置信区间这一标准下是同样的次序；而67大于57、50大于34，因为效能标准是两者中更严格的一个。随之而来有三点局限。这是1978年的事，此后试验报告已大有改进，其中部分正是拜这篇论文所赐，所以七十一分之四这个数字描述的是那个时期的文献，而不是今天的；没有改变的是它所例示的推理错误。这七十一项是作者搜集来的一组，而不是全部阴性试验的随机样本，所以这个比例是提示性的，而不是对某个总体的估计。还有，这里的百分之二十五改善指的是应答率的相对改善，不是二十五个百分点的差值，这个区别值得记住，本作也在别处专门讲过。",
-  "A trial of 40 patients finds no significant difference between the new drug and the old one, and the discussion concludes that the two are equally effective.": "一项纳入40名患者的试验没有发现新药与旧药之间有显著差异，讨论部分据此得出结论说两者同样有效。",
-  "With forty patients the confidence interval will be wide enough to contain a substantial benefit in either direction. The trial did not find the two equal, it failed to distinguish them, which is a different result.": "只有四十名患者时，置信区间会宽到足以在两个方向上都容纳一份可观的益处。这项试验并没有发现两者相等，它是没能把两者区分开，这是另一回事。",
-  "A researcher explains that because the analysis used a five per cent significance threshold, the risk of drawing the wrong conclusion from the study is under five per cent.": "一名研究者解释说，由于分析采用了百分之五的显著性阈值，从这项研究中得出错误结论的风险低于百分之五。",
-  "The five per cent threshold controls only the risk of claiming an effect that is not there. It says nothing about the risk of missing one that is, and in a small study that second risk can be enormous.": "百分之五的阈值只控制「断言一个并不存在的效应」这一风险。它对「错过一个确实存在的效应」这一风险只字未提，而在小型研究里，后一种风险可能极其巨大。",
-  "A protocol states that the study is adequately powered, without saying what effect size it is powered to detect.": "一份研究方案声称本研究具有足够的效能，却没有说明它是针对多大的效应量而言。",
-  "Power is never a property of a study on its own, only of a study against a specified effect. Adequately powered with no effect size named is not a claim that can be checked or falsified.": "效能从来不是一项研究自身的属性，而是一项研究相对于某个指定效应的属性。不指明效应量的「足够效能」，是一句既无法核实也无法证伪的话。",
-  "A large trial shows a clear benefit overall. In a subgroup of 60 older patients the difference is not significant, and the authors conclude the treatment does not work in the elderly.": "一项大型试验总体上显示出明确的获益。在一个由60名老年患者构成的亚组中差异不显著，于是作者们得出结论说这种疗法对老年人无效。",
-  "A subgroup of sixty has a fraction of the whole trial's power, so a non-significant result there is close to uninformative. Concluding the treatment fails in that group requires evidence it does not have.": "六十人的亚组只拥有整项试验效能的一小部分，因此那里的不显著结果几乎不含信息。要断定这种疗法在该群体中失效，需要它并不具备的证据。",
-  "A trial designed to detect a difference in cure rates reports no significant increase in serious side effects, and the summary describes the treatment as safe.": "一项为检出治愈率差异而设计的试验报告说严重不良反应没有显著增加，摘要据此把这种疗法描述为安全。",
-  "The trial was sized for the cure rate, not for a rare harm. A study can be perfectly adequate for its main question and hopeless for a side effect that occurs in one patient in two hundred.": "这项试验的样本量是按治愈率定的，不是按一种罕见危害定的。一项研究完全可以对它的主要问题绰绰有余，却对一个二百人中才发生一例的不良事件毫无办法。",
-  "After a study finds nothing, the analysts compute the power to detect the effect they actually observed and report that the study was underpowered by that measure.": "在一项研究一无所获之后，分析者计算了检出他们实际观察到的那个效应所需的效能，并报告说按这一标准该研究效能不足。",
-  "Power computed from the observed effect is a restatement of the p value and adds no information. The useful calculation is against an effect size that would matter clinically, chosen independently of the result.": "用观察到的效应算出来的效能，只是p值的另一种说法，不增加任何信息。有用的计算，是针对一个在临床上有意义、且独立于结果而选定的效应量来做的。",
-  "Eight small trials each report no significant benefit, and a review concludes that the accumulated evidence shows the treatment is ineffective.": "八项小型试验各自报告没有显著获益，一篇综述据此得出结论说累积的证据表明该疗法无效。",
-  "Eight uninformative studies do not add up to one informative one just by being counted. Combining them properly in a meta-analysis might settle the question, and can equally reveal a benefit none of them could see alone.": "八项不含信息的研究，并不会仅仅因为被数了一遍就变成一项含信息的研究。用荟萃分析把它们正确合并，或许能解决这个问题，也同样可能揭示出任何单项研究都看不见的获益。",
-  "A non-inferiority trial concludes the cheaper treatment is not worse, having set its margin so that anything short of a fifteen per cent loss of effectiveness counts as not worse.": "一项非劣效试验得出结论说更便宜的疗法并不更差，而它设定的界值是：只要有效性的损失不到百分之十五，就算作并不更差。",
-  "The conclusion is only as strong as the margin, and a fifteen per cent loss is a real loss. Not worse is a claim about the margin chosen, not about the treatments, and the margin has to be judged on its own.": "结论的分量不会超过界值的分量，而百分之十五的损失是实实在在的损失。「并不更差」是关于所选界值的一句话，不是关于这两种疗法的，而界值本身必须单独接受评判。",
-  "A report gives a relative risk of 0.82 with a confidence interval from 0.55 to 1.22 and concludes there was no association, without discussing the interval.": "一份报告给出相对危险度0.82，置信区间从0.55到1.22，并得出结论说不存在关联，却没有讨论这个区间。",
-  "The interval reaches down to a forty-five per cent reduction in risk, which would matter a great deal if real. The data are consistent with no association and also with a large benefit, so no association overstates what was shown.": "这个区间一直伸到风险降低百分之四十五，若属实那将极为重要。数据既与「没有关联」相容，也与「很大的获益」相容，因此「不存在关联」夸大了已被证明的东西。",
-  "A screening study of a rare exposure finds no cases of harm among 120 exposed people and reports that the exposure carries no risk.": "一项关于罕见暴露的筛查研究在120名暴露者中没有发现任何受害病例，并报告说这种暴露不带来风险。",
-  "Seeing no cases in 120 people is compatible with a risk of roughly one in forty or lower, which is not the same as no risk. Absence of evidence is evidence of absence only when the evidence would have shown up.": "在120人中一例都没看到，与大约四十分之一或更低的风险相容，这与「没有风险」不是一回事。证据的缺失只有在证据本会出现时才是缺失的证据。",
-  "A protocol registered before recruitment states that 1,400 patients give ninety per cent power to detect a five percentage point difference, which the investigators justify as the smallest difference that would change practice.": "一份在招募前就已注册的方案写明，1,400名患者可提供百分之九十的效能以检出五个百分点的差异，研究者将这一差异论证为足以改变临床实践的最小差异。",
-  "The effect size is named, justified clinically, and fixed before any data arrive. That is what makes a later null result interpretable rather than merely disappointing.": "效应量被明确写出、有临床依据，并且在任何数据到来之前就已固定。正是这一点使得日后的阴性结果可被解读，而不只是令人失望。",
-  "A trial of 9,000 patients reports a hazard ratio of 1.01 with a confidence interval from 0.96 to 1.06, and concludes that any effect is too small to be clinically important.": "一项纳入9,000名患者的试验报告风险比为1.01，置信区间从0.96到1.06，并得出结论说任何效应都小到不具临床重要性。",
-  "Here the interval excludes everything that would matter, so the null result is genuine evidence of absence rather than an absence of evidence. This is what an informative negative study looks like.": "这里的区间把一切值得在意的东西都排除了，因此这个阴性结果是真正的「不存在的证据」，而不是证据的缺失。这就是一项有信息量的阴性研究该有的样子。",
-  "A small study finds no significant difference and states plainly that its confidence interval remains consistent with a benefit of up to thirty per cent, so the question is unresolved.": "一项小型研究没有发现显著差异，并明确指出其置信区间仍与高达百分之三十的获益相容，因此这个问题尚未解决。",
-  "The authors report what the data could not rule out instead of converting a null result into a negative one. A small study that says the question is open has reported itself correctly.": "作者报告的是数据未能排除什么，而不是把一个阴性结果转写成一个否定结论。一项说「问题仍未解决」的小型研究，是把自己如实报告了出来。",
-  "A large trial, randomised one to one. Here is where its 2,672 patients ended up.": "一项大型试验，按一比一随机分组。这是它的2,672名患者最后各自去了哪里。",
-  "Ambulance crews across the Netherlands took part in a trial of giving antibiotics to patients with suspected sepsis on the way to hospital, rather than waiting until they arrived. The protocol randomised patients one to one, using blocks of four, which is a method designed to keep the two arms almost exactly level as recruitment goes along. The trial could not be blinded, since a crew giving an injection knows they are giving it, and the allocation reached them as sealed envelopes to be opened in the field. In the end 2,672 patients were analysed.": "荷兰各地的救护车团队参加了一项试验：给疑似脓毒症的患者在送往医院的途中就用上抗生素，而不是等到抵达医院。方案按一比一随机分配患者，采用四人一区组，这种方法的用意正是让两组在整个入组过程中几乎保持完全持平。这项试验无法设盲，因为给药的队员当然知道自己在给药，分组结果是以密封信封的形式送到他们手上，在现场拆开。最终有2,672名患者进入分析。",
-  "The split you are looking at came from a one to one randomisation. Could chance have produced it?": "你看到的这个分法来自一次一比一的随机分组。它有可能是偶然造成的吗？",
+  "Seventy-one published trials all reported that a treatment made no significant difference. When somebody went back and asked whether the trials were big enough to have detected a twenty-five per cent improvement if there had been one, the answer was four of them. Sixty-seven could have missed a real and substantial benefit entirely. No significant difference tells you what a study did not find, not what is not there. Whether the absence means anything depends on whether the study could have found it, which is a separate question.":
+    "七十一项已发表的试验全都报告某种疗法没有带来显著差异。当有人回过头去问，这些试验是否大到足以在真有百分之二十五改善时把它检出来，答案是其中四项。六十七项可能完全错过了一份实实在在的可观益处。「没有显著差异」告诉你的是一项研究没有发现什么，而不是什么不存在。这种缺失是否有意义，取决于这项研究是否有能力发现它，而那是另一个问题。",
+  "Read from images of the journal page itself, the abstract and Figure 2, rather than from a summary. A survey has no external figure to reconcile against, so the checks here are internal orderings that all have to hold, and all three do: 67 exceeds 50, because a smaller improvement is harder to detect and so more trials could have missed it; 57 exceeds 34, the same ordering under the confidence interval criterion; and 67 exceeds 57 while 50 exceeds 34, because the power criterion is the stricter of the two. Three limits belong with this. It is 1978, and trial reporting has improved a great deal since, partly because of this paper, so the figure of four in seventy-one describes the literature of that period and not of today; what has not changed is the reasoning error it illustrates. The seventy-one are a set the authors assembled rather than a random sample of all negative trials, so the proportion is indicative rather than an estimate of a population. And a twenty-five per cent improvement here means a relative improvement in the response rate, not a difference of twenty-five percentage points, which is a distinction worth holding on to and one this deck teaches separately.":
+    "这是从期刊页面本身的图像读来的，即摘要与图2，而不是从别人的转述。这类调查没有可供对照的外部数字，因此核验依靠的是内部次序关系，而它们必须全部成立，三条也确实都成立：67大于50，因为更小的改善更难检出，所以能错过它的试验更多；57大于34，在置信区间这一标准下是同样的次序；而67大于57、50大于34，因为效能标准是两者中更严格的一个。随之而来有三点局限。这是1978年的事，此后试验报告已大有改进，其中部分正是拜这篇论文所赐，所以七十一分之四这个数字描述的是那个时期的文献，而不是今天的；没有改变的是它所例示的推理错误。这七十一项是作者搜集来的一组，而不是全部阴性试验的随机样本，所以这个比例是提示性的，而不是对某个总体的估计。还有，这里的百分之二十五改善指的是应答率的相对改善，不是二十五个百分点的差值，这个区别值得记住，本作也在别处专门讲过。",
+  "A trial of 40 patients finds no significant difference between the new drug and the old one, and the discussion concludes that the two are equally effective.":
+    "一项纳入40名患者的试验没有发现新药与旧药之间有显著差异，讨论部分据此得出结论说两者同样有效。",
+  "With forty patients the confidence interval will be wide enough to contain a substantial benefit in either direction. The trial did not find the two equal, it failed to distinguish them, which is a different result.":
+    "只有四十名患者时，置信区间会宽到足以在两个方向上都容纳一份可观的益处。这项试验并没有发现两者相等，它是没能把两者区分开，这是另一回事。",
+  "A researcher explains that because the analysis used a five per cent significance threshold, the risk of drawing the wrong conclusion from the study is under five per cent.":
+    "一名研究者解释说，由于分析采用了百分之五的显著性阈值，从这项研究中得出错误结论的风险低于百分之五。",
+  "The five per cent threshold controls only the risk of claiming an effect that is not there. It says nothing about the risk of missing one that is, and in a small study that second risk can be enormous.":
+    "百分之五的阈值只控制「断言一个并不存在的效应」这一风险。它对「错过一个确实存在的效应」这一风险只字未提，而在小型研究里，后一种风险可能极其巨大。",
+  "A protocol states that the study is adequately powered, without saying what effect size it is powered to detect.":
+    "一份研究方案声称本研究具有足够的效能，却没有说明它是针对多大的效应量而言。",
+  "Power is never a property of a study on its own, only of a study against a specified effect. Adequately powered with no effect size named is not a claim that can be checked or falsified.":
+    "效能从来不是一项研究自身的属性，而是一项研究相对于某个指定效应的属性。不指明效应量的「足够效能」，是一句既无法核实也无法证伪的话。",
+  "A large trial shows a clear benefit overall. In a subgroup of 60 older patients the difference is not significant, and the authors conclude the treatment does not work in the elderly.":
+    "一项大型试验总体上显示出明确的获益。在一个由60名老年患者构成的亚组中差异不显著，于是作者们得出结论说这种疗法对老年人无效。",
+  "A subgroup of sixty has a fraction of the whole trial's power, so a non-significant result there is close to uninformative. Concluding the treatment fails in that group requires evidence it does not have.":
+    "六十人的亚组只拥有整项试验效能的一小部分，因此那里的不显著结果几乎不含信息。要断定这种疗法在该群体中失效，需要它并不具备的证据。",
+  "A trial designed to detect a difference in cure rates reports no significant increase in serious side effects, and the summary describes the treatment as safe.":
+    "一项为检出治愈率差异而设计的试验报告说严重不良反应没有显著增加，摘要据此把这种疗法描述为安全。",
+  "The trial was sized for the cure rate, not for a rare harm. A study can be perfectly adequate for its main question and hopeless for a side effect that occurs in one patient in two hundred.":
+    "这项试验的样本量是按治愈率定的，不是按一种罕见危害定的。一项研究完全可以对它的主要问题绰绰有余，却对一个二百人中才发生一例的不良事件毫无办法。",
+  "After a study finds nothing, the analysts compute the power to detect the effect they actually observed and report that the study was underpowered by that measure.":
+    "在一项研究一无所获之后，分析者计算了检出他们实际观察到的那个效应所需的效能，并报告说按这一标准该研究效能不足。",
+  "Power computed from the observed effect is a restatement of the p value and adds no information. The useful calculation is against an effect size that would matter clinically, chosen independently of the result.":
+    "用观察到的效应算出来的效能，只是p值的另一种说法，不增加任何信息。有用的计算，是针对一个在临床上有意义、且独立于结果而选定的效应量来做的。",
+  "Eight small trials each report no significant benefit, and a review concludes that the accumulated evidence shows the treatment is ineffective.":
+    "八项小型试验各自报告没有显著获益，一篇综述据此得出结论说累积的证据表明该疗法无效。",
+  "Eight uninformative studies do not add up to one informative one just by being counted. Combining them properly in a meta-analysis might settle the question, and can equally reveal a benefit none of them could see alone.":
+    "八项不含信息的研究，并不会仅仅因为被数了一遍就变成一项含信息的研究。用荟萃分析把它们正确合并，或许能解决这个问题，也同样可能揭示出任何单项研究都看不见的获益。",
+  "A non-inferiority trial concludes the cheaper treatment is not worse, having set its margin so that anything short of a fifteen per cent loss of effectiveness counts as not worse.":
+    "一项非劣效试验得出结论说更便宜的疗法并不更差，而它设定的界值是：只要有效性的损失不到百分之十五，就算作并不更差。",
+  "The conclusion is only as strong as the margin, and a fifteen per cent loss is a real loss. Not worse is a claim about the margin chosen, not about the treatments, and the margin has to be judged on its own.":
+    "结论的分量不会超过界值的分量，而百分之十五的损失是实实在在的损失。「并不更差」是关于所选界值的一句话，不是关于这两种疗法的，而界值本身必须单独接受评判。",
+  "A report gives a relative risk of 0.82 with a confidence interval from 0.55 to 1.22 and concludes there was no association, without discussing the interval.":
+    "一份报告给出相对危险度0.82，置信区间从0.55到1.22，并得出结论说不存在关联，却没有讨论这个区间。",
+  "The interval reaches down to a forty-five per cent reduction in risk, which would matter a great deal if real. The data are consistent with no association and also with a large benefit, so no association overstates what was shown.":
+    "这个区间一直伸到风险降低百分之四十五，若属实那将极为重要。数据既与「没有关联」相容，也与「很大的获益」相容，因此「不存在关联」夸大了已被证明的东西。",
+  "A screening study of a rare exposure finds no cases of harm among 120 exposed people and reports that the exposure carries no risk.":
+    "一项关于罕见暴露的筛查研究在120名暴露者中没有发现任何受害病例，并报告说这种暴露不带来风险。",
+  "Seeing no cases in 120 people is compatible with a risk of roughly one in forty or lower, which is not the same as no risk. Absence of evidence is evidence of absence only when the evidence would have shown up.":
+    "在120人中一例都没看到，与大约四十分之一或更低的风险相容，这与「没有风险」不是一回事。证据的缺失只有在证据本会出现时才是缺失的证据。",
+  "A protocol registered before recruitment states that 1,400 patients give ninety per cent power to detect a five percentage point difference, which the investigators justify as the smallest difference that would change practice.":
+    "一份在招募前就已注册的方案写明，1,400名患者可提供百分之九十的效能以检出五个百分点的差异，研究者将这一差异论证为足以改变临床实践的最小差异。",
+  "The effect size is named, justified clinically, and fixed before any data arrive. That is what makes a later null result interpretable rather than merely disappointing.":
+    "效应量被明确写出、有临床依据，并且在任何数据到来之前就已固定。正是这一点使得日后的阴性结果可被解读，而不只是令人失望。",
+  "A trial of 9,000 patients reports a hazard ratio of 1.01 with a confidence interval from 0.96 to 1.06, and concludes that any effect is too small to be clinically important.":
+    "一项纳入9,000名患者的试验报告风险比为1.01，置信区间从0.96到1.06，并得出结论说任何效应都小到不具临床重要性。",
+  "Here the interval excludes everything that would matter, so the null result is genuine evidence of absence rather than an absence of evidence. This is what an informative negative study looks like.":
+    "这里的区间把一切值得在意的东西都排除了，因此这个阴性结果是真正的「不存在的证据」，而不是证据的缺失。这就是一项有信息量的阴性研究该有的样子。",
+  "A small study finds no significant difference and states plainly that its confidence interval remains consistent with a benefit of up to thirty per cent, so the question is unresolved.":
+    "一项小型研究没有发现显著差异，并明确指出其置信区间仍与高达百分之三十的获益相容，因此这个问题尚未解决。",
+  "The authors report what the data could not rule out instead of converting a null result into a negative one. A small study that says the question is open has reported itself correctly.":
+    "作者报告的是数据未能排除什么，而不是把一个阴性结果转写成一个否定结论。一项说「问题仍未解决」的小型研究，是把自己如实报告了出来。",
+  "A large trial, randomised one to one. Here is where its 2,672 patients ended up.":
+    "一项大型试验，按一比一随机分组。这是它的2,672名患者最后各自去了哪里。",
+  "Ambulance crews across the Netherlands took part in a trial of giving antibiotics to patients with suspected sepsis on the way to hospital, rather than waiting until they arrived. The protocol randomised patients one to one, using blocks of four, which is a method designed to keep the two arms almost exactly level as recruitment goes along. The trial could not be blinded, since a crew giving an injection knows they are giving it, and the allocation reached them as sealed envelopes to be opened in the field. In the end 2,672 patients were analysed.":
+    "荷兰各地的救护车团队参加了一项试验：给疑似脓毒症的患者在送往医院的途中就用上抗生素，而不是等到抵达医院。方案按一比一随机分配患者，采用四人一区组，这种方法的用意正是让两组在整个入组过程中几乎保持完全持平。这项试验无法设盲，因为给药的队员当然知道自己在给药，分组结果是以密封信封的形式送到他们手上，在现场拆开。最终有2,672名患者进入分析。",
+  "The split you are looking at came from a one to one randomisation. Could chance have produced it?":
+    "你看到的这个分法来自一次一比一的随机分组。它有可能是偶然造成的吗？",
   "Antibiotics in the ambulance": "在救护车上使用抗生素",
-  "Antibiotics": "抗生素",
+  Antibiotics: "抗生素",
   "Share of the 2,672 patients analysed": "占2,672名受分析患者的比例",
   "Died within 28 days": "28天内死亡",
   "Where the patients went": "患者去了哪里",
   "Easily. Randomisation wobbles": "当然可能。随机分组本来就会摆动",
   "you never get exactly half and half": "从来不会正好各占一半",
-  "Unlikely, but possible in a trial this size": "不太可能，但在这种规模的试验里做得到",
+  "Unlikely, but possible in a trial this size":
+    "不太可能，但在这种规模的试验里做得到",
   "big numbers leave room for a big gap": "数字大，容得下大的差距",
   "No. Something other than chance decided this": "不。决定这件事的不是偶然",
-  "blocks of four are meant to prevent exactly this": "四人一区组的存在，正是为了防止这种情况",
-  "1,535 against 1,137. A fair coin would land that far out about once in a hundred million million.": "1,535对1,137。一枚均匀的硬币要偏到这么远，大约要一百万亿次才有一回。",
-  "Randomising is a procedure, and a procedure can be got around": "随机分组是一道程序，而程序是可以被绕开的",
-  "A one to one split of 2,672 should put about 1,336 in each arm, and chance alone would rarely move it more than about fifty either way. The antibiotics arm got 1,535, which is 199 too many, or more than seven standard deviations. Blocking in fours makes it worse, not better, because blocking exists precisely to hold the arms level. Some crews had been opening sealed envelopes and setting aside the ones that said usual care until they found one that said antibiotics.": "2,672人按一比一分组，每组应该在1,336人左右，单靠偶然很少会让这个数字向任一方向移动超过五十上下。抗生素组拿到了1,535人，也就是多出199人，超过七个标准差。四人一区组只会让这件事更说不通，而不是更说得通，因为区组的存在正是为了把两组拉平。有些队员一直在拆密封信封，把写着常规处置的放到一边，直到找到一张写着抗生素的为止。",
-  "How they were split, and what happened to them": "他们是怎么被分开的，以及他们后来怎么样了",
-  "Nobody here was cheating for gain. The crews believed the antibiotics would help and were trying to give their patients the better option, which is exactly the situation allocation concealment is built for. The point of concealment is not to stop dishonest people. It is to stop well-meaning people from acting on a guess about which arm is better, because the moment who gets which treatment depends on anyone's judgement, the two groups stop being comparable and the comparison stops meaning what it appears to mean. The trial's investigators found this, said so in the paper, and retrained the crews. Notice also what the second row does to the first. The headline result, that the two arms had almost identical death rates, is the number this trial is cited for. It sits on top of two groups that were not assembled by chance.": "这里没有人为了私利作弊。队员们相信抗生素有用，是在设法把更好的选择给自己的患者，而这恰恰是分组隐匿之所以存在的情形。隐匿的目的不是拦住不诚实的人，而是防止心怀善意的人凭着「哪一组更好」的猜测行事；因为一旦谁接受哪种治疗取决于任何人的判断，两组就不再可比，比较也就不再是它看上去的意思。研究者发现了这个问题，在论文里写了出来，并对队员重新做了培训。也请注意第二行对第一行做了什么。这项试验被人引用的那个主要结果，即两组死亡率几乎相同，正是建立在两个并非由偶然组成的组别之上。",
-  "What randomised did and did not guarantee": "「随机分组」保证了什么，又没保证什么",
+  "blocks of four are meant to prevent exactly this":
+    "四人一区组的存在，正是为了防止这种情况",
+  "1,535 against 1,137. A fair coin would land that far out about once in a hundred million million.":
+    "1,535对1,137。一枚均匀的硬币要偏到这么远，大约要一百万亿次才有一回。",
+  "Randomising is a procedure, and a procedure can be got around":
+    "随机分组是一道程序，而程序是可以被绕开的",
+  "A one to one split of 2,672 should put about 1,336 in each arm, and chance alone would rarely move it more than about fifty either way. The antibiotics arm got 1,535, which is 199 too many, or more than seven standard deviations. Blocking in fours makes it worse, not better, because blocking exists precisely to hold the arms level. Some crews had been opening sealed envelopes and setting aside the ones that said usual care until they found one that said antibiotics.":
+    "2,672人按一比一分组，每组应该在1,336人左右，单靠偶然很少会让这个数字向任一方向移动超过五十上下。抗生素组拿到了1,535人，也就是多出199人，超过七个标准差。四人一区组只会让这件事更说不通，而不是更说得通，因为区组的存在正是为了把两组拉平。有些队员一直在拆密封信封，把写着常规处置的放到一边，直到找到一张写着抗生素的为止。",
+  "How they were split, and what happened to them":
+    "他们是怎么被分开的，以及他们后来怎么样了",
+  "Nobody here was cheating for gain. The crews believed the antibiotics would help and were trying to give their patients the better option, which is exactly the situation allocation concealment is built for. The point of concealment is not to stop dishonest people. It is to stop well-meaning people from acting on a guess about which arm is better, because the moment who gets which treatment depends on anyone's judgement, the two groups stop being comparable and the comparison stops meaning what it appears to mean. The trial's investigators found this, said so in the paper, and retrained the crews. Notice also what the second row does to the first. The headline result, that the two arms had almost identical death rates, is the number this trial is cited for. It sits on top of two groups that were not assembled by chance.":
+    "这里没有人为了私利作弊。队员们相信抗生素有用，是在设法把更好的选择给自己的患者，而这恰恰是分组隐匿之所以存在的情形。隐匿的目的不是拦住不诚实的人，而是防止心怀善意的人凭着「哪一组更好」的猜测行事；因为一旦谁接受哪种治疗取决于任何人的判断，两组就不再可比，比较也就不再是它看上去的意思。研究者发现了这个问题，在论文里写了出来，并对队员重新做了培训。也请注意第二行对第一行做了什么。这项试验被人引用的那个主要结果，即两组死亡率几乎相同，正是建立在两个并非由偶然组成的组别之上。",
+  "What randomised did and did not guarantee":
+    "「随机分组」保证了什么，又没保证什么",
   "Allocation concealment": "分组隐匿",
-  "Randomised describes a procedure, not a result. What makes the two groups comparable is that nobody deciding who enters the trial can see which arm the next patient will get, and a trial can be randomised in name while failing that completely.": "随机分组描述的是一道程序，不是一个结果。让两组可比的，是决定谁能进入试验的人无法看到下一位患者会被分到哪一组；而一项试验完全可能名义上是随机分组，在这一点上却彻底失败。",
-  "It is worth separating two things that get said in one breath. Blinding is about who knows the assignment after it has been made, and it protects the measurement of the outcome. Concealment is about who can see the assignment before it has been made, and it protects the formation of the groups. They fail differently and they are defeated differently. This trial could not be blinded at all, which is unavoidable and was not the problem. What went wrong was concealment: the next assignment was sitting in an envelope in the ambulance, and a crew that wanted a particular answer could keep opening envelopes until they got it. The tell here is unusual and worth remembering, because most concealment failures leave no trace at all. This one left an arithmetic fingerprint: an allocation ratio that no random process could produce. When you can check that, check it.": "有两件常被一口气说出来的事值得分开。设盲说的是分组做出之后谁知道分组结果，它保护的是结局的测量。隐匿说的是分组做出之前谁能看到分组结果，它保护的是组别的形成。两者失效的方式不同，被绕开的方式也不同。这项试验根本无法设盲，这是无可避免的，也不是问题所在。出问题的是隐匿：下一个分组结果就装在救护车里的信封中，而一个想要某种答案的队伍可以一直拆信封，直到拆出它为止。这里的线索很少见，值得记住，因为大多数隐匿失败根本不留痕迹。这一次留下了一枚算术指纹：一个任何随机过程都产生不出来的分组比例。当你能核对这一点时，就去核对。",
-  "The mechanism is selection, and it can run in either direction. Suppose a clinician is enrolling a very sick patient and can see that the next envelope says usual care. If they believe the treatment works, they may find a reason not to enrol that patient at all, and wait for the next one. Nothing dishonest has to happen and no rule has to be broken; they are simply doing what they think is best for the person in front of them. But the sickest patients are now being steered away from one arm, and the trial will report a difference that was created at the door rather than by the treatment. This is why the modern standard is central randomisation: you telephone or click, a computer that has never met your patient returns the allocation, and by the time you know it you cannot unmake the enrolment. Sequentially numbered opaque sealed envelopes are the accepted fallback and they can work, but they are the method that fails in practice, and the ways they fail are catalogued: holding them to a light, opening them out of order, opening several at once. Two things to carry. First, when you read that a trial was randomised, that word alone tells you very little; what you want to know is how the sequence was generated and how it was concealed, and a report that does not say is a report that has not told you. Second, this whole family of problems is invisible in the results table. The place it shows up is the allocation ratio and the baseline characteristics, so those are the parts of a trial report worth a second look before you get to the outcome everyone is quoting.": "其机制是一种选择，而且可以朝任一方向发生。设想一位临床医生正准备纳入一位病情很重的患者，却看到下一个信封写着常规处置。如果他相信这种治疗有效，他可能会找个理由干脆不纳入这位患者，等下一位。不需要发生任何不诚实的事，也不需要违反任何规则；他只是在做他认为对眼前这个人最好的事。但如今病情最重的患者正被从某一组里挡开，于是这项试验将报告一个在门口被制造出来、而不是由治疗产生的差异。这就是为什么现代的标准做法是中心随机化：你打个电话或点一下，一台从未见过你患者的计算机返回分组结果，而等你知道它的时候，纳入已经无法撤销。连续编号的不透明密封信封是被接受的退而求其次的办法，也确实可能奏效，但它正是在实践中会失效的方法，而它失效的方式已经被一一记录在案：对着光照、不按顺序拆、一次拆好几个。有两点值得带走。第一，当你读到一项试验是随机分组的，光凭这个词你知道的很少；你想知道的是分组序列如何产生、又如何被隐匿，而一份不交代这些的报告，就是一份什么都没告诉你的报告。第二，这一整类问题在结果表里是看不见的。它现身的地方是分组比例和基线特征表，所以在你走到人人都在引用的那个结果之前，这两处才是值得再看一眼的部分。",
-  "The same trial, before and after the telephone": "同一项试验，在电话启用之前与之后",
-  "A surgical trial in the 1990s ran in two periods with everything the same except the concealment method. In the first, allocations came in sequentially numbered sealed envelopes. In the second, clinicians rang a central telephone line and a computer returned the allocation. In the envelope period the two arms differed sharply in age, with a median of 59 years against 63, and the gap was concentrated in particular surgeons: one had arms with medians of 33 and 69 years. In the telephone period the same trial, the same surgeons and the same patients produced arms with medians of 59 and 57, a difference easily explained by chance. Nothing about the disease or the population changed between the two periods. Only the question of whether the person enrolling could see what was coming next. That is as close to a controlled experiment on allocation concealment as the literature offers, and the reason this deck's puzzle uses a different trial is only that these figures are medians, and this deck authors from counts.": "上世纪九十年代的一项外科试验分两个阶段进行，除隐匿方法外一切相同。第一阶段，分组结果装在连续编号的密封信封里送达。第二阶段，临床医生拨打一条中心电话线，由计算机返回分组结果。在信封阶段，两组的年龄差别很大，中位数为59岁对63岁，而且差别集中在特定的几位外科医生身上：其中一位手下两组的中位年龄是33岁和69岁。在电话阶段，同一项试验、同一批外科医生、同样的患者，得到的两组中位年龄是59岁和57岁，这个差别用偶然就能轻松解释。两个阶段之间，无论疾病还是人群都没有任何变化。变的只是纳入患者的人能否看到接下来会是什么。这是文献所能提供的、最接近于一场关于分组隐匿的对照实验的东西；而这套题目之所以仍选用了另一项试验，只是因为这些数字是中位数，而这套题目是从计数写起的。",
+  "Randomised describes a procedure, not a result. What makes the two groups comparable is that nobody deciding who enters the trial can see which arm the next patient will get, and a trial can be randomised in name while failing that completely.":
+    "随机分组描述的是一道程序，不是一个结果。让两组可比的，是决定谁能进入试验的人无法看到下一位患者会被分到哪一组；而一项试验完全可能名义上是随机分组，在这一点上却彻底失败。",
+  "It is worth separating two things that get said in one breath. Blinding is about who knows the assignment after it has been made, and it protects the measurement of the outcome. Concealment is about who can see the assignment before it has been made, and it protects the formation of the groups. They fail differently and they are defeated differently. This trial could not be blinded at all, which is unavoidable and was not the problem. What went wrong was concealment: the next assignment was sitting in an envelope in the ambulance, and a crew that wanted a particular answer could keep opening envelopes until they got it. The tell here is unusual and worth remembering, because most concealment failures leave no trace at all. This one left an arithmetic fingerprint: an allocation ratio that no random process could produce. When you can check that, check it.":
+    "有两件常被一口气说出来的事值得分开。设盲说的是分组做出之后谁知道分组结果，它保护的是结局的测量。隐匿说的是分组做出之前谁能看到分组结果，它保护的是组别的形成。两者失效的方式不同，被绕开的方式也不同。这项试验根本无法设盲，这是无可避免的，也不是问题所在。出问题的是隐匿：下一个分组结果就装在救护车里的信封中，而一个想要某种答案的队伍可以一直拆信封，直到拆出它为止。这里的线索很少见，值得记住，因为大多数隐匿失败根本不留痕迹。这一次留下了一枚算术指纹：一个任何随机过程都产生不出来的分组比例。当你能核对这一点时，就去核对。",
+  "The mechanism is selection, and it can run in either direction. Suppose a clinician is enrolling a very sick patient and can see that the next envelope says usual care. If they believe the treatment works, they may find a reason not to enrol that patient at all, and wait for the next one. Nothing dishonest has to happen and no rule has to be broken; they are simply doing what they think is best for the person in front of them. But the sickest patients are now being steered away from one arm, and the trial will report a difference that was created at the door rather than by the treatment. This is why the modern standard is central randomisation: you telephone or click, a computer that has never met your patient returns the allocation, and by the time you know it you cannot unmake the enrolment. Sequentially numbered opaque sealed envelopes are the accepted fallback and they can work, but they are the method that fails in practice, and the ways they fail are catalogued: holding them to a light, opening them out of order, opening several at once. Two things to carry. First, when you read that a trial was randomised, that word alone tells you very little; what you want to know is how the sequence was generated and how it was concealed, and a report that does not say is a report that has not told you. Second, this whole family of problems is invisible in the results table. The place it shows up is the allocation ratio and the baseline characteristics, so those are the parts of a trial report worth a second look before you get to the outcome everyone is quoting.":
+    "其机制是一种选择，而且可以朝任一方向发生。设想一位临床医生正准备纳入一位病情很重的患者，却看到下一个信封写着常规处置。如果他相信这种治疗有效，他可能会找个理由干脆不纳入这位患者，等下一位。不需要发生任何不诚实的事，也不需要违反任何规则；他只是在做他认为对眼前这个人最好的事。但如今病情最重的患者正被从某一组里挡开，于是这项试验将报告一个在门口被制造出来、而不是由治疗产生的差异。这就是为什么现代的标准做法是中心随机化：你打个电话或点一下，一台从未见过你患者的计算机返回分组结果，而等你知道它的时候，纳入已经无法撤销。连续编号的不透明密封信封是被接受的退而求其次的办法，也确实可能奏效，但它正是在实践中会失效的方法，而它失效的方式已经被一一记录在案：对着光照、不按顺序拆、一次拆好几个。有两点值得带走。第一，当你读到一项试验是随机分组的，光凭这个词你知道的很少；你想知道的是分组序列如何产生、又如何被隐匿，而一份不交代这些的报告，就是一份什么都没告诉你的报告。第二，这一整类问题在结果表里是看不见的。它现身的地方是分组比例和基线特征表，所以在你走到人人都在引用的那个结果之前，这两处才是值得再看一眼的部分。",
+  "The same trial, before and after the telephone":
+    "同一项试验，在电话启用之前与之后",
+  "A surgical trial in the 1990s ran in two periods with everything the same except the concealment method. In the first, allocations came in sequentially numbered sealed envelopes. In the second, clinicians rang a central telephone line and a computer returned the allocation. In the envelope period the two arms differed sharply in age, with a median of 59 years against 63, and the gap was concentrated in particular surgeons: one had arms with medians of 33 and 69 years. In the telephone period the same trial, the same surgeons and the same patients produced arms with medians of 59 and 57, a difference easily explained by chance. Nothing about the disease or the population changed between the two periods. Only the question of whether the person enrolling could see what was coming next. That is as close to a controlled experiment on allocation concealment as the literature offers, and the reason this deck's puzzle uses a different trial is only that these figures are medians, and this deck authors from counts.":
+    "上世纪九十年代的一项外科试验分两个阶段进行，除隐匿方法外一切相同。第一阶段，分组结果装在连续编号的密封信封里送达。第二阶段，临床医生拨打一条中心电话线，由计算机返回分组结果。在信封阶段，两组的年龄差别很大，中位数为59岁对63岁，而且差别集中在特定的几位外科医生身上：其中一位手下两组的中位年龄是33岁和69岁。在电话阶段，同一项试验、同一批外科医生、同样的患者，得到的两组中位年龄是59岁和57岁，这个差别用偶然就能轻松解释。两个阶段之间，无论疾病还是人群都没有任何变化。变的只是纳入患者的人能否看到接下来会是什么。这是文献所能提供的、最接近于一场关于分组隐匿的对照实验的东西；而这套题目之所以仍选用了另一项试验，只是因为这些数字是中位数，而这套题目是从计数写起的。",
   "Allocation concealment, a reasoning trap.": "分组隐匿，一个推理陷阱。",
-  "A trial randomised 2,672 patients one to one, in blocks of four, to get antibiotics in the ambulance or usual care. A one to one split should put about 1,336 in each arm. The antibiotics arm got 1,535. That is more than seven standard deviations from chance, and blocks of four should have made it tighter still. Some ambulance crews had been opening sealed envelopes until they found one that said antibiotics, because they believed antibiotics would help. Randomised describes a procedure, not a result, and a procedure can be got around by people acting in good faith.": "一项试验把2,672名患者按四人一区组、一比一随机分到在救护车上用抗生素或接受常规处置。一比一的分法应该让每组各约1,336人。抗生素组拿到了1,535人。这距离偶然超过七个标准差，而四人一区组本该让它更紧凑。有些救护车队员一直拆密封信封，直到找到写着抗生素的那一张，因为他们相信抗生素有用。随机分组描述的是一道程序，不是一个结果，而程序是可以被一群心怀善意的人绕开的。",
-  "The figures reconcile five ways. The two arms sum to the stated intention-to-treat total of 2,672. The intervention share of 57.4 per cent matches the 57 per cent reported for this trial elsewhere in the methodological literature. 120 of 1,535 is 7.8 per cent and 93 of 1,137 is 8.2 per cent, both of which round to the 8 per cent the paper prints. And the two rates give a relative risk of 0.956, matching the printed 0.95. Three things to be careful about. The seven standard deviations quoted is a deliberately conservative figure: it treats the allocation as a free one to one coin toss, whereas block randomisation in blocks of four constrains imbalance much more tightly, so the true departure is larger and the exact tail probability under blocking is not something the paper computes. This puzzle is not an accusation of misconduct: the crews believed the antibiotics would help their patients, the investigators identified the problem, reported it openly in the paper and retrained the crews, and the trial's overall conclusion may well be correct. And an unequal allocation ratio demonstrates that the process was not random; it does not by itself measure how different the two groups were in prognosis, which is a separate question this trial's baseline table would have to answer.": "这些数字能以五种方式对上。两组相加正好是公布的意向治疗分析人数2,672。分到干预组的57.4%与方法学文献中就这项试验报告的57%相符。1,535人中的120人是7.8%，1,137人中的93人是8.2%，两者都四舍五入到论文印出的8%。而这两个比率给出的相对危险度为0.956，与印出的0.95相符。有三点需要谨慎。所引的七个标准差是一个刻意保守的数字：它把分组当作一次自由的一比一抛硬币，而四人一区组的随机化对不平衡的约束要强得多，所以真实的偏离更大，而区组之下的确切概率并不是这篇论文计算过的。这道题不是对不端行为的指控：队员们相信抗生素能帮到自己的患者，研究者发现了问题、在论文中坦率报告并重新培训了队员，而这项试验的总体结论很可能是对的。还有，分组比例不均证明的是这个过程不是随机的；它本身并不衡量两组在预后上差了多少，那是另一个问题，只有这项试验的基线表才能回答。",
-  "A trial report says only that patients were randomised to the two arms, with nothing about how the sequence was generated or how it was kept from the enrolling clinicians.": "一份试验报告只说患者被随机分到两组，对分组序列如何产生、又如何不让负责纳入的临床医生知道，只字未提。",
-  "Randomised on its own describes an intention, not a safeguard. Without knowing how the sequence was concealed there is no way to judge whether the groups were formed by chance or by somebody's judgement.": "「随机分组」本身描述的是一种意图，不是一道保障。不知道序列是如何被隐匿的，就无法判断这些组是由偶然形成的，还是由某个人的判断形成的。",
-  "Allocations are supplied to each recruiting site as a stack of sealed envelopes, and a site reports that it sometimes opens the next one to plan staffing before deciding whether the patient is eligible.": "分组结果以一叠密封信封的形式发给每个招募中心，其中一个中心报告说，它有时会在确定患者是否合格之前，先拆开下一个信封以便安排人手。",
-  "Once the next allocation is known before eligibility is settled, the decision to enrol can depend on it. That is the whole failure, and it needs no dishonesty: a clinician who thinks one arm is better will hesitate over the wrong patient.": "一旦在合格性尚未确定之前就知道了下一个分组结果，是否纳入的决定就可能取决于它。这就是整个失效所在，而且它不需要任何不诚实：一位认为某一组更好的医生，面对「不该分到那组」的患者时就会犹豫。",
-  "A study assigns patients arriving on odd-numbered days to the new treatment and those arriving on even days to the old one, and describes the allocation as random.": "一项研究把单日到院的患者分到新疗法、双日到院的患者分到旧疗法，并把这种分配称为随机。",
-  "Alternating by date is predictable, so anybody who knows the rule knows tomorrow's assignment and can time an admission. A sequence that can be forecast is not concealed, whatever else it is.": "按日期交替是可以预测的，所以任何知道规则的人都知道明天的分组，并能安排入院时间。一个可以被预知的序列不是隐匿的，无论它还是别的什么。",
-  "Asked about concealment, an investigator answers that the trial was double blind, so the allocation could not have influenced who was enrolled.": "被问到隐匿时，一位研究者回答说这项试验是双盲的，所以分组结果不可能影响到谁被纳入。",
-  "Blinding starts after assignment and protects the measurement of the outcome. Concealment operates before assignment and protects the formation of the groups. A trial can be perfectly blinded and still have had its groups selected at the door.": "设盲从分组之后开始，保护的是结局的测量。隐匿在分组之前起作用，保护的是组别的形成。一项试验完全可能设盲得无可挑剔，而它的组别却是在门口被挑出来的。",
-  "A trial that randomised 1:1 with blocks of six reports 940 patients in one arm and 762 in the other, and does not comment on the difference.": "一项按1:1、六人一区组随机分组的试验报告说一组有940名患者，另一组有762名，并未对这个差别加以说明。",
-  "Blocking exists to hold the arms level, so a gap that size cannot come from the allocation process working as described. An unexplained ratio is one of the few fingerprints a concealment failure leaves in a published report.": "区组的存在就是为了让两组保持持平，所以这么大的差距不可能来自一个按其所述正常运转的分组过程。一个未加解释的分组比例，是隐匿失效在已发表论文中留下的少数指纹之一。",
-  "The baseline table of an unblinded trial shows the control arm was older and had more advanced disease at entry, and the discussion attributes this to the play of chance in randomisation.": "一项非盲试验的基线表显示对照组入组时年龄更大、病情更重，讨论部分把这归因于随机分组中的偶然。",
-  "Chance is a possible explanation and so is a sequence somebody could see, and the baseline table cannot distinguish them on its own. Whether to believe the chance explanation depends on how the allocation was concealed, which is the thing to go and check.": "偶然是一种可能的解释，一个被人看见了的序列是另一种，而基线表本身无法区分二者。要不要相信偶然这个解释，取决于分组是如何被隐匿的，而那才是该去核实的地方。",
-  "A multicentre trial generates its sequence centrally with a validated computer program, then posts the full list to each site at the start of recruitment.": "一项多中心试验用经过验证的计算机程序集中生成分组序列，然后在招募开始时把完整名单发给每一个中心。",
-  "A perfectly generated sequence that everyone can read is not concealed at all. Generation and concealment are separate safeguards, and doing the first impeccably does nothing for the second.": "一个生成得再完美、却人人都能读到的序列，根本谈不上隐匿。生成与隐匿是两道彼此独立的保障，把前者做到无可挑剔，对后者毫无帮助。",
-  "After discovering that some sites had subverted the allocation, a team adjusts the analysis for the baseline characteristics that turned out to be imbalanced, and reports the adjusted result as unbiased.": "在发现部分中心绕开了分组之后，一个团队针对事后发现失衡的基线特征对分析做了校正，并把校正后的结果作为无偏结果报告出来。",
-  "Adjustment can only handle the imbalances that were measured and recorded. The reason randomisation is valuable is that it balances the things nobody thought to measure, and once it has failed that protection cannot be restored afterwards.": "校正只能处理那些被测量并记录下来的失衡。随机分组之所以宝贵，正是因为它连没人想到要测量的东西也一并平衡掉了；一旦它失效，这层保护事后是补不回来的。",
-  "In an unblinded trial, clinicians learn the allocation and then seek consent, and rather more patients decline in the arm the clinicians consider less desirable.": "在一项非盲试验中，临床医生先得知分组结果，然后再征求同意，而在医生认为不那么理想的那一组里，拒绝参加的患者略多一些。",
-  "Consent sought after the assignment is known lets the assignment influence who stays in the trial, which produces two groups that differ by more than the treatment. Seeking consent before allocation removes the opportunity entirely.": "在已知分组之后才征求的同意，会让分组结果左右谁留在试验里，从而产生两个不只在治疗上有差别的组。在分组之前征求同意，就把这个机会完全消除了。",
-  "A trial of 40 patients with a properly concealed central allocation ends up with 24 in one arm and 16 in the other, and a reader treats this as evidence that the concealment failed.": "一项40名患者、采用正确隐匿的中心分组的试验，最后一组24人、另一组16人，有读者据此认为隐匿失效了。",
-  "In forty patients a 24 to 16 split is well within what chance produces, so this ratio is no evidence of anything. The arithmetic fingerprint only becomes readable when the numbers are large enough that chance cannot reach the observed gap.": "在四十名患者里，24比16完全落在偶然会产生的范围内，所以这个比例什么也证明不了。只有当数字大到偶然够不着所观察到的差距时，那枚算术指纹才变得可读。",
-  "Clinicians enrol a patient by calling a central service, confirming eligibility first, and receiving the allocation only once the patient is irrevocably in the trial.": "临床医生通过致电一个中心服务来纳入患者：先确认合格性，只有在患者已不可撤销地进入试验之后，才拿到分组结果。",
-  "The allocation cannot be seen before the decision to enrol and cannot be undone afterwards, which is exactly what concealment means. This is the standard the method exists to reach.": "分组结果在纳入决定之前看不到，在之后也无法撤销，而这正是隐匿的含义。这就是这套方法所要达到的标准。",
-  "A trial report states that the sequence was computer generated by a statistician with no clinical contact, held centrally, and released one patient at a time after eligibility was confirmed.": "一份试验报告说明，分组序列由一位不接触临床的统计学家用计算机生成，集中保管，并在确认合格性之后一次发放一名患者的分组。",
-  "Generation and concealment are both described, separately and specifically, so a reader can judge them rather than take the word randomised on trust. This is what an adequate methods section looks like.": "生成与隐匿都被分别、具体地写了出来，因而读者可以自行判断，而不必对「随机分组」这个词照单全收。这才是一份合格的方法学部分该有的样子。",
-  "A surgical trial cannot be blinded, since the surgeon knows which operation they performed, but allocation is issued centrally after consent and the outcome is assessed by someone who does not know the assignment.": "一项外科试验无法设盲，因为外科医生知道自己做的是哪一种手术，但分组是在取得同意之后由中心发出的，结局则由不知道分组的人来评定。",
-  "Blinding the treatment is impossible here and that is not the failure. Concealing the allocation before enrolment and blinding the outcome assessment afterwards cover the two things that were still available.": "在这里给治疗设盲是不可能的，而失效并不在这一点上。在纳入之前隐匿分组、在之后对结局评定设盲，把仍然可以做到的两件事都做到了。",
-  "Hand hygiene in an intensive care unit, measured twice: once with an auditor in view, once without.": "重症监护病房的手卫生，测了两次：一次有审核员在场，一次没有。",
-  "A hospital watched its staff wash their hands in two ways. Sometimes an auditor stood openly on the ward with a clipboard, which is how hand hygiene figures are normally collected and published. Sometimes an observer recorded the same thing without anyone knowing they were doing it. Every overt observation was then matched to a covert one on the same ward, the same job, the same shift and the same kind of moment, so that the only difference left between the pair was whether the staff knew they were being watched. In the intensive care unit that gave 880 matched pairs. An intensive care unit is a closed room where staff work within sight of one another all day; an outpatient clinic is not, and its staff move between rooms alone.": "一家医院用两种方式观察员工洗手。有时审核员拿着写字板公开站在病区里，手卫生数据通常就是这样收集和公布的。另一些时候，观察者在无人知晓的情况下记录同样的事。随后，每一次公开观察都与同一病区、同一职业、同一班次、同一类时刻的一次隐蔽观察配成一对，这样每一对之内剩下的唯一差别，就是员工是否知道自己正被观察。在重症监护病房，这样得到了880对。重症监护病房是一个封闭的房间，员工整天都在彼此的视线之内工作；门诊不是，那里的员工独自在诊室之间走动。",
-  "The same hospital did this in its outpatient department too. How big was the gap there?": "这家医院在自己的门诊也做了同样的事。那里的差距有多大？",
+  "A trial randomised 2,672 patients one to one, in blocks of four, to get antibiotics in the ambulance or usual care. A one to one split should put about 1,336 in each arm. The antibiotics arm got 1,535. That is more than seven standard deviations from chance, and blocks of four should have made it tighter still. Some ambulance crews had been opening sealed envelopes until they found one that said antibiotics, because they believed antibiotics would help. Randomised describes a procedure, not a result, and a procedure can be got around by people acting in good faith.":
+    "一项试验把2,672名患者按四人一区组、一比一随机分到在救护车上用抗生素或接受常规处置。一比一的分法应该让每组各约1,336人。抗生素组拿到了1,535人。这距离偶然超过七个标准差，而四人一区组本该让它更紧凑。有些救护车队员一直拆密封信封，直到找到写着抗生素的那一张，因为他们相信抗生素有用。随机分组描述的是一道程序，不是一个结果，而程序是可以被一群心怀善意的人绕开的。",
+  "The figures reconcile five ways. The two arms sum to the stated intention-to-treat total of 2,672. The intervention share of 57.4 per cent matches the 57 per cent reported for this trial elsewhere in the methodological literature. 120 of 1,535 is 7.8 per cent and 93 of 1,137 is 8.2 per cent, both of which round to the 8 per cent the paper prints. And the two rates give a relative risk of 0.956, matching the printed 0.95. Three things to be careful about. The seven standard deviations quoted is a deliberately conservative figure: it treats the allocation as a free one to one coin toss, whereas block randomisation in blocks of four constrains imbalance much more tightly, so the true departure is larger and the exact tail probability under blocking is not something the paper computes. This puzzle is not an accusation of misconduct: the crews believed the antibiotics would help their patients, the investigators identified the problem, reported it openly in the paper and retrained the crews, and the trial's overall conclusion may well be correct. And an unequal allocation ratio demonstrates that the process was not random; it does not by itself measure how different the two groups were in prognosis, which is a separate question this trial's baseline table would have to answer.":
+    "这些数字能以五种方式对上。两组相加正好是公布的意向治疗分析人数2,672。分到干预组的57.4%与方法学文献中就这项试验报告的57%相符。1,535人中的120人是7.8%，1,137人中的93人是8.2%，两者都四舍五入到论文印出的8%。而这两个比率给出的相对危险度为0.956，与印出的0.95相符。有三点需要谨慎。所引的七个标准差是一个刻意保守的数字：它把分组当作一次自由的一比一抛硬币，而四人一区组的随机化对不平衡的约束要强得多，所以真实的偏离更大，而区组之下的确切概率并不是这篇论文计算过的。这道题不是对不端行为的指控：队员们相信抗生素能帮到自己的患者，研究者发现了问题、在论文中坦率报告并重新培训了队员，而这项试验的总体结论很可能是对的。还有，分组比例不均证明的是这个过程不是随机的；它本身并不衡量两组在预后上差了多少，那是另一个问题，只有这项试验的基线表才能回答。",
+  "A trial report says only that patients were randomised to the two arms, with nothing about how the sequence was generated or how it was kept from the enrolling clinicians.":
+    "一份试验报告只说患者被随机分到两组，对分组序列如何产生、又如何不让负责纳入的临床医生知道，只字未提。",
+  "Randomised on its own describes an intention, not a safeguard. Without knowing how the sequence was concealed there is no way to judge whether the groups were formed by chance or by somebody's judgement.":
+    "「随机分组」本身描述的是一种意图，不是一道保障。不知道序列是如何被隐匿的，就无法判断这些组是由偶然形成的，还是由某个人的判断形成的。",
+  "Allocations are supplied to each recruiting site as a stack of sealed envelopes, and a site reports that it sometimes opens the next one to plan staffing before deciding whether the patient is eligible.":
+    "分组结果以一叠密封信封的形式发给每个招募中心，其中一个中心报告说，它有时会在确定患者是否合格之前，先拆开下一个信封以便安排人手。",
+  "Once the next allocation is known before eligibility is settled, the decision to enrol can depend on it. That is the whole failure, and it needs no dishonesty: a clinician who thinks one arm is better will hesitate over the wrong patient.":
+    "一旦在合格性尚未确定之前就知道了下一个分组结果，是否纳入的决定就可能取决于它。这就是整个失效所在，而且它不需要任何不诚实：一位认为某一组更好的医生，面对「不该分到那组」的患者时就会犹豫。",
+  "A study assigns patients arriving on odd-numbered days to the new treatment and those arriving on even days to the old one, and describes the allocation as random.":
+    "一项研究把单日到院的患者分到新疗法、双日到院的患者分到旧疗法，并把这种分配称为随机。",
+  "Alternating by date is predictable, so anybody who knows the rule knows tomorrow's assignment and can time an admission. A sequence that can be forecast is not concealed, whatever else it is.":
+    "按日期交替是可以预测的，所以任何知道规则的人都知道明天的分组，并能安排入院时间。一个可以被预知的序列不是隐匿的，无论它还是别的什么。",
+  "Asked about concealment, an investigator answers that the trial was double blind, so the allocation could not have influenced who was enrolled.":
+    "被问到隐匿时，一位研究者回答说这项试验是双盲的，所以分组结果不可能影响到谁被纳入。",
+  "Blinding starts after assignment and protects the measurement of the outcome. Concealment operates before assignment and protects the formation of the groups. A trial can be perfectly blinded and still have had its groups selected at the door.":
+    "设盲从分组之后开始，保护的是结局的测量。隐匿在分组之前起作用，保护的是组别的形成。一项试验完全可能设盲得无可挑剔，而它的组别却是在门口被挑出来的。",
+  "A trial that randomised 1:1 with blocks of six reports 940 patients in one arm and 762 in the other, and does not comment on the difference.":
+    "一项按1:1、六人一区组随机分组的试验报告说一组有940名患者，另一组有762名，并未对这个差别加以说明。",
+  "Blocking exists to hold the arms level, so a gap that size cannot come from the allocation process working as described. An unexplained ratio is one of the few fingerprints a concealment failure leaves in a published report.":
+    "区组的存在就是为了让两组保持持平，所以这么大的差距不可能来自一个按其所述正常运转的分组过程。一个未加解释的分组比例，是隐匿失效在已发表论文中留下的少数指纹之一。",
+  "The baseline table of an unblinded trial shows the control arm was older and had more advanced disease at entry, and the discussion attributes this to the play of chance in randomisation.":
+    "一项非盲试验的基线表显示对照组入组时年龄更大、病情更重，讨论部分把这归因于随机分组中的偶然。",
+  "Chance is a possible explanation and so is a sequence somebody could see, and the baseline table cannot distinguish them on its own. Whether to believe the chance explanation depends on how the allocation was concealed, which is the thing to go and check.":
+    "偶然是一种可能的解释，一个被人看见了的序列是另一种，而基线表本身无法区分二者。要不要相信偶然这个解释，取决于分组是如何被隐匿的，而那才是该去核实的地方。",
+  "A multicentre trial generates its sequence centrally with a validated computer program, then posts the full list to each site at the start of recruitment.":
+    "一项多中心试验用经过验证的计算机程序集中生成分组序列，然后在招募开始时把完整名单发给每一个中心。",
+  "A perfectly generated sequence that everyone can read is not concealed at all. Generation and concealment are separate safeguards, and doing the first impeccably does nothing for the second.":
+    "一个生成得再完美、却人人都能读到的序列，根本谈不上隐匿。生成与隐匿是两道彼此独立的保障，把前者做到无可挑剔，对后者毫无帮助。",
+  "After discovering that some sites had subverted the allocation, a team adjusts the analysis for the baseline characteristics that turned out to be imbalanced, and reports the adjusted result as unbiased.":
+    "在发现部分中心绕开了分组之后，一个团队针对事后发现失衡的基线特征对分析做了校正，并把校正后的结果作为无偏结果报告出来。",
+  "Adjustment can only handle the imbalances that were measured and recorded. The reason randomisation is valuable is that it balances the things nobody thought to measure, and once it has failed that protection cannot be restored afterwards.":
+    "校正只能处理那些被测量并记录下来的失衡。随机分组之所以宝贵，正是因为它连没人想到要测量的东西也一并平衡掉了；一旦它失效，这层保护事后是补不回来的。",
+  "In an unblinded trial, clinicians learn the allocation and then seek consent, and rather more patients decline in the arm the clinicians consider less desirable.":
+    "在一项非盲试验中，临床医生先得知分组结果，然后再征求同意，而在医生认为不那么理想的那一组里，拒绝参加的患者略多一些。",
+  "Consent sought after the assignment is known lets the assignment influence who stays in the trial, which produces two groups that differ by more than the treatment. Seeking consent before allocation removes the opportunity entirely.":
+    "在已知分组之后才征求的同意，会让分组结果左右谁留在试验里，从而产生两个不只在治疗上有差别的组。在分组之前征求同意，就把这个机会完全消除了。",
+  "A trial of 40 patients with a properly concealed central allocation ends up with 24 in one arm and 16 in the other, and a reader treats this as evidence that the concealment failed.":
+    "一项40名患者、采用正确隐匿的中心分组的试验，最后一组24人、另一组16人，有读者据此认为隐匿失效了。",
+  "In forty patients a 24 to 16 split is well within what chance produces, so this ratio is no evidence of anything. The arithmetic fingerprint only becomes readable when the numbers are large enough that chance cannot reach the observed gap.":
+    "在四十名患者里，24比16完全落在偶然会产生的范围内，所以这个比例什么也证明不了。只有当数字大到偶然够不着所观察到的差距时，那枚算术指纹才变得可读。",
+  "Clinicians enrol a patient by calling a central service, confirming eligibility first, and receiving the allocation only once the patient is irrevocably in the trial.":
+    "临床医生通过致电一个中心服务来纳入患者：先确认合格性，只有在患者已不可撤销地进入试验之后，才拿到分组结果。",
+  "The allocation cannot be seen before the decision to enrol and cannot be undone afterwards, which is exactly what concealment means. This is the standard the method exists to reach.":
+    "分组结果在纳入决定之前看不到，在之后也无法撤销，而这正是隐匿的含义。这就是这套方法所要达到的标准。",
+  "A trial report states that the sequence was computer generated by a statistician with no clinical contact, held centrally, and released one patient at a time after eligibility was confirmed.":
+    "一份试验报告说明，分组序列由一位不接触临床的统计学家用计算机生成，集中保管，并在确认合格性之后一次发放一名患者的分组。",
+  "Generation and concealment are both described, separately and specifically, so a reader can judge them rather than take the word randomised on trust. This is what an adequate methods section looks like.":
+    "生成与隐匿都被分别、具体地写了出来，因而读者可以自行判断，而不必对「随机分组」这个词照单全收。这才是一份合格的方法学部分该有的样子。",
+  "A surgical trial cannot be blinded, since the surgeon knows which operation they performed, but allocation is issued centrally after consent and the outcome is assessed by someone who does not know the assignment.":
+    "一项外科试验无法设盲，因为外科医生知道自己做的是哪一种手术，但分组是在取得同意之后由中心发出的，结局则由不知道分组的人来评定。",
+  "Blinding the treatment is impossible here and that is not the failure. Concealing the allocation before enrolment and blinding the outcome assessment afterwards cover the two things that were still available.":
+    "在这里给治疗设盲是不可能的，而失效并不在这一点上。在纳入之前隐匿分组、在之后对结局评定设盲，把仍然可以做到的两件事都做到了。",
+  "Hand hygiene in an intensive care unit, measured twice: once with an auditor in view, once without.":
+    "重症监护病房的手卫生，测了两次：一次有审核员在场，一次没有。",
+  "A hospital watched its staff wash their hands in two ways. Sometimes an auditor stood openly on the ward with a clipboard, which is how hand hygiene figures are normally collected and published. Sometimes an observer recorded the same thing without anyone knowing they were doing it. Every overt observation was then matched to a covert one on the same ward, the same job, the same shift and the same kind of moment, so that the only difference left between the pair was whether the staff knew they were being watched. In the intensive care unit that gave 880 matched pairs. An intensive care unit is a closed room where staff work within sight of one another all day; an outpatient clinic is not, and its staff move between rooms alone.":
+    "一家医院用两种方式观察员工洗手。有时审核员拿着写字板公开站在病区里，手卫生数据通常就是这样收集和公布的。另一些时候，观察者在无人知晓的情况下记录同样的事。随后，每一次公开观察都与同一病区、同一职业、同一班次、同一类时刻的一次隐蔽观察配成一对，这样每一对之内剩下的唯一差别，就是员工是否知道自己正被观察。在重症监护病房，这样得到了880对。重症监护病房是一个封闭的房间，员工整天都在彼此的视线之内工作；门诊不是，那里的员工独自在诊室之间走动。",
+  "The same hospital did this in its outpatient department too. How big was the gap there?":
+    "这家医院在自己的门诊也做了同样的事。那里的差距有多大？",
   "Cleaned their hands when they should have": "在该做手卫生的时刻做了",
   "An auditor was standing there": "有一位审核员站在那里",
-  "Watched": "被观察",
+  Watched: "被观察",
   "Nobody knew they were being observed": "没有人知道他们正被观察",
   "Not watched": "未被观察",
   "Intensive care unit": "重症监护病房",
   "Outpatient department": "门诊",
-  "Intensive care, watched against not watched": "重症监护病房，被观察与未被观察",
+  "Intensive care, watched against not watched":
+    "重症监护病房，被观察与未被观察",
   "About the same, ten points or so": "差不多一样，大约十个百分点",
   "an auditor is an auditor wherever they stand": "审核员站在哪里都是审核员",
-  "Smaller. Clinics are calmer than intensive care": "更小。门诊比重症监护病房从容",
+  "Smaller. Clinics are calmer than intensive care":
+    "更小。门诊比重症监护病房从容",
   "less pressure, fewer corners cut": "压力小，走捷径也少",
   "Far bigger. Around four times the gap": "大得多。差距大约是四倍",
-  "ask how much of a change the auditor actually is": "想一想审核员实际上带来了多大的改变",
-  "Eleven points in intensive care. Forty-one in the clinic.": "重症监护病房十一个百分点。门诊四十一个。",
-  "Being watched does not move everyone by the same amount": "被观察并不会让每个人挪动同样的距离",
-  "In intensive care, 709 of 880 moments were handled correctly with an auditor present and 609 of 880 without: a gap of about eleven points. In the outpatient department it was 86 of 133 against 32 of 133, a gap of about forty-one points. Same hospital, same audit method, same matching. In the clinic, nearly two thirds of the compliance that the audit recorded existed only while the audit was happening.": "在重症监护病房，有审核员在场时880个时刻中有709个处理正确，没有审核员时是880个中的609个：差距约十一个百分点。在门诊是133个中的86个对133个中的32个，差距约四十一个百分点。同一家医院，同一套审核方法，同样的配对。在门诊，审核记录到的依从性中有将近三分之二只在审核进行时存在。",
+  "ask how much of a change the auditor actually is":
+    "想一想审核员实际上带来了多大的改变",
+  "Eleven points in intensive care. Forty-one in the clinic.":
+    "重症监护病房十一个百分点。门诊四十一个。",
+  "Being watched does not move everyone by the same amount":
+    "被观察并不会让每个人挪动同样的距离",
+  "In intensive care, 709 of 880 moments were handled correctly with an auditor present and 609 of 880 without: a gap of about eleven points. In the outpatient department it was 86 of 133 against 32 of 133, a gap of about forty-one points. Same hospital, same audit method, same matching. In the clinic, nearly two thirds of the compliance that the audit recorded existed only while the audit was happening.":
+    "在重症监护病房，有审核员在场时880个时刻中有709个处理正确，没有审核员时是880个中的609个：差距约十一个百分点。在门诊是133个中的86个对133个中的32个，差距约四十一个百分点。同一家医院，同一套审核方法，同样的配对。在门诊，审核记录到的依从性中有将近三分之二只在审核进行时存在。",
   "Both settings, watched and not": "两个场所，被观察与未被观察",
-  "Look at what the unwatched numbers alone would tell you. Intensive care sat at 69 per cent and the clinic at 24, so the real difference between these two places is enormous. Now look at the watched numbers: 81 and 65. The gap between the two settings has shrunk to a third of its true size, because the auditor lifted the worse performer far more than the better one. That is the part that should worry anyone reading a published compliance table. It is not merely that audited figures are too high. It is that they are too high by different amounts in different places, so the ranking you build from them is not the ranking of how clean people's hands actually are.": "单看未被观察的数字。重症监护病房是69%，门诊是24%，所以这两个场所之间的真实差距非常大。再看被观察的数字：81%和65%。两个场所之间的差距缩到了真实大小的三分之一，因为审核员把两者中较差的那一个抬高了得多。这才是阅读一份已公布的依从率表格时应当担心的地方。问题不只是被审核的数字太高，而是它们在不同地方高得不一样多，因此你据此排出的次序，并不是手实际有多干净的次序。",
+  "Look at what the unwatched numbers alone would tell you. Intensive care sat at 69 per cent and the clinic at 24, so the real difference between these two places is enormous. Now look at the watched numbers: 81 and 65. The gap between the two settings has shrunk to a third of its true size, because the auditor lifted the worse performer far more than the better one. That is the part that should worry anyone reading a published compliance table. It is not merely that audited figures are too high. It is that they are too high by different amounts in different places, so the ranking you build from them is not the ranking of how clean people's hands actually are.":
+    "单看未被观察的数字。重症监护病房是69%，门诊是24%，所以这两个场所之间的真实差距非常大。再看被观察的数字：81%和65%。两个场所之间的差距缩到了真实大小的三分之一，因为审核员把两者中较差的那一个抬高了得多。这才是阅读一份已公布的依从率表格时应当担心的地方。问题不只是被审核的数字太高，而是它们在不同地方高得不一样多，因此你据此排出的次序，并不是手实际有多干净的次序。",
   "What the auditor changed, and where": "审核员改变了什么，以及在哪里",
   "The Hawthorne effect": "霍桑效应",
-  "People change what they do when they know they are being measured. The trap is not that this happens, which everyone accepts, but that it happens by different amounts in different places, so measurements taken under observation can reorder things that were never in that order.": "人们知道自己正在被测量时，就会改变自己所做的事。陷阱不在于这件事会发生，这一点人人都承认；陷阱在于它在不同地方发生的程度不同，于是在观察之下取得的测量值，可能把本来从来不是那个次序的事物重新排序。",
-  "The name comes from the Hawthorne Works, an electrical factory outside Chicago where experiments in the 1920s and 1930s appeared to show that productivity rose whatever was done to the lighting, as though the attention itself were the active ingredient. That story is worth treating carefully. The illumination experiments have been reanalysed several times since the original data were rediscovered, and the tidy pattern largely dissolves: the rises are better explained by things like the working week, the day of the week, and workers being replaced. So the effect is real, the modern evidence for it is good, and the study it is named after is not that evidence. This deck builds the lesson on a hospital in 2018 rather than a factory in 1927 for exactly that reason, and the history belongs in the story rather than in the data.": "这个名字来自霍桑工厂，芝加哥郊外的一家电气厂。二十世纪二三十年代的实验似乎显示，不论把照明怎么调，生产率都会上升，仿佛注意力本身就是有效成分。这个故事值得谨慎对待。自从原始数据被重新发现以来，照明实验已被多次重新分析，那个整齐的模式在很大程度上瓦解了：上升更好地由每周工时、星期几和工人更换之类的因素来解释。也就是说，效应是真实的，支持它的现代证据也是好的，而它得名的那项研究并不是那份证据。本卡组把这一课建立在2018年的一家医院而不是1927年的一家工厂之上，正是出于这个原因，而那段历史属于叙事而不属于数据。",
-  "The mechanism is not mysterious and it is not about being nervous. Somebody who knows they are being assessed does the thing they would have skipped, and that is a genuine change in behaviour, not a measurement error in the usual sense. What makes it awkward is that the size of the change depends on how far the observed situation is from the unobserved one. In a closed unit where staff already work all day within each other's sight, an auditor adds little; in a clinic where a nurse moves alone between rooms, the auditor is the first person to have watched all week. That is why the gap here was four times larger in one place than the other, and it generalises well past hand hygiene. Any figure produced by somebody who knows the figure is being collected has this property: teaching observed by an inspector, driving with a examiner in the car, a kitchen on the day of an inspection, output on the week of a review. Three things follow. First, prefer measures that do not depend on anyone knowing: electronic counts, routine records collected for another purpose, outcomes rather than process. Second, when you cannot avoid observation, be suspicious of comparisons rather than of levels, because the bias does not cancel when you subtract two audited numbers from different settings. Third, if a published figure is high and the method was open observation, the useful question is not whether it is inflated but by how much here compared with there, and that question usually has no answer in the report, which is itself worth noticing.": "其机制并不神秘，也与紧张无关。知道自己正在被评估的人会去做那些本来会跳过的事，这是真实的行为变化，而不是通常意义上的测量误差。令人不安的是，这种变化的大小取决于被观察的情境离未被观察的情境有多远。在员工本来就整天处在彼此视线之内的封闭病区里，一位审核员几乎不增添什么；在护士独自在诊室之间走动的门诊里，审核员是这一整周里第一个看着她的人。这就是为什么这里一个场所的差距是另一个场所的四倍，而这一点远远不止适用于手卫生。任何由知道该数字正在被收集的人产生的数字都具有这个性质：督学听课的一节课，考官坐在车上的驾驶，检查日的厨房，考核那一周的产量。由此得出三点。第一，优先选择不依赖任何人知情的指标：电子计数、为别的目的常规收集的记录、结局而不是过程。第二，当无法避免观察时，对比较要比对水平更加怀疑，因为把来自不同场所的两个审核数字相减并不能抵消偏倚。第三，如果一个公布的数字很高而方法是公开观察，那么有用的问题不是它是否被抬高了，而是在这里相对于在那里被抬高了多少；这个问题在报告里通常没有答案，而这件事本身就值得记上一笔。",
-  "The same effect, measured by the dispensers themselves": "同样的效应，由消毒液瓶自己来测",
-  "A Canadian hospital fitted its alcohol gel and soap dispensers with electronic sensors and a real-time location system that knew where the hand hygiene auditors were standing. That let them compare the same dispensers at moments when an auditor was in view and moments when none was. Hand hygiene events ran at about 3.75 per dispenser per hour within sight of an auditor, against 1.48 in the same hallways at the same time with no auditor visible, and 1.07 for those same dispensers a week earlier. The rise began after the auditors arrived, which is what makes it their doing rather than a coincidence of the hour. Roughly threefold, measured by hardware rather than by a person with a clipboard, which removes the obvious objection that the covert observer might simply have been missing things. It is reported as events per dispenser per hour rather than as a proportion of opportunities, which is why this deck's puzzle is built on a different study.": "加拿大一家医院给自己的免洗消毒液和肥皂给皂器装上电子传感器，并配合一套实时定位系统，知道手卫生审核员站在哪里。这样就能比较同一批给皂器在审核员在视线内和不在视线内时的情况。在审核员视线范围内，手卫生动作约为每个给皂器每小时3.75次，同一时刻同一走廊上没有可见审核员时为1.48次，而同一批给皂器在一周之前是1.07次。上升发生在审核员到达之后，这说明它是审核员造成的，而不是时段上的巧合。大约三倍，由设备而不是由拿写字板的人来测量，这就排除了那个显而易见的反驳：隐蔽观察者可能只是漏看了。它报告的是每个给皂器每小时的次数而不是占机会数的比例，这也正是本卡组的谜题建立在另一项研究之上的原因。",
+  "People change what they do when they know they are being measured. The trap is not that this happens, which everyone accepts, but that it happens by different amounts in different places, so measurements taken under observation can reorder things that were never in that order.":
+    "人们知道自己正在被测量时，就会改变自己所做的事。陷阱不在于这件事会发生，这一点人人都承认；陷阱在于它在不同地方发生的程度不同，于是在观察之下取得的测量值，可能把本来从来不是那个次序的事物重新排序。",
+  "The name comes from the Hawthorne Works, an electrical factory outside Chicago where experiments in the 1920s and 1930s appeared to show that productivity rose whatever was done to the lighting, as though the attention itself were the active ingredient. That story is worth treating carefully. The illumination experiments have been reanalysed several times since the original data were rediscovered, and the tidy pattern largely dissolves: the rises are better explained by things like the working week, the day of the week, and workers being replaced. So the effect is real, the modern evidence for it is good, and the study it is named after is not that evidence. This deck builds the lesson on a hospital in 2018 rather than a factory in 1927 for exactly that reason, and the history belongs in the story rather than in the data.":
+    "这个名字来自霍桑工厂，芝加哥郊外的一家电气厂。二十世纪二三十年代的实验似乎显示，不论把照明怎么调，生产率都会上升，仿佛注意力本身就是有效成分。这个故事值得谨慎对待。自从原始数据被重新发现以来，照明实验已被多次重新分析，那个整齐的模式在很大程度上瓦解了：上升更好地由每周工时、星期几和工人更换之类的因素来解释。也就是说，效应是真实的，支持它的现代证据也是好的，而它得名的那项研究并不是那份证据。本卡组把这一课建立在2018年的一家医院而不是1927年的一家工厂之上，正是出于这个原因，而那段历史属于叙事而不属于数据。",
+  "The mechanism is not mysterious and it is not about being nervous. Somebody who knows they are being assessed does the thing they would have skipped, and that is a genuine change in behaviour, not a measurement error in the usual sense. What makes it awkward is that the size of the change depends on how far the observed situation is from the unobserved one. In a closed unit where staff already work all day within each other's sight, an auditor adds little; in a clinic where a nurse moves alone between rooms, the auditor is the first person to have watched all week. That is why the gap here was four times larger in one place than the other, and it generalises well past hand hygiene. Any figure produced by somebody who knows the figure is being collected has this property: teaching observed by an inspector, driving with a examiner in the car, a kitchen on the day of an inspection, output on the week of a review. Three things follow. First, prefer measures that do not depend on anyone knowing: electronic counts, routine records collected for another purpose, outcomes rather than process. Second, when you cannot avoid observation, be suspicious of comparisons rather than of levels, because the bias does not cancel when you subtract two audited numbers from different settings. Third, if a published figure is high and the method was open observation, the useful question is not whether it is inflated but by how much here compared with there, and that question usually has no answer in the report, which is itself worth noticing.":
+    "其机制并不神秘，也与紧张无关。知道自己正在被评估的人会去做那些本来会跳过的事，这是真实的行为变化，而不是通常意义上的测量误差。令人不安的是，这种变化的大小取决于被观察的情境离未被观察的情境有多远。在员工本来就整天处在彼此视线之内的封闭病区里，一位审核员几乎不增添什么；在护士独自在诊室之间走动的门诊里，审核员是这一整周里第一个看着她的人。这就是为什么这里一个场所的差距是另一个场所的四倍，而这一点远远不止适用于手卫生。任何由知道该数字正在被收集的人产生的数字都具有这个性质：督学听课的一节课，考官坐在车上的驾驶，检查日的厨房，考核那一周的产量。由此得出三点。第一，优先选择不依赖任何人知情的指标：电子计数、为别的目的常规收集的记录、结局而不是过程。第二，当无法避免观察时，对比较要比对水平更加怀疑，因为把来自不同场所的两个审核数字相减并不能抵消偏倚。第三，如果一个公布的数字很高而方法是公开观察，那么有用的问题不是它是否被抬高了，而是在这里相对于在那里被抬高了多少；这个问题在报告里通常没有答案，而这件事本身就值得记上一笔。",
+  "The same effect, measured by the dispensers themselves":
+    "同样的效应，由消毒液瓶自己来测",
+  "A Canadian hospital fitted its alcohol gel and soap dispensers with electronic sensors and a real-time location system that knew where the hand hygiene auditors were standing. That let them compare the same dispensers at moments when an auditor was in view and moments when none was. Hand hygiene events ran at about 3.75 per dispenser per hour within sight of an auditor, against 1.48 in the same hallways at the same time with no auditor visible, and 1.07 for those same dispensers a week earlier. The rise began after the auditors arrived, which is what makes it their doing rather than a coincidence of the hour. Roughly threefold, measured by hardware rather than by a person with a clipboard, which removes the obvious objection that the covert observer might simply have been missing things. It is reported as events per dispenser per hour rather than as a proportion of opportunities, which is why this deck's puzzle is built on a different study.":
+    "加拿大一家医院给自己的免洗消毒液和肥皂给皂器装上电子传感器，并配合一套实时定位系统，知道手卫生审核员站在哪里。这样就能比较同一批给皂器在审核员在视线内和不在视线内时的情况。在审核员视线范围内，手卫生动作约为每个给皂器每小时3.75次，同一时刻同一走廊上没有可见审核员时为1.48次，而同一批给皂器在一周之前是1.07次。上升发生在审核员到达之后，这说明它是审核员造成的，而不是时段上的巧合。大约三倍，由设备而不是由拿写字板的人来测量，这就排除了那个显而易见的反驳：隐蔽观察者可能只是漏看了。它报告的是每个给皂器每小时的次数而不是占机会数的比例，这也正是本卡组的谜题建立在另一项研究之上的原因。",
   "The Hawthorne effect, a reasoning trap.": "霍桑效应，一个推理陷阱。",
-  "A hospital measured hand hygiene twice: with an auditor standing there, and with nobody knowing. In intensive care the gap was eleven points, 709 of 880 moments against 609 of 880. In the outpatient clinic it was forty-one, 86 of 133 against 32 of 133. Same hospital, same method. Being watched does not lift everyone equally, so audited figures are not merely too high, they are too high by different amounts in different places. The ranking you build from them is not the ranking of what actually happens.": "一家医院把手卫生测了两次：有审核员在场时，以及无人知晓时。在重症监护病房差距是十一个百分点，880个时刻中的709个对880个中的609个。在门诊是四十一个百分点，133个中的86个对133个中的32个。同一家医院，同一套方法。被观察并不会把每个人抬高同样多，所以被审核的数字不只是太高：它们在不同地方高得不一样多。你据此排出的次序，并不是实际发生之事的次序。",
-  "The counts here are decoded rather than printed, and that distinction matters. Table 2 gives pair counts as whole numbers and compliance to one decimal place, and for these two rows exactly one integer numerator reproduces the published percentage: 709 and 609 of 880, and 86 and 32 of 133. No other integer rounds to the figures the paper prints, so the counts are determined by the published data rather than estimated from it, and the test file asserts that uniqueness rather than taking it on trust. Two rows of the same table are not decodable in this way, the overall row of 3,047 pairs and the nurse row of 2,105, which admit three and two candidate numerators, and neither is used anywhere in this puzzle. As an independent check, the decoded counts reproduce the paper's own Hawthorne effect column exactly, at 11.4 and 40.6 percentage points. Three limits. This is one hospital, and the outpatient row rests on 133 pairs, which is small enough that the forty-one point gap is imprecise even though its direction is clear. Covert observation has its own difficulties, both practical and ethical, and an observer who is unnoticed may also be less well placed to see. And the matching controlled ward, occupation, shift and indication, but matched pairs are not randomised, so residual differences between the compared moments remain possible.": "这里的计数是解出来的而不是印出来的，这个区别很重要。表2以整数给出配对数，以一位小数给出依从率，而对这两行来说，恰好只有一个整数分子能重现已公布的百分比：880中的709和609，133中的86和32。没有别的整数会四舍五入成论文印出的数字，因此这些计数是由已公布的数据所确定的，而不是据此估计的，测试文件也验证了这种唯一性而不是假定它成立。同一张表里有两行不能这样解出：3,047对的总行和2,105的护士行，它们分别容许三个和两个候选分子，本谜题两行都没有使用。作为独立核对，解出的计数精确重现了论文自己的霍桑效应一列，即11.4和40.6个百分点。三点局限。这是一家医院，而门诊那一行建立在133对之上，少到足以使那四十一个百分点的差距即便方向明确也不够精确。隐蔽观察有其自身的困难，既有实务上的也有伦理上的，而一个不被察觉的观察者也可能站在更差的位置上看。另外，配对控制了病区、职业、班次和指征，但配对并不是随机化，所以被比较的时刻之间仍可能存在残余差异。",
-  "A hospital publishes hand hygiene compliance of 94 per cent, collected by trained auditors who stand on the ward with a clipboard, and uses it to reassure the board.": "一家医院公布94%的手卫生依从率，数据由受过训练、拿着写字板站在病区里的审核员收集，并用它来让董事会放心。",
-  "The figure describes behaviour while an auditor was standing there, which is not the behaviour the patients received the rest of the time. Open observation measures the observed state, and that is the only state it measures.": "这个数字描述的是有一位审核员站在那里时的行为，而不是其余时间病人所得到的行为。公开观察测量的是被观察状态，而那是它唯一能测量的状态。",
-  "A trust ranks its wards by audited hand hygiene and puts the bottom three into an improvement programme. All the audits used the same method and the same auditors.": "一个医疗集团按被审核的手卫生给各病区排名，把垫底的三个纳入改进计划。所有审核都用同样的方法和同样的审核员。",
-  "Identical methods do not give identical inflation, because the auditor is a bigger change on some wards than others. A ranking built from audited figures can put wards in an order their real performance never had.": "方法相同并不带来同样的虚高，因为审核员在某些病区代表的改变比在另一些病区大。用审核数字排出的名次，可能把病区排成它们真实表现从未有过的次序。",
-  "After a training campaign, observed compliance rises from 62 to 89 per cent, and the report attributes the improvement to the training.": "在一次培训活动之后，观察到的依从率从62%升到89%，报告把这一改善归功于培训。",
-  "A campaign tells everyone that this behaviour is being watched, so it raises both the behaviour and the awareness of being measured at once. Without a measure that does not depend on being noticed, the two cannot be separated.": "一次活动会告诉所有人这种行为正在被盯着，所以它同时抬高了行为本身和被测量的意识。没有一个不依赖于被察觉的指标，这两者就无法分开。",
-  "A restaurant chain reports that 97 per cent of its kitchens met hygiene standards at their last scheduled inspection, with dates agreed in advance.": "一家连锁餐厅报告，在上一次预约好的卫生检查中有97%的厨房达标，日期是事先商定的。",
-  "An inspection whose date is known measures the kitchen on the day it was expecting to be measured. The interesting number is what an unannounced visit would find, and that is a different number.": "日期已知的检查测的是厨房在它预期会被测量的那一天的样子。有意思的数字是一次不预先通知的到访会发现什么，而那是另一个数字。",
-  "A new procedure is piloted on one enthusiastic unit with researchers frequently present, works well, and is rolled out on the strength of the pilot.": "一项新流程在一个热情的科室试点，研究者常常在场，效果很好，于是凭试点结果推广开来。",
-  "During the pilot the staff knew they were part of something being watched, and that attention is not part of the rollout. Pilots routinely outperform the thing they are piloting for reasons that have nothing to do with the procedure.": "试点期间员工知道自己是某个正被观察之事的一部分，而那份注意力并不属于推广。试点常常胜过它所试点的东西，原因与流程本身毫无关系。",
-  "A study of a road safety measure reports that drivers signalled correctly 98 per cent of the time, based on observers riding in the passenger seat.": "一项关于道路安全措施的研究报告，驾驶员有98%的时候正确打了转向灯，依据是坐在副驾驶座上的观察员。",
-  "A driver with an observer beside them is driving a test, not a commute. The number is real and it describes a situation that almost never occurs on the road.": "身边坐着观察员的驾驶员是在考试，而不是在通勤。这个数字是真实的，而它描述的是一种在路上几乎不会出现的情形。",
-  "Participants asked to keep a daily food diary for a study of snacking report far less snacking in week four than week one, and the authors conclude the habit was declining.": "一项关于零食的研究请参与者每天记饮食日记，他们在第四周报告的零食远少于第一周，作者由此断定这个习惯在减少。",
-  "Writing down what you eat is itself an intervention, and it also makes you conscious of being assessed. Either the snacking changed or the recording did, and a diary cannot tell you which.": "把吃了什么写下来本身就是一种干预，而且还会让人意识到自己正被评估。要么零食变了，要么记录变了，日记无法告诉你是哪一个。",
-  "Two countries report audited surgical checklist compliance of 91 and 68 per cent, and a commentary concludes the first has a stronger safety culture.": "两个国家报告的外科核查表被审核依从率为91%和68%，一篇评论由此断定前者的安全文化更强。",
-  "Both figures were lifted by being collected, and there is no reason the lift was the same size in each. Subtracting two observed numbers does not cancel the bias, because the bias is not a constant.": "两个数字都因为被收集而被抬高，而没有理由认为抬高的幅度在两者之中一样大。把两个被观察的数字相减并不能抵消偏倚，因为偏倚不是一个常数。",
-  "An inspectorate grades teaching quality from announced lesson observations and reports that 88 per cent of lessons were good or better.": "一个督导机构根据事先通知的听课来评定教学质量，报告88%的课达到良好或以上。",
-  "An announced observation samples the lesson a teacher prepares when they know somebody is coming. That is worth knowing, but it is not an estimate of the lessons nobody watched.": "事先通知的听课抽到的是教师在知道有人要来时准备的那一节课。这值得知道，但它不是对无人旁听的那些课的估计。",
-  "Concerned that its compliance figures may be inflated, a hospital responds by increasing the number of audits and the number of auditors on the wards.": "担心自己的依从率数字可能虚高，一家医院的应对是增加审核的次数和病区里审核员的人数。",
-  "More open observation produces more observed behaviour, so the figure rises and the gap it was hiding stays hidden. The fix has to be a measure that does not depend on anyone noticing, not more of the measure that failed.": "更多的公开观察会产生更多的被观察行为，于是数字上升，而它所掩盖的差距依然被掩盖着。补救办法必须是一个不依赖任何人察觉的指标，而不是更多失灵的那个指标。",
-  "A hospital fits its gel dispensers with electronic counters and reports usage from the hardware, without anyone standing on the ward to record it.": "一家医院给消毒液给皂器装上电子计数器，直接从设备报告使用情况，不需要任何人站在病区里记录。",
-  "Nobody has to be noticed for the count to happen, so the measurement does not create the behaviour it measures. Instrumenting the process rather than observing it is the standard answer to this problem.": "计数发生不需要任何人被察觉，所以这种测量不会制造出它所测量的行为。给流程装上仪表而不是去观察它，是这个问题的标准答案。",
-  "Researchers evaluate a policy using prescribing data that was collected for billing long before the study was designed, and that nobody knew would be analysed.": "研究者用远在研究设计之前为收费而收集、且当时没有人知道会被分析的处方数据来评估一项政策。",
-  "Data gathered for another purpose, before anyone knew it would be looked at, cannot have been shaped by the knowledge of being studied. This is one of the genuine advantages of routinely collected records.": "为别的目的收集、并且在任何人知道它会被查看之前就已收集的数据，不可能被「正在被研究」这一认识所塑形。这是常规收集记录的真正优势之一。",
-  "A report gives audited compliance of 93 per cent and states plainly that the audits were overt, that overt figures are known to exceed unobserved behaviour, and that the true rate is likely lower by an unknown margin.": "一份报告给出93%的被审核依从率，并明确说明审核是公开的，公开数字已知会高于未被观察的行为，真实率很可能低出一个未知的幅度。",
-  "The number is reported with the thing that limits it, and the limit is not quantified because the report cannot quantify it. Saying the margin is unknown is more honest than inventing a correction.": "这个数字连同限制它的东西一起被报告，而这个限制没有被量化，是因为该报告无法量化它。说这个幅度未知，比编造一个校正更诚实。",
-  "Researchers recruit patients currently living with a fatal heart condition and compare their past exposures with healthy controls. A factor known to make the condition kill quickly comes out looking protective.": "研究者招募当前正患致命心脏病的病人，把他们过去的暴露与健康对照比较。一个已知会让这种病迅速致死的因素，结果看上去像是保护性的。",
-  "Recruiting people who currently have the disease samples them in proportion to how long they have it, so the fast-killing cases are largely absent. A factor that shortens survival removes its own cases from the study and therefore looks protective.": "招募当前患病的人，是按人们患病时间的长短来抽样，所以迅速致死的病例大多缺席。一个缩短生存期的因素会把自己的病例从研究中移走，因此看上去像是保护性的。",
-  "A study of an aggressive cancer draws its cases from patients attending a specialist clinic in a given month, and reports which lifestyle factors are commoner among them than among controls.": "一项关于某种侵袭性癌症的研究，从某个月里到专科门诊就诊的病人中抽取病例，报告哪些生活方式因素在他们当中比在对照当中更常见。",
-  "A snapshot of who is attending in one month is a sample weighted by how long people survive to keep attending. Anything that shortens the illness is under-represented, so the exposure profile describes long survivors rather than the disease.": "一个月内谁在就诊的横断面，是一个按人们能存活多久以继续就诊来加权的样本。任何缩短病程的东西都会被低估，所以这份暴露图景描述的是长期存活者而不是这种病。",
-  "To find out what caused an outbreak, investigators interview everyone still in hospital three weeks later about what they ate, and note that one dish was eaten less often than expected.": "为查明一场暴发的原因，调查者在三周后询问所有仍住在医院里的人吃了什么，并注意到有一道菜被吃的次数比预期少。",
-  "The people interviewed are those who were still there to be interviewed. If a dish carried a heavier dose, its victims left the sample first, by discharge or by death, and it will look less dangerous than it was.": "接受询问的人是那些还留在那里可供询问的人。如果某道菜携带的剂量更重，它的受害者会先一步离开样本，或出院或死亡，于是它看上去会比实际上更不危险。",
-  "A study enrols every patient at the moment they are first diagnosed, follows them forwards, and compares exposures between those who go on to die quickly and those who do not.": "一项研究在每位病人首次被诊断的那一刻纳入他们，向前随访，并比较随后迅速死亡者与未迅速死亡者之间的暴露。",
-  "Enrolling at diagnosis catches the fast and slow cases alike, because nobody has had time to leave the pool. Sampling incident rather than prevalent cases is the specific fix for this whole family of problems.": "在诊断时纳入，会同样地抓住进展快的和慢的病例，因为还没有人有时间离开这个人群。抽取新发病例而不是现患病例，是针对这一整类问题的具体补救办法。",
+  "A hospital measured hand hygiene twice: with an auditor standing there, and with nobody knowing. In intensive care the gap was eleven points, 709 of 880 moments against 609 of 880. In the outpatient clinic it was forty-one, 86 of 133 against 32 of 133. Same hospital, same method. Being watched does not lift everyone equally, so audited figures are not merely too high, they are too high by different amounts in different places. The ranking you build from them is not the ranking of what actually happens.":
+    "一家医院把手卫生测了两次：有审核员在场时，以及无人知晓时。在重症监护病房差距是十一个百分点，880个时刻中的709个对880个中的609个。在门诊是四十一个百分点，133个中的86个对133个中的32个。同一家医院，同一套方法。被观察并不会把每个人抬高同样多，所以被审核的数字不只是太高：它们在不同地方高得不一样多。你据此排出的次序，并不是实际发生之事的次序。",
+  "The counts here are decoded rather than printed, and that distinction matters. Table 2 gives pair counts as whole numbers and compliance to one decimal place, and for these two rows exactly one integer numerator reproduces the published percentage: 709 and 609 of 880, and 86 and 32 of 133. No other integer rounds to the figures the paper prints, so the counts are determined by the published data rather than estimated from it, and the test file asserts that uniqueness rather than taking it on trust. Two rows of the same table are not decodable in this way, the overall row of 3,047 pairs and the nurse row of 2,105, which admit three and two candidate numerators, and neither is used anywhere in this puzzle. As an independent check, the decoded counts reproduce the paper's own Hawthorne effect column exactly, at 11.4 and 40.6 percentage points. Three limits. This is one hospital, and the outpatient row rests on 133 pairs, which is small enough that the forty-one point gap is imprecise even though its direction is clear. Covert observation has its own difficulties, both practical and ethical, and an observer who is unnoticed may also be less well placed to see. And the matching controlled ward, occupation, shift and indication, but matched pairs are not randomised, so residual differences between the compared moments remain possible.":
+    "这里的计数是解出来的而不是印出来的，这个区别很重要。表2以整数给出配对数，以一位小数给出依从率，而对这两行来说，恰好只有一个整数分子能重现已公布的百分比：880中的709和609，133中的86和32。没有别的整数会四舍五入成论文印出的数字，因此这些计数是由已公布的数据所确定的，而不是据此估计的，测试文件也验证了这种唯一性而不是假定它成立。同一张表里有两行不能这样解出：3,047对的总行和2,105的护士行，它们分别容许三个和两个候选分子，本谜题两行都没有使用。作为独立核对，解出的计数精确重现了论文自己的霍桑效应一列，即11.4和40.6个百分点。三点局限。这是一家医院，而门诊那一行建立在133对之上，少到足以使那四十一个百分点的差距即便方向明确也不够精确。隐蔽观察有其自身的困难，既有实务上的也有伦理上的，而一个不被察觉的观察者也可能站在更差的位置上看。另外，配对控制了病区、职业、班次和指征，但配对并不是随机化，所以被比较的时刻之间仍可能存在残余差异。",
+  "A hospital publishes hand hygiene compliance of 94 per cent, collected by trained auditors who stand on the ward with a clipboard, and uses it to reassure the board.":
+    "一家医院公布94%的手卫生依从率，数据由受过训练、拿着写字板站在病区里的审核员收集，并用它来让董事会放心。",
+  "The figure describes behaviour while an auditor was standing there, which is not the behaviour the patients received the rest of the time. Open observation measures the observed state, and that is the only state it measures.":
+    "这个数字描述的是有一位审核员站在那里时的行为，而不是其余时间病人所得到的行为。公开观察测量的是被观察状态，而那是它唯一能测量的状态。",
+  "A trust ranks its wards by audited hand hygiene and puts the bottom three into an improvement programme. All the audits used the same method and the same auditors.":
+    "一个医疗集团按被审核的手卫生给各病区排名，把垫底的三个纳入改进计划。所有审核都用同样的方法和同样的审核员。",
+  "Identical methods do not give identical inflation, because the auditor is a bigger change on some wards than others. A ranking built from audited figures can put wards in an order their real performance never had.":
+    "方法相同并不带来同样的虚高，因为审核员在某些病区代表的改变比在另一些病区大。用审核数字排出的名次，可能把病区排成它们真实表现从未有过的次序。",
+  "After a training campaign, observed compliance rises from 62 to 89 per cent, and the report attributes the improvement to the training.":
+    "在一次培训活动之后，观察到的依从率从62%升到89%，报告把这一改善归功于培训。",
+  "A campaign tells everyone that this behaviour is being watched, so it raises both the behaviour and the awareness of being measured at once. Without a measure that does not depend on being noticed, the two cannot be separated.":
+    "一次活动会告诉所有人这种行为正在被盯着，所以它同时抬高了行为本身和被测量的意识。没有一个不依赖于被察觉的指标，这两者就无法分开。",
+  "A restaurant chain reports that 97 per cent of its kitchens met hygiene standards at their last scheduled inspection, with dates agreed in advance.":
+    "一家连锁餐厅报告，在上一次预约好的卫生检查中有97%的厨房达标，日期是事先商定的。",
+  "An inspection whose date is known measures the kitchen on the day it was expecting to be measured. The interesting number is what an unannounced visit would find, and that is a different number.":
+    "日期已知的检查测的是厨房在它预期会被测量的那一天的样子。有意思的数字是一次不预先通知的到访会发现什么，而那是另一个数字。",
+  "A new procedure is piloted on one enthusiastic unit with researchers frequently present, works well, and is rolled out on the strength of the pilot.":
+    "一项新流程在一个热情的科室试点，研究者常常在场，效果很好，于是凭试点结果推广开来。",
+  "During the pilot the staff knew they were part of something being watched, and that attention is not part of the rollout. Pilots routinely outperform the thing they are piloting for reasons that have nothing to do with the procedure.":
+    "试点期间员工知道自己是某个正被观察之事的一部分，而那份注意力并不属于推广。试点常常胜过它所试点的东西，原因与流程本身毫无关系。",
+  "A study of a road safety measure reports that drivers signalled correctly 98 per cent of the time, based on observers riding in the passenger seat.":
+    "一项关于道路安全措施的研究报告，驾驶员有98%的时候正确打了转向灯，依据是坐在副驾驶座上的观察员。",
+  "A driver with an observer beside them is driving a test, not a commute. The number is real and it describes a situation that almost never occurs on the road.":
+    "身边坐着观察员的驾驶员是在考试，而不是在通勤。这个数字是真实的，而它描述的是一种在路上几乎不会出现的情形。",
+  "Participants asked to keep a daily food diary for a study of snacking report far less snacking in week four than week one, and the authors conclude the habit was declining.":
+    "一项关于零食的研究请参与者每天记饮食日记，他们在第四周报告的零食远少于第一周，作者由此断定这个习惯在减少。",
+  "Writing down what you eat is itself an intervention, and it also makes you conscious of being assessed. Either the snacking changed or the recording did, and a diary cannot tell you which.":
+    "把吃了什么写下来本身就是一种干预，而且还会让人意识到自己正被评估。要么零食变了，要么记录变了，日记无法告诉你是哪一个。",
+  "Two countries report audited surgical checklist compliance of 91 and 68 per cent, and a commentary concludes the first has a stronger safety culture.":
+    "两个国家报告的外科核查表被审核依从率为91%和68%，一篇评论由此断定前者的安全文化更强。",
+  "Both figures were lifted by being collected, and there is no reason the lift was the same size in each. Subtracting two observed numbers does not cancel the bias, because the bias is not a constant.":
+    "两个数字都因为被收集而被抬高，而没有理由认为抬高的幅度在两者之中一样大。把两个被观察的数字相减并不能抵消偏倚，因为偏倚不是一个常数。",
+  "An inspectorate grades teaching quality from announced lesson observations and reports that 88 per cent of lessons were good or better.":
+    "一个督导机构根据事先通知的听课来评定教学质量，报告88%的课达到良好或以上。",
+  "An announced observation samples the lesson a teacher prepares when they know somebody is coming. That is worth knowing, but it is not an estimate of the lessons nobody watched.":
+    "事先通知的听课抽到的是教师在知道有人要来时准备的那一节课。这值得知道，但它不是对无人旁听的那些课的估计。",
+  "Concerned that its compliance figures may be inflated, a hospital responds by increasing the number of audits and the number of auditors on the wards.":
+    "担心自己的依从率数字可能虚高，一家医院的应对是增加审核的次数和病区里审核员的人数。",
+  "More open observation produces more observed behaviour, so the figure rises and the gap it was hiding stays hidden. The fix has to be a measure that does not depend on anyone noticing, not more of the measure that failed.":
+    "更多的公开观察会产生更多的被观察行为，于是数字上升，而它所掩盖的差距依然被掩盖着。补救办法必须是一个不依赖任何人察觉的指标，而不是更多失灵的那个指标。",
+  "A hospital fits its gel dispensers with electronic counters and reports usage from the hardware, without anyone standing on the ward to record it.":
+    "一家医院给消毒液给皂器装上电子计数器，直接从设备报告使用情况，不需要任何人站在病区里记录。",
+  "Nobody has to be noticed for the count to happen, so the measurement does not create the behaviour it measures. Instrumenting the process rather than observing it is the standard answer to this problem.":
+    "计数发生不需要任何人被察觉，所以这种测量不会制造出它所测量的行为。给流程装上仪表而不是去观察它，是这个问题的标准答案。",
+  "Researchers evaluate a policy using prescribing data that was collected for billing long before the study was designed, and that nobody knew would be analysed.":
+    "研究者用远在研究设计之前为收费而收集、且当时没有人知道会被分析的处方数据来评估一项政策。",
+  "Data gathered for another purpose, before anyone knew it would be looked at, cannot have been shaped by the knowledge of being studied. This is one of the genuine advantages of routinely collected records.":
+    "为别的目的收集、并且在任何人知道它会被查看之前就已收集的数据，不可能被「正在被研究」这一认识所塑形。这是常规收集记录的真正优势之一。",
+  "A report gives audited compliance of 93 per cent and states plainly that the audits were overt, that overt figures are known to exceed unobserved behaviour, and that the true rate is likely lower by an unknown margin.":
+    "一份报告给出93%的被审核依从率，并明确说明审核是公开的，公开数字已知会高于未被观察的行为，真实率很可能低出一个未知的幅度。",
+  "The number is reported with the thing that limits it, and the limit is not quantified because the report cannot quantify it. Saying the margin is unknown is more honest than inventing a correction.":
+    "这个数字连同限制它的东西一起被报告，而这个限制没有被量化，是因为该报告无法量化它。说这个幅度未知，比编造一个校正更诚实。",
+  "Researchers recruit patients currently living with a fatal heart condition and compare their past exposures with healthy controls. A factor known to make the condition kill quickly comes out looking protective.":
+    "研究者招募当前正患致命心脏病的病人，把他们过去的暴露与健康对照比较。一个已知会让这种病迅速致死的因素，结果看上去像是保护性的。",
+  "Recruiting people who currently have the disease samples them in proportion to how long they have it, so the fast-killing cases are largely absent. A factor that shortens survival removes its own cases from the study and therefore looks protective.":
+    "招募当前患病的人，是按人们患病时间的长短来抽样，所以迅速致死的病例大多缺席。一个缩短生存期的因素会把自己的病例从研究中移走，因此看上去像是保护性的。",
+  "A study of an aggressive cancer draws its cases from patients attending a specialist clinic in a given month, and reports which lifestyle factors are commoner among them than among controls.":
+    "一项关于某种侵袭性癌症的研究，从某个月里到专科门诊就诊的病人中抽取病例，报告哪些生活方式因素在他们当中比在对照当中更常见。",
+  "A snapshot of who is attending in one month is a sample weighted by how long people survive to keep attending. Anything that shortens the illness is under-represented, so the exposure profile describes long survivors rather than the disease.":
+    "一个月内谁在就诊的横断面，是一个按人们能存活多久以继续就诊来加权的样本。任何缩短病程的东西都会被低估，所以这份暴露图景描述的是长期存活者而不是这种病。",
+  "To find out what caused an outbreak, investigators interview everyone still in hospital three weeks later about what they ate, and note that one dish was eaten less often than expected.":
+    "为查明一场暴发的原因，调查者在三周后询问所有仍住在医院里的人吃了什么，并注意到有一道菜被吃的次数比预期少。",
+  "The people interviewed are those who were still there to be interviewed. If a dish carried a heavier dose, its victims left the sample first, by discharge or by death, and it will look less dangerous than it was.":
+    "接受询问的人是那些还留在那里可供询问的人。如果某道菜携带的剂量更重，它的受害者会先一步离开样本，或出院或死亡，于是它看上去会比实际上更不危险。",
+  "A study enrols every patient at the moment they are first diagnosed, follows them forwards, and compares exposures between those who go on to die quickly and those who do not.":
+    "一项研究在每位病人首次被诊断的那一刻纳入他们，向前随访，并比较随后迅速死亡者与未迅速死亡者之间的暴露。",
+  "Enrolling at diagnosis catches the fast and slow cases alike, because nobody has had time to leave the pool. Sampling incident rather than prevalent cases is the specific fix for this whole family of problems.":
+    "在诊断时纳入，会同样地抓住进展快的和慢的病例，因为还没有人有时间离开这个人群。抽取新发病例而不是现患病例，是针对这一整类问题的具体补救办法。",
+  "One hundred and six review articles asked the same question about passive smoking, and they did not agree.":
+    "一百零六篇综述文章就被动吸烟提出了同一个问题，而它们并不一致。",
+  "Researchers collected every English-language review article published between 1980 and 1995 on whether passive smoking harms health, and found 106 of them. Two trained assessors scored the quality of each one against a published instrument, working blind: author names, affiliations, journal titles, acknowledgements and dates had all been stripped out, and the articles were sent to them in random order. A third of the reviews concluded that passive smoking is not harmful, which is not what any of the major consensus bodies had concluded. The investigators then classified each article by whether at least one author had documented tobacco industry funding, using criteria fixed in advance, because 77 per cent of the articles disclosed no funding at all.":
+    "研究者收集了1980年至1995年间以英文发表的、关于被动吸烟是否损害健康的全部综述文章，共找到106篇。两位受过训练的评估者用一套已发表的量表逐篇评分，全程盲评：作者姓名、单位、期刊名、致谢和日期都已被去除，文章以随机顺序送到他们手中。三分之一的综述断定被动吸烟无害，而这不是任何一个主要共识机构的结论。随后研究者按照事先确定的标准，依据是否至少有一位作者有据可查地接受过烟草业资助，对每篇文章分类，因为其中77%的文章根本没有披露任何资金来源。",
+  "How often did each group conclude that passive smoking is not harmful?":
+    "两组各自有多大比例断定被动吸烟无害？",
+  "At least one author funded by the tobacco industry":
+    "至少一位作者接受烟草业资助",
+  "Industry funded": "业界资助",
+  "No documented industry funding": "没有据可查的业界资助",
+  Independent: "独立",
+  "Share of the 106 review articles": "占106篇综述文章的比例",
+  "Concluded that passive smoking is not harmful": "断定被动吸烟无害",
+  "Who wrote the 106 reviews": "这106篇综述是谁写的",
+  "About equally often. They read the same studies":
+    "差不多一样多。他们读的是同一批研究",
+  "quality assessment and peer review exist for this":
+    "质量评估和同行评议就是干这个的",
+  "The industry group about twice as often": "业界资助那一组大约多一倍",
+  "money nudges a judgement, it does not dictate it":
+    "钱会让判断偏一点，但不会替人做主",
+  "The industry group about seven times as often": "业界资助那一组大约多七倍",
+  "ask what near unanimity inside one group would mean":
+    "想一想一个组内近乎一致意味着什么",
+  "Ninety-four per cent against thirteen.": "百分之九十四对百分之十三。",
+  "The funding predicted the conclusion, and nothing else did":
+    "资助预测了结论，而别的什么都没有",
+  "Twenty-nine of the 31 reviews with an industry-funded author concluded that passive smoking is not harmful, against 10 of the 75 written by everybody else. That is 94 per cent against 13, a relative risk of 7.0. The 31 are less than a third of the literature, but they supplied 29 of the 39 doubtful conclusions in it, which is three quarters of the published doubt.":
+    "有业界资助作者的31篇综述中有29篇断定被动吸烟无害，而其余所有人所写的75篇中只有10篇。也就是94%对13%，相对风险7.0。这31篇不到全部文献的三分之一，却贡献了其中39个存疑结论中的29个，即已发表的怀疑的四分之三。",
+  "Who wrote them, and what they concluded": "谁写的，以及他们断定了什么",
+  "Now ask what a reader could have done about this at the time. Quality was scored blind by two trained assessors against a published instrument, and it did not predict the conclusion. Neither did peer review, nor the topic, nor the year of publication. In the regression that controlled for all four at once, funding was the only thing left standing. And 77 per cent of these articles disclosed no funding at all, so the single variable that predicted the answer was the one variable the page did not carry. Notice the shape of the split too. Real scientific disagreement is untidy, with people spread across the range; 29 of 31 on one side and 10 of 75 on the other is not what an open question looks like from the inside.":
+    "现在想一想，当年的读者对此能做什么。质量由两位受过训练的评估者依照一套已发表的量表盲评，它并不预测结论。同行评议也不预测，主题不预测，发表年份也不预测。在同时控制这四项的回归里，唯一站得住的是资助。而这些文章中有77%根本没有披露任何资金来源，于是唯一能预测答案的变量，恰恰是纸面上没有的那一个。也请注意这种分裂的形状。真实的科学分歧是杂乱的，人们散布在整个区间上；一边31篇里29篇，另一边75篇里10篇，这不是一个开放问题从内部看上去的样子。",
+  "Who paid, and what they concluded": "谁出的钱，以及他们断定了什么",
+  "Sponsorship bias": "资助偏倚",
+  "Who paid for a piece of research predicts its conclusion better than anything you can judge by reading it. The trap is not that funded scientists lie. It is that the checks you would use to catch them, quality and peer review, carry almost no information about which way the conclusion will go.":
+    "谁为一项研究出了钱，比你读它时能判断的任何东西都更能预测它的结论。陷阱不在于受资助的科学家说谎，而在于你原本用来查他们的那些检查，质量与同行评议，几乎不携带任何关于结论会倒向哪一边的信息。",
+  "Nobody in this story has to have faked anything, and the mechanism is more uncomfortable for being ordinary. A review article is a chain of judgement calls: which studies to include, which to set aside as too weak, how much design flaw is enough to discount a finding, and where the balance of the whole thing lands. Every call is defensible on its own, and the sentence that the evidence remains inconclusive can be written honestly about almost any body of evidence, because evidence usually is. Make a hundred defensible calls that lean the same way and you have a review no referee can fault which reaches the conclusion your funder needed. Publish enough of them and the literature itself looks split, which was the whole objective: nobody had to prove that passive smoking was safe, only to keep the question looking open long enough to hold off regulation.":
+    "这个故事里没有人需要伪造任何东西，而这套机制正因为平常才更让人不安。一篇综述是一连串判断：纳入哪些研究，把哪些当作太弱而搁置，设计上的缺陷到什么程度才足以折损一项发现，以及整体最后倒向何处。每一个判断单独看都站得住，而「证据仍不足以定论」这句话，对几乎任何一堆证据都可以诚实地写下来，因为证据通常就是如此。让一百个站得住的判断都朝同一个方向倾斜，你就得到一篇任何审稿人都挑不出毛病、却抵达资助方所需结论的综述。发表足够多的这类综述，文献本身看上去就是分裂的，而这正是全部的目的：没有人需要证明被动吸烟是安全的，只需要让这个问题看上去悬而未决，久到足以拖住监管。",
+  "The effect is not confined to tobacco, and it is not a story about villains. A Cochrane methodology review pooling 75 studies of the question found that industry-sponsored drug and device studies more often report results favourable to the sponsor's product, a risk ratio of 1.27, and more often reach favourable conclusions, 1.34. The striking part is what it did not find: no difference in randomisation, allocation concealment, follow-up or selective outcome reporting, and industry studies were actually better blinded. Whatever this bias is, it does not show up in the boxes a critical appraisal checklist asks you to tick. What does show up is the gap between results and conclusions, which was wider in sponsored studies, and the head-to-head trials, where the same two drugs compared against each other reach opposite conclusions depending on which manufacturer paid. Four things follow for a reader. Read the funding and conflict statement before the abstract, not after the discussion, because it changes how you read everything in between. Treat a lone favourable finding as provisional until somebody with nothing to gain reproduces it. When an interested party's contribution to a debate is that more research is needed, notice that this is itself a finding in their favour, and ask what would count as enough. And apply the test in both directions: a study you agree with, funded by a campaign group whose mission depends on the answer, has the same problem, and the honest response to that is to look for whether its result has been reproduced by somebody else rather than to drop the standard.":
+    "这种效应不限于烟草，也不是一个关于坏人的故事。一篇汇总了75项相关研究的科克伦方法学综述发现，业界资助的药物和器械研究更常报告有利于资助方产品的结果，风险比为1.27，也更常得出有利的结论，1.34。真正引人注目的是它没有发现的东西：在随机化、分配隐藏、随访和选择性结局报告上都没有差异，而业界研究的盲法反而做得更好。无论这种偏倚是什么，它不出现在批判性阅读清单要你打勾的那些格子里。出现的是结果与结论之间的落差，在受资助的研究中更大；还有头对头试验，同样的两种药彼此相比，却因为哪家厂商付钱而得出相反的结论。对读者而言由此有四点。先读资金与利益冲突声明，在读摘要之前，而不是在读完讨论之后，因为它会改变你阅读中间一切内容的方式。把一项孤立的有利发现当作暂定的，直到某个无所可得的人把它重现出来。当一个有利害关系的一方对辩论的贡献是「还需要更多研究」时，请注意这本身就是一项对他们有利的主张，并追问怎样才算够。而且要把这项检验用在两个方向上：一项你赞同的研究，如果出资者是一个存在意义系于该答案的运动团体，它有同样的问题，而诚实的回应是去看它的结果是否被别人重现，而不是放低标准。",
+  "The same pattern, with sugar instead of smoke": "同样的图式，把烟换成糖",
+  "A Spanish group with no funding and no declared interests went looking for every systematic review on whether sugar-sweetened drinks contribute to weight gain, and found 17 of them, carrying 18 conclusions between them. Two researchers classified each conclusion blind to who had paid. Among the reviews reporting no conflict of interest, 10 of 12 concluded that these drinks are a risk factor for weight gain. Among the six with a declared food industry tie, five concluded the opposite, that the evidence was not sufficient to support the association. Reviews with a conflict of interest were five times more likely to reach that conclusion, and the figure barely moved after adjusting for the year and the journal's impact quartile. Worth noting: in three of the four industry-funded reviews, the company stated it had played no part in selecting studies, assessing them or interpreting the results. The association did not need the sponsor to touch the manuscript.":
+    "一个没有经费、也没有申报利益的西班牙团队，把关于含糖饮料是否导致体重增加的系统综述全部找了出来，共17篇，合计18个结论。两名研究者在不知道谁出钱的情况下对每个结论分类。在声明没有利益冲突的综述中，12个结论里有10个断定这类饮料是体重增加的危险因素。在6个申报了食品业关系的综述中，5个得出相反结论，认为证据不足以支持这种关联。有利益冲突的综述得出该结论的可能性高出五倍，而在按发表年份和期刊影响因子四分位调整后，这个数字几乎没有变动。值得一提：在4篇业界资助的综述中有3篇，企业都声明自己没有参与研究的挑选、评估或结果解释。这种关联并不需要资助方碰到稿件。",
+  "Seventy-five studies of the question itself":
+    "关于这个问题本身的七十五项研究",
+  "The definitive summary of this problem is a Cochrane methodology review that pools every empirical study comparing industry-sponsored drug and device research with research funded by anyone else. Across 25 papers covering 2,923 studies, sponsored work more often reported favourable efficacy results, a risk ratio of 1.27. Across 29 papers covering 4,583 studies, it more often reached favourable conclusions, 1.34. The sponsored studies were not methodologically worse: on sequence generation, allocation concealment, follow-up and selective outcome reporting there was no difference, and on blinding they were better. What differed was that their conclusions agreed with their own results less often than everybody else's did. The sharpest number is from head-to-head trials, where two drugs are compared directly: those were about six times more likely to conclude in favour of the newer drug when the newer drug's manufacturer had paid for the trial. The review's own summary is that this is a bias standard risk-of-bias tools do not detect.":
+    "关于这个问题的权威总结，是一篇汇集了所有把业界资助的药物与器械研究同其他来源资助的研究相比较的实证研究的科克伦方法学综述。在涵盖2,923项研究的25篇论文中，受资助的研究更常报告有利的疗效结果，风险比1.27。在涵盖4,583项研究的29篇论文中，它更常得出有利的结论，1.34。受资助的研究在方法学上并不更差：在随机序列生成、分配隐藏、随访和选择性报告上没有差异，在盲法上还更好。有差异的是，它们的结论与自身结果相符的频率低于其他研究。最锋利的数字来自头对头试验，即两种药直接相比：当较新那种药的厂商为试验付钱时，试验得出有利于较新药物结论的可能性约高六倍。这篇综述自己的总结是，这是一种标准偏倚风险工具检测不到的偏倚。",
+  "Sponsorship bias, a reasoning trap.": "资助偏倚，一个推理陷阱。",
+  "Researchers gathered all 106 review articles published between 1980 and 1995 on whether passive smoking harms health, and had two blinded assessors score the quality of every one. Quality did not predict the conclusion. Nor did peer review, nor topic, nor year. Funding did: 29 of the 31 reviews with a tobacco-funded author concluded passive smoking is not harmful, against 10 of the other 75. Ninety-four per cent against thirteen, and 77 per cent of the articles disclosed no funding at all, so the one thing that predicted the answer was the one thing the page did not carry.":
+    "研究者收集了1980年至1995年间发表的、关于被动吸烟是否损害健康的全部106篇综述文章，让两位盲评的评估者逐篇给质量打分。质量不预测结论。同行评议不预测，主题不预测，年份也不预测。资助预测：有烟草资助作者的31篇综述中有29篇断定被动吸烟无害，而其余75篇中只有10篇。百分之九十四对百分之十三，而且77%的文章根本没有披露任何资金来源，于是唯一能预测答案的东西，正是纸面上没有的那一个。",
+  "Every cell used here is printed rather than derived, and every printed statistic reconciles with the four counts: 39 of 106 is the stated 37 per cent, 29 of 39 the stated 74, the crude relative risk is 7.02 against a printed 7.0, and the chi-square recomputed from the two by two is 60.69, which is the paper's own value to both decimals. The test file asserts that chi-square, because reproducing a statistic the authors calculated independently is the strongest check available on a transcribed table. Five things a careful reader should hold against this. First, the paper counts a review as concluding not harmful if it said the evidence was inconclusive, which the authors state and defend on the ground that it amounts to accepting the null; excluding those 24 reviews made the association stronger rather than weaker, so the choice is conservative. Second, affiliation was assigned by the investigators from documented funding records against criteria fixed in advance, not from what authors disclosed, because most disclosed nothing; two of the ten unaffiliated reviews concluding not harmful had authors with weaker industry links that did not meet those criteria, and the authors say so. Third, this is an association across articles, not proof that any individual author was moved by money, and the paper is explicit that the conclusion of any review rests on the author's judgement. Fourth, the odds ratio the paper prints, 94.2 crude and 88.4 adjusted, is enormously larger than the relative risk of 7.0 for the reason the authors give: the outcome is common in the affiliated group, so the odds ratio badly overstates the risk ratio. This puzzle quotes 7.0 for that reason. Fifth, and in the spirit of the lesson itself, the same test applies to this study: it was conducted by researchers at the University of California, San Francisco who work on tobacco industry conduct and who had a stake in what it found. What makes it hard to explain away is not the authors' neutrality but the design, since the quality scoring and the classification of conclusions were both done blind by assessors who were told the study was about quality alone, and the association survives restricting the analysis to the highest-quality articles and to the peer-reviewed ones. One of those authors is also on the Cochrane review cited above, which is worth knowing when you read the two together.":
+    "这里用到的每一格都是印出来的而不是推导出来的，而每一个印出来的统计量都与这四个计数吻合：106中的39就是文中所说的37%，39中的29就是74，粗相对风险为7.02而印出的是7.0，从二乘二表重新算出的卡方为60.69，与论文自己的数值精确到两位小数。测试文件会核验这个卡方，因为能否重现作者独立计算出的统计量，是对一张转录表格所能做的最强检验。细心的读者应对这项研究保留五点。第一，只要一篇综述说证据尚无定论，论文就把它算作「无害」结论；作者明确说明并为此辩护，理由是这等于接受零假设。把那24篇排除后，关联不但没有减弱反而更强，所以这个选择是保守的。第二，隶属关系不是依据作者自己的披露，而是研究者按事先确定的标准、从有据可查的资助记录中指派的，因为大多数作者什么也没披露；在断定无害的10篇非隶属综述中，有2篇的作者有较弱的业界联系，未达到那些标准，作者们也写明了这一点。第三，这是文章之间的关联，而不是任何一位作者被金钱驱动的证据，论文明确指出任何综述的结论都取决于作者的判断。第四，论文印出的比值比，粗值94.2、调整后88.4，远大于相对风险7.0，原因作者已经给出：在隶属组中该结局并不罕见，所以比值比严重夸大了风险比。这个谜题因此引用7.0。第五，并且正合这一课的精神，同样的检验也适用于这项研究本身：它由加利福尼亚大学旧金山分校研究烟草业行为的研究者完成，他们对研究会发现什么是有利害关系的。使它难以被轻易打发的不是作者的中立，而是设计：质量评分和结论分类都由被告知研究只关乎质量的评估者盲评完成，而且把分析限制在质量最高的文章、以及限制在经过同行评议的文章时，这一关联依然存在。其中一位作者也在上面引用的那篇科克伦综述之列，把两者放在一起读时值得知道这一点。",
+  "A trial funded entirely by the company that makes the drug reports a clear benefit. It was randomised, double blind, published in a major journal, and a clinician accepts the result on those grounds.":
+    "一项由该药生产企业全额资助的试验报告了明确的获益。它是随机的、双盲的，发表在一份重要期刊上，一位临床医生据此接受了这个结果。",
+  "Those are the checks that catch sloppiness, and sponsored trials routinely pass them; the difference shows up in what was compared, what was measured and how the conclusion was worded. Good methods do not answer the funding question, they only make it harder to see.":
+    "这些是抓粗疏的检查，而受资助的试验通常都能通过；差异出现在比较了什么、测量了什么，以及结论是怎么措辞的。好方法回答不了资助这个问题，只会让它更难被看见。",
+  "A review of whether a chemical harms health concludes that the evidence remains inconclusive and that more research is needed. Its author has consulted for the manufacturer for a decade.":
+    "一篇关于某化学品是否损害健康的综述断定证据仍无定论、还需要更多研究。它的作者为该生产企业做了十年顾问。",
+  "Doubt is the useful product here, not a favourable finding, and the evidence on almost any question can honestly be called inconclusive. When the party who benefits from delay is the one calling for more research, that call is a position rather than a neutral observation.":
+    "这里有用的产物是怀疑而不是有利的发现，而几乎任何问题的证据都可以诚实地被称为无定论。当从拖延中获益的一方正是呼吁更多研究的那一方时，这声呼吁就是一种立场，而不是中立的观察。",
+  "Two trials compare the same two drugs against each other and reach opposite conclusions about which is better. Each was funded by one of the two manufacturers.":
+    "两项试验把同样的两种药直接相比，却在哪一种更好上得出相反结论。它们分别由两家厂商之一出资。",
+  "The comparison is identical and the answers are not, so something other than the drugs is driving the conclusion. Choice of dose, of endpoint and of how to phrase the summary can each move a head to head trial without any step in it being wrong.":
+    "比较是相同的而答案不同，那么决定结论的就是药物之外的某种东西。剂量的选择、终点的选择、以及要点如何措辞，每一项都能在没有任何一步是错的情况下移动一项头对头试验。",
+  "A treatment guideline recommends a newer, costlier drug as first line. Most of the panel members have consulting arrangements with its manufacturers, which are listed in an appendix.":
+    "一份治疗指南把一种更新更贵的药列为一线推荐。多数专家组成员与其生产企业有顾问协议，列在附录中。",
+  "Disclosure records the conflict, it does not neutralise it, and a guideline is exactly the judgement call that funding shifts. The useful question is whether an independent panel reading the same evidence reached the same recommendation.":
+    "声明记录了利益冲突，并不能中和它，而指南恰恰是资助会移动的那种判断。有用的问题是：一个读同样证据的独立专家组，是否会给出同样的推荐。",
+  "An industry funded review states that the sponsor played no part in selecting the studies, assessing them, or interpreting the results, and a reader concludes the funding therefore cannot have mattered.":
+    "一篇业界资助的综述声明资助方没有参与研究的挑选、评估或结果解释，读者据此断定资助因此不可能起过作用。",
+  "The association between funding and conclusions holds even among reviews carrying exactly this statement, which means the mechanism does not require the sponsor to touch the manuscript. Who was commissioned, and what they already thought, are decided before anyone writes anything.":
+    "资助与结论之间的关联，在恰恰带有这一声明的综述之间同样成立，这说明该机制并不需要资助方碰到稿件。委托了谁，以及那个人本来就怎么想，在任何人动笔之前就已经决定了。",
+  "A newspaper reports that scientists are split on a health question, and supports it by counting how many published reviews land on each side.":
+    "一家报纸报道科学家在某个健康问题上意见分歧，其依据是清点各方各有多少篇已发表的综述。",
+  "Counting reviews measures how many were written and published, not how much evidence there is, and anyone with money can raise the count on one side. A split in the literature and a split in the evidence are different things.":
+    "清点综述量的是写了并发表了多少篇，而不是有多少证据，而任何有钱的人都能把一边的数目抬上去。文献的分裂和证据的分裂是两回事。",
+  "A sponsored trial finds no significant difference on its primary outcome, and its discussion concludes that the drug offers meaningful benefit in this population.":
+    "一项受资助的试验在其主要结局上没有发现显著差异，而其讨论部分断定该药在这一人群中带来有意义的获益。",
+  "The gap between what a study found and what it says it found is wider in sponsored work, and the abstract is the part most people read. Read the results table against the conclusion rather than the conclusion alone.":
+    "一项研究实际发现了什么与它声称发现了什么之间的落差，在受资助的工作中更大，而摘要正是多数人会读的部分。请把结果表拿来与结论对照着读，而不是只读结论。",
+  "A meta-analysis pools thirty trials of a drug, most of them manufacturer funded, and reports a single overall effect with no breakdown by who paid.":
+    "一篇荟萃分析汇总了某药的三十项试验，其中多数由厂商资助，并报告了一个单一的总体效应，没有按出资方分列。",
+  "If sponsored and independent trials give different answers, pooling them averages the two and hides the disagreement. A funding subgroup analysis costs nothing and its absence leaves the reader unable to check.":
+    "如果受资助的试验和独立试验给出不同答案，把它们汇总就是把两者平均，从而掩盖了分歧。按资助来源做亚组分析不花什么代价，而它的缺席让读者无从核对。",
+  "A paper on a device carries the line that the authors have nothing to declare. The lead author's previous three studies were funded by the manufacturer, and the company pays for their travel to conferences.":
+    "一篇关于某器械的论文写着作者无需申报任何事项。该第一作者此前三项研究由该厂商资助，企业还为其支付参会差旅。",
+  "Disclosure rules usually cover the work in hand and a short window before it, so a long relationship can end up invisible in the one place a reader looks. An empty statement means the rules were satisfied, not that there is no interest.":
+    "申报规则通常只覆盖手头这项工作及其之前一小段时间，于是一段长期关系可能在读者唯一会看的那个地方变得不可见。一句空白的声明意味着规则得到了满足，而不是不存在利益。",
+  "A study funded by a campaign group confirms exactly the harm the group was founded to publicise, and a reader who shares its aims passes over the funding line without pausing.":
+    "一项由某运动团体资助的研究，恰好证实了该团体成立时要揭露的那种危害，而认同其宗旨的读者读到资助那一行时并未停下。",
+  "The mechanism does not care which direction the interest points, and an organisation whose existence depends on an answer has a stake in it. Applying the test only to conclusions you dislike converts a real check into a way of keeping the ones you already hold.":
+    "这套机制不在乎利益指向哪一边，而一个存在意义系于某个答案的组织，对那个答案是有利害的。只把这项检验用在你不喜欢的结论上，就把一项真实的检查变成了守住你已有观点的手段。",
+  "A reader notes that a trial was manufacturer funded, then checks the public registry and finds the primary outcome and analysis plan posted before recruitment began and unchanged in the published paper.":
+    "一位读者注意到某项试验由厂商资助，随后查阅公开注册库，发现主要结局与分析计划在招募开始前就已登记，且在发表的论文中未被更改。",
+  "Fixing the outcome and the analysis in public beforehand removes most of the room in which a sponsor's preferences could operate. Noting the funding and then checking what it could actually have changed is the whole method.":
+    "事先在公开场合固定结局和分析，就消除了资助方偏好能够活动的大部分余地。注意到资助，然后核查它实际上可能改变了什么，这就是全部方法。",
+  "A promising result from a company funded trial is treated as provisional until a publicly funded group with no commercial interest runs its own trial and gets the same answer.":
+    "来自企业资助试验的一项有希望的结果被当作暂定的，直到一个没有商业利益的公共经费团队自行做了试验并得到同样的答案。",
+  "Independent replication is the one check that does not depend on trusting anybody's motives, because a shared interest cannot explain agreement between parties who do not share one.":
+    "独立重现是唯一不依赖于相信任何人动机的检查，因为共同的利益无法解释本来不共享利益的各方之间的一致。",
+  "A meta-analysis states in its protocol that it will compare results from industry funded and independently funded trials, and reports both estimates alongside the pooled one.":
+    "一篇荟萃分析在方案中写明将比较业界资助试验与独立资助试验的结果，并在汇总估计值旁同时报告两个估计值。",
+  "Planning the comparison in advance and publishing both figures lets the reader see whether funding made a difference here rather than assuming it did or did not. That is the specific fix for pooling evidence of mixed provenance.":
+    "事先规划这项比较并公布两个数字，让读者能够看出资助在这里是否造成了差异，而不是先入为主地认定有或没有。这正是汇总来源混杂的证据时的具体补救办法。",
 };

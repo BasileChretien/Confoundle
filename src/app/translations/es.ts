@@ -4001,24 +4001,15 @@ export const es: Record<string, string> = {
     "La marca señala la que de verdad mata más, y cuántas veces más.",
   "Shares are percentages of subjects, as the paper prints them. Ratios are of true annual death rates per 100 million residents, from national statistics for 1968 to 1973.":
     "Las proporciones son porcentajes de sujetos, tal como los imprime el artículo. Las razones son de tasas anuales reales de muerte por cada 100 millones de residentes, según estadísticas nacionales de 1968 a 1973.",
-  "Diabetes":
-    "Diabetes",
-  "Motor vehicle accident":
-    "Accidente de tráfico",
-  "All accidents":
-    "Todos los accidentes",
-  "Stroke":
-    "Ictus",
-  "Tornado":
-    "Tornado",
-  "Asthma":
-    "Asma",
-  "Botulism":
-    "Botulismo",
-  "Lightning":
-    "Rayo",
-  "What people picked":
-    "Lo que eligió la gente",
+  Diabetes: "Diabetes",
+  "Motor vehicle accident": "Accidente de tráfico",
+  "All accidents": "Todos los accidentes",
+  Stroke: "Ictus",
+  Tornado: "Tornado",
+  Asthma: "Asma",
+  Botulism: "Botulismo",
+  Lightning: "Rayo",
+  "What people picked": "Lo que eligió la gente",
   "The two were too close together to call":
     "Las dos estaban demasiado igualadas para decidir",
   "nobody can split hairs about mortality from memory":
@@ -4037,14 +4028,12 @@ export const es: Record<string, string> = {
     "Cuanto más fácil es traer algo a la mente, más frecuente parece",
   "Stroke kills 1.85 times as many people as every accident combined, and 80 per cent picked accidents. Asthma kills 20.9 times as many as tornadoes, and 58 per cent picked tornadoes. Lightning kills 52 times as many as botulism, and 63 per cent picked botulism. In each case the loser is the one you have read a headline about.":
     "El ictus mata 1,85 veces más gente que todos los accidentes juntos, y el 80 por ciento eligió los accidentes. El asma mata 20,9 veces más que los tornados, y el 58 por ciento eligió los tornados. El rayo mata 52 veces más que el botulismo, y el 63 por ciento eligió el botulismo. En cada caso el perdedor es aquel del que usted ha leído un titular.",
-  "Against what actually happens":
-    "Frente a lo que ocurre de verdad",
+  "Against what actually happens": "Frente a lo que ocurre de verdad",
   "Now look at the pair they got right, because it is the one that settles the question. Motor vehicle accidents kill 1.42 times as many people as diabetes, a narrower margin than the 1.85 between stroke and accidents, and 99 per cent got it right. So it cannot be that people fail when the margin is close. In that pair the dramatic cause genuinely is the bigger killer, so the thing that comes to mind first and the thing that actually happens point the same way, and the crowd looks well informed. Availability is not a bias that makes you wrong. It is a bias that makes you right for a reason that will not hold, and gives you no way of telling the two cases apart from the inside.":
     "Mire ahora la pareja que acertaron, porque es la que zanja la cuestión. Los accidentes de tráfico matan 1,42 veces más gente que la diabetes, un margen más estrecho que el 1,85 entre el ictus y los accidentes, y el 99 por ciento acertó. Así que no puede ser que la gente falle cuando el margen es estrecho. En esa pareja la causa dramática es de verdad la que más mata, de modo que lo que viene antes a la mente y lo que ocurre de verdad apuntan en la misma dirección, y la multitud parece bien informada. La disponibilidad no es un sesgo que le haga equivocarse. Es un sesgo que le hace acertar por una razón que no se sostendrá, y que no le da manera alguna de distinguir los dos casos desde dentro.",
   "What people picked, against what happens":
     "Lo que eligió la gente, frente a lo que ocurre",
-  "The availability heuristic":
-    "La heurística de disponibilidad",
+  "The availability heuristic": "La heurística de disponibilidad",
   "How easily something comes to mind stands in for how often it happens, and what comes to mind is what got reported. The trap is not that the estimate is noisy. It is that the error has a direction: whatever is dramatic, recent or filmable is overweighted, and whatever kills quietly is underweighted.":
     "La facilidad con que algo viene a la mente hace las veces de su frecuencia, y lo que viene a la mente es aquello de lo que se informó. La trampa no es que la estimación tenga ruido. Es que el error tiene dirección: lo dramático, lo reciente y lo filmable se sobrepondera, y lo que mata en silencio se subpondera.",
   "The researchers went looking for what was doing this, and one of the things they measured was newspapers. Over 184 days of a daily paper, 19 of their 41 causes of death were never mentioned once, among them diabetes, breast cancer, tuberculosis and cancer of the digestive system. Homicide, which kills 23 per cent fewer people than suicide, was reported 9.6 times as often and given fifteen times as much space. Their summary of it is that news coverage was a decent predictor of what people believed and a poor predictor of what was true. That is the whole mechanism in one sentence, and it does not require anybody to be lying: a newspaper prints what is unusual, which is its job, and a reader who counts what they remember is counting the output of that filter rather than the world.":

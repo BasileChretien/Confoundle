@@ -357,6 +357,85 @@ error and not necessarily a judgemental bias, because the subjects were being
 asked about things they had never experienced. That objection is real, it is
 printed in the same issue, and a puzzle that teaches this bias should say so.
 
+---
+
+#### SHIPPED 2026-07-30 as `what-comes-to-mind-first`. Route 1 worked, through a repository rather than the publisher.
+
+**How the source was actually reached, because the obvious route failed.** APA
+PsycNet served a guest session with the full text behind "Get Access", and the
+library's EBSCO Discovery instance was also unauthenticated. What worked was the
+OpenAIRE record surfaced by that same search, which carries an access URL to
+**the University of Oregon's Scholars' Bank, under CC BY-NC-ND**: the last
+author's own institution publishing his own paper. That is a repository copy,
+not a mirror, and it is the route to try before anything else the next time a
+paywall bites.
+
+**Two errors it caught, both of which would have shipped without it.**
+
+1. `pdftotext -layout` shifted Table 5 by one row. Its output put botulism's
+   estimated annual death toll at 237; reading the page as an image shows 237
+   belongs to poisoning by vitamins and botulism's figure is 379. A deep dive had
+   already been drafted around the wrong number. **Table 5 was dropped entirely**
+   and the example rebuilt on figures that appear twice, in Table 2 and again in
+   the Results prose, agreeing to the digit.
+2. The first ratio formatter rounded to one decimal, so the chart printed ×1.4
+   and ×1.9 beside a reveal saying 1.42 and 1.85. Caught in the browser. The
+   formatter now prints the ratio as authored and a test pins it, because a
+   chart that disagrees with its own caption is worse than no chart.
+
+**The four pairs, all from Table 2, all cross-checked against the prose.**
+
+| Pair | Public picked | Actually commoner | Right |
+|---|---|---|---:|
+| 25 diabetes / motor vehicle accident | crash, 99% | crash, ×1.42 | yes |
+| 37 all accidents / stroke | accidents, 80% | stroke, ×1.85 | no |
+| 61 tornado / asthma | tornado, 58% | asthma, ×20.9 | no |
+| 71 botulism / lightning | botulism, 63% | lightning, ×52 | no |
+
+**The control pair is the design.** "People only fail when the margin is narrow"
+is the natural excuse, and pair 25 refutes it from inside the data: at 1.42, a
+narrower margin than the 1.85 they got wrong, ninety-nine per cent were right.
+`closenessExplanationFails()` computes that refutation rather than asserting it,
+and a test fails if a future edit ever swaps in a control whose margin no longer
+supports the claim. The reveal therefore says what availability actually does,
+which is not to make you wrong but to make you right for a reason that will not
+hold, with no way to tell the two cases apart from the inside.
+
+**New shape `salience`, and it was necessary rather than convenient.**
+`estimation` carries two groups estimating one quantity against one true value,
+which is the anchoring design; here each comparison is its own question and the
+lesson lives in the pattern across four. Bending `estimation` would have meant
+inventing a denominator: the paper prints percentages of 111 subjects, and 42
+per cent of 111 is not an integer, so **no head count is authored anywhere** and
+a test asserts it. Only one share per comparison is authored, the percentage who
+picked the genuinely commoner side; the other is derived, so the two cannot
+drift. Full build: schema union member with `asguessed` and `againstfact` view
+kinds, `engine/charts/salience.ts` with twelve tests, `SalienceView`, the
+`DataViewRenderer` case and scope labels, and a ShareCard glyph.
+
+**The mechanism is measured, not asserted.** The lesson does not merely claim
+that news coverage drives this. The paper counted it: over 184 days of a daily
+paper, 19 of the 41 causes were never mentioned once, among them diabetes,
+breast cancer, tuberculosis and cancer of the digestive system, and homicide,
+which kills 23 per cent fewer people than suicide, was reported 9.6 times as
+often with fifteen times the space. The lesson also says explicitly that this
+requires nobody to be lying, since a paper printing the unusual is a paper doing
+its job.
+
+**And the note carries the objection.** Shanteau's commentary from the same
+issue is in the provenance note in its own words: a deviation from a true
+frequency is a response error and not necessarily a judgemental bias, because
+these subjects were asked about things they had never experienced. The note
+states that the puzzle claims the pattern in the answers, which is not disputed,
+and declines to claim the mechanism. It also records that these are 1974 and
+1975 rates and a period photograph, that 111 people answering a campus
+newspaper advertisement are a sample of nobody, and that the authors themselves
+think official records undercount suicide.
+
+**That closes all six gaps.** Power, allocation concealment, sponsorship and
+Hawthorne shipped as puzzles; Neyman judged covered by length-time and
+survivorship and shipped as review items; availability shipped here.
+
 ### 5. Neyman / prevalence-incidence bias
 
 **The illusion.** A case-control study of a risk factor for a rapidly fatal

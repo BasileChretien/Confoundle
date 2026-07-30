@@ -102,16 +102,18 @@ describe("availability framing", () => {
       (c) => c.id === "cannot-tell",
     );
     expect(hedge?.isCorrect).toBe(false);
-    expect(availabilityHeuristic.choices.filter((c) => c.isCorrect)).toHaveLength(
-      1,
-    );
+    expect(
+      availabilityHeuristic.choices.filter((c) => c.isCorrect),
+    ).toHaveLength(1);
   });
 
   it("spends the reveal body killing the trap answer with the control pair", () => {
     const body = availabilityHeuristic.reveal.body?.en ?? "";
     expect(body).toContain("1.42");
     expect(body).toContain("narrower margin");
-    expect(body).toContain("cannot be that people fail when the margin is close");
+    expect(body).toContain(
+      "cannot be that people fail when the margin is close",
+    );
   });
 
   it("does not claim availability always makes you wrong", () => {
@@ -158,7 +160,9 @@ describe("availability provenance note", () => {
   });
 
   it("carries the commentary that disputes the interpretation", () => {
-    expect(note).toContain("response error rather than necessarily a judgemental bias");
+    expect(note).toContain(
+      "response error rather than necessarily a judgemental bias",
+    );
   });
 
   it("declines to claim the mechanism, only the pattern", () => {

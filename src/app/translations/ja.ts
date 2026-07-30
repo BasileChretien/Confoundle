@@ -3885,4 +3885,119 @@ export const ja: Record<string, string> = {
     "あるメタ分析が、産業資金の試験と独立資金の試験の結果を比較すると計画書に明記し、統合推定値と並べて両方の推定値を報告します。",
   "Planning the comparison in advance and publishing both figures lets the reader see whether funding made a difference here rather than assuming it did or did not. That is the specific fix for pooling evidence of mixed provenance.":
     "比較をあらかじめ計画し、両方の数字を公表することで、読者は資金がここで違いを生んだかどうかを、生んだと決めつけることも生まなかったと決めつけることもなく確かめられます。それが出所の混じった証拠を統合する場合の具体的な手当てです。",
+  "One hundred and eleven people were asked which of two things kills more Americans. Here is how they split.":
+    "111人に、二つのうちどちらがアメリカでより多くの人を死なせているかを尋ねました。答えはこう分かれました。",
+  "Researchers took 41 causes of death, paired them up, and asked people which of each pair kills more people in the United States in a year. The true annual rates came from national health statistics, so every pair has a checkable answer. Four of those pairs are below, with the share of people who picked each side. Three of the four went the wrong way.":
+    "研究者たちは41の死因を取り上げて組み合わせを作り、各組のどちらがアメリカで一年により多くの人を死なせているかを人々に尋ねました。実際の年間死亡率は国の保健統計から取られているので、どの組にも確かめられる正解があります。下にそのうち四組を、それぞれの側を選んだ人の割合とともに示します。四組のうち三組で、答えは間違った側に傾きました。",
+  "What do the three they got wrong have in common?":
+    "間違えられた三組に共通するものは何でしょうか。",
+  "Which one kills more Americans in a year?":
+    "一年により多くのアメリカ人を死なせているのはどちらか",
+  "How 111 people split. Nothing here says which side is right.":
+    "111人がどう分かれたか。ここにはどちらが正しいかを示すものは何もありません。",
+  "The tick marks the one that actually kills more, and by how many times.":
+    "チェック印は実際により多くの人を死なせているほうを示し、その倍率を添えてあります。",
+  "Shares are percentages of subjects, as the paper prints them. Ratios are of true annual death rates per 100 million residents, from national statistics for 1968 to 1973.":
+    "割合は論文が印字するとおりの被験者の百分率です。倍率は住民1億人あたりの実際の年間死亡率の比で、1968年から1973年の国の統計によります。",
+  Diabetes: "糖尿病",
+  "Motor vehicle accident": "自動車事故",
+  "All accidents": "事故全体",
+  Stroke: "脳卒中",
+  Tornado: "竜巻",
+  Asthma: "喘息",
+  Botulism: "ボツリヌス症",
+  Lightning: "落雷",
+  "What people picked": "人々が選んだもの",
+  "The two were too close together to call":
+    "二つが接近しすぎていて判断できなかった",
+  "nobody can split hairs about mortality from memory":
+    "記憶だけで死亡率の細かい差を切り分けられる人はいない",
+  "They involve causes too rare for anyone to have met":
+    "誰も出会ったことがないほど稀な死因が含まれている",
+  "you cannot know what you have never encountered":
+    "一度も出会っていないものを知ることはできない",
+  "The side they picked is the side that gets reported":
+    "選ばれたほうは、報じられるほうである",
+  "ask which one you have read a headline about":
+    "どちらの見出しを読んだことがあるかを考えてください",
+  "Stroke, asthma and lightning. All three lost.":
+    "脳卒中、喘息、落雷。三つとも負けました。",
+  "The easier something is to bring to mind, the commoner it seems":
+    "思い浮かべやすいものほど、頻繁に起きているように見える",
+  "Stroke kills 1.85 times as many people as every accident combined, and 80 per cent picked accidents. Asthma kills 20.9 times as many as tornadoes, and 58 per cent picked tornadoes. Lightning kills 52 times as many as botulism, and 63 per cent picked botulism. In each case the loser is the one you have read a headline about.":
+    "脳卒中は事故全体を合わせたよりも1.85倍多くの人を死なせていますが、80パーセントが事故を選びました。喘息は竜巻より20.9倍多く死なせていますが、58パーセントが竜巻を選びました。落雷はボツリヌス症より52倍多く死なせていますが、63パーセントがボツリヌス症を選びました。どの組でも負けたほうは、あなたが見出しで読んだことのあるほうです。",
+  "Against what actually happens": "実際に起きていることと並べて",
+  "Now look at the pair they got right, because it is the one that settles the question. Motor vehicle accidents kill 1.42 times as many people as diabetes, a narrower margin than the 1.85 between stroke and accidents, and 99 per cent got it right. So it cannot be that people fail when the margin is close. In that pair the dramatic cause genuinely is the bigger killer, so the thing that comes to mind first and the thing that actually happens point the same way, and the crowd looks well informed. Availability is not a bias that makes you wrong. It is a bias that makes you right for a reason that will not hold, and gives you no way of telling the two cases apart from the inside.":
+    "では、正解された組を見てください。問いに決着をつけるのはこの組だからです。自動車事故は糖尿病より1.42倍多くの人を死なせており、これは脳卒中と事故の1.85よりも接近した差ですが、99パーセントが正解しました。つまり、差が接近しているときに人は間違えるのだ、ということではありえません。この組では劇的なほうが本当により多くを死なせているので、最初に思い浮かぶものと実際に起きていることが同じ方向を指し、群衆はよく知っているように見えます。利用可能性はあなたを間違わせるバイアスではありません。長くは通用しない理由であなたを正解させ、しかもその二つの場合を内側から見分ける手立てを与えないバイアスです。",
+  "What people picked, against what happens":
+    "人々が選んだもの、実際に起きていることと並べて",
+  "The availability heuristic": "利用可能性ヒューリスティック",
+  "How easily something comes to mind stands in for how often it happens, and what comes to mind is what got reported. The trap is not that the estimate is noisy. It is that the error has a direction: whatever is dramatic, recent or filmable is overweighted, and whatever kills quietly is underweighted.":
+    "何かがどれだけ容易に思い浮かぶかが、それがどれだけ頻繁に起きるかの代用になり、思い浮かぶのは報じられたものです。罠は推定に雑音があることではありません。誤りに方向があることです。劇的なもの、最近のもの、映像になるものは過大に重みづけられ、静かに人を死なせるものは過小に重みづけられます。",
+  "The researchers went looking for what was doing this, and one of the things they measured was newspapers. Over 184 days of a daily paper, 19 of their 41 causes of death were never mentioned once, among them diabetes, breast cancer, tuberculosis and cancer of the digestive system. Homicide, which kills 23 per cent fewer people than suicide, was reported 9.6 times as often and given fifteen times as much space. Their summary of it is that news coverage was a decent predictor of what people believed and a poor predictor of what was true. That is the whole mechanism in one sentence, and it does not require anybody to be lying: a newspaper prints what is unusual, which is its job, and a reader who counts what they remember is counting the output of that filter rather than the world.":
+    "研究者たちはこれを生んでいるものを探しに行き、測ったものの一つが新聞でした。ある日刊紙の184日分で、41の死因のうち19は一度も言及されず、その中には糖尿病、乳がん、結核、消化器のがんが含まれていました。殺人は自殺より23パーセント少ない人しか死なせていないのに、9.6倍の頻度で報じられ、15倍の紙面を与えられていました。彼らの総括は、報道量は人々が信じていることをそこそこよく予測し、真実をうまく予測しなかった、というものです。仕組みのすべてが一文に収まっており、しかも誰かが嘘をつく必要はありません。新聞は珍しいことを印刷します。それが仕事だからです。そして覚えていることを数える読者は、世界ではなくその濾過装置の出力を数えているのです。",
+  "The useful move is to notice when you are answering a frequency question from memory, because memory is not a frequency table and was never assembled to be one. Three habits follow. First, when you catch yourself judging how common something is, ask where your examples came from: if they arrived through a screen, they were selected for being worth reporting, which is close to the opposite of being typical. Second, look for the quiet side of the comparison, because the thing with no footage attached is the thing you will underweight, and it is often the bigger number. Third, prefer a denominator to an anecdote: the question is never whether a shark attack happened, it is how many happened out of how many swimmers, and the second half is the half nobody films. This is also worth knowing about yourself in the other direction. A doctor who has just missed a rare diagnosis will overtest for it for months, and a driver who has just passed a crash slows down for a mile. Neither reaction is irrational exactly, but neither is a measurement, and treating it as one is how a single vivid case ends up setting policy.":
+    "役に立つのは、頻度についての問いを記憶から答えていると気づくことです。記憶は頻度表ではありませんし、そのために作られたこともありません。ここから三つの習慣が出てきます。第一に、何かがどれくらいありふれているかを判断している自分に気づいたら、その例がどこから来たかを問うこと。画面を通って来たのなら、それは報じる価値があるという理由で選ばれており、典型的であることとはほぼ正反対です。第二に、比較の静かなほうを探すこと。映像が付いていないものこそあなたが過小評価するものであり、しばしばそちらのほうが大きな数字です。第三に、逸話より分母を選ぶこと。問いは常に、サメの襲撃があったかどうかではなく、何人の遊泳者のうち何件あったかであり、後半こそ誰も撮らない部分です。これは逆向きに自分自身についても知っておく価値があります。稀な診断を見落としたばかりの医師は何か月も過剰に検査し、事故現場を通り過ぎたばかりの運転者は一キロのあいだ速度を落とします。どちらの反応も厳密に不合理というわけではありませんが、どちらも測定ではなく、それを測定として扱うことこそ、たった一件の鮮烈な事例が政策を決めてしまう道筋です。",
+  "Getting the direction right and the size absurd":
+    "方向は当てて、大きさをとんでもなく外す",
+  "The subjects were not only asked which of a pair was commoner, they were asked by how many times, and those answers are worse than the pick-a-side ones. Take the pair almost everybody got right. Motor vehicle accidents do kill more people than diabetes, and 99 per cent said so, but the students' average answer to how much more was 356 times. The true figure is 1.4. The League of Women Voters members said 100 times. Getting the direction right bought nobody an accurate picture: the same crowd that identified the bigger killer overstated the gap by a factor of about two hundred and fifty. Now the pair they got wrong. On stroke against all accidents the students' average was 0.04, meaning they believed accidents killed 25 times as many people as stroke, when stroke in fact kills 1.85 times as many. That is one comparison wrong by a factor of about forty-six. The direction of an availability error is easy to state; the magnitude is what makes it dangerous when somebody budgets against it.":
+    "被験者は、二つのうちどちらが多いかを尋ねられただけでなく、何倍多いかも尋ねられており、その答えのほうがどちらかを選ぶ答えよりひどいのです。ほぼ全員が正解した組を見てください。自動車事故は確かに糖尿病より多くの人を死なせており、99パーセントがそう答えましたが、何倍多いかという問いへの学生の平均は356倍でした。正しい値は1.4です。女性有権者同盟の会員は100倍と答えました。方向を当てたことは誰にも正確な像を買い与えませんでした。より大きな殺し手を言い当てたのと同じ群衆が、その差をおよそ二百五十倍に誇張したのです。次に間違えた組です。脳卒中対事故全体では学生の平均は0.04、つまり事故は脳卒中の25倍の人を死なせていると信じていたわけですが、実際には脳卒中のほうが1.85倍多く死なせています。これは一つの比較がおよそ四十六倍ずれているということです。利用可能性の誤りの向きは言うのが簡単です。危険なのはその大きさのほうで、誰かがそれを前提に予算を組むときに効いてきます。",
+  "The availability heuristic, a reasoning trap.":
+    "利用可能性ヒューリスティック、という思考の罠。",
+  "Asked which of two causes kills more Americans, 80 per cent picked all accidents over stroke, which kills 1.85 times as many. 58 per cent picked tornadoes over asthma, which kills 20.9 times as many. 63 per cent picked botulism over lightning, which kills 52 times as many. But 99 per cent correctly picked motor vehicle accidents over diabetes, a narrower margin than the first one. So it is not that people fail when it is close. They fail when the memorable side is not the deadly one.":
+    "二つの死因のうちどちらがより多くのアメリカ人を死なせているかと問われて、80パーセントが脳卒中ではなく事故全体を選びましたが、脳卒中のほうが1.85倍多く死なせています。58パーセントが喘息ではなく竜巻を選びましたが、喘息のほうが20.9倍多く死なせています。63パーセントが落雷ではなくボツリヌス症を選びましたが、落雷のほうが52倍多く死なせています。ところが99パーセントは糖尿病ではなく自動車事故を正しく選びました。こちらは最初の組より差が接近しています。つまり接戦のときに人が間違えるのではありません。記憶に残るほうが致命的なほうでないときに間違えるのです。",
+  "Read from the copy the last author's own institution publishes, the University of Oregon Scholars' Bank, under CC BY-NC-ND. Every figure used here appears twice in the paper, once in Table 2 and once discussed in the Results prose, and the two agree to the digit; the prose is the cross-check that makes a transcribed table trustworthy. Five things a careful reader should hold against this. First, it is 1974 and 1975, and both the death rates and what the news covers have moved since; the effect has been replicated many times, but these particular pairs are a period photograph and the puzzle should not be read as current mortality. Second, the subjects were 111 people who answered a University of Oregon campus newspaper advertisement, which is not a sample of anybody; the paper also ran 77 members of the local League of Women Voters, who did better on some pairs and no better on others, and neither group is the public. Third, percentages are what the paper prints, so no head counts are authored anywhere here, and the second share in each split is derived rather than authored so the two cannot drift apart. Fourth, the newspaper study in the lesson counted one local daily over 184 days, which is enough to show the shape of the filter and not enough to measure it, and the authors say as much. Fifth, and most usefully, a commentary printed in the same issue argues that a deviation from a true frequency is a response error rather than necessarily a judgemental bias, because these subjects were being asked about things they had never directly experienced, so a psychological explanation is being offered for an inaccuracy whose origin has not been established. The authors themselves also note that official records probably undercount suicide. This puzzle claims the pattern in the answers, which is not in dispute; the mechanism behind it is the part the field has spent the decades since testing.":
+    "最終著者自身の所属機関が公開している版、オレゴン大学のScholars' BankにあるCC BY-NC-ND版から読みました。ここで用いたどの数字も論文中に二度、表2と結果の本文中の記述の両方に現れ、両者は数字まで一致します。この本文との突き合わせこそが、転記した表を信頼できるものにします。注意深い読者がこの論文に対して保持すべき点が五つあります。第一に、これは1974年と1975年であり、死亡率も報道が扱う対象もそれ以降動いています。効果自体は何度も再現されていますが、これら個々の組は時代の写真であり、この問題を現在の死亡状況として読んではいけません。第二に、被験者はオレゴン大学のキャンパス新聞の広告に応じた111人であって、誰かを代表する標本ではありません。論文は地元の女性有権者同盟の会員77人にも実施しており、いくつかの組では成績がよく他ではそうでもなく、どちらの集団も一般の人々ではありません。第三に、論文が印字するのは百分率なので、ここには実数を一切書いていません。各分割の第二の割合は書かずに導出しており、二つがずれることがないようにしてあります。第四に、教訓で引いた新聞調査は地元紙一紙を184日分数えたもので、濾過装置の形を示すには足りますが測るには足りず、著者らもそう述べています。第五に、そして最も有益な点として、同じ号に載った論評は、真の頻度からのずれは反応の誤りであって必ずしも判断のバイアスではない、と論じています。被験者は直接経験したことのない事柄について尋ねられており、原因が確かめられていない不正確さに心理学的な説明が与えられている、というのです。著者ら自身も、公式記録は自殺を少なく数えている可能性が高いと注記しています。この問題が主張するのは答えに現れた型であり、それは争われていません。その背後の仕組みは、この分野がその後の数十年を費やして検証してきた部分です。",
+  "After a widely reported airliner crash, someone cancels a short flight and drives the distance instead, saying flying suddenly feels too risky.":
+    "広く報じられた旅客機事故のあと、ある人が短距離便を取り消して同じ距離を車で走り、飛行機が急に危険すぎるように感じると言います。",
+  "The crash changed how easily a crash comes to mind, not how often one happens, and the comparison that matters is against the risk of the drive. A single reported event moves the feeling and leaves the rates exactly where they were.":
+    "その事故が変えたのは、事故がどれだけ容易に思い浮かぶかであって、どれだけ頻繁に起きるかではありません。そして意味のある比較は車の運転の危険との比較です。報じられた一件の出来事は感じ方を動かし、発生率はそのままに残します。",
+  "A resident is sure crime in their town is climbing, because they can recall several recent incidents from the local news. Recorded offences have fallen for four years.":
+    "ある住民は自分の町の犯罪が増えていると確信しています。地元のニュースで見た最近の事件をいくつも思い出せるからです。記録された犯罪件数は四年間下がり続けています。",
+  "What they are counting is stories they remember, and a newsroom prints what is unusual rather than what is typical. Recall is a measure of coverage and salience, not of frequency.":
+    "その人が数えているのは覚えている記事であり、報道機関は典型的なものではなく珍しいものを印刷します。想起は報道量と目立ちやすさを測るのであって、頻度を測るのではありません。",
+  "A doctor missed a rare but serious diagnosis last month. Since then they have ordered the test for it on almost every patient with vaguely similar symptoms.":
+    "ある医師が先月、稀だが重篤な診断を見落としました。それ以来、漠然と似た症状の患者のほとんどにその検査を出しています。",
+  "The recent case has made that diagnosis easy to picture, which is not the same as it having become more common. Testing should follow how likely the condition is in the patient in front of them, and that has not changed.":
+    "最近の症例はその診断を思い浮かべやすくしましたが、それはその診断が実際に増えたことと同じではありません。検査は目の前の患者にその病気がどれだけありそうかに従うべきで、それは変わっていません。",
+  "A parent, unsettled by a reported child abduction, rules out walking to school alone, while the unfenced garden pond stays as it is.":
+    "報じられた子どもの誘拐事件に動揺した親が、一人で学校まで歩くことを禁じる一方、庭の柵のない池はそのままになっています。",
+  "The two hazards are being weighed by how vividly each can be imagined rather than by how often each kills a child. Abduction is reported nationally and drowning usually is not, so the quieter risk is the one that gets left alone.":
+    "二つの危険が、それぞれどれだけ鮮明に想像できるかで量られており、それぞれがどれだけの頻度で子どもの命を奪うかでは量られていません。誘拐は全国的に報じられ、溺死はふつう報じられないので、静かなほうの危険が手つかずで残ります。",
+  "A safety committee ranks the plant's hazards by asking each member which incidents they can remember, then funds the top three.":
+    "ある安全委員会が、各委員に覚えている事故を挙げてもらって工場の危険を順位づけ、上位三つに予算をつけます。",
+  "Memorable incidents are the dramatic ones and the recent ones, which is a different list from the frequent ones. The incident log already holds the counts, and asking the room instead substitutes recall for the record.":
+    "記憶に残る事故とは劇的なものと最近のものであり、それは頻度の高いものとは別の一覧です。事故記録簿にはすでに件数があり、代わりに部屋の人に尋ねることは、記録を想起で置き換えることです。",
+  "A patient refuses a drug because of a side effect they read about in a newspaper feature, and does not ask how often it occurs.":
+    "ある患者が、新聞の特集記事で読んだ副作用を理由に薬を断り、それがどのくらいの頻度で起こるかを尋ねません。",
+  "A side effect is written about because it is striking, and the frequency is the part the article usually omits. Knowing that something can happen says nothing about whether it is likelier than the illness being treated.":
+    "副作用が記事になるのはそれが目を引くからであり、頻度はふつう記事が省く部分です。あることが起こりうると知っていても、それが治療しようとしている病気より起こりやすいかどうかについては何も語りません。",
+  "Asked whether shark attacks or falling coconuts kill more people, someone picks sharks, explaining that they can name three attacks and no coconut deaths.":
+    "サメの襲撃とヤシの実の落下ではどちらが多くの人を死なせているかと問われて、ある人はサメを選び、襲撃なら三件挙げられるがヤシの実による死は一件も挙げられないから、と説明します。",
+  "Being able to name examples measures what was reported to you, and a shark attack is filmed while other deaths are not. The count of stories you hold is the output of a news filter rather than a sample of events.":
+    "例を挙げられることは、何があなたに報じられたかを測っています。そしてサメの襲撃は撮影され、他の死はされません。手元にある物語の数は、出来事の標本ではなく報道という濾過装置の出力です。",
+  "An investor estimates how well technology funds have done from the two funds whose names they recognise, both of which have been in the papers for their returns.":
+    "ある投資家が、名前に見覚えのある二つのファンドから技術ファンド全体の成績を見積もります。その二つはどちらも運用成績で新聞に載ったものです。",
+  "Funds become nameable by doing something worth writing about, which is usually doing unusually well. Recognition is the selection filter here, and the ones that closed quietly never entered the reckoning.":
+    "ファンドが名前を覚えられるようになるのは、書く価値のあることをしたからであり、それはたいてい異常によい成績を出したということです。ここでは知名度が選抜の濾過装置であり、静かに閉じたものは初めから計算に入っていません。",
+  "After a noisy outage in one system, a team reallocates most of its reliability budget to that system, having not looked at where the year's downtime actually accumulated.":
+    "ある系統で派手な障害が起きたあと、チームは信頼性予算の大半をその系統に振り替えます。その年の停止時間が実際にどこで積み上がったかは見ていません。",
+  "The loud failure is the one everybody can describe, and loudness is not duration. Slow, quiet degradation in a less visible service can account for far more lost time and generate no story at all.":
+    "派手な障害は誰もが説明できるものであり、派手さは時間の長さではありません。目につきにくいサービスでの遅く静かな劣化のほうが、はるかに多くの時間を失わせながら、話題を一つも生まないことがあります。",
+  "A traveller judges a destination unsafe on the strength of an attack there two years ago, without comparing it with the road risk of the journey they take every day.":
+    "ある旅行者が、二年前にそこで起きた襲撃事件を理由にある行き先を危険だと判断し、毎日している移動の交通事故の危険とは比べません。",
+  "One vivid event is being weighed against a background risk so routine that no instance of it is memorable at all. The comparison is between one thing you can picture and one thing you cannot, and that is not a comparison of sizes.":
+    "一つの鮮烈な出来事が、あまりに日常的でどの一件も記憶に残らない背景の危険と量られています。この比較は、思い浮かべられるものと思い浮かべられないものを並べており、大きさの比較にはなっていません。",
+  "Before choosing, someone looks up how many deaths each cause produced last year and how many people were exposed to each, rather than going by which one they have heard more about.":
+    "選ぶ前に、ある人はどちらの死因が去年何人を死なせたか、そしてそれぞれ何人がさらされていたかを調べます。どちらをより多く聞いたことがあるかでは決めません。",
+  "A published count and a population at risk answer the frequency question directly, and neither depends on what anyone happens to remember. Replacing recall with a rate is the specific fix.":
+    "公表された件数と危険にさらされた人口は、頻度の問いに直接答えますし、どちらも誰が何を覚えているかに依存しません。想起を率で置き換えることが、この問題の具体的な手当てです。",
+  "A safety committee ranks hazards from the incident register, which logs every event whether or not anybody found it memorable, and notes that the register may under-record near misses.":
+    "ある安全委員会が、誰かの記憶に残ったかどうかにかかわらず全ての出来事を記録する事故記録簿から危険を順位づけ、その記録簿はヒヤリハットを少なく記録している可能性があると注記します。",
+  "A record kept as events occur is not filtered by what stuck in anyone's mind, so it measures frequency rather than salience. Flagging that near misses are probably under-recorded names the one filter it does have.":
+    "出来事が起きるたびに付けられる記録は、誰の頭に残ったかで濾過されていないので、目立ちやすさではなく頻度を測ります。ヒヤリハットが少なく記録されている可能性を明記することは、その記録簿が持つ唯一の濾過を名指すことです。",
+  "A doctor who recently missed a rare diagnosis says so aloud, notes that the case is making them want to test everybody, and goes back to the guideline's criteria to decide.":
+    "稀な診断を見落としたばかりの医師が、そのことを口に出し、この症例のせいで全員に検査をしたくなっていると述べたうえで、判断は指針の基準に立ち返って行います。",
+  "Noticing that a recent case is inflating your sense of how common something is does not make the feeling go away, but it does stop the feeling from being used as evidence. Deferring to a pre-written criterion is what turns that noticing into a decision.":
+    "最近の症例が、あることのありふれ具合についての感覚を膨らませていると気づいても、その感覚は消えません。しかし、その感覚が証拠として使われることは止められます。あらかじめ書かれた基準に従うことが、その気づきを判断に変えるものです。",
 };

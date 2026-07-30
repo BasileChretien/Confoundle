@@ -770,7 +770,8 @@ const EstimationData = z
       ctx.addIssue({
         code: "custom",
         path: ["groups"],
-        message: "both groups gave the same estimate, so there is nothing to reveal",
+        message:
+          "both groups gave the same estimate, so there is nothing to reveal",
       });
     }
     // The second half of the lesson is that both guesses are far below the
@@ -837,7 +838,8 @@ const SalienceData = z
         ctx.addIssue({
           code: "custom",
           path: ["comparisons", i, "trueRatio"],
-          message: "a ratio of 1 means neither option is commoner, so there is nothing to be right about",
+          message:
+            "a ratio of 1 means neither option is commoner, so there is nothing to be right about",
         });
       }
     });
@@ -1236,7 +1238,8 @@ export const Puzzle = z
         ctx.addIssue({
           code: "custom",
           path: ["setup", "data", "control", "events"],
-          message: "the control arm needs at least one event to compare against",
+          message:
+            "the control arm needs at least one event to compare against",
         });
       }
     }
@@ -1297,11 +1300,15 @@ export const Puzzle = z
       const shadesImmortal = [p.setup.initialView, p.reveal.view].some(
         (v) => v.kind === "immortal",
       );
-      if (shadesImmortal && !d.tracks.some((tr) => tr.immortalUntil !== undefined)) {
+      if (
+        shadesImmortal &&
+        !d.tracks.some((tr) => tr.immortalUntil !== undefined)
+      ) {
         ctx.addIssue({
           code: "custom",
           path: ["setup", "data", "tracks"],
-          message: "an immortal view needs at least one track with immortalUntil",
+          message:
+            "an immortal view needs at least one track with immortalUntil",
         });
       }
     }

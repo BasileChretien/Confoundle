@@ -3999,24 +3999,15 @@ export const fr: Record<string, string> = {
     "La coche marque celle qui tue réellement le plus, et de combien de fois.",
   "Shares are percentages of subjects, as the paper prints them. Ratios are of true annual death rates per 100 million residents, from national statistics for 1968 to 1973.":
     "Les parts sont des pourcentages de sujets, tels que l'article les imprime. Les rapports portent sur les taux annuels réels de décès par 100 millions d'habitants, d'après les statistiques nationales de 1968 à 1973.",
-  "Diabetes":
-    "Diabète",
-  "Motor vehicle accident":
-    "Accident de la route",
-  "All accidents":
-    "Tous accidents confondus",
-  "Stroke":
-    "Accident vasculaire cérébral",
-  "Tornado":
-    "Tornade",
-  "Asthma":
-    "Asthme",
-  "Botulism":
-    "Botulisme",
-  "Lightning":
-    "Foudre",
-  "What people picked":
-    "Ce que les gens ont choisi",
+  Diabetes: "Diabète",
+  "Motor vehicle accident": "Accident de la route",
+  "All accidents": "Tous accidents confondus",
+  Stroke: "Accident vasculaire cérébral",
+  Tornado: "Tornade",
+  Asthma: "Asthme",
+  Botulism: "Botulisme",
+  Lightning: "Foudre",
+  "What people picked": "Ce que les gens ont choisi",
   "The two were too close together to call":
     "Les deux étaient trop proches pour être départagées",
   "nobody can split hairs about mortality from memory":
@@ -4035,14 +4026,12 @@ export const fr: Record<string, string> = {
     "Plus une chose vient facilement à l'esprit, plus elle paraît fréquente",
   "Stroke kills 1.85 times as many people as every accident combined, and 80 per cent picked accidents. Asthma kills 20.9 times as many as tornadoes, and 58 per cent picked tornadoes. Lightning kills 52 times as many as botulism, and 63 per cent picked botulism. In each case the loser is the one you have read a headline about.":
     "L'accident vasculaire cérébral tue 1,85 fois plus de gens que tous les accidents réunis, et 80 pour cent ont choisi les accidents. L'asthme en tue 20,9 fois plus que les tornades, et 58 pour cent ont choisi les tornades. La foudre en tue 52 fois plus que le botulisme, et 63 pour cent ont choisi le botulisme. À chaque fois, le perdant est celui dont vous avez lu un titre de journal.",
-  "Against what actually happens":
-    "Face à ce qui arrive réellement",
+  "Against what actually happens": "Face à ce qui arrive réellement",
   "Now look at the pair they got right, because it is the one that settles the question. Motor vehicle accidents kill 1.42 times as many people as diabetes, a narrower margin than the 1.85 between stroke and accidents, and 99 per cent got it right. So it cannot be that people fail when the margin is close. In that pair the dramatic cause genuinely is the bigger killer, so the thing that comes to mind first and the thing that actually happens point the same way, and the crowd looks well informed. Availability is not a bias that makes you wrong. It is a bias that makes you right for a reason that will not hold, and gives you no way of telling the two cases apart from the inside.":
     "Regardez maintenant la paire qu'elles ont réussie, car c'est elle qui tranche la question. Les accidents de la route tuent 1,42 fois plus de gens que le diabète, un écart plus serré que le 1,85 entre l'accident vasculaire cérébral et les accidents, et 99 pour cent ont donné la bonne réponse. Il ne peut donc pas s'agir de gens qui échouent quand l'écart est serré. Dans cette paire, la cause spectaculaire est vraiment celle qui tue le plus, si bien que ce qui vient d'abord à l'esprit et ce qui arrive réellement pointent dans le même sens, et la foule paraît bien informée. La disponibilité n'est pas un biais qui vous rend faux. C'est un biais qui vous rend juste pour une raison qui ne tiendra pas, et qui ne vous donne aucun moyen de distinguer les deux cas de l'intérieur.",
   "What people picked, against what happens":
     "Ce que les gens ont choisi, face à ce qui arrive",
-  "The availability heuristic":
-    "L'heuristique de disponibilité",
+  "The availability heuristic": "L'heuristique de disponibilité",
   "How easily something comes to mind stands in for how often it happens, and what comes to mind is what got reported. The trap is not that the estimate is noisy. It is that the error has a direction: whatever is dramatic, recent or filmable is overweighted, and whatever kills quietly is underweighted.":
     "La facilité avec laquelle une chose vient à l'esprit tient lieu de sa fréquence, et ce qui vient à l'esprit est ce dont on a parlé. Le piège n'est pas que l'estimation soit bruitée. C'est que l'erreur a une direction : ce qui est spectaculaire, récent ou filmable est surpondéré, et ce qui tue en silence est sous-pondéré.",
   "The researchers went looking for what was doing this, and one of the things they measured was newspapers. Over 184 days of a daily paper, 19 of their 41 causes of death were never mentioned once, among them diabetes, breast cancer, tuberculosis and cancer of the digestive system. Homicide, which kills 23 per cent fewer people than suicide, was reported 9.6 times as often and given fifteen times as much space. Their summary of it is that news coverage was a decent predictor of what people believed and a poor predictor of what was true. That is the whole mechanism in one sentence, and it does not require anybody to be lying: a newspaper prints what is unusual, which is its job, and a reader who counts what they remember is counting the output of that filter rather than the world.":

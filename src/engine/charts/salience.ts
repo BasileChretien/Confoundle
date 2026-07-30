@@ -49,9 +49,12 @@ export function hitComparisons(data: SalienceData): SalienceComparison[] {
  * means the lesson can state that refutation from the data rather than assert
  * it in prose.
  */
-export function narrowestHit(data: SalienceData): SalienceComparison | undefined {
+export function narrowestHit(
+  data: SalienceData,
+): SalienceComparison | undefined {
   return hitComparisons(data).reduce<SalienceComparison | undefined>(
-    (best, c) => (best === undefined || c.trueRatio < best.trueRatio ? c : best),
+    (best, c) =>
+      best === undefined || c.trueRatio < best.trueRatio ? c : best,
     undefined,
   );
 }

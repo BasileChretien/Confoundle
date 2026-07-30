@@ -57,7 +57,9 @@ export function DataViewRenderer({
     case "causal":
       return <CausalView data={data} view={view.kind} animate={animate} />;
     case "survivorship":
-      return <SurvivorshipView data={data} view={view.kind} animate={animate} />;
+      return (
+        <SurvivorshipView data={data} view={view.kind} animate={animate} />
+      );
     case "timeline":
       return <TimelineView data={data} view={view.kind} animate={animate} />;
     case "risk":

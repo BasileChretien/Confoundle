@@ -66,7 +66,10 @@ function GlyphPanel({
     <div
       key={k}
       className="relative w-4 rounded-t-[2px]"
-      style={{ height: `${v}%`, backgroundColor: k === "a" ? CARD.teal : CARD.rust }}
+      style={{
+        height: `${v}%`,
+        backgroundColor: k === "a" ? CARD.teal : CARD.rust,
+      }}
     >
       {winner === k ? (
         <span
@@ -84,7 +87,9 @@ function GlyphPanel({
         "flex flex-col items-center gap-1.5 rounded-md px-2 py-1 " +
         (emphasized ? "" : "")
       }
-      style={emphasized ? { backgroundColor: "rgba(255,255,255,0.06)" } : undefined}
+      style={
+        emphasized ? { backgroundColor: "rgba(255,255,255,0.06)" } : undefined
+      }
     >
       <div className="flex h-[58px] items-end justify-center gap-2">
         {bar("a", a)}
@@ -108,11 +113,18 @@ function GlyphPanel({
  */
 function ReversalGlyph() {
   return (
-    <div className="mt-4 rounded-lg p-3" style={{ backgroundColor: "rgba(0,0,0,0.28)" }}>
+    <div
+      className="mt-4 rounded-lg p-3"
+      style={{ backgroundColor: "rgba(0,0,0,0.28)" }}
+    >
       <div className="flex items-end justify-center gap-2.5 pt-4">
         <GlyphPanel label="Group 1" a={92} b={82} winner="a" />
         <GlyphPanel label="Group 2" a={64} b={56} winner="a" />
-        <span className="pb-5 text-sm" style={{ color: CARD.muted }} aria-hidden="true">
+        <span
+          className="pb-5 text-sm"
+          style={{ color: CARD.muted }}
+          aria-hidden="true"
+        >
           →
         </span>
         <GlyphPanel label="Combined" a={70} b={82} winner="b" emphasized />
@@ -225,10 +237,16 @@ function CausalGlyph({ data }: { data: CausalData }) {
           <span>↘</span>
         </div>
         <div className="flex w-full max-w-[16rem] items-stretch justify-center gap-3">
-          <div className={`${pill} flex-1`} style={{ backgroundColor: nodeBg, color: CARD.text }}>
+          <div
+            className={`${pill} flex-1`}
+            style={{ backgroundColor: nodeBg, color: CARD.text }}
+          >
             {t(data.cause)}
           </div>
-          <div className={`${pill} flex-1`} style={{ backgroundColor: nodeBg, color: CARD.text }}>
+          <div
+            className={`${pill} flex-1`}
+            style={{ backgroundColor: nodeBg, color: CARD.text }}
+          >
             {t(data.effect)}
           </div>
         </div>
@@ -266,19 +284,55 @@ function AgreementGlyph() {
   const STROKE = "rgba(242,236,222,0.4)";
   const GHOST = "#4A4335";
   return (
-    <div className="mt-4 rounded-lg p-3" style={{ backgroundColor: "rgba(0,0,0,0.28)" }}>
+    <div
+      className="mt-4 rounded-lg p-3"
+      style={{ backgroundColor: "rgba(0,0,0,0.28)" }}
+    >
       <svg
         viewBox="0 0 200 120"
         role="img"
         aria-label="What people reported at the time, and how little of it survived when they were asked again"
-        style={{ display: "block", width: "100%", maxWidth: 200, margin: "0 auto" }}
+        style={{
+          display: "block",
+          width: "100%",
+          maxWidth: 200,
+          margin: "0 auto",
+        }}
       >
-        <rect x="14" y="24" width="172" height="22" rx="4" fill={GHOST} stroke={STROKE} strokeWidth="1.5" />
+        <rect
+          x="14"
+          y="24"
+          width="172"
+          height="22"
+          rx="4"
+          fill={GHOST}
+          stroke={STROKE}
+          strokeWidth="1.5"
+        />
         <rect x="14" y="74" width="30" height="22" rx="4" fill={CARD.teal} />
-        <rect x="44" y="74" width="106" height="22" rx="0" fill="rgba(242,236,222,0.10)" stroke={STROKE} strokeWidth="1" />
+        <rect
+          x="44"
+          y="74"
+          width="106"
+          height="22"
+          rx="0"
+          fill="rgba(242,236,222,0.10)"
+          stroke={STROKE}
+          strokeWidth="1"
+        />
         <rect x="150" y="74" width="36" height="22" rx="4" fill={CARD.rust} />
-        <path d="M20 50 L20 70" stroke={CARD.gold} strokeWidth="1.5" strokeDasharray="3 3" />
-        <path d="M180 50 L180 70" stroke={CARD.gold} strokeWidth="1.5" strokeDasharray="3 3" />
+        <path
+          d="M20 50 L20 70"
+          stroke={CARD.gold}
+          strokeWidth="1.5"
+          strokeDasharray="3 3"
+        />
+        <path
+          d="M180 50 L180 70"
+          stroke={CARD.gold}
+          strokeWidth="1.5"
+          strokeDasharray="3 3"
+        />
       </svg>
     </div>
   );
@@ -288,25 +342,100 @@ function SurvivorshipGlyph() {
   const FILL = "#4A4335";
   const STROKE = "rgba(242,236,222,0.4)";
   const HITS: ReadonlyArray<readonly [number, number]> = [
-    [26, 72], [70, 70], [82, 80], [118, 71], [130, 80], [176, 72],
-    [100, 96], [94, 110], [107, 124], [99, 138],
+    [26, 72],
+    [70, 70],
+    [82, 80],
+    [118, 71],
+    [130, 80],
+    [176, 72],
+    [100, 96],
+    [94, 110],
+    [107, 124],
+    [99, 138],
   ];
   return (
-    <div className="mt-4 rounded-lg p-3" style={{ backgroundColor: "rgba(0,0,0,0.28)" }}>
+    <div
+      className="mt-4 rounded-lg p-3"
+      style={{ backgroundColor: "rgba(0,0,0,0.28)" }}
+    >
       <svg
         viewBox="0 0 200 168"
         role="img"
         aria-label="Armour the engines and cockpit, the clean-looking spots, not the bullet holes"
-        style={{ display: "block", width: "100%", maxWidth: 200, margin: "0 auto" }}
+        style={{
+          display: "block",
+          width: "100%",
+          maxWidth: 200,
+          margin: "0 auto",
+        }}
       >
-        <rect x="14" y="60" width="172" height="24" rx="11" fill={FILL} stroke={STROKE} strokeWidth="1.5" />
-        <rect x="64" y="128" width="72" height="15" rx="7" fill={FILL} stroke={STROKE} strokeWidth="1.5" />
-        <rect x="88" y="22" width="24" height="128" rx="12" fill={FILL} stroke={STROKE} strokeWidth="1.5" />
-        <circle cx="100" cy="38" r="9" fill="rgba(214,164,58,0.30)" stroke={CARD.gold} strokeWidth="2.5" />
-        <rect x="42" y="64" width="16" height="16" rx="4" fill="rgba(214,164,58,0.30)" stroke={CARD.gold} strokeWidth="2.5" />
-        <rect x="142" y="64" width="16" height="16" rx="4" fill="rgba(214,164,58,0.30)" stroke={CARD.gold} strokeWidth="2.5" />
+        <rect
+          x="14"
+          y="60"
+          width="172"
+          height="24"
+          rx="11"
+          fill={FILL}
+          stroke={STROKE}
+          strokeWidth="1.5"
+        />
+        <rect
+          x="64"
+          y="128"
+          width="72"
+          height="15"
+          rx="7"
+          fill={FILL}
+          stroke={STROKE}
+          strokeWidth="1.5"
+        />
+        <rect
+          x="88"
+          y="22"
+          width="24"
+          height="128"
+          rx="12"
+          fill={FILL}
+          stroke={STROKE}
+          strokeWidth="1.5"
+        />
+        <circle
+          cx="100"
+          cy="38"
+          r="9"
+          fill="rgba(214,164,58,0.30)"
+          stroke={CARD.gold}
+          strokeWidth="2.5"
+        />
+        <rect
+          x="42"
+          y="64"
+          width="16"
+          height="16"
+          rx="4"
+          fill="rgba(214,164,58,0.30)"
+          stroke={CARD.gold}
+          strokeWidth="2.5"
+        />
+        <rect
+          x="142"
+          y="64"
+          width="16"
+          height="16"
+          rx="4"
+          fill="rgba(214,164,58,0.30)"
+          stroke={CARD.gold}
+          strokeWidth="2.5"
+        />
         {HITS.map(([cx, cy], i) => (
-          <circle key={i} cx={cx} cy={cy} r="3.2" fill={CARD.rust} opacity="0.3" />
+          <circle
+            key={i}
+            cx={cx}
+            cy={cy}
+            r="3.2"
+            fill={CARD.rust}
+            opacity="0.3"
+          />
         ))}
       </svg>
       <div
@@ -386,7 +515,10 @@ function TimelineGlyph() {
 function SplitSampleGlyph({ data }: { data: RatesData }) {
   const t = useT();
   const strata = stratifiedRates(data);
-  const tallest = Math.max(...strata.flatMap((s) => s.rates.map((r) => r.rate)), 0.01);
+  const tallest = Math.max(
+    ...strata.flatMap((s) => s.rates.map((r) => r.rate)),
+    0.01,
+  );
 
   return (
     <div
@@ -397,7 +529,10 @@ function SplitSampleGlyph({ data }: { data: RatesData }) {
         {strata.map((s) => {
           const stratum = data.strata.find((x) => x.id === s.stratumId)!;
           return (
-            <div key={s.stratumId} className="flex flex-1 flex-col items-center gap-1.5">
+            <div
+              key={s.stratumId}
+              className="flex flex-1 flex-col items-center gap-1.5"
+            >
               <div className="flex h-[62px] items-end justify-center gap-2">
                 {s.rates.map((r, i) => (
                   <div
@@ -548,12 +683,20 @@ function RegressionGlyph() {
     );
   };
   return (
-    <div className="mt-4 rounded-lg p-3" style={{ backgroundColor: "rgba(0,0,0,0.28)" }}>
+    <div
+      className="mt-4 rounded-lg p-3"
+      style={{ backgroundColor: "rgba(0,0,0,0.28)" }}
+    >
       <svg
         viewBox={`0 0 ${W} ${H}`}
         role="img"
         aria-label="Two extreme groups, one high and one low, each drifting back toward the average on its own"
-        style={{ display: "block", width: "100%", maxWidth: W, margin: "0 auto" }}
+        style={{
+          display: "block",
+          width: "100%",
+          maxWidth: W,
+          margin: "0 auto",
+        }}
       >
         <line
           x1={0}
@@ -603,12 +746,20 @@ function FramingGlyph() {
     <rect x={x} y={y} width={w} height={11} rx={3} fill={fill} />
   );
   return (
-    <div className="mt-4 rounded-lg p-3" style={{ backgroundColor: "rgba(0,0,0,0.28)" }}>
+    <div
+      className="mt-4 rounded-lg p-3"
+      style={{ backgroundColor: "rgba(0,0,0,0.28)" }}
+    >
       <svg
         viewBox={`0 0 ${W} ${H}`}
         role="img"
         aria-label="The same choice worded two ways, with the majority swapping sides"
-        style={{ display: "block", width: "100%", maxWidth: W, margin: "0 auto" }}
+        style={{
+          display: "block",
+          width: "100%",
+          maxWidth: W,
+          margin: "0 auto",
+        }}
       >
         <text x={10} y={14} fontSize={9} fill={CARD.muted}>
           worded one way
@@ -620,7 +771,14 @@ function FramingGlyph() {
         </text>
         {bar(10, 68, 38, CARD.teal)}
         {bar(10, 83, 130, CARD.rust)}
-        <text x={W - 8} y={48} fontSize={9} fill={CARD.gold} textAnchor="end" fontWeight={600}>
+        <text
+          x={W - 8}
+          y={48}
+          fontSize={9}
+          fill={CARD.gold}
+          textAnchor="end"
+          fontWeight={600}
+        >
           same choice
         </text>
       </svg>
@@ -635,7 +793,14 @@ function DistributionGlyph() {
   // well to the right of where most of the mass sits.
   const row = (y: number, belowPct: number) => (
     <>
-      <rect x={10} y={y} width={(W - 40) * belowPct} height={13} rx={3} fill={CARD.rust} />
+      <rect
+        x={10}
+        y={y}
+        width={(W - 40) * belowPct}
+        height={13}
+        rx={3}
+        fill={CARD.rust}
+      />
       <rect
         x={10 + (W - 40) * belowPct}
         y={y}
@@ -647,12 +812,20 @@ function DistributionGlyph() {
     </>
   );
   return (
-    <div className="mt-4 rounded-lg p-3" style={{ backgroundColor: "rgba(0,0,0,0.28)" }}>
+    <div
+      className="mt-4 rounded-lg p-3"
+      style={{ backgroundColor: "rgba(0,0,0,0.28)" }}
+    >
       <svg
         viewBox={`0 0 ${W} ${H}`}
         role="img"
         aria-label="Most items fall below their own average, which sits far to the right"
-        style={{ display: "block", width: "100%", maxWidth: W, margin: "0 auto" }}
+        style={{
+          display: "block",
+          width: "100%",
+          maxWidth: W,
+          margin: "0 auto",
+        }}
       >
         <text x={10} y={12} fontSize={9} fill={CARD.muted}>
           below the average
@@ -669,7 +842,14 @@ function DistributionGlyph() {
           strokeWidth={2}
           strokeDasharray="3 2"
         />
-        <text x={W - 8} y={88} fontSize={9} fill={CARD.gold} textAnchor="end" fontWeight={600}>
+        <text
+          x={W - 8}
+          y={88}
+          fontSize={9}
+          fill={CARD.gold}
+          textAnchor="end"
+          fontWeight={600}
+        >
           the average
         </text>
       </svg>
@@ -691,16 +871,32 @@ function DoseGlyph() {
   ];
   const px = (d: number) => 16 + (d / 27) * (W - 32);
   const py = (m: number) => H - 22 - ((m - 3.4) / 1.8) * (H - 44);
-  const path = pts.map(([d, m], i) => `${i === 0 ? "M" : "L"}${px(d)},${py(m)}`).join(" ");
+  const path = pts
+    .map(([d, m], i) => `${i === 0 ? "M" : "L"}${px(d)},${py(m)}`)
+    .join(" ");
   return (
-    <div className="mt-4 rounded-lg p-3" style={{ backgroundColor: "rgba(0,0,0,0.28)" }}>
+    <div
+      className="mt-4 rounded-lg p-3"
+      style={{ backgroundColor: "rgba(0,0,0,0.28)" }}
+    >
       <svg
         viewBox={`0 0 ${W} ${H}`}
         role="img"
         aria-label="Belief climbs almost entirely on the first repetition, then flattens"
-        style={{ display: "block", width: "100%", maxWidth: W, margin: "0 auto" }}
+        style={{
+          display: "block",
+          width: "100%",
+          maxWidth: W,
+          margin: "0 auto",
+        }}
       >
-        <path d={path} fill="none" stroke={CARD.teal} strokeWidth={2.5} strokeLinejoin="round" />
+        <path
+          d={path}
+          fill="none"
+          stroke={CARD.teal}
+          strokeWidth={2.5}
+          strokeLinejoin="round"
+        />
         {pts.map(([d, m]) => (
           <circle key={d} cx={px(d)} cy={py(m)} r={3} fill={CARD.teal} />
         ))}
@@ -713,10 +909,22 @@ function DoseGlyph() {
           strokeWidth={1.5}
           strokeDasharray="3 2"
         />
-        <text x={px(1) + 5} y={20} fontSize={9} fill={CARD.gold} fontWeight={600}>
+        <text
+          x={px(1) + 5}
+          y={20}
+          fontSize={9}
+          fill={CARD.gold}
+          fontWeight={600}
+        >
           one repeat
         </text>
-        <text x={W - 8} y={H - 6} fontSize={9} fill={CARD.muted} textAnchor="end">
+        <text
+          x={W - 8}
+          y={H - 6}
+          fontSize={9}
+          fill={CARD.muted}
+          textAnchor="end"
+        >
           27 repeats
         </text>
       </svg>
@@ -733,16 +941,31 @@ function EstimationGlyph() {
       <text x={10} y={y - 3} fontSize={8} fill={CARD.muted}>
         {label}
       </text>
-      <rect x={10} y={y} width={Math.max((W - 30) * frac, 2)} height={11} rx={3} fill={fill} />
+      <rect
+        x={10}
+        y={y}
+        width={Math.max((W - 30) * frac, 2)}
+        height={11}
+        rx={3}
+        fill={fill}
+      />
     </>
   );
   return (
-    <div className="mt-4 rounded-lg p-3" style={{ backgroundColor: "rgba(0,0,0,0.28)" }}>
+    <div
+      className="mt-4 rounded-lg p-3"
+      style={{ backgroundColor: "rgba(0,0,0,0.28)" }}
+    >
       <svg
         viewBox={`0 0 ${W} ${H}`}
         role="img"
         aria-label="Two guesses four times apart, both tiny beside the true answer"
-        style={{ display: "block", width: "100%", maxWidth: W, margin: "0 auto" }}
+        style={{
+          display: "block",
+          width: "100%",
+          maxWidth: W,
+          margin: "0 auto",
+        }}
       >
         {bar(16, 512 / 40320, CARD.teal, "guessed 512")}
         {bar(45, 2250 / 40320, CARD.rust, "guessed 2,250")}
@@ -800,7 +1023,12 @@ function SalienceGlyph() {
         viewBox={`0 0 ${W} ${H}`}
         role="img"
         aria-label="Three public splits, with the correct side marked on the short end of two of them"
-        style={{ display: "block", width: "100%", maxWidth: W, margin: "0 auto" }}
+        style={{
+          display: "block",
+          width: "100%",
+          maxWidth: W,
+          margin: "0 auto",
+        }}
       >
         {row(14, 1, false)}
         {row(43, 80, false)}
@@ -814,23 +1042,71 @@ function EcologicalGlyph() {
   const W = 200;
   const H = 96;
   return (
-    <div className="mt-4 rounded-lg p-3" style={{ backgroundColor: "rgba(0,0,0,0.28)" }}>
+    <div
+      className="mt-4 rounded-lg p-3"
+      style={{ backgroundColor: "rgba(0,0,0,0.28)" }}
+    >
       <svg
         viewBox={`0 0 ${W} ${H}`}
         role="img"
         aria-label="A downward line across places, with the people inside pointing upward"
-        style={{ display: "block", width: "100%", maxWidth: W, margin: "0 auto" }}
+        style={{
+          display: "block",
+          width: "100%",
+          maxWidth: W,
+          margin: "0 auto",
+        }}
       >
-        <line x1={16} y1={12} x2={16} y2={78} stroke="rgba(242,236,222,0.25)" strokeWidth={1.5} />
-        <line x1={16} y1={78} x2={W - 12} y2={78} stroke="rgba(242,236,222,0.25)" strokeWidth={1.5} />
+        <line
+          x1={16}
+          y1={12}
+          x2={16}
+          y2={78}
+          stroke="rgba(242,236,222,0.25)"
+          strokeWidth={1.5}
+        />
+        <line
+          x1={16}
+          y1={78}
+          x2={W - 12}
+          y2={78}
+          stroke="rgba(242,236,222,0.25)"
+          strokeWidth={1.5}
+        />
         {/* the line you get by counting places */}
-        <line x1={26} y1={24} x2={W - 22} y2={66} stroke={CARD.rust} strokeWidth={3} strokeLinecap="round" />
+        <line
+          x1={26}
+          y1={24}
+          x2={W - 22}
+          y2={66}
+          stroke={CARD.rust}
+          strokeWidth={3}
+          strokeLinecap="round"
+        />
         <text x={W - 22} y={60} fontSize={9} fill={CARD.rust} textAnchor="end">
           places
         </text>
         {/* the people inside, pointing the other way */}
-        <line x1={52} y1={64} x2={92} y2={40} stroke={CARD.teal} strokeWidth={2.5} strokeLinecap="round" strokeDasharray="4 3" />
-        <line x1={112} y1={58} x2={152} y2={34} stroke={CARD.teal} strokeWidth={2.5} strokeLinecap="round" strokeDasharray="4 3" />
+        <line
+          x1={52}
+          y1={64}
+          x2={92}
+          y2={40}
+          stroke={CARD.teal}
+          strokeWidth={2.5}
+          strokeLinecap="round"
+          strokeDasharray="4 3"
+        />
+        <line
+          x1={112}
+          y1={58}
+          x2={152}
+          y2={34}
+          stroke={CARD.teal}
+          strokeWidth={2.5}
+          strokeLinecap="round"
+          strokeDasharray="4 3"
+        />
         <text x={20} y={92} fontSize={9} fill={CARD.teal}>
           people
         </text>
@@ -845,26 +1121,69 @@ function EffectGlyph() {
   const barX = 14;
   const barW = W - 28;
   return (
-    <div className="mt-4 rounded-lg p-3" style={{ backgroundColor: "rgba(0,0,0,0.28)" }}>
+    <div
+      className="mt-4 rounded-lg p-3"
+      style={{ backgroundColor: "rgba(0,0,0,0.28)" }}
+    >
       <svg
         viewBox={`0 0 ${W} ${H}`}
         role="img"
         aria-label="A tiny certain sliver against the whole of the problem it is meant to fix"
-        style={{ display: "block", width: "100%", maxWidth: W, margin: "0 auto" }}
+        style={{
+          display: "block",
+          width: "100%",
+          maxWidth: W,
+          margin: "0 auto",
+        }}
       >
         {/* the whole problem */}
-        <rect x={barX} y={14} width={barW} height={16} rx={3} fill="rgba(242,236,222,0.28)" />
+        <rect
+          x={barX}
+          y={14}
+          width={barW}
+          height={16}
+          rx={3}
+          fill="rgba(242,236,222,0.28)"
+        />
         {/* the part the result removes, a tenth of it */}
-        <rect x={barX} y={14} width={barW * 0.1} height={16} rx={3} fill={CARD.gold} />
+        <rect
+          x={barX}
+          y={14}
+          width={barW * 0.1}
+          height={16}
+          rx={3}
+          fill={CARD.gold}
+        />
         <text x={barX} y={46} fontSize={9} fill={CARD.gold} fontWeight={600}>
           what it actually fixes
         </text>
         {/* the interval that made that sliver certain, clear of zero */}
-        <line x1={barX + 24} y1={70} x2={barX + 24} y2={88} stroke="rgba(242,236,222,0.45)" strokeWidth={1.5} strokeDasharray="3 3" />
-        <text x={barX + 24} y={66} fontSize={8} fill="rgba(242,236,222,0.6)" textAnchor="middle">
+        <line
+          x1={barX + 24}
+          y1={70}
+          x2={barX + 24}
+          y2={88}
+          stroke="rgba(242,236,222,0.45)"
+          strokeWidth={1.5}
+          strokeDasharray="3 3"
+        />
+        <text
+          x={barX + 24}
+          y={66}
+          fontSize={8}
+          fill="rgba(242,236,222,0.6)"
+          textAnchor="middle"
+        >
           0
         </text>
-        <rect x={barX + 60} y={76} width={90} height={7} rx={3.5} fill="rgba(242,236,222,0.8)" />
+        <rect
+          x={barX + 60}
+          y={76}
+          width={90}
+          height={7}
+          rx={3.5}
+          fill="rgba(242,236,222,0.8)"
+        />
       </svg>
     </div>
   );
@@ -879,18 +1198,48 @@ function InteractionGlyph() {
     <circle cx={cx} cy={y} r={7} fill={color} opacity={dim ? 0.45 : 1} />
   );
   return (
-    <div className="mt-4 rounded-lg p-3" style={{ backgroundColor: "rgba(0,0,0,0.28)" }}>
+    <div
+      className="mt-4 rounded-lg p-3"
+      style={{ backgroundColor: "rgba(0,0,0,0.28)" }}
+    >
       <svg
         viewBox={`0 0 ${W} ${H}`}
         role="img"
         aria-label="One averaged number in the middle, hiding two very different real effects"
-        style={{ display: "block", width: "100%", maxWidth: W, margin: "0 auto" }}
+        style={{
+          display: "block",
+          width: "100%",
+          maxWidth: W,
+          margin: "0 auto",
+        }}
       >
         {/* baseline axis */}
-        <line x1={14} y1={y} x2={W - 8} y2={y} stroke="rgba(242,236,222,0.25)" strokeWidth={1.5} />
+        <line
+          x1={14}
+          y1={y}
+          x2={W - 8}
+          y2={y}
+          stroke="rgba(242,236,222,0.25)"
+          strokeWidth={1.5}
+        />
         {/* no-effect line */}
-        <line x1={x1} y1={18} x2={x1} y2={70} stroke={CARD.gold} strokeWidth={1.5} strokeDasharray="3 3" />
-        <text x={x1} y={84} fontSize={9} fill={CARD.gold} textAnchor="middle" fontWeight={600}>
+        <line
+          x1={x1}
+          y1={18}
+          x2={x1}
+          y2={70}
+          stroke={CARD.gold}
+          strokeWidth={1.5}
+          strokeDasharray="3 3"
+        />
+        <text
+          x={x1}
+          y={84}
+          fontSize={9}
+          fill={CARD.gold}
+          textAnchor="middle"
+          fontWeight={600}
+        >
           no effect
         </text>
         {/* the pooled number, dim, stranded in the middle */}
@@ -902,7 +1251,10 @@ function InteractionGlyph() {
         {dot(48, CARD.teal)}
         {dot(168, CARD.rust)}
       </svg>
-      <div className="mt-1 text-center text-[11px] font-semibold" style={{ color: CARD.gold }}>
+      <div
+        className="mt-1 text-center text-[11px] font-semibold"
+        style={{ color: CARD.gold }}
+      >
         One number can hide two.
       </div>
     </div>
@@ -1017,7 +1369,10 @@ export function ShareCard({
             {t(puzzle.lesson.skillName)}
           </div>
 
-          <p className="mt-2.5 text-[14px] leading-normal" style={{ color: CARD.text }}>
+          <p
+            className="mt-2.5 text-[14px] leading-normal"
+            style={{ color: CARD.text }}
+          >
             {t(puzzle.share.explainer)}
           </p>
 

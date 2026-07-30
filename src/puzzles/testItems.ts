@@ -4306,6 +4306,140 @@ const items: TestItem[] = [
       en: "The paint was not produced by anybody's memory and cannot have been suggested by a question. Corroborating an account against a physical record is exactly the check that recollection alone cannot provide.",
     },
   },
+
+  // ---- Statistical power and the type II error ----
+  {
+    id: "sp-null-means-equivalent",
+    scenario: {
+      en: "A trial of 40 patients finds no significant difference between the new drug and the old one, and the discussion concludes that the two are equally effective.",
+    },
+    trap: "statistical-power",
+    explanation: {
+      en: "With forty patients the confidence interval will be wide enough to contain a substantial benefit in either direction. The trial did not find the two equal, it failed to distinguish them, which is a different result.",
+    },
+  },
+  {
+    id: "sp-p-protects",
+    scenario: {
+      en: "A researcher explains that because the analysis used a five per cent significance threshold, the risk of drawing the wrong conclusion from the study is under five per cent.",
+    },
+    trap: "statistical-power",
+    explanation: {
+      en: "The five per cent threshold controls only the risk of claiming an effect that is not there. It says nothing about the risk of missing one that is, and in a small study that second risk can be enormous.",
+    },
+  },
+  {
+    id: "sp-power-without-effect-size",
+    scenario: {
+      en: "A protocol states that the study is adequately powered, without saying what effect size it is powered to detect.",
+    },
+    trap: "statistical-power",
+    explanation: {
+      en: "Power is never a property of a study on its own, only of a study against a specified effect. Adequately powered with no effect size named is not a claim that can be checked or falsified.",
+    },
+  },
+  {
+    id: "sp-subgroup-null",
+    scenario: {
+      en: "A large trial shows a clear benefit overall. In a subgroup of 60 older patients the difference is not significant, and the authors conclude the treatment does not work in the elderly.",
+    },
+    trap: "statistical-power",
+    explanation: {
+      en: "A subgroup of sixty has a fraction of the whole trial's power, so a non-significant result there is close to uninformative. Concluding the treatment fails in that group requires evidence it does not have.",
+    },
+  },
+  {
+    id: "sp-safety-null",
+    scenario: {
+      en: "A trial designed to detect a difference in cure rates reports no significant increase in serious side effects, and the summary describes the treatment as safe.",
+    },
+    trap: "statistical-power",
+    explanation: {
+      en: "The trial was sized for the cure rate, not for a rare harm. A study can be perfectly adequate for its main question and hopeless for a side effect that occurs in one patient in two hundred.",
+    },
+  },
+  {
+    id: "sp-post-hoc-power",
+    scenario: {
+      en: "After a study finds nothing, the analysts compute the power to detect the effect they actually observed and report that the study was underpowered by that measure.",
+    },
+    trap: "statistical-power",
+    explanation: {
+      en: "Power computed from the observed effect is a restatement of the p value and adds no information. The useful calculation is against an effect size that would matter clinically, chosen independently of the result.",
+    },
+  },
+  {
+    id: "sp-many-small-nulls",
+    scenario: {
+      en: "Eight small trials each report no significant benefit, and a review concludes that the accumulated evidence shows the treatment is ineffective.",
+    },
+    trap: "statistical-power",
+    explanation: {
+      en: "Eight uninformative studies do not add up to one informative one just by being counted. Combining them properly in a meta-analysis might settle the question, and can equally reveal a benefit none of them could see alone.",
+    },
+  },
+  {
+    id: "sp-non-inferiority",
+    scenario: {
+      en: "A non-inferiority trial concludes the cheaper treatment is not worse, having set its margin so that anything short of a fifteen per cent loss of effectiveness counts as not worse.",
+    },
+    trap: "statistical-power",
+    explanation: {
+      en: "The conclusion is only as strong as the margin, and a fifteen per cent loss is a real loss. Not worse is a claim about the margin chosen, not about the treatments, and the margin has to be judged on its own.",
+    },
+  },
+  {
+    id: "sp-wide-interval-ignored",
+    scenario: {
+      en: "A report gives a relative risk of 0.82 with a confidence interval from 0.55 to 1.22 and concludes there was no association, without discussing the interval.",
+    },
+    trap: "statistical-power",
+    explanation: {
+      en: "The interval reaches down to a forty-five per cent reduction in risk, which would matter a great deal if real. The data are consistent with no association and also with a large benefit, so no association overstates what was shown.",
+    },
+  },
+  {
+    id: "sp-absence-of-evidence",
+    scenario: {
+      en: "A screening study of a rare exposure finds no cases of harm among 120 exposed people and reports that the exposure carries no risk.",
+    },
+    trap: "statistical-power",
+    explanation: {
+      en: "Seeing no cases in 120 people is compatible with a risk of roughly one in forty or lower, which is not the same as no risk. Absence of evidence is evidence of absence only when the evidence would have shown up.",
+    },
+  },
+
+  // ---- Sound handling of a null result (decoys) ----
+  {
+    id: "ok-prespecified-power",
+    scenario: {
+      en: "A protocol registered before recruitment states that 1,400 patients give ninety per cent power to detect a five percentage point difference, which the investigators justify as the smallest difference that would change practice.",
+    },
+    trap: null,
+    explanation: {
+      en: "The effect size is named, justified clinically, and fixed before any data arrive. That is what makes a later null result interpretable rather than merely disappointing.",
+    },
+  },
+  {
+    id: "ok-tight-null",
+    scenario: {
+      en: "A trial of 9,000 patients reports a hazard ratio of 1.01 with a confidence interval from 0.96 to 1.06, and concludes that any effect is too small to be clinically important.",
+    },
+    trap: null,
+    explanation: {
+      en: "Here the interval excludes everything that would matter, so the null result is genuine evidence of absence rather than an absence of evidence. This is what an informative negative study looks like.",
+    },
+  },
+  {
+    id: "ok-reports-interval",
+    scenario: {
+      en: "A small study finds no significant difference and states plainly that its confidence interval remains consistent with a benefit of up to thirty per cent, so the question is unresolved.",
+    },
+    trap: null,
+    explanation: {
+      en: "The authors report what the data could not rule out instead of converting a null result into a negative one. A small study that says the question is open has reported itself correctly.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

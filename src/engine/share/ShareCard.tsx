@@ -752,6 +752,64 @@ function EstimationGlyph() {
   );
 }
 
+function SalienceGlyph() {
+  const W = 200;
+  const H = 96;
+  const INNER = W - 20;
+  /**
+   * Three head-to-head splits. The gold tick marks the side that actually
+   * happens more often, which on the bottom two rows sits on the short end:
+   * the majority went the other way. The top row is the control, where the
+   * crowd and the world agree.
+   */
+  const row = (y: number, leftShare: number, tickLeft: boolean) => (
+    <>
+      <rect
+        x={10}
+        y={y}
+        width={INNER * (leftShare / 100)}
+        height={13}
+        rx={3}
+        fill={CARD.rust}
+      />
+      <rect
+        x={10 + INNER * (leftShare / 100)}
+        y={y}
+        width={INNER * (1 - leftShare / 100)}
+        height={13}
+        rx={3}
+        fill={CARD.teal}
+      />
+      <text
+        x={tickLeft ? 14 : W - 20}
+        y={y + 11}
+        fontSize={11}
+        fontWeight={700}
+        fill={CARD.gold}
+      >
+        {"✓"}
+      </text>
+    </>
+  );
+  return (
+    <div
+      className="mt-4 rounded-lg p-3"
+      style={{ backgroundColor: "rgba(0,0,0,0.28)" }}
+    >
+      <svg
+        viewBox={`0 0 ${W} ${H}`}
+        role="img"
+        aria-label="Three public splits, with the correct side marked on the short end of two of them"
+        style={{ display: "block", width: "100%", maxWidth: W, margin: "0 auto" }}
+      >
+        {row(14, 1, false)}
+        {row(43, 80, false)}
+        {row(72, 58, false)}
+      </svg>
+    </div>
+  );
+}
+
 function EcologicalGlyph() {
   const W = 200;
   const H = 96;
@@ -894,6 +952,7 @@ export function ShareCard({
   const distributionGlyph = data.type === "distribution";
   const doseGlyph = data.type === "dose";
   const estimationGlyph = data.type === "estimation";
+  const salienceGlyph = data.type === "salience";
   const splitSampleGlyph =
     data.type === "rates" &&
     Boolean(data.strataAreSeparateSamples) &&
@@ -994,6 +1053,8 @@ export function ShareCard({
             <DoseGlyph />
           ) : estimationGlyph ? (
             <EstimationGlyph />
+          ) : salienceGlyph ? (
+            <SalienceGlyph />
           ) : null}
 
           <p className="mt-4 font-display text-[17px] font-medium leading-snug">

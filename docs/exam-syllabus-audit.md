@@ -358,7 +358,9 @@ consensus only · **X** absent from official documents.
 | Healthy worker / healthy user | X | X | T | X | partly inside indication |
 | Hawthorne effect | X | X | **O** | X | **shipped** (Wu 2018) |
 | Neyman / prevalence-incidence | X | X | T | X | covered by length-time and survivorship; review items only |
-| Cognitive: anchoring, availability, framing | named as a category | **X** | O | postgrad | **gap, needs a new beat** |
+| Cognitive: anchoring | named as a category | **X** | O | postgrad | **shipped** (Tversky & Kahneman 1974) |
+| Cognitive: framing | named as a category | **X** | O | postgrad | **shipped** |
+| Cognitive: availability | named as a category | **X** | O | postgrad | **gap**; no new beat needed, source not yet read |
 
 ## Built from this document
 

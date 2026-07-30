@@ -294,6 +294,69 @@ candidate and its numbers are published.
 **Recommendation: schedule this one last** despite ranking fourth, because it is
 the only item that changes the engine rather than adding to it.
 
+---
+
+#### DECIDED 2026-07-30. NO A/B BEAT. The engine does not need to change, and two thirds of this gap is already shipped.
+
+**The design question is settled, and the answer is neither of the two candidates
+above.** The plan's premise was that a cognitive bias is a property of the reader
+rather than of a dataset, so demonstrating one would need the reader to become
+the data point. That premise is wrong, and the deck has already disproved it
+twice:
+
+- **`anchoring`** (puzzle 28) uses the `estimation` shape. Two groups of students
+  had five seconds to estimate the same product written in opposite orders, and
+  the published median estimates were 512 and 2,250 against a true answer of
+  40,320. The bias is in the data because somebody already ran the experiment.
+- **`framing-effect`** uses the `framing` shape, with `onewording` at the setup
+  and `bothwordings` at the reveal. That *is* the two-panel beat, built and
+  shipped.
+
+So the demonstration does not require per-reader assignment, and it must not
+collect our readers' answers to produce the split. **Published between-subjects
+response distributions are the mechanism**, and the analytics stub stays a no-op.
+The A/B beat is hereby dropped rather than deferred: it would buy a nicer
+narration of a result the deck can already state from a source, at the cost of
+per-reader state, a data-collection question we have promised not to open, and a
+number nobody has audited.
+
+**What is actually left of this gap is availability alone.** Anchoring and
+framing are shipped; the audit row bundles all three under one heading and is
+therefore misleadingly red. Availability needs a source and probably a new shape,
+because the lesson is "what you can call to mind against what actually happens",
+which is a judged value beside a true value for each of a list of items, and no
+current shape holds that. `estimation` is close but carries a single `trueValue`
+for two groups estimating one quantity, which is the anchoring design, not this
+one.
+
+**Sourcing is open, and the obvious source is not currently readable.**
+Lichtenstein, Slovic, Fischhoff, Layman & Combs, "Judged frequency of lethal
+events", *J Exp Psychol Hum Learn Mem* 1978;4(6):551-578, is the canonical
+demonstration: 660 adults, 41 causes of death, judged frequencies against actual
+ones. APA PsycNet serves only the landing page here and its full text is behind
+"Get Access", so **the table has not been read and nothing from it may be
+authored**. Third-party PDF mirrors of a rights-reserved APA article are not an
+acceptable substitute, and record identifiers must not be guessed.
+
+Three routes, in order of preference:
+
+1. **Institutional access to the 1978 paper.** Nagoya may carry APA PsycArticles;
+   this needs a signed-in session rather than an anonymous fetch.
+2. **A modern replication that is openly available.** Hertwig, Pachur &
+   Kurzenhäuser, "Judgments of risk frequencies: tests of possible cognitive
+   mechanisms" (2005), has an author copy in the Max Planck repository and is
+   arguably the better source for this deck, because it does not merely show the
+   misjudgement, it tests whether availability is the mechanism producing it.
+3. **The media-coverage angle**, comparing column inches against mortality, which
+   makes the mechanism visible rather than inferred but needs its own primary.
+
+**Also worth carrying into the note when it is written.** The paper was published
+with a commentary attached, Shanteau, *J Exp Psychol Hum Learn Mem*
+1978;4(6):579-581, arguing that a deviation from actual frequency is a response
+error and not necessarily a judgemental bias, because the subjects were being
+asked about things they had never experienced. That objection is real, it is
+printed in the same issue, and a puzzle that teaches this bias should say so.
+
 ### 5. Neyman / prevalence-incidence bias
 
 **The illusion.** A case-control study of a risk factor for a rapidly fatal

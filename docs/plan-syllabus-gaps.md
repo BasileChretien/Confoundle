@@ -58,6 +58,63 @@ just the interval, since numbers are authored once as `observations` and the
 rates derived. Check the CONSORT-era reanalyses of small negative surgical
 trials first.
 
+---
+
+#### SOURCED AND VERIFIED AT SOURCE, 2026-07-30. And it does not need the new shape.
+
+The plan above looked for **one** underpowered trial. The better source is a paper
+that counted **seventy-one of them**, which turns the lesson from "here is a wide
+interval" into "here is how often this happens", and does it in integers.
+
+**Freiman JA, Chalmers TC, Smith H Jr, Kuebler RR. The importance of beta, the
+type II error and sample size in the design and interpretation of the randomized
+control trial: survey of 71 "negative" trials.** *New England Journal of
+Medicine* 1978;299(13):690-694.
+
+Read from images of the journal page itself, reproduced by the James Lind
+Library: the abstract, and Figure 2. Not from a summary.
+
+Seventy-one trials that had all reported no significant difference were
+re-examined to see whether they were large enough to have a probability above
+0.90 of detecting a 25 and a 50 per cent therapeutic improvement.
+
+| Of the 71 "negative" trials | Count |
+|---|---:|
+| Risk above 10 per cent of missing a true **25 per cent** improvement | **67** |
+| Risk above 10 per cent of missing a true **50 per cent** improvement | **50** |
+| 90 per cent confidence interval still allowed a **25 per cent** improvement | **57** |
+| 90 per cent confidence interval still allowed a **50 per cent** improvement | **34** |
+
+**Therefore only 4 of the 71 were large enough to rule out a 25 per cent
+improvement.** That is the number the puzzle turns on.
+
+**Consistent three ways, which is what stands in for an external cross-check on a
+survey like this.** 67 exceeds 50, because a smaller improvement is harder to
+detect and so more trials could have missed it. 57 exceeds 34, the same ordering
+under the other criterion. And 67 exceeds 57 while 50 exceeds 34, because the
+power criterion is the stricter of the two. All three orderings must hold and all
+three do.
+
+Figure 2 draws all 71 confidence intervals. Most straddle zero and stretch well
+into the region marked "favouring treatment", which is the picture the lesson
+needs and is the authors' own.
+
+**The shape decision above is superseded.** No `interval` shape is required.
+Groups are "reported that the treatment made no difference" at 71 of 71 and "was
+large enough to have shown a 25 per cent improvement" at 4 of 71, over one
+stratum, with the setup filtered to the first group by `groupIds` and the reveal
+dropping the filter. That is exactly the mechanism `misleading-axis` and
+`the-glass-that-was-never-there` already use. Building `interval` may still be
+worth doing one day, but this gap no longer waits on it.
+
+**Limits to carry into the provenance note.** This is 1978, and trial design has
+improved since, partly because of this paper; the puzzle must say so rather than
+imply the state of the field is unchanged. The 71 trials are a survey the authors
+assembled rather than a random sample of all negative trials. And "25 per cent
+improvement" is a relative improvement in the response rate, not an absolute
+percentage-point difference, which is a distinction this deck already teaches in
+`relative-risk` and must not blur here.
+
 ### 2. Allocation concealment
 
 **The illusion.** Two arms of a trial that was properly randomised on paper, but

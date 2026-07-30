@@ -238,6 +238,41 @@ distinguishable in the reveal.** If the reveal restates one of those, the audit
 row should be marked "covered by" rather than a new puzzle being forced. That
 judgement should be made honestly before any work starts.
 
+---
+
+#### JUDGED 2026-07-30. COVERED BY `length-time` AND `survivorship`. Not built.
+
+The check the plan asked for was made against the shipped reveals rather than
+from memory, and it fails. Neyman's mechanism is **duration-biased sampling**:
+you sample prevalent cases, so cases that end quickly are under-represented, and
+an exposure that kills quickly removes its own cases and looks protective.
+
+`length-time` already reveals exactly that, in its own words:
+
+> A test applied every few months catches the slow-growing tumours, because slow
+> ones sit in the detectable stage for years waiting to be found, while fast ones
+> surface between visits.
+
+That is the same sentence a Neyman puzzle would have to write. And the "you never
+see the ones who died" framing is `survivorship`'s reveal, in its own words: *You
+only see the survivors.*
+
+**What Neyman adds is a setting, not a reveal.** The case-control study of a fatal
+disease is a new costume; the sign reversal, a harmful factor appearing
+protective, is striking but the deck already teaches sign reversal in
+`kidney-stones`. Building it would put a third name on one reasoning move, which
+this project has refused twice before on exactly this ground: attrition against
+intention-to-treat, and question wording against framing.
+
+**Decision.** Mark the audit row "covered by length-time and survivorship", and
+give readers the setting through the **review bank** instead of a puzzle. Four
+scenarios are drafted (`nb-prevalent-cases`, `nb-clinic-attenders` and
+`nb-survivor-interviews` as traps against those two skills, plus a sound decoy
+`ok-incident-cases` on sampling incident rather than prevalent cases). They are
+deliberately **not** in this commit: new item strings need nine translations
+each, and they will ride along with the next puzzle's translation pass rather
+than triggering one of their own.
+
 ### 6. Hawthorne effect
 
 **The sourcing problem, stated up front.** The original Hawthorne studies do not
@@ -252,6 +287,60 @@ measurably changed behaviour and the counts are printed, and treat the
 historical study as a cautionary note in the deep-dive rather than as the
 data, or **do not ship it and record why**. A documented refusal is a legitimate
 outcome here and is more valuable than a weak puzzle.
+
+---
+
+#### SOURCED 2026-07-30, on the first route. Not a refusal after all.
+
+The plan's worry was that the *historical* studies do not support the effect.
+That worry stands and belongs in the deep dive. But the modern effect is real,
+large, and measured, and the search was for a source that prints it as counts.
+Two candidates failed on number type before one worked, and the failures are
+recorded so nobody repeats them.
+
+- **Srigley et al., BMJ Qual Saf 2014;23(12):974-980.** Electronic monitoring on
+  transplant units: hand hygiene events ran at **3.75 per dispenser per hour**
+  within sight of an auditor against **1.48** with none visible, and **1.07** the
+  week before. A threefold effect, beautifully measured, and reported as *rates
+  per dispenser-hour*, with the 562,304 dispenses never broken down by condition.
+  No proportions, so nothing this deck can author.
+- **Eckmanns et al., Infect Control Hosp Epidemiol 2006;27(9):931-934.** 2,808
+  indications, compliance **29 per cent** unaware against **45 per cent** aware.
+  The per-period denominators are not in the abstract, the full text is paywalled
+  and Cambridge reports this institution has no access, and **back-calculating
+  the denominators from the confidence-interval widths is exactly the
+  reconstruction this project forbids**. Not used.
+
+**The source that works.** Wu K-S, Lee SS-J, Chen J-K, et al. Identifying
+heterogeneity in the Hawthorne effect on hand hygiene observation: a cohort study
+of overtly and covertly observed results. *BMC Infect Dis* 2018;18:369. Open
+access. 31,522 opportunities observed, 4,581 overtly and 26,941 covertly, matched
+1:1 into **3,047 pairs**.
+
+**And the counts are decodable, which is not the same as reconstructed.** Table 2
+prints pair counts as integers and compliance to one decimal place. For the small
+subgroups, exactly one integer numerator produces the printed percentage, so the
+count is *determined* by the published data rather than guessed. Verified
+computationally:
+
+| Row | Pairs | Overt | Covert | Numerators |
+|---|---:|---:|---:|---|
+| Outpatient department | 133 | 64.7% | 24.1% | **86** and **32**, both unique |
+| Intensive care unit | 880 | 80.6% | 69.2% | **709** and **609**, both unique |
+| Physician | 619 | 67.9% | 57.4% | **420** and **355**, both unique |
+| Nurse | 2,105 | 84.2% | 54.2% | 2 candidates each, **unusable** |
+| Overall | 3,047 | 78.2% | 54.6% | 3 candidates each, **unusable** |
+
+**So build on the Location rows and never on the overall row.** A test must assert
+the uniqueness, which turns the decoding from a liberty into a checked property.
+
+**And the lesson is better than plain Hawthorne.** Setup shows the ICU pair, 80.6
+against 69.2, a gap of 11 points that reads as "being watched barely matters".
+The reveal adds the outpatient pair, 64.7 against 24.1, a gap of 41 points. The
+effect is nearly four times larger in one setting than the other, so the useful
+claim is not that observation changes behaviour but that **how much it changes
+behaviour is itself unstable**, which is what makes an audited compliance figure
+hard to compare across wards.
 
 ---
 

@@ -193,6 +193,74 @@ not before.
 **Note.** This is the one on this list that a non-clinical reader will find most
 immediately useful, which matters for the `everyday` audience tag.
 
+---
+
+#### SHIPPED 2026-07-30 as `who-paid-for-the-review`. The block was the abstract, not the paper.
+
+This gap sat blocked for most of a day because the abstract of Barnes & Bero
+gives only three of the four cells: 106 reviews, 39 concluding not harmful, 29 of
+those 39 industry affiliated. Deriving the fourth from the odds ratio of 88.4 is
+reconstruction and was refused. **The full text prints all four**, twice, in the
+Results and again in Table 3, and reading it was the whole fix.
+
+|  | Industry affiliated (31) | Not affiliated (75) |
+|---|---:|---:|
+| Passive smoking harmful | 2 (6%) | 65 (87%) |
+| Passive smoking **not** harmful | **29 (94%)** | **10 (13%)** |
+
+**Reconciled seven ways from those four cells alone**, all asserted in the test
+file: the arms sum to 106; 39 of 106 is the printed 37 per cent; 67 of 106 the
+printed 63; 29 of 39 the printed 74; the four cell percentages are the printed
+94, 6, 13 and 87; the crude relative risk is 7.02 against a printed 7.0; the
+crude odds ratio is exactly 94.25 against a printed 94.2; and **the chi-square
+recomputed from the table is 60.69, which is the paper's own value to both
+decimals**. Reproducing a statistic the authors calculated independently is the
+strongest check this project has ever had on a transcribed table, and it should
+be the standard for any future puzzle built from a printed two by two.
+
+**The plan's design was wrong and the source improved it.** The plan wanted two
+sets of drug trials split by sponsor. What the paper actually supports is
+sharper: quality was scored **blind** by two trained assessors against a
+published instrument, and it did not predict the conclusion. Neither did peer
+review, topic or year. In the regression controlling for all four, affiliation
+was the only survivor. So the lesson is not "funded people conclude in favour of
+their funder", which nobody finds surprising. It is that **the signals a reader
+can actually assess carry no information**, and the one that does was undisclosed
+in 77 per cent of the articles.
+
+**Shape.** Existing `rates`, no engine change. Setup filtered to a composition
+stratum (31/106 against 75/106, which reads as a reassuringly independent
+literature and gives the reader the denominators they need), reveal dropping the
+filter to add the conclusions. `crownWinner: false`, because neither conclusion
+is a win and marking the taller bar would assert a finding.
+
+**The relative risk, not the odds ratio.** The paper prints 94.2 crude and 88.4
+adjusted, then says plainly that the two measures diverge because the outcome is
+not rare in the affiliated group. The puzzle quotes 7.0. Quoting 88.4 would be
+true, cited and thoroughly misleading, which is a lesson this deck already
+teaches elsewhere; a test asserts the reveal never mentions it.
+
+**Guarded against becoming a morality tale.** The lesson's mechanism is that a
+review is a chain of individually defensible judgement calls, that "the evidence
+remains inconclusive" can be written honestly about almost anything, and that
+nobody had to prove passive smoking safe, only keep the question looking open.
+Two deep dives take it off tobacco: Bes-Rastrollo 2013 on sugar-sweetened
+beverages (a different industry, an unfunded Spanish group with no declared
+interests, relative risk 5.0) and Lundh 2017's Cochrane review of 75 papers,
+whose finding that sponsored studies are **not** methodologically worse, and are
+better blinded, is the general form of what Barnes & Bero saw. One review item
+and one clause of `howItWorks` apply the test to a study the reader agrees with,
+funded by a campaign group, because a check applied in one direction only is not
+a check.
+
+**And the note applies the test to the source.** Barnes & Bero are UCSF tobacco
+control researchers with a stake in the answer, Bero is also an author on the
+Lundh review, and the note says so. What makes the finding hard to dismiss is the
+design rather than the authors: blinded quality scoring, blinded classification
+of conclusions, pre-specified affiliation criteria, and survival of the
+association when restricted to the highest-quality and to the peer-reviewed
+articles.
+
 ### 4. Cognitive biases: anchoring, availability, framing
 
 **This is the one that needs design work before it needs a source.**

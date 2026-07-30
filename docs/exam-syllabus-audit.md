@@ -345,7 +345,7 @@ consensus only · **X** absent from official documents.
 | Placebo / nocebo | X | **A** | O | X | **shipped** |
 | Statistical vs clinical significance | X | **A** | O | X | **shipped** (oseltamivir) |
 | Power, type I and type II error | X | **A** | O | X | **gap** |
-| Sponsorship / conflict of interest | X | **A** | T | X | **gap** |
+| Sponsorship / conflict of interest | X | **A** | T | X | **shipped** (Barnes & Bero 1998) |
 | Regression to the mean | X | **X** | O | X | **shipped** (Galton 1886) |
 | Ecological fallacy | X | **X** | O | X | **shipped** (Robinson 1950) |
 | Simpson's paradox | X | **X** | **X** | X | shipped (consensus only) |

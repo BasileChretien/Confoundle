@@ -230,12 +230,15 @@ number standing between Stage 1 and a shipped puzzle.
 
 ### 2. The word that put glass on the road
 
-**Status: SOURCED.** Arrived at by way of gaslighting, and much better than
-gaslighting.
+**Status: VERIFIED AT SOURCE, 2026-07-30. READY TO AUTHOR.** Read from the
+journal scan of *Journal of Verbal Learning and Verbal Behavior* 13, 585-589, not
+from the exam-board reproduction this entry previously relied on. Arrived at by
+way of gaslighting, and much better than gaslighting.
 
-Loftus and Palmer (1974). Participants watched a film of a car crash. A week
-later they were asked whether they had seen any broken glass. There was no
-broken glass in the film.
+Participants watched a film of a multiple car accident. A week later they were
+asked whether they had seen any broken glass. There was none in the film.
+
+**Experiment 2, Table 2.** 150 students, 50 per condition.
 
 | Verb used a week earlier | Yes | No | N |
 |---|---:|---:|---:|
@@ -243,20 +246,61 @@ broken glass in the film.
 | hit | 7 | 43 | 50 |
 | control, no speed question | 6 | 44 | 50 |
 
-**Reconciles three ways** (16+34, 7+43, 6+44 all give 50) and totals 150.
+**Reconciled three ways.** Each row sums to 50; the three rows sum to the 150 the
+Method section states; and the paper's own prose gives P(Y) as **.32** for smashed
+and **.14** for hit, which recompute exactly from 16/50 and 7/50. Chi-square 7.76,
+significant beyond the .025 level.
 
-**Why it fits.** Raw counts, so `rates` holds it with nothing invented. Two views
-of one dataset: show the "hit" and control rows, which are nearly identical and
-read as "the wording changed nothing", then add the "smashed" row. Utterly
-non-partisan: it is a film of a car crash. And it teaches something no shipped
-puzzle does, which is that a single word can retroactively install a memory of a
-thing that was never there. That is a different move from `framing-effect`, which
-is about equivalent descriptions of one choice.
+The same experiment's speed estimates are **10.46 mph** for smashed against
+**8.00** for hit, t(98) = 2.00, p < .05, and the t degrees of freedom independently
+confirm the two groups of fifty.
 
-**Caveats to carry.** Experiment 1 has **nine** participants per cell, which is
-far too small to author from; only Experiment 2 (50 per cell) is usable. The
-figures above come from an exam board's reproduction of the tables, not from the
-paper, so they are SOURCED and not VERIFIED.
+#### The correction this verification produced
+
+**Experiment 1's Table 1 gives smashed as 40.5 mph, not 40.8.** The exam-board
+reproduction this file previously cited said 40.8, and so do a good many revision
+sources. The journal page was read as an image to be certain, because the OCR
+could have misread a digit, and it plainly prints 40.5.
+
+| Verb | Mean speed estimate |
+|---|---:|
+| Smashed | 40.5 |
+| Collided | 39.3 |
+| Bumped | 38.1 |
+| Hit | 34.0 |
+| Contacted | 31.8 |
+
+Quasi F(5,55) = 4.65, p < .005. **Do not author from these figures.** Experiment 1
+had 45 students and "nine subjects were asked" each verb, so every cell holds
+**nine people**, which is far too small for this deck. Experiment 1 belongs in the
+deep dive as context, and Experiment 2 supplies the puzzle.
+
+#### A second, unexpected find for the deep dive
+
+Four of Experiment 1's seven films were staged crashes at known speeds of 20, 30,
+40 and 40 mph. The mean estimates for them were **37.7, 36.2, 39.7 and 36.1**. So
+the estimates barely track the truth at all: a crash at 20 mph and a crash at 40
+drew almost the same number. That is a self-contained lesson about the
+worthlessness of eyewitness speed estimates, sitting inside the paper as an aside,
+and it strengthens the main point rather than distracting from it.
+
+#### Why it fits
+
+Raw counts, so `rates` holds Experiment 2 with nothing invented. Two views of one
+dataset: show the "hit" and control rows, which are nearly identical (7 and 6) and
+read as "the wording changed nothing", then add the "smashed" row at 16, more than
+double either. Utterly non-partisan: it is a film of a car crash. And it teaches
+something no shipped puzzle does, which is that a single word can retroactively
+install a memory of a thing that was never there. That is a different move from
+`framing-effect`, which is about equivalent descriptions of one choice.
+
+#### Limits to carry into the provenance note
+
+Experiment 1's nine-per-cell design, as above. The subjects were students in
+groups of various sizes rather than a random sample. And the broken-glass question
+sat among ten questions in a random position, which is good practice and worth
+saying, because it forecloses the obvious objection that the question itself was
+the prompt.
 
 - Loftus EF, Palmer JC. Reconstruction of automobile destruction: an example of
   the interaction between language and memory. *Journal of Verbal Learning and

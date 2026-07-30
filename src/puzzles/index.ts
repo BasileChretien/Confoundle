@@ -29,6 +29,7 @@ import { meanVsMedian } from "./data/mean-vs-median";
 import { illusoryTruth } from "./data/illusory-truth";
 import { anchoring } from "./data/anchoring";
 import { gerrymandering } from "./data/gerrymandering";
+import { literaryDigest } from "./data/literary-digest";
 
 /**
  * The puzzle registry. Adding a puzzle = import its data file and add it to
@@ -66,6 +67,7 @@ const rawPuzzles: unknown[] = [
   illusoryTruth,
   anchoring,
   gerrymandering,
+  literaryDigest,
 ];
 
 export const puzzles: PuzzleType[] = rawPuzzles.map((p, i) => {

@@ -4038,6 +4038,140 @@ const items: TestItem[] = [
       en: "Publishing both countings and declining to explain the gap without evidence is exactly right. The gap is real and worth showing; attributing it to the map would need the comparison this report does not claim to have made.",
     },
   },
+
+  // ---- Self-selection ----
+  {
+    id: "ss-online-poll",
+    scenario: {
+      en: "A newspaper puts a question on its website and reports that of 340,000 people who clicked, 78 percent agreed. It notes that this is far more responses than any conventional poll could gather.",
+    },
+    trap: "self-selection",
+    explanation: {
+      en: "Everyone in that 340,000 chose to click, and the thing that makes somebody bother to click is usually feeling strongly. The count is large and tells you nothing about the people who scrolled past.",
+    },
+  },
+  {
+    id: "ss-response-rate-unreported",
+    scenario: {
+      en: "A survey of doctors reports its sample size, its confidence intervals and its margin of error, but nowhere states how many of those approached agreed to take part.",
+    },
+    trap: "self-selection",
+    explanation: {
+      en: "A margin of error describes sampling variability among those who answered. It says nothing at all about the ones who did not, so a missing response rate leaves the largest possible bias unmeasured.",
+    },
+  },
+  {
+    id: "ss-bigger-fixes-it",
+    scenario: {
+      en: "A researcher worries that a volunteer survey may be unrepresentative and decides the fix is to keep it open longer and gather four times as many responses.",
+    },
+    trap: "self-selection",
+    explanation: {
+      en: "Every extra response arrives through the same self-selecting door as the ones before it, so the bias is reproduced rather than diluted. More volunteers is a bigger pile of volunteers.",
+    },
+  },
+  {
+    id: "ss-product-reviews",
+    scenario: {
+      en: "A product carries 4,000 reviews averaging 4.6 stars, and the seller cites the number of reviews as evidence that the rating is reliable.",
+    },
+    trap: "self-selection",
+    explanation: {
+      en: "People write reviews when they are delighted or furious, and mostly stay silent in between. The number of reviews measures how many people were moved to write, not how the product performs.",
+    },
+  },
+  {
+    id: "ss-phone-in",
+    scenario: {
+      en: "A radio programme invites listeners to call in about a proposed law and reports that callers ran nine to one against it.",
+    },
+    trap: "self-selection",
+    explanation: {
+      en: "Calling a radio station costs time and effort, which people spend when they are angry. A nine to one split among callers is evidence about intensity, not about how the audience divides.",
+    },
+  },
+  {
+    id: "ss-exit-survey",
+    scenario: {
+      en: "A hospital leaves satisfaction cards at the exit and reports that 92 percent of returned cards rated the visit good or excellent.",
+    },
+    trap: "self-selection",
+    explanation: {
+      en: "The people most upset by a visit are often the least likely to stop at a table and fill in a card on the way out. The returned cards are a sample of who chose to stay and write.",
+    },
+  },
+  {
+    id: "ss-mailing-list-fixed",
+    scenario: {
+      en: "A polling firm is criticised for an unrepresentative contact list, so it buys a properly random list of the whole population and mails everyone on it. A fifth reply, and it publishes the result as a random sample.",
+    },
+    trap: "self-selection",
+    explanation: {
+      en: "Randomising who you approach does nothing about who agrees to answer. A random list with a one in five reply rate yields a self-selected fifth, and the two problems need separate fixes.",
+    },
+  },
+  {
+    id: "ss-recruited-volunteers",
+    scenario: {
+      en: "A trial of a fitness programme advertises for participants and finds that those who enrolled improved substantially over six months, concluding the programme works.",
+    },
+    trap: "self-selection",
+    explanation: {
+      en: "People who answer an advertisement for a fitness programme are already motivated to get fitter, and some would have improved anyway. The comparison needed is against similar volunteers who were not given the programme.",
+    },
+  },
+  {
+    id: "ss-petition-count",
+    scenario: {
+      en: "A campaign presents a petition with 60,000 signatures and describes it as showing what the county thinks.",
+    },
+    trap: "self-selection",
+    explanation: {
+      en: "A petition counts only people who agreed and were reached and bothered to sign; there is no denominator and no way for a disagreeing person to be recorded. It measures organisation, not opinion.",
+    },
+  },
+  {
+    id: "ss-alumni-salaries",
+    scenario: {
+      en: "A university reports median graduate earnings from a survey its alumni office sent out, noting proudly that it received several thousand replies.",
+    },
+    trap: "self-selection",
+    explanation: {
+      en: "Graduates who are doing well are more willing to tell their university what they earn. The several thousand replies are drawn disproportionately from the successful, which pushes the median up.",
+    },
+  },
+
+  // ---- Sound reasoning about who gets counted (decoys) ----
+  {
+    id: "ok-reported-nonresponse",
+    scenario: {
+      en: "A survey states that 4,200 households were approached, that 2,900 took part, and that the results are weighted to match census figures for age, region and housing tenure.",
+    },
+    trap: null,
+    explanation: {
+      en: "The response rate is disclosed and the known imbalances are corrected. That does not guarantee the non-responders were like the responders, but it is exactly what a careful survey can do and report.",
+    },
+  },
+  {
+    id: "ok-chased-nonresponders",
+    scenario: {
+      en: "Researchers follow up a sample of people who did not reply to their questionnaire, interview them in person, and report that their answers closely matched those of the original responders.",
+    },
+    trap: null,
+    explanation: {
+      en: "This is the direct test for non-response bias rather than an assurance about it. Sampling the silent group and comparing is the only way to learn whether their absence mattered.",
+    },
+  },
+  {
+    id: "ok-census-total",
+    scenario: {
+      en: "A council reports the number of children enrolled in its schools from its own enrolment records rather than from a survey, and gives the figure without a margin of error.",
+    },
+    trap: null,
+    explanation: {
+      en: "This is a count of everybody rather than a sample of anybody, so nobody selected themselves into it and no sampling error applies. Reporting it without a margin of error is correct.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

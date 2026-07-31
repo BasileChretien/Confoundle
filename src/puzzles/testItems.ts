@@ -5155,6 +5155,139 @@ const items: TestItem[] = [
       en: "When there is no evidence that the subgroups genuinely differ, the overall estimate is the better estimate for each of them, and it rests on far more patients. Reporting the odd subgroup while declining to act on it is the honest handling.",
     },
   },
+  // ---- The conjunction fallacy ----
+  {
+    id: "cf-recession-mechanism",
+    scenario: {
+      en: "An economist offers a committee two forecasts for next year: a recession, or a recession triggered by an energy price shock. The committee rates the second as more likely because it names a mechanism.",
+    },
+    trap: "conjunction-fallacy",
+    explanation: {
+      en: "Every recession triggered by an energy shock is a recession, so the second forecast describes a smaller set of futures and cannot be the likelier one. Naming a mechanism makes a story easier to picture, which is not the same as making it easier to happen.",
+    },
+  },
+  {
+    id: "cf-failure-chain",
+    scenario: {
+      en: "A risk review compares two statements: that the system may fail during peak load, and that a queue may overflow during peak load and take the payment service down with it. The named chain is scored as the higher risk.",
+    },
+    trap: "conjunction-fallacy",
+    explanation: {
+      en: "The specific chain is one of the ways the system could fail, so its probability is at most that of failing at all. A scenario earns its place in a risk register by being worth preparing for, not by being the most probable, and the two questions have been run together here.",
+    },
+  },
+  {
+    id: "cf-hospital-infection",
+    scenario: {
+      en: "Asked what is most likely to be going on with a feverish patient, a team ranks a hospital-acquired infection resistant to first-line antibiotics above an infection.",
+    },
+    trap: "conjunction-fallacy",
+    explanation: {
+      en: "Resistant hospital-acquired infections are a subset of infections, so they cannot be more common than the category containing them. The narrower answer feels better because it explains more, and explaining more is precisely what adds conditions and cuts the number of patients who fit.",
+    },
+  },
+  {
+    id: "cf-travel-insurance",
+    scenario: {
+      en: "Travellers are offered two policies at the same price: one that pays out on death from any cause during the trip, and one that pays out on death caused by an act of terrorism during the trip. Most pick the second.",
+    },
+    trap: "conjunction-fallacy",
+    explanation: {
+      en: "The first policy covers everything the second covers and a great deal besides, so at the same price it is strictly the better buy. The second wins because a vivid named cause feels more real than the abstract category that contains it.",
+    },
+  },
+  {
+    id: "cf-candidate-profile",
+    scenario: {
+      en: "Given a description of an applicant who volunteers at a climbing club, a hiring panel judges it more likely that she is an engineer who climbs at weekends than that she is an engineer.",
+    },
+    trap: "conjunction-fallacy",
+    explanation: {
+      en: "Engineers who climb at weekends are engineers, so there cannot be more of them. The description was chosen to match the extra clause, and matching a description is a different question from how many people fit it.",
+    },
+  },
+  {
+    id: "cf-weather-pair",
+    scenario: {
+      en: "A forecaster tells a race organiser there is a good chance of rain, and a better chance of rain with strong winds, because the front coming in usually brings both.",
+    },
+    trap: "conjunction-fallacy",
+    explanation: {
+      en: "However tightly rain and wind travel together, days with both are a subset of days with rain, so the pair cannot be the more likely outcome. A strong correlation makes the two probabilities close, and close is the most it can ever do.",
+    },
+  },
+  {
+    id: "cf-business-plan",
+    scenario: {
+      en: "Two pitches ask for the same investment. One says the company will reach profitability within three years. The other says it will reach profitability within three years by winning two named retail chains and then expanding into a second country. The second reads as the safer bet.",
+    },
+    trap: "conjunction-fallacy",
+    explanation: {
+      en: "The second pitch has to clear three hurdles rather than one, so it is the less likely of the two by construction. Detail reads as competence, and here it is also a list of extra ways to fail.",
+    },
+  },
+  {
+    id: "cf-survey-option",
+    scenario: {
+      en: "A survey asks readers to rate how likely each of two events is over the next year: that the local river floods, and that the local river floods after a storm upstream. The second gets the higher average rating.",
+    },
+    trap: "conjunction-fallacy",
+    explanation: {
+      en: "Floods that follow a storm upstream are floods, so the second event cannot be rated higher without the ratings being inconsistent. Rating each statement separately hides the nesting, which is exactly why this shows up in surveys that ask about one item per line.",
+    },
+  },
+  {
+    id: "cf-incident-story",
+    scenario: {
+      en: "After a warehouse fire, an investigator's colleagues find a detailed account naming a faulty charger, an overloaded socket and a propped fire door more convincing than the plain statement that an electrical fault started it.",
+    },
+    trap: "conjunction-fallacy",
+    explanation: {
+      en: "The detailed account is one particular electrical fault story among many, so it is less probable than the plain statement even though it feels better supported. A narrative that hangs together is being read as evidence, when what it actually is is a narrower claim.",
+    },
+  },
+  {
+    id: "cf-lost-first-set",
+    scenario: {
+      en: "Before a match, a commentator says it is more likely that the defending champion loses the first set and goes on to win the match than that she loses the first set at all.",
+    },
+    trap: "conjunction-fallacy",
+    explanation: {
+      en: "Losing the first set and winning the match is one of the things that can follow from losing the first set, so it cannot be the likelier of the two. The comeback is a better story, and a better story is not a bigger share of matches.",
+    },
+  },
+
+  // ---- Sound handling of nested claims (decoys) ----
+  {
+    id: "ok-narrower-is-rarer",
+    scenario: {
+      en: "An analyst presents a detailed scenario, then notes that because it specifies three separate conditions it is less likely than the general outcome it is an instance of, and gives it as an illustration rather than a forecast.",
+    },
+    trap: null,
+    explanation: {
+      en: "This is the arithmetic handled correctly and out loud. A specific scenario is worth writing down for planning, and saying so while marking it as the rarer case keeps its usefulness without borrowing probability it does not have.",
+    },
+  },
+  {
+    id: "ok-plan-for-not-predict",
+    scenario: {
+      en: "A team builds its contingency plan around one specific failure sequence, stating that it is not the most probable thing that could go wrong but is the one they are least able to recover from.",
+    },
+    trap: null,
+    explanation: {
+      en: "Which scenario to prepare for and which scenario is most likely are different questions, and this separates them explicitly. Planning around a rare case is a judgement about consequences, which is legitimate as long as nobody claims it is also the probable one.",
+    },
+  },
+  {
+    id: "ok-conditional-stated",
+    scenario: {
+      en: "A report states that if the supplier fails, the most likely follow-on is a shortage within two weeks, and separately gives the chance that the supplier fails at all.",
+    },
+    trap: null,
+    explanation: {
+      en: "Splitting the claim into a conditional probability and the probability of the condition avoids the trap entirely, because the reader can multiply the two rather than judging a compound story by how well it hangs together.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

@@ -868,8 +868,29 @@ with published counts, all with their authors' work decades old.
 
 <!-- skill: conjunction-fallacy -->
 
-**Status: SOURCED 2026-07-31, and the source changed.** Tversky and Kahneman
-(1983). Given a description of Linda, large majorities rate "bank teller and
+**Status: SHIPPED 2026-07-31** as `two-things-at-once`, on the replication
+rather than the original. What follows is the record of how the source was
+chosen, kept because the reasoning is the interesting part.
+
+**RESOLVED 2026-07-31.** The PDF was supplied and Table 1 on page 554 read from
+the rendered page, which mattered: `pdftotext -layout` shifts the study column
+against the row descriptions in that table and would have paired several counts
+with the wrong condition. The six cells are, as violations of the conjunction
+rule with and without a $4 incentive for the correct answer, answering alone
+50/86 and 31/94, in pairs 27/56 and 5/38, in trios 10/39 and 5/48. Reconciled
+five ways: all six printed percentages reproduce, each pair of arms sums to its
+printed subtotal row in both numerator and denominator, the three denominators
+sum to exactly the 361 participants the methods section states on the previous
+page, the prose in section 3.2 quotes the alone row as 58 and 33 per cent, and
+footnote 11's truth-wins predictions reproduce from these rates. The puzzle is
+built on the incentive and consultation arms, with the reveal that unpaid trios
+(25.6 per cent) beat paid individuals (33.0 per cent). The famous 85 per cent
+appears nowhere in the puzzle: this project has not read the 1983 paper, and a
+test asserts that neither that figure nor its counts occur in any authored
+string.
+
+**Status when opened: SOURCED 2026-07-31, and the source changed.** Tversky and
+Kahneman (1983). Given a description of Linda, large majorities rate "bank teller and
 active in the feminist movement" as more probable than "bank teller", which is
 impossible. Completely non-partisan, instantly shareable, and the deck has
 nothing on probability composition.
@@ -913,6 +934,11 @@ is a *citation excerpt in someone else's paper*, not the table, and this project
 does not author from those. The numbers to read off are: the proportion violating
 the conjunction principle in each condition, with denominators, for the
 no-incentive, incentive, and group-consultation arms.
+
+The PDF was supplied by hand and the table read. The citing article's "58% to
+33%" turned out to be right, which is not the point: it was right the way a
+guess can be right, and the denominators it omitted (86 and 94) are what the
+puzzle actually needed.
 
 ### 10. Confirmation bias, as an experiment rather than a slogan
 

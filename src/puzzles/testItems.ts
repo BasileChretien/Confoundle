@@ -5421,6 +5421,139 @@ const items: TestItem[] = [
       en: "Keeping the promise and the performance in separate columns is the whole discipline, because it lets a reader see the gap instead of having it closed for them. A pledge is worth reporting as a pledge, and only the audited figure speaks to what happened.",
     },
   },
+  // ---- Metaphor framing ----
+  {
+    id: "mf-war-on",
+    scenario: {
+      en: "A strategy paper declares a war on obesity. The plan that follows is built around targets, campaigns and defeating the problem, and contains nothing about redesigning the places people live.",
+    },
+    trap: "metaphor-framing",
+    explanation: {
+      en: "Calling it a war imports enemies, victory and surrender, and quietly rules out the possibility that the thing is a condition to be managed rather than an opponent to be beaten. The metaphor made that choice before any argument was offered for it.",
+    },
+  },
+  {
+    id: "mf-belt-tightening",
+    scenario: {
+      en: "A minister argues that the country must tighten its belt like any household that has overspent. The comparison is not defended, and the budget follows from it.",
+    },
+    trap: "metaphor-framing",
+    explanation: {
+      en: "The household metaphor brings the intuition that spending less is always prudent, which is a contested economic claim smuggled in as common sense. A state that issues its own currency and borrows at long maturities differs from a household in exactly the respects that matter here.",
+    },
+  },
+  {
+    id: "mf-immune-system",
+    scenario: {
+      en: "A security vendor describes its product as an immune system for the network. The buyer starts asking about detection and response, and stops asking whether the vulnerable service should be exposed at all.",
+    },
+    trap: "metaphor-framing",
+    explanation: {
+      en: "An immune system fights intruders that have already entered, so the metaphor moves attention to detection and away from prevention. Both are real options, and the figure of speech chose between them without saying so.",
+    },
+  },
+  {
+    id: "mf-viral-rumour",
+    scenario: {
+      en: "A report on a rumour spreading online frames it as a contagion and recommends quarantining accounts and inoculating the public. Nobody asks why people found the rumour worth believing.",
+    },
+    trap: "metaphor-framing",
+    explanation: {
+      en: "Contagion treats belief as something people catch passively, which rules out the possibility that they were persuaded by something and had reasons. The remedies proposed follow from the metaphor rather than from any finding about why the rumour spread.",
+    },
+  },
+  {
+    id: "mf-brain-hard-drive",
+    scenario: {
+      en: "A popular article explains memory as the brain's hard drive, then reports as a surprising discovery that memories change each time they are recalled.",
+    },
+    trap: "metaphor-framing",
+    explanation: {
+      en: "Storage metaphors imply faithful retrieval, so reconstruction looks like a malfunction rather than like how the system works. The finding is only surprising relative to the metaphor, which was never evidence for anything.",
+    },
+  },
+  {
+    id: "mf-arms-race",
+    scenario: {
+      en: "Two companies' hiring is described as an arms race for talent, and the board concludes it must outspend the rival or lose.",
+    },
+    trap: "metaphor-framing",
+    explanation: {
+      en: "An arms race is a contest in which falling behind is fatal and the only move is to escalate, which forecloses restraint, differentiation, or simply competing somewhere else. The word decided the strategy before the strategy was discussed.",
+    },
+  },
+  {
+    id: "mf-flood",
+    scenario: {
+      en: "A briefing describes arrivals at a border as a flood, and the options tabled are barriers, containment and stemming the flow.",
+    },
+    trap: "metaphor-framing",
+    explanation: {
+      en: "A flood is a mindless force of nature, which removes the individuality of the people described and rules out any option involving processing, hosting or selecting among them. Whatever the right policy is, the metaphor settled the shape of the answer in advance.",
+    },
+  },
+  {
+    id: "mf-battle-with-illness",
+    scenario: {
+      en: "A patient's illness is repeatedly described as a fight she must not give up, and the care team notices she is reluctant to discuss palliative options.",
+    },
+    trap: "metaphor-framing",
+    explanation: {
+      en: "The battle metaphor turns stopping treatment into surrender and dying into a personal failure, which is a heavy thing to attach to a clinical decision. It is also not neutral about which choices are respectable, though nothing in the evidence made it so.",
+    },
+  },
+  {
+    id: "mf-broken-machine",
+    scenario: {
+      en: "A consultant describes a struggling department as a broken machine and proposes replacing the faulty parts, meaning several members of staff.",
+    },
+    trap: "metaphor-framing",
+    explanation: {
+      en: "A machine has interchangeable components and no relationships, so the metaphor makes replacement the natural repair and hides everything about incentives, information and how the work actually flows. The diagnosis came from the figure of speech.",
+    },
+  },
+  {
+    id: "mf-marketplace-of-ideas",
+    scenario: {
+      en: "A platform defends its policy by saying the marketplace of ideas will sort truth from falsehood, and declines to consider whether its own ranking favours some claims over others.",
+    },
+    trap: "metaphor-framing",
+    explanation: {
+      en: "A marketplace implies informed buyers, comparable goods and no thumb on the scale, and the argument depends entirely on those implications holding. Stating them plainly turns a settled metaphor back into the empirical question it was standing in for.",
+    },
+  },
+
+  // ---- Sound handling of a metaphor (decoys) ----
+  {
+    id: "ok-metaphor-named-and-tested",
+    scenario: {
+      en: "An analyst opens by saying she will treat the problem as an epidemic, notes that this assumes person to person transmission, and then shows the transmission data before continuing.",
+    },
+    trap: null,
+    explanation: {
+      en: "The metaphor is named, its load-bearing assumption is made explicit, and that assumption is then supported with evidence rather than borrowed. This is a metaphor used as a hypothesis instead of as an argument.",
+    },
+  },
+  {
+    id: "ok-metaphor-swapped",
+    scenario: {
+      en: "Before signing off a recommendation, a team restates the same facts under a second, opposite metaphor and checks whether their conclusion still follows. It does, and they say so in the paper.",
+    },
+    trap: null,
+    explanation: {
+      en: "This is the swap, applied deliberately. A conclusion that survives being retold under a rival figure of speech was resting on the evidence, and recording that the check was run lets a reader see it was not an accident.",
+    },
+  },
+  {
+    id: "ok-plain-description",
+    scenario: {
+      en: "A report avoids calling the problem anything at all, describing instead what is rising, by how much, among whom and over what period, and lists the available responses without grouping them.",
+    },
+    trap: null,
+    explanation: {
+      en: "Refusing the shorthand costs the reader a little vividness and buys them the whole option set. Listing responses without grouping them is the part that matters most, since a grouping is itself a quiet metaphor about which things belong together.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

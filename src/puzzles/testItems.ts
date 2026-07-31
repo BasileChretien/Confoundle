@@ -5288,6 +5288,139 @@ const items: TestItem[] = [
       en: "Splitting the claim into a conditional probability and the probability of the condition avoids the trap entirely, because the reader can multiply the two rather than judging a compound story by how well it hangs together.",
     },
   },
+  // ---- The self-applied label ----
+  {
+    id: "sal-institute-name",
+    scenario: {
+      en: "A television debate introduces a guest as the director of the Institute for Independent Policy Research. The host treats the affiliation as establishing that the guest has no stake in the outcome.",
+    },
+    trap: "self-applied-label",
+    explanation: {
+      en: "The word independent in an organisation's name was chosen by that organisation and required nobody's agreement. Independence is a fact about who funds and directs the work, which is a matter of public filings rather than of stationery.",
+    },
+  },
+  {
+    id: "sal-official-country-name",
+    scenario: {
+      en: "A briefing note describes a state as a republic on the strength of its official name, and infers from this that its head of state must be answerable to some elected body.",
+    },
+    trap: "self-applied-label",
+    explanation: {
+      en: "A country's official name is written by whoever holds power there, so it is a claim rather than a finding, and several of the most tightly controlled states in the world carry the most generous names. What settles it is whether anyone has ever been removed from office by a vote.",
+    },
+  },
+  {
+    id: "sal-natural-label",
+    scenario: {
+      en: "Two jars sit side by side at the same price. One is labelled all natural. A shopper concludes it must have fewer additives, without turning either jar around.",
+    },
+    trap: "self-applied-label",
+    explanation: {
+      en: "In most jurisdictions natural on a food label is not a defined term and no one verifies it, so it costs the manufacturer nothing to print. The ingredients list on the back is the regulated part, which is why it is the part worth reading.",
+    },
+  },
+  {
+    id: "sal-bill-title",
+    scenario: {
+      en: "A committee member argues that colleagues opposing a bill are hard to explain, since the bill's official short title announces that it protects children.",
+    },
+    trap: "self-applied-label",
+    explanation: {
+      en: "The title of a bill is written by its sponsors and is a piece of advocacy attached to the text, not a summary of it. Whether the bill protects anybody is a question about its clauses, and a title chosen to make opposition sound indefensible is a reason to read them more carefully rather than less.",
+    },
+  },
+  {
+    id: "sal-mission-statement",
+    scenario: {
+      en: "An investor reviewing a company's safety record is reassured by the values page on its website, which states that safety is the firm's first priority and always has been.",
+    },
+    trap: "self-applied-label",
+    explanation: {
+      en: "A values page is written by the company about the company and passes no external test, so it carries no information about the company's conduct. The incident rate, the inspection findings and the settled claims are written by other people, which is what makes them worth something.",
+    },
+  },
+  {
+    id: "sal-eco-seal",
+    scenario: {
+      en: "A product carries a green leaf seal reading Certified Eco Friendly. A buyer takes the seal as evidence the claim has been checked, without looking up who issues it.",
+    },
+    trap: "self-applied-label",
+    explanation: {
+      en: "A seal is only worth the independence of whoever grants it, and some are run by the industries they certify or invented by the manufacturer outright. The question is not whether a badge exists but who can withhold it, and on what evidence.",
+    },
+  },
+  {
+    id: "sal-journal-title",
+    scenario: {
+      en: "A paper is cited as authoritative because it appeared in a journal whose title contains the words International and Advanced, and which describes itself on its homepage as rigorously peer reviewed.",
+    },
+    trap: "self-applied-label",
+    explanation: {
+      en: "Any publisher may put those words in a title and on a homepage, and predatory journals do exactly that because the words are free. Whether review happened is a question about the editorial board, the indexing and the fees, none of which the title reports.",
+    },
+  },
+  {
+    id: "sal-democratic-charter",
+    scenario: {
+      en: "A trade body's founding charter guarantees that members may vote out the executive at any general meeting. A journalist reports the body as member controlled on that basis.",
+    },
+    trap: "self-applied-label",
+    explanation: {
+      en: "A written guarantee describes what the document says, not what has happened under it, and the two come apart routinely. The reportable fact is how often a contested vote has been held and whether an executive has ever actually lost one.",
+    },
+  },
+  {
+    id: "sal-grassroots-group",
+    scenario: {
+      en: "A campaign group calling itself Local Families for Fair Energy runs advertisements against a proposed levy, and a councillor cites it as evidence that residents oppose the measure.",
+    },
+    trap: "self-applied-label",
+    explanation: {
+      en: "A name asserting that a group is local and made of families is chosen by whoever registered it, and campaigns funded by an affected industry are routinely named this way for precisely that reason. Who pays for the advertising is on the record and answers the question the name only gestures at.",
+    },
+  },
+  {
+    id: "sal-award-self-issued",
+    scenario: {
+      en: "A clinic advertises itself as an award-winning centre of excellence. The award turns out to be one the clinic's own parent group created and administers.",
+    },
+    trap: "self-applied-label",
+    explanation: {
+      en: "An award given by the recipient to itself conveys nothing beyond a willingness to print it, and centre of excellence is in most places an unregulated phrase. What would count is an accreditation that can be refused, or outcomes reported to a registry the clinic does not control.",
+    },
+  },
+
+  // ---- Sound handling of names and labels (decoys) ----
+  {
+    id: "ok-label-with-an-auditor",
+    scenario: {
+      en: "A shopper trusts an organic label after checking that it is a legally defined term in her country, that certification requires an annual inspection, and that certificates have been withdrawn from producers who failed.",
+    },
+    trap: null,
+    explanation: {
+      en: "This is the right test applied and passed. A label means something exactly when an outside party can refuse it and sometimes does, and the shopper checked both halves rather than trusting the word itself.",
+    },
+  },
+  {
+    id: "ok-name-set-aside",
+    scenario: {
+      en: "A researcher writing about a self-described think tank uses its name once, notes that the description is the organisation's own, and then reports its funding sources and publication record.",
+    },
+    trap: null,
+    explanation: {
+      en: "Naming a thing as it names itself is unavoidable and harmless as long as the reader is told whose description it is. Setting the label aside and going to the funded, checkable facts is exactly the move the label was designed to forestall.",
+    },
+  },
+  {
+    id: "ok-promise-and-record-separate",
+    scenario: {
+      en: "A report on a company's climate pledge states what the pledge commits to, states separately what the company's audited emissions have done since, and does not treat the first as evidence for the second.",
+    },
+    trap: null,
+    explanation: {
+      en: "Keeping the promise and the performance in separate columns is the whole discipline, because it lets a reader see the gap instead of having it closed for them. A pledge is worth reporting as a pledge, and only the audited figure speaks to what happened.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

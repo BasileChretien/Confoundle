@@ -979,6 +979,92 @@ Lichtenstein, Slovic, Fischhoff, Layman and Combs (1978), where the same
 mechanism is measured against real mortality and one control pair refutes the
 obvious objection from inside the data. See `plan-syllabus-gaps.md` gap 4.
 
+### 13. The self-applied label
+
+<!-- skill: self-applied-label -->
+
+**Status: SHIPPED 2026-07-31** as `what-it-calls-itself`. Sourced, verified and
+authored the same day; what follows is the record of how the source and the
+name were chosen, because for this entry both were open questions. Requested
+directly: a lesson on the political technique where a name asserts a property
+the thing does not have, in order to borrow the credit for it. The Democratic
+People's Republic of Korea is neither democratic nor a republic. National
+Socialism was not socialism. The deck has `framing-effect`, which is the same
+facts told with a different emotional colour, and nothing at all on a proper
+name or charter that simply makes a false claim about itself.
+
+**There is no single agreed name for it, and that is worth saying in the
+lesson.** Four established terms each cover part of the ground and none covers
+all of it:
+
+- **Persuasive definition**, Charles Leslie Stevenson, *Mind* 1938. Keeping a
+  word's favourable emotive force while changing what it denotes. The closest
+  philosophical term, and exactly what happens to *democratic*, *socialist* and
+  *republic*. It describes redefining a common noun, not naming an entity.
+- **Glittering generality**, one of the seven devices named by the Institute
+  for Propaganda Analysis in 1937. Virtue words attached to a thing to win
+  assent without evidence. Close, but about vague words in an argument.
+- **Doublespeak**, William Lutz after Orwell. Language that disguises or
+  reverses meaning. Popular rather than technical, and broader than this.
+- **Decoupling** and **ceremonial conformity**, Meyer and Rowan, *American
+  Journal of Sociology* 1977. The organisational version: adopt the legitimate
+  *form*, the names and charters and structures, while practice diverges. This
+  is the one with an empirical tradition behind it, and it is what the source
+  below is measuring.
+
+So the skill takes a plain English name of its own, `self-applied-label`, and
+the lesson names all four neighbours so a reader can follow any of them up.
+
+**Source pinned and read at source.** Law DS, Versteeg M. Sham constitutions.
+*California Law Review* 2013;101(4):863-947. Open access at
+`comparativeconstitutionsproject.org/wp-content/uploads/2013_Sham-Constitutions_with-DL.pdf`.
+The paper opens on the North Korean constitution's promises of private
+property, freedom of speech and freedom of movement, so the requested example is
+the authors' own.
+
+**Table 14, page 913, read from the rendered page.** `pdftotext -layout` shifts
+this table in *two* separate places, both caused by wrapped row labels, and the
+naive extraction mislabels five rows. The visual read is authoritative and four
+independent prose anchors on the facing page confirm it: footnote 136 spells out
+136/175 for arbitrary arrest, the prose gives 12.3 per cent for torture, 70 per
+cent for religious freedom, and "every country" for the death penalty.
+
+Countries fully honouring a right, out of those whose constitution guarantees it:
+
+| Right | 1981 | 2010 |
+|---|---|---|
+| Prohibition of torture | 26/83 (31.3%) | **19/155 (12.3%)** |
+| Freedom of expression | 25/136 (18.4%) | 48/180 (26.7%) |
+| Religious freedom | 112/142 (78.9%) | 127/179 (70.9%) |
+| Freedom of movement | 82/97 (84.5%) | 137/162 (84.6%) |
+| Prohibition of the death penalty | 14/14 (100%) | **49/49 (100%)** |
+
+**The puzzle.** Setup shows 1981 only, filtered to torture: 83 constitutions
+banned it and 26 of those countries honoured the ban. Question: by 2010 the ban
+had spread to 155 constitutions, so how many honoured it? Answer: 19. The
+promise nearly doubled its reach while the share keeping it fell by more than
+half. Uses `initialView.groupIds` to hide 2010, which no puzzle in the deck has
+needed before but the schema already supports.
+
+**The reveal has to carry the other half or the lesson is a cynical one.** The
+death penalty ban was honoured by every country that made it, in all four survey
+years, and freedom of movement by 85 per cent. So the honest lesson is not that
+charters are worthless, it is that the charter is not the evidence and which
+promise you are looking at decides everything.
+
+**Reconciled 2026-07-31.** All 17 figures taken from the paper reproduce their
+printed percentages from the counts. Separately, the typology counts on page 885
+sum to exactly 167 and all five of their printed percentages reproduce: of the
+167 constitutions in force in 2010 with sufficient data, 74 (44.3%) strong, 39
+(23.4%) sham, 13 (7.8%) weak, 11 (6.6%) modest, 30 (18.0%) exactly average.
+Those are the deep dive.
+
+**Non-partisanship.** No living party or side is named. The unit is the state
+and the span is 1981 to 2010, the authors chose the examples, and the countries
+that come off worst are the ones nobody defends. The lesson generalises past
+politics on purpose, to product labels, organisation names and certification
+seals, so it cannot read as being about one country.
+
 ---
 
 ## What this document does not contain

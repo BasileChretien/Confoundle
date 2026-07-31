@@ -4,6 +4,18 @@
  */
 export const ru: Record<string, string> = {
   // ---- UI chrome (buttons, labels, section headers) ----
+  "Review": "Повторение",
+  "Loading your review…": "Загружаем ваше повторение…",
+  "Nothing is due right now. Learn a puzzle or come back later.": "Сейчас ничего не запланировано. Пройдите урок или возвращайтесь позже.",
+  "Saved, and synced to your account.": "Сохранено и синхронизировано с вашим аккаунтом.",
+  "Saved on this device.": "Сохранено на этом устройстве.",
+  "Does this fall for {skill}?": "Это рассуждение попадает в {skill}?",
+  "Yes, it falls for it": "Да, попадает",
+  "No, the reasoning is sound": "Нет, рассуждение верное",
+  "Right.": "Верно.",
+  "Not this time.": "Не в этот раз.",
+  "Next": "Дальше",
+  "See your score": "Посмотреть результат",
   "The skill": "Навык",
   "Where this shows up": "Где это встречается",
   "See it in the wild": "Пример из жизни",

@@ -39,6 +39,7 @@ import { availabilityHeuristic } from "./data/availability-heuristic";
 import { multipleComparisons } from "./data/multiple-comparisons";
 import { conjunctionFallacy } from "./data/conjunction-fallacy";
 import { selfAppliedLabel } from "./data/self-applied-label";
+import { metaphorFraming } from "./data/metaphor-framing";
 
 /**
  * The puzzle registry. Adding a puzzle = import its data file and add it to
@@ -86,6 +87,7 @@ const rawPuzzles: unknown[] = [
   multipleComparisons,
   conjunctionFallacy,
   selfAppliedLabel,
+  metaphorFraming,
 ];
 
 export const puzzles: PuzzleType[] = rawPuzzles.map((p, i) => {

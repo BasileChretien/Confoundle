@@ -1194,7 +1194,27 @@ prints article counts or only percentages before committing.
 
 <!-- skill: metaphor-framing -->
 
-**Status: LEAD.** Describing crime as a virus rather than a beast shifts which
+**Status: SHIPPED 2026-07-31** as `one-word-in-the-report`, and the source was
+open access as predicted, so it was verified and authored the same day. Read
+from Table 1 on page 5, rendered as an image. Built on **Experiments 2 and 3,
+not the famous Experiment 1**, for a reason worth recording: Experiment 1's
+counts are printed as 126.5 and 97.5, because responses offering suggestions on
+both sides were split across categories, and half a person is not an
+observation. Experiments 2 and 3 are whole counts and are also the better
+comparison, because Experiment 3 is the authors' own null control. With the bare
+word primed beforehand and absent from the report, 75/118 against 66/102 chose
+enforcement, which is nothing; with one word inside the report, 80/113 against
+72/133, a seventeen point gap. Three anchors from Experiment 1 confirm the
+reading of the table: 170/231, 126.5/224 and the pooled 296.5/455 reproduce the
+printed 74, 56 and 65 per cent. Two things recorded rather than smoothed: the
+Experiment 2 conditions hold 246 coded responses against the 253 the paper says
+were analysed, seven short and unexplained, and the replication record for this
+effect is mixed and has not been read, so the puzzle claims only what this paper
+measured.
+
+The original entry follows.
+
+**Status when opened: LEAD.** Describing crime as a virus rather than a beast shifts which
 remedy people prefer, without changing a single statistic in the passage. This
 is distinct from `framing-effect`, which is about gain and loss wording; here
 the numbers are identical and only the metaphor moves. Candidate: Thibodeau PH,

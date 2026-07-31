@@ -5021,6 +5021,140 @@ const items: TestItem[] = [
       en: "Noticing that a recent case is inflating your sense of how common something is does not make the feeling go away, but it does stop the feeling from being used as evidence. Deferring to a pre-written criterion is what turns that noticing into a decision.",
     },
   },
+
+  // ---- Multiple comparisons ----
+  {
+    id: "mc-subgroup-reversal",
+    scenario: {
+      en: "A large trial shows a drug clearly works. One of its fourteen subgroups shows no benefit, and a guideline committee proposes withholding the drug from that group.",
+    },
+    trap: "multiple-comparisons",
+    explanation: {
+      en: "With fourteen slices of one trial, a subgroup landing on the wrong side of nothing is expected rather than surprising, and each slice is far smaller than the whole. The best estimate for those patients is the overall result, which already includes them.",
+    },
+  },
+  {
+    id: "mc-forty-outcomes",
+    scenario: {
+      en: "A study measured forty outcomes. The abstract reports the one that reached significance and describes it as the study's finding.",
+    },
+    trap: "multiple-comparisons",
+    explanation: {
+      en: "At the usual threshold, forty tests on data with nothing in them would be expected to produce about two significant results anyway. A reader shown only the winner cannot tell it from the two you would get for free.",
+    },
+  },
+  {
+    id: "mc-dashboard-red",
+    scenario: {
+      en: "An operations dashboard tracks sixty metrics with control limits set to flag the most extreme 5 per cent. Every week two or three flash red and get investigated as incidents.",
+    },
+    trap: "multiple-comparisons",
+    explanation: {
+      en: "Sixty metrics at a one in twenty threshold produce about three red flags a week even when nothing is wrong. The flags are the threshold working as specified, so investigating each as an incident spends the week chasing the design.",
+    },
+  },
+  {
+    id: "mc-fund-record",
+    scenario: {
+      en: "A marketing brochure highlights a fund that beat its benchmark ten years running, out of the eight hundred funds the firm has launched.",
+    },
+    trap: "multiple-comparisons",
+    explanation: {
+      en: "With enough funds a ten-year streak appears by chance alone, and the firm chose which one to show after the fact. The relevant number is how many were run, not how well the survivor did.",
+    },
+  },
+  {
+    id: "mc-regional-cluster",
+    scenario: {
+      en: "A health department maps a rare cancer across three thousand districts, finds one with three times the national rate, and opens an investigation into local industry.",
+    },
+    trap: "multiple-comparisons",
+    explanation: {
+      en: "Three thousand districts guarantee that some will sit far above the average from chance alone, especially small ones where a few cases move the rate a long way. A cluster found by scanning a map is a hypothesis, not evidence.",
+    },
+  },
+  {
+    id: "mc-genome-scan",
+    scenario: {
+      en: "Researchers test half a million genetic variants against a disease and report the twenty that came out at p below 0.05.",
+    },
+    trap: "multiple-comparisons",
+    explanation: {
+      en: "Half a million tests at that threshold would yield about twenty-five thousand hits with no real association at all, so twenty is fewer than chance would give. This is exactly why genome-wide work uses a far stricter threshold.",
+    },
+  },
+  {
+    id: "mc-ab-test-peeking",
+    scenario: {
+      en: "A team runs an A/B test and checks the results every morning, stopping as soon as the difference reaches significance.",
+    },
+    trap: "multiple-comparisons",
+    explanation: {
+      en: "Checking daily and stopping on the first significant reading is many tests, not one, and the stopping rule guarantees you halt on a favourable wobble. The false positive rate is far above the nominal one.",
+    },
+  },
+  {
+    id: "mc-school-league",
+    scenario: {
+      en: "A newspaper ranks two hundred schools by the change in their exam results and profiles the one that improved most, looking for what its head teacher did differently.",
+    },
+    trap: "multiple-comparisons",
+    explanation: {
+      en: "The largest change out of two hundred is where the noise is largest, and small schools swing most because a few pupils move the average. The profile explains a number that was mostly going to happen to somebody.",
+    },
+  },
+  {
+    id: "mc-post-hoc-cut",
+    scenario: {
+      en: "A trial finds no overall effect. The authors then report that the drug worked in women aged under 50 with severe disease, a group defined after the results came in.",
+    },
+    trap: "multiple-comparisons",
+    explanation: {
+      en: "A subgroup drawn after seeing the data is chosen because it looks good, so the usual thresholds do not apply to it at all. Defining a group by three characteristics at once means the analyst had a great many possible groups to pick from.",
+    },
+  },
+  {
+    id: "mc-many-questionnaires",
+    scenario: {
+      en: "A wellbeing study administers twelve questionnaires at four time points and reports that the intervention improved one score at one visit.",
+    },
+    trap: "multiple-comparisons",
+    explanation: {
+      en: "Twelve instruments at four time points is forty-eight opportunities, and at the usual threshold two or three would look positive with no effect whatever. A single hit among forty-eight is roughly what nothing looks like.",
+    },
+  },
+
+  // ---- Sound handling of many comparisons (decoys) ----
+  {
+    id: "ok-prespecified-primary",
+    scenario: {
+      en: "A protocol registered before recruitment names one primary outcome and states that everything else is exploratory. The paper reports the primary result first and labels the rest as hypothesis-generating.",
+    },
+    trap: null,
+    explanation: {
+      en: "Naming the primary outcome in advance means one test carries the claim and the reader can see which one it was. Labelling the others exploratory does not weaken them, it describes them accurately.",
+    },
+  },
+  {
+    id: "ok-corrected-threshold",
+    scenario: {
+      en: "A study testing thirty hypotheses tightens its threshold to account for the number of tests, reports both the raw and adjusted values, and says which results survive.",
+    },
+    trap: null,
+    explanation: {
+      en: "Adjusting the threshold for the number of tests is the direct remedy, and printing both figures lets a reader see what the adjustment cost. Stating which survive avoids the trick of correcting and then discussing the uncorrected list.",
+    },
+  },
+  {
+    id: "ok-subgroup-deferred-to-overall",
+    scenario: {
+      en: "A trial reports that one subgroup showed no benefit, notes that the test for a real difference between subgroups was not significant, and recommends the treatment for that subgroup on the strength of the overall result.",
+    },
+    trap: null,
+    explanation: {
+      en: "When there is no evidence that the subgroups genuinely differ, the overall estimate is the better estimate for each of them, and it rests on far more patients. Reporting the odd subgroup while declining to act on it is the honest handling.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

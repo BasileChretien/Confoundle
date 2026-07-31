@@ -330,7 +330,12 @@ the prompt.
 
 <!-- skill: multiple-comparisons -->
 
-**Status: LEAD.** The largest genuine hole in the deck's statistics coverage.
+**Status: SHIPPED 2026-07-31 as `multiple-comparisons`, slug
+`written-in-the-stars`.** Built on the ISIS-2 astrological subgroup, the second
+of the two candidates below, exactly as this entry predicted. The paper was
+obtained and Figure 5(b) read: it prints head counts, which the famous version
+of this story does not. See the source note below, which is kept because it
+records what nearly went wrong.
 
 Confoundle has `publication-bias` and `statistical-significance` but **nothing on
 multiplicity**. Named as a goal by the American Statistical Association's GAISE
@@ -392,6 +397,45 @@ session on the library's discovery service, or thelancet.com reached through a
 real link rather than a constructed one. The lesson from the availability puzzle
 applies here too, that an author or institutional repository copy often exists
 where the publisher's own page does not open.
+
+#### RESOLVED 2026-07-31. The PDF settled all three questions at once.
+
+Basile supplied the PDF. Answers, in the order the questions were asked:
+
+1. **The 1988 paper does carry it**, in the Discussion on page 356 and in
+   Figure 5(b). The received account was right, and is now checked.
+2. **It prints head counts**, which is the part that mattered and the part
+   nobody could have known without the figure. The famous version of this story
+   circulates as an effect size only: the investigators' own later commentary
+   gives "9% +/- 13" and no numerators anywhere, so a puzzle built from that
+   would have had nothing to author.
+3. So no new shape was needed. `rates` fits, because birth sign genuinely
+   partitions the trial.
+
+| 5-week vascular deaths | Aspirin | Placebo tablets |
+|---|---:|---:|
+| Gemini or Libra | **150/1357** (11.1%) | **147/1442** (10.2%) |
+| Other ten signs | **654/7228** (9.0%) | **868/7157** (12.1%) |
+
+**Reconciled six ways**, all in the test file. The four printed percentages
+reproduce. The odds ratios recomputed from the counts are a 9.5 per cent
+increase and a 27.9 per cent reduction, against the paper's own printed "9% SD
+13 increase" and "28% SD 5 reduction", which the authors computed separately and
+which is therefore an independent check. And the aspirin deaths sum to exactly
+the 804 the trial reports overall.
+
+**One discrepancy, recorded and not explained away.** The strata hold 8,585
+aspirin patients against 8,587 randomised, 8,599 placebo against 8,600, and
+1,015 placebo deaths against 1,016. Two, one and one short, most likely patients
+with no usable date of birth, but the paper does not say so and neither does the
+puzzle. A test pins the residuals.
+
+**And a better deep dive than expected.** The Figure 5 caption audits the trial's
+own subgroup analyses: the 26 non-astrological heterogeneity tests summed to 58.5
+on 50 degrees of freedom, and the authors note that one or two would be expected
+to reach p below 0.05 by chance alone even if nothing differed. Exactly one did,
+and they explain why they disbelieve that one too. A paper marking its own most
+tempting finding as probably noise is rare enough to be the example.
 
 ### 4. The map is not the territory, and the projection knows it
 

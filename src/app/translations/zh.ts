@@ -3943,4 +3943,107 @@ export const zh: Record<string, string> = {
     "一位刚漏诊了罕见病的医生把这件事说了出来，指出这个病例正让他想给所有人都做检查，然后回到指南的标准上去做决定。",
   "Noticing that a recent case is inflating your sense of how common something is does not make the feeling go away, but it does stop the feeling from being used as evidence. Deferring to a pre-written criterion is what turns that noticing into a decision.":
     "察觉到一个近期病例正在夸大你对某事有多常见的感觉，并不会让这感觉消失，但能阻止这感觉被当成证据使用。回到事先写好的标准上，正是把这份察觉变成决定的那一步。",
+  "In one subgroup of a heart attack trial, aspirin came out slightly worse than the dummy tablet.":
+    "在一项心脏病发作试验的某个亚组里，阿司匹林的结果比安慰剂药片略差。",
+  "ISIS-2 randomised 17,187 people with a suspected heart attack to aspirin or to identical placebo tablets, and counted who had died of a vascular cause five weeks later. Every patient's date of birth had been recorded on entry as an identifier, so the investigators were able to divide everybody by astrological birth sign and look at the twelve groups separately. Below is what they found among the patients born under Gemini or Libra. Aspirin did slightly worse than placebo there, and the difference is not statistically significant.":
+    "ISIS-2把17,187名疑似心脏病发作的人随机分到阿司匹林或外观相同的安慰剂药片，并统计五周后有谁死于血管性原因。每位患者的出生日期在入组时都作为标识记录了下来，因此研究者能够按星座把所有人分开，分别查看这十二个组。下面是双子座或天秤座患者中的结果。在那里阿司匹林比安慰剂略差，而这个差异并不具统计显著性。",
+  "What did aspirin do among the patients born under the other ten signs?":
+    "在其余十个星座出生的患者中，阿司匹林的表现如何？",
+  "Died of a vascular cause within five weeks": "五周内死于血管性原因",
+  "Allocated aspirin": "分配到阿司匹林",
+  Aspirin: "阿司匹林",
+  "Allocated placebo tablets": "分配到安慰剂药片",
+  Placebo: "安慰剂",
+  "Born under Gemini or Libra": "双子座或天秤座出生",
+  "Born under the other ten signs": "其余十个星座出生",
+  "Gemini and Libra only": "仅双子座与天秤座",
+  "Much the same. Aspirin is not up to much here either":
+    "差不多一样。在这里阿司匹林也没什么用",
+  "one subgroup went that way, so why would others differ":
+    "一个亚组是这样，其他为什么会不同呢",
+  "A large benefit. Around a 28 per cent cut in the odds of death":
+    "很大的获益。死亡几率下降约28%",
+  "ask what twelve slices of one trial would look like":
+    "想一想把同一项试验切成十二片会是什么样子",
+  "A small benefit, easily written off as chance":
+    "一点小获益，很容易归因于偶然",
+  "a real drug, but a marginal one": "是真药，但作用勉强",
+  "Nine per cent against twelve. Aspirin worked.":
+    "百分之九对百分之十二。阿司匹林是有效的。",
+  "Slice a result enough ways and one slice will look wrong":
+    "把一个结果切成足够多片，总有一片看起来是错的",
+  "Among the other ten signs, 654 of 7,228 on aspirin died against 868 of 7,157 on placebo: 9.0 per cent against 12.1, which the paper gives as a 28 per cent reduction in the odds of death. Among Gemini and Libra it was 150 of 1,357 against 147 of 1,442, a 9 per cent increase, and not significant. Same trial, same drug, same five weeks. The only thing that changed was the birth date on the form.":
+    "在其余十个星座中，服用阿司匹林的7,228人里有654人死亡，服用安慰剂的7,157人里有868人死亡：9.0%对12.1%，论文将其表述为死亡几率下降28%。而在双子座与天秤座中是1,357人里的150人对1,442人里的147人，即上升9%，且不显著。同一项试验，同一种药，同样的五周。唯一变了的是表格上的出生日期。",
+  "Both, side by side": "两者并排",
+  "The investigators did this on purpose and published it on purpose, and their own conclusion is the one worth keeping: the best estimate of what aspirin does for a Gemini is not the Gemini result, it is the result from everybody. That is not a quirk of astrology, it is what a subgroup is. Split 17,187 people twelve ways and each slice is about a twelfth the size, so each one is noisier, and with twelve of them the odds are good that at least one lands on the wrong side of nothing. The same paper counted this directly: across the 26 non-astrological subgroup analyses in the same figure, it says that if there were no real differences at all you would still expect one or two to come out significant by chance, and exactly one did. The uncomfortable part is that the astrological subgroup and the plausible-sounding one look identical on the page. Both are a smaller number of patients with a wider interval and a result that disagrees with the whole.":
+    "研究者是有意这么做、也是有意发表的，而值得记住的正是他们自己的结论：对一个双子座的人来说，阿司匹林能起什么作用，最好的估计不是双子座那一组的结果，而是所有人的结果。这不是占星术的怪癖，这就是亚组本身的性质。把17,187人分成十二份，每一片大约只有十二分之一大，因而噪声更大；而有十二片时，至少有一片落到零的另一侧的可能性相当高。同一篇论文直接把这件事数了出来：在同一张图里那26项非占星的亚组分析中，论文指出即使根本不存在真实差异，仍然预期会有一两项因偶然而显著，而恰好有一项如此。令人不安之处在于，占星的亚组和那些听上去合情合理的亚组，在纸面上看起来一模一样。两者都是更少的患者、更宽的区间，以及一个与总体不一致的结果。",
+  "The subgroup, and the rest of the trial": "这个亚组，以及试验的其余部分",
+  "Multiple comparisons": "多重比较",
+  "Every extra question you ask of one dataset is another chance for noise to look like a finding. A single result that would be surprising on its own stops being surprising once you know how many results were available, and the count of tests is the thing almost nobody reports.":
+    "你对同一批数据每多问一个问题，噪声就多一次机会看起来像发现。一个单独看来令人惊讶的结果，一旦你知道当时有多少个结果可供选取，就不再令人惊讶了；而检验的次数恰恰是几乎没有人会报告的东西。",
+  "The arithmetic is not subtle. If a test has a one in twenty chance of a false positive and you run one test, you are probably fine. Run twenty independent tests on data with nothing in them and you expect one to come out significant; run a hundred and you expect five. Nothing has to go wrong for this to happen, and no one has to cheat: it is the advertised error rate doing exactly what it says. What makes it dangerous is that the tests you ran but did not report are invisible in the write-up, so the reader sees one striking result and has no way to know it was drawn from a bag of forty. The astrological subgroup exists to make that visible. Nobody believes birth sign changes how aspirin works, so when the numbers say it does, the numbers are obviously the problem. The whole point is that a subgroup you would find plausible produces numbers that look exactly the same.":
+    "其中的算术一点也不微妙。如果一次检验有二十分之一的概率给出假阳性，而你只做一次，那多半没问题。对什么都没有的数据做二十次独立检验，预期会有一次显著；做一百次，预期五次。这件事的发生不需要任何环节出错，也不需要任何人作弊：这是公布出来的错误率完全按照它所声明的方式在运作。真正危险的是，做过却没有报告的检验在论文里是看不见的，于是读者看到一个醒目的结果，却无从知道它是从一袋四十个里挑出来的。占星的亚组之所以存在，就是为了让这一点变得可见。没有人相信出生星座会改变阿司匹林的作用，所以当数字这么说时，有问题的显然是数字。整件事的要点在于：一个你会觉得合情合理的亚组，产生的数字看起来一模一样。",
+  "Four habits follow, and the first is the one that does most of the work. Ask how many comparisons were available, not how many are shown: a trial with ten outcomes, five subgroups and three time points has a hundred and fifty places to find something, and the paper will show you the best one. Second, treat a subgroup result as a question rather than an answer. If the overall result is solid and a subgroup disagrees with it, the subgroup is usually wrong, because it is smaller and the overall estimate already includes those patients. Third, look for whether the analysis was pre-specified, which means the question was written down before anybody saw the data. That is exactly what a trial registry and a protocol are for, and it is why the deck's puzzle on registered protocols and this one are the same habit from two directions. Fourth, notice that this generalises far past medicine. A dashboard with forty metrics will show a red one every week; a portfolio of a thousand funds will contain one with ten straight winning years; a school district ranking twenty schools will find one that improved dramatically. In all three the reasonable question is not what happened to that one but how many chances there were for something to look like that.":
+    "由此有四个习惯，而第一个作用最大。要问当时有多少种比较可做，而不是展示了多少种：一项有十个结局、五个亚组和三个时间点的试验，有一百五十个地方可以找出点什么，而论文会把最好的那个拿给你看。第二，把亚组结果当作问题而不是答案。如果总体结果稳固而某个亚组与之相左，通常错的是那个亚组，因为它更小，而且总体估计里本来就包含了这些患者。第三，看这项分析是否事先规定，也就是问题是否在任何人看到数据之前就已写下。试验注册库和研究方案正是为此而设，这也是本卡组里关于已注册方案的那道题与这一道题其实是同一个习惯的两个方向。第四，请注意这远远超出医学。一个有四十个指标的看板每周都会有一个变红；一个持有一千只基金的组合里会有一只连续十年跑赢；一份二十所学校的排名里会找到一所进步惊人的。这三种情形中，合理的问题都不是那一个发生了什么，而是有多少机会让某个东西看起来像那样。",
+  "The trial that counted its own false positives":
+    "那项数清了自己假阳性的试验",
+  "The same figure that carries the astrological rows contains 26 other subgroup analyses, split by prior heart attack, diabetes, age, blood pressure, heart rate, ECG findings and more. The authors did the arithmetic on their own work: the heterogeneity test statistics summed to 58.5 on 50 degrees of freedom, which is unremarkable, and they note that if no real differences existed between subgroups at all, one or two of those 26 tests would still be expected to produce a result at p below 0.05 purely by chance. Exactly one did, for aspirin and previous heart attack. They then explain why they do not believe that one either, since aspirin significantly reduced reinfarction in precisely those patients, 38 of 1,454 against 66 of 1,483. It is a rare thing to see a paper mark its own most tempting finding as probably noise, and it is why this trial rather than a textbook example is the source here.":
+    "载有占星行的同一张图里还有另外26项亚组分析，按既往心梗、糖尿病、年龄、血压、心率、心电图表现等划分。作者们对自己的工作做了算术：异质性检验统计量之和为58.5，自由度50，这毫不出奇；他们并指出，即使亚组之间根本不存在真实差异，这26项中仍预期会有一两项纯凭偶然给出低于0.05的结果。恰好有一项如此，即阿司匹林与既往心梗。随后他们解释了为什么连这一项也不相信，因为恰恰在那些患者中，阿司匹林显著减少了再梗死，1,454人中的38人对1,483人中的66人。一篇论文把自己最诱人的发现标注为很可能是噪声，这是罕见的，这也正是此处以这项试验而非教科书例子作为来源的原因。",
+  "Multiple comparisons, a reasoning trap.": "多重比较，一个推理陷阱。",
+  "ISIS-2 gave aspirin or placebo to 17,187 people after a heart attack, then split them by astrological birth sign. Among Gemini and Libra, aspirin came out worse: 150 of 1,357 died against 147 of 1,442. Among the other ten signs it cut the odds of death by 28 per cent, 654 of 7,228 against 868 of 7,157. Same trial, same drug, same five weeks; only the birth date changed. The investigators published it deliberately, to show what happens when you slice one result twelve ways.":
+    "ISIS-2在心脏病发作后给17,187人服用阿司匹林或安慰剂，然后按星座把他们分开。在双子座与天秤座中，阿司匹林的结果更差：1,357人中有150人死亡，安慰剂则是1,442人中的147人。在其余十个星座中，它把死亡几率降低了28%，7,228人中的654人对7,157人中的868人。同一项试验，同一种药，同样的五周；变的只有出生日期。研究者是刻意发表这一点的，为的是展示把一个结果切成十二份会发生什么。",
+  "The counts here are printed rather than derived, and they come from the figure rather than from the commentary the astrological result is usually quoted from. That distinction matters: the famous version of this story circulates as an effect size, and the investigators' own later account of it gives 9 per cent plus or minus 13 with no numerators at all, which this deck could not have authored. Figure 5(b) prints the head counts. Reconciled six ways. All four printed percentages reproduce from the counts. The odds ratios recomputed from those counts are a 9.5 per cent increase and a 27.9 per cent reduction, against the paper's own printed 9 per cent increase and 28 per cent reduction, which is an independent check because the authors computed theirs separately. And the aspirin deaths in the two strata sum to exactly the 804 the paper reports for the whole trial. Three things a careful reader should hold against it. First, the strata do not quite close: they contain 8,585 aspirin patients against the 8,587 randomised, 8,599 placebo against 8,600, and 1,015 placebo deaths against 1,016. Two, one and one short. The likeliest explanation is a handful of patients with no usable date of birth, but the paper does not say so and neither does this note; the shortfall is recorded and left unexplained, and a test pins it so it cannot drift. Second, this is a subgroup of one trial from 1988, and while aspirin after a heart attack has been settled many times over since, the specific counts are of their time. Third, and most important for what the puzzle claims: the point is not that astrology is silly, which nobody disputes, but that a subgroup you would find plausible produces numbers indistinguishable from these. The investigators chose an absurd subgroup precisely so that the absurdity would be obvious while the statistics stayed real, and the lesson keeps their framing rather than scoring off the horoscope.":
+    "这里用到的计数是印出来的而不是推导出来的，而且取自图而不是那篇通常被引用来讲这个占星结果的评论。这个区别很重要：这个故事的著名版本是以效应量的形式流传的，而研究者们自己后来的叙述只给出百分之九上下十三，没有任何分子，本卡组据此写不出任何东西。图5(b)印出了计数。以六种方式对得上。四个印出的百分数都能从计数中还原。由这些计数重新算出的比值比是上升9.5%和下降27.9%，对应论文印出的上升9%和下降28%；由于作者是另行计算的，这构成一次独立核对。而两个层中阿司匹林组的死亡数之和，正好等于论文就整个试验报告的804。细心的读者应对此保留三点。第一，两层并不完全对得拢：其中阿司匹林患者8,585人，而随机化的是8,587人；安慰剂8,599人对8,600人；安慰剂死亡1,015例对1,016例。分别少两人、一人和一例。最可能的解释是少数患者没有可用的出生日期，但论文没有这么说，本注记也不这么说；缺口被如实记录且不加解释，并有一项测试将其固定，以免日后漂移。第二，这是1988年一项试验的一个亚组，尽管心梗后使用阿司匹林此后已被反复证实，这些具体计数仍属于那个年代。第三，也是对这道题所主张之事最重要的一点：要点不在于占星术荒唐，这没有人争论，而在于一个你会觉得合情合理的亚组，产生的数字与这些无法区分。研究者之所以挑选一个荒唐的亚组，正是为了让荒唐一目了然而统计依旧真实，本课保留他们的框架，而不是拿星座开玩笑。",
+  "A large trial shows a drug clearly works. One of its fourteen subgroups shows no benefit, and a guideline committee proposes withholding the drug from that group.":
+    "一项大型试验清楚表明某药有效。它的十四个亚组中有一个未显示获益，一个指南委员会提议不给该组使用。",
+  "With fourteen slices of one trial, a subgroup landing on the wrong side of nothing is expected rather than surprising, and each slice is far smaller than the whole. The best estimate for those patients is the overall result, which already includes them.":
+    "把同一项试验切成十四片，某个亚组落到零的另一侧是意料之中而非意外，而且每一片都比整体小得多。对那些患者而言最好的估计是总体结果，而总体结果本就包含了他们。",
+  "A study measured forty outcomes. The abstract reports the one that reached significance and describes it as the study's finding.":
+    "一项研究测量了四十个结局。摘要报告了达到显著性的那一个，并把它说成该研究的发现。",
+  "At the usual threshold, forty tests on data with nothing in them would be expected to produce about two significant results anyway. A reader shown only the winner cannot tell it from the two you would get for free.":
+    "在通常的阈值下，对什么都没有的数据做四十次检验，本来也会产生大约两个显著结果。只被展示了胜者的读者，无法把它与白得的那两个区分开。",
+  "An operations dashboard tracks sixty metrics with control limits set to flag the most extreme 5 per cent. Every week two or three flash red and get investigated as incidents.":
+    "一个运营看板追踪六十个指标，控制限设定为标出最极端的5%。每周都有两三个变红并被当作事故来调查。",
+  "Sixty metrics at a one in twenty threshold produce about three red flags a week even when nothing is wrong. The flags are the threshold working as specified, so investigating each as an incident spends the week chasing the design.":
+    "六十个指标在二十分之一的阈值下，即使什么问题都没有，每周也会产生大约三个红色告警。这些告警正是阈值按设计在运作，因此逐个当作事故去查，等于把一周时间用来追着设计本身跑。",
+  "A marketing brochure highlights a fund that beat its benchmark ten years running, out of the eight hundred funds the firm has launched.":
+    "一份销售手册着重介绍了一只连续十年跑赢基准的基金，而该公司总共发行过八百只基金。",
+  "With enough funds a ten-year streak appears by chance alone, and the firm chose which one to show after the fact. The relevant number is how many were run, not how well the survivor did.":
+    "基金数量足够多时，十年连胜纯凭偶然就会出现，而公司是在事后挑选展示哪一只的。有意义的数字是发行了多少只，而不是幸存者表现如何。",
+  "A health department maps a rare cancer across three thousand districts, finds one with three times the national rate, and opens an investigation into local industry.":
+    "某卫生部门在三千个辖区绘制一种罕见癌症的地图，发现其中一个的发病率是全国的三倍，于是对当地工业展开调查。",
+  "Three thousand districts guarantee that some will sit far above the average from chance alone, especially small ones where a few cases move the rate a long way. A cluster found by scanning a map is a hypothesis, not evidence.":
+    "三千个辖区必然会有一些纯凭偶然远高于平均，尤其是那些几例病例就能大幅拉动发病率的小辖区。扫描地图找出来的聚集是一个假设，而不是证据。",
+  "Researchers test half a million genetic variants against a disease and report the twenty that came out at p below 0.05.":
+    "研究者针对某疾病检验了五十万个基因变异，并报告其中低于0.05的二十个。",
+  "Half a million tests at that threshold would yield about twenty-five thousand hits with no real association at all, so twenty is fewer than chance would give. This is exactly why genome-wide work uses a far stricter threshold.":
+    "在那个阈值下做五十万次检验，即使一个真实关联也没有，也会得到大约两万五千个命中，所以二十个比偶然给出的还要少。全基因组研究之所以使用严格得多的阈值，原因正在于此。",
+  "A team runs an A/B test and checks the results every morning, stopping as soon as the difference reaches significance.":
+    "一个团队做A/B测试，每天早上查看结果，一旦差异达到显著就停止。",
+  "Checking daily and stopping on the first significant reading is many tests, not one, and the stopping rule guarantees you halt on a favourable wobble. The false positive rate is far above the nominal one.":
+    "每天查看并在第一次读到显著时停手，这是很多次检验而不是一次，而这条停止规则保证了你会停在一个有利的波动上。假阳性率远高于名义值。",
+  "A newspaper ranks two hundred schools by the change in their exam results and profiles the one that improved most, looking for what its head teacher did differently.":
+    "一家报纸按考试成绩的变化给两百所学校排序，并为进步最大的那一所做专访，寻找它的校长做了什么不一样的事。",
+  "The largest change out of two hundred is where the noise is largest, and small schools swing most because a few pupils move the average. The profile explains a number that was mostly going to happen to somebody.":
+    "两百个之中变化最大的那个，正是噪声最大的地方，而小学校波动更大，因为几个学生就能拉动平均分。这篇专访解释的，是一个反正总会落到某个人头上的数字。",
+  "A trial finds no overall effect. The authors then report that the drug worked in women aged under 50 with severe disease, a group defined after the results came in.":
+    "一项试验未发现总体效应。作者随后报告该药在患重症的50岁以下女性中有效，而这个组是在结果出来之后才界定的。",
+  "A subgroup drawn after seeing the data is chosen because it looks good, so the usual thresholds do not apply to it at all. Defining a group by three characteristics at once means the analyst had a great many possible groups to pick from.":
+    "看过数据之后再划出的亚组，之所以被选中就是因为它好看，因此通常的阈值对它根本不适用。用三个特征同时界定一个组，意味着分析者手上有非常多可供挑选的组。",
+  "A wellbeing study administers twelve questionnaires at four time points and reports that the intervention improved one score at one visit.":
+    "一项关于幸福感的研究在四个时间点发放十二份问卷，并报告干预在某一次随访中改善了某一项得分。",
+  "Twelve instruments at four time points is forty-eight opportunities, and at the usual threshold two or three would look positive with no effect whatever. A single hit among forty-eight is roughly what nothing looks like.":
+    "十二种量表乘四个时间点是四十八次机会，在通常的阈值下，即便毫无效应也会有两三次看起来是阳性的。四十八次里中一次，大致就是「什么都没有」的样子。",
+  "A protocol registered before recruitment names one primary outcome and states that everything else is exploratory. The paper reports the primary result first and labels the rest as hypothesis-generating.":
+    "一份在招募开始前注册的方案指定了一个主要结局，并声明其余一切均为探索性。论文先报告主要结果，并把其余部分标注为产生假设之用。",
+  "Naming the primary outcome in advance means one test carries the claim and the reader can see which one it was. Labelling the others exploratory does not weaken them, it describes them accurately.":
+    "事先指定主要结局，意味着承载结论的只有一次检验，而且读者能看到是哪一次。把其余标为探索性并不会削弱它们，而是准确地描述了它们。",
+  "A study testing thirty hypotheses tightens its threshold to account for the number of tests, reports both the raw and adjusted values, and says which results survive.":
+    "一项检验三十个假设的研究收紧了阈值以考虑检验次数，同时报告原始值与调整后的值，并说明哪些结果仍然成立。",
+  "Adjusting the threshold for the number of tests is the direct remedy, and printing both figures lets a reader see what the adjustment cost. Stating which survive avoids the trick of correcting and then discussing the uncorrected list.":
+    "按检验次数调整阈值是直接的补救办法，而把两个数字都印出来，能让读者看到这次调整的代价。说明哪些仍然成立，可以避免那种先做校正、随后却讨论未校正名单的把戏。",
+  "A trial reports that one subgroup showed no benefit, notes that the test for a real difference between subgroups was not significant, and recommends the treatment for that subgroup on the strength of the overall result.":
+    "一项试验报告某个亚组未显示获益，指出检验亚组之间是否存在真实差异的结果并不显著，并基于总体结果建议该亚组也接受该治疗。",
+  "When there is no evidence that the subgroups genuinely differ, the overall estimate is the better estimate for each of them, and it rests on far more patients. Reporting the odd subgroup while declining to act on it is the honest handling.":
+    "当没有证据表明各亚组确实不同时，总体估计就是对每一个亚组而言最好的估计，而且它建立在多得多的患者之上。报告那个异常亚组，同时拒绝据其行动，这才是诚实的处理方式。",
 };

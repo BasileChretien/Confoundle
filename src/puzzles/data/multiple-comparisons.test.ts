@@ -133,7 +133,9 @@ describe("multiple comparisons framing", () => {
   it("keeps the investigators' own conclusion in the reveal", () => {
     const body = multipleComparisons.reveal.body?.en ?? "";
     expect(body).toContain("did this on purpose");
-    expect(body).toContain("is not the Gemini result, it is the result from everybody");
+    expect(body).toContain(
+      "is not the Gemini result, it is the result from everybody",
+    );
   });
 
   it("says the plausible subgroup and the absurd one look identical", () => {

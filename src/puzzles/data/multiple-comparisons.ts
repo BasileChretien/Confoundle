@@ -123,13 +123,17 @@ export const multipleComparisons: Puzzle = {
     {
       id: "same",
       label: { en: "Much the same. Aspirin is not up to much here either" },
-      sublabel: { en: "one subgroup went that way, so why would others differ" },
+      sublabel: {
+        en: "one subgroup went that way, so why would others differ",
+      },
       isCorrect: false,
       isIntuitiveTrap: true,
     },
     {
       id: "large-benefit",
-      label: { en: "A large benefit. Around a 28 per cent cut in the odds of death" },
+      label: {
+        en: "A large benefit. Around a 28 per cent cut in the odds of death",
+      },
       sublabel: { en: "ask what twelve slices of one trial would look like" },
       isCorrect: true,
       isIntuitiveTrap: false,

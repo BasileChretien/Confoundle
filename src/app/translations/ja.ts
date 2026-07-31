@@ -4000,4 +4000,108 @@ export const ja: Record<string, string> = {
     "稀な診断を見落としたばかりの医師が、そのことを口に出し、この症例のせいで全員に検査をしたくなっていると述べたうえで、判断は指針の基準に立ち返って行います。",
   "Noticing that a recent case is inflating your sense of how common something is does not make the feeling go away, but it does stop the feeling from being used as evidence. Deferring to a pre-written criterion is what turns that noticing into a decision.":
     "最近の症例が、あることのありふれ具合についての感覚を膨らませていると気づいても、その感覚は消えません。しかし、その感覚が証拠として使われることは止められます。あらかじめ書かれた基準に従うことが、その気づきを判断に変えるものです。",
+  "In one subgroup of a heart attack trial, aspirin came out slightly worse than the dummy tablet.":
+    "ある心臓発作の試験の一部分集団では、アスピリンのほうが偽薬よりわずかに悪い結果でした。",
+  "ISIS-2 randomised 17,187 people with a suspected heart attack to aspirin or to identical placebo tablets, and counted who had died of a vascular cause five weeks later. Every patient's date of birth had been recorded on entry as an identifier, so the investigators were able to divide everybody by astrological birth sign and look at the twelve groups separately. Below is what they found among the patients born under Gemini or Libra. Aspirin did slightly worse than placebo there, and the difference is not statistically significant.":
+    "ISIS-2は心臓発作の疑いのある17,187人を、アスピリンと見分けのつかない偽薬錠のどちらかに無作為に割り付け、五週間後に血管性の原因で亡くなった人を数えました。各患者の生年月日は識別用として登録時に記録されていたため、研究者たちは全員を星座で分け、十二の群を別々に見ることができました。下は、ふたご座またはてんびん座生まれの患者で得られた結果です。そこではアスピリンのほうが偽薬よりわずかに悪く、その差は統計的に有意ではありません。",
+  "What did aspirin do among the patients born under the other ten signs?":
+    "残る十の星座に生まれた患者では、アスピリンはどうだったでしょうか。",
+  "Died of a vascular cause within five weeks":
+    "五週間以内に血管性の原因で死亡",
+  "Allocated aspirin": "アスピリンに割り付け",
+  Aspirin: "アスピリン",
+  "Allocated placebo tablets": "偽薬錠に割り付け",
+  Placebo: "偽薬",
+  "Born under Gemini or Libra": "ふたご座またはてんびん座生まれ",
+  "Born under the other ten signs": "残る十の星座生まれ",
+  "Gemini and Libra only": "ふたご座とてんびん座のみ",
+  "Much the same. Aspirin is not up to much here either":
+    "だいたい同じ。ここでもアスピリンはたいしたことがない",
+  "one subgroup went that way, so why would others differ":
+    "一つの部分集団がそうだったのだから、他も違わないだろう",
+  "A large benefit. Around a 28 per cent cut in the odds of death":
+    "大きな効果。死亡のオッズがおよそ28パーセント低下",
+  "ask what twelve slices of one trial would look like":
+    "一つの試験を十二枚に切り分けたらどう見えるかを考えてください",
+  "A small benefit, easily written off as chance":
+    "小さな効果で、偶然として片づけられる程度",
+  "a real drug, but a marginal one": "本物の薬ではあるが、ぎりぎりの",
+  "Nine per cent against twelve. Aspirin worked.":
+    "九パーセント対十二パーセント。アスピリンは効いていました。",
+  "Slice a result enough ways and one slice will look wrong":
+    "結果を十分な数に切り分ければ、一枚は必ず間違って見える",
+  "Among the other ten signs, 654 of 7,228 on aspirin died against 868 of 7,157 on placebo: 9.0 per cent against 12.1, which the paper gives as a 28 per cent reduction in the odds of death. Among Gemini and Libra it was 150 of 1,357 against 147 of 1,442, a 9 per cent increase, and not significant. Same trial, same drug, same five weeks. The only thing that changed was the birth date on the form.":
+    "残る十の星座では、アスピリン群7,228人のうち654人が亡くなり、偽薬群7,157人のうち868人が亡くなりました。9.0パーセント対12.1パーセントで、論文はこれを死亡オッズの28パーセント低下としています。ふたご座とてんびん座では1,357人中150人対1,442人中147人、つまり9パーセントの上昇で、有意ではありません。同じ試験、同じ薬、同じ五週間。変わったのは用紙に書かれた生年月日だけです。",
+  "Both, side by side": "両方を並べて",
+  "The investigators did this on purpose and published it on purpose, and their own conclusion is the one worth keeping: the best estimate of what aspirin does for a Gemini is not the Gemini result, it is the result from everybody. That is not a quirk of astrology, it is what a subgroup is. Split 17,187 people twelve ways and each slice is about a twelfth the size, so each one is noisier, and with twelve of them the odds are good that at least one lands on the wrong side of nothing. The same paper counted this directly: across the 26 non-astrological subgroup analyses in the same figure, it says that if there were no real differences at all you would still expect one or two to come out significant by chance, and exactly one did. The uncomfortable part is that the astrological subgroup and the plausible-sounding one look identical on the page. Both are a smaller number of patients with a wider interval and a result that disagrees with the whole.":
+    "研究者たちはこれを意図的に行い、意図的に発表しました。そして残すべきなのは彼ら自身の結論です。ふたご座の人にとってアスピリンが何をするかの最良の推定値は、ふたご座の結果ではなく、全員の結果である、と。これは占星術の奇癖ではなく、部分集団とはそういうものだということです。17,187人を十二に分ければ各片は約十二分の一の大きさになり、それだけ雑音が大きくなります。そして十二もあれば、少なくとも一つがゼロの反対側に落ちる可能性は十分にあります。同じ論文はこれを直接数えています。同じ図にある占星術以外の26の部分集団解析について、もし本当の差がまったく存在しなくても偶然によって一つか二つは有意に出ると予想される、と述べており、実際にちょうど一つが出ました。居心地の悪いところは、占星術の部分集団と、もっともらしく聞こえる部分集団とが、紙の上ではまったく同じに見えることです。どちらも患者数が少なく、区間が広く、全体と食い違う結果なのです。",
+  "The subgroup, and the rest of the trial": "部分集団と、試験の残り",
+  "Multiple comparisons": "多重比較",
+  "Every extra question you ask of one dataset is another chance for noise to look like a finding. A single result that would be surprising on its own stops being surprising once you know how many results were available, and the count of tests is the thing almost nobody reports.":
+    "同じデータに問いを一つ加えるたびに、雑音が発見のように見える機会が一つ増えます。単独なら驚くべき結果も、いくつの結果が手に入る状態だったかを知った途端に驚きではなくなります。そして検定の回数こそ、ほとんど誰も報告しないものです。",
+  "The arithmetic is not subtle. If a test has a one in twenty chance of a false positive and you run one test, you are probably fine. Run twenty independent tests on data with nothing in them and you expect one to come out significant; run a hundred and you expect five. Nothing has to go wrong for this to happen, and no one has to cheat: it is the advertised error rate doing exactly what it says. What makes it dangerous is that the tests you ran but did not report are invisible in the write-up, so the reader sees one striking result and has no way to know it was drawn from a bag of forty. The astrological subgroup exists to make that visible. Nobody believes birth sign changes how aspirin works, so when the numbers say it does, the numbers are obviously the problem. The whole point is that a subgroup you would find plausible produces numbers that look exactly the same.":
+    "算術は少しも込み入っていません。検定の偽陽性率が二十分の一で、検定を一回行うなら、たいてい問題ありません。何もないデータに対して独立な検定を二十回行えば一つは有意に出ると予想され、百回行えば五つです。こうなるのに何かが壊れる必要はなく、誰かが不正をする必要もありません。公表されている誤り率が、まさに書いてあるとおりに働いているだけです。危険なのは、行ったが報告しなかった検定が論文からは見えないことです。読者は目を引く結果を一つ見せられ、それが四十個入りの袋から引かれたものだと知る手立てを持ちません。占星術の部分集団は、それを目に見えるようにするために存在します。生まれた星座がアスピリンの効き方を変えるとは誰も信じていないので、数字がそう言うなら、問題は明らかに数字のほうです。要点はまさに、あなたがもっともらしいと感じる部分集団も、まったく同じ見た目の数字を生むということです。",
+  "Four habits follow, and the first is the one that does most of the work. Ask how many comparisons were available, not how many are shown: a trial with ten outcomes, five subgroups and three time points has a hundred and fifty places to find something, and the paper will show you the best one. Second, treat a subgroup result as a question rather than an answer. If the overall result is solid and a subgroup disagrees with it, the subgroup is usually wrong, because it is smaller and the overall estimate already includes those patients. Third, look for whether the analysis was pre-specified, which means the question was written down before anybody saw the data. That is exactly what a trial registry and a protocol are for, and it is why the deck's puzzle on registered protocols and this one are the same habit from two directions. Fourth, notice that this generalises far past medicine. A dashboard with forty metrics will show a red one every week; a portfolio of a thousand funds will contain one with ten straight winning years; a school district ranking twenty schools will find one that improved dramatically. In all three the reasonable question is not what happened to that one but how many chances there were for something to look like that.":
+    "ここから四つの習慣が出てきます。第一が最も効きます。示された比較の数ではなく、可能だった比較の数を問うこと。評価項目が十、部分集団が五つ、測定時点が三つある試験には、何かを見つけられる場所が百五十あり、論文はその最良のものを見せます。第二に、部分集団の結果を答えではなく問いとして扱うこと。全体の結果が堅固で部分集団がそれと食い違うなら、たいてい間違っているのは部分集団のほうです。より小さく、しかも全体の推定値にはその患者たちがすでに含まれているからです。第三に、その解析が事前に規定されていたか、つまり誰かがデータを見る前に問いが書き留められていたかを確かめること。試験登録簿と実施計画書はまさにそのためにあり、この作品の登録済み実施計画の問題とこの問題が、同じ習慣を二方向から見たものである理由もそこにあります。第四に、これが医学をはるかに越えて当てはまることに気づくこと。指標が四十ある管理画面は毎週どれか一つを赤くしますし、千本のファンドを抱えた資産には十年連続で勝ったものが一本含まれますし、二十校の順位表には劇的に改善した一校が見つかります。三つとも、まともな問いは「その一つに何が起きたのか」ではなく「そう見えるものが出る機会がいくつあったのか」です。",
+  "The trial that counted its own false positives":
+    "自分の偽陽性を自分で数えた試験",
+  "The same figure that carries the astrological rows contains 26 other subgroup analyses, split by prior heart attack, diabetes, age, blood pressure, heart rate, ECG findings and more. The authors did the arithmetic on their own work: the heterogeneity test statistics summed to 58.5 on 50 degrees of freedom, which is unremarkable, and they note that if no real differences existed between subgroups at all, one or two of those 26 tests would still be expected to produce a result at p below 0.05 purely by chance. Exactly one did, for aspirin and previous heart attack. They then explain why they do not believe that one either, since aspirin significantly reduced reinfarction in precisely those patients, 38 of 1,454 against 66 of 1,483. It is a rare thing to see a paper mark its own most tempting finding as probably noise, and it is why this trial rather than a textbook example is the source here.":
+    "占星術の行を載せているのと同じ図には、心筋梗塞の既往、糖尿病、年齢、血圧、心拍数、心電図所見などで分けた他の26の部分集団解析が並んでいます。著者らは自分たちの仕事について算術を行いました。異質性の検定統計量の合計は自由度50で58.5であり、これは何ら注目に値しません。そして、もし部分集団の間に本当の差がまったく存在しなくても、この26のうち一つか二つは純粋な偶然によって0.05を下回る結果を出すと予想される、と記しています。実際にちょうど一つが出ました。アスピリンと心筋梗塞の既往についてです。続けて彼らはそれも信じない理由を説明します。まさにその患者たちにおいて、アスピリンは再梗塞を有意に減らしていたからです。1,454人中38人対1,483人中66人。論文が自らの最も魅力的な所見を「おそらく雑音である」と印をつけるのは稀なことで、ここで教科書の例ではなくこの試験を出典にしているのはそのためです。",
+  "Multiple comparisons, a reasoning trap.": "多重比較、という思考の罠。",
+  "ISIS-2 gave aspirin or placebo to 17,187 people after a heart attack, then split them by astrological birth sign. Among Gemini and Libra, aspirin came out worse: 150 of 1,357 died against 147 of 1,442. Among the other ten signs it cut the odds of death by 28 per cent, 654 of 7,228 against 868 of 7,157. Same trial, same drug, same five weeks; only the birth date changed. The investigators published it deliberately, to show what happens when you slice one result twelve ways.":
+    "ISIS-2は心臓発作のあと17,187人にアスピリンまたは偽薬を与え、その後、星座で分けました。ふたご座とてんびん座ではアスピリンのほうが悪い結果でした。1,357人中150人が亡くなり、偽薬では1,442人中147人。残る十の星座では死亡のオッズを28パーセント下げ、7,228人中654人対7,157人中868人でした。同じ試験、同じ薬、同じ五週間。変わったのは生年月日だけです。研究者たちは、一つの結果を十二に切り分けると何が起きるかを示すために、意図的にこれを発表しました。",
+  "The counts here are printed rather than derived, and they come from the figure rather than from the commentary the astrological result is usually quoted from. That distinction matters: the famous version of this story circulates as an effect size, and the investigators' own later account of it gives 9 per cent plus or minus 13 with no numerators at all, which this deck could not have authored. Figure 5(b) prints the head counts. Reconciled six ways. All four printed percentages reproduce from the counts. The odds ratios recomputed from those counts are a 9.5 per cent increase and a 27.9 per cent reduction, against the paper's own printed 9 per cent increase and 28 per cent reduction, which is an independent check because the authors computed theirs separately. And the aspirin deaths in the two strata sum to exactly the 804 the paper reports for the whole trial. Three things a careful reader should hold against it. First, the strata do not quite close: they contain 8,585 aspirin patients against the 8,587 randomised, 8,599 placebo against 8,600, and 1,015 placebo deaths against 1,016. Two, one and one short. The likeliest explanation is a handful of patients with no usable date of birth, but the paper does not say so and neither does this note; the shortfall is recorded and left unexplained, and a test pins it so it cannot drift. Second, this is a subgroup of one trial from 1988, and while aspirin after a heart attack has been settled many times over since, the specific counts are of their time. Third, and most important for what the puzzle claims: the point is not that astrology is silly, which nobody disputes, but that a subgroup you would find plausible produces numbers indistinguishable from these. The investigators chose an absurd subgroup precisely so that the absurdity would be obvious while the statistics stayed real, and the lesson keeps their framing rather than scoring off the horoscope.":
+    "ここでの実数は導出ではなく印字されたものであり、しかも占星術の結果が普段引用される論評ではなく図から取っています。この区別は重要です。この話の有名な版は効果の大きさとして流通しており、研究者たち自身による後年の記述は9パーセントのプラスマイナス13を与えるだけで分子はどこにもありません。それではこの作品は何も書けなかったでしょう。図5(b)は実数を印字しています。六通りに突き合わせました。印字された四つの百分率は実数から再現されます。その実数から計算し直したオッズ比は9.5パーセントの上昇と27.9パーセントの低下となり、論文が印字する9パーセント上昇と28パーセント低下に対応します。著者らは自分たちの値を別に計算しているので、これは独立した確認です。そして二つの層のアスピリン群死亡者数は、論文が試験全体について報告する804と正確に一致します。注意深い読者がこれに対して保持すべき点が三つあります。第一に、層の合計はぴたりとは閉じません。無作為化された8,587人に対してアスピリン群は8,585人、8,600人に対して偽薬群は8,599人、1,016に対して偽薬群の死亡は1,015です。それぞれ二人、一人、一件足りません。最も可能性が高いのは使える生年月日のない少数の患者ですが、論文はそう述べていませんし、この注記も述べません。不足は記録され、説明されないまま残され、テストがそれを固定してずれないようにしています。第二に、これは1988年の一つの試験の部分集団であり、心筋梗塞後のアスピリンはその後何度も確認されてきたとはいえ、この具体的な実数はその時代のものです。第三に、そしてこの問題が主張することにとって最も重要な点として、要点は占星術が馬鹿げているということではありません。それは誰も争いません。要点は、あなたがもっともらしいと感じる部分集団が、これと見分けのつかない数字を生むということです。研究者たちは、統計は本物のままで馬鹿馬鹿しさだけが明白になるように、あえて不条理な部分集団を選びました。この教訓は星占いを嘲るのではなく、彼らの枠組みを保っています。",
+  "A large trial shows a drug clearly works. One of its fourteen subgroups shows no benefit, and a guideline committee proposes withholding the drug from that group.":
+    "大規模な試験がある薬の明確な有効性を示します。その十四の部分集団のうち一つでは効果が見られず、診療指針の委員会がその集団には投与しないことを提案します。",
+  "With fourteen slices of one trial, a subgroup landing on the wrong side of nothing is expected rather than surprising, and each slice is far smaller than the whole. The best estimate for those patients is the overall result, which already includes them.":
+    "一つの試験を十四に切り分ければ、ある部分集団がゼロの反対側に落ちるのは驚きではなく予想されることであり、しかも各片は全体よりはるかに小さいのです。それらの患者にとって最良の推定値は全体の結果であり、それにはすでに彼らが含まれています。",
+  "A study measured forty outcomes. The abstract reports the one that reached significance and describes it as the study's finding.":
+    "ある研究が四十の評価項目を測定しました。抄録は有意に達した一つを報告し、それを研究の所見として提示します。",
+  "At the usual threshold, forty tests on data with nothing in them would be expected to produce about two significant results anyway. A reader shown only the winner cannot tell it from the two you would get for free.":
+    "通常の閾値なら、何もないデータに対する四十の検定でもおよそ二つは有意な結果を出します。勝者だけを見せられた読者には、それを無料で得られる二つと区別する手立てがありません。",
+  "An operations dashboard tracks sixty metrics with control limits set to flag the most extreme 5 per cent. Every week two or three flash red and get investigated as incidents.":
+    "ある運用管理画面が六十の指標を追跡し、最も極端な5パーセントを知らせるよう管理限界を設定しています。毎週二つか三つが赤く点灯し、インシデントとして調査されます。",
+  "Sixty metrics at a one in twenty threshold produce about three red flags a week even when nothing is wrong. The flags are the threshold working as specified, so investigating each as an incident spends the week chasing the design.":
+    "六十の指標を二十分の一の閾値で見れば、何も問題がなくても週におよそ三つの赤い警告が出ます。警告は閾値が仕様どおりに働いている姿であり、それぞれを事故として調査することは、設計そのものを一週間追いかけることになります。",
+  "A marketing brochure highlights a fund that beat its benchmark ten years running, out of the eight hundred funds the firm has launched.":
+    "販売用の冊子が、指標を十年連続で上回ったファンドを一本取り上げています。その会社が立ち上げたファンドは八百本あります。",
+  "With enough funds a ten-year streak appears by chance alone, and the firm chose which one to show after the fact. The relevant number is how many were run, not how well the survivor did.":
+    "ファンドの数が十分にあれば十年の連勝は純粋な偶然で現れますし、会社は事後にどれを見せるかを選びました。意味のある数字は運用されたファンドの数であって、生き残ったものの成績ではありません。",
+  "A health department maps a rare cancer across three thousand districts, finds one with three times the national rate, and opens an investigation into local industry.":
+    "ある保健当局が三千の地区で稀な癌を地図化し、全国の三倍の率を示す地区を一つ見つけ、地元産業の調査を開始します。",
+  "Three thousand districts guarantee that some will sit far above the average from chance alone, especially small ones where a few cases move the rate a long way. A cluster found by scanning a map is a hypothesis, not evidence.":
+    "三千の地区があれば、純粋な偶然によって平均をはるかに上回るものが出ることは保証されており、とりわけ数例で率が大きく動く小さな地区でそうです。地図を走査して見つけた集積は仮説であって、証拠ではありません。",
+  "Researchers test half a million genetic variants against a disease and report the twenty that came out at p below 0.05.":
+    "研究者らが五十万の遺伝子変異をある疾患に対して検定し、0.05を下回った二十件を報告します。",
+  "Half a million tests at that threshold would yield about twenty-five thousand hits with no real association at all, so twenty is fewer than chance would give. This is exactly why genome-wide work uses a far stricter threshold.":
+    "その閾値で五十万回検定すれば、本当の関連が一つもなくてもおよそ二万五千件が当たりとして出ますから、二十件は偶然が与える数より少ないのです。ゲノム全体を扱う研究がはるかに厳しい閾値を使うのは、まさにそのためです。",
+  "A team runs an A/B test and checks the results every morning, stopping as soon as the difference reaches significance.":
+    "あるチームがA/Bテストを行い、毎朝結果を確認し、差が有意に達した時点で打ち切ります。",
+  "Checking daily and stopping on the first significant reading is many tests, not one, and the stopping rule guarantees you halt on a favourable wobble. The false positive rate is far above the nominal one.":
+    "毎日見て最初に有意になった時点で止めるのは一回の検定ではなく多数の検定であり、その停止規則は有利な揺らぎで止まることを保証します。偽陽性率は名目値をはるかに超えます。",
+  "A newspaper ranks two hundred schools by the change in their exam results and profiles the one that improved most, looking for what its head teacher did differently.":
+    "ある新聞が二百校を試験結果の変化で順位づけし、最も改善した一校を取り上げて、その校長が何を違うやり方でしたのかを探ります。",
+  "The largest change out of two hundred is where the noise is largest, and small schools swing most because a few pupils move the average. The profile explains a number that was mostly going to happen to somebody.":
+    "二百のうち最大の変化は雑音が最も大きいところであり、小さな学校ほど数人の生徒で平均が動くので大きく振れます。その記事は、どのみち誰かに起きるはずだった数字を説明しているのです。",
+  "A trial finds no overall effect. The authors then report that the drug worked in women aged under 50 with severe disease, a group defined after the results came in.":
+    "ある試験が全体では効果を見いだしません。著者らはその後、この薬は重症の50歳未満の女性で効いたと報告します。その集団は結果が出てから定義されました。",
+  "A subgroup drawn after seeing the data is chosen because it looks good, so the usual thresholds do not apply to it at all. Defining a group by three characteristics at once means the analyst had a great many possible groups to pick from.":
+    "データを見たあとで引いた部分集団は、見栄えがよいという理由で選ばれているので、通常の閾値はまったく当てはまりません。三つの特性を同時に使って集団を定義したということは、解析者には選び放題の集団が非常に多くあったということです。",
+  "A wellbeing study administers twelve questionnaires at four time points and reports that the intervention improved one score at one visit.":
+    "ある福祉研究が十二の質問票を四つの時点で実施し、介入が一つの時点で一つの得点を改善したと報告します。",
+  "Twelve instruments at four time points is forty-eight opportunities, and at the usual threshold two or three would look positive with no effect whatever. A single hit among forty-eight is roughly what nothing looks like.":
+    "十二の尺度を四つの時点で用いれば四十八の機会があり、通常の閾値では効果がまったくなくても二つか三つは陽性に見えます。四十八のうち一つの当たりは、およそ「何もない」の姿です。",
+  "A protocol registered before recruitment names one primary outcome and states that everything else is exploratory. The paper reports the primary result first and labels the rest as hypothesis-generating.":
+    "組入れ開始前に登録された実施計画書が主要評価項目を一つ指定し、それ以外はすべて探索的であると明記しています。論文はまず主要な結果を報告し、残りを仮説生成的と位置づけます。",
+  "Naming the primary outcome in advance means one test carries the claim and the reader can see which one it was. Labelling the others exploratory does not weaken them, it describes them accurately.":
+    "主要評価項目をあらかじめ指定するとは、主張を担う検定が一つであり、それがどれかを読者が見られるということです。他を探索的と位置づけることはそれらを弱めるのではなく、正確に記述しているだけです。",
+  "A study testing thirty hypotheses tightens its threshold to account for the number of tests, reports both the raw and adjusted values, and says which results survive.":
+    "三十の仮説を検定する研究が、検定の数を考慮して閾値を厳しくし、生の値と調整後の値の両方を報告し、どの結果が残るかを述べます。",
+  "Adjusting the threshold for the number of tests is the direct remedy, and printing both figures lets a reader see what the adjustment cost. Stating which survive avoids the trick of correcting and then discussing the uncorrected list.":
+    "検定の数に合わせて閾値を調整することが直接の手当てであり、両方の数字を印字することで調整の代償が読者に見えます。どれが残るかを述べることは、補正しておきながら未補正の一覧を論じるという手口を防ぎます。",
+  "A trial reports that one subgroup showed no benefit, notes that the test for a real difference between subgroups was not significant, and recommends the treatment for that subgroup on the strength of the overall result.":
+    "ある試験が、一つの部分集団では効果が見られなかったと報告し、部分集団間に本当の差があるかの検定は有意でなかったと注記したうえで、全体の結果に基づいてその部分集団にも治療を推奨します。",
+  "When there is no evidence that the subgroups genuinely differ, the overall estimate is the better estimate for each of them, and it rests on far more patients. Reporting the odd subgroup while declining to act on it is the honest handling.":
+    "部分集団が本当に異なるという証拠がないとき、全体の推定値がそれぞれにとっての最良の推定値であり、しかもはるかに多くの患者に基づいています。異質な部分集団を報告しつつ、それに基づいて動くことは拒む。これが誠実な扱いです。",
 };

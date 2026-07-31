@@ -106,4 +106,34 @@ describe("the immortal-time schema guards", () => {
     plain.reveal.view = { kind: "lifespan" };
     expect(Puzzle.safeParse(plain).success).toBe(true);
   });
+
+  it("makes the hedge correct, because the setup cannot separate two live flaws", () => {
+    // Deliberate. Two of the four options are defensible from the setup: that
+    // the untreated were sicker, which is confounding by indication, and the
+    // person-time objection. The cohort reports no baseline characteristics,
+    // so nothing distinguishes them, and spotting a flaw is not the same as
+    // knowing that flaw explains the gap. Marking the person-time option
+    // correct made the answer turn on guessing which lesson you were in.
+    const correct = immortalTime.choices.filter((c) => c.isCorrect);
+    expect(correct).toHaveLength(1);
+    expect(correct[0].id).toBe("cannot-tell");
+
+    // The hedge must read identically to every other hedge in the deck. A
+    // right hedge that is worded differently from the wrong ones is a tell,
+    // which would defeat the point of making it right here.
+    expect(correct[0].label.en).toBe("There is no way to tell");
+    expect(correct[0].sublabel?.en).toBe("too little to go on");
+
+    // The rival bias stays on the list and stays wrong: it is a real thing to
+    // say about this design, and that is exactly why the hedge beats it.
+    const rival = immortalTime.choices.find((c) => c.id === "sicker");
+    expect(rival?.isCorrect).toBe(false);
+    expect(immortalTime.choices.find((c) => c.isIntuitiveTrap)?.id).toBe("works");
+  });
+
+  it("has the reveal concede that both objections were live", () => {
+    const e = immortalTime.reveal.explanation.en;
+    expect(e).toContain("Both objections on the list were live");
+    expect(e).toContain("Spotting a flaw is not the same as knowing that flaw explains the gap");
+  });
 });

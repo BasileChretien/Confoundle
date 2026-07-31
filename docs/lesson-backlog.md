@@ -1156,9 +1156,19 @@ whether someone did something moves belief almost as much as one asserting it,
 which is precisely why the question mark is used. Candidate: Wegner DM, Wenzlaff
 R, Kerker RM, Beattie AE. Incrimination through innuendo: can media questions
 become public answers? *Journal of Personality and Social Psychology*
-1981;40(5):822-832. Fictional candidate, so non-partisan by construction, and
+1981;40(5):822-832, **DOI `10.1037/0022-3514.40.5.822`, verified against CrossRef 2026-07-31. OpenAlex reports it closed with no open-access location.** Fictional candidate, so non-partisan by construction, and
 the design is a between-subjects rating task, which is the shape the deck's
 `onewording` and `bothwordings` views already handle.
+
+**A 2024 replication exists and was not known when this entry was opened.**
+Letourneau SM, Gawronski B. Incrimination through innuendo. *Social
+Psychology* 2024;55(1):51-61, DOI `10.1027/1864-9335/a000540`, verified
+against CrossRef. Also closed. Whoever builds this should read **both** and
+prefer the modern one for the puzzle's data if it prints counts, keeping the
+1981 study for the framing, exactly as the conjunction fallacy lesson did with
+Charness over Tversky and Kahneman. A 2024 paper in a journal with a strong
+registered-replication tradition is also the fastest way to learn whether the
+effect survived, which this deck must know before it teaches it.
 
 ### 16. The sleeper effect, or the source you stop remembering
 
@@ -1170,7 +1180,7 @@ it. This is the mechanism that makes discredited sources worth worrying about
 even when everybody discounts them at the time, and it is the best available
 answer to "what is the harm, nobody believes that outlet anyway". Candidate:
 Hovland CI, Weiss W. The influence of source credibility on communication
-effectiveness. *Public Opinion Quarterly* 1951;15(4):635-650. Old enough that
+effectiveness. *Public Opinion Quarterly* 1951;15(4):635-650, **DOI `10.1086/266350`, verified 2026-07-31, closed with no open-access location.** Old enough that
 the counts are usually printed. A modern meta-analysis (Kumkale and Albarracin,
 *Psychological Bulletin* 2004) should be checked too, because the effect is
 known to be fragile and the deck must not overstate it.
@@ -1185,7 +1195,7 @@ when every sentence is accurate. This project already invokes the idea by name
 in its own editorial rule, the Boykoff ground, and has no puzzle on it, which is
 an awkward gap to leave. Candidate: Boykoff MT, Boykoff JM. Balance as bias:
 global warming and the US prestige press. *Global Environmental Change*
-2004;14(2):125-136. A content analysis, so it counts articles, which is exactly
+2004;14(2):125-136, **DOI `10.1016/j.gloenvcha.2003.10.001`, verified 2026-07-31, closed with no open-access location.** A content analysis, so it counts articles, which is exactly
 the shape `rates` wants: share of articles giving balanced treatment against the
 share of the scientific literature doing the same. Check whether the paper
 prints article counts or only percentages before committing.
@@ -1234,7 +1244,7 @@ alone because the reader cannot fall back on a single rule of thumb. Candidates:
 Freedman JL, Fraser SC. Compliance without pressure: the foot-in-the-door
 technique. *JPSP* 1966;4(2):195-202; and Cialdini RB et al. Reciprocal
 concessions procedure for inducing compliance: the door-in-the-face technique.
-*JPSP* 1975;31(2):206-215. Both report compliance rates, which are counts.
+*JPSP* 1975;31(2):206-215. **Both DOIs verified 2026-07-31, `10.1037/h0023552` and `10.1037/h0076284`, and both are closed with no open-access location.** Both report compliance rates, which are counts.
 
 ### 20. The third-person effect
 

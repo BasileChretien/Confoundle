@@ -4,6 +4,7 @@ import { useAuth } from "../app/auth";
 import { reviews, gradeReview, type ReviewResult } from "../app/reviews";
 import { recordReviewOutcomes } from "../app/session";
 import { puzzles } from "../puzzles";
+import { searchForView } from "../app/navigation";
 import type { Review } from "../srs/select";
 import { CONFIDENCE_LEVELS, reactionFor, type Confidence } from "./scoring";
 import { Badge, Button, ProgressDots } from "./ui";
@@ -72,6 +73,27 @@ export function ReviewView({
     },
     [t],
   );
+
+  /**
+   * The puzzle behind each skill the session touched, in the order first met
+   * and without repeats. A session usually draws several items per skill, so
+   * keying by slug is what stops the same takeaway appearing three times. A
+   * skill with no puzzle in the registry is skipped rather than rendered as a
+   * bare id: the SRS can in principle hold a skill that ships only as review
+   * items, and there is no lesson to link to for one of those.
+   */
+  const reviewedLessons = useMemo(() => {
+    if (!session) return [];
+    const seen = new Set<string>();
+    const out = [];
+    for (const r of session) {
+      if (seen.has(r.skill)) continue;
+      seen.add(r.skill);
+      const p = puzzles.find((x) => x.reasoningSkill === r.skill);
+      if (p) out.push(p);
+    }
+    return out;
+  }, [session]);
 
   const done = session != null && index >= session.length;
 
@@ -149,6 +171,38 @@ export function ReviewView({
             );
           })}
         </ol>
+
+        {/* The lesson itself, restated once per skill the session touched.
+         * Grading tells you whether you got it right; it does not re-teach the
+         * rule, and a review you failed is exactly the moment the rule is worth
+         * reading again. Only the original takeaway is repeated here, with a
+         * link through to the full lesson, so the summary stays skimmable. */}
+        {reviewedLessons.length > 0 && (
+          <section className="flex flex-col gap-3">
+            <h3 className="font-sans text-[11px] font-semibold uppercase tracking-eyebrow text-ink-mute">
+              {t({ en: "The lessons behind these" })}
+            </h3>
+            {reviewedLessons.map((p) => (
+              <div
+                key={p.slug}
+                className="rounded-lg border border-rule bg-paper-2 p-3"
+              >
+                <p className="mb-1 font-sans text-[11px] font-semibold uppercase tracking-eyebrow text-ink-mute">
+                  {t(p.lesson.skillName)}
+                </p>
+                <p className="text-[14px] leading-relaxed text-ink">
+                  {t(p.lesson.takeaway)}
+                </p>
+                <a
+                  className="mt-2 inline-block font-sans text-[12px] font-semibold text-brand-ink underline underline-offset-2"
+                  href={searchForView({ name: "lesson", slug: p.slug })}
+                >
+                  {t({ en: "Read the full lesson →" })}
+                </a>
+              </div>
+            ))}
+          </section>
+        )}
 
         <Button onClick={onDone}>{t({ en: "Done" })}</Button>
       </section>

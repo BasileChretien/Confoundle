@@ -4297,4 +4297,6 @@ export const ar: Record<string, string> = {
   "This is the swap, applied deliberately. A conclusion that survives being retold under a rival figure of speech was resting on the evidence, and recording that the check was run lets a reader see it was not an accident.": "هذا هو التبديل، مطبَّقًا عن قصد. فالخلاصة التي تنجو من إعادة روايتها تحت صورة بلاغية منافسة كانت قائمة على الأدلة، وتدوين أن الفحص قد أُجري يتيح للقارئ أن يرى أن الأمر لم يكن مصادفة.",
   "A report avoids calling the problem anything at all, describing instead what is rising, by how much, among whom and over what period, and lists the available responses without grouping them.": "تقرير يتجنب تسمية المشكلة بأي اسم، ويصف بدل ذلك ما الذي يرتفع، وبكم، وبين من، وعلى أي مدة، ويعدّد الاستجابات المتاحة دون أن يجمعها في فئات.",
   "Refusing the shorthand costs the reader a little vividness and buys them the whole option set. Listing responses without grouping them is the part that matters most, since a grouping is itself a quiet metaphor about which things belong together.": "رفض الاختصار يكلف القارئ قليلًا من الحيوية ويعيد إليه مجموعة الخيارات كاملة. وتعداد الاستجابات دون تجميعها هو الجزء الأهم، لأن أي تجميع هو في ذاته مجاز صامت عن أي الأشياء ينتمي بعضها إلى بعض.",
+  "The lessons behind these": "الدروس وراء هذه",
+  "Read the full lesson →": "اقرأ الدرس كاملًا ←",
 };

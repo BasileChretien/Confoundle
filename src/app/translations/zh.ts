@@ -4236,4 +4236,6 @@ export const zh: Record<string, string> = {
   "This is the swap, applied deliberately. A conclusion that survives being retold under a rival figure of speech was resting on the evidence, and recording that the check was run lets a reader see it was not an accident.": "这就是有意识地做了对调。一个结论若能在被换成相反修辞重述后依然站得住，那它靠的就是证据；而把做过这项检查记录下来，能让读者看出这不是碰巧。",
   "A report avoids calling the problem anything at all, describing instead what is rising, by how much, among whom and over what period, and lists the available responses without grouping them.": "一份报告完全不给这个问题起名字，转而描述什么在上升、上升多少、发生在哪些人身上、在多长时间里，并把可选的应对逐条列出而不加归类。",
   "Refusing the shorthand costs the reader a little vividness and buys them the whole option set. Listing responses without grouping them is the part that matters most, since a grouping is itself a quiet metaphor about which things belong together.": "放弃这种省事的说法，读者损失一点生动，换回整套选项。逐条列出而不加归类是其中最要紧的部分，因为归类本身就是一个关于哪些东西是一伙的、悄无声息的比喻。",
+  "The lessons behind these": "这些题背后的课",
+  "Read the full lesson →": "阅读完整课程 →",
 };

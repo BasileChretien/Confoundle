@@ -4294,4 +4294,6 @@ export const ja: Record<string, string> = {
   "This is the swap, applied deliberately. A conclusion that survives being retold under a rival figure of speech was resting on the evidence, and recording that the check was run lets a reader see it was not an accident.": "これは入れ替えを意図的に用いた例である。対立する言い回しで語り直しても生き残る結論は、証拠に支えられていたのであり、その確認を行ったと記しておけば、それが偶然でないことを読み手が見て取れる。",
   "A report avoids calling the problem anything at all, describing instead what is rising, by how much, among whom and over what period, and lists the available responses without grouping them.": "ある報告書は問題に名前をつけることを避け、代わりに何がどれだけ、誰のあいだで、どの期間に増えているのかを記述し、取りうる対応をひとまとめにせずに列挙する。",
   "Refusing the shorthand costs the reader a little vividness and buys them the whole option set. Listing responses without grouping them is the part that matters most, since a grouping is itself a quiet metaphor about which things belong together.": "手軽な言い換えを拒めば、読み手はいくらか鮮やかさを失い、選択肢の全体を取り戻す。対応をひとまとめにせずに列挙することが最も大事な点である。まとめ方それ自体が、何と何が同じ仲間かについての、静かな比喩だからだ。",
+  "The lessons behind these": "これらの背後にある教訓",
+  "Read the full lesson →": "詳しい解説を読む →",
 };

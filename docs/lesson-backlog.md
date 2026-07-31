@@ -1151,7 +1151,32 @@ find whether any table prints numerators.
 
 <!-- skill: innuendo-effect -->
 
-**Status: LEAD, and the strongest of the eight.** A headline that merely asks
+**Status: READ AT SOURCE 2026-07-31, and it fails this deck's test.** Both
+papers were supplied and read. The effect is real and it replicated: the 2024
+study is two preregistered experiments, N = 506 total, and it reports that
+questions insinuating something negative reduced favourable impressions,
+replicating Wegner. It also found the effect did not differ between political
+ingroup and outgroup targets, which is a genuinely useful symmetric result.
+
+**But the outcome variable is a rating, not a count.** Impressions are measured
+on three 11-point scales from 0 to 10 and reported as means. There is no
+numerator and no denominator anywhere, so `rates` cannot hold it and the deck
+would be authoring means. That is the exact ground on which this file warned
+the third-person effect might fail, and here it has.
+
+**Two honest options, and neither is free.** Either build it on the
+`estimation` shape, which already ships means for `anchoring`, and accept that
+the reveal compares two averages rather than two head counts; or leave it as
+review items. The first is defensible and probably right, since the innuendo
+effect is too important to drop, but it is a design decision rather than a
+transcription, so it should be taken deliberately and not by whoever is next
+in a hurry. A further wrinkle: the 2024 replication manipulates the target's
+party, so building on it means naming parties, whereas Wegner's fictitious
+city-council candidate is non-partisan by construction. If the modern study is
+used, the puzzle should lean on its null for partisanship, which is the
+even-handed half.
+
+**Status when opened: LEAD, and the strongest of the eight.** A headline that merely asks
 whether someone did something moves belief almost as much as one asserting it,
 which is precisely why the question mark is used. Candidate: Wegner DM, Wenzlaff
 R, Kerker RM, Beattie AE. Incrimination through innuendo: can media questions
@@ -1236,7 +1261,40 @@ which makes it the cheapest of the eight to verify.
 
 <!-- skill: compliance-sequencing -->
 
-**Status: LEAD.** Two opposite sequencing tricks that both raise compliance: ask
+**Status: VERIFIED 2026-07-31, ready to author, and the best-shaped candidate
+left in this file.** Freedman and Fraser was supplied and read, and Table 1 on
+page 197 was read from the rendered page because the extraction misaligns the
+condition labels against their percentages.
+
+Percentage of subjects complying with the large request, **N = 36 in each
+group**, so every printed percentage converts to an exact integer count:
+
+| Condition | Count | Printed |
+|---|---|---|
+| Performance, carried out the small request | 19/36 | 52.8 |
+| Agree-Only, agreed but never had to do it | 12/36 | 33.3 |
+| Familiarization, same call, no request | 10/36 | 27.8 |
+| One-Contact, no prior contact | 8/36 | 22.2 |
+
+**Reconciles three ways.** All four percentages reproduce from a whole number
+out of 36 and none needs rounding to do it. Four groups of 36 is 144, and the
+methods state 156 housewives with 12 extra distributed among the two-contact
+conditions who could not be reached for the second call and were excluded, so
+144 plus 12 is exactly 156. And the two starred rows carry the significance
+levels against Performance that the effect requires, p below .07 and .02.
+
+**The two control conditions are what make it a puzzle rather than a fact.**
+Familiarization holds constant the time on the phone with the same person and
+produces almost nothing, so the effect is not rapport. Agree-Only shows that
+agreeing is worth less than actually doing it. The setup should show
+One-Contact alone and ask what happened to people who three days earlier had
+answered eight harmless questions about household soap, and the reveal should
+put all four side by side.
+
+The Cialdini door-in-the-face paper was supplied too and has not yet been read.
+Whether it belongs in the same puzzle or a second one is open.
+
+**Status when opened: LEAD.** Two opposite sequencing tricks that both raise compliance: ask
 for something tiny first and the large request succeeds, or ask for something
 outrageous first and the moderate one succeeds. Both are staples of fundraising,
 sales and negotiation, and the pair together makes a better lesson than either

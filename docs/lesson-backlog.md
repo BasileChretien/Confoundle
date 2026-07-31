@@ -1067,6 +1067,155 @@ seals, so it cannot read as being about one country.
 
 ---
 
+## Propaganda audit, 2026-07-31
+
+Requested directly: a full sweep of the propaganda field for anything the deck
+has missed. Method was the usual one. The checklist was the union of the
+Institute for Propaganda Analysis seven devices (1937), the modern
+computational-propaganda and disinformation taxonomies, and the consolidated
+list of 73 named techniques, audited against the 39 skills in the registry and
+the 13 entries above.
+
+**Most of the 73 are not candidates, and the reason is the same each time.**
+This deck needs a published primary source that prints *counts*, and a setup and
+reveal that are two views of the same data. Scapegoating, demonising the enemy,
+cult of personality, gaslighting, love bombing, milieu control, demoralisation
+and euphoria are real and well documented as history, but there is no experiment
+with a numerator and a denominator to build on, and a puzzle about them would be
+a lecture with a chart bolted to it. Straw man, red herring, non sequitur,
+black-and-white fallacy and guilt by association are argument fallacies rather
+than measurable effects; they belong in review items, not puzzles. Ad hominem,
+smears, name-calling and demonising also fail the non-partisanship rule almost
+by construction, since any real example makes one living side look uniquely bad.
+
+**Already covered, and struck off:** framing (`framing-effect`), glittering
+generalities, virtue words and labeling (`self-applied-label`), repetition, ad
+nauseam and the big lie (`illusory-truth`), latitudes of acceptance
+(`anchoring`), managing the news and card stacking (`publication-bias`), the
+third-party technique and astroturfing (shipped as `self-applied-label` review
+items), bandwagon (entry 6), and unstated assumption and loaded questions
+(`misinformation-effect`).
+
+**Eight genuine gaps survive, and they are entries 14 to 21 below.** Each one is
+a named technique in the field's own taxonomy, absent from the registry and from
+this backlog, and each has at least one candidate primary source that plausibly
+reports counts. None has been read yet, so every citation below is a lead and
+not a verified source: **nothing may be authored from this section until the
+paper has been read and its table reconciled**, exactly as for entries 9 and 13.
+
+### 14. Paltering, or misleading with true statements
+
+<!-- skill: paltering -->
+
+**Status: LEAD.** Deceiving by stating things that are individually true while
+creating a false impression. It is the technique behind most defensible
+political dishonesty, because nothing said can be shown to be a lie, and the
+deck has nothing on it. Candidate: Rogers T, Zeckhauser R, Gino F, Norton MI,
+Schweitzer ME. Artful paltering: the risks and rewards of using truthful
+statements to mislead others. *Journal of Personality and Social Psychology*
+2017;112(3):456-473. Reported to contain negotiation experiments, which usually
+means counts of participants by condition. Verify against CrossRef first, then
+find whether any table prints numerators.
+
+### 15. The innuendo effect, or the headline shaped as a question
+
+<!-- skill: innuendo-effect -->
+
+**Status: LEAD, and the strongest of the eight.** A headline that merely asks
+whether someone did something moves belief almost as much as one asserting it,
+which is precisely why the question mark is used. Candidate: Wegner DM, Wenzlaff
+R, Kerker RM, Beattie AE. Incrimination through innuendo: can media questions
+become public answers? *Journal of Personality and Social Psychology*
+1981;40(5):822-832. Fictional candidate, so non-partisan by construction, and
+the design is a between-subjects rating task, which is the shape the deck's
+`onewording` and `bothwordings` views already handle.
+
+### 16. The sleeper effect, or the source you stop remembering
+
+<!-- skill: sleeper-effect -->
+
+**Status: LEAD.** A message from a source you knew to be unreliable becomes
+*more* persuasive weeks later, because the claim outlives the memory of who made
+it. This is the mechanism that makes discredited sources worth worrying about
+even when everybody discounts them at the time, and it is the best available
+answer to "what is the harm, nobody believes that outlet anyway". Candidate:
+Hovland CI, Weiss W. The influence of source credibility on communication
+effectiveness. *Public Opinion Quarterly* 1951;15(4):635-650. Old enough that
+the counts are usually printed. A modern meta-analysis (Kumkale and Albarracin,
+*Psychological Bulletin* 2004) should be checked too, because the effect is
+known to be fragile and the deck must not overstate it.
+
+### 17. False balance, and the deck's own founding principle
+
+<!-- skill: false-balance -->
+
+**Status: LEAD, and overdue.** Giving two sides equal airtime when the evidence
+is not equally divided, so that the *format* of the coverage misinforms even
+when every sentence is accurate. This project already invokes the idea by name
+in its own editorial rule, the Boykoff ground, and has no puzzle on it, which is
+an awkward gap to leave. Candidate: Boykoff MT, Boykoff JM. Balance as bias:
+global warming and the US prestige press. *Global Environmental Change*
+2004;14(2):125-136. A content analysis, so it counts articles, which is exactly
+the shape `rates` wants: share of articles giving balanced treatment against the
+share of the scientific literature doing the same. Check whether the paper
+prints article counts or only percentages before committing.
+
+### 18. Metaphor framing, or the word that picks the policy
+
+<!-- skill: metaphor-framing -->
+
+**Status: LEAD.** Describing crime as a virus rather than a beast shifts which
+remedy people prefer, without changing a single statistic in the passage. This
+is distinct from `framing-effect`, which is about gain and loss wording; here
+the numbers are identical and only the metaphor moves. Candidate: Thibodeau PH,
+Boroditsky L. Metaphors we think with: the role of metaphor in reasoning. *PLoS
+ONE* 2011;6(2):e16782. **Open access**, so it is reachable without a request,
+which makes it the cheapest of the eight to verify.
+
+### 19. Foot in the door, and door in the face
+
+<!-- skill: compliance-sequencing -->
+
+**Status: LEAD.** Two opposite sequencing tricks that both raise compliance: ask
+for something tiny first and the large request succeeds, or ask for something
+outrageous first and the moderate one succeeds. Both are staples of fundraising,
+sales and negotiation, and the pair together makes a better lesson than either
+alone because the reader cannot fall back on a single rule of thumb. Candidates:
+Freedman JL, Fraser SC. Compliance without pressure: the foot-in-the-door
+technique. *JPSP* 1966;4(2):195-202; and Cialdini RB et al. Reciprocal
+concessions procedure for inducing compliance: the door-in-the-face technique.
+*JPSP* 1975;31(2):206-215. Both report compliance rates, which are counts.
+
+### 20. The third-person effect
+
+<!-- skill: third-person-effect -->
+
+**Status: LEAD, and the most self-implicating lesson in the queue.** People
+consistently judge propaganda to affect other people more than themselves, and
+that belief is itself what makes them vulnerable and what drives support for
+censoring others. For a deck whose entire premise is that the reader can be
+fooled, this is close to the thesis statement. Candidate: Davison WP. The
+third-person effect in communication. *Public Opinion Quarterly*
+1983;47(1):1-15, plus the Sun, Pan and Shen meta-analysis (*Journal of
+Communication* 2008) for magnitude. Check whether either prints counts rather
+than only effect sizes; the deck has refused a puzzle on that ground before.
+
+### 21. Quoting out of context
+
+<!-- skill: quote-mining -->
+
+**Status: LEAD, and the weakest source position of the eight.** Selective
+quotation that reverses a speaker's meaning while every quoted word is genuine.
+Obviously real and obviously important; the difficulty is that the experimental
+literature is thin and the vivid cases are all partisan. Search for work on
+selective quotation in science communication or in court reporting, where the
+original text is fixed and public so a count of reversed meanings is possible.
+If nothing with counts turns up, ship this as review items under
+`self-applied-label` or `publication-bias` rather than forcing a puzzle, the
+same judgement made for Neyman bias.
+
+---
+
 ## What this document does not contain
 
 The six medical trial-appraisal gaps: power and type I/II error, allocation

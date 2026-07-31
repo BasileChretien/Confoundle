@@ -1,4 +1,5 @@
 import type { LocalizedText, Puzzle } from "../puzzles/schema";
+import { LESSON_PAGE } from "./lessonPageStrings";
 
 /**
  * A lesson as a page you can paste into an argument.
@@ -143,7 +144,7 @@ export function renderLessonPage({
     .join("");
 
   const howItWorks = puzzle.lesson.howItWorks
-    ? `<h2>${escapeHtml(t({ en: "Why it works" }))}</h2><p>${e(puzzle.lesson.howItWorks)}</p>`
+    ? `<h2>${e(LESSON_PAGE.whyItWorks)}</h2><p>${e(puzzle.lesson.howItWorks)}</p>`
     : "";
   const revealBody = puzzle.reveal.body ? `<p>${e(puzzle.reveal.body)}</p>` : "";
 
@@ -172,40 +173,32 @@ ${alternates}
 </head>
 <body>
 <main>
-<p class="eyebrow">Confoundle · ${escapeHtml(t({ en: "a reasoning trap" }))}</p>
+<p class="eyebrow">Confoundle · ${e(LESSON_PAGE.eyebrow)}</p>
 <h1>${escapeHtml(skill)}</h1>
 <p class="lede">${e(puzzle.share.explainer)}</p>
 
-<h2>${escapeHtml(t({ en: "The rule" }))}</h2>
+<h2>${e(LESSON_PAGE.rule)}</h2>
 <p class="rule">${e(puzzle.lesson.takeaway)}</p>
 
-<h2>${escapeHtml(t({ en: "What it looks like" }))}</h2>
+<h2>${e(LESSON_PAGE.looksLike)}</h2>
 <div class="claim"><strong>${e(puzzle.setup.headline)}</strong>${e(puzzle.setup.framing)}</div>
 <div class="claim"><strong>${e(puzzle.reveal.headline)}</strong>${e(puzzle.reveal.explanation)}</div>
 ${revealBody}
 
 ${howItWorks}
 
-<h2>${escapeHtml(t({ en: "Source" }))}</h2>
+<h2>${e(LESSON_PAGE.source)}</h2>
 <p class="src">${
     link
       ? `<a href="${escapeHtml(link)}" rel="noreferrer">${e({ en: puzzle.provenance.source })}</a>`
       : e({ en: puzzle.provenance.source })
   }</p>
 
-<h2>${escapeHtml(t({ en: "See if it fools you" }))}</h2>
-<p>${escapeHtml(
-    t({
-      en: "This page gives the answer away. The puzzle version shows you the same figures first and asks you to commit before the reveal.",
-    }),
-  )}</p>
-<a class="cta" href="/?p=${escapeHtml(puzzle.slug)}">${escapeHtml(
-    t({ en: "Play this one" }),
-  )}</a>
+<h2>${e(LESSON_PAGE.tryIt)}</h2>
+<p>${e(LESSON_PAGE.spoiler)}</p>
+<a class="cta" href="/?p=${escapeHtml(puzzle.slug)}">${e(LESSON_PAGE.play)}</a>
 
-<footer>${escapeHtml(
-    t({ en: "Confoundle is free. No ads, no profiles." }),
-  )} <a href="/">${escapeHtml(t({ en: "A new puzzle every day" }))}</a></footer>
+<footer>${e(LESSON_PAGE.free)} <a href="/">${e(LESSON_PAGE.everyDay)}</a></footer>
 </main>
 </body>
 </html>`;

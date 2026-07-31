@@ -5554,6 +5554,139 @@ const items: TestItem[] = [
       en: "Refusing the shorthand costs the reader a little vividness and buys them the whole option set. Listing responses without grouping them is the part that matters most, since a grouping is itself a quiet metaphor about which things belong together.",
     },
   },
+  // ---- Compliance sequencing ----
+  {
+    id: "cs-petition-then-sign",
+    scenario: {
+      en: "A canvasser asks residents to sign a harmless petition supporting road safety. Two weeks later the same organisation returns asking them to host a large sign in their front garden, and finds far more agree than on streets it had never visited.",
+    },
+    trap: "compliance-sequencing",
+    explanation: {
+      en: "The petition was not the ask, it was the setup, and signing it is what makes the second request land on somebody who now thinks of themselves as involved. The second request should be judged on whether you want the sign, which is a question you can answer without reference to the first visit.",
+    },
+  },
+  {
+    id: "cs-free-trial",
+    scenario: {
+      en: "A service offers a free thirty-day trial that requires setting up an account, importing your data and inviting two colleagues. The paid plan is pitched on day twenty-eight.",
+    },
+    trap: "compliance-sequencing",
+    explanation: {
+      en: "The trial is not a sample of the product, it is a sequence of small completed actions, and each one makes the next agreement easier. The question worth asking on day twenty-eight is what you would pay if the offer arrived today with none of that behind you.",
+    },
+  },
+  {
+    id: "cs-outrageous-opening-bid",
+    scenario: {
+      en: "A supplier opens with a price so high the buyer laughs, then comes down to a figure that feels like a real concession. The buyer accepts it without checking it against other quotes.",
+    },
+    trap: "compliance-sequencing",
+    explanation: {
+      en: "The refused opening is doing the work, because a visible concession feels like it calls for one in return, and the second number is being judged against the first rather than against the market. A refusal does not reset the exchange, it is the mechanism.",
+    },
+  },
+  {
+    id: "cs-charity-small-gift",
+    scenario: {
+      en: "A charity asks people for a token donation of one pound, describing it as symbolic. Those who give are contacted six months later with a request for a monthly commitment, and give at much higher rates than fresh contacts.",
+    },
+    trap: "compliance-sequencing",
+    explanation: {
+      en: "The token amount was never about the money, it was about producing a donor, and the later request is addressed to that person rather than to a stranger. Nothing here is deceptive, which is precisely why checking the charity's honesty does not protect you.",
+    },
+  },
+  {
+    id: "cs-survey-then-upsell",
+    scenario: {
+      en: "A caller says she is doing a two-minute research survey and is not selling anything, which is true. At the end of the survey she asks whether the respondent would like to hear about an offer.",
+    },
+    trap: "compliance-sequencing",
+    explanation: {
+      en: "Every word of that is accurate and the survey really was research, and the sequence still does its work. Having just spent two minutes helping her, refusing the next thing feels like a change of character rather than a decision about an offer.",
+    },
+  },
+  {
+    id: "cs-interrogation-small-admission",
+    scenario: {
+      en: "An investigator opens by getting a suspect to confirm trivial and undisputed facts, such as where he parked and what time he left, before moving to the matter at issue.",
+    },
+    trap: "compliance-sequencing",
+    explanation: {
+      en: "A run of easy agreements is a recognised technique for making the next agreement easier, and the trivial facts are chosen because refusing them would seem absurd. Whether to answer the substantive question is a separate decision, and it does not become smaller because the last four answers were.",
+    },
+  },
+  {
+    id: "cs-escalating-commitment-meeting",
+    scenario: {
+      en: "A vendor asks only for a fifteen-minute introductory call, then a short technical demo, then a workshop with your team, then a pilot. Nobody ever proposed the pilot at the start.",
+    },
+    trap: "compliance-sequencing",
+    explanation: {
+      en: "A chain of small agreements arrives at a place nobody would have agreed to in one step, and each link seems reasonable relative to the one before it. The check is whether you would have said yes to the pilot cold, which is the request the sequence was always heading for.",
+    },
+  },
+  {
+    id: "cs-refused-then-moderate",
+    scenario: {
+      en: "A colleague asks you to take over an entire project for three months. You refuse. He immediately asks you to cover just the reporting for it, and you agree, having not considered whether you have time for that either.",
+    },
+    trap: "compliance-sequencing",
+    explanation: {
+      en: "The smaller request is being weighed against the one you just refused instead of against your actual workload, and his apparent retreat reads as a concession you should match. Ask what you would say if the reporting request had come first and alone.",
+    },
+  },
+  {
+    id: "cs-onboarding-profile",
+    scenario: {
+      en: "An app asks for a nickname, then a photo, then contacts access, then location, each on its own screen after the previous one is completed.",
+    },
+    trap: "compliance-sequencing",
+    explanation: {
+      en: "Splitting a large disclosure into a sequence of small ones is a design choice, not a technical necessity, and each completed step raises the odds of the next. Presented on one screen as a single list the same requests would be refused far more often.",
+    },
+  },
+  {
+    id: "cs-loyalty-punch-card",
+    scenario: {
+      en: "A cafe hands new customers a loyalty card that already has two of the ten squares stamped, describing it as a welcome bonus, and finds these cards are completed far more often than empty ten-square cards.",
+    },
+    trap: "compliance-sequencing",
+    explanation: {
+      en: "The same eight purchases are required either way, and the two free stamps change nothing but the sense of having already started. That feeling of a sequence under way is the entire product of the gift.",
+    },
+  },
+
+  // ---- Sound handling of a sequence of requests (decoys) ----
+  {
+    id: "ok-judged-cold",
+    scenario: {
+      en: "Offered an upgrade at the end of a long and genuinely helpful support call, a customer asks himself what he would pay for it in an email from a stranger, decides that is less than the price, and declines.",
+    },
+    trap: null,
+    explanation: {
+      en: "This is the defence applied exactly as it should be. Testing the request as though it had arrived cold strips out the sequence without requiring anyone to work out how much the sequence moved them.",
+    },
+  },
+  {
+    id: "ok-sequence-disclosed",
+    scenario: {
+      en: "A fundraiser tells prospective donors at the outset what the full programme involves, that it begins with a small gift and will later include a request for a regular commitment, and asks them to decide about both.",
+    },
+    trap: null,
+    explanation: {
+      en: "Disclosing the sequence in advance is what turns it from a technique into an offer, because the decision is now being made with the whole shape visible. The small first step still helps, but it is no longer doing work the donor cannot see.",
+    },
+  },
+  {
+    id: "ok-refusal-noted-not-repaid",
+    scenario: {
+      en: "After turning down a large request, a manager notices that the smaller follow-up feels like something she owes, sets that feeling aside, and evaluates the smaller task against her actual capacity before agreeing to part of it.",
+    },
+    trap: null,
+    explanation: {
+      en: "Noticing the sense of obligation and declining to treat it as evidence is the whole skill, and it does not require refusing the second request. She agreed on the merits, which is a different thing from agreeing because a concession seemed to have been made.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

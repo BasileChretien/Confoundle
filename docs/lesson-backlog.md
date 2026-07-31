@@ -13,6 +13,7 @@ duplicated here**. This file is everything else.
 
 | Status | Meaning |
 |---|---|
+| **SHIPPED** | Built and merged. Names the `reasoningSkill` and slug it went out as. |
 | **VERIFIED** | Numbers read off the primary table. Ready to author. |
 | **SOURCED** | Primary source identified and its figures seen, but not yet read off the paper's own table. Must be verified at source before authoring. |
 | **LEAD** | A citation exists and looks right. Nothing has been read. |
@@ -30,6 +31,17 @@ again.
 Nothing here may be authored from this file. The project rule stands: read the
 table, reconcile more than one way, or do not ship it.
 
+**Every numbered entry carries a `<!-- skill: id -->` tag, and it is load
+bearing.** The id is the `reasoningSkill` the lesson has shipped under, or the
+one it is expected to ship under. `src/puzzles/docsCoverage.test.ts` reads these
+tags and fails the suite if a tagged skill exists in the registry while its entry
+still says LEAD or BLOCKED, or if an entry claims SHIPPED for a skill that does
+not exist, or if a numbered entry has no tag at all. This file went stale exactly
+that way before, with three shipped lessons still listed as work to do, so it is
+checked rather than trusted. If you ship a lesson under a different id than its
+tag names, change the tag in the same commit: that is the one case the test
+cannot see.
+
 ---
 
 ## Tier 1: strongest candidates
@@ -39,9 +51,14 @@ two-views-of-one-dataset shape.
 
 ### 1. The sample that was too big to be right, 1936
 
-**Status: VERIFIED AT SOURCE, both sources, 2026-07-30. READY TO AUTHOR.** Squire read in full from the *Public
-Opinion Quarterly* scan. The strongest candidate in this document, and the
-verification changed the lesson.
+<!-- skill: self-selection -->
+
+**Status: SHIPPED 2026-07-30 as `self-selection`, slug `the-biggest-poll-ever-taken`.**
+Squire was read in full from the *Public Opinion Quarterly* scan before
+authoring, and the verification changed the lesson: the famous "they polled
+telephone owners" explanation is wrong, and the entry below records why. Kept in
+this file rather than deleted, because the research under it is the reason the
+puzzle says what it says.
 
 #### What the *Literary Digest* published
 
@@ -230,10 +247,13 @@ number standing between Stage 1 and a shipped puzzle.
 
 ### 2. The word that put glass on the road
 
-**Status: VERIFIED AT SOURCE, 2026-07-30. READY TO AUTHOR.** Read from the
-journal scan of *Journal of Verbal Learning and Verbal Behavior* 13, 585-589, not
-from the exam-board reproduction this entry previously relied on. Arrived at by
-way of gaslighting, and much better than gaslighting.
+<!-- skill: misinformation-effect -->
+
+**Status: SHIPPED 2026-07-30 as `misinformation-effect`, slug
+`the-glass-that-was-never-there`.** Read from the journal scan of *Journal of
+Verbal Learning and Verbal Behavior* 13, 585-589, not from the exam-board
+reproduction this entry previously relied on. Arrived at by way of gaslighting,
+and much better than gaslighting.
 
 Participants watched a film of a multiple car accident. A week later they were
 asked whether they had seen any broken glass. There was none in the film.
@@ -308,6 +328,8 @@ the prompt.
 
 ### 3. Everything is significant if you look at enough things
 
+<!-- skill: multiple-comparisons -->
+
 **Status: LEAD.** The largest genuine hole in the deck's statistics coverage.
 
 Confoundle has `publication-bias` and `statistical-significance` but **nothing on
@@ -333,6 +355,8 @@ before the reveal shows the whole trial. Needs the paper.
 
 ### 4. The map is not the territory, and the projection knows it
 
+<!-- skill: projection-distortion -->
+
 **Status: BLOCKED on shape, not on source.**
 
 AP Human Geography makes this **required content**, IMP-1.A.3, quoted verbatim:
@@ -352,6 +376,8 @@ unprecedented in this deck, but it needs deciding rather than stumbling into.
 
 ### 5. A lead that is not a lead
 
+<!-- skill: margin-of-error -->
+
 **Status: BLOCKED on a source with counts.**
 
 Named as required content by the AP US Government framework: "Accurate sampling
@@ -367,6 +393,8 @@ by teaching something that puzzle cannot, most likely that the margin on a
 almost nobody knows.
 
 ### 12. Retraction does not undo it
+
+<!-- skill: continued-influence-effect -->
 
 **Status: LEAD.** Promoted out of Tier 3, where it turned up while searching the
 firehose model's component claims. Nothing in the deck is like it.
@@ -394,6 +422,8 @@ and *Cognition* (2024) on relative source credibility in the CIE.
 
 ### 6. The poll that makes the opinion it measures
 
+<!-- skill: polls-shape-opinion -->
+
 **Status: BLOCKED.** Named by France, première SES, verbatim:
 
 > Comprendre comment le recours fréquent aux sondages d'opinion contribue à
@@ -407,6 +437,8 @@ the project excludes. Wanted, but do not force it.
 
 ### 7. Counting crime is counting reporting
 
+<!-- skill: reporting-rate -->
+
 **Status: BLOCKED.** Named by France, première SES: "les difficultés de mesure de
 la délinquance".
 
@@ -418,6 +450,8 @@ strongest version would use a case where recorded crime rose while victimisation
 surveys were flat, so the two instruments disagree on the same reality.
 
 ### 8. Goodhart, and the measure that stops measuring
+
+<!-- skill: goodharts-law -->
 
 **Status: LEAD.** Not named by any curriculum read, but it is the thread running
 through several things that are: the French polling item above, the sales-region
@@ -729,6 +763,8 @@ with published counts, all with their authors' work decades old.
 
 ### 9. The conjunction fallacy
 
+<!-- skill: conjunction-fallacy -->
+
 **Status: LEAD.** Tversky and Kahneman (1983). Given a description of Linda,
 large majorities rate "bank teller and active in the feminist movement" as more
 probable than "bank teller", which is impossible. Reported as percentages of
@@ -738,6 +774,8 @@ composition.
 
 ### 10. Confirmation bias, as an experiment rather than a slogan
 
+<!-- skill: confirmation-bias -->
+
 **Status: LEAD.** Wason's four-card selection task (1968) and the 2-4-6 task.
 Roughly one respondent in ten solves the four-card version. Confoundle has
 **nothing** on confirmation bias, which is conspicuous given it is the bias most
@@ -746,10 +784,16 @@ abstract cards, so there is no partisan surface at all.
 
 ### 11. Availability
 
-**Status: LEAD.** Tversky and Kahneman (1973), the question of whether more
-English words begin with K or have K as their third letter. Named as part of the
-category the medical audit lists as gap 4 (anchoring, availability, framing), of
-which anchoring and framing have shipped and availability has not.
+<!-- skill: availability-heuristic -->
+
+**Status: SHIPPED 2026-07-30 as `availability-heuristic`, slug
+`what-comes-to-mind-first`.** Not on the K-word study this entry proposed.
+Tversky and Kahneman (1973) asks whether more English words begin with K or have
+K third, which is a fact about English rather than about the world, so it teaches
+the heuristic without teaching what it costs. The puzzle was built instead on
+Lichtenstein, Slovic, Fischhoff, Layman and Combs (1978), where the same
+mechanism is measured against real mortality and one control pair refutes the
+obvious objection from inside the data. See `plan-syllabus-gaps.md` gap 4.
 
 ---
 
@@ -757,10 +801,14 @@ which anchoring and framing have shipped and availability has not.
 
 The six medical trial-appraisal gaps: power and type I/II error, allocation
 concealment, sponsorship and conflict of interest, the cognitive category,
-Neyman bias, and the Hawthorne effect. Those have their own plan in
-[`plan-syllabus-gaps.md`](./plan-syllabus-gaps.md) and are still the highest
-priority work in the project, because four of the six are rang A in France and
-three of those are also named by the USMLE. Nothing in this file outranks them.
+Neyman bias, and the Hawthorne effect. Those had their own plan in
+[`plan-syllabus-gaps.md`](./plan-syllabus-gaps.md), and **all six closed on
+2026-07-30**: five shipped as puzzles and Neyman was judged covered by
+length-time and survivorship and shipped as review items instead. That plan file
+is now a record rather than a worklist, and **this file is the queue**.
 
-The honest summary is that this backlog is broad and the medical plan is deep,
-and the deck is better served by finishing the deep one first.
+Which changes what outranks what. Until 2026-07-30 the honest summary was that
+this backlog is broad and the medical plan is deep, and the deck was better
+served by finishing the deep one first. The deep one is finished. The strongest
+remaining candidate here is entry 3, multiplicity, which the deck has nothing on
+at all.

@@ -328,39 +328,39 @@ consensus only · **X** absent from official documents.
 | Confounding (general) | A | A | O | X | via Simpson's, indication |
 | Selection bias (general) | X | A | O | X | via Berkson, survivorship |
 | Information / classification bias | X | A | O | X | **shipped** (via non-differential misclassification) |
-| Recall bias | X | **A** | O | X | **shipped** |
+| Recall bias <!-- skill: recall-bias --> | X | **A** | O | X | **shipped** |
 | Attrition / loss to follow-up | X | **A** | O | X | inside intention to treat, deliberately; see below |
-| Intention to treat vs per protocol | O | **A** | O | X | **shipped** |
-| Lead-time bias | X | **A** | O | (once) | shipped |
-| Length-time bias | X | **A** | O | X | **shipped**; also in Korea 2026 paper |
+| Intention to treat vs per protocol <!-- skill: intention-to-treat --> | O | **A** | O | X | **shipped** |
+| Lead-time bias <!-- skill: lead-time-bias --> | X | **A** | O | (once) | shipped |
+| Length-time bias <!-- skill: length-time-bias --> | X | **A** | O | X | **shipped**; also in Korea 2026 paper |
 | Overdiagnosis | X | **A** | T | **A** | inside length-time |
-| Publication bias | E | A(body) | O | X | **shipped this session** |
-| Base rate / predictive value vs prevalence | **E every year** | A | O | X | shipped |
-| Relative vs absolute risk, NNT | A (x2) | A | O | X | shipped |
+| Publication bias <!-- skill: publication-bias --> | E | A(body) | O | X | **shipped this session** |
+| Base rate / predictive value vs prevalence <!-- skill: base-rate-fallacy --> | **E every year** | A | O | X | shipped |
+| Relative vs absolute risk, NNT <!-- skill: relative-vs-absolute-risk --> | A (x2) | A | O | X | shipped |
 | Blinding: performance + detection bias | X | **A** | O | X | **shipped** (detection; Brandstrup 2003) |
-| Allocation concealment | X | **A** | O | X | **shipped** (PHANTASi 2018) |
-| Effect modification vs confounding | X | B | X | X | **shipped** (Choi 2021) |
-| Confounding by indication | X | B | T | X | shipped |
+| Allocation concealment <!-- skill: allocation-concealment --> | X | **A** | O | X | **shipped** (PHANTASi 2018) |
+| Effect modification vs confounding <!-- skill: effect-modification-vs-confounding --> | X | B | X | X | **shipped** (Choi 2021) |
+| Confounding by indication <!-- skill: confounding-by-indication --> | X | B | T | X | shipped |
 | Differential vs non-differential misclassification | X | B | T | X | **shipped** (non-differential; differential via recall bias) |
 | Placebo / nocebo | X | **A** | O | X | **shipped** |
-| Statistical vs clinical significance | X | **A** | O | X | **shipped** (oseltamivir) |
-| Power, type I and type II error | X | **A** | O | X | **gap** |
-| Sponsorship / conflict of interest | X | **A** | T | X | **shipped** (Barnes & Bero 1998) |
-| Regression to the mean | X | **X** | O | X | **shipped** (Galton 1886) |
-| Ecological fallacy | X | **X** | O | X | **shipped** (Robinson 1950) |
-| Simpson's paradox | X | **X** | **X** | X | shipped (consensus only) |
-| Berkson's bias | X | **X** | **X** | X | shipped; **named in Korea 2026 paper** |
-| Survivorship bias | X | **X** | **X** | X | shipped (consensus only) |
-| Spectrum bias | X | **X** | **X** | X | shipped (consensus only) |
-| Will Rogers phenomenon | X | X | X | X | shipped (consensus only) |
-| Prosecutor's fallacy | X | X | X | X | shipped (not a medical exam topic) |
-| Immortal time bias | X | **X** | T | X | **shipped** |
+| Statistical vs clinical significance <!-- skill: statistical-vs-clinical-significance --> | X | **A** | O | X | **shipped** (oseltamivir) |
+| Power, type I and type II error <!-- skill: statistical-power --> | X | **A** | O | X | **shipped** (Freiman 1978) |
+| Sponsorship / conflict of interest <!-- skill: sponsorship-bias --> | X | **A** | T | X | **shipped** (Barnes & Bero 1998) |
+| Regression to the mean <!-- skill: regression-to-the-mean --> | X | **X** | O | X | **shipped** (Galton 1886) |
+| Ecological fallacy <!-- skill: ecological-fallacy --> | X | **X** | O | X | **shipped** (Robinson 1950) |
+| Simpson's paradox <!-- skill: simpsons-paradox --> | X | **X** | **X** | X | shipped (consensus only) |
+| Berkson's bias <!-- skill: berksons-bias --> | X | **X** | **X** | X | shipped; **named in Korea 2026 paper** |
+| Survivorship bias <!-- skill: survivorship-bias --> | X | **X** | **X** | X | shipped (consensus only) |
+| Spectrum bias <!-- skill: spectrum-bias --> | X | **X** | **X** | X | shipped (consensus only) |
+| Will Rogers phenomenon <!-- skill: will-rogers-phenomenon --> | X | X | X | X | shipped (consensus only) |
+| Prosecutor's fallacy <!-- skill: prosecutors-fallacy --> | X | X | X | X | shipped (not a medical exam topic) |
+| Immortal time bias <!-- skill: immortal-time-bias --> | X | **X** | T | X | **shipped** |
 | Healthy worker / healthy user | X | X | T | X | partly inside indication |
-| Hawthorne effect | X | X | **O** | X | **shipped** (Wu 2018) |
+| Hawthorne effect <!-- skill: hawthorne-effect --> | X | X | **O** | X | **shipped** (Wu 2018) |
 | Neyman / prevalence-incidence | X | X | T | X | covered by length-time and survivorship; review items only |
-| Cognitive: anchoring | named as a category | **X** | O | postgrad | **shipped** (Tversky & Kahneman 1974) |
-| Cognitive: framing | named as a category | **X** | O | postgrad | **shipped** |
-| Cognitive: availability | named as a category | **X** | O | postgrad | **shipped** (Lichtenstein et al. 1978) |
+| Cognitive: anchoring <!-- skill: anchoring --> | named as a category | **X** | O | postgrad | **shipped** (Tversky & Kahneman 1974) |
+| Cognitive: framing <!-- skill: framing-effect --> | named as a category | **X** | O | postgrad | **shipped** |
+| Cognitive: availability <!-- skill: availability-heuristic --> | named as a category | **X** | O | postgrad | **shipped** (Lichtenstein et al. 1978) |
 
 ## Built from this document
 

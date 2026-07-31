@@ -78,7 +78,50 @@ Recorded because the correction is the useful part. **Judge these on the framing
 and the rendered chart, never on the question in isolation**, or you will flag
 puzzles that are working and miss ones that are not.
 
-### 3. Magnitude questions where only direction is licensed
+### 3. `immortal-time`, flagged and agreed
+
+**Q:** "Is that gap the drug?" **A:** "No, some of that time could not contain
+a death."
+
+The setup gives the cohort, the exposure definition, and 49 per cent against 71
+per cent. Nothing else.
+
+The weak version of the objection is that the reader cannot derive the
+mechanism. That version fails: the framing says anyone dispensed the drug **at
+any point during follow-up** counts as treated, in a cohort followed from entry,
+and that sentence is exactly the tell for immortal time. A reader who knows the
+skill can spot it.
+
+**The strong version holds, and it is a different problem.** Two of the four
+options are defensible from what the reader has been shown:
+
+- *No, the untreated were sicker to begin with*, which is confounding by
+  indication and has its own puzzle in this deck.
+- *No, some of that time could not contain a death*, the marked answer.
+
+The setup reports **nothing about baseline characteristics**, so there is no
+information with which to prefer one over the other. Both critiques are correct
+things to say about this design. The marked answer is correct only because the
+reader is expected to guess which lesson they are currently in, which is meta
+knowledge about the deck rather than reasoning about the data. And the reveal's
+own claim, that half the treated group's follow-up was time in which nobody
+could die, is a quantity the setup cannot yield at all.
+
+This is a third failure mode the audit had not named, and it is the most
+dangerous because it is invisible from the answer key: **the distractor is also
+right.** That grep was run. Only two other puzzles offer a wrong option naming a real
+bias, and **both are clean**. In `misclassification` the distractor is recall
+bias, and the setup rules it out by showing memory is equally poor in both
+groups, which is the whole finding. In `multiple-comparisons` the option is a
+magnitude band rather than a rival explanation. So `immortal-time` is the only
+instance in the deck, which makes it cheap to fix and worth fixing.
+
+Fix by one of: give the setup a line that rules out the baseline explanation, so
+the exposure definition becomes the only live account; or make the hedge correct
+and let the reveal show that both were live and only one survives once you look
+at the person-time. The second is truer to the lesson.
+
+### 4. Magnitude questions where only direction is licensed
 
 `metaphor-framing`, `compliance-sequencing`, `self-applied-label`,
 `conjunction-fallacy`, `sponsorship-bias`, `multiple-comparisons`,

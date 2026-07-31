@@ -353,6 +353,46 @@ The second is the better fit: it is a real clinical dataset with real numerators
 and denominators, and the setup can show the Gemini and Libra subgroup honestly
 before the reveal shows the whole trial. Needs the paper.
 
+#### Source hunt 2026-07-31: half verified, half still blocked. Do not author yet.
+
+The trial is pinned. **ISIS-2 Collaborative Group. Lancet 1988;2(8607):349-360.
+PMID 2899772.** Confirmed from the MEDLINE record, not from memory.
+
+**The reveal half is already verified**, from the abstract on that record:
+
+| 5-week vascular deaths | Aspirin | Placebo |
+|---|---:|---:|
+| All 17,187 randomised | **804/8587** (9.4%) | **1016/8600** (11.8%) |
+
+Those two fractions are what the reveal needs, and they reconcile: 804/8587 is
+9.36 per cent and 1016/8600 is 11.81, both matching the printed 9.4 and 11.8, and
+the two denominators sum to 17,187.
+
+**The setup half is not.** The Gemini and Libra numerators are in the full text,
+which this session could not reach: PubMed served a bot check, the library's
+EBSCO Discovery instance was an unauthenticated guest session, and the 1988
+article is not in ScienceDirect's index under its own title. No identifier was
+guessed to get around that, and no secondary source was substituted.
+
+**And one premise of this entry is itself unverified.** It asserts the astrology
+subgroup was "published in the *Lancet* in 1988". That is the received account,
+but nobody here has read the paper, so it is a claim about a source rather than a
+claim from one. Two things to settle together, in this order:
+
+1. Does the 1988 paper itself carry the astrological breakdown, or does it only
+   appear in later commentary by the investigators, most likely Sleight P,
+   "Subgroup analyses in clinical trials: fun to look at, but don't believe
+   them!", *Curr Control Trials Cardiovasc Med* 2000;1(1):25-27, which is open
+   access? If the counts are only in the commentary then the commentary is the
+   primary for them, and the entry above must be rewritten to say so.
+2. Only then, the numerators for Gemini and Libra against the other ten signs.
+
+**Route that is most likely to work next**, given what failed: a signed-in
+session on the library's discovery service, or thelancet.com reached through a
+real link rather than a constructed one. The lesson from the availability puzzle
+applies here too, that an author or institutional repository copy often exists
+where the publisher's own page does not open.
+
 ### 4. The map is not the territory, and the projection knows it
 
 <!-- skill: projection-distortion -->

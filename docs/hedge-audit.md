@@ -135,17 +135,74 @@ the exposure definition becomes the only live account; or make the hedge correct
 and let the reveal show that both were live and only one survives once you look
 at the person-time. The second is truer to the lesson.
 
-### 4. Magnitude questions where only direction is licensed
+### 4. The seven magnitude questions, all checked 2026-07-31
 
-`metaphor-framing`, `compliance-sequencing`, `self-applied-label`,
-`conjunction-fallacy`, `sponsorship-bias`, `multiple-comparisons`,
-`statistical-power`.
+Checked one at a time against the framing, the rendered chart and the existing
+tests. **One is cleared outright and six share a single structural property**,
+which is the finding: this is not six defects, it is one design pattern, and
+whether it is acceptable is a decision about how the deck teaches rather than a
+bug to be swept.
 
-These are the weaker cases and most are probably fine, because the answer bands
-are coarse enough that the direction picks the band. Each still needs checking
-one at a time against the same test. The specific risk is a band boundary that
-requires knowing the number, for example distinguishing "about a third" from
-"more than half" when the skill only says "more".
+**`statistical-power`: CLEARED, and it shows what a clean one looks like.** Its
+framing says the researchers asked one question only, whether each trial was
+large enough to have shown a twenty-five per cent improvement, and its test file
+already records the licensing argument in a comment: *the inference the reader
+needs is that the question is about size, and if this sentence is ever cut the
+hedge becomes defensible.* The licensing is deliberate, stated, and protected.
+
+**The other six all have the same shape.** The answer bands contain **two or
+more options pointing the same way**, so the skill picks the direction and then
+stops, and nothing in the setup chooses between them:
+
+| Puzzle | The two same-direction bands | What the skill licenses |
+|---|---|---|
+| `sponsorship-bias` | about twice as often / about seven times | industry concludes it more often |
+| `compliance-sequencing` | perhaps a third / more than half | the small favour raises compliance |
+| `metaphor-framing` | a couple of points / about seventeen | the metaphor moves something |
+| `conjunction-fallacy` | less help than the money / more than the money | talking helps |
+| `self-applied-label` | around 48 / roughly 26 / nineteen | the share falls |
+| `multiple-comparisons` | small benefit / large benefit | the subgroup was noise |
+
+Two deserve singling out because they fail harder than the others.
+
+**`self-applied-label` is the worst of them.** The skill licenses that the
+*share* keeping the promise falls. The correct answer is that the *count* falls,
+from 26 to 19, and that requires the share to more than halve while the
+denominator nearly doubles. A reader who reasons perfectly to "the share drops"
+still cannot get to "fewer countries", and the band that says "more, and a
+similar share, around 48" is exactly what a correct directional inference
+produces.
+
+**`multiple-comparisons` needs knowledge the setup never supplies.** The reader
+is shown one non-significant subgroup and asked what aspirin did in the rest of
+the trial. Multiplicity tells them the subgroup is noise; it does not tell them
+what the trial found. Answering requires already knowing that aspirin works
+after a heart attack, which is real medical knowledge but is not on the page.
+
+**Arithmetic was checked for a ceiling argument in each, of the kind that
+cleared `illusory-truth`. There is none.** For `sponsorship-bias`, a two-fold
+ratio distributes the stated third of 106 as roughly 16 industry and 19
+independent, which is perfectly possible; nothing excludes it. The same holds
+across the others.
+
+### What to do about it, which is a design decision and not a fix
+
+Three options, and this file does not choose between them.
+
+1. **Accept it.** The deck is a game as well as a course, coarse bands are how
+   it converts a prediction into a click, and being wrong is the pedagogy. This
+   is defensible and it is what the deck does today.
+2. **Add licensing to the framing**, one puzzle at a time, the way
+   `statistical-power` does. Cheapest per puzzle, keeps every answer key, and
+   the test comment there is the template.
+3. **Make the hedge correct where two same-direction bands exist.** Truest to
+   the reasoning, and it would take the hedge from 4 of 39 to 10, which is
+   probably past the point where it stops being a tell and starts being one in
+   the other direction.
+
+**No puzzle has been changed on the strength of this section.** Given that two
+of the first three flags raised in this file turned out to be wrong, a six
+puzzle sweep on one reading is exactly the move this audit exists to prevent.
 
 ## Method for whoever does this
 

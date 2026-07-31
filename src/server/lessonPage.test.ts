@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { clamp, escapeHtml, lessonPath, renderLessonPage } from "./lessonPage";
+import { LESSON_PAGE } from "./lessonPageStrings";
 import { lessonPages, lessonSitemap } from "./prerender";
 import { puzzles } from "../puzzles";
 import { ALL_DICTIONARIES } from "../app/translations/all";
@@ -147,6 +148,35 @@ describe("what gets written at build time", () => {
     const translated = ALL_DICTIONARIES.fr[puzzle.lesson.takeaway.en];
     expect(translated).toBeTruthy();
     expect(french.html).toContain(escapeHtml(translated));
+  });
+
+  it("translates its own chrome, not only the puzzle's words", () => {
+    // This one shipped broken and stayed that way. The headings were written
+    // inline as t({ en: "The rule" }), which resolves through the dictionaries,
+    // and no dictionary has ever held them: every non-English page carried
+    // English headings above correctly translated prose, with no failure
+    // anywhere because falling back to English is what a miss is meant to do.
+    // Asked of the built pages rather than of the table, since a complete table
+    // is necessary and not sufficient: a call site that keeps its own inline
+    // string would pass the parity test and still ship English.
+    const slug = puzzles.find((p) => p.lesson.howItWorks)!.slug;
+    for (const locale of LOCALE_CODES.filter((c) => c !== "en")) {
+      const html = pages.find(
+        (p) => p.file === `l/${slug}/${locale}/index.html`,
+      )!.html;
+      for (const [key, text] of Object.entries(LESSON_PAGE)) {
+        const translated = (text as Record<string, string>)[locale];
+        expect({ locale, key, shown: html.includes(escapeHtml(translated)) }).toEqual(
+          { locale, key, shown: true },
+        );
+        // French renders "Source" as "Source", so the English is only expected
+        // to be gone where the translation is actually a different string.
+        if (translated === text.en) continue;
+        expect({ locale, key, english: html.includes(escapeHtml(text.en)) }).toEqual(
+          { locale, key, english: false },
+        );
+      }
+    }
   });
 
   it("lists every page in the sitemap, with absolute urls", () => {

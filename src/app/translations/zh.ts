@@ -5,6 +5,18 @@
  */
 export const zh: Record<string, string> = {
   // ---- UI chrome (buttons, labels, section headers) ----
+  "Review": "复习",
+  "Loading your review…": "正在加载你的复习…",
+  "Nothing is due right now. Learn a puzzle or come back later.": "现在没有待复习的。去学一节课，或稍后再来。",
+  "Saved, and synced to your account.": "已保存，并同步到你的账户。",
+  "Saved on this device.": "已保存在此设备上。",
+  "Does this fall for {skill}?": "这段推理犯了{skill}吗？",
+  "Yes, it falls for it": "是的，中招了",
+  "No, the reasoning is sound": "不，这个推理没问题",
+  "Right.": "答对了。",
+  "Not this time.": "这次没有。",
+  "Next": "下一个",
+  "See your score": "查看你的得分",
   "The skill": "这项技能",
   "Where this shows up": "它出现在哪里",
   "See it in the wild": "看看真实案例",

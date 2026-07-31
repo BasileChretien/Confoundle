@@ -5,6 +5,18 @@
  */
 export const ja: Record<string, string> = {
   // ---- UI chrome (buttons, labels, section headers) ----
+  "Review": "復習",
+  "Loading your review…": "復習を読み込んでいます…",
+  "Nothing is due right now. Learn a puzzle or come back later.": "今すぐの復習はありません。レッスンを学ぶか、後で戻ってきてください。",
+  "Saved, and synced to your account.": "保存し、アカウントに同期しました。",
+  "Saved on this device.": "この端末に保存しました。",
+  "Does this fall for {skill}?": "この推論は{skill}に当てはまるか？",
+  "Yes, it falls for it": "はい、当てはまる",
+  "No, the reasoning is sound": "いいえ、推論は妥当だ",
+  "Right.": "正解。",
+  "Not this time.": "今回は違った。",
+  "Next": "次へ",
+  "See your score": "スコアを見る",
   "The skill": "スキル",
   "Where this shows up": "どこで現れるか",
   "See it in the wild": "実例で見る",

@@ -4,6 +4,18 @@
  */
 export const bn: Record<string, string> = {
   // ---- UI chrome (buttons, labels, section headers) ----
+  "Review": "পুনরাবৃত্তি",
+  "Loading your review…": "আপনার পুনরাবৃত্তি লোড হচ্ছে…",
+  "Nothing is due right now. Learn a puzzle or come back later.": "এখন কিছু বাকি নেই। একটি পাঠ শিখুন বা পরে ফিরে আসুন।",
+  "Saved, and synced to your account.": "সংরক্ষিত হয়েছে, এবং আপনার অ্যাকাউন্টে সিঙ্ক হয়েছে।",
+  "Saved on this device.": "এই ডিভাইসে সংরক্ষিত হয়েছে।",
+  "Does this fall for {skill}?": "এই যুক্তি কি {skill}-এ পড়ে?",
+  "Yes, it falls for it": "হ্যাঁ, এটা ফাঁদে পড়ে",
+  "No, the reasoning is sound": "না, যুক্তিটি ঠিক আছে",
+  "Right.": "ঠিক।",
+  "Not this time.": "এবার নয়।",
+  "Next": "পরবর্তী",
+  "See your score": "আপনার স্কোর দেখুন",
   "The skill": "দক্ষতাটি",
   "Where this shows up": "এটি কোথায় দেখা যায়",
   "See it in the wild": "বাস্তবে দেখুন",

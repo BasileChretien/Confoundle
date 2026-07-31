@@ -5,6 +5,18 @@
  */
 export const ar: Record<string, string> = {
   // ---- UI chrome (buttons, labels, section headers) ----
+  "Review": "مراجعة",
+  "Loading your review…": "جارٍ تحميل مراجعتك…",
+  "Nothing is due right now. Learn a puzzle or come back later.": "لا شيء مستحق الآن. تعلّم درسًا أو عُد لاحقًا.",
+  "Saved, and synced to your account.": "تم الحفظ والمزامنة مع حسابك.",
+  "Saved on this device.": "تم الحفظ على هذا الجهاز.",
+  "Does this fall for {skill}?": "هل يقع هذا الاستدلال في {skill}؟",
+  "Yes, it falls for it": "نعم، يقع في الفخ",
+  "No, the reasoning is sound": "لا، الاستدلال سليم",
+  "Right.": "صحيح.",
+  "Not this time.": "ليس هذه المرة.",
+  "Next": "التالي",
+  "See your score": "اطّلع على نتيجتك",
   "The skill": "المهارة",
   "Where this shows up": "أين يظهر هذا",
   "See it in the wild": "شاهده في الواقع",

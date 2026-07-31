@@ -184,8 +184,16 @@ export function ReviewView({
       <ProgressDots total={session.length} index={index} />
       <header className="flex flex-col gap-1.5">
         <Badge tone="brand">{t({ en: "Review" })}</Badge>
+        {/* One string with a slot, not a fragment plus a variable plus a "?".
+            The skill name does not sit at the end of this question in Japanese,
+            Hindi or Arabic, and the question mark is not "?" in all of them, so
+            the split version could only ever have been translated into the
+            languages that happen to share English word order. */}
         <p className="font-sans text-[11px] font-semibold uppercase tracking-eyebrow text-ink-mute">
-          {t({ en: "Does this fall for" })} {skillName(review.skill)}?
+          {t({ en: "Does this fall for {skill}?" }).replace(
+            "{skill}",
+            skillName(review.skill),
+          )}
         </p>
       </header>
 

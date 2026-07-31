@@ -4,6 +4,18 @@
  */
 export const hi: Record<string, string> = {
   // ---- UI chrome (buttons, labels, section headers) ----
+  "Review": "रिवीज़न",
+  "Loading your review…": "आपका रिवीज़न लोड हो रहा है…",
+  "Nothing is due right now. Learn a puzzle or come back later.": "अभी कुछ बाकी नहीं। एक पाठ सीखें या बाद में लौटें।",
+  "Saved, and synced to your account.": "सहेजा गया, और आपके खाते से सिंक हो गया।",
+  "Saved on this device.": "इस डिवाइस पर सहेजा गया।",
+  "Does this fall for {skill}?": "क्या यह तर्क {skill} में फँसता है?",
+  "Yes, it falls for it": "हाँ, यह फँसता है",
+  "No, the reasoning is sound": "नहीं, तर्क सही है",
+  "Right.": "सही।",
+  "Not this time.": "इस बार नहीं।",
+  "Next": "आगे",
+  "See your score": "अपना स्कोर देखें",
   "The skill": "यह कौशल",
   "Where this shows up": "यह कहाँ दिखता है",
   "See it in the wild": "इसे असल जीवन में देखें",

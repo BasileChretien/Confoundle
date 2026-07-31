@@ -5,6 +5,18 @@
  */
 export const es: Record<string, string> = {
   // ---- Interfaz (botones, etiquetas, encabezados de sección) ----
+  "Review": "Repaso",
+  "Loading your review…": "Cargando tu repaso…",
+  "Nothing is due right now. Learn a puzzle or come back later.": "No hay nada pendiente ahora. Aprende una lección o vuelve más tarde.",
+  "Saved, and synced to your account.": "Guardado y sincronizado con tu cuenta.",
+  "Saved on this device.": "Guardado en este dispositivo.",
+  "Does this fall for {skill}?": "¿Este razonamiento cae en {skill}?",
+  "Yes, it falls for it": "Sí, cae en la trampa",
+  "No, the reasoning is sound": "No, el razonamiento es sólido",
+  "Right.": "Correcto.",
+  "Not this time.": "Esta vez no.",
+  "Next": "Siguiente",
+  "See your score": "Ver tu puntuación",
   "The skill": "La habilidad",
   "Where this shows up": "Dónde aparece esto",
   "See it in the wild": "Verlo en la práctica",

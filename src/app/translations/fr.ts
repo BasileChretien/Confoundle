@@ -4,6 +4,18 @@
  */
 export const fr: Record<string, string> = {
   // ---- UI chrome (buttons, labels, section headers) ----
+  "Review": "Révision",
+  "Loading your review…": "Chargement de votre révision…",
+  "Nothing is due right now. Learn a puzzle or come back later.": "Rien à réviser pour l'instant. Apprenez une leçon ou revenez plus tard.",
+  "Saved, and synced to your account.": "Enregistré, et synchronisé avec votre compte.",
+  "Saved on this device.": "Enregistré sur cet appareil.",
+  "Does this fall for {skill}?": "Ce raisonnement tombe-t-il dans {skill} ?",
+  "Yes, it falls for it": "Oui, il tombe dans le piège",
+  "No, the reasoning is sound": "Non, le raisonnement est solide",
+  "Right.": "Exact.",
+  "Not this time.": "Pas cette fois.",
+  "Next": "Suivant",
+  "See your score": "Voir votre score",
   "The skill": "La compétence",
   "Where this shows up": "Où ça se rencontre",
   "See it in the wild": "Le voir en vrai",

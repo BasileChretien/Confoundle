@@ -49,6 +49,38 @@ function isScanned(path: string): boolean {
   return true;
 }
 
+interface Stripped {
+  code: string;
+  /**
+   * A quote opened a literal that never closed, which means everything after
+   * it was swallowed as string content and no call site in the rest of the
+   * file was seen. That reads as a pass, so it is reported rather than
+   * tolerated: a scanner that silently covers three files less than it claims
+   * is the same failure it was written to catch.
+   *
+   * This is not hypothetical. The first version of the check flagged
+   * `http.ts`, `lessonPage.ts` and `unsubscribePage.ts` on sight, because
+   * `escapeHtml` contains `.replace(/"/g, "&quot;")`: a regex literal holding
+   * a double quote, which opened a string that never closed. Hence the regex
+   * handling below.
+   */
+  dangling: boolean;
+}
+
+/**
+ * Where a `/` may begin a regex literal rather than a division.
+ *
+ * The distinction is not decidable from the character alone, which is why
+ * every hand-rolled JavaScript scanner has to take a position on it. The
+ * standard one holds: a regex can only appear where an expression may start,
+ * so it is the preceding significant character that decides. `.replace(/"/g)`
+ * qualifies on the `(`; `a / b` does not, on the `a`.
+ */
+const BEFORE_REGEX = new Set([
+  "(", ",", "=", ":", "[", "!", "&", "|", "?", "{", "}", ";", "+", "-", "*",
+  "%", "^", "~", "<", ">", "\n",
+]);
+
 /**
  * Comments are not code, and this project writes a great many of them: the
  * first version of this scan reported "The rule" as untranslated because a
@@ -57,24 +89,40 @@ function isScanned(path: string): boolean {
  * regex, because a `//` inside a string literal is common (every URL has one)
  * and cutting at it would drop real strings from the scan, which fails silent.
  */
-function stripComments(source: string): string {
+function stripComments(source: string): Stripped {
   let out = "";
+  let dangling = false;
   let i = 0;
+  /** Last character that was neither whitespace nor comment. */
+  let previous = "";
+  const emit = (text: string) => {
+    out += text;
+    const trimmed = text.trimEnd();
+    if (trimmed) previous = trimmed[trimmed.length - 1];
+    else if (text.includes("\n")) previous = "\n";
+  };
+
   while (i < source.length) {
     const c = source[i];
     if (c === '"' || c === "'" || c === "`") {
-      out += c;
+      let literal = c;
       i++;
+      let closed = false;
       while (i < source.length) {
         const ch = source[i];
-        out += ch;
+        literal += ch;
         i++;
         if (ch === "\\") {
-          if (i < source.length) out += source[i++];
+          if (i < source.length) literal += source[i++];
           continue;
         }
-        if (ch === c) break;
+        if (ch === c) {
+          closed = true;
+          break;
+        }
       }
+      if (!closed) dangling = true;
+      emit(literal);
       continue;
     }
     if (c === "/" && source[i + 1] === "/") {
@@ -87,10 +135,31 @@ function stripComments(source: string): string {
       i += 2;
       continue;
     }
-    out += c;
+    if (c === "/" && (previous === "" || BEFORE_REGEX.has(previous))) {
+      // A regex literal. Its body is dropped rather than kept: it can hold
+      // quotes and braces that would confuse everything downstream, and it can
+      // never contain a call site.
+      i++;
+      let inClass = false;
+      while (i < source.length && source[i] !== "\n") {
+        const ch = source[i];
+        i++;
+        if (ch === "\\") {
+          i++;
+          continue;
+        }
+        if (ch === "[") inClass = true;
+        else if (ch === "]") inClass = false;
+        else if (ch === "/" && !inClass) break;
+      }
+      while (i < source.length && /[a-z]/.test(source[i])) i++; // flags
+      emit("0"); // a value stood here, so `/` after it is division
+      continue;
+    }
+    emit(c);
     i++;
   }
-  return out;
+  return { code: out, dangling };
 }
 
 /**
@@ -107,11 +176,16 @@ interface Found {
   file: string;
 }
 
+/** Files the scanner could not parse cleanly, and so did not fully read. */
+const UNPARSED: string[] = [];
+
 function inlineStrings(): Found[] {
   const found = new Map<string, Found>();
   for (const [path, source] of Object.entries(SOURCES)) {
     if (!isScanned(path)) continue;
-    for (const match of stripComments(source).matchAll(INLINE)) {
+    const { code, dangling } = stripComments(source);
+    if (dangling) UNPARSED.push(path.replace("../../", "src/"));
+    for (const match of code.matchAll(INLINE)) {
       const text = JSON.parse(match[1]) as string;
       if (!text.trim()) continue;
       // First file wins, so the failure message names one place to look
@@ -129,9 +203,22 @@ describe("inline chrome strings", () => {
   it("finds the call sites at all", () => {
     // If the scan silently matched nothing, every assertion below would pass
     // and the test would be worse than useless: it would read as coverage.
-    expect(Object.keys(SOURCES).length).toBeGreaterThan(20);
-    expect(INLINE_STRINGS.length).toBeGreaterThan(20);
+    // Floors, not exact counts: adding a string must not fail this, but the
+    // scan quietly finding a fraction of what it used to must. It reads 109
+    // files and 60 strings today. A scan that has shrunk to half of that has
+    // broken, and every assertion below it would still pass.
+    expect(Object.keys(SOURCES).length).toBeGreaterThan(80);
+    expect(INLINE_STRINGS.length).toBeGreaterThan(50);
     expect(LOCALES.length).toBe(9);
+  });
+
+  it("reads every file to the end", () => {
+    // A count floor cannot catch partial coverage: if a quote the scanner
+    // does not understand opens a literal that never closes, the rest of that
+    // file is swallowed and its call sites are simply never seen. That reads
+    // as a pass. This is the difference between a test that enforces and one
+    // that only looks like it does.
+    expect(UNPARSED).toEqual([]);
   });
 
   for (const locale of LOCALES) {

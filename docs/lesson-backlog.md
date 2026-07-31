@@ -944,9 +944,39 @@ puzzle actually needed.
 
 <!-- skill: confirmation-bias -->
 
-**Status: LEAD, and the citation is now pinned.** Wason's four-card selection
-task (1968) and the 2-4-6 task. Roughly one respondent in ten solves the
-four-card version. Confoundle has **nothing** on confirmation bias, which is
+**Status: READ AT SOURCE 2026-07-31, and the paper is not what this entry
+assumed.** The PDF was supplied and read. Wason 1968 is **not** the source for
+the famous baseline error rate, and anyone picking this up should not go looking
+for it there.
+
+What the paper actually is: a study of *therapies* meant to correct the bias,
+not a measurement of it. Experiment I ran **36 first-year psychology and
+statistics students at University College London**, allocated alternately to an
+experimental and a control group, of whom two were rejected for not complying,
+leaving about seventeen per arm. The experimental group was invited to
+"project falsity" before revising its card selections; the control group was
+merely asked to think again. The headline result is a **null**: selection of the
+falsifying card rose from five to eight in the experimental group and from two
+to three in the control group, and the paper states plainly that the predicted
+facilitation "is not confirmed". The usable counts are there but small: of the
+13 experimental subjects who did not initially select the falsifying card, eight
+projected P onto it and only three then revised their selection to include it.
+The classic wrong pair, P and Q, was the most frequent choice in both arms,
+eight cases and ten.
+
+**So there are two honest ways forward and the entry should not pretend
+otherwise.** Either build on the null, which is a genuinely good and unusual
+lesson (the bias survived a therapy designed to remove it, on seventeen people
+per arm, so the puzzle would have to be about how little that proves either
+way and would run straight into the deck's own `statistical-power` lesson), or
+find a different source for the baseline. The famous rate belongs to Wason's
+earlier work and to Johnson-Laird and Wason, and a modern replication with a
+usable denominator would be better than either. **Do not author the one in ten
+figure from this paper; it is not in it.**
+
+The original framing of this entry, kept for the record: Wason's four-card
+selection task (1968) and the 2-4-6 task. Roughly one respondent in ten solves
+the four-card version. Confoundle has **nothing** on confirmation bias, which is
 conspicuous given it is the bias most readers think they already understand.
 Wason died in 2003 and the material is abstract cards, so there is no partisan
 surface at all.

@@ -500,6 +500,25 @@ to what this whole deck assumes about itself.
 Sources to read: *Memory and Cognition* (2021) on retraction source credibility,
 and *Cognition* (2024) on relative source credibility in the CIE.
 
+#### Searched 2026-07-31. Still open, and the search taught something useful.
+
+An OpenAlex sweep of open-access work on the continued influence effect since
+2015, ranked by citations, returned almost entirely **reviews rather than
+experiments** (Lewandowsky's post-truth and psychological-drivers papers, the
+inoculation literature), plus several that fail this deck's non-partisanship test
+outright by construction, being about health care reform rumours or a named
+politician.
+
+Two things follow. First, the classic non-partisan paradigm is the **warehouse
+fire** vignette, where a report mentions volatile materials, retracts it, and
+people keep citing them, and that is what a targeted hunt should look for rather
+than the CIE literature at large. Second, and this is the real risk on this entry:
+CIE outcomes are usually reported as a **mean number of references to the
+retracted claim**, or a mean rating on a scale, not as a proportion of
+participants. Means with standard deviations are what got Srigley rejected for the
+Hawthorne puzzle. **Before spending a PDF on this, check that the candidate
+reports a count of participants, not a mean count of inferences.**
+
 ---
 
 ## Tier 2: named by a curriculum, still needs a source
@@ -849,22 +868,77 @@ with published counts, all with their authors' work decades old.
 
 <!-- skill: conjunction-fallacy -->
 
-**Status: LEAD.** Tversky and Kahneman (1983). Given a description of Linda,
-large majorities rate "bank teller and active in the feminist movement" as more
-probable than "bank teller", which is impossible. Reported as percentages of
-respondents across several samples, so counts should be recoverable. Completely
-non-partisan, instantly shareable, and the deck has nothing on probability
-composition.
+**Status: SOURCED 2026-07-31, and the source changed.** Tversky and Kahneman
+(1983). Given a description of Linda, large majorities rate "bank teller and
+active in the feminist movement" as more probable than "bank teller", which is
+impossible. Completely non-partisan, instantly shareable, and the deck has
+nothing on probability composition.
+
+**The original is not reachable and probably is not the right source anyway.**
+Tversky A, Kahneman D. Extensional versus intuitive reasoning: the conjunction
+fallacy in probability judgment. *Psychological Review* 1983;90(4):293-315, DOI
+`10.1037/0033-295X.90.4.293`, verified against CrossRef. OpenAlex reports it
+**closed with no open-access location anywhere**, and APA served a guest session
+the last time this project tried, so it is a paywall with no repository copy
+behind it.
+
+**Build on the replication instead.** Charness G, Karni E, Levin D. On the
+conjunction fallacy in probability judgment: new experimental evidence regarding
+Linda. *Games and Economic Behavior* 2010;68(2):551-556, DOI
+`10.1016/j.geb.2009.09.003`, verified against CrossRef. It reruns Tversky and
+Kahneman's own design and reports, from the abstract read at source, that **with
+mild incentives the proportion violating the conjunction principle is
+significantly lower than Kahneman and Tversky reported**, and that letting
+subjects consult others drops it dramatically, especially going from two people
+to three.
+
+That makes a better puzzle than the plain Linda problem, and one that fits this
+deck's character rather than the usual retelling. The plain version teaches that
+people are bad at probability. This version teaches that too, and then asks what
+the headline rate actually measures, because paying a little or letting people
+talk to two others moves it a long way. The same move as the Hawthorne puzzle,
+where the effect is real and the study it is named after is not the evidence.
+
+**Access is solved, extraction is not.** ScienceDirect shows "Nagoya University
+Institutional Access" and "Full text access" for this article, so it is
+reachable, but the body renders as an **embedded PDF** rather than HTML, which
+Chrome's viewer does not expose to text extraction. The article's own PDF link is
+`/science/article/pii/S0899825609001742/pdf`. The EconStor green copy at
+`hdl.handle.net/10419/49905` exists and is legitimate, but the site is behind an
+Anubis proof-of-work check that stalls at 0kH/s in both browsers tried.
+
+**So the remaining step is one saved PDF, and nothing may be authored before it.**
+A citing article quotes the incentive effect as a drop "from 58% to 33%", but that
+is a *citation excerpt in someone else's paper*, not the table, and this project
+does not author from those. The numbers to read off are: the proportion violating
+the conjunction principle in each condition, with denominators, for the
+no-incentive, incentive, and group-consultation arms.
 
 ### 10. Confirmation bias, as an experiment rather than a slogan
 
 <!-- skill: confirmation-bias -->
 
-**Status: LEAD.** Wason's four-card selection task (1968) and the 2-4-6 task.
-Roughly one respondent in ten solves the four-card version. Confoundle has
-**nothing** on confirmation bias, which is conspicuous given it is the bias most
-readers think they already understand. Wason died in 2003 and the material is
-abstract cards, so there is no partisan surface at all.
+**Status: LEAD, and the citation is now pinned.** Wason's four-card selection
+task (1968) and the 2-4-6 task. Roughly one respondent in ten solves the
+four-card version. Confoundle has **nothing** on confirmation bias, which is
+conspicuous given it is the bias most readers think they already understand.
+Wason died in 2003 and the material is abstract cards, so there is no partisan
+surface at all.
+
+**Pinned 2026-07-31.** Wason PC. Reasoning about a rule. *Quarterly Journal of
+Experimental Psychology* 1968;20(3):273-281, DOI `10.1080/14640746808400161`,
+verified against CrossRef. OpenAlex reports it **closed, with no open-access
+location**. The DOI resolves to SAGE, which serves an automated security check
+that did not clear in either browser tried, so the full text was not reached and
+nothing has been read.
+
+Worth noting for whoever picks this up: the selection task's appeal here is that
+its outcome really is a **count of people choosing each card combination**, which
+is the cleanest possible fit for `rates`. That is worth one saved PDF if the
+institution has Taylor and Francis or SAGE. If it does not, the fallback is a
+modern replication rather than a textbook retelling, found the same way the
+conjunction fallacy replication was found: an OpenAlex search filtered to
+`is_oa:true`.
 
 ### 11. Availability
 

@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { selfAppliedLabel } from "./self-applied-label";
+import { restrictRates } from "../../engine/charts/rates";
 
 /**
  * Law and Versteeg (2013), Table 14 on page 913, read from the rendered page
@@ -108,6 +109,34 @@ describe("self-applied label framing", () => {
   it("drops both filters at the reveal", () => {
     expect(selfAppliedLabel.reveal.view.groupIds).toBeUndefined();
     expect(selfAppliedLabel.reveal.view.strataIds).toBeUndefined();
+  });
+
+  it("actually withholds the answer when the setup view is applied", () => {
+    // The chart is what the reader sees, and this is the first puzzle in the
+    // deck to filter a rates chart by group. If the derivation ignored
+    // groupIds, the setup would draw the 2010 bar and give the answer away
+    // before the question was asked, and every other assertion here would
+    // still pass. So this checks the rendered slice, not the stored data.
+    const shown = restrictRates(
+      selfAppliedLabel.setup.data as never,
+      selfAppliedLabel.setup.initialView,
+    );
+    expect(shown.groups.map((g) => g.id)).toEqual(["y1981"]);
+    expect(shown.strata.map((s) => s.id)).toEqual(["torture"]);
+    expect(shown.observations).toHaveLength(1);
+    expect(shown.observations[0]).toMatchObject({
+      groupId: "y1981",
+      stratumId: "torture",
+      numerator: 26,
+      denominator: 83,
+    });
+
+    // And the reveal really does put it back.
+    const revealed = restrictRates(
+      selfAppliedLabel.setup.data as never,
+      selfAppliedLabel.reveal.view,
+    );
+    expect(revealed.observations).toHaveLength(10);
   });
 
   it("gives the reader the 1981 baseline and the 2010 denominator up front", () => {

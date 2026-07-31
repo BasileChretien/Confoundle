@@ -1261,8 +1261,17 @@ which makes it the cheapest of the eight to verify.
 
 <!-- skill: compliance-sequencing -->
 
-**Status: VERIFIED 2026-07-31, ready to author, and the best-shaped candidate
-left in this file.** Freedman and Fraser was supplied and read, and Table 1 on
+**Status: SHIPPED 2026-07-31** as `the-small-favour-first`. Cialdini was read
+too and became the deep dive rather than a second puzzle: his Table 1 on page
+209 notes n = 24 per condition, giving 12, 6 and 4 of 24 for rejection-
+moderation, exposure control and smaller-request-only, and the paper states
+that no subject ever agreed to the initial extreme request. Putting the two
+techniques in one lesson is the point: they give opposite advice about the
+size of the first request and both work, so a reader cannot defend themselves
+with a rule of thumb.
+
+**Status when verified: VERIFIED 2026-07-31, ready to author, and the
+best-shaped candidate left in this file.** Freedman and Fraser was supplied and read, and Table 1 on
 page 197 was read from the rendered page because the extraction misaligns the
 condition labels against their percentages.
 

@@ -22,11 +22,13 @@ describe("what the chooser is allowed to offer", () => {
 
   it("leaves out the tags no puzzle carries yet", () => {
     const offered = availableInterests(puzzles);
-    // Still nothing outside medicine and civic life yet, so these must not be
-    // advertised. Each flips on its own the moment a lesson claims it, which is
-    // exactly what happened to media and psychology when the framing puzzle
-    // landed: this assertion used to name them and had to be updated.
-    expect(offered).not.toContain("economics");
+    // These must not be advertised until a lesson claims them. Each flips on its
+    // own the moment one does, which is exactly what happened to media and
+    // psychology when the framing puzzle landed, and to economics when the
+    // compliance-sequencing lesson landed: this assertion has named and then
+    // released all three in turn, which is the point of it.
+    expect(offered).not.toContain("sports");
+    expect(offered).not.toContain("finance");
     // ...while the areas the deck really covers are offered.
     expect(offered).toContain("everyday");
     expect(offered).toContain("clinical");
@@ -76,9 +78,10 @@ describe("keeping a stored selection honest", () => {
 
   it("drops a tag that has lost its last puzzle", () => {
     // Uses a tag no puzzle carries. This used to be "politics", until the 1812
-    // gerrymander claimed it; pick a fresh unclaimed tag if this ever fails
-    // rather than weakening the assertion.
-    expect(pruneInterests(["economics"], puzzles)).toEqual([]);
+    // gerrymander claimed it, and then "economics", until compliance sequencing
+    // claimed it; pick a fresh unclaimed tag if this ever fails rather than
+    // weakening the assertion.
+    expect(pruneInterests(["sports"], puzzles)).toEqual([]);
   });
 });
 

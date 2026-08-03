@@ -189,4 +189,17 @@ describe("compliance sequencing provenance note", () => {
   it("says the two studies are not on one axis", () => {
     expect(note).toContain("not because their percentages belong on one axis");
   });
+
+  it("offers exactly one option pointing to a higher rate", () => {
+    // Foot-in-the-door licenses that the small favour raises compliance. It
+    // says nothing about by how much, and the setup shows only the baseline,
+    // so two bands both reading "more" would leave a correct reasoner guessing.
+    // One points up, one points down, one says no change, one is the hedge.
+    const up = complianceSequencing.choices.filter((c) =>
+      /More than double|A little more|perhaps a third/i.test(c.label.en),
+    );
+    expect(up).toHaveLength(1);
+    expect(up[0].isCorrect).toBe(true);
+    expect(complianceSequencing.choices.some((c) => /^Fewer\./.test(c.label.en))).toBe(true);
+  });
 });

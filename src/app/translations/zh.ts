@@ -4304,4 +4304,6 @@ export const zh: Record<string, string> = {
   "Two law professors took the written constitution of every country they had data for, listed which rights each one guaranteed, and then checked those same countries against independent human rights reporting to see which guarantees were kept in full. Below is the ban on torture in 1981: 83 constitutions contained one, and 26 of those countries honoured it completely. Over the next thirty years the ban spread a long way, and by 2010 it was written into 155 constitutions. The same table records a reading in between: by 2000 the ban was in 149 constitutions and 11 of those countries honoured it.": "两位法学教授取来他们能拿到数据的每一个国家的成文宪法，列出每部宪法保障哪些权利，然后把这些国家对照独立的人权报告，看哪些保障被完整履行。下面是1981年的酷刑禁令：83部宪法写有此项，其中26个国家完全履行。此后三十年里禁令传播甚广，到2010年已写入155部宪法。同一张表还记录了一个中间时点：2000年该禁令写在149部宪法中，其中11个国家履行了它。",
   "The independent group more often, in fact": "其实是独立那一组更常这样说",
   "nobody pays them to reach a conclusion": "没有人付钱让他们得出某个结论",
+  "Fewer. A second approach from the same man puts people on guard": "更少。同一个人第二次上门会让人提高警惕",
+  "nobody enjoys being softened up": "没有人喜欢被事先软化",
 };

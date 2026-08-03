@@ -142,9 +142,16 @@ export const complianceSequencing: Puzzle = {
       isIntuitiveTrap: true,
     },
     {
-      id: "slightly-more",
-      label: { en: "A little more, perhaps a third of them" },
-      sublabel: { en: "some warmth carries over, but not much" },
+      // Deliberately points the other way. This slot used to read "a little
+      // more, perhaps a third of them", which shared a direction with the
+      // correct answer while nothing in the setup could choose between them:
+      // foot-in-the-door licenses "more", never "how much more". Reversed
+      // rather than deleted, because reactance is a real prediction and a
+      // reader who makes it has thought about the problem rather than skipped
+      // it.
+      id: "fewer",
+      label: { en: "Fewer. A second approach from the same man puts people on guard" },
+      sublabel: { en: "nobody enjoys being softened up" },
       isCorrect: false,
       isIntuitiveTrap: false,
     },

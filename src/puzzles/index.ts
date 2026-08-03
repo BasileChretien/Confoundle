@@ -47,6 +47,7 @@ import { sleeperEffect } from "./data/sleeper-effect";
 import { paltering } from "./data/paltering";
 import { thirdPersonEffect } from "./data/third-person-effect";
 import { innuendoEffect } from "./data/innuendo-effect";
+import { confirmationBias } from "./data/confirmation-bias";
 
 /**
  * The puzzle registry. Adding a puzzle = import its data file and add it to
@@ -102,6 +103,7 @@ const rawPuzzles: unknown[] = [
   paltering,
   thirdPersonEffect,
   innuendoEffect,
+  confirmationBias,
 ];
 
 export const puzzles: PuzzleType[] = rawPuzzles.map((p, i) => {

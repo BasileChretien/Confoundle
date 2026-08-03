@@ -1023,10 +1023,43 @@ puzzle actually needed.
 
 <!-- skill: confirmation-bias -->
 
-**Status: READ AT SOURCE 2026-07-31, and the paper is not what this entry
-assumed.** The PDF was supplied and read. Wason 1968 is **not** the source for
-the famous baseline error rate, and anyone picking this up should not go looking
-for it there.
+**Status: SHIPPED 2026-08-03 as `confirmation-bias`, slug `four-cards`.** Not on
+Wason 1968, which this entry pinned and which turned out not to contain the
+number everybody attributes to it (the refusal is recorded below and still
+stands). Built instead on **Griggs RA, Cox JR. The elusive thematic-materials
+effect in Wason's selection task. *British Journal of Psychology*
+1982;73(3):407-420**, DOI `10.1111/j.2044-8295.1982.tb01823.x`, reached through
+Wiley on institutional access and read from the rendered page.
+
+Experiment 3 gives the entry exactly what it was after: the baseline as a
+measured count rather than a quoted rate. Forty University of Florida
+undergraduates each did both problems with the order counterbalanced, twenty
+seeing each first. On the abstract letters-and-numbers version, **0 of 40**
+chose the correct pair. On the same rule dressed as a bar checking drinking
+ages, **29 of 40** did. Table 5 on page 416 is the source, and the reading
+checks four ways: every one of its four columns sums to the stated group size of
+20, 14 + 15 recovers the printed seventy-three per cent, and both published
+chi-squares reproduce to the decimal once the continuity correction the paper
+used is applied (18.6 and 20.9; uncorrected they give 21.5 and 23.3). Table 6
+supplies the mechanism separately, which is what makes this a confirmation-bias
+puzzle rather than a curiosity about wording: on the abstract version 29 of 40
+turned the card that could only *agree* with the rule, and only 14 turned the
+one that could break it.
+
+Two honesties carried into the puzzle rather than left here. The famous "fewer
+than one in ten" figure is **not** used; the paper cites it to a review rather
+than measuring it. And the thematic effect is narrower than its reputation: the
+same paper's Experiments 1 and 2 failed twice to reproduce it with other
+realistic stories (2 of 16 and 1 of 16 against 0 of 16, no significant
+difference), which is why the title calls it elusive. That failure ships as the
+puzzle's deep dive instead of being quietly dropped.
+
+---
+
+**The Wason 1968 refusal, kept because the figure is still in circulation.** The
+PDF was supplied and read on 2026-07-31. Wason 1968 is **not** the source for the
+famous baseline error rate, and anyone picking this up should not go looking for
+it there.
 
 What the paper actually is: a study of *therapies* meant to correct the bias,
 not a measurement of it. Experiment I ran **36 first-year psychology and
@@ -1052,6 +1085,10 @@ find a different source for the baseline. The famous rate belongs to Wason's
 earlier work and to Johnson-Laird and Wason, and a modern replication with a
 usable denominator would be better than either. **Do not author the one in ten
 figure from this paper; it is not in it.**
+
+The second way is the one taken, via Griggs and Cox above. The null in Wason
+1968 remains unused and would still make a defensible puzzle for somebody who
+wants it.
 
 The original framing of this entry, kept for the record: Wason's four-card
 selection task (1968) and the 2-4-6 task. Roughly one respondent in ten solves

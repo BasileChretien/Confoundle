@@ -1214,7 +1214,54 @@ known to be fragile and the deck must not overstate it.
 
 <!-- skill: false-balance -->
 
-**Status: LEAD, and overdue.** Giving two sides equal airtime when the evidence
+**Status: VERIFIED 2026-08-03, ready to author.** The PDF was supplied and read.
+
+**The counts are there, and the reconciliation is unusually strong.** The figure
+1 caption on page 129 reports the split of prestige-press articles on whether
+humans contribute to global warming, and states **n = 340**. That is the subset
+about anthropogenic contribution, *not* the 636-article full sample, and reading
+the percentages against 636 is the obvious mistake to make here: 52.65 per cent
+of 636 is 334.85, which recovers nothing. Against 340 all four printed
+percentages recover exact whole numbers and the four counts sum to exactly 340:
+
+| Coverage of anthropogenic contribution | Count | Printed |
+|---|---|---|
+| Balanced, both sides given roughly equal weight | 179/340 | 52.65 |
+| Dominant anthropogenic | 120/340 | 35.29 |
+| Dominant sceptic | 21/340 | 6.18 |
+| Exclusive anthropogenic | 20/340 | 5.88 |
+
+Four independent percentages each landing on an integer, summing to the stated
+n, is about as strong as a transcription check gets.
+
+**Other figures available.** The full sample is 636 articles, 18.4 per cent of
+the population, drawn by selecting every sixth article from a random start in
+January 1988, across 1988 to 2002. Composition: about 41 per cent New York
+Times, 29 per cent Washington Post, 25 per cent Los Angeles Times, 5 per cent
+Wall Street Journal. Intercoder reliability on the pre-test sample was 93 per
+cent. Table 2 gives year-by-year difference tests against the scientific
+discourse.
+
+**Two things for whoever builds it.**
+
+First, the puzzle needs the *other* half of the comparison to work as this deck's
+two-views-of-one-dataset shape: the press split against the scientific split.
+Table 2 tests press against scientific discourse by year, so check whether the
+paper prints the scientific side as counts anywhere, or whether that half has to
+come from a second source. If it does not, the honest shape may be the press
+distribution alone, with the consensus stated in the framing rather than drawn.
+
+Second, and this needs deciding before a word is authored: **this is the deck's
+most politically live subject so far.** The finding is about journalistic
+practice rather than about a party, which is what makes it publishable here at
+all, but the four newspapers are named and still trading, and climate coverage
+is a live partisan issue in several of the deck's ten locales. The lesson must
+be about the format producing the distortion, and must not read as an
+accusation against a newspaper or a side. If it cannot be written that way it
+should not be written: see the Boykoff ground, which this project named after
+exactly this paper and which would be an embarrassing rule to break here.
+
+**Status when opened: LEAD, and overdue.** Giving two sides equal airtime when the evidence
 is not equally divided, so that the *format* of the coverage misinforms even
 when every sentence is accurate. This project already invokes the idea by name
 in its own editorial rule, the Boykoff ground, and has no puzzle on it, which is

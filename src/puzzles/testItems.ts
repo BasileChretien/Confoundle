@@ -6261,6 +6261,147 @@ const items: TestItem[] = [
       en: "The favourable number is real and is being reported alongside the measure that qualifies it, so the audience can form the impression the full picture supports. Selecting a true measure is only paltering when the selection is what creates the impression.",
     },
   },
+  // ---- The third-person effect ----
+  {
+    id: "tp-ads-dont-work-on-me",
+    scenario: {
+      en: "A marketing director explains that advertising is enormously effective, which is why the budget is what it is, and adds that personally she has never bought anything because of an advertisement.",
+    },
+    trap: "third-person-effect",
+    explanation: {
+      en: "She is running two theories of persuasion at once, one for the market and one for herself, and only the first has evidence behind it. Being persuaded feels from the inside like being convinced, so the absence of a memory of being moved is not evidence that nothing moved her.",
+    },
+  },
+  {
+    id: "tp-ban-it-for-them",
+    scenario: {
+      en: "A council votes to restrict a category of material on the grounds that it is harmful to viewers. Every councillor has seen the material in order to vote, and none reports being harmed.",
+    },
+    trap: "third-person-effect",
+    explanation: {
+      en: "The vote assumes an effect that none of the voters can detect in themselves, which is the standard structure of the argument for restricting what other people may see. If the harm were visible from the inside, someone in the room would have reported it.",
+    },
+  },
+  {
+    id: "tp-my-feed-is-fine",
+    scenario: {
+      en: "Asked whether social media recommendation systems shape what people believe, a user says they clearly radicalise a lot of people, and that his own feed has simply got better at showing him things he was already interested in.",
+    },
+    trap: "third-person-effect",
+    explanation: {
+      en: "The same mechanism is described as radicalisation when it happens to others and as good recommendations when it happens to him. He has access to his own reasons for finding things interesting and only to other people's changed opinions, which makes influence look like something that occurs elsewhere.",
+    },
+  },
+  {
+    id: "tp-propaganda-for-others",
+    scenario: {
+      en: "A researcher argues that state broadcasting is dangerously effective on its domestic audience, and watches several hours of it a week to keep track of what is being said, judging that it has no effect on her.",
+    },
+    trap: "third-person-effect",
+    explanation: {
+      en: "Watching in order to study it is not a mechanism of immunity, and nothing in her account distinguishes her from the audience she is worried about except that she can see her own reasoning. That is exactly the asymmetry the effect describes.",
+    },
+  },
+  {
+    id: "tp-warning-labels",
+    scenario: {
+      en: "A survey finds strong majority support for warning labels on a kind of content, and also finds that respondents overwhelmingly report the content has no effect on their own judgement.",
+    },
+    trap: "third-person-effect",
+    explanation: {
+      en: "A majority believes both that the content is harmful and that it is harmless to them, which cannot be true of everyone at once, since the majority is the public. The gap between the two answers is the finding, not an inconsistency to be explained away.",
+    },
+  },
+  {
+    id: "tp-jury-cannot-be-trusted",
+    scenario: {
+      en: "A judge excludes prejudicial material from a trial because jurors could not put it out of their minds, having read it himself in chambers and formed the view that it would not sway him.",
+    },
+    trap: "third-person-effect",
+    explanation: {
+      en: "The exclusion may well be right, but the reasoning behind it is asymmetric: the same material is assumed to work on twelve people and not on the thirteenth who has read it. Nothing in the judge's training makes the mechanism stop.",
+    },
+  },
+  {
+    id: "tp-misinformation-training",
+    scenario: {
+      en: "A team designs a media literacy course after finding that most of the public shares false stories. Nobody on the team takes the course, on the grounds that they built it.",
+    },
+    trap: "third-person-effect",
+    explanation: {
+      en: "Knowing how a bias works is not the same as being exempt from it, and this one is documented to survive knowing about it. Designing the intervention is a reason to be well informed about the mechanism, not a reason to think it stops at you.",
+    },
+  },
+  {
+    id: "tp-polling-effect",
+    scenario: {
+      en: "A campaign avoids publishing an unfavourable poll on the grounds that voters who see it will be discouraged from turning out. The staff have all seen it and are working harder.",
+    },
+    trap: "third-person-effect",
+    explanation: {
+      en: "The prediction about voters is not derived from anything observed; it is derived from an assumption that information moves other people in one direction. The one group whose reaction they can actually observe went the other way.",
+    },
+  },
+  {
+    id: "tp-parenting-controls",
+    scenario: {
+      en: "A parents' group campaigns for age restrictions on a genre, arguing that it desensitises children. Asked about their own childhoods, most say they consumed similar material and turned out fine.",
+    },
+    trap: "third-person-effect",
+    explanation: {
+      en: "The same exposure is treated as harmless when it is their own history and harmful when it is somebody else's children. Their own case is the one piece of direct evidence they have, and it points the other way from the campaign.",
+    },
+  },
+  {
+    id: "tp-training-video",
+    scenario: {
+      en: "A compliance officer requires staff to watch a video on manipulative sales tactics because staff are vulnerable to them, and skips it himself, saying he already knows the tactics.",
+    },
+    trap: "third-person-effect",
+    explanation: {
+      en: "Recognising a tactic in the abstract is not the same as being unaffected by it in the moment, and that is precisely the gap the training is supposed to close. He has exempted the one person whose susceptibility he cannot observe from the outside.",
+    },
+  },
+  {
+    id: "ok-checked-a-specific-purchase",
+    scenario: {
+      en: "Wondering whether advertising works on her, a shopper goes through her last month of purchases and finds two she first heard of in an advertisement and would not otherwise have considered.",
+    },
+    trap: null,
+    explanation: {
+      en: "She replaced an unanswerable question about the sort of person she is with a specific one that has a checkable answer. That is the defence, and here it produced an answer she did not expect rather than confirming what she assumed.",
+    },
+  },
+  {
+    id: "ok-applied-it-to-himself",
+    scenario: {
+      en: "Reading that a broadcaster's coverage shifts its audience's views, an editor asks what he has been reading daily for a decade and whether he would accept the same explanation of his own opinions.",
+    },
+    trap: null,
+    explanation: {
+      en: "Turning the explanation around and checking whether he would accept it about himself is exactly the test, and he applied it before reaching a conclusion rather than after being challenged.",
+    },
+  },
+  {
+    id: "ok-restriction-argued-on-evidence",
+    scenario: {
+      en: "A regulator restricts a marketing practice citing a trial in which exposed households bought measurably more, and does not claim anything about who is susceptible.",
+    },
+    trap: null,
+    explanation: {
+      en: "The case rests on a measured effect rather than on an assumption about other people's weakness, so the third-person structure never enters it. Restricting things is not the error; assuming an effect you cannot detect in yourself is.",
+    },
+  },
+  {
+    id: "ok-included-herself-in-the-sample",
+    scenario: {
+      en: "Presenting a finding that a persuasion technique works on most people, a researcher notes that she was run through the same procedure by a colleague and moved about as much as her participants did.",
+    },
+    trap: null,
+    explanation: {
+      en: "She has treated herself as a member of the population the finding is about, which is what the evidence supports, rather than as an observer standing outside it. Nothing here needs explaining away.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

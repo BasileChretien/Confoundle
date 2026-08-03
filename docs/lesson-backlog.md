@@ -1164,7 +1164,19 @@ numerator and no denominator anywhere, so `rates` cannot hold it and the deck
 would be authoring means. That is the exact ground on which this file warned
 the third-person effect might fail, and here it has.
 
-**Two honest options, and neither is free.** Either build it on the
+**DECIDED 2026-08-03: build it on the `estimation` shape.** That shape already
+ships means for `anchoring`, so the precedent exists and the engine needs no
+change. The reveal compares two averages rather than two head counts, which is a
+real weakening of the deck's usual standard and should be stated plainly in the
+provenance note rather than glossed. The alternative was review items only, and
+it was rejected because the innuendo effect is too central to propaganda to
+leave out of the puzzle deck.
+
+Note the consequence for `provenance`: this is the first puzzle whose headline
+figure is not a count, so the note must say so, and the numbers-authored-once
+rule still applies to whatever the shape does store.
+
+**The options as they stood before that decision, and neither was free.** Either build it on the
 `estimation` shape, which already ships means for `anchoring`, and accept that
 the reveal compares two averages rather than two head counts; or leave it as
 review items. The first is defensible and probably right, since the innuendo
@@ -1241,6 +1253,14 @@ Times, 29 per cent Washington Post, 25 per cent Los Angeles Times, 5 per cent
 Wall Street Journal. Intercoder reliability on the pre-test sample was 93 per
 cent. Table 2 gives year-by-year difference tests against the scientific
 discourse.
+
+**DECIDED 2026-08-03: build it, format-focused, and name the newspapers as the
+study does.** Anonymising a published content analysis would itself be a small
+dishonesty, and the deck cites its sources in full everywhere else. The
+constraint is on what the lesson *says*, not on what it omits: the puzzle is
+about the balance norm producing distortion, and it must never adjudicate the
+science or read as an attack on a masthead. If a draft cannot hold that line it
+does not ship.
 
 **Two things for whoever builds it.**
 

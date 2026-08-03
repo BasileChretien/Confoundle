@@ -74,7 +74,7 @@ export const selfAppliedLabel: Puzzle = {
       en: "Almost every constitution on earth bans torture. That is not the same as almost nobody being tortured.",
     },
     framing: {
-      en: "Two law professors took the written constitution of every country they had data for, listed which rights each one guaranteed, and then checked those same countries against independent human rights reporting to see which guarantees were kept in full. Below is the ban on torture in 1981: 83 constitutions contained one, and 26 of those countries honoured it completely. Over the next thirty years the ban spread a long way, and by 2010 it was written into 155 constitutions.",
+      en: "Two law professors took the written constitution of every country they had data for, listed which rights each one guaranteed, and then checked those same countries against independent human rights reporting to see which guarantees were kept in full. Below is the ban on torture in 1981: 83 constitutions contained one, and 26 of those countries honoured it completely. Over the next thirty years the ban spread a long way, and by 2010 it was written into 155 constitutions. The same table records a reading in between: by 2000 the ban was in 149 constitutions and 11 of those countries honoured it.",
     },
     question: {
       en: "By 2010, how many of those 155 countries were fully honouring the ban they had written down?",

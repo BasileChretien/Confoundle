@@ -1382,31 +1382,8 @@ export const Puzzle = z
         }
       }
 
-      // A view that filters to a group or stratum must name one that exists,
-      // otherwise the beat silently renders an empty chart.
-      for (const [where, view] of [
-        ["initialView", p.setup.initialView],
-        ["reveal.view", p.reveal.view],
-      ] as const) {
-        for (const id of view.groupIds ?? []) {
-          if (!groupIds.has(id)) {
-            ctx.addIssue({
-              code: "custom",
-              path: [where, "groupIds"],
-              message: `unknown group id "${id}"`,
-            });
-          }
-        }
-        for (const id of view.strataIds ?? []) {
-          if (!stratumIds.has(id)) {
-            ctx.addIssue({
-              code: "custom",
-              path: [where, "strataIds"],
-              message: `unknown stratum id "${id}"`,
-            });
-          }
-        }
-      }
+      // The view-filter guard that used to live here now covers every shape
+      // that can be filtered; see `filterableIds` below.
 
       // Choice ids deliberately need NOT name a group. Some paradoxes have no
       // winning group: the Will Rogers phenomenon's honest answer is "nothing
@@ -1415,48 +1392,110 @@ export const Puzzle = z
       // so requiring it would only rule out valid puzzles.
     }
 
-    // The same check the rates branch does above, for the two shapes added
-    // later. Both of them filter views by id exactly as rates does, and both
-    // were shipped without this guard, so a typo in `groupIds` would have
-    // rendered an empty beat with nothing failing anywhere. `drift` maps
-    // series to groupIds and checkpoints to strataIds; `ratings` maps series
-    // to groupIds and has no strata at all, so any strataIds on it is a
-    // mistake rather than an unknown id.
-    //
-    // The four older shapes that also accept `groupIds` (distribution, dose,
-    // estimation, salience) still lack this guard. Deliberately not widened
-    // here: that is a change to puzzles this stack does not touch, and it
-    // belongs in its own branch.
-    if (p.setup.data.type === "drift" || p.setup.data.type === "ratings") {
+    /**
+     * A view that filters must name ids that exist. Getting this wrong renders
+     * an empty beat and fails nothing, which is why the check belongs here
+     * rather than in any one puzzle's tests.
+     *
+     * It used to sit inside the `rates` branch, so every shape added after it
+     * inherited the hole: `drift` and `ratings` shipped without it, and the
+     * four older filterable shapes never had it at all. Keyed by `type` with an
+     * explicit `default`, so a new shape has to opt in deliberately rather than
+     * silently arriving unguarded the way these six did.
+     *
+     * `strata: null` means the shape has no second axis, so any `strataIds` on
+     * it filters nothing and is a mistake rather than an unknown id.
+     */
+    const filterableIds = ((): {
+      groups: Set<string>;
+      groupWord: string;
+      strata: Set<string> | null;
+      strataWord: string;
+    } | null => {
       const d = p.setup.data;
-      const seriesIds = new Set(d.series.map((s) => s.id));
-      const checkpointIds =
-        d.type === "drift" ? new Set(d.checkpoints.map((c) => c.id)) : new Set<string>();
+      switch (d.type) {
+        case "rates":
+          return {
+            groups: new Set(d.groups.map((g) => g.id)),
+            groupWord: "group",
+            strata: new Set(d.strata.map((s) => s.id)),
+            strataWord: "stratum",
+          };
+        case "drift":
+          return {
+            groups: new Set(d.series.map((s) => s.id)),
+            groupWord: "series",
+            strata: new Set(d.checkpoints.map((c) => c.id)),
+            strataWord: "checkpoint",
+          };
+        case "ratings":
+          return {
+            groups: new Set(d.series.map((s) => s.id)),
+            groupWord: "series",
+            strata: null,
+            strataWord: "",
+          };
+        case "distribution":
+        case "estimation":
+          return {
+            groups: new Set(d.groups.map((g) => g.id)),
+            groupWord: "group",
+            strata: null,
+            strataWord: "",
+          };
+        case "dose":
+          return {
+            groups: new Set(d.steps.map((s) => s.id)),
+            groupWord: "step",
+            strata: null,
+            strataWord: "",
+          };
+        case "salience":
+          return {
+            groups: new Set(d.comparisons.map((c) => c.id)),
+            groupWord: "comparison",
+            strata: null,
+            strataWord: "",
+          };
+        default:
+          // Shapes with nothing to filter. A view on one of these carrying
+          // groupIds is caught below, since there is no id it could name.
+          return null;
+      }
+    })();
 
-      for (const [where, view] of [
-        ["initialView", p.setup.initialView],
-        ["reveal.view", p.reveal.view],
-      ] as const) {
-        for (const id of view.groupIds ?? []) {
-          if (!seriesIds.has(id)) {
-            ctx.addIssue({
-              code: "custom",
-              path: [where, "groupIds"],
-              message: `unknown series id "${id}"`,
-            });
-          }
+    for (const [where, view] of [
+      ["initialView", p.setup.initialView],
+      ["reveal.view", p.reveal.view],
+    ] as const) {
+      for (const id of view.groupIds ?? []) {
+        if (!filterableIds) {
+          ctx.addIssue({
+            code: "custom",
+            path: [where, "groupIds"],
+            message: `${p.setup.data.type} cannot be filtered, so groupIds filters nothing`,
+          });
+        } else if (!filterableIds.groups.has(id)) {
+          ctx.addIssue({
+            code: "custom",
+            path: [where, "groupIds"],
+            message: `unknown ${filterableIds.groupWord} id "${id}"`,
+          });
         }
-        for (const id of view.strataIds ?? []) {
-          if (!checkpointIds.has(id)) {
-            ctx.addIssue({
-              code: "custom",
-              path: [where, "strataIds"],
-              message:
-                d.type === "drift"
-                  ? `unknown checkpoint id "${id}"`
-                  : "ratings has no strata, so strataIds filters nothing",
-            });
-          }
+      }
+      for (const id of view.strataIds ?? []) {
+        if (!filterableIds || filterableIds.strata === null) {
+          ctx.addIssue({
+            code: "custom",
+            path: [where, "strataIds"],
+            message: `${p.setup.data.type} has no strata, so strataIds filters nothing`,
+          });
+        } else if (!filterableIds.strata.has(id)) {
+          ctx.addIssue({
+            code: "custom",
+            path: [where, "strataIds"],
+            message: `unknown ${filterableIds.strataWord} id "${id}"`,
+          });
         }
       }
     }

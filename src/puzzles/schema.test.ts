@@ -2,6 +2,12 @@ import { describe, expect, it } from "vitest";
 import { Puzzle, PuzzleData } from "./schema";
 import { sleeperEffect } from "./data/sleeper-effect";
 import { thirdPersonEffect } from "./data/third-person-effect";
+import { meanVsMedian } from "./data/mean-vs-median";
+import { illusoryTruth } from "./data/illusory-truth";
+import { anchoring } from "./data/anchoring";
+import { availabilityHeuristic } from "./data/availability-heuristic";
+import { baseRate } from "./data/base-rate";
+import { kidneyStones } from "./data/kidney-stones";
 
 /**
  * The two shapes added in this stack, `drift` and `ratings`, brought about 210
@@ -256,5 +262,86 @@ describe("view filters must name data that exists", () => {
       },
     };
     expect(puzzleProblems(bad).join(" ")).toContain("ratings has no strata");
+  });
+});
+
+/**
+ * The four shapes that could always be filtered and never had the guard, plus
+ * one that cannot be filtered at all. Each case names a real shipped puzzle and
+ * breaks one field, so the test says something about the engine rather than
+ * about a fixture invented to pass.
+ *
+ * Each shape calls its filterable collection something different, which is
+ * exactly why the guard is keyed by type rather than duck-typed on `groups`.
+ */
+describe("the view filter guard covers every filterable shape", () => {
+  const cases = [
+    { name: "distribution", puzzle: meanVsMedian, word: "group" },
+    { name: "dose", puzzle: illusoryTruth, word: "step" },
+    { name: "estimation", puzzle: anchoring, word: "group" },
+    { name: "salience", puzzle: availabilityHeuristic, word: "comparison" },
+  ] as const;
+
+  for (const { name, puzzle, word } of cases) {
+    it(`accepts the shipped ${name} puzzle unchanged`, () => {
+      expect(puzzleProblems(puzzle)).toEqual([]);
+    });
+
+    it(`rejects a ${name} view filtering to an id that does not exist`, () => {
+      const bad = {
+        ...puzzle,
+        setup: {
+          ...puzzle.setup,
+          initialView: { ...puzzle.setup.initialView, groupIds: ["typo"] },
+        },
+      };
+      expect(puzzleProblems(bad).join(" ")).toContain(`unknown ${word} id "typo"`);
+    });
+
+    it(`rejects strataIds on ${name}, which has no second axis`, () => {
+      const bad = {
+        ...puzzle,
+        setup: {
+          ...puzzle.setup,
+          initialView: { ...puzzle.setup.initialView, strataIds: ["anything"] },
+        },
+      };
+      expect(puzzleProblems(bad).join(" ")).toContain("has no strata");
+    });
+  }
+
+  it("rejects a filter on a shape that cannot be filtered at all", () => {
+    // frequencies draws one fixed diagram; there is no id a view could name,
+    // so a groupIds on it is always a mistake rather than an unknown id.
+    const bad = {
+      ...baseRate,
+      setup: {
+        ...baseRate.setup,
+        initialView: { ...baseRate.setup.initialView, groupIds: ["anything"] },
+      },
+    };
+    expect(puzzleProblems(bad).join(" ")).toContain("cannot be filtered");
+  });
+
+  it("still guards rates, which is where this check started", () => {
+    // The refactor moved this check out of the rates branch, so the case it
+    // was originally written for has to keep working.
+    expect(puzzleProblems(kidneyStones)).toEqual([]);
+    const badGroup = {
+      ...kidneyStones,
+      setup: {
+        ...kidneyStones.setup,
+        initialView: { ...kidneyStones.setup.initialView, groupIds: ["typo"] },
+      },
+    };
+    expect(puzzleProblems(badGroup).join(" ")).toContain('unknown group id "typo"');
+    const badStratum = {
+      ...kidneyStones,
+      reveal: {
+        ...kidneyStones.reveal,
+        view: { ...kidneyStones.reveal.view, strataIds: ["typo"] },
+      },
+    };
+    expect(puzzleProblems(badStratum).join(" ")).toContain('unknown stratum id "typo"');
   });
 });

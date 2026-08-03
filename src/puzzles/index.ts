@@ -43,6 +43,7 @@ import { metaphorFraming } from "./data/metaphor-framing";
 import { complianceSequencing } from "./data/compliance-sequencing";
 import { falseBalance } from "./data/false-balance";
 import { continuedInfluence } from "./data/continued-influence";
+import { sleeperEffect } from "./data/sleeper-effect";
 
 /**
  * The puzzle registry. Adding a puzzle = import its data file and add it to
@@ -94,6 +95,7 @@ const rawPuzzles: unknown[] = [
   complianceSequencing,
   falseBalance,
   continuedInfluence,
+  sleeperEffect,
 ];
 
 export const puzzles: PuzzleType[] = rawPuzzles.map((p, i) => {

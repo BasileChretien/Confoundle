@@ -860,6 +860,97 @@ const SalienceData = z
 export type SalienceData = z.infer<typeof SalienceData>;
 
 /** Discriminated by `type`. Add new members here to support new data shapes. */
+/* ---------------------------------------------------------------------------
+ * Signed movement, measured on the same people more than once.
+ *
+ * Needed because `rates` cannot express this and would misdescribe it even
+ * where it could. A net change is movers-toward minus movers-away, so it is a
+ * balance rather than a share: it can be negative, and a bar drawn from zero to
+ * a proportion would tell the reader that this many people did something, which
+ * is not what the number counts. `Observation.numerator` is a nonnegative
+ * integer for good reasons, and loosening it would let every existing puzzle
+ * express something it should not.
+ *
+ * The lesson this exists for is the sleeper effect, where the whole point is
+ * that one line falls while another rises, so the shape has to hold a direction
+ * as well as a size.
+ * ------------------------------------------------------------------------- */
+const DriftSeries = z.object({
+  id: z.string().min(1),
+  label: LocalizedText,
+  short: LocalizedText.optional(), // compact label for the chart
+});
+export type DriftSeries = z.infer<typeof DriftSeries>;
+
+const DriftCheckpoint = z.object({
+  id: z.string().min(1),
+  label: LocalizedText, // "Straight afterwards", "Four weeks later"
+});
+export type DriftCheckpoint = z.infer<typeof DriftCheckpoint>;
+
+const DriftObservation = z.object({
+  seriesId: z.string().min(1),
+  checkpointId: z.string().min(1),
+  /**
+   * Signed, and that is the point of the shape. Movers toward the thing minus
+   * movers away from it, measured against the baseline the puzzle names.
+   */
+  net: z.number().int(),
+  denominator: z.number().int().positive(),
+});
+export type DriftObservation = z.infer<typeof DriftObservation>;
+
+const DriftData = z
+  .object({
+    type: z.literal("drift"),
+    label: LocalizedText, // figure title
+    metricLabel: LocalizedText, // what the signed number counts
+    /** Names the zero line, e.g. "where they started before hearing it". */
+    baselineLabel: LocalizedText,
+    series: z.array(DriftSeries).min(2),
+    checkpoints: z.array(DriftCheckpoint).min(2),
+    observations: z.array(DriftObservation).min(2),
+  })
+  .superRefine((d, ctx) => {
+    const seriesIds = new Set(d.series.map((s) => s.id));
+    const checkpointIds = new Set(d.checkpoints.map((c) => c.id));
+    const seen = new Set<string>();
+    d.observations.forEach((o, i) => {
+      if (!seriesIds.has(o.seriesId))
+        ctx.addIssue({
+          code: "custom",
+          path: ["observations", i, "seriesId"],
+          message: `no series with id ${o.seriesId}`,
+        });
+      if (!checkpointIds.has(o.checkpointId))
+        ctx.addIssue({
+          code: "custom",
+          path: ["observations", i, "checkpointId"],
+          message: `no checkpoint with id ${o.checkpointId}`,
+        });
+      // A net cannot exceed the people it was computed over in either
+      // direction, so this catches a sign slip or a mistyped denominator.
+      if (Math.abs(o.net) > o.denominator)
+        ctx.addIssue({
+          code: "custom",
+          path: ["observations", i, "net"],
+          message: `net ${o.net} is larger than the ${o.denominator} people it was measured over`,
+        });
+      seen.add(`${o.seriesId}|${o.checkpointId}`);
+    });
+    // A missing cell would silently drop a line from the chart, which for this
+    // shape means losing half of a comparison the whole lesson rests on.
+    for (const s of d.series)
+      for (const c of d.checkpoints)
+        if (!seen.has(`${s.id}|${c.id}`))
+          ctx.addIssue({
+            code: "custom",
+            path: ["observations"],
+            message: `no observation for series ${s.id} at checkpoint ${c.id}`,
+          });
+  });
+export type DriftData = z.infer<typeof DriftData>;
+
 export const PuzzleData = z.discriminatedUnion("type", [
   RatesData,
   FrequenciesData,
@@ -877,6 +968,7 @@ export const PuzzleData = z.discriminatedUnion("type", [
   DoseData,
   EstimationData,
   SalienceData,
+  DriftData,
 ]);
 export type PuzzleData = z.infer<typeof PuzzleData>;
 
@@ -931,6 +1023,8 @@ export const DataView = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("withtruth"), ...viewFields }),
   z.object({ kind: z.literal("asguessed"), ...viewFields }),
   z.object({ kind: z.literal("againstfact"), ...viewFields }),
+  z.object({ kind: z.literal("atfirst"), ...viewFields }),
+  z.object({ kind: z.literal("overtime"), ...viewFields }),
 ]);
 export type DataView = z.infer<typeof DataView>;
 export type DataViewKind = DataView["kind"];

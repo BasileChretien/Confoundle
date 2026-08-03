@@ -5979,6 +5979,147 @@ const items: TestItem[] = [
       en: "A silent removal is the weakest form of correction there is: no reader is told the advice was wrong, so nobody has any reason to revise anything. Absence cannot displace a belief, and the people repeating the advice have no way of knowing there is anything to displace.",
     },
   },
+  // ---- The sleeper effect ----
+  {
+    id: "se-nobody-believes-them",
+    scenario: {
+      en: "An editor decides not to respond to a claim circulating in an outlet with a poor reputation, on the grounds that the outlet's readers already discount everything it prints and a response would only spread the claim further.",
+    },
+    trap: "sleeper-effect",
+    explanation: {
+      en: "The discount is real today and is the part that expires. Readers keep the claim as something they vaguely know and stop applying the reason they had for setting it aside, so the outlet's reputation protects them at the time and not later.",
+    },
+  },
+  {
+    id: "se-heard-it-somewhere",
+    scenario: {
+      en: "Asked why she thinks a particular supplement helps, someone says she is not sure where she read it but has the impression it is well supported. She had in fact read it in a promotional leaflet and dismissed it at the time.",
+    },
+    trap: "sleeper-effect",
+    explanation: {
+      en: "This is the effect in its plainest form. The claim survived as a proposition about the world while the fact about where it came from stopped being applied to it, so a judgement she made correctly has quietly reversed itself.",
+    },
+  },
+  {
+    id: "se-repeat-to-mock",
+    scenario: {
+      en: "A commentator quotes an absurd claim at length in order to ridicule it. Weeks later, surveys of his audience find higher agreement with the claim than before the segment aired.",
+    },
+    trap: "sleeper-effect",
+    explanation: {
+      en: "Repeating a claim puts it into memory; the mockery is the part that has to stay attached, and attachments are what decay. Quoting something to demolish it is one of the reliable ways of spreading it, which is why the defence is to describe rather than repeat.",
+    },
+  },
+  {
+    id: "se-retracted-source-still-cited",
+    scenario: {
+      en: "A team dismisses a figure because it came from an industry press release with no method attached. Six months later the same figure appears in their own internal slide deck, sourced to nothing in particular.",
+    },
+    trap: "sleeper-effect",
+    explanation: {
+      en: "The figure entered circulation the moment it was discussed, and the reason for distrusting it was a fact about its origin rather than a property of the number. The number travelled and the caveat did not.",
+    },
+  },
+  {
+    id: "se-briefing-caveat",
+    scenario: {
+      en: "A briefing note presents an estimate with a clear warning that it comes from a single unreplicated study. The estimate is quoted in three later documents, none of which carries the warning.",
+    },
+    trap: "sleeper-effect",
+    explanation: {
+      en: "Conditions travel worse than the propositions they attach to, and here the decay is visible in the paper trail rather than in anybody's memory. The mechanism is the same: what was true only given a caveat becomes true simply.",
+    },
+  },
+  {
+    id: "se-trusted-source-fades-too",
+    scenario: {
+      en: "A clinician accepts a recommendation because it came from a body she trusts, without following up the reasoning. A year later she still follows it and can no longer say why it was recommended.",
+    },
+    trap: "sleeper-effect",
+    explanation: {
+      en: "The same decay runs in the flattering direction and is worth recognising there too: the good reason for believing something has dropped away and left a bare conviction. She is not wrong to trust the body, but she now holds the conclusion without anything that could tell her when it stops applying.",
+    },
+  },
+  {
+    id: "se-oppo-research",
+    scenario: {
+      en: "A campaign circulates an allegation it knows will be publicly and convincingly rebutted within days, judging that the rebuttal will settle the matter and cost them little.",
+    },
+    trap: "sleeper-effect",
+    explanation: {
+      en: "The calculation is that the immediate measurement is the one that matters, and the immediate measurement is the one this effect contradicts. A claim that is discounted now can be doing work weeks later, and the campaign has probably assessed that correctly.",
+    },
+  },
+  {
+    id: "se-fiction-detail",
+    scenario: {
+      en: "A reader who knows a novel is fiction later reports a historical belief that appears nowhere except in that novel, and is confident it is established fact.",
+    },
+    trap: "sleeper-effect",
+    explanation: {
+      en: "Knowing a source is fiction is a discounting cue like any other, and it is stored separately from what the source said. The belief was never checked against anything because at the time it never needed to be.",
+    },
+  },
+  {
+    id: "se-anonymous-tip-line",
+    scenario: {
+      en: "An investigator reads an anonymous tip, notes that anonymous tips are worthless as evidence, and files it. Months into the inquiry he finds his working theory matches the tip closely, having reached it, as far as he can tell, from the documents.",
+    },
+    trap: "sleeper-effect",
+    explanation: {
+      en: "The tip supplied a hypothesis, and hypotheses are what steer which documents look significant. He correctly refused to treat it as evidence and it shaped the investigation anyway, because the refusal applied to the tip's status and not to the idea it planted.",
+    },
+  },
+  {
+    id: "se-advertising-recall",
+    scenario: {
+      en: "Focus groups shown an advertisement say the claims are obvious marketing and they do not believe any of them. A survey of the same people six weeks later finds them rating the product more favourably than a group who never saw it.",
+    },
+    trap: "sleeper-effect",
+    explanation: {
+      en: "That an advertisement is an advertisement is a discounting cue, and the whole business model works if that cue fades faster than the impression does. Reporting disbelief in the room is not evidence about what the campaign will have done by the time anybody buys anything.",
+    },
+  },
+  {
+    id: "se-wrote-down-why",
+    scenario: {
+      en: "On dismissing a striking statistic from an unnamed source, an analyst adds a line to her notes recording what she would need to see before using it. Asked about the figure a month later, she checks the note and repeats the condition.",
+    },
+    trap: null,
+    explanation: {
+      en: "Putting the condition somewhere outside her own memory is exactly the defence, because the condition is the part that decays and the claim is not. Nothing here needs explaining away; this is the behaviour the finding recommends.",
+    },
+  },
+  {
+    id: "se-checked-before-repeating",
+    scenario: {
+      en: "Before including a well-known figure in a report, a writer notices he cannot remember where it came from, looks it up, finds it traces back to a press release, and leaves it out.",
+    },
+    trap: null,
+    explanation: {
+      en: "Noticing that the source has detached from the claim, and treating that as a reason to check rather than as a reason to relax, is the skill. The failure would have been to take his own familiarity with the figure as evidence for it.",
+    },
+  },
+  {
+    id: "se-first-impression-held",
+    scenario: {
+      en: "A committee revisits a proposal it rejected a year ago on grounds it recorded in the minutes at the time. Reading the minutes, it finds the objection still holds and rejects the proposal again.",
+    },
+    trap: null,
+    explanation: {
+      en: "The reasoning is anchored to a written record rather than to what anybody remembers feeling about it, so the conditions attached to the original judgement are still available. Consistency reached this way is evidence, unlike consistency reached from memory alone.",
+    },
+  },
+  {
+    id: "se-described-not-quoted",
+    scenario: {
+      en: "Covering a conspiracy claim, a broadcaster describes its structure and what would have to be true for it to hold, without stating the claim itself in a quotable form.",
+    },
+    trap: null,
+    explanation: {
+      en: "This is the practical response to the finding rather than an instance of it. Nothing memorable has been put into circulation that could later come loose from its context, and the audience has still been told what is going on.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

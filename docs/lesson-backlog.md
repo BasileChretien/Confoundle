@@ -643,6 +643,67 @@ and the whole logic of `more-votes-fewer-seats`.
 Campbell's law (Campbell DT, 1976) is the citable form. Needs a case with counts
 where a target was hit and the underlying thing did not move.
 
+**Searched 2026-08-03, and the best case in the literature was found and read in
+full. It is the right lesson and it does not print counts.**
+
+**Eatock J, Cooke M, Young TP. Performing or not performing: what's in a target?**
+*Future Healthcare Journal* 2017;4(3):167-172, DOI `10.7861/futurehosp.4-3-167`,
+PMCID PMC6502571. Open on PMC and read at source.
+
+It is almost exactly the puzzle this entry describes, to the point of stating the
+setup-and-reveal contract in its own abstract. Two English A&E departments,
+2014/15, matched on age and arrival profile. Both meet the 95 per cent four-hour
+target and look identical doing it: **4.68 per cent of attendances breached at
+Hospital A and 4.49 per cent at Hospital B**. Behind that single number they are
+running completely different departments. The share of patients leaving between
+three hours forty and four hours is **20.83 per cent at A against 8.56 per cent at
+B**, and **15.82 per cent of A's patients leave in the last ten minutes** of the
+window, a peak entirely absent at B. Before three hours twenty the two profiles
+differ by under one percentage point. Same target, same compliance, opposite
+behaviour, and the paper's own line for it is that the information "is not visible
+simply by monitoring the single existing metric".
+
+**The block is that every one of those figures is a percentage, printed to two
+decimal places, and no bin counts appear anywhere.** The only exact counts in the
+paper are the two annual attendance totals, 148,999 and 108,698. Reconstructing a
+numerator from a rounded percentage fails this project's test on the first step:
+20.83 per cent of 148,999 is consistent with **any of the fourteen integers from
+31,030 to 31,043** (checked by enumeration, not by eye), so it is not unique, and
+nothing else in the paper pins it. Tables 1 and 2 are
+percentages too, and the ten-minute profile that carries the whole reveal, Fig 2,
+is a chart and is never tabulated. Authoring a rate directly would break the rule
+that rates are always derived and never authored, and inventing a share-shaped
+data type to get round that would be building a loophole in the central
+convention rather than a shape for a lesson.
+
+**Two routes forward, and the first one is a decision rather than a task.**
+
+1. **The underlying data is public.** The paper names its source exactly: NHS
+   Digital Hospital Episode Statistics, accident and emergency attendances in
+   England, provider-level analysis, 2014/15, which publishes attendances by
+   duration band for every provider. That gives real counts for a real chart. The
+   catch is that the authors deliberately anonymised the two trusts, and the
+   printed attendance totals are exact enough to identify both. Going to the
+   source therefore means de-anonymising hospitals whose authors chose not to
+   name them, even if the puzzle then reproduced the anonymity. That is a call
+   for a human, not something to do quietly on the way to shipping a puzzle.
+   Nothing here was pursued.
+2. **A different case that prints counts.** The mechanism to demonstrate is
+   bunching at a threshold, and two literatures publish it as bin counts rather
+   than shares: **Burgstahler and Dichev (1997)** on the discontinuity in reported
+   earnings just above zero, which prints histograms of firm counts, and **Allen,
+   Dechow, Pope and Wu (2017)**, *Management Science*, on bunching of marathon
+   finishing times just under round hours, counts of finishers per minute bin over
+   roughly nine million times. Both are completely non-partisan and both are
+   genuinely countable. Neither is a target imposed by a principal on an agent,
+   which is what Campbell's law is about, so a puzzle built on either would teach
+   the mechanism honestly but would have to be named for the bunching rather than
+   for Goodhart. Neither has been read.
+
+Status stays **LEAD**. The lesson is real and the best paper for it has now been
+read and ruled out on format, which is worth more to the next person than the
+bare instruction to find a case with counts.
+
 ---
 
 ## Tier 3: the nine persuasion techniques

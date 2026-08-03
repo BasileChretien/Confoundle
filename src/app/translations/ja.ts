@@ -4362,4 +4362,6 @@ export const ja: Record<string, string> = {
   "Two law professors took the written constitution of every country they had data for, listed which rights each one guaranteed, and then checked those same countries against independent human rights reporting to see which guarantees were kept in full. Below is the ban on torture in 1981: 83 constitutions contained one, and 26 of those countries honoured it completely. Over the next thirty years the ban spread a long way, and by 2010 it was written into 155 constitutions. The same table records a reading in between: by 2000 the ban was in 149 constitutions and 11 of those countries honoured it.": "二人の法学者が、データの得られるすべての国の成文憲法を集め、それぞれがどの権利を保障しているかを書き出し、そのうえで同じ国々を独立した人権報告と突き合わせて、どの保障が完全に守られているかを調べた。以下は1981年の拷問禁止である。83の憲法がそれを定めており、そのうち26か国が完全に守っていた。続く三十年で禁止規定は大きく広まり、2010年には155の憲法に書き込まれていた。　同じ表には中間の記録もある。2000年にはこの禁止は149の憲法にあり、そのうち11か国が守っていた。",
   "The independent group more often, in fact": "むしろ独立した側のほうが多かった",
   "nobody pays them to reach a conclusion": "結論を出すために金を払われてはいない",
+  "Fewer. A second approach from the same man puts people on guard": "減る。同じ男から二度目に接触されれば人は警戒する",
+  "nobody enjoys being softened up": "下ごしらえされるのは誰も気分がよくない",
 };

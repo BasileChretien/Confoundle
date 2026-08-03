@@ -1291,6 +1291,35 @@ about the balance norm producing distortion, and it must never adjudicate the
 science or read as an attack on a masthead. If a draft cannot hold that line it
 does not ship.
 
+**BOTH BUILD QUESTIONS RESOLVED 2026-08-03, and the answer is that this paper
+alone does not make a Confoundle puzzle.**
+
+*The scientific side is not counts.* The methods on page 128 say the views of
+the scientific community were defined by drawing primarily on IPCC reports and
+assessments, and Table 2 tests the press against that discourse year by year.
+There is no numerator and denominator for the science anywhere in the paper. So
+the two-views-of-one-dataset shape has nothing to put opposite the press.
+
+*And the press distribution alone will not carry a commit beat.* The four
+categories exhaust the 340 articles. Show the three that took a position, which
+is 20 plus 120 plus 21, or 161, and the fourth is 340 minus 161. **The answer is
+pure subtraction the moment the framing states the total**, and withholding the
+total to prevent that would be withholding the denominator, which this project
+does not do. Any question that survives is a question about what the balanced
+category *means*, which is a definition and not a prediction.
+
+**So the build needs a second source for the science, and there is an obvious
+one.** Oreskes' 2004 analysis in *Science* of 928 peer-reviewed abstracts, in
+which none rejected the consensus position, is a count with a denominator and
+covers an overlapping period. Press against literature is then a real two-views
+comparison and the reveal is the gap between them. That paper has not been read
+by this project and must be before anything is authored: check that the 928 is a
+denominator rather than a screening total, and that the zero is what it is
+usually quoted as.
+
+Until then this entry is **VERIFIED as to Boykoff and BLOCKED as to shape**. It
+is a good finding waiting on a second source, not a puzzle waiting on drafting.
+
 **Two things for whoever builds it.**
 
 First, the puzzle needs the *other* half of the comparison to work as this deck's

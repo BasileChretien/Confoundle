@@ -263,4 +263,20 @@ describe("self-applied label provenance", () => {
   it("states what the puzzle is not claiming", () => {
     expect(note).toContain("not that written rights are useless");
   });
+
+  it("gives the reader the 2000 reading, which is what licenses the answer", () => {
+    // Load bearing, and added after an audit found the puzzle unanswerable.
+    // The skill licenses only that the SHARE keeping the promise falls. The
+    // answer needs the COUNT to fall, from 26 to 19, which requires the share
+    // to more than halve while the denominator nearly doubles. Holding the
+    // 1981 share of 31.3 per cent across 155 constitutions gives 49, and the
+    // distractor reads "around 48": a reader reasoning correctly about the
+    // share landed exactly on a wrong answer. The intermediate reading fixes
+    // that, because 11 of 149 in 2000 is already below 26. Cut this sentence
+    // and the hedge becomes the only defensible answer again.
+    const framing = selfAppliedLabel.setup.framing.en;
+    expect(framing).toContain("by 2000 the ban was in 149 constitutions");
+    expect(framing).toContain("11 of those countries honoured it");
+    expect(Math.round((26 / 83) * 155)).toBe(49);
+  });
 });

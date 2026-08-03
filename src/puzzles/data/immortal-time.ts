@@ -103,7 +103,10 @@ export const immortalTime: Puzzle = {
       id: "clock",
       label: { en: "No, some of that time could not contain a death" },
       sublabel: { en: "the clock was started too early" },
-      isCorrect: true,
+      // True of the design, and still not an answer to the question asked.
+      // Spotting a flaw is not the same as knowing the flaw explains the gap,
+      // and the setup gives nothing with which to size it.
+      isCorrect: false,
       isIntuitiveTrap: false,
     },
     {
@@ -113,7 +116,10 @@ export const immortalTime: Puzzle = {
       id: "cannot-tell",
       label: { en: "There is no way to tell" },
       sublabel: { en: "too little to go on" },
-      isCorrect: false,
+      // Correct, and deliberately worded exactly as everywhere else in the
+      // deck. The moment the right hedge reads differently from the wrong
+      // ones it becomes a tell, which is the whole reason it is reused.
+      isCorrect: true,
       isIntuitiveTrap: false,
     },
   ],
@@ -123,7 +129,7 @@ export const immortalTime: Puzzle = {
     mechanismLabel: { en: "The stretch before the prescription" },
     mechanismName: { en: "Surviving is what put them in the treated group" },
     explanation: {
-      en: "This patient was counted as treated from the day they entered, but the prescription was not dispensed until month 11. Those eleven months are immortal: had the patient died in month 6, no prescription would ever have been written and they would have been counted in the other group instead. Death was not merely unlikely in that stretch, it was impossible by the way the groups were defined, and it is credited to the drug all the same:",
+      en: "Both objections on the list were live and nothing you had been shown could settle between them: the cohort reported no baseline characteristics at all, so the treated really might have been healthier, and the exposure definition really does hand them immortal time. Spotting a flaw is not the same as knowing that flaw explains the gap, and the size of it was not on the page. Here is what the follow-up shows. This patient was counted as treated from the day they entered, but the prescription was not dispensed until month 11. Those eleven months are immortal: had the patient died in month 6, no prescription would ever have been written and they would have been counted in the other group instead. Death was not merely unlikely in that stretch, it was impossible by the way the groups were defined, and it is credited to the drug all the same:",
     },
     body: {
       en: "Nothing about the patients has to differ for this to work. Give both groups exactly the same drug, the same illness and the same luck, and the treated group will still come out ahead, because it has been handed a run of guaranteed survival that the other group cannot have. In the published example this is drawn from, the treated group was credited with 291.1 immortal person-years against 276.3 person-years in which it was genuinely at risk: more of its follow-up was impossible-to-die time than was real. Correcting only that moved the hazard ratio from 0.48 to 0.91.",

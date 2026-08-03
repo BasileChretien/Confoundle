@@ -187,4 +187,16 @@ describe("multiple comparisons provenance note", () => {
   it("states what the puzzle is and is not claiming", () => {
     expect(note).toContain("not that astrology is silly");
   });
+
+  it("tells the reader the whole trial worked, which is what licenses the answer", () => {
+    // Load bearing, and added after an audit. Multiplicity tells a reader the
+    // astrological subgroup is noise; it does not tell them what the trial
+    // found, and without that both "a small benefit" and "much the same" stay
+    // open. Answering used to require already knowing that aspirin works after
+    // a heart attack, which is real knowledge but was not on the page. The
+    // magnitude is deliberately withheld so the reveal still lands.
+    const framing = multipleComparisons.setup.framing.en;
+    expect(framing).toContain("overwhelmingly significant");
+    expect(framing).not.toContain("28 per cent");
+  });
 });

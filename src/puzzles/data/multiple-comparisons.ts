@@ -56,7 +56,7 @@ export const multipleComparisons: Puzzle = {
       en: "In one subgroup of a heart attack trial, aspirin came out slightly worse than the dummy tablet.",
     },
     framing: {
-      en: "ISIS-2 randomised 17,187 people with a suspected heart attack to aspirin or to identical placebo tablets, and counted who had died of a vascular cause five weeks later. Every patient's date of birth had been recorded on entry as an identifier, so the investigators were able to divide everybody by astrological birth sign and look at the twelve groups separately. Below is what they found among the patients born under Gemini or Libra. Aspirin did slightly worse than placebo there, and the difference is not statistically significant.",
+      en: "ISIS-2 randomised 17,187 people with a suspected heart attack to aspirin or to identical placebo tablets, and counted who had died of a vascular cause five weeks later. Every patient's date of birth had been recorded on entry as an identifier, so the investigators were able to divide everybody by astrological birth sign and look at the twelve groups separately. Below is what they found among the patients born under Gemini or Libra. Aspirin did slightly worse than placebo there, and the difference is not statistically significant. Across all 17,187 patients, though, aspirin cut vascular deaths by a margin the trial reports as overwhelmingly significant.",
     },
     question: {
       en: "What did aspirin do among the patients born under the other ten signs?",

@@ -235,4 +235,17 @@ describe("conjunction fallacy provenance note", () => {
     expect(authored).not.toContain("85 per cent");
     expect(authored).not.toContain("121");
   });
+
+  it("offers exactly one option pointing to consultation helping", () => {
+    // The setup gives the money effect as a yardstick but nothing that says
+    // whether talking beats it. Two bands both reading "talking helps" would
+    // leave a correct reasoner guessing, so there is one, plus one saying
+    // groups make it worse, plus one saying nothing changes, plus the hedge.
+    const helps = conjunctionFallacy.choices.filter((c) =>
+      /More than the money did|Some help/i.test(c.label.en),
+    );
+    expect(helps).toHaveLength(1);
+    expect(helps[0].isCorrect).toBe(true);
+    expect(conjunctionFallacy.choices.some((c) => /^Worse\./.test(c.label.en))).toBe(true);
+  });
 });

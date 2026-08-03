@@ -4434,4 +4434,10 @@ export const ru: Record<string, string> = {
   "Two law professors took the written constitution of every country they had data for, listed which rights each one guaranteed, and then checked those same countries against independent human rights reporting to see which guarantees were kept in full. Below is the ban on torture in 1981: 83 constitutions contained one, and 26 of those countries honoured it completely. Over the next thirty years the ban spread a long way, and by 2010 it was written into 155 constitutions. The same table records a reading in between: by 2000 the ban was in 149 constitutions and 11 of those countries honoured it.": "Двое профессоров права взяли писаную конституцию каждой страны, по которой у них были данные, выписали, какие права гарантирует каждая из них, и затем сверили эти же страны с независимыми правозащитными отчётами, чтобы увидеть, какие гарантии соблюдались полностью. Ниже запрет пыток в 1981 году: он содержался в 83 конституциях, и 26 из этих стран соблюдали его целиком. За следующие тридцать лет запрет разошёлся очень широко, и к 2010 году он был вписан в 155 конституций. Та же таблица содержит промежуточный замер: в 2000 году запрет был в 149 конституциях и 11 из этих стран его соблюдали.",
   "The independent group more often, in fact": "На самом деле чаще независимая группа",
   "nobody pays them to reach a conclusion": "им никто не платит за то, чтобы прийти к выводу",
+  "Fewer. A second approach from the same man puts people on guard": "Меньше. Второй заход того же человека настораживает",
+  "nobody enjoys being softened up": "никому не нравится, когда его обрабатывают",
+  "Worse. Three people talk each other into it": "Хуже. Втроём они убеждают друг друга",
+  "a confident voice carries a whole group": "уверенный голос увлекает всю группу",
+  "The other way round. Virus produced more enforcement than beast": "Наоборот. Вирус дал больше запроса на правоприменение, чем зверь",
+  "an epidemic is the more frightening of the two": "эпидемия из этих двух страшнее",
 };

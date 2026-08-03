@@ -4444,4 +4444,10 @@ export const pt: Record<string, string> = {
   "Two law professors took the written constitution of every country they had data for, listed which rights each one guaranteed, and then checked those same countries against independent human rights reporting to see which guarantees were kept in full. Below is the ban on torture in 1981: 83 constitutions contained one, and 26 of those countries honoured it completely. Over the next thirty years the ban spread a long way, and by 2010 it was written into 155 constitutions. The same table records a reading in between: by 2000 the ban was in 149 constitutions and 11 of those countries honoured it.": "Dois professores de direito pegaram na constituição escrita de todos os países de que tinham dados, anotaram que direitos cada uma garantia e depois confrontaram esses mesmos países com relatórios independentes de direitos humanos para ver que garantias eram cumpridas na íntegra. Abaixo está a proibição da tortura em 1981: 83 constituições continham uma, e 26 desses países cumpriam-na por completo. Nos trinta anos seguintes a proibição espalhou-se muito e, em 2010, estava escrita em 155 constituições. A mesma tabela regista uma leitura intermédia: em 2000 a proibição estava em 149 constituições e 11 desses países cumpriam-na.",
   "The independent group more often, in fact": "O grupo independente mais vezes, na verdade",
   "nobody pays them to reach a conclusion": "ninguém lhes paga para chegar a uma conclusão",
+  "Fewer. A second approach from the same man puts people on guard": "Menos. Uma segunda abordagem do mesmo homem põe as pessoas de sobreaviso",
+  "nobody enjoys being softened up": "ninguém gosta de ser amaciado",
+  "Worse. Three people talk each other into it": "Pior. Em três convencem-se uns aos outros",
+  "a confident voice carries a whole group": "uma voz confiante arrasta um grupo inteiro",
+  "The other way round. Virus produced more enforcement than beast": "Ao contrário. Vírus produziu mais mão pesada do que fera",
+  "an epidemic is the more frightening of the two": "uma epidemia é a mais assustadora das duas",
 };

@@ -220,4 +220,20 @@ describe("sponsorship bias provenance note", () => {
     expect(note).toContain("the same test applies to this study");
     expect(note).toContain("San Francisco");
   });
+
+  it("offers exactly one option pointing toward the industry group", () => {
+    // The rule: a skill licenses a direction, rarely a magnitude, so no two
+    // bands may share the direction the skill points in. Sponsorship bias tells
+    // a reader that funding predicts conclusions; it does not tell them whether
+    // that means twofold or sevenfold, and the setup cannot settle it either,
+    // since a twofold ratio distributes the stated third of 106 as about 18
+    // industry against 21 independent. With only one band pointing that way,
+    // direction alone picks the answer and nobody is punished for reasoning
+    // correctly but imprecisely.
+    const towardIndustry = sponsorshipBias.choices.filter((c) =>
+      /industry group (about|more|far)/i.test(c.label.en),
+    );
+    expect(towardIndustry).toHaveLength(1);
+    expect(towardIndustry[0].isCorrect).toBe(true);
+  });
 });

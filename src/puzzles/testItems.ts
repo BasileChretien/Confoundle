@@ -6490,6 +6490,127 @@ const items: TestItem[] = [
       en: "Going to the source before using the clip is the whole defence against this, and it is cheap when the original is public. Declining to use material that would have worked is what the check is for.",
     },
   },
+  // ---- The innuendo effect ----
+  {
+    id: "in-headline-question",
+    scenario: {
+      en: "A front page asks whether a charity's director diverted funds. The article beneath reports that an audit found no irregularities and that nobody has alleged any.",
+    },
+    trap: "innuendo-effect",
+    explanation: {
+      en: "The headline makes no claim, so there is nothing in it to correct and no retraction anybody could demand, and it still puts the accusation in front of every reader. That unanswerability is the point of the question mark rather than a side effect of it.",
+    },
+  },
+  {
+    id: "in-im-not-saying",
+    scenario: {
+      en: "During a meeting a manager says he is not suggesting anyone tampered with the figures, and that it is interesting how the discrepancy only ever appears on one person's shifts.",
+    },
+    trap: "innuendo-effect",
+    explanation: {
+      en: "The disclaimer is what makes the insinuation sayable, because it leaves nothing on the record that could be shown false or apologised for. Convert it into the assertion it invites, namely that this person tampered with the figures, and ask what evidence was offered for that.",
+    },
+  },
+  {
+    id: "in-cross-examination",
+    scenario: {
+      en: "A barrister asks a witness whether he has ever been treated for a drinking problem. The objection is sustained and the jury is told to disregard the question, which the witness never answered.",
+    },
+    trap: "innuendo-effect",
+    explanation: {
+      en: "Nothing was testified and nothing was established, and the jury now holds a possibility it did not hold before. This is why the technique survives procedural rules: the sanction lands on a question that has already done its work.",
+    },
+  },
+  {
+    id: "in-just-raising-it",
+    scenario: {
+      en: "A commentator says she has no idea whether the resignation was connected to the investigation, that she is only raising the question, and that viewers can draw their own conclusions.",
+    },
+    trap: "innuendo-effect",
+    explanation: {
+      en: "Inviting the audience to draw a conclusion is how the conclusion gets drawn without anybody being on the hook for asserting it. Asking what would settle the question usually reveals that no evidence was ever on the table, which is why it was put as a question.",
+    },
+  },
+  {
+    id: "in-questions-remain",
+    scenario: {
+      en: "A campaign leaflet says serious questions remain about a candidate's business dealings, and lists three questions. All three were answered in a published inquiry two years earlier.",
+    },
+    trap: "innuendo-effect",
+    explanation: {
+      en: "Questions remain is a claim about the state of somebody's knowledge and reads as a claim about the state of the world. Once you ask whether the questions have in fact been answered, the form collapses, and here they had been.",
+    },
+  },
+  {
+    id: "in-poll-the-suspicion",
+    scenario: {
+      en: "A broadcaster runs a viewer poll asking whether people think a public figure has something to hide, and reports the result as a finding about public concern.",
+    },
+    trap: "innuendo-effect",
+    explanation: {
+      en: "The poll manufactures the concern it then reports, because asking the question is what puts the possibility into viewers' heads. The number is real and it measures the effect of having asked rather than anything about the person.",
+    },
+  },
+  {
+    id: "in-what-are-they-hiding",
+    scenario: {
+      en: "After a company declines to comment on a confidential settlement, a rival's briefing note asks what they are so keen to keep quiet, and offers nothing further.",
+    },
+    trap: "innuendo-effect",
+    explanation: {
+      en: "Confidentiality has been converted into evidence of wrongdoing purely by being asked about, and the company cannot answer without breaching the thing that made it confidential. A question whose target is barred from answering it is the strongest form of this, not the weakest.",
+    },
+  },
+  {
+    id: "in-social-post-ellipsis",
+    scenario: {
+      en: "A widely shared post reads: interesting that this study was funded by the industry it exonerates. Makes you wonder. The study's methods and data are public and nobody has challenged them.",
+    },
+    trap: "innuendo-effect",
+    explanation: {
+      en: "Makes you wonder does the work of an accusation while committing to nothing, and the funding fact is true and irrelevant to whether the methods hold. Funding is a reason to look harder at the work, not a substitute for looking at it.",
+    },
+  },
+  {
+    id: "in-reference-hint",
+    scenario: {
+      en: "Asked for a reference, a former manager writes that the candidate was never the subject of a formal complaint during her time there. There had been no complaints of any kind, formal or otherwise.",
+    },
+    trap: "innuendo-effect",
+    explanation: {
+      en: "Every word is true and the sentence is built to imply a category of informal complaints that never existed. The tell is a denial narrower than the question, since specifying formal invites the reader to ask about the rest.",
+    },
+  },
+  {
+    id: "in-title-question-paper",
+    scenario: {
+      en: "A magazine article is titled with a question asking whether a common food additive causes a disease. The body reports that studies have consistently found no association.",
+    },
+    trap: "innuendo-effect",
+    explanation: {
+      en: "Most readers meet only the title, and the title raises a possibility that the article itself closes. Whether the piece is accurate is a separate question from what the headline leaves behind in people who read no further.",
+    },
+  },
+  {
+    id: "ok-asked-and-answered-it",
+    scenario: {
+      en: "An investigation opens by asking whether a supplier overcharged, then reports the invoices, the comparison prices, and the conclusion that it did not.",
+    },
+    trap: null,
+    explanation: {
+      en: "The question was posed and then settled with evidence in the same piece, which is what an inquiry looks like. The failure mode is posing it and leaving it open when there was never anything to settle it with.",
+    },
+  },
+  {
+    id: "ok-stated-what-was-known",
+    scenario: {
+      en: "An editor rejects a headline asking whether a minister misled parliament, and runs one saying that the minister's account differs from the department's, which is what the documents show.",
+    },
+    trap: null,
+    explanation: {
+      en: "The published version asserts something specific that can be checked and, if wrong, corrected. Trading an unanswerable question for a falsifiable claim is exactly the move the lesson asks for, and it costs the story nothing here.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

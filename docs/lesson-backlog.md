@@ -1184,6 +1184,48 @@ existing shape.** The intended decision, that the innuendo effect ships as a
 puzzle rather than as review items, stands unchanged; only the means of doing it
 was wrong.
 
+**NUMBERS EXTRACTED 2026-08-03, and they need one visual check before use.**
+Table 1 of the replication gives descriptive statistics for Experiment 1,
+N = 150, on a 0 to 10 impression scale, for the non-political target:
+
+| Headline | Mean | SD |
+|---|---|---|
+| Neutral | 5.133 | 1.519 |
+| Negation, the claim explicitly denied | 4.960 | 1.590 |
+| Question, the claim merely asked | 4.798 | 1.688 |
+| Assertion, the claim stated | 4.202 | 1.639 |
+
+Table 2 covers Experiment 2, N = 356. **150 plus 356 is exactly the 506 the
+abstract states**, which is an independent check on the reading of both tables.
+Political-ingroup and outgroup targets are reported separately in the same
+table and move together, which is the null the paper highlights.
+
+Table 1 was read from extracted text, not from the rendered page, so it must be
+re-read visually before anything is authored. Every table this project has
+touched has been shifted by extraction at least once.
+
+**AND THERE IS AN OPEN DESIGN QUESTION THAT THE HEDGE AUDIT MAKES UNAVOIDABLE.**
+Two obvious puzzle shapes both have the flaw that audit was written to catch.
+
+*Shape A, question against assertion.* Setup shows neutral and assertion, and
+asks what merely asking did. The answer is 4.798, about a third of the way from
+neutral to assertion. But the skill licenses only that a question moves the
+needle, not how far, so bands reading "a third as much" and "as much as the
+assertion" both point the same way and nothing chooses between them. That is
+exactly the two-same-direction-bands failure.
+
+*Shape B, question against denial.* Setup shows neutral and assertion, and asks
+what a question and an explicit denial each did. The answer is that the question
+harmed and the denial did not significantly differ from neutral. This is
+directional rather than magnitude, which is better. But nothing in the setup
+licenses predicting that a denial is harmless: a reader who knows that denials
+repeat the proposition would reasonably predict both harm, and would be marked
+wrong for reasoning well. That is the illusory-truth failure mode.
+
+So the honest options are to write a framing that licenses one of these, in the
+way `statistical-power` does, or to make the hedge correct and let the reveal
+carry the surprise. **Decide that before drafting, not during.**
+
 What the shape has to carry: two groups who read the same story about the same
 person, one with the claim asserted and one with it merely asked as a question,
 each reporting a mean rating on a bounded scale, with the scale bounds so a bar

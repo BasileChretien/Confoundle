@@ -1222,9 +1222,17 @@ licenses predicting that a denial is harmless: a reader who knows that denials
 repeat the proposition would reasonably predict both harm, and would be marked
 wrong for reasoning well. That is the illusory-truth failure mode.
 
-So the honest options are to write a framing that licenses one of these, in the
-way `statistical-power` does, or to make the hedge correct and let the reveal
-carry the surprise. **Decide that before drafting, not during.**
+**DECIDED 2026-08-03 by project policy, not per puzzle.** The deck does not mark
+a well-reasoning player wrong in order to land a surprise; the rule is now in
+`CLAUDE.md`. So shape A is out unless its framing licenses the magnitude, and
+shape B is out unless its framing licenses the denial being harmless.
+
+For this puzzle the cleanest route is shape B with the hedge correct. A reader
+who predicts that both a question and a denial do damage is reasoning well, and
+under the new rule cannot be marked wrong for it, so the honest answer at the
+commit beat is that the setup does not say. The reveal then delivers the real
+finding, that the question harmed and the denial did not, which is a surprise
+earned from the data rather than taken from the reader.
 
 What the shape has to carry: two groups who read the same story about the same
 person, one with the claim asserted and one with it merely asked as a question,

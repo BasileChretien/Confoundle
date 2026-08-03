@@ -185,7 +185,26 @@ ratio distributes the stated third of 106 as roughly 16 industry and 19
 independent, which is perfectly possible; nothing excludes it. The same holds
 across the others.
 
-### What to do about it, which is a design decision and not a fix
+### DECIDED 2026-08-03: option 1 is off the table
+
+Asked directly whether the deck is willing to mark a well-reasoning player wrong
+in order to land a surprise, the answer was **no, that is not the goal.** That
+settles it, and it overrides the recommendation made here a day earlier that
+four of the six be accepted as they stand.
+
+So every puzzle in the table above needs option 2 or option 3: either the
+discriminator goes into the framing, or the hedge becomes correct. The rule now
+lives in `CLAUDE.md` so it binds new puzzles too, not only this backlog.
+
+Two of the six were fixed under option 2 before the policy was settled, and both
+happen to comply with it: `self-applied-label` and `multiple-comparisons`. Four
+remain: `sponsorship-bias`, `compliance-sequencing`, `metaphor-framing` and
+`conjunction-fallacy`. Each needs the same treatment, one at a time, framing and
+rendered chart and existing tests read together.
+
+### The options as they stood before that decision
+
+
 
 Three options, and this file does not choose between them.
 

@@ -491,11 +491,48 @@ the retraction is designed and rated as highly credible**. So the correction can
 be impeccable and still not work.
 
 Why it fits: the paradigm is a scripted incident with a retraction condition and a
-control, non-partisan by construction, and the outcome is usually a count of
-inferences that still rely on the retracted claim. That is a `rates` shape with
-two arms. It also does something no shipped puzzle does, which is to be about what
-happens **after** the reader has been corrected, and that is uncomfortably close
-to what this whole deck assumes about itself.
+control, non-partisan by construction. It also does something no shipped puzzle
+does, which is to be about what happens **after** the reader has been corrected,
+and that is uncomfortably close to what this whole deck assumes about itself.
+
+**Status as to shape: BLOCKED, and the block is the whole field, not one paper.**
+The line above used to claim the outcome "is usually a count of inferences that
+still rely on the retracted claim. That is a `rates` shape with two arms." That
+was wrong, and three papers were read at source on 2026-08-03 to establish it.
+The field's standard dependent measure is a **coded mean per person**, not a
+headcount, so there is no numerator over a denominator anywhere in it.
+
+- **Wilkes and Leatherbarrow (1988)**, `10.1080/02724988843000168`, the original
+  paradigm. Table 2 prints percentages, but the denominator is *questions
+  answered*, which varies with omissions and is never printed. 90 subjects across
+  three groups, confirmed by `F(2, 87)`. No counts recoverable.
+- **Johnson and Seifert (1994)**, `10.1037/0278-7393.20.6.1420`. Tables 3, 4, 6
+  and 8 are means and standard deviations. The text does print percentages **of
+  subjects**, which is the right unit, but never the per-group denominators.
+  Experiment 1A is 34 people across three arms, from `F(2, 31)`, and the arms are
+  uneven. Several splits are consistent with 95 and 27 per cent, and none lands on
+  an exact integer, so reconstructing would be guessing. Compare Oreskes below,
+  where 75 per cent of 928 is 696 exactly and the categories sum to the total:
+  that is what a legitimate reconstruction looks like, and this is not it.
+- **Ecker, Lewandowsky and Tang (2010)**, `10.3758/MC.38.8.1087`. Prints 25
+  participants per cell and a manipulation-check headcount (19, 17, 20 and 18 of
+  25 remembered the retraction), but the effect itself is a mean inference score
+  out of 20, shown with standard-error bars.
+
+So this ships only behind **a new shape for a mean with a dispersion interval**,
+which the deck does not have and which is a real piece of engine work: a union
+member, a derivation module with a test, a renderer, a `DataViewRenderer` case,
+scope labels and a share-card glyph. Ecker is the one to build it on, because it
+prints its per-cell N and its two-by-two of retraction against warning is already
+a setup-and-reveal.
+
+Worth recording separately, because it survives the shape problem and is the
+best framing anyone has found for this bias: Johnson and Seifert report that
+**95 and 91 per cent** of people in the corrected conditions still made at least
+one direct, uncontroverted reference to the retracted material, while only **24
+and 9.1 per cent** named it when asked the global cause question outright. Asked
+directly, they look corrected. Watched while they reason, they are not. That is
+the puzzle, whenever a shape exists to hold it.
 
 Sources to read: *Memory and Cognition* (2021) on retraction source credibility,
 and *Cognition* (2024) on relative source credibility in the CIE.
@@ -1305,7 +1342,22 @@ known to be fragile and the deck must not overstate it.
 
 <!-- skill: false-balance -->
 
-**Status: VERIFIED 2026-08-03, ready to author.** The PDF was supplied and read.
+**Status: SHIPPED 2026-08-03** as `both-sides-of-what`, slug `both-sides-of-what`,
+skill `false-balance`. Both papers were read at source and reconciled before a
+word was authored. The record below is kept in full because it documents two
+blocking questions and how each was resolved, and because the second of them
+changed the shape of the puzzle.
+
+**One design note worth carrying forward.** The commit question asks which of two
+press treatments was more common, not what share was balanced. The share version
+is a magnitude guess, and every band except "almost none" would have shared the
+direction the skill licenses, which is exactly the failure `docs/hedge-audit.md`
+exists to catch. A two-way comparison is answerable from the framing plus the
+skill, and 52.65 per cent still lands as a surprise at the reveal.
+
+The original research record follows.
+
+**Sourcing status: VERIFIED 2026-08-03.** The PDF was supplied and read.
 
 **The counts are there, and the reconciliation is unusually strong.** The figure
 1 caption on page 129 reports the split of prestige-press articles on whether
@@ -1367,8 +1419,35 @@ by this project and must be before anything is authored: check that the 928 is a
 denominator rather than a screening total, and that the zero is what it is
 usually quoted as.
 
-Until then this entry is **VERIFIED as to Boykoff and BLOCKED as to shape**. It
-is a good finding waiting on a second source, not a puzzle waiting on drafting.
+**ORESKES READ AND VERIFIED 2026-08-03. The block is lifted and this is ready to
+author.** Oreskes N, "The scientific consensus on climate change", *Science*
+2004;306(5702):1686, `10.1126/science.1103618`. Both checks pass.
+
+*928 is the analysed denominator, not a screening total.* The paper states that
+"the 928 papers were divided into six categories", one of which is rejection of
+the consensus position. A screening yield does not get divided into outcome
+categories. Sample is ISI abstracts on the keyword "climate change", 1993 to
+2003, with note 9 explaining the 1993 start as the first year the database
+carried abstracts consistently, and noting that some hits were dropped because
+the paper was not about climate change. That is the screening step, and it
+happened before the 928.
+
+*And the zero is what it is quoted as.* "Remarkably, none of the papers disagreed
+with the consensus position." The split reconciles exactly, which is the same
+class of check that validated the Boykoff table:
+
+| Position in the literature | Count | Printed |
+|---|---|---|
+| Accepting the consensus, explicitly or implicitly | 696/928 | 75 |
+| Methods or paleoclimate, taking no position | 232/928 | 25 |
+| Rejecting the consensus | 0/928 | none |
+
+Both percentages land on exact integers and the three counts sum to 928.
+
+One disclosure the puzzle must carry: **the two windows differ.** Boykoff runs
+1988 to 2002 and Oreskes 1993 to 2003. They overlap for ten years but they are
+not the same period, and the provenance note must say so rather than implying a
+single dataset cut two ways.
 
 **Two things for whoever builds it.**
 
@@ -1499,8 +1578,24 @@ censoring others. For a deck whose entire premise is that the reader can be
 fooled, this is close to the thesis statement. Candidate: Davison WP. The
 third-person effect in communication. *Public Opinion Quarterly*
 1983;47(1):1-15, plus the Sun, Pan and Shen meta-analysis (*Journal of
-Communication* 2008) for magnitude. Check whether either prints counts rather
-than only effect sizes; the deck has refused a puzzle on that ground before.
+Communication* 2008) for magnitude.
+
+**Davison read 2026-08-03, and it does not carry counts.** The headline results
+are means on a 0 to 7 influence scale: 3.4 for the effect on others against 2.26
+for the effect on self. Table 1, the one place a distribution is printed, gives
+percentages only, in two columns that each sum to 100. No sample size is printed
+next to it, and the extracted layout drops a row, which is the usual
+`pdftotext` shift and means the table still needs a visual read before anything
+is concluded from it. Even if an N turns up there, deriving counts from five
+rounded percentages and one denominator is the move this project refused for
+Johnson and Seifert in entry 12, and it would be refused here for the same
+reason.
+
+So this stays **LEAD, blocked on counts**, and the meta-analysis is unlikely to
+rescue it, since meta-analyses report effect sizes by construction. The realistic
+routes are a primary study in the paradigm that reports a headcount, or the same
+mean-with-dispersion shape entry 12 needs. If that shape gets built for Ecker, it
+unblocks this entry too, which is an argument for building it once and well.
 
 ### 21. Quoting out of context
 

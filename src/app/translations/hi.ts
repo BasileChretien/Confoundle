@@ -4405,4 +4405,8 @@ export const hi: Record<string, string> = {
   "nobody pays them to reach a conclusion": "उन्हें किसी निष्कर्ष तक पहुँचने के पैसे नहीं मिलते",
   "Fewer. A second approach from the same man puts people on guard": "कम। उसी आदमी का दूसरी बार संपर्क लोगों को सतर्क कर देता है",
   "nobody enjoys being softened up": "किसी को नरम किया जाना पसंद नहीं",
+  "Worse. Three people talk each other into it": "और बुरा। तीन लोग एक-दूसरे को मना लेते हैं",
+  "a confident voice carries a whole group": "एक आश्वस्त आवाज़ पूरे समूह को खींच ले जाती है",
+  "The other way round. Virus produced more enforcement than beast": "उल्टा। वायरस ने दरिंदे से ज़्यादा सख़्ती पैदा की",
+  "an epidemic is the more frightening of the two": "महामारी दोनों में अधिक डरावनी है",
 };

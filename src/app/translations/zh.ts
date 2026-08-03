@@ -4306,4 +4306,8 @@ export const zh: Record<string, string> = {
   "nobody pays them to reach a conclusion": "没有人付钱让他们得出某个结论",
   "Fewer. A second approach from the same man puts people on guard": "更少。同一个人第二次上门会让人提高警惕",
   "nobody enjoys being softened up": "没有人喜欢被事先软化",
+  "Worse. Three people talk each other into it": "更糟。三个人会互相说服",
+  "a confident voice carries a whole group": "一个笃定的声音能带动一整组人",
+  "The other way round. Virus produced more enforcement than beast": "正相反。病毒比野兽带来了更多执法主张",
+  "an epidemic is the more frightening of the two": "疫病是两者中更可怕的那个",
 };

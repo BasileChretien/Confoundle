@@ -4466,4 +4466,8 @@ export const fr: Record<string, string> = {
   "nobody pays them to reach a conclusion": "personne ne les paie pour arriver à une conclusion",
   "Fewer. A second approach from the same man puts people on guard": "Moins. Une seconde approche du même homme met les gens sur leurs gardes",
   "nobody enjoys being softened up": "personne n aime être amadoué",
+  "Worse. Three people talk each other into it": "Pire. À trois, ils s y convainquent mutuellement",
+  "a confident voice carries a whole group": "une voix assurée entraîne tout un groupe",
+  "The other way round. Virus produced more enforcement than beast": "L inverse. Virus a produit plus de répression que bête",
+  "an epidemic is the more frightening of the two": "une épidémie est la plus effrayante des deux",
 };

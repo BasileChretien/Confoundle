@@ -975,6 +975,59 @@ function EstimationGlyph() {
   );
 }
 
+function DriftGlyph() {
+  const W = 200;
+  const H = 96;
+  /**
+   * Two lines that swap places. The trusted source starts high and sinks; the
+   * discredited one starts low and climbs past it. The crossing is the whole
+   * lesson, so the glyph is the crossing and nothing else, with a gold dot
+   * where the order reverses.
+   */
+  const x0 = 16;
+  const x1 = W - 16;
+  const highStart = 20;
+  const highEnd = 56;
+  const lowStart = 74;
+  const lowEnd = 46;
+  return (
+    <svg
+      viewBox={`0 0 ${W} ${H}`}
+      width="100%"
+      role="img"
+      aria-label="Two lines crossing over time"
+    >
+      <line
+        x1={x0}
+        y1={H - 12}
+        x2={x1}
+        y2={H - 12}
+        stroke={CARD.rule}
+        strokeWidth={1}
+      />
+      <line
+        x1={x0}
+        y1={highStart}
+        x2={x1}
+        y2={highEnd}
+        stroke={CARD.teal}
+        strokeWidth={3}
+        strokeLinecap="round"
+      />
+      <line
+        x1={x0}
+        y1={lowStart}
+        x2={x1}
+        y2={lowEnd}
+        stroke={CARD.rust}
+        strokeWidth={3}
+        strokeLinecap="round"
+      />
+      <circle cx={(x0 + x1) / 2} cy={(highStart + highEnd) / 2} r={4} fill={CARD.gold} />
+    </svg>
+  );
+}
+
 function SalienceGlyph() {
   const W = 200;
   const H = 96;
@@ -1305,6 +1358,7 @@ export function ShareCard({
   const doseGlyph = data.type === "dose";
   const estimationGlyph = data.type === "estimation";
   const salienceGlyph = data.type === "salience";
+  const driftGlyph = data.type === "drift";
   const splitSampleGlyph =
     data.type === "rates" &&
     Boolean(data.strataAreSeparateSamples) &&
@@ -1410,6 +1464,8 @@ export function ShareCard({
             <EstimationGlyph />
           ) : salienceGlyph ? (
             <SalienceGlyph />
+          ) : driftGlyph ? (
+            <DriftGlyph />
           ) : null}
 
           <p className="mt-4 font-display text-[17px] font-medium leading-snug">

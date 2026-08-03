@@ -18,6 +18,8 @@ import { EcologicalView } from "./EcologicalView";
 import { FramingView } from "./FramingView";
 import { DistributionView } from "./DistributionView";
 import { restrictDistribution } from "./distribution";
+import { DriftView } from "./DriftView";
+import { restrictDrift } from "./drift";
 import { DoseView } from "./DoseView";
 import { restrictDose } from "./dose";
 import { EstimationView } from "./EstimationView";
@@ -126,6 +128,20 @@ export function DataViewRenderer({
           kind={view.kind}
         />
       ) : null;
+    case "drift":
+      // Draws a slice like the others, but along time rather than across
+      // groups: the setup shows the first checkpoint, which is the result as it
+      // was reported, and the reveal adds what the same people looked like
+      // later.
+      return view.kind === "atfirst" || view.kind === "overtime" ? (
+        <DriftView
+          data={restrictDrift(data, {
+            groupIds: view.groupIds,
+            strataIds: view.strataIds,
+          })}
+          kind={view.kind}
+        />
+      ) : null;
     default:
       return null;
   }
@@ -218,6 +234,10 @@ export function scopeLabel(kind: DataViewKind): string {
       return "What people picked";
     case "againstfact":
       return "Against what happens";
+    case "atfirst":
+      return "Measured straight away";
+    case "overtime":
+      return "And the same people later";
     default:
       return "";
   }

@@ -1369,7 +1369,37 @@ effect survived, which this deck must know before it teaches it.
 
 <!-- skill: sleeper-effect -->
 
-**Status: LEAD.** A message from a source you knew to be unreliable becomes
+**Status: SHIPPED 2026-08-03** as `the-source-you-forget`, skill
+`sleeper-effect`, on Hovland and Weiss (1951), `10.1086/266350`.
+
+**The blocking shape was built for it.** `drift` holds signed movement from a
+baseline, measured on the same people more than once: a union member in
+`schema.ts`, `engine/charts/drift.ts` with its test, `DriftView.tsx`, a
+`DataViewRenderer` case, the `atfirst` and `overtime` scope labels, and a
+crossing-lines glyph in `ShareCard.tsx`. Existing puzzles are untouched. It is
+reusable by anything measuring movement rather than level, and it is the right
+shape on the merits rather than a workaround, since the lesson *is* that one
+line falls while the other rises.
+
+**One thing the build turned up that the research had not.** Adding the two
+published tables as percentages gives the distrusted source 14.0 per cent at
+four weeks; adding them as counts gives 13.9. The counts are what was measured,
+so the file holds counts and derives everything, and a test exists purely so
+nobody later corrects it back to 14.0. This is the project's authored-once rule
+earning its keep on a real disagreement rather than a hypothetical one.
+
+The Kumkale and Albarracin meta-analysis was supplied and read, and the caveat
+it required is now the puzzle's deep dive: the effect is conditional on the
+argument and the cue both landing hard, is stronger when the reader had the
+ability and motivation to think, and is stronger when the discounting cue comes
+*after* the message. Hovland and Weiss put the source first, which is the weaker
+arrangement, so the study understates rather than overstates. Capon and
+Hulbert's 1973 conclusion that the literature was too unreliable to pursue is
+recorded there too.
+
+The original research record follows.
+
+**Sourcing status: LEAD.** A message from a source you knew to be unreliable becomes
 *more* persuasive weeks later, because the claim outlives the memory of who made
 it. This is the mechanism that makes discredited sources worth worrying about
 even when everybody discounts them at the time, and it is the best available

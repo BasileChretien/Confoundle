@@ -1728,7 +1728,41 @@ concessions procedure for inducing compliance: the door-in-the-face technique.
 
 <!-- skill: third-person-effect -->
 
-**Status: LEAD, and the most self-implicating lesson in the queue.** People
+**Status: SHIPPED 2026-08-03** as `not-me-though`, skill `third-person-effect`,
+on Gunther (1995), `10.1111/j.1460-2466.1995.tb00712.x`.
+
+**The two refusals below stand. What changed is the deck, not the paper.** The
+counts genuinely are unrecoverable, and nothing in the puzzle rests on them. The
+block was never really about this paper: it was that the deck could only draw
+counts, while whole literatures measure their outcome as a rating. So the fix
+was the `ratings` shape, which draws a mean on the scale it was measured on,
+with the source's own dispersion when it prints one.
+
+**Why the scale is the shape rather than a decoration.** A bar from zero to 3.23
+says nothing: zero is not where the scale starts and 3.23 is not a quantity of
+anything. The finding is not that one mean exceeds another by 0.39. It is that
+on a scale where 3 means *no effect at all*, people put themselves at 3.23 and
+everybody else at 3.62. Without the anchor drawn on the axis, that is invisible,
+which is why the schema requires the scale endpoints to be named and refuses an
+anchor without a label.
+
+**What was checked, since means do not reconcile the way counts do.** All seven
+of Table 1's printed differences between the self and others columns reproduce
+exactly from the two means beside them. The male and female subsample sizes, 230
+and 262, sum to the 492 of the combined measure, a total neither row states. And
+the 19 and 20 per cent in the text sum to the 39 per cent the discussion gives
+for respondents not showing the perception. Three independent checks, none of
+them used to derive anything.
+
+**The shape also unblocks entry 15, but that entry stays blocked for a different
+reason.** Its 2024 replication is closed access with no open-access location
+anywhere, so Table 1 cannot be re-read from the rendered page, and this project
+does not author from a machine extraction. Entry 15 now needs one thing only:
+the PDF.
+
+The original research record follows.
+
+**Sourcing status: LEAD, and the most self-implicating lesson in the queue.** People
 consistently judge propaganda to affect other people more than themselves, and
 that belief is itself what makes them vulnerable and what drives support for
 censoring others. For a deck whose entire premise is that the reader can be

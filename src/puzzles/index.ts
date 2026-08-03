@@ -45,6 +45,7 @@ import { falseBalance } from "./data/false-balance";
 import { continuedInfluence } from "./data/continued-influence";
 import { sleeperEffect } from "./data/sleeper-effect";
 import { paltering } from "./data/paltering";
+import { thirdPersonEffect } from "./data/third-person-effect";
 
 /**
  * The puzzle registry. Adding a puzzle = import its data file and add it to
@@ -98,6 +99,7 @@ const rawPuzzles: unknown[] = [
   continuedInfluence,
   sleeperEffect,
   paltering,
+  thirdPersonEffect,
 ];
 
 export const puzzles: PuzzleType[] = rawPuzzles.map((p, i) => {

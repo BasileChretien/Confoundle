@@ -1028,6 +1028,50 @@ function DriftGlyph() {
   );
 }
 
+function RatingsGlyph() {
+  const W = 200;
+  const H = 96;
+  /**
+   * Two markers on one scale. The teal one sits on the gold anchor line, the
+   * point that means "no effect at all"; the rust one sits well to its right.
+   * That is the whole finding: not that one number beats another, but that
+   * people put themselves exactly on nothing happened.
+   */
+  const x0 = 18;
+  const x1 = W - 18;
+  const axis = 62;
+  const anchor = x0 + (x1 - x0) * 0.5;
+  const self = anchor + 3;
+  const others = anchor + 42;
+  const marker = (x: number, y: number, color: string, spread: number) => (
+    <>
+      <rect x={x - spread} y={y - 2} width={spread * 2} height={4} rx={2} fill={color} opacity={0.28} />
+      <rect x={x - 1.5} y={y - 9} width={3} height={18} rx={1.5} fill={color} />
+    </>
+  );
+  return (
+    <svg
+      viewBox={`0 0 ${W} ${H}`}
+      width="100%"
+      role="img"
+      aria-label="Two mean ratings on one scale"
+    >
+      <line x1={x0} y1={axis} x2={x1} y2={axis} stroke={CARD.rule} strokeWidth={1} />
+      <line
+        x1={anchor}
+        y1={22}
+        x2={anchor}
+        y2={axis + 6}
+        stroke={CARD.gold}
+        strokeWidth={1}
+        strokeDasharray="3 3"
+      />
+      {marker(self, 34, CARD.teal, 14)}
+      {marker(others, 34, CARD.rust, 24)}
+    </svg>
+  );
+}
+
 function SalienceGlyph() {
   const W = 200;
   const H = 96;
@@ -1359,6 +1403,7 @@ export function ShareCard({
   const estimationGlyph = data.type === "estimation";
   const salienceGlyph = data.type === "salience";
   const driftGlyph = data.type === "drift";
+  const ratingsGlyph = data.type === "ratings";
   const splitSampleGlyph =
     data.type === "rates" &&
     Boolean(data.strataAreSeparateSamples) &&
@@ -1466,6 +1511,8 @@ export function ShareCard({
             <SalienceGlyph />
           ) : driftGlyph ? (
             <DriftGlyph />
+          ) : ratingsGlyph ? (
+            <RatingsGlyph />
           ) : null}
 
           <p className="mt-4 font-display text-[17px] font-medium leading-snug">

@@ -20,6 +20,8 @@ import { DistributionView } from "./DistributionView";
 import { restrictDistribution } from "./distribution";
 import { DriftView } from "./DriftView";
 import { restrictDrift } from "./drift";
+import { RatingsView } from "./RatingsView";
+import { restrictRatings } from "./ratings";
 import { DoseView } from "./DoseView";
 import { restrictDose } from "./dose";
 import { EstimationView } from "./EstimationView";
@@ -142,6 +144,15 @@ export function DataViewRenderer({
           kind={view.kind}
         />
       ) : null;
+    case "ratings":
+      // Draws a slice like the rest: the setup quotes the one rating that gets
+      // quoted, and the reveal puts the others on the same scale beside it.
+      return view.kind === "onerating" || view.kind === "bothratings" ? (
+        <RatingsView
+          data={restrictRatings(data, { groupIds: view.groupIds })}
+          kind={view.kind}
+        />
+      ) : null;
     default:
       return null;
   }
@@ -238,6 +249,10 @@ export function scopeLabel(kind: DataViewKind): string {
       return "Measured straight away";
     case "overtime":
       return "And the same people later";
+    case "onerating":
+      return "One of the two ratings";
+    case "bothratings":
+      return "Both, on the same scale";
     default:
       return "";
   }

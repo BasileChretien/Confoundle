@@ -951,6 +951,119 @@ const DriftData = z
   });
 export type DriftData = z.infer<typeof DriftData>;
 
+/* ---------------------------------------------------------------------------
+ * Mean ratings on a bounded scale, with dispersion when the source prints it.
+ *
+ * The deck has refused several lessons for want of this. Whole literatures
+ * measure their outcome as a rating rather than a count: the third-person
+ * effect, the innuendo effect, most of persuasion research. `rates` cannot hold
+ * a mean, and reconstructing counts from a mean is not possible at all, so
+ * those lessons were either dropped or shipped on a neighbouring paradigm that
+ * happened to produce a headcount.
+ *
+ * What makes a mean drawable honestly is the scale. A bar from zero to 3.23
+ * says nothing, because zero is not where the scale starts and 3.23 is not a
+ * quantity of anything. A position on a labelled axis from 1 to 5, with the
+ * point that means "no effect at all" marked, says exactly what the number
+ * means. So the scale is required and its endpoints must be named.
+ *
+ * `sd` is optional because papers vary in what they print, and a puzzle that
+ * has one should show it rather than imply a precision the data does not have.
+ * ------------------------------------------------------------------------- */
+const RatingScale = z.object({
+  min: z.number(),
+  max: z.number(),
+  minLabel: LocalizedText, // "1, a large positive effect"
+  maxLabel: LocalizedText, // "5, a large negative effect"
+  /** A meaningful point worth drawing, usually the neutral one. */
+  anchorAt: z.number().optional(),
+  anchorLabel: LocalizedText.optional(), // "3, no effect at all"
+});
+export type RatingScale = z.infer<typeof RatingScale>;
+
+const RatingSeries = z.object({
+  id: z.string().min(1),
+  label: LocalizedText,
+  short: LocalizedText.optional(),
+});
+export type RatingSeries = z.infer<typeof RatingSeries>;
+
+const RatingObservation = z.object({
+  seriesId: z.string().min(1),
+  mean: z.number(),
+  /** Standard deviation, when the source prints one. */
+  sd: z.number().positive().optional(),
+  n: z.number().int().positive(),
+});
+export type RatingObservation = z.infer<typeof RatingObservation>;
+
+const RatingsData = z
+  .object({
+    type: z.literal("ratings"),
+    label: LocalizedText, // figure title
+    metricLabel: LocalizedText, // what was rated
+    scale: RatingScale,
+    /** Says on the figure what the whisker is, e.g. one standard deviation. */
+    dispersionLabel: LocalizedText.optional(),
+    series: z.array(RatingSeries).min(2),
+    observations: z.array(RatingObservation).min(2),
+  })
+  .superRefine((d, ctx) => {
+    if (d.scale.max <= d.scale.min)
+      ctx.addIssue({
+        code: "custom",
+        path: ["scale", "max"],
+        message: "scale max must be above scale min",
+      });
+    if (d.scale.anchorAt !== undefined) {
+      if (d.scale.anchorAt < d.scale.min || d.scale.anchorAt > d.scale.max)
+        ctx.addIssue({
+          code: "custom",
+          path: ["scale", "anchorAt"],
+          message: "the anchor must sit on the scale",
+        });
+      if (!d.scale.anchorLabel)
+        ctx.addIssue({
+          code: "custom",
+          path: ["scale", "anchorLabel"],
+          message: "an anchor drawn without a label tells the reader nothing",
+        });
+    }
+    const ids = new Set(d.series.map((s) => s.id));
+    const seen = new Set<string>();
+    d.observations.forEach((o, i) => {
+      if (!ids.has(o.seriesId))
+        ctx.addIssue({
+          code: "custom",
+          path: ["observations", i, "seriesId"],
+          message: `no series with id ${o.seriesId}`,
+        });
+      // A mean off the end of its own scale is a transcription error, and it
+      // would draw off the end of the figure too.
+      if (o.mean < d.scale.min || o.mean > d.scale.max)
+        ctx.addIssue({
+          code: "custom",
+          path: ["observations", i, "mean"],
+          message: `mean ${o.mean} is outside the ${d.scale.min} to ${d.scale.max} scale`,
+        });
+      if (seen.has(o.seriesId))
+        ctx.addIssue({
+          code: "custom",
+          path: ["observations", i, "seriesId"],
+          message: `two observations for series ${o.seriesId}`,
+        });
+      seen.add(o.seriesId);
+    });
+    for (const s of d.series)
+      if (!seen.has(s.id))
+        ctx.addIssue({
+          code: "custom",
+          path: ["observations"],
+          message: `no observation for series ${s.id}`,
+        });
+  });
+export type RatingsData = z.infer<typeof RatingsData>;
+
 export const PuzzleData = z.discriminatedUnion("type", [
   RatesData,
   FrequenciesData,
@@ -969,6 +1082,7 @@ export const PuzzleData = z.discriminatedUnion("type", [
   EstimationData,
   SalienceData,
   DriftData,
+  RatingsData,
 ]);
 export type PuzzleData = z.infer<typeof PuzzleData>;
 
@@ -1025,6 +1139,8 @@ export const DataView = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("againstfact"), ...viewFields }),
   z.object({ kind: z.literal("atfirst"), ...viewFields }),
   z.object({ kind: z.literal("overtime"), ...viewFields }),
+  z.object({ kind: z.literal("onerating"), ...viewFields }),
+  z.object({ kind: z.literal("bothratings"), ...viewFields }),
 ]);
 export type DataView = z.infer<typeof DataView>;
 export type DataViewKind = DataView["kind"];

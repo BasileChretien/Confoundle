@@ -44,6 +44,7 @@ import { complianceSequencing } from "./data/compliance-sequencing";
 import { falseBalance } from "./data/false-balance";
 import { continuedInfluence } from "./data/continued-influence";
 import { sleeperEffect } from "./data/sleeper-effect";
+import { paltering } from "./data/paltering";
 
 /**
  * The puzzle registry. Adding a puzzle = import its data file and add it to
@@ -96,6 +97,7 @@ const rawPuzzles: unknown[] = [
   falseBalance,
   continuedInfluence,
   sleeperEffect,
+  paltering,
 ];
 
 export const puzzles: PuzzleType[] = rawPuzzles.map((p, i) => {

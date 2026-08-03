@@ -6402,6 +6402,94 @@ const items: TestItem[] = [
       en: "She has treated herself as a member of the population the finding is about, which is what the evidence supports, rather than as an observer standing outside it. Nothing here needs explaining away.",
     },
   },
+  // ---- Quoting out of context, filed under paltering ----
+  // Backlog entry 21 could not find a study that counts anything, and the deck
+  // does not ship a puzzle without one. But the technique is a species of
+  // paltering rather than a separate skill: every quoted word is genuine and
+  // the impression is false, which is the paltering test exactly. What differs
+  // is only whose true statements are being selected, and the defence is the
+  // same one the paltering lesson gives, namely go and look at what was
+  // actually asked and answered.
+  {
+    id: "qm-clipped-conditional",
+    scenario: {
+      en: "A scientist writes that the model predicts severe effects if emissions continue unchecked and that current policy makes that path unlikely. A campaign quotes the first half exactly and stops.",
+    },
+    trap: "paltering",
+    explanation: {
+      en: "The quotation is verbatim and the conditional it depended on has been cut off, which turns a claim about one scenario into a claim about the future. Whenever a quote begins mid-sentence or ends before a comma would naturally fall, the missing clause is the thing to go and find.",
+    },
+  },
+  {
+    id: "qm-attributed-the-objection",
+    scenario: {
+      en: "A columnist quotes a philosopher as saying that morality is merely a convenient fiction. In the book, that sentence introduces a position the philosopher spends the next chapter refuting.",
+    },
+    trap: "paltering",
+    explanation: {
+      en: "The words are on the page in that order, and they are the view being argued against rather than the view being argued for. Setting out an opponent's position clearly is what careful writing looks like, which is exactly what makes it quotable against the author.",
+    },
+  },
+  {
+    id: "qm-ellipsis-doing-work",
+    scenario: {
+      en: "A press release quotes a review as calling the show a triumph of staging. The full sentence read that it would have been a triumph of staging in the hands of a better cast.",
+    },
+    trap: "paltering",
+    explanation: {
+      en: "Nothing has been added and the meaning has been reversed, which is the signature of the technique. An ellipsis or a tight fragment in a favourable quote is worth the ten seconds it takes to find the original sentence.",
+    },
+  },
+  {
+    id: "qm-answer-to-another-question",
+    scenario: {
+      en: "An interview clip shows an official saying that of course the department was aware. In the recording, the question was whether the department was aware of the weather forecast, not of the safety report.",
+    },
+    trap: "paltering",
+    explanation: {
+      en: "The answer is genuine and belongs to a different question, so the deception is carried entirely by what was cut. A clip that opens on an answer rather than a question should be treated as incomplete until the question is found.",
+    },
+  },
+  {
+    id: "qm-hostile-summary-quoted-back",
+    scenario: {
+      en: "A minute records a manager saying the plan is unworkable as described. She was reading back a colleague's summary in order to say that the summary was wrong.",
+    },
+    trap: "paltering",
+    explanation: {
+      en: "Repeating something in order to correct it puts the words in your mouth in the record, and the record does not mark the difference. This is why the defence is to read the surrounding turns rather than the sentence.",
+    },
+  },
+  {
+    id: "qm-selective-sample-of-quotes",
+    scenario: {
+      en: "A report on a consultation quotes eleven respondents opposing a proposal and none supporting it. All eleven quotes are accurate, and support ran at about two thirds.",
+    },
+    trap: "paltering",
+    explanation: {
+      en: "Each quotation is true and the selection is the lie, which is the same move as choosing the one favourable measure from a set only the speaker can see. Ask what proportion the quoted voices represent, because a set of quotations is a sample and should be treated as one.",
+    },
+  },
+  {
+    id: "ok-quoted-with-the-condition",
+    scenario: {
+      en: "A journalist quotes a researcher's striking sentence and includes the clause that follows it, in which the researcher says the result holds only for the age group studied.",
+    },
+    trap: null,
+    explanation: {
+      en: "The quotation carries the qualification that came with it, so the reader ends up with the claim the researcher actually made. Quoting is not the problem; quoting the half that survives without its condition is.",
+    },
+  },
+  {
+    id: "ok-checked-the-transcript",
+    scenario: {
+      en: "Sent a damaging fifteen second clip of a rival, a campaign manager finds the full recording, sees that the line was a summary of the opposing view, and does not use it.",
+    },
+    trap: null,
+    explanation: {
+      en: "Going to the source before using the clip is the whole defence against this, and it is cheap when the original is public. Declining to use material that would have worked is what the check is for.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

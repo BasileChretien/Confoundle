@@ -1028,6 +1028,17 @@ const RatingsData = z
           path: ["scale", "anchorLabel"],
           message: "an anchor drawn without a label tells the reader nothing",
         });
+    } else if (d.scale.anchorLabel) {
+      // The other direction, which is worse. `RatingsView` prints the label
+      // whenever it exists but draws the line only when `anchorAt` does, so a
+      // label without a position puts a sentence on screen describing a mark
+      // the reader cannot see.
+      ctx.addIssue({
+        code: "custom",
+        path: ["scale", "anchorAt"],
+        message:
+          "anchorLabel describes a mark on the axis, so anchorAt has to say where it goes",
+      });
     }
     const ids = new Set(d.series.map((s) => s.id));
     const seen = new Set<string>();
@@ -1402,6 +1413,52 @@ export const Puzzle = z
       // changed". Nothing in the renderers resolves a choice id to a group
       // (the charts highlight via bestGroupId, computed from the data alone),
       // so requiring it would only rule out valid puzzles.
+    }
+
+    // The same check the rates branch does above, for the two shapes added
+    // later. Both of them filter views by id exactly as rates does, and both
+    // were shipped without this guard, so a typo in `groupIds` would have
+    // rendered an empty beat with nothing failing anywhere. `drift` maps
+    // series to groupIds and checkpoints to strataIds; `ratings` maps series
+    // to groupIds and has no strata at all, so any strataIds on it is a
+    // mistake rather than an unknown id.
+    //
+    // The four older shapes that also accept `groupIds` (distribution, dose,
+    // estimation, salience) still lack this guard. Deliberately not widened
+    // here: that is a change to puzzles this stack does not touch, and it
+    // belongs in its own branch.
+    if (p.setup.data.type === "drift" || p.setup.data.type === "ratings") {
+      const d = p.setup.data;
+      const seriesIds = new Set(d.series.map((s) => s.id));
+      const checkpointIds =
+        d.type === "drift" ? new Set(d.checkpoints.map((c) => c.id)) : new Set<string>();
+
+      for (const [where, view] of [
+        ["initialView", p.setup.initialView],
+        ["reveal.view", p.reveal.view],
+      ] as const) {
+        for (const id of view.groupIds ?? []) {
+          if (!seriesIds.has(id)) {
+            ctx.addIssue({
+              code: "custom",
+              path: [where, "groupIds"],
+              message: `unknown series id "${id}"`,
+            });
+          }
+        }
+        for (const id of view.strataIds ?? []) {
+          if (!checkpointIds.has(id)) {
+            ctx.addIssue({
+              code: "custom",
+              path: [where, "strataIds"],
+              message:
+                d.type === "drift"
+                  ? `unknown checkpoint id "${id}"`
+                  : "ratings has no strata, so strataIds filters nothing",
+            });
+          }
+        }
+      }
     }
 
     if (p.setup.data.type === "frequencies") {

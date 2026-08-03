@@ -131,9 +131,18 @@ export const sponsorshipBias: Puzzle = {
       isIntuitiveTrap: true,
     },
     {
-      id: "twice",
-      label: { en: "The industry group about twice as often" },
-      sublabel: { en: "money nudges a judgement, it does not dictate it" },
+      // Deliberately points the other way. This slot used to read "the industry
+      // group about twice as often", which shared a direction with the correct
+      // answer while nothing in the setup could choose between them: two-fold
+      // distributes the stated third of 106 as roughly 18 industry and 21
+      // independent, which is perfectly possible. Under the rule that a
+      // well-reasoning player is never marked wrong, one of the two had to go,
+      // and reversing it is better than deleting it: a reader who thinks
+      // unsponsored researchers are the ones free to say the contrarian thing
+      // has a real argument, and it is wrong for a reason worth learning.
+      id: "independent",
+      label: { en: "The independent group more often, in fact" },
+      sublabel: { en: "nobody pays them to reach a conclusion" },
       isCorrect: false,
       isIntuitiveTrap: false,
     },

@@ -1216,7 +1216,38 @@ paper has been read and its table reconciled**, exactly as for entries 9 and 13.
 
 <!-- skill: paltering -->
 
-**Status: LEAD.** Deceiving by stating things that are individually true while
+**Status: SHIPPED 2026-08-03** as `every-word-was-true`, skill `paltering`, on
+Rogers, Zeckhauser, Gino, Norton and Schweitzer (2017), `10.1037/pspi0000081`.
+
+**The instruction in this entry was followed and it worked.** CrossRef confirmed
+the citation; the article is closed access, but the accepted manuscript is public
+on the HBS publication server and carries the published journal furniture, so it
+is the version of record rather than the 2014 working paper. Study 4B prints its
+counts, so nothing is reconstructed, which is the first source in a while that
+needed no argument.
+
+**The tables check each other, which is better than either alone.** Table 4's
+cells for people who actually paltered, 38 in one condition and 10 in the other,
+sum to the 48 eligible dyads Table 5 reports; the actually-honest cells, 2 and
+26, sum to its 28. Neither table states those totals as totals. The impasse rates
+built from Table 5, 7 of 47 against 1 of 51, recover the 15 and 2 per cent in the
+text and reproduce the published chi-square of 5.46 to the second decimal.
+
+**One discrepancy is left standing.** Table 4's honest condition lists 10, 26, 3,
+8 and 3, which is 50, while Table 5 gives 51 dyads. All five percentages recover
+against 51, and so does the printed 49 per cent for non-honest behaviour, so 51
+is right and one participant is missing from the breakdown. The paper does not
+explain it and the provenance note does not pretend to.
+
+**Design note.** The puzzle uses the impasse rate rather than the profit
+comparison, because the profit figures are means with t-tests and this deck
+cannot author means as counts. It is also the better lesson: the cost of
+paltering is not that you earn less on the deals you close, it is that the deal
+falls over.
+
+The original research record follows.
+
+**Sourcing status: LEAD.** Deceiving by stating things that are individually true while
 creating a false impression. It is the technique behind most defensible
 political dishonesty, because nothing said can be shown to be a lie, and the
 deck has nothing on it. Candidate: Rogers T, Zeckhauser R, Gino F, Norton MI,

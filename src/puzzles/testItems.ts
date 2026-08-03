@@ -6120,6 +6120,147 @@ const items: TestItem[] = [
       en: "This is the practical response to the finding rather than an instance of it. Nothing memorable has been put into circulation that could later come loose from its context, and the audience has still been told what is going on.",
     },
   },
+  // ---- Paltering ----
+  {
+    id: "pa-meets-every-standard",
+    scenario: {
+      en: "Asked whether its product has ever failed a safety test, a manufacturer replies that the product meets every current regulatory standard. The questioner takes this as a no and moves on.",
+    },
+    trap: "paltering",
+    explanation: {
+      en: "Meeting today's standards and never having failed a test are different facts, and only the second was asked about. The answer is true, unfalsifiable and completely unresponsive, which is the signature: repeat the question and it either gets answered or visibly does not.",
+    },
+  },
+  {
+    id: "pa-no-evidence-of-harm",
+    scenario: {
+      en: "Asked whether a chemical is safe at the levels found in drinking water, a spokesperson says there is no evidence of harm at those levels. Nobody has looked.",
+    },
+    trap: "paltering",
+    explanation: {
+      en: "No evidence of harm is true when no one has gone looking, and it is heard as evidence of no harm. The statement survives any fact-check because it describes the state of the literature rather than the state of the world, and those come apart precisely when nothing has been studied.",
+    },
+  },
+  {
+    id: "pa-record-quarter",
+    scenario: {
+      en: "A company announces its best quarter for new customer sign-ups in five years. It does not mention that departures also hit a five-year high and that the customer base shrank.",
+    },
+    trap: "paltering",
+    explanation: {
+      en: "Sign-ups really were a record; that is not the misleading part. Choosing the one true measure that points the right way, from a set the speaker can see and the audience cannot, is what does the work. Ask which measure you would want if you were choosing, then ask why that one was not given.",
+    },
+  },
+  {
+    id: "pa-previously-owned-by",
+    scenario: {
+      en: "Selling a car, an owner says it has been serviced by the main dealer its whole life. It has, twice, and it has been off the road for two of the last three years.",
+    },
+    trap: "paltering",
+    explanation: {
+      en: "Every word holds up and the impression is of a well-maintained car. The technique is to state something true whose usual implication does not apply in this case, and to leave the implication to do the lying.",
+    },
+  },
+  {
+    id: "pa-i-was-not-charged",
+    scenario: {
+      en: "Asked about an investigation, a public figure says repeatedly and truthfully that they were never charged with anything. The investigation concluded that the conduct occurred but fell outside the statute.",
+    },
+    trap: "paltering",
+    explanation: {
+      en: "Not charged is true and answers a legal question that nobody asked; the question was about what happened. Substituting an adjacent question you can answer cleanly for the one that was put is the standard move, and the tell is that the answer is more precise than the question.",
+    },
+  },
+  {
+    id: "pa-up-to-forty-per-cent",
+    scenario: {
+      en: "A tariff is advertised as saving households up to 40 per cent. The 40 per cent applies to one usage pattern shared by a small fraction of customers; the median saving is near zero.",
+    },
+    trap: "paltering",
+    explanation: {
+      en: "The claim is true for somebody, which is all up to requires, and it is heard as a description of what you would get. A range whose top end is real for a handful of people is a true statement engineered to be read as a typical one.",
+    },
+  },
+  {
+    id: "pa-declined-to-renew",
+    scenario: {
+      en: "A reference letter states accurately that the employee's contract was not renewed at the end of its term, and says nothing else about the circumstances. The employee had been dismissed for misconduct.",
+    },
+    trap: "paltering",
+    explanation: {
+      en: "Not renewed at the end of its term is literally correct and reads as an ordinary expiry. This is the version that is legally careful on purpose, which is much of the appeal: it can be defended sentence by sentence if it is ever challenged.",
+    },
+  },
+  {
+    id: "pa-fastest-growing",
+    scenario: {
+      en: "A treatment is promoted as the fastest growing in its class. It is growing fastest because it started from almost nothing and remains the least prescribed option.",
+    },
+    trap: "paltering",
+    explanation: {
+      en: "Growth rates are largest where the base is smallest, so fastest growing is compatible with least used and is often chosen for exactly that reason. The true statement about change is standing in for a false impression about level.",
+    },
+  },
+  {
+    id: "pa-technically-on-schedule",
+    scenario: {
+      en: "Asked whether a project is on schedule, a manager says no milestone has been formally missed. The schedule was rebaselined twice in the last quarter, each time moving the milestones.",
+    },
+    trap: "paltering",
+    explanation: {
+      en: "No milestone missed is true of the current schedule and says nothing about the original one, which is what on schedule meant to the person asking. Answering about a definition that has quietly moved is a palter, and the giveaway is the word formally.",
+    },
+  },
+  {
+    id: "pa-independent-review",
+    scenario: {
+      en: "A firm describes a report as an independent review. The reviewers had no financial stake and were selected, briefed and paid by the firm, and their terms of reference excluded the contested question.",
+    },
+    trap: "paltering",
+    explanation: {
+      en: "Independent is defensible on the narrow sense the firm has in mind and is heard in the broad sense the audience has in mind. Words with a strict technical reading and a loose everyday one are the natural raw material for this, because the strict reading is the defence.",
+    },
+  },
+  {
+    id: "ok-answered-the-question-asked",
+    scenario: {
+      en: "Asked whether its product has ever failed a safety test, a manufacturer says that it failed twice in 2019, explains what was changed, and adds that it has passed every test since.",
+    },
+    trap: null,
+    explanation: {
+      en: "The question was answered on its own terms before any context was added, which is the shape an honest reply has. Adding favourable true information after answering is not paltering; substituting it for the answer is.",
+    },
+  },
+  {
+    id: "ok-declined-to-answer-openly",
+    scenario: {
+      en: "Asked about a confidential settlement, a spokesperson says she is not able to discuss the terms and will not try to characterise them either way.",
+    },
+    trap: null,
+    explanation: {
+      en: "Refusing to answer is not deception, and saying plainly that you are refusing leaves the questioner correctly informed that they have not been told. The failure mode would have been a true remark shaped to sound like a denial.",
+    },
+  },
+  {
+    id: "ok-asked-again-narrowly",
+    scenario: {
+      en: "Told that a supplier meets all current standards, a buyer replies that she is asking something narrower, namely whether any batch has been rejected in the past two years, and waits.",
+    },
+    trap: null,
+    explanation: {
+      en: "Repeating the question in a narrowed form is the defence against paltering, because a true but unresponsive answer cannot be given twice without becoming visible. She has not accused anybody of anything and has made the evasion impossible to repeat.",
+    },
+  },
+  {
+    id: "ok-volunteered-the-bad-number",
+    scenario: {
+      en: "Presenting a strong quarter for sign-ups, a chief executive puts the departure figure on the same slide and notes that the customer base shrank overall.",
+    },
+    trap: null,
+    explanation: {
+      en: "The favourable number is real and is being reported alongside the measure that qualifies it, so the audience can form the impression the full picture supports. Selecting a true measure is only paltering when the selection is what creates the impression.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

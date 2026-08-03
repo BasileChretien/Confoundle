@@ -762,6 +762,81 @@ Needs the primary paper: the finding was reached through a *Scientific American*
 account of the experiments and the underlying article has not been identified,
 still less read. Status: **LEAD**, and the highest-priority item in this section.
 
+---
+
+#### The primary paper was found and read. Status: REFUSED 2026-08-03, on four counts.
+
+**Levari DE, Martel C, Orchinik R, Bhui R, Seli P, Pennycook G, Rand DG.
+Blatantly false news increases belief in news that is merely implausible.**
+PsyArXiv preprint `10.31234/osf.io/cz7vy`, version of 1 February 2024. Five
+studies, N = 5,476. Downloaded from OSF and read at source, all 33 pages of the
+main text and methods. It is the right paper: it is unambiguously the work behind
+the *Scientific American* piece, and the account above of what it finds is
+accurate. It still cannot be authored from, and the reasons compound.
+
+**One. It is not peer reviewed, and says so itself.** Page 1 carries, in red, "This
+is a working paper and has not yet been published in a peer-reviewed journal." It
+is still listed under "Working Papers" on Orchinik's own research page, two and a
+half years after posting. That is not a knock on the work, which is preregistered
+and larger than most of what this deck ships on. But the deck refused Paul and
+Matthews partly on this ground, and a working paper's numbers can still move.
+
+**Two, and this is the one that ends it: there are no counts anywhere.** Every
+result in the paper is a coefficient from a binomial generalized linear mixed
+model with random intercepts for participant and for headline, reported as b, SE,
+z and CI. Not one condition-level proportion is printed. Figures 1, 2 and 4 are
+per-headline scatterplots of percentage-called-plausible against *pretested*
+plausibility, with fitted curves. There is no numerator and no denominator for
+the effect, and deriving one from an interaction coefficient is exactly the
+reconstruction the project does not do.
+
+**Three, the effect is a threshold shift, which this deck cannot draw honestly.**
+The finding is not "X per cent believed it here and Y per cent there". It is that
+the plausibility at which people flip to calling a headline true moves. In Figures
+1 and 2 the three condition curves very nearly overlap; the difference lives in
+the fit, not in the picture. Setup and reveal have to be two readings of the same
+visible numbers, and there is nothing here a reader could read either way.
+
+**Four, the internal pattern is not the monotone story the popular account tells.**
+In Study 1 the high-versus-low contrast is b = 0.73, p = 0.03 and the
+*moderate*-versus-low contrast is b = 0.77, p = 0.01, so moderate came out
+fractionally larger than high, and high versus moderate is flatly null (b = -0.04,
+p = 0.88). In Studies 3a and 3b the authors describe their own interactions as
+**marginally significant** (p = 0.06, 0.07 and 0.06). In the Figure 3 forest plot
+Study 2's moderate-versus-low point sits on the wrong side of 1. What survives is
+the pooled high-versus-low odds ratio of 2.39 [1.56, 3.65], which is a real
+result, but "more implausibility, more belief" as a dose-response is not what the
+individual studies show, so the `dose` shape would misrepresent them.
+
+**And a fifth thing, which is a correction to this entry rather than a reason to
+refuse.** SI Appendices L and M report three further studies testing exposure to
+just **one or two** blatantly implausible headlines, and found **no significant
+results**; the paper says the effect needs "several dozen headlines with high
+average implausibility". So the mechanism is **prevalence, not magnitude**. That
+matters, because the whole reason this entry was promoted was that magnitude and
+frequency are different variables and the Big Lie is about magnitude. On this
+evidence it is not. A puzzle built here would be about living in a stream of
+nonsense, which is a good lesson, but it is not the Big Lie and it should not be
+shipped under that name.
+
+**What a shippable version would need**, so this is a note and not a dead end:
+either the peer-reviewed version of this paper *with* a table of condition-level
+proportions, or the open data (the studies are preregistered and the OSF project
+may carry trial-level responses, which would give real numerators and
+denominators for a chart the deck could draw). Neither was pursued here, because
+re-analysing somebody's raw data to manufacture a statistic they did not publish
+is a different and larger claim than reading a table, and it is not obvious the
+project should make it. Recorded so the next person starts from the block rather
+than from the *Scientific American* summary.
+
+**The Overton window pairing is now weaker, not stronger.** The paragraph in that
+entry below rests on this being "an experimental scale shift on political
+claims". It is a scale shift, but on *plausibility of news headlines in general*,
+with the paper stating explicitly that its results are driven by plausibility
+rather than veracity and that the experiments say little about whether the effect
+operates on a specific topic. The Sherif and Hovland prohibition lead in that
+entry is now the better of the two routes, and is unaffected by any of this.
+
 ### Firehose of falsehood: SEARCHED, and one of its ingredients looks refuted
 
 The objection to Paul and Matthews (2016) stands on its own terms: think-tank
@@ -812,13 +887,21 @@ Status: **REJECTED, now legitimately**, failing shape primarily and neutral grou
 secondarily. Reopen if an experiment surfaces that manipulates which of two issues
 is made salient and measures a choice with counts.
 
-### Overton window: OPEN, and possibly the same puzzle as the Big Lie
+### Overton window: OPEN, and no longer the same puzzle as the Big Lie
 
 The redirect to shipped `anchoring` stands for the mechanism. But see the Big Lie
 entry above: the implausibility-calibration finding is an experimental scale
 shift on political claims, which is what the Overton window asserts and what
 `anchoring` demonstrates only on numbers. If one paper can carry both, build one
 puzzle, not two.
+
+**Superseded 2026-08-03.** That paragraph was written before the paper was read.
+Levari et al. is a scale shift on the plausibility of news headlines in general,
+not on political claims in particular, and the authors say outright that their
+experiments tell them little about whether the effect operates on a specific
+topic. The pairing does not hold, and in any case that paper is refused for the
+four reasons listed above. **Sherif and Hovland below is now the only live route
+for this entry**, and it is unaffected.
 
 **Searched, and the subject is better than expected.** Sherif and Hovland,
 *Social Judgment: Assimilation and Contrast Effects in Communication and Attitude

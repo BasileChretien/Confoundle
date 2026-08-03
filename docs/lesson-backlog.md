@@ -1380,6 +1380,60 @@ the counts are usually printed. A modern meta-analysis (Kumkale and Albarracin,
 *Psychological Bulletin* 2004) should be checked too, because the effect is
 known to be fragile and the deck must not overstate it.
 
+**READ AT SOURCE 2026-08-03, and the numbers are fully verified. Blocked only on
+a missing engine shape, which is a pure engineering job with no research left in
+it.** Tables 3 and 6 were read off the rendered pages 643 and 645, because
+`pdftotext` scrambles both, putting the Ns and the values on the wrong rows.
+
+Table 3, net percentage of subjects who moved toward the message, immediately
+after hearing it. Table 6, the further net change between then and four weeks
+later. 223 subjects took part, 122 per column survive into these analyses.
+
+| Topic | High credibility | N | Low credibility | N |
+|---|---|---|---|---|
+| Anti-histamines | 22.6 / -6.5 | 31 | 13.3 / +6.7 | 30 |
+| Atomic submarines | 36.0 / -16.0 | 25 | 0.0 / +13.9 | 36 |
+| Steel shortage | 22.9 / -11.4 | 35 | -3.8 / +15.4 | 26 |
+| Future of movies | 12.9 / -9.7 | 31 | 16.7 / -6.7 | 30 |
+| **Average** | **23.0 / -10.7** | 122 | **6.6 / +7.4** | 122 |
+
+**The reconciliation is as strong as any in the deck.** All sixteen cells recover
+exact whole numbers of people against their printed Ns. The four column averages
+then recover from those counts: 7+9+8+4 = 28 of 122 is 23.0 per cent, 4+0-1+5 = 8
+is 6.6, -2-4-4-3 = -13 is -10.7, and 2+5+4-2 = 9 is 7.4. And all five printed
+differences in Table 6's third column reproduce exactly. Nothing was fitted.
+
+**The finding, which is a genuine reversal.** Adding the two tables gives the
+change from before the message to four weeks after: the high credibility source
+goes 23.0 down to **12.3**, and the low credibility source 6.6 up to **14.0**. The
+discredited source ends up ahead of the trusted one. The paper draws exactly this
+comparison as its Figure 2. That is a perfect setup and reveal: show the
+immediate result, where credibility obviously matters, then show the same people
+four weeks later.
+
+**What blocks it is the shape, and the block is real rather than a preference.**
+These are *net* changes, positive changers minus negative changers, and the paper
+never prints the two components. So the numbers are differences, not proportions,
+and five of the sixteen cells are negative. `rates` cannot hold them:
+`Observation.numerator` is `z.number().int().nonnegative()`, and a bar running
+from zero to a share would misdescribe the quantity even where it is positive.
+
+So this needs a **signed change shape**, diverging bars around a zero line, which
+is the six-file job the conventions describe: a `PuzzleData` union member, a pure
+derivation module in `engine/charts/` with a test, a renderer, a
+`DataViewRenderer` case, `scopeLabel` entries, and a `ShareCard` glyph. It is
+also the right shape on the merits rather than a workaround, because the lesson
+*is* that one line falls while the other rises, and a diverging chart says that
+in one look.
+
+Note this is a different shape from the mean-with-dispersion one entries 12 and
+20 wanted, so it does not unblock those. Still worth doing: a signed change chart
+is reusable by anything measuring movement rather than level.
+
+Before authoring, the Kumkale and Albarracin (2004) meta-analysis still needs
+reading, because the effect is known to be fragile and the provenance note must
+say so. That is the only research left; everything else here is verified.
+
 ### 17. False balance, and the deck's own founding principle
 
 <!-- skill: false-balance -->
@@ -1638,6 +1692,40 @@ rescue it, since meta-analyses report effect sizes by construction. The realisti
 routes are a primary study in the paradigm that reports a headcount, or the same
 mean-with-dispersion shape entry 12 needs. If that shape gets built for Ecker, it
 unblocks this entry too, which is an argument for building it once and well.
+
+**Two more papers read at source 2026-08-03, and both fail. Entry 20 is now
+blocked with three refusals behind it.** The route tried was the one that
+rescued entry 12: find a study whose outcome is a headcount rather than a mean.
+The third-person literature does report headcounts, but never with a printed
+denominator, and unlike Kassin and Sommers there is nothing to cross-check a
+reconstruction against.
+
+- **Gunther (1995)**, `10.1111/j.1460-2466.1995.tb00712.x`. Reports that 61 per
+  cent of respondents perceived others as more negatively influenced, 19 per cent
+  no difference, 20 per cent themselves more. The denominator for that split is
+  never stated. Table 1 gives Ns of 550, 525 and 492 for three different
+  measures, plus subgroup Ns. Taking the most likely, 492, **sixteen count
+  triples round to 61/19/20**. There is no chi-square or other printed statistic
+  computed from those counts, so nothing would confirm a choice.
+- **Rojas, Shah and Faber (1996)**, `10.1093/ijpor/8.2.163`. Better on the face
+  of it, because the percentages carry a decimal: 84.7 and 3.8 for mass media,
+  71.7 and 7.1 for pornography, 82.2 and 3.1 for television violence. Sample is
+  133 students. Searching 110 to 133, mass media gives exactly one solution
+  (N = 131, split 111/5/15) and television violence exactly one (N = 129, split
+  106/4/19), and both of those Ns appear among the Table 2 degrees of freedom
+  plus one, which looked briefly like independent confirmation. **Pornography
+  kills it.** It gives two solutions, N = 113 and N = 127, and neither matches its
+  printed df of 128. So the two apparent matches were coincidence: several values
+  in that narrow range happen to equal some printed df plus one. Note also that
+  Table 2 is shifted by `pdftotext`, which put the degrees of freedom on the
+  wrong rows; the correct assignment was read off the rendered page 175 and is
+  mass media 132 and 130, pornography 128 and 128, television violence 130 and
+  128.
+
+The standard being applied is the one set by entry 12's resolution: a
+reconstruction ships when it is unique **and** reproduces a printed quantity that
+was not used to derive it. Kassin and Sommers cleared that twice over, with both
+chi-squares landing to the second decimal. Neither of these clears it once.
 
 ### 21. Quoting out of context
 

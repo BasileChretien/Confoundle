@@ -46,6 +46,7 @@ import { continuedInfluence } from "./data/continued-influence";
 import { sleeperEffect } from "./data/sleeper-effect";
 import { paltering } from "./data/paltering";
 import { thirdPersonEffect } from "./data/third-person-effect";
+import { innuendoEffect } from "./data/innuendo-effect";
 
 /**
  * The puzzle registry. Adding a puzzle = import its data file and add it to
@@ -100,6 +101,7 @@ const rawPuzzles: unknown[] = [
   sleeperEffect,
   paltering,
   thirdPersonEffect,
+  innuendoEffect,
 ];
 
 export const puzzles: PuzzleType[] = rawPuzzles.map((p, i) => {

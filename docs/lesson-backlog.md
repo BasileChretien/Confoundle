@@ -1261,7 +1261,46 @@ find whether any table prints numerators.
 
 <!-- skill: innuendo-effect -->
 
-**Status: READ AT SOURCE 2026-07-31, and it fails this deck's test.** Both
+**Status: SHIPPED 2026-08-03** as `just-asking`, skill `innuendo-effect`, on
+Letourneau and Gawronski (2024), `10.1027/1864-9335/a000540`, Experiment 1.
+
+**Everything below was right and nothing below needed changing.** The shape was
+missing, then it existed; the numbers were extracted, then the PDF arrived and
+Table 1 was read on the rendered page. It matches the extraction exactly, which
+is the first time this session that a table survived extraction intact. The
+design question was settled in advance and shipped as settled.
+
+**The reading is confirmed three ways beyond the table.** Every degrees of
+freedom figure recovers N = 150, since F(3, 447), F(2, 298), F(6, 894) and the
+t(149) used throughout are all built on 149. The two experiments are stated as
+150 and 356 and the abstract gives 506, which is their sum. And the significance
+pattern is printed separately in the text for nonpolitical targets: question
+t(149) = 2.90, p = .004; assertion t(149) = 6.88, p < .001; denial t(149) =
+1.53, p = .129.
+
+**The hedge is the correct answer, and that is the whole design.** Shape A was a
+magnitude guess and shape B would have marked a good reasoner wrong, both
+rejected below. So the commit beat offers three confident bands, each built from
+a real mechanism, and none of them licensed by a setup showing only a neutral
+headline and an assertion. Declining to guess is the right move, and the reveal
+then delivers the finding as a surprise earned from the data rather than taken
+from the reader. This is the deck's clearest instance of the policy in
+`CLAUDE.md` doing real work rather than merely being satisfied.
+
+**Only the nonpolitical target is used.** The political ingroup and outgroup
+conditions would mean naming parties, and the nonpolitical row carries the whole
+finding on its own. The partisanship null goes in the deep dive, where it is
+more useful anyway: the question effect did not differ significantly across
+target groups, so the technique works on your own side as well as the other.
+
+One small thing recorded in the test file for whoever meets it next: the
+question gap is exactly 0.335, which sits on a rounding boundary, and in binary
+floating point it lands a hair under, so two decimals give 0.33 rather than
+0.34. Nothing in the puzzle quotes either figure to two decimals.
+
+The original research record follows.
+
+**Sourcing status: READ AT SOURCE 2026-07-31, and it fails this deck's test.** Both
 papers were supplied and read. The effect is real and it replicated: the 2024
 study is two preregistered experiments, N = 506 total, and it reports that
 questions insinuating something negative reduced favourable impressions,

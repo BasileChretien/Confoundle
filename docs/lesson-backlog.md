@@ -1164,9 +1164,38 @@ numerator and no denominator anywhere, so `rates` cannot hold it and the deck
 would be authoring means. That is the exact ground on which this file warned
 the third-person effect might fail, and here it has.
 
-**DECIDED 2026-08-03: build it on the `estimation` shape.** That shape already
-ships means for `anchoring`, so the precedent exists and the engine needs no
-change. The reveal compares two averages rather than two head counts, which is a
+**DECIDED 2026-08-03: build it as a puzzle rather than review items. The shape
+named in that decision was wrong, and the correction is below.**
+
+The decision was taken on the premise that `estimation` already ships means for
+`anchoring` and would need no engine change. **Checking the schema afterwards
+showed that is false.** `EstimationData` requires a positive `trueValue` and a
+`superRefine` that rejects any estimate not strictly below it, because the
+anchoring lesson is specifically about two anchored guesses both undershooting a
+checkable answer. The innuendo effect has no checkable answer: it is an
+impression of a fictional candidate on an 11-point scale, and there is no true
+value to undershoot. Using `estimation` would mean inventing one, which is
+fabrication, and the shape's own comment three lines below already says it
+cannot hold the neighbouring `salience` design for the same kind of reason.
+
+**So this needs a new shape, which is what the project rule prescribes anyway:
+build a new shape whenever the lesson needs one, never bend a lesson to fit an
+existing shape.** The intended decision, that the innuendo effect ships as a
+puzzle rather than as review items, stands unchanged; only the means of doing it
+was wrong.
+
+What the shape has to carry: two groups who read the same story about the same
+person, one with the claim asserted and one with it merely asked as a question,
+each reporting a mean rating on a bounded scale, with the scale bounds so a bar
+can be drawn honestly and with no ground truth anywhere. The 2024 replication
+adds a second axis, political ingroup against outgroup target, which came back
+null and is the even-handed half of the finding; the shape should be able to
+hold that or the puzzle should state it in prose.
+
+Per the conventions, adding it means: a `PuzzleData` union member in
+`schema.ts`, a pure derivation module in `engine/charts/` with its own test, a
+renderer, a `DataViewRenderer` case plus `scopeLabel` entries for the new view
+kinds, and a glyph in `share/ShareCard.tsx`. Existing puzzles stay untouched. The reveal compares two averages rather than two head counts, which is a
 real weakening of the deck's usual standard and should be stated plainly in the
 provenance note rather than glossed. The alternative was review items only, and
 it was rejected because the innuendo effect is too central to propaganda to

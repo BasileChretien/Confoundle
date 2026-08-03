@@ -6611,6 +6611,147 @@ const items: TestItem[] = [
       en: "The published version asserts something specific that can be checked and, if wrong, corrected. Trading an unanswerable question for a falsifiable claim is exactly the move the lesson asks for, and it costs the story nothing here.",
     },
   },
+  // ---- Confirmation bias ----
+  {
+    id: "cb-admin-two-factor",
+    scenario: {
+      en: "Told to verify that every administrator account has two-factor authentication on, an auditor exports the list of accounts with two-factor on and confirms that they are administrators.",
+    },
+    trap: "confirmation-bias",
+    explanation: {
+      en: "That list cannot break the rule no matter what it says, because the rule allows non-administrators to have two-factor as well. The check that could break it is the list of administrators, looking for one without it, and that is the list nobody pulled.",
+    },
+  },
+  {
+    id: "cb-supplier-always-late",
+    scenario: {
+      en: "Convinced that one supplier is always late, a buyer pulls up every late delivery from the past year and finds that a third of them came from that supplier.",
+    },
+    trap: "confirmation-bias",
+    explanation: {
+      en: "Late deliveries were selected first, so the number says something about who is late rather than about whether this supplier is. The claim is broken by that supplier's deliveries arriving on time, so the list to pull is that supplier's deliveries.",
+    },
+  },
+  {
+    id: "cb-eleven-countries",
+    scenario: {
+      en: "An analyst arguing that a tax reform drives growth searches the database for countries that adopted it and then grew, finds eleven, and puts the eleven in the report.",
+    },
+    trap: "confirmation-bias",
+    explanation: {
+      en: "The search was written so that only agreeing cases could come back, which guarantees a result whether or not the reform does anything. The adopters that did not grow, and the growth among countries that never adopted it, are the two groups that could have shown the claim was wrong.",
+    },
+  },
+  {
+    id: "cb-test-that-confirms",
+    scenario: {
+      en: "A clinician suspecting one particular diagnosis orders the scan that would look abnormal if that condition is present, and does not order the blood test whose normal result would rule it out.",
+    },
+    trap: "confirmation-bias",
+    explanation: {
+      en: "Both tests were available and only the agreeing one was ordered, so a hypothesis that is wrong can still survive the workup. Deciding what to order is exactly the moment the choice between confirming and falsifying evidence gets made.",
+    },
+  },
+  {
+    id: "cb-lucky-socks",
+    scenario: {
+      en: "A player says the socks work, and can list six matches won while wearing them. He has never counted the matches won without them, or the ones lost while wearing them.",
+    },
+    trap: "confirmation-bias",
+    explanation: {
+      en: "Six agreeing cases are compatible with the socks doing nothing at all, since the same six exist whatever the truth is. The two counts he has never taken are the only ones that could have told him anything.",
+    },
+  },
+  {
+    id: "cb-dairy-diary",
+    scenario: {
+      en: "Suspecting that dairy gives her headaches, someone notes each headache and checks back over what she ate. Most headache days had dairy in them, so she is now sure.",
+    },
+    trap: "confirmation-bias",
+    explanation: {
+      en: "Starting from the headaches can only ever fill in one cell of the four, and if she eats dairy most days that cell fills up whether or not dairy matters. The days with dairy and no headache are what would break it, and they were never counted.",
+    },
+  },
+  {
+    id: "cb-interview-questions",
+    scenario: {
+      en: "A manager who has decided a candidate is disorganised spends the interview asking for examples of missed deadlines and dropped handovers, and gets two.",
+    },
+    trap: "confirmation-bias",
+    explanation: {
+      en: "Almost anyone can produce two such examples on request, so the answers do not distinguish a disorganised candidate from an organised one. Asking what she shipped on time would have given the belief a chance to fail, which is what testing it means.",
+    },
+  },
+  {
+    id: "cb-competitive-programming",
+    scenario: {
+      en: "A recruiter notices that the four strongest engineers on the team all did competitive programming at university, and makes it a screening criterion.",
+    },
+    trap: "confirmation-bias",
+    explanation: {
+      en: "The strongest engineers were picked first, so their shared background was going to look meaningful whatever it turned out to be. The hires who did competitive programming and struggled are the ones who could have shown the criterion is worthless, and they were not looked at.",
+    },
+  },
+  {
+    id: "cb-horoscope-morning",
+    scenario: {
+      en: "Having read in the morning that today brings an unexpected message, someone spends the day noticing messages and counts three by the evening.",
+    },
+    trap: "confirmation-bias",
+    explanation: {
+      en: "The forecast set the search running and the day supplied the matches, as almost any day would. Nothing was ever going to count as the forecast failing, and a claim that cannot fail has not been tested.",
+    },
+  },
+  {
+    id: "cb-deploy-caused-it",
+    scenario: {
+      en: "After an outage, a team pulls the four occasions where a deploy was followed by an incident and concludes that deploying at midday is the problem. They do not count the midday deploys that were followed by nothing.",
+    },
+    trap: "confirmation-bias",
+    explanation: {
+      en: "Four agreeing cases would be there even if midday deploys were perfectly safe, provided the team deploys at midday often enough. The quiet deploys are the evidence that could have settled it, and they are the ones nobody goes looking for.",
+    },
+  },
+  {
+    id: "ok-cb-named-the-kill-number",
+    scenario: {
+      en: "Before running the pilot, a product team writes down that fewer than forty weekly returning users would mean the feature does not work. It comes in at thirty-one and they drop it.",
+    },
+    trap: null,
+    explanation: {
+      en: "Naming in advance what would count as being wrong, and then honouring it, is the entire defence. The number was fixed before the result was known, so it could not be reinterpreted once the result arrived.",
+    },
+  },
+  {
+    id: "ok-cb-ordered-the-rule-out",
+    scenario: {
+      en: "A clinician who thinks a clot is unlikely orders the test whose negative result rules it out, rather than the one that would only look abnormal if a clot were there.",
+    },
+    trap: null,
+    explanation: {
+      en: "The test was chosen for what a negative result would settle, which is the case that carries information. Selecting evidence by what it could exclude rather than what it could support is the move the lesson asks for.",
+    },
+  },
+  {
+    id: "ok-cb-pulled-both-lists",
+    scenario: {
+      en: "An analyst checking the same tax claim pulls every country that adopted the reform and every comparable country that did not, and reports growth in both.",
+    },
+    trap: null,
+    explanation: {
+      en: "Both lists were fixed by a rule set before the outcomes were looked at, so the disagreeing cases had to appear if they existed. That is the difference between a search and a demonstration.",
+    },
+  },
+  {
+    id: "ok-cb-logged-every-day",
+    scenario: {
+      en: "Told that noting only headache days would not settle it, someone logs dairy and headaches every day for six weeks, including the uneventful ones.",
+    },
+    trap: null,
+    explanation: {
+      en: "Logging every day fills all four combinations, including dairy without a headache, which is the one that can break the belief. Recording the boring days is what makes the interesting ones mean anything.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

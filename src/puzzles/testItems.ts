@@ -5838,6 +5838,147 @@ const items: TestItem[] = [
       en: "The airtime here matches a division that was measured rather than assumed, so the format is saying something true. Checking the denominator first is the whole of the skill, and it can perfectly well come back even.",
     },
   },
+  // ---- The continued influence effect ----
+  {
+    id: "ci-withdrawn-on-a-technicality",
+    scenario: {
+      en: "A journal withdraws a paper because the authors did not have ethical approval for the data collection, saying nothing about whether the findings are sound. Six months later the finding is still being cited approvingly in reviews.",
+    },
+    trap: "continued-influence-effect",
+    explanation: {
+      en: "The withdrawal gave readers no reason to think the result was wrong, only that it should not have been gathered, so the belief it created has nothing to displace it. A retraction has to supply a replacement account to take effect, and a procedural one supplies none.",
+    },
+  },
+  {
+    id: "ci-cannot-stand-it-up",
+    scenario: {
+      en: "A newspaper retracts an allegation against a company, saying only that it was unable to substantiate the claim to its own standards. Readers surveyed afterwards still believe the allegation at close to the original rate.",
+    },
+    trap: "continued-influence-effect",
+    explanation: {
+      en: "Unable to substantiate is not the same as untrue, and readers hear it as the paper backing down rather than as the claim being false. Without a competing account of what actually happened, the original story is still the only story they have.",
+    },
+  },
+  {
+    id: "ci-recall-then-reinstated",
+    scenario: {
+      en: "A device is pulled from sale while a fault is investigated, then reinstated when the investigation finds no fault. Sales stay depressed, and clinicians report that they now avoid it for reasons they find hard to articulate.",
+    },
+    trap: "continued-influence-effect",
+    explanation: {
+      en: "The recall planted a specific belief, that this device fails, and the all-clear only removed the reason for suspicion without addressing the belief itself. That the clinicians cannot articulate the reason is characteristic: influence of this kind survives the correction and is not introspectively visible.",
+    },
+  },
+  {
+    id: "ci-sealed-not-disproved",
+    scenario: {
+      en: "A tribunal rules that a leaked document cannot be entered as evidence because of how it was acquired, and instructs the panel to set it aside. The panel members each report having done so, and the eventual finding tracks the document closely.",
+    },
+    trap: "continued-influence-effect",
+    explanation: {
+      en: "Nobody told the panel the document was inaccurate, only that it was off-limits, so setting it aside would require disbelieving something they still think is true. Their sincere reports of compliance are exactly what this effect predicts, because the influence does not feel like influence.",
+    },
+  },
+  {
+    id: "ci-correction-in-small-print",
+    scenario: {
+      en: "A magazine corrects a figure it had overstated by a factor of ten, printing the true number in a short notice. A reader who saw both later recalls the topic as involving a very large number without being able to say which.",
+    },
+    trap: "continued-influence-effect",
+    explanation: {
+      en: "The correction did supply a replacement, which is the kind that can work, but the impression it had to displace was already doing structural work in the reader's picture of the topic. What survives is the gist rather than the digit, so a correction that only swaps a number often leaves the conclusion it supported standing.",
+    },
+  },
+  {
+    id: "ci-rumour-and-denial",
+    scenario: {
+      en: "An organisation responds to a rumour about a departing executive by stating that it does not comment on personnel matters. Staff take the non-denial as confirmation and the rumour hardens.",
+    },
+    trap: "continued-influence-effect",
+    explanation: {
+      en: "Declining to engage leaves the rumour as the only account in circulation, and refusing to say it is false is heard as being unable to. A correction that neither denies nor explains cannot displace anything, and here it has added weight to what it was meant to damp.",
+    },
+  },
+  {
+    id: "ci-retracted-but-explained",
+    scenario: {
+      en: "A safety scare about an additive is retracted after the original lab admits its samples were contaminated and shows how. Later surveys find belief in the scare has dropped close to its level before the story ran.",
+    },
+    trap: null,
+    explanation: {
+      en: "This is what an effective retraction looks like, and it is worth recognising that they exist. Readers were handed a different account of why the result appeared, so there is something to believe instead of the scare, and the original belief has somewhere to go.",
+    },
+  },
+  {
+    id: "ci-jury-told-evidence-false",
+    scenario: {
+      en: "A judge tells a jury to disregard a witness's identification because the line-up was run in a way known to produce false identifications, and explains why. The jury acquits at the same rate as a comparable jury that never heard the identification.",
+    },
+    trap: null,
+    explanation: {
+      en: "Being told the evidence is probably wrong, with the reason, gives jurors grounds to disbelieve rather than merely grounds not to mention. That is the version of the instruction people do comply with, so nothing here needs explaining away.",
+    },
+  },
+  {
+    id: "ci-blamed-the-correction",
+    scenario: {
+      en: "A team reviewing why a project failed keeps returning to a supplier problem that was identified early and later shown to have been a misreading of a delivery log. The misreading was circulated and acknowledged, but no alternative cause was ever established.",
+    },
+    trap: "continued-influence-effect",
+    explanation: {
+      en: "Withdrawing a cause leaves a hole in the account of what happened, and a hole is uncomfortable enough that the withdrawn cause keeps filling it. Corrections take hold much better when they come with a replacement explanation, and here there is none to be had.",
+    },
+  },
+  {
+    id: "ci-preprint-then-peer-review",
+    scenario: {
+      en: "A preprint reporting a striking treatment effect circulates widely. Peer review later finds the analysis excluded a third of the randomised patients, and the published version reports no effect. Clinicians continue to cite the striking figure.",
+    },
+    trap: "continued-influence-effect",
+    explanation: {
+      en: "The correction here does supply grounds for disbelief, so it is the kind that can work, but only for people who encounter it, and a null result circulates far less than a striking one. Where the retraction is real and the exposure is not, the original claim keeps running on its head start.",
+    },
+  },
+  {
+    id: "ci-headline-then-clarification",
+    scenario: {
+      en: "A broadcaster reports that a chemical was found in a water supply, then clarifies the next day that the level was a hundredth of the safety threshold. Complaints about the water supply continue to rise for weeks.",
+    },
+    trap: "continued-influence-effect",
+    explanation: {
+      en: "The clarification did not contradict the original claim, it qualified it, so listeners keep both and the alarming half is the memorable one. A number that is technically consistent with the first report gives the belief nothing to bump against.",
+    },
+  },
+  {
+    id: "ci-source-recanted",
+    scenario: {
+      en: "An investigation's central witness recants and explains that they had been mistaken about the date. Coverage reporting the recantation is as prominent as the original, and subsequent commentary treats the allegation as closed.",
+    },
+    trap: null,
+    explanation: {
+      en: "A recantation with a reason and equal prominence is close to the best case for a correction: it names what was wrong, supplies the replacement, and reaches the same audience. Corrections working under those conditions is the finding, not an exception to it.",
+    },
+  },
+  {
+    id: "ci-both-versions-heard",
+    scenario: {
+      en: "Asked whether a colleague was involved in an incident, a manager who read both the initial report and its detailed retraction says she is not sure, checks the retraction again before answering, and answers from it.",
+    },
+    trap: null,
+    explanation: {
+      en: "Noticing that she holds two versions and going back to the source rather than to memory is the defence against this effect, not a symptom of it. The uncertainty is appropriate; acting on the checked document rather than the vivid first impression is the whole skill.",
+    },
+  },
+  {
+    id: "ci-quietly-unpublished",
+    scenario: {
+      en: "A government agency removes a guidance page that had circulated widely, without announcement or explanation. The advice on it continues to be repeated in training materials for years.",
+    },
+    trap: "continued-influence-effect",
+    explanation: {
+      en: "A silent removal is the weakest form of correction there is: no reader is told the advice was wrong, so nobody has any reason to revise anything. Absence cannot displace a belief, and the people repeating the advice have no way of knowing there is anything to displace.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

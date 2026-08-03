@@ -480,8 +480,50 @@ almost nobody knows.
 
 <!-- skill: continued-influence-effect -->
 
-**Status: LEAD.** Promoted out of Tier 3, where it turned up while searching the
-firehose model's component claims. Nothing in the deck is like it.
+**Status: SHIPPED 2026-08-03** as `strike-that-from-the-record`, skill
+`continued-influence-effect`, on Kassin and Sommers (1997),
+`10.1177/01461672972310005`.
+
+**The block recorded below was real and was got around by changing paradigm, not
+by lowering the bar.** Three memory-paradigm papers were read at source and
+refused because the field measures a coded mean per person. The
+instructed-disregard literature asks jurors for a verdict, which is binary, so
+the same lesson arrives with a numerator and a denominator. That is the general
+move worth remembering: when a literature cannot supply counts, look for a
+neighbouring literature testing the same claim with a binary outcome.
+
+**The counts are reconstructed, which this project normally refuses, so the
+grounds are on the record.** The paper prints percentages by condition, but it
+also prints 81 participants, 36 guilty verdicts, an overall rate of 44.4 per
+cent, group sizes of 19 to 21, 58 of 60 across the three experimental groups and
+39 of 41 across the two disregard groups. Those last two fix the control group at
+21 and the admitted group at 19 without any arithmetic on a percentage at all,
+and leave 41 to split between the disregard groups; only 20 and 21 work, because
+55 per cent recovers a whole number against 20 and against nothing else in range.
+The resulting counts sum to the independently printed 36 of 81 **and reproduce
+both published chi-square statistics to the second decimal, 17.31 and 14.56**,
+neither of which anything was fitted to. Six printed quantities recovered, none
+of them used in the derivation. That is the standard the refused reconstructions
+below failed: there, several readings survived and none landed exactly.
+
+**The lesson changed once the data was read, and for the better.** The entry
+below assumed the teaching point was that corrections do not work. The study
+shows that is wrong. One instruction to disregard was obeyed completely, the jury
+told the tape was unreliable convicting at exactly the control rate, 5 of 21
+against 5 of 21. The jury told the same tape was real but illegally obtained
+convicted 11 of 20. What people cannot do is stop believing something they still
+think is true, so a retraction works when it supplies a replacement account and
+fails when it merely forbids the use. That is a sharper lesson than the platitude
+and it is the one that ships.
+
+Entries 20 and any future backfire entry still need the mean-with-dispersion
+shape; this route does not rescue them.
+
+**The original research record follows, kept because the refusals are still the
+right calls and the reasoning is worth not repeating.**
+
+**Sourcing status: LEAD.** Promoted out of Tier 3, where it turned up while
+searching the firehose model's component claims. Nothing in the deck is like it.
 
 The **continued influence effect**: people keep using retracted misinformation in
 their reasoning after the retraction. Two reported findings make it a puzzle

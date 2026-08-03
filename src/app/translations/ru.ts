@@ -4436,4 +4436,8 @@ export const ru: Record<string, string> = {
   "nobody pays them to reach a conclusion": "им никто не платит за то, чтобы прийти к выводу",
   "Fewer. A second approach from the same man puts people on guard": "Меньше. Второй заход того же человека настораживает",
   "nobody enjoys being softened up": "никому не нравится, когда его обрабатывают",
+  "Worse. Three people talk each other into it": "Хуже. Втроём они убеждают друг друга",
+  "a confident voice carries a whole group": "уверенный голос увлекает всю группу",
+  "The other way round. Virus produced more enforcement than beast": "Наоборот. Вирус дал больше запроса на правоприменение, чем зверь",
+  "an epidemic is the more frightening of the two": "эпидемия из этих двух страшнее",
 };

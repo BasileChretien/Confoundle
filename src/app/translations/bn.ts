@@ -4414,4 +4414,8 @@ export const bn: Record<string, string> = {
   "nobody pays them to reach a conclusion": "কোনও সিদ্ধান্তে পৌঁছানোর জন্য তাঁদের কেউ টাকা দেয় না",
   "Fewer. A second approach from the same man puts people on guard": "কম। একই লোকের দ্বিতীয়বার যোগাযোগ মানুষকে সতর্ক করে দেয়",
   "nobody enjoys being softened up": "নরম করে নেওয়া কারও ভালো লাগে না",
+  "Worse. Three people talk each other into it": "আরও খারাপ। তিনজন একে অপরকে বুঝিয়ে ফেলে",
+  "a confident voice carries a whole group": "আত্মবিশ্বাসী একটি কণ্ঠ গোটা দলকে টেনে নেয়",
+  "The other way round. Virus produced more enforcement than beast": "উল্টোটা। ভাইরাস হিংস্র জন্তুর চেয়ে বেশি কঠোরতা এনেছে",
+  "an epidemic is the more frightening of the two": "মহামারিই দুটির মধ্যে বেশি ভয়ের",
 };

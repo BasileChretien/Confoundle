@@ -4367,4 +4367,8 @@ export const ar: Record<string, string> = {
   "nobody pays them to reach a conclusion": "لا أحد يدفع لهم للوصول إلى نتيجة",
   "Fewer. A second approach from the same man puts people on guard": "أقل. اقتراب ثانٍ من الرجل نفسه يجعل الناس على حذر",
   "nobody enjoys being softened up": "لا أحد يحب أن يُهيَّأ للقبول",
+  "Worse. Three people talk each other into it": "أسوأ. ثلاثة يقنعون بعضهم بعضًا",
+  "a confident voice carries a whole group": "صوت واثق واحد يجرّ مجموعة بأكملها",
+  "The other way round. Virus produced more enforcement than beast": "بل العكس. الفيروس أنتج إنفاذًا أكثر من الوحش",
+  "an epidemic is the more frightening of the two": "الوباء هو الأشد إخافة بينهما",
 };

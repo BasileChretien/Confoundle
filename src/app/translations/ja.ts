@@ -4364,4 +4364,8 @@ export const ja: Record<string, string> = {
   "nobody pays them to reach a conclusion": "結論を出すために金を払われてはいない",
   "Fewer. A second approach from the same man puts people on guard": "減る。同じ男から二度目に接触されれば人は警戒する",
   "nobody enjoys being softened up": "下ごしらえされるのは誰も気分がよくない",
+  "Worse. Three people talk each other into it": "むしろ悪化する。三人で互いに納得してしまう",
+  "a confident voice carries a whole group": "自信のある一人の声が集団を運んでいく",
+  "The other way round. Virus produced more enforcement than beast": "逆である。ウイルスのほうがけものより取り締まりを増やした",
+  "an epidemic is the more frightening of the two": "流行病のほうが恐ろしいからだ",
 };

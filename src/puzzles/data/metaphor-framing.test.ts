@@ -161,4 +161,18 @@ describe("metaphor framing provenance note", () => {
     expect(note).toContain("takes no side");
     expect(note).toContain("No winner is marked");
   });
+
+  it("offers exactly one option pointing to a beast-side shift", () => {
+    // The setup shows a null, so the skill licenses only that the metaphor
+    // moves something once it is doing work in the sentence. It does not say
+    // how far. Two bands both reading "beast produced more enforcement" would
+    // leave a correct reasoner guessing the size, so there is one, plus one
+    // pointing the other way, plus no-change, plus the hedge.
+    const beastSide = metaphorFraming.choices.filter((c) =>
+      /A large shift|A small shift|couple of points/i.test(c.label.en),
+    );
+    expect(beastSide).toHaveLength(1);
+    expect(beastSide[0].isCorrect).toBe(true);
+    expect(metaphorFraming.choices.some((c) => /other way round/i.test(c.label.en))).toBe(true);
+  });
 });

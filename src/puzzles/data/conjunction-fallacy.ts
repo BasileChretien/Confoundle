@@ -152,9 +152,15 @@ export const conjunctionFallacy: Puzzle = {
       isIntuitiveTrap: true,
     },
     {
-      id: "some-help",
-      label: { en: "Some help, but less than the money did" },
-      sublabel: { en: "cash focuses the mind more than conversation" },
+      // Deliberately points the other way. This slot used to read "some help,
+      // but less than the money did", which shared a direction with the correct
+      // answer while the setup gave no way to choose. Reversed rather than
+      // deleted: groups talking each other into a confident wrong answer is a
+      // real and well documented thing, so a reader who predicts it is
+      // reasoning, not guessing.
+      id: "worse",
+      label: { en: "Worse. Three people talk each other into it" },
+      sublabel: { en: "a confident voice carries a whole group" },
       isCorrect: false,
       isIntuitiveTrap: false,
     },

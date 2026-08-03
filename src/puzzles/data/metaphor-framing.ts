@@ -116,9 +116,15 @@ export const metaphorFraming: Puzzle = {
       isIntuitiveTrap: true,
     },
     {
-      id: "small",
-      label: { en: "A small shift, a couple of points at most" },
-      sublabel: { en: "wording nudges, it does not decide" },
+      // Deliberately points the other way. This slot used to read "a small
+      // shift, a couple of points at most", which shared a direction with the
+      // correct answer while nothing licensed choosing between them. Reversed
+      // rather than deleted: a virus is frightening, contagious and urgent, so
+      // expecting it to produce the harder response is a real reading of the
+      // metaphor, and one the reveal is worth having to answer.
+      id: "other-way",
+      label: { en: "The other way round. Virus produced more enforcement than beast" },
+      sublabel: { en: "an epidemic is the more frightening of the two" },
       isCorrect: false,
       isIntuitiveTrap: false,
     },

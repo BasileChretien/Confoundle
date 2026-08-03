@@ -1826,7 +1826,40 @@ chi-squares landing to the second decimal. Neither of these clears it once.
 
 <!-- skill: quote-mining -->
 
-**Status: LEAD, and the weakest source position of the eight.** Selective
+**Status: CLOSED 2026-08-03 as review items, not a puzzle. This entry needs no
+further work.** The instruction below was to ship it as review items if nothing
+with counts turned up, the same judgement made for Neyman bias, and nothing did.
+
+**But the home named below was wrong, and the better one now exists.** The
+entry suggested filing it under `self-applied-label` or `publication-bias`.
+Neither fits: the first is about what a thing calls itself and the second about
+what never got published. Quoting out of context is a species of **paltering**,
+which shipped as entry 14. Every quoted word is genuine and the impression is
+false, which is the paltering test exactly; all that differs is whose true
+statements are being selected. The defence is the same one the paltering lesson
+already gives, which is to go and look at what was actually asked and answered.
+
+So eight items ship under `paltering`, six traps and two sound, covering the
+clipped conditional, the quoted objection, the load-bearing ellipsis, the answer
+to a different question, the hostile summary read back, and the selective sample
+of quotations. That last one matters most, because a set of quotations is a
+sample and almost nobody treats it as one.
+
+**The tag on this entry deliberately stays `quote-mining` rather than becoming
+`paltering`.** `docsCoverage.test.ts` requires any entry tagged with a
+registered skill to say SHIPPED, and two entries both claiming to have shipped
+`paltering` would make the coverage record say something false. The skill id
+`quote-mining` is not in the registry and never will be, which is the accurate
+state of affairs.
+
+**If a countable study ever turns up, reopen it.** The right shape would be a
+content analysis of a fixed public text where somebody counted how many
+quotations reversed the source's meaning. That is a possible study; it does not
+appear to exist yet.
+
+The original research record follows.
+
+**Sourcing status: LEAD, and the weakest source position of the eight.** Selective
 quotation that reverses a speaker's meaning while every quoted word is genuine.
 Obviously real and obviously important; the difficulty is that the experimental
 literature is thin and the vivid cases are all partisan. Search for work on

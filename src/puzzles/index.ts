@@ -41,6 +41,7 @@ import { conjunctionFallacy } from "./data/conjunction-fallacy";
 import { selfAppliedLabel } from "./data/self-applied-label";
 import { metaphorFraming } from "./data/metaphor-framing";
 import { complianceSequencing } from "./data/compliance-sequencing";
+import { falseBalance } from "./data/false-balance";
 
 /**
  * The puzzle registry. Adding a puzzle = import its data file and add it to
@@ -90,6 +91,7 @@ const rawPuzzles: unknown[] = [
   selfAppliedLabel,
   metaphorFraming,
   complianceSequencing,
+  falseBalance,
 ];
 
 export const puzzles: PuzzleType[] = rawPuzzles.map((p, i) => {

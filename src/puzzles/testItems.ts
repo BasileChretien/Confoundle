@@ -5687,6 +5687,157 @@ const items: TestItem[] = [
       en: "Noticing the sense of obligation and declining to treat it as evidence is the whole skill, and it does not require refusing the second request. She agreed on the merits, which is a different thing from agreeing because a concession seemed to have been made.",
     },
   },
+  // ---- False balance ----
+  {
+    id: "fb-two-chairs",
+    scenario: {
+      en: "A broadcaster covering a new surgical technique books one surgeon who uses it and one who thinks it unsafe, and gives them nine minutes each. Of the surgeons who have published on the technique, the producer knows that the great majority use it.",
+    },
+    trap: "false-balance",
+    explanation: {
+      en: "Nine minutes each tells the audience the profession is split about evenly, which is a claim about the evidence and it is false. Neither surgeon has to say anything untrue for the segment to leave viewers with a wrong impression of where the field stands.",
+    },
+  },
+  {
+    id: "fb-school-textbook",
+    scenario: {
+      en: "A textbook committee decides that a disputed historical question should be presented with two interpretations side by side and equal space, on the grounds that pupils should make up their own minds. One interpretation is held by a handful of writers, the other by nearly every academic historian of the period.",
+    },
+    trap: "false-balance",
+    explanation: {
+      en: "Equal space is not neutrality, it is a statement that the profession divides evenly, and pupils cannot make up their own minds about evidence they have been given a distorted picture of. Presenting both and saying honestly how each is held would be neutral; presenting both as equals is not.",
+    },
+  },
+  {
+    id: "fb-safety-panel",
+    scenario: {
+      en: "An engineering review of a bridge design assembles a panel of six: three who consider the design sound and three who consider it unsafe. The three critics were recruited specifically to make the panel even, from a field in which almost nobody shares their view.",
+    },
+    trap: "false-balance",
+    explanation: {
+      en: "The panel was built to look balanced rather than to sample the field, so its composition carries no information about the design and the even split is an artefact of recruitment. A reader who takes the three-to-three split as evidence of genuine professional disagreement has been misled by the shape of the panel.",
+    },
+  },
+  {
+    id: "fb-manufactured-minority",
+    scenario: {
+      en: "A trade association responds to a critical review of its product by funding a small number of dissenting studies, then asks reporters covering the topic to represent both sides of what it calls an ongoing scientific debate.",
+    },
+    trap: "false-balance",
+    explanation: {
+      en: "Producing a minority and then demanding it be given equal weight turns the balance norm into a tool. The reporter who complies has not been bribed or lied to; the format itself does the work, because two sides in print look the same whether the split is even or lopsided.",
+    },
+  },
+  {
+    id: "fb-omitted-minority",
+    scenario: {
+      en: "A clinical guideline summary presents a treatment as settled and does not mention that roughly a third of the specialist committee filed a dissent, on the grounds that the summary should give clinicians a clear recommendation.",
+    },
+    trap: "false-balance",
+    explanation: {
+      en: "This is the same failure running the other way, and it is worth recognising as one: the format has again claimed something about the distribution of expert opinion that is not true, this time by manufacturing consensus rather than controversy. A third dissenting is a fact clinicians need, and clarity is not a reason to withhold it.",
+    },
+  },
+  {
+    id: "fb-comment-section",
+    scenario: {
+      en: "A journal publishes a large study alongside a single critical commentary, formatted identically and of equal length. A reader concludes that the finding is contested within the field.",
+    },
+    trap: "false-balance",
+    explanation: {
+      en: "One commentary is evidence that one group objected, not evidence about how many did. Equal formatting and equal length invite the reader to weigh the two as comparable bodies of opinion, and nothing in the layout says how many researchers stand behind each.",
+    },
+  },
+  {
+    id: "fb-sports-pundit",
+    scenario: {
+      en: "A sports programme debating whether a rule change reduced injuries seats a former player who says it did against one who says it did not, and lets them argue for the segment. The medical literature on the rule is cited by neither.",
+    },
+    trap: "false-balance",
+    explanation: {
+      en: "The question has an answer that somebody has measured, and the segment has replaced that with a two-sided argument in which the sides are people rather than evidence. The audience learns that opinion divides, which was never in doubt, and nothing about which view the data supports.",
+    },
+  },
+  {
+    id: "fb-courtroom-experts",
+    scenario: {
+      en: "Each side in a civil case calls one expert witness. The jury is told that expert opinion on the technical question is divided, and reasons that since the experts cancel out, the point should be set aside.",
+    },
+    trap: "false-balance",
+    explanation: {
+      en: "One expert per side is a rule of procedure, not a sample of the field, so the apparent tie is produced by the format of the trial. Whether the field actually divides evenly is a separate question the jury has not been given the means to answer, and treating the point as neutralised assumes an answer to it.",
+    },
+  },
+  {
+    id: "fb-poll-of-two",
+    scenario: {
+      en: "A technology site asks two analysts whether a security standard is ready for production, publishes one yes and one no, and headlines the piece as analysts split. The site approached only those two.",
+    },
+    trap: "false-balance",
+    explanation: {
+      en: "Two people disagreeing is not a split in the field, it is a sample of two, and the headline promotes it to a statement about analysts generally. The smaller the sample, the easier it is to produce any division you like without anybody misreporting a word.",
+    },
+  },
+  {
+    id: "fb-letters-page",
+    scenario: {
+      en: "A newspaper runs its letters page on a scientific controversy with an equal number of letters each way, as a matter of editorial policy, having received nine times as many on one side as the other.",
+    },
+    trap: "false-balance",
+    explanation: {
+      en: "The policy has thrown away the one piece of information the postbag contained. Readers see an even page and infer an even division, when the letters themselves recorded nine to one, so the format has erased a real measurement in the name of fairness.",
+    },
+  },
+  {
+    id: "ok-balance-with-denominator",
+    scenario: {
+      en: "A programme covering a disputed treatment interviews a supporter and a critic, and the presenter states that a recent survey found roughly nine in ten specialists take the supporter's position. The two are then allowed to make their cases.",
+    },
+    trap: null,
+    explanation: {
+      en: "Airing a minority view is not the problem and never was. Supplying the denominator is what stops the two-chair format from making its own silent claim, and here the audience has been told how the field divides before hearing the argument.",
+    },
+  },
+  {
+    id: "ok-genuinely-open-question",
+    scenario: {
+      en: "A magazine gives equal space to two research groups reading the same ambiguous fossil evidence in different ways, and notes that specialists are split with no clear majority either way.",
+    },
+    trap: null,
+    explanation: {
+      en: "Equal weight is the accurate treatment when the weight really is equal, which is why balance is the right default rather than a trap in itself. The error is applying the format without checking, not applying it here.",
+    },
+  },
+  {
+    id: "ok-minority-reported-as-minority",
+    scenario: {
+      en: "A report on a contested diagnostic threshold devotes most of its length to the majority position, gives the dissenting group a shorter section, and says plainly how many committee members took each view.",
+    },
+    trap: null,
+    explanation: {
+      en: "Space proportional to support, with the numbers stated, is what accurate coverage of a lopsided question looks like. The dissent is neither hidden nor inflated, and a reader can weigh it themselves because they have been told how much of it there is.",
+    },
+  },
+  {
+    id: "ok-refusing-a-manufactured-side",
+    scenario: {
+      en: "Offered a spokesperson to represent the other side of a question on which an editor can find no published disagreement among specialists, the editor declines the interview and instead reports that the specialist literature is one-sided.",
+    },
+    trap: null,
+    explanation: {
+      en: "Declining to stage a debate that does not exist in the field is not censorship of a view, it is a refusal to misreport the distribution of expert opinion. The one-sidedness has been reported rather than concealed, which is what the audience needed to know.",
+    },
+  },
+  {
+    id: "ok-split-really-is-even",
+    scenario: {
+      en: "Covering a macroeconomic forecast, a broadcaster notes that a survey of forecasters found them close to evenly divided, and gives roughly equal time to a representative of each camp.",
+    },
+    trap: null,
+    explanation: {
+      en: "The airtime here matches a division that was measured rather than assumed, so the format is saying something true. Checking the denominator first is the whole of the skill, and it can perfectly well come back even.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

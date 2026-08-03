@@ -1342,7 +1342,22 @@ known to be fragile and the deck must not overstate it.
 
 <!-- skill: false-balance -->
 
-**Status: VERIFIED 2026-08-03, ready to author.** The PDF was supplied and read.
+**Status: SHIPPED 2026-08-03** as `both-sides-of-what`, slug `both-sides-of-what`,
+skill `false-balance`. Both papers were read at source and reconciled before a
+word was authored. The record below is kept in full because it documents two
+blocking questions and how each was resolved, and because the second of them
+changed the shape of the puzzle.
+
+**One design note worth carrying forward.** The commit question asks which of two
+press treatments was more common, not what share was balanced. The share version
+is a magnitude guess, and every band except "almost none" would have shared the
+direction the skill licenses, which is exactly the failure `docs/hedge-audit.md`
+exists to catch. A two-way comparison is answerable from the framing plus the
+skill, and 52.65 per cent still lands as a surprise at the reveal.
+
+The original research record follows.
+
+**Sourcing status: VERIFIED 2026-08-03.** The PDF was supplied and read.
 
 **The counts are there, and the reconciliation is unusually strong.** The figure
 1 caption on page 129 reports the split of prestige-press articles on whether

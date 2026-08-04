@@ -7739,6 +7739,147 @@ const items: TestItem[] = [
       en: "Identical scores on one indicator support identical scores on that indicator and nothing more. Refusing to convert a summary figure into a judgement about how somewhere is run, and asking what the figure omits, is the discipline this trap is about.",
     },
   },
+  // ---- Polls that shape what they measure ----
+  {
+    id: "ps-lead-repeated",
+    scenario: {
+      en: "A broadcaster leads every bulletin for a month with the same finding that one side of a referendum is ahead. When the gap widens over that month, the editor cites the widening as proof the early polls were reading the public correctly.",
+    },
+    trap: "polls-shape-opinion",
+    explanation: {
+      en: "The later polls measured a public that had been told for a month which side was ahead. A gap that widens under repetition is what you would expect both from an accurate early reading and from the reporting having helped along the thing it reported, and the bulletins cannot tell those apart.",
+    },
+  },
+  {
+    id: "ps-office-show-of-hands",
+    scenario: {
+      en: "Before a team discussion, the chair announces that a quick straw poll found most people already favour the proposal, then asks for views around the table.",
+    },
+    trap: "polls-shape-opinion",
+    explanation: {
+      en: "The straw poll has become part of the discussion rather than a summary of it. Whatever the room says next is a response to having been told where the majority sits, so the chair can no longer read the round table as independent evidence of what people think.",
+    },
+  },
+  {
+    id: "ps-bandwagon-donations",
+    scenario: {
+      en: "A fundraising page displays a running total and a note that most visitors have already given. The organisers point to the rising total as evidence the cause is widely supported.",
+    },
+    trap: "polls-shape-opinion",
+    explanation: {
+      en: "The display of what others did is one of the things producing the total, so the total cannot be used as an independent measure of support. It measures support plus whatever the display added, and nothing on the page separates the two.",
+    },
+  },
+  {
+    id: "ps-review-count",
+    scenario: {
+      en: "A shop sorts products by average rating with the number of reviews shown. The top item pulls further ahead each month, and the buyer treats the growing gap as increasingly reliable evidence of quality.",
+    },
+    trap: "polls-shape-opinion",
+    explanation: {
+      en: "Being at the top brings more buyers, and buyers who chose because it was top are not an independent sample of opinion about it. The gap can widen from position alone, so more data here does not straightforwardly mean a better estimate.",
+    },
+  },
+  {
+    id: "ps-primary-viability",
+    scenario: {
+      en: "Coverage of a crowded selection contest focuses on which candidates are viable according to current surveys. Support for the front runner grows, and commentators describe the surveys as having been prescient.",
+    },
+    trap: "polls-shape-opinion",
+    explanation: {
+      en: "Telling people who can win changes who they are willing to back, so the surveys were an input to the outcome as well as a forecast of it. Prescience and influence look identical from the outside, and the coverage is not a neutral observer of the race it is reporting.",
+    },
+  },
+  {
+    id: "ps-consultation-running-tally",
+    scenario: {
+      en: "A public consultation publishes a live tally of responses for and against. Officials later report the final split as a measure of public opinion on the proposal.",
+    },
+    trap: "polls-shape-opinion",
+    explanation: {
+      en: "Everyone who responded after the first day could see which way the tally was going. The final split therefore measures opinion after exposure to the tally, which is not the quantity the report claims to be describing.",
+    },
+  },
+  {
+    id: "ps-norm-message",
+    scenario: {
+      en: "A campaign tells households that most of their neighbours have switched to a new scheme, then measures uptake in those households and reports the figure as the underlying level of interest in the scheme.",
+    },
+    trap: "polls-shape-opinion",
+    explanation: {
+      en: "The message was designed to raise uptake and probably did. The resulting figure is a measure of interest after a nudge, so describing it as the underlying level drops the nudge out of the description while keeping its effect in the number.",
+    },
+  },
+  {
+    id: "ps-panel-shown-earlier-answers",
+    scenario: {
+      en: "In the second round of an expert panel, each member is shown the distribution of first-round answers before revising. The tighter spread in round two is reported as growing expert consensus.",
+    },
+    trap: "polls-shape-opinion",
+    explanation: {
+      en: "Convergence is what showing people the distribution reliably produces, whether or not anyone learned anything. A narrower spread is evidence that the procedure worked as designed, and only weak evidence about the question the panel was convened to answer.",
+    },
+  },
+  {
+    id: "ps-market-odds",
+    scenario: {
+      en: "A newspaper reports betting odds on an outcome every day as an indicator of what informed people expect. The odds shorten steadily and the paper describes the expectation as having firmed up.",
+    },
+    trap: "polls-shape-opinion",
+    explanation: {
+      en: "Daily publication feeds back into the betting, so later odds partly reflect earlier reporting of odds. That does not make them useless, but firming up describes the loop as if it were only the underlying expectation moving.",
+    },
+  },
+  {
+    id: "ps-charity-thermometer",
+    scenario: {
+      en: "An appeal shows a progress thermometer near its target and finds that pledges made after the thermometer appeared are larger. It concludes that the cause turned out to be more popular than expected.",
+    },
+    trap: "polls-shape-opinion",
+    explanation: {
+      en: "Larger later pledges are exactly what a visible near-complete target produces. Popularity and the pull of an almost-met goal both raise the same number, and the appeal has no measurement that separates them.",
+    },
+  },
+  {
+    id: "ps-reports-without-tally",
+    scenario: {
+      en: "A consultation collects responses without publishing any running total, and reports the final split alongside a note that respondents were self-selected and could not see how others had answered.",
+    },
+    trap: null,
+    explanation: {
+      en: "Withholding the tally removes the feedback loop, and the self-selection caveat names the limitation that remains. The number is reported as the thing it can support rather than as a measure of the public at large.",
+    },
+  },
+  {
+    id: "ps-blind-first-round",
+    scenario: {
+      en: "A committee asks each member to write down and hand in a judgement before any discussion, and only then opens the floor.",
+    },
+    trap: null,
+    explanation: {
+      en: "Collecting judgements before anyone hears the others is precisely how you get views that are not a response to the room. The discussion can then add information rather than only spreading whichever opinion was voiced first.",
+    },
+  },
+  {
+    id: "ps-separates-the-questions",
+    scenario: {
+      en: "Reading that a proposal has majority support, an analyst notes the figure, sets it aside, and goes to the impact assessment to decide what she thinks of the proposal itself.",
+    },
+    trap: null,
+    explanation: {
+      en: "She keeps what the public thinks and what the policy does as two separate questions. Knowing the majority view is useful information about the politics, and she has not let it stand in for evidence about the merits.",
+    },
+  },
+  {
+    id: "ps-pre-registered-baseline",
+    scenario: {
+      en: "Researchers measure attitudes in a group that has seen no polling information and compare it with a randomly assigned group that has, rather than comparing this month's national poll with last month's.",
+    },
+    trap: null,
+    explanation: {
+      en: "Random assignment to seeing or not seeing the information is what makes the comparison clean. Two national polls months apart differ by everything that happened in between, including the reporting of the first one.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

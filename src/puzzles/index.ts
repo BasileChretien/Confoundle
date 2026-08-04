@@ -55,6 +55,7 @@ import { prebunking } from "./data/prebunking";
 import { magnitudeCompression } from "./data/magnitude-compression";
 import { projectionDistortion } from "./data/projection-distortion";
 import { campbellsLaw } from "./data/campbells-law";
+import { pollsShapeOpinion } from "./data/polls-shape-opinion";
 
 /**
  * The puzzle registry. Adding a puzzle = import its data file and add it to
@@ -118,6 +119,7 @@ const rawPuzzles: unknown[] = [
   magnitudeCompression,
   projectionDistortion,
   campbellsLaw,
+  pollsShapeOpinion,
 ];
 
 export const puzzles: PuzzleType[] = rawPuzzles.map((p, i) => {

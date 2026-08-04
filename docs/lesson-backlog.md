@@ -973,7 +973,38 @@ partisanship does not expire.
 
 <!-- skill: polls-shape-opinion -->
 
-**Status: BLOCKED.** Named by France, première SES, verbatim:
+**Status: SHIPPED 2026-08-04** as `what-everyone-thinks`, skill
+`polls-shape-opinion`, on the existing `rates` shape with no engine work at all.
+
+**What unblocked it.** Three objections were recorded and the audit expired one.
+Toff B, "Exploring the effects of polls on public opinion", Research and
+Politics 2018;5(4):1-9, open access, settles the other two. It is a randomised
+survey experiment on ordinary policy issues, not a live election, so the
+partisan-ground objection does not apply; the author deliberately avoided
+polarised issues. And the effects are not small: 14.2 points on foreign language
+requirements and 9.3 on junk food taxes.
+
+**The finding is sharper than bandwagon.** There were two poll treatments. A
+poll saying the public was evenly divided shifted support by under two points on
+every issue. A poll saying two thirds were in favour moved it by 14 and by 9. A
+poll does not persuade because it is a poll; it persuades when it names a
+winner.
+
+**Counts, not percentages.** Appendix Table C-1 prints a share and an N for every
+cell, and all twelve cells of Study 1 reconstruct to a unique whole number. They
+also reproduce the effect sizes printed in the paper own prose, 14.2 and 9.3,
+which were not used to derive them. That is the reconstruction standard met in
+full, so this ships as real counts on `rates`.
+
+**Two exclusions.** Study 2 is out entirely: its social security treatment cell
+is printed as 42.3 per cent of 387 people, and no whole number of 387 rounds to
+42.3. Net neutrality is deliberately kept in even though almost nothing moved
+there, because about seven in ten already favoured it and dropping it would make
+the finding look more general than the paper reports.
+
+---
+
+**Status when opened: BLOCKED.** Named by France, première SES, verbatim:
 
 > Comprendre comment le recours fréquent aux sondages d'opinion contribue à
 > forger l'opinion publique

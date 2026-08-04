@@ -1084,6 +1084,45 @@ The obstacle is access, not politics: it is a book rather than an article, and t
 search did not reach the tables, so whether it reports **counts** rather than
 scale means is unknown. Status: **LEAD**, worth the interlibrary request.
 
+**Updated 2026-08-04. The shape doubt is void, the better source is a journal
+article rather than the book, and the block is one PDF.**
+
+**The shape doubt no longer matters.** "Whether it reports counts rather than
+scale means is unknown" was written before `ratings` existed. Either answer is
+now authorable: counts go in `rates`, means on a bounded scale go in `ratings`.
+This is the second entry in this section whose recorded blocker was dissolved by
+a shape built for a different lesson, after whataboutism.
+
+**Go to the article, not the book.** The prohibition experiment was published in
+its own right two years before the monograph: **Hovland CI, Harvey OJ, Sherif M.
+Assimilation and contrast effects in reactions to communication and attitude
+change.** *Journal of Abnormal and Social Psychology* 1957;55(2):244-252, DOI
+`10.1037/h0048480`. That is eight pages with its own tables, against a 218-page
+book, and it is the primary report of the study this entry wants.
+
+**Why it is a good fit, from the abstract read at source on PsycNET.** Subjects
+came from a dry state where prohibition was a live issue. Each was shown a
+communication taking a position some distance from their own, and the paper's own
+framing is that the distance between a subject's position and the message,
+together with their latitudes of acceptance and rejection, predicts how they
+react. That is the Overton window stated as an experiment, and it carries the
+boomerang: a message far enough away pushes people further from it rather than
+towards it. Secondary accounts describe 20 statements sorted from extreme dry to
+extreme wet, which if accurate makes latitude a count out of 20 and therefore
+`rates`, but **that detail comes from a secondary source and has not been read at
+source**, so nobody should plan the shape around it yet.
+
+**Access, checked 2026-08-04.** PsycNET serves the abstract and then "Get Access";
+no institutional entitlement appears. The record also carries an explicit
+reservation of text and data mining rights, which is a reason to read a copy
+rather than to scrape one.
+
+**What has to be read off it**, so the ask is small and specific: the number of
+statements in the sorting task and how many each group accepted and rejected, the
+group sizes, the distances between subject position and message position that
+were used, and the attitude-change outcome at each distance, including whichever
+distance produced movement away from the message.
+
 ### Gaslighting: the redirect stands, the rejection under it was not searched
 
 **Loftus and Palmer remains a strong find and is Tier 1 item 2.** But the claim

@@ -32,6 +32,7 @@ import { SalienceView } from "./SalienceView";
 import { restrictSalience } from "./salience";
 import { MagnitudeView } from "./MagnitudeView";
 import { ProjectionView } from "./ProjectionView";
+import { TargetView } from "./TargetView";
 
 /**
  * The generic seam: dispatch on the data's `type` to the matching renderer.
@@ -182,6 +183,13 @@ export function DataViewRenderer({
       return view.kind === "asdrawn" || view.kind === "whichisexact" ? (
         <ProjectionView data={data} kind={view.kind} />
       ) : null;
+    case "target":
+      // Not a slice-drawer either: both views draw both performers and the
+      // whole axis. What the reveal adds is a second cut through bars that are
+      // already on screen, so nothing may change length between the beats.
+      return view.kind === "oncompliance" || view.kind === "insidewindow" ? (
+        <TargetView data={data} kind={view.kind} />
+      ) : null;
     default:
       return null;
   }
@@ -294,6 +302,10 @@ export function scopeLabel(kind: DataViewKind): string {
       return "Just look at them";
     case "whichisexact":
       return "Which one is honest";
+    case "oncompliance":
+      return "Against the target";
+    case "insidewindow":
+      return "And where they finished";
     default:
       return "";
   }

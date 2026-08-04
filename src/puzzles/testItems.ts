@@ -7598,6 +7598,147 @@ const items: TestItem[] = [
       en: "Familiar and accurate are not opposites, and this format happens to be both. What makes the reasoning sound is that the accuracy was established separately rather than inferred from the familiarity.",
     },
   },
+  // ---- When a measure becomes a target ----
+  {
+    id: "cl-call-answer-time",
+    scenario: {
+      en: "A support desk is told that 90 per cent of calls must be answered within 30 seconds, and bonuses follow the figure. A year later it reports 91 per cent and the manager presents this as proof that service has improved.",
+    },
+    trap: "campbells-law",
+    explanation: {
+      en: "The one thing a year of pressure guarantees is that the reported number went up. Whether service improved is a separate question, and answering a call at 29 seconds to hang up at 31 satisfies the measure without touching it.",
+    },
+  },
+  {
+    id: "cl-stable-under-pressure",
+    scenario: {
+      en: "A regulator notes that a hospital's key performance indicator has sat just above the required threshold every quarter for six years, and cites the consistency as evidence that the standard is being maintained comfortably.",
+    },
+    trap: "campbells-law",
+    explanation: {
+      en: "A number that never moves and never quite falls below a line it is judged against is behaving like something being managed rather than something being observed. Six years of just clearing the bar is the pattern that should prompt a look at the distribution, not the pattern that settles the question.",
+    },
+  },
+  {
+    id: "cl-school-pass-mark",
+    scenario: {
+      en: "A school system rewards the share of pupils reaching a grade C. Two schools report the same share, and the inspectorate treats them as equivalent for the purposes of ranking.",
+    },
+    trap: "campbells-law",
+    explanation: {
+      en: "One school may have lifted borderline pupils across the line while the rest were left alone, and the other may have taught everybody. The measure sees one cut through the distribution, so schools with very different results at the top and bottom arrive at the same figure.",
+    },
+  },
+  {
+    id: "cl-surgeon-mortality",
+    scenario: {
+      en: "Surgeons' individual death rates are published, and a hospital finds the following year that its published rates have fallen across the board. It reports the fall as an improvement in surgical technique.",
+    },
+    trap: "campbells-law",
+    explanation: {
+      en: "Declining to operate on the sickest patients would move the same number in the same direction without a single technique changing. The published figure cannot distinguish better surgery from a different set of patients, so it cannot on its own support the claim being made.",
+    },
+  },
+  {
+    id: "cl-ambulance-clock",
+    scenario: {
+      en: "An ambulance service must reach a set proportion of emergency calls within eight minutes. A review finds the target met and concludes that response times are under control across the service.",
+    },
+    trap: "campbells-law",
+    explanation: {
+      en: "Under control across the service is a claim about the whole distribution, and the target only reports one point on it. Calls that were never going to be reached in eight minutes are worth nothing to the measure, so the time they wait is exactly what the figure stops describing.",
+    },
+  },
+  {
+    id: "cl-bug-count",
+    scenario: {
+      en: "A software team is assessed on the number of open bug reports. The count falls sharply over two quarters, and the lead cites it in an argument that the codebase is now in good shape.",
+    },
+    trap: "campbells-law",
+    explanation: {
+      en: "Closing reports and fixing defects are different actions that move the same counter. Once the counter is the thing being judged, its fall stops being evidence about the codebase and becomes evidence about how reports are being handled.",
+    },
+  },
+  {
+    id: "cl-readmission-window",
+    scenario: {
+      en: "Hospitals are penalised for readmissions within thirty days of discharge. National readmissions inside the window fall, and the programme is judged a success on that basis.",
+    },
+    trap: "campbells-law",
+    explanation: {
+      en: "A patient held in observation, or readmitted on day thirty-two, does not appear in the measure and may be no better off. A fall inside a window that is itself the thing being rewarded is consistent with the intended improvement and with movement around the edge of the window, and the figure does not separate them.",
+    },
+  },
+  {
+    id: "cl-sales-quota-quarter",
+    scenario: {
+      en: "A sales team meets its quarterly quota every quarter for three years. Management concludes that demand is stable and plans capacity on that basis.",
+    },
+    trap: "campbells-law",
+    explanation: {
+      en: "Deals can be pulled forward or pushed back across a quarter boundary at no cost to anyone whose bonus depends on the quarter. The steadiness of the reported series is what you would expect from a smoothed indicator, so planning capacity from it means planning from the smoothing.",
+    },
+  },
+  {
+    id: "cl-university-ranking",
+    scenario: {
+      en: "A university rises twelve places in a ranking after focusing on the inputs the ranking weights most heavily. The vice-chancellor describes the rise as an improvement in the quality of education.",
+    },
+    trap: "campbells-law",
+    explanation: {
+      en: "Moving the components a ranking weights is precisely how a ranking is moved, and it is exactly what was done. The rise is strong evidence about attention paid to the formula, and no evidence at all about teaching, which the formula only ever stood in for.",
+    },
+  },
+  {
+    id: "cl-crime-recording",
+    scenario: {
+      en: "Police forces are set a target to reduce recorded offences in a category. Recorded offences in that category fall, and a report treats the fall as a fall in offending.",
+    },
+    trap: "campbells-law",
+    explanation: {
+      en: "Recorded offences and offences are different quantities, and the target is attached to the first. Any change in how incidents are classified at the point of recording moves it without anything happening on the street, which is why the two need separate evidence.",
+    },
+  },
+  {
+    id: "cl-holds-the-distribution",
+    scenario: {
+      en: "Before accepting that a waiting-time target is working, an analyst asks for the full distribution of waits rather than the share inside the limit, and finds the shape unchanged apart from a small shift at the limit itself.",
+    },
+    trap: null,
+    explanation: {
+      en: "Asking for the distribution behind the indicator is the right check, and she made it before drawing a conclusion rather than after. What she found is also reported honestly rather than as either a success or a scandal.",
+    },
+  },
+  {
+    id: "cl-unrewarded-measure",
+    scenario: {
+      en: "A team tracks a metric that nobody is assessed on, that carries no bonus and that is not published, and uses it to monitor whether a process is drifting.",
+    },
+    trap: null,
+    explanation: {
+      en: "The corrupting pressure this trap is about comes from the measure being used to judge people. An indicator nobody is rewarded for moving is the case where reading it as a description of the world is reasonable.",
+    },
+  },
+  {
+    id: "cl-second-unrewarded-check",
+    scenario: {
+      en: "A regulator keeps its published target and adds an unannounced audit of a random sample of cases, on the grounds that the target alone cannot show whether the underlying work has changed.",
+    },
+    trap: null,
+    explanation: {
+      en: "This is the structural response rather than the educational one. The audit measures the thing itself, is not the number anyone is paid to move, and answers the question the target cannot.",
+    },
+  },
+  {
+    id: "cl-declines-to-rank",
+    scenario: {
+      en: "Given two branches with identical scores on the company's single performance measure, a director declines to say which is better run and asks what each measure would fail to capture before commissioning anything further.",
+    },
+    trap: null,
+    explanation: {
+      en: "Identical scores on one indicator support identical scores on that indicator and nothing more. Refusing to convert a summary figure into a judgement about how somewhere is run, and asking what the figure omits, is the discipline this trap is about.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

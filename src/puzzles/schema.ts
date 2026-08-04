@@ -1374,6 +1374,113 @@ const ProjectionData = z
   });
 export type ProjectionData = z.infer<typeof ProjectionData>;
 
+/* ---------------------------------------------------------------------------
+ * Two performers judged against one imposed threshold, and where inside the
+ * allowed stretch each of them actually finishes.
+ *
+ * Campbell's law needs a shape that can show a target being MET and gamed at the
+ * same time, and nothing else here can. `bunching` is the near relative and
+ * cannot hold it: its bins are integer counts and its guard compares the two
+ * bins either side of a line, whereas this is one cumulative distribution per
+ * performer, published as shares. `rates` needs counts. `distribution` exists to
+ * say a mean describes a minority and actively requires most items to sit below
+ * it. `ratings` would have to call a percentage a mean rating on a scale, which
+ * would misdescribe the data on the face of the figure.
+ *
+ * The reveal works because both views draw the same axis: the share of everyone
+ * who came through the door, ordered by how long they took. The setup splits it
+ * once, at the deadline, and the two performers look identical because they are
+ * identical there. The reveal splits the compliant part again, at the start of
+ * the final stretch, and one of them turns out to have a crowd pressed up
+ * against the line. Nothing is recomputed and no bar changes length.
+ *
+ * Authored as PUBLISHED PERCENTAGES with the denominator, never as counts, the
+ * same deliberate exception `framing`, `distribution`, `dose`, `estimation` and
+ * `magnitude` make. The source prints shares to two decimal places and no bin
+ * counts at all; 20.83 per cent of 148,999 is 31,036 point something, so there
+ * is no integer to author and rounding to one would be inventing data. It is
+ * also the right unit here rather than a compromise, because the two performers
+ * are different sizes and counts would compare how big they are.
+ *
+ * `withinPercent` is DERIVED from `breachPercent`, never authored, so the
+ * compliance figure the whole setup turns on cannot drift from the breach rate
+ * the source actually printed.
+ * ------------------------------------------------------------------------- */
+export const TargetPerformer = z.object({
+  id: z.string().min(1),
+  label: LocalizedText, // "Hospital A"
+  short: LocalizedText.optional(),
+  /** How many went through, printed so the reader can see the shares are real. */
+  n: z.number().int().positive(),
+  /** Share that missed the deadline, exactly as printed. */
+  breachPercent: z.number().min(0).max(100),
+  /** Share that finished inside the final stretch before it, exactly as printed. */
+  lateSharePercent: z.number().min(0).max(100),
+});
+export type TargetPerformer = z.infer<typeof TargetPerformer>;
+
+const TargetData = z
+  .object({
+    type: z.literal("target"),
+    label: LocalizedText, // figure title
+    /** The rule imposed from outside, e.g. "95 per cent seen within four hours". */
+    targetLabel: LocalizedText,
+    /** The share that has to finish in time for the target to be met. */
+    targetPercent: z.number().min(0).max(100),
+    /** Names the compliant part of the bar, e.g. "Seen inside four hours". */
+    withinLabel: LocalizedText,
+    /** Names the part past the deadline, e.g. "Missed the four hours". */
+    breachedLabel: LocalizedText,
+    /** Names the final stretch, e.g. "Left in the last twenty minutes". */
+    lateLabel: LocalizedText,
+    /** Says on the figure that these are published shares, not counts. */
+    percentNote: LocalizedText,
+    performers: z.array(TargetPerformer).length(2),
+  })
+  .superRefine((d, ctx) => {
+    d.performers.forEach((p, i) => {
+      // The premise of the whole puzzle is that BOTH of them passed. If either
+      // had failed, the setup's question answers itself and there is no gaming
+      // to reveal, only a straightforward shortfall.
+      const within = 100 - p.breachPercent;
+      if (within < d.targetPercent)
+        ctx.addIssue({
+          code: "custom",
+          path: ["performers", i, "breachPercent"],
+          message: `${p.label.en} finishes ${within.toFixed(2)} per cent in time, which misses the ${d.targetPercent} per cent target, so it is not a case of hitting the target and gaming it`,
+        });
+      // The final stretch is drawn as the tail of the compliant part, so it
+      // cannot be wider than the compliant part is.
+      if (p.lateSharePercent > within)
+        ctx.addIssue({
+          code: "custom",
+          path: ["performers", i, "lateSharePercent"],
+          message: `${p.label.en} cannot have ${p.lateSharePercent} per cent in the final stretch when only ${within.toFixed(2)} per cent finished in time at all`,
+        });
+    });
+    const [a, b] = d.performers;
+    if (!a || !b) return;
+    // Without a real difference in where they finish, the reveal would redraw
+    // the setup with an extra line on it.
+    const hi = Math.max(a.lateSharePercent, b.lateSharePercent);
+    const lo = Math.min(a.lateSharePercent, b.lateSharePercent);
+    if (lo <= 0 || hi / lo < 1.5)
+      ctx.addIssue({
+        code: "custom",
+        path: ["performers"],
+        message: `the final-stretch shares are ${a.lateSharePercent} and ${b.lateSharePercent}, too close to be worth revealing`,
+      });
+    // And if they were visibly different on the headline metric, the setup
+    // would already have given the game away.
+    if (Math.abs(a.breachPercent - b.breachPercent) > 1)
+      ctx.addIssue({
+        code: "custom",
+        path: ["performers"],
+        message: `the two breach rates differ by more than a point, so they do not look alike in the setup`,
+      });
+  });
+export type TargetData = z.infer<typeof TargetData>;
+
 export const PuzzleData = z.discriminatedUnion("type", [
   RatesData,
   FrequenciesData,
@@ -1396,6 +1503,7 @@ export const PuzzleData = z.discriminatedUnion("type", [
   BunchingData,
   MagnitudeData,
   ProjectionData,
+  TargetData,
 ]);
 export type PuzzleData = z.infer<typeof PuzzleData>;
 
@@ -1460,6 +1568,8 @@ export const DataView = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("againsttruth"), ...viewFields }),
   z.object({ kind: z.literal("asdrawn"), ...viewFields }),
   z.object({ kind: z.literal("whichisexact"), ...viewFields }),
+  z.object({ kind: z.literal("oncompliance"), ...viewFields }),
+  z.object({ kind: z.literal("insidewindow"), ...viewFields }),
 ]);
 export type DataView = z.infer<typeof DataView>;
 export type DataViewKind = DataView["kind"];

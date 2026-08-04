@@ -54,6 +54,7 @@ import { boomerangEffect } from "./data/boomerang-effect";
 import { prebunking } from "./data/prebunking";
 import { magnitudeCompression } from "./data/magnitude-compression";
 import { projectionDistortion } from "./data/projection-distortion";
+import { campbellsLaw } from "./data/campbells-law";
 
 /**
  * The puzzle registry. Adding a puzzle = import its data file and add it to
@@ -116,6 +117,7 @@ const rawPuzzles: unknown[] = [
   prebunking,
   magnitudeCompression,
   projectionDistortion,
+  campbellsLaw,
 ];
 
 export const puzzles: PuzzleType[] = rawPuzzles.map((p, i) => {

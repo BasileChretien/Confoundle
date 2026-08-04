@@ -2767,10 +2767,19 @@ at all.
 
 <!-- skill: campbells-law -->
 
-**Status: SOURCED 2026-08-04, AND THE OLD BLOCK ON IT HAS EXPIRED.** This is the
-imposed-target half of entry 8, which shipped only its self-set half as
-`threshold-bunching`. Campbell's law proper needs a principal imposing a target
-on an agent, and that is what this is.
+**Status: SHIPPED 2026-08-04** as `both-hit-the-target`, skill `campbells-law`,
+on the new `target` shape. This is the imposed-target half of entry 8, which
+shipped only its self-set half as `threshold-bunching`. Campbell's law proper
+needs a principal imposing a target on an agent, and that is what this is.
+
+**What shipped, and the one design decision worth recording.** The commit beat
+makes "There is no way to tell from this" the CORRECT answer, which
+`docs/hedge-audit.md` explicitly allows and which this puzzle needs. The skill
+licenses exactly one thing, that the compliance figure does not separate the two
+departments, so any second band saying the same thing in different words would
+mark a well-reasoning player wrong for picking the hedge. An earlier draft had
+one, reading "almost nothing, and the number cannot tell you", and it was
+removed. A test named `PINS THE HEDGE` fails if another such band ever appears.
 
 **The source, re-read at source 2026-08-04.** Eatock J, Cooke M, Young TP.
 Performing or not performing: what's in a target? Future Healthcare Journal

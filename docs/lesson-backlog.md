@@ -2722,3 +2722,78 @@ this backlog is broad and the medical plan is deep, and the deck was better
 served by finishing the deep one first. The deep one is finished. The strongest
 remaining candidate here is entry 3, multiplicity, which the deck has nothing on
 at all.
+
+### 23. Two hospitals hit the same target and ran opposite departments
+
+<!-- skill: campbells-law -->
+
+**Status: SOURCED 2026-08-04, AND THE OLD BLOCK ON IT HAS EXPIRED.** This is the
+imposed-target half of entry 8, which shipped only its self-set half as
+`threshold-bunching`. Campbell's law proper needs a principal imposing a target
+on an agent, and that is what this is.
+
+**The source, re-read at source 2026-08-04.** Eatock J, Cooke M, Young TP.
+Performing or not performing: what's in a target? Future Healthcare Journal
+2017;4(3):167-172, doi `10.7861/futurehosp.4-3-167`, PMCID PMC6502571, open
+access. Two English A&E departments, 2014/15, matched on age and arrival
+profile. Both meet the 95 per cent four-hour target and look identical doing it:
+**4.68 per cent of attendances breached at Hospital A, 4.49 per cent at Hospital
+B**, on annual attendances of **148,999 and 108,698**. Inside the window they are
+running different departments: **20.83 per cent of A's patients leave between
+three hours forty and four hours, against 8.56 per cent of B's**. Every figure in
+this paragraph was confirmed against the article text in this pass.
+
+**Why the block has expired, and it is the same kind of expiry as entry 4's.**
+The recorded objection was that the paper prints percentages and no bin counts,
+and that "inventing a share-shaped data type to get round that would be building
+a loophole in the central convention". That last clause is not what the deck
+actually does, and it was already not true when it was written. `framing`,
+`distribution`, `dose`, `estimation` and now `magnitude` all author published
+values that are not counts, each with a comment in `schema.ts` calling it a
+deliberate exception and each putting a note on the figure saying so. `framing`
+states the reasoning in terms that fit this paper exactly: the source prints
+percentages and N and never the numerators, 72 per cent of 152 is 109.44, so
+there is no integer to author and rounding to one would be inventing data. Here
+20.83 per cent of 148,999 is 31,036 point something, and the enumeration recorded
+under entry 8 is right that no unique integer exists. That is the `framing`
+situation, not a new loophole.
+
+**And there is a stronger argument that was missed.** The rule these shapes bend
+is "never hardcode a percentage that could contradict the counts", and its whole
+purpose is to stop a printed rate drifting from counts that exist. Here the
+comparison is between two departments of **different sizes**, 148,999 against
+108,698, so raw counts would be the wrong unit and shares are the right one. A
+bar of 31,036 against a bar of 9,304 would say A pushes out three times as many
+patients late, which is a fact about how big A is. Authoring shares is not a
+workaround here; it is the only honest representation of the comparison, in
+exactly the way `framing` compares two wordings with different Ns.
+
+**What must not be claimed.** The paper's most striking single number, that 15.82
+per cent of Hospital A's patients leave in the final ten minutes, is printed for A
+but the corresponding figure for B is not stated in the text, and the
+ten-minute profile that carries it is Fig 2, a chart that is never tabulated. So
+"a peak entirely absent at B", as entry 8 words it, cannot be asserted from
+printed numbers. The reveal does not need it: 20.83 against 8.56 in the final
+twenty minutes is printed for both hospitals and is the whole lesson. Anything
+read off Fig 2 by eye stays out.
+
+**The design.** Setup: two departments, same imposed target, near-identical
+compliance, 4.68 and 4.49 per cent breaching. The obvious reading is that the
+target is doing its job and the two are interchangeable. Reveal: where inside the
+four hours each department actually discharges people. Same target, same
+headline, opposite behaviour, and the paper's own line for it is that the
+information is not visible simply by monitoring the single existing metric.
+
+**Open questions for whoever builds it.** Whether this needs a new shape or an
+optional extension to an existing one: `bunching` is the near relative and
+cannot hold it, since its bins are integer counts and its guard compares two
+adjacent bins across a line, whereas this is two series of shares over the same
+window. The commit beat needs working out against `docs/hedge-audit.md` before
+authoring, because "both hospitals meet the target" is true and the question has
+to ask something the setup licenses. Non-partisanship is clean: two anonymised
+English hospitals, no party, no living side made to look foolish.
+
+**Route 1 of entry 8 stays closed.** Going to Hospital Episode Statistics for real
+counts would de-anonymise two trusts whose authors chose not to name them. That
+was flagged as a call for a human and nothing here changes it. This entry does not
+need it.

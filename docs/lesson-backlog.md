@@ -441,7 +441,9 @@ tempting finding as probably noise is rare enough to be the example.
 
 <!-- skill: projection-distortion -->
 
-**Status: BLOCKED on shape, not on source.**
+**Status: REFUTED AT SOURCE 2026-08-04.** The lesson as written asserts a
+misconception that the best available measurement of that misconception says
+people do not have.
 
 AP Human Geography makes this **required content**, IMP-1.A.3, quoted verbatim:
 
@@ -453,16 +455,69 @@ though a map is the chart form most people meet in an argument. Greenland
 against Africa on a Mercator projection is the canonical demonstration: Africa is
 roughly fourteen times the area, and on Mercator they look comparable.
 
-**Why it is blocked.** This needs a genuinely new shape (`projection` or `area`),
-and the numbers are geodetic constants rather than observations from a study, so
-`provenance` has to point at an authority rather than at a finding. That is not
-unprecedented in this deck, but it needs deciding rather than stumbling into.
+The old block was "this needs a genuinely new shape (`projection` or `area`)",
+and the audit below narrowed it to a sourcing task: find a source measuring
+**what people believe** the relative areas to be, and the puzzle then measures a
+misconception instead of asserting one. That source was found, and read at
+source, and it says the opposite of what this entry assumes.
+
+**The source.** Battersby SE, Montello DR. Area estimation of world regions and
+the projection of the global-scale cognitive map. Annals of the Association of
+American Geographers 2009;99(2):273-291, doi 10.1080/00045600802683734, author
+copy at `people.geog.ucsb.edu/~montello/pubs/area_estim.pdf`. Two studies: 194
+students estimating the area of twenty-six world regions from memory as a number
+relative to the lower 48 states set at 1,000, then 33 students doing the same
+task with a graphical slider. There is no third study. Both are memory tasks;
+neither shows anybody a map.
+
+**Every number in it reconciles.** Table 1 prints each region's area in square
+kilometres and its "modulus area" relative to the conterminous United States at
+1,000. Tables 3 and 5 print the same modulus to one decimal place, in separately
+typeset columns. All twenty-six recompute exactly from the printed areas against
+the printed 7,809,158 square kilometres of the conterminous United States, and
+match both the integer column and the one-decimal column, with no exceptions.
+
+**What it found, in the authors' own words in the abstract:** nonequal area
+projections, particularly the Mercator projection, were found not to have much
+if any influence on the shape of participants' cognitive maps, and the estimation
+pattern most clearly reflected standard trends in psychophysical estimation.
+
+**The numbers say it plainly.** Greenland is the region this entry was going to
+be built on. Participants put it at 520 against a true 271, so 1.9 times its real
+size. Fifteen of the twenty-six regions were overestimated by more than that, and
+the head of that list is not high latitude at all: Switzerland by 27 times,
+Denmark by 26, Austria by 15, North Korea by 11. Across the twenty-six regions
+the correlation between how wrong the mean estimate was and how big the region
+really is comes to -0.94 on logs, while the correlation with mean absolute
+latitude is +0.19, sitting alongside the paper's own within-participant figure of
+0.17. The error is a size effect, not a latitude effect.
+
+**So this entry cannot be built as written.** The Greenland-against-Africa story
+is a true fact about Mercator maps and an unevidenced one about the people
+looking at them. Shipping it as a measured misconception would be asserting
+something the only measurement contradicts, which is the failure mode this deck
+exists to teach.
+
+**What the same data do support is a different and better lesson**, filed below
+as entry 22.
+
+**What would revive this entry** is a study measuring area judgements made
+**while looking at a Mercator map**, which is a different task from either study
+here and is where the authors themselves say a projection effect should show up.
+Battersby's separate paper, "The effect of global-scale map-projection knowledge
+on perceived land area", is the obvious first place to look and was not read in
+this pass. The provenance question recorded earlier is unchanged and untested:
+geodetic constants are an authority rather than a finding. Note that the study
+above sidesteps it entirely, since it prints the true areas it scored people
+against, so the provenance is the study.
 
 ### 5. A lead that is not a lead
 
 <!-- skill: margin-of-error -->
 
-**Status: BLOCKED on a source with counts.**
+**Status: BLOCKED ON A POLL WITH THE RIGHT GAP.** Searched hard on 2026-08-04
+and not found. The old wording, "BLOCKED on a source with counts", was both
+overstated and vague; what follows is a search order rather than a shrug.
 
 Named as required content by the AP US Government framework: "Accurate sampling
 methods, **including calculating a margin of error**". The deck has nothing on
@@ -475,6 +530,78 @@ This is a cousin of `statistical-significance` and would need to earn its place
 by teaching something that puzzle cannot, most likely that the margin on a
 **difference** is wider than the margin on either number, which is the part
 almost nobody knows.
+
+**The arithmetic is settled and needs no source.** For two shares of one sample,
+the errors are negatively correlated, because a respondent who moves from A to B
+moves the gap by two. The variance of the gap is `(p1 + p2 - (p1 - p2)^2) / n`,
+so for two shares near half the margin on the gap is very close to **twice** the
+published margin, not the same as it and not the 1.41 times that two independent
+samples would give. Charles Franklin's note for ABC News, "The margin of error
+for differences in polls", states the doubling directly, and the Pew explainer
+"Understanding the margin of error in election polls" says the same in prose.
+Those pin the method. What is missing is data.
+
+**What the puzzle needs, exactly.** All five at once, and the fifth is the one
+that keeps failing:
+
+1. Two answer options from a **single** published sample, so the doubling
+   applies rather than the square-root-of-two.
+2. The **denominator those two percentages are shares of**, printed, not a
+   subgroup whose size is left to be reconstructed.
+3. A **published margin of error**, and ideally a **published design effect**, so
+   the margin can be reproduced rather than taken on trust.
+4. Non-political ground, or a topic with no living partisans.
+5. A gap **strictly between one and about two times the published margin**. Below
+   one and the naive reading already says "too close", so there is no trap and
+   the commit beat is a giveaway. At or above two and the poll really does
+   establish the lead, so the reveal would be false.
+
+**What was checked, and how each one failed.**
+
+- **Marist** is the best source class found, and the reason is condition 3: the
+  methodology page prints the design effect, so the published margin reproduces
+  exactly. The hot dog poll of July 2025 (n=1,542, design effect 1.19, printed
+  margin 2.7) recomputes to 2.72, and the June 2026 NPR/PBS poll (n=1,340,
+  design effect 1.29, printed 3.0 for adults and 3.3 for registered voters)
+  recomputes to 3.04 and 3.26. Two independent checks each. But no full-sample
+  non-political question found in these packets lands in the window: the hot dog
+  question is 62 to 38, the NYC baseball question 38 to 24, the summer travel
+  question 26 to 23 against a margin of 3.0. The one that does land, 48 to 43
+  on kinds of holiday, is asked of the subset taking a holiday, whose size is
+  never printed. Reconstructing it as 55 per cent of 1,340 gives a range from
+  731 to 744 rather than a unique integer, so it fails the reconstruction
+  standard and condition 2.
+- **YouGov's July 2026 head-to-head sports poll** (n=1,099, margin given as
+  "approximately 4.0%") is a full round robin of five sports, which is the right
+  shape and perfectly non-political. It fails condition 2: the shares are
+  reported "among Americans with a preference", and the number who skipped each
+  pair is never printed, so the denominator of every matchup is unknown. It also
+  fails condition 5 twice over. Baseball against basketball is 48 to 52, a gap
+  of 4 against a margin of 4, which is below the window. Soccer against hockey
+  is 54 to 46, and the gap of 8 against a doubled margin of 7.97 sits on the
+  knife edge, where whole-number rounding of the shares could move it either
+  way.
+- **Seton Hall Sports Poll** is entirely non-political and asks many two-option
+  questions, but publishes no design effect. Its reported 3.0 points for
+  n=1,506 against the 2.5 that simple random sampling gives implies a weighting
+  adjustment it does not itemise, so condition 3 is half met at best.
+- **Marist's Super Bowl poll of February 2025** has a question that does land in
+  the window, on whether referees would affect the outcome, 42 against 37 with a
+  printed margin of 2.9 and a doubled margin of 5.15. A gap of 5 against 5.15 is
+  another knife edge, and that packet is a non-probability online panel with no
+  design effect printed.
+- **Rasmussen's "Americans prefer Coke over Pepsi"** is the ideal headline, a
+  published claim of a lead on the least political ground imaginable, but the
+  free page carries only the favourability numbers and never the head-to-head.
+
+**Where to look next.** The window is widest for a near-even binary, so the
+target is a two-option question splitting about 53 to 47 against a margin near 4,
+or 48 to 44 against a margin near 3. The most likely homes are a Marist branded
+lifestyle packet, since Marist prints the design effect, or any pollster that
+publishes both a topline denominator and a design effect. A survey that publishes
+raw **counts** would be better still, because then both margins are derived from
+the counts in the deck's usual way and nothing rests on a published margin at
+all.
 
 ### 12. Retraction does not undo it
 
@@ -740,6 +867,21 @@ asserting one. The unchanged part of this entry is the provenance question, sinc
 geodetic constants are an authority rather than a finding, and that still needs
 deciding rather than stumbling into.
 
+**Outcome, 2026-08-04: the route was taken and it ran into the wall at the far
+end.** A source measuring what people believe was found and read at source
+(Battersby and Montello 2009), and it reports that map projections have little
+if any influence on those beliefs, that the pattern is ordinary psychophysical
+compression, and that Greenland is less overestimated than fifteen of the other
+twenty-five regions in the study. So the narrowing was correct as a piece of
+reasoning and it is what made the entry checkable: measuring a misconception
+rather than asserting one is exactly what exposed the fact that the misconception
+is not there. Entry 4 is now marked REFUTED AT SOURCE, and the lesson the data do
+carry is filed as entry 22. Two smaller corrections to what is written above.
+`estimation` would not have fitted unmodified after all: its guard requires both
+estimates to fall **below** the true value, and these are overestimates. And the
+provenance question dissolves rather than needing a decision, because a study
+that scores people against true areas prints those areas itself.
+
 ### Weaker than recorded: entry 5, margin of error
 
 Recorded as "BLOCKED on a source with counts", which overstates it. Polls publish
@@ -748,6 +890,19 @@ on a **difference** is wider than the margin on either number, is arithmetic on
 exactly those. This is a sourcing task (find a published poll, read its
 methodology at source, check the reported margin against the sample size) rather
 than a shape or data block. Nothing here needs engine work.
+
+**Outcome, 2026-08-04: right about the kind of block, wrong about the size of
+it.** It is indeed a sourcing task and nothing here needs engine work, and the
+reported margin does check out against the sample size in the best sources
+(Marist prints its design effect, and three of its polls reproduce their printed
+margins to two decimal places). But "polls publish their sample size and their
+percentages" understates what this particular puzzle needs, which is a gap
+strictly between one and about two times the published margin. Below the window
+there is no trap and above it the lead is real, and a day of searching turned up
+candidates that failed on the denominator, on the design effect, or by landing
+within a tenth of a point of the boundary. Entry 5 keeps its block, now written
+as five explicit conditions and a list of what was checked, so the next pass can
+start from a search order instead of from scratch.
 
 ### Partly expired, and the real block is untouched: entry 6, polls shaping opinion
 
@@ -2428,6 +2583,94 @@ registered skill to say SHIPPED, and two entries both claiming to have shipped
 `paltering` would make the coverage record say something false. The skill id
 `quote-mining` is not in the registry and never will be, which is the accurate
 state of affairs.
+
+### 22. Small things feel bigger than they are
+
+<!-- skill: magnitude-compression -->
+
+**Status: SOURCED 2026-08-04, NEEDS A SHAPE.** Every number below has been read
+at source and reconciled. What stands between this and shipping is engine work
+and a commit beat, not provenance.
+
+**Where it came from.** Entry 4 went looking for a study of what people believe
+about the sizes of countries, in order to ship map-projection distortion as a
+measured misconception. The study exists, and it refutes the projection story.
+What it shows instead is a cleaner and more general trap, and one the deck has
+nothing on: **people's sense of magnitude is compressed**. Small quantities are
+overestimated by enormous factors, large ones are underestimated, and the two
+errors point in opposite directions, so a list of estimates can look like a
+sensible ranking while being wrong at both ends at once.
+
+**The source.** Battersby SE, Montello DR. Area estimation of world regions and
+the projection of the global-scale cognitive map. Annals of the Association of
+American Geographers 2009;99(2):273-291, doi 10.1080/00045600802683734, author
+copy at `people.geog.ucsb.edu/~montello/pubs/area_estim.pdf`. Study 1: 194
+students were given twenty-six region names, told that the area of the lower 48
+states is 1,000 units, and asked to write a number for each. No maps were shown.
+Study 2 repeats it with a graphical slider and 33 students; the ordering is
+nearly the same but the sample is small, so build on Study 1.
+
+**Reconciliation, done and recorded.** Table 1 prints each region's area in
+square kilometres and its modulus area relative to the conterminous United
+States at 1,000; Tables 3 and 5 print that modulus again to one decimal place in
+separately typeset columns. All twenty-six recompute exactly from the printed
+square kilometres against the printed 7,809,158 for the conterminous United
+States, matching the integer column and the one-decimal column both. That is the
+"reproduces a printed quantity not used to derive it" test, passed twenty-six
+times over. Two further checks agree with the paper's own statistics: the
+correlation between log estimate-over-truth and mean absolute latitude comes to
++0.19 across regions, against the 0.17 the paper reports within participants, and
+the slope of log mean estimate on log true size is 0.41, below 1 in the same
+direction as the paper's mean per-participant exponent of 0.56. Those last two
+are different estimators from the paper's and must not be presented as
+reproducing them; they agree in sign and rough size, which is all that is
+claimed.
+
+**The data, true modulus (lower 48 = 1,000) then mean estimate, Study 1.**
+
+Denmark 5.3 / 140. Switzerland 5.4 / 146. Austria 10.6 / 159. Guatemala 14.1 /
+118. North Korea 15.7 / 180. Greece 16.1 / 179. New Zealand 34.2 / 193. Italy
+38.6 / 177. Norway 39.2 / 205. Vietnam 41.3 / 164. Japan 47.5 / 269. Sweden 56.6
+/ 184. Spain 64.4 / 264. Venezuela 117.0 / 183. Ethiopia 145.2 / 169. South
+Africa 156.2 / 393. Peru 166.0 / 165. Alaska 192.0 / 318. Mexico 250.2 / 569.
+Greenland 271.2 / 520. India 403.8 / 754. Australia 985.3 / 740. Brazil 1,087.6 /
+615. China 1,199.4 / 1,409. Antarctica 1,572.2 / 1,225. Russia 2,163.8 / 2,077.
+
+Switzerland is put at 27 times its real size and Denmark at 26. Brazil is put at
+0.57 of its real size and Australia at 0.75. Peru lands at 0.99, which is worth
+keeping in whichever subset ships, because a puzzle where every guess is wrong
+teaches less than one where the accurate guess sits in the middle of the range
+and shows that the error is a function of size rather than of ignorance.
+
+**Why no existing shape holds it.** `estimation` is the closest and does not fit:
+it takes exactly two groups estimating one quantity, and its guard requires both
+estimates to fall below the true value, which is the anchoring design and the
+opposite of what happens here. `salience` carries several comparisons but they
+are binary choices with a share who picked correctly, not magnitudes. `dose`
+requires a zero baseline and front-loading. `ratings` needs a bounded scale.
+`regression` means something else entirely. So this is a new shape, on the order
+of `bunching`: a union member, a derivation module with a test, a renderer, a
+`DataViewRenderer` case, scope labels in all ten locales, and a share-card glyph.
+Roughly: a list of items each carrying a true magnitude and an estimated one, a
+setup view drawing the estimates alone, and a reveal view drawing them against
+the truth on the scale that makes both ends visible at once. The scale is the
+hard part, because 5.3 and 2,163.8 have to share an axis with 140 and 2,077.
+
+**The commit beat, which is the open design question.** The setup can honestly
+show the guesses alone, labelled by country, because the reader brings their own
+knowledge of which countries are small. The question then asks which end of the
+list the guesses went wrong at, with bands for the largest countries, the
+smallest countries, evenly across the range, and no way to tell. That is
+answerable from the setup by anyone who knows Denmark is small, the surprise
+stays in the reveal (26 times, not 26 per cent), and no two bands share the
+direction the skill licenses. Worth checking against `docs/hedge-audit.md`
+properly before authoring rather than taking the sketch above on trust.
+
+**Non-duplication.** `anchoring` uses estimates but its lesson is that a number
+you were shown moves your guess. Here nobody is shown anything; the distortion
+is in the scale sense itself. `mean-vs-median` and `misleading-axis` are about
+how a number is drawn, not about what a person believes before any drawing
+happens.
 
 **If a countable study ever turns up, reopen it.** The right shape would be a
 content analysis of a fixed public text where somebody counted how many

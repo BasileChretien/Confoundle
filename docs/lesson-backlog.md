@@ -796,6 +796,65 @@ Evidence: **yes**. Neutral ground: plausible, via the argumentation studies rath
 than the IR one. Shape: needs the rating scales checked, since means on a
 reasonableness scale are not counts and this deck authors from counts.
 
+**Updated 2026-08-04. The shape objection is dead, the paper is identified, and
+the block is now one PDF.**
+
+**The shape objection no longer applies.** It was written before the `ratings`
+shape existed. `ratings` was built for the third-person effect precisely because
+whole literatures measure their outcome as a mean on a bounded scale, and it
+carries a mean with an optional SD on a labelled axis. A seven-point
+reasonableness scale is exactly what it is for. Nothing about this entry is
+blocked on shape any more.
+
+**The paper.** van Eemeren FH, Meuffels B, Verburg M. **The (Un)Reasonableness of
+Ad Hominem Fallacies.** *Journal of Language and Social Psychology*
+2000;19(4):416-435, DOI `10.1177/0261927X00019004002`. Three ad hominem variants
+(abusive direct attack, circumstantial indirect attack, and the **tu quoque**,
+which is whataboutism) crossed with three discussion contexts (scientific,
+political, domestic). The same study is written up at book length as chapter 3,
+"Ad Hominem Fallacies: An Exemplary Study", pp. 51-83, of van Eemeren, Garssen
+and Meuffels, *Fallacies and Judgments of Reasonableness*, Springer 2009,
+Argumentation Library vol. 16.
+
+**Why it is the right paper for this deck.** Two results, either of which is a
+reveal. First, the ranking: the tu quoque is judged the **most reasonable of the
+three personal attacks**, which is the whole lesson, since whataboutism is the
+attack that gets waved through because it looks like it engages. Second, the same
+move is judged differently by setting, most harshly in a scientific discussion.
+And the stimuli are invented one-sentence dialogues, so there is no partisan
+surface at all.
+
+**What is actually in hand, and it is not enough.** SAGE serves the article behind
+a paywall but renders its **endnotes in full on the public page**, and they carry
+numbers. Endnote 10, read there: the tu quoque is "regarded as the most
+reasonable (mean reasonableness score: 3.82)", then the circumstantial variant
+(3.47), then the abusive attack (2.99); within the scientific domain the three
+run 3.25, 2.69 and 1.96; and fallacious arguments (M = 3.43) are judged less
+reasonable than non-fallacious moves (M = 5.27). Endnote 9 gives 3.6 and 3.9 for
+two education groups, with t = 2.4, df = 90.
+
+**Do not author from those.** Three reasons, and the third is the serious one.
+The scale is never stated in the endnotes, so the numbers have no units. No
+per-condition n or SD appears. And endnote 10 opens "Just as in the previous
+research", which means it is describing a **different experiment** from the
+paper's main study; a web summary of secondary sources produced yet a third set
+of figures (3.75 against 5.29, with SDs and n = 92 on a seven-point scale) that
+matches neither endnote. Three accounts that disagree are three different
+experiments, and picking whichever set is easiest to reach is exactly the failure
+this project exists to avoid.
+
+**Access, checked 2026-08-04.** SAGE shows no institutional entitlement for this
+article, and the Springer chapter offers only "Log in via an institution". Both
+were tried in a real browser. Also checked and ruled out: Garssen's open paper
+"Charges of inconsistency and the tu quoque fallacy" in the UvA repository at
+`pure.uva.nl/ws/files/1632290/`, which confirms the qualitative finding but is
+**pure theory and prints no data at all**, so nobody need download it again.
+
+**So the block is one PDF**, and what has to be read off it is small and specific:
+the scale definition with its endpoints, the per-condition means for the three
+variants, the per-condition n, and SDs if the paper prints them. Either the SAGE
+article or the Springer chapter would do.
+
 ### Dog whistling: OPEN. The earlier rejection conflated two different objections
 
 Written up as the clearest partisanship rejection on the list. The partisanship

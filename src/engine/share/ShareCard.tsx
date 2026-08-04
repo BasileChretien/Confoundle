@@ -1185,6 +1185,61 @@ function MagnitudeGlyph() {
   );
 }
 
+function TargetGlyph() {
+  const W = 200;
+  const H = 96;
+  /**
+   * Two bars of the same length against the same dashed rule, so the metric
+   * anybody reports is identical. Inside them, the band pressed against the
+   * rule is the crowd finishing in the last moments before the deadline: fat on
+   * the top bar, thin on the bottom one. Same compliance, opposite department.
+   */
+  const left = 12;
+  const span = W - left - 30;
+  const target = 0.95;
+  const rows = [
+    { within: 0.9532, late: 0.2083 },
+    { within: 0.9551, late: 0.0856 },
+  ];
+  const ruleX = left + target * span;
+  return (
+    <svg
+      viewBox={`0 0 ${W} ${H}`}
+      width="100%"
+      role="img"
+      aria-label="Two bars of equal length against the same target line, one with a wide band of finishers crowded against the line and one with a narrow band"
+    >
+      {rows.map((r, i) => {
+        const y = 22 + i * 32;
+        const end = left + r.within * span;
+        const bandStart = left + (r.within - r.late) * span;
+        return (
+          <g key={i}>
+            <rect x={left} y={y} width={r.within * span} height={16} rx={2} fill={CARD.teal} />
+            <rect
+              x={bandStart}
+              y={y}
+              width={end - bandStart}
+              height={16}
+              rx={2}
+              fill={CARD.rust}
+            />
+          </g>
+        );
+      })}
+      <line
+        x1={ruleX}
+        y1={12}
+        x2={ruleX}
+        y2={H - 12}
+        stroke={CARD.gold}
+        strokeWidth={1}
+        strokeDasharray="3 3"
+      />
+    </svg>
+  );
+}
+
 function SalienceGlyph() {
   const W = 200;
   const H = 96;
@@ -1519,6 +1574,7 @@ export function ShareCard({
   const ratingsGlyph = data.type === "ratings";
   const bunchingGlyph = data.type === "bunching";
   const magnitudeGlyph = data.type === "magnitude";
+  const targetGlyph = data.type === "target";
   const splitSampleGlyph =
     data.type === "rates" &&
     Boolean(data.strataAreSeparateSamples) &&
@@ -1632,6 +1688,8 @@ export function ShareCard({
             <BunchingGlyph />
           ) : magnitudeGlyph ? (
             <MagnitudeGlyph />
+          ) : targetGlyph ? (
+            <TargetGlyph />
           ) : null}
 
           <p className="mt-4 font-display text-[17px] font-medium leading-snug">

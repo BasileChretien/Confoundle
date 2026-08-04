@@ -22,6 +22,8 @@ import { DriftView } from "./DriftView";
 import { restrictDrift } from "./drift";
 import { RatingsView } from "./RatingsView";
 import { restrictRatings } from "./ratings";
+import { restrictBunching } from "./bunching";
+import { BunchingView } from "./BunchingView";
 import { DoseView } from "./DoseView";
 import { restrictDose } from "./dose";
 import { EstimationView } from "./EstimationView";
@@ -153,6 +155,15 @@ export function DataViewRenderer({
           kind={view.kind}
         />
       ) : null;
+    case "bunching":
+      // Same slicing contract as the rest: the setup draws the bins running up
+      // to the line, the reveal adds the ones past it.
+      return view.kind === "approaching" || view.kind === "acrossline" ? (
+        <BunchingView
+          data={restrictBunching(data, { groupIds: view.groupIds })}
+          kind={view.kind}
+        />
+      ) : null;
     default:
       return null;
   }
@@ -253,6 +264,10 @@ export function scopeLabel(kind: DataViewKind): string {
       return "One of the two ratings";
     case "bothratings":
       return "Both, on the same scale";
+    case "approaching":
+      return "Running up to the line";
+    case "acrossline":
+      return "And just past it";
     default:
       return "";
   }

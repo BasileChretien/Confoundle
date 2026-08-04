@@ -1075,6 +1075,103 @@ const RatingsData = z
   });
 export type RatingsData = z.infer<typeof RatingsData>;
 
+/* ---------------------------------------------------------------------------
+ * Counts in ordered bins, with a line drawn somewhere along them.
+ *
+ * Every other shape in this file compares quantities. This one is about where
+ * a quantity suddenly stops being smooth. The lesson is that a threshold in a
+ * measurement reshapes the thing measured: people pile up on the good side of
+ * an arbitrary line, so the count just short of it is inflated by everyone who
+ * pushed, and the count just past it is depleted by the same people.
+ *
+ * `distribution` cannot hold this. That shape exists to say a mean describes a
+ * minority, and its guard actively requires most items to sit below the mean.
+ * `dose` is the nearest relative, since it also carries a curve rather than a
+ * gap, but its points are doses of something administered, not bins of a
+ * measured outcome, and it has no notion of a line that matters.
+ *
+ * What makes the reveal work is holding the far side back: the setup shows the
+ * bins approaching the line, which read as an ordinary gentle slope, and the
+ * reveal adds the bins past it. Same counts, drawn twice, which is the whole
+ * contract of the deck.
+ * ------------------------------------------------------------------------- */
+const BunchingBin = z.object({
+  id: z.string().min(1),
+  label: LocalizedText, // "3:59"
+  short: LocalizedText.optional(),
+  /** How many items landed in this bin. A count, never a rate. */
+  count: z.number().int().nonnegative(),
+  /** True once the bin sits past the line. */
+  past: z.boolean(),
+});
+export type BunchingBin = z.infer<typeof BunchingBin>;
+
+const BunchingData = z
+  .object({
+    type: z.literal("bunching"),
+    label: LocalizedText, // figure title
+    metricLabel: LocalizedText, // what is being counted, e.g. "finishers"
+    itemLabel: LocalizedText, // what one bin is, e.g. "one minute"
+    /** The line itself, e.g. "four hours". */
+    thresholdLabel: LocalizedText,
+    /** Why anyone cares about it, e.g. "the commonest time goal". */
+    thresholdNote: LocalizedText.optional(),
+    /**
+     * Caption for the step itself, shown only once both sides are drawn.
+     * Takes a `{count}` slot rather than a bare number with a fragment either
+     * side of it, because word order around a number is not universal.
+     */
+    dropLabel: LocalizedText.optional(),
+    bins: z.array(BunchingBin).min(3),
+  })
+  .superRefine((d, ctx) => {
+    const ids = new Set<string>();
+    d.bins.forEach((b, i) => {
+      if (ids.has(b.id))
+        ctx.addIssue({
+          code: "custom",
+          path: ["bins", i, "id"],
+          message: `duplicate bin id "${b.id}"`,
+        });
+      ids.add(b.id);
+    });
+
+    const firstPast = d.bins.findIndex((b) => b.past);
+    if (firstPast === -1 || d.bins.every((b) => b.past)) {
+      ctx.addIssue({
+        code: "custom",
+        path: ["bins"],
+        message:
+          "a threshold needs bins on both sides of it, so mark at least one bin past and leave at least one before",
+      });
+      return;
+    }
+    // Bins are drawn in array order, so a `past` flag that goes back and forth
+    // would render a line that crosses the threshold more than once. The array
+    // is the axis; it has to be sorted.
+    const strayBefore = d.bins.findIndex((b, i) => i > firstPast && !b.past);
+    if (strayBefore !== -1)
+      ctx.addIssue({
+        code: "custom",
+        path: ["bins", strayBefore, "past"],
+        message: `bin "${d.bins[strayBefore].id}" comes after the threshold in the array but is not marked past, so the bins are out of order`,
+      });
+
+    // If the count does not actually fall across the line there is no cliff,
+    // and the reveal would restate the setup. Compare the bin immediately
+    // before the line with the one immediately after, which is the pair the
+    // lesson is about.
+    const lastBefore = d.bins[firstPast - 1];
+    const firstAfter = d.bins[firstPast];
+    if (lastBefore && firstAfter && firstAfter.count >= lastBefore.count)
+      ctx.addIssue({
+        code: "custom",
+        path: ["bins", firstPast, "count"],
+        message: `bin "${firstAfter.id}" (${firstAfter.count}) is not lower than "${lastBefore.id}" (${lastBefore.count}), so nothing bunches at the threshold and there is nothing to reveal`,
+      });
+  });
+export type BunchingData = z.infer<typeof BunchingData>;
+
 export const PuzzleData = z.discriminatedUnion("type", [
   RatesData,
   FrequenciesData,
@@ -1094,6 +1191,7 @@ export const PuzzleData = z.discriminatedUnion("type", [
   SalienceData,
   DriftData,
   RatingsData,
+  BunchingData,
 ]);
 export type PuzzleData = z.infer<typeof PuzzleData>;
 
@@ -1152,6 +1250,8 @@ export const DataView = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("overtime"), ...viewFields }),
   z.object({ kind: z.literal("onerating"), ...viewFields }),
   z.object({ kind: z.literal("bothratings"), ...viewFields }),
+  z.object({ kind: z.literal("approaching"), ...viewFields }),
+  z.object({ kind: z.literal("acrossline"), ...viewFields }),
 ]);
 export type DataView = z.infer<typeof DataView>;
 export type DataViewKind = DataView["kind"];
@@ -1432,6 +1532,13 @@ export const Puzzle = z
           return {
             groups: new Set(d.series.map((s) => s.id)),
             groupWord: "series",
+            strata: null,
+            strataWord: "",
+          };
+        case "bunching":
+          return {
+            groups: new Set(d.bins.map((b) => b.id)),
+            groupWord: "bin",
             strata: null,
             strataWord: "",
           };

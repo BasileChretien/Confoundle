@@ -633,9 +633,33 @@ surveys were flat, so the two instruments disagree on the same reality.
 
 ### 8. Goodhart, and the measure that stops measuring
 
-<!-- skill: goodharts-law -->
+<!-- skill: threshold-bunching -->
 
-**Status: LEAD.** Not named by any curriculum read, but it is the thread running
+**Status: SHIPPED 2026-08-04 as `threshold-bunching`, slug `just-under-the-line`,
+and the skill id changed, which is the one thing `docsCoverage.test.ts` cannot
+catch by itself.** The tag above used to read `goodharts-law`. It was changed
+deliberately, and the reason is the honest limit of what shipped.
+
+What shipped is the **mechanism**: draw a line anywhere and people pile up on
+the good side of it, so a count taken at a threshold measures the threshold as
+much as the thing it was meant to measure. On Allen, Dechow, Pope and Wu (2017),
+*Management Science* 63(6):1657-1672, nearly ten million chip-timed marathon
+finishes. 97,012 runners finished in the minute before four hours and 74,968 in
+the minute after, a step of 22,044 across an instant at which nothing about
+running changes. It needed a new shape, `bunching`, because a step in a curve
+had no home in the deck.
+
+What did **not** ship is Campbell's law proper, where a principal imposes the
+target on an agent. A marathon runner's four hours is self-set; nobody is
+rewarded or punished for it, which is exactly why the paper can rule out
+external incentives and why the case is so clean. The imposed-target version is
+still unbuilt and still blocked for the reason recorded below: the best paper
+for it prints percentages rather than counts. The Trap Hunt items shipped with
+this puzzle do cover imposed targets (a pass mark, an ambulance clock, a sales
+quota, a readmission window), so the applied side is not missing from the deck,
+only the imposed-target puzzle.
+
+**Status when opened: LEAD.** Not named by any curriculum read, but it is the thread running
 through several things that are: the French polling item above, the sales-region
 and school-catchment items already written into the gerrymandering review bank,
 and the whole logic of `more-votes-fewer-seats`.

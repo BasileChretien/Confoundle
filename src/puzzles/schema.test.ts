@@ -8,6 +8,7 @@ import { anchoring } from "./data/anchoring";
 import { availabilityHeuristic } from "./data/availability-heuristic";
 import { baseRate } from "./data/base-rate";
 import { kidneyStones } from "./data/kidney-stones";
+import { thresholdBunching } from "./data/threshold-bunching";
 
 /**
  * The two shapes added in this stack, `drift` and `ratings`, brought about 210
@@ -200,6 +201,91 @@ describe("ratings validation", () => {
 });
 
 /**
+ * `bunching`, the third shape added this way. Its guards are different in kind
+ * from the others: two of them are about the bins being an axis rather than a
+ * set, and one refuses data where the lesson would not be true.
+ */
+const bunching = {
+  type: "bunching" as const,
+  label: t("Counts by bin"),
+  metricLabel: t("Items in each bin"),
+  itemLabel: t("One bin"),
+  thresholdLabel: t("The line"),
+  bins: [
+    { id: "a", label: t("a"), count: 100, past: false },
+    { id: "b", label: t("b"), count: 98, past: false },
+    { id: "c", label: t("c"), count: 70, past: true },
+  ],
+};
+
+describe("bunching data", () => {
+  it("accepts a well-formed shape", () => {
+    expect(problems(bunching)).toEqual([]);
+  });
+
+  it("accepts the shipped puzzle's data unchanged", () => {
+    expect(problems(thresholdBunching.setup.data)).toEqual([]);
+  });
+
+  it("rejects duplicate bin ids", () => {
+    const bad = {
+      ...bunching,
+      bins: [...bunching.bins, { id: "a", label: t("again"), count: 60, past: true }],
+    };
+    expect(problems(bad).join(" ")).toContain('duplicate bin id "a"');
+  });
+
+  it("rejects bins that are all on one side of the line", () => {
+    const noPast = {
+      ...bunching,
+      bins: bunching.bins.map((b) => ({ ...b, past: false })),
+    };
+    expect(problems(noPast).join(" ")).toContain("bins on both sides");
+    const allPast = {
+      ...bunching,
+      bins: bunching.bins.map((b) => ({ ...b, past: true })),
+    };
+    expect(problems(allPast).join(" ")).toContain("bins on both sides");
+  });
+
+  it("rejects bins that cross back over the line", () => {
+    // The array is the axis, so a `past` flag that alternates would draw a
+    // threshold in two places at once.
+    const bad = {
+      ...bunching,
+      bins: [
+        { id: "a", label: t("a"), count: 100, past: false },
+        { id: "b", label: t("b"), count: 70, past: true },
+        { id: "c", label: t("c"), count: 98, past: false },
+      ],
+    };
+    expect(problems(bad).join(" ")).toContain("out of order");
+  });
+
+  it("refuses data where nothing actually bunches", () => {
+    // If the count does not fall across the line, the reveal would restate the
+    // setup, so the shape declines to draw it at all.
+    const flat = {
+      ...bunching,
+      bins: [
+        { id: "a", label: t("a"), count: 100, past: false },
+        { id: "b", label: t("b"), count: 98, past: false },
+        { id: "c", label: t("c"), count: 98, past: true },
+      ],
+    };
+    expect(problems(flat).join(" ")).toContain("nothing bunches at the threshold");
+  });
+
+  it("needs at least three bins to show a step at all", () => {
+    const bad = {
+      ...bunching,
+      bins: bunching.bins.slice(0, 2),
+    };
+    expect(problems(bad).length).toBeGreaterThan(0);
+  });
+});
+
+/**
  * The view-filter guard, which the rates branch has had for a long time and
  * the two new shapes shipped without. Its own comment in `schema.ts` says why
  * it matters: a view naming an id that does not exist renders an empty beat
@@ -343,5 +429,37 @@ describe("the view filter guard covers every filterable shape", () => {
       },
     };
     expect(puzzleProblems(badStratum).join(" ")).toContain('unknown stratum id "typo"');
+  });
+
+  it("accepts the shipped bunching puzzle unchanged", () => {
+    expect(puzzleProblems(thresholdBunching)).toEqual([]);
+  });
+
+  it("rejects a bunching view filtering to a bin that does not exist", () => {
+    const bad = {
+      ...thresholdBunching,
+      setup: {
+        ...thresholdBunching.setup,
+        initialView: {
+          ...thresholdBunching.setup.initialView,
+          groupIds: ["359", "typo"],
+        },
+      },
+    };
+    expect(puzzleProblems(bad).join(" ")).toContain('unknown bin id "typo"');
+  });
+
+  it("rejects a bunching view trying to filter by stratum", () => {
+    // There are no strata in this shape, so naming one is always a mistake.
+    const bad = {
+      ...thresholdBunching,
+      reveal: {
+        ...thresholdBunching.reveal,
+        view: { ...thresholdBunching.reveal.view, strataIds: ["anything"] },
+      },
+    };
+    expect(puzzleProblems(bad).join(" ")).toContain(
+      "bunching has no strata, so strataIds filters nothing",
+    );
   });
 });

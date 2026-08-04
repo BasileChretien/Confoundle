@@ -1072,6 +1072,59 @@ function RatingsGlyph() {
   );
 }
 
+function BunchingGlyph() {
+  const W = 200;
+  const H = 96;
+  /**
+   * Six bars and a line. The three on the left sit high and level, the three on
+   * the right drop away, and the gold rule falls in the gap between them. The
+   * point is not that the count declines, which any distribution does, but that
+   * it steps down at one arbitrary instant that only matters because people
+   * were aiming at it.
+   */
+  const base = 76;
+  const left = 20;
+  const gap = 6;
+  const barW = 22;
+  const heights = [46, 48, 45, 33, 31, 30];
+  const bars = heights.map((h, i) => {
+    // The rule takes the place of a seventh gap, so the far side shifts right.
+    const x = left + i * (barW + gap) + (i >= 3 ? gap : 0);
+    return { x, h, past: i >= 3 };
+  });
+  const ruleX = left + 3 * (barW + gap) - gap / 2;
+  return (
+    <svg
+      viewBox={`0 0 ${W} ${H}`}
+      width="100%"
+      role="img"
+      aria-label="Six counts in order, level before an arbitrary line and dropping sharply after it"
+    >
+      {bars.map((b, i) => (
+        <rect
+          key={i}
+          x={b.x}
+          y={base - b.h}
+          width={barW}
+          height={b.h}
+          rx={2}
+          fill={b.past ? CARD.rust : CARD.teal}
+        />
+      ))}
+      <line
+        x1={ruleX}
+        y1={16}
+        x2={ruleX}
+        y2={base + 6}
+        stroke={CARD.gold}
+        strokeWidth={1}
+        strokeDasharray="3 3"
+      />
+      <line x1={12} y1={base} x2={W - 12} y2={base} stroke={CARD.rule} strokeWidth={1} />
+    </svg>
+  );
+}
+
 function SalienceGlyph() {
   const W = 200;
   const H = 96;
@@ -1404,6 +1457,7 @@ export function ShareCard({
   const salienceGlyph = data.type === "salience";
   const driftGlyph = data.type === "drift";
   const ratingsGlyph = data.type === "ratings";
+  const bunchingGlyph = data.type === "bunching";
   const splitSampleGlyph =
     data.type === "rates" &&
     Boolean(data.strataAreSeparateSamples) &&
@@ -1513,6 +1567,8 @@ export function ShareCard({
             <DriftGlyph />
           ) : ratingsGlyph ? (
             <RatingsGlyph />
+          ) : bunchingGlyph ? (
+            <BunchingGlyph />
           ) : null}
 
           <p className="mt-4 font-display text-[17px] font-medium leading-snug">

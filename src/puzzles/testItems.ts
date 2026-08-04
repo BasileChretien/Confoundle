@@ -6752,6 +6752,147 @@ const items: TestItem[] = [
       en: "Logging every day fills all four combinations, including dairy without a headache, which is the one that can break the belief. Recording the boring days is what makes the interesting ones mean anything.",
     },
   },
+  // ---- Threshold bunching ----
+  {
+    id: "tb-exam-pass-mark",
+    scenario: {
+      en: "A school reports that 62 per cent of its pupils reached the pass grade this year. The mark distribution has a pronounced spike in the two marks immediately above the boundary and a dip immediately below it.",
+    },
+    trap: "threshold-bunching",
+    explanation: {
+      en: "Marks do not naturally cluster at a boundary, so the spike is a record of effort aimed at the line, whether by pupils, markers or moderators. The pass rate is partly a measure of how much the boundary mattered rather than of what pupils knew.",
+    },
+  },
+  {
+    id: "tb-ambulance-eight-minutes",
+    scenario: {
+      en: "An ambulance service must reach urgent calls within eight minutes. Its published figures show far more arrivals logged at seven minutes and fifty-something seconds than at eight minutes and a few seconds.",
+    },
+    trap: "threshold-bunching",
+    explanation: {
+      en: "A cliff at the exact target is the signature of the target itself, not of how quickly ambulances travel. Whether it comes from harder driving, different dispatching or when the clock is stopped, the compliance figure now describes the line as much as the service.",
+    },
+  },
+  {
+    id: "tb-quarterly-sales",
+    scenario: {
+      en: "A sales team's quota is one million in the quarter. Over five years the distribution of quarter-end totals has a heavy pile between one million and one and a half million, and almost nothing between eight hundred thousand and one million.",
+    },
+    trap: "threshold-bunching",
+    explanation: {
+      en: "Hitting just under a quota is nearly as common as hitting just over it, in any process the quota does not touch. The missing bin means deals were being pulled forward or pushed back across the line, so quarter totals no longer measure quarterly demand.",
+    },
+  },
+  {
+    id: "tb-p-value-cliff",
+    scenario: {
+      en: "A survey of published results finds a marked excess of p values just below 0.05 and a shortage just above it, across thousands of papers in a field.",
+    },
+    trap: "threshold-bunching",
+    explanation: {
+      en: "Nothing in nature distinguishes 0.049 from 0.051, so a step at that point is a fact about publishing rather than about the phenomena studied. The proportion of significant findings in the literature is partly a measure of the threshold's power.",
+    },
+  },
+  {
+    id: "tb-tax-bracket",
+    scenario: {
+      en: "Reported self-employment income shows a sharp pile of taxpayers reporting just below the point where a higher rate starts, and a thinning immediately above it.",
+    },
+    trap: "threshold-bunching",
+    explanation: {
+      en: "Income is not naturally lumpy at a number the tax code invented. The pile is people adjusting hours, timing or what they declare, so the count below the line measures the line's bite rather than what people earned.",
+    },
+  },
+  {
+    id: "tb-four-hour-target",
+    scenario: {
+      en: "A hospital reports that 95.3 per cent of emergency patients were dealt with inside the four-hour target. A breakdown by ten-minute interval shows a large spike in the final ten minutes before four hours.",
+    },
+    trap: "threshold-bunching",
+    explanation: {
+      en: "Two hospitals with the same headline figure can have completely different profiles behind it, and the spike says decisions were being made against the clock. The compliance percentage on its own cannot distinguish them.",
+    },
+  },
+  {
+    id: "tb-warranty-mileage",
+    scenario: {
+      en: "A manufacturer notes that warranty claims per thousand cars fall sharply once vehicles pass sixty thousand miles, the point at which the warranty expires.",
+    },
+    trap: "threshold-bunching",
+    explanation: {
+      en: "Cars do not become more reliable at the moment cover ends. What changes is whether a fault gets reported as a claim, so the claim rate past the line measures reporting rather than reliability.",
+    },
+  },
+  {
+    id: "tb-minimum-order",
+    scenario: {
+      en: "An online shop offers free delivery over fifty pounds. Its basket-value chart has a tall column between fifty and fifty-five pounds and a shallow trough between forty-five and fifty.",
+    },
+    trap: "threshold-bunching",
+    explanation: {
+      en: "The average basket value has gone up, but the shape shows why: customers added an item to clear the line. Reading the rise as growing appetite would credit demand for something the delivery rule did.",
+    },
+  },
+  {
+    id: "tb-hospital-readmission",
+    scenario: {
+      en: "A payer penalises readmissions within thirty days of discharge. A hospital's readmission counts by day show a dip on days twenty-eight and twenty-nine and a jump on day thirty-one.",
+    },
+    trap: "threshold-bunching",
+    explanation: {
+      en: "Illness does not know the counting window, so the notch at the boundary reflects decisions about when to readmit. The thirty-day rate has become partly a measure of scheduling around the rule.",
+    },
+  },
+  {
+    id: "tb-grant-word-limit",
+    scenario: {
+      en: "Applications to a funder are capped at 2,000 words. The distribution of submitted lengths climbs steadily to a huge peak at 1,990 to 2,000 words and stops dead.",
+    },
+    trap: "threshold-bunching",
+    explanation: {
+      en: "The peak at the cap says applicants wrote to the limit rather than to the argument, so average length measures the rule, not how much anyone had to say. Any statistic taken at a boundary people can see and act on carries this.",
+    },
+  },
+  {
+    id: "ok-tb-payday-spike",
+    scenario: {
+      en: "A bank notices that current-account balances spike sharply on the same few days each month, then decline. Salaries in the country are overwhelmingly paid on those days.",
+    },
+    trap: null,
+    explanation: {
+      en: "There is a spike, but it is caused by the thing being measured rather than by a line anyone is aiming at. Money arriving on payday is the real process, not a distortion of a measurement.",
+    },
+  },
+  {
+    id: "ok-tb-no-cliff",
+    scenario: {
+      en: "An inspector checks whether a supplier is meeting a ninety-eight per cent on-time target by plotting deliveries against how early or late they arrived. The curve is smooth through the deadline with no step at it.",
+    },
+    trap: null,
+    explanation: {
+      en: "A smooth curve through the threshold is exactly what you check for and exactly what you want to find. Absence of a step is evidence the headline figure is describing performance rather than the target.",
+    },
+  },
+  {
+    id: "ok-tb-looked-at-shape",
+    scenario: {
+      en: "Told that a department's pass rate rose from 71 to 78 per cent, an auditor asks for the full mark distribution for both years before deciding whether anything improved.",
+    },
+    trap: null,
+    explanation: {
+      en: "Asking for the shape rather than the headline is the whole defence. A rise with the distribution shifting everywhere means something changed; a rise created entirely at the boundary means the boundary moved people, not the teaching.",
+    },
+  },
+  {
+    id: "ok-tb-round-number-report",
+    scenario: {
+      en: "A charity reports that it served just over ten thousand meals this year. The monthly counts are irregular and show no clustering near any round total.",
+    },
+    trap: null,
+    explanation: {
+      en: "A round number in a headline is not itself evidence of bunching; the question is whether the underlying counts pile up against a line. Here they do not, so the total is just a total that happens to look tidy.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

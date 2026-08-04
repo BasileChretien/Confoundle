@@ -7457,6 +7457,147 @@ const items: TestItem[] = [
       en: "He takes the ranking for what it is worth and no further. Accepting a result while refusing to extend it to a quantity it never measured is the whole of the discipline here.",
     },
   },
+  // ---- Familiarity read as accuracy ----
+  {
+    id: "pd-house-style",
+    scenario: {
+      en: "A reviewer is shown two versions of the same figures. One follows the chart style the field has used for thirty years; the other is unfamiliar. She recommends the familiar one on the grounds that it is clearer, without comparing either against the underlying table.",
+    },
+    trap: "projection-distortion",
+    explanation: {
+      en: "Clearer here means easier for her to read, which is a fact about her practice rather than about the figures. Whether either version represents the table faithfully is a separate question and it was not asked of either one.",
+    },
+  },
+  {
+    id: "pd-new-index-rejected",
+    scenario: {
+      en: "A statistical agency publishes a revised index built to correct a known bias in the old one. Commentators note that the new series looks nothing like the series everyone is used to, and treat that as evidence the revision went wrong.",
+    },
+    trap: "projection-distortion",
+    explanation: {
+      en: "A correction that changed nothing would not have been worth making, so looking different is what a successful revision is supposed to do. The disagreement with the old series is the thing being explained, not evidence against the explanation.",
+    },
+  },
+  {
+    id: "pd-unfamiliar-scale",
+    scenario: {
+      en: "Shown a chart on a logarithmic scale, an audience objects that the growth looks much less dramatic than in the usual version and concludes that the presenter has played it down.",
+    },
+    trap: "projection-distortion",
+    explanation: {
+      en: "Which scale flatters the story is not the same question as which one represents it faithfully, and the audience answered the first while believing they had answered the second. Whether a log scale is right here depends on what the quantity does, not on which picture they have seen before.",
+    },
+  },
+  {
+    id: "pd-accent-credibility",
+    scenario: {
+      en: "A panel rates recorded explanations of the same result. Explanations delivered in the accent most of the panel share are rated as more likely to be factually correct.",
+    },
+    trap: "projection-distortion",
+    explanation: {
+      en: "Nothing about the delivery bears on whether the result is right, and the content was identical across recordings by construction. What the panel could assess quickly was familiarity, so that is what the ratings ended up measuring.",
+    },
+  },
+  {
+    id: "pd-legacy-format",
+    scenario: {
+      en: "An auditor finds that a firm's accounts follow the presentation used across its industry, and reports the presentation as evidence that the accounts are sound.",
+    },
+    trap: "projection-distortion",
+    explanation: {
+      en: "An industry-wide convention is evidence about the industry, not about this firm's numbers. If the convention itself obscures something, every firm following it looks equally reassuring and the auditor's check cannot see it.",
+    },
+  },
+  {
+    id: "pd-redrawn-boundaries",
+    scenario: {
+      en: "A geography textbook replaces its world map with an equal-area projection. Parents complain that the countries look the wrong shape and ask for the old map back on the grounds that it was more accurate.",
+    },
+    trap: "projection-distortion",
+    explanation: {
+      en: "The shapes did get worse; that is what an equal-area projection trades away. What it bought is that every country is now drawn in true proportion to its area. Calling the result less accurate treats one property as accuracy itself and ignores the one that improved.",
+    },
+  },
+  {
+    id: "pd-translation-fluency",
+    scenario: {
+      en: "Two translations of a technical document are compared. The one that reads more smoothly in the target language is chosen as the more faithful, without either being checked against the source.",
+    },
+    trap: "projection-distortion",
+    explanation: {
+      en: "Smoothness is assessable without the original and fidelity is not, so the comparison quietly substituted the question that could be answered for the question that was asked. A translation can read beautifully and say something the source does not.",
+    },
+  },
+  {
+    id: "pd-old-photo",
+    scenario: {
+      en: "Asked which of two colour renderings of a historical photograph is truer to the original scene, a group picks the one whose palette matches the film stock they associate with the period.",
+    },
+    trap: "projection-distortion",
+    explanation: {
+      en: "The palette they recognise is the palette of the film, which is itself a distortion of the scene it recorded. Matching a familiar rendering is a claim about the medium, and it is being read as a claim about the world in front of the camera.",
+    },
+  },
+  {
+    id: "pd-standard-questionnaire",
+    scenario: {
+      en: "A research team keeps a long-standing question wording because it is the standard in the field and switching would make their results incomparable with everyone else's, and describes the wording in their write-up as validated on that basis.",
+    },
+    trap: "projection-distortion",
+    explanation: {
+      en: "Comparability is a real and good reason to keep the wording, and it is not the same as validation. Every study in the field sharing a flawed wording produces a literature that agrees with itself, which is exactly what widespread use cannot distinguish from correctness.",
+    },
+  },
+  {
+    id: "pd-familiar-projection-web",
+    scenario: {
+      en: "A news team notices that the online mapping tool it uses stretches high latitudes, and reassures itself that the tool must be fine because it is what every major mapping service uses.",
+    },
+    trap: "projection-distortion",
+    explanation: {
+      en: "Every major service uses it because it keeps angles right at every zoom level, which is what panning and zooming a street map needs. That is a reason it suits their software and no reason at all that it suits a graphic comparing the size of countries.",
+    },
+  },
+  {
+    id: "pd-checks-the-property",
+    scenario: {
+      en: "Before choosing a projection for a graphic comparing the land area of countries, a designer looks up which projections preserve area exactly and picks from that list, accepting that the shapes will look unusual.",
+    },
+    trap: null,
+    explanation: {
+      en: "She asked what the map needed to keep exact, found the family that keeps it, and paid the known price. That the result looks unfamiliar is a consequence she has priced in rather than a signal she has misread.",
+    },
+  },
+  {
+    id: "pd-two-renderings-same-table",
+    scenario: {
+      en: "Given an unfamiliar chart that contradicts his expectations, an analyst goes back to the underlying table and recomputes two of the values by hand before deciding whether to trust the chart.",
+    },
+    trap: null,
+    explanation: {
+      en: "He treated his own surprise as a reason to check the source rather than as a verdict on the chart. Recomputing from the table answers the question that looking at the chart cannot.",
+    },
+  },
+  {
+    id: "pd-names-the-tradeoff",
+    scenario: {
+      en: "A cartographer explains that her map keeps angles exact and therefore cannot keep areas exact, states which property the reader should not rely on it for, and prints that note beside the map.",
+    },
+    trap: null,
+    explanation: {
+      en: "Every flat map gives something up, and naming what this one gives up is what lets a reader use it correctly. Declaring the trade-off is the opposite of the failure this trap is about.",
+    },
+  },
+  {
+    id: "pd-conventional-and-checked",
+    scenario: {
+      en: "A team keeps the conventional chart format after testing it against the raw data and confirming it represents the values faithfully, and records that the choice was made on those grounds rather than on convention.",
+    },
+    trap: null,
+    explanation: {
+      en: "Familiar and accurate are not opposites, and this format happens to be both. What makes the reasoning sound is that the accuracy was established separately rather than inferred from the familiarity.",
+    },
+  },
   // ---- When a measure becomes a target ----
   {
     id: "cl-call-answer-time",

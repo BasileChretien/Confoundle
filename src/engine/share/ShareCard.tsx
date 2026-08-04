@@ -1185,6 +1185,40 @@ function MagnitudeGlyph() {
   );
 }
 
+function ProjectionGlyph() {
+  const W = 200;
+  const H = 96;
+  /**
+   * Two schematic maps. On the left, the familiar-looking one: the far north is
+   * drawn far too big, so the polar block dwarfs the tropical one. On the right,
+   * the honest one, where the same two bands are drawn in true proportion. The
+   * gold tick is on the map that looks stranger, which is the whole joke.
+   */
+  const box = (x: number, north: number, tropic: number, ok: boolean) => (
+    <g>
+      <rect x={x} y={16} width={86} height={62} rx={2} fill="none" stroke={CARD.rule} />
+      <rect x={x + 8} y={22} width={north} height={16} rx={1} fill={CARD.rust} />
+      <rect x={x + 8} y={46} width={tropic} height={22} rx={1} fill={CARD.teal} />
+      {ok ? (
+        <text x={x + 43} y={90} textAnchor="middle" fontSize="11" fill={CARD.gold}>
+          ✓
+        </text>
+      ) : null}
+    </g>
+  );
+  return (
+    <svg
+      viewBox={`0 0 ${W} ${H}`}
+      width="100%"
+      role="img"
+      aria-label="Two maps side by side: the familiar-looking one draws the far north far too large, the stranger-looking one draws both bands in true proportion and is the accurate one"
+    >
+      {box(6, 68, 34, false)}
+      {box(108, 24, 70, true)}
+    </svg>
+  );
+}
+
 function TargetGlyph() {
   const W = 200;
   const H = 96;
@@ -1574,6 +1608,7 @@ export function ShareCard({
   const ratingsGlyph = data.type === "ratings";
   const bunchingGlyph = data.type === "bunching";
   const magnitudeGlyph = data.type === "magnitude";
+  const projectionGlyph = data.type === "projection";
   const targetGlyph = data.type === "target";
   const splitSampleGlyph =
     data.type === "rates" &&
@@ -1688,6 +1723,8 @@ export function ShareCard({
             <BunchingGlyph />
           ) : magnitudeGlyph ? (
             <MagnitudeGlyph />
+          ) : projectionGlyph ? (
+            <ProjectionGlyph />
           ) : targetGlyph ? (
             <TargetGlyph />
           ) : null}

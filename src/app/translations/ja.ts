@@ -5268,6 +5268,8 @@ export const ja: Record<string, string> = {
   "Given two branches with identical scores on the company's single performance measure, a director declines to say which is better run and asks what each measure would fail to capture before commissioning anything further.": "会社の唯一の業績指標で同点の二支店を前にして、ある役員はどちらの運営が優れているかを述べることを拒み、さらに何かを発注する前に、それぞれの指標が捉え損ねるものは何かを問う。",
   "Identical scores on one indicator support identical scores on that indicator and nothing more. Refusing to convert a summary figure into a judgement about how somewhere is run, and asking what the figure omits, is the discipline this trap is about.": "一つの指標で同点であることが支持するのは、その指標で同点だということだけであり、それ以上ではない。要約された数字を、そこがどう運営されているかについての判断に変えることを拒み、その数字が省いているものを問うこと。この罠が問題にしている規律はそれである。",
   "Against the target": "目標に照らして",
+  "One official count": "公式の集計を一つ",
+  "And the other one": "そしてもう一つ",
   "And where they finished": "そして、どこで出ていったか",
   "Everyone read the same news story about a policy. Some were also shown a poll saying the public was split down the middle. It barely moved them.": "全員が同じ政策記事を読んだ。一部の人はそれに加えて、世論が真っ二つに割れているという世論調査も見せられた。それでは、ほとんど動かなかった。",
   "Two thousand people read short news excerpts about real policy debates. Some saw the excerpt alone, some saw it with a graphic carrying no poll, and some saw it with a poll saying the public was evenly divided, 49 against 51. A fourth group saw a poll saying two thirds of the public were in favour. Three of the four groups are drawn here.": "二千人が実在の政策論争についての短い記事の抜粋を読んだ。抜粋だけを見た人、世論調査を含まない図表つきで見た人、世論が49対51で二分しているという世論調査つきで見た人がいた。四つ目のグループは、世論の三分の二が賛成しているという世論調査を見せられた。ここに描かれているのは四つのうち三つのグループである。",

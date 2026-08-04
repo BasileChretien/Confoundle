@@ -5210,6 +5210,8 @@ export const zh: Record<string, string> = {
   "Given two branches with identical scores on the company's single performance measure, a director declines to say which is better run and asks what each measure would fail to capture before commissioning anything further.": "面对在公司唯一一项绩效指标上得分完全相同的两家分支机构，一位主管拒绝说出哪一家管理得更好，并在决定进一步做什么之前先问：每一项指标各自会漏掉什么。",
   "Identical scores on one indicator support identical scores on that indicator and nothing more. Refusing to convert a summary figure into a judgement about how somewhere is run, and asking what the figure omits, is the discipline this trap is about.": "在一个指标上得分相同，只能支持在这个指标上得分相同，别的什么都支持不了。拒绝把一个汇总数字变成对某处如何运作的判断，并追问这个数字省略了什么，正是这个陷阱所讲的纪律。",
   "Against the target": "对照目标",
+  "One official count": "一项官方计数",
+  "And the other one": "以及另一项",
   "And where they finished": "以及他们在哪里离开",
   "Everyone read the same news story about a policy. Some were also shown a poll saying the public was split down the middle. It barely moved them.": "所有人都读了同一篇关于某项政策的新闻。有些人还被出示了一份民调，说公众意见对半分。这几乎没有让他们移动。",
   "Two thousand people read short news excerpts about real policy debates. Some saw the excerpt alone, some saw it with a graphic carrying no poll, and some saw it with a poll saying the public was evenly divided, 49 against 51. A fourth group saw a poll saying two thirds of the public were in favour. Three of the four groups are drawn here.": "两千人阅读了关于真实政策辩论的简短新闻摘录。有些人只看到摘录，有些人看到摘录加一张不含民调的图表，还有些人看到摘录加一份民调，说公众意见势均力敌，49对51。第四组看到的民调说公众有三分之二赞成。这里画出的是四组中的三组。",

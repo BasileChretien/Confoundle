@@ -555,9 +555,91 @@ against, so the provenance is the study.
 
 <!-- skill: margin-of-error -->
 
-**Status: BLOCKED ON A POLL WITH THE RIGHT GAP.** Searched hard on 2026-08-04
-and not found. The old wording, "BLOCKED on a source with counts", was both
-overstated and vague; what follows is a search order rather than a shrug.
+**Status: SOURCED 2026-08-04, NEEDS A SHAPE AND ONE DESIGN DECISION.** A poll
+has been found and read at source, the arithmetic has been worked through
+against integer rounding, and the block is now a specific piece of engine work
+rather than a hunt. What follows records the numbers, the arithmetic and the one
+place the obvious design fails, so nobody has to rediscover any of it.
+
+**The source.** Marist Poll of 1,128 National Adults, interviews conducted 3 to
+4 February 2025, released as the Super Bowl LIX survey. Methodology page read at
+source: adults 18 and over contacted through online web surveys, sampling frame
+of aggregated non-probability online research panels drawn from Cint, balanced
+to the 2022 American Community Survey five-year estimates for age, gender,
+income, race and region. **Margin of error for all adults (n=1,128) is +/-2.9
+percentage points; for registered voters (n=1,011) it is +/-3.1.** Non-political,
+which was the preference.
+
+`https://maristpoll.marist.edu/polls/the-super-bowl-february-2025/`
+
+**The published margin has no design effect in it, and that is checkable.**
+1.96 x 0.5 / sqrt(1128) = 2.918, which rounds to the printed 2.9; and
+1.96 x 0.5 / sqrt(1011) = 3.082, which rounds to the printed 3.1. Both printed
+margins reproduce exactly from the simple binomial formula, so the deff is 1.0.
+This matters: the December 2025 Marist holiday poll needed a deff of 1.49 to
+reproduce its printed margins, and assuming the wrong one moves every number
+below.
+
+**The question to use, read off table SBREF1.** "Do you think the referees will
+have:" National Adults answer **A major impact 42 per cent, A minor impact 37
+per cent, No impact at all 21 per cent, No opinion under 1 per cent.** A
+five-point lead against a printed margin of +/-2.9, which is exactly the shape
+of a headline that says a result is "outside the margin of error".
+
+**The arithmetic, which is the lesson.** For two shares of ONE sample,
+Var(p1 - p2) = [p1 + p2 - (p1 - p2)^2] / n, because the two shares are
+negatively correlated. Here [0.42 + 0.37 - 0.0025] / 1128 gives a standard error
+of 0.02642 and a 95 per cent margin on the gap of **5.18 points**, against 2.9
+on either share alone. The ratio is 1.95, not the square root of 2: **root two is
+the answer for two independent samples, and is the sophisticated wrong answer
+this puzzle exists to catch.**
+
+**Where the obvious design fails, and it fails by 0.18 points.** The printed
+gap of 5.0 is smaller than the 5.18 margin, so the lead does not clear its own
+ruler. But the shares are printed as integers, so the true gap lies anywhere in
+(4.0, 6.0), and at the top of that interval the verdict flips. A puzzle whose
+correct answer is "the lead is not significant" would therefore be resting on
+rounding, which this project does not ship.
+
+**Two ways out, and the second is better.**
+
+1. Use the registered-voter row of the same table, 42 / 38 / 20 on n=1,011 with
+   a printed margin of +/-3.1. The gap is 4.0 and the margin on the gap is 5.51,
+   and the conclusion holds across the whole rounding interval: even at a true
+   gap of 4.99 the margin is 5.50. Robust, but reporting a football question on
+   registered voters is a strange base that would need explaining, and the
+   explanation costs more than it buys.
+
+2. **Move the question off the verdict and onto the ruler**, which is where the
+   lesson actually lives. Do not ask whether the lead is significant. Ask what
+   the margin on the LEAD is, given a margin of +/-2.9 on each share. Bands: the
+   same 2.9; about 4.1, which is root two times wider; about 5.2, which is about
+   twice as wide and is correct; and narrower than either. Every band is a
+   magnitude, the framing states that the question is about the width, and the
+   correct answer is a fact about the published figures that no rounding can
+   move. The verdict then belongs in the reveal, stated honestly: 5.0 against
+   5.18 does not clear it, and the fact that integer rounding puts the printed
+   figures within a fifth of a point of the boundary is itself worth saying.
+
+**What it needs to ship.** A shape that can draw a share with an interval around
+it, and then draw the gap with ITS interval, which is the same data seen twice
+and is exactly the setup-and-reveal structure the deck is built on. No existing
+shape has an error bar at all. Nearest neighbours are `estimation`, which holds
+guesses against a truth, and `risk`, which splits one risk two ways; neither
+carries an interval. Call it `interval`, with view kinds `oneshare` and
+`thegap`.
+
+**One honesty note that must reach the puzzle.** This is a non-probability
+online panel balanced to census benchmarks, so its "margin of error" is a
+modelled quantity rather than a sampling margin in the textbook sense. The
+lesson is about the arithmetic relating two margins, which is unaffected, but
+the puzzle must not imply the panel is a random sample. Say what Marist says.
+
+---
+
+**Status when opened: BLOCKED ON A POLL WITH THE RIGHT GAP.** Searched hard on
+2026-08-04 and not found. The old wording, "BLOCKED on a source with counts", was
+both overstated and vague; what follows is a search order rather than a shrug.
 
 Named as required content by the AP US Government framework: "Accurate sampling
 methods, **including calculating a margin of error**". The deck has nothing on

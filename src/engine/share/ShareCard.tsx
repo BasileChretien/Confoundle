@@ -1206,6 +1206,19 @@ function ProjectionGlyph() {
       ) : null}
     </g>
   );
+  return (
+    <svg
+      viewBox={`0 0 ${W} ${H}`}
+      width="100%"
+      role="img"
+      aria-label="Two maps side by side: the familiar-looking one draws the far north far too large, the stranger-looking one draws both bands in true proportion and is the accurate one"
+    >
+      {box(6, 68, 34, false)}
+      {box(108, 24, 70, true)}
+    </svg>
+  );
+}
+
 function TargetGlyph() {
   const W = 200;
   const H = 96;
@@ -1228,10 +1241,6 @@ function TargetGlyph() {
       viewBox={`0 0 ${W} ${H}`}
       width="100%"
       role="img"
-      aria-label="Two maps side by side: the familiar-looking one draws the far north far too large, the stranger-looking one draws both bands in true proportion and is the accurate one"
-    >
-      {box(6, 68, 34, false)}
-      {box(108, 24, 70, true)}
       aria-label="Two bars of equal length against the same target line, one with a wide band of finishers crowded against the line and one with a narrow band"
     >
       {rows.map((r, i) => {

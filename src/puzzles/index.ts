@@ -49,6 +49,7 @@ import { thirdPersonEffect } from "./data/third-person-effect";
 import { innuendoEffect } from "./data/innuendo-effect";
 import { confirmationBias } from "./data/confirmation-bias";
 import { thresholdBunching } from "./data/threshold-bunching";
+import { whataboutism } from "./data/whataboutism";
 
 /**
  * The puzzle registry. Adding a puzzle = import its data file and add it to
@@ -106,6 +107,7 @@ const rawPuzzles: unknown[] = [
   innuendoEffect,
   confirmationBias,
   thresholdBunching,
+  whataboutism,
 ];
 
 export const puzzles: PuzzleType[] = rawPuzzles.map((p, i) => {

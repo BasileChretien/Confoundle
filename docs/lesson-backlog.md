@@ -1056,7 +1056,45 @@ Status: **REJECTED, now legitimately**, failing shape primarily and neutral grou
 secondarily. Reopen if an experiment surfaces that manipulates which of two issues
 is made salient and measures a choice with counts.
 
-### Overton window: OPEN, and no longer the same puzzle as the Big Lie
+### Overton window: SHIPPED 2026-08-04 as the boomerang effect
+
+<!-- skill: boomerang-effect -->
+
+**Shipped as `boomerang-effect`, slug `the-speech-that-pushed-back`, on `rates`.**
+Basile supplied the article. It was read at source and the puzzle is built on
+Table 3, page 249.
+
+**The skill is named for what shipped, not for the entry.** This entry asked for
+the Overton window. What the evidence actually supports is narrower and more
+useful: 69 people publicly committed to prohibition heard a stranger argue for
+no restriction on alcohol at all. **19 shifted towards the speech and 16 shifted
+away from it**, so the net movement was about four per cent and the speech
+achieved close to nothing. The same recording played to 92 uncommitted students
+netted about twenty-eight per cent, and that difference is the comparison the
+paper tests, at p below .04. Same precedent as Goodhart shipping under
+`threshold-bunching`: the tag was changed deliberately and both places say so.
+
+**What was deliberately not claimed.** The paper also reports that a milder
+pro-repeal talk shifted the drys more than the extreme one (twelve per cent
+against four), which is the closest thing here to a literal Overton window. Its
+authors say in the same paragraph that the difference **is not statistically
+significant** and that the two recordings cannot be shown to have been equally
+persuasive. The puzzle carries it as an explicitly labelled hint and the
+provenance note says why. If somebody later finds a powered version of that
+comparison, the window puzzle proper is still available.
+
+**The counts are reconstructed and meet the standard.** Table 3 prints
+percentages. Each one resolves to exactly one integer out of the printed group
+size, checked by enumeration in the test file, and the three integers sum to
+that group size, which is a printed quantity not used to derive them. Two small
+discrepancies are recorded rather than smoothed: the drys' printed net of 4.5
+does not follow from their own cells, which give 4.3, and one unused row has a
+middle cell of 33.4 per cent that no integer out of 87 produces, which is what
+computing a remainder by subtraction does.
+
+---
+
+**Status when opened: OPEN, and no longer the same puzzle as the Big Lie**
 
 The redirect to shipped `anchoring` stands for the mechanism. But see the Big Lie
 entry above: the implausibility-calibration finding is an experimental scale

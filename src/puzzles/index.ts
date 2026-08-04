@@ -50,6 +50,7 @@ import { innuendoEffect } from "./data/innuendo-effect";
 import { confirmationBias } from "./data/confirmation-bias";
 import { thresholdBunching } from "./data/threshold-bunching";
 import { whataboutism } from "./data/whataboutism";
+import { boomerangEffect } from "./data/boomerang-effect";
 
 /**
  * The puzzle registry. Adding a puzzle = import its data file and add it to
@@ -108,6 +109,7 @@ const rawPuzzles: unknown[] = [
   confirmationBias,
   thresholdBunching,
   whataboutism,
+  boomerangEffect,
 ];
 
 export const puzzles: PuzzleType[] = rawPuzzles.map((p, i) => {

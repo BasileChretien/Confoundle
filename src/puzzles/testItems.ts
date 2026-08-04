@@ -7034,6 +7034,147 @@ const items: TestItem[] = [
       en: "Consistency of treatment is the actual question when the complaint is about proportionality, so the comparison is the argument rather than a diversion from it. Other cases are relevant precisely because like cases are supposed to be treated alike.",
     },
   },
+  // ---- The boomerang effect ----
+  {
+    id: "bo-net-two-points",
+    scenario: {
+      en: "A charity reports that its campaign moved public support for its cause up by two points, and treats this as a small but real win worth repeating.",
+    },
+    trap: "boomerang-effect",
+    explanation: {
+      en: "Two points net can be almost nobody moving, or it can be a large group won over and a nearly as large group driven off. Only the second is dangerous to repeat, and the net figure cannot tell them apart.",
+    },
+  },
+  {
+    id: "bo-strongest-version",
+    scenario: {
+      en: "Preparing to address an audience known to disagree, a speaker decides to lead with the most uncompromising version of the argument, on the grounds that a strong case is more convincing than a hedged one.",
+    },
+    trap: "boomerang-effect",
+    explanation: {
+      en: "Strength and distance are different things. A case pitched far outside what the audience will treat as arguable tends to be filed as unreasonable, and once it is filed there the listener has moved further away rather than staying put.",
+    },
+  },
+  {
+    id: "bo-no-change-stubborn",
+    scenario: {
+      en: "After a safety briefing, average attitudes among a crew are unchanged, and the manager concludes that the crew simply ignored it.",
+    },
+    trap: "boomerang-effect",
+    explanation: {
+      en: "An unchanged average is equally consistent with nobody listening and with half the crew being convinced while the other half hardened against it. Those call for opposite responses, and only counting movement in both directions distinguishes them.",
+    },
+  },
+  {
+    id: "bo-graphic-warning",
+    scenario: {
+      en: "A public health team finds that a deliberately shocking warning label produced no net change in intentions, and plans to make the next version more shocking still.",
+    },
+    trap: "boomerang-effect",
+    explanation: {
+      en: "If the null came from some people being moved and others reacting against it, then escalating will widen both effects rather than tip the balance. The direction to check first is whether anyone moved the wrong way.",
+    },
+  },
+  {
+    id: "bo-ab-test-flat",
+    scenario: {
+      en: "An A/B test of a blunter sign-up prompt shows conversion flat against the old wording, so the team ships the blunter one, reasoning that it costs nothing and reads more clearly.",
+    },
+    trap: "boomerang-effect",
+    explanation: {
+      en: "Flat overall can hide a segment converting more and another converting less. Shipping on a null assumes the effect is uniformly zero, which is the one thing the aggregate number does not establish.",
+    },
+  },
+  {
+    id: "bo-town-meeting",
+    scenario: {
+      en: "A developer presents the most ambitious version of a scheme at a first public meeting, expecting that opposition will negotiate it down to something reasonable from there.",
+    },
+    trap: "boomerang-effect",
+    explanation: {
+      en: "That plan assumes an opening position only sets a starting point and cannot itself move people. If the opening lands far enough outside what residents consider arguable, it can harden them, leaving less room to negotiate rather than more.",
+    },
+  },
+  {
+    id: "bo-average-unmoved",
+    scenario: {
+      en: "A polling firm reports that an attack advertisement left the targeted candidate's approval statistically unchanged, and concludes the advertisement had no effect.",
+    },
+    trap: "boomerang-effect",
+    explanation: {
+      en: "No net effect and no effect are different claims. An advertisement that repels one group and attracts another produces the same unchanged headline as one nobody noticed, and the two matter very differently to whoever paid for it.",
+    },
+  },
+  {
+    id: "bo-correction-hardening",
+    scenario: {
+      en: "A team measures whether a strongly worded correction changes belief in a false claim, records the average shift, and does not record how many individuals moved in each direction.",
+    },
+    trap: "boomerang-effect",
+    explanation: {
+      en: "The design cannot detect the thing most worth detecting. Recording only the mean makes an offsetting pair of effects look identical to no effect at all, which is the failure mode this measurement most needed to rule out.",
+    },
+  },
+  {
+    id: "bo-recruiting-pitch",
+    scenario: {
+      en: "A recruiter finds that an aggressively worded advertisement produced the same number of applications as the previous one and keeps it, since it did no harm.",
+    },
+    trap: "boomerang-effect",
+    explanation: {
+      en: "The same total can come from a different set of people, some newly attracted and others put off. Whether that is harmless depends entirely on which people left, and the headcount does not say.",
+    },
+  },
+  {
+    id: "bo-escalate-because-unmoved",
+    scenario: {
+      en: "Told that a group of sceptics did not shift after a first presentation, an advocate concludes they need a harder push and prepares a more forceful second one.",
+    },
+    trap: "boomerang-effect",
+    explanation: {
+      en: "The inference treats absence of movement as evidence that the message was too weak. It is at least as consistent with the message having been too far away, in which case a more forceful one moves them further off.",
+    },
+  },
+  {
+    id: "ok-bo-counted-both-ways",
+    scenario: {
+      en: "A team reports that its message moved 30 per cent of the audience towards the position and 27 per cent away from it, for a net of three, and says so in those terms.",
+    },
+    trap: null,
+    explanation: {
+      en: "Reporting both directions is exactly the fix. The reader can now see that a small net came from large offsetting movements, and can decide what to do about it rather than being told nothing much happened.",
+    },
+  },
+  {
+    id: "ok-bo-pitched-near",
+    scenario: {
+      en: "Aiming to shift a sceptical group, a campaigner tests a modest ask first and a stronger one later, on the grounds that a request just outside what people already accept is more likely to land than one far outside it.",
+    },
+    trap: null,
+    explanation: {
+      en: "That is the lesson applied rather than a case of it. Choosing a position by how far it sits from the audience, instead of by how strongly it is felt, is what the evidence on distance actually supports.",
+    },
+  },
+  {
+    id: "ok-bo-real-null",
+    scenario: {
+      en: "A trial of a leaflet finds no change in average attitude, and its per-person data show almost nobody moved in either direction.",
+    },
+    trap: null,
+    explanation: {
+      en: "Here the null really is a null, and it is known to be one because both directions were counted. The leaflet did nothing, which is a finding rather than an ambiguity.",
+    },
+  },
+  {
+    id: "ok-bo-strong-and-close",
+    scenario: {
+      en: "An expert gives a firmly worded warning to colleagues who already accept the underlying premise, and it shifts most of them further in that direction.",
+    },
+    trap: null,
+    explanation: {
+      en: "Forcefulness is not the problem; distance is. A strong message to an audience already inside the relevant range is the situation where pushing harder does move people further.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

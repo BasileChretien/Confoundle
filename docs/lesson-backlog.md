@@ -1019,7 +1019,70 @@ the project excludes. Wanted, but do not force it.
 
 <!-- skill: reporting-rate -->
 
-**Status: BLOCKED.** Named by France, première SES: "les difficultés de mesure de
+**Status: SOURCED 2026-08-04, NEEDS A SHAPE.** Every number below has been read
+at source and reconciled. What stands between this and shipping is engine work,
+not provenance, and the duplicate-skill objection recorded below is answered.
+
+**The source.** Francis BJ, Walby S. Conflicting trends in violent crime
+measured by police recorded crime and the crime survey in England and Wales
+since 2010. PLoS One 2025;20(6):e0324272, doi 10.1371/journal.pone.0324272, open
+access under CC BY. The authors build an "aligned" dataset so the two
+instruments finally measure the same thing: the narrower CSEW definition of
+violence, restricted to crimes the survey's respondents say were reported to the
+police. That alignment is what makes this a puzzle rather than an apples-to-
+oranges complaint, and it is the paper's own contribution.
+
+**The data, Table 5 (survey) against Table 6 (police), aligned totals.**
+
+| Year | Crime Survey | Police recorded | Police / Survey |
+|---|---|---|---|
+| 2010-11 | 872,361 | 576,484 | 0.66 |
+| 2013-14 | 848,967 | 550,850 | 0.65 |
+| 2015-16 | 776,001 | 794,937 | **1.02** |
+| 2017-18 | 561,724 | 1,044,306 | 1.86 |
+| 2019-20 | 575,933 | 1,190,845 | 2.07 |
+| 2022-23 | 407,806 | 1,293,402 | **3.17** |
+
+From 2013-14 to 2022-23 the police series rose 134.8 per cent while the survey
+series fell 52.0 per cent. The paper states those as 134 per cent and "just over
+half", so both recompute from the printed tables. **The crossover is 2015-16**:
+before it the survey found more violence than the police recorded, after it the
+police recorded more, and by 2022-23 more than three times more.
+
+**A discrepancy found and recorded rather than smoothed over.** The prose on page
+18 gives two figures that do not match its own tables: it says the police series
+runs to 1,293,492 where Table 6 says 1,293,402, and that the survey series starts
+at 848,467 where Table 5 says 848,967. Differences of 90 and 500 respectively.
+Neither changes any claim, since both readings give the same 134 per cent and the
+same "just over half", but the tables are the data and the tables are what should
+be authored. Whoever builds this must use the table values and say so.
+
+**The duplicate-skill objection is answered.** The risk recorded below was that
+this is `detection-bias` under another name. It is not. `detection-bias` is about
+one instrument finding more when you look harder. Here there are TWO instruments,
+both visible, moving in opposite directions on the same reality, and the lesson
+is that you cannot resolve them by trusting the one that agrees with you. The
+paper's own conclusion is that improvements in police recording explain part of
+the gap and the survey's exclusion of vulnerable groups another part, so neither
+series is simply the honest one. That is a different reasoning move.
+
+**What it needs to ship.** A new shape: two count series over time, drawn on one
+axis, with the crossover visible. No existing shape holds it. `rates` needs a
+denominator per observation and there is none here. `bunching` is counts in
+ordered bins but carries a single series and a threshold. `drift` is signed net
+movement and requires denominators. `dose` needs a zero baseline. The natural
+setup is one series alone, which reads as a clear trend in whichever direction,
+with the reveal adding the other series crossing it.
+
+**Non-partisanship is clean**, which is unusual for crime statistics: the story
+is about two measurement instruments, both official, and the paper blames
+neither. Note also that the survey's response rate fell to 42 per cent, which
+the authors flag as a further quality concern, and any puzzle should carry that
+rather than presenting the survey as the reliable one.
+
+---
+
+**Status when opened: BLOCKED.** Named by France, première SES: "les difficultés de mesure de
 la délinquance".
 
 This is `detection-bias` transplanted from medicine to policing. **The risk is

@@ -590,6 +590,148 @@ const items: TestItem[] = [
     },
   },
 
+  // ---- The margin on a lead is not the margin on the poll ----
+  {
+    id: "moe-two-flavours",
+    scenario: {
+      en: "An ice cream maker polls 900 customers on a new flavour. 46 per cent prefer the new one, 41 per cent the old, and the report notes a margin of error of plus or minus 3.3 points. The company launches the new flavour, citing a lead outside the margin of error.",
+    },
+    trap: "margin-of-error",
+    explanation: {
+      en: "The 3.3 is the margin on one share. The five point lead is a difference between two shares of the same 900 people, and its own margin is close to twice that, so the poll has not separated the two flavours. Doubling the printed margin before believing a lead is the whole check.",
+    },
+  },
+  {
+    id: "moe-subgroup-difference",
+    scenario: {
+      en: "A survey of 1,500 adults finds 61 per cent of women and 55 per cent of men agree with a statement, and reports a margin of error of plus or minus 2.5 points for the full sample. The write-up calls the six point gender gap statistically significant.",
+    },
+    trap: "margin-of-error",
+    explanation: {
+      en: "Two things are wrong at once. The margin quoted belongs to the full sample, while each subgroup is roughly half that size and carries a wider margin of its own, and the gap between two subgroups is a difference and needs a wider margin again. Neither correction was made.",
+    },
+  },
+  {
+    id: "moe-month-on-month",
+    scenario: {
+      en: "A tracking poll puts approval at 44 per cent this month against 41 per cent last month, each survey with a margin of plus or minus 3 points. A commentator describes the three point rise as real movement because it matches the margin.",
+    },
+    trap: "margin-of-error",
+    explanation: {
+      en: "A change between two surveys is a difference between two independent samples, so the margin on the change is about 4.2 points, wider than either survey's own. A three point move sits comfortably inside it, and matching the single-survey margin is not a test of anything.",
+    },
+  },
+  {
+    id: "moe-inside-the-band",
+    scenario: {
+      en: "A poll of 1,000 people finds a product recommended by 52 per cent and not recommended by 48 per cent, with a margin of plus or minus 3.1 points. A press release says a clear majority recommends it.",
+    },
+    trap: "margin-of-error",
+    explanation: {
+      en: "The four point lead is smaller than the margin on the difference, which is about 6.2 points here, so the poll cannot say which side is ahead at all. Reading a majority off a split this close is reading the noise.",
+    },
+  },
+  {
+    id: "moe-narrow-crosstab",
+    scenario: {
+      en: "A national poll of 1,200 adults reports a margin of plus or minus 2.8 points. A columnist quotes the result for adults under 30, a group of 180 respondents in the sample, and applies the same margin to it.",
+    },
+    trap: "margin-of-error",
+    explanation: {
+      en: "A margin of error shrinks with the square root of the sample it is computed on. On 180 respondents it is around 7.3 points, not 2.8, so the crosstab is far softer than the headline figure and the same number cannot be carried down the table.",
+    },
+  },
+  {
+    id: "moe-three-way",
+    scenario: {
+      en: "Three options in a survey of 800 people draw 36, 33 and 31 per cent, with a stated margin of plus or minus 3.5 points. A summary ranks them first, second and third.",
+    },
+    trap: "margin-of-error",
+    explanation: {
+      en: "Every gap in that ranking is smaller than the margin on a difference, which is around 7 points at these shares, so the ordering is not established by the data. A poll can say all three are in the same region without being able to say which is on top.",
+    },
+  },
+  {
+    id: "moe-repeated-comparisons",
+    scenario: {
+      en: "A researcher compares a treatment group with a control group on twenty different outcomes, reports the two that came out significant at the five per cent level, and describes them as the effects of the treatment.",
+    },
+    trap: "margin-of-error",
+    explanation: {
+      en: "Twenty comparisons at a five per cent threshold will throw up about one apparent finding by chance even when nothing is going on, so two is close to what noise alone predicts. The margin on any single comparison says nothing about how many comparisons were made.",
+    },
+  },
+  {
+    id: "moe-exit-poll-lead",
+    scenario: {
+      en: "A survey of 2,000 households finds 49 per cent of homes have a particular appliance in a coastal region and 45 per cent inland, each region contributing about half the sample, and the report treats the four point difference as established.",
+    },
+    trap: "margin-of-error",
+    explanation: {
+      en: "The two regional figures rest on about 1,000 respondents each, so each already carries a margin near 3 points, and the difference between two independent groups carries about 4.4. A four point gap does not clear it.",
+    },
+  },
+  {
+    id: "moe-precision-theatre",
+    scenario: {
+      en: "A polling firm reports support at 47.3 per cent with a margin of error of plus or minus 3 points, and a headline notes that support has slipped from 47.8 per cent last week.",
+    },
+    trap: "margin-of-error",
+    explanation: {
+      en: "A decimal point on an estimate whose margin is three points is precision the survey does not have, and a half point week-on-week move is far inside the margin on a change. The extra digit invites a comparison the data cannot support.",
+    },
+  },
+  {
+    id: "moe-approval-two-groups",
+    scenario: {
+      en: "A hospital surveys 1,400 patients and reports that 68 per cent of day-case patients and 63 per cent of inpatients rated their care as good, with a margin of error of plus or minus 2.6 points, and concludes that day cases are more satisfied.",
+    },
+    trap: "margin-of-error",
+    explanation: {
+      en: "The five point difference is between two groups, each smaller than the full sample the 2.6 was computed on, and a difference needs a wider margin than either group's own. Nothing in the report has compared the gap against a ruler built for a gap.",
+    },
+  },
+  {
+    id: "moe-lead-narrowed",
+    scenario: {
+      en: "A poll last month put one option 9 points ahead and this month puts it 5 points ahead, both surveys of about 1,000 people with margins near plus or minus 3 points. A newspaper reports that the lead has narrowed.",
+    },
+    trap: "margin-of-error",
+    explanation: {
+      en: "A change in a lead is a difference between two differences, and its margin is wider than any of the four figures behind it, comfortably more than the four point move being reported. Each individual lead may be real while the change between them is invisible.",
+    },
+  },
+  {
+    id: "moe-tie-called",
+    scenario: {
+      en: "Two products are tested with the same 1,100 users. One is preferred by 51 per cent, the other by 49, and the margin of error is plus or minus 3 points. A blog post reports the result as too close to call.",
+    },
+    trap: null,
+    explanation: {
+      en: "This is sound. The two point gap is smaller than the margin on a single share, and smaller again than the wider margin that belongs to a difference, so declining to name a winner is the correct reading. Note that being right here needs no arithmetic: when the gap is below even the printed margin, no correction can rescue a lead.",
+    },
+  },
+  {
+    id: "moe-doubled-first",
+    scenario: {
+      en: "An analyst looking at a poll of 1,000 people, where one option draws 55 per cent and another 38 with a printed margin of plus or minus 3.1 points, notes that the 17 point lead would survive even a margin twice as wide, and reports the lead as real.",
+    },
+    trap: null,
+    explanation: {
+      en: "This is sound, and it is sound because of the check that was made rather than the conclusion that was reached. Doubling the printed margin before believing a lead is the right rule of thumb for two shares of one sample, and a 17 point gap clears it easily.",
+    },
+  },
+  {
+    id: "moe-named-the-quantity",
+    scenario: {
+      en: "A pollster is asked whether a four point lead in her latest survey is outside the margin of error. She replies that the printed margin applies to each candidate's share, that the margin on the gap between them is roughly twice that, and that the survey therefore cannot separate the two.",
+    },
+    trap: null,
+    explanation: {
+      en: "This is sound. She has identified which quantity the claim is about before choosing a ruler for it, which is exactly the step that the usual reading skips.",
+    },
+  },
+
   // ---- Genuinely sound reasoning (decoys) ----
   {
     id: "ok-prespecified",

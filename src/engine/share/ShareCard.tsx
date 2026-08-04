@@ -1274,6 +1274,36 @@ function TargetGlyph() {
   );
 }
 
+function IntervalGlyph() {
+  const W = 200;
+  const H = 96;
+  /**
+   * A lead sitting on a number line, with a wide bracket that reaches back past
+   * zero. The gold dashes are zero: no lead at all. The point of the picture is
+   * that the bracket touches them.
+   */
+  const mid = 52;
+  const zero = 46;
+  const dot = 108;
+  return (
+    <svg
+      viewBox={`0 0 ${W} ${H}`}
+      width="100%"
+      role="img"
+      aria-label="A measured lead with an uncertainty bracket wide enough to reach back to zero"
+    >
+      <line x1={zero} y1={16} x2={zero} y2={80} stroke={CARD.gold} strokeWidth={1} strokeDasharray="3 3" />
+      <line x1={38} y1={mid} x2={178} y2={mid} stroke={CARD.teal} strokeWidth={2} />
+      <line x1={38} y1={mid - 8} x2={38} y2={mid + 8} stroke={CARD.teal} strokeWidth={2} />
+      <line x1={178} y1={mid - 8} x2={178} y2={mid + 8} stroke={CARD.teal} strokeWidth={2} />
+      <line x1={88} y1={mid + 20} x2={128} y2={mid + 20} stroke={CARD.rule} strokeWidth={1.5} />
+      <line x1={88} y1={mid + 15} x2={88} y2={mid + 25} stroke={CARD.rule} strokeWidth={1.5} />
+      <line x1={128} y1={mid + 15} x2={128} y2={mid + 25} stroke={CARD.rule} strokeWidth={1.5} />
+      <circle cx={dot} cy={mid} r={4} fill={CARD.rust} />
+    </svg>
+  );
+}
+
 function SeriesGlyph() {
   const W = 200;
   const H = 96;
@@ -1637,6 +1667,7 @@ export function ShareCard({
   const projectionGlyph = data.type === "projection";
   const targetGlyph = data.type === "target";
   const seriesGlyph = data.type === "series";
+  const intervalGlyph = data.type === "interval";
   const splitSampleGlyph =
     data.type === "rates" &&
     Boolean(data.strataAreSeparateSamples) &&
@@ -1756,6 +1787,8 @@ export function ShareCard({
             <TargetGlyph />
           ) : seriesGlyph ? (
             <SeriesGlyph />
+          ) : intervalGlyph ? (
+            <IntervalGlyph />
           ) : null}
 
           <p className="mt-4 font-display text-[17px] font-medium leading-snug">

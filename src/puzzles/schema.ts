@@ -1604,6 +1604,114 @@ const SeriesData = z
   });
 export type SeriesData = z.infer<typeof SeriesData>;
 
+/* ---------------------------------------------------------------------------
+ * A published poll: shares of one sample, each with the margin the source
+ * printed, and the gap between two of them with ITS margin.
+ *
+ * Needed because no existing shape can draw an interval at all. `estimation`
+ * holds guesses against a truth, `risk` splits one risk two ways, `rates`
+ * derives proportions from counts and draws them bare. None of them has a
+ * whisker, and a lesson about how wide a margin is cannot be told without one.
+ *
+ * The reveal works by drawing the SAME uncertainty a second time, around a
+ * different quantity. The setup shows two shares, each with the poll's printed
+ * margin, and the obvious reading is that a gap bigger than that margin is a
+ * real lead. The reveal draws the gap itself, with the margin that actually
+ * belongs to it, which for two shares of one sample is close to twice as wide.
+ *
+ * Percentages are authored as published rather than derived from counts, the
+ * same deliberate exception this project already makes for framing,
+ * distribution, dose, estimation, magnitude and target data: polls print shares
+ * and margins, never counts, and 42 per cent of 1,128 has no unique integer
+ * behind it. What is NOT authored is any margin on a difference, any ratio
+ * between two margins, or the gap itself. Those are derived, because a data
+ * file that stated them could contradict the shares it drew them from.
+ * ------------------------------------------------------------------------- */
+export const IntervalOption = z.object({
+  id: z.string().min(1),
+  label: LocalizedText, // "A major impact"
+  short: LocalizedText.optional(),
+  /** As published, in per cent. */
+  percent: z.number().min(0).max(100),
+});
+export type IntervalOption = z.infer<typeof IntervalOption>;
+
+const IntervalData = z
+  .object({
+    type: z.literal("interval"),
+    label: LocalizedText, // figure title
+    metricLabel: LocalizedText, // what the shares are shares of
+    /** Says on the figure who was asked, how many, and what the margin means. */
+    statNote: LocalizedText,
+    /** Named on the reveal, where the gap gets its own margin. */
+    gapLabel: LocalizedText.optional(),
+    sampleSize: z.number().int().positive(),
+    /** The margin the source prints, in percentage points, for one share. */
+    publishedMargin: z.number().positive(),
+    /**
+     * The design effect the source applied, if it applied one. Optional rather
+     * than defaulted: a `.default()` would make the field required on the
+     * inferred type and force an edit to every other puzzle. Absent means one.
+     */
+    designEffect: z.number().positive().optional(),
+    options: z.array(IntervalOption).min(2),
+    /** The two options whose gap the reveal draws, in order. */
+    gapBetween: z.tuple([z.string().min(1), z.string().min(1)]),
+  })
+  .superRefine((d, ctx) => {
+    const ids = new Set(d.options.map((o) => o.id));
+    if (ids.size !== d.options.length)
+      ctx.addIssue({ code: "custom", path: ["options"], message: "duplicate option id" });
+
+    const [aId, bId] = d.gapBetween;
+    if (aId === bId)
+      ctx.addIssue({
+        code: "custom",
+        path: ["gapBetween"],
+        message: "the gap must be between two different options",
+      });
+    for (const [i, id] of d.gapBetween.entries())
+      if (!ids.has(id))
+        ctx.addIssue({
+          code: "custom",
+          path: ["gapBetween", i],
+          message: `no option with id ${id}`,
+        });
+
+    const total = d.options.reduce((s, o) => s + o.percent, 0);
+    if (total > 100.5)
+      ctx.addIssue({
+        code: "custom",
+        path: ["options"],
+        message: `shares of one sample sum to ${total}, which is over 100`,
+      });
+
+    // The printed margin has to reproduce from the sample size and the design
+    // effect. This is the check that catches the nastiest authoring error in
+    // this shape: taking a margin from one poll and a sample size from another,
+    // or silently assuming a design effect of one where the source applied a
+    // bigger one. Everything the reveal derives scales with that assumption, so
+    // if it is wrong every number on the second beat is wrong with it.
+    const deff = d.designEffect ?? 1;
+    const implied = 1.96 * 0.5 * Math.sqrt(deff / d.sampleSize) * 100;
+    if (Math.abs(implied - d.publishedMargin) > 0.05)
+      ctx.addIssue({
+        code: "custom",
+        path: ["publishedMargin"],
+        message: `a sample of ${d.sampleSize} with a design effect of ${deff} implies a margin of ${implied.toFixed(2)}, not the authored ${d.publishedMargin}`,
+      });
+
+    const a = d.options.find((o) => o.id === aId);
+    const b = d.options.find((o) => o.id === bId);
+    if (a && b && a.percent <= b.percent)
+      ctx.addIssue({
+        code: "custom",
+        path: ["gapBetween"],
+        message: "name the leading option first, or the gap draws negative",
+      });
+  });
+export type IntervalData = z.infer<typeof IntervalData>;
+
 export const PuzzleData = z.discriminatedUnion("type", [
   RatesData,
   FrequenciesData,
@@ -1628,6 +1736,7 @@ export const PuzzleData = z.discriminatedUnion("type", [
   ProjectionData,
   TargetData,
   SeriesData,
+  IntervalData,
 ]);
 export type PuzzleData = z.infer<typeof PuzzleData>;
 
@@ -1696,6 +1805,8 @@ export const DataView = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("insidewindow"), ...viewFields }),
   z.object({ kind: z.literal("oneinstrument"), ...viewFields }),
   z.object({ kind: z.literal("bothinstruments"), ...viewFields }),
+  z.object({ kind: z.literal("oneshare"), ...viewFields }),
+  z.object({ kind: z.literal("thegap"), ...viewFields }),
 ]);
 export type DataView = z.infer<typeof DataView>;
 export type DataViewKind = DataView["kind"];

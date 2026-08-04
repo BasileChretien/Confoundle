@@ -34,6 +34,7 @@ import { MagnitudeView } from "./MagnitudeView";
 import { ProjectionView } from "./ProjectionView";
 import { TargetView } from "./TargetView";
 import { SeriesView } from "./SeriesView";
+import { IntervalView } from "./IntervalView";
 import { restrictSeries } from "./series";
 
 /**
@@ -204,6 +205,12 @@ export function DataViewRenderer({
           kind={view.kind}
         />
       ) : null;
+    case "interval":
+      // Not a slice-drawer. Both beats draw every published figure; what
+      // changes is which quantity carries the interval.
+      return view.kind === "oneshare" || view.kind === "thegap" ? (
+        <IntervalView data={data} kind={view.kind} />
+      ) : null;
     default:
       return null;
   }
@@ -324,6 +331,10 @@ export function scopeLabel(kind: DataViewKind): string {
       return "One official count";
     case "bothinstruments":
       return "And the other one";
+    case "oneshare":
+      return "Each share, with the poll's margin";
+    case "thegap":
+      return "The lead, with its own";
     default:
       return "";
   }

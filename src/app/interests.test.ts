@@ -24,11 +24,15 @@ describe("what the chooser is allowed to offer", () => {
     const offered = availableInterests(puzzles);
     // These must not be advertised until a lesson claims them. Each flips on its
     // own the moment one does, which is exactly what happened to media and
-    // psychology when the framing puzzle landed, and to economics when the
-    // compliance-sequencing lesson landed: this assertion has named and then
-    // released all three in turn, which is the point of it.
-    expect(offered).not.toContain("sports");
+    // psychology when the framing puzzle landed, to economics when the
+    // compliance-sequencing lesson landed, and to sports when the margin-of-
+    // error poll landed: this assertion has named and then released four in
+    // turn, which is the point of it. Only finance is left unclaimed, so if
+    // this fails there is no fresh tag to move to and the assertion should be
+    // deleted rather than weakened.
     expect(offered).not.toContain("finance");
+    // ...and sports, released by the Super Bowl poll, is now offered.
+    expect(offered).toContain("sports");
     // ...while the areas the deck really covers are offered.
     expect(offered).toContain("everyday");
     expect(offered).toContain("clinical");
@@ -78,10 +82,11 @@ describe("keeping a stored selection honest", () => {
 
   it("drops a tag that has lost its last puzzle", () => {
     // Uses a tag no puzzle carries. This used to be "politics", until the 1812
-    // gerrymander claimed it, and then "economics", until compliance sequencing
-    // claimed it; pick a fresh unclaimed tag if this ever fails rather than
-    // weakening the assertion.
-    expect(pruneInterests(["sports"], puzzles)).toEqual([]);
+    // gerrymander claimed it, then "economics", until compliance sequencing
+    // claimed it, then "sports", until the margin-of-error poll claimed it;
+    // pick a fresh unclaimed tag if this ever fails rather than weakening the
+    // assertion. Finance is the last one left.
+    expect(pruneInterests(["finance"], puzzles)).toEqual([]);
   });
 });
 

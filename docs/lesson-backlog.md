@@ -555,11 +555,10 @@ against, so the provenance is the study.
 
 <!-- skill: margin-of-error -->
 
-**Status: SOURCED 2026-08-04, NEEDS A SHAPE AND ONE DESIGN DECISION.** A poll
-has been found and read at source, the arithmetic has been worked through
-against integer rounding, and the block is now a specific piece of engine work
-rather than a hunt. What follows records the numbers, the arithmetic and the one
-place the obvious design fails, so nobody has to rediscover any of it.
+**Status: SHIPPED 2026-08-04** as `a-lead-that-is-not-a-lead`, on the new
+`interval` shape, taking option 2 below. The record of the sourcing is kept
+because it is also the record of why the puzzle asks for a width rather than a
+verdict, which is the only interesting decision in it.
 
 **The source.** Marist Poll of 1,128 National Adults, interviews conducted 3 to
 4 February 2025, released as the Super Bowl LIX survey. Methodology page read at

@@ -652,13 +652,13 @@ const items: TestItem[] = [
     },
   },
   {
-    id: "moe-repeated-comparisons",
+    id: "moe-two-departments",
     scenario: {
-      en: "A researcher compares a treatment group with a control group on twenty different outcomes, reports the two that came out significant at the five per cent level, and describes them as the effects of the treatment.",
+      en: "An employer surveys 1,000 staff and reports engagement scores of 71 per cent in one department and 67 in another, each department contributing about 500 responses, alongside the survey's margin of error of plus or minus 3.1 points. The second department is put on an improvement plan.",
     },
     trap: "margin-of-error",
     explanation: {
-      en: "Twenty comparisons at a five per cent threshold will throw up about one apparent finding by chance even when nothing is going on, so two is close to what noise alone predicts. The margin on any single comparison says nothing about how many comparisons were made.",
+      en: "The 3.1 was computed on the whole survey. Each department rests on about half that, so each already carries a margin near 4.2 points, and the difference between the two carries about 5.9. A four point gap is well inside it, and the department is being managed on noise.",
     },
   },
   {
@@ -724,11 +724,11 @@ const items: TestItem[] = [
   {
     id: "moe-named-the-quantity",
     scenario: {
-      en: "A pollster is asked whether a four point lead in her latest survey is outside the margin of error. She replies that the printed margin applies to each candidate's share, that the margin on the gap between them is roughly twice that, and that the survey therefore cannot separate the two.",
+      en: "A pollster is asked whether a four point lead in her latest survey is outside the margin of error. They reply that the printed margin applies to each candidate's share, that the margin on the gap between them is roughly twice that, and that the survey therefore cannot separate the two.",
     },
     trap: null,
     explanation: {
-      en: "This is sound. She has identified which quantity the claim is about before choosing a ruler for it, which is exactly the step that the usual reading skips.",
+      en: "This is sound. They have identified which quantity the claim is about before choosing a ruler for it, which is exactly the step that the usual reading skips.",
     },
   },
 

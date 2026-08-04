@@ -29,7 +29,15 @@ export function IntervalView({
   return (
     <div className="flex flex-col gap-2.5">
       {kind === "oneshare" ? <Shares data={data} /> : <Gap data={data} />}
-      <p className="text-[11px] leading-snug text-ink-soft">{t(data.metricLabel)}</p>
+      {/*
+        The caption has to name what carries the interval, and that changes
+        between the beats: the shares on the first, the lead on the second. A
+        puzzle that draws the gap authors `gapLabel` for exactly this, so the
+        second beat is not captioned with a sentence about the first.
+      */}
+      <p className="text-[11px] leading-snug text-ink-soft">
+        {t(kind === "thegap" ? (data.gapLabel ?? data.metricLabel) : data.metricLabel)}
+      </p>
       <p className="text-[11px] leading-snug text-ink-mute">{t(data.statNote)}</p>
     </div>
   );

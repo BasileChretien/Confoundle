@@ -31,6 +31,7 @@ import { restrictEstimation } from "./estimation";
 import { SalienceView } from "./SalienceView";
 import { restrictSalience } from "./salience";
 import { MagnitudeView } from "./MagnitudeView";
+import { ProjectionView } from "./ProjectionView";
 
 /**
  * The generic seam: dispatch on the data's `type` to the matching renderer.
@@ -173,6 +174,14 @@ export function DataViewRenderer({
       return view.kind === "asnumbers" || view.kind === "againsttruth" ? (
         <MagnitudeView data={data} kind={view.kind} />
       ) : null;
+    case "projection":
+      // Not a slice-drawer: both views draw the same maps at the same size, and
+      // the reveal adds the verdict and the accusation bars. Rescaling or
+      // dropping a map between the beats would change what the reader is
+      // comparing, which is the one thing this shape has to hold still.
+      return view.kind === "asdrawn" || view.kind === "whichisexact" ? (
+        <ProjectionView data={data} kind={view.kind} />
+      ) : null;
     default:
       return null;
   }
@@ -281,6 +290,10 @@ export function scopeLabel(kind: DataViewKind): string {
       return "What people guessed";
     case "againsttruth":
       return "And the real sizes";
+    case "asdrawn":
+      return "Just look at them";
+    case "whichisexact":
+      return "Which one is honest";
     default:
       return "";
   }

@@ -441,9 +441,49 @@ tempting finding as probably noise is rare enough to be the example.
 
 <!-- skill: projection-distortion -->
 
-**Status: REFUTED AT SOURCE 2026-08-04.** The lesson as written asserts a
-misconception that the best available measurement of that misconception says
-people do not have.
+**Status: SHIPPED 2026-08-04** as `which-map-lies`, skill
+`projection-distortion`, on the new `projection` shape, but NOT on the premise
+recorded below, which stays refuted. Read this entry as a record of two
+findings: the original lesson is dead, and a better one was underneath it.
+
+**What shipped.** Battersby SE, Kessler FC, "Cues for interpreting distortion in
+map projections", Journal of Geography 2012;111(3):93-101. Thirty-one
+undergraduates with no projection training were shown six world projections and
+asked, for each, whether it distorted area. Two of the six are equal-area
+projections and are exactly right about size. Those two were accused at 39 per
+cent (Gall-Peters) and 71 per cent (Goode). The projection accused least, at 10
+per cent, was Robinson, which really does distort area and which had been the
+National Geographic Society's standard world map for twenty-five years. People
+judge a map by whether it looks like the maps they know.
+
+**Provenance notes worth keeping.** Five of the six figures are printed twice,
+in Table 1 and again in the prose about that projection, and agree both times.
+Eisenlohr is the sixth and is excluded: Table 1 says 55 per cent, the prose says
+58. The study's second group of 42 trained participants is excluded entirely,
+because its Mercator figure of 91 per cent is not reachable by any whole number
+of 42 people. The shares are authored as published rather than converted to
+counts: each does pin a unique number out of 31, but nothing else printed
+confirms those counts.
+
+**The maps are computed, not copied.** Robinson and Gall-Peters outlines were
+generated from Natural Earth 110m coastlines, which are public domain with no
+attribution required, by applying each projection's published formula. The test
+proves from that arithmetic that Gall-Peters is area-exact at every latitude and
+that Robinson draws a ten-degree cell at 70 north about twice the size, relative
+to its ground, as one at the equator. Nothing from the paper's figures or from
+any copyrighted map is reproduced.
+
+**The original premise below remains refuted** and must not be revived: the
+Greenland-against-Africa story is a fact about Mercator maps, not a measured
+fact about what people believe, and Battersby and Montello (2009) is the
+measurement that says so. What shipped is the opposite lesson, that people
+mistake the honest maps for the dishonest ones.
+
+---
+
+**Status when opened: BLOCKED on shape. Then REFUTED AT SOURCE 2026-08-04.** The
+lesson as written asserts a misconception that the best available measurement of
+that misconception says people do not have.
 
 AP Human Geography makes this **required content**, IMP-1.A.3, quoted verbatim:
 

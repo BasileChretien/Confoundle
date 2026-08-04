@@ -53,6 +53,7 @@ import { whataboutism } from "./data/whataboutism";
 import { boomerangEffect } from "./data/boomerang-effect";
 import { prebunking } from "./data/prebunking";
 import { magnitudeCompression } from "./data/magnitude-compression";
+import { projectionDistortion } from "./data/projection-distortion";
 
 /**
  * The puzzle registry. Adding a puzzle = import its data file and add it to
@@ -114,6 +115,7 @@ const rawPuzzles: unknown[] = [
   boomerangEffect,
   prebunking,
   magnitudeCompression,
+  projectionDistortion,
 ];
 
 export const puzzles: PuzzleType[] = rawPuzzles.map((p, i) => {

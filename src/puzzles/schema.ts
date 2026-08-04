@@ -1276,6 +1276,104 @@ const MagnitudeData = z
   });
 export type MagnitudeData = z.infer<typeof MagnitudeData>;
 
+/* ---------------------------------------------------------------------------
+ * Map projections, what each one actually does to area, and what people said it
+ * did to area.
+ *
+ * Needed because no existing shape can hold a claim against the thing the claim
+ * is about when the thing is a picture. `salience` is the near relative: it also
+ * sets what people said against what is true. But its comparisons are binary
+ * picks between two options with a share who chose correctly, and here each
+ * projection is judged on its own, the property at stake is a mathematical fact
+ * about the projection rather than a frequency in the world, and the figure has
+ * to draw the maps themselves, because the whole point is that people are
+ * reading the picture and reading it wrong.
+ *
+ * The reveal works because both views draw the same maps at the same size. The
+ * setup shows them and nothing else, so the reader judges them the way the
+ * study's participants did, by looking. The reveal keeps the maps exactly as
+ * they were and adds two things that were in the data all along: which
+ * projections are area-exact, and how many people said each one distorted area.
+ *
+ * Shares are authored as published, with the number of participants stated, the
+ * same deliberate exception made for `framing`, `distribution`, `dose`,
+ * `estimation` and `magnitude`. The source prints percentages of 31 people and
+ * no counts.
+ * ------------------------------------------------------------------------- */
+export const ProjectionEntry = z.object({
+  id: z.string().min(1),
+  label: LocalizedText, // "Robinson"
+  short: LocalizedText.optional(),
+  /** Whether this projection draws every region in exact proportion to its area. */
+  equalArea: z.boolean(),
+  /** Share of the study's untrained participants who said it distorts area. */
+  saidDistorts: z.number().min(0).max(100),
+  /**
+   * Which stored outline to draw for this projection, when the figure draws it.
+   * Absent means the projection appears in the data and the bars but has no map
+   * on screen, which is how the study's other projections are carried.
+   */
+  mapId: z.string().min(1).optional(),
+});
+export type ProjectionEntry = z.infer<typeof ProjectionEntry>;
+
+const ProjectionData = z
+  .object({
+    type: z.literal("projection"),
+    label: LocalizedText, // figure title
+    /** What the bar measures, e.g. "Said this map distorts the sizes". */
+    accusedLabel: LocalizedText,
+    exactLabel: LocalizedText, // "Areas are exact"
+    distortsLabel: LocalizedText, // "Areas are distorted"
+    /** Says on the figure whose answers these are and how many there were. */
+    percentNote: LocalizedText,
+    projections: z.array(ProjectionEntry).min(2),
+  })
+  .superRefine((d, ctx) => {
+    const ids = new Set<string>();
+    d.projections.forEach((p, i) => {
+      if (ids.has(p.id))
+        ctx.addIssue({
+          code: "custom",
+          path: ["projections", i, "id"],
+          message: `duplicate projection id "${p.id}"`,
+        });
+      ids.add(p.id);
+    });
+    const exact = d.projections.filter((p) => p.equalArea);
+    const notExact = d.projections.filter((p) => !p.equalArea);
+    if (exact.length === 0 || notExact.length === 0)
+      ctx.addIssue({
+        code: "custom",
+        path: ["projections"],
+        message:
+          "needs at least one area-exact projection and at least one that distorts area, or there is nothing to be right or wrong about",
+      });
+    // The whole lesson is that people accuse the honest maps. If the worst-
+    // accused area-exact projection were never accused more than the least-
+    // accused distorting one, the reveal would show people getting it right and
+    // the copy would be false.
+    if (exact.length && notExact.length) {
+      const worstExact = Math.max(...exact.map((p) => p.saidDistorts));
+      const leastAccusedLiar = Math.min(...notExact.map((p) => p.saidDistorts));
+      if (worstExact <= leastAccusedLiar)
+        ctx.addIssue({
+          code: "custom",
+          path: ["projections"],
+          message: `the most-accused area-exact projection (${worstExact} per cent) is not accused more than the least-accused distorting one (${leastAccusedLiar} per cent), so people are not mistaking the honest maps for the dishonest ones and there is nothing to reveal`,
+        });
+    }
+    // At least two maps have to be on screen, or the setup is asking the reader
+    // to compare pictures it never showed them.
+    if (d.projections.filter((p) => p.mapId).length < 2)
+      ctx.addIssue({
+        code: "custom",
+        path: ["projections"],
+        message: "at least two projections need a mapId, or there is nothing to look at",
+      });
+  });
+export type ProjectionData = z.infer<typeof ProjectionData>;
+
 export const PuzzleData = z.discriminatedUnion("type", [
   RatesData,
   FrequenciesData,
@@ -1297,6 +1395,7 @@ export const PuzzleData = z.discriminatedUnion("type", [
   RatingsData,
   BunchingData,
   MagnitudeData,
+  ProjectionData,
 ]);
 export type PuzzleData = z.infer<typeof PuzzleData>;
 
@@ -1359,6 +1458,8 @@ export const DataView = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("acrossline"), ...viewFields }),
   z.object({ kind: z.literal("asnumbers"), ...viewFields }),
   z.object({ kind: z.literal("againsttruth"), ...viewFields }),
+  z.object({ kind: z.literal("asdrawn"), ...viewFields }),
+  z.object({ kind: z.literal("whichisexact"), ...viewFields }),
 ]);
 export type DataView = z.infer<typeof DataView>;
 export type DataViewKind = DataView["kind"];

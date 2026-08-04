@@ -685,9 +685,19 @@ No dispersion can be drawn for Experiment 1 in any case: its error bars are
 standard errors shown graphically, with no numeric values printed. Experiment 2
 does print `M = .84, SE = .26` for its restricted subsample.
 
-Status: **SOURCED, ready to author once the axis question is settled**, and it
-should ship under a new skill for prebunking rather than as a second
-`continued-influence-effect`.
+**Settled and SHIPPED 2026-08-04 as `prebunking`, slug `warned-in-advance`.**
+Basile chose option 1: draw the true 0 to 20 scale. So the chart is cramped by
+design, all five markers sit between 10.6 and 25.3 per cent of the axis, and the
+framing turns that into part of the finding by telling the reader what twenty
+means. The provenance note records why the deck did not copy the paper's own 0 to
+6 axis, and a test asserts the axis is 0 to 20 and that every marker lands in the
+lower half, so nobody can quietly rescale it later.
+
+It ships under `prebunking` rather than as a second `continued-influence-effect`,
+because the intervention is a warning given **before** the misinformation rather
+than a correction after it. The reveal carries the other four conditions, the
+deep dive carries Experiment 2, and both say plainly that nothing tried switched
+the effect off.
 
 ### Expired: the continued influence field-wide shape block
 

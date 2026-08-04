@@ -7175,6 +7175,147 @@ const items: TestItem[] = [
       en: "Forcefulness is not the problem; distance is. A strong message to an audience already inside the relevant range is the situation where pushing harder does move people further.",
     },
   },
+  // ---- Prebunking ----
+  {
+    id: "pb-read-about-it",
+    scenario: {
+      en: "Having read a long article about anchoring, a buyer concludes that the seller opening at a high number can no longer affect her, and stops writing down her own valuation first.",
+    },
+    trap: "prebunking",
+    explanation: {
+      en: "Knowing the mechanism reduces the effect rather than removing it, so the reasonable estimate of how much it still moves her is somewhere well above zero. Dropping the external check because of what she has read is exactly the wrong response to having read it.",
+    },
+  },
+  {
+    id: "pb-training-then-nothing",
+    scenario: {
+      en: "A firm runs a one-hour session on cognitive bias for its analysts and, on the strength of it, retires the requirement that two people independently value each deal.",
+    },
+    trap: "prebunking",
+    explanation: {
+      en: "The training may well help, but the procedure it replaced worked whether or not anyone remembered the training. Swapping a structural check for an educational one trades something reliable for something partial.",
+    },
+  },
+  {
+    id: "pb-warned-jury",
+    scenario: {
+      en: "A judge warns jurors at the start of a trial that they may hear inadmissible material and must set it aside, and treats that warning as removing the need to consider a mistrial later.",
+    },
+    trap: "prebunking",
+    explanation: {
+      en: "A warning given in advance measurably reduces reliance on material later struck out, which is why it is worth giving. It does not reduce it to nothing, so it cannot carry the weight of a decision that assumes the material has no effect at all.",
+    },
+  },
+  {
+    id: "pb-media-literacy-claim",
+    scenario: {
+      en: "A campaign reports that its media-literacy course halved how often participants shared false headlines, and describes the participants as now inoculated against misinformation.",
+    },
+    trap: "prebunking",
+    explanation: {
+      en: "Halving is a genuinely large effect and worth reporting as one. Inoculated is a different claim, and the same data show the remaining half, which is what the word quietly denies.",
+    },
+  },
+  {
+    id: "pb-i-know-im-biased",
+    scenario: {
+      en: "Asked whether his own hiring decisions might be affected by the candidate's school, a manager answers that he is aware of that bias and therefore controls for it.",
+    },
+    trap: "prebunking",
+    explanation: {
+      en: "Awareness is the beginning of the fix, not the fix. The claim to control for it introspectively is precisely the claim that the evidence on forewarning does not support, and it displaces the structural remedies that would work.",
+    },
+  },
+  {
+    id: "pb-disclosure-solves-it",
+    scenario: {
+      en: "A journal decides that requiring authors to disclose funding at the top of each paper is sufficient, since readers now know to allow for it.",
+    },
+    trap: "prebunking",
+    explanation: {
+      en: "Telling readers in advance what to watch for reduces how much the funding colours their reading, and it does not neutralise it. Disclosure is a discount on the problem rather than a solution to it, which is an argument for keeping the other safeguards.",
+    },
+  },
+  {
+    id: "pb-forewarned-shopper",
+    scenario: {
+      en: "Before a negotiation, a team reminds itself that the other side will open with an extreme number, and on that basis decides it does not need to agree its walk-away point beforehand.",
+    },
+    trap: "prebunking",
+    explanation: {
+      en: "Predicting the move in advance helps and does not immunise. The walk-away point written down before the meeting is the thing that still works after the extreme number has been heard, which is why it is worth having.",
+    },
+  },
+  {
+    id: "pb-corrected-and-warned",
+    scenario: {
+      en: "A newsroom warns readers at the top of a developing story that early details often turn out wrong, then issues a correction two days later, and considers the record fully repaired.",
+    },
+    trap: "prebunking",
+    explanation: {
+      en: "Both steps are right and both are partial. The evidence is that a warning plus a correction still leaves people using the withdrawn detail, so treating the pair as a complete fix overstates what either can do.",
+    },
+  },
+  {
+    id: "pb-debiasing-course",
+    scenario: {
+      en: "After a debiasing workshop, a team stops recording the reasons for its forecasts, on the grounds that the participants can now catch their own errors as they make them.",
+    },
+    trap: "prebunking",
+    explanation: {
+      en: "The written record is what lets an error be caught by somebody who was not in the workshop, and later by the person who was. Replacing it with trained self-monitoring assumes the training does more than the evidence says it does.",
+    },
+  },
+  {
+    id: "pb-this-wont-work-on-me",
+    scenario: {
+      en: "Shown an advertisement and told plainly that it is engineered to associate the product with belonging, a viewer concludes that having seen through it means it has had no effect on him.",
+    },
+    trap: "prebunking",
+    explanation: {
+      en: "Seeing through something and being unaffected by it are different states, and the gap between them is the whole finding. The expectation to hold is a reduced effect, not an absent one.",
+    },
+  },
+  {
+    id: "ok-pb-warned-and-kept-the-check",
+    scenario: {
+      en: "A reviewer is told in advance that a manuscript comes from a well-known laboratory, notes that this is likely to soften her reading, and asks for a second reviewer who is not told.",
+    },
+    trap: null,
+    explanation: {
+      en: "This is prebunking used correctly. The warning is taken as reason to add an external check rather than as a substitute for one, which is what the evidence supports.",
+    },
+  },
+  {
+    id: "ok-pb-reported-both",
+    scenario: {
+      en: "A training programme reports that errors fell by about half and states plainly that the remaining half persisted despite everyone having been taught the material.",
+    },
+    trap: null,
+    explanation: {
+      en: "Reporting the reduction and the residue together is the honest form. It lets the reader see both that the training worked and that it did not finish the job.",
+    },
+  },
+  {
+    id: "ok-pb-specific-over-vague",
+    scenario: {
+      en: "Rather than telling staff to be sceptical of supplier claims, a manager walks through the exact pattern a particular supplier uses and what it will look like next quarter.",
+    },
+    trap: null,
+    explanation: {
+      en: "Specific beats vague, and that is what the evidence shows: a detailed account of the mechanism does considerably more than a general instruction to take care. This is the lesson applied.",
+    },
+  },
+  {
+    id: "ok-pb-structural-fix",
+    scenario: {
+      en: "A hospital finds that reminding clinicians about anchoring on the first diagnosis helps only somewhat, and adds a checklist step requiring one alternative to be recorded before discharge.",
+    },
+    trap: null,
+    explanation: {
+      en: "Noticing that the educational fix is partial and adding a structural one is the right response to a partial result. The check works whether or not the reminder was remembered that day.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

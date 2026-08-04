@@ -5340,6 +5340,8 @@ export const ru: Record<string, string> = {
   "Given two branches with identical scores on the company's single performance measure, a director declines to say which is better run and asks what each measure would fail to capture before commissioning anything further.": "Имея два филиала с одинаковыми баллами по единственной корпоративной мере эффективности, директор отказывается сказать, какой из них управляется лучше, и спрашивает, что каждая мера не улавливает, прежде чем заказывать что-либо ещё.",
   "Identical scores on one indicator support identical scores on that indicator and nothing more. Refusing to convert a summary figure into a judgement about how somewhere is run, and asking what the figure omits, is the discipline this trap is about.": "Одинаковые баллы по одному показателю подтверждают одинаковые баллы по этому показателю и ничего больше. Отказ превращать сводное число в суждение о том, как где-то устроена работа, и вопрос о том, что это число опускает, и есть та дисциплина, о которой эта ловушка.",
   "Against the target": "Против норматива",
+  "Each share, with the poll's margin": "Каждая доля с погрешностью опроса",
+  "The lead, with its own": "Отрыв со своей собственной",
   "One official count": "Один официальный счёт",
   "And the other one": "И второй",
   "And where they finished": "И где они закончили",

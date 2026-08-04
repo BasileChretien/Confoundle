@@ -5370,6 +5370,8 @@ export const fr: Record<string, string> = {
   "Given two branches with identical scores on the company's single performance measure, a director declines to say which is better run and asks what each measure would fail to capture before commissioning anything further.": "Face à deux agences aux scores identiques sur l'unique indicateur de performance de l'entreprise, un directeur refuse de dire laquelle est la mieux gérée et demande ce que chaque mesure ne capterait pas avant de commander quoi que ce soit d'autre.",
   "Identical scores on one indicator support identical scores on that indicator and nothing more. Refusing to convert a summary figure into a judgement about how somewhere is run, and asking what the figure omits, is the discipline this trap is about.": "Des scores identiques sur un indicateur soutiennent des scores identiques sur cet indicateur, et rien de plus. Refuser de convertir un chiffre résumé en jugement sur la façon dont un endroit est géré, et demander ce que ce chiffre omet, c'est la discipline dont il est question ici.",
   "Against the target": "Face à l'objectif",
+  "Each share, with the poll's margin": "Chaque proportion, avec la marge du sondage",
+  "The lead, with its own": "L'écart, avec la sienne",
   "One official count": "Un décompte officiel",
   "And the other one": "Et l'autre",
   "And where they finished": "Et où ils sont sortis",

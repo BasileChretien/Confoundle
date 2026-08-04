@@ -5268,6 +5268,8 @@ export const ja: Record<string, string> = {
   "Given two branches with identical scores on the company's single performance measure, a director declines to say which is better run and asks what each measure would fail to capture before commissioning anything further.": "会社の唯一の業績指標で同点の二支店を前にして、ある役員はどちらの運営が優れているかを述べることを拒み、さらに何かを発注する前に、それぞれの指標が捉え損ねるものは何かを問う。",
   "Identical scores on one indicator support identical scores on that indicator and nothing more. Refusing to convert a summary figure into a judgement about how somewhere is run, and asking what the figure omits, is the discipline this trap is about.": "一つの指標で同点であることが支持するのは、その指標で同点だということだけであり、それ以上ではない。要約された数字を、そこがどう運営されているかについての判断に変えることを拒み、その数字が省いているものを問うこと。この罠が問題にしている規律はそれである。",
   "Against the target": "目標に照らして",
+  "Each share, with the poll's margin": "各割合と、調査の誤差",
+  "The lead, with its own": "その差と、差自身の誤差",
   "One official count": "公式の集計を一つ",
   "And the other one": "そしてもう一つ",
   "And where they finished": "そして、どこで出ていったか",

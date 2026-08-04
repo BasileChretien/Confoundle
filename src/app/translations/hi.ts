@@ -5309,6 +5309,8 @@ export const hi: Record<string, string> = {
   "Given two branches with identical scores on the company's single performance measure, a director declines to say which is better run and asks what each measure would fail to capture before commissioning anything further.": "कंपनी के इकलौते प्रदर्शन माप पर एक जैसे अंक पाने वाली दो शाखाओं के सामने, एक निदेशक यह कहने से इनकार करता है कि कौन बेहतर चल रही है, और आगे कुछ भी करवाने से पहले पूछता है कि हर माप क्या पकड़ने से चूक जाएगी।",
   "Identical scores on one indicator support identical scores on that indicator and nothing more. Refusing to convert a summary figure into a judgement about how somewhere is run, and asking what the figure omits, is the discipline this trap is about.": "एक सूचक पर एक जैसे अंक बस इतना ही सिद्ध करते हैं कि उस सूचक पर अंक एक जैसे हैं, इससे आगे कुछ नहीं। किसी सारांश आँकड़े को यह फ़ैसला बना देने से इनकार करना कि कोई जगह कैसे चल रही है, और यह पूछना कि वह आँकड़ा क्या छोड़ देता है, यही वह अनुशासन है जिसकी बात यह जाल करता है।",
   "Against the target": "लक्ष्य के सामने",
+  "Each share, with the poll's margin": "हर हिस्सा, सर्वेक्षण की त्रुटि सीमा के साथ",
+  "The lead, with its own": "बढ़त, अपनी त्रुटि सीमा के साथ",
   "One official count": "एक आधिकारिक गिनती",
   "And the other one": "और दूसरी वाली",
   "And where they finished": "और वे कहाँ निकले",

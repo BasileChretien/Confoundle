@@ -5318,6 +5318,8 @@ export const bn: Record<string, string> = {
   "Given two branches with identical scores on the company's single performance measure, a director declines to say which is better run and asks what each measure would fail to capture before commissioning anything further.": "কোম্পানির একমাত্র কর্মদক্ষতা মাপে হুবহু একই নম্বর পাওয়া দুটি শাখার সামনে এক পরিচালক বলতে অস্বীকার করেন কোনটি ভালো চলছে, আর আর কিছু করানোর আগে জিজ্ঞাসা করেন প্রতিটি মাপ কী ধরতে ব্যর্থ হবে।",
   "Identical scores on one indicator support identical scores on that indicator and nothing more. Refusing to convert a summary figure into a judgement about how somewhere is run, and asking what the figure omits, is the discipline this trap is about.": "একটি সূচকে একই নম্বর কেবল এটুকুই সমর্থন করে যে ওই সূচকে নম্বর এক, আর কিছুই নয়। একটি সারাংশ সংখ্যাকে কোনো জায়গা কীভাবে চলছে তার রায়ে বদলে ফেলতে অস্বীকার করা, আর ওই সংখ্যা কী বাদ দিচ্ছে তা জিজ্ঞাসা করা, এই ফাঁদ যে শৃঙ্খলার কথা বলে তা এটিই।",
   "Against the target": "লক্ষ্যের বিপরীতে",
+  "Each share, with the poll's margin": "প্রতিটি অংশ, জরিপের ত্রুটিসীমা সহ",
+  "The lead, with its own": "ব্যবধান, তার নিজের ত্রুটিসীমা সহ",
   "One official count": "একটি সরকারি গণনা",
   "And the other one": "আর অন্যটি",
   "And where they finished": "আর তারা কোথায় বেরোল",

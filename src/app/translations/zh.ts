@@ -5210,6 +5210,8 @@ export const zh: Record<string, string> = {
   "Given two branches with identical scores on the company's single performance measure, a director declines to say which is better run and asks what each measure would fail to capture before commissioning anything further.": "面对在公司唯一一项绩效指标上得分完全相同的两家分支机构，一位主管拒绝说出哪一家管理得更好，并在决定进一步做什么之前先问：每一项指标各自会漏掉什么。",
   "Identical scores on one indicator support identical scores on that indicator and nothing more. Refusing to convert a summary figure into a judgement about how somewhere is run, and asking what the figure omits, is the discipline this trap is about.": "在一个指标上得分相同，只能支持在这个指标上得分相同，别的什么都支持不了。拒绝把一个汇总数字变成对某处如何运作的判断，并追问这个数字省略了什么，正是这个陷阱所讲的纪律。",
   "Against the target": "对照目标",
+  "Each share, with the poll's margin": "每个百分比，附民调的误差",
+  "The lead, with its own": "领先，附它自己的误差",
   "One official count": "一项官方计数",
   "And the other one": "以及另一项",
   "And where they finished": "以及他们在哪里离开",

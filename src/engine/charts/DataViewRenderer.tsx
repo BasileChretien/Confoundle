@@ -33,6 +33,8 @@ import { restrictSalience } from "./salience";
 import { MagnitudeView } from "./MagnitudeView";
 import { ProjectionView } from "./ProjectionView";
 import { TargetView } from "./TargetView";
+import { SeriesView } from "./SeriesView";
+import { restrictSeries } from "./series";
 
 /**
  * The generic seam: dispatch on the data's `type` to the matching renderer.
@@ -190,6 +192,18 @@ export function DataViewRenderer({
       return view.kind === "oncompliance" || view.kind === "insidewindow" ? (
         <TargetView data={data} kind={view.kind} />
       ) : null;
+    case "series":
+      // A slice-drawer, but of LINES rather than points: the setup draws one
+      // instrument and the reveal adds the other. The full data is passed
+      // alongside the restricted copy so the vertical scale and the time axis
+      // stay fixed between the two beats.
+      return view.kind === "oneinstrument" || view.kind === "bothinstruments" ? (
+        <SeriesView
+          data={restrictSeries(data, { groupIds: view.groupIds })}
+          full={data}
+          kind={view.kind}
+        />
+      ) : null;
     default:
       return null;
   }
@@ -306,6 +320,10 @@ export function scopeLabel(kind: DataViewKind): string {
       return "Against the target";
     case "insidewindow":
       return "And where they finished";
+    case "oneinstrument":
+      return "One official count";
+    case "bothinstruments":
+      return "And the other one";
     default:
       return "";
   }

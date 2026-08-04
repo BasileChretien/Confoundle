@@ -1274,6 +1274,32 @@ function TargetGlyph() {
   );
 }
 
+function SeriesGlyph() {
+  const W = 200;
+  const H = 96;
+  /**
+   * Two lines counting the same thing and crossing. The teal one falls, the
+   * rust one climbs, and the gold rule marks the year they swap places. Neither
+   * line is marked as the true one, because the point is that you cannot tell
+   * from the picture which instrument to believe.
+   */
+  const teal = "M14 24L60 32L106 52L152 66L186 76";
+  const rust = "M14 72L60 62L106 44L152 26L186 16";
+  return (
+    <svg
+      viewBox={`0 0 ${W} ${H}`}
+      width="100%"
+      role="img"
+      aria-label="Two lines measuring the same thing over time, one falling and one rising, crossing in the middle"
+    >
+      <line x1={106} y1={10} x2={106} y2={86} stroke={CARD.gold} strokeWidth={1} strokeDasharray="3 3" />
+      <path d={teal} fill="none" stroke={CARD.teal} strokeWidth={2} />
+      <path d={rust} fill="none" stroke={CARD.rust} strokeWidth={2} />
+      <line x1={10} y1={86} x2={W - 10} y2={86} stroke={CARD.rule} strokeWidth={1} />
+    </svg>
+  );
+}
+
 function SalienceGlyph() {
   const W = 200;
   const H = 96;
@@ -1610,6 +1636,7 @@ export function ShareCard({
   const magnitudeGlyph = data.type === "magnitude";
   const projectionGlyph = data.type === "projection";
   const targetGlyph = data.type === "target";
+  const seriesGlyph = data.type === "series";
   const splitSampleGlyph =
     data.type === "rates" &&
     Boolean(data.strataAreSeparateSamples) &&
@@ -1727,6 +1754,8 @@ export function ShareCard({
             <ProjectionGlyph />
           ) : targetGlyph ? (
             <TargetGlyph />
+          ) : seriesGlyph ? (
+            <SeriesGlyph />
           ) : null}
 
           <p className="mt-4 font-display text-[17px] font-medium leading-snug">

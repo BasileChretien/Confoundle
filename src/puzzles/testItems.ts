@@ -488,6 +488,108 @@ const items: TestItem[] = [
     },
   },
 
+  // ---- Counting reports is not counting events ----
+  {
+    id: "rr-harassment-policy",
+    scenario: {
+      en: "A company introduces an anonymous reporting line for harassment and runs a campaign telling staff how to use it. Reported incidents triple over the following year, and a board paper concludes that harassment has become a serious and worsening problem at the firm.",
+    },
+    trap: "reporting-rate",
+    explanation: {
+      en: "The campaign was designed to raise the share of incidents that get reported, and it appears to have worked. A count of reports moves when reporting moves, so a tripling immediately after a push to report tells you very little about whether the underlying behaviour changed at all.",
+    },
+  },
+  {
+    id: "rr-adverse-drug-reactions",
+    scenario: {
+      en: "A drug regulator notes that reported side effects for a medicine rose sharply in the year after a widely covered safety scare, and a newspaper reports that the drug has become more dangerous.",
+    },
+    trap: "reporting-rate",
+    explanation: {
+      en: "Publicity is one of the strongest known drivers of spontaneous reporting. Doctors and patients who would previously have shrugged an event off now file it, so the count climbs while the risk per patient stays where it was.",
+    },
+  },
+  {
+    id: "rr-hospital-incident-forms",
+    scenario: {
+      en: "A hospital ward makes incident forms easier to file and protects staff who file them. Reported near misses double the next quarter, and the trust's risk committee grades the ward as less safe than the one next door, which reported almost none.",
+    },
+    trap: "reporting-rate",
+    explanation: {
+      en: "The ward that reports nothing is the one nobody can see into. Making reporting easier raises the count without raising the number of near misses, and a ward with a healthy reporting culture will always look worse than a silent one on a measure built out of reports.",
+    },
+  },
+  {
+    id: "rr-fraud-detection-team",
+    scenario: {
+      en: "A bank hires a dedicated fraud team and installs new detection software. Confirmed fraud cases rise 60 per cent over two years, and the annual report presents this as evidence that fraud against the bank is escalating.",
+    },
+    trap: "reporting-rate",
+    explanation: {
+      en: "The bank changed how much fraud it can see, then measured how much it saw. A rise in confirmed cases is exactly what a working detection system produces, whether the attempts against the bank went up, stayed flat or fell.",
+    },
+  },
+  {
+    id: "rr-missing-persons",
+    scenario: {
+      en: "A police force changes its policy so that every report of a missing child is logged immediately rather than after a waiting period. The recorded number of missing children in the county rises by a third, and a councillor calls it a child safety crisis.",
+    },
+    trap: "reporting-rate",
+    explanation: {
+      en: "The definition of what enters the record changed on a known date, so the series before and after are not counting the same thing. The rise measures a policy, and nothing in it says whether more children went missing.",
+    },
+  },
+  {
+    id: "rr-food-poisoning-outbreak",
+    scenario: {
+      en: "A public health agency introduces free testing for a stomach bug at pharmacies. Confirmed cases in the region climb steeply and the agency's press office announces an outbreak.",
+    },
+    trap: "reporting-rate",
+    explanation: {
+      en: "Free testing converts illnesses that would never have been counted into confirmed cases. The confirmed count is the illness rate multiplied by the testing rate, and only one of those two clearly changed.",
+    },
+  },
+  {
+    id: "rr-falling-count-reassurance",
+    scenario: {
+      en: "After a police station closes and the local force moves to an online reporting form, recorded shoplifting in the town falls by a quarter. The force cites the fall in its annual performance summary.",
+    },
+    trap: "reporting-rate",
+    explanation: {
+      en: "This is the same error running downhill, which is why it rarely gets challenged. Making reporting harder removes reports, and a count built from reports will fall whether or not a single shoplifting stopped happening.",
+    },
+  },
+  {
+    id: "rr-two-instruments-disagree",
+    scenario: {
+      en: "A government's administrative count of homelessness rises for the fifth year running, while a household survey of the same population finds the number falling. A minister quotes the administrative figure, noting that it is a full count rather than a sample.",
+    },
+    trap: "reporting-rate",
+    explanation: {
+      en: "Being a full count is no defence: it is a full count of the people who reached the system, and access to the system can change. The disagreement between two instruments is the finding here, and picking whichever supports your position throws away the only useful information available.",
+    },
+  },
+  {
+    id: "rr-hate-crime-league-table",
+    scenario: {
+      en: "A league table ranks police forces by recorded hate crime per head. The force at the top, which has spent three years training officers to identify and log these offences, is described as policing the country's least tolerant area.",
+    },
+    trap: "reporting-rate",
+    explanation: {
+      en: "The force that got better at recording rises up a table built out of records. Comparing areas on a recorded count compares their recording practice at least as much as it compares their behaviour, so the ranking may be close to upside down.",
+    },
+  },
+  {
+    id: "rr-app-bug-reports",
+    scenario: {
+      en: "A software team adds a one-tap crash reporting button to its app. Reported bugs per week double, and the engineering lead tells the board that quality has deteriorated since the last release.",
+    },
+    trap: "reporting-rate",
+    explanation: {
+      en: "The team lowered the cost of reporting and then read the resulting rise as a fall in quality. Crash telemetry that fires without a user deciding anything would answer the quality question; a count of voluntary reports answers a different one.",
+    },
+  },
+
   // ---- Genuinely sound reasoning (decoys) ----
   {
     id: "ok-prespecified",
@@ -7878,6 +7980,26 @@ const items: TestItem[] = [
     trap: null,
     explanation: {
       en: "Random assignment to seeing or not seeing the information is what makes the comparison clean. Two national polls months apart differ by everything that happened in between, including the reporting of the first one.",
+    },
+  },
+  {
+    id: "ok-reporting-rate-held-constant",
+    scenario: {
+      en: "A country's road deaths are counted from death certificates, a system unchanged in method and coverage for thirty years. The certified count falls by 40 per cent over a decade, and a transport agency concludes that fewer people are dying on the roads.",
+    },
+    trap: null,
+    explanation: {
+      en: "This is sound. A death certificate does not depend on a victim deciding to come forward, coverage is effectively complete, and the recording method did not change over the period. When the instrument is stable and the ascertainment is near total, a fall in the count really is a fall in the events.",
+    },
+  },
+  {
+    id: "ok-reporting-rate-second-instrument",
+    scenario: {
+      en: "A city's recorded burglaries fall by a third. A separate household survey, which asks people whether they were burgled regardless of whether they told anyone, finds the same fall over the same years. The city reports that burglary has fallen.",
+    },
+    trap: null,
+    explanation: {
+      en: "This is sound. Two instruments with different failure modes agree: one depends on people reporting to the police and one does not. That agreement is what makes the conclusion safe, and it is exactly the check that a single administrative series cannot provide on its own.",
     },
   },
 ];

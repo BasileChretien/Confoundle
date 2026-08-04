@@ -1481,6 +1481,129 @@ const TargetData = z
   });
 export type TargetData = z.infer<typeof TargetData>;
 
+/* ---------------------------------------------------------------------------
+ * Two counts of the same thing, measured by different instruments, over time.
+ *
+ * Needed because no existing shape can hold two independent series of raw
+ * counts along a time axis. `rates` needs a denominator for every observation
+ * and here there is none: these are estimated totals, not shares of anything.
+ * `drift` carries signed movement against a baseline and also needs
+ * denominators. `bunching` is counts in ordered bins, but it holds one series
+ * and a threshold rather than two series that cross. `dose` requires a zero
+ * baseline and a front-loaded curve.
+ *
+ * The lesson this exists for is what happens when two instruments that are both
+ * supposed to measure one reality disagree about its direction. That cannot be
+ * drawn with one series, and it cannot be drawn as a rate, so it needs its own
+ * shape.
+ *
+ * The reveal works by holding a whole series back. The setup draws one
+ * instrument, which reads as a plain trend in whichever direction it happens to
+ * run; the reveal adds the other, crossing it. Both views share one axis scaled
+ * over every value in the data, so the first series does not move or rescale
+ * when the second arrives.
+ *
+ * Observations are sparse on purpose. A survey can be suspended for a year, and
+ * a missing year has to be drawn as a gap rather than as a zero or as a
+ * straight line through it, because both of those would assert a measurement
+ * nobody made.
+ * ------------------------------------------------------------------------- */
+export const SeriesLine = z.object({
+  id: z.string().min(1),
+  label: LocalizedText, // "The Crime Survey"
+  short: LocalizedText.optional(),
+});
+export type SeriesLine = z.infer<typeof SeriesLine>;
+
+export const SeriesPoint = z.object({
+  id: z.string().min(1),
+  label: LocalizedText, // "2015-16"
+  short: LocalizedText.optional(),
+});
+export type SeriesPoint = z.infer<typeof SeriesPoint>;
+
+export const SeriesObservation = z.object({
+  lineId: z.string().min(1),
+  pointId: z.string().min(1),
+  /** A raw count, as published. Omit the observation entirely if not measured. */
+  count: z.number().nonnegative(),
+});
+export type SeriesObservation = z.infer<typeof SeriesObservation>;
+
+const SeriesData = z
+  .object({
+    type: z.literal("series"),
+    label: LocalizedText, // figure title
+    metricLabel: LocalizedText, // what is being counted
+    /** Says on the figure where the numbers come from and what is missing. */
+    statNote: LocalizedText,
+    /** Names the moment the two lines swap places, drawn only in the reveal. */
+    crossoverLabel: LocalizedText.optional(),
+    lines: z.array(SeriesLine).length(2),
+    points: z.array(SeriesPoint).min(3),
+    observations: z.array(SeriesObservation).min(6),
+  })
+  .superRefine((d, ctx) => {
+    const lineIds = new Set(d.lines.map((l) => l.id));
+    const pointIds = new Set(d.points.map((p) => p.id));
+    const seen = new Set<string>();
+    d.observations.forEach((o, i) => {
+      if (!lineIds.has(o.lineId))
+        ctx.addIssue({
+          code: "custom",
+          path: ["observations", i, "lineId"],
+          message: `no line with id ${o.lineId}`,
+        });
+      if (!pointIds.has(o.pointId))
+        ctx.addIssue({
+          code: "custom",
+          path: ["observations", i, "pointId"],
+          message: `no point with id ${o.pointId}`,
+        });
+      const key = `${o.lineId}|${o.pointId}`;
+      if (seen.has(key))
+        ctx.addIssue({
+          code: "custom",
+          path: ["observations", i],
+          message: `two observations for ${key}`,
+        });
+      seen.add(key);
+    });
+
+    // The whole lesson is that the two instruments swap places. Find the first
+    // and last points where BOTH were measured, and require the ordering to
+    // reverse between them. Without that there is no disagreement to reveal,
+    // only two lines that happen to differ.
+    const both = d.points.filter(
+      (p) =>
+        d.observations.some((o) => o.pointId === p.id && o.lineId === d.lines[0].id) &&
+        d.observations.some((o) => o.pointId === p.id && o.lineId === d.lines[1].id),
+    );
+    if (both.length < 2) {
+      ctx.addIssue({
+        code: "custom",
+        path: ["observations"],
+        message:
+          "at least two points need both lines measured, or the series cannot be compared at all",
+      });
+      return;
+    }
+    const at = (lineId: string, pointId: string) =>
+      d.observations.find((o) => o.lineId === lineId && o.pointId === pointId)!.count;
+    const first = both[0].id;
+    const last = both[both.length - 1].id;
+    const startGap = at(d.lines[0].id, first) - at(d.lines[1].id, first);
+    const endGap = at(d.lines[0].id, last) - at(d.lines[1].id, last);
+    if (Math.sign(startGap) === Math.sign(endGap) || startGap === 0 || endGap === 0)
+      ctx.addIssue({
+        code: "custom",
+        path: ["observations"],
+        message:
+          "the two instruments do not swap places between the first and last points where both were measured, so there is no crossover to reveal",
+      });
+  });
+export type SeriesData = z.infer<typeof SeriesData>;
+
 export const PuzzleData = z.discriminatedUnion("type", [
   RatesData,
   FrequenciesData,
@@ -1504,6 +1627,7 @@ export const PuzzleData = z.discriminatedUnion("type", [
   MagnitudeData,
   ProjectionData,
   TargetData,
+  SeriesData,
 ]);
 export type PuzzleData = z.infer<typeof PuzzleData>;
 
@@ -1570,6 +1694,8 @@ export const DataView = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("whichisexact"), ...viewFields }),
   z.object({ kind: z.literal("oncompliance"), ...viewFields }),
   z.object({ kind: z.literal("insidewindow"), ...viewFields }),
+  z.object({ kind: z.literal("oneinstrument"), ...viewFields }),
+  z.object({ kind: z.literal("bothinstruments"), ...viewFields }),
 ]);
 export type DataView = z.infer<typeof DataView>;
 export type DataViewKind = DataView["kind"];
@@ -1850,6 +1976,15 @@ export const Puzzle = z
           return {
             groups: new Set(d.series.map((s) => s.id)),
             groupWord: "series",
+            strata: null,
+            strataWord: "",
+          };
+        case "series":
+          // The setup names one instrument and the reveal names none, which
+          // draws both. Points are the time axis and are never filtered.
+          return {
+            groups: new Set(d.lines.map((l) => l.id)),
+            groupWord: "line",
             strata: null,
             strataWord: "",
           };

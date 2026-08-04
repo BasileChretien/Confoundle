@@ -1019,9 +1019,19 @@ the project excludes. Wanted, but do not force it.
 
 <!-- skill: reporting-rate -->
 
-**Status: SOURCED 2026-08-04, NEEDS A SHAPE.** Every number below has been read
-at source and reconciled. What stands between this and shipping is engine work,
-not provenance, and the duplicate-skill objection recorded below is answered.
+**Status: SHIPPED 2026-08-04** as `the-crime-that-doubled`, on the new `series`
+shape. Every number below was read at source and reconciled before a line of the
+puzzle was written, and the record of that reading is kept here because it is
+also the record of what the puzzle refuses to claim.
+
+The setup draws the police series alone, which climbs 134.8 per cent and reads
+as a plain rise; the question asks whether violence rose; the correct answer is
+that there is no way to tell, because the line counts records rather than
+events, and the framing says so in as many words. The reveal adds the survey
+series on the same axis and the same scale, falling 52.0 per cent and crossing
+in 2015-16. The prose-versus-table discrepancy noted below is resolved in favour
+of the tables, and the provenance note says which figures the prose gives and by
+how much they differ.
 
 **The source.** Francis BJ, Walby S. Conflicting trends in violent crime
 measured by police recorded crime and the crime survey in England and Wales

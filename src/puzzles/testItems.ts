@@ -6893,6 +6893,147 @@ const items: TestItem[] = [
       en: "A round number in a headline is not itself evidence of bunching; the question is whether the underlying counts pile up against a line. Here they do not, so the total is just a total that happens to look tidy.",
     },
   },
+  // ---- Whataboutism ----
+  {
+    id: "wa-late-delivery",
+    scenario: {
+      en: "A supplier is told its last four deliveries arrived late. It replies that the buyer has twice paid its invoices after the due date.",
+    },
+    trap: "whataboutism",
+    explanation: {
+      en: "Both things can be true at once, and the buyer's late payments do not make the deliveries punctual. The reply changes the subject from what happened to who is entitled to raise it.",
+    },
+  },
+  {
+    id: "wa-audit-finding",
+    scenario: {
+      en: "Presented with an audit finding that its safety checks were skipped on eleven occasions, a department head asks why the auditors have never looked at the neighbouring department, which is worse.",
+    },
+    trap: "whataboutism",
+    explanation: {
+      en: "Whether the neighbours are worse is a question about audit priorities, not about the eleven occasions. Even if the complaint about scope is fair, it leaves the finding exactly where it was.",
+    },
+  },
+  {
+    id: "wa-smoker-doctor",
+    scenario: {
+      en: "A doctor tells a patient that smoking is harming his lungs. The patient points out that the doctor smokes.",
+    },
+    trap: "whataboutism",
+    explanation: {
+      en: "The evidence on smoking does not depend on the habits of the person describing it. A hypocrite can give correct advice, and this one is, which is what makes the reply feel like a point while settling nothing.",
+    },
+  },
+  {
+    id: "wa-your-record",
+    scenario: {
+      en: "Asked in an interview about a specific unmet commitment, an official responds by listing commitments the questioner's own organisation failed to meet.",
+    },
+    trap: "whataboutism",
+    explanation: {
+      en: "The question was about one commitment and what happened to it. Answering with somebody else's record is a way of appearing to engage while leaving the original question untouched.",
+    },
+  },
+  {
+    id: "wa-code-review",
+    scenario: {
+      en: "Told that a function is 400 lines long and needs splitting, an engineer replies that the reviewer wrote a 600-line function last year.",
+    },
+    trap: "whataboutism",
+    explanation: {
+      en: "The reviewer's old code has no bearing on whether this function should be split. If the standard is wrong, argue that; if the reviewer is inconsistent, that is a separate conversation to have separately.",
+    },
+  },
+  {
+    id: "wa-emissions",
+    scenario: {
+      en: "A company challenged over its emissions figures responds that its main competitor emits considerably more and nobody asks them about it.",
+      },
+    trap: "whataboutism",
+    explanation: {
+      en: "The competitor's figures do not change this company's figures. The reply is a claim about fairness of attention, which may even be true, and it answers nothing about the numbers that were raised.",
+    },
+  },
+  {
+    id: "wa-you-were-late-too",
+    scenario: {
+      en: "A manager raises that a team member missed two stand-ups this week. The reply is that the manager was absent from three last month.",
+    },
+    trap: "whataboutism",
+    explanation: {
+      en: "The manager's attendance is a real issue if anyone wants to raise it, and it is not this issue. The tell is that after the reply, the original question is still sitting there unanswered.",
+    },
+  },
+  {
+    id: "wa-country-comparison",
+    scenario: {
+      en: "Asked about a documented failure in its own prison system, a government spokesman lists worse documented failures in other countries' prisons.",
+    },
+    trap: "whataboutism",
+    explanation: {
+      en: "Comparisons can be informative about scale, but only if that was the question. Here the question was whether a specific failure occurred, and the answer is unaffected by conditions elsewhere.",
+    },
+  },
+  {
+    id: "wa-charity-overheads",
+    scenario: {
+      en: "A charity questioned about its administrative costs replies that its critics work for organisations with far higher overheads.",
+    },
+    trap: "whataboutism",
+    explanation: {
+      en: "The critics' employers have no bearing on this charity's accounts. Redirecting attention to the person raising the issue is what the move is for, and it works because it sounds like a rebuttal.",
+    },
+  },
+  {
+    id: "wa-past-vote",
+    scenario: {
+      en: "Someone argues a proposed rule is unworkable and explains why. The answer is that they supported an unworkable rule five years ago.",
+    },
+    trap: "whataboutism",
+    explanation: {
+      en: "The reasons given for this rule being unworkable are either sound or not, and their author's history does not touch them. Nobody has to have a clean record to make an argument that stands up.",
+    },
+  },
+  {
+    id: "ok-wa-witness-credibility",
+    scenario: {
+      en: "A witness testifies that she saw the defendant at the scene. The defence establishes that she has twice been convicted of giving false statements to police.",
+    },
+    trap: null,
+    explanation: {
+      en: "Here the question genuinely is whether to believe this person, so her record of truthfulness is directly relevant rather than a change of subject. Attacking the source is fair when the source is the evidence.",
+    },
+  },
+  {
+    id: "ok-wa-expert-vouching",
+    scenario: {
+      en: "An expert says her method is reliable and offers her own track record as the reason. A reviewer points out that two of her previous studies were retracted.",
+    },
+    trap: null,
+    explanation: {
+      en: "She rested the claim on her own reliability, so her reliability became the matter at issue. Answering the argument that was actually made is not a personal attack, even when it is about the person.",
+    },
+  },
+  {
+    id: "ok-wa-answered-then-raised",
+    scenario: {
+      en: "Challenged on a missed deadline, a supplier explains what went wrong and what has changed, and then separately asks to discuss the buyer's late payments at the next review.",
+    },
+    trap: null,
+    explanation: {
+      en: "The original question was answered before the second one was raised, and the second was flagged as a separate item. Raising a counter-issue is only a dodge when it arrives instead of an answer.",
+    },
+  },
+  {
+    id: "ok-wa-relevant-precedent",
+    scenario: {
+      en: "A regulator is told that a proposed penalty is disproportionate, and the objection cites three earlier cases with similar facts where much smaller penalties were imposed.",
+    },
+    trap: null,
+    explanation: {
+      en: "Consistency of treatment is the actual question when the complaint is about proportionality, so the comparison is the argument rather than a diversion from it. Other cases are relevant precisely because like cases are supposed to be treated alike.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

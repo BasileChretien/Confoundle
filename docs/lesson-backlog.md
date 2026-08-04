@@ -773,7 +773,32 @@ item 12. **A section written to close nine questions ended up opening two of the
 best candidates in the file**, which is the argument against writing rejections
 from memory, stated as compactly as it can be.
 
-### Whataboutism: OPEN. The earlier rejection was wrong
+### Whataboutism: SHIPPED 2026-08-04
+
+<!-- skill: whataboutism -->
+
+**Shipped as `whataboutism`, slug `you-do-it-too`, on `ratings`.** Basile supplied
+both the SAGE article and the Springer book, and the article was read at source.
+The block recorded below is cleared and the record of it is kept, because the
+refusal it describes turned out to be correct on the facts.
+
+92 Dutch pupils, none of whom had ever heard of the ad hominem, rated 48 two-line
+dialogues from 1, very unreasonable, to 7, very reasonable. A flat insult scored
+2.91 and an insinuation about motives 3.90, both on the unreasonable half. **The
+tu quoque scored 4.45, the only one of the three past the middle of the scale.**
+A reply that actually answered the point scored 5.29. Table 3 supplies the deep
+dive: in a scientific discussion the tu quoque falls back to 3.66, below the
+middle, so the identical move reads as fair comment at home and as out of order
+in an argument about evidence.
+
+**The endnote refusal is vindicated.** The entry below refused to author from the
+figures SAGE renders publicly in its endnotes (3.82 for the tu quoque). The
+article gives 4.45. They were indeed different experiments, and authoring from
+the reachable numbers would have shipped the wrong ones.
+
+---
+
+**Status when opened: OPEN. The earlier rejection was wrong**
 
 Written up as "a fallacy of argument structure has no dataset". It has several.
 

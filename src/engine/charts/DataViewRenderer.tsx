@@ -30,6 +30,7 @@ import { EstimationView } from "./EstimationView";
 import { restrictEstimation } from "./estimation";
 import { SalienceView } from "./SalienceView";
 import { restrictSalience } from "./salience";
+import { MagnitudeView } from "./MagnitudeView";
 
 /**
  * The generic seam: dispatch on the data's `type` to the matching renderer.
@@ -164,6 +165,14 @@ export function DataViewRenderer({
           kind={view.kind}
         />
       ) : null;
+    case "magnitude":
+      // Deliberately NOT a slice-drawer. Both views draw every item; what the
+      // reveal adds is the second bar. Filtering items would change the scale
+      // between the beats and move the guess bars, which is the one thing this
+      // shape has to keep still.
+      return view.kind === "asnumbers" || view.kind === "againsttruth" ? (
+        <MagnitudeView data={data} kind={view.kind} />
+      ) : null;
     default:
       return null;
   }
@@ -268,6 +277,10 @@ export function scopeLabel(kind: DataViewKind): string {
       return "Running up to the line";
     case "acrossline":
       return "And just past it";
+    case "asnumbers":
+      return "What people guessed";
+    case "againsttruth":
+      return "And the real sizes";
     default:
       return "";
   }

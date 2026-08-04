@@ -2588,9 +2588,25 @@ state of affairs.
 
 <!-- skill: magnitude-compression -->
 
-**Status: SOURCED 2026-08-04, NEEDS A SHAPE.** Every number below has been read
-at source and reconciled. What stands between this and shipping is engine work
-and a commit beat, not provenance.
+**Status: SHIPPED 2026-08-04** as `how-big-is-denmark`, skill
+`magnitude-compression`, on the new `magnitude` shape. Everything below is the
+research note it shipped from, kept because the reconciliation is the record.
+
+**What shipped.** Seven of the twenty-six regions, ascending by true size:
+Denmark, Greece, Japan, Peru, Greenland, Australia, Brazil. The setup draws the
+mean guesses alone, correctly ordered and reading as competence; the reveal adds
+the true size under each without moving a bar. Greenland is the intuitive trap,
+because everybody has heard the Mercator story and Greenland turns out to be
+less distorted than fifteen of the study's other regions. Denmark is the answer,
+at twenty-six times. Peru stays in the figure at 165 against a true 166, so the
+figure cannot be read as "people are simply bad at this".
+
+**The wording that is load-bearing.** Brazil is the furthest off in raw units,
+by 473 of them, and Brazil is on the answer list, so the question asks which
+country was wrong by the biggest **multiple** of its real size. That is the
+`statistical-power` move, a discriminator in the framing rather than a reader
+marked wrong for a reasonable reading, and there is a test named
+`PINS THE WORDING` that fails if the word ever leaves the question.
 
 **Where it came from.** Entry 4 went looking for a study of what people believe
 about the sizes of countries, in order to ship map-projection distortion as a

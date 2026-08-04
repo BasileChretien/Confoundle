@@ -7316,6 +7316,147 @@ const items: TestItem[] = [
       en: "Noticing that the educational fix is partial and adding a structural one is the right response to a partial result. The check works whether or not the reminder was remembered that day.",
     },
   },
+  // ---- Compressed sense of magnitude ----
+  {
+    id: "mc-ranking-to-budget",
+    scenario: {
+      en: "A safety committee lists five hazards in order of how many injuries each causes, checks the order against the injury records and finds it exactly right, then divides next year's prevention budget equally between the five.",
+    },
+    trap: "magnitude-compression",
+    explanation: {
+      en: "Confirming the order tells you nothing about the distances between the entries. If the first hazard causes forty times as many injuries as the fifth, an equal split is nowhere near proportionate, and no amount of checking the ranking would ever have shown that.",
+    },
+  },
+  {
+    id: "mc-quiz-order",
+    scenario: {
+      en: "A geography test is marked purely on whether pupils put a list of countries into the correct size order. The class does well, and the report concludes that they have a sound grasp of the relative sizes of countries.",
+    },
+    trap: "magnitude-compression",
+    explanation: {
+      en: "Relative size is a set of ratios, and the test measured a sequence. A pupil who thinks the largest country on the list is three times the smallest can score full marks alongside one who thinks it is three hundred times.",
+    },
+  },
+  {
+    id: "mc-felt-about-twice",
+    scenario: {
+      en: "Two pieces of work are ranked by how long they will take, and the ranking turns out to be right. The schedule then gives the second twice the time of the first, because that is how much larger it felt.",
+    },
+    trap: "magnitude-compression",
+    explanation: {
+      en: "The ranking was tested and the multiplier was not. Being right about which is longer offers no evidence at all for the factor, and a plan built on the felt ratio inherits none of the confidence the ranking earned.",
+    },
+  },
+  {
+    id: "mc-flat-correction",
+    scenario: {
+      en: "An analyst notices that her team's estimates of small quantities come in high and their estimates of large ones come in low, and corrects for it by subtracting a fixed number of units from every small estimate and adding the same fixed number to every large one.",
+    },
+    trap: "magnitude-compression",
+    explanation: {
+      en: "The bias she has spotted is real, but it scales: the small estimates are out by a multiple, not by a quantity. A flat adjustment is far too small at the small end, where the estimate might be twenty times over, and does almost nothing useful at the large end.",
+    },
+  },
+  {
+    id: "mc-two-figures-one-line",
+    scenario: {
+      en: "A briefing note lists each of the department's commitments on one line with its cost beside it. One line reads four million and another reads one billion. The meeting allots each commitment the same discussion time and settles both in a single session.",
+    },
+    trap: "magnitude-compression",
+    explanation: {
+      en: "The two figures differ by a factor of two hundred and fifty, and the format hides it by making every line look like a comparable object. Attention allocated by list position rather than by size is attention allocated by the wrong variable.",
+    },
+  },
+  {
+    id: "mc-sketch-from-memory",
+    scenario: {
+      en: "Asked to sketch last year's spending by department from memory, a manager produces a chart with the departments in the correct order, then uses the heights in his sketch to argue that the largest department is running somewhat over budget.",
+    },
+    trap: "magnitude-compression",
+    explanation: {
+      en: "The order in the sketch came from memory and so did the heights, but only the order is likely to have survived the trip. Somewhat over budget is a statement about a height, and heights recalled without the figures beside them tend to be flattened at the top of the range.",
+    },
+  },
+  {
+    id: "mc-scope-equal-value",
+    scenario: {
+      en: "A fundraiser finds that an appeal describing a programme as reaching two thousand people and one describing it as reaching two hundred thousand bring in roughly the same total, and concludes that donors value the two programmes about equally.",
+    },
+    trap: "magnitude-compression",
+    explanation: {
+      en: "What the test showed is that the two descriptions produced the same response, which is a fact about how the numbers were read rather than about what donors value. A hundredfold difference that leaves giving unchanged is evidence the size did not register.",
+    },
+  },
+  {
+    id: "mc-knows-where-they-stand",
+    scenario: {
+      en: "A buyer can put four suppliers in order from cheapest to dearest and is confident she has it right. She decides there is no need to pull the actual quotes before choosing, since she already knows where each one stands.",
+    },
+    trap: "magnitude-compression",
+    explanation: {
+      en: "Knowing the order settles which is cheapest and nothing else. Whether the gap between the first and second is one per cent or one hundred is exactly the question a purchase turns on, and it is the question the ordering cannot answer.",
+    },
+  },
+  {
+    id: "mc-cities-accurate-picture",
+    scenario: {
+      en: "A study reports that respondents ordered ten cities by population almost perfectly, and the write-up says the public has an accurate picture of how these cities compare in size.",
+    },
+    trap: "magnitude-compression",
+    explanation: {
+      en: "How they compare in size is a claim about ratios; the study measured a sequence. Near-perfect ordering is compatible with respondents thinking the largest city is twice the smallest when it is fifty times, so the write-up is asserting something that was never tested.",
+    },
+  },
+  {
+    id: "mc-doubling-a-rare-risk",
+    scenario: {
+      en: "A committee is told that one procedure carries a risk of about one in fifty and another about one in fifty thousand. It records both as rare and treats the choice between them as turning on cost.",
+    },
+    trap: "magnitude-compression",
+    explanation: {
+      en: "Both fall under the same word and they differ by a factor of a thousand. Collapsing that range into one label is the compression happening in the vocabulary rather than in the head, and the decision then proceeds as though the difference had been considered.",
+    },
+  },
+  {
+    id: "mc-divides-and-is-surprised",
+    scenario: {
+      en: "Before comparing two budget lines, an officer converts both to the same units and divides one by the other. The answer is much larger than he expected, and he rewrites his recommendation around it.",
+    },
+    trap: null,
+    explanation: {
+      en: "This is the correct handling. He did not trust the felt size of the gap, he computed it, and he treated his own surprise as information about his intuition rather than as a reason to doubt the arithmetic.",
+    },
+  },
+  {
+    id: "mc-order-only-claim",
+    scenario: {
+      en: "A report states that respondents ranked the ten items in very nearly the right order, and says in the same paragraph that the study did not test whether they could judge how far apart the items were.",
+    },
+    trap: null,
+    explanation: {
+      en: "The claim is exactly the size of the evidence. Naming what the design cannot support, in the same breath as the finding, is what stops a ranking result being read as a result about magnitudes.",
+    },
+  },
+  {
+    id: "mc-measured-not-guessed",
+    scenario: {
+      en: "A team needs the relative sizes of eight quantities for a chart. Rather than working from what the analysts already know, it pulls the recorded figure for each one and sets the spacing from those.",
+    },
+    trap: null,
+    explanation: {
+      en: "Nothing here rests on anyone's feel for the sizes. The ordering and the spacing both come from the measurements, so the chart carries no more confidence about the gaps than the records themselves do.",
+    },
+  },
+  {
+    id: "mc-defers-the-split",
+    scenario: {
+      en: "Shown that a panel ranked five categories of loss in the right order, a manager declines to set the budget split until someone brings the actual totals, while accepting the ranking as sound.",
+    },
+    trap: null,
+    explanation: {
+      en: "He takes the ranking for what it is worth and no further. Accepting a result while refusing to extend it to a quantity it never measured is the whole of the discipline here.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

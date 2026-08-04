@@ -1172,6 +1172,110 @@ const BunchingData = z
   });
 export type BunchingData = z.infer<typeof BunchingData>;
 
+/* ---------------------------------------------------------------------------
+ * What people think a set of quantities are, against what they are.
+ *
+ * `estimation` is the near relative and cannot hold this. It carries exactly
+ * two groups estimating ONE quantity against one true value, and its guard
+ * requires both estimates to fall BELOW the truth, which is the anchoring
+ * design. Here there is one group estimating MANY quantities, and the whole
+ * lesson is that the errors run in opposite directions at the two ends: small
+ * things are guessed far too big and large things too small. A shape that can
+ * only express underestimation cannot say that.
+ *
+ * `salience` is the other near relative and also cannot: its comparisons are
+ * binary picks with a share who chose correctly, not magnitudes on a scale.
+ *
+ * What makes the reveal work is that both views draw the same bars at the same
+ * size. The setup shows the guesses alone, which read as a sensible ranking
+ * because they are correctly ordered; the reveal adds the true value beside
+ * each one without moving anything. So the scale is taken over both series and
+ * all items at once, never over the subset a view happens to draw, or the
+ * guesses would silently rescale between the two beats and the reader could no
+ * longer see it is one set of numbers shown twice.
+ *
+ * Values are authored on whatever shared scale the source used (the source
+ * here sets one country to 1,000 and expresses everything relative to it), so
+ * they are plain numbers rather than counts. `scaleLabel` has to name that
+ * scale on the figure, because a bar of 140 means nothing without it.
+ * ------------------------------------------------------------------------- */
+export const MagnitudeItem = z.object({
+  id: z.string().min(1),
+  label: LocalizedText, // "Denmark"
+  short: LocalizedText.optional(), // compact chart label
+  /** What the thing actually is, on the shared scale. */
+  actual: z.number().positive(),
+  /** What people said it was, on the same scale. */
+  estimated: z.number().positive(),
+});
+export type MagnitudeItem = z.infer<typeof MagnitudeItem>;
+
+const MagnitudeData = z
+  .object({
+    type: z.literal("magnitude"),
+    label: LocalizedText, // figure title
+    /** Names the shared scale, e.g. "the lower 48 states count as 1,000". */
+    scaleLabel: LocalizedText,
+    estimatedLabel: LocalizedText, // "What people guessed"
+    actualLabel: LocalizedText, // "What it actually is"
+    /** Whose guesses these are, what kind of average, and how many items the
+     * figure is a subset of, when it is one. */
+    statNote: LocalizedText,
+    items: z.array(MagnitudeItem).min(3),
+  })
+  .superRefine((d, ctx) => {
+    const seen = new Set<string>();
+    d.items.forEach((it, i) => {
+      if (seen.has(it.id))
+        ctx.addIssue({
+          code: "custom",
+          path: ["items", i, "id"],
+          message: `duplicate item id "${it.id}"`,
+        });
+      seen.add(it.id);
+      // Items are drawn in array order and the pattern is only legible if the
+      // axis runs small to large, the same reason `dose` requires ascending
+      // doses. Out of order, the compression looks like noise.
+      if (i > 0 && it.actual <= d.items[i - 1].actual)
+        ctx.addIssue({
+          code: "custom",
+          path: ["items", i, "actual"],
+          message: `items must ascend by actual size; ${it.actual} follows ${d.items[i - 1].actual}`,
+        });
+    });
+    // The lesson is that the error depends on size, so the smallest item has to
+    // be overestimated by a bigger factor than the largest. Without that the
+    // reveal shows scattered error and teaches nothing the setup did not.
+    const first = d.items[0];
+    const last = d.items[d.items.length - 1];
+    if (first && last && first !== last) {
+      const smallRatio = first.estimated / first.actual;
+      const largeRatio = last.estimated / last.actual;
+      if (smallRatio <= largeRatio)
+        ctx.addIssue({
+          code: "custom",
+          path: ["items", 0, "estimated"],
+          message: `the smallest item is overestimated by ${smallRatio.toFixed(2)} times and the largest by ${largeRatio.toFixed(2)}, so nothing is compressed and there is nothing to reveal`,
+        });
+    }
+    // Both directions have to be on screen. If every item were overestimated,
+    // the honest reading would be "people guess high", not "the error tracks
+    // size", and the lesson copy would be overclaiming.
+    if (!d.items.some((it) => it.estimated > it.actual))
+      ctx.addIssue({
+        code: "custom",
+        path: ["items"],
+        message: "no item is overestimated, so there is no compression to show",
+      });
+    if (!d.items.some((it) => it.estimated < it.actual))
+      ctx.addIssue({
+        code: "custom",
+        path: ["items"],
+        message: "no item is underestimated, so there is no compression to show",
+      });
+  });
+export type MagnitudeData = z.infer<typeof MagnitudeData>;
+
 export const PuzzleData = z.discriminatedUnion("type", [
   RatesData,
   FrequenciesData,
@@ -1192,6 +1296,7 @@ export const PuzzleData = z.discriminatedUnion("type", [
   DriftData,
   RatingsData,
   BunchingData,
+  MagnitudeData,
 ]);
 export type PuzzleData = z.infer<typeof PuzzleData>;
 
@@ -1252,6 +1357,8 @@ export const DataView = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("bothratings"), ...viewFields }),
   z.object({ kind: z.literal("approaching"), ...viewFields }),
   z.object({ kind: z.literal("acrossline"), ...viewFields }),
+  z.object({ kind: z.literal("asnumbers"), ...viewFields }),
+  z.object({ kind: z.literal("againsttruth"), ...viewFields }),
 ]);
 export type DataView = z.infer<typeof DataView>;
 export type DataViewKind = DataView["kind"];

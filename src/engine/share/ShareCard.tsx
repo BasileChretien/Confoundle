@@ -1125,6 +1125,66 @@ function BunchingGlyph() {
   );
 }
 
+function MagnitudeGlyph() {
+  const W = 200;
+  const H = 96;
+  /**
+   * Four pairs of bars, small thing at the top and large thing at the bottom.
+   * The teal bar is what people guessed, the rust bar under it is the truth.
+   * At the top the guess dwarfs the truth; at the bottom the truth runs off
+   * past the guess. The crossover in the middle is the whole point: the error
+   * does not shrink as you go down the list, it changes sign.
+   */
+  const left = 14;
+  const span = W - left - 14;
+  const rows = [
+    { guess: 0.13, truth: 0.005 },
+    { guess: 0.17, truth: 0.05 },
+    { guess: 0.48, truth: 0.25 },
+    { guess: 0.57, truth: 1 },
+  ];
+  return (
+    <svg
+      viewBox={`0 0 ${W} ${H}`}
+      width="100%"
+      role="img"
+      aria-label="Four pairs of bars: for small things the guess towers over the truth, for the largest the truth runs well past the guess"
+    >
+      {rows.map((r, i) => {
+        const y = 12 + i * 21;
+        return (
+          <g key={i}>
+            <rect
+              x={left}
+              y={y}
+              width={Math.max(r.guess * span, 1.5)}
+              height={6}
+              rx={2}
+              fill={CARD.teal}
+            />
+            <rect
+              x={left}
+              y={y + 8}
+              width={Math.max(r.truth * span, 1.5)}
+              height={6}
+              rx={2}
+              fill={CARD.rust}
+            />
+          </g>
+        );
+      })}
+      <line
+        x1={left}
+        y1={6}
+        x2={left}
+        y2={H - 8}
+        stroke={CARD.rule}
+        strokeWidth={1}
+      />
+    </svg>
+  );
+}
+
 function SalienceGlyph() {
   const W = 200;
   const H = 96;
@@ -1458,6 +1518,7 @@ export function ShareCard({
   const driftGlyph = data.type === "drift";
   const ratingsGlyph = data.type === "ratings";
   const bunchingGlyph = data.type === "bunching";
+  const magnitudeGlyph = data.type === "magnitude";
   const splitSampleGlyph =
     data.type === "rates" &&
     Boolean(data.strataAreSeparateSamples) &&
@@ -1569,6 +1630,8 @@ export function ShareCard({
             <RatingsGlyph />
           ) : bunchingGlyph ? (
             <BunchingGlyph />
+          ) : magnitudeGlyph ? (
+            <MagnitudeGlyph />
           ) : null}
 
           <p className="mt-4 font-display text-[17px] font-medium leading-snug">

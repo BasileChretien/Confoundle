@@ -600,6 +600,100 @@ reports a count of participants, not a mean count of inferences.**
 
 ---
 
+## Audit, 2026-08-04: which blocks are real and which have expired
+
+Three entries in a row shipped this week after their recorded blocker turned out
+to be stale rather than true. Whataboutism was blocked because "means on a
+reasonableness scale are not counts"; the Overton window because "whether it
+reports counts rather than scale means is unknown"; both objections predate the
+`ratings` shape, which was built for the third-person effect and carries exactly
+that. Rather than discover the same thing a fourth time by accident, every
+remaining block was re-read against the shapes the deck actually has today.
+
+The shape inventory now stands at: `rates`, `frequencies`, `causal`,
+`survivorship`, `timeline`, `risk`, `agreement`, `regression`, `interaction`,
+`effect`, `ecological`, `framing`, `distribution`, `dose`, `estimation`,
+`salience`, `drift`, `ratings`, `bunching`.
+
+**The pattern, stated once so it is not rediscovered.** Shape objections age
+badly, because the deck grows shapes. Partisanship objections and
+duplicate-skill objections do not age at all, because neither the world nor the
+registry gets more permissive. When an entry is blocked, check which kind of
+block it is before believing it.
+
+### Expired: the continued influence field-wide shape block
+
+The block under Tier 1 entry 12 says the field's standard measure is "a coded
+mean per person, not a headcount", and then specifies the remedy exactly: "a new
+shape for a mean with a dispersion interval, which the deck does not have and
+which is a real piece of engine work: a union member, a derivation module with a
+test, a renderer, a `DataViewRenderer` case, scope labels and a share-card
+glyph."
+
+**That is a part-for-part description of `ratings`, which now exists.** It was
+built for the third-person effect and every item on that list shipped with it.
+The entry even names the paper to build on, Ecker, Lewandowsky and Tang (2010),
+which prints per-cell N of 25 and whose retraction-by-warning two-by-two is
+already a setup and a reveal. That PDF is in hand.
+
+**Two things stop this being an immediate build, and neither is the shape.**
+First, entry 12 has already shipped as `strike-that-from-the-record` under skill
+`continued-influence-effect`, so an Ecker puzzle would be a second puzzle for one
+reasoning move, which this project refuses. If it is built, it has to earn its
+place as a different skill, and the obvious candidate is the warning half of the
+two-by-two: whether being told in advance that a claim may be retracted changes
+what a retraction does. That is prebunking, not continued influence, and it is
+not in the registry. Second, the Johnson and Seifert framing the entry calls the
+best anyone has found (95 and 91 per cent still referring to retracted material
+while only 24 and 9.1 per cent name it when asked outright) is **still refused**,
+and `ratings` does not rescue it: those are percentages of subjects with the
+per-group denominators never printed, which is a missing-counts problem, not a
+missing-shape one.
+
+### Narrowed: entry 4, map projections
+
+The block was "this needs a genuinely new shape (`projection` or `area`)". That
+is probably still true for a pure areas-on-a-map comparison, but there is a route
+that needs no new shape at all: `estimation` exists and holds a guess against the
+truth. If a source measures **what people believe** the relative sizes to be,
+against what they are, that is `estimation` without modification and the lesson
+lands harder, because the puzzle then measures a misconception rather than
+asserting one. The unchanged part of this entry is the provenance question, since
+geodetic constants are an authority rather than a finding, and that still needs
+deciding rather than stumbling into.
+
+### Weaker than recorded: entry 5, margin of error
+
+Recorded as "BLOCKED on a source with counts", which overstates it. Polls publish
+their sample size and their percentages, and the teachable point, that the margin
+on a **difference** is wider than the margin on either number, is arithmetic on
+exactly those. This is a sourcing task (find a published poll, read its
+methodology at source, check the reported margin against the sample size) rather
+than a shape or data block. Nothing here needs engine work.
+
+### Partly expired, and the real block is untouched: entry 6, polls shaping opinion
+
+Three objections were recorded: the effects are small, "the outcome is usually a
+stated preference rather than a count", and the clean demonstrations are in live
+elections. The middle one has expired, since `ratings` holds a stated preference
+on a scale. The other two stand, and the third is the one that actually blocks:
+partisanship does not expire.
+
+### Still blocked, and not on shape at all
+
+- **Entry 7, counting crime is counting reporting.** The risk recorded is that it
+  is a second name for `detection-bias`, which is a duplicate-skill objection. No
+  shape touches it. It stands.
+- **Dog whistling.** The entry's own shape doubt ("outcomes are policy-preference
+  scales, so counts need checking") has expired via `ratings`, but the entry
+  already says the neutral-ground problem "is the real obstacle", and it is.
+  Stands.
+- **Astroturfing.** "A documents analysis with no numerator and no denominator."
+  No shape invents data that was never collected. The entry notes this was the
+  one obstacle correctly identified first time, and that assessment survives.
+
+---
+
 ## Tier 2: named by a curriculum, still needs a source
 
 ### 6. The poll that makes the opinion it measures

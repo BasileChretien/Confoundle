@@ -621,6 +621,74 @@ duplicate-skill objections do not age at all, because neither the world nor the
 registry gets more permissive. When an entry is blocked, check which kind of
 block it is before believing it.
 
+### Ecker read at source 2026-08-04. SOURCED, and one design question stands in the way
+
+Following the audit above, the paper the block named was read in full:
+**Ecker UKH, Lewandowsky S, Tang DTW. Explicit warnings reduce but do not
+eliminate the continued influence of misinformation.** *Memory and Cognition*
+2010;38(8):1087-1100, DOI `10.3758/MC.38.8.1087`. The PDF is on Basile's Desktop
+as `mc.38.8.1087.pdf`.
+
+**Everything needed to author is now extracted.** Experiment 1, five
+between-subjects conditions, **25 participants each**, all reading the same story
+about a minibus crash initially blamed on its elderly passengers. The dependent
+measure is the mean number of references to the retracted material, **maximum
+20**, one possible inference per item. Figure 1, page 1091:
+
+| Condition | Mean references |
+|---|---|
+| No retraction | **5.06** |
+| Retraction only | **4.04** |
+| General warning | **3.36** |
+| Specific warning | **2.12** |
+| Alternative explanation | **2.22** |
+
+The reading checks out on degrees of freedom. Five conditions of 25 is 125, and
+125 minus 5 is the 120 in the paper's `F(1,120)`. The restricted reanalysis
+removes 32 participants who scored zero on the manipulation check, and 125 minus
+32 minus 5 is the 88 in `F(1,88)`. The four bars carrying a retraction also print
+their restricted subsample sizes: **19, 17, 20 and 18**.
+
+**The lesson is genuinely not the one already shipped.** Table 1 shows a mere
+retraction does not significantly reduce reliance (C2, p = .13). A **general**
+warning that facts are not always checked does little on the full sample (C3,
+p = .32). A **specific** warning explaining the continued influence effect works,
+and works about as well as supplying an alternative explanation, which was
+previously the only thing known to work. Experiment 2 then combines both and
+still cannot eliminate it: 1.04 references against a no-retraction 4.64,
+significantly above zero at `t(41) = 3.78, p < .001`. So the lesson is that
+**forewarning helps and is not enough**, which is prebunking rather than
+continued influence, and is not in the registry. It is also uncomfortably
+reflexive for a deck whose whole premise is that being told about a trap helps.
+
+**The one thing blocking a build, and it needs deciding rather than guessing.**
+The measure runs 0 to 20 and every condition falls between 2.12 and 5.06. On an
+honest `ratings` axis from 0 to 20 the five markers occupy the band from 10.6 to
+25.3 per cent of the width, all bunched at the left, and the reveal would look
+flat even though the effect is real and ordered. The paper's own Figure 1 solves
+this by drawing an axis from 0 to 6, which is a normal choice for a journal
+figure and is also exactly the move `misleading-axis` exists to warn readers
+about, so this deck cannot copy it without saying so. Three options, none
+obviously right:
+
+1. Draw the true 0 to 20 scale and accept a cramped figure, on the argument that
+   "a few references out of twenty possible" is itself part of the finding.
+2. Add an optional zoom to `ratings` that names the truncation on the figure, so
+   the reader is told the axis does not start where the scale does. That is new
+   engine work and it half-contradicts a shipped lesson.
+3. Use a different beat: Experiment 2 is two bars, 4.64 against 1.04 on the same
+   0 to 20 scale, a 3.6-point gap rather than a 3-point spread across five. It
+   reads better and loses the ordering that makes the point about which warnings
+   work.
+
+No dispersion can be drawn for Experiment 1 in any case: its error bars are
+standard errors shown graphically, with no numeric values printed. Experiment 2
+does print `M = .84, SE = .26` for its restricted subsample.
+
+Status: **SOURCED, ready to author once the axis question is settled**, and it
+should ship under a new skill for prebunking rather than as a second
+`continued-influence-effect`.
+
 ### Expired: the continued influence field-wide shape block
 
 The block under Tier 1 entry 12 says the field's standard measure is "a coded

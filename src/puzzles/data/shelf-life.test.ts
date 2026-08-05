@@ -157,12 +157,29 @@ describe("the commit beat stays answerable", () => {
   it("tells the reader that five of the eleven arms used a newer drug", () => {
     // Without this the question is unanswerable rather than hard.
     expect(shelfLife.setup.framing.en).toContain(
-      "Five of the eleven arms in that final group used a newer kind of acid blocker",
+      "Five of the eleven arms in that final group used a newer kind of acid suppressant",
     );
   });
 
-  it("says nothing about the prescription changed, which is the whole point", () => {
-    expect(shelfLife.setup.framing.en).toContain("same antibiotics, same doses, same lengths");
+  it("names the first four periods as a steady fall, which is the discriminator", () => {
+    // The hedge audit turns on this sentence. What the setup licenses is a
+    // DIRECTION: did the fall continue once the new drug came out? Without the
+    // trend named, "around 79" and "around 72" are both just "lower", and a
+    // player reasoning correctly about direction gets marked wrong on a
+    // magnitude the setup never gave them. See the band-separation test below.
+    expect(shelfLife.setup.framing.en).toContain("The first four groups fall steadily");
+  });
+
+  it("does not claim the pooled arms were a fixed prescription", () => {
+    // An earlier draft said "same antibiotics, same doses, same lengths". The
+    // review pooled five to fourteen day courses across six acid suppression
+    // backbones and says it could not correct for that, so only the antibiotic
+    // pair is constant. Asserting otherwise oversold the puzzle's own logic.
+    const framing = shelfLife.setup.framing.en;
+    expect(framing).not.toContain("same doses");
+    expect(framing).not.toContain("same lengths");
+    expect(framing).toContain("The antibiotics are the part that never changed");
+    expect(framing).toContain("could not adjust for that");
   });
 
   it("makes the durable-result reading the trap", () => {
@@ -172,17 +189,38 @@ describe("the commit beat stays answerable", () => {
     expect(shelfLife.choices.find((c) => c.isIntuitiveTrap)?.id).toBe("unchanged");
   });
 
-  it("puts the four bands at four distinct places, one of them qualitative", () => {
-    // unchanged at 82, mid-pack at 79, below-everything at 72, and higher. The
-    // correct band is the only one that clears the 75.02 floor the framing
-    // prints, so it is distinguishable by a fact and not only by a number.
+  it("puts the four bands at four distinct places", () => {
+    // unchanged at 82, mid-pack at 79, below-everything at 72, and higher.
     expect(shelfLife.choices.map((c) => c.id)).toEqual([
       "unchanged",
       "mid-pack",
       "below-everything",
       "higher",
     ]);
-    expect(shelfLife.choices[2].label.en).toContain("75.02");
+  });
+
+  it("lets exactly ONE band say the fall continued", () => {
+    // The hedge audit rule in CLAUDE.md: no two bands may share the direction
+    // the skill licenses. The setup prints a fall from 83.04 to 75.02, so the
+    // direction on offer is whether that fall carried on past 75.02. Only
+    // `below-everything` says it did; the other three all assert a reversal,
+    // at three different sizes. An earlier draft failed this: `mid-pack` was
+    // worded "continuing the gentle slide" while sitting at 79, ABOVE the
+    // 75.02 it claimed to be continuing from, so it read as the disciplined
+    // answer to anyone who had the direction right.
+    const continuesTheFall = shelfLife.choices.filter((c) =>
+      /the fall never stopped|below every earlier period/i.test(c.label.en),
+    );
+    expect(continuesTheFall.map((c) => c.id)).toEqual(["below-everything"]);
+    expect(continuesTheFall[0].isCorrect).toBe(true);
+
+    // And no other band may describe itself as continuing, sliding or falling,
+    // which is the exact wording trap that let the earlier draft through.
+    const others = shelfLife.choices.filter((c) => c.id !== "below-everything");
+    for (const c of others)
+      expect(`${c.label.en} ${c.sublabel?.en ?? ""}`).not.toMatch(
+        /continuing|slide|keeps falling/i,
+      );
   });
 
   it("NO BAND ASSERTS A NULL", () => {
@@ -248,6 +286,39 @@ describe("the lesson", () => {
     expect(shelfLife.reasoningSkill).toBe("temporal-validity");
     expect(shelfLife.lesson.howItWorks?.en ?? "").toContain(
       "look for its date before you look at its size",
+    );
+  });
+});
+
+describe("the heterogeneity the review could not adjust for", () => {
+  // Added after review caught the setup asserting a fixed prescription. The
+  // paper states verbatim: "It was not feasible to correct for the heterogeneity
+  // of dosage and duration of treatment in multivariable models due to the
+  // limited amount of data." The composition effect the puzzle turns on is a
+  // printed contrast between two columns of one table, not an adjusted estimate,
+  // and every beat has to say so rather than implying a controlled comparison.
+  it("discloses it in the reveal rather than only in the notes", () => {
+    expect(shelfLife.reveal.explanation.en).toContain("not offered as the whole account");
+    expect(shelfLife.reveal.explanation.en).toMatch(/could not correct for that heterogeneity/i);
+  });
+
+  it("records the six backbones and the four course lengths in the notes", () => {
+    const note = shelfLife.provenance.note?.en ?? "";
+    for (const backbone of [
+      "vonoprazan",
+      "rabeprazole",
+      "lansoprazole",
+      "esomeprazole",
+      "omeprazole",
+    ])
+      expect(note).toContain(backbone);
+    expect(note).toContain("five, seven, ten and fourteen days");
+    expect(note).toContain("heterogeneity of dosage and duration of treatment");
+  });
+
+  it("calls the trend an observed association, not an adjusted one", () => {
+    expect(shelfLife.provenance.note?.en ?? "").toContain(
+      "observed temporal association",
     );
   });
 });

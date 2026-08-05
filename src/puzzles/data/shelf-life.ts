@@ -28,12 +28,22 @@ import type { Puzzle } from "../schema";
  * page, and its values appear to disagree with the running text. See the
  * provenance note; this is recorded rather than quietly avoided.
  *
- * THE COMMIT BEAT ASKS FOR A POSITION AGAINST A STATED FLOOR. The framing prints
- * all five earlier figures, so the reader knows the series ran 83, 82, 79, 75
- * and then apparently recovered to 82, and the question is where the corrected
- * last period falls relative to those. The correct band is qualitatively
- * distinct from its neighbours: below every earlier period rather than back
- * among them.
+ * THE COMMIT BEAT SEPARATES ON DIRECTION, NOT MAGNITUDE. The framing prints all
+ * five earlier figures AND names the first four as a steady fall, which is the
+ * discriminator the hedge audit requires. What the setup licenses is whether
+ * that fall carried on past 75.02 once the new drug is taken out: only
+ * `below-everything` says it did, and the other three bands each assert a
+ * reversal of a different size. Review caught an earlier draft failing exactly
+ * here, where `mid-pack` sat at 79 while describing itself as "continuing the
+ * gentle slide", so it read as the disciplined answer to anyone who had the
+ * direction right and then got marked wrong on a magnitude nothing gave them.
+ *
+ * THE ARMS ARE NOT A FIXED PRESCRIPTION, and the framing must not say they are.
+ * Only the antibiotic pair is constant, that being the review's inclusion
+ * criterion; the acid suppressant and the course length both vary, and the paper
+ * states it could not correct for that heterogeneity. An earlier draft claimed
+ * "same doses, same lengths" and oversold the puzzle's own logic. See the
+ * seventh provenance note.
  */
 export const shelfLife: Puzzle = {
   schemaVersion: 1,
@@ -47,10 +57,10 @@ export const shelfLife: Puzzle = {
 
   setup: {
     headline: {
-      en: "The same three drugs, the same doses, for twenty-three years. The trials say it still works about as well as ever.",
+      en: "The same two antibiotics for twenty-three years. The trials say they still work about as well as ever.",
     },
     framing: {
-      en: "One combination has been the standard first treatment for a stomach infection carried by perhaps half the world: an acid blocker, clarithromycin and amoxicillin, taken together for a week or two. At its peak in the 1990s a trial put its cure rate at 94 per cent. A 2023 review pooled 67 arms from 38 randomised trials and grouped them by when they were published. The chart is that series. Cure rates run 83.04 per cent before 2001, then 82.33, then 79.14, then 75.02 for trials published between 2011 and 2015. And then the last group, published after 2015, comes back up to 82.00 per cent, which is where the whole thing started. Testing across the five periods, the review found no significant difference between them. Nothing about the prescription changed across those years: same antibiotics, same doses, same lengths. One thing did change. Five of the eleven arms in that final group used a newer kind of acid blocker that simply did not exist when the earlier trials ran. The question is what the other six arms in that final group show on their own.",
+      en: "One combination has been the standard first treatment for a stomach infection carried by perhaps half the world: an acid suppressant, clarithromycin and amoxicillin, taken together for a week or two. At its peak in the 1990s a trial put its cure rate at 94 per cent. A 2023 review pooled 67 arms from 38 randomised trials and grouped them by when they were published. The chart is that series. The first four groups fall steadily: 83.04 per cent before 2001, then 82.33, then 79.14, then 75.02 for trials published between 2011 and 2015. And then the last group, published after 2015, comes back up to 82.00 per cent, which is where the whole thing started. Testing across the five periods, the review found no significant difference between them. The antibiotics are the part that never changed: the same clarithromycin and amoxicillin throughout, which is what the review selected on. The arms do differ around them, in which acid suppressant they used and in whether the course ran five days or fourteen, and the review says it could not adjust for that. One difference stands out anyway. Five of the eleven arms in that final group used a newer kind of acid suppressant that simply did not exist when the earlier trials ran. The question is what the other six arms in that final group show on their own.",
     },
     question: {
       en: "Take out the five arms using a drug the earlier trials never had. Where do the remaining six land?",
@@ -110,7 +120,7 @@ export const shelfLife: Puzzle = {
         {
           id: "post-2015-old-drugs",
           label: {
-            en: "Published after 2015, without the new acid blocker",
+            en: "Published after 2015, without the new acid suppressant",
           },
           short: { en: "After 2015, old drugs only" },
         },
@@ -154,16 +164,16 @@ export const shelfLife: Puzzle = {
     {
       id: "mid-pack",
       label: {
-        en: "Around 79, back among the middle periods and continuing the gentle slide",
+        en: "Around 79, so the fall stopped and turned back up even without the new drug",
       },
-      sublabel: { en: "a slow drift, nothing sharp" },
+      sublabel: { en: "resistance levelled off" },
       isCorrect: false,
       isIntuitiveTrap: false,
     },
     {
       id: "below-everything",
       label: {
-        en: "Around 72, below every earlier period including the 75.02 that looked like the low point",
+        en: "Around 72, below every earlier period, so the fall never stopped",
       },
       sublabel: { en: "the recovery was a different drug" },
       isCorrect: true,
@@ -189,7 +199,7 @@ export const shelfLife: Puzzle = {
       en: "A label can stay fixed while the thing underneath it moves",
     },
     explanation: {
-      en: "The last marker is not a recalculation. It is the neighbouring column of the same printed table, which reports every period twice: once for all clarithromycin regimens and once excluding the vonoprazan-based ones. The first four periods are identical in both columns, arm for arm, because that newer acid blocker did not exist when those trials ran. Only the final period differs, and it differs by nearly ten points. Taking the five new arms out drops the group from 82.00 to 72.43, below the 75.02 that had looked like the floor, and the review's test across periods goes from no significant difference at all to a difference at less than one in ten thousand. Two things had been moving under one label. The bacterium grew resistant to clarithromycin, which the same review notes went from at or below 10 per cent resistance around the turn of the century to over 20 per cent across the United States, Europe and Asia by 2014 and as high as 60 per cent in some countries. And a better acid blocker arrived, worth about fifteen points on its own. The pooled line stayed flat because those two moved in opposite directions.",
+      en: "The last marker is not a recalculation. It is the neighbouring column of the same printed table, which reports every period twice: once for all clarithromycin regimens and once excluding the vonoprazan-based ones. The first four periods are identical in both columns, arm for arm, because that newer acid suppressant did not exist when those trials ran. Only the final period differs, and it differs by nearly ten points. Taking the five new arms out drops the group from 82.00 to 72.43, below the 75.02 that had looked like the floor, and the review's test across periods goes from no significant difference at all to a difference at less than one in ten thousand. Two things had been moving under one label. The bacterium grew resistant to clarithromycin, which the same review notes went from at or below 10 per cent resistance around the turn of the century to over 20 per cent across the United States, Europe and Asia by 2014 and as high as 60 per cent in some countries. And a better acid suppressant arrived, worth about fifteen points on its own against esomeprazole. Those two pull against each other, which is how a pooled line stays flat while the thing under it moves. They are not offered as the whole account: the review pooled courses running anywhere from five days to fourteen across six different acid suppressants, and states that it could not correct for that heterogeneity.",
     },
     body: {
       en: "The modelling in the same paper tells the story a second way. Fit a trend to eradication rate against publication year and the older regimens fall by 0.62 percentage points a year, which is significant at p = 0.0287. Restrict the trend to the proton-pump-inhibitor regimens and it stays significant at p = 0.0315. Put every arm back in, including the new ones, and the same trend is no longer significant at all, p = 0.3910. Nothing about the data changed between those two sentences except which arms were counted. That is worth sitting with, because the flat version is the one that reads like a headline: a standard treatment, tested for two decades, no significant change. The version that describes what a prescriber can actually write today is the other one. Note also what this puzzle does not show. It cannot tell you whether the newer drug will itself hold up, since the arms testing it are recent, few and clustered in one region, and the review says so. What it does show is that a treatment effect is not a fixed property of a drug. It is a fact about a drug, a bug and a year, and only one of those three appears on the prescription.",
@@ -231,7 +241,7 @@ export const shelfLife: Puzzle = {
     doi: "10.1177/17562848231167284",
     url: "https://doi.org/10.1177/17562848231167284",
     note: {
-      en: "Six things. First, on why percentages are drawn rather than counts. Table 1 does print per-arm intention-to-treat numerators and denominators, which is normally what this deck authors from, but Table 2's figures are random-effects pooled estimates rather than sums, so adding Table 1 up would produce a number the paper does not state and does not equal. Deriving a figure the source never printed, in order to satisfy a rule about deriving figures, would be the wrong way round, so the published percentages are used and this is the same exception the deck makes for pooled and published summary figures elsewhere. Second, a reconciliation that does hold and was worth running: the five periods carry 12, 21, 16, 7 and 11 arms, which sum to the 67 the paper reports, and the post-2015 row loses exactly five arms when vonoprazan is excluded, which matches the five vonoprazan arms individually listed in Table 1 (Murakami 2016, Maruyama 2017, Sue 2018, Suzuki 2020 and Chey 2022). Third, nothing on this card is drawn from Figure 2. That figure embeds a table of extrapolated 2022 rates whose columns could not be aligned with confidence from the published page, and whose listed values appear to disagree with the running text's statement that the proton pump inhibitors all reached 70 per cent or below. The trend statistics quoted here come from the running text, which states them unambiguously. Fourth, the time variable is the year of publication, not the year patients were treated, and trials appear some years after they enrol. The paper uses publication year and says so, but it means the decline is dated later than it happened. Fifth, the later groups are thin: 7 arms for 2011 to 2015 and only 6 for the corrected post-2015 figure, and the intervals show it. The corrected post-2015 interval of 68.72 to 75.85 does not overlap the pre-2001 interval of 77.99 to 87.12, which is the comparison the puzzle turns on, but the uncorrected post-2015 interval of 75.18 to 87.27 is wide and overlaps almost everything. Sixth, on what is not claimed: the newer acid blocker's own durability is untested here, since its arms are few, recent and concentrated in one region, and the reveal says so rather than leaving the reader with the impression that the problem is solved.",
+      en: "Six things. First, on why percentages are drawn rather than counts. Table 1 does print per-arm intention-to-treat numerators and denominators, which is normally what this deck authors from, but Table 2's figures are random-effects pooled estimates rather than sums, so adding Table 1 up would produce a number the paper does not state and does not equal. Deriving a figure the source never printed, in order to satisfy a rule about deriving figures, would be the wrong way round, so the published percentages are used and this is the same exception the deck makes for pooled and published summary figures elsewhere. Second, a reconciliation that does hold and was worth running: the five periods carry 12, 21, 16, 7 and 11 arms, which sum to the 67 the paper reports, and the post-2015 row loses exactly five arms when vonoprazan is excluded, which matches the five vonoprazan arms individually listed in Table 1 (Murakami 2016, Maruyama 2017, Sue 2018, Suzuki 2020 and Chey 2022). Third, nothing on this card is drawn from Figure 2. That figure embeds a table of extrapolated 2022 rates whose columns could not be aligned with confidence from the published page, and whose listed values appear to disagree with the running text's statement that the proton pump inhibitors all reached 70 per cent or below. The trend statistics quoted here come from the running text, which states them unambiguously. Fourth, the time variable is the year of publication, not the year patients were treated, and trials appear some years after they enrol. The paper uses publication year and says so, but it means the decline is dated later than it happened. Fifth, the later groups are thin: 7 arms for 2011 to 2015 and only 6 for the corrected post-2015 figure, and the intervals show it. The corrected post-2015 interval of 68.72 to 75.85 does not overlap the pre-2001 interval of 77.99 to 87.12, which is the comparison the puzzle turns on, but the uncorrected post-2015 interval of 75.18 to 87.27 is wide and overlaps almost everything. Sixth, on what is not claimed: the newer acid suppressant's own durability is untested here, since its arms are few, recent and concentrated in one region, and the reveal says so rather than leaving the reader with the impression that the problem is solved. Seventh, and this one corrects an earlier draft of this card, the pooled arms are not a fixed prescription. The review's own inclusion list runs to six acid suppression backbones (vonoprazan, rabeprazole, lansoprazole, esomeprazole, omeprazole and mixed proton pump inhibitor) and to courses of five, seven, ten and fourteen days, and it states that \"it was not feasible to correct for the heterogeneity of dosage and duration of treatment in multivariable models due to the limited amount of data\". Only the antibiotic pair is constant, which is the review's selection criterion. So the decline is an observed temporal association with an uncontrolled mixture underneath it, and the composition effect the puzzle turns on is a printed contrast between two columns of one table rather than an adjusted estimate. The setup and the reveal both say this rather than implying the arms differ in one respect only.",
     },
   },
 

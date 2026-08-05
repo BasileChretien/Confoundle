@@ -3643,7 +3643,68 @@ and often committed: a trial from the 1990s reports a high cure rate, a modern
 one reports a poor one, and the reflex is to suspect the old trial rather than to
 notice that the pathogen is no longer the same pathogen. That is temporal
 validity with nothing charged about it, and it sits in Basile's own field.
-UNVERIFIED and not yet searched.
+
+#### SOURCED 2026-08-05, and the source carries a second trap the entry did not anticipate
+
+**Moss SF, Chey WD, Daniele P, Pelletier C, Jacob R, Tremblay G, Hubscher E,
+Leifke E, Malfertheiner P.** *Brief communication: global temporal trends in the
+efficacy of clarithromycin-based regimens for the treatment of Helicobacter
+pylori infection.* Therapeutic Advances in Gastroenterology 2023;16:
+17562848231167284, doi `10.1177/17562848231167284`. Open access. **Read via the
+publisher's full-text page, not yet from the PDF**, which is the one gap in this
+note and should be closed before authoring.
+
+**It clears the shape bar decisively, which is the thing that killed Flynn.**
+Table 1, "Included studies", prints per study: authors, year, country, treatment
+type, duration, N, **ITT (N), ITT (n)** and ITT per cent. Numerators and
+denominators, per arm. 38 randomised trials, 67 study arms, East Asian, South
+Asian and Western including North America, inception to May 2021. Table 2 gives
+time-stratified pooled eradication rates.
+
+**Table 2, PPI-based clarithromycin triple therapy, eradication by publication
+period:**
+
+| Period | Eradication | 95% CI |
+|---|---|---|
+| Pre-2001 | 83.04% | 77.99 to 87.12 |
+| 2001-2005 | 82.33% | 80.03 to 84.42 |
+| 2006-2010 | 79.14% | 71.21 to 85.33 |
+| 2011-2015 | 75.02% | 66.17 to 82.18 |
+| Post-2015 | **72.43%** | 68.72 to 75.85 |
+
+A fall of about eleven points across 23 years, **0.62 per cent a year,
+p = 0.0287**, with the negative trend for PPI triple therapies significant at
+p = 0.0315. Same regimen, same trial design, different organism. That is the
+temporal-validity lesson in printed counts.
+
+**And the second trap, which is better than the first.** Pool every arm together,
+including the newer vonoprazan-based ones, and **the decline stops being
+significant, p = 0.3910**. The post-2015 pooled figure reads 82.00 per cent
+instead of 72.43, because vonoprazan is a more effective acid suppressor
+(+14.81%, p < 0.0001) whose trials are concentrated in the recent years.
+Extrapolated to 2022 the paper puts vonoprazan at 84.20 per cent against every
+PPI at or below 70. **So the literature's headline number for "clarithromycin
+triple therapy" can look stable while the version a prescriber actually reaches
+for has decayed by more than a tenth.** Setup and reveal would be the same 67
+arms, pooled and then split by acid suppressor.
+
+**One design question to settle before building, and it is the reason this says
+SOURCED rather than READY.** The masking version is arguably a
+composition lesson rather than a temporal one, and the deck already ships
+`simpsons-paradox` on kidney stones and several other disaggregation puzzles. The
+distinguishing feature, if there is one, is that the confounder here is *when a
+regimen entered the evidence base*, and the practical error is not "look at your
+own subgroup" but "the old arm is obsolete, and the pooled figure is quoting it
+at you". Work out whether that is a second move or the same move with a new coat
+before choosing which of the two framings is the spine, and if the masking wins,
+reconsider whether `temporal-validity` is still the right skill id, since the tag
+in this entry is the contract that `docsCoverage.test.ts` checks.
+
+**Sequencing note.** The decline framing asks the reader to predict a magnitude
+and is guessable in direction, since everybody knows resistance exists, so it
+would need the yardstick pinned in the framing the way `statistical-power` does.
+The masking framing is genuinely non-obvious. Prefer the masking framing if the
+adjacency check clears it.
 
 Also worth checking: an educational or preventive intervention with a published
 effect in one decade and a published null in another, where the second paper

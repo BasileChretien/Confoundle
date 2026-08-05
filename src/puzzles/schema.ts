@@ -1712,6 +1712,254 @@ const IntervalData = z
   });
 export type IntervalData = z.infer<typeof IntervalData>;
 
+/* ---------------------------------------------------------------------------
+ * An effect measured across a scale, where the outcome itself has hard bounds
+ * it cannot pass, plus the published location of the effect's peak with the
+ * interval around it.
+ *
+ * Needed because no existing shape can draw a bound at all, and this lesson is
+ * about what a bound does to a measurement. `series` is the near miss and it
+ * fails on three counts: its schema REQUIRES the two lines to swap places and
+ * these never do, its observations are raw counts with no ceiling to press
+ * against, and its vertical axis runs to the largest value in the data rather
+ * than to a fixed maximum, which would hide the one thing worth seeing. Giving
+ * `series` a no-crossover flag would fix only the first of those, and the
+ * lesson would still be undrawable, which is bending the lesson to the shape.
+ * `dose` has a bounded-looking curve but requires a zero baseline and a single
+ * series. `bunching` holds one series in ordered bins against a threshold.
+ * `interval` can draw an interval but only around one quantity, with no scale
+ * for it to sit on.
+ *
+ * The reveal works by drawing what the setup's curve was DERIVED FROM. The
+ * setup draws the difference between the two arms, bin by bin, which collapses
+ * at both ends and peaks in the middle. The reveal throws that away and draws
+ * the two arms themselves against the floor and the ceiling, where the reason
+ * for the collapse is visible: both arms are pinned near a bound at each end
+ * and have room to separate only in the middle. Nothing is recomputed between
+ * the beats. The second picture is the first one's arithmetic, undone.
+ *
+ * The reveal also carries the published peak of the fitted effect and its
+ * confidence interval, drawn against `neutralPoint`, the place on the axis
+ * where an effect of CONSTANT size would peak once it had been squeezed by the
+ * bounds. That comparison is the whole verdict, and it cannot be derived from
+ * binned means, so it is authored as published and its consistency with the
+ * bins is a matter for the puzzle's own test.
+ *
+ * Values are authored as published proportions rather than derived from counts,
+ * the same deliberate exception this project already makes for framing,
+ * distribution, dose, estimation, magnitude, target and interval data. What is
+ * NEVER authored is the difference between the arms, the mean over the bins, or
+ * where the collapse happens: all three are derived, because a data file that
+ * stated them could contradict the values it drew them from.
+ * ------------------------------------------------------------------------- */
+export const CeilingArm = z.object({
+  id: z.string().min(1),
+  label: LocalizedText, // "Seen for the first time"
+  short: LocalizedText.optional(),
+});
+export type CeilingArm = z.infer<typeof CeilingArm>;
+
+export const CeilingBin = z.object({
+  id: z.string().min(1),
+  label: LocalizedText, // "41 to 50%"
+  short: LocalizedText.optional(),
+  /** Where the bin sits on the axis, in the axis's own units. */
+  at: z.number(),
+});
+export type CeilingBin = z.infer<typeof CeilingBin>;
+
+export const CeilingObservation = z.object({
+  binId: z.string().min(1),
+  armId: z.string().min(1),
+  /** As published, in the outcome's own units. */
+  value: z.number(),
+  /** The published standard deviation, when the source prints one. */
+  sd: z.number().nonnegative().optional(),
+});
+export type CeilingObservation = z.infer<typeof CeilingObservation>;
+
+const CeilingData = z
+  .object({
+    type: z.literal("ceiling"),
+    label: LocalizedText, // figure title
+    metricLabel: LocalizedText, // what the outcome is
+    /** Says on the figure who was measured, how many, and on what. */
+    statNote: LocalizedText,
+    /** Captions the derived difference, which is what the setup draws. */
+    differenceLabel: LocalizedText,
+    /** The hard bounds the OUTCOME cannot pass, and what they mean. */
+    bounds: z.object({
+      min: z.number(),
+      max: z.number(),
+      minLabel: LocalizedText, // "0, nobody called it true"
+      maxLabel: LocalizedText, // "1, everybody called it true"
+    }),
+    /** The scale the bins sit on, which is what the peak is located on. */
+    axis: z.object({
+      min: z.number(),
+      max: z.number(),
+      label: LocalizedText,
+    }),
+    /**
+     * Where on the axis an effect of constant size would peak once the bounds
+     * had squeezed it. The verdict is whether the measured peak reaches it.
+     */
+    neutralPoint: z.number(),
+    neutralLabel: LocalizedText,
+    /** The published peak of the fitted effect, with its interval. */
+    peak: z.object({
+      at: z.number(),
+      low: z.number(),
+      high: z.number(),
+      label: LocalizedText,
+    }),
+    /** The baseline arm first, the one the effect acts on second. */
+    arms: z.array(CeilingArm).length(2),
+    bins: z.array(CeilingBin).min(4),
+    observations: z.array(CeilingObservation).min(8),
+  })
+  .superRefine((d, ctx) => {
+    if (!(d.bounds.min < d.bounds.max))
+      ctx.addIssue({
+        code: "custom",
+        path: ["bounds"],
+        message: `the ceiling (${d.bounds.max}) must sit above the floor (${d.bounds.min})`,
+      });
+    if (!(d.axis.min < d.axis.max))
+      ctx.addIssue({
+        code: "custom",
+        path: ["axis"],
+        message: `the axis runs from ${d.axis.min} to ${d.axis.max}`,
+      });
+
+    const armIds = new Set(d.arms.map((a) => a.id));
+    const binIds = new Set(d.bins.map((b) => b.id));
+    if (armIds.size !== d.arms.length)
+      ctx.addIssue({ code: "custom", path: ["arms"], message: "duplicate arm id" });
+    if (binIds.size !== d.bins.length)
+      ctx.addIssue({ code: "custom", path: ["bins"], message: "duplicate bin id" });
+
+    d.bins.forEach((b, i) => {
+      if (b.at < d.axis.min || b.at > d.axis.max)
+        ctx.addIssue({
+          code: "custom",
+          path: ["bins", i, "at"],
+          message: `${b.at} falls outside the axis (${d.axis.min} to ${d.axis.max})`,
+        });
+      if (i > 0 && b.at <= d.bins[i - 1].at)
+        ctx.addIssue({
+          code: "custom",
+          path: ["bins", i, "at"],
+          message: `bins must run up the axis in order; ${b.at} does not follow ${d.bins[i - 1].at}`,
+        });
+    });
+
+    const seen = new Set<string>();
+    d.observations.forEach((o, i) => {
+      if (!armIds.has(o.armId))
+        ctx.addIssue({
+          code: "custom",
+          path: ["observations", i, "armId"],
+          message: `no arm with id ${o.armId}`,
+        });
+      if (!binIds.has(o.binId))
+        ctx.addIssue({
+          code: "custom",
+          path: ["observations", i, "binId"],
+          message: `no bin with id ${o.binId}`,
+        });
+      if (o.value < d.bounds.min || o.value > d.bounds.max)
+        ctx.addIssue({
+          code: "custom",
+          path: ["observations", i, "value"],
+          message: `${o.value} falls outside the bounds (${d.bounds.min} to ${d.bounds.max})`,
+        });
+      const key = `${o.armId}|${o.binId}`;
+      if (seen.has(key))
+        ctx.addIssue({
+          code: "custom",
+          path: ["observations", i],
+          message: `two observations for ${key}`,
+        });
+      seen.add(key);
+    });
+
+    // Every cell has to be filled. A missing one would leave a bin with no
+    // difference to draw, and the setup's whole curve is differences.
+    for (const a of d.arms)
+      for (const b of d.bins)
+        if (!seen.has(`${a.id}|${b.id}`))
+          ctx.addIssue({
+            code: "custom",
+            path: ["observations"],
+            message: `missing observation for arm "${a.id}" in bin "${b.id}"`,
+          });
+
+    if (d.neutralPoint <= d.axis.min || d.neutralPoint >= d.axis.max)
+      ctx.addIssue({
+        code: "custom",
+        path: ["neutralPoint"],
+        message: `${d.neutralPoint} has to sit inside the axis for the peak to be compared against it`,
+      });
+    if (!(d.peak.low <= d.peak.at && d.peak.at <= d.peak.high))
+      ctx.addIssue({
+        code: "custom",
+        path: ["peak"],
+        message: `the interval ${d.peak.low} to ${d.peak.high} does not contain the peak at ${d.peak.at}`,
+      });
+    for (const [key, v] of [
+      ["at", d.peak.at],
+      ["low", d.peak.low],
+      ["high", d.peak.high],
+    ] as const)
+      if (v < d.axis.min || v > d.axis.max)
+        ctx.addIssue({
+          code: "custom",
+          path: ["peak", key],
+          message: `${v} falls outside the axis (${d.axis.min} to ${d.axis.max})`,
+        });
+
+    if (d.arms.length !== 2 || d.bins.length < 3) return;
+    const at = (armId: string, binId: string) =>
+      d.observations.find((o) => o.armId === armId && o.binId === binId)?.value ?? null;
+    const [base, treated] = d.arms;
+    const diffs = d.bins.map((b) => {
+      const lo = at(base.id, b.id);
+      const hi = at(treated.id, b.id);
+      return lo === null || hi === null ? null : hi - lo;
+    });
+    if (diffs.some((x) => x === null)) return;
+    const values = diffs as number[];
+
+    // The second arm is the one the effect acts on, so it may not fall below
+    // the baseline anywhere. This is the property that makes `series` the wrong
+    // shape: there, the two lines are REQUIRED to swap places.
+    values.forEach((v, i) => {
+      if (v < 0)
+        ctx.addIssue({
+          code: "custom",
+          path: ["observations"],
+          message: `in bin "${d.bins[i].id}" the second arm falls below the first, so name them the other way round`,
+        });
+    });
+
+    // And the difference has to collapse at BOTH ends while peaking somewhere
+    // in between, or there is no squeeze to reveal, only a curve. Stated as one
+    // comparison against both ends so that a tie at either end fails too: a
+    // difference matching its own peak at the edge of the axis is exactly the
+    // case where the bounds explain nothing.
+    const largest = Math.max(...values);
+    const first = values[0];
+    const last = values[values.length - 1];
+    if (!(largest > first && largest > last))
+      ctx.addIssue({
+        code: "custom",
+        path: ["observations"],
+        message: `the difference runs ${first} at one end and ${last} at the other against a peak of ${largest}, so it does not fall away at both ends and nothing is being squeezed between two bounds`,
+      });
+  });
+export type CeilingData = z.infer<typeof CeilingData>;
+
 export const PuzzleData = z.discriminatedUnion("type", [
   RatesData,
   FrequenciesData,
@@ -1737,6 +1985,7 @@ export const PuzzleData = z.discriminatedUnion("type", [
   TargetData,
   SeriesData,
   IntervalData,
+  CeilingData,
 ]);
 export type PuzzleData = z.infer<typeof PuzzleData>;
 
@@ -1807,6 +2056,8 @@ export const DataView = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("bothinstruments"), ...viewFields }),
   z.object({ kind: z.literal("oneshare"), ...viewFields }),
   z.object({ kind: z.literal("thegap"), ...viewFields }),
+  z.object({ kind: z.literal("thedifference"), ...viewFields }),
+  z.object({ kind: z.literal("bothcurves"), ...viewFields }),
 ]);
 export type DataView = z.infer<typeof DataView>;
 export type DataViewKind = DataView["kind"];

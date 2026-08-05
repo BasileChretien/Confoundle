@@ -60,6 +60,7 @@ import { reportingRate } from "./data/reporting-rate";
 import { marginOfError } from "./data/margin-of-error";
 import { floorAndCeiling } from "./data/floor-and-ceiling";
 import { sourceCountIllusion } from "./data/source-count-illusion";
+import { shelfLife } from "./data/shelf-life";
 
 /**
  * The puzzle registry. Adding a puzzle = import its data file and add it to
@@ -128,6 +129,7 @@ const rawPuzzles: unknown[] = [
   marginOfError,
   floorAndCeiling,
   sourceCountIllusion,
+  shelfLife,
 ];
 
 export const puzzles: PuzzleType[] = rawPuzzles.map((p, i) => {

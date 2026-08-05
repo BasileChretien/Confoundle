@@ -3567,11 +3567,26 @@ need it.
 
 <!-- skill: temporal-validity -->
 
-**Status: LEAD 2026-08-05.** Extracted from the dog whistling entry above, which
-was refused on neutral ground on the same day. The refusal was about the material,
-not about the idea, and the idea deserves its own line rather than dying with the
-paper it was noticed in. **Numbered 25 rather than 24 because 24 is claimed by the
-open floor-and-ceiling pull request**, and a duplicate number is worse than a gap.
+**Status: SHIPPED 2026-08-05** as `back-where-it-started`, skill
+`temporal-validity`, on `ratings`. Extracted from the dog whistling entry above,
+which was refused on neutral ground the same day, then routed through two closed
+candidates before landing. **Numbered 25 rather than 24 because 24 was claimed by
+the floor-and-ceiling pull request**, and a duplicate number is worse than a gap.
+
+**The adjacency question this entry raised is settled, and the answer shaped the
+build.** The Moss source carries two possible spines: the decay of the regimen
+itself, and the masking of that decay by a newer drug entering the pooled
+average. The masking is the more surprising of the two and it is also
+**Simpson's-adjacent**, since the mechanism is an unequal mix across strata,
+which is what `simpsons-paradox` already ships on kidney stones. Putting two
+names on one reasoning move is the thing the deck refuses to do, so the masking
+is **not** the skill. It is the reveal's mechanism and the lesson's second
+warning, while the spine is temporal: a measured effect is a fact about a drug,
+a bug and a year, and only one of those appears on the prescription. The
+distinguishing move against every disaggregation puzzle in the deck is stated in
+`howItWorks`: with case mix you want your own stratum, whereas here you want to
+**discard** the old stratum, and a failed replication and an expired finding look
+identical on the page while calling for opposite responses.
 
 **The trap.** A careful experiment establishes an effect. Years later a careful
 replication finds nothing. The reflex is to decide that one of the two was done

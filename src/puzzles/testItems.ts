@@ -8428,6 +8428,148 @@ const items: TestItem[] = [
       en: "New data gathered by people who were not involved in the first study is the expensive kind of confirmation, and it is the kind that earns the weight. Nothing about it is a repetition of the original claim.",
     },
   },
+
+  // ---- Findings have a shelf life ----
+  {
+    id: "sl-antibiotic-guideline",
+    scenario: {
+      en: "A prescribing guideline still recommends a first-line antibiotic on the strength of trials from the 1990s showing a 94 per cent cure rate, and cites those trials as the evidence. Local laboratory reports show resistance to that antibiotic has risen from under 10 per cent to over 40 per cent since.",
+    },
+    trap: "temporal-validity",
+    explanation: {
+      en: "The old trials were not wrong; they measured the drug against the organism of the 1990s. The organism is the part that moved, and a cure rate is a fact about a pairing rather than a property of the drug, so the citation has gone stale while remaining accurate about its own era.",
+    },
+  },
+  {
+    id: "sl-failed-replication-blame",
+    scenario: {
+      en: "A large modern trial of a long-established treatment finds a much smaller benefit than the original studies. Commentators conclude that the original researchers must have been careless or selective, and call for the old papers to be discounted.",
+    },
+    trap: "temporal-validity",
+    explanation: {
+      en: "That is one explanation and it is not the only one. If the population, the background care or the target has changed since, both results can be correct measurements of different worlds. Deciding which without asking what changed in between is choosing a story rather than testing one.",
+    },
+  },
+  {
+    id: "sl-pooled-across-decades",
+    scenario: {
+      en: "A meta-analysis pools thirty years of trials of one procedure and reports a single average success rate, which a hospital uses to counsel patients about what to expect.",
+    },
+    trap: "temporal-validity",
+    explanation: {
+      en: "An average across thirty years describes no particular year, and if the procedure improved or deteriorated over that span the pooled figure lands somewhere in the middle and matches nobody. What a patient needs is the recent end of that literature, not its centre of gravity.",
+    },
+  },
+  {
+    id: "sl-fraud-detection-model",
+    scenario: {
+      en: "A fraud-detection model validated three years ago is reported as still achieving its original accuracy, on the basis of that validation study. Nobody has rechecked it since, and fraudsters adapt to whatever gets caught.",
+    },
+    trap: "temporal-validity",
+    explanation: {
+      en: "An adversary who responds to the model is the clearest case of a moving target. The validation was honest about the fraud of its own year, and its number carries no information about a year in which the behaviour it detects has had time to change.",
+    },
+  },
+  {
+    id: "sl-screening-yield",
+    scenario: {
+      en: "A screening programme quotes the number of cases it catches per thousand people screened, taken from a study run before a vaccine against the same disease was introduced. The figure is used to justify continuing the programme unchanged.",
+    },
+    trap: "temporal-validity",
+    explanation: {
+      en: "The vaccine changes how much disease there is to find, and a yield per thousand is a measurement of the test against a background rate. Reusing the pre-vaccine figure assumes away the very thing the vaccine was meant to do.",
+    },
+  },
+  {
+    id: "sl-old-norm-survey",
+    scenario: {
+      en: "A textbook states what proportion of people hold a particular social attitude, citing a survey from twenty-five years ago, and presents it as the current picture without noting the date in the text.",
+    },
+    trap: "temporal-validity",
+    explanation: {
+      en: "Attitudes are among the fastest-moving things anybody measures, and a quarter-century-old proportion is a historical fact rather than a current one. The survey has not become wrong; the sentence built on it has, by dropping the date that made it true.",
+    },
+  },
+  {
+    id: "sl-benchmark-cost",
+    scenario: {
+      en: "A business case argues a technology is uneconomic, citing a cost-per-unit benchmark from an analysis published eight years earlier, in a sector where unit costs have been falling steeply throughout.",
+    },
+    trap: "temporal-validity",
+    explanation: {
+      en: "In a sector with a steep cost curve the age of a benchmark is most of its content. The analysis was right about its own year and the conclusion drawn from it is about this one, and nothing in the citation flags the gap.",
+    },
+  },
+  {
+    id: "sl-drug-interaction-list",
+    scenario: {
+      en: "A ward keeps a laminated list of first-line antibiotics for common infections, produced when the ward opened and never revised, and staff treat it as settled reference material because it was compiled from good evidence.",
+    },
+    trap: "temporal-validity",
+    explanation: {
+      en: "Being compiled from good evidence is what makes it persuasive and does not make it current. A reference that is never revised converts a dated measurement into standing practice, and the better the original evidence the longer that survives unchallenged.",
+    },
+  },
+  {
+    id: "sl-effect-size-in-power-calc",
+    scenario: {
+      en: "A team designing a new trial takes its expected effect size straight from a landmark study conducted twenty years earlier, in order to work out how many participants to recruit.",
+    },
+    trap: "temporal-validity",
+    explanation: {
+      en: "If the effect has shrunk since, the trial is powered for a benefit that no longer exists and will probably miss the smaller one that does. The landmark number is the wrong input not because it was wrong then but because it is being used as a prediction about now.",
+    },
+  },
+  {
+    id: "sl-forecast-model-holdout",
+    scenario: {
+      en: "A demand forecasting model is judged on its accuracy against a held-out sample drawn from the same years as its training data, and is then deployed on the assumption that it will perform similarly next year.",
+    },
+    trap: "temporal-validity",
+    explanation: {
+      en: "Holding out data from the same years tests whether the model generalises across cases and not whether it generalises across time. Those are different questions, and only the second is the one deployment actually asks.",
+    },
+  },
+  {
+    id: "ok-sl-checked-the-date",
+    scenario: {
+      en: "Before quoting a cure rate to a patient, a clinician checks when the supporting trials were run, finds them recent and finds local resistance data unchanged since, and quotes the figure.",
+    },
+    trap: null,
+    explanation: {
+      en: "This is the check being run and passed. The date was looked at before the number, and the thing the number was measured against was confirmed not to have moved. That is what makes reusing it sound rather than habitual.",
+    },
+  },
+  {
+    id: "ok-sl-stratified-by-era",
+    scenario: {
+      en: "A review pooling trials across three decades reports the overall figure and also reports it separately by decade, noting that the recent estimate is the relevant one for current practice.",
+    },
+    trap: null,
+    explanation: {
+      en: "Reporting the pooled figure and the era breakdown together is the honest form. The reader can see both what the whole literature says and which part of it applies now, and is told which to use.",
+    },
+  },
+  {
+    id: "ok-sl-stable-quantity",
+    scenario: {
+      en: "An engineer uses a measurement of a metal's thermal expansion published in 1974, on the grounds that nothing about the metal or the measurement has changed in the interim.",
+    },
+    trap: null,
+    explanation: {
+      en: "Some quantities really are constants, and this is one. The reasoning is sound because the question was asked and answered rather than skipped: the age of a figure matters exactly insofar as the thing it measures can drift.",
+    },
+  },
+  {
+    id: "ok-sl-prospective-recheck",
+    scenario: {
+      en: "Rather than citing its original validation, a laboratory re-runs its susceptibility panel every year and publishes the current figures alongside the historical ones.",
+    },
+    trap: null,
+    explanation: {
+      en: "Re-measuring on a schedule is the structural fix, and it works whether or not anyone remembers to be suspicious of the old number. Publishing the series rather than only the latest value also lets a reader see the direction of travel.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

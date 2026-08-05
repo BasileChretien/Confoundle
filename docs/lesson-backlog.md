@@ -1591,7 +1591,63 @@ threshold would be overstating the paper's own finding, and the authors say so
 themselves.
 
 **The shipping question, when it reopens, is a data question rather than a paper
-question**, and it is Basile's call in the same way the last one was. The studies are preregistered
+question**, and it is Basile's call in the same way the last one was.
+
+**A BETTER PAPER ARRIVED 2026-08-04, AND IT IS NOT A SUBSTITUTE. IT IS ITS OWN
+LESSON, AND IT PARTLY REFUTES THIS ONE.** Basile supplied Fazio LK, Rand DG,
+Pennycook G. *Repetition increases perceived truth equally for plausible and
+implausible statements.* Psychonomic Bulletin & Review 2019;26:1705-1710, doi
+10.3758/s13423-019-01651-4. **Peer reviewed and published**, which neither of the
+candidates above is.
+
+**The finding, from the abstract read at source.** It had been argued that
+repetition cannot move belief in unambiguous statements: faced with an obviously
+false claim, people should just reject it. Fazio and colleagues report a
+simulation study and **a preregistered experiment**, and conclude the opposite.
+Belief in **all** statements is increased by repetition. The observed illusory
+truth effect *is* largest for ambiguous items, but they show that this **can be
+explained by the psychometric properties of the task rather than by any
+psychological mechanism that blocks repetition for implausible items**. Their
+closing sentence: even highly implausible statements will become more plausible
+with enough repetition.
+
+**Why this is a Confoundle puzzle in its own right, and a very good one.** The
+data have an obvious reading and the obvious reading is wrong, which is the
+deck's whole DNA. Plot the size of the repetition effect against baseline
+plausibility and you get a symmetric inverted U centred at 0.5: the effect looks
+large for ambiguous claims and near zero at both extremes. The natural
+conclusion, and the one the prior literature drew, is that outrageous claims are
+immune, so repeating a big lie is wasted effort. The reveal is that the inverted
+U appears **even when the simulation is built with the repetition effect held
+exactly constant across every level of plausibility**, because converting a
+continuous belief into a binary true or false judgment floors it at one end and
+ceilings it at the other. The shape is the ruler, not the world. Setup and reveal
+are two views of the same curve, which is exactly the structure this engine wants.
+
+**And note what it does to the entry above.** The folk Big Lie says a colossal
+lie is more credible than a small one. Levari et al. say something subtler, that
+big lies make *other* claims more credible, and their own SI found one or two
+outrageous headlines do nothing. Fazio et al. say the apparent immunity of
+outrageous claims to repetition is a measurement artefact. Between them the folk
+claim is in poor shape, and **a puzzle whose reveal is "the shield you thought
+protected you from obvious nonsense is an artefact of how belief was measured"
+is a better lesson than the one this entry set out to build.**
+
+**What is still unchecked**, and it is the same question that killed the last
+two: whether Study 2 tabulates its proportions. Study 2 ran **503 participants**
+on Amazon Mechanical Turk, with 43 more starting and not finishing, rating novel
+and repeated statements across the full plausibility range. The outcome is
+reported as a **proportion rated true**, which is the right unit for this deck if
+it is printed rather than only plotted. **Read the Study 2 results and figures
+before designing anything.** If the proportions are tabulated, this ships on
+`rates` or on a small new shape; if they exist only inside Fig. 1, the same rule
+that stopped Levari stops this too.
+
+The second file Basile supplied, `OrchinikEtAl_ITPretest.docx`, is the pretest
+material for the Orchinik, Rand, Pennycook and Fazio paper listed above as
+Revise & Resubmit at Cognition. Unread as of this note. It is likely to be a
+stimulus set with per-item plausibility ratings, which would be useful for
+authoring example headlines but is not an outcome measure. The studies are preregistered
 and hosted on OSF, so the trial-level data are very likely posted. Computing the
 share of ambiguous headlines called plausible in each condition from those files
 would give exactly the counts this deck authors from, and it would arguably be

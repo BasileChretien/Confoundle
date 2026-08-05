@@ -1304,6 +1304,40 @@ function IntervalGlyph() {
   );
 }
 
+function CeilingGlyph() {
+  const W = 200;
+  const H = 96;
+  /**
+   * Two curves pinned against a floor and a ceiling, free to separate only in
+   * the middle. The gold rules are the bounds. The point of the picture is that
+   * the gap between the curves is not a fact about the curves; it is what is
+   * left over once both ends have been squeezed flat.
+   */
+  const floorY = 78;
+  const ceilY = 18;
+  const lower = "M14 74L50 66L86 48L122 30L158 22L186 20";
+  const upper = "M14 71L50 58L86 34L122 22L158 18L186 17";
+  return (
+    <svg
+      viewBox={`0 0 ${W} ${H}`}
+      width="100%"
+      role="img"
+      aria-label="Two rising curves squeezed together against a floor and a ceiling, apart only in the middle"
+    >
+      <line x1={10} y1={ceilY} x2={W - 10} y2={ceilY} stroke={CARD.gold} strokeWidth={1} strokeDasharray="3 3" />
+      <line x1={10} y1={floorY} x2={W - 10} y2={floorY} stroke={CARD.gold} strokeWidth={1} strokeDasharray="3 3" />
+      <path d={lower} fill="none" stroke={CARD.teal} strokeWidth={2} />
+      <path d={upper} fill="none" stroke={CARD.rust} strokeWidth={2} />
+      <text x={12} y={ceilY - 4} fontSize={8} fill={CARD.muted}>
+        ceiling
+      </text>
+      <text x={12} y={floorY + 11} fontSize={8} fill={CARD.muted}>
+        floor
+      </text>
+    </svg>
+  );
+}
+
 function SeriesGlyph() {
   const W = 200;
   const H = 96;
@@ -1668,6 +1702,7 @@ export function ShareCard({
   const targetGlyph = data.type === "target";
   const seriesGlyph = data.type === "series";
   const intervalGlyph = data.type === "interval";
+  const ceilingGlyph = data.type === "ceiling";
   const splitSampleGlyph =
     data.type === "rates" &&
     Boolean(data.strataAreSeparateSamples) &&
@@ -1789,6 +1824,8 @@ export function ShareCard({
             <SeriesGlyph />
           ) : intervalGlyph ? (
             <IntervalGlyph />
+          ) : ceilingGlyph ? (
+            <CeilingGlyph />
           ) : null}
 
           <p className="mt-4 font-display text-[17px] font-medium leading-snug">

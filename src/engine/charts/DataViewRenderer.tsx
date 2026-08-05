@@ -35,6 +35,7 @@ import { ProjectionView } from "./ProjectionView";
 import { TargetView } from "./TargetView";
 import { SeriesView } from "./SeriesView";
 import { IntervalView } from "./IntervalView";
+import { CeilingView } from "./CeilingView";
 import { restrictSeries } from "./series";
 
 /**
@@ -211,6 +212,13 @@ export function DataViewRenderer({
       return view.kind === "oneshare" || view.kind === "thegap" ? (
         <IntervalView data={data} kind={view.kind} />
       ) : null;
+    case "ceiling":
+      // Not a slice-drawer. The setup draws the DERIVED difference and the
+      // reveal draws the two arms it was subtracted from, so both beats already
+      // use every observation; there is nothing to hold back.
+      return view.kind === "thedifference" || view.kind === "bothcurves" ? (
+        <CeilingView data={data} kind={view.kind} />
+      ) : null;
     default:
       return null;
   }
@@ -335,6 +343,10 @@ export function scopeLabel(kind: DataViewKind): string {
       return "Each share, with the poll's margin";
     case "thegap":
       return "The lead, with its own";
+    case "thedifference":
+      return "The gap between them";
+    case "bothcurves":
+      return "And what the gap was drawn from";
     default:
       return "";
   }

@@ -58,6 +58,7 @@ import { campbellsLaw } from "./data/campbells-law";
 import { pollsShapeOpinion } from "./data/polls-shape-opinion";
 import { reportingRate } from "./data/reporting-rate";
 import { marginOfError } from "./data/margin-of-error";
+import { floorAndCeiling } from "./data/floor-and-ceiling";
 
 /**
  * The puzzle registry. Adding a puzzle = import its data file and add it to
@@ -124,6 +125,7 @@ const rawPuzzles: unknown[] = [
   pollsShapeOpinion,
   reportingRate,
   marginOfError,
+  floorAndCeiling,
 ];
 
 export const puzzles: PuzzleType[] = rawPuzzles.map((p, i) => {

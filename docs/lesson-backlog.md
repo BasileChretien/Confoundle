@@ -1458,6 +1458,13 @@ checking.
 
 ### The Big Lie: PAPER IDENTIFIED 2026-08-04, AND IT IS STILL A WORKING PAPER
 
+**Read this first, 2026-08-05.** The Fazio, Rand and Pennycook strand recorded in
+this section is no longer queued here: it **shipped** as entry 24 below, skill
+`floor-and-ceiling`, slug `nowhere-left-to-go`. The Big Lie proper is **still
+blocked** for the reasons set out under the four counts further down, and nothing
+about that ship changes them. The Table 1 numbers and the two honesty items
+recorded in this section are the source of record for the shipped puzzle.
+
 **The paper is found and named. The block is now provenance, and it is a decision
 rather than a search.**
 
@@ -1851,6 +1858,63 @@ with the paper stating explicitly that its results are driven by plausibility
 rather than veracity and that the experiments say little about whether the effect
 operates on a specific topic. The Sherif and Hovland prohibition lead in that
 entry is now the better of the two routes, and is unaffected by any of this.
+
+### 24. The inverted U that was the ruler
+
+<!-- skill: floor-and-ceiling -->
+
+**Status: SHIPPED 2026-08-05** as `nowhere-left-to-go`, skill `floor-and-ceiling`,
+category `measurement`, on a new `ceiling` shape. This is the Fazio, Rand and
+Pennycook strand that grew out of the Big Lie entry above and turned out to be
+its own lesson rather than a substitute for it. **The Big Lie entry itself stays
+BLOCKED**, on the grounds recorded there: Levari et al. is an unpublished working
+paper printing only coefficients, its figures are untabulated, and its trial-level
+data are not posted. Nothing about this ship unblocks it.
+
+**What the entry above already establishes, and this note does not repeat.**
+Table 1 was read at source on 2026-08-05 and its twenty proportions with standard
+deviations are copied there, along with the participant counts, the overall test,
+the regression, the bootstrapped location of the peak and the two honesty items.
+Read that block, not this one, for the numbers.
+
+**The shape decision, which was the only open question and was taken on the
+merits.** A new shape, `ceiling`, rather than a flag on `series`. Three reasons
+and only the first was about the flag. `series` REQUIRES its two lines to swap
+places and these never do, which the flag would have fixed. It also holds raw
+counts with no bound to press against, and it scales its vertical axis to the
+largest value in the data rather than to a fixed maximum. Both of those hide the
+one thing this reveal has to show, which is how close each arm sits to a wall. On
+top of that the reveal needed the peak's confidence interval drawn on the axis
+against 0.50, and nothing in the deck could draw an interval on a scale at all.
+Fixing one of three would have left the lesson undrawable, which is the
+definition of bending the lesson to fit the shape.
+
+**What the shape holds.** Two arms across ordered bins, the outcome's hard floor
+and ceiling, the axis the bins sit on, a `neutralPoint` where an effect of
+constant size would peak, and the published peak with its interval. Its schema
+refuses data that would make the lesson false: a value outside the bounds, the
+second arm falling below the first anywhere, or a difference that fails to fall
+away at BOTH ends. Derivations live in `engine/charts/ceiling.ts` and nothing in
+the data file states a difference, a mean, or where the room runs out.
+
+**The commit beat makes "nothing either way" the correct answer**, which
+`docs/hedge-audit.md` allows and which this puzzle needs. Three of the four bands
+assert something about the extremes that the setup chart licenses none of, so the
+band that declines to assert is where a well-reasoning player lands. The two
+non-obvious distractors are refutable from the framing rather than from outside
+knowledge: the noise band is answered by the printed standard deviations, which
+are SMALLEST at the two ends, and the framing prints them. A test named
+`PINS THE HEDGE` fails if a second hedging band is ever added.
+
+**One thing a careful reader will challenge, recorded because it is real.** The
+tallest point on the setup chart is the 61 to 70 per cent bin, and the fitted peak
+is at 0.53, which falls in the 51 to 60 one. Those are two instruments and they
+are not expected to agree: ten bins summarise eighty statements, and the quadratic
+was fitted to all eighty separately. The reveal says so on the beat where it
+matters and the provenance note says so at length. In the same spirit the reveal
+records that the interval leans slightly right of 0.50 rather than straddling it
+evenly, which tilts very faintly towards the trap, and that what the interval
+establishes is that equality cannot be ruled out rather than that it is proved.
 
 ### Firehose of falsehood: SEARCHED, and one of its ingredients looks refuted
 

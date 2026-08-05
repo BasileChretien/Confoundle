@@ -8144,6 +8144,148 @@ const items: TestItem[] = [
       en: "This is sound. Two instruments with different failure modes agree: one depends on people reporting to the police and one does not. That agreement is what makes the conclusion safe, and it is exactly the check that a single administrative series cannot provide on its own.",
     },
   },
+
+  // ---- Floor and ceiling effects ----
+  {
+    id: "fc-tutoring-top-set",
+    scenario: {
+      en: "A tutoring programme is evaluated on whether pupils pass an end-of-year exam. Pass rates rise sharply in the middle sets and not at all in the top set, where 98 per cent were passing before the programme began. The report concludes that the strongest pupils have nothing left to gain from tutoring.",
+    },
+    trap: "floor-and-ceiling",
+    explanation: {
+      en: "With 98 per cent already passing there is almost no room for a pass rate to rise, so the top set would show a flat line whether the tutoring helped them or not. The measure ran out before the pupils did, and the report reads that as a fact about the pupils.",
+    },
+  },
+  {
+    id: "fc-plant-safety",
+    scenario: {
+      en: "A safety programme is rolled out across twelve plants and judged by whether each plant records any reportable incident in the following year. The three plants that had gone incident-free for years show no improvement, and the review concludes that the programme adds nothing where safety culture is already strong.",
+    },
+    trap: "floor-and-ceiling",
+    explanation: {
+      en: "A plant already at zero cannot go below zero, so on this measure it can only stay where it is or get worse, however much the programme helps. Judging it on a count already sitting at the floor guarantees a null result, which is not the same as finding one.",
+    },
+  },
+  {
+    id: "fc-partisan-persuasion",
+    scenario: {
+      en: "A message is tested on voters and scored by whether each person says they would vote for the candidate. It shifts moderates noticeably and moves the strongest supporters and strongest opponents by almost nothing. The campaign concludes that committed voters are immune to persuasion.",
+    },
+    trap: "floor-and-ceiling",
+    explanation: {
+      en: "The outcome is a single yes or no, so it records only whether somebody crossed the line between the two answers. Committed voters sit a long way from that line in both directions, so a message that shifted their views substantially would still register as no change at all.",
+    },
+  },
+  {
+    id: "fc-satisfaction-refurbishment",
+    scenario: {
+      en: "A hotel chain refurbishes its rooms and compares guest satisfaction before and after on a five-point scale. Branches that had been scoring 2.8 improve by nearly a point; branches already scoring 4.8 do not move, and head office concludes that refurbishment only helps struggling branches.",
+    },
+    trap: "floor-and-ceiling",
+    explanation: {
+      en: "A branch at 4.8 has two tenths of a point of headroom on a scale that stops at five, so the largest improvement it could possibly record is a fifth of what the struggling branches recorded. What is being compared is not what the branches did but what the scale let them show.",
+    },
+  },
+  {
+    id: "fc-pain-relief-severe",
+    scenario: {
+      en: "A painkiller is assessed by asking patients whether they are pain-free at four hours. It helps most of the moderate group and almost none of the severe group, and the write-up concludes that the drug does not work for severe pain.",
+    },
+    trap: "floor-and-ceiling",
+    explanation: {
+      en: "Pain-free is a threshold, and patients starting at the top of the range have much further to travel to reach it. A drug that took every severe patient from nine out of ten down to five would count as a complete failure on this outcome while obviously working.",
+    },
+  },
+  {
+    id: "fc-vaccination-districts",
+    scenario: {
+      en: "A reminder campaign raises childhood vaccination coverage in districts sitting at 60 per cent and produces no measurable rise in districts already at 97 per cent. The evaluation reports that reminders do not work where uptake is high.",
+    },
+    trap: "floor-and-ceiling",
+    explanation: {
+      en: "Three points is all the movement the districts at 97 per cent could ever have shown, and a campaign of any strength would look small against one with thirty-seven points to work with. Treating the two as though they had the same opportunity to move is the error.",
+    },
+  },
+  {
+    id: "fc-ad-recall-binary",
+    scenario: {
+      en: "An advertising test scores each viewer on whether they can name the brand unprompted afterwards. Among viewers who already knew the brand well the advertisement changes nothing, and the agency concludes that its work only reaches new customers.",
+    },
+    trap: "floor-and-ceiling",
+    explanation: {
+      en: "Viewers who already knew the brand were going to name it either way, so the measure has nothing left to record for them. Whether the advertisement changed how they felt about the brand was never asked, and a flat line on a question already answered is not evidence about a question that was not put.",
+    },
+  },
+  {
+    id: "fc-language-app-advanced",
+    scenario: {
+      en: "A language app is evaluated with a test scored out of twenty. Beginners gain six points on average and advanced learners gain half a point. The advanced learners had been averaging nineteen. The app is redesigned for beginners on the strength of this.",
+    },
+    trap: "floor-and-ceiling",
+    explanation: {
+      en: "One point is the most an advanced learner could gain, so half a point is half of everything available to them, while six out of the beginners' fourteen available points is well under half. On the only comparison this test can support the advanced learners did better, and the raw gains say the opposite.",
+    },
+  },
+  {
+    id: "fc-poverty-line-crossing",
+    scenario: {
+      en: "A cash transfer is judged by the share of households above a fixed poverty line. Households just below the line cross it in large numbers; the very poorest show almost no change on the measure, and the programme is described as failing to reach the poorest.",
+    },
+    trap: "floor-and-ceiling",
+    explanation: {
+      en: "The measure records only whether a household crossed one particular line. The poorest were furthest from it, so the same transfer that visibly rescued the households sitting just underneath would leave them exactly where the statistic found them, however much their income rose.",
+    },
+  },
+  {
+    id: "fc-therapy-mild-symptoms",
+    scenario: {
+      en: "A therapy is tested on a symptom questionnaire whose lowest possible score is zero. Patients with moderate symptoms improve by several points; patients who entered with mild symptoms, averaging two points, barely move. The clinic stops offering the therapy to mild cases.",
+    },
+    trap: "floor-and-ceiling",
+    explanation: {
+      en: "A patient scoring two has two points of possible improvement before the questionnaire runs out, so a barely-moving average is what this instrument would produce for a therapy that worked perfectly. Whether those patients felt better in ways the questionnaire cannot score was never measured.",
+    },
+  },
+  {
+    id: "ok-fc-checked-the-headroom",
+    scenario: {
+      en: "Reviewing a training evaluation that shows no gain for the highest-scoring group, an analyst checks their starting scores, finds them averaging 62 out of 100, and concludes that the flat result for that group is a real finding rather than an artefact of the scale.",
+    },
+    trap: null,
+    explanation: {
+      en: "This is the check being run, and passed. With 38 points of headroom the top group had ample room to improve, so their failure to improve is information about the training. The reasoning is sound precisely because the possibility was tested rather than assumed away.",
+    },
+  },
+  {
+    id: "ok-fc-reported-the-limit",
+    scenario: {
+      en: "A report states that an intervention produced no measurable change in the highest-performing sites, and adds that those sites were already at 99 per cent on the outcome measure, so the study cannot say whether it helped them.",
+    },
+    trap: null,
+    explanation: {
+      en: "Naming the limit and declining to draw the conclusion is the honest form. The null result is reported, the reason it carries no weight is reported beside it, and nothing is claimed about a group the measurement could not have spoken about.",
+    },
+  },
+  {
+    id: "ok-fc-finer-instrument",
+    scenario: {
+      en: "Finding that almost every pupil in a school passes a national test, a researcher measuring the effect of a reading scheme switches from the pass rate to the underlying score, on the grounds that the pass rate cannot distinguish the pupils she is interested in.",
+    },
+    trap: null,
+    explanation: {
+      en: "Replacing a threshold with the continuous quantity behind it is the standard remedy, and it is being applied for the right reason. A pass rate at the top of its range has no resolution left, and the score it was derived from still does.",
+    },
+  },
+  {
+    id: "ok-fc-share-of-available-gain",
+    scenario: {
+      en: "Two groups improve by different absolute amounts on a test scored out of fifty. Before comparing them, an evaluator works out how many points each group had available to gain from where it started, and compares shares of that available gain rather than raw point totals.",
+    },
+    trap: null,
+    explanation: {
+      en: "Comparing improvement against the improvement that was possible is the right adjustment when two groups start at different distances from the top of a scale. The raw totals would have flattered whichever group had more room, independently of anything the intervention did.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

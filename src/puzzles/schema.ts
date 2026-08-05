@@ -1960,6 +1960,114 @@ const CeilingData = z
   });
 export type CeilingData = z.infer<typeof CeilingData>;
 
+/**
+ * Several estimates, each with a confidence interval, drawn against the value
+ * that means no effect.
+ *
+ * Needed because no existing shape can put more than one interval on an axis.
+ * `interval` draws published poll shares and derives a gap from them, so its
+ * whole arithmetic is poll-specific. `effect` draws exactly one estimate, and
+ * its second view measures that estimate against a reference quantity it is a
+ * slice of, which is a different lesson. What neither can do is the thing a
+ * forest plot exists for: line up several pooled estimates so a reader can see
+ * WHICH SIDE OF ZERO each one falls on.
+ *
+ * That sign is the whole point. A row that shrinks toward the null and a row
+ * that crosses it are read as the same event constantly, and they are not: one
+ * says the thing helped less, the other says it did harm. So this shape draws
+ * `nullValue` as a line, names both sides of it (`worseLabel` / `betterLabel`),
+ * and lets a beat add rows rather than recolour them.
+ *
+ * Estimates are AUTHORED AS PUBLISHED and never recomputed. A meta-analysis
+ * prints random-effects pooled estimates whose weights are not the study count,
+ * so a subgroup-weighted average of the rows is a consistency check and not an
+ * identity. `rows[].k` is therefore how much evidence sits behind a row, for
+ * display and for that check, and never a weight this module pools with.
+ */
+const ForestRow = z.object({
+  id: z.string().min(1),
+  label: LocalizedText,
+  short: LocalizedText.optional(),
+  /** The point estimate, on whatever scale `unit` names. */
+  estimate: z.number(),
+  ciLow: z.number(),
+  ciHigh: z.number(),
+  /** How many studies or samples sit behind this row. */
+  k: z.number().int().positive(),
+  /** Set on the row that pools the others, so the renderer can mark it. */
+  isPooled: z.boolean().optional(),
+});
+
+const ForestData = z
+  .object({
+    type: z.literal("forest"),
+    label: LocalizedText,
+    /** What the estimate is measured in, e.g. "standardised mean difference". */
+    unit: LocalizedText,
+    metricLabel: LocalizedText,
+    /** The value meaning no effect: 0 for a difference, 1 for a ratio. */
+    nullValue: z.number(),
+    nullLabel: LocalizedText,
+    /** Names the side of the null line where the intervention did harm. */
+    worseLabel: LocalizedText,
+    /** And the side where it helped. */
+    betterLabel: LocalizedText,
+    /** Axis bounds, authored so both beats share one scale. */
+    axisMin: z.number(),
+    axisMax: z.number(),
+    rows: z.array(ForestRow).min(2),
+  })
+  .superRefine((d, ctx) => {
+    if (d.axisMin >= d.axisMax)
+      ctx.addIssue({
+        code: "custom",
+        path: ["axisMin"],
+        message: `axisMin (${d.axisMin}) must be below axisMax (${d.axisMax})`,
+      });
+    if (d.nullValue <= d.axisMin || d.nullValue >= d.axisMax)
+      ctx.addIssue({
+        code: "custom",
+        path: ["nullValue"],
+        message: `the null line at ${d.nullValue} must fall inside the axis (${d.axisMin} to ${d.axisMax}), or no row can be seen to cross it`,
+      });
+    const seen = new Set();
+    for (const r of d.rows) {
+      if (seen.has(r.id))
+        ctx.addIssue({ code: "custom", path: ["rows"], message: `duplicate row id ${r.id}` });
+      seen.add(r.id);
+      if (r.ciLow > r.estimate || r.ciHigh < r.estimate)
+        ctx.addIssue({
+          code: "custom",
+          path: ["rows"],
+          message: `row ${r.id}: estimate ${r.estimate} must lie inside its interval (${r.ciLow} to ${r.ciHigh})`,
+        });
+      if (r.ciLow < d.axisMin || r.ciHigh > d.axisMax)
+        ctx.addIssue({
+          code: "custom",
+          path: ["rows"],
+          message: `row ${r.id}: interval ${r.ciLow} to ${r.ciHigh} runs outside the axis (${d.axisMin} to ${d.axisMax}), so it would be drawn clipped and read as narrower than it is`,
+        });
+    }
+    // BOTH SIDES OF THE LINE MUST BE VISIBLE. The earlier version of this
+    // guard demanded that some row actually cross the null, and it was wrong:
+    // it rejected the very case this shape is best at, where a row everyone
+    // expects to be negative turns out not to be. Absence of crossing is the
+    // finding there, so what has to be protected is that a reader can SEE the
+    // harmful side and see that nothing reached it. An axis cropped at the null
+    // would make that invisible and would flatter every result drawn on it.
+    const span = d.axisMax - d.axisMin;
+    const worseShare = (d.nullValue - d.axisMin) / span;
+    const betterShare = (d.axisMax - d.nullValue) / span;
+    const MIN_SHARE = 0.1;
+    if (worseShare < MIN_SHARE || betterShare < MIN_SHARE)
+      ctx.addIssue({
+        code: "custom",
+        path: ["axisMin"],
+        message: `the null line at ${d.nullValue} leaves only ${Math.round(worseShare * 100)} per cent of the axis on the worse side and ${Math.round(betterShare * 100)} per cent on the better side; both sides must be visible or the figure cannot show which side a row failed to reach`,
+      });
+  });
+export type ForestData = z.infer<typeof ForestData>;
+
 export const PuzzleData = z.discriminatedUnion("type", [
   RatesData,
   FrequenciesData,
@@ -1986,6 +2094,7 @@ export const PuzzleData = z.discriminatedUnion("type", [
   SeriesData,
   IntervalData,
   CeilingData,
+  ForestData,
 ]);
 export type PuzzleData = z.infer<typeof PuzzleData>;
 
@@ -2058,6 +2167,8 @@ export const DataView = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("thegap"), ...viewFields }),
   z.object({ kind: z.literal("thedifference"), ...viewFields }),
   z.object({ kind: z.literal("bothcurves"), ...viewFields }),
+  z.object({ kind: z.literal("whatisknown"), ...viewFields }),
+  z.object({ kind: z.literal("themissingrow"), ...viewFields }),
 ]);
 export type DataView = z.infer<typeof DataView>;
 export type DataViewKind = DataView["kind"];
@@ -2338,6 +2449,13 @@ export const Puzzle = z
           return {
             groups: new Set(d.series.map((s) => s.id)),
             groupWord: "series",
+            strata: null,
+            strataWord: "",
+          };
+        case "forest":
+          return {
+            groups: new Set(d.rows.map((r) => r.id)),
+            groupWord: "row",
             strata: null,
             strataWord: "",
           };

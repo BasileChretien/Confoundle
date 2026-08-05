@@ -8570,6 +8570,148 @@ const items: TestItem[] = [
       en: "Re-measuring on a schedule is the structural fix, and it works whether or not anyone remembers to be suspicious of the old number. Publishing the series rather than only the latest value also lets a reader see the direction of travel.",
     },
   },
+
+  // ---- Weaker is not the same as backfired (nobody-got-worse) ----
+  {
+    id: "wb-elderly-subgroup",
+    scenario: {
+      en: "A trial reports that a drug lowers stroke risk by a fifth overall, and by about a twelfth in patients over eighty. The guideline committee writes that the drug is not appropriate for the over-eighties.",
+    },
+    trap: "weaker-is-not-backfire",
+    explanation: {
+      en: "A twelfth is smaller than a fifth and it is still a reduction. The comparison that would justify withholding the drug is the over-eighties against no drug, not the over-eighties against everybody else. Nothing here says the older group does worse than untreated.",
+    },
+  },
+  {
+    id: "wb-campaign-young-men",
+    scenario: {
+      en: "An anti-drink-driving campaign shifts intentions least among men under twenty-five. The agency concludes the campaign puts young men off and recommends pulling it for that audience.",
+    },
+    trap: "weaker-is-not-backfire",
+    explanation: {
+      en: "Shifting intentions least is not shifting them backwards. Putting people off would mean a negative effect against no campaign at all, and moving one group less than another is fully compatible with moving them forwards.",
+    },
+  },
+  {
+    id: "wb-teaching-weakest",
+    scenario: {
+      en: "A new teaching method raises scores across the board, with the smallest gain among students who started furthest behind. A column argues the method is actively harmful to struggling students and widens the gap.",
+    },
+    trap: "weaker-is-not-backfire",
+    explanation: {
+      en: "Two claims are being run together. The gap does widen, because the gains are uneven. But the struggling students gained, so the method did not harm them, and the sentence saying it did has flipped the sign of their result.",
+    },
+  },
+  {
+    id: "wb-half-benefit-generic",
+    scenario: {
+      en: "A treatment's effect is half as large in women as in men, and both estimates sit clearly above no effect. A summary reports that the treatment works in men and works against women.",
+    },
+    trap: "weaker-is-not-backfire",
+    explanation: {
+      en: "Works against is a claim about the far side of no effect, and the women's estimate is clearly on the near side of it. Half as large is a statement about a ratio between two groups; against is a statement about a sign.",
+    },
+  },
+  {
+    id: "wb-marketing-channel",
+    scenario: {
+      en: "An email reminder lifts renewals by six points; the same reminder by text lifts them by two. The team reports that texting customers costs the company renewals and stops sending them.",
+    },
+    trap: "weaker-is-not-backfire",
+    explanation: {
+      en: "Two points is a lift. Costing the company renewals would require the texted group to renew less than a group left alone, which is not what a comparison against the email arm shows. The right conclusion is to prefer email, not to stop texting.",
+    },
+  },
+  {
+    id: "wb-supplement-dose",
+    scenario: {
+      en: "A supplement improves a blood marker more at a low dose than a high one, with both doses better than placebo. A newsletter warns that the high dose is counterproductive.",
+    },
+    trap: "weaker-is-not-backfire",
+    explanation: {
+      en: "Counterproductive means worse than not taking it. The high dose beat placebo, so it is productive and merely less so than the low dose. The finding argues for choosing the low dose, not for calling the high one harmful.",
+    },
+  },
+  {
+    id: "wb-physio-older",
+    scenario: {
+      en: "A rehabilitation programme restores more movement in under-sixties than in over-seventies, and both age groups end up better than those who did not enrol. A service review concludes the programme should be withheld from the over-seventies because it does not help them.",
+    },
+    trap: "weaker-is-not-backfire",
+    explanation: {
+      en: "Does not help them is contradicted by the comparison the review already has: the over-seventies who enrolled did better than those who did not. Less improvement is not no improvement, and withholding it removes a benefit that was measured.",
+    },
+  },
+  {
+    id: "wb-warning-label",
+    scenario: {
+      en: "Graphic warning labels reduce purchases in every country studied, with the smallest reduction in the country where they had been in place longest. A trade body says the labels stop working and start driving sales.",
+    },
+    trap: "weaker-is-not-backfire",
+    explanation: {
+      en: "Two different claims, and only the first is supported. The effect may well fade with familiarity, but a smaller reduction is still a reduction, and driving sales requires crossing to the other side of zero, which the study does not show.",
+    },
+  },
+  {
+    id: "wb-subgroup-forest",
+    scenario: {
+      en: "A forest plot shows six subgroups. Five intervals sit well to the right of the no-effect line; the sixth is shorter and closer to the line but still entirely to the right of it. The discussion describes the sixth subgroup as the one the treatment failed.",
+    },
+    trap: "weaker-is-not-backfire",
+    explanation: {
+      en: "An interval entirely on the benefit side of the line is a subgroup the treatment worked in. Failed would need the interval to reach the line at least. Shorter and closer says how much and how precisely, not whether.",
+    },
+  },
+  {
+    id: "wb-tutoring-hours",
+    scenario: {
+      en: "Pupils given two hours of tutoring a week gain less than pupils given four, and both groups gain more than pupils given none. A board paper says two hours a week is worse than nothing and proposes cancelling it.",
+    },
+    trap: "weaker-is-not-backfire",
+    explanation: {
+      en: "Worse than nothing names a comparison the paper has and contradicts: the two-hour group beat the group given none. The choice worth arguing about is two hours against four, on cost, and that argument does not need the false claim.",
+    },
+  },
+  {
+    id: "ok-wb-crosses-zero",
+    scenario: {
+      en: "A subgroup's estimate sits slightly on the harmful side of no effect, with an interval running well past the line in both directions. The authors write that the study cannot say whether the treatment helps or harms this subgroup, and call for a larger trial.",
+    },
+    trap: null,
+    explanation: {
+      en: "This is the reading done properly, and in the harder direction. A point estimate past the line with an interval straddling it supports neither helped nor harmed, and saying so is more honest than reading the point estimate as damage.",
+    },
+  },
+  {
+    id: "ok-wb-genuine-harm",
+    scenario: {
+      en: "A trial arm shows more infections than the control arm, and the interval on the difference lies entirely on the harmful side of no difference. The monitoring committee stops the arm.",
+    },
+    trap: null,
+    explanation: {
+      en: "This is harm, established the way harm has to be: the comparison is against the control rather than against a better-performing arm, and the interval clears the no-difference line on the harmful side. Acting on it is correct.",
+    },
+  },
+  {
+    id: "ok-wb-worse-than-what",
+    scenario: {
+      en: "Told that a programme performs worse in rural areas, an analyst asks whether that means worse than in cities or worse than no programme, finds it is the former, and reports that the programme helps everywhere and helps cities more.",
+    },
+    trap: null,
+    explanation: {
+      en: "Worse than what is the whole question, and asking it turned one ambiguous sentence into two accurate ones. The variation is real and worth investigating; it simply is not evidence of harm.",
+    },
+  },
+  {
+    id: "ok-wb-ranking-not-sign",
+    scenario: {
+      en: "A procurement note ranks four suppliers by measured performance and recommends the best, while stating that all four exceeded the minimum standard.",
+    },
+    trap: null,
+    explanation: {
+      en: "Ranking and sign are kept apart, which is exactly right. Coming fourth of four is compatible with being good enough, and the note says both things instead of letting the ranking imply a failure.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

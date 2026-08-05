@@ -1338,6 +1338,53 @@ function CeilingGlyph() {
   );
 }
 
+function ForestGlyph() {
+  const W = 200;
+  const H = 96;
+  /**
+   * Three intervals against the line that means no effect. The top two sit well
+   * clear of it. The third is HALF the length of the second and still on the
+   * same side, which is the whole lesson: it shrank, it did not cross. The gold
+   * rule is zero, and the arrow to its left is the side nothing reached.
+   */
+  const zeroX = 58;
+  const rows = [
+    { y: 26, low: 96, high: 142, dot: 119 },
+    { y: 48, low: 108, high: 158, dot: 133 },
+    { y: 70, low: 82, high: 116, dot: 99 },
+  ];
+  return (
+    <svg
+      viewBox={`0 0 ${W} ${H}`}
+      width="100%"
+      role="img"
+      aria-label="Three confidence intervals, all to the right of a zero line, the lowest one shorter but still clear of it"
+    >
+      <line x1={zeroX} y1={12} x2={zeroX} y2={82} stroke={CARD.gold} strokeWidth={1} strokeDasharray="3 3" />
+      <text x={zeroX - 26} y={92} fontSize={8} fill={CARD.muted}>
+        worse
+      </text>
+      <text x={zeroX + 6} y={92} fontSize={8} fill={CARD.muted}>
+        better
+      </text>
+      {rows.map((r, i) => (
+        <g key={r.y}>
+          <line
+            x1={r.low}
+            y1={r.y}
+            x2={r.high}
+            y2={r.y}
+            stroke={i === 2 ? CARD.rust : CARD.teal}
+            strokeWidth={2}
+            opacity={0.55}
+          />
+          <circle cx={r.dot} cy={r.y} r={3.5} fill={i === 2 ? CARD.rust : CARD.teal} />
+        </g>
+      ))}
+    </svg>
+  );
+}
+
 function SeriesGlyph() {
   const W = 200;
   const H = 96;
@@ -1703,6 +1750,7 @@ export function ShareCard({
   const seriesGlyph = data.type === "series";
   const intervalGlyph = data.type === "interval";
   const ceilingGlyph = data.type === "ceiling";
+  const forestGlyph = data.type === "forest";
   const splitSampleGlyph =
     data.type === "rates" &&
     Boolean(data.strataAreSeparateSamples) &&
@@ -1826,6 +1874,8 @@ export function ShareCard({
             <IntervalGlyph />
           ) : ceilingGlyph ? (
             <CeilingGlyph />
+          ) : forestGlyph ? (
+            <ForestGlyph />
           ) : null}
 
           <p className="mt-4 font-display text-[17px] font-medium leading-snug">

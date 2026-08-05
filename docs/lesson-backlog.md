@@ -1456,10 +1456,222 @@ Evidence: **yes, and strong**. Neutral ground: **no**, and this remains the real
 obstacle. Shape: the outcomes are policy-preference scales, so counts need
 checking.
 
-### The Big Lie: PROMOTE. Searched, and the rejection was wrong twice over
+### The Big Lie: PAPER IDENTIFIED 2026-08-04, AND IT IS STILL A WORKING PAPER
 
-Written up as "the mechanism is repetition, so it is `illusory-truth` again". That
-was wrong on two counts, and the search took one query.
+**The paper is found and named. The block is now provenance, and it is a decision
+rather than a search.**
+
+**The source.** Levari DE, Martel C, Orchinik R, Bhui R, Seli P, Pennycook G,
+Rand DG. *Blatantly false news increases belief in news that is merely
+implausible.* Preprint, PsyArXiv, doi 10.31234/osf.io/cz7vy, posted February
+2024. Five preregistered experiments, N=5,476. Covered by *Scientific American*
+as "How Blatantly False Headlines Can Distort What We Believe In".
+
+**The stated finding matches what this entry predicted.** Exposure to a higher
+prevalence of blatantly false headlines raised belief in unrelated headlines that
+were merely ambiguous or plausible, true ones as well as false ones. The effect
+is reported to hold for hypothetical events and for real headlines, under active
+evaluation and passive reading, among liberals and conservatives, and among
+those high and low in cognitive reflection. That last set is the
+non-partisanship test passing, and it is exactly the shape the deck wants.
+
+**And it has not been peer reviewed.** As of 2026-08-04 the lead author's own
+publication page lists it under **Working Papers**, with no journal, no "in
+press" and no "under review" status, two and a half years after it was posted.
+Compare the same author's neighbouring entries, which carry precise statuses
+("Minor revisions at Management Science", "Revise & Resubmit at Psychological
+Science", "Revise & Resubmit at Cognition"). The absence of any status on this
+one, on a page that gives one for almost everything else, is information.
+
+**Why that matters here and not everywhere.** This project's standard is that a
+puzzle's factual claim is read at source and reconciled. A preprint can be read
+at source, and this one carries preregistrations and a large N from the strongest
+author list in the field, so it is not disqualified on its face. But a deck whose
+whole premise is that it is more careful than the thing it is teaching against
+should not rest a lesson on a finding that has sat unpublished for two and a half
+years without saying so on the card. The two honest options are:
+
+1. **Wait.** Recheck the venue before authoring. If it lands in a journal, this
+   becomes an ordinary build and a very good one.
+2. **Ship it as a preprint, and say so in the provenance note and on the
+   lesson page**, in the same voice the deck uses for its other honesty notes.
+   Defensible, given five preregistered experiments and N=5,476, but it is a
+   decision about the deck's standard rather than about this puzzle, so it is
+   Basile's to make and not one to take silently.
+
+**Do not substitute the neighbouring paper.** The same team's *Replicability and
+generalizability of the repeated exposure effect on moral condemnation of fake
+news* (Orchinik, Bhui, Rand, Nature Communications 2025, doi
+10.1038/s41467-025-62462-x) is peer reviewed and open access, and it is
+tempting. It is the wrong lesson: it is about repetition, which is frequency,
+and the whole reason this entry was promoted is that the Big Lie is about
+magnitude. Swapping it in would recreate the exact error this entry was written
+to correct.
+
+**PREPRINT STATUS RESOLVED, AND A SECOND BLOCKER FOUND 2026-08-04.** Basile's
+decision on the question above was to **ship it labelled a preprint**. That
+settles the provenance question and it stands. But the preprint was then read at
+source, cover to cover, and it raises a different obstacle that neither of us
+knew about when that decision was made, so the decision cannot dispose of it.
+
+**The paper prints no drawable outcome numbers anywhere.** Every result in all
+five studies is a regression coefficient with a standard error, a test statistic
+and a p value, and every outcome figure is a scatter plot with a fitted curve.
+There is not one table of percentages or counts in the paper. Study 1:
+b = 0.73, SE = 0.33, z = 2.23, p = 0.03 for high versus low, and b = 0.77,
+SE = 0.30, z = 2.59, p = 0.01 for moderate versus low. Study 2: b = 0.89,
+SE = 0.28, z = 3.20, p = 0.001 and b = 0.82, SE = 0.34, z = 2.41, p = 0.02.
+Study 4: b = 0.05, SE = 0.02, t = 2.72, p = 0.01 in the high condition against
+b = -0.002, SE = 0.02, t = -0.10, p = 0.92 in the low one. Figures 1 and 4 plot
+"% of headlines called plausible" and "% called accurate" against pretested
+plausibility, and neither is tabulated.
+
+A generalised linear mixed model interaction coefficient on a latent
+plausibility-threshold scale is not a count and not a published percentage. It
+cannot be drawn as a rate, and group shares cannot be recovered from it without
+modelling assumptions the paper does not license. This project already refused to
+read numbers off an untabulated figure once, in the Campbell's law puzzle, whose
+provenance note says the 15.82 per cent profile "appears only in a figure that is
+never tabulated, so no claim is made here". The same rule applies here and it
+points the same way.
+
+**What the paper does print, exactly, and it is not nothing.** The
+manipulation is given as precise shares, and those are the input rather than the
+outcome. Study 1, 419 US residents on Amazon Mechanical Turk, 204 female, 215
+male, mean age 37.4, each reading 60 headlines drawn from a set of 300 written by
+the research team. Three conditions: **low implausibility, 8 per cent
+implausible, 33 per cent ambiguous, 58 per cent plausible; moderate, equal
+thirds; high, 58 per cent implausible, 33 per cent ambiguous, 8 per cent
+plausible.** Study 2, 599 residents, 295 female, 302 male, 2 other, mean age
+37.5, headlines drawn from 1,235 real ones fact-checked by Snopes between 1
+February and 1 November 2018, half true and half false, same three conditions.
+Study 4 reanalyses 1,455 US residents on Lucid: a habituation phase of 50
+headlines at 80 per cent true and 20 per cent false, or the reverse, then an
+evaluation phase of 15 true and 15 false for everybody, drawn from 55 true and 55
+false balanced on partisanship.
+
+**THE DATA ARE NOT POSTED. Checked 2026-08-04, in the three places they could
+be, and they are in none of them.** Basile's decision was to pull the OSF data
+and derive the shares, which was the right instinct; the route is simply closed.
+
+1. **The authors declared it themselves.** The OSF submission record for this
+   preprint answers the data-availability question with `has_data_links: "no"`
+   and an empty `data_links` list. That is the authors' own answer on the
+   deposit form, not an inference from a missing link.
+2. **The preprint carries one file, and it is the PDF.** Listing the preprint's
+   storage returns `levari_et_al_blatantly_false_news_1feb2024.pdf`, 1,259,975
+   bytes, and nothing else. No CSV, no analysis code, no supplement.
+3. **The paper has no data availability statement.** It runs to the Discussion
+   and then straight into Acknowledgments and funding, and stops. There is no
+   repository named anywhere in it.
+
+What **is** linked is four AsPredicted preregistrations
+(`aspredicted.org/WWQ_OOV`, `OSV_MRU`, `VMQ_COU`, `HHU_ECQ`). Those hold the
+plans, not the data, so they cannot supply a single count.
+
+**So there is no route that stays inside this project's rules.** The paper prints
+coefficients, the figures are untabulated, and the trial-level data are not
+public. Every remaining path involves inventing a number: reading points off
+Figure 1 or Figure 4 by eye, or converting a log-odds coefficient into group
+shares under assumptions nobody published. This deck does not do either.
+
+**The one honest way to unblock it is to ask.** The corresponding author is
+David E. Levari, `dlevari@fas.harvard.edu`. A request for the trial-level data or
+for the condition-level percentages behind Figures 1 and 4 is an ordinary
+academic courtesy and costs one email. If the numbers arrive, the provenance note
+says they were supplied by the authors on request, which is a stronger sentence
+than most of what this deck cites. Until then the entry stays here.
+
+**One more thing worth carrying to whoever builds it**, found on page 11 and easy
+to miss: SI Appendices L and M report three additional studies testing whether
+**one or two** blatantly implausible headlines produce the effect, and they found
+**no significant results**. The effect needed several dozen high-implausibility
+headlines to emerge. A puzzle that implied one outrageous claim shifts a reader's
+threshold would be overstating the paper's own finding, and the authors say so
+themselves.
+
+**The shipping question, when it reopens, is a data question rather than a paper
+question**, and it is Basile's call in the same way the last one was.
+
+**A BETTER PAPER ARRIVED 2026-08-04, AND IT IS NOT A SUBSTITUTE. IT IS ITS OWN
+LESSON, AND IT PARTLY REFUTES THIS ONE.** Basile supplied Fazio LK, Rand DG,
+Pennycook G. *Repetition increases perceived truth equally for plausible and
+implausible statements.* Psychonomic Bulletin & Review 2019;26:1705-1710, doi
+10.3758/s13423-019-01651-4. **Peer reviewed and published**, which neither of the
+candidates above is.
+
+**The finding, from the abstract read at source.** It had been argued that
+repetition cannot move belief in unambiguous statements: faced with an obviously
+false claim, people should just reject it. Fazio and colleagues report a
+simulation study and **a preregistered experiment**, and conclude the opposite.
+Belief in **all** statements is increased by repetition. The observed illusory
+truth effect *is* largest for ambiguous items, but they show that this **can be
+explained by the psychometric properties of the task rather than by any
+psychological mechanism that blocks repetition for implausible items**. Their
+closing sentence: even highly implausible statements will become more plausible
+with enough repetition.
+
+**Why this is a Confoundle puzzle in its own right, and a very good one.** The
+data have an obvious reading and the obvious reading is wrong, which is the
+deck's whole DNA. Plot the size of the repetition effect against baseline
+plausibility and you get a symmetric inverted U centred at 0.5: the effect looks
+large for ambiguous claims and near zero at both extremes. The natural
+conclusion, and the one the prior literature drew, is that outrageous claims are
+immune, so repeating a big lie is wasted effort. The reveal is that the inverted
+U appears **even when the simulation is built with the repetition effect held
+exactly constant across every level of plausibility**, because converting a
+continuous belief into a binary true or false judgment floors it at one end and
+ceilings it at the other. The shape is the ruler, not the world. Setup and reveal
+are two views of the same curve, which is exactly the structure this engine wants.
+
+**And note what it does to the entry above.** The folk Big Lie says a colossal
+lie is more credible than a small one. Levari et al. say something subtler, that
+big lies make *other* claims more credible, and their own SI found one or two
+outrageous headlines do nothing. Fazio et al. say the apparent immunity of
+outrageous claims to repetition is a measurement artefact. Between them the folk
+claim is in poor shape, and **a puzzle whose reveal is "the shield you thought
+protected you from obvious nonsense is an artefact of how belief was measured"
+is a better lesson than the one this entry set out to build.**
+
+**What is still unchecked**, and it is the same question that killed the last
+two: whether Study 2 tabulates its proportions. Study 2 ran **503 participants**
+on Amazon Mechanical Turk, with 43 more starting and not finishing, rating novel
+and repeated statements across the full plausibility range. The outcome is
+reported as a **proportion rated true**, which is the right unit for this deck if
+it is printed rather than only plotted. **Read the Study 2 results and figures
+before designing anything.** If the proportions are tabulated, this ships on
+`rates` or on a small new shape; if they exist only inside Fig. 1, the same rule
+that stopped Levari stops this too.
+
+The second file Basile supplied, `OrchinikEtAl_ITPretest.docx`, is the pretest
+material for the Orchinik, Rand, Pennycook and Fazio paper listed above as
+Revise & Resubmit at Cognition. Unread as of this note. It is likely to be a
+stimulus set with per-item plausibility ratings, which would be useful for
+authoring example headlines but is not an outcome measure. The studies are preregistered
+and hosted on OSF, so the trial-level data are very likely posted. Computing the
+share of ambiguous headlines called plausible in each condition from those files
+would give exactly the counts this deck authors from, and it would arguably be
+*more* rigorous than quoting a coefficient, since every puzzle here already
+derives its rates from raw counts. But it is a step past "read the number at
+source", it introduces analysis choices the paper made and this deck would have
+to match, and doing it silently would be the sort of shortcut this file exists to
+prevent. **Do not author this lesson from the coefficients. Either work from the
+posted trial-level data, with the derivation written into the puzzle's test the
+way every other reconciliation is, or leave the entry here.**
+
+**What it would need to ship**, once both questions are settled: the
+counts derived from the posted data, and a shape. The natural setup shows a
+reader's plausibility ratings for a set of mild claims, and the reveal shows the
+same ratings after the same reader has been shown a batch of outlandish ones,
+with nothing about the mild claims having changed. Whether an existing shape
+carries that is unexamined; `drift` and `estimation` are the two to look at
+first.
+
+---
+
+**Status when opened: PROMOTE.** Searched, and the rejection was wrong twice
+over. Written up as "the mechanism is repetition, so it is `illusory-truth`
+again". That was wrong on two counts, and the search took one query.
 
 Wrong once because that is not what the Big Lie claims. The claim is about
 **magnitude**, that a colossal lie is more credible than a small one, and

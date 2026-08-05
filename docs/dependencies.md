@@ -68,6 +68,51 @@ fetch a platform binary.
 If an urgent security patch is younger than three days, install it by hand and
 deliberately. The policy is there to restrain automation, not you.
 
+## When the vulnerable package is not one of yours
+
+Every advisory this project has had to answer so far has been against a
+**transitive** dependency of the build tooling, never against anything in
+`package.json`. That changes how the fix works, in a way worth writing down
+because the obvious command silently does nothing.
+
+The reflex is `pnpm update <pkg> --depth Infinity`. That works only when the
+locked version has fallen **outside** the parent's declared range. When the
+parent's range already permits the patched version, pnpm has nothing to
+re-resolve: the lockfile is already valid, so the command reports `Already up
+to date` and leaves the vulnerable version exactly where it was. Naming the
+version explicitly does not help either. `pnpm update fast-uri@3.1.5 --depth
+Infinity` prints the same line.
+
+That is not an edge case. It is the normal shape of a backported security
+patch: `ajv` declares `fast-uri: ^3.0.1`, and the fix shipped in 3.1.5, which
+that range had always allowed.
+
+So the lever is an `overrides` entry in
+[`pnpm-workspace.yaml`](../pnpm-workspace.yaml), which forces a version
+regardless of what any parent asked for. Both entries there exist for this
+reason and for no other.
+
+**Cap the range unless you have actually checked the next major.** The
+`brace-expansion` entry is an open floor, `">=5.0.8"`, and that was safe.
+Copying its shape is not always safe. `fast-uri` is capped at `">=3.1.5 <4"`
+because upstream backported the fix to the 3.x line and publishes it under the
+`three` dist-tag, while `latest` points at a 4.x major that `ajv` has not
+adopted. An uncapped floor would have forced that major on `ajv` as a side
+effect of a patch, which is a far larger change than the advisory asked for and
+one nobody would have reviewed.
+
+An override that resolves to nothing fails quietly, so confirm the fix actually
+reached the tree:
+
+```bash
+corepack pnpm why fast-uri
+```
+
+Overrides are not free. Each one pins a version the ecosystem will eventually
+reach on its own, and once a parent requires the patched version itself the
+entry becomes dead weight that can hold that package *back*. When `pnpm why`
+shows the parent range no longer needs it, delete it.
+
 ## What lands by itself and what does not
 
 Nothing lands by itself. Every PR is merged by a person looking at a green
@@ -142,6 +187,17 @@ Two mitigations, and neither is complete:
 
 1. Cloudflare Pages builds a **preview deployment for every branch**, so any
    dependency PR has a real URL to open before merging.
+
+   A red Pages check is not automatically a red project, and on a dependency PR
+   the temptation to assume otherwise is strong. The build clones the repository
+   before it installs anything, and that clone can fail on its own: one preview
+   here died after seven minutes with `curl 56 GnuTLS recv error` during
+   `Cloning repository...`, on a branch whose CI was green, having never reached
+   `pnpm install`. Read the log before believing the failure. Note that wrangler
+   cannot show it to you, because `wrangler pages deployment tail` streams
+   Functions logs at runtime rather than build output, so the dashboard link on
+   the check is the only route to it. **Retry deployment** in that same view is
+   the one-click test for whether the failure was real.
 2. The tests cover the places where silence would be most dangerous: the zod
    contract, the rate and timeline derivations, SRS scheduling, and the account
    endpoints driven end to end against real SQLite.

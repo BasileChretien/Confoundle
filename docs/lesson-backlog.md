@@ -1550,8 +1550,48 @@ headlines at 80 per cent true and 20 per cent false, or the reverse, then an
 evaluation phase of 15 true and 15 false for everybody, drawn from 55 true and 55
 false balanced on partisanship.
 
-**So the route to shipping is now a data question, not a paper question**, and it
-is Basile's call in the same way the last one was. The studies are preregistered
+**THE DATA ARE NOT POSTED. Checked 2026-08-04, in the three places they could
+be, and they are in none of them.** Basile's decision was to pull the OSF data
+and derive the shares, which was the right instinct; the route is simply closed.
+
+1. **The authors declared it themselves.** The OSF submission record for this
+   preprint answers the data-availability question with `has_data_links: "no"`
+   and an empty `data_links` list. That is the authors' own answer on the
+   deposit form, not an inference from a missing link.
+2. **The preprint carries one file, and it is the PDF.** Listing the preprint's
+   storage returns `levari_et_al_blatantly_false_news_1feb2024.pdf`, 1,259,975
+   bytes, and nothing else. No CSV, no analysis code, no supplement.
+3. **The paper has no data availability statement.** It runs to the Discussion
+   and then straight into Acknowledgments and funding, and stops. There is no
+   repository named anywhere in it.
+
+What **is** linked is four AsPredicted preregistrations
+(`aspredicted.org/WWQ_OOV`, `OSV_MRU`, `VMQ_COU`, `HHU_ECQ`). Those hold the
+plans, not the data, so they cannot supply a single count.
+
+**So there is no route that stays inside this project's rules.** The paper prints
+coefficients, the figures are untabulated, and the trial-level data are not
+public. Every remaining path involves inventing a number: reading points off
+Figure 1 or Figure 4 by eye, or converting a log-odds coefficient into group
+shares under assumptions nobody published. This deck does not do either.
+
+**The one honest way to unblock it is to ask.** The corresponding author is
+David E. Levari, `dlevari@fas.harvard.edu`. A request for the trial-level data or
+for the condition-level percentages behind Figures 1 and 4 is an ordinary
+academic courtesy and costs one email. If the numbers arrive, the provenance note
+says they were supplied by the authors on request, which is a stronger sentence
+than most of what this deck cites. Until then the entry stays here.
+
+**One more thing worth carrying to whoever builds it**, found on page 11 and easy
+to miss: SI Appendices L and M report three additional studies testing whether
+**one or two** blatantly implausible headlines produce the effect, and they found
+**no significant results**. The effect needed several dozen high-implausibility
+headlines to emerge. A puzzle that implied one outrageous claim shifts a reader's
+threshold would be overstating the paper's own finding, and the authors say so
+themselves.
+
+**The shipping question, when it reopens, is a data question rather than a paper
+question**, and it is Basile's call in the same way the last one was. The studies are preregistered
 and hosted on OSF, so the trial-level data are very likely posted. Computing the
 share of ambiguous headlines called plausible in each condition from those files
 would give exactly the counts this deck authors from, and it would arguably be

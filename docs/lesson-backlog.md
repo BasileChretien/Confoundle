@@ -3596,25 +3596,61 @@ documented rather than assumed. All three parts matter. Without the documented
 population change the puzzle is indistinguishable from an ordinary failed
 replication, which is a different and much duller lesson.
 
-**One candidate, identified but NOT read at source, and it may not fit.**
+**The one candidate was READ AT SOURCE 2026-08-05, AND IT DOES NOT FIT.** The
+reservation recorded when this entry was written turned out to be right. The
+candidate is closed and the entry still needs a source.
+
 Bratsberg B, Rogeberg O. *Flynn effect and its reversal are both environmentally
 caused.* PNAS 2018;115(26):6674-6678, doi `10.1073/pnas.1718793115`, PMC6042097,
-open access. Norwegian military conscription records, birth cohorts 1962 to 1991,
-scores peaking with the 1975 cohort and falling by roughly 0.2 points a year
-since, with the decline recovered **within families**, so brothers born later
-score below brothers born earlier. Neutral ground is excellent and the data are
-administrative rather than self-reported. **The reservation is that it may be the
-wrong lesson**: a trend that reversed is not the same object as a treatment effect
-that vanished, and the paper's own punchline, that the within-family design rules
-out compositional and genetic explanations, is a confounding lesson of the kind
-this deck already ships several of. Read it before believing it fits.
+open access. Norwegian military conscription records, **736,808 men** with valid
+scores across birth cohorts 1962 to 1991, ability stanines converted by
+IQ = 100 + 7.5 x (stanine minus 5). The average rose from **99.5** for the 1962
+cohort to **102.3** for 1975, fell to **99.4** by 1989 and recovered slightly to
+**99.7** by 1991. The rise runs at +0.20 points a year within families
+[0.11, 0.29] against +0.18 across families [0.14, 0.21]; the fall runs at
+**-0.33 within families [0.26, 0.40] against -0.34 across [0.30, 0.38]**, a
+within-to-across ratio of **0.98 [0.79, 1.20]**.
 
-**What would fit better**, if anyone finds it: a clinical or educational
-intervention with a published effect in one decade and a published null in
-another, where the second paper establishes what changed about the people rather
-than speculating. Prevention trials against a falling baseline rate are the most
-likely place to look, since a shrinking baseline mechanically shrinks the
-absolute effect and the literature about it tends to say so out loud.
+**It is a good paper and the wrong lesson, exactly as suspected.** Its punchline
+is that the compositional explanation fails: the decline shows up between
+brothers inside one family, so it is not a matter of which people are being born.
+In this deck's vocabulary that is a **confounding** lesson, near neighbours of
+which are already shipped, and it is not the temporal-validity move at all.
+Nothing here concerns a finding whose truth conditions expired.
+
+**Two further reasons it could not ship even as its own puzzle.** First and
+decisively, **neutral ground fails**. To make the reveal land, the setup has to
+put the compositional hypotheses into the reader's head, and in this literature
+those are immigration and differential fertility by education. A card inviting a
+reader to suspect that the population changed, in order to then correct them, is
+handling the most charged material in psychometrics, and the file's own test asks
+whether there is a version whose parties and people are extinct. There is not.
+Note that dog whistling was refused on this same test even though its finding was
+solid and its conclusion unobjectionable: the test is about whether the material
+is live, not about whether our conclusion is the agreeable one. Second, the shape
+is doubtful. Only four cohort values appear as numbers anywhere in the main text,
+and the thirty-cohort series in Figure 1A is **not tabulated**, which is the wall
+that stopped the Campbell's law profile. The PNAS supporting information was not
+reachable from two guessed URLs, so that half is unresolved rather than settled,
+and it does not need to be resolved because the first reason is sufficient.
+
+**What would fit better, and the strongest lead now that Flynn is closed:** a
+**clinical treatment whose effect genuinely expired because the target changed**,
+with counts printed at both times. Antimicrobial susceptibility is the obvious
+place to look, since surveillance data print numerators and denominators and the
+organism changing is documented rather than inferred. The reasoning trap is real
+and often committed: a trial from the 1990s reports a high cure rate, a modern
+one reports a poor one, and the reflex is to suspect the old trial rather than to
+notice that the pathogen is no longer the same pathogen. That is temporal
+validity with nothing charged about it, and it sits in Basile's own field.
+UNVERIFIED and not yet searched.
+
+Also worth checking: an educational or preventive intervention with a published
+effect in one decade and a published null in another, where the second paper
+establishes what changed about the people rather than speculating. Prevention
+trials against a falling baseline rate are the most likely place, since a
+shrinking baseline mechanically shrinks the absolute effect and that literature
+tends to say so out loud.
 
 **Do not author this from the racial priming papers.** That route is closed and
 the reasons are recorded above under dog whistling. They are about neutral ground

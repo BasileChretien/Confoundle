@@ -193,11 +193,24 @@ Two mitigations, and neither is complete:
    before it installs anything, and that clone can fail on its own: one preview
    here died after seven minutes with `curl 56 GnuTLS recv error` during
    `Cloning repository...`, on a branch whose CI was green, having never reached
-   `pnpm install`. Read the log before believing the failure. Note that wrangler
-   cannot show it to you, because `wrangler pages deployment tail` streams
-   Functions logs at runtime rather than build output, so the dashboard link on
-   the check is the only route to it. **Retry deployment** in that same view is
-   the one-click test for whether the failure was real.
+   `pnpm install`. Read the log before believing the failure.
+
+   Wrangler will not show it to you. `wrangler pages deployment tail` streams
+   Functions logs at runtime, and `wrangler pages deployment list` gives you
+   status but no build output. The log lives in the dashboard, under **Workers
+   and Pages > confoundle > Deployments >** the deployment **> Build log**,
+   which is where the check's own link lands. There is also an API route, if you
+   are holding a token with Pages read access:
+
+   ```
+   GET /accounts/{account_id}/pages/projects/{project_name}/deployments/{deployment_id}/history/logs
+   ```
+
+   **Retry deployment**, in that same view, tests whether the failure
+   reproduces. Be careful what you conclude from a green retry: it shows the
+   failure did not happen again, which is evidence and not proof. A flaky
+   failure and a real one both sometimes pass on the second run, so it is the
+   log that tells you which you had.
 2. The tests cover the places where silence would be most dangerous: the zod
    contract, the rate and timeline derivations, SRS scheduling, and the account
    endpoints driven end to end against real SQLite.

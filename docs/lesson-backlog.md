@@ -3927,8 +3927,18 @@ trial. A Confoundle card needs a setup and a reveal that are two views of one
 dataset, so it needs **one named trial that prints its composite result AND the
 counts for each component**, where the composite is a clear win and the hard
 component is flat. The review establishes that such trials are common; it does not
-hand one over. Whoever picks this up should start from references 3, 5 and 8 of
-the BMJ paper, and should not author the card from the review alone.
+hand one over.
+
+**And the obvious next step has been checked, so nobody repeats it.** An earlier
+draft of this entry said to start from the BMJ paper's references 3, 5 and 8.
+Those were pulled and they are Freemantle 2003 (JAMA), Ferreira-Gonzalez 2007
+(BMJ) and Lim 2008 (Annals of Internal Medicine). **All three are themselves
+systematic reviews of composite reporting, not trials.** They will tell you how
+often the pattern occurs and they will not give you a card either, so following
+that instruction leads in a circle. The search that is actually needed is for a
+single trial, and the most likely route is the reference lists INSIDE those three
+reviews, or a cardiology trial whose primary composite was significant while its
+mortality component was not, with a table printing both. That has not been done.
 
 **Shape.** Probably none needed: a composite total and its components is
 `rates` with a stratified reveal, and the components are counts rather than pooled

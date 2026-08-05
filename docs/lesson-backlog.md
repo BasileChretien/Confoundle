@@ -1508,6 +1508,88 @@ and the whole reason this entry was promoted is that the Big Lie is about
 magnitude. Swapping it in would recreate the exact error this entry was written
 to correct.
 
+**TABLE 1 READ AT SOURCE 2026-08-05. IT PRINTS THE PROPORTIONS, AND THIS ONE
+SHIPS.** Fazio, Rand and Pennycook clears the bar that killed both Big Lie
+candidates. Table 1, "Proportion of statements rated true across the different
+bins of plausibility", prints twenty proportions with standard deviations. Copied
+exactly, standard deviations in brackets:
+
+| Bin | New | Repeated | Difference |
+|---|---|---|---|
+| 1-10% | .13 (.28) | .13 (.27) | .00 |
+| 11-20% | .20 (.29) | .23 (.29) | .03 |
+| 21-30% | .27 (.31) | .29 (.32) | .02 |
+| 31-40% | .36 (.31) | .41 (.32) | .05 |
+| 41-50% | .44 (.31) | .50 (.32) | .06 |
+| 51-60% | .53 (.32) | .59 (.32) | .06 |
+| 61-70% | .58 (.30) | .66 (.29) | .08 |
+| 71-80% | .68 (.27) | .72 (.27) | .04 |
+| 81-90% | .77 (.26) | .81 (.25) | .04 |
+| 91-100% | .88 (.22) | .89 (.19) | .01 |
+| **M** | **.48 (.17)** | **.52 (.16)** | **.04** |
+
+The difference column is **not printed** and must be derived, which is what this
+deck does anyway. Note its shape: near zero at both ends, peaking at .08 in the
+middle. That is the inverted U, and it is the whole puzzle.
+
+**The rest of the numbers, all read at source.** 503 participants completed the
+study on Amazon Mechanical Turk, 43 more started and did not finish. 80
+statements, 40 previously rated true by 50 to 100 per cent of participants and 40
+by 0 to 49 per cent. Repeated statements were rated true more often than novel
+ones overall, M = .52 against .48, t(502) = 9.19, p < .001, d = 0.41. A regression
+predicting the size of the illusory truth effect from perceived truth found a
+significant positive linear term and a significant negative quadratic term,
+F(2, 77) = 7.94, p = .001, with perceived truth predicting 17 per cent of the
+variance. A cubed term added nothing, delta R squared = 0, F = 0.01, p = .935.
+
+**And the number the reveal turns on.** The quadratic model puts the largest
+illusory truth effect at a perceived truth of **0.53**. They bootstrapped 5,000
+resamples of the 80 items to put a confidence interval on where that peak sits,
+and got **95% CI [0.489, 0.593], which includes 0.5.** Their own Study 1
+simulation establishes what that means: if the repetition effect is equivalent at
+every level of plausibility the curve peaks at exactly 0.5; if the effect shrinks
+with plausibility it peaks below; if it grows, above. The peak is at 0.5. The
+data are consistent with repetition working **just as well on outrageous claims
+as on plausible ones**, and the inverted U being an artefact of binarising a
+continuous belief.
+
+**The data are posted.** `https://osf.io/w4k2c/` carries the full stimulus set,
+the data and the preregistration of the primary analyses and sample size. Nothing
+here needs an email to an author.
+
+**The puzzle, which is the deck's exact shape.** Setup draws the difference by
+bin, near zero at both extremes and peaking in the middle. The obvious reading,
+and the one the prior literature drew, is that repetition cannot touch a claim
+you already know is false, so the outrageous lie is repetition-proof. The reveal
+puts the peak's confidence interval on the axis and shows it straddles 0.5, and
+that the same inverted U comes out of a simulation built with the repetition
+effect held exactly constant. The shape is the ruler, not the world. Two views of
+one curve.
+
+**Skill id proposal: `floor-and-ceiling`.** The general move is that an effect
+which looks absent at the extremes of a scale may be squeezed by the scale rather
+than absent from the world. It is distinct from `illusory-truth`, which the deck
+should hold for the plain repetition effect, and distinct from
+`magnitude-compression`, which is about perceiving quantities.
+
+**Two honesty notes for whoever builds it.** First, the lowest-plausibility items
+did not come from the same source as the rest: no statement in the prior study
+was rated true by fewer than 14 per cent of participants, so the 0 to 10 and 11
+to 20 per cent bins were filled from an unpublished follow-up to Pennycook,
+Cannon and Rand (2018) Experiment 1, rated by 492 further MTurk participants.
+Second, the differences in the table are between-subject at the item level, since
+each item was either only new or only repeated for a given participant, and the
+paper says so in a footnote. Neither undermines the lesson, and both belong in
+the provenance note.
+
+**A shape question that is not yet answered.** The `series` shape built for the
+crime lesson holds two count series on one axis, which is nearly this, but its
+schema requires the two lines to swap places and these never cross: repeated is
+at or above new in every bin. Either the difference gets its own shape, or
+`series` grows an optional flag saying no crossover is expected. Look at both
+before writing anything, and remember the rule: build a new shape whenever the
+lesson needs one, never bend the lesson to fit.
+
 **PREPRINT STATUS RESOLVED, AND A SECOND BLOCKER FOUND 2026-08-04.** Basile's
 decision on the question above was to **ship it labelled a preprint**. That
 settles the provenance question and it stands. But the preprint was then read at

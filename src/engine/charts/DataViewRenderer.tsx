@@ -20,7 +20,9 @@ import { DistributionView } from "./DistributionView";
 import { restrictDistribution } from "./distribution";
 import { DriftView } from "./DriftView";
 import { restrictDrift } from "./drift";
+import { ForestView } from "./ForestView";
 import { RatingsView } from "./RatingsView";
+import { restrictForest } from "./forest";
 import { restrictRatings } from "./ratings";
 import { restrictBunching } from "./bunching";
 import { BunchingView } from "./BunchingView";
@@ -161,6 +163,12 @@ export function DataViewRenderer({
           data={restrictRatings(data, { groupIds: view.groupIds })}
           kind={view.kind}
         />
+      ) : null;
+    case "forest":
+      // Same slicing contract as the rest: the setup draws the rows that are
+      // already public, and the reveal adds the row that settles the sign.
+      return view.kind === "whatisknown" || view.kind === "themissingrow" ? (
+        <ForestView data={restrictForest(data, { groupIds: view.groupIds })} kind={view.kind} />
       ) : null;
     case "bunching":
       // Same slicing contract as the rest: the setup draws the bins running up
@@ -319,6 +327,10 @@ export function scopeLabel(kind: DataViewKind): string {
       return "One of the two ratings";
     case "bothratings":
       return "Both, on the same scale";
+    case "whatisknown":
+      return "What was already known";
+    case "themissingrow":
+      return "And the row that settles it";
     case "approaching":
       return "Running up to the line";
     case "acrossline":

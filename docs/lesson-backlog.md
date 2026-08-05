@@ -3732,3 +3732,81 @@ tends to say so out loud.
 the reasons are recorded above under dog whistling. They are about neutral ground
 and about what a Confoundle chart would have to put on its x axis, and neither
 weakens with time.
+
+---
+
+### 26. Weaker is not the same as backfired
+
+<!-- skill: weaker-is-not-backfire -->
+
+**Status: SHIPPED 2026-08-05** as `nobody-got-worse`, skill
+`weaker-is-not-backfire`, on the new `forest` shape. Extracted from the
+fearmongering entry above, whose recorded objection was to one framing and not
+to the topic, and which named this as live route 1.
+
+**Read at source**, not from an abstract: Tannenbaum MB, Hepler J, Zimmerman RS,
+Saul L, Jacobs S, Wilson K, Albarracin D. *Appealing to fear: a meta-analysis of
+fear appeal effectiveness and theories.* Psychological Bulletin
+2015;141(6):1178-1204, doi `10.1037/a0039729`, PMID 26501228, PMCID PMC5789790.
+The full text was read in the browser from the Europe PMC rendering of the author
+manuscript, and Table 1 and Table 5 were transcribed from the page rather than
+from any summary. Note for anyone re-checking it: `isOpenAccess` is **N** and the
+`fullTextXML` REST endpoint 404s, because this is an NIH author manuscript that
+is free to read but not open-access licensed. The PMC copy sits behind a bot
+check that must not be worked around; the Europe PMC copy does not.
+
+**Why this is not the fearmongering framing that was refused.** The refused
+version would have authored Janis and Feshbach's 1953 result as current, which
+the literature does not support. This one is built on what replaced it, and the
+lesson is not "fear appeals work" but the reasoning distinction the paper itself
+draws in order to test it.
+
+**The paper names the reasoning move, which is what made it authorable.** From
+the running text, verbatim: "There are two forms of the efficacy statement
+hypothesis. The strong hypothesis is that fear appeals without efficacy
+statements will produce negative effects (i.e., will backfire). The weak
+hypothesis is that fear appeals without efficacy statements will produce weaker
+(i.e., less positive or null) effects relative to fear appeals with efficacy
+statements." And the verdict: "The results clearly support the weak efficacy
+hypothesis and disconfirm the strong efficacy hypothesis. Thus, fear appeals are
+effective with or without efficacy statements, but the inclusion of efficacy
+statements is associated with increased effectiveness."
+
+That is the skill in one sentence: an effect that shrinks is not an effect that
+reverses, and the two get read as the same thing constantly.
+
+**The numbers drawn, Table 5, transcribed from the rendered table.**
+
+| Row | d | 95% CI | k |
+|---|---|---|---|
+| Overall (Results text) | 0.29 | [0.22, 0.35] | 248 |
+| Efficacy statements included | .43 | [.31, .55] | 92 |
+| Efficacy statements excluded | .21 | [.13, .29] | 154 |
+
+**The reconciliation, and it holds.** 92 + 154 = 246 against a total k of 248,
+so two samples are unclassified on efficacy, which the card records rather than
+hides. Weighting the two subgroups by k gives (92 x .43 + 154 x .21) / 246 =
+0.292, against the printed overall of 0.29. That is a consistency check and not
+an identity, because the pooled figures are random-effects estimates whose
+weights are not k, and the card says so. It is strong enough to carry the commit
+beat: a negative value for the excluded arm cannot be reconciled with a pooled
+0.29, which is what makes the puzzle answerable rather than a guess.
+
+**Also from the paper, and used.** The sign convention is the paper's own: "a
+positive effect size indicates the fear appeal worked, whereas a negative effect
+size indicates the fear appeal backfired". Table 1 records the verdict on each
+theory, including the curvilinear model's prediction that high fear does worse
+than moderate fear, marked **Not supported**, and the strong efficacy hypothesis,
+also **Not supported**. The abstract concludes "there are no identified
+circumstances under which they backfire and lead to undesirable outcomes".
+
+**One thing deliberately not built on.** The curvilinear test (moderate versus
+high depicted fear, d = -.05, 95% CI [-.34, .24]) is a wide null and the paper
+itself says the conclusion "should be confirmed in future research". It is
+mentioned in the deep dive as a second instance of the same reading error, and
+nothing on the card rests on it. Absence of evidence with an interval that wide
+is not a finding this deck will draw.
+
+**Neutral ground: yes.** The pooled evidence spans dental hygiene, driving
+safety, smoking and drink, and the card is written on the general question rather
+than on any live public-health argument.

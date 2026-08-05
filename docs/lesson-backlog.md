@@ -2242,12 +2242,59 @@ group sizes, the distances between subject position and message position that
 were used, and the attitude-change outcome at each distance, including whichever
 distance produced movement away from the message.
 
-### Gaslighting: the redirect stands, the rejection under it was not searched
+### Gaslighting: SEARCHED 2026-08-05. The stated block was FALSE, and the real one is different
 
-**Loftus and Palmer remains a strong find and is Tier 1 item 2.** But the claim
-that gaslighting's own literature has "no countable dataset" was written without
-searching it. Sweet (2019) is sociological and qualitative, which is what that
-claim was based on, but it is one paper and no one looked further.
+**Loftus and Palmer remains a strong find and is Tier 1 item 2**, and it shipped
+as `misinformation-effect`. The redirect stands.
+
+**The rejection under it has now been searched, and it does not survive.** The
+claim was that gaslighting's own literature has "no countable dataset", written
+on the strength of Sweet (2019) being sociological and qualitative. That claim is
+wrong, and it was wrong when it was written. A Europe PMC title search returns 98
+records for `gaslighting`, of which 40 also mention a scale, questionnaire or measure,
+and several are straightforwardly quantitative:
+
+- **Experiences of care and gaslighting in patients with vulvovaginal disorders**,
+  *JAMA Network Open* 2025, `PMC12062909`, open access CC BY, full text reachable through
+  the Europe PMC REST endpoint. Cross-sectional survey, **447 patient responses**,
+  of whom **52.8 per cent** considered stopping care because of their experiences.
+  The paper exists precisely because medical gaslighting "has been described
+  anecdotally in vulvovaginal patient care, but has not been quantified".
+- **Workplace gaslighting: conceptualization, development, and validation of a
+  scale**, *Frontiers in Psychology* 2023, `PMC10097938`. A **12-item** Gaslighting at Work
+  Questionnaire developed across three samples, **total N = 679**.
+- **Long covid and medical gaslighting**, *SSM Qualitative Research in Health*
+  2022, `PMC9448633`. Online survey of Long Covid patients, **n = 334**.
+- Several 2025 and 2026 nurse cohort studies relating workplace gaslighting to
+  burnout and turnover intention.
+
+So the countable datasets exist. **The block that actually applies was never the
+one written down, and it is a shape-and-lesson problem rather than a data one.**
+These instruments measure the PREVALENCE OF A REPORTED EXPERIENCE. That is a
+single view of a single quantity, and this deck needs a setup and a reveal that
+are two views of the same data, with the first reading wrong. A bar saying 52.8
+per cent has no second reading; it is a finding, not a trap.
+
+**And where one of them does carry a trap, the deck already ships it twice.** The
+JAMA Network Open survey was completed by patients **before their first
+appointment at a referral clinic**, so every respondent is someone who reached a
+specialist. A figure for how many considered abandoning care, collected only from
+people who did not abandon care, is a selection effect, and a good one. It is
+also `self-selection` and `survivorship-bias`, both already in the registry, and this project does not put
+two names on one reasoning move.
+
+**Conclusion: CLOSED as a source of a new skill, on searched grounds rather than
+assumed ones.** The correction matters even though the outcome is unchanged,
+because the recorded reason was false and would have gone on being repeated. If
+this entry is ever reopened, the thing to look for is not more data. It is a
+gaslighting dataset where the obvious reading of the numbers is wrong, and none
+of the four above is that.
+
+**A note on neutral ground, which was not the deciding factor here.** Medical
+gaslighting is live and contested, and the vulvovaginal and Long Covid literatures
+sit inside arguments about whose symptom reports get believed. The deck's test is
+whether the material is live, not whether our conclusion is the agreeable one, so
+this would have needed care rather than avoidance. It did not get that far.
 
 ### Fearmongering: the one substantive objection, and it is narrower than written
 
@@ -2257,13 +2304,23 @@ softened: **Tannenbaum et al. (2015)**, *Psychological Bulletin*, 127 studies an
 appeals backfire. Authoring Janis and Feshbach's 1953 result as current would ship
 a claim the literature does not support.
 
-But the objection is to **one framing**, not to the topic. Two live routes remain:
+But the objection is to **one framing**, not to the topic. Two routes were left
+live, and the first has since been taken.
 
-1. Fear appeals paired with efficacy against fear appeals without it, which is the
-   EPPM's actual claim and is not the same as "too much fear backfires".
-2. The meta-analytic reversal itself as the lesson, which is a genuinely good
-   puzzle about a famous single study that did not survive, and which shares its
-   spine with the dog-whistle 2018 reversal above.
+1. **SHIPPED 2026-08-05** as entry 26, `nobody-got-worse`, skill `weaker-is-not-backfire`. Fear appeals paired
+   with efficacy against fear appeals without it, which is the EPPM's actual claim
+   and is not the same as "too much fear backfires". Tannenbaum was read at source
+   and the efficacy moderator carried the lesson: .43 with an efficacy statement
+   against .21 without, both intervals clear of zero. The skill that came out of
+   it is not about fear at all, which is why it earned its own card rather than
+   duplicating anything: it is that an effect which SHRINKS has not REVERSED.
+2. **Still live.** The meta-analytic reversal itself as the lesson, a genuinely
+   good puzzle about a famous single study that did not survive, sharing its spine
+   with the dog-whistle 2018 reversal above. Note before building it that it now
+   has to be told without colliding with `temporal-validity`, which shipped on 2026-08-05
+   and whose own lesson text already draws the distinction between a failed
+   replication and an expired finding. A card here would have to be about the
+   first of those, and would need to say plainly why it is not the second.
 
 ### Astroturfing: HOLD stands, and it is a shape problem only
 

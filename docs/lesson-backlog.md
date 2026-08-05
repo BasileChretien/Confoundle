@@ -2345,6 +2345,7 @@ project does not put two names on one reasoning move.
 So this closes on duplication rather than on shape, and it would still close even
 if a countable astroturfing dataset turned up tomorrow. Anyone reopening it needs
 a reasoning step that `source-count-illusion` does not already cover, not better data.
+
 ---
 
 ## Tier 4: what the nine discipline audits found
@@ -3954,9 +3955,19 @@ needs the full treatment before it is numbered.
 - **Per-protocol versus intention to treat.** `intention-to-treat` ships the principle; the
   counterpart card would be the per-protocol analysis that looks better precisely
   because it drops the people for whom the treatment did not work.
-- **Blinding and performance bias.** Unblinded outcome assessment moves soft
-  endpoints and not hard ones, which is the same skeleton as entry 27 above and
-  may be better told as one card than two.
+- **Blinding, and specifically performance bias.** Corrected after review, because
+  the first draft of this line got the taxonomy wrong and it matters here. Cochrane
+  separates two channels. **Detection bias** is knowledge of allocation changing how
+  an outcome is ASSESSED, and that is already shipped as `detection-bias`, so it is
+  not available. **Performance bias** is knowledge of allocation changing what
+  participants and personnel actually DO during the trial: co-interventions, extra
+  monitoring, effort, adherence. That second channel is the one still open, and a
+  card would have to live there rather than on the assessment side. Note also that
+  the effect is a matter of degree rather than a clean split: unblinding moves
+  subjective outcomes more than objective ones, which is not the same as leaving
+  hard endpoints untouched. The skeleton resembles entry 27 in that both end with a
+  soft component carrying the result, but the mechanism differs and they should not
+  be merged without deciding which one a player is actually learning.
 - **Attrition.** Differential loss to follow-up. Adjacent to `survivorship-bias` again.
 - **Pygmalion and procedure bias.** Named rang A, no obvious dataset, lowest
   priority of the group.

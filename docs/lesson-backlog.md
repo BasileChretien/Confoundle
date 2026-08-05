@@ -2050,20 +2050,64 @@ O'Donnell's description of it. **A bounded null belongs in a deep-dive example
 that labels it one, never in an answer key**, and that is where O'Donnell now
 sits.
 
-**Still open from this entry, and worth its own build.** Mattavelli, Brambilla
-and Unkelbach (2025), "Repeating Statements Increases Source Credibility",
-*Personality and Social Psychology Bulletin*, doi `10.1177/01461672251347420`,
-four preregistered experiments. Repetition raised the SOURCE's credibility and
-the gain transferred to **novel** statements from that source. That is separable
-both from shipped `illusory-truth`, which is about the repeated statement itself,
-and from `source-count-illusion`, which is about perceived prevalence. An author
-PDF is posted at mbrambilla.com. Not read at source.
+**Repetition buys the speaker, not just the claim: READ AT SOURCE 2026-08-05 AND
+REFUSED.** Mattavelli S, Brambilla M, Unkelbach C. *Repeating Statements
+Increases Source Credibility.* Personality and Social Psychology Bulletin 2025,
+doi `10.1177/01461672251347420`, author PDF at mbrambilla.com, all four
+preregistrations and data on OSF. Read cover to cover. **This entry previously
+described it as worth its own build. It is not, and the reason is in the paper's
+own numbers rather than in anything outside it.**
 
-**Repetition buys the speaker, not just the claim.** Mattavelli, Brambilla and
-Unkelbach (2025), "Repeating Statements Increases Source Credibility". Repetition
-raised perceived truth *and* the source's credibility, and the credibility gain
-transferred to **novel** statements from that source. That is separable from
-shipped `illusory-truth`, which is about the repeated statement itself.
+**Everything reconciles, which is what makes the refusal safe.** Every printed
+effect size falls out of its printed t and n. Experiment 1: statement truth
+t(44) = 6.38 over the square root of 45 gives the printed d = 0.95; source
+credibility t(44) = 4.95 gives the printed d = 0.74. Experiment 2 phase one,
+t(64) = 8.27 gives d = 1.03; phase two, t(64) = 2.57 gives d = 0.32. Experiment 4
+recovers all three of its simple effects the same way, and its three condition
+sizes of 145, 146 and 144 sum to the printed N of 435. The reading is not in
+doubt.
+
+**The solid half is already shipped, and the interesting half is not solid.**
+What is rock solid here is the illusory truth effect on the statements
+themselves, d around 1.0 with Bayes factors past ten to the fifth. The deck
+shipped that as `illusory-truth`. The claim that would justify a new puzzle is
+the *downstream* one, that repetition makes a speaker credible enough to lend
+weight to claims he has not yet made, and that is the claim the four experiments
+do not settle:
+
+- **Experiment 2**, N = 65: novel statements from sources previously paired with
+  repeated ones rated 3.96 (SD 0.62) against 3.76 (SD 0.51). d = 0.32
+  [0.07, 0.57], p = .006.
+- **Experiment 3**, N = 180, the same design with the first truth-rating phase
+  removed: **no effect**. 3.76 (SD 0.55) against 3.77 (SD 0.60), d = -0.02
+  [-0.17, 0.13], **BF10 = 0.09**, which is positive evidence for the null.
+- **Experiment 4**, N = 435, built to resolve the conflict: main effect 3.82
+  (SD 0.66) against 3.73 (SD 0.65), d = 0.12 [0.03, 0.22], p = .010, and
+  **BF10 = 1.45**, which is no evidence either way. Worse for a card, the simple
+  effects invert: the condition replicating Experiment 2 came out
+  **non-significant** here (d = 0.08, p = .162) while the condition replicating
+  Experiment 3, which had found nothing, came out significant (d = 0.14).
+
+The authors say it themselves, and say it plainly: the downstream effect "while
+positive, is likely small", each condition "may have been underpowered", and
+"small differences between conditions cannot be ruled out".
+
+**Why Experiment 1 alone cannot carry a puzzle either.** Its direct effect is
+strong and well measured, sources paired with repeated statements rated 4.26
+(SD 1.09) against 3.46 (SD 0.87), on forty faces pre-matched for trustworthiness
+(M = 3.50, SD = 0.16). But the authors raise the obvious confound against
+themselves on the same page: participants may have been confusing the judgment
+target, rating the statement rather than the face. Experiments 2 to 4 exist
+precisely to rule that out, and they came back inconsistent. A card asserting
+that repetition buys the messenger would be asserting the thing the paper's own
+follow-ups failed to establish.
+
+**The rule this is an instance of.** A published, preregistered, competently run
+paper is not automatically a Confoundle source. The question is whether the
+specific claim a card would make is settled, and here the settled claim is one
+the deck already teaches while the novel claim sits at BF = 1.45. Reopen if a
+larger replication lands: the effect is plausible and the authors are careful,
+and nothing here is a criticism of the work.
 
 **And the search surfaced a candidate the deck has nothing like: the continued
 influence effect.** Retracted misinformation keeps influencing reasoning after the

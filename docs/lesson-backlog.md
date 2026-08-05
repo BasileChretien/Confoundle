@@ -1432,12 +1432,12 @@ the scale definition with its endpoints, the per-condition means for the three
 variants, the per-condition n, and SDs if the paper prints them. Either the SAGE
 article or the Springer chapter would do.
 
-### Dog whistling: OPEN. The earlier rejection conflated two different objections
+### Dog whistling: SOURCED AND REFUSED 2026-08-05, on neutral ground, with shape failing too
 
-Written up as the clearest partisanship rejection on the list. The partisanship
-concern is real and stands. The claim that came with it, that there was nothing
-but live political material, was wrong: this is one of the better-replicated
-literatures in political psychology.
+Written up originally as the clearest partisanship rejection on the list. The
+partisanship concern is real and it is what finally settles this. The claim that
+came with it, that there was nothing but live political material, was wrong: this
+is one of the better-replicated literatures in political psychology.
 
 - Mendelberg (2001); **Valentino, Hutchings and White (2002)**, the foundational
   implicit-appeal experiments; White (2007).
@@ -1447,14 +1447,103 @@ literatures in political psychology.
 - **Wetts and Willer (2019)**, *Socius*, two experiments, **1,797 white
   Americans**, racial attitudes measured two weeks before exposure.
 
-The 2018 reversal is the interesting part for this deck, and it is not a lesson
-about race at all: it is a lesson about a well-established effect that stopped
-replicating because the world changed underneath it, which is a reasoning trap in
-its own right and a close cousin of the fear-appeal problem below.
+**Both papers have now been read at source, and the third test is answered too.**
+The three tests were left half-open for a week with the note "counts need
+checking". They are checked.
 
-Evidence: **yes, and strong**. Neutral ground: **no**, and this remains the real
-obstacle. Shape: the outcomes are policy-preference scales, so counts need
-checking.
+**Valentino NA, Neuner FG, Vandenbroek LM. The Changing Norms of Racial Political
+Rhetoric and the End of Racial Priming.** *Journal of Politics* 2018;80(3):
+757-771, doi `10.1086/694845`. Read cover to cover on 2026-08-05, together with
+its online appendix. **Caveat on which text was read:** the typeset article is
+paywalled, so this was the accepted manuscript posted by the second author on his
+own university page, plus the posted online appendix. Data and replication
+materials are on the JOP Dataverse, doi `10.7910/DVN/5AN3RU`.
+
+**The design, and one correction to this entry's own framing.** Four survey
+experiments on national samples of whites. Study 1, 2,394 voting-age Americans
+fielded 16 July to 8 August 2010 through YouGov/Polimetrix; Studies 2 and 3, 234
+and 321 white respondents; Study 4, 3,114 white respondents through Knowledge
+Networks. **The fieldwork ran from 2010 to 2012, not 2016**, and the authors say
+so themselves in the discussion: the shift "cannot be solely due to Trump's
+political rise". A card that dated this to the Trump era would be wrong about the
+paper's own dates, and the earlier note here inviting a "changed environment"
+reading was one step away from making that mistake.
+
+**Shape: FAILS, and it is the Levari wall again.** The estimating equation is an
+OLS interaction model with the explicit cue as the excluded category, and the
+implicit/explicit theory lives entirely in the sign of one interaction term.
+Every substantive table in the paper and in the appendix prints coefficients with
+standard errors: Table A9, Study 1, symbolic racism -0.626 (0.0271) with the
+implicit interaction at 0.027 (0.0380), N = 2,168; Study 4, -0.489 (0.0212) with
+the interaction at -0.016 (0.0305), N = 2,983. Figures 2, 3 and 4 plot fitted
+slopes and are never tabulated. **Appendix Tables A5 to A8 do print means, but
+pooled over conditions**, one row per variable with N, mean, standard deviation,
+minimum and maximum, so there is no condition-level outcome printed anywhere in
+the paper or the appendix. A puzzle needs two views of one data set and the
+second view here does not exist on the page.
+
+**What the paper does print at condition level, which is not nothing.** Two
+manipulation checks from Study 4, on a 0 to 1 scale. Asked whether the
+advertisement was racially insensitive: implicit **.23**, explicit **.67**. Asked
+whether it focused on racial conflict: implicit **.19**, explicit **.72**. And
+one distribution, on whether people are too sensitive about race in public:
+**60 per cent** answered "way too sensitive" or "slightly too sensitive" against
+**13 per cent** who answered "not quite sensitive enough" or "not nearly
+sensitive enough". That is a real and striking pair of numbers, and it is a
+manipulation check rather than an outcome: it says the treatment landed, not that
+it did anything.
+
+**Two arithmetic checks worth keeping, since they were run.** First, one that
+holds: Table A8 gives pooled means of .4571 for the racially-insensitive item
+(n = 2,305) and .4651 for the racial-conflict item (n = 2,288), and the midpoints
+of the two printed condition means are .450 and .455, within a hundredth of each.
+That is consistent with the reading rather than a proof of it, since the paper
+does not say how the control group enters the pooled figure. Second, one that
+does not: the text reports the modal symbolic-racism score of 1 as 17.6 per cent,
+n = 402, and the floor of 0 as 59 respondents, 2.6 per cent. Neither is a share
+of the headline 2,394, since 402 of 2,394 is 16.8 per cent. Both are shares of
+roughly 2,284, which is about the number who completed the battery, and the
+appendix regression Ns of 2,168 and 2,269 sit just below that. The percentages
+are consistent with each other and **not** with the sample size the paper leads
+with, which is exactly the sort of thing a provenance note would have to carry.
+
+**Wetts and Willer (2019),** *Socius*, doi `10.1177/2378023119866268`, hits the
+same wall. Two experiments, 865 and 864 after exclusions, outcomes are 1 to 7
+composites for welfare support, recipient deservingness and gun control, and all
+five tables are OLS coefficients with standard errors. **Lighter read than the
+Valentino one**: this was taken from the publisher's full-text page rather than
+the typeset PDF, so the table inventory should be re-checked if the entry ever
+reopens.
+
+**Why it is still refused, and it is neutral ground rather than shape.** Two
+reasons, and the second is the stronger of the two.
+
+1. **The parties and the people are alive.** The stimuli and outcome measures
+   name Obama, the Tea Party, Glenn Beck, Sarah Palin, Rush Limbaugh and Mitt
+   Romney, and the focal policy is the Affordable Care Act. The test this file
+   sets is whether there is a version whose parties and people are extinct.
+   There is not.
+2. **Every drawable version puts a prejudice scale on the x axis.** The finding
+   is about how strongly a respondent's symbolic-racism score predicts their
+   policy opinion, so any chart of it sorts people along that score. A Confoundle
+   puzzle asks a reader to look at a chart and commit to an answer; this one would
+   ask them to reason about how their own group's racial resentment tracks its
+   politics. That is a different kind of object from a puzzle about a persuasion
+   technique, and it is not one this deck can hand to a general audience. This
+   reason is independent of who is alive and would survive the passage of time,
+   which is why it settles the entry rather than deferring it.
+
+**Evidence: passes, emphatically.** Four nationally representative experiments in
+a top journal, plus an independent two-experiment replication in an open-access
+one. Nothing here is a criticism of the work. **Shape: fails.** **Neutral ground:
+fails.** Status: **REFUSED**, and unlike the first refusal this one names the
+test it actually failed.
+
+**The lesson worth keeping was extracted rather than discarded.** The general
+move, that a well-established effect can stop replicating because the world
+changed underneath it rather than because anyone measured it wrong, is a real
+reasoning trap and is not about race. It is now **entry 25** below, where it needs
+a neutral source of its own.
 
 ### The Big Lie: PAPER IDENTIFIED 2026-08-04, AND IT IS STILL A WORKING PAPER
 
@@ -3389,3 +3478,63 @@ English hospitals, no party, no living side made to look foolish.
 counts would de-anonymise two trusts whose authors chose not to name them. That
 was flagged as a call for a human and nothing here changes it. This entry does not
 need it.
+
+---
+
+### 25. The effect that stopped working because the world moved
+
+<!-- skill: temporal-validity -->
+
+**Status: LEAD 2026-08-05.** Extracted from the dog whistling entry above, which
+was refused on neutral ground on the same day. The refusal was about the material,
+not about the idea, and the idea deserves its own line rather than dying with the
+paper it was noticed in. **Numbered 25 rather than 24 because 24 is claimed by the
+open floor-and-ceiling pull request**, and a duplicate number is worse than a gap.
+
+**The trap.** A careful experiment establishes an effect. Years later a careful
+replication finds nothing. The reflex is to decide that one of the two was done
+badly, usually the older one, and that the effect was never real. There is a third
+possibility that is often the right one: **both studies measured correctly and the
+population changed in between**. Kevin Munger's name for the property a finding
+lacks in that case is *temporal validity*, and it is worth having a word for,
+because without one the only available readings are "the first team was sloppy"
+and "the second team botched the replication".
+
+**Why it belongs in this deck.** It is the failure mode behind a great deal of
+confident argument from evidence: quoting a 1990s effect size at 2026 as though
+findings do not expire, and equally, treating a failed replication as a verdict on
+the original researchers. It also cuts against the deck's own instincts, since
+every puzzle here rests on a published number and the honest version of that has a
+date attached.
+
+**What it needs, and this is the hard part.** A neutral case where the SAME
+intervention was measured twice, far enough apart that the world moved, with
+counts or means printed at both times, and where the change in the population is
+documented rather than assumed. All three parts matter. Without the documented
+population change the puzzle is indistinguishable from an ordinary failed
+replication, which is a different and much duller lesson.
+
+**One candidate, identified but NOT read at source, and it may not fit.**
+Bratsberg B, Rogeberg O. *Flynn effect and its reversal are both environmentally
+caused.* PNAS 2018;115(26):6674-6678, doi `10.1073/pnas.1718793115`, PMC6042097,
+open access. Norwegian military conscription records, birth cohorts 1962 to 1991,
+scores peaking with the 1975 cohort and falling by roughly 0.2 points a year
+since, with the decline recovered **within families**, so brothers born later
+score below brothers born earlier. Neutral ground is excellent and the data are
+administrative rather than self-reported. **The reservation is that it may be the
+wrong lesson**: a trend that reversed is not the same object as a treatment effect
+that vanished, and the paper's own punchline, that the within-family design rules
+out compositional and genetic explanations, is a confounding lesson of the kind
+this deck already ships several of. Read it before believing it fits.
+
+**What would fit better**, if anyone finds it: a clinical or educational
+intervention with a published effect in one decade and a published null in
+another, where the second paper establishes what changed about the people rather
+than speculating. Prevention trials against a falling baseline rate are the most
+likely place to look, since a shrinking baseline mechanically shrinks the
+absolute effect and the literature about it tends to say so out loud.
+
+**Do not author this from the racial priming papers.** That route is closed and
+the reasons are recorded above under dog whistling. They are about neutral ground
+and about what a Confoundle chart would have to put on its x axis, and neither
+weakens with time.

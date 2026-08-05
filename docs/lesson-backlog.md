@@ -2005,21 +2005,59 @@ records that the interval leans slightly right of 0.50 rather than straddling it
 evenly, which tilts very faintly towards the trap, and that what the interval
 establishes is that equality cannot be ruled out rather than that it is proved.
 
-### Firehose of falsehood: SEARCHED, and one of its ingredients looks refuted
+### Firehose of falsehood: its multi-channel ingredient SHIPPED 2026-08-05
+
+<!-- skill: source-count-illusion -->
 
 The objection to Paul and Matthews (2016) stands on its own terms: think-tank
-perspective paper, not peer-reviewed, about one named state. The component claims
-are separable and testable, and the search turned up three things, one of which
-is better than anything the model itself asserts.
+perspective paper, not peer-reviewed, about one named state. **The model itself
+is still not authored from and is not going to be.** What shipped is the
+component claim this entry singled out, which is about method rather than about
+any country, and it shipped on a better paper than the one this entry pointed at.
+
+**SHIPPED as `one-voice-three-times`, skill `source-count-illusion`, on
+`ratings`.** Weaver K, Garcia SM, Schwarz N, Miller DT, *Journal of Personality
+and Social Psychology* 2007;92(5):821-833, doi `10.1037/0022-3514.92.5.821`,
+supplied by Basile and read at source. Study 1A, Table 1: 177 people read
+comments attributed **by name** to members of a five-person focus group, then
+estimated statewide support for a fictitious policy. One comment from one
+homeowner produced 56.87 per cent; three comments from three different homeowners
+produced 72.18; the **same** homeowner making the same point three times produced
+**65.96**, about three fifths of the way to a real chorus, with his name on every
+comment and the readers knowing it.
 
 **The multi-channel claim appears to be false.** Foster and colleagues found that
 **repetition, not number of sources**, increases susceptibility to misinformation
 and confidence in eyewitness accuracy, and a later meta-analysis concluded that
 source variability "does not increase eyewitness suggestibility independently of
-repetition". If that holds, the firehose's "many channels" ingredient contributes
-nothing beyond saying the same thing more often. **A widely repeated model of
-manipulation with a component that does not survive testing is a very good
-Confoundle subject**, and it is about method rather than about any country.
+repetition". That was the lead this entry recorded, and it was read at source:
+O'Donnell R, Chan JCK, Foster JL, Garry M, *Frontiers in Psychology*
+2023;14:1201674, doi `10.3389/fpsyg.2023.1201674`, open access, two preregistered
+experiments of 267 and 268 retained participants crossing repetition against
+source variability, with meta-analytic effects of g = 0.38 [0.17, 0.59] for
+repetition against g = -0.01 [-0.18, 0.15] for source variability.
+
+**The puzzle was built on that paper first, and that build was scrapped.**
+Recorded because the reason generalises. A puzzle whose correct answer is "there
+is no gap" fails three ways. Its distractor "smaller but clearly there" was
+**not** excluded by that interval, so a well-reasoning player could have been
+marked wrong, which `docs/hedge-audit.md` calls the nastiest failure of the
+three. The deck already ships `statistical-significance` under the slug
+`no-difference-found`, whose whole point is that failing to find a difference is
+not finding none, so the answer key would have contradicted another card. And the
+actionable half of the lesson rested on Weaver anyway, cited there only through
+O'Donnell's description of it. **A bounded null belongs in a deep-dive example
+that labels it one, never in an answer key**, and that is where O'Donnell now
+sits.
+
+**Still open from this entry, and worth its own build.** Mattavelli, Brambilla
+and Unkelbach (2025), "Repeating Statements Increases Source Credibility",
+*Personality and Social Psychology Bulletin*, doi `10.1177/01461672251347420`,
+four preregistered experiments. Repetition raised the SOURCE's credibility and
+the gain transferred to **novel** statements from that source. That is separable
+both from shipped `illusory-truth`, which is about the repeated statement itself,
+and from `source-count-illusion`, which is about perceived prevalence. An author
+PDF is posted at mbrambilla.com. Not read at source.
 
 **Repetition buys the speaker, not just the claim.** Mattavelli, Brambilla and
 Unkelbach (2025), "Repeating Statements Increases Source Credibility". Repetition

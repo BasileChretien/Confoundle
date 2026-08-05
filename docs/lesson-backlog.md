@@ -1456,10 +1456,71 @@ Evidence: **yes, and strong**. Neutral ground: **no**, and this remains the real
 obstacle. Shape: the outcomes are policy-preference scales, so counts need
 checking.
 
-### The Big Lie: PROMOTE. Searched, and the rejection was wrong twice over
+### The Big Lie: PAPER IDENTIFIED 2026-08-04, AND IT IS STILL A WORKING PAPER
 
-Written up as "the mechanism is repetition, so it is `illusory-truth` again". That
-was wrong on two counts, and the search took one query.
+**The paper is found and named. The block is now provenance, and it is a decision
+rather than a search.**
+
+**The source.** Levari DE, Martel C, Orchinik R, Bhui R, Seli P, Pennycook G,
+Rand DG. *Blatantly false news increases belief in news that is merely
+implausible.* Preprint, PsyArXiv, doi 10.31234/osf.io/cz7vy, posted February
+2024. Five preregistered experiments, N=5,476. Covered by *Scientific American*
+as "How Blatantly False Headlines Can Distort What We Believe In".
+
+**The stated finding matches what this entry predicted.** Exposure to a higher
+prevalence of blatantly false headlines raised belief in unrelated headlines that
+were merely ambiguous or plausible, true ones as well as false ones. The effect
+is reported to hold for hypothetical events and for real headlines, under active
+evaluation and passive reading, among liberals and conservatives, and among
+those high and low in cognitive reflection. That last set is the
+non-partisanship test passing, and it is exactly the shape the deck wants.
+
+**And it has not been peer reviewed.** As of 2026-08-04 the lead author's own
+publication page lists it under **Working Papers**, with no journal, no "in
+press" and no "under review" status, two and a half years after it was posted.
+Compare the same author's neighbouring entries, which carry precise statuses
+("Minor revisions at Management Science", "Revise & Resubmit at Psychological
+Science", "Revise & Resubmit at Cognition"). The absence of any status on this
+one, on a page that gives one for almost everything else, is information.
+
+**Why that matters here and not everywhere.** This project's standard is that a
+puzzle's factual claim is read at source and reconciled. A preprint can be read
+at source, and this one carries preregistrations and a large N from the strongest
+author list in the field, so it is not disqualified on its face. But a deck whose
+whole premise is that it is more careful than the thing it is teaching against
+should not rest a lesson on a finding that has sat unpublished for two and a half
+years without saying so on the card. The two honest options are:
+
+1. **Wait.** Recheck the venue before authoring. If it lands in a journal, this
+   becomes an ordinary build and a very good one.
+2. **Ship it as a preprint, and say so in the provenance note and on the
+   lesson page**, in the same voice the deck uses for its other honesty notes.
+   Defensible, given five preregistered experiments and N=5,476, but it is a
+   decision about the deck's standard rather than about this puzzle, so it is
+   Basile's to make and not one to take silently.
+
+**Do not substitute the neighbouring paper.** The same team's *Replicability and
+generalizability of the repeated exposure effect on moral condemnation of fake
+news* (Orchinik, Bhui, Rand, Nature Communications 2025, doi
+10.1038/s41467-025-62462-x) is peer reviewed and open access, and it is
+tempting. It is the wrong lesson: it is about repetition, which is frequency,
+and the whole reason this entry was promoted is that the Big Lie is about
+magnitude. Swapping it in would recreate the exact error this entry was written
+to correct.
+
+**What it would need to ship**, once the provenance question is settled: the
+counts read off the preprint's own tables, and a shape. The natural setup shows a
+reader's plausibility ratings for a set of mild claims, and the reveal shows the
+same ratings after the same reader has been shown a batch of outlandish ones,
+with nothing about the mild claims having changed. Whether an existing shape
+carries that is unexamined; `drift` and `estimation` are the two to look at
+first.
+
+---
+
+**Status when opened: PROMOTE.** Searched, and the rejection was wrong twice
+over. Written up as "the mechanism is repetition, so it is `illusory-truth`
+again". That was wrong on two counts, and the search took one query.
 
 Wrong once because that is not what the Big Lie claims. The claim is about
 **magnitude**, that a colossal lie is more credible than a small one, and

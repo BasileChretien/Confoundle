@@ -21,10 +21,23 @@ allowBuilds:
 # prevents that.
 minimumReleaseAge: 4320
 
-# Force the patched brace-expansion into the tree. It arrives only through the
-# build tooling (vite-plugin-pwa > workbox-build), never into the shipped
-# bundle, so the DoS advisory GHSA-mh99-v99m-4gvg cannot reach a reader. It is
-# pinned anyway because a high advisory left open is one nobody looks at twice,
-# and because the fix is a patch release with no API surface.
+# Force patched versions of transitive dependencies into the tree. Each one
+# arrives only through the build tooling, never into the shipped bundle, so
+# none of these advisories can reach a reader. They are pinned anyway because a
+# high advisory left open is one nobody looks at twice, and because each fix is
+# a patch release with no API surface.
+#
+# An override is the only lever that works here. None of these are declared in
+# package.json, and their parents' ranges already permit the patched version,
+# so pnpm has no reason to re-resolve them: `pnpm update <pkg> --depth Infinity`
+# reports "Already up to date" and leaves the locked version alone.
 overrides:
+  # vite-plugin-pwa > workbox-build. DoS, GHSA-mh99-v99m-4gvg.
   brace-expansion: ">=5.0.8"
+
+  # vite-plugin-pwa > workbox-build > ajv. Host confusion via a backslash
+  # authority introducer, GHSA-7p8r-x3mc-p8w7. Capped below 4 because ajv
+  # declares ^3.0.1: upstream backported the fix to the 3.x line and publishes
+  # it under the "three" dist-tag, while "latest" points at a 4.x that ajv has
+  # not adopted. An uncapped floor would quietly force that major on it.
+  fast-uri: ">=3.1.5 <4"

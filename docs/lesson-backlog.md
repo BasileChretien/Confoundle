@@ -1508,8 +1508,63 @@ and the whole reason this entry was promoted is that the Big Lie is about
 magnitude. Swapping it in would recreate the exact error this entry was written
 to correct.
 
-**What it would need to ship**, once the provenance question is settled: the
-counts read off the preprint's own tables, and a shape. The natural setup shows a
+**PREPRINT STATUS RESOLVED, AND A SECOND BLOCKER FOUND 2026-08-04.** Basile's
+decision on the question above was to **ship it labelled a preprint**. That
+settles the provenance question and it stands. But the preprint was then read at
+source, cover to cover, and it raises a different obstacle that neither of us
+knew about when that decision was made, so the decision cannot dispose of it.
+
+**The paper prints no drawable outcome numbers anywhere.** Every result in all
+five studies is a regression coefficient with a standard error, a test statistic
+and a p value, and every outcome figure is a scatter plot with a fitted curve.
+There is not one table of percentages or counts in the paper. Study 1:
+b = 0.73, SE = 0.33, z = 2.23, p = 0.03 for high versus low, and b = 0.77,
+SE = 0.30, z = 2.59, p = 0.01 for moderate versus low. Study 2: b = 0.89,
+SE = 0.28, z = 3.20, p = 0.001 and b = 0.82, SE = 0.34, z = 2.41, p = 0.02.
+Study 4: b = 0.05, SE = 0.02, t = 2.72, p = 0.01 in the high condition against
+b = -0.002, SE = 0.02, t = -0.10, p = 0.92 in the low one. Figures 1 and 4 plot
+"% of headlines called plausible" and "% called accurate" against pretested
+plausibility, and neither is tabulated.
+
+A generalised linear mixed model interaction coefficient on a latent
+plausibility-threshold scale is not a count and not a published percentage. It
+cannot be drawn as a rate, and group shares cannot be recovered from it without
+modelling assumptions the paper does not license. This project already refused to
+read numbers off an untabulated figure once, in the Campbell's law puzzle, whose
+provenance note says the 15.82 per cent profile "appears only in a figure that is
+never tabulated, so no claim is made here". The same rule applies here and it
+points the same way.
+
+**What the paper does print, exactly, and it is not nothing.** The
+manipulation is given as precise shares, and those are the input rather than the
+outcome. Study 1, 419 US residents on Amazon Mechanical Turk, 204 female, 215
+male, mean age 37.4, each reading 60 headlines drawn from a set of 300 written by
+the research team. Three conditions: **low implausibility, 8 per cent
+implausible, 33 per cent ambiguous, 58 per cent plausible; moderate, equal
+thirds; high, 58 per cent implausible, 33 per cent ambiguous, 8 per cent
+plausible.** Study 2, 599 residents, 295 female, 302 male, 2 other, mean age
+37.5, headlines drawn from 1,235 real ones fact-checked by Snopes between 1
+February and 1 November 2018, half true and half false, same three conditions.
+Study 4 reanalyses 1,455 US residents on Lucid: a habituation phase of 50
+headlines at 80 per cent true and 20 per cent false, or the reverse, then an
+evaluation phase of 15 true and 15 false for everybody, drawn from 55 true and 55
+false balanced on partisanship.
+
+**So the route to shipping is now a data question, not a paper question**, and it
+is Basile's call in the same way the last one was. The studies are preregistered
+and hosted on OSF, so the trial-level data are very likely posted. Computing the
+share of ambiguous headlines called plausible in each condition from those files
+would give exactly the counts this deck authors from, and it would arguably be
+*more* rigorous than quoting a coefficient, since every puzzle here already
+derives its rates from raw counts. But it is a step past "read the number at
+source", it introduces analysis choices the paper made and this deck would have
+to match, and doing it silently would be the sort of shortcut this file exists to
+prevent. **Do not author this lesson from the coefficients. Either work from the
+posted trial-level data, with the derivation written into the puzzle's test the
+way every other reconciliation is, or leave the entry here.**
+
+**What it would need to ship**, once both questions are settled: the
+counts derived from the posted data, and a shape. The natural setup shows a
 reader's plausibility ratings for a set of mild claims, and the reveal shows the
 same ratings after the same reader has been shown a batch of outlandish ones,
 with nothing about the mild claims having changed. Whether an existing shape

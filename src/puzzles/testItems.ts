@@ -8286,6 +8286,148 @@ const items: TestItem[] = [
       en: "Comparing improvement against the improvement that was possible is the right adjustment when two groups start at different distances from the top of a scale. The raw totals would have flattered whichever group had more room, independently of anything the intervention did.",
     },
   },
+
+  // ---- Repetition disguised as corroboration ----
+  {
+    id: "sc-six-accounts",
+    scenario: {
+      en: "A claim reaches someone from six social media accounts, two group chats and a screenshot. They report that so many independent people are saying it that it must be substantially true. All nine were quoting the same original post.",
+    },
+    trap: "source-count-illusion",
+    explanation: {
+      en: "Nine encounters with one claim is one source met nine times, not nine sources agreeing. The feeling of weight came from the count of encounters, and that count carries no information about whether anybody confirmed anything.",
+    },
+  },
+  {
+    id: "sc-press-roundup",
+    scenario: {
+      en: "A press office circulates a roundup showing that eleven outlets have now reported a figure, and argues that the figure is therefore well established. Ten of the eleven cite the same agency wire.",
+    },
+    trap: "source-count-illusion",
+    explanation: {
+      en: "Counting outlets counts republications. The trails end at one wire, so the eleven-outlet tally measures how widely that wire was picked up rather than how many organisations checked the number.",
+    },
+  },
+  {
+    id: "sc-second-opinion-notes",
+    scenario: {
+      en: "A consultant seeks a second opinion on a diagnosis and sends the referring clinician's notes along with the request. The second opinion agrees, and the agreement is recorded as independent confirmation.",
+    },
+    trap: "source-count-illusion",
+    explanation: {
+      en: "The second clinician read the first one's reasoning before forming a view, so part of the agreement is transmission rather than concurrence. Independent means the two could not have influenced each other, and here one plainly could.",
+    },
+  },
+  {
+    id: "sc-panel-after-briefing",
+    scenario: {
+      en: "A committee circulates a briefing note, then polls its eight members individually. Seven agree with the note's conclusion, and the chair reports strong independent support from seven separate experts.",
+    },
+    trap: "source-count-illusion",
+    explanation: {
+      en: "Everyone read the same note first, so the seven answers share an input. Polling people separately makes the responses private, not independent, and only the second would justify treating them as seven pieces of evidence.",
+    },
+  },
+  {
+    id: "sc-witness-repeats",
+    scenario: {
+      en: "A witness gives the same account of a detail at the scene, again at a follow-up interview and again at a deposition. The file records three statements supporting the detail and treats it as well attested.",
+    },
+    trap: "source-count-illusion",
+    explanation: {
+      en: "Three statements from one witness is one witness, three times. The count in the file has grown without any new person having seen anything, and that count is exactly what makes the detail feel established.",
+    },
+  },
+  {
+    id: "sc-review-citations",
+    scenario: {
+      en: "A claim in a field is supported by forty citations. Followed up, all forty trace back to a single unreplicated study from 1987, mostly by way of other reviews. A newcomer counts the citations and concludes the claim is very well supported.",
+    },
+    trap: "source-count-illusion",
+    explanation: {
+      en: "A citation count measures how often a claim has been passed on, not how often it has been tested. Forty pointers to one study is one piece of evidence with a long tail of repetition attached to it.",
+    },
+  },
+  {
+    id: "sc-two-forecasts",
+    scenario: {
+      en: "Two forecasting teams submit separate estimates that come out close together, and a board treats the agreement as strong corroboration. Both teams bought their input data from the same vendor.",
+    },
+    trap: "source-count-illusion",
+    explanation: {
+      en: "Two analyses of one data set agree partly because they share the data. What the match tests is whether the two methods behave alike, and it cannot test anything the shared input got wrong.",
+    },
+  },
+  {
+    id: "sc-heard-everywhere",
+    scenario: {
+      en: "Asked why she now believes a rumour she doubted last month, someone answers that she has heard it from so many people since. She cannot name anyone in the chain who would have known it first hand.",
+    },
+    trap: "source-count-illusion",
+    explanation: {
+      en: "What changed between last month and now is how often she met the rumour, not what anybody knows. If nobody in the chain has first-hand access, adding people to the chain adds encounters and no evidence.",
+    },
+  },
+  {
+    id: "sc-repost-count",
+    scenario: {
+      en: "A platform ranks a claim as highly corroborated because it appears in thousands of posts. The ranking counts posts rather than distinct origins.",
+    },
+    trap: "source-count-illusion",
+    explanation: {
+      en: "A metric that counts posts rewards whatever is easiest to copy. Corroboration is a property of independent origins, and a system that cannot see origins is measuring circulation and calling it support.",
+    },
+  },
+  {
+    id: "sc-same-quote-three-times",
+    scenario: {
+      en: "A dossier lists three separate expert warnings about a risk. Each of the three is the same expert, quoted from three different conferences, and the dossier presents the total as a weight of expert concern.",
+    },
+    trap: "source-count-illusion",
+    explanation: {
+      en: "One expert speaking three times is one opinion. Presenting the appearances as a tally converts a repeated view into an apparent consensus, and the tally is the part a reader will remember.",
+    },
+  },
+  {
+    id: "ok-sc-traced-the-origins",
+    scenario: {
+      en: "Before repeating a figure she has seen many times, a journalist traces every version she can find, discovers three genuinely separate research groups behind them, and reports the figure as well supported.",
+    },
+    trap: null,
+    explanation: {
+      en: "This is the check being run, and passed. She counted origins rather than encounters and found more than one, which is the thing that makes agreement evidence rather than echo.",
+    },
+  },
+  {
+    id: "ok-sc-blinded-second-reader",
+    scenario: {
+      en: "A laboratory has every slide read twice, and withholds the first reader's conclusion from the second. When the two agree, the result is recorded as confirmed.",
+    },
+    trap: null,
+    explanation: {
+      en: "Withholding the first reading is precisely what makes the second one independent. The agreement is then informative, because there was no route by which one reader could have produced the other's answer.",
+    },
+  },
+  {
+    id: "ok-sc-counted-and-said-one",
+    scenario: {
+      en: "A report notes that a claim appears in nine places, adds that all nine cite a single source, and concludes that there is one piece of evidence for it rather than nine.",
+    },
+    trap: null,
+    explanation: {
+      en: "The count is reported and then immediately deflated by the thing that matters, which is where the trails end. Stating both is the honest form and it leaves the reader holding the right number.",
+    },
+  },
+  {
+    id: "ok-sc-preregistered-replication",
+    scenario: {
+      en: "A finding is questioned, and a different team collects new data using the original materials but their own participants and their own analysis, registered in advance. Their result matches, and the field treats the finding as strengthened.",
+    },
+    trap: null,
+    explanation: {
+      en: "New data gathered by people who were not involved in the first study is the expensive kind of confirmation, and it is the kind that earns the weight. Nothing about it is a repetition of the original claim.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

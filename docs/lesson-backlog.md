@@ -2322,13 +2322,30 @@ live, and the first has since been taken.
    replication and an expired finding. A card here would have to be about the
    first of those, and would need to say plainly why it is not the second.
 
-### Astroturfing: HOLD stands, and it is a shape problem only
+### Astroturfing: CLOSED 2026-08-05. The shape note was right and is no longer what binds
 
 Apollonio and Bero (2007), *American Journal of Public Health* 97(3):419-428, on
 RJ Reynolds creating "Get Government Off Our Back" in 1994 while concealing its
 involvement. Evidence: yes. Neutral ground: yes, tobacco is ideal. Shape: **no**,
-it is a documents analysis with no numerator and no denominator. This is the only
-one of the nine whose obstacle was correctly identified the first time.
+it is a documents analysis with no numerator and no denominator. That was
+correctly identified the first time and remains true.
+
+**But a second obstacle has appeared since, and it is the decisive one.**
+`source-count-illusion` shipped on 2026-08-05 as `one-voice-three-times`, under the skill name "repetition
+disguised as corroboration". Its takeaway is that the sense a view is widely held
+is built from how often you have met it rather than from how many people hold it,
+and that one voice repeating itself buys most of what a real chorus buys.
+
+That is the astroturfing move, from the reader's side. A player who has learned to
+ask how many INDEPENDENT sources are behind a chorus has already been given
+everything an astroturf card would teach. The concealment of funding is a
+difference in the mechanism, not in the reasoning the player performs, and this
+project does not put two names on one reasoning move.
+
+So this closes on duplication rather than on shape, and it would still close even
+if a countable astroturfing dataset turned up tomorrow. Anyone reopening it needs
+a reasoning step that `source-count-illusion` does not already cover, not better data.
+
 ---
 
 ## Tier 4: what the nine discipline audits found
@@ -3867,3 +3884,90 @@ is not a finding this deck will draw.
 **Neutral ground: yes.** The pooled evidence spans dental hygiene, driving
 safety, smoking and drink, and the card is written on the general question rather
 than on any live public-health argument.
+
+---
+
+### 27. The trial won on a composite, and the win is in the softest part of it
+
+<!-- skill: composite-endpoints -->
+
+**Status: SOURCED AT THE REVIEW LEVEL 2026-08-05, and one thing is still missing
+before it can be authored.** Read at source: Cordoba G, Schwartz L, Woloshin S,
+Bae H, Gotzsche PC. *Definition, reporting, and interpretation of composite
+outcomes in clinical trials: systematic review.* BMJ 2010;341:c3920, `PMC2923692`, open
+access, full text reachable through the Europe PMC REST endpoint.
+
+**Why this is a gap worth filling.** The syllabus audit's own conclusion is that
+the deck's holes cluster in trial appraisal rather than in exotic named biases,
+and composite endpoints are **rang A in France**, meaning every doctor is required
+to know them. The registry has `intention-to-treat` and `statistical-vs-clinical-significance` but nothing on composites.
+
+**What the review establishes, transcribed from the paper.** Of **40** trials
+published in 2008 reporting a binary composite outcome, **29 (73%)** were
+cardiovascular and **24 (60%)** were entirely or partly industry funded.
+Composites had a median of **three** components (range 2 to 9). Death or
+cardiovascular death was the most important component in **33 (83%)**. Only
+**one** trial gave a good rationale for its choice of components. The reviewers
+judged the components **not** of similar importance in **28 (70%)**, and in **20**
+of those, death was combined with hospital admission. The definition of the
+composite changed between the abstract, methods and results sections in **13**
+trials. In **4 (10%)** the authors said outright that the composite was created
+post hoc, and in **3** of those the prespecified composite had not been
+statistically significant.
+
+The paper also states the mechanism plainly, and this sentence is the lesson:
+
+> the effect is often smallest for the most important component of the outcome
+> and biggest for the less important components
+
+**The thing still missing, and it is what stops this being authorable today.**
+That sentence is cited to the review's own references 3, 5 and 8; it is not this
+paper's finding, and this paper prints no component-level counts for any single
+trial. A Confoundle card needs a setup and a reveal that are two views of one
+dataset, so it needs **one named trial that prints its composite result AND the
+counts for each component**, where the composite is a clear win and the hard
+component is flat. The review establishes that such trials are common; it does not
+hand one over. Whoever picks this up should start from references 3, 5 and 8 of
+the BMJ paper, and should not author the card from the review alone.
+
+**Shape.** Probably none needed: a composite total and its components is
+`rates` with a stratified reveal, and the components are counts rather than pooled
+estimates, so the deck's usual authoring rule applies without the exception that
+`temporal-validity` and `weaker-is-not-backfire` both needed.
+
+**Neutral ground: yes**, on the usual condition that the trial chosen is not one
+currently being argued about in public.
+
+### Named on a national curriculum, absent from the registry, not yet worked
+
+The audit records that France's intitulés de connaissance mark these **rang A**,
+which is the "every doctor must know it" tier, and the registry has none of them.
+Listed here so the queue is not empty rather than as researched entries; each
+needs the full treatment before it is numbered.
+
+- **Overdiagnosis.** Distinct from `lead-time-bias` and `length-time-bias`, both shipped: those are
+  about when the clock starts and which cases get caught, this is about disease
+  that would never have surfaced. Needs a source printing counts, and screening
+  data is politically live, so neutral ground needs thought rather than assumption.
+- **Prevalence-incidence (Neyman) bias.** Cases that resolve or kill quickly are
+  missing from a prevalent sample, so a survey of survivors misdescribes the
+  disease. Adjacent to `survivorship-bias` and would have to earn its place against it.
+- **Per-protocol versus intention to treat.** `intention-to-treat` ships the principle; the
+  counterpart card would be the per-protocol analysis that looks better precisely
+  because it drops the people for whom the treatment did not work.
+- **Blinding, and specifically performance bias.** Corrected after review, because
+  the first draft of this line got the taxonomy wrong and it matters here. Cochrane
+  separates two channels. **Detection bias** is knowledge of allocation changing how
+  an outcome is ASSESSED, and that is already shipped as `detection-bias`, so it is
+  not available. **Performance bias** is knowledge of allocation changing what
+  participants and personnel actually DO during the trial: co-interventions, extra
+  monitoring, effort, adherence. That second channel is the one still open, and a
+  card would have to live there rather than on the assessment side. Note also that
+  the effect is a matter of degree rather than a clean split: unblinding moves
+  subjective outcomes more than objective ones, which is not the same as leaving
+  hard endpoints untouched. The skeleton resembles entry 27 in that both end with a
+  soft component carrying the result, but the mechanism differs and they should not
+  be merged without deciding which one a player is actually learning.
+- **Attrition.** Differential loss to follow-up. Adjacent to `survivorship-bias` again.
+- **Pygmalion and procedure bias.** Named rang A, no obvious dataset, lowest
+  priority of the group.

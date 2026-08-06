@@ -3932,10 +3932,13 @@ under an Elsevier user license as an open archive:
 
 **Why it is better than what the entry asked for.** The entry wanted a trial whose
 composite won while its hard component stayed flat. Kip does something stronger:
-it takes ONE cohort and re-runs it under THREE definitions of MACE, so the setup
-and the reveal are not two components of one composite, they are the same patients
-and the same events counted two ways. Nothing is recomputed by this deck and
-nothing is compared across studies.
+it takes ONE cohort and evaluates it under THREE definitions of MACE. The setup
+and the reveal are not two components of one composite: they are the same patients
+and the same follow-up, with each definition counting a different set of event
+types. Not "the same events counted two ways", which would be false, since the
+wider definitions count more events, 674 against 362. What is fixed is the record;
+what moves is the definition drawn across it. Nothing is recomputed by this deck
+and nothing is compared across studies.
 
 **The dataset.** The DEScover registry, **6,922 patients** who received at least
 one drug-eluting stent and did not present in cardiogenic shock, across 140 US
@@ -3958,11 +3961,15 @@ hazard ratios with 95 per cent intervals, as printed:
 | Presented with acute MI vs not | **1.75** [1.31, 2.34] | 1.20 [0.95, 1.51] | 1.14 [0.92, 1.40] |
 | Multilesion vs single-lesion PCI | 1.06 [0.77, 1.48] | **1.41** [1.13, 1.75] | not printed |
 
-So acute MI looks clearly worse on the safety definition and that finding
-DISAPPEARS once revascularisation is added, while multilesion PCI looks fine on
-the safety definition and becomes clearly worse once it is added. Same cohort,
-same year, same event log. Only the outcome definition changed, and it decided
-both answers, in opposite directions.
+So acute MI carries a higher adjusted hazard on the safety definition, and that
+association is ATTENUATED and no longer statistically significant once
+revascularisation is added. Multilesion PCI is not significant on the safety
+definition and is significantly associated with a higher hazard once it is added.
+Attenuated is not abolished, and these are observational associations rather than
+causal results, so a card built here must not say the finding vanished or that
+either group became worse. Same cohort, same follow-up. Only the outcome
+definition changed, and it decided which of the two comparisons reached
+significance.
 
 **The skill this actually teaches**, and it is not quite what this entry was
 originally sketched as: a composite outcome is a CHOICE, and the choice can
@@ -3992,9 +3999,10 @@ revascularisation is added they swap. No new shape, no schema change.
 
 Note that the earlier guess in this entry, that the card would be `rates` with a
 stratified reveal, was wrong, and wrong in an instructive way: it assumed the card
-would compare a composite against its own components. The better card compares one
-composite against ANOTHER composite on the same patients, which is a different
-figure entirely.
+would compare a composite against its own components. The better card shows the
+SAME subgroup analyses under alternative composites in the same patients, which is
+a different figure entirely. Note that it does not estimate a hazard ratio of one
+composite against another; nothing in the paper does that.
 
 **Neutral ground: yes**, on the usual condition that the trial chosen is not one
 currently being argued about in public.

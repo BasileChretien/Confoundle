@@ -3920,50 +3920,89 @@ The paper also states the mechanism plainly, and this sentence is the lesson:
 > the effect is often smallest for the most important component of the outcome
 > and biggest for the less important components
 
-**The thing still missing, and it is what stops this being authorable today.**
-That sentence is cited to the review's own references 3, 5 and 8; it is not this
-paper's finding, and this paper prints no component-level counts for any single
-trial. A Confoundle card needs a setup and a reveal that are two views of one
-dataset, so it needs **one named trial that prints its composite result AND the
-counts for each component**, where the composite is a clear win and the hard
-component is flat. The review establishes that such trials are common; it does not
-hand one over.
+**FOUND 2026-08-06, and this entry is now READY TO AUTHOR.** The missing piece
+was one study printing a composite alongside its components on one dataset. It
+turned out to be better than that. Read at source on ScienceDirect, where it sits
+under an Elsevier user license as an open archive:
 
-**And the obvious next step has been checked, so nobody repeats it.** An earlier
-draft of this entry said to start from the BMJ paper's references 3, 5 and 8.
-Those were pulled and they are Freemantle 2003 (JAMA), Ferreira-Gonzalez 2007
-(BMJ) and Lim 2008 (Annals of Internal Medicine). **All three are themselves
-systematic reviews of composite reporting, not trials.** They will tell you how
-often the pattern occurs and they will not give you a card either, so following
-that instruction leads in a circle. The search that is actually needed is for a
-single trial, and the most likely route is the reference lists INSIDE those three
-reviews, or a cardiology trial whose primary composite was significant while its
-mortality component was not, with a table printing both. That has been attempted twice now and has not
-landed, and the reason is worth recording because it changes what the next
-attempt should be.
+> Kip KE, Hollabaugh K, Marroquin OC, Williams DO. *The problem with composite end
+> points in cardiovascular studies: the story of major adverse cardiac events and
+> percutaneous coronary intervention.* J Am Coll Cardiol 2008;51(7):701-707. doi
+> 10.1016/j.jacc.2007.10.034, PMID 18279733.
 
-**Two searches, both recorded so they are not repeated.** First, Europe PMC for
-randomised trials whose abstract contains both a primary composite and the phrase
-"driven by": 10 hits, none a landmark trial. That query is structurally biased
-anyway, since it can only find trials that ADMIT the driver in their own
-abstract, which is the honest minority and the opposite of the population a trap
-card needs. Second, trials whose abstract carries a primary composite alongside
-both revascularisation and all-cause mortality: 4 hits, none usable.
+**Why it is better than what the entry asked for.** The entry wanted a trial whose
+composite won while its hard component stayed flat. Kip does something stronger:
+it takes ONE cohort and evaluates it under THREE definitions of MACE. The setup
+and the reveal are not two components of one composite: they are the same patients
+and the same follow-up, with each definition counting a different set of event
+types. Not "the same events counted two ways", which would be false, since the
+wider definitions count more events, 674 against 362. What is fixed is the record;
+what moves is the definition drawn across it. Nothing is recomputed by this deck
+and nothing is compared across studies.
 
-**The real obstacle is access, not searching.** The trials that would carry this
-card are in the NEJM, the Lancet and JAMA, and the component-level table lives in
-the body of the paper rather than the abstract. Europe PMC indexes the abstracts
-and not those tables, so no abstract query will ever reach the numbers this needs.
-The next attempt should go through institutional journal access, and the most
-efficient entry point is probably Lim 2008 (Annals of Internal Medicine), which
-surveyed cardiovascular trials and explicitly "evaluated the contribution of
-individual end points to the composite estimate of effect", so it should name
-trials with the pattern rather than merely counting them.
+**The dataset.** The DEScover registry, **6,922 patients** who received at least
+one drug-eluting stent and did not present in cardiogenic shock, across 140 US
+hospitals, followed one year.
 
-**Shape.** Probably none needed: a composite total and its components is
-`rates` with a stratified reveal, and the components are counts rather than pooled
-estimates, so the deck's usual authoring rule applies without the exception that
-`temporal-validity` and `weaker-is-not-backfire` both needed.
+**The three definitions and their event counts.**
+
+| Definition | Events in one year |
+|---|---|
+| Death, MI or stent thrombosis (safety only) | **362** |
+| Death, MI, ST or target vessel revascularisation | **674** |
+| Death, MI, ST or any repeat revascularisation | **868** |
+
+**And now the part that makes the card.** Two subgroup comparisons, on those same
+6,922 patients, move in OPPOSITE directions as the definition widens. Adjusted
+hazard ratios with 95 per cent intervals, as printed:
+
+| Comparison | Safety only | Plus TVR | Plus any revascularisation |
+|---|---|---|---|
+| Presented with acute MI vs not | **1.75** [1.31, 2.34] | 1.20 [0.95, 1.51] | 1.14 [0.92, 1.40] |
+| Multilesion vs single-lesion PCI | 1.06 [0.77, 1.48] | **1.41** [1.13, 1.75] | not printed |
+
+So acute MI carries a higher adjusted hazard on the safety definition, and that
+association is ATTENUATED and no longer statistically significant once
+revascularisation is added. Multilesion PCI is not significant on the safety
+definition and is significantly associated with a higher hazard once it is added.
+Attenuated is not abolished, and these are observational associations rather than
+causal results, so a card built here must not say the finding vanished or that
+either group became worse. Same cohort, same follow-up. Only the outcome
+definition changed, and it decided which of the two comparisons reached
+significance.
+
+**The skill this actually teaches**, and it is not quite what this entry was
+originally sketched as: a composite outcome is a CHOICE, and the choice can
+determine the result. That is distinct from `weaker-is-not-backfire`, which is about confusing a
+smaller effect with a reversed one, and distinct from `effect-modification-vs-confounding`. The tag on this entry
+already says `composite-endpoints` and that still fits.
+
+**What must be said on the card, because it is not an RCT.** DEScover is a
+prospective observational registry, not a randomised trial, and these are
+covariate-adjusted hazard ratios rather than randomised comparisons: adjusted for
+age, sex, urgent or emergent presentation, smoking, number of diseased vessels,
+diabetes, congestive heart failure, peripheral vascular disease, renal dysfunction
+or dialysis, and pulmonary disease. The subgroups are also not randomised to each
+other, so none of this licenses a causal claim about acute MI or multilesion PCI.
+The card's claim is narrower and survives all of that: the definition moved the
+answer. Also to be disclosed, since this deck discloses it: the study was
+supported in part by Cordis Corporation, a Johnson and Johnson company, and two
+authors received research support from Cordis while two served as its consultants.
+
+**Shape: `forest`, which already exists and fits this exactly.** It was built for
+`weaker-is-not-backfire` the day before and draws several estimates with their intervals against a
+named null line, deriving which side each falls on and whether an interval clears
+the line. Here `nullValue` is 1 rather than 0, since these are hazard ratios, and the
+whole lesson is visible in one figure: on the safety definition the acute MI
+interval sits clear of 1 and the multilesion interval straddles it, and when
+revascularisation is added they swap. No new shape, no schema change.
+
+Note that the earlier guess in this entry, that the card would be `rates` with a
+stratified reveal, was wrong, and wrong in an instructive way: it assumed the card
+would compare a composite against its own components. The better card shows the
+SAME subgroup analyses under alternative composites in the same patients, which is
+a different figure entirely. Note that it does not estimate a hazard ratio of one
+composite against another; nothing in the paper does that.
 
 **Neutral ground: yes**, on the usual condition that the trial chosen is not one
 currently being argued about in public.

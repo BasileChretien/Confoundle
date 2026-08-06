@@ -28,8 +28,17 @@ export type ForestBar = {
   clearsNull: boolean;
 };
 
-const sideOf = (estimate: number, nullValue: number): ForestBar["side"] =>
-  estimate > nullValue ? "better" : estimate < nullValue ? "worse" : "null";
+const sideOf = (
+  estimate: number,
+  nullValue: number,
+  higherIsWorse: boolean,
+): ForestBar["side"] => {
+  if (estimate === nullValue) return "null";
+  const above = estimate > nullValue;
+  // `higherIsWorse` flips which side of the line counts as harm, so a hazard
+  // ratio above 1 reads as harm while an effect size above 0 reads as benefit.
+  return above === higherIsWorse ? "worse" : "better";
+};
 
 /** Every row as drawn, with its relation to the null line derived. */
 export function forestRows(data: ForestData): ForestBar[] {
@@ -42,7 +51,7 @@ export function forestRows(data: ForestData): ForestBar[] {
     ciHigh: r.ciHigh,
     k: r.k,
     isPooled: r.isPooled === true,
-    side: sideOf(r.estimate, data.nullValue),
+    side: sideOf(r.estimate, data.nullValue, data.higherIsWorse === true),
     clearsNull: r.ciLow > data.nullValue || r.ciHigh < data.nullValue,
   }));
 }

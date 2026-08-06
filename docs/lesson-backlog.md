@@ -3891,8 +3891,10 @@ than on any live public-health argument.
 
 <!-- skill: composite-endpoints -->
 
-**Status: SOURCED AT THE REVIEW LEVEL 2026-08-05, and one thing is still missing
-before it can be authored.** Read at source: Cordoba G, Schwartz L, Woloshin S,
+**Status: SHIPPED 2026-08-06** as `count-it-differently`, skill `composite-endpoints`, on the
+existing `forest` shape. Sourced at the review level on 2026-08-05 and unblocked
+the next day when Kip et al. turned up, which is recorded below because the route
+to it was not the one this entry first predicted. Read at source: Cordoba G, Schwartz L, Woloshin S,
 Bae H, Gotzsche PC. *Definition, reporting, and interpretation of composite
 outcomes in clinical trials: systematic review.* BMJ 2010;341:c3920, `PMC2923692`, open
 access, full text reachable through the Europe PMC REST endpoint.
@@ -3920,7 +3922,7 @@ The paper also states the mechanism plainly, and this sentence is the lesson:
 > the effect is often smallest for the most important component of the outcome
 > and biggest for the less important components
 
-**FOUND 2026-08-06, and this entry is now READY TO AUTHOR.** The missing piece
+**FOUND 2026-08-06, and the card was built from it the same day.** The missing piece
 was one study printing a composite alongside its components on one dataset. It
 turned out to be better than that. Read at source on ScienceDirect, where it sits
 under an Elsevier user license as an open archive:

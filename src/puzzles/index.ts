@@ -60,6 +60,7 @@ import { reportingRate } from "./data/reporting-rate";
 import { marginOfError } from "./data/margin-of-error";
 import { floorAndCeiling } from "./data/floor-and-ceiling";
 import { sourceCountIllusion } from "./data/source-count-illusion";
+import { compositeEndpoints } from "./data/composite-endpoints";
 import { fearAppeals } from "./data/fear-appeals";
 import { shelfLife } from "./data/shelf-life";
 
@@ -132,6 +133,7 @@ const rawPuzzles: unknown[] = [
   sourceCountIllusion,
   shelfLife,
   fearAppeals,
+  compositeEndpoints,
 ];
 
 export const puzzles: PuzzleType[] = rawPuzzles.map((p, i) => {

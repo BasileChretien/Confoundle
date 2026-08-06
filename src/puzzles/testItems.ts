@@ -8712,6 +8712,148 @@ const items: TestItem[] = [
       en: "Ranking and sign are kept apart, which is exactly right. Coming fourth of four is compatible with being good enough, and the note says both things instead of letting the ranking imply a failure.",
     },
   },
+
+  // ---- The outcome was a choice (count-it-differently) ----
+  {
+    id: "ce-mace-across-studies",
+    scenario: {
+      en: "Two stent trials both report a reduction in MACE and a review compares them directly, concluding one device is better. One trial defined MACE as death, heart attack or stent thrombosis; the other added repeat procedures to that list.",
+    },
+    trap: "composite-endpoints",
+    explanation: {
+      en: "The two numbers share a name and not a definition, so the comparison is between different quantities. The second trial's MACE counts a class of event the first one never counted, which usually means more events and a result driven by a component the first trial excluded entirely.",
+    },
+  },
+  {
+    id: "ce-driven-by-softest",
+    scenario: {
+      en: "A drug reduces a composite of cardiovascular death, heart attack and hospitalisation for chest pain. The press release says it cuts cardiovascular death, heart attack and chest pain admissions. The component table shows the effect is entirely in admissions.",
+    },
+    trap: "composite-endpoints",
+    explanation: {
+      en: "The composite improved, so the headline is not false about the bundle; it is false about the parts. The effect on death and heart attack is not there, and listing the components after a verb that only the softest one earned invites exactly the reading the data do not support.",
+    },
+  },
+  {
+    id: "ce-post-hoc-composite",
+    scenario: {
+      en: "A trial's prespecified primary composite is not significant. The published paper reports a different composite, adding one component, which is significant. The methods section describes only the second one.",
+    },
+    trap: "composite-endpoints",
+    explanation: {
+      en: "The second composite is a choice made after seeing the data, which makes it a description of that data rather than a test of a prediction. That the first is missing from the methods is the more serious problem, because a reader cannot see that a definition was changed at all.",
+    },
+  },
+  {
+    id: "ce-power-belief",
+    scenario: {
+      en: "A team designing a trial adds two more components to its primary composite, reasoning that more events will give more statistical power and a better chance of a significant result.",
+    },
+    trap: "composite-endpoints",
+    explanation: {
+      en: "More events do tighten an interval, but power depends on the effect size as well as the count. If the added components are ones the treatment does not affect, they dilute the effect faster than they add events, and the trial becomes less likely to detect the thing it was built to detect.",
+    },
+  },
+  {
+    id: "ce-mace-name-heard-as-death",
+    scenario: {
+      en: "A cardiologist tells a patient that the procedure reduces major adverse cardiac events by a fifth. The composite is death, heart attack, stroke and repeat revascularisation, and the reduction is almost all in repeat revascularisation.",
+    },
+    trap: "composite-endpoints",
+    explanation: {
+      en: "A composite keeps the name of its most serious component, and a patient hearing major adverse cardiac events hears death. The honest sentence names what actually moved: the chance of needing the vessel treated again, which matters, and is not the same conversation.",
+    },
+  },
+  {
+    id: "ce-unequal-importance",
+    scenario: {
+      en: "A trial reports a composite of death, dialysis and a doubling of serum creatinine. A summary describes the treatment as preventing kidney failure and death.",
+    },
+    trap: "composite-endpoints",
+    explanation: {
+      en: "The three components are not of similar importance to a patient, and a doubling of creatinine is a laboratory change rather than an outcome anyone experiences. If it is the commonest of the three it will dominate the composite, and preventing kidney failure and death then describes the label rather than the finding.",
+    },
+  },
+  {
+    id: "ce-same-name-different-content",
+    scenario: {
+      en: "A meta-analysis pools twelve trials that all report MACE as their primary outcome, treating the results as measurements of one thing.",
+    },
+    trap: "composite-endpoints",
+    explanation: {
+      en: "There is no standard definition of MACE, so pooling them assumes an agreement that does not exist. The summary estimate is an average across outcomes that count different events, and it describes a quantity none of the twelve trials measured.",
+    },
+  },
+  {
+    id: "ce-net-effect-misuse",
+    scenario: {
+      en: "A composite combines a safety outcome, bleeding, with an effectiveness outcome, prevented heart attacks, into a single number. The paper reports the treatment improves that combined number and recommends it.",
+    },
+    trap: "composite-endpoints",
+    explanation: {
+      en: "Bundling harm with benefit answers what is the net effect, which is a legitimate question but not the only one. A reader deciding for one patient needs to know how much bleeding and how much prevention separately, because those trade off differently depending on who is in front of them.",
+    },
+  },
+  {
+    id: "ce-component-not-reported",
+    scenario: {
+      en: "A trial reports a significant reduction in its primary composite and does not print the individual components anywhere in the paper or its supplement.",
+    },
+    trap: "composite-endpoints",
+    explanation: {
+      en: "Without the components there is no way to tell whether the result is spread across them or concentrated in the least important one, which are very different findings. The absence is itself informative, since a composite driven by its hardest component is normally something authors are keen to show.",
+    },
+  },
+  {
+    id: "ce-definition-changed-midway",
+    scenario: {
+      en: "A trial's registration lists a composite of death and heart attack. The published paper reports a composite of death, heart attack and unplanned hospitalisation, without noting the change.",
+    },
+    trap: "composite-endpoints",
+    explanation: {
+      en: "The definition of the outcome moved between the plan and the report, and hospitalisation is likely to be the commonest of the three. Whether or not the change was innocent, the published result is no longer a test of the registered prediction, and the reader is given no way to see that.",
+    },
+  },
+  {
+    id: "ok-ce-components-reported",
+    scenario: {
+      en: "A trial reports a significant reduction in its primary composite and prints each component with its own estimate and interval, noting in the discussion that the effect is concentrated in the least serious component.",
+    },
+    trap: null,
+    explanation: {
+      en: "This is a composite handled properly. The bundle is reported, the parts are reported, and the sentence a reader will carry away is the one the data support. Using a composite is not the problem; hiding what drove it is.",
+    },
+  },
+  {
+    id: "ok-ce-separate-composites",
+    scenario: {
+      en: "Rather than one combined outcome, a trial specifies two composites in advance, one for safety and one for effectiveness, each built from components of similar type, and reports both.",
+    },
+    trap: null,
+    explanation: {
+      en: "This is the structural fix. Safety and effectiveness answer different questions, and giving each its own composite of coherent components means neither number has to serve two purposes at once. It also removes the temptation to let a gain on one side cancel a harm on the other.",
+    },
+  },
+  {
+    id: "ok-ce-prespecified-and-kept",
+    scenario: {
+      en: "A trial's primary composite is registered before recruitment, is not significant, and the paper reports it as not significant while presenting the component analyses as exploratory.",
+    },
+    trap: null,
+    explanation: {
+      en: "The definition was fixed in advance and honoured when it produced an unwelcome answer, which is the whole value of specifying it in advance. Labelling the component analyses exploratory is correct: they were not what the trial was designed to test.",
+    },
+  },
+  {
+    id: "ok-ce-checks-the-name",
+    scenario: {
+      en: "Before pooling trials that all report MACE, a reviewer checks each definition, finds three distinct ones, and analyses the three groups separately rather than together.",
+    },
+    trap: null,
+    explanation: {
+      en: "The check that the shared name means a shared quantity is exactly the right one, and finding that it does not is a result rather than an obstacle. Analysing them separately keeps the comparison between like and like.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

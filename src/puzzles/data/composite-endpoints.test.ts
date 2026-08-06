@@ -122,7 +122,7 @@ describe("the commit beat separates on pattern, not on magnitude", () => {
   it("tells the reader what the added component IS and that it is commoner", () => {
     // Without both facts the swap is unguessable rather than hard.
     const f = compositeEndpoints.setup.framing.en;
-    expect(f).toContain("repeat revascularisation");
+    expect(f).toContain("revascularisation of the vessel they treated");
     expect(f).toContain("much more common");
   });
 });
@@ -176,10 +176,31 @@ describe("the honesty items", () => {
     expect(compositeEndpoints.reveal.body?.en ?? "").toContain("not a randomised trial");
   });
 
-  it("explains why the card's claim survives the registry design", () => {
-    // The specific reason: both definitions ran on the same people under the
-    // same adjustment, so residual confounding is identical in both rows.
-    expect(note).toContain("cannot be what makes them differ");
+  it("keeps the claim descriptive rather than causal", () => {
+    // Review caught an earlier draft asserting that residual confounding could
+    // not differ between the rows, since both ran on the same patients under one
+    // adjustment model. That is false: a confounder may associate differently
+    // with death than with re-treatment. The claim is descriptive instead.
+    expect(note).toContain("descriptive rather than causal");
+    expect(note).not.toContain("cannot be what makes them differ");
+    expect(note).toContain("nothing causal is being claimed");
+  });
+
+  it("names the drawn definition as re-treatment of the SAME vessel", () => {
+    // 674 events is death/MI/ST plus target vessel revascularisation. "Any
+    // repeat revascularisation" is the separate 868-event definition, so the
+    // generic phrase made the two indistinguishable in the framing.
+    const framing = compositeEndpoints.setup.framing.en;
+    expect(framing).toContain("the vessel they treated");
+    expect(framing).not.toContain("They add repeat revascularisation");
+    expect(compositeEndpoints.provenance.source).toContain("target vessel revascularisation, 674 events");
+  });
+
+  it("does not assert mechanisms the registry cannot show", () => {
+    const ex = compositeEndpoints.reveal.explanation.en;
+    expect(ex).not.toContain("land on both groups alike");
+    expect(ex).not.toContain("is exactly what produces");
+    expect(ex).toContain("it reports what each definition yields, not why");
   });
 
   it("discloses the industry funding", () => {

@@ -31,11 +31,11 @@ import type { Puzzle } from "../schema";
  * one is about the definition deciding the answer, which is a different lesson.
  *
  * THE COMMIT BEAT IS ANSWERABLE, and the framing carries what it needs: that the
- * added component is repeat revascularisation, that it is far more common than
+ * added component is re-treatment of the vessel, that it is far more common than
  * the safety events (674 and 868 against 362), and what multilesion stenting
  * actually is. A player who sees that a common component dilutes an effect
- * concentrated in rare events, and that repeat revascularisation is precisely
- * what treating several lesions produces, can reach the swap. The four bands are
+ * concentrated in rare events, and that re-treatment is the kind of event several
+ * treated lesions tend to be followed by, can reach the swap. The four bands are
  * four distinct PATTERNS across the two rows rather than four guesses at one
  * number, so no two of them share a reading.
  *
@@ -44,8 +44,11 @@ import type { Puzzle } from "../schema";
  * subgroups are not randomised against one another. Nothing here licenses a
  * causal claim about acute MI or about multilesion stenting, and the card makes
  * no such claim: what it claims is that the definition moved the answer, which
- * survives every one of those limitations because both definitions were applied
- * to the same people.
+ * is descriptive rather than causal: it is about what the analysis reports, not
+ * about what happened to the patients. NOTE that an earlier draft claimed residual
+ * confounding could not differ between the rows because both ran on the same
+ * people under one model. That is false, and review caught it: a confounder may
+ * associate differently with death than with re-treatment.
  */
 export const compositeEndpoints: Puzzle = {
   schemaVersion: 1,
@@ -62,7 +65,7 @@ export const compositeEndpoints: Puzzle = {
       en: "Two findings from one year of stent patients. Nothing about the patients is about to change.",
     },
     framing: {
-      en: "Cardiology reports outcomes as MACE, major adverse cardiac events, a composite that bundles several things into one number. There is no standard definition of it, and that turns out to matter. Researchers took 6,922 patients who received a drug-eluting stent, followed them for a year, and asked two ordinary questions of that one dataset. Did patients who arrived with a heart attack do worse over the year than those who did not? And did patients who had several lesions treated do worse than those who had one? Counting only the hard safety events, death, heart attack and stent thrombosis, there were 362 of them in the year. On that definition, arriving with a heart attack predicts a clearly worse year: a hazard ratio of 1.75, and the interval runs 1.31 to 2.34, well clear of 1. Multiple lesions predicts nothing at all: 1.06, interval 0.77 to 1.48, straddling 1. Now the researchers widen the definition. They add repeat revascularisation, meaning a vessel needed treating again, which is much more common than the safety events: the count goes from 362 to 674. Not one patient changes and nothing new is added to the record. The same year is simply counted with a wider net. What happens to the two findings?",
+      en: "Cardiology reports outcomes as MACE, major adverse cardiac events, a composite that bundles several things into one number. There is no standard definition of it, and that turns out to matter. Researchers took 6,922 patients who received a drug-eluting stent, followed them for a year, and asked two ordinary questions of that one dataset. Did patients who arrived with a heart attack do worse over the year than those who did not? And did patients who had several lesions treated do worse than those who had one? Counting only the hard safety events, death, heart attack and stent thrombosis, there were 362 of them in the year. On that definition, arriving with a heart attack predicts a clearly worse year: a hazard ratio of 1.75, and the interval runs 1.31 to 2.34, well clear of 1. Multiple lesions predicts nothing at all: 1.06, interval 0.77 to 1.48, straddling 1. Now the researchers widen the definition. They add revascularisation of the vessel they treated, meaning that vessel needed opening again, which is much more common than the safety events: the count goes from 362 to 674. Not one patient changes and nothing new is added to the record. The same year is simply counted with a wider net. What happens to the two findings?",
     },
     question: {
       en: "The same 6,922 patients, the same year, one wider definition of MACE. What happens to the two findings?",
@@ -111,7 +114,7 @@ export const compositeEndpoints: Puzzle = {
         },
         {
           id: "mi-wide",
-          label: { en: "Arrived with a heart attack, once repeat treatment counts too" },
+          label: { en: "Arrived with a heart attack, once re-treating that vessel counts too" },
           short: { en: "Heart attack, wider" },
           estimate: 1.2,
           ciLow: 0.95,
@@ -120,7 +123,7 @@ export const compositeEndpoints: Puzzle = {
         },
         {
           id: "multi-wide",
-          label: { en: "Several lesions treated, once repeat treatment counts too" },
+          label: { en: "Several lesions treated, once re-treating that vessel counts too" },
           short: { en: "Several lesions, wider" },
           estimate: 1.41,
           ciLow: 1.13,
@@ -185,7 +188,7 @@ export const compositeEndpoints: Puzzle = {
     mechanismLabel: { en: "And the same two questions, counted the wider way" },
     mechanismName: { en: "The outcome was a choice, and the choice was the answer" },
     explanation: {
-      en: "Both movements have the same cause and it is not subtle once you see it. Repeat revascularisation is common, and it is common for a particular reason: it happens when a treated vessel narrows again. Fold it into the outcome and you have added a lot of events that are mostly about lesions recurring. For the heart attack question, those added events are noise: arriving with a heart attack goes with a higher risk of death and of another infarct, and not especially with a higher risk of needing a vessel re-treated, so the extra events land on both groups alike and drag the ratio from 1.75 down to 1.20, where the interval now crosses 1. For the several-lesions question the same added events are the signal: treating several lesions is exactly what produces repeat revascularisation later, so the ratio climbs from 1.06 to 1.41 and the interval no longer crosses 1. One dataset, one year, one event log, and two findings that swap places according to which events the outcome was defined to include. Neither version is a mistake. Both are correctly computed. That is the uncomfortable part.",
+      en: "Both movements come of the same thing. Re-treating a vessel is common, and it happens when a vessel that was treated narrows again, so folding it into the outcome adds a great many events of one particular kind. What those added events do to each comparison differs. For the heart attack question the association weakens: the ratio falls from 1.75 to 1.20 and the interval now crosses 1, which is what you would expect if arriving with a heart attack is more closely associated with death and further infarction than with needing that vessel opened again. For the several-lesions question it strengthens: the ratio climbs from 1.06 to 1.41 and the interval no longer crosses 1, which is what you would expect if having several lesions treated is more closely associated with later re-treatment than with the hard safety events. Those readings are the natural ones and the registry is consistent with them, but it does not establish them: it reports what each definition yields, not why. One dataset, one year, one event log, and two findings that swap places according to which events the outcome was defined to include. Neither version is a mistake. Both are correctly computed. That is the uncomfortable part.",
     },
     body: {
       en: "The belief the first answer rests on is worth naming, because the paper names it too: that adding components buys statistical power, since more events mean a bigger numerator and a tighter interval. It does buy events. Here the count goes 362, then 674, then 868 as the definition widens. What it does not buy is a bigger effect, and the ratio is what the interval is built around, so an effect diluted faster than the count grows comes out weaker rather than stronger. That is exactly what happened to the heart attack row. It is worth being careful about what this card does and does not show. This is a prospective registry, not a randomised trial, and these are hazard ratios adjusted for age, sex, urgent presentation, smoking, diseased vessels, diabetes, heart failure, peripheral vascular disease, kidney and lung disease. Patients were not randomised to arrive with a heart attack or to have several lesions, so nothing here establishes that either causes anything. The claim that survives all of that is the only one the card makes, and it survives because both definitions were applied to the very same people: the definition moved the answer. The authors' recommendation is blunter than the finding. They argue the term MACE should not be used at all, and that safety and effectiveness should be given separate composites built from components that belong together, since mixing the two asks one number to answer two questions.",
@@ -227,7 +230,7 @@ export const compositeEndpoints: Puzzle = {
     doi: "10.1016/j.jacc.2007.10.034",
     url: "https://doi.org/10.1016/j.jacc.2007.10.034",
     note: {
-      en: "Six things. First, and this governs how the whole card is worded: DEScover is a prospective observational registry and not a randomised trial, and the figures drawn are covariate-adjusted hazard ratios. Patients were not randomised to arrive with a heart attack or to have several lesions treated, so nothing on this card licenses a causal claim about either, and none is made. The claim the card does make, that the definition moved the answer, is immune to that limitation for a specific reason worth stating: both definitions were applied to the same patients with the same adjustment model, so whatever confounding remains is present identically in both rows and cannot be what makes them differ. Second, the funding, which this deck discloses as a matter of course. The study was supported in part by Cordis Corporation, a Johnson and Johnson company; two authors report research support from Cordis and two report serving as its consultants. That is worth knowing and it cuts against the easy reading rather than for it, since the finding is unhelpful to anyone selling stents. Third, on which comparison is drawn. The paper prints a third definition, adding any repeat revascularisation rather than target vessel revascularisation, which takes the heart attack row to 1.14 (0.92 to 1.40) and the event count to 868. It is quoted in the deep dive but not drawn, because the paper prints no corresponding figure for the several-lesions comparison under that third definition and a figure with a hole in it would invite the reader to fill it. Fourth, the event counts beside each row are cohort-wide totals for that definition, not events within the subgroup being compared, and the metric label says so. Fifth, nothing here is recomputed. The hazard ratios, intervals and counts are all as printed; this deck derives which side of the line each interval falls on and whether it clears it, which is what the shape is for. Sixth, on the choice of the acute MI and multilesion comparisons: they are the paper's own two worked examples, chosen by its authors, and this card adds no subgroup analysis of its own.",
+      en: "Six things. First, and this governs how the whole card is worded: DEScover is a prospective observational registry and not a randomised trial, and the figures drawn are covariate-adjusted hazard ratios. Patients were not randomised to arrive with a heart attack or to have several lesions treated, so nothing on this card licenses a causal claim about either, and none is made. The claim the card does make is narrower and is descriptive rather than causal: the association REPORTED depends on which events the outcome counts, and that is a fact about the analysis rather than about the patients, visible directly in the paper's own two columns. An earlier draft went further and said residual confounding could not be what makes the two rows differ, since both ran on the same patients under the same model. That was wrong, and review caught it. The same adjustment does not force an unmeasured confounder to be associated equally with hard safety events and with re-treatment, so confounding can perfectly well differ between the definitions. It just is not needed to explain anything here, because nothing causal is being claimed. Second, the funding, which this deck discloses as a matter of course. The study was supported in part by Cordis Corporation, a Johnson and Johnson company; two authors report research support from Cordis and two report serving as its consultants. That is worth knowing and it cuts against the easy reading rather than for it, since the finding is unhelpful to anyone selling stents. Third, on which comparison is drawn. The paper prints a third definition, adding any repeat revascularisation rather than target vessel revascularisation, which takes the heart attack row to 1.14 (0.92 to 1.40) and the event count to 868. It is quoted in the deep dive but not drawn, because the paper prints no corresponding figure for the several-lesions comparison under that third definition and a figure with a hole in it would invite the reader to fill it. Fourth, the event counts beside each row are cohort-wide totals for that definition, not events within the subgroup being compared, and the metric label says so. Fifth, nothing here is recomputed. The hazard ratios, intervals and counts are all as printed; this deck derives which side of the line each interval falls on and whether it clears it, which is what the shape is for. Sixth, on the choice of the acute MI and multilesion comparisons: they are the paper's own two worked examples, chosen by its authors, and this card adds no subgroup analysis of its own.",
     },
   },
 

@@ -3938,7 +3938,27 @@ often the pattern occurs and they will not give you a card either, so following
 that instruction leads in a circle. The search that is actually needed is for a
 single trial, and the most likely route is the reference lists INSIDE those three
 reviews, or a cardiology trial whose primary composite was significant while its
-mortality component was not, with a table printing both. That has not been done.
+mortality component was not, with a table printing both. That has been attempted twice now and has not
+landed, and the reason is worth recording because it changes what the next
+attempt should be.
+
+**Two searches, both recorded so they are not repeated.** First, Europe PMC for
+randomised trials whose abstract contains both a primary composite and the phrase
+"driven by": 10 hits, none a landmark trial. That query is structurally biased
+anyway, since it can only find trials that ADMIT the driver in their own
+abstract, which is the honest minority and the opposite of the population a trap
+card needs. Second, trials whose abstract carries a primary composite alongside
+both revascularisation and all-cause mortality: 4 hits, none usable.
+
+**The real obstacle is access, not searching.** The trials that would carry this
+card are in the NEJM, the Lancet and JAMA, and the component-level table lives in
+the body of the paper rather than the abstract. Europe PMC indexes the abstracts
+and not those tables, so no abstract query will ever reach the numbers this needs.
+The next attempt should go through institutional journal access, and the most
+efficient entry point is probably Lim 2008 (Annals of Internal Medicine), which
+surveyed cardiovascular trials and explicitly "evaluated the contribution of
+individual end points to the composite estimate of effect", so it should name
+trials with the pattern rather than merely counting them.
 
 **Shape.** Probably none needed: a composite total and its components is
 `rates` with a stratified reveal, and the components are counts rather than pooled

@@ -4290,7 +4290,7 @@ and a card should not print one without resolving it.
 **Neutral ground: yes.** This is a programme evaluation whose authors are the
 people running the programme, and its finding is unflattering to them.
 
-### 66. Performance bias: searched 2026-08-07, and the best candidate is blocked three ways
+### 66. Performance bias: the best candidate has perfect data and a finding nobody should be taught to believe
 
 <!-- skill: performance-bias -->
 
@@ -4335,7 +4335,63 @@ behaviour behind it, and their candidate is that monitored patients came to the
 study site on their own initiative more often, and a visit is where an adverse
 event gets recorded.
 
-Why it cannot be built as it stands:
+**UPDATED 2026-08-07, SAME DAY, ON THE FULL TEXT.** Basile supplied the PDF. The
+three blockers recorded below were written from the abstract, and reading the
+paper changed all three: one was simply wrong, one is resolved, and one turns
+out to be decisive. The original wording is kept underneath so the correction is
+legible.
+
+- **Blocker 1 was WRONG. The paper is Open Access**, CC BY-NC-ND 4.0, published
+  in Trials on 13 May 2026 (2026;27:471). Europe PMC returns `isOpenAccess: N`
+  for PMID 42129909 and carries only the Europace conference abstract, and this
+  entry took that flag for the fact. It is not: the article is free at the
+  publisher. **The lesson for the next search is that a Europe PMC OA flag is
+  evidence about Europe PMC, not about the paper**, and a negative should be
+  checked at the publisher before it is written down as a blocker.
+- **Blocker 3 is RESOLVED, in favour of performance bias.** The full text settles
+  the taxonomy the abstract left ambiguous. Primary endpoints were adjudicated by
+  a **blinded endpoint committee**, so no assessor's knowledge is grading
+  anything differently: this is not the `detection-bias` mechanism. What differs
+  is entirely what participants DID, and the paper defines the bias in those
+  terms, as "a difference in treatment or behaviour of participants of the study
+  groups that was not planned in the protocol". The mechanism is concrete and
+  memorable: in Denmark the GP is a gatekeeper to specialist care, and having
+  the monitor let treatment-group patients bypass that gate and go straight to
+  the investigational site. Note it cuts both ways, which is the elegant part:
+  Danish CONTROLS contacted the site LESS than controls elsewhere (2.3 per cent
+  against 11.8), and Danish TREATMENT patients contacted it more than treatment
+  patients elsewhere (24.4 against 10.4).
+- **Blocker 2 SURVIVES AND IS DECISIVE.** It is also worse than the abstract
+  suggested. The authors' own Limitations say it plainly: "All analyses were
+  defined post-hoc... Our selection of subgroups was arbitrary and we may have
+  omitted tests for differences according to other relevant patient
+  characteristics", and "a statistically significant difference taken in
+  isolation is not proof of a true difference." The whole-cohort comparison is
+  null: 53/398 against 38/392, 13.3 per cent against 9.7, P = 0.12. Everything
+  striking is one country out of 24 post-hoc subgroups.
+
+**So this is not shippable, and the reason is worth stating exactly, because the
+data is otherwise perfect.** Every count is printed and every one reconciles:
+20 + 33 = 53 and 2 + 36 = 38 across Denmark and the rest, 82 + 316 = 398 and
+86 + 306 = 392 across the arms, 398 + 392 = 790 randomised, and all six printed
+percentages reproduce from their counts to the decimal. It is `rates`,
+aggregate against stratified, with no new shape needed. What it is not is a
+finding a player should be taught to believe. A card drawing 24.4 against 2.3
+as its reveal would be drawing exactly the object the deck's own
+`multiple-comparisons` card teaches players to distrust, and the authors
+decline to call it proof. Four indicators do triangulate in Denmark and go null
+outside it, which is genuinely reassuring, but all four are post-hoc on the same
+arbitrary split, so they are not four independent confirmations.
+
+**What it IS good for, and this is worth keeping.** It is an excellent worked
+example for a lesson body or for Trap Hunt review items under an eventual
+performance-bias card: an unblinded trial stopped early on an adverse-event
+signal that the final data did not support (non-CV AEs ended balanced at HR
+1.08, 95 per cent CI 0.91 to 1.29), while the primary endpoint showed no benefit
+either (HR 0.84, 0.65 to 1.10). Disclose if used: the trial was funded by
+Biotronik, the device manufacturer, and one author is a Biotronik employee.
+
+The three blockers as originally recorded from the abstract, kept for the record:
 
 1. **The full paper is not open access.** What is reachable through Europe PMC
    is the Europace conference abstract (`PMC13301046`, `article-type="abstract"`,
@@ -4370,7 +4426,9 @@ patients, which is the deck's usual shape and is probably `rates`. Searching on
 tables; searching on the process itself (rescue medication, physiotherapy
 sessions, clinic visits, adherence) by arm is likelier to find the trial.
 
-**Not attempted here: institutional access.** The Trials paper could be read
-through Basile's own access, and that would settle obstacle 1 but not 2 or 3.
-It is worth doing only if somebody first decides the taxonomy question, because
-obstacle 3 is a design decision rather than a sourcing one.
+**Superseded, kept for the record: "Not attempted here: institutional access.
+The Trials paper could be read through Basile's own access, and that would
+settle obstacle 1 but not 2 or 3."** It was read the same day, and the guess
+was half right. Reading it settled obstacle 1 by showing there had never been
+one, and settled obstacle 3 as well, which this note did not expect. Obstacle 2
+is the one that survived, and it is the one that stops the card.

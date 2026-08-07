@@ -2322,6 +2322,24 @@ live, and the first has since been taken.
    replication and an expired finding. A card here would have to be about the
    first of those, and would need to say plainly why it is not the second.
 
+   **RE-VERIFIED 2026-08-07 against the cards rather than the labels, and it
+   holds: this is the one genuinely open lead left in this file.** The collision
+   warning above is real but avoidable. `temporal-validity` ships as
+   `shelf-life`, on Moss et al. 2023: Helicobacter pylori eradication rates
+   falling across publication periods because the drugs actually stopped working
+   as resistance spread. That is a finding that EXPIRED, and the world changed
+   underneath it. A replication failure is the other thing, where the world did
+   not change and the original number was never what it appeared to be, and no
+   skill in the registry teaches it. So the two can coexist, and the card's job
+   is to say which of the two it is and why.
+   **What it does not have is a source.** This entry names a lesson, not a
+   paper, and route 1 was shipped on Tannenbaum without settling route 2. So the
+   next step here is sourcing from scratch: a famous single finding, a later
+   meta-analysis or multi-lab replication that did not reproduce it, both
+   printing enough for one figure, and neutral ground. The obvious candidates
+   from the replication crisis are mostly in social psychology, where the deck
+   already has to be careful, so weigh neutrality early rather than at the end.
+
 ### Astroturfing: CLOSED 2026-08-05. The shape note was right and is no longer what binds
 
 Apollonio and Bero (2007), *American Journal of Public Health* 97(3):419-428, on
@@ -4461,6 +4479,35 @@ may well exist; four keyword routes did not reach it, and the next attempt
 should probably go through a source that names individual trials, such as the
 trials behind the blinding rows of a meta-epidemiological study, rather than
 through search terms.
+
+**THAT FIFTH ROUTE WAS TRIED THE SAME DAY AND IS A DEAD END, on both of the
+uses it was suggested for.** The recommendation immediately above was written
+before checking it, so it is corrected here rather than left to send somebody
+down it.
+
+The largest current example is the ROBES study (Savovic J, Turner RM, Mawdsley
+D, et al., *Association Between Risk-of-Bias Assessments and Results of
+Randomized Trials in Cochrane Reviews*, American Journal of Epidemiology
+2018;187:1113-1122, `PMC5928453`, open access, abstract read at source). It
+covers 2,443 randomised trials in 228 meta-analyses and reports blinding as a
+SINGLE Cochrane risk-of-bias domain: ratio of odds ratios 0.87, 95 per cent
+credible interval 0.80 to 0.93. It does not split blinding of participants from
+blinding of outcome assessors, so it cannot isolate the behaviour channel, which
+is the one thing this lead needs. That is the same bundling objection the rang A
+note above already raises against meta-epidemiological sources generally, and
+checking confirmed it rather than escaping it.
+
+It is no better as an index. A study analysing 2,443 trials inside pooled
+meta-analyses offers no route to the handful of individual trials that printed a
+care-process count by arm, which is the actual object of the search.
+
+**So the honest position on this lead is that five routes are now closed and the
+sixth is not obvious.** What would still work is a source that discusses
+individual trials by name and quotes their text, and the likeliest such source is
+the risk-of-bias table of a Cochrane review, where a "high risk of performance
+bias" judgement is justified with a quotation from the trial. That is a
+supplementary-table read rather than a search, it is slow, and nobody should
+start it without budgeting for it.
 
 Big CACTUS is not wasted either. It is a ready-made SOUND DECOY for Trap Hunt
 under an eventual performance-bias card, and a good one: a trial that suspected

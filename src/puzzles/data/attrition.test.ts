@@ -197,9 +197,46 @@ describe("what the card must not overclaim", () => {
     const note = attrition.provenance.note?.en ?? "";
     expect(note).toMatch(/32 facilities/);
     expect(note).toMatch(/64 facilities/);
-    // The card itself must not assert either count.
+
+    /**
+     * The card itself must not assert either count, since the paper contradicts
+     * itself and nothing drawn depends on it.
+     *
+     * The first version of this guard was `/\b(32|64) facilities\b/`, which is
+     * a reintroduction guard for one exact phrase rather than a check that no
+     * facility count is printed: it misses "64 clinics", "64 health facilities"
+     * and "sixty-four facilities". Widened to a count near any of the words a
+     * rewrite would reach for, and self-tested below, because a guard whose
+     * blind spots are wider than its coverage is worth less than it looks.
+     */
+    const COUNTED_SITES =
+      /\b(\d[\d,]*|thirty[- ]two|sixty[- ]four)\s+(\w+\s+){0,2}(facilit|clinic|site|centre|center|hospital)/i;
+
+    for (const shouldCatch of [
+      "a network of 64 facilities across four provinces",
+      "we selected a total of 32 facilities",
+      "a network of 64 clinics",
+      "64 health facilities in Zambia",
+      "sixty-four facilities",
+    ])
+      expect({ shouldCatch, caught: COUNTED_SITES.test(shouldCatch) }).toEqual({
+        shouldCatch,
+        caught: true,
+      });
+
+    // And it must not fire on the wording the card actually uses.
+    for (const shouldPass of [
+      "165,464 adults on antiretroviral therapy, followed through the clinics that treat them",
+      "in four provinces of Zambia",
+      "28,111 patients, 17 percent of the whole cohort",
+    ])
+      expect({ shouldPass, caught: COUNTED_SITES.test(shouldPass) }).toEqual({
+        shouldPass,
+        caught: false,
+      });
+
     const surfaces = [attrition.setup.framing.en, attrition.reveal.explanation.en, body()].join(" ");
-    expect(surfaces).not.toMatch(/\b(32|64) facilities\b/);
+    expect(surfaces).not.toMatch(COUNTED_SITES);
   });
 });
 

@@ -4158,12 +4158,27 @@ depends on that sentence, and the provenance note says all of this.
 
 <!-- skill: attrition-bias -->
 
-**Status: SOURCED 2026-08-07, READY TO AUTHOR, blocked on nothing but a shape.**
-Every number below was read at source and reconciled; what is not yet settled is
-which figure draws it, and that decision is deliberately left to a fresh session
-rather than taken at the end of a long one. Promoted out of the unnumbered rang A
-list above, where it read only "Attrition. Differential loss to follow-up.
+**Status: SHIPPED 2026-08-07** as `filed-as-lost`, skill `attrition-bias`, on a
+NEW shape, `unseen`. Sourced and reconciled first and built immediately after, in
+two PRs: the research landed on its own because the shape question was still
+open, and the shape below is what closed it. Promoted out of the unnumbered rang
+A list above, where it read only "Attrition. Differential loss to follow-up.
 Adjacent to `survivorship-bias` again."
+
+**The shape that was missing, and what settled it.** `unseen` draws a reported
+number, the slice of the population whose outcome nobody observed, and the
+number after somebody went and looked. Half of it is COUNTED and half is
+ESTIMATED, which is the reason none of the existing shapes fit: the cohort, the
+lost, the traced and the resolved are printed counts whose shares this deck
+derives, while the two mortality figures and the 17 per cent are
+probability-weighted and are transcribed as published. `frequencies` was the
+painful near miss, since its natural-frequency tree is exactly this structure,
+and it fails because using it would mean turning a weighted estimate back into a
+numerator nobody printed. `yield` refuses it correctly, because it requires one
+row whose intervals overlap and here the two estimates must separate: its lesson
+is "found more, changed nothing" and this one is "the number was wrong". The
+shape should also serve prevalence-incidence (Neyman) bias, which is the same
+complaint about a different missing group.
 
 Read at source: Holmes CB, Sikazwe I, Sikombe K, Eshun-Wilson I, Czaicki N,
 Beres LK, Mwamba C, Bolton-Moore C, Padian N, Geng E. *Estimated mortality on HIV
@@ -4209,7 +4224,7 @@ mortality moved from a naive **1.9% (1.7 to 2.0)** to a sample-revised **7.0%
 10.7) for new starters. That is a correction of roughly 3.7-fold and 4.0-fold.
 Provincial estimates rose 3-fold to 8-fold; one site moved 23-fold.
 
-**THE SHAPE PROBLEM, and it is the only open question.** These are
+**THE SHAPE PROBLEM AS IT WAS RECORDED, now closed by `unseen` above.** These are
 probability-weighted survival estimates, not proportions of the 2,163. The paper
 prints no death count for the traced group, so the 17% cannot be turned back into
 a numerator, and any card that presented it as one would be inventing data.
@@ -4225,7 +4240,7 @@ a published interval, alongside the share of the population whose outcome was
 never observed. It would also serve prevalence-incidence (Neyman) bias, which is
 the same complaint about a different missing group.
 
-**Sketch of the beats, for whoever builds it.** Setup draws the programme's own
+**The beats, sketched here before the build and followed by it.** Setup draws the programme's own
 books: 165,464 patients, 17% filed as lost, about 1% recorded dead. The obvious
 reading is a programme with low mortality whose dropouts moved away or lost
 interest. Commit asks what tracing a random sample of the lost did to the

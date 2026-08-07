@@ -1338,6 +1338,43 @@ function CeilingGlyph() {
   );
 }
 
+function UnseenGlyph() {
+  const W = 200;
+  const H = 96;
+  /**
+   * A cohort bar whose right-hand slice is the part nobody observed, and below
+   * it the same quantity measured twice: the short teal estimate the records
+   * produced, and the long rust one that arrived after somebody went and found
+   * the missing. The gold slice and the gold arrow are the same fact, which is
+   * the whole card: the correction came out of the gap.
+   */
+  return (
+    <svg
+      viewBox={`0 0 ${W} ${H}`}
+      width="100%"
+      role="img"
+      aria-label="A population bar with a marked slice whose outcome was never recorded, above two estimates of the same quantity, the second far larger than the first"
+    >
+      <rect x={10} y={12} width={140} height={16} rx={3} fill={CARD.teal} opacity={0.3} />
+      <rect x={150} y={12} width={40} height={16} rx={3} fill={CARD.gold} opacity={0.55} />
+      <text x={150} y={40} fontSize={8} fill={CARD.muted}>
+        never seen
+      </text>
+
+      <line x1={170} y1={44} x2={170} y2={58} stroke={CARD.gold} strokeWidth={1} strokeDasharray="2 2" />
+      <path d="M170 60 l-3 -5 h6 z" fill={CARD.gold} />
+
+      {/* reported */}
+      <line x1={14} y1={72} x2={44} y2={72} stroke={CARD.teal} strokeWidth={2} opacity={0.55} />
+      <circle cx={29} cy={72} r={3.5} fill={CARD.teal} />
+      {/* corrected */}
+      <line x1={104} y1={86} x2={168} y2={86} stroke={CARD.rust} strokeWidth={2} opacity={0.55} />
+      <circle cx={136} cy={86} r={3.5} fill={CARD.rust} />
+      <line x1={10} y1={62} x2={W - 10} y2={62} stroke={CARD.rule} strokeWidth={1} />
+    </svg>
+  );
+}
+
 function YieldGlyph() {
   const W = 200;
   const H = 96;
@@ -1812,6 +1849,7 @@ export function ShareCard({
   const ceilingGlyph = data.type === "ceiling";
   const forestGlyph = data.type === "forest";
   const yieldGlyph = data.type === "yield";
+  const unseenGlyph = data.type === "unseen";
   const splitSampleGlyph =
     data.type === "rates" &&
     Boolean(data.strataAreSeparateSamples) &&
@@ -1939,6 +1977,8 @@ export function ShareCard({
             <ForestGlyph />
           ) : yieldGlyph ? (
             <YieldGlyph />
+          ) : unseenGlyph ? (
+            <UnseenGlyph />
           ) : null}
 
           <p className="mt-4 font-display text-[17px] font-medium leading-snug">

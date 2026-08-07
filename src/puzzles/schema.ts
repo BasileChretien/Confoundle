@@ -2253,6 +2253,171 @@ const YieldData = z
   });
 export type YieldData = z.infer<typeof YieldData>;
 
+/* ---------------------------------------------------------------------------
+ * A number that was reported, the part of the population whose outcome nobody
+ * observed, and the number after somebody went and looked.
+ *
+ * Needed because the lessons about MISSING OUTCOMES cannot be drawn with counts,
+ * and every count-based shape therefore fails on the same point. When a study
+ * chases a random sample of the people who vanished, what it publishes is a
+ * probability-WEIGHTED estimate with an interval, because the sample was drawn
+ * with unequal probabilities and the weights are the design rather than a
+ * nuisance. There is no numerator to recover.
+ *
+ *   `rates` and `frequencies` both build their rates from a numerator over a
+ *   denominator. `frequencies` is the painful near miss: its natural-frequency
+ *   tree is exactly this structure (a total, the part that went missing, the
+ *   outcome within each part), and it cannot be used, because turning a
+ *   weighted estimate back into a count would be inventing the count.
+ *
+ *   `yield` draws several outcomes in two populations and refuses this on
+ *   purpose: it requires at least one row whose pair of intervals overlaps,
+ *   since its lesson is "the programme found more and changed nothing". Here
+ *   the two estimates must separate, because the lesson is "the number was
+ *   wrong". Same picture, opposite verdict, and a shape that accepted both
+ *   would assert neither.
+ *
+ *   `effect` draws one estimate against a reference it is a slice of, and
+ *   `interval` derives poll margins from a sample size.
+ *
+ * What this shape holds that none of them can is the pairing of a COUNTED
+ * composition with an ESTIMATED correction. The counts are real and are
+ * derived here as shares: how much of the cohort went unobserved, how much of
+ * that was chased, how much of the chase resolved. The estimates are authored
+ * exactly as published and never recomputed. Keeping both on one figure is the
+ * point: the size of the missing group is what makes the correction credible,
+ * and a reader who sees only the corrected number has to take it on trust.
+ *
+ * The reveal works by drawing MORE of the same figure rather than a new one.
+ * `asrecorded` draws the composition and the reported estimate, which is the
+ * world as the routine records describe it. `afterlooking` keeps both, exactly
+ * where they were, and adds what tracing found among the missing plus the
+ * corrected estimate. `axisMax` is shared, so the reported estimate does not
+ * move when the corrected one lands beside it, which is the one thing this
+ * shape must never do: the whole verdict is how far apart they are.
+ *
+ * NOTE that `foundAmongUnobserved` is on a DIFFERENT SCALE from the two
+ * estimates. It is a share of the missing group, not of the cohort, so it must
+ * never be drawn on the same axis. The renderer keeps it beside the composition
+ * bar, where its denominator is visible.
+ * ------------------------------------------------------------------------- */
+export const UnseenEstimate = z.object({
+  label: LocalizedText,
+  short: LocalizedText.optional(),
+  /** As published, in the units `perLabel` names. Never recomputed. */
+  value: z.number(),
+  ciLow: z.number(),
+  ciHigh: z.number(),
+});
+export type UnseenEstimate = z.infer<typeof UnseenEstimate>;
+
+const UnseenData = z
+  .object({
+    type: z.literal("unseen"),
+    label: LocalizedText,
+    metricLabel: LocalizedText,
+    /** Names the units the two estimates are in. */
+    perLabel: LocalizedText,
+    /** Says on the figure that these are published estimates, not counts. */
+    rateNote: LocalizedText,
+    /** Shared by both beats so the reported estimate never moves. */
+    axisMax: z.number().positive(),
+
+    /* The counted part. These are real counts and their shares are derived. */
+    cohort: z.number().int().positive(),
+    cohortLabel: LocalizedText,
+    /** People whose outcome the routine record never captured. */
+    unobserved: z.number().int().nonnegative(),
+    unobservedLabel: LocalizedText,
+    /** How many of those were chased. */
+    traced: z.number().int().nonnegative(),
+    tracedLabel: LocalizedText,
+    /** And how many of the chase resolved. The rest stay unknown. */
+    resolved: z.number().int().nonnegative(),
+    resolvedLabel: LocalizedText,
+
+    /* The estimated part, authored as published. */
+    reported: UnseenEstimate,
+    corrected: UnseenEstimate,
+    /**
+     * The share of the MISSING group found to have the outcome. On its own
+     * scale, a share of `unobserved` rather than of `cohort`, so the renderer
+     * must keep it off the estimates axis.
+     */
+    foundAmongUnobserved: UnseenEstimate,
+  })
+  .superRefine((d, ctx) => {
+    // The counted funnel has to nest, or the shares derived from it are lies.
+    if (d.unobserved > d.cohort)
+      ctx.addIssue({
+        code: "custom",
+        path: ["unobserved"],
+        message: `${d.unobserved} unobserved out of a cohort of ${d.cohort}`,
+      });
+    if (d.traced > d.unobserved)
+      ctx.addIssue({
+        code: "custom",
+        path: ["traced"],
+        message: `${d.traced} traced out of ${d.unobserved} who went unobserved`,
+      });
+    if (d.resolved > d.traced)
+      ctx.addIssue({
+        code: "custom",
+        path: ["resolved"],
+        message: `${d.resolved} resolved out of ${d.traced} traced`,
+      });
+
+    const named = [
+      ["reported", d.reported],
+      ["corrected", d.corrected],
+      ["foundAmongUnobserved", d.foundAmongUnobserved],
+    ] as const;
+    for (const [key, e] of named) {
+      if (e.ciLow > e.value || e.ciHigh < e.value)
+        ctx.addIssue({
+          code: "custom",
+          path: [key, "value"],
+          message: `estimate (${e.value}) must lie inside its interval (${e.ciLow} to ${e.ciHigh})`,
+        });
+    }
+    // Only the two on the shared axis are bounded by it. The third is a share
+    // of a different denominator and has no business on that scale.
+    for (const [key, e] of [
+      ["reported", d.reported],
+      ["corrected", d.corrected],
+    ] as const)
+      if (e.ciHigh > d.axisMax)
+        ctx.addIssue({
+          code: "custom",
+          path: [key, "ciHigh"],
+          message: `interval reaches ${e.ciHigh}, past the axis maximum of ${d.axisMax}, so it would be drawn cut off`,
+        });
+
+    // The lesson requires the correction to have MOVED the answer, and to have
+    // moved it further than the intervals can explain away. Two estimates whose
+    // intervals overlap describe a study that looked for missing outcomes and
+    // found the reported number was fine, which is a worthwhile result and is
+    // not this shape's lesson: there would be nothing for the reveal to reveal.
+    const disjoint = d.reported.ciHigh < d.corrected.ciLow || d.corrected.ciHigh < d.reported.ciLow;
+    if (!disjoint)
+      ctx.addIssue({
+        code: "custom",
+        path: ["corrected"],
+        message: `the reported interval (${d.reported.ciLow} to ${d.reported.ciHigh}) and the corrected one (${d.corrected.ciLow} to ${d.corrected.ciHigh}) overlap, so the figure shows a correction that changed nothing and there is nothing to reveal`,
+      });
+
+    // And the missing group has to be big enough to be the explanation. If
+    // almost nobody went unobserved, a large correction did not come from them,
+    // and the card would be pointing at the wrong cause.
+    if (d.cohort > 0 && d.unobserved / d.cohort < 0.02)
+      ctx.addIssue({
+        code: "custom",
+        path: ["unobserved"],
+        message: `only ${((d.unobserved / d.cohort) * 100).toFixed(1)} per cent of the cohort went unobserved, too few to account for a correction of this size`,
+      });
+  });
+export type UnseenData = z.infer<typeof UnseenData>;
+
 export const PuzzleData = z.discriminatedUnion("type", [
   RatesData,
   FrequenciesData,
@@ -2281,6 +2446,7 @@ export const PuzzleData = z.discriminatedUnion("type", [
   CeilingData,
   ForestData,
   YieldData,
+  UnseenData,
 ]);
 export type PuzzleData = z.infer<typeof PuzzleData>;
 
@@ -2357,6 +2523,8 @@ export const DataView = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("themissingrow"), ...viewFields }),
   z.object({ kind: z.literal("whatitfound"), ...viewFields }),
   z.object({ kind: z.literal("whatitchanged"), ...viewFields }),
+  z.object({ kind: z.literal("asrecorded"), ...viewFields }),
+  z.object({ kind: z.literal("afterlooking"), ...viewFields }),
 ]);
 export type DataView = z.infer<typeof DataView>;
 export type DataViewKind = DataView["kind"];

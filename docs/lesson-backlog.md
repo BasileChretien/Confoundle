@@ -4016,9 +4016,22 @@ which is the "every doctor must know it" tier, and the registry has none of them
 Listed here so the queue is not empty rather than as researched entries; each
 needs the full treatment before it is numbered.
 
-- **Prevalence-incidence (Neyman) bias.** Cases that resolve or kill quickly are
-  missing from a prevalent sample, so a survey of survivors misdescribes the
-  disease. Adjacent to `survivorship-bias` and would have to earn its place against it.
+- **Prevalence-incidence (Neyman) bias. NOT A LEAD, and this line was wrong to
+  list it as one.** Corrected 2026-08-07. The decision was already taken on
+  2026-07-30 and is recorded twice: in the section above, which says Neyman "was
+  judged covered by length-time and survivorship and shipped as review items
+  instead", and in a comment above the items themselves in `testItems.ts`, which
+  gives the reasoning. Its reveal is duration-biased sampling, which is what
+  `length-time-bias` already reveals, and its "you never see the ones who died"
+  framing is what `survivorship-bias` already reveals; the three review items
+  are therefore tagged to those two skills rather than to a Neyman skill, and
+  no `neyman` or `prevalence-incidence` entry exists in the registry by design.
+  Whoever wrote this rang A list wrote it from the syllabus rather than from the
+  deck, and so re-opened a question that had been closed. If you want to revisit
+  the decision, revisit it explicitly: the case for reopening would have to be
+  that a card can show the prevalent sample and the incident cohort as two views
+  of ONE dataset, which is what neither shipped skill does, and that is a claim
+  about a source nobody has found yet.
 - **Per-protocol versus intention to treat. WITHDRAWN 2026-08-07: already
   shipped, and its dataset already spent.** This line survived because nobody
   re-read the card it was proposing a counterpart to. `intention-to-treat` does
@@ -4177,8 +4190,16 @@ and it fails because using it would mean turning a weighted estimate back into a
 numerator nobody printed. `yield` refuses it correctly, because it requires one
 row whose intervals overlap and here the two estimates must separate: its lesson
 is "found more, changed nothing" and this one is "the number was wrong". The
-shape should also serve prevalence-incidence (Neyman) bias, which is the same
-complaint about a different missing group.
+An earlier draft of this entry added that the shape "should also serve
+prevalence-incidence (Neyman) bias, which is the same complaint about a
+different missing group". That was written without checking and is struck here
+for two reasons. Neyman is not open: it was closed on 2026-07-30 as review items
+under `length-time-bias` and `survivorship-bias`, for reasons recorded in
+`testItems.ts`. And the shape would not fit it as built anyway, because `traced`
+and `resolved` are required fields and nobody traces the people who died before
+a prevalence survey began; a Neyman card would have to invent them or the fields
+would have to become optional. Neither has been done, and neither should be done
+on the strength of a guess about a source nobody has found.
 
 Read at source: Holmes CB, Sikazwe I, Sikombe K, Eshun-Wilson I, Czaicki N,
 Beres LK, Mwamba C, Bolton-Moore C, Padian N, Geng E. *Estimated mortality on HIV
@@ -4237,8 +4258,10 @@ pair of intervals overlaps, and here every pair separates, because `yield`'s
 lesson is "found more, changed nothing" and this one is "the number was wrong".
 So a new shape is needed: a reported quantity and its corrected value, each with
 a published interval, alongside the share of the population whose outcome was
-never observed. It would also serve prevalence-incidence (Neyman) bias, which is
-the same complaint about a different missing group.
+never observed. (This paragraph originally went on to say the shape "would also
+serve prevalence-incidence (Neyman) bias". Corrected 2026-08-07: see the
+struck-through note further down. Neyman is not open, and the shape would not
+fit it as built.)
 
 **The beats, sketched here before the build and followed by it.** Setup draws the programme's own
 books: 165,464 patients, 17% filed as lost, about 1% recorded dead. The obvious

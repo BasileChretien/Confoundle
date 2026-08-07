@@ -4525,6 +4525,59 @@ was half right. Reading it settled obstacle 1 by showing there had never been
 one, and settled obstacle 3 as well, which this note did not expect. Obstacle 2
 is the one that survived, and it is the one that stops the card.
 
+**THREE MORE ANGLES TRIED 2026-08-07, AFTER PYGMALION SHIPPED, ALL DRY. The
+first of them is the one this entry itself recommended and had not run.**
+
+Recorded because the entry above ends by recommending a process-based search
+("rescue medication, physiotherapy sessions, clinic visits, adherence, by arm")
+and then lists four angles tried, none of which is that one. So the entry's own
+recommendation sat unexecuted while reading as though it had been followed. It
+has now been run and it is dry.
+
+- **Route 7, the process-based search the entry recommended.** Europe PMC on
+  open-label plus rescue medication by arm; on the phrases a paper would use if
+  its co-interventions had diverged; and on attended-session counts against
+  usual care in unblinded designs. What comes back is protocols, statistical
+  analysis plans and systematic reviews, which is the same failure mode the four
+  earlier angles hit. The one on-target methods paper, *Impact of Allocation
+  Concealment and Blinding in Trials Addressing Treatments for COVID-19*
+  (`PMC10558187`), is doubly unusable: it is meta-epidemiological, so it bundles
+  the two blinding channels exactly as ROBES does, and its subject is
+  politically live in the sense CONTRIBUTING.md now defines, so the deck would
+  be taking a side by using it.
+
+- **Route 8, the pattern that unlocked Pygmalion, applied to the participant
+  side.** Entry 68's lesson is that a mechanism nobody can find among TRIALS may
+  be sitting in the laboratory literature as a designed manipulation, because a
+  study whose purpose is to INSTALL the bias escapes the objection that killed
+  routes 1 to 6. The participant-side version of performance bias would
+  randomise what a participant BELIEVES about their allocation while holding the
+  actual treatment constant, and then measure what they DO rather than what they
+  report. Searched on that shape and it did not surface: the belief-manipulation
+  hits are about perceived assignment changing perceived outcome, which is the
+  channel `nocebo-effect` already occupies, not effort or adherence.
+
+  This route is not closed the way the others are. It failed on keywords, and
+  the sport and exercise placebo literature is the obvious place it would live,
+  which was not reached from Europe PMC's biomedical index. Somebody with a
+  reason to look there should.
+
+- **Route 9 was considered and rejected without being run**, which is worth
+  saying so nobody runs it. The personnel-side version would randomise what a
+  CLINICIAN believes about allocation and measure the care they then deliver.
+  That is a design nobody will have run on real patients, for the obvious reason
+  that deceiving clinicians about allocation and then measuring whether patients
+  get worse care is not something an ethics committee approves.
+
+**One thing HAS changed in this lead's favour, and it is not a source.** The
+entry above guesses that a usable source would be drawn with `rates`. It would
+now be drawn with `delivered`, the shape built for entry 68, whose whole purpose
+is a comparison shown beside what each arm was actually given, with the process
+column withheld at the setup and supplied at the reveal. That is precisely the
+figure this lesson wants: the outcome by arm, then the co-intervention count by
+arm. So the build cost has dropped from "new shape plus card" to "card", and the
+next person to find the trial has less to do than this entry assumes.
+
 ### 67. Route 2, the meta-analytic reversal: REFUSED 2026-08-07 on the source the check was designed to catch
 
 <!-- skill: replication-failure -->

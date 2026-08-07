@@ -2322,7 +2322,7 @@ live, and the first has since been taken.
    replication and an expired finding. A card here would have to be about the
    first of those, and would need to say plainly why it is not the second.
 
-   **RE-VERIFIED 2026-08-07 against the cards rather than the labels, and it
+   **RE-VERIFIED 2026-08-07, and one candidate source has since been REFUSED: see numbered entry 67. Checked against the cards rather than the labels, and it
    holds: this is the one genuinely open lead left in this file.** The collision
    warning above is real but avoidable. `temporal-validity` ships as
    `shelf-life`, on Moss et al. 2023: Helicobacter pylori eradication rates
@@ -4520,3 +4520,80 @@ settle obstacle 1 but not 2 or 3."** It was read the same day, and the guess
 was half right. Reading it settled obstacle 1 by showing there had never been
 one, and settled obstacle 3 as well, which this note did not expect. Obstacle 2
 is the one that survived, and it is the one that stops the card.
+
+### 67. Route 2, the meta-analytic reversal: REFUSED 2026-08-07 on the source the check was designed to catch
+
+<!-- skill: replication-failure -->
+
+**Status: REFUSED on this source, and route 2 stays open.** The lesson is still
+live; what follows is one candidate eliminated, with its data preserved because
+the data is perfect and somebody should not have to source it twice.
+
+Read at source, full text supplied by Basile as PDF after Europe PMC returned
+nothing and NCBI reported that the publisher does not allow full-text download:
+Griesdale DEG, de Souza RJ, van Dam RM, Heyland DK, Cook DJ, Malhotra A, et al.
+*Intensive insulin therapy and mortality among critically ill patients: a
+meta-analysis including NICE-SUGAR study data.* CMAJ 2009;180(8):821-827, doi
+`10.1503/cmaj.090206`, PMID 19318387.
+
+**Why it looked ideal.** Route 2 needs a famous result that did not survive, and
+a card comparing two separate papers breaks the deck's tenet that the setup and
+reveal are two views of ONE dataset. A meta-analysis that plots both trials is
+one dataset, and `forest` already exists, so no new shape would be needed. This
+is the paper that folded NICE-SUGAR into the evidence: 26 trials, 13,567
+patients, with Van den Berghe's celebrated 2001 single-centre result sitting in
+the plot as one row.
+
+**Why it is refused: the paper's own analysis says the difference is EFFECT
+MODIFICATION BY SETTING, not a failed replication.** This was flagged as the
+disqualifying risk before the PDF was requested, from one truncated clause in
+the abstract, and the full text confirms it. Pooled mortality across all 26
+trials is RR 0.93 (95 per cent CI 0.83 to 1.04), which is null. But split by
+ICU type: surgical RR 0.63 (0.44 to 0.91), medical RR 1.00 (0.78 to 1.28),
+mixed RR 0.99 (0.86 to 1.12), with meta-regression p = 0.02 for the surgical
+benefit. The paper's Interpretation says the therapy "may be beneficial to
+patients admitted to a surgical ICU".
+
+A card claiming the famous trial did not replicate would therefore have to omit
+the source's own explanation of why it did not, which is the precise species of
+selective reading this deck exists to teach against. And a card built on the
+setting instead is `effect-modification-vs-confounding`, which shipped on
+2026-08-04. There is no third reading: the reveal would have to be taken back
+in the lesson text, and a reveal that gets taken back is not a reveal.
+
+**Worth recording for whoever revisits it:** the surgical subgroup is 5 trials,
+77/1037 against 110/935, and Van den Berghe 2001 alone contributes 55/765
+against 85/783, which is about three quarters of the patients and of the deaths
+in that subgroup. So the "surgical benefit" is very largely the original trial
+restated. The paper says as much, that the heterogeneity "was driven primarily
+by the 2 trials involving surgical patient populations". That observation is a
+subgroup-credibility point and therefore `multiple-comparisons`, also shipped.
+
+**The data, fully reconciled, so nobody sources it twice.** Figure 2 prints
+deaths over totals for every trial. Each subgroup sums exactly to its printed
+subtotal and the three subtotals sum exactly to the printed grand total of
+1,681/6,812 against 1,681/6,760, an identical death count in both arms. Every
+printed risk ratio reproduces from its counts. Key rows: NICE-SUGAR 829/3010
+against 751/3012 (RR 1.10, 1.01 to 1.20, harm); Van den Berghe 2001 surgical
+55/765 against 85/783 (RR 0.66, 0.48 to 0.92); Van den Berghe 2006 medical
+214/595 against 228/605 (RR 0.95, 0.82 to 1.11). Secondary outcome, 14 trials:
+severe hypoglycaemia RR 6.0 (4.5 to 8.0).
+
+**One other angle was considered and set aside rather than forced.** The pairing
+of a null mortality effect with a six-fold hypoglycaemia harm, in a therapy that
+the American Diabetes Association and the American Association of Clinical
+Endocrinologists had recommended as standard of care, is a real and teachable
+story about guidelines running ahead of evidence. It was not pursued because it
+is an institutional observation rather than a reasoning move a player performs,
+and this deck's cards turn on the latter. If somebody disagrees, the data above
+is sufficient and already checked.
+
+**What route 2 still needs**, unchanged: a source that prints BOTH the original
+famous result and the attempt to reproduce it, where the source itself does not
+attribute the discrepancy to something the deck already ships. Registered
+Replication Reports have exactly that structure. They were passed over here on
+neutral ground, since the Reproducibility Project carries a published Comment
+and Response disputing its conclusions in Science, and ego depletion is still
+actively argued; that judgement is worth revisiting rather than treating as
+settled, because "the field is still arguing" may be a weaker objection than it
+looked when the alternative is nothing.

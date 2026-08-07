@@ -4426,6 +4426,47 @@ patients, which is the deck's usual shape and is probably `rates`. Searching on
 tables; searching on the process itself (rescue medication, physiotherapy
 sessions, clinic visits, adherence) by arm is likelier to find the trial.
 
+**FOUR MORE SEARCH ANGLES TRIED 2026-08-07, ALL DRY, AND THE PATTERN IN THE
+FAILURES IS ITSELF THE FINDING.** Recorded so nobody repeats them: co-intervention
+as a keyword; "performance bias" with example or illustrate; three-arm designs
+pairing an attention control against usual care; and PROBE design, resentful
+demoralization, compensatory rivalry. What came back was protocols, systematic
+reviews and risk-of-bias tables, not trials with by-arm process counts.
+
+The one strong design hit was checked in full and rules the bias OUT, which is
+worth knowing before somebody spends an afternoon on it. **Big CACTUS** (Palmer
+R et al., *Self-managed, computerised speech and language therapy for patients
+with chronic aphasia post-stroke compared with usual care or attention control*,
+Lancet Neurology 2019;18:821-833, `PMC6700375`, open access) is exactly the
+design this lesson wants: three arms, 278 randomised, single-blind with masked
+outcome assessors and a masked statistician, so the detection channel is closed
+and only the behaviour channel is open. It compares the therapy against BOTH
+usual care and an attention control built to match the contact time. If extra
+contact were doing the work, the attention arm would separate from usual care.
+It does not. Mean word-finding improvement was 1.1 per cent (SD 11.2) under
+usual care, 2.4 (8.8) under attention control, and 16.4 (15.3) under the
+therapy; the therapy beat usual care by 16.2 points (95 per cent CI 12.7 to
+19.6) and the attention control by 14.4 (10.8 to 18.1). The attention arm
+behaved like usual care. Functional communication moved in no arm at all.
+
+**So the structural difficulty is this, and it is not bad luck.** A trial built
+well enough to ISOLATE performance bias, with masked assessors and an
+attention-matched arm, is a trial built well enough to PREVENT it, and Big
+CACTUS duly found none. A trial where the bias is dramatic enough to see, like
+BIO|GUARD-MI, tends to have found it post-hoc, because nobody designed to catch
+what nobody expected. The lesson needs a trial that fell into the middle: not
+careful enough to prevent it, careful enough to have measured the process
+anyway, and pre-specified enough that the difference is believable. That trial
+may well exist; four keyword routes did not reach it, and the next attempt
+should probably go through a source that names individual trials, such as the
+trials behind the blinding rows of a meta-epidemiological study, rather than
+through search terms.
+
+Big CACTUS is not wasted either. It is a ready-made SOUND DECOY for Trap Hunt
+under an eventual performance-bias card, and a good one: a trial that suspected
+the contact might be doing the work, built an arm to test exactly that, and
+reported that it was not.
+
 **Superseded, kept for the record: "Not attempted here: institutional access.
 The Trials paper could be read through Basile's own access, and that would
 settle obstacle 1 but not 2 or 3."** It was read the same day, and the guess

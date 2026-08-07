@@ -4107,9 +4107,22 @@ control area, per 100,000 births, children aged 12 to 71 months, birth cohorts
 | Died of neuroblastoma within ten years | 3.5 [2.9, 4.1] | 3.8 [3.1, 4.5] |
 
 44 per cent more disease found, the excess sitting entirely in stages 1 to 3
-(8.3 against 4.2), the metastatic rate identical to a decimal place, and
-mortality unmoved at P = .78. The paper's own excess-case estimate for stage 4 is
-minus 0.5, which is to say none.
+(8.3 against 4.2), the metastatic rate identical to a decimal place, and no
+detectable reduction in mortality: 3.5 against 3.8 at P = .78. The paper's own
+excess-case estimate for stage 4 is minus 0.5, so there is none there to find.
+
+**On how that last one is worded, because review caught the card getting it
+wrong.** The two mortality rates are NOT equal, and the screened area's estimate
+is the lower of the two. Overlapping intervals and a P of .78 establish that the
+trial found no reduction, not that the rates match, which is exactly what
+`yield.ts` says about its own `separated` flag. The card first keyed its correct
+answer as "Deaths were the same in both areas" and so contradicted the module it
+was drawn with. The nastier half of the same slip was a distractor reading
+"Deaths fell a little": since 3.5 really is below 3.8, a player who read the
+printed numbers correctly could have picked it and been marked wrong. Both are
+fixed, the fall-band is now sized against the 44 per cent excess so the data
+refutes it, and the test that guards this proves itself against the four
+historical phrasings before trusting its own denylist.
 
 **The commit beat is answerable because the stage 4 row is in the SETUP.** An
 earlier plan showed only the headline incidence and asked what happened to

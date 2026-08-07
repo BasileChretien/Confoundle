@@ -38,14 +38,29 @@ import type { Puzzle } from "../schema";
  * make the mortality question a guess and would mark a careful player wrong for
  * having no way to tell. It also draws the stage 4 row, where the two areas sit
  * at 5.0 and 5.0. A player who sees that the metastatic rate did not fall, and
- * who knows that deaths come from metastatic disease, can reach "mortality did
- * not move" by reasoning rather than by luck. The surprise survives anyway,
+ * who knows that deaths come from metastatic disease, can reach "no reduction
+ * to find" by reasoning rather than by luck. The surprise survives anyway,
  * because "we found 44 per cent more cancers, and found them before symptoms"
  * pulls very hard indeed. The four bands are four distinct readings rather than
- * four guesses at one number: a large fall, a small fall, no change, and a rise
- * from overtreatment. That last one is the sophisticate's answer and it is also
- * wrong, which is deliberate: the paper looked and found no notable increase in
- * toxic deaths.
+ * four guesses at one number: a halving, a substantial fall, no detectable
+ * reduction, and a rise from overtreatment. That last one is the sophisticate's
+ * answer and it is also wrong, which is deliberate: the paper looked and found
+ * no notable increase in toxic deaths.
+ *
+ * NOTHING ON THIS CARD SAYS THE TWO MORTALITY RATES ARE EQUAL, and review was
+ * right to insist on it. They are not equal: 3.5 against 3.8, with the SCREENED
+ * area's point estimate the lower of the two. Overlapping intervals and P = .78
+ * do not establish equality, they establish that this trial found no reduction,
+ * and `yield.ts` says exactly that about its own `separated` flag. An earlier
+ * draft keyed the correct answer as "Deaths were the same in both areas", which
+ * contradicted the module the card is drawn with. That slip had a second edge,
+ * and it is the worse one: because 3.5 really is lower than 3.8, the old
+ * "Deaths fell a little" band was consistent with the printed numbers, so a
+ * player who read them correctly could be marked wrong for it. That band now
+ * claims a fall in step with the 44 per cent excess, which the numbers do
+ * refute. Stage 4 is a different case and the card treats it differently: there
+ * the two printed rates are exactly 5.0, so calling them identical describes
+ * the figures rather than asserting a truth about the world.
  *
  * WHAT THE CARD MUST NOT SAY, and every beat is written around this. It must
  * not say the screening killed children: 4 toxic deaths among stage 1 to 3
@@ -151,20 +166,37 @@ export const overdiagnosis: Puzzle = {
       isIntuitiveTrap: true,
     },
     {
-      id: "fell-a-little",
+      /**
+       * This band has to claim a SUBSTANTIAL fall, and an earlier draft said
+       * "fell a little", which was a genuine defect rather than a distractor.
+       * The screened area's point estimate really is the lower of the two, 3.5
+       * against 3.8, so "fell a little" is consistent with the printed numbers
+       * and a careful player picking it would have been marked wrong for
+       * reading them correctly. Sizing it against the 44 percent excess is what
+       * makes it refutable: a fall in step with that would be large.
+       */
+      id: "fell-substantially",
       label: {
-        en: "Deaths fell a little, roughly in proportion to how many extra children were caught early",
+        en: "Deaths fell substantially, roughly in step with the 44 percent more cases found early",
       },
-      sublabel: { en: "some benefit, not a lot" },
+      sublabel: { en: "real benefit, just not a halving" },
       isCorrect: false,
       isIntuitiveTrap: false,
     },
     {
-      id: "unchanged",
+      /**
+       * Worded as NO DETECTABLE REDUCTION and never as equality. The two rates
+       * differ, 3.5 against 3.8, and overlapping intervals with P = .78 do not
+       * establish that they are the same; they establish that this trial found
+       * no reduction. `yield.ts` says the same thing about its own derivation,
+       * and an earlier draft of this label ("Deaths were the same in both
+       * areas") contradicted it.
+       */
+      id: "no-detectable-reduction",
       label: {
-        en: "Deaths were the same in both areas: 3.5 per 100,000 births against 3.8",
+        en: "No reduction the trial could detect: 3.5 per 100,000 births against 3.8, a gap well inside the play of chance",
       },
-      sublabel: { en: "nothing moved" },
+      sublabel: { en: "nothing to find" },
       isCorrect: true,
       isIntuitiveTrap: false,
     },
@@ -181,15 +213,15 @@ export const overdiagnosis: Puzzle = {
 
   reveal: {
     headline: {
-      en: "Nothing moved. 3.5 deaths per 100,000 births where screening ran, 3.8 where it did not.",
+      en: "No reduction to find. 3.5 deaths per 100,000 births where screening ran, 3.8 where it did not, and P = 0.78.",
     },
     mechanismLabel: { en: "And the row that says what the screening changed" },
     mechanismName: { en: "The extra tumours were never going to surface" },
     explanation: {
-      en: "The stage 4 row in the setup had already given the answer, for anyone who noticed what it meant. Almost everyone who dies of neuroblastoma dies of stage 4 disease. Screening did not reduce how much stage 4 disease there was: 5.0 per 100,000 births in both areas, an excess the paper measures at minus 0.5, which is to say none. If the metastatic disease is still all there, the deaths will still all be there, and they were. So what were the extra cases? They were localised tumours, stages 1 to 3, running at 8.3 per 100,000 births in the screened states against 4.2 in the unscreened ones. Infant neuroblastoma does something most cancers do not: it regresses. Tumours shrink and disappear without anyone touching them. The screening was finding real tumours, correctly identified by a test that was working, in children who genuinely had them, and a large share of those tumours were going to vanish on their own before they ever caused a symptom. Nobody made a diagnostic error. The disease was there. It just was not coming.",
+      en: "The stage 4 row in the setup had already given the answer, for anyone who noticed what it meant. Almost everyone who dies of neuroblastoma dies of stage 4 disease. Screening did not reduce how much stage 4 disease there was: 5.0 per 100,000 births in both areas, with the paper putting the excess at minus 0.5, so there is none there to find. If the metastatic disease is all still present, there is nothing for a fall in deaths to come from, and no fall appeared: 3.5 against 3.8, a difference this trial could not tell from chance. Note what that last sentence does not say. It does not say the two rates are equal, because they are not, and a comparison that fails to find a difference has not shown there is none. What it rules out is the size of reduction anybody was hoping for. So what were the extra cases? They were localised tumours, stages 1 to 3, running at 8.3 per 100,000 births in the screened states against 4.2 in the unscreened ones. Infant neuroblastoma does something most cancers do not: it regresses. Tumours shrink and disappear without anyone touching them. The screening was finding real tumours, correctly identified by a test that was working, in children who genuinely had them, and a large share of those tumours were going to vanish on their own before they ever caused a symptom. Nobody made a diagnostic error. The disease was there. It just was not coming.",
     },
     body: {
-      en: "It is worth being careful about what this trial does and does not establish, because the temptation is to swing too far. It does not show that the screening killed anybody. Four children with stage 1 to 3 disease in the screened area died of treatment toxicity against none in the control area, which reads as damning until you see that the cohort before screening began ran at five such deaths in 101 patients; the authors looked hard at this and concluded toxic death did not notably increase. Nor does it show that no individual child was helped. Eighteen children with stage 4 disease were picked up by screening in their second year, and they did strikingly well, with 94 percent alive at ten years against 29 percent for the stage 4 children in the unscreened states. The authors are honest that they cannot tell whether that is because those children were found earlier or because a tumour detectable by this test at that age is a biologically gentler tumour; only one of them carried the MYCN amplification that marks the aggressive form, against 68 percent of the control cases. What the trial establishes is the population claim, and the population claim is what a screening programme has to answer for: 1.5 million children screened, a great many extra diagnoses, and the same number of children dead. The programmes were stopped in Canada, the United States, Germany and Japan. Two structural caveats belong on the record. The areas were assigned rather than randomised, and 61 percent of invited families took part, so the screened area's figure mixes participants with non-participants; among participants alone the incidence was higher still, at 15.7.",
+      en: "It is worth being careful about what this trial does and does not establish, because the temptation is to swing too far. It does not show that the screening killed anybody. Four children with stage 1 to 3 disease in the screened area died of treatment toxicity against none in the control area, which reads as damning until you see that the cohort before screening began ran at five such deaths in 101 patients; the authors looked hard at this and concluded toxic death did not notably increase. Nor does it show that no individual child was helped. Eighteen children with stage 4 disease were picked up by screening in their second year, and they did strikingly well, with 94 percent alive at ten years against 29 percent for the stage 4 children in the unscreened states. The authors are honest that they cannot tell whether that is because those children were found earlier or because a tumour detectable by this test at that age is a biologically gentler tumour; only one of them carried the MYCN amplification that marks the aggressive form, against 68 percent of the control cases. What the trial establishes is the population claim, and the population claim is what a screening programme has to answer for: 1.5 million children screened, a great many extra diagnoses, and no reduction in the number of children who died. The programmes were stopped in Canada, the United States, Germany and Japan. Two structural caveats belong on the record. The areas were assigned rather than randomised, and 61 percent of invited families took part, so the screened area's figure mixes participants with non-participants; among participants alone the incidence was higher still, at 15.7.",
     },
     view: {
       kind: "whatitchanged",
@@ -213,7 +245,7 @@ export const overdiagnosis: Puzzle = {
   share: {
     title: { en: "Disease that was never coming, a reasoning trap." },
     explainer: {
-      en: "Six German states tested every one-year-old for neuroblastoma; ten did not. About 1.5 million children were screened, and the screened states found 44 percent more cancers, most of them before any symptom appeared. But the rate of stage 4 disease, the form that kills, was identical: 5.0 per 100,000 births in both. And so was the death rate: 3.5 against 3.8. The extra tumours were real and correctly diagnosed, and they were the kind that disappears on its own. Every child treated for one looked like a life saved. None of them was.",
+      en: "Six German states tested every one-year-old for neuroblastoma; ten did not. About 1.5 million children were screened, and the screened states found 44 percent more cancers, most of them before any symptom appeared. But the rate of stage 4 disease, the form that kills, was identical: 5.0 per 100,000 births in both. And no reduction in deaths turned up either: 3.5 against 3.8, which this trial could not tell from chance. The extra tumours were real and correctly diagnosed, and they were the kind that disappears on its own. Every child treated for one looked like a life saved. None of them was.",
     },
     captions: {
       competitive: { en: "Checked whether the deadly kind got rarer." },

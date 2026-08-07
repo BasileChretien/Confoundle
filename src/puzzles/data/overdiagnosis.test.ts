@@ -105,11 +105,14 @@ describe("the finding the card turns on, derived not asserted", () => {
     expect(differenceOn(data, "stage4")).toBe(0);
   });
 
-  it("has mortality no lower where screening ran", () => {
-    // Negative means the screened area's rate is the SMALLER of the two, and
-    // the point is that it is not: the difference runs the other way, and its
-    // intervals overlap heavily either way.
-    expect(differenceOn(data, "died")).toBeLessThan(0);
+  it("has a mortality gap the trial cannot separate, pointing slightly the screened way", () => {
+    // This is the fact the card's wording has to respect, and an earlier
+    // comment here got it backwards. The difference is NEGATIVE, which means
+    // the screened area's point estimate is the LOWER of the two: 3.5 against
+    // 3.8. So the rates are not equal, and they do not favour the control area
+    // either. What the overlapping intervals establish is that this trial found
+    // no reduction, which is a weaker claim than either.
+    expect(differenceOn(data, "died")).toBeCloseTo(-0.3, 10);
     expect(separatedOn(data, "died")).toBe(false);
   });
 });
@@ -138,22 +141,36 @@ describe("the beats", () => {
 
   it("keeps exactly one correct answer and marks the intuitive trap", () => {
     expect(overdiagnosis.choices.filter((c) => c.isCorrect)).toHaveLength(1);
-    expect(overdiagnosis.choices.find((c) => c.isCorrect)?.id).toBe("unchanged");
+    expect(overdiagnosis.choices.find((c) => c.isCorrect)?.id).toBe("no-detectable-reduction");
     expect(overdiagnosis.choices.filter((c) => c.isIntuitiveTrap)).toHaveLength(1);
     expect(overdiagnosis.choices.find((c) => c.isIntuitiveTrap)?.id).toBe("halved");
   });
 
-  it("offers the two directions and the two magnitudes as distinct readings", () => {
-    // No two bands may share the reading the setup licenses. The setup licenses
-    // "no change" (stage 4 did not move), and exactly one band says that; the
-    // other three are a large fall, a small fall and a rise, which are three
-    // different claims rather than three guesses at one number.
+  it("offers four distinct readings rather than four guesses at one number", () => {
     expect(overdiagnosis.choices.map((c) => c.id)).toEqual([
       "halved",
-      "fell-a-little",
-      "unchanged",
+      "fell-substantially",
+      "no-detectable-reduction",
       "rose",
     ]);
+  });
+
+  it("does not let a wrong band be satisfied by the printed numbers", () => {
+    // The trap this catches is the nastiest one in the hedge audit: a distractor
+    // that is ALSO right. The screened area's mortality point estimate is the
+    // lower of the two, so any band claiming merely that deaths fell somewhat is
+    // consistent with the figures on screen and would mark a careful reader
+    // wrong. The surviving fall-band must therefore carry a magnitude the data
+    // refutes, and it is sized against the 44 per cent excess.
+    const fall = overdiagnosis.choices.find((c) => c.id === "fell-substantially");
+    expect(fall?.isCorrect).toBe(false);
+    expect(fall?.label.en).toMatch(/substantially/);
+    expect(fall?.label.en).toMatch(/44 percent/);
+    // A 3.8 to 3.5 move is an 8 per cent relative fall, nowhere near "in step
+    // with" a 44 per cent excess, which is what makes the band refutable.
+    const relative = Math.abs(differenceOn(data, "died")) / 3.8;
+    expect(relative).toBeLessThan(0.1);
+    expect(relativeExcessOn(data, "any")).toBeGreaterThan(0.4);
   });
 });
 
@@ -216,16 +233,81 @@ describe("what the card must not overclaim", () => {
     expect(body).toContain("94");
   });
 
-  it("does not claim the two mortality rates are proven equal", () => {
-    // Overlapping intervals are not proof of equality, and the derivation
-    // module reports separation only. The prose must match: it may say the
-    // rates did not move, and must not say a difference was ruled out.
-    const all = [
+  it("never says the two mortality rates were EQUAL, anywhere a player reads", () => {
+    /**
+     * This replaces a guard that was too narrow to do its job. The old version
+     * only looked for phrases like "no difference was proven", and the card
+     * shipped to review with a correct answer reading "Deaths were the same in
+     * both areas" and a reveal headline reading "Nothing moved". Both sailed
+     * past it.
+     *
+     * Overlapping intervals with P = .78 establish that this trial found no
+     * reduction, not that the rates match, and `yield.ts` says so about its own
+     * derivation. So the card may say a reduction was not found and must never
+     * say the numbers were the same. Note the scope: stage 4 IS printed as 5.0
+     * in both areas, so equality language about that row describes the figures
+     * and is allowed. This check therefore runs over the mortality sentences.
+     */
+    const surfaces = [
       overdiagnosis.reveal.headline.en,
       overdiagnosis.reveal.explanation.en,
       revealBody(),
-    ].join(" ");
-    expect(all).not.toMatch(/no difference (?:was )?(?:proven|established|ruled)/i);
+      overdiagnosis.share.explainer.en,
+      ...overdiagnosis.choices.map((c) => `${c.label.en} ${c.sublabel?.en ?? ""}`),
+    ];
+
+    /**
+     * An explicit denylist, because a generic "equality word near a death word"
+     * scan was tried first and caught only one of the four phrasings that
+     * actually shipped: sentence splitting loses "Nothing moved." from the
+     * rates in the sentence after it, "so was the death rate" carries the
+     * claim anaphorically with no equality word in it at all, and "children
+     * dead" is not the word "death".
+     */
+    const BANNED = [
+      /deaths? (?:were|was) the same/i,
+      /nothing moved/i,
+      /so (?:was|were) the (?:death|mortality)/i,
+      /same number of children (?:dead|who died)/i,
+      /(?:death|mortality)[^.]{0,50}\bunchanged\b/i,
+      /\bunchanged\b[^.]{0,50}(?:death|mortality)/i,
+      /(?:death|mortality)[^.]{0,50}\bidentical\b/i,
+    ];
+
+    // The guard proves itself before it is trusted. Every one of these is real
+    // wording this card carried into review; a version of this test that could
+    // not flag them would be worth nothing, and the first version could not.
+    const HISTORICAL = [
+      "Deaths were the same in both areas: 3.5 per 100,000 births against 3.8",
+      "Nothing moved. 3.5 deaths per 100,000 births where screening ran, 3.8 where it did not.",
+      "And so was the death rate: 3.5 against 3.8.",
+      "1.5 million children screened, a great many extra diagnoses, and the same number of children dead.",
+    ];
+    for (const old of HISTORICAL)
+      expect({ old, caught: BANNED.some((re) => re.test(old)) }).toEqual({ old, caught: true });
+
+    // Stage 4 genuinely IS printed as 5.0 in both areas, so equality language
+    // about that row is a description of the figures and must stay legal.
+    expect(
+      BANNED.some((re) =>
+        re.test("the rate of stage 4 disease, the form that kills, was identical: 5.0 in both"),
+      ),
+    ).toBe(false);
+
+    const offenders = surfaces.flatMap((s) =>
+      BANNED.filter((re) => re.test(s)).map((re) => `${re}  ::  ${s.slice(0, 90)}`),
+    );
+    expect(offenders).toEqual([]);
+  });
+
+  it("still states the null result positively, so the card has a finding", () => {
+    // The mirror of the check above: refusing to claim equality must not leave
+    // the card saying nothing at all. It has to assert that no reduction was
+    // found, and carry both printed rates so the reader can see the gap.
+    const all = [overdiagnosis.reveal.headline.en, overdiagnosis.reveal.explanation.en].join(" ");
+    expect(all).toMatch(/no reduction|could not tell from chance/i);
+    expect(all).toContain("3.5");
+    expect(all).toContain("3.8");
   });
 
   it("carries provenance with a resolvable identifier", () => {

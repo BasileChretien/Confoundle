@@ -8854,6 +8854,148 @@ const items: TestItem[] = [
       en: "The check that the shared name means a shared quantity is exactly the right one, and finding that it does not is a result rather than an obstacle. Analysing them separately keeps the comparison between like and like.",
     },
   },
+
+  // ---- Overdiagnosis ----
+  {
+    id: "od-incidence-up-mortality-flat",
+    scenario: {
+      en: "A region introduces screening for a cancer. Over the next decade the number of people diagnosed with it triples. The death rate from that cancer across the region is unchanged. A health board cites the tripling as evidence the programme is finding disease that would otherwise have been missed.",
+    },
+    trap: "overdiagnosis",
+    explanation: {
+      en: "Disease that was going to kill someone cannot be removed from the death rate by finding it and leaving the deaths where they were. A tripling with flat mortality is the signature of a test finding disease that was never going to surface, not of a backlog being cleared.",
+    },
+  },
+  {
+    id: "od-five-year-survival-rose",
+    scenario: {
+      en: "After a screening programme starts, five-year survival among people diagnosed with the disease rises from 60 per cent to 85 per cent. The programme is judged a success on that number alone.",
+    },
+    trap: "overdiagnosis",
+    explanation: {
+      en: "Survival is measured among the diagnosed, so adding people whose disease was never going to harm them raises it mechanically: every one of them survives. The number that would test the programme is deaths across the whole population, which this does not report.",
+    },
+  },
+  {
+    id: "od-stage-shift-only",
+    scenario: {
+      en: "A screening programme reports that the share of cancers caught at an early stage has risen from 40 per cent to 70 per cent, and concludes that late-stage disease is being prevented.",
+    },
+    trap: "overdiagnosis",
+    explanation: {
+      en: "A share can rise because the numerator grew rather than because the denominator's late cases fell. If the programme added a large number of early cases and the rate of late-stage disease per head of population did not move, nothing was intercepted on its way to becoming late disease.",
+    },
+  },
+  {
+    id: "od-every-case-a-life-saved",
+    scenario: {
+      en: "A charity's campaign states that the screening programme found cancer in 4,000 people last year, and describes each of them as a life saved by early detection.",
+    },
+    trap: "overdiagnosis",
+    explanation: {
+      en: "A case found is not a death averted. Some of those cancers would never have caused symptoms, and their owners were always going to survive them; counting them as saved lives assumes the very thing the programme has to demonstrate.",
+    },
+  },
+  {
+    id: "od-autopsy-reservoir",
+    scenario: {
+      en: "Post-mortem studies of people who died of unrelated causes find the disease present in a large fraction of them, none of whom knew they had it. A screening advocate treats this as evidence of a huge undiagnosed burden that screening should be finding.",
+    },
+    trap: "overdiagnosis",
+    explanation: {
+      en: "A large silent reservoir is a reason for caution rather than enthusiasm. Those people lived and died without the disease affecting them, so a test sensitive enough to reach that reservoir will mostly be finding what the post-mortems found: disease that does nothing.",
+    },
+  },
+  {
+    id: "od-regression-possible",
+    scenario: {
+      en: "A screening test picks up a lesion. Follow-up studies of untreated lesions of the same kind show a measurable share of them shrink or disappear on their own. All detected lesions in the programme are treated immediately, and the programme reports a near-perfect cure rate.",
+    },
+    trap: "overdiagnosis",
+    explanation: {
+      en: "If some lesions resolve untreated, then treating all of them guarantees a high cure rate whether or not the treatment does anything, because the ones that would have resolved are counted as cures. That cure rate cannot tell a treatment that works from a lesion that was leaving anyway.",
+    },
+  },
+  {
+    id: "od-comparing-diagnosed-groups",
+    scenario: {
+      en: "Among people diagnosed with the disease, those whose cancer was found by screening live substantially longer than those who came in with symptoms. This is offered as proof that screening extends life.",
+    },
+    trap: "overdiagnosis",
+    explanation: {
+      en: "The two groups are not comparable, because screening selects the cases that sit still long enough to be caught, including those that were never going anywhere. Comparing outcomes among the diagnosed cannot answer a question about whether a population does better.",
+    },
+  },
+  {
+    id: "od-more-sensitive-test",
+    scenario: {
+      en: "A programme replaces its test with a more sensitive one. Detected cases rise by 30 per cent. The programme reports the improvement as 30 per cent more disease caught in time.",
+    },
+    trap: "overdiagnosis",
+    explanation: {
+      en: "A more sensitive test reaches smaller and slower disease first, which is disproportionately the disease least likely to matter. The extra cases are therefore the least likely part of the caseload to have been heading anywhere, and calling them caught in time asserts what has not been measured.",
+    },
+  },
+  {
+    id: "od-treatment-burden-ignored",
+    scenario: {
+      en: "A cost analysis of a screening programme counts the price of the tests and the treatments, and the deaths averted. It records no cost for people treated for disease that would never have troubled them, on the grounds that they all survived.",
+    },
+    trap: "overdiagnosis",
+    explanation: {
+      en: "Surviving treatment is not the same as being unharmed by it, and surgery, radiation or chemotherapy given for disease that was never going to surface is a pure cost with no possible benefit. Leaving that column empty makes the programme look better than any measurement supports.",
+    },
+  },
+  {
+    id: "od-incidence-stayed-up-after",
+    scenario: {
+      en: "A screening programme is discontinued. Analysts expect a period of unusually low diagnosis afterwards, as the cases the programme pulled forward would otherwise have appeared. Instead the diagnosis rate simply returns to its old level, with no dip.",
+    },
+    trap: "overdiagnosis",
+    explanation: {
+      en: "If the programme had merely been finding cases early, stopping it should leave a deficit while the pulled-forward cases work through. No deficit means those extra cases were not borrowed from the future; they were additional, and would never have appeared at all.",
+    },
+  },
+  {
+    id: "ok-od-late-stage-fell",
+    scenario: {
+      en: "A screening programme reports that diagnoses rose by a quarter, that the rate of late-stage disease per 100,000 people fell by a third, and that deaths from the disease fell over the same period.",
+    },
+    trap: null,
+    explanation: {
+      en: "This is what a working programme looks like. Late-stage disease became rarer and deaths fell, which is what happens when cases are genuinely intercepted before they progress. Extra diagnoses alongside those two falls are the expected cost rather than a warning sign.",
+    },
+  },
+  {
+    id: "ok-od-reports-population-mortality",
+    scenario: {
+      en: "Evaluating a screening trial, a team declines to use five-year survival among the diagnosed and reports deaths from the disease per 100,000 people in each arm, including everyone randomised.",
+    },
+    trap: null,
+    explanation: {
+      en: "This is the correct denominator. Counting deaths across everyone randomised rather than among those diagnosed makes the measure immune to changes in who gets diagnosed, which is precisely what the intervention alters.",
+    },
+  },
+  {
+    id: "ok-od-active-surveillance",
+    scenario: {
+      en: "Because some screen-detected lesions are known not to progress, a programme offers monitoring rather than immediate treatment for the lowest-risk ones, and reports how many were later treated.",
+    },
+    trap: null,
+    explanation: {
+      en: "This is a direct response to the problem rather than a denial of it. Monitoring separates the lesions that move from the ones that do not, which is the only way to find out in an individual, and reporting later treatment keeps the policy honest.",
+    },
+  },
+  {
+    id: "ok-od-names-the-uncertainty",
+    scenario: {
+      en: "A screening programme's leaflet states that it will find some cancers that would never have caused problems, that there is no way to tell in an individual which those are, and gives its best estimate of how many.",
+    },
+    trap: null,
+    explanation: {
+      en: "This is sound and is what informed consent requires here. The leaflet neither hides the possibility nor overstates it into a reason to refuse, and admitting that the distinction cannot be made in one person is the honest statement of what is known.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

@@ -2082,6 +2082,177 @@ const ForestData = z
   });
 export type ForestData = z.infer<typeof ForestData>;
 
+/* ---------------------------------------------------------------------------
+ * Two populations, several outcomes, each as a rate over one shared
+ * denominator, with the interval the source published around it.
+ *
+ * Needed because no existing shape can hold ONE PAIR OF POPULATIONS measured on
+ * SEVERAL DIFFERENT OUTCOMES at once, and that is the only way this lesson can
+ * be drawn. The four near misses each fail on something structural:
+ *
+ *   `rates` derives every rate from a numerator and a denominator, and the
+ *   sources for this lesson publish the rate and its interval while the
+ *   denominator (births, person-years) is nowhere printed. Back-computing the
+ *   denominator from the rate and then deriving the rate from it again is a
+ *   reconciliation that cannot fail, which is worse than no check at all. It
+ *   also carries a single `metricLabel`, so it cannot say that one row counts
+ *   diagnoses and another counts deaths.
+ *
+ *   `forest` draws several intervals but each row is ONE estimate measured
+ *   against a null line. Cumulative incidence has no null value, and the two
+ *   populations here are not an effect: they are two numbers that have to sit
+ *   side by side on every row so a reader can see which rows moved apart and
+ *   which did not. Recasting the rows as arm-minus-arm differences would give
+ *   forest its null at zero, but the interval around a difference is not
+ *   published and inventing one is inventing data.
+ *
+ *   `effect` draws exactly one estimate against a reference it is a slice of.
+ *   `interval` derives poll margins from a sample size, so its whole arithmetic
+ *   is poll-specific and its shares must sum to a hundred.
+ *
+ * The reveal works by ADDING ROWS to a figure that is otherwise identical, the
+ * same contract `forest` and `ratings` use. Both beats share `axisMax`, so a
+ * row that arrives at the reveal lands on the scale the reader was already
+ * reading and nothing already on screen moves. Rescaling between beats is the
+ * one thing this shape must never do, because the whole verdict is a comparison
+ * of how far apart the pairs are.
+ *
+ * Rates are AUTHORED AS PUBLISHED, the same deliberate exception this project
+ * already makes for framing, distribution, dose, estimation, magnitude, target,
+ * interval and forest data. What is never authored is which rows moved, whether
+ * a pair's intervals overlap, or the size of any gap: all three are derived,
+ * because a data file that stated them could contradict the numbers it drew
+ * them from, and this is a lesson about exactly that reading.
+ * ------------------------------------------------------------------------- */
+export const YieldArm = z.object({
+  id: z.string().min(1),
+  label: LocalizedText, // "The six states that screened"
+  short: LocalizedText.optional(),
+});
+export type YieldArm = z.infer<typeof YieldArm>;
+
+export const YieldRow = z.object({
+  id: z.string().min(1),
+  label: LocalizedText, // "Diagnosed with neuroblastoma"
+  short: LocalizedText.optional(),
+  /** What this row counts, when the row label alone would be ambiguous. */
+  note: LocalizedText.optional(),
+});
+export type YieldRow = z.infer<typeof YieldRow>;
+
+export const YieldObservation = z.object({
+  rowId: z.string().min(1),
+  armId: z.string().min(1),
+  /** The rate as published, in units of `perLabel`. */
+  rate: z.number().nonnegative(),
+  ciLow: z.number().nonnegative(),
+  ciHigh: z.number().nonnegative(),
+});
+export type YieldObservation = z.infer<typeof YieldObservation>;
+
+const YieldData = z
+  .object({
+    type: z.literal("yield"),
+    label: LocalizedText,
+    /** Names the shared denominator, e.g. "per 100,000 births". */
+    perLabel: LocalizedText,
+    metricLabel: LocalizedText,
+    /** Says on the figure that these are published rates, not counts. */
+    rateNote: LocalizedText,
+    /** Shared by both beats so nothing moves when the reveal adds a row. */
+    axisMax: z.number().positive(),
+    arms: z.array(YieldArm).length(2),
+    rows: z.array(YieldRow).min(2),
+    observations: z.array(YieldObservation).min(4),
+  })
+  .superRefine((d, ctx) => {
+    const armIds = new Set(d.arms.map((a) => a.id));
+    const rowIds = new Set(d.rows.map((r) => r.id));
+    if (armIds.size !== d.arms.length)
+      ctx.addIssue({ code: "custom", path: ["arms"], message: "duplicate arm id" });
+    if (rowIds.size !== d.rows.length)
+      ctx.addIssue({ code: "custom", path: ["rows"], message: "duplicate row id" });
+
+    const seen = new Set<string>();
+    d.observations.forEach((o, i) => {
+      if (!armIds.has(o.armId))
+        ctx.addIssue({
+          code: "custom",
+          path: ["observations", i, "armId"],
+          message: `no arm with id ${o.armId}`,
+        });
+      if (!rowIds.has(o.rowId))
+        ctx.addIssue({
+          code: "custom",
+          path: ["observations", i, "rowId"],
+          message: `no row with id ${o.rowId}`,
+        });
+      const key = `${o.rowId}|${o.armId}`;
+      if (seen.has(key))
+        ctx.addIssue({
+          code: "custom",
+          path: ["observations", i],
+          message: `two observations for ${o.rowId} in ${o.armId}`,
+        });
+      seen.add(key);
+      if (o.ciLow > o.rate || o.ciHigh < o.rate)
+        ctx.addIssue({
+          code: "custom",
+          path: ["observations", i, "rate"],
+          message: `rate (${o.rate}) must lie inside its interval (${o.ciLow} to ${o.ciHigh})`,
+        });
+      if (o.ciHigh > d.axisMax)
+        ctx.addIssue({
+          code: "custom",
+          path: ["observations", i, "ciHigh"],
+          message: `interval reaches ${o.ciHigh}, past the axis maximum of ${d.axisMax}, so it would be drawn cut off`,
+        });
+    });
+
+    // Every row must carry BOTH arms. A row drawn with one arm missing would
+    // read as a pair whose second member happened to be zero, which is the
+    // most damaging thing this figure could imply.
+    for (const r of d.rows)
+      for (const a of d.arms)
+        if (!seen.has(`${r.id}|${a.id}`))
+          ctx.addIssue({
+            code: "custom",
+            path: ["observations"],
+            message: `row ${r.id} has no observation for arm ${a.id}`,
+          });
+
+    // The lesson requires both kinds of row to exist: one where the two arms
+    // are plainly apart, and one where they are not. A figure whose rows all
+    // moved the same way is a figure about a programme that worked, and a
+    // figure where nothing moved has no setup. Neither is this shape's lesson,
+    // and finding out at authoring time is much cheaper than in review.
+    const disjoint = (rowId: string): boolean | null => {
+      const [x, y] = d.arms.map((a) =>
+        d.observations.find((o) => o.rowId === rowId && o.armId === a.id),
+      );
+      if (!x || !y) return null;
+      return x.ciHigh < y.ciLow || y.ciHigh < x.ciLow;
+    };
+    const verdicts = d.rows.map((r) => disjoint(r.id)).filter((v) => v !== null);
+    if (verdicts.length === d.rows.length) {
+      if (!verdicts.some((v) => v === true))
+        ctx.addIssue({
+          code: "custom",
+          path: ["observations"],
+          message:
+            "no row has intervals that clear one another, so the figure never shows the programme finding anything and there is nothing to set up",
+        });
+      if (!verdicts.some((v) => v === false))
+        ctx.addIssue({
+          code: "custom",
+          path: ["observations"],
+          message:
+            "every row separates, so the figure shows a programme that changed everything it measured and there is nothing to reveal",
+        });
+    }
+  });
+export type YieldData = z.infer<typeof YieldData>;
+
 export const PuzzleData = z.discriminatedUnion("type", [
   RatesData,
   FrequenciesData,
@@ -2109,6 +2280,7 @@ export const PuzzleData = z.discriminatedUnion("type", [
   IntervalData,
   CeilingData,
   ForestData,
+  YieldData,
 ]);
 export type PuzzleData = z.infer<typeof PuzzleData>;
 
@@ -2183,6 +2355,8 @@ export const DataView = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("bothcurves"), ...viewFields }),
   z.object({ kind: z.literal("whatisknown"), ...viewFields }),
   z.object({ kind: z.literal("themissingrow"), ...viewFields }),
+  z.object({ kind: z.literal("whatitfound"), ...viewFields }),
+  z.object({ kind: z.literal("whatitchanged"), ...viewFields }),
 ]);
 export type DataView = z.infer<typeof DataView>;
 export type DataViewKind = DataView["kind"];
@@ -2467,6 +2641,17 @@ export const Puzzle = z
             strataWord: "",
           };
         case "forest":
+          return {
+            groups: new Set(d.rows.map((r) => r.id)),
+            groupWord: "row",
+            strata: null,
+            strataWord: "",
+          };
+        case "yield":
+          // The setup names the outcomes already public and the reveal names
+          // none, which draws them all. Arms are the pairing and are never
+          // filtered: a row drawn with one arm missing is the one thing this
+          // shape must not render.
           return {
             groups: new Set(d.rows.map((r) => r.id)),
             groupWord: "row",

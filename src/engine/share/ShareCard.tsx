@@ -1338,6 +1338,66 @@ function CeilingGlyph() {
   );
 }
 
+function YieldGlyph() {
+  const W = 200;
+  const H = 96;
+  /**
+   * Three outcomes, each measured in two populations. On the top row the teal
+   * and rust marks sit far apart: the programme found a great deal more. On the
+   * two rows below they land on top of one another, and those are the rows that
+   * decide whether it did any good. The gold sign marks each pair that did not
+   * move, because those are the rows a reader skips.
+   */
+  const rows = [
+    { y: 24, teal: 62, rust: 138, span: 20, moved: true },
+    { y: 52, teal: 96, rust: 100, span: 16, moved: false },
+    { y: 78, teal: 82, rust: 76, span: 15, moved: false },
+  ];
+  return (
+    <svg
+      viewBox={`0 0 ${W} ${H}`}
+      width="100%"
+      role="img"
+      aria-label="Three outcomes measured in two populations: on the first the two marks are far apart, on the other two they sit on top of each other"
+    >
+      {rows.map((r) => (
+        <g key={r.y}>
+          {[
+            { x: r.teal, c: CARD.teal },
+            { x: r.rust, c: CARD.rust },
+          ].map((m, i) => (
+            <g key={i}>
+              <line
+                x1={m.x - r.span / 2}
+                y1={r.y}
+                x2={m.x + r.span / 2}
+                y2={r.y}
+                stroke={m.c}
+                strokeWidth={2}
+                opacity={0.5}
+              />
+              <circle
+                cx={m.x}
+                cy={r.y}
+                r={3.5}
+                fill={r.moved ? m.c : "none"}
+                stroke={m.c}
+                strokeWidth={1.6}
+              />
+            </g>
+          ))}
+          {r.moved ? null : (
+            <text x={W - 24} y={r.y + 3} fontSize={9} fontWeight={700} fill={CARD.gold}>
+              =
+            </text>
+          )}
+        </g>
+      ))}
+      <line x1={10} y1={90} x2={W - 10} y2={90} stroke={CARD.rule} strokeWidth={1} />
+    </svg>
+  );
+}
+
 function ForestGlyph() {
   const W = 200;
   const H = 96;
@@ -1751,6 +1811,7 @@ export function ShareCard({
   const intervalGlyph = data.type === "interval";
   const ceilingGlyph = data.type === "ceiling";
   const forestGlyph = data.type === "forest";
+  const yieldGlyph = data.type === "yield";
   const splitSampleGlyph =
     data.type === "rates" &&
     Boolean(data.strataAreSeparateSamples) &&
@@ -1876,6 +1937,8 @@ export function ShareCard({
             <CeilingGlyph />
           ) : forestGlyph ? (
             <ForestGlyph />
+          ) : yieldGlyph ? (
+            <YieldGlyph />
           ) : null}
 
           <p className="mt-4 font-display text-[17px] font-medium leading-snug">

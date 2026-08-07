@@ -333,7 +333,7 @@ consensus only · **X** absent from official documents.
 | Intention to treat vs per protocol <!-- skill: intention-to-treat --> | O | **A** | O | X | **shipped** |
 | Lead-time bias <!-- skill: lead-time-bias --> | X | **A** | O | (once) | shipped |
 | Length-time bias <!-- skill: length-time-bias --> | X | **A** | O | X | **shipped**; also in Korea 2026 paper |
-| Overdiagnosis | X | **A** | T | **A** | inside length-time |
+| Overdiagnosis <!-- skill: overdiagnosis --> | X | **A** | T | **A** | **SHIPPED** 2026-08-07 as `the-extra-cases` (German neuroblastoma screening trial), on the new `yield` shape. No longer "inside length-time": that card bundles all three screening biases and says so |
 | Publication bias <!-- skill: publication-bias --> | E | A(body) | O | X | **shipped this session** |
 | Base rate / predictive value vs prevalence <!-- skill: base-rate-fallacy --> | **E every year** | A | O | X | shipped |
 | Relative vs absolute risk, NNT <!-- skill: relative-vs-absolute-risk --> | A (x2) | A | O | X | shipped |

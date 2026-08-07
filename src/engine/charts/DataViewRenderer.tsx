@@ -38,6 +38,8 @@ import { TargetView } from "./TargetView";
 import { SeriesView } from "./SeriesView";
 import { IntervalView } from "./IntervalView";
 import { CeilingView } from "./CeilingView";
+import { YieldView } from "./YieldView";
+import { restrictYield } from "./yield";
 import { restrictSeries } from "./series";
 
 /**
@@ -227,6 +229,12 @@ export function DataViewRenderer({
       return view.kind === "thedifference" || view.kind === "bothcurves" ? (
         <CeilingView data={data} kind={view.kind} />
       ) : null;
+    case "yield":
+      // Same slicing contract as the rest: the setup draws what the programme
+      // found, and the reveal adds the row saying what it changed.
+      return view.kind === "whatitfound" || view.kind === "whatitchanged" ? (
+        <YieldView data={restrictYield(data, { groupIds: view.groupIds })} kind={view.kind} />
+      ) : null;
     default:
       return null;
   }
@@ -359,6 +367,10 @@ export function scopeLabel(kind: DataViewKind): string {
       return "The gap between them";
     case "bothcurves":
       return "And what the gap was drawn from";
+    case "whatitfound":
+      return "What the programme found";
+    case "whatitchanged":
+      return "And what it changed";
     default:
       return "";
   }

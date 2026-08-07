@@ -4016,16 +4016,24 @@ which is the "every doctor must know it" tier, and the registry has none of them
 Listed here so the queue is not empty rather than as researched entries; each
 needs the full treatment before it is numbered.
 
-- **Overdiagnosis.** Distinct from `lead-time-bias` and `length-time-bias`, both shipped: those are
-  about when the clock starts and which cases get caught, this is about disease
-  that would never have surfaced. Needs a source printing counts, and screening
-  data is politically live, so neutral ground needs thought rather than assumption.
 - **Prevalence-incidence (Neyman) bias.** Cases that resolve or kill quickly are
   missing from a prevalent sample, so a survey of survivors misdescribes the
   disease. Adjacent to `survivorship-bias` and would have to earn its place against it.
-- **Per-protocol versus intention to treat.** `intention-to-treat` ships the principle; the
-  counterpart card would be the per-protocol analysis that looks better precisely
-  because it drops the people for whom the treatment did not work.
+- **Per-protocol versus intention to treat. WITHDRAWN 2026-08-07: already
+  shipped, and its dataset already spent.** This line survived because nobody
+  re-read the card it was proposing a counterpart to. `intention-to-treat` does
+  not merely "ship the principle": its setup beat IS the per-protocol analysis
+  looking better, on STICH, where per protocol says surgery cuts deaths and
+  significantly so while as-randomised does not reach significance on the same
+  1,212 patients, and its reveal is precisely who got dropped and why. That is
+  the card this line asks for, already built. Worse, the obvious source for a
+  second one is gone too: the Coronary Drug Project adherence tables, where
+  placebo adherers outlived placebo non-adherers by as much as clofibrate
+  adherers outlived theirs, are already spent inside
+  `confounding-by-indication`'s lesson text. A new card here would have to find
+  a third dataset and then explain what it teaches that `who-got-left-out` does
+  not, which is a high bar and probably not worth clearing. Do not restore this
+  line without reading both of those files first.
 - **Blinding, and specifically performance bias.** Corrected after review, because
   the first draft of this line got the taxonomy wrong and it matters here. Cochrane
   separates two channels. **Detection bias** is knowledge of allocation changing how
@@ -4042,3 +4050,106 @@ needs the full treatment before it is numbered.
 - **Attrition.** Differential loss to follow-up. Adjacent to `survivorship-bias` again.
 - **Pygmalion and procedure bias.** Named rang A, no obvious dataset, lowest
   priority of the group.
+
+### 64. Overdiagnosis: the screening that found more and prevented nothing
+
+<!-- skill: overdiagnosis -->
+
+**Status: SHIPPED 2026-08-07** as `the-extra-cases`, skill `overdiagnosis`, on a
+NEW shape, `yield`. Promoted straight out of the unnumbered rang A list above,
+where it had sat with two obstacles recorded against it. Both turned out to be
+answerable, and the way they were answered is the useful part of this entry.
+
+Read at source: Schilling FH, Erttmann R, Berthold F, Hero B, Ernst A, Spix C,
+Kaatsch P, Treuner J, Michaelis J, Berthold F. *Neuroblastoma Screening at 1 Year
+of Age: The Final Results of a Controlled Trial.* JNCI Cancer Spectrum
+2021;5(4):pkab041, `PMC8259619`, open access, pulled as full-text XML through the
+Europe PMC REST endpoint along with its supplementary PDF.
+
+**The first obstacle was neutral ground, and it dissolved on the choice of
+disease rather than on argument.** The line above warned that screening data is
+politically live. It is, for breast and prostate and lung, and the tempting
+source was the Canadian National Breast Screening Study, which is open access in
+the BMJ, randomised, and prints every count this card would need. It also fails
+the deck's neutral-ground test outright, being one of the most publicly contested
+trials in medicine. Neuroblastoma screening is the opposite: the programmes were
+stopped in Canada, the United States, Germany and Japan on the strength of these
+results, and nobody is still arguing. It is also a STRONGER instance, because the
+mechanism is documented spontaneous regression rather than merely slow growth.
+
+**The second obstacle was "needs a source printing counts", and that one was
+half right in a way worth recording.** The paper prints cumulative incidence and
+cumulative mortality per 100,000 births with 95 per cent intervals, and prints no
+birth denominators anywhere. Denominators can be recovered as cases over
+incidence, and they reconcile beautifully against German births in the mid 1990s
+(about 776,000 a year across both areas), but a denominator recovered from a rate
+cannot then be used to check that rate. So the requirement was not "counts": it
+was a shape that could carry published rates.
+
+**Why a new shape rather than a bend.** `rates` derives every rate from a
+numerator and a denominator, so it would have reconciled circularly, and it
+carries one `metricLabel` where this needs three. `forest` puts ONE estimate per
+row against a null line; cumulative incidence has no null, and recasting the rows
+as arm-minus-arm differences would supply one but the interval around a
+difference is not published and inventing it is inventing data. `interval` is
+poll-margin arithmetic. So `yield` was built: two populations, several outcomes,
+each a published rate with its interval on one shared axis, the reveal adding
+rows rather than recolouring them.
+
+**The figure, which is the whole lesson in three rows.** Screening area against
+control area, per 100,000 births, children aged 12 to 71 months, birth cohorts
+1994 to 1999:
+
+| Outcome | Screened | Not screened |
+|---|---|---|
+| Diagnosed with neuroblastoma | **13.4** [12.2, 14.6] | **9.3** [8.2, 10.3] |
+| Diagnosed at stage 4, the metastatic form | 5.0 [4.3, 5.7] | 5.0 [4.2, 5.8] |
+| Died of neuroblastoma within ten years | 3.5 [2.9, 4.1] | 3.8 [3.1, 4.5] |
+
+44 per cent more disease found, the excess sitting entirely in stages 1 to 3
+(8.3 against 4.2), the metastatic rate identical to a decimal place, and no
+detectable reduction in mortality: 3.5 against 3.8 at P = .78. The paper's own
+excess-case estimate for stage 4 is minus 0.5, so there is none there to find.
+
+**On how that last one is worded, because review caught the card getting it
+wrong.** The two mortality rates are NOT equal, and the screened area's estimate
+is the lower of the two. Overlapping intervals and a P of .78 establish that the
+trial found no reduction, not that the rates match, which is exactly what
+`yield.ts` says about its own `separated` flag. The card first keyed its correct
+answer as "Deaths were the same in both areas" and so contradicted the module it
+was drawn with. The nastier half of the same slip was a distractor reading
+"Deaths fell a little": since 3.5 really is below 3.8, a player who read the
+printed numbers correctly could have picked it and been marked wrong. Both are
+fixed, the fall-band is now sized against the 44 per cent excess so the data
+refutes it, and the test that guards this proves itself against the four
+historical phrasings before trusting its own denylist.
+
+**The commit beat is answerable because the stage 4 row is in the SETUP.** An
+earlier plan showed only the headline incidence and asked what happened to
+deaths, which would have been a guess and would have marked a careful player
+wrong for having no way to tell. Drawing the stage 4 row costs the puzzle
+nothing, because "we found 44 per cent more cancers, before symptoms" still pulls
+hard, and it buys a player who knows that deaths come from metastatic disease a
+route to the answer by reasoning.
+
+**Three overclaims this card refuses, all of them tempting.** It does not say the
+screening killed children: 4 toxic deaths among stage 1 to 3 patients against 0
+in the control area looks damning until the pre-study cohort's 5 in 101 is put
+beside it, and the authors conclude toxic death did not notably increase. It does
+not say nobody was helped: 18 children with stage 4 disease were found by
+screening at 12 to 23 months with 94.4 per cent ten-year survival against 29.0
+per cent in the control area, and the authors say plainly they cannot separate
+earlier detection from kinder biology (1 of 17 MYCN-amplified against 17 of 25).
+And it does not call the areas randomised, because the paper states no
+randomisation was performed and participation was 61.2 per cent.
+
+**A discrepancy found in the paper and recorded rather than smoothed over.** The
+Results section says 352 patients had stage 1 to 3 disease in the screening area
+and 219 had stage 4. The supplement gives the opposite assignment, 219 and 133,
+which sum to the 352 that Supplementary Figure 1 gives for ALL stages, and which
+Supplementary Table 4 independently reproduces (58.7 cases per birth year over
+six birth years). The supplement is right: the same Results sentence reports 80
+deaths among the stage 4 patients, and 80 of 133 leaves 39.8 per cent alive,
+matching the published 40.6 per cent ten-year survival, where 80 of 219 would
+leave 63.5 per cent and contradict the paper's own curve. Nothing the card draws
+depends on that sentence, and the provenance note says all of this.

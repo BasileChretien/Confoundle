@@ -40,6 +40,7 @@ import { IntervalView } from "./IntervalView";
 import { CeilingView } from "./CeilingView";
 import { YieldView } from "./YieldView";
 import { restrictYield } from "./yield";
+import { UnseenView } from "./UnseenView";
 import { restrictSeries } from "./series";
 
 /**
@@ -235,6 +236,14 @@ export function DataViewRenderer({
       return view.kind === "whatitfound" || view.kind === "whatitchanged" ? (
         <YieldView data={restrictYield(data, { groupIds: view.groupIds })} kind={view.kind} />
       ) : null;
+    case "unseen":
+      // Deliberately NOT a slice-drawer. Both beats draw the same cohort and
+      // the same reported estimate; the reveal ADDS the correction beside
+      // them. Filtering anything would move the figure the reader is meant to
+      // watch stay still.
+      return view.kind === "asrecorded" || view.kind === "afterlooking" ? (
+        <UnseenView data={data} kind={view.kind} />
+      ) : null;
     default:
       return null;
   }
@@ -371,6 +380,10 @@ export function scopeLabel(kind: DataViewKind): string {
       return "What the programme found";
     case "whatitchanged":
       return "And what it changed";
+    case "asrecorded":
+      return "As the records have it";
+    case "afterlooking":
+      return "And after somebody looked";
     default:
       return "";
   }

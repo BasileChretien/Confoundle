@@ -8996,6 +8996,148 @@ const items: TestItem[] = [
       en: "This is sound and is what informed consent requires here. The leaflet neither hides the possibility nor overstates it into a reason to refuse, and admitting that the distinction cannot be made in one person is the honest statement of what is known.",
     },
   },
+
+  // ---- Attrition bias ----
+  {
+    id: "at-completers-only",
+    scenario: {
+      en: "A twelve-month weight-loss trial reports an average loss of 9 kg among the 140 participants who attended the final weigh-in. It began with 300 participants.",
+    },
+    trap: "attrition-bias",
+    explanation: {
+      en: "More than half never reached the final weigh-in, and the likeliest reason to stop attending is that it was not working. The average is over a group selected for success, so it describes the people it retained rather than the programme.",
+    },
+  },
+  {
+    id: "at-differential-dropout",
+    scenario: {
+      en: "In a trial of a demanding rehabilitation regime, 8 per cent of the control arm dropped out and 27 per cent of the treatment arm did. The published analysis compares everyone who completed.",
+    },
+    trap: "attrition-bias",
+    explanation: {
+      en: "The loss is heavily concentrated in one arm, which is what lets it move a comparison. Whatever made the regime hard to stick with has removed those people from the treatment arm only, so the two groups being compared are no longer the two that were randomised.",
+    },
+  },
+  {
+    id: "at-lost-means-alive",
+    scenario: {
+      en: "A treatment programme reports mortality among patients still enrolled. Patients who stop attending are recorded as lost to follow-up and excluded from the calculation.",
+    },
+    trap: "attrition-bias",
+    explanation: {
+      en: "Dying is one of the reasons a patient stops attending, so the event being counted is also the event that removes people from the group it is counted over. Excluding them does not make the deaths not have happened, it makes them invisible.",
+    },
+  },
+  {
+    id: "at-survey-nonresponse",
+    scenario: {
+      en: "A university surveys its graduates five years on and reports that 88 per cent are in work relevant to their degree. Thirty-nine per cent of those contacted answered.",
+    },
+    trap: "attrition-bias",
+    explanation: {
+      en: "Answering a survey about your career is easier when the career went well, so the people who did not respond are likely to differ on exactly the thing being measured. With a majority missing, the reported share describes respondents and not graduates.",
+    },
+  },
+  {
+    id: "at-small-but-lopsided",
+    scenario: {
+      en: "A trial loses only 6 per cent of participants to follow-up, and the authors call this negligible. All but two of the lost were in the arm that showed the benefit.",
+    },
+    trap: "attrition-bias",
+    explanation: {
+      en: "Size is the wrong thing to check on its own. A small loss concentrated almost entirely in one arm can move a comparison, while a much larger loss spread evenly usually cannot, so what matters is the imbalance rather than the headline percentage.",
+    },
+  },
+  {
+    id: "at-last-observation-carried",
+    scenario: {
+      en: "In a trial of a drug for a progressive disease, patients who withdraw have their last recorded measurement carried forward as if it were their final result.",
+    },
+    trap: "attrition-bias",
+    explanation: {
+      en: "In a disease that gets worse over time, freezing someone at their last visit records them as healthier than they would have been. The method quietly assumes the missing stopped deteriorating the moment they left, which is the one thing that is certainly untrue.",
+    },
+  },
+  {
+    id: "at-per-protocol-swap",
+    scenario: {
+      en: "A trial's registered analysis was to include everyone randomised. The published paper reports only those who completed the full course, without giving the original analysis.",
+    },
+    trap: "attrition-bias",
+    explanation: {
+      en: "Restricting to completers undoes the randomisation, because completing is an outcome rather than a baseline characteristic. That the pre-registered analysis is absent is the more serious problem, since a reader cannot see what it would have shown.",
+    },
+  },
+  {
+    id: "at-app-retention",
+    scenario: {
+      en: "A health app reports that users who are still active after six months have improved markedly on every measure it tracks, and cites this as evidence the app works.",
+    },
+    trap: "attrition-bias",
+    explanation: {
+      en: "People stop using an app that is not helping them, so being still active at six months is partly an outcome of having done well. The comparison needed is everyone who ever started, including those who deleted it.",
+    },
+  },
+  {
+    id: "at-registry-transfers",
+    scenario: {
+      en: "Asked about patients who disappear from its books, a clinic says most of them have transferred elsewhere, and reports outcomes only for those it can still see. No attempt has been made to check.",
+    },
+    trap: "attrition-bias",
+    explanation: {
+      en: "Transferring is a plausible explanation and so is dying, and the records cannot distinguish them because in both cases the patient simply stops appearing. An assumption about the missing is doing the work that evidence should be doing.",
+    },
+  },
+  {
+    id: "at-longer-follow-up",
+    scenario: {
+      en: "A cohort study reports that its five-year results are more reliable than its one-year results, because the longer follow-up gives a fuller picture of the disease.",
+    },
+    trap: "attrition-bias",
+    explanation: {
+      en: "Longer follow-up gives more time for people to be lost, so the five-year sample is the more heavily depleted one. More time is not the same as more complete, and the later figure may rest on a smaller and more selected group than the earlier one.",
+    },
+  },
+  {
+    id: "ok-at-traced-a-sample",
+    scenario: {
+      en: "Faced with a large group whose outcomes were never recorded, investigators take a random sample of them, chase those individuals until their outcomes are established, and use what they find to correct the overall estimate.",
+    },
+    trap: null,
+    explanation: {
+      en: "This is the strongest available answer to the problem rather than an instance of it. Sampling the missing at random and going to find them replaces an assumption about their outcomes with a measurement of them, and the correction applies to the whole.",
+    },
+  },
+  {
+    id: "ok-at-sensitivity-survives",
+    scenario: {
+      en: "A trial with 11 per cent loss to follow-up reports its main result, then repeats the analysis assuming every missing participant in the treatment arm did badly and every missing control did well. The conclusion holds either way.",
+    },
+    trap: null,
+    explanation: {
+      en: "This is the right test and the result passes it. Assuming the worst plausible pattern for the missing and finding the conclusion unchanged shows the finding does not depend on what happened to them.",
+    },
+  },
+  {
+    id: "ok-at-reports-both",
+    scenario: {
+      en: "A paper prints the number lost from each arm, compares their baseline characteristics with those who remained, finds them similar, and says the comparison cannot rule out differences on unmeasured factors.",
+    },
+    trap: null,
+    explanation: {
+      en: "This is careful reporting. Showing the losses by arm, checking the leavers against the stayers, and then declining to treat similarity on measured characteristics as proof of similarity overall is exactly the right sequence and the right amount of caution.",
+    },
+  },
+  {
+    id: "ok-at-everyone-randomised",
+    scenario: {
+      en: "A trial reports its primary outcome over everyone randomised, counting participants who withdrew according to the group they were assigned to, and reports the completer analysis separately as secondary.",
+    },
+    trap: null,
+    explanation: {
+      en: "Analysing by assignment keeps the randomised groups intact, which is what makes the comparison fair. Reporting the completer analysis alongside as a secondary result is informative and is not a substitute for it.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

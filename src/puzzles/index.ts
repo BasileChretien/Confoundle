@@ -63,6 +63,7 @@ import { sourceCountIllusion } from "./data/source-count-illusion";
 import { compositeEndpoints } from "./data/composite-endpoints";
 import { fearAppeals } from "./data/fear-appeals";
 import { shelfLife } from "./data/shelf-life";
+import { overdiagnosis } from "./data/overdiagnosis";
 
 /**
  * The puzzle registry. Adding a puzzle = import its data file and add it to
@@ -134,6 +135,7 @@ const rawPuzzles: unknown[] = [
   shelfLife,
   fearAppeals,
   compositeEndpoints,
+  overdiagnosis,
 ];
 
 export const puzzles: PuzzleType[] = rawPuzzles.map((p, i) => {

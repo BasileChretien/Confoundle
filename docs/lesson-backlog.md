@@ -4060,7 +4060,13 @@ needs the full treatment before it is numbered.
   hard endpoints untouched. The skeleton resembles entry 27 in that both end with a
   soft component carrying the result, but the mechanism differs and they should not
   be merged without deciding which one a player is actually learning.
-- **Attrition.** Differential loss to follow-up. Adjacent to `survivorship-bias` again.
+  **Searched 2026-08-07 and written up as numbered entry 66 below**, which
+  checks the three adjacency claims in this paragraph against the actual cards
+  (they hold), records the best candidate found, and records the three reasons
+  it cannot be built yet. Read that before searching again.
+- **Attrition. SHIPPED 2026-08-07** as `filed-as-lost`, on the new `unseen`
+  shape; see numbered entry 65. Left in this list rather than deleted, because
+  this is where somebody looking for it will look.
 - **Pygmalion and procedure bias.** Named rang A, no obvious dataset, lowest
   priority of the group.
 
@@ -4283,3 +4289,88 @@ and a card should not print one without resolving it.
 
 **Neutral ground: yes.** This is a programme evaluation whose authors are the
 people running the programme, and its finding is unflattering to them.
+
+### 66. Performance bias: searched 2026-08-07, and the best candidate is blocked three ways
+
+<!-- skill: performance-bias -->
+
+**Status: LEAD, SEARCHED AND NOT SHIPPABLE YET.** Recorded so the next session
+does not repeat the search or the adjacency checks. The lead itself, in the
+unnumbered rang A list above, is accurate and survives: this entry adds what
+happened when somebody tried to source it.
+
+**First, the adjacency claims were checked against the cards rather than
+believed, and all three hold.** That check is the reason this entry exists,
+after three planning-doc claims failed it this week.
+
+- `detection-bias` (`who-graded-it`, Brandstrup 2003) is genuinely the
+  ASSESSMENT channel: 172 colorectal patients whose complications were graded
+  twice, once by a blinded assessor and once by the unblinded local
+  investigators. Nothing about what was DONE to the patients differs between
+  those two columns; only the grader does. So the behaviour channel really is
+  unoccupied.
+- `hawthorne-effect` (`the-watched-ward`) is about being observed changing
+  behaviour, in BOTH arms, and its lesson is that the size of that change
+  varies by setting. It is not about knowing which arm you are in.
+- `nocebo-effect` (StatinWISE) is a blinded crossover about symptom REPORTING
+  under expectation, which is neither channel.
+
+**What performance bias would need, restated from those three.** A trial where
+knowing the allocation changed what participants or staff actually DID:
+co-interventions, extra monitoring, effort, adherence. Not who graded it, not
+being watched in general, not what was reported.
+
+**The best candidate found, and it fails three ways.** Jøns C, Søgaard P,
+Smilde T, et al., BIO|GUARD-MI study group. *Pitfalls in the reporting of
+clinical events in unblinded device trials: analysing performance bias in the
+BIO|GUARD-MI trial.* Trials 2026, PMID 42129909, doi
+10.1186/s13063-026-09720-5.
+
+The story is close to ideal. BIO|GUARD-MI was an unblinded trial of an
+implantable arrhythmia monitor after myocardial infarction. A pre-specified
+interim analysis found MORE non-cardiovascular adverse events in the monitored
+arm, which randomisation should have balanced, so a performance bias was
+assumed and the trial was stopped early. The authors then went looking for the
+behaviour behind it, and their candidate is that monitored patients came to the
+study site on their own initiative more often, and a visit is where an adverse
+event gets recorded.
+
+Why it cannot be built as it stands:
+
+1. **The full paper is not open access.** What is reachable through Europe PMC
+   is the Europace conference abstract (`PMC13301046`, `article-type="abstract"`,
+   about 11 KB with no body). This deck does not author from abstracts, so the
+   numbers below are quoted only to say what would need checking, not as
+   verified figures. The Trials version is paywalled and would need
+   institutional access.
+2. **The headline comparison does not reach significance.** In the total
+   population the uninvited-visit rates were 13.3 per cent against 9.7 per
+   cent, P = 0.12. The dramatic figure, 24.4 against 2.3, is Denmark alone,
+   about a fifth of the trial, found by testing 14 national and 10 clinical
+   subgroups. The authors corrected for multiple testing and report P = 0.0004,
+   which is careful of them, and it is still a subgroup finding. A card whose
+   central number came from one country out of 24 comparisons would sit badly
+   in a deck that ships `multiple-comparisons`, and the honest framing of the
+   whole-trial result is that it did not separate.
+3. **It blurs the very distinction this lead exists to preserve.** The
+   behaviour that changed is the patient's, which is the performance channel;
+   the consequence is that more events were ascertained, which is the detection
+   side. The rang A note above says these two must not be merged without
+   deciding which one a player is actually learning, and a card built here would
+   have to decide that first. Note also that a surveillance-bias reading, more
+   looking finds more, is arguably the better description, and no
+   `surveillance-bias` skill exists either.
+
+**What a usable source would look like**, so the next search is narrower than
+this one: a trial that PRINTS, by arm, a co-intervention or care-process count
+alongside its outcome, where the arms differ on the process and the trial was
+unblinded. The two views are then the outcome and the process on one set of
+patients, which is the deck's usual shape and is probably `rates`. Searching on
+"performance bias" as a phrase mostly returns methodology papers and risk-of-bias
+tables; searching on the process itself (rescue medication, physiotherapy
+sessions, clinic visits, adherence) by arm is likelier to find the trial.
+
+**Not attempted here: institutional access.** The Trials paper could be read
+through Basile's own access, and that would settle obstacle 1 but not 2 or 3.
+It is worth doing only if somebody first decides the taxonomy question, because
+obstacle 3 is a design decision rather than a sourcing one.

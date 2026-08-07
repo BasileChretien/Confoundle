@@ -6084,4 +6084,8 @@ export const es: Record<string, string> = {
   "This is careful reporting. Showing the losses by arm, checking the leavers against the stayers, and then declining to treat similarity on measured characteristics as proof of similarity overall is exactly the right sequence and the right amount of caution.": "Esto es informar con cuidado. Mostrar las pérdidas por rama, contrastar a los que se fueron con los que se quedaron, y luego negarse a tratar la similitud en características medidas como prueba de similitud general es exactamente la secuencia correcta y la dosis correcta de cautela.",
   "A trial reports its primary outcome over everyone randomised, counting participants who withdrew according to the group they were assigned to, and reports the completer analysis separately as secondary.": "Un ensayo informa de su desenlace principal sobre todos los aleatorizados, contando a los participantes que se retiraron según el grupo al que fueron asignados, e informa por separado del análisis de quienes completaron, como secundario.",
   "Analysing by assignment keeps the randomised groups intact, which is what makes the comparison fair. Reporting the completer analysis alongside as a secondary result is informative and is not a substitute for it.": "Analizar por asignación mantiene intactos los grupos aleatorizados, que es lo que hace justa la comparación. Informar al lado del análisis de quienes completaron como resultado secundario es informativo y no lo sustituye.",
+  "What the programme found": "Lo que el programa encontró",
+  "And what it changed": "Y lo que cambió",
+  "As the records have it": "Según los registros",
+  "And after somebody looked": "Y después de que alguien fuera a mirar",
 };

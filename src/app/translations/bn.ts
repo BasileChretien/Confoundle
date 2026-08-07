@@ -6030,4 +6030,8 @@ export const bn: Record<string, string> = {
   "This is careful reporting. Showing the losses by arm, checking the leavers against the stayers, and then declining to treat similarity on measured characteristics as proof of similarity overall is exactly the right sequence and the right amount of caution.": "এটি যত্নবান প্রতিবেদন। বাহু অনুযায়ী ক্ষতি দেখানো, যাঁরা গেছেন তাঁদের যাঁরা থেকেছেন তাঁদের সঙ্গে মেলানো, আর তারপর মাপা বৈশিষ্ট্যে মিলকে সামগ্রিক মিলের প্রমাণ ভাবতে অস্বীকার করা ঠিক সঠিক ক্রম এবং ঠিক সঠিক পরিমাণ সতর্কতা।",
   "A trial reports its primary outcome over everyone randomised, counting participants who withdrew according to the group they were assigned to, and reports the completer analysis separately as secondary.": "একটি পরীক্ষা তার প্রধান ফল সব এলোমেলোভাবে বণ্টিতের উপর জানায়, সরে যাওয়া অংশগ্রহণকারীদের তাঁদের বরাদ্দ দলেই গুনে, আর কেবল শেষ করাদের বিশ্লেষণ আলাদাভাবে গৌণ হিসেবে জানায়।",
   "Analysing by assignment keeps the randomised groups intact, which is what makes the comparison fair. Reporting the completer analysis alongside as a secondary result is informative and is not a substitute for it.": "বরাদ্দ অনুযায়ী বিশ্লেষণ এলোমেলো দলগুলিকে অক্ষত রাখে, আর সেটিই তুলনাকে ন্যায্য করে। পাশে শেষ করাদের বিশ্লেষণ গৌণ ফল হিসেবে জানানো তথ্যবহুল এবং তার বিকল্প নয়।",
+  "What the programme found": "কর্মসূচি যা পেল",
+  "And what it changed": "আর সে যা বদলাল",
+  "As the records have it": "নথিতে যেমন আছে",
+  "And after somebody looked": "আর কেউ খোঁজার পর",
 };

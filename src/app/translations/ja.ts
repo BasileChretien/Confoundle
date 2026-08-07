@@ -5980,4 +5980,8 @@ export const ja: Record<string, string> = {
   "This is careful reporting. Showing the losses by arm, checking the leavers against the stayers, and then declining to treat similarity on measured characteristics as proof of similarity overall is exactly the right sequence and the right amount of caution.": "これは丁寧な報告である。群ごとの喪失を示し、去った人と残った人を照合し、そのうえで測定された特性の類似を全体の類似の証拠として扱うことを拒むのは、まさに正しい順序であり、正しい量の慎重さである。",
   "A trial reports its primary outcome over everyone randomised, counting participants who withdrew according to the group they were assigned to, and reports the completer analysis separately as secondary.": "ある試験が主要評価項目を無作為化された全員について報告し、離脱した参加者も割り付けられた群に数え入れ、完了者だけの解析は副次的なものとして別に報告している。",
   "Analysing by assignment keeps the randomised groups intact, which is what makes the comparison fair. Reporting the completer analysis alongside as a secondary result is informative and is not a substitute for it.": "割り付けに従って解析することは無作為化された群をそのまま保ち、それが比較を公正にする。完了者の解析を副次的な結果として併記することは有益であり、その代わりにはならない。",
+  "What the programme found": "事業が見つけたもの",
+  "And what it changed": "そして何を変えたか",
+  "As the records have it": "記録のとおりでは",
+  "And after somebody looked": "そして誰かが探したあと",
 };

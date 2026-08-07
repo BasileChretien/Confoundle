@@ -5983,4 +5983,8 @@ export const ar: Record<string, string> = {
   "This is careful reporting. Showing the losses by arm, checking the leavers against the stayers, and then declining to treat similarity on measured characteristics as proof of similarity overall is exactly the right sequence and the right amount of caution.": "هذا عرض دقيق. فإظهار الخسائر بحسب الذراع، ومقابلة الراحلين بالباقين، ثم رفض اعتبار التشابه في الخصائص المقيسة برهانًا على التشابه عمومًا، هو بالضبط التسلسل الصحيح والقدر الصحيح من الحذر.",
   "A trial reports its primary outcome over everyone randomised, counting participants who withdrew according to the group they were assigned to, and reports the completer analysis separately as secondary.": "تفيد تجربة بمآلها الرئيسي على كل من جرت عشوأتهم، محتسبةً المشاركين المنسحبين ضمن المجموعة التي خُصصوا لها، وتفيد بتحليل من أكملوا على حدة بوصفه ثانويًا.",
   "Analysing by assignment keeps the randomised groups intact, which is what makes the comparison fair. Reporting the completer analysis alongside as a secondary result is informative and is not a substitute for it.": "التحليل بحسب التخصيص يبقي المجموعات المعشّاة سليمة، وهو ما يجعل المقارنة منصفة. وإيراد تحليل من أكملوا إلى جانبه كنتيجة ثانوية مفيد ولا يحل محله.",
+  "What the programme found": "ما وجده البرنامج",
+  "And what it changed": "وما غيّره",
+  "As the records have it": "كما تقول السجلات",
+  "And after somebody looked": "وبعد أن بحث أحدهم",
 };

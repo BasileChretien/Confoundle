@@ -6052,4 +6052,8 @@ export const ru: Record<string, string> = {
   "This is careful reporting. Showing the losses by arm, checking the leavers against the stayers, and then declining to treat similarity on measured characteristics as proof of similarity overall is exactly the right sequence and the right amount of caution.": "Вот это аккуратное изложение. Показать потери по группам, сверить ушедших с оставшимися, а затем отказаться считать сходство по измеренным характеристикам доказательством сходства вообще, это ровно верная последовательность и верная мера осторожности.",
   "A trial reports its primary outcome over everyone randomised, counting participants who withdrew according to the group they were assigned to, and reports the completer analysis separately as secondary.": "Исследование сообщает основной исход по всем рандомизированным, засчитывая выбывших участников в ту группу, в которую они были распределены, и отдельно приводит анализ по дошедшим до конца как вторичный.",
   "Analysing by assignment keeps the randomised groups intact, which is what makes the comparison fair. Reporting the completer analysis alongside as a secondary result is informative and is not a substitute for it.": "Анализ по распределению сохраняет рандомизированные группы нетронутыми, и именно это делает сравнение честным. Приводить рядом анализ по дошедшим как вторичный результат полезно, и он его не заменяет.",
+  "What the programme found": "Что программа нашла",
+  "And what it changed": "И что она изменила",
+  "As the records have it": "Как значится в записях",
+  "And after somebody looked": "И после того как кто-то поискал",
 };

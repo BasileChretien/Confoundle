@@ -6021,4 +6021,8 @@ export const hi: Record<string, string> = {
   "This is careful reporting. Showing the losses by arm, checking the leavers against the stayers, and then declining to treat similarity on measured characteristics as proof of similarity overall is exactly the right sequence and the right amount of caution.": "यह सावधान रिपोर्टिंग है। बाँह-वार हानि दिखाना, जाने वालों को रुकने वालों से मिलाना, और फिर मापी गई विशेषताओं पर समानता को समग्र समानता का प्रमाण मानने से इनकार करना ठीक सही क्रम है और सावधानी की ठीक सही मात्रा।",
   "A trial reports its primary outcome over everyone randomised, counting participants who withdrew according to the group they were assigned to, and reports the completer analysis separately as secondary.": "एक परीक्षण अपना मुख्य परिणाम सभी यादृच्छिक किए गए लोगों पर बताता है, हट जाने वाले प्रतिभागियों को उसी समूह में गिनते हुए जिसमें उन्हें रखा गया था, और पूरा करने वालों का विश्लेषण अलग से गौण के रूप में बताता है।",
   "Analysing by assignment keeps the randomised groups intact, which is what makes the comparison fair. Reporting the completer analysis alongside as a secondary result is informative and is not a substitute for it.": "आवंटन के अनुसार विश्लेषण यादृच्छिक समूहों को अक्षुण्ण रखता है, और यही तुलना को निष्पक्ष बनाता है। साथ में पूरा करने वालों का विश्लेषण गौण परिणाम के रूप में बताना उपयोगी है और उसका विकल्प नहीं।",
+  "What the programme found": "कार्यक्रम ने क्या पाया",
+  "And what it changed": "और उसने क्या बदला",
+  "As the records have it": "जैसा रिकॉर्ड में है",
+  "And after somebody looked": "और जब किसी ने खोजा उसके बाद",
 };

@@ -5922,4 +5922,8 @@ export const zh: Record<string, string> = {
   "This is careful reporting. Showing the losses by arm, checking the leavers against the stayers, and then declining to treat similarity on measured characteristics as proof of similarity overall is exactly the right sequence and the right amount of caution.": "这是审慎的报告。分组展示损失，把离开者与留下者相对照，然后拒绝把已测量特征上的相似当作总体相似的证明，正是恰当的顺序和恰当分量的谨慎。",
   "A trial reports its primary outcome over everyone randomised, counting participants who withdrew according to the group they were assigned to, and reports the completer analysis separately as secondary.": "一项试验就所有随机分配者报告其主要结局，把退出的参与者按其被分配到的组计入，并把仅限完成者的分析作为次要结果单独报告。",
   "Analysing by assignment keeps the randomised groups intact, which is what makes the comparison fair. Reporting the completer analysis alongside as a secondary result is informative and is not a substitute for it.": "按分配进行分析可使随机分组保持完整，而这正是比较之所以公平的原因。把完成者分析作为次要结果并列报告是有益的，但不能取代它。",
+  "What the programme found": "项目找到了什么",
+  "And what it changed": "以及它改变了什么",
+  "As the records have it": "按记录所载",
+  "And after somebody looked": "以及有人去找过之后",
 };

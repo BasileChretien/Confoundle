@@ -4638,9 +4638,15 @@ were checked and both fail, and neither fails on neutrality.
   point the other way. The literature is genuinely unresolved, so "it did not
   replicate" is not the honest summary either.
 
-Both are Open Access, incidentally, which Europe PMC's `isOpenAccess` flag
-denies for both. That flag was wrong three separate times on 2026-08-07. Check
-Unpaywall, or the publisher, before recording a paywall as an obstacle.
+Both are Open Access at the publisher, and Europe PMC returns
+`isOpenAccess: N` for both. That is not the flag being wrong, and an earlier
+entry in this file already put it correctly before this one regressed: the field
+reports membership of Europe PMC's own open-access subset, which a paper can sit
+outside while being free at the publisher, and it also reads N when the only
+Europe PMC record is a conference abstract, as it was for BIO|GUARD-MI. What was
+wrong three times on 2026-08-07 was reading that N as a paywall, and once it
+cost Basile a PDF request he did not need to fulfil. Check Unpaywall or the
+publisher before recording a paywall as an obstacle.
 
 **THE ACTUAL BINDING CONSTRAINT, which is worth stating plainly because two
 sessions have now circled it.** Every well-documented reversal comes with an

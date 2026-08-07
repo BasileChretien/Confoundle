@@ -9173,11 +9173,11 @@ const items: TestItem[] = [
   {
     id: "pyg-coach-lane",
     scenario: {
-      en: "A running club tested a new warm-up. The coach was told which athletes were in the intervention group so he could deliver it correctly, and he also timed everyone's trial. The intervention group improved more.",
+      en: "A running club tested a new warm-up. The coach was told which athletes were in the intervention group so he could deliver it correctly. An official who did not know the groups timed every trial. The intervention group improved more.",
     },
     trap: "pygmalion-effect",
     explanation: {
-      en: "The coach knew who was in which group and then spent the season with them, so his belief could have changed how hard those athletes trained. That he also held the stopwatch adds a second problem on top of the first.",
+      en: "The coach knew who was in which group and then spent the season with them, so his belief could have changed how hard those athletes trained. A blinded timekeeper protects the measurement, and it does nothing at all about the training that produced it.",
     },
   },
   {
@@ -9187,7 +9187,7 @@ const items: TestItem[] = [
     },
     trap: "pygmalion-effect",
     explanation: {
-      en: "The instructors saw the scores and then taught the recruits for weeks, so the scores had a route to the exam that runs through the instructors rather than through aptitude. A test can only be shown to predict if the people it is predicting about are kept from seeing it.",
+      en: "The instructors saw the scores and then taught the recruits for weeks, so the scores had a route to the exam that runs through the instructors rather than through aptitude. A test can only be shown to predict if its scores are kept from the people doing the teaching.",
     },
   },
   {
@@ -9233,11 +9233,11 @@ const items: TestItem[] = [
   {
     id: "pyg-open-label-ward",
     scenario: {
-      en: "A hospital compared a new early-mobilisation policy on two wards. The ward running the new policy had volunteered for it and its staff were keen. Patients there reported better mood and less fatigue at discharge.",
+      en: "A hospital compared a new early-mobilisation policy on two wards, drawing lots to decide which ward would run it. The staff on that ward were told the policy was expected to help, and they were keen on it. Patients there reported better mood and less fatigue at discharge.",
     },
     trap: "pygmalion-effect",
     explanation: {
-      en: "The keen ward chose itself, and its staff spent the admission with the patients whose mood and fatigue are the outcome. Enthusiasm reaches patients, so the policy and the staff's belief in it cannot be separated by this comparison.",
+      en: "The wards were allocated by lot rather than self-selected, so that is not what is wrong here. What is wrong is that the staff who believed in the policy are the staff who then spent the admission with the patients whose mood and fatigue are the outcome. Enthusiasm reaches patients, so the policy and the belief in it cannot be separated by this comparison.",
     },
   },
   {

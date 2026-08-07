@@ -2012,6 +2012,20 @@ const ForestData = z
     worseLabel: LocalizedText,
     /** And the side where it helped. */
     betterLabel: LocalizedText,
+    /**
+     * Put the HARMFUL side on the right instead of the left.
+     *
+     * Optional, and never given a default, because the inferred type would then
+     * make it required on every existing puzzle. Omitted keeps the original
+     * behaviour, which suits an effect size where more is better.
+     *
+     * A hazard ratio for an adverse event runs the other way: above the null is
+     * worse. Without this the axis would have to be labelled backwards, or the
+     * two side labels would have to be swapped in the data file and quietly mean
+     * the opposite of their field names, which is the kind of small lie that
+     * survives for years.
+     */
+    higherIsWorse: z.boolean().optional(),
     /** Axis bounds, authored so both beats share one scale. */
     axisMin: z.number(),
     axisMax: z.number(),

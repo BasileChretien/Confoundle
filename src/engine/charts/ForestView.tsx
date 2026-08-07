@@ -152,9 +152,13 @@ export function ForestView({
         dir="ltr"
         className="mt-2 flex items-start justify-between gap-2 text-[10px] leading-tight text-ink-soft"
       >
-        <span className="max-w-[42%] text-left">← {t(data.worseLabel)}</span>
+        <span className="max-w-[42%] text-left">
+          ← {t(data.higherIsWorse ? data.betterLabel : data.worseLabel)}
+        </span>
         <span className="shrink-0 text-center font-medium">{t(data.nullLabel)}</span>
-        <span className="max-w-[42%] text-right">{t(data.betterLabel)} →</span>
+        <span className="max-w-[42%] text-right">
+          {t(data.higherIsWorse ? data.worseLabel : data.betterLabel)} →
+        </span>
       </div>
       <p className="text-[10px] leading-snug text-ink-soft">{t(data.unit)}</p>
     </div>

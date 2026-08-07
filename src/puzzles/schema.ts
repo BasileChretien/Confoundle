@@ -2418,6 +2418,175 @@ const UnseenData = z
   });
 export type UnseenData = z.infer<typeof UnseenData>;
 
+/* ---------------------------------------------------------------------------
+ * An outcome measured in two arms, plus what each arm was actually given.
+ *
+ * Needed because the lessons about a COMPARISON THAT WAS NEVER LIKE FOR LIKE
+ * cannot be drawn by any shape here, and they all fail in the same place. Every
+ * existing shape draws the outcome and stops. That is fine when the question is
+ * whether the gap is real, and useless when the question is what bought it,
+ * because the reader is then being asked to judge a comparison while looking at
+ * exactly the half of it that cannot answer the question.
+ *
+ * `ratings` comes closest and still cannot do it: it is a flat list of series
+ * with one mean each, so there is nowhere to put the dose, and nowhere to say
+ * that two of the bars were measured under conditions the experimenters had
+ * rigged and two were not. Encoding the dose in the series LABEL would put the
+ * answer on screen during the setup, which is the beat where it must not be.
+ *
+ * So the shape carries a third column, `exposure`, and the two views differ by
+ * whether it is drawn. `asmeasured` shows the bars alone, which is how such a
+ * comparison is normally published and normally read. `asdelivered` prints
+ * under each bar what that group was actually given. Nothing moves between the
+ * beats; a column appears. That is the whole design, and it is the reason this
+ * shape is not filterable: the reveal is not more bars, it is the same bars
+ * with the missing column filled in.
+ *
+ * `tiers` are the groups compared across (doctors and patients, say, or two
+ * centres); `arms` are the two conditions each tier was measured under. The
+ * refinement below insists on at least one tier whose two exposures are EQUAL
+ * and at least one whose two DIFFER, because a figure without both has no
+ * lesson: if every tier was given something different the answer is just "the
+ * doses differed" and no comparison is left standing to be surprised by, and if
+ * every tier was given the same thing the hidden column reveals nothing at all.
+ * ------------------------------------------------------------------------- */
+
+export const DeliveredArm = z.object({
+  id: z.string().min(1),
+  label: LocalizedText, // "Thermedol"
+  short: LocalizedText.optional(),
+});
+export type DeliveredArm = z.infer<typeof DeliveredArm>;
+
+export const DeliveredTier = z.object({
+  id: z.string().min(1),
+  label: LocalizedText, // "The doctors, on their own arm"
+  short: LocalizedText.optional(),
+  /**
+   * What the source reported for this tier's own comparison. The figure draws
+   * bare means, so a tier whose difference needs a published interval or test
+   * to be read honestly says so here rather than leaving the reader to judge
+   * two bars by eye.
+   */
+  note: LocalizedText.optional(),
+});
+export type DeliveredTier = z.infer<typeof DeliveredTier>;
+
+export const DeliveredObservation = z.object({
+  tierId: z.string().min(1),
+  armId: z.string().min(1),
+  mean: z.number(),
+  /** People (or units) contributing to this cell, as the source counts them. */
+  n: z.number().int().positive(),
+  /** What was actually delivered here, in units of `exposureUnit`. */
+  exposure: z.number(),
+});
+export type DeliveredObservation = z.infer<typeof DeliveredObservation>;
+
+const DeliveredData = z
+  .object({
+    type: z.literal("delivered"),
+    label: LocalizedText,
+    metricLabel: LocalizedText, // "pain, rated 0 to 100"
+    scale: z.object({
+      min: z.number(),
+      max: z.number(),
+      minLabel: LocalizedText,
+      maxLabel: LocalizedText,
+    }),
+    /** Names the withheld column, e.g. "heat actually applied". */
+    exposureLabel: LocalizedText,
+    /** Its unit, printed against every value: degrees, mg, minutes. */
+    exposureUnit: LocalizedText,
+    arms: z.array(DeliveredArm).length(2),
+    tiers: z.array(DeliveredTier).min(2),
+    observations: z.array(DeliveredObservation).min(4),
+  })
+  .superRefine((d, ctx) => {
+    if (d.scale.max <= d.scale.min)
+      ctx.addIssue({
+        code: "custom",
+        path: ["scale", "max"],
+        message: "scale max must be above scale min",
+      });
+
+    const armIds = new Set(d.arms.map((a) => a.id));
+    const tierIds = new Set(d.tiers.map((t) => t.id));
+    if (armIds.size !== d.arms.length)
+      ctx.addIssue({ code: "custom", path: ["arms"], message: "duplicate arm id" });
+    if (tierIds.size !== d.tiers.length)
+      ctx.addIssue({ code: "custom", path: ["tiers"], message: "duplicate tier id" });
+
+    const seen = new Set<string>();
+    d.observations.forEach((o, i) => {
+      if (!armIds.has(o.armId))
+        ctx.addIssue({
+          code: "custom",
+          path: ["observations", i, "armId"],
+          message: `no arm with id ${o.armId}`,
+        });
+      if (!tierIds.has(o.tierId))
+        ctx.addIssue({
+          code: "custom",
+          path: ["observations", i, "tierId"],
+          message: `no tier with id ${o.tierId}`,
+        });
+      const key = `${o.tierId}|${o.armId}`;
+      if (seen.has(key))
+        ctx.addIssue({
+          code: "custom",
+          path: ["observations", i],
+          message: `two observations for ${o.tierId} in ${o.armId}`,
+        });
+      seen.add(key);
+      if (o.mean < d.scale.min || o.mean > d.scale.max)
+        ctx.addIssue({
+          code: "custom",
+          path: ["observations", i, "mean"],
+          message: `mean ${o.mean} is outside the ${d.scale.min} to ${d.scale.max} scale`,
+        });
+    });
+
+    // Every tier must carry both arms, for the reason `yield` insists on it: a
+    // pair drawn with one member missing reads as a pair whose second member
+    // was zero.
+    for (const t of d.tiers)
+      for (const a of d.arms)
+        if (!seen.has(`${t.id}|${a.id}`))
+          ctx.addIssue({
+            code: "custom",
+            path: ["observations"],
+            message: `tier ${t.id} has no observation for arm ${a.id}`,
+          });
+
+    // And the pair of checks this shape exists for.
+    const exposureGap = (tierId: string): number | null => {
+      const [x, y] = d.arms.map((a) =>
+        d.observations.find((o) => o.tierId === tierId && o.armId === a.id),
+      );
+      if (!x || !y) return null;
+      return x.exposure - y.exposure;
+    };
+    const gaps = d.tiers.map((t) => exposureGap(t.id)).filter((g) => g !== null);
+    if (gaps.length === d.tiers.length) {
+      if (!gaps.some((g) => g === 0))
+        ctx.addIssue({
+          code: "custom",
+          path: ["observations"],
+          message:
+            "no tier was given the same thing in both arms, so the hidden column accounts for every gap in the figure and no comparison is left standing to be surprised by",
+        });
+      if (!gaps.some((g) => g !== 0))
+        ctx.addIssue({
+          code: "custom",
+          path: ["observations"],
+          message:
+            "every tier was given the same thing in both arms, so revealing the hidden column changes nothing the reader could not already see",
+        });
+    }
+  });
+export type DeliveredData = z.infer<typeof DeliveredData>;
+
 export const PuzzleData = z.discriminatedUnion("type", [
   RatesData,
   FrequenciesData,
@@ -2447,6 +2616,7 @@ export const PuzzleData = z.discriminatedUnion("type", [
   ForestData,
   YieldData,
   UnseenData,
+  DeliveredData,
 ]);
 export type PuzzleData = z.infer<typeof PuzzleData>;
 
@@ -2525,6 +2695,8 @@ export const DataView = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("whatitchanged"), ...viewFields }),
   z.object({ kind: z.literal("asrecorded"), ...viewFields }),
   z.object({ kind: z.literal("afterlooking"), ...viewFields }),
+  z.object({ kind: z.literal("asmeasured"), ...viewFields }),
+  z.object({ kind: z.literal("asdelivered"), ...viewFields }),
 ]);
 export type DataView = z.infer<typeof DataView>;
 export type DataViewKind = DataView["kind"];

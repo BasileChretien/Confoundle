@@ -9138,6 +9138,148 @@ const items: TestItem[] = [
       en: "Analysing by assignment keeps the randomised groups intact, which is what makes the comparison fair. Reporting the completer analysis alongside as a secondary result is informative and is not a substitute for it.",
     },
   },
+
+  // ---- Pygmalion effect: somebody else's expectation ----
+  {
+    id: "pyg-physio-belief",
+    scenario: {
+      en: "A physiotherapy department trialled a new stretching protocol. The therapists delivering it had been shown the pilot data first and were enthusiastic about it. Patients on the new protocol reported less stiffness at six weeks than those on the old one.",
+    },
+    trap: "pygmalion-effect",
+    explanation: {
+      en: "The therapists knew which patients were getting the protocol they believed in, and stiffness is reported by the patient after an hour in that therapist's company. Some unknown share of the six-week difference belongs to the therapists rather than the stretches.",
+    },
+  },
+  {
+    id: "pyg-teacher-flagged",
+    scenario: {
+      en: "A school gave every new pupil a screening test and told teachers which pupils had been flagged as likely to make rapid progress. By the summer, the flagged pupils had gained more than the others, which the head cited as evidence the screening test works.",
+    },
+    trap: "pygmalion-effect",
+    explanation: {
+      en: "The teachers were told the flags before spending a year with the children, so the flag could have produced the gain rather than predicted it. The test is only shown to work if the flags are kept from the people doing the teaching.",
+    },
+  },
+  {
+    id: "pyg-nurse-tone",
+    scenario: {
+      en: "In a trial of two anti-nausea drugs, the nurses giving the infusions knew which was the newer one. They said nothing about it to patients. The newer drug came out ahead on patient-reported nausea.",
+    },
+    trap: "pygmalion-effect",
+    explanation: {
+      en: "Saying nothing is not the same as giving nothing away. Manner, pace and expression carry belief without a word, and nausea is scored by asking the patient. The nurses needed to be blinded too, not merely silent.",
+    },
+  },
+  {
+    id: "pyg-coach-lane",
+    scenario: {
+      en: "A running club tested a new warm-up. The coach was told which athletes were in the intervention group so he could deliver it correctly, and he also timed everyone's trial. The intervention group improved more.",
+    },
+    trap: "pygmalion-effect",
+    explanation: {
+      en: "The coach knew who was in which group and then spent the season with them, so his belief could have changed how hard those athletes trained. That he also held the stopwatch adds a second problem on top of the first.",
+    },
+  },
+  {
+    id: "pyg-recruit-scores",
+    scenario: {
+      en: "Instructors on a training course were given each recruit's aptitude score before the course began. At the end, the recruits with high scores had outperformed the rest on the objective final exam, and the unit concluded the aptitude test predicts performance well.",
+    },
+    trap: "pygmalion-effect",
+    explanation: {
+      en: "The instructors saw the scores and then taught the recruits for weeks, so the scores had a route to the exam that runs through the instructors rather than through aptitude. A test can only be shown to predict if the people it is predicting about are kept from seeing it.",
+    },
+  },
+  {
+    id: "pyg-therapist-allegiance",
+    scenario: {
+      en: "Two talking therapies were compared. Each was delivered by therapists trained in it and convinced by it. The therapy whose practitioners had developed it did better on the depression scale at twelve weeks.",
+    },
+    trap: "pygmalion-effect",
+    explanation: {
+      en: "The therapists' belief in what they are delivering is bundled with the therapy itself here, and it is the kind of thing that reaches a patient across twelve weeks of conversation. This is why allegiance is recorded as its own variable in psychotherapy trials.",
+    },
+  },
+  {
+    id: "pyg-care-home-mobility",
+    scenario: {
+      en: "A care home introduced a mobility programme on one floor. Staff on that floor were told the residents chosen for it were the ones with the best chance of walking again. Those residents did regain more mobility than residents on the other floor.",
+    },
+    trap: "pygmalion-effect",
+    explanation: {
+      en: "Staff were told these residents were the promising ones, and staff are the people who decide how much encouragement and how many attempts a resident gets. The expectation could have produced the walking rather than the programme.",
+    },
+  },
+  {
+    id: "pyg-vet-lameness",
+    scenario: {
+      en: "A supplement for lame horses was tested on a yard. The grooms giving it knew which horses were on it, and lameness was graded by the owner watching each horse trot up. The supplemented horses were graded sounder after eight weeks.",
+    },
+    trap: "pygmalion-effect",
+    explanation: {
+      en: "Two people who knew the allocation were in a position to affect the result: the grooms, whose handling and exercise decisions differ with what they expect, and the owner grading by eye. Blinding the grader alone would not fix the first of those.",
+    },
+  },
+  {
+    id: "pyg-interview-recommended",
+    scenario: {
+      en: "A firm reviewed its hiring and found that candidates who arrived with an internal recommendation performed far better at interview than those who did not. It concluded that internal recommendations identify strong candidates.",
+    },
+    trap: "pygmalion-effect",
+    explanation: {
+      en: "The interviewers knew who had been recommended before the conversation started, and an interview is a conversation whose course both people shape. A warmer interviewer produces a better candidate, so the recommendation may be creating the performance it appears to predict.",
+    },
+  },
+  {
+    id: "pyg-open-label-ward",
+    scenario: {
+      en: "A hospital compared a new early-mobilisation policy on two wards. The ward running the new policy had volunteered for it and its staff were keen. Patients there reported better mood and less fatigue at discharge.",
+    },
+    trap: "pygmalion-effect",
+    explanation: {
+      en: "The keen ward chose itself, and its staff spent the admission with the patients whose mood and fatigue are the outcome. Enthusiasm reaches patients, so the policy and the staff's belief in it cannot be separated by this comparison.",
+    },
+  },
+  {
+    id: "pyg-sound-blinded-staff",
+    scenario: {
+      en: "In a trial of an anti-inflammatory, the syringes were prepared by a pharmacy that kept the code, so the nurses giving the injections and the doctors assessing joint pain both had no idea which patients were on the drug. The drug arm reported less pain.",
+    },
+    trap: null,
+    explanation: {
+      en: "Everybody in contact with the patient was blinded, which is exactly the protection a subjective outcome needs. There is no route here for anyone's belief about the treatment to reach the patient.",
+    },
+  },
+  {
+    id: "pyg-sound-registry-death",
+    scenario: {
+      en: "An open-label trial of a heart drug could not blind the cardiologists. Its primary outcome was death from any cause, taken from the national death register rather than from the clinicians.",
+    },
+    trap: null,
+    explanation: {
+      en: "Unblinded clinicians are a genuine worry for outcomes that a person's manner or judgement can touch, and all-cause death from a national register is about as far from that as an outcome gets. The design has matched the endpoint to what it could protect.",
+    },
+  },
+  {
+    id: "pyg-sound-attention-control",
+    scenario: {
+      en: "A trial of a counselling programme gave the comparison group the same number of sessions of the same length with the same staff, differing only in what was discussed. The counselling arm did better on the anxiety scale.",
+    },
+    trap: null,
+    explanation: {
+      en: "An attention control holds contact time and staff constant, so the enthusiasm and attention that usually travel with a new programme are present in both arms. What is left is the content, which is what the trial set out to test.",
+    },
+  },
+  {
+    id: "pyg-sound-scores-withheld",
+    scenario: {
+      en: "A university validated an admissions test by scoring every applicant and then sealing the scores until the end of the first year. Tutors never saw them. Students with higher scores went on to get better first-year marks.",
+    },
+    trap: null,
+    explanation: {
+      en: "The scores were kept from everyone who could have acted on them, so they had no route to the marks except through whatever the test measures. That is what makes this a prediction rather than a self-fulfilling one.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

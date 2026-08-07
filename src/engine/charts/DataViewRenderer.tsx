@@ -41,6 +41,7 @@ import { CeilingView } from "./CeilingView";
 import { YieldView } from "./YieldView";
 import { restrictYield } from "./yield";
 import { UnseenView } from "./UnseenView";
+import { DeliveredView } from "./DeliveredView";
 import { restrictSeries } from "./series";
 
 /**
@@ -244,6 +245,14 @@ export function DataViewRenderer({
       return view.kind === "asrecorded" || view.kind === "afterlooking" ? (
         <UnseenView data={data} kind={view.kind} />
       ) : null;
+    case "delivered":
+      // Deliberately NOT a slice-drawer either, and for a sharper reason than
+      // `unseen`: both beats draw EVERY bar. The reveal is a column appearing
+      // beside them, not a bar arriving, so there is nothing to hold back, and
+      // holding anything back would break the one promise the figure makes.
+      return view.kind === "asmeasured" || view.kind === "asdelivered" ? (
+        <DeliveredView data={data} kind={view.kind} />
+      ) : null;
     default:
       return null;
   }
@@ -384,6 +393,10 @@ export function scopeLabel(kind: DataViewKind): string {
       return "As the records have it";
     case "afterlooking":
       return "And after somebody looked";
+    case "asmeasured":
+      return "What each group reported";
+    case "asdelivered":
+      return "And what each was actually given";
     default:
       return "";
   }

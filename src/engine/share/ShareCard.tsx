@@ -1375,6 +1375,60 @@ function UnseenGlyph() {
   );
 }
 
+function DeliveredGlyph() {
+  const W = 200;
+  const H = 96;
+  /**
+   * Two tiers of paired bars with the dose printed against each. The top pair
+   * is far apart and the two doses beside it differ, so that gap is bought and
+   * accounted for. The bottom pair is closer but still apart, and the two doses
+   * beside it are the SAME number, which is the whole card: a gap with nothing
+   * behind it. The matched pair is the one in gold, because it is the pair a
+   * reader would otherwise skip past as the small, boring one.
+   */
+  const rows = [
+    { y: 18, w: 124, c: CARD.teal, dose: "48°", gold: false },
+    { y: 34, w: 24, c: CARD.rust, dose: "43°", gold: false },
+    { y: 62, w: 100, c: CARD.teal, dose: "48°", gold: true },
+    { y: 78, w: 88, c: CARD.rust, dose: "48°", gold: true },
+  ];
+  return (
+    <svg
+      viewBox={`0 0 ${W} ${H}`}
+      width="100%"
+      role="img"
+      aria-label="Two pairs of bars with the dose printed beside each: the first pair is far apart and its two doses differ, the second pair is apart although its two doses are identical"
+    >
+      {rows.map((r) => (
+        <g key={r.y}>
+          <rect x={10} y={r.y} width={r.w} height={10} rx={3} fill={r.c} opacity={0.55} />
+          <text
+            x={146}
+            y={r.y + 8.5}
+            fontSize={9}
+            fill={r.gold ? CARD.gold : CARD.muted}
+            fontWeight={r.gold ? 600 : 400}
+          >
+            {r.dose}
+          </text>
+        </g>
+      ))}
+      <line
+        x1={140}
+        y1={60}
+        x2={140}
+        y2={90}
+        stroke={CARD.gold}
+        strokeWidth={1}
+        strokeDasharray="2 2"
+      />
+      <text x={172} y={78} fontSize={8} fill={CARD.gold}>
+        same
+      </text>
+    </svg>
+  );
+}
+
 function YieldGlyph() {
   const W = 200;
   const H = 96;
@@ -1850,6 +1904,7 @@ export function ShareCard({
   const forestGlyph = data.type === "forest";
   const yieldGlyph = data.type === "yield";
   const unseenGlyph = data.type === "unseen";
+  const deliveredGlyph = data.type === "delivered";
   const splitSampleGlyph =
     data.type === "rates" &&
     Boolean(data.strataAreSeparateSamples) &&
@@ -1979,6 +2034,8 @@ export function ShareCard({
             <YieldGlyph />
           ) : unseenGlyph ? (
             <UnseenGlyph />
+          ) : deliveredGlyph ? (
+            <DeliveredGlyph />
           ) : null}
 
           <p className="mt-4 font-display text-[17px] font-medium leading-snug">

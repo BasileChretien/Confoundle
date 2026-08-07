@@ -357,6 +357,7 @@ consensus only · **X** absent from official documents.
 | Immortal time bias <!-- skill: immortal-time-bias --> | X | **X** | T | X | **shipped** |
 | Healthy worker / healthy user | X | X | T | X | partly inside indication |
 | Hawthorne effect <!-- skill: hawthorne-effect --> | X | X | **O** | X | **shipped** (Wu 2018) |
+| Pygmalion / observer expectancy <!-- skill: pygmalion-effect --> | X | X | X | X | **SHIPPED** 2026-08-07 as `what-the-doctor-believed` (Chen 2019, socially transmitted placebo), on the new `delivered` shape. In none of the four official outlines; named in US teaching, and as **Rosenthaleffekt** in the German list recorded near line 72. Distinct from `detection-bias`, which is the observer's belief changing the SCORE, and from `hawthorne-effect`, which needs nobody to believe anything |
 | Neyman / prevalence-incidence | X | X | T | X | covered by length-time and survivorship; review items only |
 | Cognitive: anchoring <!-- skill: anchoring --> | named as a category | **X** | O | postgrad | **shipped** (Tversky & Kahneman 1974) |
 | Cognitive: framing <!-- skill: framing-effect --> | named as a category | **X** | O | postgrad | **shipped** |

@@ -4085,8 +4085,12 @@ needs the full treatment before it is numbered.
 - **Attrition. SHIPPED 2026-08-07** as `filed-as-lost`, on the new `unseen`
   shape; see numbered entry 65. Left in this list rather than deleted, because
   this is where somebody looking for it will look.
-- **Pygmalion and procedure bias.** Named rang A, no obvious dataset, lowest
-  priority of the group.
+- **Pygmalion. SHIPPED 2026-08-07** as `what-the-doctor-believed`, on the new
+  `delivered` shape; see numbered entry 68. The "no obvious dataset" this entry
+  carried since the list was written was wrong, and entry 68 records what it was
+  wrong about. **Procedure bias travelled with Pygmalion in this bullet and is
+  NOT shipped**; the performance-bias family it belongs to is written up in
+  entry 66, with five routes closed.
 
 ### 64. Overdiagnosis: the screening that found more and prevented nothing
 
@@ -4668,3 +4672,93 @@ effect modification. That is a real object, but it is not the first thing a
 search returns, and it may be easier to recognise while reading something else
 than to hunt for directly. Route 2 stays open on that basis rather than being
 closed, because the lesson is good and the deck has nothing like it.
+
+### 68. Pygmalion: the cream that worked because the doctor thought it did
+
+<!-- skill: pygmalion-effect -->
+
+**Status: SHIPPED 2026-08-07** as `what-the-doctor-believed`, skill
+`pygmalion-effect`, on a NEW shape, `delivered`. Promoted straight out of the
+unnumbered rang A list above, where it had sat since the list was written with
+"no obvious dataset" recorded against it. That note was wrong, and the way it
+was wrong is the useful part of this entry.
+
+**What the note got wrong.** It was true of the studies the name points at.
+"Pygmalion" comes from Rosenthal and Jacobson's 1968 classroom experiment,
+which is genuinely unshippable here: its intelligence instrument was taken
+apart within a couple of years of publication, and the honest modern reading of
+teacher-expectancy research is that the effect is real but small, fragile and
+far smaller than the legend. A card built on it would be teaching the legend,
+and no amount of careful wording fixes that. But the *mechanism* the name
+labels, an observer's belief changing what the observed person actually does or
+feels, has been tested elsewhere and much better, and searching for the
+mechanism rather than the name finds it immediately. The lesson to draw is
+narrow and worth writing down: **a lead recorded as having no dataset may have
+been searched under its famous name only.** Where a bias is named after one
+old study, the name and the evidence are often in different places.
+
+Read at source: Chen PA, Cheong JH, Jolly E, Elhence H, Wager TD, Chang LJ.
+Socially transmitted placebo effects. Nature Human Behaviour 2019;3(12):
+1295-1305. PMID 31636406, PMCID PMC7494051, DOI 10.1038/s41562-019-0749-5.
+Full text through the NCBI efetch endpoint. Trial-level data published by the
+authors at github.com/cosanlab/socially_transmitted_placebo_effects.
+
+**The design, which is what makes it a Confoundle card.** 194 undergraduates in
+dyads, randomly assigned to play doctor or patient. Both creams were the same
+petroleum jelly. The doctor was first conditioned to believe in "Thermedol" by
+being burned at 43 degrees under it and 48 degrees under the control, without
+being told. Then the doctor treated the patient, where both creams got the same
+temperature. The patients rated the Thermedol burns lower, and so did their
+skin conductance and their facial expression. Nobody said anything: the paper
+traces the transmission to the doctors' faces.
+
+That is the rare thing the deck keeps failing to find in this family, and it is
+worth naming why. Entry 66 closed five routes to performance bias on a single
+recurring obstacle: **a trial built well enough to isolate the bias is built
+well enough to prevent it.** This experiment escapes that because it is not a
+trial. It is a laboratory manipulation whose *purpose* is to install the bias,
+so isolating it and preventing it are not the same act. Anything else in this
+family should be searched for on that pattern rather than among trials.
+
+**Three things that had to be got right, recorded because the next card in this
+family will meet them too.**
+
+1. *Which study.* The paper's headline is Study 1, where the effect is nearly
+   twice as large, and Study 1 gave every patient the control cream first. Its
+   result is therefore perfectly confounded with order, and a player answering
+   "they got used to the heat" would have been reasoning correctly and marked
+   wrong. The card draws Study 3 instead, which used an ABBA sequence, so the
+   framing can state the order and close that door honestly. The price is a
+   smaller effect, 3.9 points rather than 7.2, and it is worth paying.
+2. *The hedge audit.* The setup withholds one column, the temperature, from
+   both tiers. With it missing no reading of the figure is safe, so "there is
+   no way to tell" is the correct answer and the reveal carries the surprise,
+   which is the pattern CLAUDE.md prescribes for exactly this case. The three
+   distractors take a pharmacological, a psychological and a statistical
+   direction so that none shares a direction with another. The psychological
+   one is the dangerous band, because expectation really is at work here, so
+   the reveal credits it in as many words before explaining why it is not what
+   made the doctors' drop eight times bigger.
+3. *The order limitation is on the card, not in a footnote.* Study 2
+   counterbalanced the order and found the effect only when the control cream
+   came first; reversed, it was absent. The authors read that as a reference
+   experience being needed rather than as habituation, and Study 3 is their
+   answer to the habituation reading. A card claiming the effect is
+   unconditional would overstate the source.
+
+**The numbers were reconciled before anything was authored.** The paper prints
+mixed-model coefficients and no cell means, so the four means the card draws
+were computed from the authors' released CSVs and checked back against the
+published models across five independent comparisons: Study 3 doctors -32.20
+(SE 2.74) against -31.92 (2.89); Study 3 patients -3.88 (1.46) against -3.70
+(1.53); Study 1 patients -7.19 (1.60) against -7.30 (1.53); Study 2 original
+order -7.45 (1.42) against -7.35 (1.84); Study 2 reversed +2.51 (2.35) against
++2.25 (2.05). Agreement in sign, size and standard error across all five is
+what made raw paired means safe to draw.
+
+**One access note worth keeping.** Europe PMC reports `isOpenAccess: Y` for
+this record while its own `fullTextXML` endpoint returns 404 for it. That is
+the same trap entry 63 recorded from the other direction: the flag describes
+membership of Europe PMC's open-access subset, not the paper's status, and it
+is not a reliable guide to whether Europe PMC will actually serve the text.
+NCBI efetch served it without trouble.

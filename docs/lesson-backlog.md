@@ -4597,3 +4597,74 @@ and Response disputing its conclusions in Science, and ego depletion is still
 actively argued; that judgement is worth revisiting rather than treating as
 settled, because "the field is still arguing" may be a weaker objection than it
 looked when the alternative is nothing.
+
+#### The neutrality bar was then relaxed, and it was not the binding constraint
+
+Kept inside entry 67 rather than opened as a numbered entry 68, because it is
+the same lesson under the same skill tag and the suite is right to refuse two
+numbered entries claiming one skill. Route 2 remains open; what has changed is
+the reason it is stuck. Above, one source was refused on its own merits. What
+follows is what happened when the rule that had excluded the obvious
+alternatives was deliberately loosened.
+
+**The rule change.** Basile decided on 2026-08-07 that politically live and
+academically live are different things and only the first disqualifies a source.
+Written into `CONTRIBUTING.md` under content bar 3, where it belongs, having
+previously existed only as folklore repeated eight times in this file. It is a
+good change on its own merits: a deck about reasoning should not treat
+scientists disagreeing in journals as contamination.
+
+**It did not unlock route 2.** The two flagship Registered Replication Reports
+were checked and both fail, and neither fails on neutrality.
+
+- **Facial feedback, Strack, Martin and Stepper (1988), the pen-in-the-teeth
+  study.** The RRR (Wagenmakers et al., *Perspectives on Psychological Science*
+  2016, doi `10.1177/1745691616674458`) is 17 labs and found nothing. But the
+  literature moved: the Many Smiles Collaboration (Coles et al., *Nature Human
+  Behaviour* 2022, doi `10.1038/s41562-022-01458-9`, n = 3,878 across 19
+  countries, an adversarial collaboration) reports that facial mimicry and
+  voluntary facial action "could both amplify and initiate feelings of
+  happiness", with only the unobtrusive pen-in-mouth manipulation staying
+  inconclusive. So the honest summary today is that the paradigm is fragile and
+  the hypothesis has support, which is not a replication-failure lesson. A card
+  built on the 2016 RRR alone would be an EXPIRED CLAIM, which is precisely what
+  `temporal-validity` teaches against. The deck would have been caught by its
+  own card.
+- **Ego depletion.** The RRR (Hagger et al., same journal and year, doi
+  `10.1177/1745691616652873`) is 23 labs and found nothing, and Vadillo's Many
+  Labs 3 analysis (*Royal Society Open Science* 2018) failed to find it either.
+  But Dang's updated meta-analysis (*Psychological Research* 2018) and a
+  multilab replication (*Social Psychological and Personality Science* 2021)
+  point the other way. The literature is genuinely unresolved, so "it did not
+  replicate" is not the honest summary either.
+
+Both are Open Access at the publisher, and Europe PMC returns
+`isOpenAccess: N` for both. That is not the flag being wrong, and an earlier
+entry in this file already put it correctly before this one regressed: the field
+reports membership of Europe PMC's own open-access subset, which a paper can sit
+outside while being free at the publisher, and it also reads N when the only
+Europe PMC record is a conference abstract, as it was for BIO|GUARD-MI. What was
+wrong three times on 2026-08-07 was reading that N as a paywall, and once it
+cost Basile a PDF request he did not need to fulfil. Check Unpaywall or the
+publisher before recording a paywall as an obstacle.
+
+**THE ACTUAL BINDING CONSTRAINT, which is worth stating plainly because two
+sessions have now circled it.** Every well-documented reversal comes with an
+explanation attached, and the explanation is usually something this deck already
+ships. Intensive insulin therapy: effect modification by setting, entry 67.
+Candidate genes for depression, the strongest remaining untried lead: the
+standard account is underpowered studies plus flexible analysis, which is
+`publication-bias` and `multiple-comparisons`. And where no competing
+explanation exists, as with facial feedback and ego depletion, the reason none
+exists is that the question is still open, so nothing can be asserted. A clean
+"it simply did not reproduce, and that is the whole story" is rare because a
+finding famous enough to be worth a card attracts enough attention to acquire an
+explanation or a defence.
+
+**What would still work**, and this is a narrower target than the last entry
+recorded: a reversal that is SETTLED, so nobody is defending the original any
+more, and whose accepted explanation is NOT publication bias, multiplicity or
+effect modification. That is a real object, but it is not the first thing a
+search returns, and it may be easier to recognise while reading something else
+than to hunt for directly. Route 2 stays open on that basis rather than being
+closed, because the lesson is good and the deck has nothing like it.

@@ -329,7 +329,7 @@ consensus only · **X** absent from official documents.
 | Selection bias (general) | X | A | O | X | via Berkson, survivorship |
 | Information / classification bias | X | A | O | X | **shipped** (via non-differential misclassification) |
 | Recall bias <!-- skill: recall-bias --> | X | **A** | O | X | **shipped** |
-| Attrition / loss to follow-up | X | **A** | O | X | inside intention to treat, deliberately; see below |
+| Attrition / loss to follow-up <!-- skill: attrition-bias --> | X | **A** | O | X | SOURCED 2026-08-07, not yet built: backlog entry 65, Zambia ART tracing. The old note "inside intention to treat" understated the gap: that card is about excluding patients whose outcomes are known, this is about outcomes never observed at all |
 | Intention to treat vs per protocol <!-- skill: intention-to-treat --> | O | **A** | O | X | **shipped** |
 | Lead-time bias <!-- skill: lead-time-bias --> | X | **A** | O | (once) | shipped |
 | Length-time bias <!-- skill: length-time-bias --> | X | **A** | O | X | **shipped**; also in Korea 2026 paper |

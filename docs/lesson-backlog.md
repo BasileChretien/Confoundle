@@ -4153,3 +4153,95 @@ deaths among the stage 4 patients, and 80 of 133 leaves 39.8 per cent alive,
 matching the published 40.6 per cent ten-year survival, where 80 of 219 would
 leave 63.5 per cent and contradict the paper's own curve. Nothing the card draws
 depends on that sentence, and the provenance note says all of this.
+
+### 65. Attrition: the programme whose dead were filed as "lost to follow-up"
+
+<!-- skill: attrition-bias -->
+
+**Status: SOURCED 2026-08-07, READY TO AUTHOR, blocked on nothing but a shape.**
+Every number below was read at source and reconciled; what is not yet settled is
+which figure draws it, and that decision is deliberately left to a fresh session
+rather than taken at the end of a long one. Promoted out of the unnumbered rang A
+list above, where it read only "Attrition. Differential loss to follow-up.
+Adjacent to `survivorship-bias` again."
+
+Read at source: Holmes CB, Sikazwe I, Sikombe K, Eshun-Wilson I, Czaicki N,
+Beres LK, Mwamba C, Bolton-Moore C, Padian N, Geng E. *Estimated mortality on HIV
+treatment among active patients and patients lost to follow-up in 4 provinces of
+Zambia: Findings from a multistage sampling-based survey.* PLoS Medicine
+2018;15(1):e1002489, `PMC5766235`, open access, pulled as full-text XML through
+the Europe PMC REST endpoint.
+
+**Why this one and not a trial.** The obvious place to look was a randomised
+trial with heavy differential dropout, and that route collides with work already
+shipped: `intention-to-treat` (STICH) is about excluding patients whose outcomes
+are KNOWN, and the per-protocol lead was withdrawn above for the same reason.
+Attrition proper is about outcomes that were never observed at all, and the
+cleanest instance of it is not a trial but a treatment programme, because there
+the missing are numerous, the reason they are missing is correlated with the
+outcome, and somebody actually went and found out.
+
+**The mechanism, which is the whole card.** A national ART programme's books
+record what the clinic saw. A patient who stops coming is filed as "lost to
+follow-up", not as dead, so every death that happens away from the clinic is
+invisible to the routine statistics. The programme therefore reports a mortality
+figure computed over exactly the people whose outcome it could see.
+
+**The counts, all from Table 1 and all reconciled** (percentages below are
+derived here and match the ones the Results section prints in prose):
+
+| | All ART users | New ART users |
+|---|---|---|
+| Patients | 165,464 | 49,129 |
+| Lost to follow-up | 28,111 (17.0%) | 10,217 (20.8%) |
+| Randomly sampled for tracing | 2,892 (10.3% of the lost) | 993 |
+| Vital status ascertained | 2,163 (74.8% of those traced) | 734 (73.9%) |
+
+Cross-checks that all close: female 105,745/165,464 = 63.9% against a printed
+64%, urban 92,216/165,464 = 55.7% against 56%, hospital 56,701/165,464 = 34.3%
+against 34%.
+
+**The published estimates, which are weighted and must be authored as printed.**
+Among patients lost to follow-up, **17% (95% CI 15 to 19)** had died; among the
+lost who were new ART starters, 21% (17 to 25). Two-year cumulative incidence of
+mortality moved from a naive **1.9% (1.7 to 2.0)** to a sample-revised **7.0%
+(5.7 to 8.4)** for all ART users, and from 2.1% (1.8 to 2.4) to 8.3% (6.1 to
+10.7) for new starters. That is a correction of roughly 3.7-fold and 4.0-fold.
+Provincial estimates rose 3-fold to 8-fold; one site moved 23-fold.
+
+**THE SHAPE PROBLEM, and it is the only open question.** These are
+probability-weighted survival estimates, not proportions of the 2,163. The paper
+prints no death count for the traced group, so the 17% cannot be turned back into
+a numerator, and any card that presented it as one would be inventing data.
+That rules out the three obvious shapes. `rates` derives every rate from a
+numerator and a denominator. `frequencies` is a natural-frequency tree and would
+fit the structure beautifully (total, the lost, deaths among the lost, deaths
+among the retained) if the counts existed, and they do not. `yield` was built the
+same week and refuses this correctly: its schema requires at least one row whose
+pair of intervals overlaps, and here every pair separates, because `yield`'s
+lesson is "found more, changed nothing" and this one is "the number was wrong".
+So a new shape is needed: a reported quantity and its corrected value, each with
+a published interval, alongside the share of the population whose outcome was
+never observed. It would also serve prevalence-incidence (Neyman) bias, which is
+the same complaint about a different missing group.
+
+**Sketch of the beats, for whoever builds it.** Setup draws the programme's own
+books: 165,464 patients, 17% filed as lost, about 1% recorded dead. The obvious
+reading is a programme with low mortality whose dropouts moved away or lost
+interest. Commit asks what tracing a random sample of the lost did to the
+mortality estimate, and the framing must pin that this is a question about SIZE,
+the way `statistical-power` does, because otherwise several bands share the
+direction the setup licenses. Reveal: 17% of the lost had died, and the two-year
+estimate goes from 1.9% to 7.0%.
+
+**Caveats that must reach the card.** Vital status could not be ascertained for
+about a quarter of those traced (2,163 of 2,892), so the correction itself rests
+on incomplete tracing and the authors say so. The estimates are weighted, and the
+weights are the design, not a nuisance. And there is an internal inconsistency
+worth noting rather than hiding: the Methods describe selecting "a total of 32
+facilities" by probability proportional to size, while the abstract and Results
+describe a network of 64 facilities. Nothing above depends on the facility count,
+and a card should not print one without resolving it.
+
+**Neutral ground: yes.** This is a programme evaluation whose authors are the
+people running the programme, and its finding is unflattering to them.

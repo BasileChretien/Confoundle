@@ -5026,7 +5026,12 @@ NCBI efetch served it without trouble.
 
 <!-- skill: healthy-adherer -->
 
-**Status: LEAD, GAP CONFIRMED, SOURCE NOT YET READ.** Found on 2026-08-12 by
+**Status: SOURCE READ 2026-08-12, AND BLOCKED ON THE SHAPE, NOT ON THE
+EVIDENCE.** Basile supplied the Coronary Drug Project paper through
+institutional access the same day. It is everything the lead hoped for and the
+card still cannot be built, for a reason worth writing down precisely; see the
+section at the end of this entry. The original status, kept because everything
+below was written under it: LEAD, GAP CONFIRMED, SOURCE NOT YET READ. Found on 2026-08-12 by
 checking a coverage claim rather than believing it, which is now the fifth such
 claim to fail this way. The syllabus audit row for healthy worker and healthy
 user read **"partly inside indication"**. It is not, and the card settles it in
@@ -5094,3 +5099,76 @@ meta-analysis prints odds ratios, which are second best for this deck because
 `crossed` and `rates` both want the underlying numbers. If neither can be read,
 the honest output is to leave this entry as it stands rather than build on the
 abstract, which is the same rule that refused Davies in entry 66.
+
+#### Entry 69 continued: the source, read at last, and why the card is still blocked
+
+**The finding is exactly as advertised and better documented than expected.**
+Coronary Drug Project Research Group, *Influence of adherence to treatment and
+response of cholesterol on mortality in the Coronary Drug Project*, N Engl J Med
+1980;303:1038-1041, PMID 6999345. Read at source from the paper Basile supplied.
+Table 1, five-year mortality by cumulative adherence to protocol prescription:
+
+                        CLOFIBRATE              PLACEBO
+    adherence     n     % mortality       n     % mortality
+    < 80%       357     24.6 +/- 2.3    882     28.2 +/- 1.5
+    >= 80%      708     15.0 +/- 1.3   1813     15.1 +/- 0.8
+    total      1065     18.2 +/- 1.2   2695     19.4 +/- 0.8
+
+The placebo column is the whole lesson. Good adherers to a capsule containing
+nothing had 15.1 per cent five-year mortality against 28.2 for poor adherers,
+z = -8.12, P = 4.7 x 10^-16. The clofibrate column shows the same gradient and
+a weaker one, 15.0 against 24.6, z = -3.86, P = 0.00011. And the drug itself did
+nothing: 20.0 per cent against 20.9, P = 0.55, over the full randomised groups.
+
+**Two things that make it stronger than the usual version of this story.**
+First, the authors anticipated the obvious objection and tested it. Adjusting
+for 40 baseline characteristics moves the placebo figures only from 15.1 and
+28.2 to 16.4 and 25.8, still z = -5.78, P = 7.3 x 10^-9, and they write that
+adjustment "accounts for only a small portion of the observed difference".
+Table 2 shows poor adherers did carry somewhat more baseline risk, so the
+confounding is real and simply nowhere near large enough. Second, the paper's
+own conclusion is the deck's lesson rather than a claim about adherence: that
+subgroups defined by what patients did AFTER randomisation cannot be compared,
+because randomisation guarantees nothing about them.
+
+**Provenance detail that must go on the card.** Table 1's totals, 1065 and 2695,
+are smaller than the randomised 1103 and 2789 quoted in the abstract, because
+patients who died or left before any follow-up determination of adherence or
+cholesterol were excluded from these analyses. That is 38 and 94 patients. A
+card quoting 20.0 against 20.9 for the arms and 18.2 against 19.4 from Table 1
+without saying why they differ would look like an arithmetic error.
+
+**THE BLOCKER, AND IT IS THE SHAPE RATHER THAN THE EVIDENCE.** Table 1 prints
+denominators and percentages. It does not print deaths, and CLAUDE.md is
+explicit that a source whose table does not print counts is a backlog entry
+rather than a puzzle. Three of the four cells can be DECODED the way
+`hawthorne-effect` decodes its two, since exactly one integer numerator
+reproduces the printed percentage: 88/357, 106/708 and 249/882. The fourth
+cannot. Both 273/1813 and 274/1813 print as 15.1 per cent, and the placebo arm
+total cannot break the tie because 522, 523 and 524 deaths all print as 19.4.
+That undecodable cell is the placebo good adherers, which is the punchline, so
+the card cannot be built on decoded counts and must not be built on a guess.
+
+What does check out is the table's internal arithmetic: the subgroup
+denominators sum to the printed totals exactly, 357 + 708 = 1065 and
+882 + 1813 = 2695, and weighting the subgroup percentages by those denominators
+reproduces both printed arm totals, 18.22 against a printed 18.2 and 19.39
+against a printed 19.4.
+
+**No existing shape can draw it, and this was checked rather than assumed.**
+`rates` is the natural one, groups by adherence and strata by arm with the setup
+on the clofibrate stratum, and its `Observation` requires an integer numerator
+and denominator, which the undecodable cell cannot supply. `yield` authors
+published rates rather than counts and would fit, except that its refinement
+demands at least one row whose intervals clear one another and at least one
+where they overlap; here both rows overlap, so it rejects the data by design.
+`crossed` takes bare means with no denominators and no intervals, which would
+mean hardcoding four percentages, and its documented purpose is a setup drawn on
+a confounded diagonal, which is not this figure.
+
+**So the next step is a shape, not a search.** Something that carries a
+published rate with its standard error and a denominator, without `yield`'s
+separation requirement, since the honest reading here is that both rows overlap
+and the lesson lives in the gradient down each column rather than across. That
+is a session's work and the evidence to fill it is now in hand and verified,
+which is further than this entry has ever been.

@@ -1,6 +1,6 @@
 import { useT } from "../../app/i18n";
 import type { RatingsData } from "../../puzzles/schema";
-import { colorFor } from "./palette";
+import { declaredColors } from "./palette";
 import { anchorPosition, points } from "./ratings";
 
 /**
@@ -62,14 +62,22 @@ function Row({
 
 export function RatingsView({
   data,
+  full,
   kind,
 }: {
   data: RatingsData;
+  /**
+   * The UNRESTRICTED data, for colour only. `restrictRatings` filters `series`,
+   * so a series' position in `data.series` is a property of the beat rather
+   * than of the puzzle. See `declaredColors`.
+   */
+  full: RatingsData;
   kind: "onerating" | "bothratings";
 }) {
   const t = useT();
   const all = points(data);
   const shown = kind === "onerating" ? all.slice(0, 1) : all;
+  const colorOf = declaredColors(full.series);
   const anchor = anchorPosition(data);
 
   return (
@@ -80,7 +88,6 @@ export function RatingsView({
         <div className="flex flex-col gap-2">
           {shown.map((p) => {
             const series = data.series.find((s) => s.id === p.seriesId);
-            const index = data.series.findIndex((s) => s.id === p.seriesId);
             if (!series) return null;
             return (
               <Row
@@ -90,7 +97,7 @@ export function RatingsView({
                 low={p.low}
                 high={p.high}
                 mean={p.mean}
-                color={colorFor(index)}
+                color={colorOf(p.seriesId)}
               />
             );
           })}

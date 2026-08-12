@@ -1,6 +1,6 @@
 import { useT } from "../../app/i18n";
 import type { SeriesData } from "../../puzzles/schema";
-import { colorFor } from "./palette";
+import { declaredColors } from "./palette";
 import { crossoverPoint, seriesShape } from "./series";
 
 /**
@@ -27,11 +27,20 @@ export function SeriesView({
   kind,
 }: {
   data: SeriesData;
+  /**
+   * The UNRESTRICTED data. It already fixed the SCALE across the beats; it now
+   * fixes the COLOURS too, which is the same argument applied to the other
+   * thing a reader tracks. `restrictSeries` filters `lines`, and this figure
+   * shipped colouring by the drawn index: the police line was teal on its own
+   * at the setup and rust at the reveal, having handed teal to the survey line
+   * arriving beside it. See `declaredColors`.
+   */
   full: SeriesData;
   kind: "oneinstrument" | "bothinstruments";
 }) {
   const t = useT();
   const { lines } = seriesShape(data, full);
+  const colorOf = declaredColors(full.lines);
   const crossover = kind === "bothinstruments" ? crossoverPoint(full) : null;
 
   const px = (x: number) => PAD_X + x * (W - PAD_X * 2);
@@ -48,14 +57,14 @@ export function SeriesView({
   return (
     <div className="flex flex-col gap-2.5">
       <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-        {lines.map((l, i) => (
+        {lines.map((l) => (
           <span
             key={l.id}
             className="flex items-center gap-1.5 text-[10px] leading-none text-ink-soft"
           >
             <span
               className="h-2 w-2 rounded-[1px]"
-              style={{ backgroundColor: colorFor(i) }}
+              style={{ backgroundColor: colorOf(l.id) }}
               aria-hidden="true"
             />
             {t(l.short ?? l.label)}
@@ -89,7 +98,7 @@ export function SeriesView({
             strokeWidth={1}
           />
 
-          {lines.map((l, i) => {
+          {lines.map((l) => {
             // Break the path wherever a year has no observation, so a gap
             // stays a gap. Consecutive dots only are joined.
             const segments: string[] = [];
@@ -111,7 +120,7 @@ export function SeriesView({
                 <path
                   d={segments.join("")}
                   fill="none"
-                  stroke={colorFor(i)}
+                  stroke={colorOf(l.id)}
                   strokeWidth={2}
                   strokeLinejoin="round"
                 />
@@ -121,7 +130,7 @@ export function SeriesView({
                     cx={px(d.x)}
                     cy={py(d.y)}
                     r={2}
-                    fill={colorFor(i)}
+                    fill={colorOf(l.id)}
                   />
                 ))}
               </g>

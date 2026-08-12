@@ -1,6 +1,6 @@
 import { useT } from "../../app/i18n";
 import type { ForestData } from "../../puzzles/schema";
-import { colorFor } from "./palette";
+import { declaredColors } from "./palette";
 import { axisFraction, forestRows } from "./forest";
 
 /**
@@ -99,9 +99,18 @@ function Row({
 
 export function ForestView({
   data,
+  full,
   kind: _kind,
 }: {
   data: ForestData;
+  /**
+   * The UNRESTRICTED data, for colour only. `restrictForest` filters `rows`, so
+   * a row's position in `data.rows` is a property of the beat. An earlier
+   * version looked the index up with `data.rows.findIndex`, which reads like a
+   * fix and is not one: it resolves against the same restricted list the map
+   * would have given. See `declaredColors`.
+   */
+  full: ForestData;
   kind: "whatisknown" | "themissingrow";
 }) {
   void _kind;
@@ -110,6 +119,7 @@ export function ForestView({
   // carrying MORE rows, not by drawing the same ones differently, so the
   // restriction lives in `restrictForest` and the kind only names the beat.
   const shown = forestRows(data);
+  const colorOf = declaredColors(full.rows);
   const nullAt = axisFraction(data, data.nullValue);
 
   return (
@@ -126,7 +136,7 @@ export function ForestView({
               width={axisFraction(data, r.ciHigh) - axisFraction(data, r.ciLow)}
               point={axisFraction(data, r.estimate)}
               estimate={r.estimate}
-              color={colorFor(data.rows.findIndex((x) => x.id === r.id))}
+              color={colorOf(r.id)}
               clearsNull={r.clearsNull}
               k={r.k}
               nullAt={nullAt}

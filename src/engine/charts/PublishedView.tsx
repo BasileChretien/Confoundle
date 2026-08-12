@@ -1,6 +1,6 @@
 import { useT } from "../../app/i18n";
 import type { PublishedData } from "../../puzzles/schema";
-import { colorFor } from "./palette";
+import { declaredColors } from "./palette";
 import { axisFraction, publishedPairs } from "./published";
 
 /**
@@ -63,14 +63,22 @@ function Track({
 
 export function PublishedView({
   data,
+  full,
   kind: _kind,
 }: {
   data: PublishedData;
+  /**
+   * The UNRESTRICTED data, for colour only. `restrictPublished` filters `arms`,
+   * so `data.arms` is the list this beat draws and its indices are a property
+   * of the beat rather than of the puzzle. See `declaredColors`.
+   */
+  full: PublishedData;
   kind: "onearm" | "botharms";
 }) {
   void _kind;
   const t = useT();
   const shown = publishedPairs(data);
+  const colorOf = declaredColors(full.arms);
   const anyAdjusted = data.observations.some((o) => o.adjusted !== undefined);
 
   return (
@@ -78,11 +86,11 @@ export function PublishedView({
       <p className="text-[11px] leading-snug text-ink-soft">{t(data.metricLabel)}</p>
 
       <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
-        {data.arms.map((a, i) => (
+        {data.arms.map((a) => (
           <span key={a.id} className="flex items-center gap-1.5 text-[11px] text-ink">
             <span
               className="h-2.5 w-2.5 shrink-0 rounded-full"
-              style={{ backgroundColor: colorFor(i) }}
+              style={{ backgroundColor: colorOf(a.id) }}
             />
             {t(a.short ?? a.label)}
           </span>
@@ -100,7 +108,7 @@ export function PublishedView({
                 </span>
               </div>
               <div aria-hidden="true">
-                {p.values.map((v, i) => (
+                {p.values.map((v) => (
                   <Track
                     key={v.armId}
                     point={axisFraction(data, v.rate)}
@@ -109,7 +117,7 @@ export function PublishedView({
                     adjusted={
                       v.adjusted === undefined ? undefined : axisFraction(data, v.adjusted)
                     }
-                    color={colorFor(i)}
+                    color={colorOf(v.armId)}
                   />
                 ))}
               </div>

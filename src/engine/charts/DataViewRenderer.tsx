@@ -53,6 +53,13 @@ import { restrictSeries } from "./series";
 /**
  * The generic seam: dispatch on the data's `type` to the matching renderer.
  * A new data shape is added here and nowhere else, existing puzzles untouched.
+ *
+ * A SLICE-DRAWING SHAPE GETS BOTH COPIES: the restricted one it draws, and
+ * `full` for anything that must not move between the beats. Scale was the first
+ * such thing (`SeriesView` has taken `full` for that since it was written) and
+ * COLOUR is the second, because `restrict*` filters the very list a renderer
+ * would otherwise take its colour index from. `declaredColors` in `palette.ts`
+ * has the whole argument and the shipped bug that prompted it.
  */
 export function DataViewRenderer({
   data,
@@ -139,6 +146,7 @@ export function DataViewRenderer({
       return view.kind === "oneguess" || view.kind === "withtruth" ? (
         <EstimationView
           data={restrictEstimation(data, { groupIds: view.groupIds })}
+          full={data}
           kind={view.kind}
         />
       ) : null;
@@ -148,6 +156,7 @@ export function DataViewRenderer({
       return view.kind === "asguessed" || view.kind === "againstfact" ? (
         <SalienceView
           data={restrictSalience(data, { groupIds: view.groupIds })}
+          full={data}
           kind={view.kind}
         />
       ) : null;
@@ -162,6 +171,7 @@ export function DataViewRenderer({
             groupIds: view.groupIds,
             strataIds: view.strataIds,
           })}
+          full={data}
           kind={view.kind}
         />
       ) : null;
@@ -171,6 +181,7 @@ export function DataViewRenderer({
       return view.kind === "onerating" || view.kind === "bothratings" ? (
         <RatingsView
           data={restrictRatings(data, { groupIds: view.groupIds })}
+          full={data}
           kind={view.kind}
         />
       ) : null;
@@ -178,7 +189,11 @@ export function DataViewRenderer({
       // Same slicing contract as the rest: the setup draws the rows that are
       // already public, and the reveal adds the row that settles the sign.
       return view.kind === "whatisknown" || view.kind === "themissingrow" ? (
-        <ForestView data={restrictForest(data, { groupIds: view.groupIds })} kind={view.kind} />
+        <ForestView
+          data={restrictForest(data, { groupIds: view.groupIds })}
+          full={data}
+          kind={view.kind}
+        />
       ) : null;
     case "bunching":
       // Same slicing contract as the rest: the setup draws the bins running up
@@ -241,7 +256,11 @@ export function DataViewRenderer({
       // Same slicing contract as the rest: the setup draws what the programme
       // found, and the reveal adds the row saying what it changed.
       return view.kind === "whatitfound" || view.kind === "whatitchanged" ? (
-        <YieldView data={restrictYield(data, { groupIds: view.groupIds })} kind={view.kind} />
+        <YieldView
+          data={restrictYield(data, { groupIds: view.groupIds })}
+          full={data}
+          kind={view.kind}
+        />
       ) : null;
     case "unseen":
       // Deliberately NOT a slice-drawer. Both beats draw the same cohort and
@@ -264,7 +283,11 @@ export function DataViewRenderer({
       // cells of the confounded diagonal and the reveal omits groupIds, so the
       // reveal adds the two that vary one factor at a time.
       return view.kind === "astested" || view.kind === "allfourways" ? (
-        <CrossedView data={restrictCrossed(data, { groupIds: view.groupIds })} kind={view.kind} />
+        <CrossedView
+          data={restrictCrossed(data, { groupIds: view.groupIds })}
+          full={data}
+          kind={view.kind}
+        />
       ) : null;
     case "published":
       // A slice-drawer on the ARMS: the setup names one arm through strataIds
@@ -273,6 +296,7 @@ export function DataViewRenderer({
       return view.kind === "onearm" || view.kind === "botharms" ? (
         <PublishedView
           data={restrictPublished(data, { strataIds: view.strataIds })}
+          full={data}
           kind={view.kind}
         />
       ) : null;

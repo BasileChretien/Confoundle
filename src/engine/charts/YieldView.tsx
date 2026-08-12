@@ -1,6 +1,6 @@
 import { useT } from "../../app/i18n";
 import type { YieldData } from "../../puzzles/schema";
-import { colorFor } from "./palette";
+import { declaredColors } from "./palette";
 import { axisFraction, yieldPairs } from "./yield";
 
 /**
@@ -60,14 +60,25 @@ function Track({
 
 export function YieldView({
   data,
+  full,
   kind: _kind,
 }: {
   data: YieldData;
+  /**
+   * The UNRESTRICTED data, for colour only. `restrictYield` slices ROWS rather
+   * than arms today, so `data.arms` happens to equal `full.arms` and this
+   * changes nothing that currently ships. It is here because the day this shape
+   * learns to hold an arm back is the day indexing the drawn list starts
+   * recolouring a population between the beats, and that failure is silent.
+   * See `declaredColors`.
+   */
+  full: YieldData;
   kind: "whatitfound" | "whatitchanged";
 }) {
   void _kind;
   const t = useT();
   const shown = yieldPairs(data);
+  const colorOf = declaredColors(full.arms);
 
   return (
     <div className="flex flex-col gap-2.5">
@@ -78,11 +89,11 @@ export function YieldView({
         two tracks in a row are unlabelled and the figure is unreadable.
       */}
       <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
-        {data.arms.map((a, i) => (
+        {data.arms.map((a) => (
           <span key={a.id} className="flex items-center gap-1.5 text-[11px] text-ink">
             <span
               className="h-2.5 w-2.5 shrink-0 rounded-full"
-              style={{ backgroundColor: colorFor(i) }}
+              style={{ backgroundColor: colorOf(a.id) }}
             />
             {t(a.short ?? a.label)}
           </span>
@@ -100,13 +111,13 @@ export function YieldView({
                 </span>
               </div>
               <div aria-hidden="true">
-                {p.values.map((v, i) => (
+                {p.values.map((v) => (
                   <Track
                     key={v.armId}
                     left={axisFraction(data, v.ciLow)}
                     width={axisFraction(data, v.ciHigh) - axisFraction(data, v.ciLow)}
                     point={axisFraction(data, v.rate)}
-                    color={colorFor(i)}
+                    color={colorOf(v.armId)}
                     solid={p.separated}
                   />
                 ))}

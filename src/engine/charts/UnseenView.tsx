@@ -1,4 +1,5 @@
 import { useT } from "../../app/i18n";
+import { UI } from "../../app/ui";
 import type { UnseenData } from "../../puzzles/schema";
 import { colorFor, WINNER_GOLD } from "./palette";
 import {
@@ -153,7 +154,8 @@ export function UnseenView({
           </p>
           <p className="mt-1 text-[12px] font-medium leading-snug" style={{ color: WINNER_GOLD }}>
             {t(data.foundAmongUnobserved.label)}: {data.foundAmongUnobserved.value}% (
-            {data.foundAmongUnobserved.ciLow} to {data.foundAmongUnobserved.ciHigh})
+            {data.foundAmongUnobserved.ciLow} {t(UI.rangeTo)}{" "}
+            {data.foundAmongUnobserved.ciHigh})
           </p>
         </div>
       ) : null}

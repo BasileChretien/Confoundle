@@ -6372,4 +6372,6 @@ export const ru: Record<string, string> = {
   "The randomised comparison, at last": "Наконец, рандомизированное сравнение",
   "In a randomised trial of a new cancer drug against the standard one, tumours shrank by at least 30 per cent in 41 per cent of patients on the new drug against 22 per cent on the standard. The press release said the drug helps patients with this cancer live longer.": "В рандомизированном испытании нового противоопухолевого препарата против стандартного лечения опухоли уменьшились не менее чем на 30 процентов у 41 процента пациентов на новом препарате против 22 процентов на стандартном. В пресс-релизе говорилось, что препарат помогает больным этим раком жить дольше.",
   "Shrinking a tumour is a fact about the tumour on a scan. Living longer is a fact about the patient, and it requires counting how long patients lived, which this trial did not report. Response rates and survival have parted company often enough that regulators now ask for both.": "Уменьшение опухоли есть факт об опухоли на снимке. Более долгая жизнь есть факт о пациенте, и он требует подсчёта того, сколько пациенты прожили, о чём это испытание не сообщило. Частота ответа и выживаемость расходились достаточно часто, чтобы регуляторы теперь требовали обе.",
+  // ---- causal chart: the reveal diagram ----
+  "no direct link": "прямой связи нет",
 };

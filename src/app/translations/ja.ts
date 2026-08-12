@@ -6300,4 +6300,6 @@ export const ja: Record<string, string> = {
   "The randomised comparison, at last": "ようやく、無作為化された比較",
   "In a randomised trial of a new cancer drug against the standard one, tumours shrank by at least 30 per cent in 41 per cent of patients on the new drug against 22 per cent on the standard. The press release said the drug helps patients with this cancer live longer.": "新しい抗がん薬を標準治療と比べた無作為化試験で、腫瘍が30パーセント以上縮小した患者は、新薬群で41パーセント、標準治療群で22パーセントであった。プレスリリースは、この薬がこのがんの患者の延命に役立つと述べた。",
   "Shrinking a tumour is a fact about the tumour on a scan. Living longer is a fact about the patient, and it requires counting how long patients lived, which this trial did not report. Response rates and survival have parted company often enough that regulators now ask for both.": "腫瘍が縮むのは、画像の上での腫瘍についての事実である。長く生きるのは患者についての事実であり、患者がどれだけ生きたかを数える必要があるが、この試験はそれを報告していない。奏効率と生存はしばしば食い違ってきたため、規制当局は今では両方を求める。",
+  // ---- causal chart: the reveal diagram ----
+  "no direct link": "直接のつながりなし",
 };

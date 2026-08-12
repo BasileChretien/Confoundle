@@ -6242,4 +6242,6 @@ export const zh: Record<string, string> = {
   "The randomised comparison, at last": "终于，那个随机化的比较",
   "In a randomised trial of a new cancer drug against the standard one, tumours shrank by at least 30 per cent in 41 per cent of patients on the new drug against 22 per cent on the standard. The press release said the drug helps patients with this cancer live longer.": "在一项将新抗癌药与标准治疗相比较的随机试验中，肿瘤缩小至少30%的患者，在新药组为41%，在标准治疗组为22%。新闻稿称这种药能帮助患这种癌症的病人活得更久。",
   "Shrinking a tumour is a fact about the tumour on a scan. Living longer is a fact about the patient, and it requires counting how long patients lived, which this trial did not report. Response rates and survival have parted company often enough that regulators now ask for both.": "肿瘤缩小是关于影像上那个肿瘤的事实。活得更久是关于病人的事实，它需要统计病人活了多久，而这项试验并没有报告。有效率与生存率分道扬镳的次数已经够多，以至于监管机构如今两样都要。",
+  // ---- causal chart: the reveal diagram ----
+  "no direct link": "没有直接联系",
 };

@@ -6454,4 +6454,11 @@ export const ru: Record<string, string> = {
   "Self-deprecating": "С самоиронией",
   "Working…": "Обработка…",
   "Share / save card": "Поделиться / сохранить",
+  // ---- chart announcements: bars, arms and the group-level slope ----
+  "{group}: {percent} percent": "{group}: {percent} процентов",
+  "{group}: {percent} percent, the highest": "{group}: {percent} процентов, самый высокий показатель",
+  "{arm}: {events} out of {total}": "{arm}: {events} из {total}",
+  "{arm}: {events} out of {total}, {percent}": "{arm}: {events} из {total}, то есть {percent}",
+  "Compared group by group, the relationship runs downward. Correlation r equals {r}.": "При сравнении по группам связь идёт вниз. Корреляция r равна {r}.",
+  "Compared group by group, the relationship runs upward. Correlation r equals {r}.": "При сравнении по группам связь идёт вверх. Корреляция r равна {r}.",
 };

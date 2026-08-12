@@ -6385,4 +6385,11 @@ export const ar: Record<string, string> = {
   "Self-deprecating": "بروح السخرية من الذات",
   "Working…": "جار العمل…",
   "Share / save card": "مشاركة / حفظ البطاقة",
+  // ---- chart announcements: bars, arms and the group-level slope ----
+  "{group}: {percent} percent": "{group}: {percent} في المئة",
+  "{group}: {percent} percent, the highest": "{group}: {percent} في المئة، وهي الأعلى",
+  "{arm}: {events} out of {total}": "{arm}: {events} من أصل {total}",
+  "{arm}: {events} out of {total}, {percent}": "{arm}: {events} من أصل {total}، أي {percent}",
+  "Compared group by group, the relationship runs downward. Correlation r equals {r}.": "عند المقارنة بين المجموعات، تنحدر العلاقة إلى أسفل. معامل الارتباط r يساوي {r}.",
+  "Compared group by group, the relationship runs upward. Correlation r equals {r}.": "عند المقارنة بين المجموعات، تصعد العلاقة إلى أعلى. معامل الارتباط r يساوي {r}.",
 };

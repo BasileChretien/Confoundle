@@ -2,6 +2,7 @@ import type { DataView, RatesData } from "../../puzzles/schema";
 import { useT } from "../../app/i18n";
 import { useReducedMotion } from "../useReducedMotion";
 import { useCountUp } from "../useCountUp";
+import { fillSlots } from "./announce";
 import { colorFor } from "./palette";
 import {
   aggregateRates,
@@ -20,6 +21,7 @@ interface BarProps {
 }
 
 function Bar({ pct, colorHex, label, sub, winner, animate }: BarProps) {
+  const t = useT();
   const reduced = useReducedMotion();
   const value = useCountUp(pct, animate, 800, reduced);
   const height = Math.max(0, Math.min(100, value));
@@ -47,7 +49,17 @@ function Bar({ pct, colorHex, label, sub, winner, animate }: BarProps) {
           className="relative w-9 rounded-t-[3px]"
           style={{ height: `${height}%`, minHeight: "4px", backgroundColor: colorHex }}
           role="img"
-          aria-label={`${label}: ${Math.round(pct)} percent${winner ? ", highest" : ""}`}
+          // Two whole sentences rather than one plus an appended ", highest",
+          // because the crown is not a suffix in every language and a fragment
+          // has nowhere else to go.
+          aria-label={fillSlots(
+            t(
+              winner
+                ? { en: "{group}: {percent} percent, the highest" }
+                : { en: "{group}: {percent} percent" },
+            ),
+            { group: label, percent: Math.round(pct) },
+          )}
         >
           <span
             className="pointer-events-none absolute inset-0 rounded-t-[3px] ring-1 ring-inset ring-black/15"

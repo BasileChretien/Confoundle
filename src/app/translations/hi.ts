@@ -6423,4 +6423,11 @@ export const hi: Record<string, string> = {
   "Self-deprecating": "मज़ाक वाला",
   "Working…": "चल रहा है…",
   "Share / save card": "कार्ड साझा करें / सहेजें",
+  // ---- chart announcements: bars, arms and the group-level slope ----
+  "{group}: {percent} percent": "{group}: {percent} प्रतिशत",
+  "{group}: {percent} percent, the highest": "{group}: {percent} प्रतिशत, सबसे अधिक",
+  "{arm}: {events} out of {total}": "{arm}: {total} में से {events}",
+  "{arm}: {events} out of {total}, {percent}": "{arm}: {total} में से {events}, यानी {percent}",
+  "Compared group by group, the relationship runs downward. Correlation r equals {r}.": "समूह दर समूह तुलना करने पर संबंध नीचे की ओर जाता है। सहसंबंध r का मान {r} है।",
+  "Compared group by group, the relationship runs upward. Correlation r equals {r}.": "समूह दर समूह तुलना करने पर संबंध ऊपर की ओर जाता है। सहसंबंध r का मान {r} है।",
 };

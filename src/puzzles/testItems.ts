@@ -9403,23 +9403,49 @@ const items: TestItem[] = [
     },
   },
   {
-    id: "pb-sound-fracture-endpoint",
+    /**
+     * Written as a sound decoy and corrected to a trap in review, because it
+     * had the card's own distinction backwards. A registry endpoint is proof
+     * against DETECTION bias, where the worry is the scoring. It is no defence
+     * at all against PERFORMANCE bias, where the worry is what people do.
+     */
+    id: "pb-fracture-endpoint",
     scenario: {
       en: "An unblinded trial of a fall-prevention programme could not disguise which participants were doing the classes. Its primary outcome was hip fracture, taken from hospital admission records.",
     },
-    trap: null,
+    trap: "performance-bias",
     explanation: {
-      en: "Hip fracture recorded in admission data is not something a participant's enthusiasm can produce or suppress in the way a symptom score is. The outcome was chosen to sit beyond the reach of the thing that could not be blinded.",
+      en: "Taking the outcome from admission records settles who counts as fractured, which is a different worry. It does nothing about the participants: the class group knows to be careful and may also move the rugs and use the handrail, and the group told it was not selected may go and find its own exercise. Both change how often people fall.",
     },
   },
   {
-    id: "pb-sound-adherence-equal",
+    id: "pb-adherence-equal",
     scenario: {
-      en: "An open-label trial reported adherence by arm: 89 percent in the treatment group and 87 percent in the control group, with drop-out of 6 and 7 percent. The treatment arm did better on the primary outcome.",
+      en: "An open-label trial reported adherence by arm: 89 percent in the treatment group and 87 percent in the control group, with drop-out of 6 and 7 percent. On that basis the authors ruled out any effect of participants knowing their allocation.",
+    },
+    trap: "performance-bias",
+    explanation: {
+      en: "Adherence and drop-out are two of the routes, not all of them. Equal pill-taking says nothing about how hard each group tried, what else they sought out, or what they expected, and any of those can move the outcome. Measuring two pathways and declaring the rest closed is the step that does not follow.",
+    },
+  },
+  {
+    id: "pb-sound-nobody-knew",
+    scenario: {
+      en: "A health service randomised its clinics to two different wordings of the appointment reminder text message and compared attendance from routine booking records. Patients were never told that anything was being compared, and no clinic displayed which version it was using.",
     },
     trap: null,
     explanation: {
-      en: "The trial measured the thing that would have gone wrong and reported it, and the two arms behaved almost identically. Knowing the allocation did not translate into doing anything different, which is what the numbers are there to show.",
+      en: "Nobody in the study knew there were two versions or which one they had, so there is no allocation for knowledge of it to change anything. Whatever difference in attendance appears belongs to the wording, since that is the only thing that differed.",
+    },
+  },
+  {
+    id: "pb-sound-no-participant-step",
+    scenario: {
+      en: "A laboratory randomised which of two sample-handling protocols each batch of blood went through, and measured how often the assay had to be repeated. Patients gave one sample and had no further part in the study.",
+    },
+    trap: null,
+    explanation: {
+      en: "There is no participant behaviour anywhere between the randomisation and the outcome, so the pathway performance bias runs along does not exist here. It is randomised batches of blood, and blood does not try harder.",
     },
   },
 ];

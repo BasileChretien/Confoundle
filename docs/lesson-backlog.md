@@ -5483,3 +5483,96 @@ where they overlap, which is literally the respiratory series, but `yield`
 authors published rates with intervals rather than counts and has no second
 panel for the control cause. Whether that is an extension, a new shape, or a
 `rates` modelling, decide it against these numbers.
+
+### 72. The halo effect: the same accent, appealing or irritating depending on nothing about the accent
+
+<!-- skill: halo-effect -->
+
+**Status: LEAD, SOURCE IDENTIFIED AND FREELY AVAILABLE, BLOCKED ON READING IT.**
+Found 2026-08-12 by the audit method that produced entries 70 and 71, run this
+time against the GERMAN catalogue rather than the US outline. That method has
+now found three genuine gaps in one day and is worth stating plainly: take a
+national catalogue's own list of named concepts, grep the project for each, and
+look for the ones that appear exactly once, in the line that transcribes the
+catalogue. A concept the deck has never discussed leaves exactly that trace.
+
+**Why Germany is where the remaining gaps are.** The consolidated table in
+`exam-syllabus-audit.md` is now essentially exhausted: 34 of its 37 rows are
+shipped and the other three are deliberate decisions recorded elsewhere
+(confounding and selection bias as general headings covered by specific cards,
+and Neyman closed by design). But that table tracks the epidemiological
+tradition. The audit's own Germany section notes that the German catalogues are
+thin on bias types and carry instead something nobody else has: a populated set
+of PSYCHOLOGICAL judgement errors inherited from the 2010 Medizinische
+Psychologie catalogue. That list is where the deck has holes.
+
+Checked against the registry, one by one. **Rosenthaleffekt** is shipped as
+`pygmalion-effect`. **Labeling** is shipped as `self-applied-label`.
+**Urteilsheuristiken** are shipped as `anchoring` and `availability-heuristic`.
+**Placeboeffekt** is covered from the other side by `nocebo-effect`. Two are
+not covered at all, and neither appears anywhere in this project except on the
+single line that transcribes the German list: **Haloeffekt**, and **Primacy-
+und Recency-Effekt**, which has its own entry below.
+
+**The source, identified and free.** Nisbett RE, Wilson TD. The halo effect:
+evidence for unconscious alteration of judgments. Journal of Personality and
+Social Psychology 1977;35(4):250-256. doi 10.1037/0022-3514.35.4.250. The PDF
+is hosted openly by the University of Michigan's Deep Blue repository, which is
+Nisbett's own institution: handle 2027.42/92158, file TheHaloEffect.pdf, 543 KB.
+
+**Why it is close to an ideal Confoundle card.** Two videotaped interviews with
+the SAME instructor, who speaks English with a European accent. In one he is
+warm, in the other cold and distant. Students then rate his physical appearance,
+his mannerisms, and his accent. The attributes being rated are physically
+identical across the two tapes, and they are rated as appealing by the students
+who saw the warm tape and irritating by the students who saw the cold one. The
+accent in particular cannot have changed. That is a setup and a reveal on one
+dataset in the deck's strongest form: the thing being judged is held constant by
+construction, so the whole difference belongs to the judge. The published
+follow-up is better still, and is the part that makes it a REASONING trap rather
+than a curiosity: the subjects were asked which way the influence ran, and did
+not believe their liking had coloured the attribute ratings.
+
+**WHAT BLOCKS IT, EXACTLY.** Nothing about access. The paper is free, and the
+landing page and file were both reached. The block is that the file is a PDF
+whose text is not extractable in the browser, so the tables and the actual
+numbers were not read. Every figure available from search results is at the
+level of the abstract, and this project does not build on abstracts. Two routes
+unblock it in a minute each: hand the PDF over the way the CDP, Hurst and Davies
+papers were handed over, or allow it to be downloaded and read from disk.
+
+**What is needed from the paper before authoring anything.** The number of
+subjects and their split across the warm and cold conditions; the rating scale
+and its endpoints; the mean rating in each condition for appearance, mannerisms
+and accent, with the test statistics as printed; and the results of the
+direction-of-influence question. Note in advance that this is a RATINGS source
+rather than a counts source, so the `ratings` shape is the likely fit and the
+provenance note will have to say plainly that means are drawn rather than
+derived from counts, as `crossed` and `published` already do.
+
+### 73. Primacy and recency: the same list, remembered from the ends
+
+<!-- skill: serial-position-effect -->
+
+**Status: LEAD, NOT YET SOURCED.** The second of the two gaps found in the
+German psychology catalogue, and recorded here so the next session does not have
+to rediscover it. Like the halo effect it appears exactly once in this project,
+on the line transcribing that catalogue, with no puzzle and no prior entry.
+
+**What it would have to teach, and the honest risk.** The serial position curve
+is a memory phenomenon before it is a reasoning trap, and this deck is not a
+memory deck. So the card cannot simply be "people recall the first and last
+items best". It has to be the DECISION consequence: that the order in which
+options, candidates, or evidence arrive changes which one is chosen, without
+anybody noticing that order was doing the work. That is a real and much-studied
+effect, and it is the version a doctor or a reader actually meets.
+
+**Adjacency to check properly before building**, because two shipped cards sit
+close and this entry has not opened them. `anchoring` is about the first number
+setting a scale, which is a primacy effect about magnitude rather than about
+recall or choice. `compliance-sequencing` (`the-small-favour-first`) is about the
+ORDER of two requests changing whether the second succeeds, which is the closest
+thing in the deck and may already occupy the ground. Whoever picks this up should
+open `the-small-favour-first` and decide honestly whether a serial position card
+reveals anything that one does not, before searching for a source. If it does
+not, the right outcome is to close this entry the way Neyman was closed.

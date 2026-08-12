@@ -3466,6 +3466,15 @@ export const ConditionalData = z
     if (d.columns.filter((c) => c.isBaseline).length > 1)
       ctx.addIssue({ code: "custom", path: ["columns"], message: "at most one baseline column" });
 
+    /**
+     * JSON rather than a joined string. Ids are authored by hand, and a "|"
+     * inside one would let two DIFFERENT pairs collide on a single key: the
+     * duplicate check would then reject a correct grid, and the completeness
+     * check below would accept one with a hole, which is the worse half.
+     */
+    const cellKey = (rowId: string, columnId: string): string =>
+      JSON.stringify([rowId, columnId]);
+
     const seen = new Set<string>();
     d.cells.forEach((c, i) => {
       if (!rowIds.has(c.rowId))
@@ -3476,9 +3485,13 @@ export const ConditionalData = z
           path: ["cells", i, "columnId"],
           message: `no column ${c.columnId}`,
         });
-      const key = `${c.rowId}|${c.columnId}`;
+      const key = cellKey(c.rowId, c.columnId);
       if (seen.has(key))
-        ctx.addIssue({ code: "custom", path: ["cells", i], message: `two cells for ${key}` });
+        ctx.addIssue({
+          code: "custom",
+          path: ["cells", i],
+          message: `two cells for row ${c.rowId}, column ${c.columnId}`,
+        });
       seen.add(key);
       if (c.mean < d.scale.min || c.mean > d.scale.max)
         ctx.addIssue({
@@ -3492,7 +3505,7 @@ export const ConditionalData = z
     // as data rather than as absence.
     for (const r of d.rows)
       for (const c of d.columns)
-        if (!seen.has(`${r.id}|${c.id}`))
+        if (!seen.has(cellKey(r.id, c.id)))
           ctx.addIssue({
             code: "custom",
             path: ["cells"],
@@ -3513,7 +3526,17 @@ export const ConditionalData = z
     if (spreads.length === d.rows.length) {
       const widest = Math.max(...spreads);
       const narrowest = Math.min(...spreads);
-      if (widest < 2 * narrowest)
+      // Flat everywhere has to be caught FIRST. With every row flat both
+      // numbers are 0, the ratio test below reads "0 < 0" and passes, and a
+      // grid with no variation at all would ship as an interaction chart.
+      if (widest === 0)
+        ctx.addIssue({
+          code: "custom",
+          path: ["cells"],
+          message:
+            "every row is flat across the columns, so there is no effect to modify and nothing for the reveal to add",
+        });
+      else if (widest < 2 * narrowest)
         ctx.addIssue({
           code: "custom",
           path: ["cells"],

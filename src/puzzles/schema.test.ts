@@ -463,3 +463,100 @@ describe("the view filter guard covers every filterable shape", () => {
     );
   });
 });
+
+describe("conditional validation", () => {
+  /**
+   * A minimal well-formed grid: two rows, three columns, one row flat and the
+   * other spread, which is the whole precondition this shape exists to enforce.
+   */
+  const conditional = {
+    type: "conditional",
+    label: { en: "Score" },
+    metricLabel: { en: "Mean score" },
+    factorLabel: { en: "The cue" },
+    meanNote: { en: "Means as published." },
+    scale: { min: 1, max: 9, minLabel: { en: "low" }, maxLabel: { en: "high" } },
+    rows: [
+      { id: "strong", label: { en: "Strong" } },
+      { id: "weak", label: { en: "Weak" } },
+    ],
+    columns: [
+      { id: "up", label: { en: "Up" } },
+      { id: "none", label: { en: "None" }, isBaseline: true },
+      { id: "down", label: { en: "Down" } },
+    ],
+    cells: [
+      { rowId: "strong", columnId: "up", mean: 6.7, n: 10 },
+      { rowId: "strong", columnId: "none", mean: 6.6, n: 10 },
+      { rowId: "strong", columnId: "down", mean: 5.9, n: 10 },
+      { rowId: "weak", columnId: "up", mean: 5.2, n: 10 },
+      { rowId: "weak", columnId: "none", mean: 4.7, n: 10 },
+      { rowId: "weak", columnId: "down", mean: 2.7, n: 10 },
+    ],
+  };
+
+  it("accepts a well-formed shape", () => {
+    expect(problems(conditional)).toEqual([]);
+  });
+
+  it("rejects a grid that is flat in every row", () => {
+    // Regression. Flat everywhere makes widest and narrowest both 0, and the
+    // ratio test reads "0 < 2 * 0", which is false, so this passed and a chart
+    // with no variation at all would have shipped as an interaction chart.
+    const flat = {
+      ...conditional,
+      cells: conditional.cells.map((c) => ({ ...c, mean: 5 })),
+    };
+    expect(problems(flat).join(" ")).toContain("every row is flat");
+  });
+
+  it("still rejects a real but too-similar interaction", () => {
+    // The flat guard must not have swallowed the ratio guard it precedes.
+    const shallow = {
+      ...conditional,
+      cells: conditional.cells.map((c) =>
+        c.rowId === "weak" && c.columnId === "down" ? { ...c, mean: 5.4 } : c,
+      ),
+    };
+    expect(problems(shallow).join(" ")).toContain("no interaction for this shape to reveal");
+  });
+
+  it("does not confuse two different cells whose ids contain a separator", () => {
+    // Regression. Keys were built as `rowId|columnId`, so ("a|b","c") and
+    // ("a","b|c") collided: the duplicate check fired on a correct grid and,
+    // worse, the completeness check accepted one with a hole.
+    const piped = {
+      ...conditional,
+      rows: [
+        { id: "a|b", label: { en: "A" } },
+        { id: "a", label: { en: "B" } },
+      ],
+      columns: [
+        { id: "c", label: { en: "C" } },
+        { id: "b|c", label: { en: "D" } },
+      ],
+      cells: [
+        { rowId: "a|b", columnId: "c", mean: 2, n: 5 },
+        { rowId: "a|b", columnId: "b|c", mean: 8, n: 5 },
+        { rowId: "a", columnId: "c", mean: 5, n: 5 },
+        { rowId: "a", columnId: "b|c", mean: 5.5, n: 5 },
+      ],
+    };
+    const found = problems(piped).join(" ");
+    expect(found).not.toContain("two cells for");
+    expect(found).not.toContain("no cell for");
+  });
+
+  it("rejects a mean outside the authored scale", () => {
+    const bad = {
+      ...conditional,
+      cells: conditional.cells.map((c, i) => (i === 0 ? { ...c, mean: 99 } : c)),
+    };
+    expect(problems(bad).join(" ")).toContain("outside the scale");
+  });
+
+  it("rejects a grid with a missing cell", () => {
+    const holed = { ...conditional, cells: conditional.cells.slice(1) };
+    expect(problems(holed).join(" ")).toContain("no cell for row");
+  });
+});

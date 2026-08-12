@@ -9893,6 +9893,158 @@ const items: TestItem[] = [
       en: "They ran the test, the association behaved exactly as a backwards arrow behaves, and they said so instead of publishing a new risk factor. Following the evidence to the less publishable conclusion is the behaviour this topic is asking for.",
     },
   },
+
+  /*
+   * The halo effect. Every trap is one move: an irrelevant global impression
+   * changing a specific judgement the judge had enough information to make
+   * independently. Two neighbours are deliberately kept out. Nothing here has
+   * an expectation changing the SUBJECT's behaviour, which is
+   * `pygmalion-effect` and would make the person genuinely better rather than
+   * the judgement worse, so the thing being judged is identical in every item.
+   * And nothing turns on the same fact worded two ways, which is
+   * `framing-effect`: here the wording is fixed and an irrelevant cue sits
+   * beside it.
+   */
+  {
+    id: "hal-cv-photo",
+    scenario: {
+      en: "A company asked managers to score identical CVs for a technical role. Half carried a photograph of an attractive applicant and half a photograph of a plainer one. The attractive applicants were scored as more technically competent, and the firm concluded its managers had spotted genuine differences in ability.",
+    },
+    trap: "halo-effect",
+    explanation: {
+      en: "The CVs were identical, so there was no difference in ability to spot. A general impression formed from the photograph is colouring a judgement of technical competence that the document already answered on its own.",
+    },
+  },
+  {
+    id: "hal-code-author",
+    scenario: {
+      en: "An engineering team showed the same pull request to different reviewers, attributed to a senior engineer for some and to a new joiner for others. The version attributed to the senior engineer was rated cleaner and better structured.",
+    },
+    trap: "halo-effect",
+    explanation: {
+      en: "Structure and cleanliness are properties of the code, and the code was character for character the same. The reviewers' impression of who wrote it is doing work the diff in front of them had already settled.",
+    },
+  },
+  {
+    id: "hal-grant-letterhead",
+    scenario: {
+      en: "A funder tested its own process by sending one proposal to reviewers with different institutions named at the top. Proposals bearing a famous university scored higher on methodological rigour than the identical text bearing an unknown college.",
+    },
+    trap: "halo-effect",
+    explanation: {
+      en: "Methodological rigour is visible in the method section, which did not change. The institution is a global impression of quality leaking into a specific technical judgement the reviewer was equipped to make from the page.",
+    },
+  },
+  {
+    id: "hal-restaurant-room",
+    scenario: {
+      en: "A chain served the identical dish, cooked in one kitchen, in two of its rooms: one recently refurbished and one shabby. Diners in the smart room rated the food itself tastier, and head office took that as evidence the kitchen there was performing better.",
+    },
+    trap: "halo-effect",
+    explanation: {
+      en: "The food came out of one kitchen and was the same dish. The diners are tasting the room. Pleasant surroundings have become a general impression that then answers a question about the food specifically.",
+    },
+  },
+  {
+    id: "hal-lecturer-reading-list",
+    scenario: {
+      en: "At the end of term, students who rated a lecturer highly also rated his reading list, his slides and the lecture theatre as better than students who disliked him, although every one of them had the same list, the same slides and the same room.",
+    },
+    trap: "halo-effect",
+    explanation: {
+      en: "The list, the slides and the room were shared, so nothing about them can explain the difference. A single overall feeling about the lecturer is being reported back as separate verdicts on things that were identical for everyone.",
+    },
+  },
+  {
+    id: "hal-ceo-photograph",
+    scenario: {
+      en: "Participants were shown photographs of chief executives and, with no other information, asked to judge how well run their companies were. The better-looking executives were judged to run better-managed companies, and a magazine reported this as evidence that appearance predicts competence.",
+    },
+    trap: "halo-effect",
+    explanation: {
+      en: "The participants were given a face and nothing else, so a judgement about management can only be an extension of an impression of the face. Reporting it as appearance predicting competence mistakes the bias for the finding.",
+    },
+  },
+  {
+    id: "hal-handwriting-marks",
+    scenario: {
+      en: "The same examination answers were transcribed twice, once in neat handwriting and once in untidy handwriting, and given to markers. The neat versions received higher marks for the quality of the argument.",
+    },
+    trap: "halo-effect",
+    explanation: {
+      en: "The argument was word for word identical, so its quality cannot differ. Tidiness has produced a general impression of care which the marker then applies to a judgement about reasoning that the text alone could answer.",
+    },
+  },
+  {
+    id: "hal-charity-report",
+    scenario: {
+      en: "Two charities published annual reports containing the same audited figures, one professionally designed and one typed plainly. Readers judged the well-designed one to be more financially responsible with its donations.",
+    },
+    trap: "halo-effect",
+    explanation: {
+      en: "The figures were the same and were audited, so financial responsibility is answerable from the numbers. The design produces an overall impression of competence which readers then report as a verdict about the accounts.",
+    },
+  },
+  {
+    id: "hal-accent-interview",
+    scenario: {
+      en: "In a hiring exercise the same recorded answers to technical questions were voiced by two speakers, one with a prestigious regional accent and one with a stigmatised one. Panels rated the prestigious voice as giving more accurate technical answers.",
+    },
+    trap: "halo-effect",
+    explanation: {
+      en: "Accuracy is a property of the answers, which were word for word the same. The accent creates a general impression of education, and that impression is answering a factual question the panel could have checked directly.",
+    },
+  },
+  {
+    id: "hal-wine-bottle",
+    scenario: {
+      en: "The same wine was poured for tasters from a plain bottle and from an elegant one with an expensive-looking label. Tasters served from the elegant bottle described the wine itself as more complex and better balanced.",
+    },
+    trap: "halo-effect",
+    explanation: {
+      en: "It was one wine in two bottles, so complexity and balance could not differ. The bottle sets a general impression of quality which then supplies the answers to specific questions about the taste in the glass.",
+    },
+  },
+  {
+    id: "hal-sound-blinded-marking",
+    scenario: {
+      en: "A department removed names, photographs and institutions from every script before marking, saying it did so because it did not trust markers to set that information aside once they had seen it.",
+    },
+    trap: null,
+    explanation: {
+      en: "This is the right response to the problem and for the right reason. The defence against a global impression colouring specific judgements is to remove the cue before the judgement, rather than to ask the judge to discount it afterwards.",
+    },
+  },
+  {
+    id: "hal-sound-criteria-scored-first",
+    scenario: {
+      en: "A hiring panel scored each written criterion separately against a rubric before anyone gave an overall verdict, and reported that on two criteria the candidate they liked least had scored highest.",
+    },
+    trap: null,
+    explanation: {
+      en: "Scoring components before forming a global verdict is the order that stops an overall impression supplying every specific answer, and finding that the components disagree with the general feeling is evidence the procedure is working rather than something to explain away.",
+    },
+  },
+  {
+    id: "hal-sound-suspicious-consistency",
+    scenario: {
+      en: "An analyst noticed that appraisal scores across quite unrelated qualities were almost perfectly correlated within each employee, and treated that as a sign the form was not being filled in dimension by dimension, rather than as evidence that some staff were uniformly excellent.",
+    },
+    trap: null,
+    explanation: {
+      en: "Ratings of genuinely unrelated qualities should not move in lockstep, so near-perfect agreement is a property of the rater rather than of the rated. Reading it as a warning about the instrument is the careful conclusion, and it is the observation this effect was originally named from.",
+    },
+  },
+  {
+    id: "hal-sound-refused-self-report",
+    scenario: {
+      en: "Asked whether seeing applicants' photographs had affected their scores, a selection panel said it had not. The chair replied that people are poor judges of what influenced them, and blinded the next round anyway.",
+    },
+    trap: null,
+    explanation: {
+      en: "The panel's assurance is exactly the evidence that should not be relied on, since this influence is not available to introspection and people who have been swayed report sincerely that they were not. Acting on the structure instead of on the self-report is the sound move.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

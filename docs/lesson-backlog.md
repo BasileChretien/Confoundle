@@ -5488,7 +5488,7 @@ panel for the control cause. Whether that is an extension, a new shape, or a
 
 <!-- skill: halo-effect -->
 
-**Status: LEAD, SOURCE IDENTIFIED AND FREELY AVAILABLE, BLOCKED ON READING IT.**
+**Status: SHIPPED 2026-08-12** as `the-photo-on-the-essay`, skill `halo-effect`, on a NEW shape, `conditional`. The block below was real and was resolved by reading both papers in full; what changed is WHICH paper carries the figure, and that is recorded at the end of this entry. Original status: LEAD, SOURCE IDENTIFIED AND FREELY AVAILABLE, BLOCKED ON READING IT.
 Found 2026-08-12 by the audit method that produced entries 70 and 71, run this
 time against the GERMAN catalogue rather than the US outline. That method has
 now found three genuine gaps in one day and is worth stating plainly: take a
@@ -5549,6 +5549,12 @@ direction-of-influence question. Note in advance that this is a RATINGS source
 rather than a counts source, so the `ratings` shape is the likely fit and the
 provenance note will have to say plainly that means are drawn rather than
 derived from counts, as `crossed` and `published` already do.
+
+**RESOLVED 2026-08-12, SAME DAY. Both papers were read in full and the block turned out to be about the FIGURE, not about access.** Nisbett and Wilson prints means for the liking measure only, 5.48 against 3.18; every attribute result appears as a t value in the text and as percentage bars in Figures 1 to 3, and this project does not read values off a bar chart. So it cannot carry a chart even though it carries the better story. What it does carry, and what the shipped card quotes it for, is the mechanism (the accent that cannot have changed between takes), a negative control of 34 further subjects who watched with the audio stripped out and found the visible attributes did not differ at t below 1, and the denial: asked directly, subjects said their liking had not coloured the ratings, and the cold group reported the arrow running the other way at t = 3.28, 2.80 and 2.74.
+
+The figure comes instead from Landy D, Sigall H. Beauty is talent: task evaluation as a function of the performer's physical attractiveness. J Pers Soc Psychol 1974;29(3):299-304, which Nisbett and Wilson themselves cite as the study that gave judges information sufficient for an independent assessment. It prints a full 2 by 3 of means and standard deviations, 60 men and 10 per cell, and the interaction is the better lesson: the photograph was worth 0.8 of a mark on the good essay and not significant, and 2.5 marks on the poor one at p below .001. The bias does its worst work where the evidence is weakest, which is the transferable rule and the reason the setup draws only the good-essay row.
+
+**One honesty constraint carried into the card and its provenance note:** the overall 2 by 3 interaction was NOT significant on either measure. What the card claims is the two simple comparisons the paper reports directly, plus the 2 by 2 interaction with the no-photo condition removed, which reaches only p below .10. The reveal says so rather than implying a cleaner result than exists.
 
 ### 73. Primacy and recency: the same list, remembered from the ends
 

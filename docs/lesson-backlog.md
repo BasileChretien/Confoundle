@@ -5327,3 +5327,52 @@ categories drawn as one bar and the reveal needs them drawn apart. That is
 either a new shape or a modelling trick with `rates` aggregate against
 stratified, and which one should be decided with the real numbers in hand
 rather than now.
+
+**UPDATE 2026-08-12, SAME DAY: the ex-smoker route was chosen and then searched,
+and it is HARDER than this entry assumed. Five sources checked, none shippable,
+and the reason is interesting enough to be the useful part.**
+
+The suggestion above was that ex-smoker mortality exceeding current-smoker
+mortality is the identical sick-quitter shape with none of the alcohol baggage.
+That is true of the MECHANISM and false of the DATA, for a reason worth stating:
+in most cohorts quitting smoking helps enough that the ordering never flips, so
+the raw pattern the card needs simply is not there to print.
+
+- **Shaper 1988, Lancet (alcohol).** Right phenomenon, tables unreadable.
+  ScienceDirect grants institutional access and serves the 1988 issue as a scan
+  whose body is not in the HTML.
+- **Wannamethee and Shaper 1988, Int J Epidemiol (alcohol).** Oxford Academic
+  states the content is available only as a PDF.
+- **Smoking Cessation and Short- and Longer-Term Mortality, NEJM Evidence 2024,
+  doi 10.1056/EVIDoa2300272.** Read at source through institutional access,
+  1.48 million people across four cohorts. It is a paper about the BENEFIT of
+  quitting: former smokers run at hazard ratios of 1.41 to 1.98 against never
+  smokers where current smokers run at 2.35 to 3.12. No reversal to show.
+- **Smoking, smoking cessation and 7-year mortality in Thai adults, PMC4624360.**
+  Open access, raw counts read from Table 2. Current smokers 163 deaths of 8,732
+  (1.9 per cent) against former smokers 189 of 14,698 (1.3 per cent). The
+  ordering holds; again no reversal.
+- **Effect of time since smoking cessation on lung cancer incidence, PMC8921458,
+  a Chinese tin-miner cohort of 9,134 with 27 years of follow-up.** THIS ONE HAS
+  THE REVERSAL PRINTED, and it still cannot carry the card. Table 2 gives, per
+  10,000 person-years, 126.6 for men who quit within one year against 87.9 for
+  men still smoking, with a crude hazard ratio of 1.49 (95 per cent CI 1.02 to
+  2.18), falling across 94.1 at 2 to 5 years, 84.9 at 6 to 10, and 59.0 beyond
+  10. A beautiful gradient, and the wrong lesson: the authors' adjusted hazard
+  ratio for the same band is 1.03 (0.70 to 1.51), because their ex-smokers were
+  older, mean age 59 against 53 for current smokers. The paper never attributes
+  the crude excess to reverse causation, and the adjustment says most of it was
+  age. Building a reverse-causality card on it would put an explanation on the
+  data that its own authors did not make. It is, however, a genuinely good
+  crude-versus-adjusted confounding dataset if a card ever needs one.
+
+**What this changes about the entry.** Reverse causality remains a real and
+uncovered gap; nothing above weakens that. What is now known is that the search
+should stop looking for a cohort where ex-smokers simply die more, because
+quitting works and that ordering rarely flips. The two routes still open are
+the alcohol papers, which need only a PDF, and a source where the AUTHORS
+themselves attribute a recent-quitter excess to preclinical disease rather than
+leaving it to be inferred. The Lee and Fry quantitative review (ScienceDirect
+S0273230013000871) models reverse causation explicitly and reports that model
+fit is poor when it is ignored, so its references are the obvious next place to
+look; it is a meta-analysis and so carries no counts of its own.

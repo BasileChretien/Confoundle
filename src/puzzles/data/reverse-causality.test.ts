@@ -126,6 +126,29 @@ describe("the association melts and the control does not", () => {
     expect(primaryOutcome(d).id).toBe("respiratory");
     expect(controlOutcome(d)?.id).toBe("coronary");
   });
+
+  it("states the attrition correctly in the reveal", () => {
+    // The reveal concedes how much of the cohort the last window throws away,
+    // because that is the objection the control exists to answer. It first said
+    // "three quarters", which the authored counts do not support: 361 + 4,436
+    // of 934 + 9,397 remain, so it is closer to half. A user-facing number, so
+    // it is pinned here rather than left to prose.
+    const r = ratiosFor(d, "respiratory");
+    const first = r[0]!;
+    const last = r[r.length - 1]!;
+    const started = first.exposedN + first.referenceN;
+    const left = last.exposedN + last.referenceN;
+    expect(started).toBe(10331);
+    expect(left).toBe(4797);
+    expect(left / started).toBeGreaterThan(0.4);
+    expect(left / started).toBeLessThan(0.5);
+
+    const explanation = reverseCausality.reveal.explanation.en ?? "";
+    expect(explanation).toMatch(/more than half the cohort is gone/i);
+    expect(explanation).toContain(left.toLocaleString("en"));
+    expect(explanation).toContain(started.toLocaleString("en"));
+    expect(explanation).not.toMatch(/three quarters of the cohort/i);
+  });
 });
 
 describe("the puzzle is answerable and does not punish good reasoning", () => {

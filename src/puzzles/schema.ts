@@ -3311,14 +3311,31 @@ export const AttenuationData = z
             });
         }
 
+    // A reference cell with no events makes the ratio a division by zero, and
+    // the derivation would hand the renderer a NaN. The first version of this
+    // file merely SKIPPED the checks below in that case, which let such a
+    // puzzle validate and then draw NaN on the card. Reject it here instead:
+    // this shape's entire output is a ratio, so a reference group that nothing
+    // happened to is data this shape cannot draw, whatever else is true of it.
+    const [exposedGroup, referenceGroup] = d.groups;
+    if (referenceGroup)
+      for (const w of d.windows)
+        for (const o of d.outcomes) {
+          const b = at(w.id, referenceGroup.id, o.id);
+          if (b && b.events === 0)
+            ctx.addIssue({
+              code: "custom",
+              path: ["observations"],
+              message: `the reference group has no events for window ${w.id}, outcome ${o.id}, so the ratio would divide by zero`,
+            });
+        }
+
     const ratio = (windowId: string, outcomeId: string): number | null => {
-      const [exposed, reference] = d.groups;
-      if (!exposed || !reference) return null;
-      const a = at(windowId, exposed.id, outcomeId);
-      const b = at(windowId, reference.id, outcomeId);
+      if (!exposedGroup || !referenceGroup) return null;
+      const a = at(windowId, exposedGroup.id, outcomeId);
+      const b = at(windowId, referenceGroup.id, outcomeId);
       if (!a || !b || b.events === 0) return null;
-      const rb = b.events / b.n;
-      return rb === 0 ? null : a.events / a.n / rb;
+      return a.events / a.n / (b.events / b.n);
     };
 
     const first = d.windows[0];

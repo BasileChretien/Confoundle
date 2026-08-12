@@ -1,7 +1,13 @@
 import { useLocale, useT } from "../../app/i18n";
 import type { AttenuationData } from "../../puzzles/schema";
 import { colorFor } from "./palette";
-import { axisFraction, showsAllWindows, visibleSeries } from "./attenuation";
+import {
+  axisFraction,
+  exposedGroup,
+  referenceGroup,
+  showsAllWindows,
+  visibleSeries,
+} from "./attenuation";
 
 /**
  * One association drawn once, then drawn again after the earliest deaths are
@@ -35,6 +41,8 @@ export function AttenuationView({
 
   const series = visibleSeries(data, kind);
   const onePos = axisFraction(data, 1);
+  const exposed = exposedGroup(data);
+  const reference = referenceGroup(data);
 
   return (
     <div className="flex flex-col gap-3">
@@ -105,9 +113,22 @@ export function AttenuationView({
                       />
                     </div>
 
-                    <span className="font-mono text-[10px] tabular-nums text-ink-soft">
-                      {nf.format(r.exposedEvents)}/{nf.format(r.exposedN)} ·{" "}
-                      {nf.format(r.referenceEvents)}/{nf.format(r.referenceN)}
+                    {/*
+                      The counts name their groups. Without the labels this read
+                      as two bare fractions either side of a dot, and which one
+                      was the exposed group came from the schema contract that
+                      `groups[0]` is exposed, which a reader cannot see.
+                    */}
+                    <span className="text-[10px] leading-snug text-ink-soft">
+                      <span className="font-mono tabular-nums">
+                        {t(exposed.short ?? exposed.label)} {nf.format(r.exposedEvents)}/
+                        {nf.format(r.exposedN)}
+                      </span>
+                      {" · "}
+                      <span className="font-mono tabular-nums">
+                        {t(reference.short ?? reference.label)} {nf.format(r.referenceEvents)}/
+                        {nf.format(r.referenceN)}
+                      </span>
                     </span>
                   </div>
                 );

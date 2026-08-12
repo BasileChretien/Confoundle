@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { Puzzle, PuzzleData } from "./schema";
+import { haloEffect } from "./data/halo-effect";
 import { sleeperEffect } from "./data/sleeper-effect";
 import { thirdPersonEffect } from "./data/third-person-effect";
 import { meanVsMedian } from "./data/mean-vs-median";
@@ -558,5 +559,62 @@ describe("conditional validation", () => {
   it("rejects a grid with a missing cell", () => {
     const holed = { ...conditional, cells: conditional.cells.slice(1) };
     expect(problems(holed).join(" ")).toContain("no cell for row");
+  });
+});
+
+describe("conditional view semantics", () => {
+  /**
+   * These go through `Puzzle`, not `PuzzleData`. The view guards live in the
+   * puzzle-level superRefine, because they compare the view against the data,
+   * so a `PuzzleData.safeParse` case cannot reach them and would pass while
+   * testing nothing. That is exactly what the first version of these tests did.
+   */
+  const puzzleProblems = (p: unknown): string[] => {
+    const result = Puzzle.safeParse(p);
+    if (result.success) return [];
+    return result.error.issues.map((i) => i.message);
+  };
+
+  const withViews = (initialView: unknown, revealView: unknown) => ({
+    ...haloEffect,
+    setup: { ...haloEffect.setup, initialView },
+    reveal: { ...haloEffect.reveal, view: revealView },
+  });
+
+  it("accepts the shipped pairing, so the guards are not simply always firing", () => {
+    expect(puzzleProblems(haloEffect)).toEqual([]);
+  });
+
+  it("rejects onerow that names no row, which would draw every row", () => {
+    const bad = withViews(
+      { kind: "onerow", caption: { en: "x" } },
+      haloEffect.reveal.view,
+    );
+    expect(puzzleProblems(bad).join(" ")).toContain("onerow must name exactly one row");
+  });
+
+  it("rejects onerow that names more than one row", () => {
+    const bad = withViews(
+      { kind: "onerow", groupIds: ["good", "poor"], caption: { en: "x" } },
+      haloEffect.reveal.view,
+    );
+    expect(puzzleProblems(bad).join(" ")).toContain("onerow must name exactly one row");
+  });
+
+  it("rejects bothrows carrying groupIds, which would draw fewer rows than it says", () => {
+    const bad = withViews(haloEffect.setup.initialView, {
+      kind: "bothrows",
+      groupIds: ["good"],
+      caption: { en: "x" },
+    });
+    expect(puzzleProblems(bad).join(" ")).toContain("groupIds would contradict it");
+  });
+
+  it("rejects a view kind that DataViewRenderer would render as nothing", () => {
+    const bad = withViews(
+      { kind: "aggregate", caption: { en: "x" } },
+      haloEffect.reveal.view,
+    );
+    expect(puzzleProblems(bad).join(" ")).toContain("cannot be drawn as");
   });
 });

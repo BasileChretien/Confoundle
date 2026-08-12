@@ -5576,3 +5576,99 @@ thing in the deck and may already occupy the ground. Whoever picks this up shoul
 open `the-small-favour-first` and decide honestly whether a serial position card
 reveals anything that one does not, before searching for a source. If it does
 not, the right outcome is to close this entry the way Neyman was closed.
+
+**ADJACENCY RESOLVED 2026-08-12. The entry survives, but only in one of its two
+possible framings, and the other must not be built.** `the-small-favour-first`
+was opened and read, lesson and examples both, rather than judged from its title.
+
+What that card actually occupies is narrower than the entry feared. Its subject
+is two DIFFERENT requests aimed at one person, where the first exchange leaves
+behind either a self-image to live up to (foot in the door) or a concession that
+seems to call for one back (door in the face). Its own lesson text turns on the
+two versions pointing opposite ways on size, which is the proof that size is not
+the variable. Its defence is "what would I say if this arrived cold from a
+stranger this minute". None of that is about position within a list, and the
+card contains no list. `anchoring` is a magnitude claim: a first number sets the
+scale a later number is read against. Also not position within a list.
+
+So the ground is genuinely free, and the registry confirms it: 71 shipped skills
+and nothing under a serial position, order effect, or ballot order heading.
+
+**The framing that must be built, and the one that must not.** Do NOT build "the
+first item sets the standard", because that is `anchoring` wearing different
+clothes and the two answer bands would share a direction. Build the version
+where the items are EQUIVALENT and only position differs, so that the whole
+claim is that order alone moved the outcome. That version has a defence the deck
+does not yet own either, namely randomise or rotate the order and compare, which
+is different from halo's "score the components separately" because there is
+nothing to decompose: the items are already atomic and already equal.
+
+**Sourcing lead, now OPENED, and the answer is in the section below it.** The
+strongest candidate is the ballot order literature, because the randomisation is
+real rather than assumed: California randomises the candidate ordering by an
+alphabet lottery, drawn separately per assembly district, which makes it a
+randomised natural experiment across dozens of districts at once. Ho and Imai in
+Public Opinion Quarterly 2008 is the paper that exploits exactly that. Whether
+it can carry a card depends on the thing that killed the Nisbett and Wilson
+figure: it has to PRINT counts or means in a table, not just report regression
+coefficients and plots. That is the first thing to check, before anything else
+is written. If it prints only coefficients, the fallback is the sequential
+judging literature, where order of performance is fixed by draw, but that needs
+the same check and must not be taken from an abstract.
+
+**SOURCE READ AT SOURCE, SAME DAY.** Ho DE, Imai K. Estimating causal effects of
+ballot order from a randomized natural experiment: the California alphabet
+lottery, 1978 to 2002. Public Opinion Quarterly 2008;72(2):216-240. Read from
+the authors' own PDF, all 25 pages, not from the abstract.
+
+**On the figures, which was the blocking question. The paper prints NO counts
+and NO vote shares by position anywhere.** Table 1 is the randomised alphabets
+themselves, letter by letter. Table 2 is the number of candidates per race, not
+votes. Table 3, Table 4 and Table 5 print estimated average causal effects in
+percentage points with standard errors, which is the CONTRAST already taken, not
+the pair of quantities it was taken between. The one place raw vote shares
+appear is Figure 1, and they appear as boxplots, so this project cannot read
+them. Total n is 37,840.
+
+That is not fatal the way it was for Nisbett and Wilson, because the deck
+already owns a shape that draws exactly an estimate with an interval, namely
+`forest`. Table 4 is directly drawable on it: nine parties, general against
+primary, ATE with SE. So the card is BUILDABLE. The blocker is somewhere else.
+
+**The real blocker, and it is a lesson-level one. The paper's headline structure
+is the halo card's transferable rule wearing a different costume.** What Ho and
+Imai find is that in general elections ballot order does essentially nothing to
+the major parties (Democratic 0.05 with SE 0.46, Republican -0.06 with SE 0.53)
+while moving minor and nonpartisan candidates, and that in the primaries for the
+very same offices the same two parties gain 1.89 (SE 0.32) and 2.16 (SE 0.46),
+with Libertarians at 6.59 and Peace and Freedom at 6.31. The authors' own
+explanation is a cognitive cost model: the cue does the work when the party
+label carries no information. That is, in one sentence, "the cue takes over
+where the evidence runs out", which is precisely what
+`the-photo-on-the-essay` was shipped to teach, and shipped to teach ON THE SAME
+DAY this entry was resolved. A second card whose reveal lands on the same rule
+teaches nothing new, however different its subject matter looks.
+
+**So the decision is not "source it", it is a choice between two options, and
+whoever picks this up must make it deliberately rather than drift into the
+first one.**
+
+1. Build the narrow version and keep the reveal off the conditionality. The
+   distinct claim available in this paper is about MAGNITUDE against a decision
+   threshold, not about where bias concentrates: in the 1998 Republican primary
+   for Lieutenant Governor, Tim Leslie won the nomination by 10 points and his
+   estimated ballot order effect was 11 points, with the runner-up Richard
+   Mountjoy at 9. The paper states outright that ballot order might have changed
+   the winner in as many as 12 percent of primary races examined. That is a
+   claim the deck does not make anywhere. It is also the claim with the widest
+   uncertainty in the paper, Leslie's SE being 6.8, so it can only be told as
+   "a coin toss is the same size as the margin", never as a point estimate.
+2. Close the entry. If option 1 cannot be told without leaning on the general
+   versus primary contrast, then the honest outcome is that the serial position
+   ground is real but this source cannot reach it without repeating halo, and
+   the entry should be closed the way Neyman was, with this note as the record.
+
+A third path exists but is NOT recommended without a fresh source check: the
+sequential judging literature (order of performance fixed by draw), which would
+give equivalent items and pure position, with no party label and therefore no
+information-conditionality to fall into. Nothing about it has been opened.

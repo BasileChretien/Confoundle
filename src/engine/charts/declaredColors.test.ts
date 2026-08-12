@@ -214,6 +214,16 @@ describe("slice-drawing renderers", () => {
   };
 
   /**
+   * A scan that reads nothing passes everything. `sourceOf` would throw and say
+   * so, but the last check below walks `SOURCES` directly and would simply find
+   * no offenders in no files, which is the failure mode this whole file exists
+   * to argue against: silence that looks like success.
+   */
+  it("actually reads the renderer sources", () => {
+    expect(Object.keys(SOURCES).length).toBeGreaterThan(20);
+  });
+
+  /**
    * Which renderers those are is READ OFF `DataViewRenderer`, never listed here.
    * A hand-kept list would cover exactly the shapes that existed the day it was
    * written, and the whole point of this file is the shape that has not been

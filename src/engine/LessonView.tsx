@@ -1,6 +1,7 @@
 import type { Provenance, Puzzle } from "../puzzles/schema";
 import { useT } from "../app/i18n";
 import { UI } from "../app/ui";
+import { forumTagUrl } from "../app/forum";
 import { Badge, Button } from "./ui";
 import { TagChips } from "./TagChips";
 import { ShareLesson } from "./ShareLesson";
@@ -27,6 +28,9 @@ export function LessonView({
   const t = useT();
   const { lesson, provenance, goDeeperUrl } = puzzle;
   const sourceLink = linkFor(provenance);
+  // Null when no forum is configured for this build, in which case nothing is
+  // drawn at all. A dead "Discuss" link is worse than no link.
+  const discussUrl = forumTagUrl(puzzle.slug);
   const examples = lesson.examples ?? [];
   const hasDeepDive = Boolean(lesson.howItWorks) || examples.length > 0;
 
@@ -151,6 +155,20 @@ export function LessonView({
           className="text-center text-sm text-ink-soft underline decoration-rule underline-offset-2 hover:text-ink"
         >
           {t({ en: "Go deeper on this idea →" })}
+        </a>
+      ) : null}
+
+      {discussUrl ? (
+        <a
+          href={discussUrl}
+          target="_blank"
+          // noreferrer, not merely noopener: without it the forum learns which
+          // card the reader was on, which is the per-card crumb the privacy
+          // policy promises not to leave.
+          rel="noreferrer"
+          className="text-center text-sm text-ink-soft underline decoration-rule underline-offset-2 hover:text-ink"
+        >
+          {t({ en: "Argue with this card on the forum →" })}
         </a>
       ) : null}
 

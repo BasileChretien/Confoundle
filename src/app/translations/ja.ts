@@ -26,6 +26,7 @@ export const ja: Record<string, string> = {
   Source: "出典",
   "Make my card →": "カードを作る →",
   "Go deeper on this idea →": "この考えをさらに掘り下げる →",
+  "Argue with this card on the forum →": "このカードについて掲示板で議論する →",
   "Commit to see the reveal. No peeking.":
     "答えを見るには、まず選んでください。のぞき見は禁止。",
   "Reveal the answer": "答えを明かす",

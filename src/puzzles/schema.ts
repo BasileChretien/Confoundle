@@ -3408,11 +3408,21 @@ export const Puzzle = z
             strataWord: "",
           };
         case "published":
-          // Rows are the groups; the ARMS are the strata, because the setup
-          // draws one arm and the reveal adds the other.
+          /**
+           * ONLY the arms are filterable. The setup draws one arm and the
+           * reveal adds the other, and every row is drawn at both beats
+           * because the gradient down the rows IS the figure: a beat showing
+           * one adherence level shows nothing at all.
+           *
+           * So `groups` is deliberately empty rather than listing the rows.
+           * `restrictPublished` filters on `strataIds` alone, so a puzzle
+           * setting `groupIds` would otherwise pass validation and change
+           * nothing, which is precisely the silent no-op this switch exists
+           * to catch. Empty means any groupIds is rejected below.
+           */
           return {
-            groups: new Set(d.rows.map((r) => r.id)),
-            groupWord: "row",
+            groups: new Set<string>(),
+            groupWord: "row (this shape draws every row at both beats)",
             strata: new Set(d.arms.map((a) => a.id)),
             strataWord: "arm",
           };

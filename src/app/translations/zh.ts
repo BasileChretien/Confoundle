@@ -6099,7 +6099,7 @@ export const zh: Record<string, string> = {
   "Took 80 per cent or more of their capsules": "服用了80%或以上的胶囊",
   "Took 80 per cent or more": "80%或以上",
   "The arm that got the drug": "拿到药的那一组",
-  "The drug works, and you have to take it to get the benefit. Ten points of mortality is what the men who actually swallowed it gained": "药是有效的，而且必须吃下去才能获益。十个百分点的死亡率差距，就是真正把它吞下去的人所获得的",
+  "The drug works, and you have to take it to get the benefit. Ten points of mortality is what the men who actually swallowed it gained": "药是有效的，而且必须吃下去才能获益。十个百分点的死亡率差距，正是真正把它吞下去的人所获得的好处",
   "take your medicine": "按时吃你的药",
   "The men who skipped doses were sicker to begin with, so the gap is their illness rather than their tablets, and adjusting for how ill they were would remove it": "漏服的人本来病情就更重，所以这个差距来自他们的病情而不是他们的药片，只要针对病情严重程度作调整，它就会消失",
   "confounding, and fixable": "是混杂，而且可以校正",
@@ -6149,4 +6149,8 @@ export const zh: Record<string, string> = {
   "The comparison being drawn is the one the randomisation created, and adherence is reported as information about how the trial ran rather than used to carve up the results. Nothing here is grouped by anything the patients decided.": "所作的比较正是随机化造出的那一个，而依从性是作为「试验是怎么跑的」这一信息被报告的，并没有拿来切分结果。这里没有任何东西是按患者自己决定的事情来分组的。",
   "A clinic assigned patients at random to a morning or an afternoon appointment slot and compared attendance between the two. Morning slots were attended more often.": "某诊所把患者随机分配到上午或下午的就诊时段，并比较两者的到诊率。上午时段的到诊率更高。",
   "The slots were assigned rather than chosen, so the two groups are the same kinds of people and the difference in attendance belongs to the time of day. This is the comparison the healthy adherer problem breaks, being made in a way that does not break.": "时段是被指派的，不是自己选的，所以两组是同一类人，而到诊率的差别属于一天中的时间。这正是「健康依从者」问题会破坏的那种比较，只是以一种不会被破坏的方式做出来。",
+
+  // ---- The healthy adherer, review correction ----
+  "Researchers reporting a drug trial also looked at adherence within the placebo arm. Good adherers to the placebo did markedly better than poor adherers to it, and the authors concluded that they could not read the adherence comparison in the drug arm as a treatment effect.": "报告一项药物试验的研究者，也查看了安慰剂组内部的依从性。安慰剂组中依从良好者的结果明显优于依从不良者，于是作者断定：他们不能把用药组里的依从性比较读作治疗效果。",
+  "Finding the gradient in an arm where there was nothing to adhere to is what shows the comparison is contaminated, and the authors drew that conclusion rather than the flattering one. Running the check and then believing it is the sound move.": "在一个根本没有东西可遵从的组里发现同样的梯度，正是这个比较已被污染的证据，而作者选择了这个结论，而不是那个更讨喜的结论。做了这项检查并且相信它，才是正确的做法。",
 };

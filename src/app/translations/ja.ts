@@ -6146,7 +6146,7 @@ export const ja: Record<string, string> = {
   "Each row is an adherence group, followed for five years. Percentages are of the men in that group.": "各行は服薬の程度で分けた群で、5年間追跡した。パーセントはその群の男性に対する割合である。",
   "Per cent dead within five years": "5年以内に死亡した割合（パーセント）",
   "Rates exactly as published. The paper's table prints denominators and percentages and no death counts, so no count is shown here.": "公表されたとおりの率。論文の表は分母と百分率を示し、死亡数は示していないため、ここにも件数は表示しない。",
-  "The hollow diamond is the same figure after the authors adjusted for 40 baseline characteristics.": "白抜きのひし形は、著者らが40のベースライン特性で調整した後の同じ数値である。",
+  "The hollow diamond is the same figure after the authors adjusted for 40 baseline characteristics.": "白抜きのひし形は、同じ指標を著者らが40のベースライン特性で調整した後の値である。",
   "The whisker is one standard error, as printed.": "ひげは印刷されたとおりの標準誤差1つ分である。",
   "Men given clofibrate": "クロフィブラートを投与された男性",
   "Given clofibrate": "クロフィブラート投与",
@@ -6207,4 +6207,8 @@ export const ja: Record<string, string> = {
   "The comparison being drawn is the one the randomisation created, and adherence is reported as information about how the trial ran rather than used to carve up the results. Nothing here is grouped by anything the patients decided.": "描かれている比較は無作為化が作ったものであり、服薬状況は結果を切り分けるためではなく、試験がどう進んだかについての情報として報告されている。ここでは、患者が決めた何かで人がまとめられてはいない。",
   "A clinic assigned patients at random to a morning or an afternoon appointment slot and compared attendance between the two. Morning slots were attended more often.": "ある診療所が、患者を午前枠か午後枠かに無作為に割り当て、両者の受診率を比べた。午前の枠のほうが守られる割合が高かった。",
   "The slots were assigned rather than chosen, so the two groups are the same kinds of people and the difference in attendance belongs to the time of day. This is the comparison the healthy adherer problem breaks, being made in a way that does not break.": "枠は選ばれたのではなく割り当てられたので、2つの群は同じ種類の人々であり、受診率の差は時間帯に属する。これは良好服薬者の問題が壊してしまう比較を、壊れないやり方で行ったものである。",
+
+  // ---- The healthy adherer, review correction ----
+  "Researchers reporting a drug trial also looked at adherence within the placebo arm. Good adherers to the placebo did markedly better than poor adherers to it, and the authors concluded that they could not read the adherence comparison in the drug arm as a treatment effect.": "ある薬剤試験を報告する研究者らは、プラセボ群の中の服薬状況も調べた。プラセボをよく飲んだ人は、あまり飲まなかった人よりはっきり成績がよく、著者らは、実薬群での服薬比較を治療効果として読むことはできないと結論づけた。",
+  "Finding the gradient in an arm where there was nothing to adhere to is what shows the comparison is contaminated, and the authors drew that conclusion rather than the flattering one. Running the check and then believing it is the sound move.": "守るべきものが何もない群で勾配が見つかること、それこそがこの比較が汚染されている証拠であり、著者らは都合のよいほうではなくその結論を採った。確認を行い、そしてその結果を信じることが、正しい振る舞いである。",
 };

@@ -9553,11 +9553,11 @@ const items: TestItem[] = [
   {
     id: "ha-sound-placebo-check",
     scenario: {
-      en: "Researchers wanted to know whether adherence to their drug could be compared meaningfully, so they measured adherence in the placebo arm too. Good adherers to placebo did no better than poor adherers to placebo, and they went on to compare adherence within the drug arm.",
+      en: "Researchers reporting a drug trial also looked at adherence within the placebo arm. Good adherers to the placebo did markedly better than poor adherers to it, and the authors concluded that they could not read the adherence comparison in the drug arm as a treatment effect.",
     },
     trap: null,
     explanation: {
-      en: "They ran the one check that can tell you whether an adherence comparison is contaminated, and it came back clean. Finding no gap in an arm where there was nothing to adhere to is what licenses looking at adherence in the other arm.",
+      en: "Finding the gradient in an arm where there was nothing to adhere to is what shows the comparison is contaminated, and the authors drew that conclusion rather than the flattering one. Running the check and then believing it is the sound move.",
     },
   },
   {

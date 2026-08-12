@@ -1,5 +1,6 @@
 import { useT } from "../../app/i18n";
 import type { DistributionData, DistributionGroup } from "../../puzzles/schema";
+import { fillSlots } from "./announce";
 import { colorFor } from "./palette";
 import { formatPercent, placementOf, splitOf } from "./distribution";
 
@@ -44,7 +45,19 @@ function SpreadRow({ group }: { group: DistributionGroup }) {
       <div
         className="flex h-4 w-full overflow-hidden rounded-[3px]"
         role="img"
-        aria-label={`${name}: ${formatPercent(s.belowPercent)} below ${group.mean}, ${formatPercent(s.abovePercent)} reached it`}
+        // "reached it" refers back to the mean, which is the slot before it.
+        // That anaphora is not free in every language, so the sentence is
+        // authored whole and a translator can repeat the value instead of
+        // pointing back at it.
+        aria-label={fillSlots(
+          t({ en: "{group}: {below} below {mean}, {above} reached it" }),
+          {
+            group: name,
+            below: formatPercent(s.belowPercent),
+            mean: group.mean,
+            above: formatPercent(s.abovePercent),
+          },
+        )}
       >
         <div
           className="h-full"

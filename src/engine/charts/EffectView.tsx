@@ -1,6 +1,7 @@
 import { useLocale, useT } from "../../app/i18n";
 import { UI } from "../../app/ui";
 import type { EffectData } from "../../puzzles/schema";
+import { fillSlots } from "./announce";
 import { colorFor, WINNER_GOLD } from "./palette";
 import { effectReading, significanceAxis } from "./effect";
 
@@ -59,11 +60,23 @@ export function EffectView({
               backgroundColor: colorFor(0),
             }}
             role="img"
-            aria-label={`Interval from ${num(r.ciLow)} to ${num(
-              r.ciHigh,
-            )} ${unit}, ${
-              r.excludesNoEffect ? "not touching no difference" : "crossing no difference"
-            }`}
+            // Whether the interval clears no-difference is the whole verdict of
+            // this view, so it is two complete sentences rather than one with a
+            // verdict phrase slotted in. A bare "crossing no difference" is a
+            // participial clause, and several of these languages have no place
+            // to hang one.
+            aria-label={fillSlots(
+              t(
+                r.excludesNoEffect
+                  ? {
+                      en: "Interval from {low} to {high} {unit}, not touching no difference",
+                    }
+                  : {
+                      en: "Interval from {low} to {high} {unit}, crossing no difference",
+                    },
+              ),
+              { low: num(r.ciLow), high: num(r.ciHigh), unit },
+            )}
           />
           {/* the point estimate */}
           <div

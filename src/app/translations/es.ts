@@ -6502,4 +6502,13 @@ export const es: Record<string, string> = {
   "{track}: {onset} at {onsetwhen}, {detected} at {detectedwhen}, {died} at {diedwhen}": "{track}: {onset} a {onsetwhen}, {detected} a {detectedwhen}, {died} a {diedwhen}",
   "World map in the {projection} projection": "Mapamundi en proyección {projection}",
   "World map in the {projection} projection. {verdict}.": "Mapamundi en proyección {projection}. {verdict}.",
+  // ---- chart announcements: the trend, the interval, the reversion and the spread ----
+  "{cause} and {effect} rise together": "{cause} y {effect} suben a la vez",
+  "Interval from {low} to {high} {unit}, not touching no difference": "Intervalo de {low} a {high} {unit}, sin llegar a la ausencia de diferencia",
+  "Interval from {low} to {high} {unit}, crossing no difference": "Intervalo de {low} a {high} {unit}, cruzando la ausencia de diferencia",
+  "{group}: first {first}, against an average of {mean}.": "{group}: primero {first}, frente a una media de {mean}.",
+  "{group}: first {first}, then {second}, against an average of {mean}.": "{group}: primero {first}, luego {second}, frente a una media de {mean}.",
+  "{group}: {below} below {mean}, {above} reached it": "{group}: {below} por debajo de {mean}, {above} llegaron a {mean}",
+  "{optiona} {sharea}, {optionb} {shareb}": "{optiona} {sharea}, {optionb} {shareb}",
+  "{optiona} {sharea}, {optionb} {shareb}. {commoner} is {ratio} times commoner.": "{optiona} {sharea}, {optionb} {shareb}. {commoner} es {ratio} veces más frecuente.",
 };

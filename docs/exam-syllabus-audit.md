@@ -471,6 +471,8 @@ under `scratchpad/research/`:
 
 <!-- skill: statistical-vs-clinical-significance -->
 
+**Status: SHIPPED** as `certainly-tiny`, skill `statistical-vs-clinical-significance`.
+
 Shipped as the `statistical-vs-clinical-significance` puzzle (`certainly-tiny`) from
 Jefferson T, et al, BMJ 2014;348:g2545 (PMID 24811411), the review built on the full
 clinical study reports rather than the published papers. The abstract prints the
@@ -497,6 +499,8 @@ misread does no damage.**
 ### Ecological fallacy: SHIPPED, and how the group level was handled
 
 <!-- skill: ecological-fallacy -->
+
+**Status: SHIPPED** as the `ecological-fallacy` puzzle; the detail below is how the group level was handled.
 
 The gap recorded above (Robinson prints the individual-level counts but no
 per-state figures) **closes through the census underneath him**, not through the
@@ -798,6 +802,8 @@ what the reveal supplies.
 ### Gerrymandering: SHIPPED, on an 1812 source, after the modern one was rejected
 
 <!-- skill: gerrymandering -->
+
+**Status: SHIPPED** as `more-votes-fewer-seats`, skill `gerrymandering`, on the 1812 source.
 
 Searched on 2026-07-29. This is the sixth persuasion technique and the one that
 would complete the set, so both the rejection and the route around it matter and

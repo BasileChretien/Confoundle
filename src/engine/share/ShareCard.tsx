@@ -1410,6 +1410,44 @@ function PublishedGlyph() {
     </svg>
   );
 }
+function SurrogateGlyph() {
+  const W = 200;
+  const H = 96;
+  /**
+   * A long teal bar for the marker doing what it was asked, then a rule, then
+   * two short bars for the deaths in which the treated one is the taller. The
+   * rule is the point: above it the denominator is everybody who walked in,
+   * below it it is one randomised arm, and the two are not on one scale. A
+   * glyph that drew them against a shared axis would show a triumphant bar
+   * beside two slivers, which is the misreading rather than the lesson.
+   */
+  return (
+    <svg
+      viewBox={`0 0 ${W} ${H}`}
+      width="100%"
+      role="img"
+      aria-label="A long bar for the marker responding, then a dividing rule, then two short bars for deaths in which the treated one is taller"
+    >
+      {/*
+        Shape-generic wording, not CAST's. The glyph is chosen by `data.type`
+        alone, so "beats suppressed" would be simply wrong on the second puzzle
+        built on this shape. Note that the labels here are English in every
+        locale, which is true of every glyph in this file rather than of this
+        one, and is tracked separately.
+      */}
+      <text x={10} y={18} fontSize={8} fill={CARD.muted}>
+        marker responded
+      </text>
+      <rect x={10} y={24} width={142} height={11} rx={2} fill={CARD.teal} opacity={0.85} />
+      <line x1={10} y1={48} x2={190} y2={48} stroke={CARD.muted} strokeWidth={0.5} opacity={0.5} />
+      <text x={10} y={62} fontSize={8} fill={CARD.muted}>
+        died
+      </text>
+      <rect x={10} y={68} width={54} height={9} rx={2} fill={CARD.gold} opacity={0.9} />
+      <rect x={10} y={80} width={21} height={9} rx={2} fill={CARD.teal} opacity={0.6} />
+    </svg>
+  );
+}
 function CrossedGlyph() {
   const W = 200;
   const H = 96;
@@ -1997,6 +2035,7 @@ export function ShareCard({
   const deliveredGlyph = data.type === "delivered";
   const crossedGlyph = data.type === "crossed";
   const publishedGlyph = data.type === "published";
+  const surrogateGlyph = data.type === "surrogate";
   const splitSampleGlyph =
     data.type === "rates" &&
     Boolean(data.strataAreSeparateSamples) &&
@@ -2132,6 +2171,8 @@ export function ShareCard({
             <CrossedGlyph />
           ) : publishedGlyph ? (
             <PublishedGlyph />
+          ) : surrogateGlyph ? (
+            <SurrogateGlyph />
           ) : null}
 
           <p className="mt-4 font-display text-[17px] font-medium leading-snug">

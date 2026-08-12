@@ -2959,6 +2959,181 @@ const PublishedData = z
   });
 export type PublishedData = z.infer<typeof PublishedData>;
 
+/* ---------------------------------------------------------------------------
+ * `surrogate`: a run-in that keeps only the people in whom a marker responded,
+ * then the randomised comparison of what happened to those people.
+ *
+ * WHY THIS COULD NOT REUSE A SHAPE. Every two-arm shape in this file draws both
+ * arms on every row, and the point here is that the surrogate result HAS no
+ * control arm: the marker responding is what got a patient randomised at all,
+ * so at that beat there is nobody to compare them against. `yield` requires
+ * both arms on every row plus one row where they overlap; `rates` is a single
+ * count table grouped and stratified, not a funnel followed by a different
+ * table; `published` authors rates with standard errors; `crossed` needs two
+ * crossed binary factors. Drawing the surrogate as though it had a control
+ * would invent a comparison the source never ran, which on a card about
+ * misreading surrogates would be its own punchline.
+ * ------------------------------------------------------------------------- */
+const RunInStage = z.object({
+  id: z.string().min(1),
+  label: LocalizedText,
+  short: LocalizedText.optional(),
+  count: z.number().int().nonnegative(),
+  /** Exactly one stage is the one that qualified people for randomisation. */
+  qualified: z.boolean().optional(),
+});
+
+const SurrogateArm = z.object({
+  id: z.string().min(1),
+  label: LocalizedText,
+  short: LocalizedText.optional(),
+  n: z.number().int().positive(),
+});
+
+const SurrogateEndpoint = z.object({
+  id: z.string().min(1),
+  label: LocalizedText,
+  short: LocalizedText.optional(),
+  note: LocalizedText.optional(),
+});
+
+const SurrogateObservation = z.object({
+  endpointId: z.string().min(1),
+  armId: z.string().min(1),
+  events: z.number().int().nonnegative(),
+});
+
+export const SurrogateData = z
+  .object({
+    type: z.literal("surrogate"),
+    label: LocalizedText,
+    /** What the marker was and what counted as a response, on the figure. */
+    criterionLabel: LocalizedText,
+    /** Names the run-in population, e.g. "patients who tried the drug". */
+    runInLabel: LocalizedText,
+    /** Names what the endpoint counts are of, e.g. "of those randomised". */
+    endpointLabel: LocalizedText,
+    /** Said on the figure, because the asymmetry IS the lesson. */
+    noControlNote: LocalizedText,
+    entered: z.number().int().positive(),
+    stages: z.array(RunInStage).min(2),
+    arms: z.array(SurrogateArm).length(2),
+    endpoints: z.array(SurrogateEndpoint).min(1),
+    observations: z.array(SurrogateObservation).min(2),
+  })
+  .superRefine((d, ctx) => {
+    const armIds = new Set(d.arms.map((a) => a.id));
+    const endpointIds = new Set(d.endpoints.map((e) => e.id));
+    if (armIds.size !== d.arms.length)
+      ctx.addIssue({ code: "custom", path: ["arms"], message: "duplicate arm id" });
+    if (endpointIds.size !== d.endpoints.length)
+      ctx.addIssue({
+        code: "custom",
+        path: ["endpoints"],
+        message: "duplicate endpoint id",
+      });
+    if (new Set(d.stages.map((s) => s.id)).size !== d.stages.length)
+      ctx.addIssue({ code: "custom", path: ["stages"], message: "duplicate stage id" });
+
+    // The funnel must account for everybody. A stage list that does not sum to
+    // the number who entered is a figure with people quietly missing from it,
+    // which is the exact reading error `attrition-bias` exists to punish.
+    const summed = d.stages.reduce((t, s) => t + s.count, 0);
+    if (summed !== d.entered)
+      ctx.addIssue({
+        code: "custom",
+        path: ["stages"],
+        message: `stages sum to ${summed} but ${d.entered} entered the run-in, leaving ${Math.abs(d.entered - summed)} people unaccounted for`,
+      });
+
+    const qualified = d.stages.filter((s) => s.qualified);
+    if (qualified.length !== 1)
+      ctx.addIssue({
+        code: "custom",
+        path: ["stages"],
+        message: `exactly one stage must be marked qualified, found ${qualified.length}`,
+      });
+
+    // Everyone randomised came out of the qualifying stage, so the arms cannot
+    // between them hold more people than that stage produced.
+    const randomised = d.arms.reduce((t, a) => t + a.n, 0);
+    const q = qualified[0];
+    if (q && randomised > q.count)
+      ctx.addIssue({
+        code: "custom",
+        path: ["arms"],
+        message: `arms hold ${randomised} people but only ${q.count} qualified`,
+      });
+
+    const seen = new Set<string>();
+    d.observations.forEach((o, i) => {
+      if (!armIds.has(o.armId))
+        ctx.addIssue({
+          code: "custom",
+          path: ["observations", i, "armId"],
+          message: `no arm with id ${o.armId}`,
+        });
+      if (!endpointIds.has(o.endpointId))
+        ctx.addIssue({
+          code: "custom",
+          path: ["observations", i, "endpointId"],
+          message: `no endpoint with id ${o.endpointId}`,
+        });
+      const key = `${o.endpointId}|${o.armId}`;
+      if (seen.has(key))
+        ctx.addIssue({
+          code: "custom",
+          path: ["observations", i],
+          message: `two observations for ${o.endpointId} in ${o.armId}`,
+        });
+      seen.add(key);
+      const arm = d.arms.find((a) => a.id === o.armId);
+      if (arm && o.events > arm.n)
+        ctx.addIssue({
+          code: "custom",
+          path: ["observations", i, "events"],
+          message: `${o.events} events in an arm of ${arm.n}`,
+        });
+    });
+
+    for (const e of d.endpoints)
+      for (const a of d.arms)
+        if (!seen.has(`${e.id}|${a.id}`))
+          ctx.addIssue({
+            code: "custom",
+            path: ["observations"],
+            message: `endpoint ${e.id} has no observation for arm ${a.id}`,
+          });
+
+    // The reason this shape exists: the marker responded and the outcome went
+    // the other way. If the treated arm is better or level on every endpoint,
+    // the reveal has nothing to reveal and the card is about a drug that
+    // worked, which is a different card. The first-declared arm is the treated
+    // one, which the renderer also relies on.
+    const [treated, control] = d.arms;
+    if (treated && control) {
+      const rateIn = (endpointId: string, arm: typeof treated) => {
+        const o = d.observations.find(
+          (x) => x.endpointId === endpointId && x.armId === arm.id,
+        );
+        return o ? o.events / arm.n : null;
+      };
+      const worseSomewhere = d.endpoints.some((e) => {
+        const t = rateIn(e.id, treated);
+        const c = rateIn(e.id, control);
+        return t !== null && c !== null && t > c;
+      });
+      if (!worseSomewhere)
+        ctx.addIssue({
+          code: "custom",
+          path: ["observations"],
+          message:
+            "the treated arm is no worse than the control on any endpoint, so the marker and the outcome agree and this shape has no lesson to draw",
+        });
+    }
+  });
+export type SurrogateData = z.infer<typeof SurrogateData>;
+
 export const PuzzleData = z.discriminatedUnion("type", [
   RatesData,
   FrequenciesData,
@@ -2991,6 +3166,7 @@ export const PuzzleData = z.discriminatedUnion("type", [
   DeliveredData,
   CrossedData,
   PublishedData,
+  SurrogateData,
 ]);
 export type PuzzleData = z.infer<typeof PuzzleData>;
 
@@ -3075,6 +3251,8 @@ export const DataView = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("allfourways"), ...viewFields }),
   z.object({ kind: z.literal("onearm"), ...viewFields }),
   z.object({ kind: z.literal("botharms"), ...viewFields }),
+  z.object({ kind: z.literal("markeronly"), ...viewFields }),
+  z.object({ kind: z.literal("andoutcome"), ...viewFields }),
 ]);
 export type DataView = z.infer<typeof DataView>;
 export type DataViewKind = DataView["kind"];
@@ -3425,6 +3603,30 @@ export const Puzzle = z
             groupWord: "row (this shape draws every row at both beats)",
             strata: new Set(d.arms.map((a) => a.id)),
             strataWord: "arm",
+          };
+        case "surrogate":
+          /**
+           * NOTHING is filterable, and that is not an oversight.
+           *
+           * The two beats of this shape differ by which SECTIONS of the figure
+           * are drawn, not by which ids are kept: `markeronly` draws the run-in
+           * funnel and `andoutcome` draws the funnel plus the endpoint counts.
+           * That lives in the view kind, so there is no id a `groupIds` or
+           * `strataIds` could name, and either one on a `surrogate` view is a
+           * silent no-op. Both sets are therefore empty, which makes the
+           * validation below reject them by name.
+           *
+           * Learned from `published`, which shipped accepting a `groupIds` that
+           * filtered nothing, because its restriction function read `strataIds`
+           * alone. A beat that names an id and changes nothing is the worst
+           * failure this file can allow, since the puzzle looks authored and
+           * the reveal silently equals the setup.
+           */
+          return {
+            groups: new Set<string>(),
+            groupWord: "id (this shape's beats differ by view kind, not by ids)",
+            strata: new Set<string>(),
+            strataWord: "id (this shape's beats differ by view kind, not by ids)",
           };
         case "crossed":
           // The setup names the two cells of the confounded diagonal and the

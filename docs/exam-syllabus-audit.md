@@ -1384,7 +1384,16 @@ Reasoning traps that are not called "bias" but are printed:
 - type I error and alpha; type II error, beta, power; multiple comparisons;
   a priori versus post hoc and subgroup analysis
 - p-values, confidence intervals, statistical versus clinical significance
-- clinical versus surrogate endpoints
+- clinical versus surrogate endpoints <!-- skill: surrogate-endpoints -->.
+  **SHIPPED 2026-08-12** as
+  `the-beats-went-away`, skill `surrogate-endpoints`, on the new `surrogate`
+  shape, from CAST (N Engl J Med 1989;321:406-412); see numbered entry 70 in the
+  backlog. Found by auditing the deck against this list rather than against the
+  backlog queue, which was empty: the phrase appeared exactly once in the whole
+  project, on this line, with no puzzle, no entry and no lead behind it. Worth
+  recording for whoever audits next, because the same method should find the
+  rest: **reverse causality** and **non-inferiority and equivalence designs**,
+  both on this list, still look uncovered on the same test.
 - internal versus external validity, generalisability, efficacy versus
   effectiveness
 - non-inferiority and equivalence designs

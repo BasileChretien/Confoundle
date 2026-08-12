@@ -5181,3 +5181,75 @@ separation requirement, since the honest reading here is that both rows overlap
 and the lesson lives in the gradient down each column rather than across. That
 is a session's work and the evidence to fill it is now in hand and verified,
 which is further than this entry has ever been.
+
+### 70. Surrogate endpoints: the drug did exactly what it was designed to do, and killed people
+
+<!-- skill: surrogate-endpoints -->
+
+**Status: SHIPPED 2026-08-12** as `the-beats-went-away`, skill `surrogate-endpoints`, on a NEW shape, `surrogate`. Found the same day by auditing the deck against the
+US outline rather than against this queue, which was empty. "Clinical versus
+surrogate endpoints" is printed in the official USMLE content outline, appears
+exactly once anywhere in this project (in the transcription of that outline),
+and has no puzzle, no backlog entry and no lead. That is the largest genuine
+coverage hole left, and unlike most of them it has a canonical source.
+
+**Why the deck has nothing adjacent, checked against the cards rather than
+assumed.** `composite-endpoints` (`count-it-differently`) is about bundling
+several outcomes so a soft one carries the result: the endpoint is still
+clinical, the trick is the packaging. `statistical-vs-clinical-significance`
+(`certainly-tiny`) is about an effect on a real outcome being too small to
+matter. `intention-to-treat` is about who gets counted. None of them is a
+measurement standing in for the thing you actually care about, and none can
+show a marker moving the right way while the patient does worse.
+
+**The source, read in full at the publisher on 2026-08-12 through institutional
+access.** The Cardiac Arrhythmia Suppression Trial (CAST) Investigators.
+Preliminary report: effect of encainide and flecainide on mortality in a
+randomized trial of arrhythmia suppression after myocardial infarction. N Engl J
+Med 1989;321(6):406-412. doi 10.1056/NEJM198908103210629.
+
+**Every figure below is from the paper's own text and they reconcile exactly.**
+
+- 2,309 patients entered the open-label titration phase as of 30 March 1989.
+- 1,727 (75 per cent) had their arrhythmia suppressed and were randomised.
+- 447 (19 per cent) had arrhythmia worsen, were intolerant, or died before
+  randomisation. 135 (6 per cent) had only partial suppression.
+- **1,727 + 447 + 135 = 2,309 exactly**, and 1727/2309 = 74.8, 447/2309 = 19.4,
+  135/2309 = 5.8, matching the printed 75, 19 and 6.
+- Of the randomised, 1,455 went to encainide, flecainide or placebo (730 against
+  725) and 272 to moricizine or placebo.
+- Death from arrhythmia or cardiac arrest: **33/730 against 9/725**, printed as
+  4.5 and 1.2 per cent, relative risk 3.6 (95 per cent CI 1.7 to 8.5).
+- Death from any cause: **56/730 against 22/725**, printed as 7.7 and 3.0 per
+  cent, relative risk 2.5 (95 per cent CI 1.6 to 4.5).
+- Recomputed: 33/730 = 4.52, 9/725 = 1.24, 56/730 = 7.67, 22/725 = 3.03. The
+  ratios recompute to 3.64 and 2.53 against the printed 3.6 and 2.5.
+- Average follow-up 10 months; titration averaged 15 days.
+- Suppression criterion: at least 80 per cent fewer ventricular premature
+  depolarisations and at least 90 per cent fewer runs of unsustained ventricular
+  tachycardia, on 24-hour Holter.
+
+**Why this is the cleanest surrogate card available anywhere.** The suppression
+was not an outcome that the trial compared between arms. It was an ENTRY
+CRITERION: only patients in whom the drug had already demonstrably worked were
+randomised. So the randomised comparison is, precisely, continued suppression
+against withdrawn suppression, in people selected for responding. The surrogate
+could not have performed better and the patients could not have done worse.
+
+**The hedge decision, made deliberately rather than stumbled into.** Asking a
+player to predict mortality from the suppression result is asking them to guess,
+and the setup licenses no direction at all. So "there is no way to tell from the
+suppression" is the CORRECT answer and the reveal carries the surprise, which is
+the second of the two routes CLAUDE.md allows. The commit beat must ask what the
+suppression result licenses, not what happened, or a player who answers "more
+deaths" from outside knowledge is marked wrong for being right.
+
+**It needs a new shape, and this was checked rather than assumed.** The obstacle
+is that the surrogate has no control arm by construction, so nothing that draws
+two arms per row can hold it. `yield` needs both arms on every row and one row
+where they overlap. `rates` groups and stratifies a single count table, and this
+is a funnel followed by a different table. `published` authors rates with
+standard errors. `crossed` needs two crossed binary factors. The shape wanted is
+a run-in funnel (entered, suppressed, partial, failed) at the setup beat, with
+the randomised endpoint counts added at the reveal, which is a superset by
+construction in exactly the way the engine's contract wants.

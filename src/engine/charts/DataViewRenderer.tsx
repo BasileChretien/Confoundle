@@ -44,6 +44,7 @@ import { UnseenView } from "./UnseenView";
 import { DeliveredView } from "./DeliveredView";
 import { CrossedView } from "./CrossedView";
 import { PublishedView } from "./PublishedView";
+import { SurrogateView } from "./SurrogateView";
 import { restrictPublished } from "./published";
 import { restrictCrossed } from "./crossed";
 import { restrictSeries } from "./series";
@@ -274,6 +275,13 @@ export function DataViewRenderer({
           kind={view.kind}
         />
       ) : null;
+    case "surrogate":
+      // Nothing is filtered here: the beats differ by WHICH SECTIONS are
+      // drawn, so the reveal carries the funnel unchanged plus the endpoint
+      // counts underneath it, and is a superset by construction.
+      return view.kind === "markeronly" || view.kind === "andoutcome" ? (
+        <SurrogateView data={data} kind={view.kind} />
+      ) : null;
     default:
       return null;
   }
@@ -426,6 +434,10 @@ export function scopeLabel(kind: DataViewKind): string {
       return "The arm that got the drug";
     case "botharms":
       return "And the arm that got nothing";
+    case "markeronly":
+      return "What the drug did to the marker";
+    case "andoutcome":
+      return "And what happened to the patients";
     default:
       return "";
   }

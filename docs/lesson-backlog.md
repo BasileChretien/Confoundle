@@ -5382,8 +5382,10 @@ RECONCILED. The card is ready to build and needs no further searching.**
 
 The two failed routes above both hunted for a cohort where one group simply
 looks worse. The route that works asks for something else: a study that reports
-the SAME association twice on the SAME people, once whole and once with the
-early deaths removed. That is two views of one dataset by construction, which
+the SAME association twice on the SAME COHORT, once whole and once with serial
+exclusion windows applied. Note that the at-risk population shrinks as the
+window widens, from 934 underweight men to 704 to 361, so these are repeated
+analyses of one cohort rather than one analysis of one fixed set of people. That is two views of one dataset by construction, which
 is exactly what this engine wants, and it is the standard way epidemiologists
 test for reverse causality.
 
@@ -5415,13 +5417,16 @@ a puzzle rather than a graph.** The same exclusions applied to coronary deaths
 precede a heart attack the way it precedes chronic lung disease. So the reveal
 is not merely "the number went down when we cut the data", which any sceptic
 would rightly distrust; it is "it went down here and did not move there", which
-rules out the exclusion itself doing the work. The authors make that argument
-explicitly.
+makes it much less likely that the exclusion itself is doing the work. Stated at
+that strength deliberately: the authors offer the stable coronary estimates as
+supporting evidence and say weight loss is LESS LIKELY to precede a heart
+attack, not that it cannot, and a negative control supports a conclusion rather
+than proving one.
 
 **The counts as printed, and they reconcile.** Table, total population, by years
 of follow-up excluded:
 
-| Excluded | Underweight deaths / N | Normal deaths / N | Rate ratio |
+| Excluded | Underweight deaths / N | Normal deaths / N | Crude risk ratio |
 | --- | --- | --- | --- |
 | Respiratory, 0 y | 168 / 934 | 1,146 / 9,397 | 1.475 |
 | Respiratory, 15 y | 124 / 704 | 1,009 / 7,774 | 1.357 |
@@ -5430,8 +5435,13 @@ of follow-up excluded:
 | Coronary, 15 y | 106 / 704 | 1,442 / 7,774 | 0.812 |
 | Coronary, 30 y | 36 / 361 | 563 / 4,436 | 0.786 |
 
-The crude ratios were recomputed from the counts and track the paper's adjusted
-figures: respiratory melts 1.475 to 1.357 to 1.195 while coronary sits flat at
+**Those are crude cumulative RISK ratios, not rate ratios and not the paper's
+estimates.** N is the number alive at the start of each window and no
+person-time denominator is printed per cell, so nothing here is a rate. The
+paper's own 1.55 and 1.14 are age-adjusted and smoking-adjusted HAZARD ratios,
+which is a third quantity again. Keep the three apart on the card. What can be
+said is that the crude risk ratios move the same way as the published hazard
+ratios: respiratory melts 1.475 to 1.357 to 1.195 while coronary sits flat at
 0.788, 0.812, 0.786. The smoking split reconciles EXACTLY in all six cells:
 underweight respiratory deaths 44 + 124 = 168, 39 + 85 = 124, 19 + 34 = 53;
 normal weight 494 + 652 = 1,146, 457 + 552 = 1,009, 289 + 256 = 545.
@@ -5439,9 +5449,10 @@ normal weight 494 + 652 = 1,146, 457 + 552 = 1,009, 289 + 256 = 545.
 **One discrepancy to carry in provenance rather than hide.** The smoking split
 of the DENOMINATORS is short by one or two men in three cells: 5,012 + 4,383 =
 9,395 against a printed 9,397, and 4,411 + 3,361 = 7,772 against 7,774, and
-2,824 + 1,611 = 4,435 against 4,436. Deaths reconcile exactly, so this is
-missing baseline smoking status for a couple of men, not an error in the card's
-numbers. Nothing the card draws depends on it.
+2,824 + 1,611 = 4,435 against 4,436. The paper does not explain the difference
+and no cause should be assumed for it here. What matters is that the DEATHS
+reconcile exactly in all six cells, and that nothing the card draws uses the
+smoking split of the denominators.
 
 **The hedge decision, and it is the framing route rather than the hedge route.**
 The setup licenses no direction on its own, so the framing must supply the
@@ -5453,9 +5464,17 @@ when the death happened while a consequence should be concentrated early. Four
 bands, four distinct explanations, none sharing a direction: thinness damages
 the lungs (the trap, and the reading that would have doctors telling patients to
 gain weight, which the paper's own introduction names as the stake); smoking
-explains it (excluded by the framing, since it is adjusted and stratified); the
-illness made them thin before it killed them (correct); too few underweight men
-to say (the noise band).
+explains it; the illness made them thin before it killed them (correct); too few
+underweight men to say (the noise band).
+
+**The smoking band needs care, and getting this wrong would break the hedge
+rule.** Adjustment and stratification reduce confounding by RECORDED smoking
+status; they do not eliminate residual confounding and they do not prove smoking
+has no role. So the band must NOT be written as though smoking were simply
+excluded, or a player who picks it is being marked wrong for a defensible
+answer. Write it instead as the specific claim the data refute, that adjusting
+for smoking would make the gap go away, which is checkable against the paper
+showing the same stepwise attenuation separately in smokers and in non-smokers.
 
 **Shape: undecided, and this entry deliberately does not decide it.** The data
 are two groups by three exclusion windows by two causes. `yield` is the closest

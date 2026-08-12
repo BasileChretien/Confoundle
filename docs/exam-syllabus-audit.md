@@ -469,6 +469,10 @@ under `scratchpad/research/`:
 
 ### Statistical versus clinical significance: shipped, and why on this source
 
+<!-- skill: statistical-vs-clinical-significance -->
+
+**Status: SHIPPED** as `certainly-tiny`, skill `statistical-vs-clinical-significance`.
+
 Shipped as the `statistical-vs-clinical-significance` puzzle (`certainly-tiny`) from
 Jefferson T, et al, BMJ 2014;348:g2545 (PMID 24811411), the review built on the full
 clinical study reports rather than the published papers. The abstract prints the
@@ -493,6 +497,10 @@ lesson can be taught on either of two sources, prefer the one where being
 misread does no damage.**
 
 ### Ecological fallacy: SHIPPED, and how the group level was handled
+
+<!-- skill: ecological-fallacy -->
+
+**Status: SHIPPED** as the `ecological-fallacy` puzzle; the detail below is how the group level was handled.
 
 The gap recorded above (Robinson prints the individual-level counts but no
 per-state figures) **closes through the census underneath him**, not through the
@@ -665,6 +673,8 @@ puzzle, from Pandey's own second result.
 
 ### Manufactured doubt: sourced and non-partisan, but the effect is too small
 
+<!-- skill: manufactured-doubt -->
+
 Searched properly on 2026-07-29. **Koehler DJ. Can journalistic "false balance"
 distort public perception of consensus in expert opinion? J Exp Psychol Appl.
 2016;22(1):24-38. doi 10.1037/xap0000073.** Read in full from the open copy on
@@ -708,7 +718,19 @@ wage.
 either a better source turns up or the deck gains a shape that can carry a small
 effect honestly. It is recorded here so nobody searches for it a third time.
 
-### Anchoring: sourced from the canonical paper, and the better demonstration is the second one
+### Anchoring: SHIPPED, on the canonical paper, using the second demonstration
+
+<!-- skill: anchoring -->
+
+**Status: SHIPPED** as `same-sum-backwards`, skill `anchoring`, on the
+`estimation` shape. Found stale on 2026-08-12 by the same scan that caught the
+illusory truth section below. The brief that follows picks the eight-number
+product over the wheel of fortune and calls it "the one to build"; puzzle #28 is
+that build, on that source, with those numbers, 512 against 2,250 and both
+against the true 40,320. So everything below records a decision that was taken
+and acted on rather than a proposal, and it is kept because the argument for
+preferring the second demonstration is still the clearest statement of why that
+card looks the way it does.
 
 Searched on 2026-07-29, as the measurable mechanism underneath the **Overton
 window**, which was requested by name. The Overton window is a political-theory
@@ -778,6 +800,10 @@ wrong. The size of the gap, and the fact that both groups were wildly under, is
 what the reveal supplies.
 
 ### Gerrymandering: SHIPPED, on an 1812 source, after the modern one was rejected
+
+<!-- skill: gerrymandering -->
+
+**Status: SHIPPED** as `more-votes-fewer-seats`, skill `gerrymandering`, on the 1812 source.
 
 Searched on 2026-07-29. This is the sixth persuasion technique and the one that
 would complete the set, so both the rejection and the route around it matter and
@@ -857,6 +883,8 @@ The setup shows the votes stratum alone; the reveal adds the seats.
 
 ### Cherry-picked baselines: still unsourced
 
+<!-- skill: cherry-picked-baselines -->
+
 Two new leads checked on 2026-07-29, both failing the rules:
 
 - **Nadib KA, Kogan M, Lex A, Lisnic M. Guardrail selection in line charts to
@@ -872,7 +900,17 @@ Two new leads checked on 2026-07-29, both failing the rules:
   convincingness and investment amounts. Worth one look through institutional
   access, but the outcome type already points at the same wall.
 
-### Illusory truth: sourced, verified, non-partisan, and worth building
+### Illusory truth: sourced, verified, non-partisan, and SHIPPED
+
+<!-- skill: illusory-truth -->
+
+**Status: SHIPPED** as `heard-it-before`, skill `illusory-truth`, on the `dose`
+shape. This heading read "worth building" until 2026-08-12, long after the card
+existed, and the brief below still reads as instructions for whoever builds it.
+It is kept in full because everything in it is true and was verified at the
+publisher; only the status was wrong. Note that the shape note at the end asks
+for a new shape and got one: `dose` is that shape, and the hedge decision it
+says must be made deliberately was made.
 
 Searched on 2026-07-29, as the measurable mechanism underneath two techniques
 that were requested by name: the Big Lie and the firehose of falsehood. Neither

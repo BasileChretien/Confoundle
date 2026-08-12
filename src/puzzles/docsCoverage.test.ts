@@ -156,3 +156,99 @@ describe("syllabus audit stays honest about what is still a gap", () => {
     expect(malformed).toEqual([]);
   });
 });
+
+/**
+ * The audit's PROSE sections, which the row checks above cannot see at all,
+ * because `auditRows` only looks at lines beginning with a pipe.
+ *
+ * That blind spot is not hypothetical. On 2026-08-12 two `###` sections were
+ * found making build-status claims about skills that had long since shipped:
+ * one headed "worth building" for a card that exists on the very shape its own
+ * shape note asked for, and one headed "the better demonstration is the second
+ * one" whose chosen demonstration IS puzzle #28. Both read as open work. Both
+ * passed every check in this file, because a heading is not a table row.
+ *
+ * So the same contract the rows carry is extended to any section whose HEADING
+ * makes a claim about build status: it must be tagged, and if the tagged skill
+ * is registered the section must say SHIPPED. Headings are the right trigger
+ * because a heading is what a reader skims and what misleads them, which is
+ * exactly how both of those sections survived being read repeatedly.
+ *
+ * Sections that merely discuss a topic stay untagged and unchecked; only a
+ * status CLAIM opts a section in.
+ */
+const STATUS_CLAIM =
+  /\b(shipped|worth building|ready to build|unsourced|sourced|to build|not yet built|rejected)\b/i;
+
+function auditSections(
+  doc: string,
+): { heading: string; skill: string; body: string }[] {
+  return doc
+    .split(/^### /m)
+    .slice(1)
+    .map((section) => ({
+      heading: section.split("\n")[0].trim(),
+      skill: /<!--\s*skill:\s*([a-z0-9-]+)\s*-->/.exec(section)?.[1] ?? "",
+      body: section,
+    }))
+    .filter((s) => STATUS_CLAIM.test(s.heading));
+}
+
+const sections = auditSections(auditDoc);
+
+/**
+ * The exact inventory, not a floor.
+ *
+ * This started as `expect(sections.length).toBeGreaterThanOrEqual(5)` against
+ * seven sections, which let two of them vanish from `STATUS_CLAIM` entirely
+ * while the test still passed and its own name promised that a rewording could
+ * not disable it. That is the same inert-guard bug the rest of this PR is
+ * about, committed inside the fix for it, so the inventory is now pinned: a
+ * reworded heading that stops matching fails here by name.
+ *
+ * Adding a status-claiming section to the audit means adding it here too. That
+ * is the point rather than a chore, since the whole failure mode is a section
+ * nothing is watching.
+ */
+const EXPECTED_STATUS_SKILLS = [
+  "anchoring",
+  "cherry-picked-baselines",
+  "ecological-fallacy",
+  "gerrymandering",
+  "illusory-truth",
+  "manufactured-doubt",
+  "statistical-vs-clinical-significance",
+];
+
+/**
+ * "SHIPPED" as a bare token also matches "not shipped" and "never shipped", so
+ * a section could stay open and still pass. The status marker is required in
+ * the same `**Status: SHIPPED**` form the backlog entries use, which cannot be
+ * negated by preceding prose.
+ */
+const SHIPPED_MARKER = /\*\*Status:\s*SHIPPED\b/;
+
+describe("syllabus audit prose does not claim open work that has shipped", () => {
+  it("finds exactly the known status-claiming sections, so a rewording cannot disable this", () => {
+    expect(sections.map((s) => s.skill).sort()).toEqual(EXPECTED_STATUS_SKILLS);
+  });
+
+  it("gives every status-claiming section a skill tag", () => {
+    const untagged = sections.filter((s) => !s.skill).map((s) => s.heading);
+    expect(
+      untagged,
+      "this heading claims a build status; tag it with the skill it ships (or would ship) under",
+    ).toEqual([]);
+  });
+
+  it("marks a section SHIPPED once its skill is in the registry", () => {
+    // The check that would have caught illusory truth and anchoring.
+    const stale = sections
+      .filter((s) => SKILLS.has(s.skill) && !SHIPPED_MARKER.test(s.body))
+      .map((s) => `${s.heading} (skill ${s.skill} is registered)`);
+    expect(
+      stale,
+      "this lesson has shipped; add **Status: SHIPPED** to the section and name the slug",
+    ).toEqual([]);
+  });
+});

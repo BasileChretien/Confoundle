@@ -5376,3 +5376,91 @@ leaving it to be inferred. The Lee and Fry quantitative review (ScienceDirect
 S0273230013000871) models reverse causation explicitly and reports that model
 fit is poor when it is ignored, so its references are the obvious next place to
 look; it is a meta-analysis and so carries no counts of its own.
+
+**RESOLVED 2026-08-12, SAME DAY: SOURCED, READ IN FULL, EVERY NUMBER
+RECONCILED. The card is ready to build and needs no further searching.**
+
+The two failed routes above both hunted for a cohort where one group simply
+looks worse. The route that works asks for something else: a study that reports
+the SAME association twice on the SAME people, once whole and once with the
+early deaths removed. That is two views of one dataset by construction, which
+is exactly what this engine wants, and it is the standard way epidemiologists
+test for reverse causality.
+
+**Kivimäki M, Shipley MJ, Bell JA, Brunner EJ, Batty GD, Singh-Manoux A.
+Underweight as a risk factor for respiratory death in the Whitehall cohort
+study: exploring reverse causality using a 45-year follow-up. Thorax
+2015;71(1):84-85.** doi 10.1136/thoraxjnl-2015-207449, PMID 26253581, PMCID
+PMC4717419. **Open access, read in full at PMC**, counts table included in the
+article body.
+
+Design: the original Whitehall study, 19,019 male London civil servants aged 40
+to 69, weighed once at baseline in 1967 to 1970 and followed to 30 September
+2012. Analysis N = 18,823, 507,648 person-years, 2,139 respiratory deaths.
+
+**The authors state the conclusion themselves, which is the thing every earlier
+candidate lacked.** Their abstract says the excess risk among the underweight
+"is attributable to reverse causality", and the discussion says underweight "is
+a consequence and not a cause of respiratory disease or its risk factors". No
+interpretation has to be supplied by this deck.
+
+Headline: age-adjusted and smoking-adjusted hazard ratio 1.55 (95 per cent CI
+1.32 to 1.83) for underweight against normal weight, attenuating stepwise to
+1.14 (0.76 to 1.71) after serial exclusion of deaths in the first 5 to 35 years,
+P for trend below 0.001.
+
+**AND THERE IS A NEGATIVE CONTROL BUILT INTO THE PAPER, which is what makes this
+a puzzle rather than a graph.** The same exclusions applied to coronary deaths
+(N = 4,461) leave that association untouched, because weight loss does not
+precede a heart attack the way it precedes chronic lung disease. So the reveal
+is not merely "the number went down when we cut the data", which any sceptic
+would rightly distrust; it is "it went down here and did not move there", which
+rules out the exclusion itself doing the work. The authors make that argument
+explicitly.
+
+**The counts as printed, and they reconcile.** Table, total population, by years
+of follow-up excluded:
+
+| Excluded | Underweight deaths / N | Normal deaths / N | Rate ratio |
+| --- | --- | --- | --- |
+| Respiratory, 0 y | 168 / 934 | 1,146 / 9,397 | 1.475 |
+| Respiratory, 15 y | 124 / 704 | 1,009 / 7,774 | 1.357 |
+| Respiratory, 30 y | 53 / 361 | 545 / 4,436 | 1.195 |
+| Coronary, 0 y | 158 / 934 | 2,017 / 9,397 | 0.788 |
+| Coronary, 15 y | 106 / 704 | 1,442 / 7,774 | 0.812 |
+| Coronary, 30 y | 36 / 361 | 563 / 4,436 | 0.786 |
+
+The crude ratios were recomputed from the counts and track the paper's adjusted
+figures: respiratory melts 1.475 to 1.357 to 1.195 while coronary sits flat at
+0.788, 0.812, 0.786. The smoking split reconciles EXACTLY in all six cells:
+underweight respiratory deaths 44 + 124 = 168, 39 + 85 = 124, 19 + 34 = 53;
+normal weight 494 + 652 = 1,146, 457 + 552 = 1,009, 289 + 256 = 545.
+
+**One discrepancy to carry in provenance rather than hide.** The smoking split
+of the DENOMINATORS is short by one or two men in three cells: 5,012 + 4,383 =
+9,395 against a printed 9,397, and 4,411 + 3,361 = 7,772 against 7,774, and
+2,824 + 1,611 = 4,435 against 4,436. Deaths reconcile exactly, so this is
+missing baseline smoking status for a couple of men, not an error in the card's
+numbers. Nothing the card draws depends on it.
+
+**The hedge decision, and it is the framing route rather than the hedge route.**
+The setup licenses no direction on its own, so the framing must supply the
+discriminator, and honestly can: the men were weighed ONCE at baseline and
+followed 45 years, chronic lung disease develops over decades, and the analysis
+is adjusted for smoking with the same pattern in smokers and non-smokers
+separately. Given all that, a player can reason that a cause should not care
+when the death happened while a consequence should be concentrated early. Four
+bands, four distinct explanations, none sharing a direction: thinness damages
+the lungs (the trap, and the reading that would have doctors telling patients to
+gain weight, which the paper's own introduction names as the stake); smoking
+explains it (excluded by the framing, since it is adjusted and stratified); the
+illness made them thin before it killed them (correct); too few underweight men
+to say (the noise band).
+
+**Shape: undecided, and this entry deliberately does not decide it.** The data
+are two groups by three exclusion windows by two causes. `yield` is the closest
+existing fit and its refinement wants one row where the arms separate and one
+where they overlap, which is literally the respiratory series, but `yield`
+authors published rates with intervals rather than counts and has no second
+panel for the control cause. Whether that is an extension, a new shape, or a
+`rates` modelling, decide it against these numbers.

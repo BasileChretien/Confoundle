@@ -308,6 +308,7 @@ export function DataViewRenderer({
       return view.kind === "onerow" || view.kind === "bothrows" ? (
         <ConditionalView
           data={restrictConditional(data, { groupIds: view.groupIds })}
+          full={data}
           kind={view.kind}
         />
       ) : null;

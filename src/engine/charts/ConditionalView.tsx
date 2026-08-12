@@ -1,6 +1,6 @@
 import { useLocale, useT } from "../../app/i18n";
 import type { ConditionalData } from "../../puzzles/schema";
-import { colorFor } from "./palette";
+import { declaredColors } from "./palette";
 import { rowSeries, scaleFraction } from "./conditional";
 
 /**
@@ -15,9 +15,20 @@ import { rowSeries, scaleFraction } from "./conditional";
  */
 export function ConditionalView({
   data,
+  full,
   kind: _kind,
 }: {
   data: ConditionalData;
+  /**
+   * The UNRESTRICTED data, for colour only. Note that what a beat restricts
+   * here is ROWS, while the colours run along the COLUMNS, so today the two
+   * never interact and `data.columns` would give the same answer. It is done
+   * this way anyway, for two reasons: the day someone makes a column
+   * filterable, colouring by loop index would silently repaint the whole
+   * figure between beats, and the source scan in `declaredColors.test.ts`
+   * cannot tell a safe index from an unsafe one, so it rightly refuses both.
+   */
+  full: ConditionalData;
   kind: "onerow" | "bothrows";
 }) {
   void _kind;
@@ -30,6 +41,7 @@ export function ConditionalView({
     }).format(v);
   const nf = new Intl.NumberFormat(locale);
 
+  const colorOf = declaredColors(full.columns);
   const series = rowSeries(data);
 
   return (
@@ -37,11 +49,11 @@ export function ConditionalView({
       <p className="text-[11px] leading-snug text-ink-soft">{t(data.metricLabel)}</p>
 
       <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
-        {data.columns.map((c, i) => (
+        {data.columns.map((c) => (
           <span key={c.id} className="flex items-center gap-1.5 text-[11px] text-ink">
             <span
               className="h-2.5 w-2.5 shrink-0 rounded-full"
-              style={{ backgroundColor: colorFor(i) }}
+              style={{ backgroundColor: colorOf(c.id) }}
             />
             {t(c.short ?? c.label)}
           </span>
@@ -72,13 +84,13 @@ export function ConditionalView({
               */}
               <div dir="ltr" className="relative h-5" aria-hidden="true">
                 <div className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-rule" />
-                {s.points.map((p, i) => (
+                {s.points.map((p) => (
                   <div
                     key={p.columnId}
                     className="absolute top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full border border-paper"
                     style={{
                       left: `${scaleFraction(data, p.mean) * 100}%`,
-                      backgroundColor: colorFor(i),
+                      backgroundColor: colorOf(p.columnId),
                     }}
                   />
                 ))}

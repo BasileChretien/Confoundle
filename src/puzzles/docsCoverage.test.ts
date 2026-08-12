@@ -156,3 +156,67 @@ describe("syllabus audit stays honest about what is still a gap", () => {
     expect(malformed).toEqual([]);
   });
 });
+
+/**
+ * The audit's PROSE sections, which the row checks above cannot see at all,
+ * because `auditRows` only looks at lines beginning with a pipe.
+ *
+ * That blind spot is not hypothetical. On 2026-08-12 two `###` sections were
+ * found making build-status claims about skills that had long since shipped:
+ * one headed "worth building" for a card that exists on the very shape its own
+ * shape note asked for, and one headed "the better demonstration is the second
+ * one" whose chosen demonstration IS puzzle #28. Both read as open work. Both
+ * passed every check in this file, because a heading is not a table row.
+ *
+ * So the same contract the rows carry is extended to any section whose HEADING
+ * makes a claim about build status: it must be tagged, and if the tagged skill
+ * is registered the section must say SHIPPED. Headings are the right trigger
+ * because a heading is what a reader skims and what misleads them, which is
+ * exactly how both of those sections survived being read repeatedly.
+ *
+ * Sections that merely discuss a topic stay untagged and unchecked; only a
+ * status CLAIM opts a section in.
+ */
+const STATUS_CLAIM =
+  /\b(shipped|worth building|ready to build|unsourced|sourced|to build|not yet built|rejected)\b/i;
+
+function auditSections(
+  doc: string,
+): { heading: string; skill: string; body: string }[] {
+  return doc
+    .split(/^### /m)
+    .slice(1)
+    .map((section) => ({
+      heading: section.split("\n")[0].trim(),
+      skill: /<!--\s*skill:\s*([a-z0-9-]+)\s*-->/.exec(section)?.[1] ?? "",
+      body: section,
+    }))
+    .filter((s) => STATUS_CLAIM.test(s.heading));
+}
+
+const sections = auditSections(auditDoc);
+
+describe("syllabus audit prose does not claim open work that has shipped", () => {
+  it("finds the status-claiming sections at all, so a rewording cannot disable this", () => {
+    expect(sections.length).toBeGreaterThanOrEqual(5);
+  });
+
+  it("gives every status-claiming section a skill tag", () => {
+    const untagged = sections.filter((s) => !s.skill).map((s) => s.heading);
+    expect(
+      untagged,
+      "this heading claims a build status; tag it with the skill it ships (or would ship) under",
+    ).toEqual([]);
+  });
+
+  it("marks a section SHIPPED once its skill is in the registry", () => {
+    // The check that would have caught illusory truth and anchoring.
+    const stale = sections
+      .filter((s) => SKILLS.has(s.skill) && !/\bSHIPPED\b/i.test(s.body))
+      .map((s) => `${s.heading} (skill ${s.skill} is registered)`);
+    expect(
+      stale,
+      "this lesson has shipped; say SHIPPED in the section and name the slug",
+    ).toEqual([]);
+  });
+});

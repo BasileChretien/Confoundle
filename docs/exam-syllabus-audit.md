@@ -355,7 +355,7 @@ consensus only · **X** absent from official documents.
 | Will Rogers phenomenon <!-- skill: will-rogers-phenomenon --> | X | X | X | X | shipped (consensus only) |
 | Prosecutor's fallacy <!-- skill: prosecutors-fallacy --> | X | X | X | X | shipped (not a medical exam topic) |
 | Immortal time bias <!-- skill: immortal-time-bias --> | X | **X** | T | X | **shipped** |
-| Healthy worker / healthy user | X | X | T | X | partly inside indication |
+| Healthy worker / healthy user / healthy adherer <!-- skill: healthy-adherer --> | X | X | T | X | **gap, and the note that said otherwise was wrong.** It read "partly inside indication" until 2026-08-12, when the card was opened and it is not: `confounding-by-indication` is the DIG trial, where the SICKER patients were the ones prescribed the drug, so the treated group looks worse. Healthy user and healthy adherer run the other way, and healthy worker is a third thing again. A grep across every puzzle and every Trap Hunt item finds none of the three named anywhere. See backlog entry 69 |
 | Hawthorne effect <!-- skill: hawthorne-effect --> | X | X | **O** | X | **shipped** (Wu 2018) |
 | Pygmalion / observer expectancy <!-- skill: pygmalion-effect --> | X | X | X | X | **SHIPPED** 2026-08-07 as `what-the-doctor-believed` (Chen 2019, socially transmitted placebo), on the new `delivered` shape. In none of the four official outlines; named in US teaching, and as **Rosenthaleffekt** in the German list recorded near line 72. Distinct from `detection-bias`, which is the observer's belief changing the SCORE, and from `hawthorne-effect`, which needs nobody to believe anything |
 | Neyman / prevalence-incidence | X | X | T | X | covered by length-time and survivorship; review items only |

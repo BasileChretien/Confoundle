@@ -45,6 +45,7 @@ import { DeliveredView } from "./DeliveredView";
 import { CrossedView } from "./CrossedView";
 import { PublishedView } from "./PublishedView";
 import { SurrogateView } from "./SurrogateView";
+import { AttenuationView } from "./AttenuationView";
 import { restrictPublished } from "./published";
 import { restrictCrossed } from "./crossed";
 import { restrictSeries } from "./series";
@@ -275,6 +276,12 @@ export function DataViewRenderer({
           kind={view.kind}
         />
       ) : null;
+    case "attenuation":
+      // Nothing filtered: the beats differ by which windows and outcomes are
+      // drawn, and the reveal keeps the setup row untouched underneath.
+      return view.kind === "atbaseline" || view.kind === "astrimmed" ? (
+        <AttenuationView data={data} kind={view.kind} />
+      ) : null;
     case "surrogate":
       // Nothing is filtered here: the beats differ by WHICH SECTIONS are
       // drawn, so the reveal carries the funnel unchanged plus the endpoint
@@ -438,6 +445,10 @@ export function scopeLabel(kind: DataViewKind): string {
       return "What the drug did to the marker";
     case "andoutcome":
       return "And what happened to the patients";
+    case "atbaseline":
+      return "Everyone, over the whole follow-up";
+    case "astrimmed":
+      return "And with the early deaths thrown away";
     default:
       return "";
   }

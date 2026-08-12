@@ -9741,6 +9741,158 @@ const items: TestItem[] = [
       en: "The marker is being used to shorten the wait for a serious illness, not to stand in for the answer. The claim is labelled as unproven, the confirmatory trial is required rather than encouraged, and failure has a stated consequence. Speed bought with an explicit debt is not the same as mistaking a marker for an outcome.",
     },
   },
+
+  /*
+   * Reverse causality. Every trap below is the outcome changing the exposure
+   * BEFORE anyone measured it, and nothing else. Two whole families of scenario
+   * are deliberately absent because they would license a second shipped skill.
+   * Nothing here involves a treatment given because somebody was sicker, which
+   * is `confounding-by-indication` and would make the tutoring, therapy and
+   * consultant scenarios that first suggested themselves unusable. And nothing
+   * turns on a third variable driving both, which is what
+   * `correlation-not-causation` reveals, so the fire-engine and police-numbers
+   * classics are absent too: they are confounding, not a backwards arrow.
+   */
+  {
+    id: "rc-diet-drinks",
+    scenario: {
+      en: "A survey found that people who drink diet soft drinks are on average considerably heavier than people who drink the sugary versions. A columnist concluded that artificial sweeteners make you gain weight.",
+    },
+    trap: "reverse-causality",
+    explanation: {
+      en: "Almost nobody switches to diet drinks and then gains weight; they gain weight and then switch. The heaviness came first and caused the drink choice, so a survey taken at one moment finds the two together and says nothing about which produced which.",
+    },
+  },
+  {
+    id: "rc-grip-strength",
+    scenario: {
+      en: "In a cohort of older adults, those with the weakest handgrip at enrolment were far more likely to be diagnosed with dementia over the following six years. The report described weak grip as a risk factor for dementia.",
+    },
+    trap: "reverse-causality",
+    explanation: {
+      en: "Dementia begins altering the brain many years before it is diagnosed, and among the things it alters early is motor strength. Six years is comfortably inside that window, so the weak grip is most likely the disease already under way rather than something that invites it.",
+    },
+  },
+  {
+    id: "rc-cholesterol-cancer",
+    scenario: {
+      en: "A cohort study found that men with the lowest cholesterol were the most likely to die of cancer in the next few years, and the authors suggested that low cholesterol raises cancer risk.",
+    },
+    trap: "reverse-causality",
+    explanation: {
+      en: "A tumour that has been growing quietly for years lowers cholesterol before it is found. So the low reading is an early consequence of the cancer, measured before anybody knew the cancer was there, and reading it as a cause turns the sequence around.",
+    },
+  },
+  {
+    id: "rc-walking-speed",
+    scenario: {
+      en: "Older people who walked more slowly across a clinic room died sooner than those who walked briskly. A newspaper reported that walking faster helps you live longer.",
+    },
+    trap: "reverse-causality",
+    explanation: {
+      en: "Walking speed is one of the most sensitive summaries of how ill somebody currently is, and illness is what kills them. The slow walk is the accumulated disease showing itself, so telling people to walk faster addresses the reading rather than the thing being read.",
+    },
+  },
+  {
+    id: "rc-napping",
+    scenario: {
+      en: "Adults who reported regular daytime naps had higher death rates over the following four years than those who did not nap. The finding was written up as evidence that napping is harmful.",
+    },
+    trap: "reverse-causality",
+    explanation: {
+      en: "Undiagnosed illness makes people tired, and tired people nap. Over four years the naps therefore mark who was already unwell at the moment the question was asked, which is a fact about their existing disease and not about what napping does to a healthy person.",
+    },
+  },
+  {
+    id: "rc-appetite",
+    scenario: {
+      en: "Among care home residents, those eating least at the start of the study were most likely to die within the year, and the conclusion drawn was that eating more would extend their lives.",
+    },
+    trap: "reverse-causality",
+    explanation: {
+      en: "Appetite falls away as serious illness advances, often well before anything else is obvious. So poor intake at baseline is largely a measure of who was closest to dying already, and encouraging them to eat more would leave the underlying reason untouched.",
+    },
+  },
+  {
+    id: "rc-unintentional-weight-loss",
+    scenario: {
+      en: "People who had lost weight without trying in the year before enrolment went on to be diagnosed with cancer far more often than those whose weight was stable. A headline said losing weight raises cancer risk.",
+    },
+    trap: "reverse-causality",
+    explanation: {
+      en: "Unintentional weight loss is one of the oldest recognised early signs of an undiagnosed cancer, which is why it is a red flag in clinics. The weight loss is the tumour announcing itself, and treating it as the cause reverses a sequence that medicine has understood for a century.",
+    },
+  },
+  {
+    id: "rc-supermarket",
+    scenario: {
+      en: "Neighbourhoods that gained a large supermarket saw household incomes rise over the next decade, considerably faster than neighbourhoods that did not. A council report cited this as evidence that attracting a supermarket raises local incomes.",
+    },
+    trap: "reverse-causality",
+    explanation: {
+      en: "Supermarket chains choose sites by forecasting where spending is about to rise, so an area that was already on its way up is exactly where one gets built. The rising incomes drew the supermarket rather than the other way round, and the store arrives as a consequence of the trend it is credited with.",
+    },
+  },
+  {
+    id: "rc-fad-adoption",
+    scenario: {
+      en: "Firms that adopted a new management practice grew faster over the following five years than firms that did not, and a business school wrote it up as evidence that the practice drives growth.",
+    },
+    trap: "reverse-causality",
+    explanation: {
+      en: "Adopting a new practice costs money, attention and slack, and the firms that had those to spare were the ones already doing well. Growth bought the adoption at least as plausibly as adoption produced the growth, and a comparison taken after the fact cannot separate them.",
+    },
+  },
+  {
+    id: "rc-social-contact",
+    scenario: {
+      en: "Adults who saw friends less often at baseline were substantially more likely to be diagnosed with depression over the next two years, and the study concluded that social contact protects against depression.",
+    },
+    trap: "reverse-causality",
+    explanation: {
+      en: "Withdrawing from people is one of the first things depression does, and it typically starts well before anyone reaches a diagnosis. Two years is short enough that much of the reduced contact at baseline is likely the illness beginning, rather than an exposure that brought it on.",
+    },
+  },
+  {
+    id: "rc-sound-flat-across-exclusions",
+    scenario: {
+      en: "Researchers reported that an association held steady when they recomputed it after excluding deaths in the first 5, then 10, then 15 years of follow-up, and concluded on that basis that reverse causation was an unlikely explanation.",
+    },
+    trap: null,
+    explanation: {
+      en: "This is the right test read the right way. A backwards arrow lives among the people whose outcome came soonest, so it fades as those are removed; an association that does not budge across progressively longer exclusions has been shown not to behave that way. Note it is the flat PATTERN that carries the argument, not any single exclusion.",
+    },
+  },
+  {
+    id: "rc-sound-control-outcome",
+    scenario: {
+      en: "After finding that an association weakened once early events were excluded, researchers ran the identical exclusions on a second outcome that the exposure could not plausibly be an early sign of, showed that one did not move, and only then concluded reverse causation.",
+    },
+    trap: null,
+    explanation: {
+      en: "Discarding data shrinks estimates for dull reasons too, so an attenuation on its own proves little. Checking it against an outcome that should not attenuate is what separates the two, and doing that check before drawing the conclusion is the careful move rather than the trap.",
+    },
+  },
+  {
+    id: "rc-sound-measured-decades-earlier",
+    scenario: {
+      en: "A study related a measurement taken in adolescence to a disease diagnosed after the age of seventy, and argued that the fifty-year gap makes it implausible that early disease could have produced the adolescent measurement.",
+    },
+    trap: null,
+    explanation: {
+      en: "Reverse causation needs the outcome, or its silent early phase, to have already begun when the exposure was measured. A gap far longer than any plausible prodrome is a real argument against it, and the authors are making it explicitly rather than assuming the direction they prefer.",
+    },
+  },
+  {
+    id: "rc-sound-reported-as-likely-reverse",
+    scenario: {
+      en: "An association between a blood measurement and later death weakened steadily as early deaths were excluded, and the authors reported it as most likely a consequence of undiagnosed illness rather than adding the measurement to the list of risk factors.",
+    },
+    trap: null,
+    explanation: {
+      en: "They ran the test, the association behaved exactly as a backwards arrow behaves, and they said so instead of publishing a new risk factor. Following the evidence to the less publishable conclusion is the behaviour this topic is asking for.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

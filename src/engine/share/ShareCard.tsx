@@ -1448,6 +1448,45 @@ function SurrogateGlyph() {
     </svg>
   );
 }
+function AttenuationGlyph() {
+  const W = 200;
+  const H = 96;
+  /**
+   * A vertical line at 1, three gold marks walking in towards it, and three
+   * teal marks that do not move. That pair IS the card: one association melts
+   * as the early deaths are discarded and the other, given exactly the same
+   * treatment, stays where it was. Shape-generic wording, since the glyph is
+   * chosen by `data.type` and must survive the next puzzle on this shape.
+   */
+  const one = 60;
+  const gold = [150, 124, 78];
+  const teal = [38, 41, 39];
+  return (
+    <svg
+      viewBox={`0 0 ${W} ${H}`}
+      width="100%"
+      role="img"
+      aria-label="Three marks walking in towards a line at one, and three marks beside them that stay put"
+    >
+      <line x1={one} y1={10} x2={one} y2={88} stroke={CARD.muted} strokeWidth={1} />
+      <text x={one - 3} y={94} fontSize={7} fill={CARD.muted}>
+        1
+      </text>
+      {gold.map((x, i) => (
+        <g key={`g${x}`}>
+          <line x1={one} y1={20 + i * 11} x2={x} y2={20 + i * 11} stroke={CARD.gold} strokeWidth={2} opacity={0.35} />
+          <circle cx={x} cy={20 + i * 11} r={4} fill={CARD.gold} opacity={0.9} />
+        </g>
+      ))}
+      {teal.map((x, i) => (
+        <g key={`t${x}-${i}`}>
+          <line x1={one} y1={62 + i * 11} x2={x} y2={62 + i * 11} stroke={CARD.teal} strokeWidth={2} opacity={0.3} />
+          <circle cx={x} cy={62 + i * 11} r={4} fill={CARD.teal} opacity={0.75} />
+        </g>
+      ))}
+    </svg>
+  );
+}
 function CrossedGlyph() {
   const W = 200;
   const H = 96;
@@ -2036,6 +2075,7 @@ export function ShareCard({
   const crossedGlyph = data.type === "crossed";
   const publishedGlyph = data.type === "published";
   const surrogateGlyph = data.type === "surrogate";
+  const attenuationGlyph = data.type === "attenuation";
   const splitSampleGlyph =
     data.type === "rates" &&
     Boolean(data.strataAreSeparateSamples) &&
@@ -2173,6 +2213,8 @@ export function ShareCard({
             <PublishedGlyph />
           ) : surrogateGlyph ? (
             <SurrogateGlyph />
+          ) : attenuationGlyph ? (
+            <AttenuationGlyph />
           ) : null}
 
           <p className="mt-4 font-display text-[17px] font-medium leading-snug">

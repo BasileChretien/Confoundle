@@ -1,5 +1,6 @@
 import { useT } from "../../app/i18n";
 import type { EcologicalData } from "../../puzzles/schema";
+import { fillSlots } from "./announce";
 import { colorFor } from "./palette";
 import { formatR, personRates, slopeLine } from "./ecological";
 
@@ -51,9 +52,22 @@ export function EcologicalView({
               preserveAspectRatio="none"
               className="absolute inset-0 h-full w-full"
               role="img"
-              aria-label={`Compared group by group, the relationship runs ${
-                data.groupCorrelation < 0 ? "downward" : "upward"
-              }, r equals ${formatR(data.groupCorrelation)}`}
+              // The direction is the whole content of this announcement, so it
+              // is two sentences rather than one with the word "downward"
+              // slotted in: a bare direction word has no case, and several of
+              // these languages inflect it.
+              aria-label={fillSlots(
+                t(
+                  data.groupCorrelation < 0
+                    ? {
+                        en: "Compared group by group, the relationship runs downward. Correlation r equals {r}.",
+                      }
+                    : {
+                        en: "Compared group by group, the relationship runs upward. Correlation r equals {r}.",
+                      },
+                ),
+                { r: formatR(data.groupCorrelation) },
+              )}
             >
               <line
                 x1={line.x1}
@@ -110,7 +124,14 @@ export function EcologicalView({
                 backgroundColor: colorFor(i),
               }}
               role="img"
-              aria-label={`${t(r.label)}: ${(r.rate * 100).toFixed(1)} percent`}
+              // The same sentence the rates chart announces, deliberately the
+              // same key: one bar with a name and a percentage reads the same
+              // way whichever shape drew it, and two wordings would be two
+              // translations of one thing.
+              aria-label={fillSlots(t({ en: "{group}: {percent} percent" }), {
+                group: t(r.label),
+                percent: (r.rate * 100).toFixed(1),
+              })}
             />
           </div>
         </div>

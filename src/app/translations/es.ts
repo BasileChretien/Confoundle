@@ -6486,4 +6486,11 @@ export const es: Record<string, string> = {
   "Self-deprecating": "Autocrítica",
   "Working…": "Trabajando…",
   "Share / save card": "Compartir / guardar",
+  // ---- chart announcements: bars, arms and the group-level slope ----
+  "{group}: {percent} percent": "{group}: {percent} por ciento",
+  "{group}: {percent} percent, the highest": "{group}: {percent} por ciento, la cifra más alta",
+  "{arm}: {events} out of {total}": "{arm}: {events} de {total}",
+  "{arm}: {events} out of {total}, {percent}": "{arm}: {events} de {total}, es decir {percent}",
+  "Compared group by group, the relationship runs downward. Correlation r equals {r}.": "Comparando grupo por grupo, la relación es descendente. La correlación r es {r}.",
+  "Compared group by group, the relationship runs upward. Correlation r equals {r}.": "Comparando grupo por grupo, la relación es ascendente. La correlación r es {r}.",
 };

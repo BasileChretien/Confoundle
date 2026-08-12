@@ -6324,4 +6324,11 @@ export const zh: Record<string, string> = {
   "Self-deprecating": "自嘲型",
   "Working…": "处理中…",
   "Share / save card": "分享 / 保存卡片",
+  // ---- chart announcements: bars, arms and the group-level slope ----
+  "{group}: {percent} percent": "{group}：百分之{percent}",
+  "{group}: {percent} percent, the highest": "{group}：百分之{percent}，最高",
+  "{arm}: {events} out of {total}": "{arm}：{total}人中有{events}人",
+  "{arm}: {events} out of {total}, {percent}": "{arm}：{total}人中有{events}人，{percent}",
+  "Compared group by group, the relationship runs downward. Correlation r equals {r}.": "逐组比较时，这一关系呈下降趋势。相关系数 r 为 {r}。",
+  "Compared group by group, the relationship runs upward. Correlation r equals {r}.": "逐组比较时，这一关系呈上升趋势。相关系数 r 为 {r}。",
 };

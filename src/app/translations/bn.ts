@@ -6432,4 +6432,11 @@ export const bn: Record<string, string> = {
   "Self-deprecating": "আত্মরসিকতার",
   "Working…": "চলছে…",
   "Share / save card": "কার্ড শেয়ার / সংরক্ষণ",
+  // ---- chart announcements: bars, arms and the group-level slope ----
+  "{group}: {percent} percent": "{group}: {percent} শতাংশ",
+  "{group}: {percent} percent, the highest": "{group}: {percent} শতাংশ, সর্বোচ্চ",
+  "{arm}: {events} out of {total}": "{arm}: {total} জনের মধ্যে {events} জন",
+  "{arm}: {events} out of {total}, {percent}": "{arm}: {total} জনের মধ্যে {events} জন, অর্থাৎ {percent}",
+  "Compared group by group, the relationship runs downward. Correlation r equals {r}.": "দল ধরে ধরে তুলনা করলে সম্পর্কটি নিচের দিকে নামে। সহসম্পর্ক r এর মান {r}।",
+  "Compared group by group, the relationship runs upward. Correlation r equals {r}.": "দল ধরে ধরে তুলনা করলে সম্পর্কটি উপরের দিকে ওঠে। সহসম্পর্ক r এর মান {r}।",
 };

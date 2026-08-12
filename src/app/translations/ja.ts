@@ -6382,4 +6382,11 @@ export const ja: Record<string, string> = {
   "Self-deprecating": "自虐する",
   "Working…": "処理中…",
   "Share / save card": "カードを共有 / 保存",
+  // ---- chart announcements: bars, arms and the group-level slope ----
+  "{group}: {percent} percent": "{group}：{percent}パーセント",
+  "{group}: {percent} percent, the highest": "{group}：{percent}パーセント、最も高い",
+  "{arm}: {events} out of {total}": "{arm}：{total}人中{events}人",
+  "{arm}: {events} out of {total}, {percent}": "{arm}：{total}人中{events}人、{percent}",
+  "Compared group by group, the relationship runs downward. Correlation r equals {r}.": "集団ごとに比べると、関係は右下がりになる。相関 r は {r}。",
+  "Compared group by group, the relationship runs upward. Correlation r equals {r}.": "集団ごとに比べると、関係は右上がりになる。相関 r は {r}。",
 };

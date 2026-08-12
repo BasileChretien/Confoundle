@@ -9590,6 +9590,157 @@ const items: TestItem[] = [
       en: "The slots were assigned rather than chosen, so the two groups are the same kinds of people and the difference in attendance belongs to the time of day. This is the comparison the healthy adherer problem breaks, being made in a way that does not break.",
     },
   },
+
+  /*
+   * Surrogate endpoints. Every trap below is the same single move, a marker
+   * result reported as though it were the outcome the marker stands for, and
+   * nothing else. That restraint is the point rather than a stylistic choice:
+   * an item where the researchers also split the groups after randomisation
+   * would license `healthy-adherer` too, one where they bundled outcomes would
+   * license `composite-endpoints`, and one where anybody optimised the measure
+   * on purpose would license `campbells-law`. A player picking the second
+   * correct skill would be marked wrong, so none of these items contains one.
+   */
+  {
+    id: "se-bone-density",
+    scenario: {
+      en: "A drug raised bone mineral density by 8 per cent over two years, more than any treatment then available. The manufacturer announced it as a treatment that prevents hip fractures in older women.",
+    },
+    trap: "surrogate-endpoints",
+    explanation: {
+      en: "Density is measured because fractures are slow and expensive to count, but the announcement is about fractures and the trial measured density. Denser bone is not automatically stronger bone: the two came apart badly for fluoride, which raised density and raised fracture rates.",
+    },
+  },
+  {
+    id: "se-tumour-shrinkage",
+    scenario: {
+      en: "In a single-arm trial of a new cancer drug, tumours shrank by at least 30 per cent in 41 per cent of patients. The press release said the drug helps patients with this cancer live longer.",
+    },
+    trap: "surrogate-endpoints",
+    explanation: {
+      en: "Shrinking a tumour is a fact about the tumour on a scan. Living longer is a fact about the patient, and it requires counting how long patients lived, which this trial did not do. Response rates and survival have parted company often enough that regulators now ask for both.",
+    },
+  },
+  {
+    id: "se-antibody-titre",
+    scenario: {
+      en: "A new vaccine produced antibody levels three times higher than the existing one in a trial of healthy volunteers, and was described as three times more protective against the disease.",
+    },
+    trap: "surrogate-endpoints",
+    explanation: {
+      en: "Higher titres were measured; protection was not. Antibody level is a reasonable marker for some vaccines and a poor one for others, and the multiple does not carry across in any case: three times the antibody is not three times the protection unless somebody has shown that it is.",
+    },
+  },
+  {
+    id: "se-hba1c",
+    scenario: {
+      en: "A diabetes drug lowered average blood sugar over three months further than the standard treatment did. The report concluded that it therefore prevents more of the kidney and heart damage that diabetes causes.",
+    },
+    trap: "surrogate-endpoints",
+    explanation: {
+      en: "Blood sugar control is the marker; the damage is the outcome. The link is real enough that the inference feels safe, and it has still failed in practice, most visibly where intensive lowering achieved better numbers and did not deliver the expected reduction in cardiovascular deaths.",
+    },
+  },
+  {
+    id: "se-ldl-further",
+    scenario: {
+      en: "An added drug lowered LDL cholesterol substantially further than a statin alone. The sponsor concluded it would prevent proportionally more heart attacks than the statin does.",
+    },
+    trap: "surrogate-endpoints",
+    explanation: {
+      en: "A surrogate is validated for a mechanism, not for a number. Lowering LDL with a statin does reduce heart attacks; that warranty does not transfer to a different drug that moves the same marker by a different route, and torcetrapib raised the good cholesterol beautifully while raising deaths.",
+    },
+  },
+  {
+    id: "se-ejection-fraction",
+    scenario: {
+      en: "A heart-failure drug improved the heart's measured pumping fraction on echocardiography by five points. The summary reported it as a drug that extends life in heart failure.",
+    },
+    trap: "surrogate-endpoints",
+    explanation: {
+      en: "The pumping fraction is what was measured and life expectancy is what was claimed. Several drugs have improved that number and shortened lives, because a heart can be made to squeeze harder by means that cost it something else nobody was counting.",
+    },
+  },
+  {
+    id: "se-viral-load",
+    scenario: {
+      en: "An antiviral reduced the amount of virus detectable in the blood faster than the comparator, and was reported as the more effective treatment for the illness.",
+    },
+    trap: "surrogate-endpoints",
+    explanation: {
+      en: "Clearing measurable virus faster is a laboratory result. Being less ill, staying out of hospital, and not dying are the outcomes, and a drug can do the first without doing the others, particularly when the damage being done is by the body's response rather than the virus itself.",
+    },
+  },
+  {
+    id: "se-inflammation-marker",
+    scenario: {
+      en: "A treatment for a chronic joint condition halved a blood marker of inflammation. The report concluded that patients therefore have less joint damage and less pain.",
+    },
+    trap: "surrogate-endpoints",
+    explanation: {
+      en: "The marker fell, which is a fact about the blood. Damage and pain are what patients have, and they need to be measured on the joints and on the patients. A drug can suppress a marker of a process without arresting the process it marks.",
+    },
+  },
+  {
+    id: "se-brand-recall",
+    scenario: {
+      en: "An advertising campaign raised unprompted brand recall from 22 per cent to 35 per cent in a survey. The agency reported the campaign as having increased sales.",
+    },
+    trap: "surrogate-endpoints",
+    explanation: {
+      en: "Recall is measured because sales are slow, noisy and attributable to many things at once. But recall was measured and sales were claimed, and people remembering an advertisement is compatible with them buying nothing, or with them remembering it because they disliked it.",
+    },
+  },
+  {
+    id: "se-daily-steps",
+    scenario: {
+      en: "Employees given an activity tracker averaged 2,400 more steps a day than before. The wellbeing team reported the scheme as having improved staff cardiovascular health.",
+    },
+    trap: "surrogate-endpoints",
+    explanation: {
+      en: "Steps are counted because heart health is not countable in a quarter. Steps went up, which is real, and cardiovascular health is a claim about arteries that nobody examined. Whether a modest rise in walking, achieved this way and sustained this long, reaches the artery is the question the report skipped.",
+    },
+  },
+  {
+    id: "se-sound-named-the-marker",
+    scenario: {
+      en: "A trial found that a new drug lowered a blood marker of kidney stress more than placebo. The authors reported it as an effect on the marker, said plainly that whether this translates into fewer patients reaching dialysis is unknown, and called for a trial with dialysis as the endpoint.",
+    },
+    trap: null,
+    explanation: {
+      en: "Measuring a marker is not the error; claiming the outcome from it is. These authors measured what they measured, reported it as what it was, and named the trial that would answer the question they could not. That is the correct use of a surrogate.",
+    },
+  },
+  {
+    id: "se-sound-believed-the-outcome-trial",
+    scenario: {
+      en: "A drug that improved a marker for years was finally tested against clinical events, and the events did not fall. The manufacturer withdrew the claim, saying the outcome trial answers the question and the marker result does not override it.",
+    },
+    trap: null,
+    explanation: {
+      en: "When the marker and the outcome disagree, the outcome wins, because it is the thing anybody actually wanted. Running the harder trial and then accepting its answer against your own commercial interest is the behaviour this whole topic is asking for.",
+    },
+  },
+  {
+    id: "se-sound-validated-for-this-mechanism",
+    scenario: {
+      en: "Researchers used LDL cholesterol reduction as the endpoint for a new statin, noting that for this drug class the reduction has repeatedly been shown to deliver the expected reduction in heart attacks, and stating that the justification is specific to statins rather than to LDL lowering by any means.",
+    },
+    trap: null,
+    explanation: {
+      en: "This is what a validated surrogate looks like when it is used honestly. The validation is cited, it comes from outcome trials in the same drug class, and its limit is stated in the same breath. Refusing to extend the warranty to other mechanisms is exactly the caution the failures teach.",
+    },
+  },
+  {
+    id: "se-sound-conditional-approval",
+    scenario: {
+      en: "A regulator granted an accelerated approval on the basis of a marker, stating in the label that clinical benefit has not been established and requiring the company to complete a trial measuring survival, with withdrawal if it fails.",
+    },
+    trap: null,
+    explanation: {
+      en: "The marker is being used to shorten the wait for a serious illness, not to stand in for the answer. The claim is labelled as unproven, the confirmatory trial is required rather than encouraged, and failure has a stated consequence. Speed bought with an explicit debt is not the same as mistaking a marker for an outcome.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

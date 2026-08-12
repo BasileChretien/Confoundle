@@ -6331,4 +6331,13 @@ export const zh: Record<string, string> = {
   "{arm}: {events} out of {total}, {percent}": "{arm}：{total}人中有{events}人，{percent}",
   "Compared group by group, the relationship runs downward. Correlation r equals {r}.": "逐组比较时，这一关系呈下降趋势。相关系数 r 为 {r}。",
   "Compared group by group, the relationship runs upward. Correlation r equals {r}.": "逐组比较时，这一关系呈上升趋势。相关系数 r 为 {r}。",
+  // ---- chart announcements: the planes, the timelines and the maps ----
+  "Bullet holes on returning planes cluster on the wings and body": "返航飞机上的弹孔集中在机翼和机身上",
+  "The engines and cockpit, clean on returning planes, are the vulnerable spots to armour": "在返航飞机上完好无损的发动机和座舱，正是需要加装装甲的要害",
+  "{track}: {immortal} counted but not at risk, then {atrisk} at risk": "{track}：{immortal}虽已计入却不可能发生事件，其后{atrisk}才真正处于风险之中",
+  "{track}: {counted} counted": "{track}：计入{counted}",
+  "{track}: {survival} after diagnosis": "{track}：确诊后{survival}",
+  "{track}: {onset} at {onsetwhen}, {detected} at {detectedwhen}, {died} at {diedwhen}": "{track}：{onset}在{onsetwhen}，{detected}在{detectedwhen}，{died}在{diedwhen}",
+  "World map in the {projection} projection": "{projection}投影的世界地图",
+  "World map in the {projection} projection. {verdict}.": "{projection}投影的世界地图。{verdict}。",
 };

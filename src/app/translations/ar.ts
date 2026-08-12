@@ -6392,4 +6392,13 @@ export const ar: Record<string, string> = {
   "{arm}: {events} out of {total}, {percent}": "{arm}: {events} من أصل {total}، أي {percent}",
   "Compared group by group, the relationship runs downward. Correlation r equals {r}.": "عند المقارنة بين المجموعات، تنحدر العلاقة إلى أسفل. معامل الارتباط r يساوي {r}.",
   "Compared group by group, the relationship runs upward. Correlation r equals {r}.": "عند المقارنة بين المجموعات، تصعد العلاقة إلى أعلى. معامل الارتباط r يساوي {r}.",
+  // ---- chart announcements: the planes, the timelines and the maps ----
+  "Bullet holes on returning planes cluster on the wings and body": "ثقوب الرصاص في الطائرات العائدة تتجمع في الجناحين وجسم الطائرة",
+  "The engines and cockpit, clean on returning planes, are the vulnerable spots to armour": "المحركات وقمرة القيادة، وهي سليمة في الطائرات العائدة، هي المواضع الهشة التي ينبغي تدريعها",
+  "{track}: {immortal} counted but not at risk, then {atrisk} at risk": "{track}: {immortal} محتسبة دون إمكان الخطر، ثم {atrisk} تحت الخطر",
+  "{track}: {counted} counted": "{track}: المحتسب {counted}",
+  "{track}: {survival} after diagnosis": "{track}: {survival} بعد التشخيص",
+  "{track}: {onset} at {onsetwhen}, {detected} at {detectedwhen}, {died} at {diedwhen}": "{track}: {onset} عند {onsetwhen}، {detected} عند {detectedwhen}، {died} عند {diedwhen}",
+  "World map in the {projection} projection": "خريطة العالم بمسقط {projection}",
+  "World map in the {projection} projection. {verdict}.": "خريطة العالم بمسقط {projection}. {verdict}.",
 };

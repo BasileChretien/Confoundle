@@ -6471,4 +6471,13 @@ export const pt: Record<string, string> = {
   "{arm}: {events} out of {total}, {percent}": "{arm}: {events} de {total}, ou seja {percent}",
   "Compared group by group, the relationship runs downward. Correlation r equals {r}.": "Comparando grupo a grupo, a relação é descendente. A correlação r é {r}.",
   "Compared group by group, the relationship runs upward. Correlation r equals {r}.": "Comparando grupo a grupo, a relação é ascendente. A correlação r é {r}.",
+  // ---- chart announcements: the planes, the timelines and the maps ----
+  "Bullet holes on returning planes cluster on the wings and body": "Nos aviões que voltaram, os furos de bala concentram-se nas asas e na fuselagem",
+  "The engines and cockpit, clean on returning planes, are the vulnerable spots to armour": "Os motores e a cabine, intactos nos aviões que voltaram, são os pontos vulneráveis a blindar",
+  "{track}: {immortal} counted but not at risk, then {atrisk} at risk": "{track}: {immortal} sem risco possível, depois {atrisk} em risco",
+  "{track}: {counted} counted": "{track}: total contabilizado, {counted}",
+  "{track}: {survival} after diagnosis": "{track}: {survival} após o diagnóstico",
+  "{track}: {onset} at {onsetwhen}, {detected} at {detectedwhen}, {died} at {diedwhen}": "{track}: {onset} aos {onsetwhen}, {detected} aos {detectedwhen}, {died} aos {diedwhen}",
+  "World map in the {projection} projection": "Mapa-múndi na projeção {projection}",
+  "World map in the {projection} projection. {verdict}.": "Mapa-múndi na projeção {projection}. {verdict}.",
 };

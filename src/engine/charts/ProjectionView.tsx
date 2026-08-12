@@ -1,5 +1,6 @@
 import { useT } from "../../app/i18n";
 import type { ProjectionData } from "../../puzzles/schema";
+import { fillSlots } from "./announce";
 import { colorFor } from "./palette";
 import { projectionShape } from "./projections";
 
@@ -26,17 +27,25 @@ function WorldMap({
   name: string;
   verdict: { exact: boolean; label: string } | null;
 }) {
+  const t = useT();
   return (
     <figure className="flex min-w-0 flex-1 flex-col gap-1">
       <svg
         viewBox="0 0 320 200"
         className="w-full rounded-[3px] border border-rule bg-paper"
         role="img"
-        aria-label={
-          verdict
-            ? `World map in the ${name} projection. ${verdict.label}.`
-            : `World map in the ${name} projection`
-        }
+        // The verdict is a whole clause from the puzzle, so the sentence that
+        // carries it is authored with the full stop in it rather than having
+        // one appended: not every one of these languages ends a sentence with
+        // the same mark.
+        aria-label={fillSlots(
+          t(
+            verdict
+              ? { en: "World map in the {projection} projection. {verdict}." }
+              : { en: "World map in the {projection} projection" },
+          ),
+          { projection: name, verdict: verdict?.label ?? "" },
+        )}
       >
         <path
           d={path}

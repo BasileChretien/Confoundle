@@ -9614,11 +9614,11 @@ const items: TestItem[] = [
   {
     id: "se-tumour-shrinkage",
     scenario: {
-      en: "In a single-arm trial of a new cancer drug, tumours shrank by at least 30 per cent in 41 per cent of patients. The press release said the drug helps patients with this cancer live longer.",
+      en: "In a randomised trial of a new cancer drug against the standard one, tumours shrank by at least 30 per cent in 41 per cent of patients on the new drug against 22 per cent on the standard. The press release said the drug helps patients with this cancer live longer.",
     },
     trap: "surrogate-endpoints",
     explanation: {
-      en: "Shrinking a tumour is a fact about the tumour on a scan. Living longer is a fact about the patient, and it requires counting how long patients lived, which this trial did not do. Response rates and survival have parted company often enough that regulators now ask for both.",
+      en: "Shrinking a tumour is a fact about the tumour on a scan. Living longer is a fact about the patient, and it requires counting how long patients lived, which this trial did not report. Response rates and survival have parted company often enough that regulators now ask for both.",
     },
   },
   {

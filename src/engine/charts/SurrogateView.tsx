@@ -1,4 +1,4 @@
-import { useT } from "../../app/i18n";
+import { useLocale, useT } from "../../app/i18n";
 import type { SurrogateData } from "../../puzzles/schema";
 import { colorFor } from "./palette";
 import { endpointAxisMax, endpointRates, showsOutcome, stageShares } from "./surrogate";
@@ -38,6 +38,29 @@ export function SurrogateView({
   kind: "markeronly" | "andoutcome";
 }) {
   const t = useT();
+  /**
+   * Counts are grouped in the reader's locale, not in English.
+   *
+   * This was `toLocaleString("en")`, copied from `PublishedView`, which meant a
+   * Hindi or Arabic reader saw 2,309 grouped the English way. `EffectView` had
+   * the right pattern already. The digits themselves are left as the locale's
+   * default rather than forced, so nothing here decides for a reader whether
+   * they want Western or Eastern Arabic numerals.
+   */
+  const locale = useLocale();
+  const nf = new Intl.NumberFormat(locale);
+  /**
+   * EVERY numeral in this figure goes through the locale, including the
+   * percentages, and that is not tidiness. Formatting only the counts produced
+   * lines reading "১,৭২৭ · 75%" in Bengali, with the count in Bengali numerals
+   * and the percentage in Western ones, inside a single span. Half-localised is
+   * worse than either choice made consistently.
+   */
+  const pct = (v: number, digits: number) =>
+    new Intl.NumberFormat(locale, {
+      minimumFractionDigits: digits,
+      maximumFractionDigits: digits,
+    }).format(v * 100);
   const stages = stageShares(data);
   const withOutcome = showsOutcome(kind);
   const rates = endpointRates(data);
@@ -48,7 +71,7 @@ export function SurrogateView({
       <div className="flex flex-col gap-1">
         <p className="text-[11px] leading-snug text-ink-soft">{t(data.runInLabel)}</p>
         <p className="font-mono text-[11px] tabular-nums text-ink">
-          n = {data.entered.toLocaleString("en")}
+          n = {nf.format(data.entered)}
         </p>
       </div>
 
@@ -69,7 +92,7 @@ export function SurrogateView({
                   {t(stage.short ?? stage.label)}
                 </span>
                 <span className="shrink-0 font-mono text-[11px] tabular-nums text-ink-soft">
-                  {stage.count.toLocaleString("en")} · {(s.share * 100).toFixed(0)}%
+                  {nf.format(stage.count)} · {pct(s.share, 0)}%
                 </span>
               </div>
               <div aria-hidden="true">
@@ -127,7 +150,7 @@ export function SurrogateView({
                         />
                       </div>
                       <span className="w-[104px] shrink-0 text-right font-mono text-[11px] tabular-nums text-ink-soft">
-                        {r.events} / {r.n.toLocaleString("en")} · {(r.rate * 100).toFixed(1)}%
+                        {nf.format(r.events)} / {nf.format(r.n)} · {pct(r.rate, 1)}%
                       </span>
                     </div>
                   );

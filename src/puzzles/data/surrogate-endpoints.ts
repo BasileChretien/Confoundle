@@ -191,7 +191,10 @@ export const surrogateEndpoints: Puzzle = {
     },
     view: {
       kind: "andoutcome",
-      caption: { en: "And what happened to the patients" },
+      // Same rule as the setup caption: not the words of `label`, and not the
+      // words of `mechanismLabel` either, since the engine draws the caption on
+      // the figure and the mechanism label just below it.
+      caption: { en: "The randomised comparison, at last" },
     },
   },
 

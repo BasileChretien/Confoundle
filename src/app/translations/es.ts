@@ -6399,4 +6399,9 @@ export const es: Record<string, string> = {
 
   // ---- Surrogate endpoints, setup caption ----
   "Before anyone was randomised": "Antes de cualquier aleatorización",
+
+  // ---- Surrogate endpoints, review corrections ----
+  "The randomised comparison, at last": "La comparación aleatorizada, por fin",
+  "In a randomised trial of a new cancer drug against the standard one, tumours shrank by at least 30 per cent in 41 per cent of patients on the new drug against 22 per cent on the standard. The press release said the drug helps patients with this cancer live longer.": "En un ensayo aleatorizado de un nuevo fármaco oncológico frente al tratamiento estándar, los tumores se redujeron al menos un 30 por ciento en el 41 por ciento de los pacientes con el nuevo fármaco, frente al 22 por ciento con el estándar. La nota de prensa decía que el fármaco ayuda a los pacientes con este cáncer a vivir más.",
+  "Shrinking a tumour is a fact about the tumour on a scan. Living longer is a fact about the patient, and it requires counting how long patients lived, which this trial did not report. Response rates and survival have parted company often enough that regulators now ask for both.": "Encoger un tumor es un hecho sobre el tumor en una imagen. Vivir más es un hecho sobre el paciente, y exige contar cuánto vivieron los pacientes, cosa que este ensayo no comunicó. Tasa de respuesta y supervivencia se han separado lo bastante a menudo como para que los reguladores pidan ahora ambas.",
 };

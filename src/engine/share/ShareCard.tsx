@@ -1428,8 +1428,15 @@ function SurrogateGlyph() {
       role="img"
       aria-label="A long bar for the marker responding, then a dividing rule, then two short bars for deaths in which the treated one is taller"
     >
+      {/*
+        Shape-generic wording, not CAST's. The glyph is chosen by `data.type`
+        alone, so "beats suppressed" would be simply wrong on the second puzzle
+        built on this shape. Note that the labels here are English in every
+        locale, which is true of every glyph in this file rather than of this
+        one, and is tracked separately.
+      */}
       <text x={10} y={18} fontSize={8} fill={CARD.muted}>
-        beats suppressed
+        marker responded
       </text>
       <rect x={10} y={24} width={142} height={11} rx={2} fill={CARD.teal} opacity={0.85} />
       <line x1={10} y1={48} x2={190} y2={48} stroke={CARD.muted} strokeWidth={0.5} opacity={0.5} />

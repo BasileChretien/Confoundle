@@ -6336,4 +6336,9 @@ export const hi: Record<string, string> = {
 
   // ---- Surrogate endpoints, setup caption ----
   "Before anyone was randomised": "किसी के भी बेतरतीब बँटवारे से पहले",
+
+  // ---- Surrogate endpoints, review corrections ----
+  "The randomised comparison, at last": "आख़िरकार, वह बेतरतीब तुलना",
+  "In a randomised trial of a new cancer drug against the standard one, tumours shrank by at least 30 per cent in 41 per cent of patients on the new drug against 22 per cent on the standard. The press release said the drug helps patients with this cancer live longer.": "एक नई कैंसर दवा की मानक इलाज से तुलना करने वाले बेतरतीब परीक्षण में, नई दवा पर 41 प्रतिशत मरीज़ों में ट्यूमर कम से कम 30 प्रतिशत सिकुड़े, जबकि मानक इलाज पर 22 प्रतिशत में। प्रेस विज्ञप्ति ने कहा कि यह दवा इस कैंसर के मरीज़ों को अधिक समय जीने में मदद करती है।",
+  "Shrinking a tumour is a fact about the tumour on a scan. Living longer is a fact about the patient, and it requires counting how long patients lived, which this trial did not report. Response rates and survival have parted company often enough that regulators now ask for both.": "ट्यूमर का सिकुड़ना स्कैन पर उस ट्यूमर के बारे में तथ्य है। अधिक जीना मरीज़ के बारे में तथ्य है, और उसके लिए गिनना पड़ता है कि मरीज़ कितने समय जिए, जो इस परीक्षण ने बताया ही नहीं। प्रतिक्रिया दर और उत्तरजीविता इतनी बार अलग हो चुकी हैं कि नियामक अब दोनों माँगते हैं।",
 };

@@ -6345,4 +6345,9 @@ export const bn: Record<string, string> = {
 
   // ---- Surrogate endpoints, setup caption ----
   "Before anyone was randomised": "কাউকে এলোমেলোভাবে ভাগ করার আগে",
+
+  // ---- Surrogate endpoints, review corrections ----
+  "The randomised comparison, at last": "অবশেষে, এলোমেলোভাবে করা তুলনাটি",
+  "In a randomised trial of a new cancer drug against the standard one, tumours shrank by at least 30 per cent in 41 per cent of patients on the new drug against 22 per cent on the standard. The press release said the drug helps patients with this cancer live longer.": "একটি নতুন ক্যান্সার-ওষুধকে মানক চিকিৎসার বিপরীতে রাখা এলোমেলো ট্রায়ালে, নতুন ওষুধে 41 শতাংশ রোগীর টিউমার অন্তত 30 শতাংশ ছোট হলো, আর মানক চিকিৎসায় 22 শতাংশের। সংবাদ বিজ্ঞপ্তিতে বলা হলো, ওষুধটি এই ক্যান্সারের রোগীদের বেশিদিন বাঁচতে সাহায্য করে।",
+  "Shrinking a tumour is a fact about the tumour on a scan. Living longer is a fact about the patient, and it requires counting how long patients lived, which this trial did not report. Response rates and survival have parted company often enough that regulators now ask for both.": "টিউমার ছোট হওয়া স্ক্যানে দেখা ওই টিউমার সম্পর্কে তথ্য। বেশিদিন বাঁচা রোগী সম্পর্কে তথ্য, আর তার জন্য গুনতে হয় রোগীরা কতদিন বেঁচেছিলেন, যা এই ট্রায়াল জানায়নি। সাড়ার হার আর বেঁচে থাকা যথেষ্টবার আলাদা হয়ে গেছে বলে নিয়ন্ত্রকরা এখন দুটোই চান।",
 };

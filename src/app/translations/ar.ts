@@ -6298,4 +6298,9 @@ export const ar: Record<string, string> = {
 
   // ---- Surrogate endpoints, setup caption ----
   "Before anyone was randomised": "قبل توزيع أي أحد عشوائيا",
+
+  // ---- Surrogate endpoints, review corrections ----
+  "The randomised comparison, at last": "المقارنة العشوائية، أخيرا",
+  "In a randomised trial of a new cancer drug against the standard one, tumours shrank by at least 30 per cent in 41 per cent of patients on the new drug against 22 per cent on the standard. The press release said the drug helps patients with this cancer live longer.": "في تجربة عشوائية لدواء سرطاني جديد في مواجهة العلاج المعياري، انكمشت الأورام بنسبة 30 في المئة على الأقل لدى 41 في المئة من المرضى على الدواء الجديد مقابل 22 في المئة على المعياري. وقال البيان الصحفي إن الدواء يساعد مرضى هذا السرطان على العيش مدة أطول.",
+  "Shrinking a tumour is a fact about the tumour on a scan. Living longer is a fact about the patient, and it requires counting how long patients lived, which this trial did not report. Response rates and survival have parted company often enough that regulators now ask for both.": "انكماش الورم حقيقة عن الورم على الصورة. أما العيش مدة أطول فحقيقة عن المريض، وتقتضي إحصاء كم عاش المرضى، وهو ما لم تبلغ عنه هذه التجربة. وقد افترق معدل الاستجابة والبقاء مرات كافية حتى صارت الجهات التنظيمية تطلب الاثنين معا.",
 };

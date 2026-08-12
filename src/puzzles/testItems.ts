@@ -9958,11 +9958,11 @@ const items: TestItem[] = [
   {
     id: "hal-ceo-photograph",
     scenario: {
-      en: "Participants were shown photographs of chief executives and, with no other information, asked to judge how well run their companies were. The better-looking executives were judged to run better-managed companies, and a magazine reported this as evidence that appearance predicts competence.",
+      en: "Participants were given one page on each of several chief executives, carrying the same three years of revenue and margin figures for every company, with a photograph of the executive at the top. The better-looking executives were judged to run better-managed companies, and a magazine reported this as evidence that appearance predicts competence.",
     },
     trap: "halo-effect",
     explanation: {
-      en: "The participants were given a face and nothing else, so a judgement about management can only be an extension of an impression of the face. Reporting it as appearance predicting competence mistakes the bias for the finding.",
+      en: "The financial figures were identical for every company, so how well run each one was is answerable from the page, and the answer is the same every time. An impression of the face is supplying a verdict the numbers had already settled. Reporting it as appearance predicting competence mistakes the bias for the finding.",
     },
   },
   {

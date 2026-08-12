@@ -4128,6 +4128,41 @@ export const Puzzle = z
       }
     }
 
+    /**
+     * `conditional` carries the kind and the ids as two halves of one claim,
+     * and nothing above checks they agree. `onerow` with no `groupIds` draws
+     * every row, so the setup would equal the reveal; `bothrows` WITH ids draws
+     * a subset, so the reveal would be smaller than its name promises. Both
+     * are the silent no-op the loop above exists to catch, just expressed
+     * through the kind rather than through an unknown id.
+     */
+    if (p.setup.data.type === "conditional") {
+      for (const [where, view] of [
+        ["initialView", p.setup.initialView],
+        ["reveal.view", p.reveal.view],
+      ] as const) {
+        const ids = view.groupIds ?? [];
+        if (view.kind === "onerow" && ids.length !== 1)
+          ctx.addIssue({
+            code: "custom",
+            path: [where, "groupIds"],
+            message: `onerow must name exactly one row, but names ${ids.length}`,
+          });
+        if (view.kind === "bothrows" && ids.length > 0)
+          ctx.addIssue({
+            code: "custom",
+            path: [where, "groupIds"],
+            message: "bothrows draws every row, so groupIds would contradict it",
+          });
+        if (view.kind !== "onerow" && view.kind !== "bothrows")
+          ctx.addIssue({
+            code: "custom",
+            path: [where, "kind"],
+            message: `conditional data cannot be drawn as "${view.kind}"; DataViewRenderer would render nothing`,
+          });
+      }
+    }
+
     if (p.setup.data.type === "frequencies") {
       const d = p.setup.data;
       const path = ["setup", "data"] as const;

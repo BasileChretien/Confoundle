@@ -2765,6 +2765,200 @@ const CrossedData = z
   });
 export type CrossedData = z.infer<typeof CrossedData>;
 
+/* ---------------------------------------------------------------------------
+ * Rates a source PUBLISHED, in arms, where the counts behind them were never
+ * printed and cannot be recovered.
+ *
+ * Needed because this deck's first rule is that numbers are authored once as
+ * raw counts and every rate is derived, and there exist sources where obeying
+ * that rule is impossible rather than merely inconvenient. `rates` requires an
+ * integer numerator and denominator. When a table gives denominators and
+ * percentages only, three things can happen, and the third is why this shape
+ * exists. Sometimes exactly one integer reproduces the printed percentage and
+ * the count can be DECODED, which is what `hawthorne-effect` does. Sometimes
+ * the source prints counts elsewhere. And sometimes a cell is genuinely
+ * ambiguous, two integers round to the same printed figure, and no other
+ * published number breaks the tie. Then the percentage IS the primary datum,
+ * and pretending otherwise means writing down a number the source does not
+ * determine.
+ *
+ * `yield` already accepts published rates and cannot be used here, for a
+ * reason worth stating so nobody tries: it requires at least one row whose
+ * intervals clear one another, because it was built for a figure where
+ * something moved and something did not. This shape is for the opposite
+ * picture, where the SAME gradient appears in every arm, and the refinement
+ * below insists on exactly that instead.
+ *
+ * WHAT THE SHAPE IS FOR. A gradient down the rows that repeats across the arms.
+ * The setup draws one arm and invites the reader to explain its gradient with
+ * that arm's treatment; the reveal adds an arm where that explanation is not
+ * available and the gradient is there anyway. So the check is that the rows
+ * fall in the SAME DIRECTION in every arm. A figure where the gradient reverses
+ * between arms is a different lesson and must not borrow this one's shape.
+ *
+ * Carries the source's own adjusted figure per cell where there is one, because
+ * for this family the interesting fact is usually how little adjustment moves
+ * things, and a reader who is not shown the adjusted number will reasonably
+ * assume nobody tried.
+ * ------------------------------------------------------------------------- */
+
+export const PublishedArm = z.object({
+  id: z.string().min(1),
+  label: LocalizedText, // "Given clofibrate"
+  short: LocalizedText.optional(),
+});
+export type PublishedArm = z.infer<typeof PublishedArm>;
+
+export const PublishedRow = z.object({
+  id: z.string().min(1),
+  label: LocalizedText, // "Took under 80 per cent of their capsules"
+  short: LocalizedText.optional(),
+  note: LocalizedText.optional(),
+});
+export type PublishedRow = z.infer<typeof PublishedRow>;
+
+export const PublishedObservation = z.object({
+  rowId: z.string().min(1),
+  armId: z.string().min(1),
+  /** The rate as published, in units of `perLabel`. */
+  rate: z.number().nonnegative(),
+  /** Its standard error, as published. Drawn as a whisker, never widened. */
+  se: z.number().positive(),
+  /** The denominator, which sources of this kind do print. */
+  n: z.number().int().positive(),
+  /** The source's OWN adjusted rate, where it published one. */
+  adjusted: z.number().nonnegative().optional(),
+});
+export type PublishedObservation = z.infer<typeof PublishedObservation>;
+
+const PublishedData = z
+  .object({
+    type: z.literal("published"),
+    label: LocalizedText,
+    metricLabel: LocalizedText,
+    /** Names the units, e.g. "per cent dead within five years". */
+    perLabel: LocalizedText,
+    /**
+     * Says on the figure that these are published rates and why they are not
+     * counts. Required, not optional: a reader who assumes a percentage was
+     * derived from counts this deck holds is owed the correction on the figure
+     * itself and not only in the provenance.
+     */
+    rateNote: LocalizedText,
+    /** What the source adjusted for, printed wherever `adjusted` is drawn. */
+    adjustedLabel: LocalizedText.optional(),
+    /** Says what the whisker is, since it is one standard error and not a CI. */
+    dispersionLabel: LocalizedText,
+    /** Shared by both beats so nothing moves when the reveal adds an arm. */
+    axisMax: z.number().positive(),
+    arms: z.array(PublishedArm).min(2),
+    rows: z.array(PublishedRow).min(2),
+    observations: z.array(PublishedObservation).min(4),
+  })
+  .superRefine((d, ctx) => {
+    const armIds = new Set(d.arms.map((a) => a.id));
+    const rowIds = new Set(d.rows.map((r) => r.id));
+    if (armIds.size !== d.arms.length)
+      ctx.addIssue({ code: "custom", path: ["arms"], message: "duplicate arm id" });
+    if (rowIds.size !== d.rows.length)
+      ctx.addIssue({ code: "custom", path: ["rows"], message: "duplicate row id" });
+
+    const seen = new Set<string>();
+    d.observations.forEach((o, i) => {
+      if (!armIds.has(o.armId))
+        ctx.addIssue({
+          code: "custom",
+          path: ["observations", i, "armId"],
+          message: `no arm with id ${o.armId}`,
+        });
+      if (!rowIds.has(o.rowId))
+        ctx.addIssue({
+          code: "custom",
+          path: ["observations", i, "rowId"],
+          message: `no row with id ${o.rowId}`,
+        });
+      const key = `${o.rowId}|${o.armId}`;
+      if (seen.has(key))
+        ctx.addIssue({
+          code: "custom",
+          path: ["observations", i],
+          message: `two observations for ${o.rowId} in ${o.armId}`,
+        });
+      seen.add(key);
+      if (o.rate + o.se > d.axisMax)
+        ctx.addIssue({
+          code: "custom",
+          path: ["observations", i, "se"],
+          message: `rate plus one standard error reaches ${(o.rate + o.se).toFixed(1)}, past the axis maximum of ${d.axisMax}, so the whisker would be drawn cut off`,
+        });
+      if (o.adjusted !== undefined && o.adjusted > d.axisMax)
+        ctx.addIssue({
+          code: "custom",
+          path: ["observations", i, "adjusted"],
+          message: `adjusted rate ${o.adjusted} is past the axis maximum of ${d.axisMax}`,
+        });
+    });
+
+    for (const r of d.rows)
+      for (const a of d.arms)
+        if (!seen.has(`${r.id}|${a.id}`))
+          ctx.addIssue({
+            code: "custom",
+            path: ["observations"],
+            message: `row ${r.id} has no observation for arm ${a.id}`,
+          });
+
+    /**
+     * An adjusted figure in one cell and not its neighbour would invite a
+     * reader to compare an adjusted number against an unadjusted one, which is
+     * the sort of quiet apples-to-oranges this deck exists to catch.
+     */
+    const adjustedCount = d.observations.filter((o) => o.adjusted !== undefined).length;
+    if (adjustedCount !== 0 && adjustedCount !== d.observations.length)
+      ctx.addIssue({
+        code: "custom",
+        path: ["observations"],
+        message:
+          "some cells carry an adjusted rate and some do not, so the figure would put adjusted and unadjusted numbers side by side",
+      });
+    if (adjustedCount > 0 && !d.adjustedLabel)
+      ctx.addIssue({
+        code: "custom",
+        path: ["adjustedLabel"],
+        message: "adjusted rates are drawn, so the figure has to say what they were adjusted for",
+      });
+
+    // And the check this shape exists for: the gradient must run the same way
+    // in every arm, since the reveal is an arm where the reader's explanation
+    // of that gradient is not available and it is there regardless.
+    const [first, second] = d.rows;
+    if (first && second && d.rows.length >= 2) {
+      const signs = d.arms.map((a) => {
+        const x = d.observations.find((o) => o.rowId === first.id && o.armId === a.id);
+        const y = d.observations.find((o) => o.rowId === second.id && o.armId === a.id);
+        if (!x || !y) return null;
+        return Math.sign(x.rate - y.rate);
+      });
+      if (signs.every((s) => s !== null)) {
+        if (signs.some((s) => s === 0))
+          ctx.addIssue({
+            code: "custom",
+            path: ["observations"],
+            message:
+              "an arm has no gap at all between the first two rows, so there is no gradient for the other arm to repeat",
+          });
+        else if (new Set(signs).size > 1)
+          ctx.addIssue({
+            code: "custom",
+            path: ["observations"],
+            message:
+              "the gradient between the first two rows runs one way in one arm and the other way in another, which is a different lesson than this shape draws",
+          });
+      }
+    }
+  });
+export type PublishedData = z.infer<typeof PublishedData>;
+
 export const PuzzleData = z.discriminatedUnion("type", [
   RatesData,
   FrequenciesData,
@@ -2796,6 +2990,7 @@ export const PuzzleData = z.discriminatedUnion("type", [
   UnseenData,
   DeliveredData,
   CrossedData,
+  PublishedData,
 ]);
 export type PuzzleData = z.infer<typeof PuzzleData>;
 
@@ -2878,6 +3073,8 @@ export const DataView = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("asdelivered"), ...viewFields }),
   z.object({ kind: z.literal("astested"), ...viewFields }),
   z.object({ kind: z.literal("allfourways"), ...viewFields }),
+  z.object({ kind: z.literal("onearm"), ...viewFields }),
+  z.object({ kind: z.literal("botharms"), ...viewFields }),
 ]);
 export type DataView = z.infer<typeof DataView>;
 export type DataViewKind = DataView["kind"];
@@ -3209,6 +3406,25 @@ export const Puzzle = z
             groupWord: "step",
             strata: null,
             strataWord: "",
+          };
+        case "published":
+          /**
+           * ONLY the arms are filterable. The setup draws one arm and the
+           * reveal adds the other, and every row is drawn at both beats
+           * because the gradient down the rows IS the figure: a beat showing
+           * one adherence level shows nothing at all.
+           *
+           * So `groups` is deliberately empty rather than listing the rows.
+           * `restrictPublished` filters on `strataIds` alone, so a puzzle
+           * setting `groupIds` would otherwise pass validation and change
+           * nothing, which is precisely the silent no-op this switch exists
+           * to catch. Empty means any groupIds is rejected below.
+           */
+          return {
+            groups: new Set<string>(),
+            groupWord: "row (this shape draws every row at both beats)",
+            strata: new Set(d.arms.map((a) => a.id)),
+            strataWord: "arm",
           };
         case "crossed":
           // The setup names the two cells of the confounded diagonal and the

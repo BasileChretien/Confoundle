@@ -5026,7 +5026,16 @@ NCBI efetch served it without trouble.
 
 <!-- skill: healthy-adherer -->
 
-**Status: SOURCE READ 2026-08-12, AND BLOCKED ON THE SHAPE, NOT ON THE
+**Status: SHIPPED 2026-08-12** as `took-their-tablets`, skill `healthy-adherer`,
+on a NEW shape, `published`, built for exactly the obstacle the paragraph below
+describes: a source that prints rates whose counts cannot all be recovered. The
+blocker recorded here was real and it was ours rather than the world's, which
+is why it could be removed in the same day it was found. Everything below is
+kept because the route from a wrong coverage note to a shipped card is the
+useful part.
+
+**The previous status, kept because the section it heads was written under it:**
+SOURCE READ 2026-08-12, AND BLOCKED ON THE SHAPE, NOT ON THE
 EVIDENCE.** Basile supplied the Coronary Drug Project paper through
 institutional access the same day. It is everything the lead hoped for and the
 card still cannot be built, for a reason worth writing down precisely; see the

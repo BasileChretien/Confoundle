@@ -1375,6 +1375,41 @@ function UnseenGlyph() {
   );
 }
 
+function PublishedGlyph() {
+  const W = 200;
+  const H = 96;
+  /**
+   * Two rows, one per adherence level, each carrying a teal point for the arm
+   * that got the drug and a gold point for the arm that got nothing. The rows
+   * are far apart and the two colours sit together inside each row, which is
+   * the whole card: the gap runs down the page, not across it, so it belongs
+   * to the people rather than to the capsule.
+   */
+  const rows = [
+    { y: 30, teal: 128, gold: 148, label: "took few" },
+    { y: 72, teal: 66, gold: 68, label: "took most" },
+  ];
+  return (
+    <svg
+      viewBox={`0 0 ${W} ${H}`}
+      width="100%"
+      role="img"
+      aria-label="Two rows of points: within each row the two arms sit together, while the two rows are far apart"
+    >
+      {rows.map((r) => (
+        <g key={r.y}>
+          <text x={10} y={r.y - 9} fontSize={8} fill={CARD.muted}>
+            {r.label}
+          </text>
+          <line x1={10} y1={r.y} x2={190} y2={r.y} stroke={CARD.muted} strokeWidth={0.5} opacity={0.4} />
+          <circle cx={r.teal} cy={r.y} r={5} fill={CARD.teal} opacity={0.85} />
+          <circle cx={r.gold} cy={r.y} r={5} fill={CARD.gold} opacity={0.85} />
+        </g>
+      ))}
+      <line x1={196} y1={30} x2={196} y2={72} stroke={CARD.gold} strokeWidth={1} strokeDasharray="2 2" />
+    </svg>
+  );
+}
 function CrossedGlyph() {
   const W = 200;
   const H = 96;
@@ -1961,6 +1996,7 @@ export function ShareCard({
   const unseenGlyph = data.type === "unseen";
   const deliveredGlyph = data.type === "delivered";
   const crossedGlyph = data.type === "crossed";
+  const publishedGlyph = data.type === "published";
   const splitSampleGlyph =
     data.type === "rates" &&
     Boolean(data.strataAreSeparateSamples) &&
@@ -2094,6 +2130,8 @@ export function ShareCard({
             <DeliveredGlyph />
           ) : crossedGlyph ? (
             <CrossedGlyph />
+          ) : publishedGlyph ? (
+            <PublishedGlyph />
           ) : null}
 
           <p className="mt-4 font-display text-[17px] font-medium leading-snug">

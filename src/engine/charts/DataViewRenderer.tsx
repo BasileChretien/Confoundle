@@ -43,6 +43,8 @@ import { restrictYield } from "./yield";
 import { UnseenView } from "./UnseenView";
 import { DeliveredView } from "./DeliveredView";
 import { CrossedView } from "./CrossedView";
+import { PublishedView } from "./PublishedView";
+import { restrictPublished } from "./published";
 import { restrictCrossed } from "./crossed";
 import { restrictSeries } from "./series";
 
@@ -262,6 +264,16 @@ export function DataViewRenderer({
       return view.kind === "astested" || view.kind === "allfourways" ? (
         <CrossedView data={restrictCrossed(data, { groupIds: view.groupIds })} kind={view.kind} />
       ) : null;
+    case "published":
+      // A slice-drawer on the ARMS: the setup names one arm through strataIds
+      // and the reveal omits it, so the reveal adds the arm where the reader
+      // explanation of the gradient is not available.
+      return view.kind === "onearm" || view.kind === "botharms" ? (
+        <PublishedView
+          data={restrictPublished(data, { strataIds: view.strataIds })}
+          kind={view.kind}
+        />
+      ) : null;
     default:
       return null;
   }
@@ -410,6 +422,10 @@ export function scopeLabel(kind: DataViewKind): string {
       return "The comparison the trial made";
     case "allfourways":
       return "And the two nobody was told about";
+    case "onearm":
+      return "The arm that got the drug";
+    case "botharms":
+      return "And the arm that got nothing";
     default:
       return "";
   }

@@ -9448,6 +9448,148 @@ const items: TestItem[] = [
       en: "There is no participant behaviour anywhere between the randomisation and the outcome, so the pathway performance bias runs along does not exist here. It is randomised batches of blood, and blood does not try harder.",
     },
   },
+
+  // ---- The healthy adherer: the group that chose itself ----
+  {
+    id: "ha-statin-fractures",
+    scenario: {
+      en: "A database study followed patients prescribed a statin for two years and split them by how much of the prescribed supply they collected. The high-collection group had 35 per cent fewer broken hips than the low-collection group.",
+    },
+    trap: "healthy-adherer",
+    explanation: {
+      en: "Statins do not mend bones, so the gap cannot be the drug and something about the two groups of people must be doing it. Nobody assigned who would keep collecting their prescriptions, and whatever sorts people into that habit also sorts who falls and who breaks.",
+    },
+  },
+  {
+    id: "ha-physio-sessions",
+    scenario: {
+      en: "A hospital reviewed knee replacements and found that patients who attended all twelve physiotherapy sessions were walking further at six months than patients who attended fewer than half. It concluded that completing the course of physiotherapy is what produces the result.",
+    },
+    trap: "healthy-adherer",
+    explanation: {
+      en: "Attendance was not assigned; patients sorted themselves into it. Being well enough, mobile enough and organised enough to get to twelve appointments is itself a good sign, and it predicts walking further whether or not the sessions do anything.",
+    },
+  },
+  {
+    id: "ha-optional-training",
+    scenario: {
+      en: "A company found that employees who completed its optional leadership course were promoted at three times the rate of those who did not, and proposed making the course available to everyone to raise promotion rates.",
+    },
+    trap: "healthy-adherer",
+    explanation: {
+      en: "The people who signed up for an optional course about getting promoted were already the ones angling for promotion. Offering it more widely does not turn other people into them, so the three-fold figure is not what expanding the course would buy.",
+    },
+  },
+  {
+    id: "ha-revision-app",
+    scenario: {
+      en: "A university reported that students who logged into the revision app on at least twenty days scored on average a grade higher than students who logged in less often, and bought licences for the whole cohort.",
+    },
+    trap: "healthy-adherer",
+    explanation: {
+      en: "Logging in on twenty separate days is a measure of how much revising a student was going to do anyway. The comparison is between diligent students and less diligent ones, which is not the same as the comparison between using the app and not.",
+    },
+  },
+  {
+    id: "ha-flu-vaccine-summer",
+    scenario: {
+      en: "Among people over 70, those who had taken the autumn flu vaccine had lower mortality than those who had not, and the difference was just as large during the summer months when no influenza was circulating.",
+    },
+    trap: "healthy-adherer",
+    explanation: {
+      en: "A vaccine cannot prevent deaths in a season when the virus is absent, so the summer gap is measuring the difference between the people, not the effect of the jab. Those well enough and organised enough to come in for a vaccine were already less likely to die.",
+    },
+  },
+  {
+    id: "ha-antibiotic-course",
+    scenario: {
+      en: "A clinic found that patients who finished the full course of antibiotics had fewer repeat infections than those who stopped early, and used the figure in a campaign about completing the course.",
+    },
+    trap: "healthy-adherer",
+    explanation: {
+      en: "Who finishes a course is not assigned. People stop early because they feel better, because they feel worse, because their lives are chaotic, or because of side effects, and each of those also predicts what happens next. The gap mixes all of it with whatever the last few tablets do.",
+    },
+  },
+  {
+    id: "ha-parent-evenings",
+    scenario: {
+      en: "A school reported that children whose parents attended every parents' evening achieved better results than children whose parents attended none, and made attendance the centrepiece of its improvement plan.",
+    },
+    trap: "healthy-adherer",
+    explanation: {
+      en: "Turning up to every parents' evening is a marker of a household already set up to support schooling. Getting the other parents through the door does not give their children the rest of that household, so the measured gap is not what the plan would deliver.",
+    },
+  },
+  {
+    id: "ha-followup-appointments",
+    scenario: {
+      en: "A cancer centre found that patients who kept every scheduled follow-up appointment in the first two years survived longer than those who missed several, and concluded that follow-up appointments improve survival.",
+    },
+    trap: "healthy-adherer",
+    explanation: {
+      en: "Missing appointments is often a consequence of being unwell, and always a marker of circumstances. Patients well enough to attend everything were doing better before the attendance was measured, so the comparison runs the wrong way round from the conclusion drawn.",
+    },
+  },
+  {
+    id: "ha-loyalty-scheme",
+    scenario: {
+      en: "A supermarket compared shoppers who joined its loyalty scheme with those who did not and found the members spent 40 per cent more per month. It reported the scheme as delivering a 40 per cent uplift.",
+    },
+    trap: "healthy-adherer",
+    explanation: {
+      en: "Shoppers who bother to join a loyalty scheme for a shop are the ones who already shop there most. The scheme did not create that spending, it selected the people doing it, and the uplift attributable to the scheme is a different and much harder number.",
+    },
+  },
+  {
+    id: "ha-diet-app-logging",
+    scenario: {
+      en: "A weight-loss programme reported that participants who logged their meals on at least five days a week lost three times as much weight as participants who logged less often, and concluded that logging drives the loss.",
+    },
+    trap: "healthy-adherer",
+    explanation: {
+      en: "Everyone in the programme was offered the same thing; the split is by what they did with it. Logging five days a week is a symptom of being engaged with losing weight, and engagement produces the weight loss whether or not the logging itself does anything.",
+    },
+  },
+  {
+    id: "ha-sound-placebo-check",
+    scenario: {
+      en: "Researchers reporting a drug trial also looked at adherence within the placebo arm. Good adherers to the placebo did markedly better than poor adherers to it, and the authors concluded that they could not read the adherence comparison in the drug arm as a treatment effect.",
+    },
+    trap: null,
+    explanation: {
+      en: "Finding the gradient in an arm where there was nothing to adhere to is what shows the comparison is contaminated, and the authors drew that conclusion rather than the flattering one. Running the check and then believing it is the sound move.",
+    },
+  },
+  {
+    id: "ha-sound-lottery-places",
+    scenario: {
+      en: "A city had more applicants for its subsidised nursery places than places available, so it allocated them by lottery. Researchers compared the children who won the lottery with those who applied and lost.",
+    },
+    trap: null,
+    explanation: {
+      en: "Everyone in both groups applied, so the eagerness that usually separates takers from non-takers is present on both sides. What separates them is the draw, which is exactly the comparison a randomised trial would make.",
+    },
+  },
+  {
+    id: "ha-sound-as-randomised",
+    scenario: {
+      en: "A trial of a new inhaler analysed its primary outcome over everyone as randomised, and reported adherence separately as a descriptive figure without splitting the results by it.",
+    },
+    trap: null,
+    explanation: {
+      en: "The comparison being drawn is the one the randomisation created, and adherence is reported as information about how the trial ran rather than used to carve up the results. Nothing here is grouped by anything the patients decided.",
+    },
+  },
+  {
+    id: "ha-sound-assigned-slot",
+    scenario: {
+      en: "A clinic assigned patients at random to a morning or an afternoon appointment slot and compared attendance between the two. Morning slots were attended more often.",
+    },
+    trap: null,
+    explanation: {
+      en: "The slots were assigned rather than chosen, so the two groups are the same kinds of people and the difference in attendance belongs to the time of day. This is the comparison the healthy adherer problem breaks, being made in a way that does not break.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

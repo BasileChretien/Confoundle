@@ -84,7 +84,7 @@ function CausalDiagram({ data }: { data: CausalData }) {
       </div>
       <div className="mt-0.5 flex items-center gap-2 text-[11px] font-semibold text-rust-ink">
         <span className="inline-block w-8 border-t border-dashed border-rust-ink/60" />
-        ✗ no direct link
+        ✗ {t({ en: "no direct link" })}
         <span className="inline-block w-8 border-t border-dashed border-rust-ink/60" />
       </div>
     </div>

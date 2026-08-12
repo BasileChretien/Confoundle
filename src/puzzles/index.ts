@@ -69,6 +69,7 @@ import { pygmalion } from "./data/pygmalion";
 import { performanceBias } from "./data/performance-bias";
 import { healthyAdherer } from "./data/healthy-adherer";
 import { surrogateEndpoints } from "./data/surrogate-endpoints";
+import { reverseCausality } from "./data/reverse-causality";
 
 /**
  * The puzzle registry. Adding a puzzle = import its data file and add it to
@@ -146,6 +147,7 @@ const rawPuzzles: unknown[] = [
   performanceBias,
   healthyAdherer,
   surrogateEndpoints,
+  reverseCausality,
 ];
 
 export const puzzles: PuzzleType[] = rawPuzzles.map((p, i) => {

@@ -3134,6 +3134,257 @@ export const SurrogateData = z
   });
 export type SurrogateData = z.infer<typeof SurrogateData>;
 
+/* ---------------------------------------------------------------------------
+ * `attenuation`: one association, recomputed on the same cohort after throwing
+ * away the earliest deaths, next to a control association put through exactly
+ * the same treatment.
+ *
+ * WHY THIS COULD NOT REUSE A SHAPE. Every other two-group shape here draws one
+ * comparison. This one draws the SAME comparison several times over, and the
+ * lesson lives in how it changes across those repetitions rather than in any
+ * single one of them. `yield` was the near miss: its refinement wants one row
+ * where the arms separate and one where they overlap, which is exactly the
+ * primary series, but it authors published rates with intervals rather than
+ * counts and has nowhere to put the second, control outcome. The control is
+ * not decoration. Without it a reader should distrust the whole manoeuvre,
+ * since throwing away data shrinks estimates for boring reasons too; the
+ * control is what shows this particular shrinkage is not one of them.
+ *
+ * THE EXCLUSION WINDOWS ARE NESTED, NOT SEPARATE GROUPS. Each window keeps a
+ * subset of the people the previous one kept, so the denominators shrink as the
+ * window widens, and the schema enforces that rather than trusting an author to
+ * notice.
+ * ------------------------------------------------------------------------- */
+const ExclusionWindow = z.object({
+  id: z.string().min(1),
+  label: LocalizedText,
+  short: LocalizedText.optional(),
+  /** Years of follow-up discarded. The first window is normally 0. */
+  excludedYears: z.number().int().nonnegative(),
+});
+
+const AttenuationGroup = z.object({
+  id: z.string().min(1),
+  label: LocalizedText,
+  short: LocalizedText.optional(),
+});
+
+const AttenuationOutcome = z.object({
+  id: z.string().min(1),
+  label: LocalizedText,
+  short: LocalizedText.optional(),
+  note: LocalizedText.optional(),
+  /**
+   * The outcome that should NOT move, and the reason the reveal is believable.
+   * At most one, and it is never the outcome drawn at the setup beat.
+   */
+  isControl: z.boolean().optional(),
+});
+
+const AttenuationObservation = z.object({
+  windowId: z.string().min(1),
+  groupId: z.string().min(1),
+  outcomeId: z.string().min(1),
+  events: z.number().int().nonnegative(),
+  /** People still at risk at the start of this window. */
+  n: z.number().int().positive(),
+});
+
+export const AttenuationData = z
+  .object({
+    type: z.literal("attenuation"),
+    label: LocalizedText,
+    /** Says what the windows mean, on the figure. */
+    windowLabel: LocalizedText,
+    /** Says what the ratio is, since it is neither a rate nor a hazard ratio. */
+    ratioLabel: LocalizedText,
+    /** Says the counts are as published and the ratios are derived from them. */
+    rateNote: LocalizedText,
+    windows: z.array(ExclusionWindow).min(2),
+    /** Exactly two: the first is the exposed group the ratio is built on. */
+    groups: z.array(AttenuationGroup).length(2),
+    outcomes: z.array(AttenuationOutcome).min(1),
+    observations: z.array(AttenuationObservation).min(4),
+  })
+  .superRefine((d, ctx) => {
+    const windowIds = new Set(d.windows.map((w) => w.id));
+    const groupIds = new Set(d.groups.map((g) => g.id));
+    const outcomeIds = new Set(d.outcomes.map((o) => o.id));
+    if (windowIds.size !== d.windows.length)
+      ctx.addIssue({ code: "custom", path: ["windows"], message: "duplicate window id" });
+    if (groupIds.size !== d.groups.length)
+      ctx.addIssue({ code: "custom", path: ["groups"], message: "duplicate group id" });
+    if (outcomeIds.size !== d.outcomes.length)
+      ctx.addIssue({ code: "custom", path: ["outcomes"], message: "duplicate outcome id" });
+
+    // Windows must be authored widest-last, because the renderer and every
+    // derivation read them in order and the whole lesson is a direction.
+    for (let i = 1; i < d.windows.length; i++) {
+      const prev = d.windows[i - 1];
+      const cur = d.windows[i];
+      if (prev && cur && cur.excludedYears <= prev.excludedYears)
+        ctx.addIssue({
+          code: "custom",
+          path: ["windows", i, "excludedYears"],
+          message: `windows must widen in order: ${cur.excludedYears} does not exceed ${prev.excludedYears}`,
+        });
+    }
+
+    const controls = d.outcomes.filter((o) => o.isControl);
+    if (controls.length > 1)
+      ctx.addIssue({
+        code: "custom",
+        path: ["outcomes"],
+        message: `at most one control outcome, found ${controls.length}`,
+      });
+    if (d.outcomes.filter((o) => !o.isControl).length === 0)
+      ctx.addIssue({
+        code: "custom",
+        path: ["outcomes"],
+        message: "every outcome is marked as the control, leaving nothing to attenuate",
+      });
+
+    const seen = new Set<string>();
+    d.observations.forEach((o, i) => {
+      if (!windowIds.has(o.windowId))
+        ctx.addIssue({
+          code: "custom",
+          path: ["observations", i, "windowId"],
+          message: `no window with id ${o.windowId}`,
+        });
+      if (!groupIds.has(o.groupId))
+        ctx.addIssue({
+          code: "custom",
+          path: ["observations", i, "groupId"],
+          message: `no group with id ${o.groupId}`,
+        });
+      if (!outcomeIds.has(o.outcomeId))
+        ctx.addIssue({
+          code: "custom",
+          path: ["observations", i, "outcomeId"],
+          message: `no outcome with id ${o.outcomeId}`,
+        });
+      const key = `${o.windowId}|${o.groupId}|${o.outcomeId}`;
+      if (seen.has(key))
+        ctx.addIssue({
+          code: "custom",
+          path: ["observations", i],
+          message: `two observations for ${key}`,
+        });
+      seen.add(key);
+      if (o.events > o.n)
+        ctx.addIssue({
+          code: "custom",
+          path: ["observations", i, "events"],
+          message: `${o.events} events among ${o.n} people`,
+        });
+    });
+
+    // The grid must be complete: a missing cell would draw a series with a
+    // silent hole in it, and a reader would price the gap as data.
+    for (const w of d.windows)
+      for (const g of d.groups)
+        for (const o of d.outcomes)
+          if (!seen.has(`${w.id}|${g.id}|${o.id}`))
+            ctx.addIssue({
+              code: "custom",
+              path: ["observations"],
+              message: `no observation for window ${w.id}, group ${g.id}, outcome ${o.id}`,
+            });
+
+    const at = (windowId: string, groupId: string, outcomeId: string) =>
+      d.observations.find(
+        (o) => o.windowId === windowId && o.groupId === groupId && o.outcomeId === outcomeId,
+      );
+
+    // Nested windows: nobody can be added back by discarding more follow-up.
+    for (const g of d.groups)
+      for (const o of d.outcomes)
+        for (let i = 1; i < d.windows.length; i++) {
+          const prev = at(d.windows[i - 1]!.id, g.id, o.id);
+          const cur = at(d.windows[i]!.id, g.id, o.id);
+          if (prev && cur && cur.n > prev.n)
+            ctx.addIssue({
+              code: "custom",
+              path: ["observations"],
+              message: `group ${g.id} grows from ${prev.n} to ${cur.n} as the window widens, but the windows are nested`,
+            });
+        }
+
+    // A reference cell with no events makes the ratio a division by zero, and
+    // the derivation would hand the renderer a NaN. The first version of this
+    // file merely SKIPPED the checks below in that case, which let such a
+    // puzzle validate and then draw NaN on the card. Reject it here instead:
+    // this shape's entire output is a ratio, so a reference group that nothing
+    // happened to is data this shape cannot draw, whatever else is true of it.
+    const [exposedGroup, referenceGroup] = d.groups;
+    if (referenceGroup)
+      for (const w of d.windows)
+        for (const o of d.outcomes) {
+          const b = at(w.id, referenceGroup.id, o.id);
+          if (b && b.events === 0)
+            ctx.addIssue({
+              code: "custom",
+              path: ["observations"],
+              message: `the reference group has no events for window ${w.id}, outcome ${o.id}, so the ratio would divide by zero`,
+            });
+        }
+
+    const ratio = (windowId: string, outcomeId: string): number | null => {
+      if (!exposedGroup || !referenceGroup) return null;
+      const a = at(windowId, exposedGroup.id, outcomeId);
+      const b = at(windowId, referenceGroup.id, outcomeId);
+      if (!a || !b || b.events === 0) return null;
+      return a.events / a.n / (b.events / b.n);
+    };
+
+    const first = d.windows[0];
+    const last = d.windows[d.windows.length - 1];
+    if (!first || !last) return;
+
+    // The lesson: the primary association must actually move towards 1, and by
+    // a margin worth drawing. A shape whose figure does not attenuate is a
+    // figure about a robust association, which is a different card entirely.
+    for (const o of d.outcomes.filter((x) => !x.isControl)) {
+      const a = ratio(first.id, o.id);
+      const b = ratio(last.id, o.id);
+      if (a === null || b === null) continue;
+      const moved = Math.abs(a - 1) - Math.abs(b - 1);
+      if (moved <= 0)
+        ctx.addIssue({
+          code: "custom",
+          path: ["observations"],
+          message: `outcome ${o.id} does not move towards 1 across the windows (${a.toFixed(3)} to ${b.toFixed(3)}), so there is nothing for this shape to reveal`,
+        });
+      else if (moved < 0.1 * Math.abs(a - 1))
+        ctx.addIssue({
+          code: "custom",
+          path: ["observations"],
+          message: `outcome ${o.id} moves only ${(100 * moved) / Math.abs(a - 1)} per cent of the way towards 1, which is too little to read off a chart`,
+        });
+    }
+
+    // And the control must hold still, or it is not a control.
+    //
+    // Distance travelled, NOT distance towards 1. A first version measured the
+    // latter and would have accepted a control that lurched the other way, from
+    // 0.79 to 1.31, which is a control demonstrating that the exclusions do
+    // plenty. Either direction of movement destroys the argument the control
+    // exists to make, so either direction has to fail here.
+    for (const o of controls) {
+      const a = ratio(first.id, o.id);
+      const b = ratio(last.id, o.id);
+      if (a === null || b === null) continue;
+      if (Math.abs(b - a) > 0.25 * Math.abs(a - 1))
+        ctx.addIssue({
+          code: "custom",
+          path: ["observations"],
+          message: `the control outcome ${o.id} moves from ${a.toFixed(3)} to ${b.toFixed(3)}, which is too far to show that the exclusions are innocent`,
+        });
+    }
+  });
+export type AttenuationData = z.infer<typeof AttenuationData>;
+
 export const PuzzleData = z.discriminatedUnion("type", [
   RatesData,
   FrequenciesData,
@@ -3167,6 +3418,7 @@ export const PuzzleData = z.discriminatedUnion("type", [
   CrossedData,
   PublishedData,
   SurrogateData,
+  AttenuationData,
 ]);
 export type PuzzleData = z.infer<typeof PuzzleData>;
 
@@ -3253,6 +3505,8 @@ export const DataView = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("botharms"), ...viewFields }),
   z.object({ kind: z.literal("markeronly"), ...viewFields }),
   z.object({ kind: z.literal("andoutcome"), ...viewFields }),
+  z.object({ kind: z.literal("atbaseline"), ...viewFields }),
+  z.object({ kind: z.literal("astrimmed"), ...viewFields }),
 ]);
 export type DataView = z.infer<typeof DataView>;
 export type DataViewKind = DataView["kind"];
@@ -3603,6 +3857,20 @@ export const Puzzle = z
             groupWord: "row (this shape draws every row at both beats)",
             strata: new Set(d.arms.map((a) => a.id)),
             strataWord: "arm",
+          };
+        case "attenuation":
+          /**
+           * Nothing is filterable, for the same reason as `surrogate` below:
+           * `atbaseline` draws the first window and the primary outcome, and
+           * `astrimmed` draws every window and every outcome. That is the view
+           * kind's job, so no id could name it and either filter would be a
+           * silent no-op.
+           */
+          return {
+            groups: new Set<string>(),
+            groupWord: "id (this shape's beats differ by view kind, not by ids)",
+            strata: new Set<string>(),
+            strataWord: "id (this shape's beats differ by view kind, not by ids)",
           };
         case "surrogate":
           /**

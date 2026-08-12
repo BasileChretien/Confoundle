@@ -5258,7 +5258,7 @@ construction in exactly the way the engine's contract wants.
 
 <!-- skill: reverse-causality -->
 
-**Status: LEAD, SOURCED BUT BLOCKED ON THE TABLES.** Found 2026-08-12 by the
+**Status: SHIPPED 2026-08-12** as `thin-and-then-dead`, skill `reverse-causality`, on a NEW shape, `attenuation`. The history below is kept in full because two routes were searched and abandoned first, and the failures are the useful part. Original status when opened: LEAD, SOURCED BUT BLOCKED ON THE TABLES. Found 2026-08-12 by the
 same method as entry 70, auditing the deck against the US outline rather than
 against this queue. "Reverse causality" is printed on that outline and the
 registry has no card for it.

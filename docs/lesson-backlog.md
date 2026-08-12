@@ -5021,3 +5021,76 @@ the same trap entry 63 recorded from the other direction: the flag describes
 membership of Europe PMC's open-access subset, not the paper's status, and it
 is not a reliable guide to whether Europe PMC will actually serve the text.
 NCBI efetch served it without trouble.
+
+### 69. The healthy adherer: the people who took their placebo reliably lived longer
+
+<!-- skill: healthy-adherer -->
+
+**Status: LEAD, GAP CONFIRMED, SOURCE NOT YET READ.** Found on 2026-08-12 by
+checking a coverage claim rather than believing it, which is now the fifth such
+claim to fail this way. The syllabus audit row for healthy worker and healthy
+user read **"partly inside indication"**. It is not, and the card settles it in
+one line.
+
+`confounding-by-indication` is the DIG trial: the patients already on digoxin
+were the SICKER ones, so the treated group looks worse than it is. That is the
+indication for treatment causing the outcome. The healthy user and healthy
+adherer effects run the other way entirely, and healthy worker is a third
+mechanism again:
+
+- **Healthy user.** People who accept a preventive treatment are systematically
+  more health-conscious in ways the treatment has nothing to do with, so the
+  treatment inherits the credit.
+- **Healthy adherer.** Among people given the same thing, the ones who TAKE it
+  reliably do better, whatever it is they were given.
+- **Healthy worker.** People in employment are healthier than the general
+  population, so an occupational cohort compared against the general population
+  looks protected by the job.
+
+A grep across every puzzle data file and the whole Trap Hunt bank finds none of
+the three named anywhere. The gap is real.
+
+**Why the healthy adherer is the one to build, and why it is a Confoundle card
+rather than a lecture.** The demonstration is decisive in a way this deck
+rewards, because it removes the drug from the argument entirely. Among people
+taking a PLACEBO, the reliable takers outlive the unreliable ones. There is
+nothing in the capsule, so nothing about the capsule can be the explanation, and
+whatever is doing the work is a property of the kind of person who takes tablets
+as instructed. The setup shows the adherence gradient in the treated arm, which
+every reader will attribute to the drug, and the reveal puts the placebo arm
+beside it showing the same gradient. That is the deck's own shape, two views of
+one dataset, and it is probably `rates` with the arms as separate-sample strata,
+the Berkson pattern.
+
+**Two candidate sources, and NEITHER HAS BEEN READ BEYOND ITS ABSTRACT, so
+nothing here may be built on yet.**
+
+1. The primary one. *Influence of adherence to treatment and response of
+   cholesterol on mortality in the Coronary Drug Project*, N Engl J Med
+   1980;303:1038-1041. PMID 6999345, DOI `10.1056/nejm198010303031804`. Not open
+   access. This is the paper the whole idea rests on, and it is the one that
+   prints the placebo-arm mortality by adherence.
+2. The pooled one. Simpson SH et al., *A meta-analysis of the association
+   between adherence to drug therapy and mortality*, BMJ 2006;333:15.
+   `PMC1488752`. Europe PMC reports it as not open access and NCBI efetch
+   serves only the abstract, which is the same trap entry 68 records from the
+   other direction. From the abstract alone: 21 studies, 46,847 participants,
+   of which 8 studies and 19,633 participants had placebo arms. Good adherence
+   against poor gave an odds ratio for mortality of 0.56 (95 per cent CI 0.50
+   to 0.63); **good adherence to PLACEBO gave 0.56 (0.43 to 0.74)**, against
+   0.55 (0.49 to 0.62) for adherence to beneficial drug therapy. The conclusion
+   names the healthy adherer effect outright.
+
+There is a third figure in that abstract which may be the better card if the
+full text supports it: good adherence to a **harmful** drug therapy carried an
+odds ratio of 2.90 (1.04 to 8.11). Adherers do thoroughly whatever they were
+given, including harm, and that is a sharper statement of the mechanism than
+the placebo result on its own. Note the interval, though: 1.04 at the lower
+bound, so it is one study away from nothing and must not be led with.
+
+**What to do next.** Ask for `10.1056/nejm198010303031804` through institutional
+access. The Coronary Drug Project prints the counts a card needs; the
+meta-analysis prints odds ratios, which are second best for this deck because
+`crossed` and `rates` both want the underlying numbers. If neither can be read,
+the honest output is to leave this entry as it stands rather than build on the
+abstract, which is the same rule that refused Davies in entry 66.

@@ -53,6 +53,7 @@ export const fr: Record<string, string> = {
   // category names (humanized)
   "Causal reasoning": "Raisonnement causal",
   "Cognitive bias": "Biais cognitif",
+  "Two tracks on one scale, three points bunched together on the upper one and spread far apart on the lower one": "Deux pistes sur une même échelle, trois points serrés les uns contre les autres sur celle du haut et très écartés sur celle du bas",
   "Statistical reasoning": "Raisonnement statistique",
   // tags
   Everyday: "Grand public",

@@ -1580,6 +1580,52 @@ function AttenuationGlyph() {
     </svg>
   );
 }
+function ConditionalGlyph() {
+  const t = useT();
+  const W = 200;
+  const H = 96;
+  /**
+   * Two tracks on one shared scale. The gold row is tight, its three points
+   * almost touching; the teal row below is flung wide. That contrast IS the
+   * card: the same three conditions barely move one row and pull the other
+   * apart, so whatever the columns are doing depends entirely on which row
+   * you are in. Shape-generic wording, since the glyph is chosen by
+   * `data.type` and must survive the next puzzle on this shape.
+   */
+  const tight = [122, 128, 140];
+  const wide = [66, 108, 152];
+  return (
+    <svg
+      viewBox={`0 0 ${W} ${H}`}
+      width="100%"
+      role="img"
+      aria-label={t({
+        en: "Two tracks on one scale, three points bunched together on the upper one and spread far apart on the lower one",
+      })}
+    >
+      <line x1={20} y1={34} x2={180} y2={34} stroke={CARD.rule} strokeWidth={1} />
+      <line x1={20} y1={70} x2={180} y2={70} stroke={CARD.rule} strokeWidth={1} />
+      {tight.map((x) => (
+        <circle key={`c${x}`} cx={x} cy={34} r={5} fill={CARD.gold} opacity={0.9} />
+      ))}
+      {wide.map((x) => (
+        <circle key={`w${x}`} cx={x} cy={70} r={5} fill={CARD.teal} opacity={0.8} />
+      ))}
+      {/*
+        The bracket under the lower row measures the spread the upper row does
+        not have. No numerals: the glyph is a comparison of two widths, and the
+        card's own figures are already in the caption above it.
+      */}
+      <path
+        d={`M${wide[0]} 82 L${wide[0]} 87 L${wide[2]} 87 L${wide[2]} 82`}
+        fill="none"
+        stroke={CARD.teal}
+        strokeWidth={1.5}
+        opacity={0.6}
+      />
+    </svg>
+  );
+}
 function CrossedGlyph() {
   const t = useT();
   const W = 200;
@@ -2208,6 +2254,7 @@ export function ShareCard({
   const publishedGlyph = data.type === "published";
   const surrogateGlyph = data.type === "surrogate";
   const attenuationGlyph = data.type === "attenuation";
+  const conditionalGlyph = data.type === "conditional";
   const splitSampleGlyph =
     data.type === "rates" &&
     Boolean(data.strataAreSeparateSamples) &&
@@ -2364,6 +2411,8 @@ export function ShareCard({
               <SurrogateGlyph />
             ) : attenuationGlyph ? (
               <AttenuationGlyph />
+            ) : conditionalGlyph ? (
+              <ConditionalGlyph />
             ) : null}
           </div>
 

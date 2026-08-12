@@ -53,6 +53,7 @@ export const ar: Record<string, string> = {
   // category names (humanized)
   "Causal reasoning": "الاستدلال السببي",
   "Cognitive bias": "تحيز معرفي",
+  "Two tracks on one scale, three points bunched together on the upper one and spread far apart on the lower one": "مساران على سلّم واحد، ثلاث نقاط متلاصقة في الأعلى ومتباعدة كثيرا في الأسفل",
   "Statistical reasoning": "الاستدلال الإحصائي",
   // tags
   Everyday: "الحياة اليومية",

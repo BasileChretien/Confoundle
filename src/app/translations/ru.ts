@@ -53,6 +53,7 @@ export const ru: Record<string, string> = {
   // category names (humanized)
   "Causal reasoning": "Причинно-следственное мышление",
   "Cognitive bias": "Когнитивное искажение",
+  "Two tracks on one scale, three points bunched together on the upper one and spread far apart on the lower one": "Две дорожки на одной шкале, три точки тесно сжаты на верхней и широко разнесены на нижней",
   "Statistical reasoning": "Статистическое мышление",
   // tags
   Everyday: "Повседневное",

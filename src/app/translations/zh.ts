@@ -52,6 +52,7 @@ export const zh: Record<string, string> = {
   // category names (humanized)
   "Causal reasoning": "因果推理",
   "Cognitive bias": "认知偏差",
+  "Two tracks on one scale, three points bunched together on the upper one and spread far apart on the lower one": "同一刻度上的两条轨道，上面一条的三个点挤在一起，下面一条的三个点相距很远",
   "Statistical reasoning": "统计推理",
   // tags
   Everyday: "日常",

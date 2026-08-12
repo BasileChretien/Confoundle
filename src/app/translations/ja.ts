@@ -53,6 +53,7 @@ export const ja: Record<string, string> = {
   // category names (humanized)
   "Causal reasoning": "因果推論",
   "Cognitive bias": "認知バイアス",
+  "Two tracks on one scale, three points bunched together on the upper one and spread far apart on the lower one": "一つの尺度に載った二本の帯。上の帯では三つの点が寄り集まり、下の帯では大きく離れている",
   "Statistical reasoning": "統計的推論",
   // tags
   Everyday: "日常",

@@ -54,6 +54,7 @@ export const es: Record<string, string> = {
   // nombres de categoría (humanizados)
   "Causal reasoning": "Razonamiento causal",
   "Cognitive bias": "Sesgo cognitivo",
+  "Two tracks on one scale, three points bunched together on the upper one and spread far apart on the lower one": "Dos carriles en una misma escala, tres puntos apretados entre sí en el de arriba y muy separados en el de abajo",
   "Statistical reasoning": "Razonamiento estadístico",
   // etiquetas
   Everyday: "Cotidiano",

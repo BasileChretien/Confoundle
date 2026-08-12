@@ -52,6 +52,7 @@ export const hi: Record<string, string> = {
   // category names (humanized)
   "Causal reasoning": "कारण संबंधी तर्क",
   "Cognitive bias": "संज्ञानात्मक पूर्वाग्रह",
+  "Two tracks on one scale, three points bunched together on the upper one and spread far apart on the lower one": "एक ही पैमाने पर दो पटरियाँ, ऊपर वाली पर तीन बिंदु आपस में सिमटे हुए और नीचे वाली पर दूर-दूर फैले हुए",
   "Statistical reasoning": "सांख्यिकीय तर्क",
   // tags
   Everyday: "रोज़मर्रा",

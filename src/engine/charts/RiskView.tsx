@@ -2,6 +2,7 @@ import type { DataViewKind, RiskArm, RiskData } from "../../puzzles/schema";
 import { useT } from "../../app/i18n";
 import { useReducedMotion } from "../useReducedMotion";
 import { useCountUp } from "../useCountUp";
+import { fillSlots } from "./announce";
 import { colorFor, WINNER_GOLD } from "./palette";
 import { formatRiskPct, riskSummary } from "./risk";
 
@@ -92,7 +93,22 @@ function ArmBar({
             : undefined
         }
         role="img"
-        aria-label={`${t(arm.label)}: ${arm.events} of ${arm.n}${readout ? `, ${readout}` : ""}`}
+        // The percentage is present only in the absolute view, so the two
+        // readings are two sentences. Appending ", 3.4%" to the first would
+        // hand a translator a clause with no sentence to sit in.
+        aria-label={fillSlots(
+          t(
+            readout
+              ? { en: "{arm}: {events} out of {total}, {percent}" }
+              : { en: "{arm}: {events} out of {total}" },
+          ),
+          {
+            arm: t(arm.label),
+            events: arm.events,
+            total: arm.n,
+            percent: readout ?? "",
+          },
+        )}
       >
         <div
           className="w-10 rounded-t-[3px]"

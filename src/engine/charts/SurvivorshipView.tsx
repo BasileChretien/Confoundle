@@ -24,6 +24,7 @@ const DAMAGE_DOTS: ReadonlyArray<readonly [number, number]> = [
 ];
 
 function Plane({ armor }: { armor: boolean }) {
+  const t = useT();
   const zoneFill = armor ? "rgba(154,107,18,0.30)" : PLANE_FILL;
   const zoneStroke = armor ? ARMOR : PLANE_STROKE;
   const zoneW = armor ? 2.5 : 1.5;
@@ -31,11 +32,17 @@ function Plane({ armor }: { armor: boolean }) {
     <svg
       viewBox="0 0 200 168"
       role="img"
-      aria-label={
+      // No slots: both readings are whole sentences already, and the only
+      // thing wrong with them was that neither had ever been through `t()`.
+      aria-label={t(
         armor
-          ? "The engines and cockpit, clean on returning planes, are the vulnerable spots to armour"
-          : "Bullet holes on returning planes cluster on the wings and body"
-      }
+          ? {
+              en: "The engines and cockpit, clean on returning planes, are the vulnerable spots to armour",
+            }
+          : {
+              en: "Bullet holes on returning planes cluster on the wings and body",
+            },
+      )}
       style={{ display: "block", width: "100%", maxWidth: 220, margin: "0 auto" }}
     >
       <rect x="14" y="60" width="172" height="24" rx="11" fill={PLANE_FILL} stroke={PLANE_STROKE} strokeWidth="1.5" />

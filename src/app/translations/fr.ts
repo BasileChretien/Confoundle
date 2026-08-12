@@ -6570,4 +6570,20 @@ export const fr: Record<string, string> = {
   "Working…": "En cours…",
   "Share / save card": "Partager / enregistrer",
   "Three marks walking in towards a line at one, and three marks beside them that stay put": "Trois marques qui se rapprochent d'une ligne située à un, et trois marques à côté qui ne bougent pas",
+  // ---- chart announcements: bars, arms and the group-level slope ----
+  "{group}: {percent} percent": "{group} : {percent} pour cent",
+  "{group}: {percent} percent, the highest": "{group} : {percent} pour cent, le taux le plus élevé",
+  "{arm}: {events} out of {total}": "{arm} : {events} sur {total}",
+  "{arm}: {events} out of {total}, {percent}": "{arm} : {events} sur {total}, soit {percent}",
+  "Compared group by group, the relationship runs downward. Correlation r equals {r}.": "D'un groupe à l'autre, la relation est décroissante. La corrélation r vaut {r}.",
+  "Compared group by group, the relationship runs upward. Correlation r equals {r}.": "D'un groupe à l'autre, la relation est croissante. La corrélation r vaut {r}.",
+  // ---- chart announcements: the planes, the timelines and the maps ----
+  "Bullet holes on returning planes cluster on the wings and body": "Sur les avions revenus, les impacts de balles se concentrent sur les ailes et le fuselage",
+  "The engines and cockpit, clean on returning planes, are the vulnerable spots to armour": "Les moteurs et le cockpit, intacts sur les avions revenus, sont les points vulnérables à blinder",
+  "{track}: {immortal} counted but not at risk, then {atrisk} at risk": "{track} : {immortal} sans risque possible, puis {atrisk} à risque",
+  "{track}: {counted} counted": "{track} : total comptabilisé, {counted}",
+  "{track}: {survival} after diagnosis": "{track} : {survival} après le diagnostic",
+  "{track}: {onset} at {onsetwhen}, {detected} at {detectedwhen}, {died} at {diedwhen}": "{track} : {onset} à {onsetwhen}, {detected} à {detectedwhen}, {died} à {diedwhen}",
+  "World map in the {projection} projection": "Planisphère en projection {projection}",
+  "World map in the {projection} projection. {verdict}.": "Planisphère en projection {projection}. {verdict}.",
 };

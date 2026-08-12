@@ -6518,4 +6518,20 @@ export const bn: Record<string, string> = {
   "Working…": "চলছে…",
   "Share / save card": "কার্ড শেয়ার / সংরক্ষণ",
   "Three marks walking in towards a line at one, and three marks beside them that stay put": "এক-এর জায়গায় টানা রেখার দিকে এগিয়ে আসা তিনটি চিহ্ন, আর তার পাশে তিনটি চিহ্ন যারা নড়ে না",
+  // ---- chart announcements: bars, arms and the group-level slope ----
+  "{group}: {percent} percent": "{group}: {percent} শতাংশ",
+  "{group}: {percent} percent, the highest": "{group}: {percent} শতাংশ, সর্বোচ্চ",
+  "{arm}: {events} out of {total}": "{arm}: {total} জনের মধ্যে {events} জন",
+  "{arm}: {events} out of {total}, {percent}": "{arm}: {total} জনের মধ্যে {events} জন, অর্থাৎ {percent}",
+  "Compared group by group, the relationship runs downward. Correlation r equals {r}.": "দল ধরে ধরে তুলনা করলে সম্পর্কটি নিচের দিকে নামে। সহসম্পর্ক r এর মান {r}।",
+  "Compared group by group, the relationship runs upward. Correlation r equals {r}.": "দল ধরে ধরে তুলনা করলে সম্পর্কটি উপরের দিকে ওঠে। সহসম্পর্ক r এর মান {r}।",
+  // ---- chart announcements: the planes, the timelines and the maps ----
+  "Bullet holes on returning planes cluster on the wings and body": "ফিরে আসা বিমানগুলিতে গুলির ছিদ্রগুলি ডানা আর কাঠামোয় জড়ো হয়ে আছে",
+  "The engines and cockpit, clean on returning planes, are the vulnerable spots to armour": "ফিরে আসা বিমানগুলিতে যে ইঞ্জিন আর ককপিট অক্ষত, সেগুলিই দুর্বল জায়গা, সেখানেই বর্ম দরকার",
+  "{track}: {immortal} counted but not at risk, then {atrisk} at risk": "{track}: {immortal} হিসাবে ধরা হয়েছে অথচ ঝুঁকিই ছিল না, তারপর {atrisk} ঝুঁকির মধ্যে",
+  "{track}: {counted} counted": "{track}: মোট {counted} ধরা হয়েছে",
+  "{track}: {survival} after diagnosis": "{track}: রোগ নির্ণয়ের পরে {survival}",
+  "{track}: {onset} at {onsetwhen}, {detected} at {detectedwhen}, {died} at {diedwhen}": "{track}: {onset} {onsetwhen} সময়ে, {detected} {detectedwhen} সময়ে, {died} {diedwhen} সময়ে",
+  "World map in the {projection} projection": "{projection} অভিক্ষেপে বিশ্বের মানচিত্র",
+  "World map in the {projection} projection. {verdict}.": "{projection} অভিক্ষেপে বিশ্বের মানচিত্র। {verdict}।",
 };

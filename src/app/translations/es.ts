@@ -6572,4 +6572,20 @@ export const es: Record<string, string> = {
   "Working…": "Trabajando…",
   "Share / save card": "Compartir / guardar",
   "Three marks walking in towards a line at one, and three marks beside them that stay put": "Tres marcas que se acercan a una línea situada en uno, y tres marcas al lado que no se mueven",
+  // ---- chart announcements: bars, arms and the group-level slope ----
+  "{group}: {percent} percent": "{group}: {percent} por ciento",
+  "{group}: {percent} percent, the highest": "{group}: {percent} por ciento, la cifra más alta",
+  "{arm}: {events} out of {total}": "{arm}: {events} de {total}",
+  "{arm}: {events} out of {total}, {percent}": "{arm}: {events} de {total}, es decir {percent}",
+  "Compared group by group, the relationship runs downward. Correlation r equals {r}.": "Comparando grupo por grupo, la relación es descendente. La correlación r es {r}.",
+  "Compared group by group, the relationship runs upward. Correlation r equals {r}.": "Comparando grupo por grupo, la relación es ascendente. La correlación r es {r}.",
+  // ---- chart announcements: the planes, the timelines and the maps ----
+  "Bullet holes on returning planes cluster on the wings and body": "En los aviones que regresaron, los impactos de bala se concentran en las alas y el fuselaje",
+  "The engines and cockpit, clean on returning planes, are the vulnerable spots to armour": "Los motores y la cabina, intactos en los aviones que regresaron, son los puntos vulnerables que hay que blindar",
+  "{track}: {immortal} counted but not at risk, then {atrisk} at risk": "{track}: {immortal} sin riesgo posible, luego {atrisk} en riesgo",
+  "{track}: {counted} counted": "{track}: total contabilizado, {counted}",
+  "{track}: {survival} after diagnosis": "{track}: {survival} después del diagnóstico",
+  "{track}: {onset} at {onsetwhen}, {detected} at {detectedwhen}, {died} at {diedwhen}": "{track}: {onset} a {onsetwhen}, {detected} a {detectedwhen}, {died} a {diedwhen}",
+  "World map in the {projection} projection": "Mapamundi en proyección {projection}",
+  "World map in the {projection} projection. {verdict}.": "Mapamundi en proyección {projection}. {verdict}.",
 };

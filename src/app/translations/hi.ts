@@ -6509,4 +6509,20 @@ export const hi: Record<string, string> = {
   "Working…": "चल रहा है…",
   "Share / save card": "कार्ड साझा करें / सहेजें",
   "Three marks walking in towards a line at one, and three marks beside them that stay put": "एक पर खिंची रेखा की ओर बढ़ते तीन निशान, और उनके बग़ल में तीन निशान जो हिलते नहीं",
+  // ---- chart announcements: bars, arms and the group-level slope ----
+  "{group}: {percent} percent": "{group}: {percent} प्रतिशत",
+  "{group}: {percent} percent, the highest": "{group}: {percent} प्रतिशत, सबसे अधिक",
+  "{arm}: {events} out of {total}": "{arm}: {total} में से {events}",
+  "{arm}: {events} out of {total}, {percent}": "{arm}: {total} में से {events}, यानी {percent}",
+  "Compared group by group, the relationship runs downward. Correlation r equals {r}.": "समूह दर समूह तुलना करने पर संबंध नीचे की ओर जाता है। सहसंबंध r का मान {r} है।",
+  "Compared group by group, the relationship runs upward. Correlation r equals {r}.": "समूह दर समूह तुलना करने पर संबंध ऊपर की ओर जाता है। सहसंबंध r का मान {r} है।",
+  // ---- chart announcements: the planes, the timelines and the maps ----
+  "Bullet holes on returning planes cluster on the wings and body": "लौटकर आए विमानों पर गोलियों के छेद पंखों और धड़ पर जमा हैं",
+  "The engines and cockpit, clean on returning planes, are the vulnerable spots to armour": "लौटकर आए विमानों पर जो इंजन और कॉकपिट बेदाग़ रहे, वही असली कमज़ोर जगहें हैं जिन पर कवच चाहिए",
+  "{track}: {immortal} counted but not at risk, then {atrisk} at risk": "{track}: {immortal} गिने तो गए पर उनमें जोखिम संभव ही नहीं था, फिर {atrisk} जोखिम में",
+  "{track}: {counted} counted": "{track}: कुल {counted} गिने गए",
+  "{track}: {survival} after diagnosis": "{track}: निदान के बाद {survival}",
+  "{track}: {onset} at {onsetwhen}, {detected} at {detectedwhen}, {died} at {diedwhen}": "{track}: {onset} {onsetwhen} पर, {detected} {detectedwhen} पर, {died} {diedwhen} पर",
+  "World map in the {projection} projection": "{projection} प्रक्षेप में विश्व मानचित्र",
+  "World map in the {projection} projection. {verdict}.": "{projection} प्रक्षेप में विश्व मानचित्र। {verdict}।",
 };

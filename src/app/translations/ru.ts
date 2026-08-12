@@ -6540,4 +6540,20 @@ export const ru: Record<string, string> = {
   "Working…": "Обработка…",
   "Share / save card": "Поделиться / сохранить",
   "Three marks walking in towards a line at one, and three marks beside them that stay put": "Три метки, подходящие к линии на единице, и три метки рядом, которые не двигаются",
+  // ---- chart announcements: bars, arms and the group-level slope ----
+  "{group}: {percent} percent": "{group}: {percent} процентов",
+  "{group}: {percent} percent, the highest": "{group}: {percent} процентов, самый высокий показатель",
+  "{arm}: {events} out of {total}": "{arm}: {events} из {total}",
+  "{arm}: {events} out of {total}, {percent}": "{arm}: {events} из {total}, то есть {percent}",
+  "Compared group by group, the relationship runs downward. Correlation r equals {r}.": "При сравнении по группам связь идёт вниз. Корреляция r равна {r}.",
+  "Compared group by group, the relationship runs upward. Correlation r equals {r}.": "При сравнении по группам связь идёт вверх. Корреляция r равна {r}.",
+  // ---- chart announcements: the planes, the timelines and the maps ----
+  "Bullet holes on returning planes cluster on the wings and body": "На вернувшихся самолётах пробоины от пуль скапливаются на крыльях и фюзеляже",
+  "The engines and cockpit, clean on returning planes, are the vulnerable spots to armour": "Двигатели и кабина, целые на вернувшихся самолётах, и есть уязвимые места, которые надо бронировать",
+  "{track}: {immortal} counted but not at risk, then {atrisk} at risk": "{track}: {immortal} засчитано, но риск был невозможен, затем {atrisk} под риском",
+  "{track}: {counted} counted": "{track}: засчитано {counted}",
+  "{track}: {survival} after diagnosis": "{track}: {survival} после постановки диагноза",
+  "{track}: {onset} at {onsetwhen}, {detected} at {detectedwhen}, {died} at {diedwhen}": "{track}: {onset} на отметке {onsetwhen}, {detected} на отметке {detectedwhen}, {died} на отметке {diedwhen}",
+  "World map in the {projection} projection": "Карта мира в проекции {projection}",
+  "World map in the {projection} projection. {verdict}.": "Карта мира в проекции {projection}. {verdict}.",
 };

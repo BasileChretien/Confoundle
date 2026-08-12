@@ -4606,8 +4606,14 @@ this route was looking for.**
    TOLD against what you were GIVEN. From the abstract, relative to baseline:
    informed caffeine / received caffeine d = 0.42, informed caffeine / received
    placebo d = 0.43, informed placebo / received caffeine d = 0.21, informed
-   placebo / received placebo d = 0.10. The told dimension carries it and the
-   given dimension does not, on an objective 1000-m time trial with splits.
+   placebo / received placebo d = 0.10. Read those as four separate comparisons
+   against baseline and nothing more: the two cells where the runner was told
+   caffeine are the two that moved, and the two where the runner was told
+   placebo are the two that did not. That is a description of WHICH CELLS
+   CHANGED. It is not a told effect, a given effect or an interaction, none of
+   which these four numbers can establish, and the n = 11 note below is where
+   that distinction bites. The outcome is at least objective, a 1000-m time
+   trial with splits.
 
 2. Davies MJ, Clark B, Garvican-Lewis LA, Welvaert M, Gore CJ, Thompson KG.
    *The potential to change pacing and performance during 4000-m cycling time
@@ -4635,14 +4641,20 @@ rediscovered later at more cost.
   The comparison is also between effect sizes against baseline rather than an
   interaction test, so the headline is a description of four numbers and not a
   result about their difference.
-- **A same-design study finds the opposite.** Soares EMKVK et al., *Caffeine
-  supplementation increases muscle strength, but not endurance, while both
-  caffeine and its expectation elevate blood lactate: a balanced-placebo design
-  study*, Nutrients 2026, `PMC12986729`, open access. Same 2x2, n = 16, caffeine
-  5 mg/kg. Caffeine raised strength; **no placebo effect was observed in
-  strength or endurance at all**, though expectancy did raise blood lactate. So
-  within one design family and a few years, the expectancy channel appears on
-  running and vanishes on strength.
+- **The same design on a different outcome does not find it.** Soares EMKVK et
+  al., *Caffeine supplementation increases muscle strength, but not endurance,
+  while both caffeine and its expectation elevate blood lactate: a
+  balanced-placebo design study*, Nutrients 2026, `PMC12986729`, open access.
+  Same 2x2, n = 16, caffeine 5 mg/kg. Caffeine raised strength; **no placebo
+  effect was observed in strength or endurance**, though expectancy did raise
+  blood lactate. Be careful what this is: it measures knee-extensor strength and
+  repetitions, where Hurst measures 1000-m running, so it is NOT a failed
+  replication of Hurst and NOT a contradiction of it. Two different outcomes can
+  honestly behave differently. What it does show is that the expectancy channel
+  is not a property of the balanced-placebo design itself, so the design turning
+  up in a paper is no guarantee the channel will be there, and a card would have
+  to be about the outcome it was demonstrated on rather than about performance
+  in general.
 
 The review itself points the same way when read rather than quoted: its pooled
 placebo effect of d = 0.67 is, in its own words, driven by six studies at
@@ -4651,11 +4663,16 @@ performance measure, the population and the setting.
 
 **So the honest position on route 8.** It is open, indexed, and has named
 candidates, which is further than any other route in this entry has reached.
-What it does not yet have is a study large enough and consistent enough for a
-card that would survive the deck's own `statistical-power` lesson. The next
-step is to read Hurst and Davies in full through institutional access and see
-whether either prints per-condition times rather than effect sizes; if they do
-not, the route needs a larger balanced-placebo study rather than these two.
+What it does not yet have is a study big enough to carry a card that would
+survive the deck's own `statistical-power` lesson, on an outcome the effect has
+actually been shown on. The next step is to read Hurst and Davies in full
+through institutional access and see whether either prints per-condition times
+rather than effect sizes against baseline, and whether either tests the two
+dimensions against each other rather than each cell against baseline. If they
+do neither, the route needs a larger balanced-placebo study rather than these
+two. Note in Hurst's favour before dismissing it on n: every runner completed
+all four cells across seven trials, so it is fully within-subject, and eleven
+is the number of people rather than the number of observations.
 
 ### 67. Route 2, the meta-analytic reversal: REFUSED 2026-08-07 on the source the check was designed to catch
 

@@ -112,14 +112,15 @@ function GlyphPanel({
  * teaches the concept, not this one puzzle.
  */
 function ReversalGlyph() {
+  const t = useT();
   return (
     <div
       className="mt-4 rounded-lg p-3"
       style={{ backgroundColor: "rgba(0,0,0,0.28)" }}
     >
       <div className="flex items-end justify-center gap-2.5 pt-4">
-        <GlyphPanel label="Group 1" a={92} b={82} winner="a" />
-        <GlyphPanel label="Group 2" a={64} b={56} winner="a" />
+        <GlyphPanel label={t({ en: "Group 1" })} a={92} b={82} winner="a" />
+        <GlyphPanel label={t({ en: "Group 2" })} a={64} b={56} winner="a" />
         <span
           className="pb-5 text-sm"
           style={{ color: CARD.muted }}
@@ -127,7 +128,13 @@ function ReversalGlyph() {
         >
           →
         </span>
-        <GlyphPanel label="Combined" a={70} b={82} winner="b" emphasized />
+        <GlyphPanel
+          label={t({ en: "Combined" })}
+          a={70}
+          b={82}
+          winner="b"
+          emphasized
+        />
       </div>
     </div>
   );
@@ -139,6 +146,7 @@ function ReversalGlyph() {
  * rare. Derived from the puzzle's counts (scaled to fit); no case specifics.
  */
 function FrequencyGlyph({ data }: { data: FrequenciesData }) {
+  const t = useT();
   const b = frequencyBreakdown(data);
   const CAP = 60;
   let trueN = b.truePositive;
@@ -156,7 +164,7 @@ function FrequencyGlyph({ data }: { data: FrequenciesData }) {
         className="mb-2 text-center font-sans text-[10px] font-semibold uppercase tracking-eyebrow"
         style={{ color: CARD.muted }}
       >
-        Everyone here tested positive
+        {t({ en: "Everyone here tested positive" })}
       </div>
       <div className="mx-auto flex max-w-60 flex-wrap justify-center gap-1">
         {Array.from({ length: trueN }).map((_, i) => (
@@ -178,7 +186,7 @@ function FrequencyGlyph({ data }: { data: FrequenciesData }) {
         className="mt-2.5 text-center text-[11px] font-semibold"
         style={{ color: CARD.gold }}
       >
-        Almost every one is a false alarm.
+        {t({ en: "Almost every one is a false alarm." })}
       </div>
       <div
         className="mt-1.5 flex flex-wrap justify-center gap-x-4 gap-y-1 text-[10px]"
@@ -189,14 +197,14 @@ function FrequencyGlyph({ data }: { data: FrequenciesData }) {
             className="h-2.5 w-2.5 rounded-full"
             style={{ backgroundColor: CARD.teal }}
           />
-          really has it
+          {t({ en: "really has it" })}
         </span>
         <span className="inline-flex items-center gap-1.5">
           <span
             className="h-2.5 w-2.5 rounded-full"
             style={{ backgroundColor: CARD.falseDim }}
           />
-          false alarm
+          {t({ en: "false alarm" })}
         </span>
       </div>
     </div>
@@ -258,7 +266,7 @@ function CausalGlyph({ data }: { data: CausalData }) {
             className="inline-block w-8"
             style={{ borderTop: `1px dashed ${CARD.rust}` }}
           />
-          ✗ no direct link
+          ✗ {t({ en: "no direct link" })}
           <span
             className="inline-block w-8"
             style={{ borderTop: `1px dashed ${CARD.rust}` }}
@@ -281,6 +289,7 @@ function CausalGlyph({ data }: { data: CausalData }) {
  * Deliberately unlabelled: the card teases the shape, the lesson explains it.
  */
 function AgreementGlyph() {
+  const t = useT();
   const STROKE = "rgba(242,236,222,0.4)";
   const GHOST = "#4A4335";
   return (
@@ -291,7 +300,9 @@ function AgreementGlyph() {
       <svg
         viewBox="0 0 200 120"
         role="img"
-        aria-label="What people reported at the time, and how little of it survived when they were asked again"
+        aria-label={t({
+          en: "What people reported at the time, and how little of it survived when they were asked again",
+        })}
         style={{
           display: "block",
           width: "100%",
@@ -339,6 +350,7 @@ function AgreementGlyph() {
 }
 
 function SurvivorshipGlyph() {
+  const t = useT();
   const FILL = "#4A4335";
   const STROKE = "rgba(242,236,222,0.4)";
   const HITS: ReadonlyArray<readonly [number, number]> = [
@@ -361,7 +373,9 @@ function SurvivorshipGlyph() {
       <svg
         viewBox="0 0 200 168"
         role="img"
-        aria-label="Armour the engines and cockpit, the clean-looking spots, not the bullet holes"
+        aria-label={t({
+          en: "Armour the engines and cockpit, the clean-looking spots, not the bullet holes",
+        })}
         style={{
           display: "block",
           width: "100%",
@@ -442,7 +456,7 @@ function SurvivorshipGlyph() {
         className="mt-2 text-center text-[11px] font-semibold"
         style={{ color: CARD.gold }}
       >
-        Armour the clean-looking spots, not the bullet holes.
+        {t({ en: "Armour the clean-looking spots, not the bullet holes." })}
       </div>
     </div>
   );
@@ -455,9 +469,12 @@ function SurvivorshipGlyph() {
  * specifics; the card teaches the move, not this puzzle.
  */
 function TimelineGlyph() {
+  const t = useT();
+  // "found", not "told": the shape's own field is `detectedLabel`, and a
+  // timeline puzzle need not involve anybody being told anything.
   const ROWS = [
-    { found: 58, label: "told late" },
-    { found: 26, label: "told early" },
+    { found: 58, label: t({ en: "found late" }) },
+    { found: 26, label: t({ en: "found early" }) },
   ];
   const DEATH = 82; // percent along the axis, shared by both rows
   return (
@@ -467,7 +484,7 @@ function TimelineGlyph() {
     >
       <div className="relative flex flex-col gap-3">
         {ROWS.map((row, i) => (
-          <div key={row.label} className="flex flex-col gap-1">
+          <div key={row.found} className="flex flex-col gap-1">
             <span
               className="text-[9px] font-semibold uppercase tracking-eyebrow"
               style={{ color: CARD.muted }}
@@ -498,7 +515,7 @@ function TimelineGlyph() {
         className="mt-2.5 text-center text-[11px] font-semibold"
         style={{ color: CARD.gold }}
       >
-        Same day of death. Longer "survival".
+        {t({ en: "Same day of death. Longer “survival”." })}
       </div>
     </div>
   );
@@ -560,7 +577,7 @@ function SplitSampleGlyph({ data }: { data: RatesData }) {
         className="mt-2.5 text-center text-[11px] font-semibold"
         style={{ color: CARD.gold }}
       >
-        Same people. Two ways of sorting them.
+        {t({ en: "Same people. Two ways of sorting them." })}
       </div>
     </div>
   );
@@ -571,8 +588,15 @@ function SplitSampleGlyph({ data }: { data: RatesData }) {
  * measured twice. On the left the treated bar is scaled against the untreated
  * one and a third of it is gone. On the right both sit inside the whole
  * population and the same drop is a sliver. No case-specific numbers.
+ *
+ * The panels are labelled by WHAT THEY ARE MEASURED AGAINST rather than by how
+ * big the drop looks. An earlier draft said "a third lower", which is the
+ * schematic geometry here and not a fact about any puzzle: this glyph is picked
+ * by `data.type` alone, so a risk puzzle whose reduction is a half would have
+ * shipped a share image asserting a third.
  */
 function RiskGlyph() {
+  const t = useT();
   const panel = (
     label: string,
     bars: Array<{ h: number; color: string }>,
@@ -617,7 +641,7 @@ function RiskGlyph() {
     >
       <div className="flex items-end justify-center gap-3">
         {panel(
-          "a third lower",
+          t({ en: "against the other arm" }),
           [
             { h: 100, color: CARD.teal },
             { h: 67, color: CARD.rust },
@@ -632,7 +656,7 @@ function RiskGlyph() {
           =
         </span>
         {panel(
-          "same result",
+          t({ en: "against everybody" }),
           [
             { h: 8, color: CARD.teal },
             { h: 5, color: CARD.rust },
@@ -644,7 +668,7 @@ function RiskGlyph() {
         className="mt-2.5 text-center text-[11px] font-semibold"
         style={{ color: CARD.gold }}
       >
-        Ask: a third of what?
+        {t({ en: "Ask: a drop in what?" })}
       </div>
     </div>
   );
@@ -657,6 +681,7 @@ function RiskGlyph() {
  * teaches the move, that an extreme group drifts toward the average on its own.
  */
 function RegressionGlyph() {
+  const t = useT();
   const W = 200;
   const H = 120;
   const midY = H / 2;
@@ -690,7 +715,9 @@ function RegressionGlyph() {
       <svg
         viewBox={`0 0 ${W} ${H}`}
         role="img"
-        aria-label="Two extreme groups, one high and one low, each drifting back toward the average on its own"
+        aria-label={t({
+          en: "Two extreme groups, one high and one low, each drifting back toward the average on its own",
+        })}
         style={{
           display: "block",
           width: "100%",
@@ -714,7 +741,7 @@ function RegressionGlyph() {
         className="mt-2 text-center text-[11px] font-semibold"
         style={{ color: CARD.gold }}
       >
-        The extreme drifts back on its own.
+        {t({ en: "The extreme drifts back on its own." })}
       </div>
     </div>
   );
@@ -740,6 +767,7 @@ function RegressionGlyph() {
  * swapping sides without a single outcome changing.
  */
 function FramingGlyph() {
+  const t = useT();
   const W = 200;
   const H = 96;
   const bar = (x: number, y: number, w: number, fill: string) => (
@@ -753,7 +781,9 @@ function FramingGlyph() {
       <svg
         viewBox={`0 0 ${W} ${H}`}
         role="img"
-        aria-label="The same choice worded two ways, with the majority swapping sides"
+        aria-label={t({
+          en: "The same choice worded two ways, with the majority swapping sides",
+        })}
         style={{
           display: "block",
           width: "100%",
@@ -762,12 +792,12 @@ function FramingGlyph() {
         }}
       >
         <text x={10} y={14} fontSize={9} fill={CARD.muted}>
-          worded one way
+          {t({ en: "worded one way" })}
         </text>
         {bar(10, 20, 120, CARD.teal)}
         {bar(10, 35, 48, CARD.rust)}
         <text x={10} y={62} fontSize={9} fill={CARD.muted}>
-          worded the other
+          {t({ en: "worded the other" })}
         </text>
         {bar(10, 68, 38, CARD.teal)}
         {bar(10, 83, 130, CARD.rust)}
@@ -779,7 +809,7 @@ function FramingGlyph() {
           textAnchor="end"
           fontWeight={600}
         >
-          same choice
+          {t({ en: "same choice" })}
         </text>
       </svg>
     </div>
@@ -787,6 +817,7 @@ function FramingGlyph() {
 }
 
 function DistributionGlyph() {
+  const t = useT();
   const W = 200;
   const H = 96;
   // Three stacked bars, each mostly the "below" colour, with the average marked
@@ -819,7 +850,9 @@ function DistributionGlyph() {
       <svg
         viewBox={`0 0 ${W} ${H}`}
         role="img"
-        aria-label="Most items fall below their own average, which sits far to the right"
+        aria-label={t({
+          en: "Most items fall below their own average, which sits far to the right",
+        })}
         style={{
           display: "block",
           width: "100%",
@@ -828,7 +861,7 @@ function DistributionGlyph() {
         }}
       >
         <text x={10} y={12} fontSize={9} fill={CARD.muted}>
-          below the average
+          {t({ en: "below the average" })}
         </text>
         {row(18, 0.755)}
         {row(37, 0.748)}
@@ -850,7 +883,7 @@ function DistributionGlyph() {
           textAnchor="end"
           fontWeight={600}
         >
-          the average
+          {t({ en: "the average" })}
         </text>
       </svg>
     </div>
@@ -858,10 +891,15 @@ function DistributionGlyph() {
 }
 
 function DoseGlyph() {
+  const t = useT();
   const W = 200;
   const H = 96;
   // A curve that does almost all its climbing in the first sliver, with the
   // points spaced by dose rather than evenly, same as the real chart.
+  //
+  // The curve is schematic and the labels say so. They used to read "one
+  // repeat" and "27 repeats", which are the illusory-truth study's units and
+  // its top dose; every other `dose` puzzle would have carried them too.
   const pts: Array<[number, number]> = [
     [0, 3.64],
     [1, 4.26],
@@ -882,7 +920,9 @@ function DoseGlyph() {
       <svg
         viewBox={`0 0 ${W} ${H}`}
         role="img"
-        aria-label="Belief climbs almost entirely on the first repetition, then flattens"
+        aria-label={t({
+          en: "The outcome climbs almost entirely on the first step of dose, then flattens",
+        })}
         style={{
           display: "block",
           width: "100%",
@@ -916,7 +956,7 @@ function DoseGlyph() {
           fill={CARD.gold}
           fontWeight={600}
         >
-          one repeat
+          {t({ en: "the first step" })}
         </text>
         <text
           x={W - 8}
@@ -925,7 +965,7 @@ function DoseGlyph() {
           fill={CARD.muted}
           textAnchor="end"
         >
-          27 repeats
+          {t({ en: "the largest dose" })}
         </text>
       </svg>
     </div>
@@ -933,9 +973,15 @@ function DoseGlyph() {
 }
 
 function EstimationGlyph() {
+  const t = useT();
   const W = 200;
   const H = 96;
   // Two guesses that differ fourfold, both vanishing against the real answer.
+  //
+  // The three fractions are the anchoring study's numbers and stay, because
+  // they are what makes the picture; the labels no longer PRINT them. They
+  // used to read "guessed 512", "guessed 2,250" and "actually 40,320", which
+  // would have appeared verbatim on the card of any other `estimation` puzzle.
   const bar = (y: number, frac: number, fill: string, label: string) => (
     <>
       <text x={10} y={y - 3} fontSize={8} fill={CARD.muted}>
@@ -959,7 +1005,9 @@ function EstimationGlyph() {
       <svg
         viewBox={`0 0 ${W} ${H}`}
         role="img"
-        aria-label="Two guesses four times apart, both tiny beside the true answer"
+        aria-label={t({
+          en: "Two guesses four times apart, both tiny beside the true answer",
+        })}
         style={{
           display: "block",
           width: "100%",
@@ -967,15 +1015,16 @@ function EstimationGlyph() {
           margin: "0 auto",
         }}
       >
-        {bar(16, 512 / 40320, CARD.teal, "guessed 512")}
-        {bar(45, 2250 / 40320, CARD.rust, "guessed 2,250")}
-        {bar(74, 1, CARD.gold, "actually 40,320")}
+        {bar(16, 512 / 40320, CARD.teal, t({ en: "one group guessed" }))}
+        {bar(45, 2250 / 40320, CARD.rust, t({ en: "the other guessed" }))}
+        {bar(74, 1, CARD.gold, t({ en: "the true answer" }))}
       </svg>
     </div>
   );
 }
 
 function DriftGlyph() {
+  const t = useT();
   const W = 200;
   const H = 96;
   /**
@@ -995,7 +1044,7 @@ function DriftGlyph() {
       viewBox={`0 0 ${W} ${H}`}
       width="100%"
       role="img"
-      aria-label="Two lines crossing over time"
+      aria-label={t({ en: "Two lines crossing over time" })}
     >
       <line
         x1={x0}
@@ -1029,6 +1078,7 @@ function DriftGlyph() {
 }
 
 function RatingsGlyph() {
+  const t = useT();
   const W = 200;
   const H = 96;
   /**
@@ -1054,7 +1104,7 @@ function RatingsGlyph() {
       viewBox={`0 0 ${W} ${H}`}
       width="100%"
       role="img"
-      aria-label="Two mean ratings on one scale"
+      aria-label={t({ en: "Two mean ratings on one scale" })}
     >
       <line x1={x0} y1={axis} x2={x1} y2={axis} stroke={CARD.rule} strokeWidth={1} />
       <line
@@ -1073,6 +1123,7 @@ function RatingsGlyph() {
 }
 
 function BunchingGlyph() {
+  const t = useT();
   const W = 200;
   const H = 96;
   /**
@@ -1098,7 +1149,9 @@ function BunchingGlyph() {
       viewBox={`0 0 ${W} ${H}`}
       width="100%"
       role="img"
-      aria-label="Six counts in order, level before an arbitrary line and dropping sharply after it"
+      aria-label={t({
+        en: "Six counts in order, level before an arbitrary line and dropping sharply after it",
+      })}
     >
       {bars.map((b, i) => (
         <rect
@@ -1126,6 +1179,7 @@ function BunchingGlyph() {
 }
 
 function MagnitudeGlyph() {
+  const t = useT();
   const W = 200;
   const H = 96;
   /**
@@ -1148,7 +1202,9 @@ function MagnitudeGlyph() {
       viewBox={`0 0 ${W} ${H}`}
       width="100%"
       role="img"
-      aria-label="Four pairs of bars: for small things the guess towers over the truth, for the largest the truth runs well past the guess"
+      aria-label={t({
+        en: "Four pairs of bars: for small things the guess towers over the truth, for the largest the truth runs well past the guess",
+      })}
     >
       {rows.map((r, i) => {
         const y = 12 + i * 21;
@@ -1186,6 +1242,7 @@ function MagnitudeGlyph() {
 }
 
 function ProjectionGlyph() {
+  const t = useT();
   const W = 200;
   const H = 96;
   /**
@@ -1211,7 +1268,9 @@ function ProjectionGlyph() {
       viewBox={`0 0 ${W} ${H}`}
       width="100%"
       role="img"
-      aria-label="Two maps side by side: the familiar-looking one draws the far north far too large, the stranger-looking one draws both bands in true proportion and is the accurate one"
+      aria-label={t({
+        en: "Two maps side by side: the familiar-looking one draws the far north far too large, the stranger-looking one draws both bands in true proportion and is the accurate one",
+      })}
     >
       {box(6, 68, 34, false)}
       {box(108, 24, 70, true)}
@@ -1220,6 +1279,7 @@ function ProjectionGlyph() {
 }
 
 function TargetGlyph() {
+  const t = useT();
   const W = 200;
   const H = 96;
   /**
@@ -1241,7 +1301,9 @@ function TargetGlyph() {
       viewBox={`0 0 ${W} ${H}`}
       width="100%"
       role="img"
-      aria-label="Two bars of equal length against the same target line, one with a wide band of finishers crowded against the line and one with a narrow band"
+      aria-label={t({
+        en: "Two bars of equal length against the same target line, one with a wide band of finishers crowded against the line and one with a narrow band",
+      })}
     >
       {rows.map((r, i) => {
         const y = 22 + i * 32;
@@ -1275,6 +1337,7 @@ function TargetGlyph() {
 }
 
 function IntervalGlyph() {
+  const t = useT();
   const W = 200;
   const H = 96;
   /**
@@ -1290,7 +1353,9 @@ function IntervalGlyph() {
       viewBox={`0 0 ${W} ${H}`}
       width="100%"
       role="img"
-      aria-label="A measured lead with an uncertainty bracket wide enough to reach back to zero"
+      aria-label={t({
+        en: "A measured lead with an uncertainty bracket wide enough to reach back to zero",
+      })}
     >
       <line x1={zero} y1={16} x2={zero} y2={80} stroke={CARD.gold} strokeWidth={1} strokeDasharray="3 3" />
       <line x1={38} y1={mid} x2={178} y2={mid} stroke={CARD.teal} strokeWidth={2} />
@@ -1305,6 +1370,7 @@ function IntervalGlyph() {
 }
 
 function CeilingGlyph() {
+  const t = useT();
   const W = 200;
   const H = 96;
   /**
@@ -1322,23 +1388,26 @@ function CeilingGlyph() {
       viewBox={`0 0 ${W} ${H}`}
       width="100%"
       role="img"
-      aria-label="Two rising curves squeezed together against a floor and a ceiling, apart only in the middle"
+      aria-label={t({
+        en: "Two rising curves squeezed together against a floor and a ceiling, apart only in the middle",
+      })}
     >
       <line x1={10} y1={ceilY} x2={W - 10} y2={ceilY} stroke={CARD.gold} strokeWidth={1} strokeDasharray="3 3" />
       <line x1={10} y1={floorY} x2={W - 10} y2={floorY} stroke={CARD.gold} strokeWidth={1} strokeDasharray="3 3" />
       <path d={lower} fill="none" stroke={CARD.teal} strokeWidth={2} />
       <path d={upper} fill="none" stroke={CARD.rust} strokeWidth={2} />
       <text x={12} y={ceilY - 4} fontSize={8} fill={CARD.muted}>
-        ceiling
+        {t({ en: "ceiling" })}
       </text>
       <text x={12} y={floorY + 11} fontSize={8} fill={CARD.muted}>
-        floor
+        {t({ en: "floor" })}
       </text>
     </svg>
   );
 }
 
 function UnseenGlyph() {
+  const t = useT();
   const W = 200;
   const H = 96;
   /**
@@ -1353,12 +1422,14 @@ function UnseenGlyph() {
       viewBox={`0 0 ${W} ${H}`}
       width="100%"
       role="img"
-      aria-label="A population bar with a marked slice whose outcome was never recorded, above two estimates of the same quantity, the second far larger than the first"
+      aria-label={t({
+        en: "A population bar with a marked slice whose outcome was never recorded, above two estimates of the same quantity, the second far larger than the first",
+      })}
     >
       <rect x={10} y={12} width={140} height={16} rx={3} fill={CARD.teal} opacity={0.3} />
       <rect x={150} y={12} width={40} height={16} rx={3} fill={CARD.gold} opacity={0.55} />
       <text x={150} y={40} fontSize={8} fill={CARD.muted}>
-        never seen
+        {t({ en: "never seen" })}
       </text>
 
       <line x1={170} y1={44} x2={170} y2={58} stroke={CARD.gold} strokeWidth={1} strokeDasharray="2 2" />
@@ -1376,6 +1447,7 @@ function UnseenGlyph() {
 }
 
 function PublishedGlyph() {
+  const t = useT();
   const W = 200;
   const H = 96;
   /**
@@ -1384,17 +1456,25 @@ function PublishedGlyph() {
    * are far apart and the two colours sit together inside each row, which is
    * the whole card: the gap runs down the page, not across it, so it belongs
    * to the people rather than to the capsule.
+   *
+   * The rows are labelled generically. "took few" and "took most" were the
+   * healthy-adherer card's own rows; this shape is a gradient down ANY
+   * grouping of people that repeats across the arms, and the glyph is chosen
+   * by `data.type`, so the second puzzle to ship on it would have carried
+   * adherence labels over rows that were never about adherence.
    */
   const rows = [
-    { y: 30, teal: 128, gold: 148, label: "took few" },
-    { y: 72, teal: 66, gold: 68, label: "took most" },
+    { y: 30, teal: 128, gold: 148, label: t({ en: "one group" }) },
+    { y: 72, teal: 66, gold: 68, label: t({ en: "another group" }) },
   ];
   return (
     <svg
       viewBox={`0 0 ${W} ${H}`}
       width="100%"
       role="img"
-      aria-label="Two rows of points: within each row the two arms sit together, while the two rows are far apart"
+      aria-label={t({
+        en: "Two rows of points: within each row the two arms sit together, while the two rows are far apart",
+      })}
     >
       {rows.map((r) => (
         <g key={r.y}>
@@ -1411,37 +1491,40 @@ function PublishedGlyph() {
   );
 }
 function SurrogateGlyph() {
+  const t = useT();
   const W = 200;
   const H = 96;
   /**
    * A long teal bar for the marker doing what it was asked, then a rule, then
-   * two short bars for the deaths in which the treated one is the taller. The
-   * rule is the point: above it the denominator is everybody who walked in,
-   * below it it is one randomised arm, and the two are not on one scale. A
-   * glyph that drew them against a shared axis would show a triumphant bar
-   * beside two slivers, which is the misreading rather than the lesson.
+   * two short bars for the hard outcome, in which the treated one is the
+   * taller. The rule is the point: above it the denominator is everybody who
+   * walked in, below it it is one randomised arm, and the two are not on one
+   * scale. A glyph that drew them against a shared axis would show a
+   * triumphant bar beside two slivers, which is the misreading rather than
+   * the lesson.
    */
   return (
     <svg
       viewBox={`0 0 ${W} ${H}`}
       width="100%"
       role="img"
-      aria-label="A long bar for the marker responding, then a dividing rule, then two short bars for deaths in which the treated one is taller"
+      aria-label={t({
+        en: "A long bar for the marker responding, then a dividing rule, then two short bars for the real outcome, in which the treated one is taller",
+      })}
     >
       {/*
         Shape-generic wording, not CAST's. The glyph is chosen by `data.type`
         alone, so "beats suppressed" would be simply wrong on the second puzzle
-        built on this shape. Note that the labels here are English in every
-        locale, which is true of every glyph in this file rather than of this
-        one, and is tracked separately.
+        built on this shape, and so would "died": the shape carries whatever
+        endpoints a puzzle authors, and only one of them happens to be death.
       */}
       <text x={10} y={18} fontSize={8} fill={CARD.muted}>
-        marker responded
+        {t({ en: "marker responded" })}
       </text>
       <rect x={10} y={24} width={142} height={11} rx={2} fill={CARD.teal} opacity={0.85} />
       <line x1={10} y1={48} x2={190} y2={48} stroke={CARD.muted} strokeWidth={0.5} opacity={0.5} />
       <text x={10} y={62} fontSize={8} fill={CARD.muted}>
-        died
+        {t({ en: "the real outcome" })}
       </text>
       <rect x={10} y={68} width={54} height={9} rx={2} fill={CARD.gold} opacity={0.9} />
       <rect x={10} y={80} width={21} height={9} rx={2} fill={CARD.teal} opacity={0.6} />
@@ -1449,25 +1532,40 @@ function SurrogateGlyph() {
   );
 }
 function CrossedGlyph() {
+  const t = useT();
   const W = 200;
   const H = 96;
   /**
-   * Two rows on one axis, one per level of the told factor. The gold pair are
+   * Two rows on one axis, one per level of the first factor. The gold pair are
    * the two points the setup drew, far apart. The teal pair are the two the
    * reveal added, and the whole card is that the top two sit on top of each
-   * other: moving the other factor, with the told factor held still, went
-   * almost nowhere. The dashed line is the baseline both rows are read against.
+   * other: moving the other factor, with the first held still, went almost
+   * nowhere. The dashed line is the baseline both rows are read against.
+   *
+   * "one level" and "the other level" rather than "told yes" and "told no":
+   * the shape crosses ANY two binary factors, and only the first puzzle on it
+   * happened to have one of them be what people were told.
    */
   const rows = [
-    { y: 34, pts: [{ x: 62, gold: true }, { x: 58, gold: false }], label: "told yes" },
-    { y: 72, pts: [{ x: 118, gold: false }, { x: 158, gold: true }], label: "told no" },
+    {
+      y: 34,
+      pts: [{ x: 62, gold: true }, { x: 58, gold: false }],
+      label: t({ en: "one level" }),
+    },
+    {
+      y: 72,
+      pts: [{ x: 118, gold: false }, { x: 158, gold: true }],
+      label: t({ en: "the other level" }),
+    },
   ];
   return (
     <svg
       viewBox={`0 0 ${W} ${H}`}
       width="100%"
       role="img"
-      aria-label="Two rows of points on a shared axis: in the first row the two points sit almost on top of each other, in the second they are far apart"
+      aria-label={t({
+        en: "Two rows of points on a shared axis: in the first row the two points sit almost on top of each other, in the second they are far apart",
+      })}
     >
       <line x1={148} y1={14} x2={148} y2={88} stroke={CARD.muted} strokeWidth={1} strokeDasharray="3 3" />
       {rows.map((r) => (
@@ -1493,6 +1591,7 @@ function CrossedGlyph() {
 }
 
 function DeliveredGlyph() {
+  const t = useT();
   const W = 200;
   const H = 96;
   /**
@@ -1528,7 +1627,9 @@ function DeliveredGlyph() {
       viewBox={`0 0 ${W} ${H}`}
       width="100%"
       role="img"
-      aria-label="Two pairs of bars: the first pair is far apart and marked as having been given different amounts, the second pair is apart although marked as having been given the same amount"
+      aria-label={t({
+        en: "Two pairs of bars: the first pair is far apart and marked as having been given different amounts, the second pair is apart although marked as having been given the same amount",
+      })}
     >
       {rows.map((r) => (
         <rect key={r.y} x={10} y={r.y} width={r.w} height={10} rx={3} fill={r.c} opacity={0.55} />
@@ -1558,6 +1659,7 @@ function DeliveredGlyph() {
 }
 
 function YieldGlyph() {
+  const t = useT();
   const W = 200;
   const H = 96;
   /**
@@ -1577,7 +1679,9 @@ function YieldGlyph() {
       viewBox={`0 0 ${W} ${H}`}
       width="100%"
       role="img"
-      aria-label="Three outcomes measured in two populations: on the first the two marks are far apart, on the other two they sit on top of each other"
+      aria-label={t({
+        en: "Three outcomes measured in two populations: on the first the two marks are far apart, on the other two they sit on top of each other",
+      })}
     >
       {rows.map((r) => (
         <g key={r.y}>
@@ -1618,6 +1722,7 @@ function YieldGlyph() {
 }
 
 function ForestGlyph() {
+  const t = useT();
   const W = 200;
   const H = 96;
   /**
@@ -1637,14 +1742,16 @@ function ForestGlyph() {
       viewBox={`0 0 ${W} ${H}`}
       width="100%"
       role="img"
-      aria-label="Three confidence intervals, all to the right of a zero line, the lowest one shorter but still clear of it"
+      aria-label={t({
+        en: "Three confidence intervals, all to the right of a zero line, the lowest one shorter but still clear of it",
+      })}
     >
       <line x1={zeroX} y1={12} x2={zeroX} y2={82} stroke={CARD.gold} strokeWidth={1} strokeDasharray="3 3" />
       <text x={zeroX - 26} y={92} fontSize={8} fill={CARD.muted}>
-        worse
+        {t({ en: "worse" })}
       </text>
       <text x={zeroX + 6} y={92} fontSize={8} fill={CARD.muted}>
-        better
+        {t({ en: "better" })}
       </text>
       {rows.map((r, i) => (
         <g key={r.y}>
@@ -1665,6 +1772,7 @@ function ForestGlyph() {
 }
 
 function SeriesGlyph() {
+  const t = useT();
   const W = 200;
   const H = 96;
   /**
@@ -1680,7 +1788,9 @@ function SeriesGlyph() {
       viewBox={`0 0 ${W} ${H}`}
       width="100%"
       role="img"
-      aria-label="Two lines measuring the same thing over time, one falling and one rising, crossing in the middle"
+      aria-label={t({
+        en: "Two lines measuring the same thing over time, one falling and one rising, crossing in the middle",
+      })}
     >
       <line x1={106} y1={10} x2={106} y2={86} stroke={CARD.gold} strokeWidth={1} strokeDasharray="3 3" />
       <path d={teal} fill="none" stroke={CARD.teal} strokeWidth={2} />
@@ -1691,6 +1801,7 @@ function SeriesGlyph() {
 }
 
 function SalienceGlyph() {
+  const t = useT();
   const W = 200;
   const H = 96;
   const INNER = W - 20;
@@ -1737,7 +1848,9 @@ function SalienceGlyph() {
       <svg
         viewBox={`0 0 ${W} ${H}`}
         role="img"
-        aria-label="Three public splits, with the correct side marked on the short end of two of them"
+        aria-label={t({
+          en: "Three public splits, with the correct side marked on the short end of two of them",
+        })}
         style={{
           display: "block",
           width: "100%",
@@ -1754,6 +1867,7 @@ function SalienceGlyph() {
 }
 
 function EcologicalGlyph() {
+  const t = useT();
   const W = 200;
   const H = 96;
   return (
@@ -1764,7 +1878,9 @@ function EcologicalGlyph() {
       <svg
         viewBox={`0 0 ${W} ${H}`}
         role="img"
-        aria-label="A downward line across places, with the people inside pointing upward"
+        aria-label={t({
+          en: "A downward line across places, with the people inside pointing upward",
+        })}
         style={{
           display: "block",
           width: "100%",
@@ -1799,7 +1915,7 @@ function EcologicalGlyph() {
           strokeLinecap="round"
         />
         <text x={W - 22} y={60} fontSize={9} fill={CARD.rust} textAnchor="end">
-          places
+          {t({ en: "places" })}
         </text>
         {/* the people inside, pointing the other way */}
         <line
@@ -1823,7 +1939,7 @@ function EcologicalGlyph() {
           strokeDasharray="4 3"
         />
         <text x={20} y={92} fontSize={9} fill={CARD.teal}>
-          people
+          {t({ en: "people" })}
         </text>
       </svg>
     </div>
@@ -1831,6 +1947,7 @@ function EcologicalGlyph() {
 }
 
 function EffectGlyph() {
+  const t = useT();
   const W = 200;
   const H = 96;
   const barX = 14;
@@ -1843,7 +1960,9 @@ function EffectGlyph() {
       <svg
         viewBox={`0 0 ${W} ${H}`}
         role="img"
-        aria-label="A tiny certain sliver against the whole of the problem it is meant to fix"
+        aria-label={t({
+          en: "A tiny certain sliver against the whole of the problem it is meant to fix",
+        })}
         style={{
           display: "block",
           width: "100%",
@@ -1870,7 +1989,7 @@ function EffectGlyph() {
           fill={CARD.gold}
         />
         <text x={barX} y={46} fontSize={9} fill={CARD.gold} fontWeight={600}>
-          what it actually fixes
+          {t({ en: "what it actually fixes" })}
         </text>
         {/* the interval that made that sliver certain, clear of zero */}
         <line
@@ -1905,6 +2024,7 @@ function EffectGlyph() {
 }
 
 function InteractionGlyph() {
+  const t = useT();
   const W = 200;
   const H = 96;
   const x1 = 30; // no-effect line
@@ -1920,7 +2040,9 @@ function InteractionGlyph() {
       <svg
         viewBox={`0 0 ${W} ${H}`}
         role="img"
-        aria-label="One averaged number in the middle, hiding two very different real effects"
+        aria-label={t({
+          en: "One averaged number in the middle, hiding two very different real effects",
+        })}
         style={{
           display: "block",
           width: "100%",
@@ -1955,12 +2077,12 @@ function InteractionGlyph() {
           textAnchor="middle"
           fontWeight={600}
         >
-          no effect
+          {t({ en: "no effect" })}
         </text>
         {/* the pooled number, dim, stranded in the middle */}
         {dot(96, CARD.muted, true)}
         <text x={96} y={26} fontSize={9} fill={CARD.muted} textAnchor="middle">
-          one number
+          {t({ en: "one number" })}
         </text>
         {/* the two real effects, flying apart */}
         {dot(48, CARD.teal)}
@@ -1970,7 +2092,7 @@ function InteractionGlyph() {
         className="mt-1 text-center text-[11px] font-semibold"
         style={{ color: CARD.gold }}
       >
-        One number can hide two.
+        {t({ en: "One number can hide two." })}
       </div>
     </div>
   );
@@ -2049,7 +2171,7 @@ export function ShareCard({
   async function handleShare() {
     if (!cardRef.current || busy) return;
     setBusy(true);
-    setStatus("Rendering card…");
+    setStatus(t({ en: "Rendering card…" }));
     const result: ExportResult = await shareOrDownloadCard(
       cardRef.current,
       `confoundle-${puzzle.slug}.png`,
@@ -2058,12 +2180,12 @@ export function ShareCard({
     track("share_export", { slug: puzzle.slug, framing, result });
     setStatus(
       result === "shared"
-        ? "Shared!"
+        ? t({ en: "Shared!" })
         : result === "downloaded"
-          ? "Saved to your device."
+          ? t({ en: "Saved to your device." })
           : result === "cancelled"
             ? null
-            : "Couldn't create the image, try again.",
+            : t({ en: "Couldn't create the image, try again." }),
     );
     setBusy(false);
   }
@@ -2071,9 +2193,9 @@ export function ShareCard({
   return (
     <section className="flex flex-col gap-4">
       <header className="flex flex-col gap-2">
-        <Badge tone="brand">Your card</Badge>
+        <Badge tone="brand">{t({ en: "Your card" })}</Badge>
         <h2 className="font-display text-xl font-semibold text-ink">
-          Nice, now catch a friend.
+          {t({ en: "Nice, now catch a friend." })}
         </h2>
       </header>
 
@@ -2092,7 +2214,7 @@ export function ShareCard({
               className="font-sans text-[10px] font-semibold uppercase tracking-eyebrow"
               style={{ color: CARD.muted }}
             >
-              {humanize(puzzle.category)}
+              {t({ en: humanize(puzzle.category) })}
             </span>
           </div>
 
@@ -2107,73 +2229,91 @@ export function ShareCard({
             {t(puzzle.share.explainer)}
           </p>
 
-          {reversalGlyph ? (
-            <ReversalGlyph />
-          ) : splitSampleGlyph && data.type === "rates" ? (
-            <SplitSampleGlyph data={data} />
-          ) : frequencyGlyph ? (
-            <FrequencyGlyph data={data} />
-          ) : causalGlyph ? (
-            <CausalGlyph data={data} />
-          ) : survivorshipGlyph ? (
-            <SurvivorshipGlyph />
-          ) : timelineGlyph ? (
-            <TimelineGlyph />
-          ) : riskGlyph ? (
-            <RiskGlyph />
-          ) : agreementGlyph ? (
-            <AgreementGlyph />
-          ) : regressionGlyph ? (
-            <RegressionGlyph />
-          ) : interactionGlyph ? (
-            <InteractionGlyph />
-          ) : effectGlyph ? (
-            <EffectGlyph />
-          ) : ecologicalGlyph ? (
-            <EcologicalGlyph />
-          ) : framingGlyph ? (
-            <FramingGlyph />
-          ) : distributionGlyph ? (
-            <DistributionGlyph />
-          ) : doseGlyph ? (
-            <DoseGlyph />
-          ) : estimationGlyph ? (
-            <EstimationGlyph />
-          ) : salienceGlyph ? (
-            <SalienceGlyph />
-          ) : driftGlyph ? (
-            <DriftGlyph />
-          ) : ratingsGlyph ? (
-            <RatingsGlyph />
-          ) : bunchingGlyph ? (
-            <BunchingGlyph />
-          ) : magnitudeGlyph ? (
-            <MagnitudeGlyph />
-          ) : projectionGlyph ? (
-            <ProjectionGlyph />
-          ) : targetGlyph ? (
-            <TargetGlyph />
-          ) : seriesGlyph ? (
-            <SeriesGlyph />
-          ) : intervalGlyph ? (
-            <IntervalGlyph />
-          ) : ceilingGlyph ? (
-            <CeilingGlyph />
-          ) : forestGlyph ? (
-            <ForestGlyph />
-          ) : yieldGlyph ? (
-            <YieldGlyph />
-          ) : unseenGlyph ? (
-            <UnseenGlyph />
-          ) : deliveredGlyph ? (
-            <DeliveredGlyph />
-          ) : crossedGlyph ? (
-            <CrossedGlyph />
-          ) : publishedGlyph ? (
-            <PublishedGlyph />
-          ) : surrogateGlyph ? (
-            <SurrogateGlyph />
-          ) : null}
+          {/*
+            The glyph is a DIAGRAM, and its geometry is left to right: bars
+            grow rightwards from x=10, axes run from 0 to 200, the gold rule
+            sits at a fixed x. Its labels have to be anchored the same way.
+
+            Without this the Arabic card lost every SVG label. `dir="rtl"` on
+            the document is inherited by SVG text, where it flips what
+            `text-anchor: start` MEANS: a label at x=10 was laid out from x=10
+            leftwards, so it ran from -40 to 10 and fell off the edge of a
+            viewBox that starts at 0. Nothing overlapped and nothing warned;
+            the words were simply not on the picture. Arabic still shapes and
+            orders right to left inside each label, which is bidi's job and
+            not this property's. The card's PROSE stays in the document
+            direction, which is why this sits on the glyph rather than on the
+            card.
+          */}
+          <div style={{ direction: "ltr" }}>
+            {reversalGlyph ? (
+              <ReversalGlyph />
+            ) : splitSampleGlyph && data.type === "rates" ? (
+              <SplitSampleGlyph data={data} />
+            ) : frequencyGlyph ? (
+              <FrequencyGlyph data={data} />
+            ) : causalGlyph ? (
+              <CausalGlyph data={data} />
+            ) : survivorshipGlyph ? (
+              <SurvivorshipGlyph />
+            ) : timelineGlyph ? (
+              <TimelineGlyph />
+            ) : riskGlyph ? (
+              <RiskGlyph />
+            ) : agreementGlyph ? (
+              <AgreementGlyph />
+            ) : regressionGlyph ? (
+              <RegressionGlyph />
+            ) : interactionGlyph ? (
+              <InteractionGlyph />
+            ) : effectGlyph ? (
+              <EffectGlyph />
+            ) : ecologicalGlyph ? (
+              <EcologicalGlyph />
+            ) : framingGlyph ? (
+              <FramingGlyph />
+            ) : distributionGlyph ? (
+              <DistributionGlyph />
+            ) : doseGlyph ? (
+              <DoseGlyph />
+            ) : estimationGlyph ? (
+              <EstimationGlyph />
+            ) : salienceGlyph ? (
+              <SalienceGlyph />
+            ) : driftGlyph ? (
+              <DriftGlyph />
+            ) : ratingsGlyph ? (
+              <RatingsGlyph />
+            ) : bunchingGlyph ? (
+              <BunchingGlyph />
+            ) : magnitudeGlyph ? (
+              <MagnitudeGlyph />
+            ) : projectionGlyph ? (
+              <ProjectionGlyph />
+            ) : targetGlyph ? (
+              <TargetGlyph />
+            ) : seriesGlyph ? (
+              <SeriesGlyph />
+            ) : intervalGlyph ? (
+              <IntervalGlyph />
+            ) : ceilingGlyph ? (
+              <CeilingGlyph />
+            ) : forestGlyph ? (
+              <ForestGlyph />
+            ) : yieldGlyph ? (
+              <YieldGlyph />
+            ) : unseenGlyph ? (
+              <UnseenGlyph />
+            ) : deliveredGlyph ? (
+              <DeliveredGlyph />
+            ) : crossedGlyph ? (
+              <CrossedGlyph />
+            ) : publishedGlyph ? (
+              <PublishedGlyph />
+            ) : surrogateGlyph ? (
+              <SurrogateGlyph />
+            ) : null}
+          </div>
 
           <p className="mt-4 font-display text-[17px] font-medium leading-snug">
             <span style={{ color: CARD.gold }}>“</span>
@@ -2185,7 +2325,7 @@ export function ShareCard({
             className="mt-4 border-t pt-2 font-sans text-[10px] font-semibold uppercase tracking-eyebrow"
             style={{ borderColor: CARD.rule, color: CARD.muted }}
           >
-            Spot the hidden variable · confoundle
+            {t({ en: "Spot the hidden variable · confoundle" })}
           </div>
         </div>
       </div>
@@ -2193,13 +2333,13 @@ export function ShareCard({
       {/* Caption framing, both offered side by side */}
       <div>
         <p className="mb-2 text-center font-sans text-[11px] uppercase tracking-eyebrow text-ink-mute">
-          Pick your caption
+          {t({ en: "Pick your caption" })}
         </p>
         <div className="grid grid-cols-2 gap-2">
           {(
             [
-              { key: "competitive", label: "Competitive" },
-              { key: "selfDeprecating", label: "Self-deprecating" },
+              { key: "competitive", label: t({ en: "Competitive" }) },
+              { key: "selfDeprecating", label: t({ en: "Self-deprecating" }) },
             ] as const
           ).map((opt) => {
             const active = framing === opt.key;
@@ -2224,7 +2364,7 @@ export function ShareCard({
       </div>
 
       <Button onClick={handleShare} disabled={busy}>
-        {busy ? "Working…" : "Share / save card"}
+        {busy ? t({ en: "Working…" }) : t({ en: "Share / save card" })}
       </Button>
       <p
         className="min-h-5 text-center text-sm text-ink-soft"
@@ -2234,7 +2374,7 @@ export function ShareCard({
       </p>
 
       <Button variant="ghost" onClick={onReplay}>
-        Play again
+        {t({ en: "Play again" })}
       </Button>
 
       <Button variant="ghost" onClick={onHome}>

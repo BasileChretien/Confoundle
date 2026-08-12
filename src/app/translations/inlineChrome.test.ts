@@ -27,6 +27,18 @@ import { ALL_DICTIONARIES as DICTIONARIES } from "./all";
  *
  * `import.meta.glob` rather than `node:fs` because the project carries no
  * `@types/node`, and Vite's client types are already in tsconfig.
+ *
+ * WHAT THIS STILL CANNOT SEE, and what does. It matches the CALL SITE, so a
+ * string that was never wrapped in `t()` at all is invisible to it, and so is
+ * one whose English is computed rather than written (`t({ en: humanize(...) })`
+ * is a function call, not a literal). Both of those shipped: every glyph in
+ * `engine/share/ShareCard.tsx` drew bare English onto the share image, in all
+ * ten languages, and the category eyebrow beside it went through `t()` with a
+ * computed key. `engine/share/shareCardLocalized.test.ts` covers that half by
+ * rendering the card in six non-Latin locales and failing on any Latin word,
+ * which catches what no source scan can. The two are complements: that one
+ * proves a string reaches the reader translated, this one proves it is held to
+ * all nine dictionaries rather than only the one that got tested.
  */
 
 /** Every source file that could hold an inline string, as text. */
@@ -135,7 +147,17 @@ function stripComments(source: string): Stripped {
       i += 2;
       continue;
     }
-    if (c === "/" && (previous === "" || BEFORE_REGEX.has(previous))) {
+    if (
+      c === "/" &&
+      (previous === "" || BEFORE_REGEX.has(previous)) &&
+      // A `/` directly after a `<` closes a JSX tag; it cannot open a regex.
+      // Without this the scan silently ate every closing tag whose `<` sat
+      // after a `>` or a `}`, which is most of them, and with it the rest of
+      // that LINE. A call site written as `<b>{t({ en: "a" })}</b> and
+      // <i>{t({ en: "b" })}</i>` therefore lost its second string, and lost it
+      // the quiet way: no error, just one fewer string held to nine locales.
+      source[i - 1] !== "<"
+    ) {
       // A regex literal. Its body is dropped rather than kept: it can hold
       // quotes and braces that would confuse everything downstream, and it can
       // never contain a call site.

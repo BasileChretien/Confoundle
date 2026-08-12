@@ -1,7 +1,7 @@
 import { useT } from "../../app/i18n";
 import type { SalienceComparison, SalienceData } from "../../puzzles/schema";
 import { fillSlots } from "./announce";
-import { colorFor } from "./palette";
+import { colorFor, declaredSlot } from "./palette";
 import { formatRatio, formatShare, shareFor } from "./salience";
 
 /**
@@ -23,17 +23,18 @@ import { formatRatio, formatShare, shareFor } from "./salience";
 function Comparison({
   c,
   showTruth,
-  index,
+  colorA,
+  colorB,
 }: {
   c: SalienceComparison;
   showTruth: boolean;
-  index: number;
+  /** The pair of slots this comparison's DECLARED position earns it. */
+  colorA: string;
+  colorB: string;
 }) {
   const t = useT();
   const shareA = shareFor(c, "a");
   const shareB = shareFor(c, "b");
-  const colorA = colorFor(index * 2);
-  const colorB = colorFor(index * 2 + 1);
   const commonerLabel = t(c.commoner === "a" ? c.optionA : c.optionB);
 
   const side = (which: "a" | "b", share: number, alignEnd: boolean) => {
@@ -116,13 +117,23 @@ function Comparison({
 
 export function SalienceView({
   data,
+  full,
   kind,
 }: {
   data: SalienceData;
+  /**
+   * The UNRESTRICTED data, for colour only. `restrictSalience` filters
+   * `comparisons`, and this shape spends a PAIR of palette slots per
+   * comparison, so a beat drawing only the second-declared one would give it
+   * slots 0 and 1 and then move it to 2 and 3 at the reveal. See
+   * `declaredSlot`.
+   */
+  full: SalienceData;
   kind: "asguessed" | "againstfact";
 }) {
   const t = useT();
   const showTruth = kind === "againstfact";
+  const slotOf = declaredSlot(full.comparisons);
   return (
     // The engine already draws the figure title and scope tag around this, so
     // the view owns only the rows and the two notes.
@@ -131,8 +142,14 @@ export function SalienceView({
         {t(showTruth ? data.truthLabel : data.splitLabel)}
       </p>
       <div className="divide-y divide-rule/60">
-        {data.comparisons.map((c, i) => (
-          <Comparison key={c.id} c={c} showTruth={showTruth} index={i} />
+        {data.comparisons.map((c) => (
+          <Comparison
+            key={c.id}
+            c={c}
+            showTruth={showTruth}
+            colorA={colorFor(slotOf(c.id) * 2)}
+            colorB={colorFor(slotOf(c.id) * 2 + 1)}
+          />
         ))}
       </div>
       <p className="mt-2 text-[11px] leading-snug text-ink-soft">

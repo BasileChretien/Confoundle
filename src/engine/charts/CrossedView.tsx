@@ -1,6 +1,6 @@
 import { useT } from "../../app/i18n";
 import type { CrossedData } from "../../puzzles/schema";
-import { colorFor } from "./palette";
+import { declaredColors } from "./palette";
 import { axisFraction, cellsInA } from "./crossed";
 
 /**
@@ -34,14 +34,24 @@ function Axis({ children }: { children: React.ReactNode }) {
 
 export function CrossedView({
   data,
+  full,
   kind: _kind,
 }: {
   data: CrossedData;
+  /**
+   * The UNRESTRICTED data, for colour only. `restrictCrossed` slices CELLS
+   * rather than levels, so `data.bLevels` already equals `full.bLevels` and
+   * this changes nothing that currently ships. It is here so the rule holds
+   * without an exception: a figure handed restricted data takes its colours
+   * from the declared list, and nobody has to work out which lists the
+   * restriction happened to spare. See `declaredColors`.
+   */
+  full: CrossedData;
   kind: "astested" | "allfourways";
 }) {
   void _kind;
   const t = useT();
-  const bIndex = new Map(data.bLevels.map((l, i) => [l.id, i]));
+  const colorOf = declaredColors(full.bLevels);
 
   return (
     <div className="flex flex-col gap-2.5">
@@ -49,11 +59,11 @@ export function CrossedView({
 
       {/* Which colour is which level of the second factor, said once. */}
       <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
-        {data.bLevels.map((l, i) => (
+        {data.bLevels.map((l) => (
           <span key={l.id} className="flex items-center gap-1.5 text-[11px] text-ink">
             <span
               className="h-2.5 w-2.5 shrink-0 rounded-full"
-              style={{ backgroundColor: colorFor(i) }}
+              style={{ backgroundColor: colorOf(l.id) }}
             />
             {t(l.short ?? l.label)}
           </span>
@@ -89,8 +99,8 @@ export function CrossedView({
                     className="absolute top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full border-2"
                     style={{
                       left: `${axisFraction(data, p.mean) * 100}%`,
-                      backgroundColor: colorFor(bIndex.get(p.bId) ?? 0),
-                      borderColor: colorFor(bIndex.get(p.bId) ?? 0),
+                      backgroundColor: colorOf(p.bId),
+                      borderColor: colorOf(p.bId),
                     }}
                     aria-hidden="true"
                   />

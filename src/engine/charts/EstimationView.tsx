@@ -1,6 +1,6 @@
 import { useT } from "../../app/i18n";
 import type { EstimateGroup, EstimationData } from "../../puzzles/schema";
-import { colorFor } from "./palette";
+import { colorFor, declaredColors } from "./palette";
 import { barFraction, formatValue } from "./estimation";
 
 /**
@@ -63,25 +63,33 @@ function Row({
 
 export function EstimationView({
   data,
+  full,
   kind,
 }: {
   data: EstimationData;
+  /**
+   * The UNRESTRICTED data, for colour only. `restrictEstimation` filters
+   * `groups`, so a group's position in `data.groups` is a property of the beat
+   * rather than of the puzzle. See `declaredColors`.
+   */
+  full: EstimationData;
   kind: "oneguess" | "withtruth";
 }) {
   const t = useT();
   const againstTruth = kind === "withtruth";
+  const colorOf = declaredColors(full.groups);
 
   return (
     <div className="flex flex-col gap-1">
       <div className="rounded-md border border-rule bg-paper/50 px-2.5 py-1">
-        {data.groups.map((g: EstimateGroup, i) => (
+        {data.groups.map((g: EstimateGroup) => (
           <Row
             key={g.id}
             name={t(g.short ?? g.label)}
             prompt={t(g.promptText)}
             value={g.estimate}
             fraction={barFraction(g.estimate, data, againstTruth)}
-            color={colorFor(i)}
+            color={colorOf(g.id)}
           />
         ))}
 

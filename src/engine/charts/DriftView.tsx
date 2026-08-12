@@ -1,6 +1,6 @@
 import { useT } from "../../app/i18n";
 import type { DriftData } from "../../puzzles/schema";
-import { colorFor } from "./palette";
+import { declaredColors } from "./palette";
 import { maxExcursion, seriesPoints } from "./drift";
 
 /**
@@ -47,13 +47,21 @@ function Bar({
 
 export function DriftView({
   data,
+  full,
   kind,
 }: {
   data: DriftData;
+  /**
+   * The UNRESTRICTED data, for colour only. `restrictDrift` filters `series`,
+   * so a series' position in `data.series` is a property of the beat rather
+   * than of the puzzle. See `declaredColors`.
+   */
+  full: DriftData;
   kind: "atfirst" | "overtime";
 }) {
   const t = useT();
   const scale = maxExcursion(data);
+  const colorOf = declaredColors(full.series);
   const shown =
     kind === "atfirst" ? data.checkpoints.slice(0, 1) : data.checkpoints;
 
@@ -69,7 +77,7 @@ export function DriftView({
             <p className="font-sans text-[10px] uppercase tracking-eyebrow text-ink-soft">
               {t(c.label)}
             </p>
-            {data.series.map((s, i) => {
+            {data.series.map((s) => {
               const point = seriesPoints(data, s.id).find(
                 (p) => p.checkpointId === c.id,
               );
@@ -79,7 +87,7 @@ export function DriftView({
                   <span className="w-[38%] shrink-0 truncate text-[12px] leading-snug text-ink">
                     {t(s.short ?? s.label)}
                   </span>
-                  <Bar percent={point.percent} scale={scale} color={colorFor(i)} />
+                  <Bar percent={point.percent} scale={scale} color={colorOf(s.id)} />
                   <span className="w-11 shrink-0 text-right font-mono text-[11px] tabular-nums text-ink">
                     {point.percent > 0 ? "+" : ""}
                     {point.percent.toFixed(1)}

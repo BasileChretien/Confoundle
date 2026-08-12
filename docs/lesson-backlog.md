@@ -5253,3 +5253,77 @@ standard errors. `crossed` needs two crossed binary factors. The shape wanted is
 a run-in funnel (entered, suppressed, partial, failed) at the setup beat, with
 the randomised endpoint counts added at the reveal, which is a superset by
 construction in exactly the way the engine's contract wants.
+
+### 71. Reverse causality: the group that looks worst because being ill put them in it
+
+<!-- skill: reverse-causality -->
+
+**Status: LEAD, SOURCED BUT BLOCKED ON THE TABLES.** Found 2026-08-12 by the
+same method as entry 70, auditing the deck against the US outline rather than
+against this queue. "Reverse causality" is printed on that outline and the
+registry has no card for it.
+
+**The adjacency was checked by opening the card, not by reading a row, and it
+holds.** `correlation-not-causation` is the chocolate and Nobel prizes card
+(`chocolate-nobel`), and its reveal is a COMMON CAUSE: its takeaway is that "a
+third thing is quietly driving both", and national wealth is that third thing.
+Reverse causality names the arrow running the other way, which is a different
+reveal on a different structure. The chocolate card's `howItWorks` does list
+"the causation runs the other way" as one of four explanations of a
+correlation, but a mechanism named inside another card's prose is not a card,
+by the same standard entry 66 applied to performance bias.
+
+**The canonical source, and why it is the right one structurally.** Shaper AG,
+Wannamethee G, Walker M. Alcohol and mortality in British men: explaining the
+U-shaped curve. Lancet 1988;332(8623):1267-1273. PMID 2904004, doi
+10.1016/S0140-6736(88)92890-5. British Regional Heart Study, 7,735 middle-aged
+men from general practices in 24 British towns, 504 deaths in 7.5 years.
+
+The sick quitter effect is the cleanest reverse causality there is, and it has
+the shape this deck wants. Conventional analyses put lifelong teetotallers and
+ex-drinkers together as "non-drinkers" and that combined group has the worst
+mortality, which reads as though not drinking is bad for you. Split the group
+and the excess sits with the ex-drinkers, who stopped because they were already
+ill. The setup and the reveal are then the same men, partitioned two ways.
+
+**The companion paper is arguably the better source and says the finding
+outright.** Wannamethee G, Shaper AG. Men who do not drink: a report from the
+British Regional Heart Study. Int J Epidemiol 1988;17(2):307-316, doi
+10.1093/ije/17.2.307. Its abstract, read at the publisher, states that
+ex-drinkers have the highest percentage of men with multiple doctor-diagnosed
+disorders, the highest prevalence of angina, of myocardial infarction on
+electrocardiogram and on questionnaire, of recalled ischaemic heart disease,
+and the highest proportion who consider their own health poor. It closes by
+saying the general category of non-drinkers "should not be used as a baseline
+against which to measure the effects of alcohol consumption".
+
+**WHY THIS IS NOT SHIPPED, WHICH IS THE POINT OF THIS ENTRY.** Neither paper's
+tables could be read. The Lancet paper is behind institutional access and
+ScienceDirect grants it, but serves the 1988 article as a scan whose body and
+tables are not in the HTML; only the abstract and the reference list extract.
+Oxford Academic says of the IJE paper, in as many words, that the content is
+available only as a PDF. So every number that would go on the card is currently
+an abstract number, and this project does not build on abstracts. What is
+needed is either PDF for the counts by drinking category, at which point the
+arithmetic can be reconciled and the card built.
+
+**A judgement call to make before building, which is deliberately left open.**
+Alcohol and mortality is live contested science, and this document has rejected
+sources for exactly that reason. The defence is that the card would teach the
+METHOD and not the substance: Shaper's finding is the correction rather than
+the claim, and nothing on the card would need to say whether a drink helps or
+harms. The risk is that the topic invites the reader to that question anyway,
+which is a distraction from the lesson at best. If that risk is judged too
+high, the same structure exists in less charged places and the next search
+should target them: mortality among EX-SMOKERS exceeding that among current
+smokers, which is the identical sick-quitter shape and which nobody will
+misread as an argument for smoking; weight loss preceding a dementia diagnosis
+by years; and a biomarker falling because of preclinical disease.
+
+**No shape work has been done and none should be assumed.** A first look
+suggests the reveal is a SPLIT rather than a filter, which the engine does not
+currently do: `restrict*` functions hide ids, and here the setup needs two
+categories drawn as one bar and the reveal needs them drawn apart. That is
+either a new shape or a modelling trick with `rates` aggregate against
+stratified, and which one should be decided with the real numbers in hand
+rather than now.

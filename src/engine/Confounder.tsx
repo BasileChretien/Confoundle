@@ -61,6 +61,7 @@ export function pickQuip(s: ConfounderState): Quip {
  * otherwise icon-free interface.
  */
 export function ConfounderMark({ size = 72 }: { size?: number }) {
+  const t = useT();
   const teal = colorFor(0);
   const rust = colorFor(1);
   return (
@@ -69,7 +70,14 @@ export function ConfounderMark({ size = 72 }: { size?: number }) {
       height={size}
       viewBox="0 0 72 72"
       role="img"
-      aria-label="The Confounder"
+      // The creature's name, not a description of the drawing, and it goes
+      // through `UI.confounderName` rather than being written in English here.
+      // The name is already translated in all ten locales and already shown
+      // translated in the label beside this mark, so leaving the accessible
+      // name in English would not have protected a brand: it would only have
+      // told a screen reader something different from what the sighted reader
+      // was being told two centimetres away.
+      aria-label={t(UI.confounderName)}
       style={{ display: "block", flexShrink: 0 }}
     >
       {/* the two ascending bars of the brand motif, for it to hide among */}

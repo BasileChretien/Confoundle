@@ -4316,7 +4316,24 @@ people running the programme, and its finding is unflattering to them.
 
 <!-- skill: performance-bias -->
 
-**Status: LEAD, SEARCHED AND NOT SHIPPABLE YET.** Recorded so the next session
+**Status: SHIPPED 2026-08-12** as `told-and-given`, skill `performance-bias`, on
+a NEW shape, `crossed`, built on Hurst 2019 by way of route 8. **Everything
+below is kept in full rather than trimmed**, because this entry is now the most
+complete worked example the project has of a lead that resisted nine routes, and
+the failures are the useful part. The route 8 sections at the end are where the
+answer is; routes 1 to 7 record what does not work and why.
+
+**What unlocked it, in one sentence, since that is the transferable part.**
+Routes 1 to 6 all hunted for a TRIAL in which performance bias had gone wrong,
+and all died on one point: a trial built well enough to isolate the bias is
+built well enough to prevent it. Entry 68 supplied the way out. Stop looking
+among trials, and look for a laboratory manipulation whose PURPOSE is to install
+the bias, because installing it and preventing it are then not the same act. A
+balanced placebo design does exactly that on the participant side, by crossing
+what a person is told against what they are given.
+
+**The original status, kept because everything below was written under it:**
+LEAD, SEARCHED AND NOT SHIPPABLE YET. Recorded so the next session
 does not repeat the search or the adjacency checks. The lead itself, in the
 unnumbered rang A list above, is accurate and survives: this entry adds what
 happened when somebody tried to source it.
@@ -4737,7 +4754,15 @@ and not the intervals, which do not. Second, the treatment main effect is
 reported as F(4, 160) where a five-condition repeated-measures design on eleven
 participants gives 40 error degrees of freedom; 160 is the interaction error df.
 
-**Status of the route: SOURCE READ, CARD SPECIFIED, BUILD PENDING**, and the
+**Status of the route: SHIPPED 2026-08-12** as `told-and-given`, on the new
+`crossed` shape. The specification below was written before the build and is
+left as it stands, because it turned out to be what got built: setup on the
+diagonal, commit beat asking how the four seconds divide, reveal adding the two
+deception cells. The one thing the build added was the third answer band, which
+is wrong in the OTHER direction, claiming the study shows caffeine does nothing;
+the paper never established that PC beat PP or baseline, and converting a null
+in eleven runners into an absence would be the `statistical-power` error in
+reverse. What follows is the original specification, and the
 build is a session's work rather than an afternoon's because it needs a new
 shape. The design, so the next session does not re-derive it:
 

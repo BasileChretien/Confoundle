@@ -42,6 +42,8 @@ import { YieldView } from "./YieldView";
 import { restrictYield } from "./yield";
 import { UnseenView } from "./UnseenView";
 import { DeliveredView } from "./DeliveredView";
+import { CrossedView } from "./CrossedView";
+import { restrictCrossed } from "./crossed";
 import { restrictSeries } from "./series";
 
 /**
@@ -253,6 +255,13 @@ export function DataViewRenderer({
       return view.kind === "asmeasured" || view.kind === "asdelivered" ? (
         <DeliveredView data={data} kind={view.kind} />
       ) : null;
+    case "crossed":
+      // A slice-drawer, and the slice is the point: the setup names the two
+      // cells of the confounded diagonal and the reveal omits groupIds, so the
+      // reveal adds the two that vary one factor at a time.
+      return view.kind === "astested" || view.kind === "allfourways" ? (
+        <CrossedView data={restrictCrossed(data, { groupIds: view.groupIds })} kind={view.kind} />
+      ) : null;
     default:
       return null;
   }
@@ -397,6 +406,10 @@ export function scopeLabel(kind: DataViewKind): string {
       return "What each group reported";
     case "asdelivered":
       return "And what each was actually given";
+    case "astested":
+      return "The comparison the trial made";
+    case "allfourways":
+      return "And the two nobody was told about";
     default:
       return "";
   }

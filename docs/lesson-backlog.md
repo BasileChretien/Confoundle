@@ -4578,6 +4578,85 @@ figure this lesson wants: the outcome by arm, then the co-intervention count by
 arm. So the build cost has dropped from "new shape plus card" to "card", and the
 next person to find the trial has less to do than this entry assumes.
 
+**ROUTE 8 FOLLOWED UP 2026-08-07 AND IT IS REACHABLE AFTER ALL. It is still not
+shippable, and the reason has changed from access to evidence, which is the
+useful part.**
+
+The note above closed route 8 as "failed on keywords, and the sport and exercise
+placebo literature is the obvious place it would live, which was not reached
+from Europe PMC's biomedical index". Both halves were right. The literature is
+there, Europe PMC does index it, and the way in is not a keyword but an index
+that names individual studies, exactly as the sixth-route note predicted for
+Cochrane tables.
+
+**The index that works.** Szabo A et al., *Placebo and Nocebo Effects on Sports
+and Exercise Performance: A Systematic Literature Review Update*, Nutrients
+2024, `PMC11243088`, open access, read at source. It covers 20 studies and 535
+participants published 2019 to May 2024 and, crucially, describes each one by
+name with its design and effect size, which is what turns a literature into a
+list of candidates.
+
+**The two candidates it names, both of them the participant-side manipulation
+this route was looking for.**
+
+1. Hurst P, Schipof-Godart L, Hettinga F, Roelands B, Beedie C. *Improved
+   1000-m running performance and pacing strategy with caffeine and placebo: a
+   balanced placebo design study.* Int J Sports Physiol Perform 2019;15:483-488.
+   DOI `10.1123/ijspp.2019-0230`, PMID 31575826. A true 2x2 of what you were
+   TOLD against what you were GIVEN. From the abstract, relative to baseline:
+   informed caffeine / received caffeine d = 0.42, informed caffeine / received
+   placebo d = 0.43, informed placebo / received caffeine d = 0.21, informed
+   placebo / received placebo d = 0.10. The told dimension carries it and the
+   given dimension does not, on an objective 1000-m time trial with splits.
+
+2. Davies MJ, Clark B, Garvican-Lewis LA, Welvaert M, Gore CJ, Thompson KG.
+   *The potential to change pacing and performance during 4000-m cycling time
+   trials using hyperoxia and inspired gas-content deception.* Int J Sports
+   Physiol Perform 2019. DOI `10.1123/ijspp.2018-0335`, PMID 30676139.
+   Participants told they were breathing oxygen-enriched air produced more power
+   when they were in fact breathing ordinary air.
+
+**Neither can be read at source from here, and this is the point at which to
+ask for institutional access rather than to guess.** Davies is not open access
+at all. Unpaywall has exactly one location for Hurst, a SUBMITTED version in the
+Northumbria repository, on a host that does not resolve from this environment;
+a submitted version is in any case not the published one and could differ from
+it. **Nothing above the abstract line has been read for either paper, and no
+card may be built on that.**
+
+**The evidential problem, which access would not fix.** Two things sit against
+this route and both were found while checking it, so neither should be
+rediscovered later at more cost.
+
+- **n = 11.** Hurst is eleven well-trained middle-distance runners. The deck
+  ships `statistical-power` precisely to teach that a study this size cannot
+  settle a question of magnitude, and a card asserting "belief moved performance
+  as much as the drug" on eleven people would be contradicting its own deck.
+  The comparison is also between effect sizes against baseline rather than an
+  interaction test, so the headline is a description of four numbers and not a
+  result about their difference.
+- **A same-design study finds the opposite.** Soares EMKVK et al., *Caffeine
+  supplementation increases muscle strength, but not endurance, while both
+  caffeine and its expectation elevate blood lactate: a balanced-placebo design
+  study*, Nutrients 2026, `PMC12986729`, open access. Same 2x2, n = 16, caffeine
+  5 mg/kg. Caffeine raised strength; **no placebo effect was observed in
+  strength or endurance at all**, though expectancy did raise blood lactate. So
+  within one design family and a few years, the expectancy channel appears on
+  running and vanishes on strength.
+
+The review itself points the same way when read rather than quoted: its pooled
+placebo effect of d = 0.67 is, in its own words, driven by six studies at
+d >= 1.0, and it records high heterogeneity attributed to the agent, the
+performance measure, the population and the setting.
+
+**So the honest position on route 8.** It is open, indexed, and has named
+candidates, which is further than any other route in this entry has reached.
+What it does not yet have is a study large enough and consistent enough for a
+card that would survive the deck's own `statistical-power` lesson. The next
+step is to read Hurst and Davies in full through institutional access and see
+whether either prints per-condition times rather than effect sizes; if they do
+not, the route needs a larger balanced-placebo study rather than these two.
+
 ### 67. Route 2, the meta-analytic reversal: REFUSED 2026-08-07 on the source the check was designed to catch
 
 <!-- skill: replication-failure -->

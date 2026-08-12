@@ -1375,6 +1375,50 @@ function UnseenGlyph() {
   );
 }
 
+function CrossedGlyph() {
+  const W = 200;
+  const H = 96;
+  /**
+   * Two rows on one axis, one per level of the told factor. The gold pair are
+   * the two points the setup drew, far apart. The teal pair are the two the
+   * reveal added, and the whole card is that the top two sit on top of each
+   * other: moving the other factor, with the told factor held still, went
+   * almost nowhere. The dashed line is the baseline both rows are read against.
+   */
+  const rows = [
+    { y: 34, pts: [{ x: 62, gold: true }, { x: 58, gold: false }], label: "told yes" },
+    { y: 72, pts: [{ x: 118, gold: false }, { x: 158, gold: true }], label: "told no" },
+  ];
+  return (
+    <svg
+      viewBox={`0 0 ${W} ${H}`}
+      width="100%"
+      role="img"
+      aria-label="Two rows of points on a shared axis: in the first row the two points sit almost on top of each other, in the second they are far apart"
+    >
+      <line x1={148} y1={14} x2={148} y2={88} stroke={CARD.muted} strokeWidth={1} strokeDasharray="3 3" />
+      {rows.map((r) => (
+        <g key={r.y}>
+          <text x={10} y={r.y - 10} fontSize={8} fill={CARD.muted}>
+            {r.label}
+          </text>
+          <line x1={10} y1={r.y} x2={190} y2={r.y} stroke={CARD.muted} strokeWidth={0.5} opacity={0.5} />
+          {r.pts.map((p, i) => (
+            <circle
+              key={i}
+              cx={p.x}
+              cy={r.y}
+              r={5}
+              fill={p.gold ? CARD.gold : CARD.teal}
+              opacity={0.85}
+            />
+          ))}
+        </g>
+      ))}
+    </svg>
+  );
+}
+
 function DeliveredGlyph() {
   const W = 200;
   const H = 96;
@@ -1916,6 +1960,7 @@ export function ShareCard({
   const yieldGlyph = data.type === "yield";
   const unseenGlyph = data.type === "unseen";
   const deliveredGlyph = data.type === "delivered";
+  const crossedGlyph = data.type === "crossed";
   const splitSampleGlyph =
     data.type === "rates" &&
     Boolean(data.strataAreSeparateSamples) &&
@@ -2047,6 +2092,8 @@ export function ShareCard({
             <UnseenGlyph />
           ) : deliveredGlyph ? (
             <DeliveredGlyph />
+          ) : crossedGlyph ? (
+            <CrossedGlyph />
           ) : null}
 
           <p className="mt-4 font-display text-[17px] font-medium leading-snug">

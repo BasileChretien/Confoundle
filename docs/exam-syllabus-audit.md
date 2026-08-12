@@ -337,7 +337,7 @@ consensus only · **X** absent from official documents.
 | Publication bias <!-- skill: publication-bias --> | E | A(body) | O | X | **shipped this session** |
 | Base rate / predictive value vs prevalence <!-- skill: base-rate-fallacy --> | **E every year** | A | O | X | shipped |
 | Relative vs absolute risk, NNT <!-- skill: relative-vs-absolute-risk --> | A (x2) | A | O | X | shipped |
-| Blinding: performance + detection bias | X | **A** | O | X | **shipped** (detection; Brandstrup 2003) |
+| Blinding: performance + detection bias <!-- skill: performance-bias --> | X | **A** | O | X | **BOTH HALVES NOW SHIPPED.** Detection since Brandstrup 2003 as `who-graded-it`, the assessment channel. Performance **SHIPPED 2026-08-12** as `told-and-given` (Hurst 2019, balanced placebo design) on the new `crossed` shape, the behaviour channel. The two are genuinely different rows of a risk-of-bias table and the deck now separates them: detection is the observer's belief changing the SCORE, performance is the participant's own knowledge changing what they DO. See backlog entry 66, which records the nine routes this took |
 | Allocation concealment <!-- skill: allocation-concealment --> | X | **A** | O | X | **shipped** (PHANTASi 2018) |
 | Effect modification vs confounding <!-- skill: effect-modification-vs-confounding --> | X | B | X | X | **shipped** (Choi 2021) |
 | Confounding by indication <!-- skill: confounding-by-indication --> | X | B | T | X | shipped |

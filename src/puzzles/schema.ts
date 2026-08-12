@@ -2587,6 +2587,184 @@ const DeliveredData = z
   });
 export type DeliveredData = z.infer<typeof DeliveredData>;
 
+/* ---------------------------------------------------------------------------
+ * One continuous outcome measured under two crossed binary factors.
+ *
+ * Needed because the lessons about a CONFOUNDED COMPARISON, where two things
+ * were varied together and the result is credited to only one of them, have no
+ * shape here. Every existing shape draws one factor. `delivered` gets closest
+ * and cannot do it: it requires at least one tier whose two arms received the
+ * same exposure, which is exactly what a fully crossed design never has, so a
+ * 2x2 fails its schema by construction rather than by accident.
+ *
+ * `interaction` is not it either, despite the name. That shape is built for
+ * odds ratios, with a crude row, an adjusted row and a no-effect line at one.
+ * This is four cell means on a shared continuous axis.
+ *
+ * THE SETUP DRAWS A DIAGONAL. Two cells that differ in BOTH factors at once
+ * are exactly what an uncontrolled comparison looks like, and drawing only
+ * those two is drawing the confound. The reveal adds the other two, which vary
+ * one factor at a time and so split the gap into its parts. Nothing moves; two
+ * points arrive. Cells are filterable by id, so the restriction is data rather
+ * than a special case in the renderer.
+ *
+ * Drawn as points on a shared axis rather than bars, deliberately. The
+ * outcomes this shape suits are things like times and scores, whose interesting
+ * range sits far from zero, and a bar chart on an axis that starts at 165
+ * seconds is the exact figure `misleading-axis` exists to teach against. Points
+ * on a labelled axis carry a truncated range honestly; bars do not.
+ * ------------------------------------------------------------------------- */
+
+export const CrossedLevel = z.object({
+  id: z.string().min(1),
+  label: LocalizedText, // "Told caffeine"
+  short: LocalizedText.optional(),
+});
+export type CrossedLevel = z.infer<typeof CrossedLevel>;
+
+export const CrossedCell = z.object({
+  id: z.string().min(1),
+  /** Which level of the first factor this cell sits in. */
+  aId: z.string().min(1),
+  /** And of the second. */
+  bId: z.string().min(1),
+  mean: z.number(),
+  n: z.number().int().positive(),
+  /** What the source says about this cell, printed under it. */
+  note: LocalizedText.optional(),
+});
+export type CrossedCell = z.infer<typeof CrossedCell>;
+
+const CrossedData = z
+  .object({
+    type: z.literal("crossed"),
+    label: LocalizedText,
+    metricLabel: LocalizedText,
+    /**
+     * The axis. `min` and `max` are almost never 0 and the maximum possible
+     * value for this shape, so both labels must name their number outright:
+     * a reader has to be able to see that the axis is a window.
+     */
+    scale: z.object({
+      min: z.number(),
+      max: z.number(),
+      minLabel: LocalizedText,
+      maxLabel: LocalizedText,
+    }),
+    /** True when a smaller number is a better result, as with a race time. */
+    lowerIsBetter: z.boolean(),
+    factorALabel: LocalizedText, // "What they were told"
+    factorBLabel: LocalizedText, // "What they were actually given"
+    aLevels: z.array(CrossedLevel).length(2),
+    bLevels: z.array(CrossedLevel).length(2),
+    cells: z.array(CrossedCell).length(4),
+    /**
+     * An optional comparator drawn as a line rather than a point, for the
+     * source's own baseline. Not a fifth cell: it belongs to neither factor.
+     */
+    reference: z
+      .object({ label: LocalizedText, mean: z.number(), note: LocalizedText.optional() })
+      .optional(),
+  })
+  .superRefine((d, ctx) => {
+    if (d.scale.max <= d.scale.min)
+      ctx.addIssue({
+        code: "custom",
+        path: ["scale", "max"],
+        message: "scale max must be above scale min",
+      });
+
+    const aIds = new Set(d.aLevels.map((l) => l.id));
+    const bIds = new Set(d.bLevels.map((l) => l.id));
+    if (aIds.size !== 2)
+      ctx.addIssue({ code: "custom", path: ["aLevels"], message: "duplicate level id" });
+    if (bIds.size !== 2)
+      ctx.addIssue({ code: "custom", path: ["bLevels"], message: "duplicate level id" });
+
+    const cellIds = new Set(d.cells.map((c) => c.id));
+    if (cellIds.size !== d.cells.length)
+      ctx.addIssue({ code: "custom", path: ["cells"], message: "duplicate cell id" });
+
+    const seen = new Set<string>();
+    d.cells.forEach((c, i) => {
+      if (!aIds.has(c.aId))
+        ctx.addIssue({
+          code: "custom",
+          path: ["cells", i, "aId"],
+          message: `no level with id ${c.aId} on the first factor`,
+        });
+      if (!bIds.has(c.bId))
+        ctx.addIssue({
+          code: "custom",
+          path: ["cells", i, "bId"],
+          message: `no level with id ${c.bId} on the second factor`,
+        });
+      const key = `${c.aId}|${c.bId}`;
+      if (seen.has(key))
+        ctx.addIssue({
+          code: "custom",
+          path: ["cells", i],
+          message: `two cells for ${c.aId} with ${c.bId}`,
+        });
+      seen.add(key);
+      if (c.mean < d.scale.min || c.mean > d.scale.max)
+        ctx.addIssue({
+          code: "custom",
+          path: ["cells", i, "mean"],
+          message: `mean ${c.mean} is outside the ${d.scale.min} to ${d.scale.max} scale`,
+        });
+    });
+
+    // A crossed design has all four combinations by definition. A missing one
+    // makes it something else, and the shape would be drawing a claim about a
+    // design that was never run.
+    for (const a of aIds)
+      for (const b of bIds)
+        if (!seen.has(`${a}|${b}`))
+          ctx.addIssue({
+            code: "custom",
+            path: ["cells"],
+            message: `no cell for ${a} with ${b}, so this is not a crossed design`,
+          });
+
+    if (d.reference && (d.reference.mean < d.scale.min || d.reference.mean > d.scale.max))
+      ctx.addIssue({
+        code: "custom",
+        path: ["reference", "mean"],
+        message: `reference ${d.reference.mean} is outside the ${d.scale.min} to ${d.scale.max} scale`,
+      });
+
+    // And the check this shape exists for. The figure has to contain both a
+    // visible gap and a near-tie, because the reveal IS the near-tie: it is
+    // the pair that shows one of the two factors doing almost nothing. Four
+    // cells spread evenly have no reveal, and four cells on top of each other
+    // have no setup. Ten to one is a wide bar that a real figure clears
+    // easily; it exists to catch a data file that has drifted, not to grade
+    // the finding.
+    if (d.cells.length === 4) {
+      const gaps: number[] = [];
+      for (let i = 0; i < d.cells.length; i++)
+        for (let j = i + 1; j < d.cells.length; j++)
+          gaps.push(Math.abs(d.cells[i]!.mean - d.cells[j]!.mean));
+      const widest = Math.max(...gaps);
+      const narrowest = Math.min(...gaps);
+      if (widest === 0)
+        ctx.addIssue({
+          code: "custom",
+          path: ["cells"],
+          message: "all four cells are equal, so the figure shows nothing at either beat",
+        });
+      else if (narrowest * 10 > widest)
+        ctx.addIssue({
+          code: "custom",
+          path: ["cells"],
+          message:
+            "the closest pair of cells is not close relative to the widest, so no pair shows a factor doing almost nothing and the reveal has nothing to land",
+        });
+    }
+  });
+export type CrossedData = z.infer<typeof CrossedData>;
+
 export const PuzzleData = z.discriminatedUnion("type", [
   RatesData,
   FrequenciesData,
@@ -2617,6 +2795,7 @@ export const PuzzleData = z.discriminatedUnion("type", [
   YieldData,
   UnseenData,
   DeliveredData,
+  CrossedData,
 ]);
 export type PuzzleData = z.infer<typeof PuzzleData>;
 
@@ -2697,6 +2876,8 @@ export const DataView = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("afterlooking"), ...viewFields }),
   z.object({ kind: z.literal("asmeasured"), ...viewFields }),
   z.object({ kind: z.literal("asdelivered"), ...viewFields }),
+  z.object({ kind: z.literal("astested"), ...viewFields }),
+  z.object({ kind: z.literal("allfourways"), ...viewFields }),
 ]);
 export type DataView = z.infer<typeof DataView>;
 export type DataViewKind = DataView["kind"];
@@ -3026,6 +3207,15 @@ export const Puzzle = z
           return {
             groups: new Set(d.steps.map((s) => s.id)),
             groupWord: "step",
+            strata: null,
+            strataWord: "",
+          };
+        case "crossed":
+          // The setup names the two cells of the confounded diagonal and the
+          // reveal omits groupIds, so the reveal is a superset by construction.
+          return {
+            groups: new Set(d.cells.map((c) => c.id)),
+            groupWord: "cell",
             strata: null,
             strataWord: "",
           };

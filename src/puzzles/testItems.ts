@@ -9280,6 +9280,148 @@ const items: TestItem[] = [
       en: "The scores were kept from everyone who could have acted on them, so they had no route to the marks except through whatever the test measures. That is what makes this a prediction rather than a self-fulfilling one.",
     },
   },
+
+  // ---- Performance bias: the participants knew which arm they were in ----
+  {
+    id: "pb-walk-test",
+    scenario: {
+      en: "A rehabilitation programme was tested against usual care. Patients obviously knew which one they had been assigned. The six-minute walk distance at the end was measured by an assessor who was kept blind to the assignment, and the programme group walked further.",
+    },
+    trap: "performance-bias",
+    explanation: {
+      en: "Blinding the assessor protects the measuring, not the doing. Patients who knew they were in the programme had months to train harder and turn up more often, and the walk test reflects that as much as the programme's content.",
+    },
+  },
+  {
+    id: "pb-supplement-training",
+    scenario: {
+      en: "Athletes were randomised to a new supplement or to nothing, and were told which they had been given. Over the season the supplement group logged more training hours and finished with better times.",
+    },
+    trap: "performance-bias",
+    explanation: {
+      en: "The supplement group trained more, and that alone could produce the better times. Knowing you are on the promising arm changes what you do for the rest of the study, so the comparison is the supplement plus the extra training.",
+    },
+  },
+  {
+    id: "pb-waiting-list",
+    scenario: {
+      en: "A therapy was compared against a waiting list. People on the waiting list knew they would not be seen for six months. At three months the therapy group reported better mood.",
+    },
+    trap: "performance-bias",
+    explanation: {
+      en: "Being told you have six months to wait is itself a condition, and a discouraging one. A waiting list does not hold everything else constant; it changes what people expect and what else they try, so the gap is therapy against being made to wait.",
+    },
+  },
+  {
+    id: "pb-control-sought-help",
+    scenario: {
+      en: "In an open trial of a weight-management programme, the comparison group was told they had not been selected for it. By the end, a third of them had joined a commercial slimming club on their own, and the difference between the groups was smaller than expected.",
+    },
+    trap: "performance-bias",
+    explanation: {
+      en: "The comparison group knew what they were missing and went and found their own version of it. That narrows the measured difference, so the trial understates the programme rather than overstating it, and the number it reports is not the programme against nothing.",
+    },
+  },
+  {
+    id: "pb-dropout-control",
+    scenario: {
+      en: "An unblinded trial of a new inhaler reported that the standard-care arm had three times the drop-out rate. The analysis compared everyone who finished, and the new inhaler came out ahead.",
+    },
+    trap: "performance-bias",
+    explanation: {
+      en: "People who knew they had drawn the standard arm left, and who leaves is not random. Analysing only finishers compares a self-selected remnant of one arm with most of the other, and knowing the allocation is what drove the leaving.",
+    },
+  },
+  {
+    id: "pb-knee-brace",
+    scenario: {
+      en: "Patients with knee pain were randomised to a brace or to advice alone. Those given advice alone were visibly disappointed. Three months later the brace group had better pain scores and had done more of the prescribed exercises.",
+    },
+    trap: "performance-bias",
+    explanation: {
+      en: "The brace group did more exercise, which is a treatment in itself and not part of what was randomised. Disappointment in the other arm works the same way in reverse, and neither is separable from the brace in this comparison.",
+    },
+  },
+  {
+    id: "pb-cycling-power",
+    scenario: {
+      en: "Cyclists were told they were receiving a legal performance aid before a time trial, and their average power output rose by four percent. The power meter is objective and was calibrated before every ride.",
+    },
+    trap: "performance-bias",
+    explanation: {
+      en: "An objective instrument measures the effort faithfully, and the effort is exactly what changed. Objectivity protects against a biased reading of the outcome, not against the participant doing something different because of what they were told.",
+    },
+  },
+  {
+    id: "pb-diet-vitamin",
+    scenario: {
+      en: "Volunteers were randomised to a vitamin or to no vitamin, and were told which. At the end, the vitamin group reported better health. They had also, on their own initiative, improved their diets more than the other group.",
+    },
+    trap: "performance-bias",
+    explanation: {
+      en: "Being put on the health-promoting arm made people do other healthy things, and those things affect the outcome too. The trial measures the vitamin bundled with everything else the assignment set off.",
+    },
+  },
+  {
+    id: "pb-school-tablets",
+    scenario: {
+      en: "Half of a year group was given tablets for maths lessons and half kept workbooks. Everyone knew which class had the tablets. The tablet classes did better on the end-of-year test, and their teachers had also stayed late more often to prepare.",
+    },
+    trap: "performance-bias",
+    explanation: {
+      en: "The extra preparation is part of what the tablet classes received, and it was not what was randomised. When one arm knows it is the interesting one, the effort that follows travels with the intervention and cannot be separated from it here.",
+    },
+  },
+  {
+    id: "pb-adherence-gap",
+    scenario: {
+      en: "An open-label trial of two blood pressure drugs found the newer one worked better. Pill counts showed patients on the newer drug took 92 percent of their doses and those on the older one took 68 percent.",
+    },
+    trap: "performance-bias",
+    explanation: {
+      en: "The two arms did not take their tablets equally, and knowing which drug you were on is the obvious reason. Some of the newer drug's advantage is simply that more of it was swallowed, which a blinded trial would have held level.",
+    },
+  },
+  {
+    id: "pb-sound-identical-capsules",
+    scenario: {
+      en: "In a trial of a new painkiller, the active and dummy capsules were identical in look, taste and weight, and at the end participants were asked which they thought they had received. Their guesses were no better than chance. The painkiller arm reported less pain.",
+    },
+    trap: null,
+    explanation: {
+      en: "The blinding was not only claimed, it was checked, and it held. If participants could not tell which arm they were in, then knowing the arm cannot be what changed their behaviour or their reports.",
+    },
+  },
+  {
+    id: "pb-sound-crossed-design",
+    scenario: {
+      en: "Researchers ran four conditions: told the drug and given it, told the drug and given a dummy, told a dummy and given the drug, and told a dummy and given a dummy. They reported all four separately.",
+    },
+    trap: null,
+    explanation: {
+      en: "Crossing what people are told against what they are given is precisely how you separate the two. Every comparison here moves one thing at a time, so the design answers the question that an open-label trial cannot.",
+    },
+  },
+  {
+    id: "pb-sound-fracture-endpoint",
+    scenario: {
+      en: "An unblinded trial of a fall-prevention programme could not disguise which participants were doing the classes. Its primary outcome was hip fracture, taken from hospital admission records.",
+    },
+    trap: null,
+    explanation: {
+      en: "Hip fracture recorded in admission data is not something a participant's enthusiasm can produce or suppress in the way a symptom score is. The outcome was chosen to sit beyond the reach of the thing that could not be blinded.",
+    },
+  },
+  {
+    id: "pb-sound-adherence-equal",
+    scenario: {
+      en: "An open-label trial reported adherence by arm: 89 percent in the treatment group and 87 percent in the control group, with drop-out of 6 and 7 percent. The treatment arm did better on the primary outcome.",
+    },
+    trap: null,
+    explanation: {
+      en: "The trial measured the thing that would have gone wrong and reported it, and the two arms behaved almost identically. Knowing the allocation did not translate into doing anything different, which is what the numbers are there to show.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

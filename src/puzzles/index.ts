@@ -66,6 +66,7 @@ import { shelfLife } from "./data/shelf-life";
 import { overdiagnosis } from "./data/overdiagnosis";
 import { attrition } from "./data/attrition";
 import { pygmalion } from "./data/pygmalion";
+import { performanceBias } from "./data/performance-bias";
 
 /**
  * The puzzle registry. Adding a puzzle = import its data file and add it to
@@ -140,6 +141,7 @@ const rawPuzzles: unknown[] = [
   overdiagnosis,
   attrition,
   pygmalion,
+  performanceBias,
 ];
 
 export const puzzles: PuzzleType[] = rawPuzzles.map((p, i) => {

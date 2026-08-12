@@ -1,5 +1,6 @@
 import type { CausalData, DataViewKind } from "../../puzzles/schema";
 import { useT } from "../../app/i18n";
+import { fillSlots } from "./announce";
 
 const TEAL = "#0E8C7A";
 const RULE = "#D6C9AE";
@@ -28,7 +29,10 @@ function TrendView({ data }: { data: CausalData }) {
         viewBox="0 0 290 116"
         width="100%"
         role="img"
-        aria-label={`${t(data.cause)} and ${t(data.effect)} rise together`}
+        aria-label={fillSlots(t({ en: "{cause} and {effect} rise together" }), {
+          cause: t(data.cause),
+          effect: t(data.effect),
+        })}
         className="block"
       >
         <line x1="6" y1="6" x2="6" y2="108" stroke={RULE} strokeWidth="1.5" />

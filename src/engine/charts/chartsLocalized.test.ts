@@ -143,30 +143,29 @@ function sweep(
 }
 
 /**
- * The aria-labels that are still English, frozen so they cannot spread.
+ * The aria-labels that are still English. It is empty, and it stays a list.
  *
- * Every one of them is built by concatenation at the call site, as
- * `` `${t(data.cause)} and ${t(data.effect)} rise together` ``. That is a
- * harder fix than a bare string, not a lazier one: each needs redrafting as a
- * single translatable sentence with `{slot}` placeholders, because the clause
- * order it assumes does not hold in Japanese, Hindi or Arabic, and then nine
- * translations apiece. It is a separate piece of work, sized in the pull
- * request that added this file, and it is real: these are what a screen reader
- * announces for the figure, so a blind player in any of these six languages is
- * read English.
+ * It began at eighteen. Every one was built by concatenation at the call site,
+ * as `` `${t(data.cause)} and ${t(data.effect)} rise together` ``, which is one
+ * English sentence with its holes where ENGLISH puts them: no translator ever
+ * saw it, so a screen reader announced English in all ten locales while the
+ * figure beside it was fully translated. Each was redrafted as a single
+ * translatable sentence carrying `{slot}` placeholders, so that clause order
+ * became the translator's to choose, and then translated nine times.
  *
- * This list is a ratchet, not an exemption. The test below fails if a shape
- * that is not on it starts announcing English, AND if a shape on it stops:
- * fixing one means deleting its line, and the list can only shrink.
+ * The list is kept rather than deleted along with the last entry, and the
+ * assertion below stays an equality against it rather than becoming a bare
+ * `toEqual([])`. The two read the same today and they fail differently
+ * tomorrow: an equality against a NAMED list says what the empty array means,
+ * which is that no chart may announce English rather than that none happens to.
+ * A future chart that regresses is then a failing diff against a documented
+ * floor instead of against an anonymous literal, and anyone tempted to quiet it
+ * has to add a line to a list whose comment says it may only shrink.
+ *
+ * So: it may only shrink, and it is at zero. A new entry here is not a
+ * deferral, it is a regression.
  */
-const ANNOUNCED_IN_ENGLISH = [
-  "causal/setup",
-  "distribution/reveal",
-  "effect/setup",
-  "regression/reveal",
-  "regression/setup",
-  "salience/reveal",
-];
+const ANNOUNCED_IN_ENGLISH: string[] = [];
 
 beforeAll(async () => {
   await Promise.all(NON_LATIN.map(loadDictionary));
@@ -189,6 +188,19 @@ describe("the puzzle's chart in a non-Latin language", () => {
     expect(english["unseen/reveal"]).toContain("to");
     expect(Object.keys(english).length).toBeGreaterThan(2);
     expect(GUTTED.length).toBeGreaterThan(40);
+
+    // The SAME proof for the other channel, and it is load-bearing now in a way
+    // it was not before. While `ANNOUNCED_IN_ENGLISH` had entries, the equality
+    // below asserted their presence and so proved by itself that `announcedText`
+    // was still finding aria-labels. At zero it no longer proves anything: if
+    // the extraction quietly broke, every locale would sweep up nothing and
+    // report clean. So require the announced channel to fire in English, where
+    // these sentences are correctly English, and name the shapes rather than
+    // counting them.
+    const announced = sweep("en", announcedText);
+    expect(announced["causal/setup"]).toContain("rise");
+    expect(announced["timeline/reveal"]).toContain("counted");
+    expect(Object.keys(announced).length).toBeGreaterThan(8);
   });
 
   it("strips the puzzles' own words before looking", () => {
@@ -211,12 +223,13 @@ describe("the puzzle's chart in a non-Latin language", () => {
       });
     });
 
-    it(`announces English on no chart beyond the known list in ${locale}`, () => {
+    it(`announces no English to a screen reader in ${locale}`, () => {
       const offenders = Object.keys(sweep(locale, announcedText)).sort();
-      // Equality rather than a subset check, in both directions on purpose: a
-      // new English aria-label fails, and so does a stale entry left behind
-      // after its chart was fixed. A list that may only shrink is the only
-      // kind that stays true.
+      // Equality against the named list rather than a subset check, in both
+      // directions on purpose: a new English aria-label fails, and so does a
+      // stale entry left behind after its chart was fixed. The list is empty
+      // now, and it is still named, because the failure should read as "this
+      // chart regressed" and not as "this literal changed".
       expect({ locale, offenders }).toEqual({
         locale,
         offenders: ANNOUNCED_IN_ENGLISH,

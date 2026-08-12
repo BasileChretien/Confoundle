@@ -6439,4 +6439,13 @@ export const hi: Record<string, string> = {
   "{track}: {onset} at {onsetwhen}, {detected} at {detectedwhen}, {died} at {diedwhen}": "{track}: {onset} {onsetwhen} पर, {detected} {detectedwhen} पर, {died} {diedwhen} पर",
   "World map in the {projection} projection": "{projection} प्रक्षेप में विश्व मानचित्र",
   "World map in the {projection} projection. {verdict}.": "{projection} प्रक्षेप में विश्व मानचित्र। {verdict}।",
+  // ---- chart announcements: the trend, the interval, the reversion and the spread ----
+  "{cause} and {effect} rise together": "{cause} और {effect} साथ साथ बढ़ते हैं",
+  "Interval from {low} to {high} {unit}, not touching no difference": "अंतराल {low} से {high} {unit} तक, अंतर न होने की रेखा तक पहुँचे बिना",
+  "Interval from {low} to {high} {unit}, crossing no difference": "अंतराल {low} से {high} {unit} तक, अंतर न होने की रेखा को पार करता हुआ",
+  "{group}: first {first}, against an average of {mean}.": "{group}: पहले {first}, जबकि औसत {mean} है।",
+  "{group}: first {first}, then {second}, against an average of {mean}.": "{group}: पहले {first}, फिर {second}, जबकि औसत {mean} है।",
+  "{group}: {below} below {mean}, {above} reached it": "{group}: {below} {mean} से नीचे, {above} {mean} तक पहुँचे",
+  "{optiona} {sharea}, {optionb} {shareb}": "{optiona} {sharea}, {optionb} {shareb}",
+  "{optiona} {sharea}, {optionb} {shareb}. {commoner} is {ratio} times commoner.": "{optiona} {sharea}, {optionb} {shareb}। असल में {commoner} {ratio} गुना अधिक आम है।",
 };

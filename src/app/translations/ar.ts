@@ -6401,4 +6401,13 @@ export const ar: Record<string, string> = {
   "{track}: {onset} at {onsetwhen}, {detected} at {detectedwhen}, {died} at {diedwhen}": "{track}: {onset} عند {onsetwhen}، {detected} عند {detectedwhen}، {died} عند {diedwhen}",
   "World map in the {projection} projection": "خريطة العالم بمسقط {projection}",
   "World map in the {projection} projection. {verdict}.": "خريطة العالم بمسقط {projection}. {verdict}.",
+  // ---- chart announcements: the trend, the interval, the reversion and the spread ----
+  "{cause} and {effect} rise together": "{cause} و{effect} يرتفعان معا",
+  "Interval from {low} to {high} {unit}, not touching no difference": "المجال من {low} إلى {high} {unit}، ولا يبلغ انعدام الفرق",
+  "Interval from {low} to {high} {unit}, crossing no difference": "المجال من {low} إلى {high} {unit}، وهو يعبر انعدام الفرق",
+  "{group}: first {first}, against an average of {mean}.": "{group}: أولا {first}، مقابل متوسط قدره {mean}.",
+  "{group}: first {first}, then {second}, against an average of {mean}.": "{group}: أولا {first}، ثم {second}، مقابل متوسط قدره {mean}.",
+  "{group}: {below} below {mean}, {above} reached it": "{group}: {below} دون {mean}، و{above} بلغوا {mean}",
+  "{optiona} {sharea}, {optionb} {shareb}": "{optiona} {sharea}، {optionb} {shareb}",
+  "{optiona} {sharea}, {optionb} {shareb}. {commoner} is {ratio} times commoner.": "{optiona} {sharea}، {optionb} {shareb}. وفي الواقع {commoner} أكثر شيوعا بمقدار {ratio} مرة.",
 };

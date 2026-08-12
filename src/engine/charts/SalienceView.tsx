@@ -1,5 +1,6 @@
 import { useT } from "../../app/i18n";
 import type { SalienceComparison, SalienceData } from "../../puzzles/schema";
+import { fillSlots } from "./announce";
 import { colorFor } from "./palette";
 import { formatRatio, formatShare, shareFor } from "./salience";
 
@@ -14,8 +15,10 @@ import { formatRatio, formatShare, shareFor } from "./salience";
  * how much. No share is recomputed between the two views; only the knowledge of
  * which side was right arrives, and that is the lesson.
  *
- * Every string here comes from the puzzle's own data, so this view owns no
- * display text of its own to translate.
+ * Every string DRAWN here comes from the puzzle's own data, so the view owns no
+ * visible text of its own. It does own the two sentences it announces to a
+ * screen reader, which is a different thing and was missed for exactly that
+ * reason: nothing on screen was in English, so nothing looked wrong.
  */
 function Comparison({
   c,
@@ -58,9 +61,29 @@ function Comparison({
     );
   };
 
-  const label = showTruth
-    ? `${t(c.optionA)} ${formatShare(shareA)}, ${t(c.optionB)} ${formatShare(shareB)}. ${commonerLabel} is ${formatRatio(c.trueRatio)} times commoner.`
-    : `${t(c.optionA)} ${formatShare(shareA)}, ${t(c.optionB)} ${formatShare(shareB)}`;
+  // Both beats, not just the reveal. Only the reveal was announcing English,
+  // but the reveal sentence CONTAINS the setup one, so translating one and not
+  // the other would have the same bar announce a Latin comma at the setup and a
+  // fullwidth one at the reveal. The setup key looks like punctuation because
+  // that is exactly what it is, and punctuation is not spelled the same in all
+  // ten: Arabic separates on "،" and Chinese on "，".
+  const label = fillSlots(
+    t(
+      showTruth
+        ? {
+            en: "{optiona} {sharea}, {optionb} {shareb}. {commoner} is {ratio} times commoner.",
+          }
+        : { en: "{optiona} {sharea}, {optionb} {shareb}" },
+    ),
+    {
+      optiona: t(c.optionA),
+      sharea: formatShare(shareA),
+      optionb: t(c.optionB),
+      shareb: formatShare(shareB),
+      commoner: commonerLabel,
+      ratio: formatRatio(c.trueRatio),
+    },
+  );
 
   return (
     <div className="flex flex-col gap-1.5 py-2.5">

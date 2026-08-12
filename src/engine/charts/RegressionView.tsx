@@ -1,5 +1,6 @@
 import { useT } from "../../app/i18n";
 import type { RegressionData } from "../../puzzles/schema";
+import { fillSlots } from "./announce";
 import { colorFor, WINNER_GOLD } from "./palette";
 import { regressionRows, type RegressionRow } from "./regression";
 
@@ -51,14 +52,31 @@ export function RegressionView({
       <svg
         viewBox={`0 0 ${W} 168`}
         role="img"
+        // One sentence per group, each ending in its own full stop and joined
+        // by a space. The old version joined half-sentences with "; ", which
+        // forced a Latin semicolon into languages that write it differently and
+        // gave the translator no sentence-final mark to choose: Chinese ends on
+        // "。" and Hindi on "।". A space is the one separator every locale
+        // spells the same way.
         aria-label={rows
-          .map(
-            (r) =>
-              `${t(r.short ?? r.label)}: first ${num(r.first)}, ` +
-              (showSecond ? `then ${num(r.second)}, ` : "") +
-              `against an average of ${num(data.mean)}`,
+          .map((r) =>
+            fillSlots(
+              t(
+                showSecond
+                  ? {
+                      en: "{group}: first {first}, then {second}, against an average of {mean}.",
+                    }
+                  : { en: "{group}: first {first}, against an average of {mean}." },
+              ),
+              {
+                group: t(r.short ?? r.label),
+                first: num(r.first),
+                second: num(r.second),
+                mean: num(data.mean),
+              },
+            ),
           )
-          .join("; ")}
+          .join(" ")}
         style={{ display: "block", width: "100%" }}
       >
         {/* the average line, the level everything reverts toward */}

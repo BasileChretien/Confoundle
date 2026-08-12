@@ -6448,4 +6448,13 @@ export const bn: Record<string, string> = {
   "{track}: {onset} at {onsetwhen}, {detected} at {detectedwhen}, {died} at {diedwhen}": "{track}: {onset} {onsetwhen} সময়ে, {detected} {detectedwhen} সময়ে, {died} {diedwhen} সময়ে",
   "World map in the {projection} projection": "{projection} অভিক্ষেপে বিশ্বের মানচিত্র",
   "World map in the {projection} projection. {verdict}.": "{projection} অভিক্ষেপে বিশ্বের মানচিত্র। {verdict}।",
+  // ---- chart announcements: the trend, the interval, the reversion and the spread ----
+  "{cause} and {effect} rise together": "{cause} আর {effect} একসঙ্গে বাড়ে",
+  "Interval from {low} to {high} {unit}, not touching no difference": "ব্যবধান {low} থেকে {high} {unit}, পার্থক্যহীনতার রেখা ছোঁয়নি",
+  "Interval from {low} to {high} {unit}, crossing no difference": "ব্যবধান {low} থেকে {high} {unit}, পার্থক্যহীনতার রেখা পেরিয়ে গেছে",
+  "{group}: first {first}, against an average of {mean}.": "{group}: প্রথমে {first}, অথচ গড় {mean}।",
+  "{group}: first {first}, then {second}, against an average of {mean}.": "{group}: প্রথমে {first}, তারপর {second}, অথচ গড় {mean}।",
+  "{group}: {below} below {mean}, {above} reached it": "{group}: {below} {mean} এর নিচে, {above} {mean} ছুঁয়েছে",
+  "{optiona} {sharea}, {optionb} {shareb}": "{optiona} {sharea}, {optionb} {shareb}",
+  "{optiona} {sharea}, {optionb} {shareb}. {commoner} is {ratio} times commoner.": "{optiona} {sharea}, {optionb} {shareb}। আসলে {commoner} {ratio} গুণ বেশি ঘটে।",
 };

@@ -6340,4 +6340,13 @@ export const zh: Record<string, string> = {
   "{track}: {onset} at {onsetwhen}, {detected} at {detectedwhen}, {died} at {diedwhen}": "{track}：{onset}在{onsetwhen}，{detected}在{detectedwhen}，{died}在{diedwhen}",
   "World map in the {projection} projection": "{projection}投影的世界地图",
   "World map in the {projection} projection. {verdict}.": "{projection}投影的世界地图。{verdict}。",
+  // ---- chart announcements: the trend, the interval, the reversion and the spread ----
+  "{cause} and {effect} rise together": "{cause}与{effect}同步上升",
+  "Interval from {low} to {high} {unit}, not touching no difference": "区间为{low}到{high}{unit}，未触及无差异之处",
+  "Interval from {low} to {high} {unit}, crossing no difference": "区间为{low}到{high}{unit}，跨过了无差异之处",
+  "{group}: first {first}, against an average of {mean}.": "{group}：起初为{first}，而平均值为{mean}。",
+  "{group}: first {first}, then {second}, against an average of {mean}.": "{group}：起初为{first}，随后为{second}，而平均值为{mean}。",
+  "{group}: {below} below {mean}, {above} reached it": "{group}：{below}低于{mean}，{above}达到了{mean}",
+  "{optiona} {sharea}, {optionb} {shareb}": "{optiona}{sharea}，{optionb}{shareb}",
+  "{optiona} {sharea}, {optionb} {shareb}. {commoner} is {ratio} times commoner.": "{optiona}{sharea}，{optionb}{shareb}。实际上{commoner}要常见{ratio}倍。",
 };

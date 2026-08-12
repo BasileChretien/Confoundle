@@ -6470,4 +6470,13 @@ export const ru: Record<string, string> = {
   "{track}: {onset} at {onsetwhen}, {detected} at {detectedwhen}, {died} at {diedwhen}": "{track}: {onset} на отметке {onsetwhen}, {detected} на отметке {detectedwhen}, {died} на отметке {diedwhen}",
   "World map in the {projection} projection": "Карта мира в проекции {projection}",
   "World map in the {projection} projection. {verdict}.": "Карта мира в проекции {projection}. {verdict}.",
+  // ---- chart announcements: the trend, the interval, the reversion and the spread ----
+  "{cause} and {effect} rise together": "{cause} и {effect} растут вместе",
+  "Interval from {low} to {high} {unit}, not touching no difference": "Интервал от {low} до {high} {unit}, отсутствия различия он не задевает",
+  "Interval from {low} to {high} {unit}, crossing no difference": "Интервал от {low} до {high} {unit}, отсутствие различия он пересекает",
+  "{group}: first {first}, against an average of {mean}.": "{group}: сперва {first}, при среднем {mean}.",
+  "{group}: first {first}, then {second}, against an average of {mean}.": "{group}: сперва {first}, затем {second}, при среднем {mean}.",
+  "{group}: {below} below {mean}, {above} reached it": "{group}: {below} ниже {mean}, {above} достигли {mean}",
+  "{optiona} {sharea}, {optionb} {shareb}": "{optiona} {sharea}, {optionb} {shareb}",
+  "{optiona} {sharea}, {optionb} {shareb}. {commoner} is {ratio} times commoner.": "{optiona} {sharea}, {optionb} {shareb}. На деле {commoner} встречается в {ratio} раза чаще.",
 };

@@ -6398,4 +6398,13 @@ export const ja: Record<string, string> = {
   "{track}: {onset} at {onsetwhen}, {detected} at {detectedwhen}, {died} at {diedwhen}": "{track}：{onset}は{onsetwhen}、{detected}は{detectedwhen}、{died}は{diedwhen}",
   "World map in the {projection} projection": "{projection}図法の世界地図",
   "World map in the {projection} projection. {verdict}.": "{projection}図法の世界地図。{verdict}。",
+  // ---- chart announcements: the trend, the interval, the reversion and the spread ----
+  "{cause} and {effect} rise together": "{cause}と{effect}はともに増えている",
+  "Interval from {low} to {high} {unit}, not touching no difference": "区間は{low}から{high}{unit}で、差なしの線に届いていない",
+  "Interval from {low} to {high} {unit}, crossing no difference": "区間は{low}から{high}{unit}で、差なしの線をまたいでいる",
+  "{group}: first {first}, against an average of {mean}.": "{group}：最初は{first}、平均は{mean}。",
+  "{group}: first {first}, then {second}, against an average of {mean}.": "{group}：最初は{first}、次に{second}、平均は{mean}。",
+  "{group}: {below} below {mean}, {above} reached it": "{group}：{below}が{mean}未満、{above}が{mean}に達した",
+  "{optiona} {sharea}, {optionb} {shareb}": "{optiona}{sharea}、{optionb}{shareb}",
+  "{optiona} {sharea}, {optionb} {shareb}. {commoner} is {ratio} times commoner.": "{optiona}{sharea}、{optionb}{shareb}。実際には{commoner}のほうが{ratio}倍多い。",
 };

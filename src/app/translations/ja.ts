@@ -6389,4 +6389,13 @@ export const ja: Record<string, string> = {
   "{arm}: {events} out of {total}, {percent}": "{arm}：{total}人中{events}人、{percent}",
   "Compared group by group, the relationship runs downward. Correlation r equals {r}.": "集団ごとに比べると、関係は右下がりになる。相関 r は {r}。",
   "Compared group by group, the relationship runs upward. Correlation r equals {r}.": "集団ごとに比べると、関係は右上がりになる。相関 r は {r}。",
+  // ---- chart announcements: the planes, the timelines and the maps ----
+  "Bullet holes on returning planes cluster on the wings and body": "帰還した機体の弾痕は、主翼と胴体に集中している",
+  "The engines and cockpit, clean on returning planes, are the vulnerable spots to armour": "帰還した機体では無傷だった発動機と操縦席こそ、装甲すべき弱点である",
+  "{track}: {immortal} counted but not at risk, then {atrisk} at risk": "{track}：{immortal}は算入されていても死にえない期間、続いて{atrisk}が危険にさらされた期間",
+  "{track}: {counted} counted": "{track}：算入された期間は{counted}",
+  "{track}: {survival} after diagnosis": "{track}：診断から{survival}",
+  "{track}: {onset} at {onsetwhen}, {detected} at {detectedwhen}, {died} at {diedwhen}": "{track}：{onset}は{onsetwhen}、{detected}は{detectedwhen}、{died}は{diedwhen}",
+  "World map in the {projection} projection": "{projection}図法の世界地図",
+  "World map in the {projection} projection. {verdict}.": "{projection}図法の世界地図。{verdict}。",
 };

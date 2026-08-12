@@ -2,6 +2,7 @@ import type { DataViewKind, TimelineData, TimelineTrack } from "../../puzzles/sc
 import { useT } from "../../app/i18n";
 import { useReducedMotion } from "../useReducedMotion";
 import { useCountUp } from "../useCountUp";
+import { fillSlots } from "./announce";
 import { colorFor, WINNER_GOLD } from "./palette";
 import {
   atRiskTime,
@@ -43,6 +44,11 @@ function CountedRow({
   const pct = (v: number) => (span > 0 ? (v / span) * 100 : 0);
   const immortal = immortalTime(track);
   const shown = shadeImmortal && immortal > 0 ? atRiskTime(track) : countedTime(track);
+  // The unit travels with its number into the slot, rather than being a slot of
+  // its own, so a translation can put "3 years" wherever the sentence needs it
+  // without the two halves drifting apart. It is the same pairing the row above
+  // already draws.
+  const dur = (v: number) => `${formatDuration(v)} ${unit}`;
 
   return (
     <div className="flex flex-col gap-1">
@@ -60,8 +66,20 @@ function CountedRow({
         role="img"
         aria-label={
           shadeImmortal && immortal > 0
-            ? `${t(track.label)}: ${formatDuration(immortal)} ${unit} counted but not at risk, then ${formatDuration(atRiskTime(track))} ${unit} at risk`
-            : `${t(track.label)}: ${formatDuration(countedTime(track))} ${unit} counted`
+            ? fillSlots(
+                t({
+                  en: "{track}: {immortal} counted but not at risk, then {atrisk} at risk",
+                }),
+                {
+                  track: t(track.label),
+                  immortal: dur(immortal),
+                  atrisk: dur(atRiskTime(track)),
+                },
+              )
+            : fillSlots(t({ en: "{track}: {counted} counted" }), {
+                track: t(track.label),
+                counted: dur(countedTime(track)),
+              })
         }
       >
         {shadeImmortal && immortal > 0 ? (
@@ -149,7 +167,10 @@ function SurvivalRow({
         className="h-5 w-full overflow-hidden rounded-[3px]"
         style={{ backgroundColor: RAIL }}
         role="img"
-        aria-label={`${t(track.label)}: ${formatDuration(years)} ${unit} after diagnosis`}
+        aria-label={fillSlots(t({ en: "{track}: {survival} after diagnosis" }), {
+          track: t(track.label),
+          survival: `${formatDuration(years)} ${unit}`,
+        })}
       >
         <div
           className="h-full rounded-[3px]"
@@ -200,7 +221,24 @@ function LifespanRow({
         className="relative h-5 w-full rounded-[3px]"
         style={{ backgroundColor: RAIL }}
         role="img"
-        aria-label={`${t(track.label)}: ${t(data.onsetLabel)} at ${at(track.onsetAt)}, ${t(data.detectedLabel)} at ${at(track.detectedAt)}, ${t(data.diedLabel)} at ${at(track.diedAt)}`}
+        // Six slots, because the three milestones are named by the puzzle and
+        // their three times are derived. Every "at" in the English is a
+        // preposition a translator has to be free to move or drop: Japanese
+        // marks the time with a particle after it, not a word before it.
+        aria-label={fillSlots(
+          t({
+            en: "{track}: {onset} at {onsetwhen}, {detected} at {detectedwhen}, {died} at {diedwhen}",
+          }),
+          {
+            track: t(track.label),
+            onset: t(data.onsetLabel),
+            onsetwhen: at(track.onsetAt),
+            detected: t(data.detectedLabel),
+            detectedwhen: at(track.detectedAt),
+            died: t(data.diedLabel),
+            diedwhen: at(track.diedAt),
+          },
+        )}
       >
         {/* onset to death: the life this disease actually ran for */}
         <div

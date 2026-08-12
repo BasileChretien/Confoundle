@@ -163,15 +163,9 @@ const ANNOUNCED_IN_ENGLISH = [
   "causal/setup",
   "distribution/reveal",
   "effect/setup",
-  "projection/reveal",
-  "projection/setup",
   "regression/reveal",
   "regression/setup",
   "salience/reveal",
-  "survivorship/reveal",
-  "survivorship/setup",
-  "timeline/reveal",
-  "timeline/setup",
 ];
 
 beforeAll(async () => {

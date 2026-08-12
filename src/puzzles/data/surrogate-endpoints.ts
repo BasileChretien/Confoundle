@@ -125,7 +125,10 @@ export const surrogateEndpoints: Puzzle = {
     },
     initialView: {
       kind: "markeronly",
-      caption: { en: "What the drug did to the heartbeats" },
+      // Deliberately NOT the same words as `label` above: the engine draws the
+      // figure title and the scope caption on the same line, so repeating the
+      // label prints it twice at the setup beat.
+      caption: { en: "Before anyone was randomised" },
     },
   },
 

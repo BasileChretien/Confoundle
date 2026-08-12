@@ -4674,6 +4674,91 @@ two. Note in Hurst's favour before dismissing it on n: every runner completed
 all four cells across seven trials, so it is fully within-subject, and eleven
 is the number of people rather than the number of observations.
 
+**BOTH PAPERS READ AT SOURCE 2026-08-12, supplied through institutional access.
+One is out, one is in, and the review that named them is wrong about the one
+that is out.**
+
+**Davies 2019 is REFUSED, and the refusal is the more instructive half.** The
+index review describes it in one line as "This experiment shows the conditioned
+placebo effect". The paper does not say that. Read at source: fifteen trained
+male cyclists, six 4000-m time trials. Improvement occurred when cyclists
+**inspired** hyperoxic air, in the truthful trial (HYPER) and in the deceptive
+one where they were told normoxic and given hyperoxic (NORM-DEC), both against
+NORM at P < .001. That is the GIVEN dimension carrying the result, which is a
+physiological effect and the opposite of what this route needs. The authors say
+so themselves: "Mechanisms for the improvement were likely physiological."
+The belief-only result, the one the review is pointing at, is NORM-INFORM, and
+the abstract states it held **in n = 4 participants** who happened to complete
+the trials in one particular order. A subgroup of four, defined post hoc by
+sequence, is not something this deck builds on.
+
+Record the general point rather than just the instance: **a systematic review's
+one-line description of a study is not a reading of that study.** This one
+turned a paper whose own conclusion says "likely physiological" into an example
+of a conditioned placebo effect. The review was still the right way in, because
+it names studies; it was never a substitute for opening them.
+
+**Hurst 2019 survives, and the raw data is in the paper.** Table 1 prints the
+1000-m time for every one of the eleven participants in all five conditions,
+which is better provenance than this route expected to find anywhere. Every
+printed mean reproduces from those per-participant times exactly:
+
+    Baseline 175.9   CC 172.7   CP 172.6   PC 174.3   PP 176.7
+
+where CC is told caffeine and given caffeine, CP told caffeine and given
+placebo, PC told placebo and given caffeine, PP told placebo and given placebo.
+The told dimension separates and the given dimension barely moves inside it:
+172.7 against 172.6 is a tenth of a second over 1000 m.
+
+**THE UNITS TRAP, and it is the thing to carry away from this reading.** The
+paper's reported effects are stated as "mean differences = 0.64 +/- 0.11 s" for
+CC against baseline, and similar for the others. Those are **per split, not per
+kilometre.** The analysis is a treatment by split ANOVA over five 200-m splits,
+Figure 1 is titled mean SPLIT time, and dividing the total by five reproduces
+every published figure to the decimal:
+
+    CC vs baseline  total 3.22 s   /5 = 0.64   published 0.64
+    CP vs baseline  total 3.34 s   /5 = 0.67   published 0.66
+    CC vs PP        total 4.02 s   /5 = 0.80   published 0.80
+    CP vs PP        total 4.14 s   /5 = 0.83   published 0.83
+
+So anyone quoting 0.64 s as the effect on a 1000-m time trial understates it
+fivefold, and anyone building a card on the published number without checking
+would put a wrong quantity on the deck. The card must draw totals and say which
+they are.
+
+**Two defects in the paper, neither fatal, both to go in the card's provenance
+note.** First, Table 1's "Mean +/- SEM" cannot be a plain SEM of those columns:
+computed from the printed per-participant values the SEMs are 2.19 to 2.72 s,
+against 0.55 to 0.68 printed, a factor of about four throughout. A
+within-subject correction gets the right order of magnitude but does not
+reproduce them either, so the card should draw the means, which do reconcile,
+and not the intervals, which do not. Second, the treatment main effect is
+reported as F(4, 160) where a five-condition repeated-measures design on eleven
+participants gives 40 error degrees of freedom; 160 is the interaction error df.
+
+**Status of the route: SOURCE READ, CARD SPECIFIED, BUILD PENDING**, and the
+build is a session's work rather than an afternoon's because it needs a new
+shape. The design, so the next session does not re-derive it:
+
+- Setup draws only CC and PP, which is exactly what an unblinded trial looks
+  like: the people given caffeine were told so, the people given placebo were
+  told so. 172.7 against 176.7, a four-second gap over 1000 m.
+- The commit beat asks how much of those four seconds is the caffeine.
+- The reveal adds CP and PC, the two deception cells, and the four seconds turn
+  out to be almost entirely the telling.
+- No existing shape draws it. `interaction` is odds-ratio specific, with a
+  crude row, an adjusted row and a no-effect line at 1. `delivered` fails its
+  own schema check, which requires at least one tier whose two arms got the
+  same exposure, and here every tier differs. This needs a told-by-given 2x2
+  over a continuous outcome, with the setup drawing one diagonal.
+- The n = 11 objection weakens on reading and does not disappear. It is fully
+  within-subject, every runner ran all five conditions, and the key contrasts
+  are CC and CP each against PP at p = .001 and .002, which is not marginal.
+  Against that, the paper runs many uncontrolled split-level comparisons at
+  p around .03, and the deck ships `multiple-comparisons`. The card should rest
+  on the two strong contrasts and say the split-level ones are exploratory.
+
 ### 67. Route 2, the meta-analytic reversal: REFUSED 2026-08-07 on the source the check was designed to catch
 
 <!-- skill: replication-failure -->

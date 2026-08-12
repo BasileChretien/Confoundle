@@ -6352,4 +6352,11 @@ export const bn: Record<string, string> = {
   "Shrinking a tumour is a fact about the tumour on a scan. Living longer is a fact about the patient, and it requires counting how long patients lived, which this trial did not report. Response rates and survival have parted company often enough that regulators now ask for both.": "টিউমার ছোট হওয়া স্ক্যানে দেখা ওই টিউমার সম্পর্কে তথ্য। বেশিদিন বাঁচা রোগী সম্পর্কে তথ্য, আর তার জন্য গুনতে হয় রোগীরা কতদিন বেঁচেছিলেন, যা এই ট্রায়াল জানায়নি। সাড়ার হার আর বেঁচে থাকা যথেষ্টবার আলাদা হয়ে গেছে বলে নিয়ন্ত্রকরা এখন দুটোই চান।",
   // ---- causal chart: the reveal diagram ----
   "no direct link": "সরাসরি কোনো যোগ নেই",
+  // ---- chart announcements: bars, arms and the group-level slope ----
+  "{group}: {percent} percent": "{group}: {percent} শতাংশ",
+  "{group}: {percent} percent, the highest": "{group}: {percent} শতাংশ, সর্বোচ্চ",
+  "{arm}: {events} out of {total}": "{arm}: {total} জনের মধ্যে {events} জন",
+  "{arm}: {events} out of {total}, {percent}": "{arm}: {total} জনের মধ্যে {events} জন, অর্থাৎ {percent}",
+  "Compared group by group, the relationship runs downward. Correlation r equals {r}.": "দল ধরে ধরে তুলনা করলে সম্পর্কটি নিচের দিকে নামে। সহসম্পর্ক r এর মান {r}।",
+  "Compared group by group, the relationship runs upward. Correlation r equals {r}.": "দল ধরে ধরে তুলনা করলে সম্পর্কটি উপরের দিকে ওঠে। সহসম্পর্ক r এর মান {r}।",
 };

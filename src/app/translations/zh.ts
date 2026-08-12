@@ -6244,4 +6244,11 @@ export const zh: Record<string, string> = {
   "Shrinking a tumour is a fact about the tumour on a scan. Living longer is a fact about the patient, and it requires counting how long patients lived, which this trial did not report. Response rates and survival have parted company often enough that regulators now ask for both.": "肿瘤缩小是关于影像上那个肿瘤的事实。活得更久是关于病人的事实，它需要统计病人活了多久，而这项试验并没有报告。有效率与生存率分道扬镳的次数已经够多，以至于监管机构如今两样都要。",
   // ---- causal chart: the reveal diagram ----
   "no direct link": "没有直接联系",
+  // ---- chart announcements: bars, arms and the group-level slope ----
+  "{group}: {percent} percent": "{group}：百分之{percent}",
+  "{group}: {percent} percent, the highest": "{group}：百分之{percent}，最高",
+  "{arm}: {events} out of {total}": "{arm}：{total}人中有{events}人",
+  "{arm}: {events} out of {total}, {percent}": "{arm}：{total}人中有{events}人，{percent}",
+  "Compared group by group, the relationship runs downward. Correlation r equals {r}.": "逐组比较时，这一关系呈下降趋势。相关系数 r 为 {r}。",
+  "Compared group by group, the relationship runs upward. Correlation r equals {r}.": "逐组比较时，这一关系呈上升趋势。相关系数 r 为 {r}。",
 };

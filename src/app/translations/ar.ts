@@ -6305,4 +6305,11 @@ export const ar: Record<string, string> = {
   "Shrinking a tumour is a fact about the tumour on a scan. Living longer is a fact about the patient, and it requires counting how long patients lived, which this trial did not report. Response rates and survival have parted company often enough that regulators now ask for both.": "انكماش الورم حقيقة عن الورم على الصورة. أما العيش مدة أطول فحقيقة عن المريض، وتقتضي إحصاء كم عاش المرضى، وهو ما لم تبلغ عنه هذه التجربة. وقد افترق معدل الاستجابة والبقاء مرات كافية حتى صارت الجهات التنظيمية تطلب الاثنين معا.",
   // ---- causal chart: the reveal diagram ----
   "no direct link": "لا صلة مباشرة",
+  // ---- chart announcements: bars, arms and the group-level slope ----
+  "{group}: {percent} percent": "{group}: {percent} في المئة",
+  "{group}: {percent} percent, the highest": "{group}: {percent} في المئة، وهي الأعلى",
+  "{arm}: {events} out of {total}": "{arm}: {events} من أصل {total}",
+  "{arm}: {events} out of {total}, {percent}": "{arm}: {events} من أصل {total}، أي {percent}",
+  "Compared group by group, the relationship runs downward. Correlation r equals {r}.": "عند المقارنة بين المجموعات، تنحدر العلاقة إلى أسفل. معامل الارتباط r يساوي {r}.",
+  "Compared group by group, the relationship runs upward. Correlation r equals {r}.": "عند المقارنة بين المجموعات، تصعد العلاقة إلى أعلى. معامل الارتباط r يساوي {r}.",
 };

@@ -6384,4 +6384,11 @@ export const pt: Record<string, string> = {
   "Shrinking a tumour is a fact about the tumour on a scan. Living longer is a fact about the patient, and it requires counting how long patients lived, which this trial did not report. Response rates and survival have parted company often enough that regulators now ask for both.": "Encolher um tumor é um fato sobre o tumor numa imagem. Viver mais é um fato sobre o paciente, e exige contar quanto tempo os pacientes viveram, o que este ensaio não relatou. Taxa de resposta e sobrevida se separaram com frequência suficiente para que os reguladores hoje peçam as duas.",
   // ---- causal chart: the reveal diagram ----
   "no direct link": "sem ligação direta",
+  // ---- chart announcements: bars, arms and the group-level slope ----
+  "{group}: {percent} percent": "{group}: {percent} por cento",
+  "{group}: {percent} percent, the highest": "{group}: {percent} por cento, o valor mais alto",
+  "{arm}: {events} out of {total}": "{arm}: {events} de {total}",
+  "{arm}: {events} out of {total}, {percent}": "{arm}: {events} de {total}, ou seja {percent}",
+  "Compared group by group, the relationship runs downward. Correlation r equals {r}.": "Comparando grupo a grupo, a relação é descendente. A correlação r é {r}.",
+  "Compared group by group, the relationship runs upward. Correlation r equals {r}.": "Comparando grupo a grupo, a relação é ascendente. A correlação r é {r}.",
 };

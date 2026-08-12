@@ -6302,4 +6302,11 @@ export const ja: Record<string, string> = {
   "Shrinking a tumour is a fact about the tumour on a scan. Living longer is a fact about the patient, and it requires counting how long patients lived, which this trial did not report. Response rates and survival have parted company often enough that regulators now ask for both.": "腫瘍が縮むのは、画像の上での腫瘍についての事実である。長く生きるのは患者についての事実であり、患者がどれだけ生きたかを数える必要があるが、この試験はそれを報告していない。奏効率と生存はしばしば食い違ってきたため、規制当局は今では両方を求める。",
   // ---- causal chart: the reveal diagram ----
   "no direct link": "直接のつながりなし",
+  // ---- chart announcements: bars, arms and the group-level slope ----
+  "{group}: {percent} percent": "{group}：{percent}パーセント",
+  "{group}: {percent} percent, the highest": "{group}：{percent}パーセント、最も高い",
+  "{arm}: {events} out of {total}": "{arm}：{total}人中{events}人",
+  "{arm}: {events} out of {total}, {percent}": "{arm}：{total}人中{events}人、{percent}",
+  "Compared group by group, the relationship runs downward. Correlation r equals {r}.": "集団ごとに比べると、関係は右下がりになる。相関 r は {r}。",
+  "Compared group by group, the relationship runs upward. Correlation r equals {r}.": "集団ごとに比べると、関係は右上がりになる。相関 r は {r}。",
 };

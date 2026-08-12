@@ -6343,4 +6343,11 @@ export const hi: Record<string, string> = {
   "Shrinking a tumour is a fact about the tumour on a scan. Living longer is a fact about the patient, and it requires counting how long patients lived, which this trial did not report. Response rates and survival have parted company often enough that regulators now ask for both.": "ट्यूमर का सिकुड़ना स्कैन पर उस ट्यूमर के बारे में तथ्य है। अधिक जीना मरीज़ के बारे में तथ्य है, और उसके लिए गिनना पड़ता है कि मरीज़ कितने समय जिए, जो इस परीक्षण ने बताया ही नहीं। प्रतिक्रिया दर और उत्तरजीविता इतनी बार अलग हो चुकी हैं कि नियामक अब दोनों माँगते हैं।",
   // ---- causal chart: the reveal diagram ----
   "no direct link": "कोई सीधा संबंध नहीं",
+  // ---- chart announcements: bars, arms and the group-level slope ----
+  "{group}: {percent} percent": "{group}: {percent} प्रतिशत",
+  "{group}: {percent} percent, the highest": "{group}: {percent} प्रतिशत, सबसे अधिक",
+  "{arm}: {events} out of {total}": "{arm}: {total} में से {events}",
+  "{arm}: {events} out of {total}, {percent}": "{arm}: {total} में से {events}, यानी {percent}",
+  "Compared group by group, the relationship runs downward. Correlation r equals {r}.": "समूह दर समूह तुलना करने पर संबंध नीचे की ओर जाता है। सहसंबंध r का मान {r} है।",
+  "Compared group by group, the relationship runs upward. Correlation r equals {r}.": "समूह दर समूह तुलना करने पर संबंध ऊपर की ओर जाता है। सहसंबंध r का मान {r} है।",
 };

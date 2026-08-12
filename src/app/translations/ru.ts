@@ -6374,4 +6374,11 @@ export const ru: Record<string, string> = {
   "Shrinking a tumour is a fact about the tumour on a scan. Living longer is a fact about the patient, and it requires counting how long patients lived, which this trial did not report. Response rates and survival have parted company often enough that regulators now ask for both.": "Уменьшение опухоли есть факт об опухоли на снимке. Более долгая жизнь есть факт о пациенте, и он требует подсчёта того, сколько пациенты прожили, о чём это испытание не сообщило. Частота ответа и выживаемость расходились достаточно часто, чтобы регуляторы теперь требовали обе.",
   // ---- causal chart: the reveal diagram ----
   "no direct link": "прямой связи нет",
+  // ---- chart announcements: bars, arms and the group-level slope ----
+  "{group}: {percent} percent": "{group}: {percent} процентов",
+  "{group}: {percent} percent, the highest": "{group}: {percent} процентов, самый высокий показатель",
+  "{arm}: {events} out of {total}": "{arm}: {events} из {total}",
+  "{arm}: {events} out of {total}, {percent}": "{arm}: {events} из {total}, то есть {percent}",
+  "Compared group by group, the relationship runs downward. Correlation r equals {r}.": "При сравнении по группам связь идёт вниз. Корреляция r равна {r}.",
+  "Compared group by group, the relationship runs upward. Correlation r equals {r}.": "При сравнении по группам связь идёт вверх. Корреляция r равна {r}.",
 };

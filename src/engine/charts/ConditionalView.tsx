@@ -1,5 +1,6 @@
 import { useLocale, useT } from "../../app/i18n";
 import type { ConditionalData } from "../../puzzles/schema";
+import { fillSlots } from "./announce";
 import { declaredColors } from "./palette";
 import { rowSeries, scaleFraction } from "./conditional";
 
@@ -96,8 +97,17 @@ export function ConditionalView({
                 ))}
               </div>
 
+              {/*
+                The denominator is notation rather than prose, and most locales
+                keep the Latin `n`, but it is still a label a reader sees, so it
+                is keyed rather than inlined: a translator whose convention
+                differs has somewhere to put it, and the digits already group
+                per locale through `nf`.
+              */}
               <span className="font-mono text-[10px] tabular-nums text-ink-soft">
-                {s.points.map((p) => `n = ${nf.format(p.n)}`).join(" · ")}
+                {s.points
+                  .map((p) => fillSlots(t({ en: "n = {count}" }), { count: nf.format(p.n) }))
+                  .join(" · ")}
               </span>
               {row.note ? (
                 <span className="text-[10px] leading-snug text-ink-soft">{t(row.note)}</span>

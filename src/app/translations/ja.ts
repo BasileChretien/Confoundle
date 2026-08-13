@@ -5,6 +5,7 @@
  */
 export const ja: Record<string, string> = {
   // ---- UI chrome (buttons, labels, section headers) ----
+  "n = {count}": "n = {count}",
   "Review": "復習",
   "Loading your review…": "復習を読み込んでいます…",
   "Nothing is due right now. Learn a puzzle or come back later.": "今すぐの復習はありません。レッスンを学ぶか、後で戻ってきてください。",
@@ -6500,7 +6501,7 @@ export const ja: Record<string, string> = {
 
   // ---- The halo effect, chart and framing ----
   "Sixty students marked the same essay out of nine. A photograph of the supposed author was clipped to it. Does a face change a mark?": "六十人の学生が同じ小論文を九点満点で採点した。書いたとされる人物の写真がクリップで留めてあった。顔は点数を変えるのか。",
-  "Each student read one essay of about 700 words on television and society, supposedly written by a first-year student called Marilyn Thomas, and marked its general quality from 1 to 9. Clipped to the essay was a photograph: for a third of them an attractive woman, for a third an unattractive one, and for a third no photograph at all. The essay itself was word for word identical whichever photograph came with it. Here is what happened with the well-written essay. The photograph moved the mark by less than a point, and that difference was not statistically significant. They also ran a second version of the study with a badly written essay, pre-tested and confirmed as clearly worse.": "学生は一人ずつ、テレビと社会について約700語の小論文を読んだ。マリリン・トーマスという一年生が書いたとされるもので、その全体的な質を1から9で採点する。小論文にはクリップで写真が留めてあった。三分の一には魅力的な女性、三分の一には魅力に乏しい女性、残る三分の一には写真なし。小論文そのものは、どの写真が付いていても一言一句同じである。まずはよく書けたほうの結果を見てほしい。写真が動かした点数は一点未満で、その差は統計的に有意ではなかった。研究者たちは、下手に書いた版でも同じ実験をもう一度行っている。こちらは事前検査で明らかに劣ると確認されたものである。",
+  "Each student read one essay of about 700 words on television and society, supposedly written by a first-year student called Marilyn Thomas, and marked its general quality from 1 to 9. Clipped to the essay was a photograph: for a third of them an attractive woman, for a third an unattractive one, and for a third no photograph at all. The essay itself was word for word identical whichever photograph came with it. Here is what happened with the well-written essay. The photograph moved the mark by less than a point, and that difference was not statistically significant. They also ran a second version of the study with a badly written essay, pre-tested and confirmed as clearly worse. The question is not whether a marker can be swayed, but how much room a photograph has to sway one, so ask how far the essay in front of them settles the mark on its own.": "学生は一人ずつ、テレビと社会について約700語の小論文を読んだ。マリリン・トーマスという一年生が書いたとされるもので、その全体的な質を1から9で採点する。小論文にはクリップで写真が留めてあった。三分の一には魅力的な女性、三分の一には魅力に乏しい女性、残る三分の一には写真なし。小論文そのものは、どの写真が付いていても一言一句同じである。まずはよく書けたほうの結果を見てほしい。写真が動かした点数は一点未満で、その差は統計的に有意ではなかった。研究者たちは、下手に書いた版でも同じ実験をもう一度行っている。こちらは事前検査で明らかに劣ると確認されたものである。 問題は採点者が影響を受けうるかどうかではなく、写真が影響を及ぼす余地がどれだけあるかです。目の前の小論文それ自体がどこまで点数を決めているかを考えてください。",
   "What will the photograph do to the mark on the badly written essay?": "下手に書かれたほうの小論文の点数に、写真は何をするだろうか。",
   "Mark for the essay, out of nine": "小論文の点数、九点満点",
   "Each point is the mean mark given by ten students. The essay was identical in every condition; only the photograph clipped to it changed.": "各点は学生十人がつけた平均点である。小論文はどの条件でも同一で、変わったのはクリップで留めた写真だけである。",

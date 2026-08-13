@@ -5,6 +5,7 @@
  */
 export const zh: Record<string, string> = {
   // ---- UI chrome (buttons, labels, section headers) ----
+  "n = {count}": "n = {count}",
   "Review": "复习",
   "Loading your review…": "正在加载你的复习…",
   "Nothing is due right now. Learn a puzzle or come back later.": "现在没有待复习的。去学一节课，或稍后再来。",
@@ -6442,7 +6443,7 @@ export const zh: Record<string, string> = {
 
   // ---- The halo effect, chart and framing ----
   "Sixty students marked the same essay out of nine. A photograph of the supposed author was clipped to it. Does a face change a mark?": "六十名学生给同一篇文章打分，满分九分。文章上别着一张署名作者的照片。一张脸会改变分数吗？",
-  "Each student read one essay of about 700 words on television and society, supposedly written by a first-year student called Marilyn Thomas, and marked its general quality from 1 to 9. Clipped to the essay was a photograph: for a third of them an attractive woman, for a third an unattractive one, and for a third no photograph at all. The essay itself was word for word identical whichever photograph came with it. Here is what happened with the well-written essay. The photograph moved the mark by less than a point, and that difference was not statistically significant. They also ran a second version of the study with a badly written essay, pre-tested and confirmed as clearly worse.": "每名学生读一篇约700词、关于电视与社会的文章，据说出自一位名叫玛丽琳·托马斯的大一女生之手，并为其总体质量打1到9分。文章上别着一张照片：三分之一的人看到的是一位有魅力的女性，三分之一是一位相貌平平的女性，还有三分之一没有照片。无论配哪张照片，文章本身逐字相同。先看写得好的那一版发生了什么。照片让分数移动了不到一分，而且这个差异在统计上并不显著。他们还用一篇写得很差的文章做了第二版实验，那一篇经预先测试确认明显更差。",
+  "Each student read one essay of about 700 words on television and society, supposedly written by a first-year student called Marilyn Thomas, and marked its general quality from 1 to 9. Clipped to the essay was a photograph: for a third of them an attractive woman, for a third an unattractive one, and for a third no photograph at all. The essay itself was word for word identical whichever photograph came with it. Here is what happened with the well-written essay. The photograph moved the mark by less than a point, and that difference was not statistically significant. They also ran a second version of the study with a badly written essay, pre-tested and confirmed as clearly worse. The question is not whether a marker can be swayed, but how much room a photograph has to sway one, so ask how far the essay in front of them settles the mark on its own.": "每名学生读一篇约700词、关于电视与社会的文章，据说出自一位名叫玛丽琳·托马斯的大一女生之手，并为其总体质量打1到9分。文章上别着一张照片：三分之一的人看到的是一位有魅力的女性，三分之一是一位相貌平平的女性，还有三分之一没有照片。无论配哪张照片，文章本身逐字相同。先看写得好的那一版发生了什么。照片让分数移动了不到一分，而且这个差异在统计上并不显著。他们还用一篇写得很差的文章做了第二版实验，那一篇经预先测试确认明显更差。 问题不在于评分者是否会被影响，而在于一张照片有多大的空间去影响他，所以要问的是，眼前这篇文章本身在多大程度上决定了分数。",
   "What will the photograph do to the mark on the badly written essay?": "在那篇写得很差的文章上，照片会对分数做什么？",
   "Mark for the essay, out of nine": "文章得分，满分九分",
   "Each point is the mean mark given by ten students. The essay was identical in every condition; only the photograph clipped to it changed.": "每个点是十名学生所给分数的平均值。文章在所有条件下都完全相同，改变的只有别在上面的那张照片。",

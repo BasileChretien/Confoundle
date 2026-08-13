@@ -6,6 +6,7 @@
 export const zh: Record<string, string> = {
   // ---- UI chrome (buttons, labels, section headers) ----
   "n = {count}": "n = {count}",
+  "{name}: {value}": "{name}：{value}",
   "Review": "复习",
   "Loading your review…": "正在加载你的复习…",
   "Nothing is due right now. Learn a puzzle or come back later.": "现在没有待复习的。去学一节课，或稍后再来。",

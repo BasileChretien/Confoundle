@@ -6,6 +6,7 @@
 export const ar: Record<string, string> = {
   // ---- UI chrome (buttons, labels, section headers) ----
   "n = {count}": "n = {count}",
+  "{name}: {value}": "{name}: {value}",
   "Review": "مراجعة",
   "Loading your review…": "جارٍ تحميل مراجعتك…",
   "Nothing is due right now. Learn a puzzle or come back later.": "لا شيء مستحق الآن. تعلّم درسًا أو عُد لاحقًا.",

@@ -1,5 +1,6 @@
 import { useLocale, useT } from "../../app/i18n";
 import type { EstimateGroup, EstimationData } from "../../puzzles/schema";
+import { fillSlots } from "./announce";
 import { colorFor, declaredColors } from "./palette";
 import { barFraction, formatValue } from "./estimation";
 
@@ -28,9 +29,34 @@ function Row({
   fraction: number;
   color: string;
   emphasis?: boolean;
-  /** Passed down because this component has no hook to reach it from. */
+  /**
+   * Passed down rather than read here, because the CALLER already resolved it
+   * and threading it keeps one source for the number formatting. `useT()` below
+   * is a different matter: this is a component, so it may hold hooks, and the
+   * announced sentence has to come from the dictionaries rather than be built
+   * here.
+   */
   locale: string;
 }) {
+  const t = useT();
+  /**
+   * An authored sentence, not a template literal.
+   *
+   * This line used to read `` `${name}: ${formatValue(value, locale)}` ``,
+   * which localised the VALUE and left the sentence around it in English
+   * punctuation: the digits followed the reader and the ": " between them did
+   * not. That is the half-converted state this whole change argues against,
+   * one layer further down, and it is the layer no rendering test can see,
+   * because an `aria-label` is not drawn.
+   *
+   * `EcologicalView` announces its equivalent bar exactly this way. Japanese
+   * and Chinese write the colon as a fullwidth "：" with no space before it,
+   * which no hardcoded separator could have produced.
+   */
+  const announced = fillSlots(t({ en: "{name}: {value}" }), {
+    name,
+    value: formatValue(value, locale),
+  });
   return (
     <div className="flex flex-col gap-1 py-1.5">
       <div className="flex items-baseline justify-between gap-3">
@@ -57,7 +83,7 @@ function Row({
             backgroundColor: color,
           }}
           role="img"
-          aria-label={`${name}: ${formatValue(value, locale)}`}
+          aria-label={announced}
         />
       </div>
     </div>

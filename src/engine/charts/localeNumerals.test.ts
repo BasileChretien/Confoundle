@@ -76,6 +76,8 @@ const isScanned = (path: string) => !/\.test\.tsx?$/.test(path);
 function stripComments(source: string): { code: string; dangling: boolean } {
   const out: string[] = [];
   let inBlock = false;
+  /** A template literal, which is the one literal that survives a newline. */
+  let inTemplate = false;
   for (const line of source.split("\n")) {
     let kept = "";
     let i = 0;
@@ -85,6 +87,47 @@ function stripComments(source: string): { code: string; dangling: boolean } {
         if (end === -1) break;
         inBlock = false;
         i = end + 2;
+        continue;
+      }
+      if (inTemplate) {
+        const c = line[i];
+        kept += c;
+        i++;
+        if (c === "\\") {
+          if (i < line.length) {
+            kept += line[i];
+            i++;
+          }
+          continue;
+        }
+        if (c === "`") inTemplate = false;
+        continue;
+      }
+      // A quote opens a literal, and NOTHING inside it is a comment marker.
+      // Copied through verbatim rather than skipped, because the literal may
+      // itself hold a formatting call the scan has to see: the self-test below
+      // asserts exactly that on a quoted `toLocaleString`.
+      if (line[i] === '"' || line[i] === "'" || line[i] === "`") {
+        const quote = line[i];
+        kept += quote;
+        i++;
+        if (quote === "`") {
+          inTemplate = true;
+          continue;
+        }
+        while (i < line.length) {
+          const c = line[i];
+          kept += c;
+          i++;
+          if (c === "\\") {
+            if (i < line.length) {
+              kept += line[i];
+              i++;
+            }
+            continue;
+          }
+          if (c === quote) break;
+        }
         continue;
       }
       if (line.startsWith("//", i)) break;
@@ -110,14 +153,20 @@ function stripComments(source: string): { code: string; dangling: boolean } {
 const TO_LOCALE_STRING = /\.toLocaleString\s*\(/g;
 
 /**
- * `new Intl.NumberFormat(` whose first argument is not an identifier: `()` or
+ * `Intl.NumberFormat(` whose first argument is not an identifier: `()` or
  * `("en")` or `(undefined, {...})`. A call like `new Intl.NumberFormat(locale)`
  * or `new Intl.NumberFormat(props.locale, {...})` passes, which is as far as a
  * source scan can see: whether that identifier came from `useLocale()` is a
  * question about values, and the render tests in `chartsLocalized.test.ts` and
  * the throwaway locale sweeps are what answer it.
+ *
+ * `new` IS OPTIONAL, and that is not pedantry. `Intl.NumberFormat("en")` without
+ * it is legal and returns a formatter exactly as the constructor call does, so
+ * requiring `new` here would have let the identical defect through in the one
+ * spelling nobody thinks to grep for.
  */
-const HARDCODED_FORMAT = /new\s+Intl\.NumberFormat\s*\(\s*(?:\)|["'`]|undefined\b)/g;
+const HARDCODED_FORMAT =
+  /(?:new\s+)?Intl\.NumberFormat\s*\(\s*(?:\)|["'`]|undefined\b)/g;
 
 function offendersIn(source: string): string[] {
   return [
@@ -150,6 +199,11 @@ describe("numerals on a chart follow the reader's locale", () => {
       `? Math.round(n).toLocaleString()`,
       `\`\${n.toLocaleString(undefined, { maximumFractionDigits: 2 })}%\``,
       `const nf = new Intl.NumberFormat();`,
+      // `new` is optional in the language, so it is optional here. This
+      // spelling is legal, returns the same formatter, and would have been the
+      // one way to reintroduce the defect without tripping the scan.
+      `const nf = Intl.NumberFormat("en");`,
+      `const nf = Intl.NumberFormat(undefined, { maximumFractionDigits: 1 });`,
     ];
     for (const line of shipped) {
       expect({ line, found: offendersIn(line) }).not.toEqual({
@@ -164,9 +218,42 @@ describe("numerals on a chart follow the reader's locale", () => {
       `const nf = new Intl.NumberFormat(locale);`,
       `new Intl.NumberFormat(locale, { maximumFractionDigits: 1 })`,
       `new Intl.NumberFormat(props.locale)`,
+      `const nf = Intl.NumberFormat(locale);`,
     ]) {
       expect({ clean, found: offendersIn(clean) }).toEqual({ clean, found: [] });
     }
+  });
+
+  it("does not let a quoted comment marker blind it", () => {
+    // THE HOLE THIS CLOSES, and why it is worse than the `//` one. A `/*`
+    // inside a string or regex literal used to open a fake block comment, and
+    // a block comment runs until the next `*/` REGARDLESS OF LINES. So one
+    // quoted `/*` anywhere in a file silently deleted everything after it, and
+    // the file swept up clean. `dangling` caught it only when no `*/` happened
+    // to appear later, which in a directory this heavily commented is rare.
+    //
+    // The literal is copied through rather than skipped, because a formatting
+    // call can sit inside one, and a scan that dropped literals would be the
+    // same silent pass wearing different clothes.
+    const hidden = [
+      'const marker = "/*";\nconst nf = new Intl.NumberFormat("en");\nconst end = "*/";',
+      "const re = '/*';\nn.toLocaleString();",
+    ];
+    for (const line of hidden) {
+      const { code, dangling } = stripComments(line);
+      expect({ line, dangling }).toEqual({ line, dangling: false });
+      expect({ line, found: offendersIn(code) }).not.toEqual({
+        line,
+        found: [],
+      });
+    }
+
+    // A real comment is still removed, or the fix would have gone too far the
+    // other way and turned the stripper off.
+    const { code } = stripComments(
+      '/* new Intl.NumberFormat("en") */\nconst ok = new Intl.NumberFormat(locale);',
+    );
+    expect(offendersIn(code)).toEqual([]);
   });
 
   it("strips the comments without stripping the code", () => {

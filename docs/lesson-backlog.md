@@ -5560,7 +5560,12 @@ The figure comes instead from Landy D, Sigall H. Beauty is talent: task evaluati
 
 <!-- skill: serial-position-effect -->
 
-**Status: LEAD, NOT YET SOURCED.** The second of the two gaps found in the
+**Status: SOURCED AND RECONCILED, READY TO AUTHOR.** See the section at the end
+of this entry for the numbers, which have been read from the published paper and
+checked. What follows below is the original lead, kept because the reasoning that
+narrowed it is what made the source findable.
+
+The second of the two gaps found in the
 German psychology catalogue, and recorded here so the next session does not have
 to rediscover it. Like the halo effect it appears exactly once in this project,
 on the line transcribing that catalogue, with no puzzle and no prior entry.
@@ -5678,3 +5683,72 @@ A third path exists but is NOT recommended without a fresh source check: the
 sequential judging literature (order of performance fixed by draw), which would
 give equivalent items and pure position, with no party label and therefore no
 information-conditionality to fall into. Nothing about it has been opened.
+
+**THE THIRD PATH WAS OPENED, AND IT IS THE CARD.** Ginsburgh V, van Ours JC.
+Expert opinion and compensation: evidence from a musical competition. American
+Economic Review 2003;93(1):289-296. The published version was read at source,
+tables included. Note for whoever picks this up: the freely available working
+paper is NOT enough, because it prints "[Table 1 approximately here]" and
+carries no tables at all. The numbers below come from the published article.
+
+**Why this source and not the ballot-order one.** The Queen Elisabeth piano
+competition draws the order of appearance AT RANDOM before the competition and
+leaves it unchanged. Twelve finalists per competition, eleven competitions from
+1952 to 1991, 132 musicians. Every finalist plays the same unknown concerto,
+handed to them exactly seven days before they appear. Two perform per evening.
+The jury grades after every evening, without discussion, and marks cannot be
+changed once turned in. So the items being compared are equivalent by
+construction, only position differs, and there is no party label and therefore
+none of the information-conditionality that made Ho and Imai a halo repeat.
+
+The authors verify the randomness rather than asserting it: a regression of
+order on sex, four nationality dummies and age gives R-bar-squared = 0.02 with
+no coefficient significant at the 20 percent level, and 2 by 2 tests of sex,
+age and nationality against `first` and `late` all fall far below the critical
+value.
+
+**The numbers, and they reconcile exactly.** Table 1, effect of order on the
+judges' ranking, ranks coded so the winner is 12: performing on the first
+evening costs 2.958 positions (t = 3.1), being female costs 1.856 (t = 2.9),
+and performing second within an evening gains 1.130 (t = 1.9). With `first` as
+the only regressor the estimate is 3.421 (t = 4.8).
+
+Table 2 is the one this deck wants, because it prints COUNTS rather than
+coefficients. Ratings by Belgian music critics, collected in 1998, split at the
+average:
+
+| | First to perform | All others |
+|---|---|---|
+| Rating below average | 10 | 62 |
+| Rating above average | 1 | 59 |
+
+Eleven and 121, totalling 132, which is exactly twelve finalists times eleven
+competitions with one first-performer each. So 1 of 11 against 59 of 121, which
+is 9.1 percent against 48.8 percent. The paper prints chi-squared = 6.4 on 1
+degree of freedom against a critical 3.84; recomputing it from the four counts
+gives 6.40, so the table and the statistic agree.
+
+The catalogue indicator in the same table also reconciles to 11 and 121
+(5 + 0 + 6 + 0 and 24 + 33 + 20 + 44), with chi-squared = 17.4 on 3 df against
+a critical 7.82.
+
+**How to build it.** No new shape: `rates` already draws counts and derives the
+percentages. Setup draws the 121 who did not open the competition, reveal adds
+the 11 who did, which is the `restrict*` pattern the deck already uses.
+
+**The hedge trap here, and how to avoid it.** Do NOT frame this as "the order is
+random, so what happens?", because from that alone "nothing" is the correct
+answer and marking it wrong repeats the defect that had to be fixed on the halo
+card. Put the mechanism in the framing without naming the direction, the way
+`statistical-power` does: state that the concerto is unknown to the JUDGES too,
+who have never heard it before the first evening, and that marks are given
+immediately and cannot be revised. That licenses reasoning about a direction
+and leaves the size for the reveal.
+
+**The honesty constraints, which are severe and must be in the card.** Only 11
+musicians ever performed first, so the headline contrast rests on a group of
+eleven and one single above-average rating. The critics' ratings are a
+downstream career outcome measured in 1998 rather than the judges' marks, and
+only 11 of 25 surveyed critics answered. The card should claim that a lottery
+slot moved a career outcome, with the sample stated plainly, and should not
+imply precision the eleven cannot carry.

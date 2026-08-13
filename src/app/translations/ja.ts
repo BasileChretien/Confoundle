@@ -6345,6 +6345,8 @@ export const ja: Record<string, string> = {
   "The same comparison, three times over": "同じ比較を、三度",
   "The practical stake is in the paper's first paragraph. If underweight caused respiratory death, then doctors should be telling thin patients to gain weight in order to protect their lungs, and clinical guidance would follow. If instead weight loss is an early sign of the disease, that advice is useless at best: it treats a symptom as though it were a cause, and it may delay somebody asking why the patient is losing weight in the first place, which is the question that would actually help them. Notice how little this has to do with the size of the correlation. The gap was large, it was statistically solid, it survived adjustment for age and for smoking, and it appeared in smokers and non-smokers alike. Every check that is usually deployed against a spurious association passed, because none of those checks is aimed at the direction of the arrow. Confounding and reverse causation are different problems and adjustment only addresses the first. This is also why the 45 years matter. The authors point out that the Prospective Studies Collaboration, the largest study on the question, excluded deaths in the first 15 years, and that most studies exclude 3 or 5, and that on this evidence all of those are too short: the contamination was still visible at 15 and had not entirely gone by 30. A study with a decade of follow-up simply could not have found this out about itself.": "実際に何がかかっているかは、論文の最初の段落に書かれている。低体重が呼吸器死を引き起こしているのなら、医師は痩せた患者に肺を守るため体重を増やすよう伝えるべきであり、診療指針もそれに従うことになる。逆に体重減少が病気の早期のしるしなら、その助言はよくても無益である。症状を原因であるかのように扱うことになり、なぜこの患者は痩せているのかと誰かが問う時期を遅らせかねない。本当に患者を助けるのはその問いのほうである。これが相関の大きさとほとんど関係ないことに注意してほしい。差は大きく、統計的にも堅固で、年齢と喫煙の調整に耐え、喫煙者にも非喫煙者にも現れた。見せかけの関連に対して普通に持ち出される検査はすべて通過している。どの検査も矢印の向きを狙っていないからである。交絡と逆因果は別の問題であり、調整が扱うのは前者だけである。45年という長さが効いてくるのもそこである。著者らは、この問いについて最大の研究であるProspective Studies Collaborationが最初の15年の死亡を除外していること、多くの研究は3年か5年しか除外しないこと、そしてこの証拠に照らせばそれらはどれも短すぎることを指摘する。汚染は15年でもまだ見え、30年でも完全には消えていなかった。追跡が十年の研究では、自分自身についてこのことを知りようがなかったのである。",
   "And with the early deaths thrown away": "そして早期の死亡を捨てたうえで",
+  "In one case": "一方の場合",
+  "In every case": "どの場合でも",
   "Which way the arrow points": "矢印はどちらを向いているか",
   "Before asking whether a correlation is confounded, ask whether it is pointing the wrong way. Adjustment cannot fix an arrow that runs backwards, and an association can be large, robust and thoroughly adjusted while still describing the outcome causing the exposure.": "相関が交絡しているかを問う前に、それが逆を向いていないかを問うこと。調整は逆向きの矢印を直せないし、関連は大きく、頑健で、丁寧に調整されていながら、結果が曝露を引き起こしている様子を描いていることがある。",
 
@@ -6534,7 +6536,7 @@ export const ja: Record<string, string> = {
   "And when the work was poor": "そして出来が悪かったとき",
   "The halo effect": "ハロー効果",
   "An irrelevant impression bleeds into judgements you believe you are making independently, and it bleeds most where the evidence is weakest. The moment a thing is hard to judge on its merits is the moment something else quietly starts doing the judging.": "無関係な印象が、独立に下しているつもりの判断ににじみ出る。そしてもっともにじみ出るのは、証拠がもっとも弱いところである。あるものをその中身で判断するのが難しくなった瞬間こそ、別の何かが静かに判断を引き受け始める瞬間である。",
-  "The halo effect, a reasoning trap.": "ハロー効果、思考の罠。",
+  "The halo effect, a reasoning trap.": "ハロー効果、推論の罠。",
   "Knew where the bias was hiding.": "偏りがどこに潜んでいるかを見抜いた。",
   "I would have sworn I marked it on the writing.": "文章そのもので採点したと、私は誓えたはずだ。",
 

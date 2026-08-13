@@ -485,10 +485,18 @@ export function scopeLabel(kind: DataViewKind): string {
       return "Everyone, over the whole follow-up";
     case "astrimmed":
       return "And with the early deaths thrown away";
+    /*
+      Shape-generic, NOT halo's wording. These are keyed by view KIND, so the
+      second puzzle on `conditional` inherits whatever is written here, and the
+      first draft said "When the work was good", which describes one card's
+      essays and nothing else. A card that wants its own phrasing sets an
+      explicit `caption`, which is what `RevealView` prefers anyway; this is
+      only the fallback.
+    */
     case "onerow":
-      return "When the work was good";
+      return "In one case";
     case "bothrows":
-      return "And when the work was poor";
+      return "In every case";
     default:
       return "";
   }

@@ -26,6 +26,7 @@ export const ar: Record<string, string> = {
   Source: "المصدر",
   "Make my card →": "أنشئ بطاقتي ←",
   "Go deeper on this idea →": "تعمّق أكثر في هذه الفكرة ←",
+  "Argue with this card on the forum →": "ناقش هذه البطاقة في المنتدى →",
   "Commit to see the reveal. No peeking.":
     "اختر إجابتك لتكشف الحل. لا استراق للنظر.",
   "Reveal the answer": "اكشف الإجابة",

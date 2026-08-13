@@ -26,6 +26,7 @@ export const zh: Record<string, string> = {
   Source: "来源",
   "Make my card →": "生成我的卡片 →",
   "Go deeper on this idea →": "深入了解这个概念 →",
+  "Argue with this card on the forum →": "到论坛上争论这张卡片 →",
   "Commit to see the reveal. No peeking.": "先做出选择才能看到答案。不许偷看。",
   "Reveal the answer": "揭晓答案",
   "Name the skill →": "说出这项技能 →",

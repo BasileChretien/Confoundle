@@ -25,6 +25,7 @@ export const hi: Record<string, string> = {
   Source: "स्रोत",
   "Make my card →": "मेरा कार्ड बनाएँ →",
   "Go deeper on this idea →": "इस विचार में और गहराई से जाएँ →",
+  "Argue with this card on the forum →": "इस कार्ड पर फ़ोरम में बहस करें →",
   "Commit to see the reveal. No peeking.":
     "उत्तर देखने के लिए चुनें। झाँकना मना है।",
   "Reveal the answer": "उत्तर दिखाएँ",

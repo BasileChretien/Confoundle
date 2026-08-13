@@ -25,6 +25,7 @@ export const ru: Record<string, string> = {
   Source: "Источник",
   "Make my card →": "Создать мою карточку →",
   "Go deeper on this idea →": "Углубиться в эту идею →",
+  "Argue with this card on the forum →": "Поспорить об этой карточке на форуме →",
   "Commit to see the reveal. No peeking.":
     "Сделайте выбор, чтобы увидеть ответ. Без подглядывания.",
   "Reveal the answer": "Показать ответ",

@@ -53,9 +53,14 @@ function stripComments(code: string): string {
 }
 
 /**
- * Every template literal, with the position it starts at. Nesting inside
- * `${...}` is followed so an inner literal is read as its own literal rather
- * than as part of the outer one's text.
+ * Every template literal, with the position it starts at, INCLUDING the ones
+ * nested inside an interpolation.
+ *
+ * The recursion is not a nicety. A scanner that skips `${...}` wholesale reads
+ * `` `${ok ? `n = ${count}` : ""}` `` as a literal whose only text is empty,
+ * and reports nothing: the label is real, visible, and invisible to the check.
+ * So an interpolation's contents are collected and scanned in their own right,
+ * with positions kept absolute so the caller can still ask where each one sits.
  */
 function templateLiterals(code: string): { at: number; text: string }[] {
   const out: { at: number; text: string }[] = [];
@@ -65,18 +70,30 @@ function templateLiterals(code: string): { at: number; text: string }[] {
     const start = i;
     let literal = "";
     let depth = 0;
+    let holeAt = -1;
     i++;
     for (; i < code.length; i++) {
       const c = code[i];
       if (depth === 0 && c === "`") break;
       if (depth === 0 && c === "$" && code[i + 1] === "{") {
         depth = 1;
+        holeAt = i + 2;
         i++;
         continue;
       }
       if (depth > 0) {
         if (c === "{") depth++;
-        else if (c === "}") depth--;
+        else if (c === "}") {
+          depth--;
+          if (depth === 0 && holeAt >= 0) {
+            // Scan the hole's own source, then shift the positions back into
+            // this file's coordinates so `attributeSpans` still lines up.
+            for (const inner of templateLiterals(code.slice(holeAt, i))) {
+              out.push({ at: holeAt + inner.at, text: inner.text });
+            }
+            holeAt = -1;
+          }
+        }
         continue;
       }
       literal += c;
@@ -86,20 +103,44 @@ function templateLiterals(code: string): { at: number; text: string }[] {
   return out;
 }
 
-/** `attr={` and `prop:` are markup, not prose. */
-const MARKUP_POSITION = /(?:[A-Za-z-]+\s*=\s*\{\s*|[A-Za-z-]+\s*:\s*|\?\s*|:\s*)$/;
+/**
+ * The brace spans of JSX attributes, as `[start, end)`.
+ *
+ * Position is tracked by SCOPE rather than by the token immediately before a
+ * literal, which is the mistake the first draft made: it treated a bare `?` or
+ * `:` as a markup signal, and so silently exempted both branches of an ordinary
+ * ternary such as `` const label = ok ? `n = ${a}` : `n = ${b}` ``. Every one of
+ * the legitimate literals in these files, the CSS lengths and the class names
+ * and the viewBox values, lives inside an attribute's braces, so exempting the
+ * SPAN covers them all without needing to guess from punctuation. It also
+ * covers `style={{ left: ... }}`, whose object properties sit within the
+ * attribute's own braces.
+ */
+function attributeSpans(code: string): [number, number][] {
+  const spans: [number, number][] = [];
+  const open = /\b[A-Za-z-]+\s*=\s*\{/g;
+  let m: RegExpExecArray | null;
+  while ((m = open.exec(code))) {
+    let depth = 1;
+    let i = m.index + m[0].length;
+    for (; i < code.length && depth > 0; i++) {
+      if (code[i] === "{") depth++;
+      else if (code[i] === "}") depth--;
+    }
+    spans.push([m.index, i]);
+  }
+  return spans;
+}
 
 /** A label reads as `n = ` or as a word and a space; markup does not. */
 const LOOKS_LIKE_A_LABEL = /[A-Za-z]\s*=|[A-Za-z]{2,}\s/;
 
 function offenders(code: string): string[] {
   const clean = stripComments(code);
+  const spans = attributeSpans(clean);
+  const inAttribute = (at: number) => spans.some(([s, e]) => at >= s && at < e);
   return templateLiterals(clean)
-    .filter(({ at, text }) => {
-      if (!text.trim()) return false;
-      if (!LOOKS_LIKE_A_LABEL.test(text)) return false;
-      return !MARKUP_POSITION.test(clean.slice(Math.max(0, at - 80), at));
-    })
+    .filter(({ at, text }) => text.trim() && LOOKS_LIKE_A_LABEL.test(text) && !inAttribute(at))
     .map(({ text }) => text.trim());
 }
 
@@ -129,6 +170,22 @@ describe("chart labels", () => {
       "const y = s.points.map((p) => `n = ${nf.format(p.n)}`).join(' · ');",
     ];
     for (const line of shipped) expect(offenders(line)).toHaveLength(1);
+  });
+
+  /**
+   * Both raised by CodeRabbit on this PR, and both were holes in the first
+   * draft rather than hypotheticals.
+   */
+  it("sees a label nested inside an interpolation", () => {
+    // The first draft skipped `${...}` wholesale, so the outer literal read as
+    // empty and the inner label was never examined at all.
+    expect(offenders('const s = `${ok ? `n = ${count}` : ""}`;')).toEqual(["n ="]);
+  });
+
+  it("sees both branches of a ternary, rather than treating the punctuation as markup", () => {
+    // The first draft exempted anything preceded by `?` or `:`, which was aimed
+    // at object properties and caught ordinary conditionals as collateral.
+    expect(offenders("const label = ok ? `n = ${a}` : `n = ${b}`;")).toEqual(["n =", "n ="]);
   });
 
   /** And that it stays quiet on the markup these files are full of. */

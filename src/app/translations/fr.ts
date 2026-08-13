@@ -1017,7 +1017,7 @@ export const fr: Record<string, string> = {
     "Cet essai montre-t-il que la chirurgie réduit la mortalité ?",
   "Died during follow-up": "Décédés pendant le suivi",
   "Medicine alone": "Traitement médical seul",
-  Medicine: "Médical",
+  Medicine: "Médicaments",
   "Surgery added": "Chirurgie en plus",
   Surgery: "Chirurgie",
   "Only those who got what they were assigned":

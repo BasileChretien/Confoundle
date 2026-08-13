@@ -1,5 +1,6 @@
-import { useT } from "../../app/i18n";
+import { useLocale, useT } from "../../app/i18n";
 import type { PublishedData } from "../../puzzles/schema";
+import { fillSlots } from "./announce";
 import { declaredColors } from "./palette";
 import { axisFraction, publishedPairs } from "./published";
 
@@ -77,6 +78,26 @@ export function PublishedView({
 }) {
   void _kind;
   const t = useT();
+  /**
+   * EVERY numeral in this figure goes through the reader's locale, which is the
+   * rule `SurrogateView` states and the reason it states it: formatting only
+   * some of them produced a Bengali line reading "১,৭২৭ · 75%", one number in
+   * Bengali digits and its neighbour in Western ones, inside a single row.
+   * Here the row is worse placed than that, because the rate and its
+   * denominator sit two lines apart in the same block and are read together.
+   *
+   * So the rates go through `num` rather than `toFixed`, and the axis ends go
+   * through `nf` rather than being printed raw. The digits themselves are left
+   * as each locale's default rather than forced to Western, so nothing here
+   * decides for an Arabic or Bengali reader which numerals they want.
+   */
+  const locale = useLocale();
+  const nf = new Intl.NumberFormat(locale);
+  const num = (v: number, digits: number) =>
+    new Intl.NumberFormat(locale, {
+      minimumFractionDigits: digits,
+      maximumFractionDigits: digits,
+    }).format(v);
   const shown = publishedPairs(data);
   const colorOf = declaredColors(full.arms);
   const anyAdjusted = data.observations.some((o) => o.adjusted !== undefined);
@@ -104,7 +125,7 @@ export function PublishedView({
               <div className="flex items-baseline justify-between gap-2">
                 <span className="text-[12px] leading-snug text-ink">{t(p.short ?? p.label)}</span>
                 <span className="shrink-0 font-mono text-[11px] tabular-nums text-ink-soft">
-                  {p.values.map((v) => v.rate.toFixed(1)).join(" · ")}
+                  {p.values.map((v) => num(v.rate, 1)).join(" · ")}
                 </span>
               </div>
               <div aria-hidden="true">
@@ -121,8 +142,26 @@ export function PublishedView({
                   />
                 ))}
               </div>
+              {/*
+                The denominator is notation rather than prose, and most locales
+                keep the Latin `n`, but it is still a label a reader sees, so it
+                is keyed rather than inlined: a translator whose convention
+                differs has somewhere to put it, and the digits already group
+                per locale through `nf`.
+
+                It survived as a bare template literal because nothing could see
+                it. `coverage.test.ts` walks authored puzzle content and
+                `inlineChrome.test.ts` reads the source for the `t({ en: ... })`
+                form, so a string that was never wrapped is invisible to both;
+                and `chartsLocalized.test.ts`, which does render every chart in
+                six non-Latin locales, matches runs of TWO or more Latin letters
+                because one letter is an axis label rather than a word. A label
+                whose only Latin is `n` falls through all three.
+              */}
               <span className="font-mono text-[10px] tabular-nums text-ink-soft">
-                {p.values.map((v) => `n = ${v.n.toLocaleString("en")}`).join(" · ")}
+                {p.values
+                  .map((v) => fillSlots(t({ en: "n = {count}" }), { count: nf.format(v.n) }))
+                  .join(" · ")}
               </span>
               {p.note ? (
                 <span className="text-[10px] leading-snug text-ink-soft">{t(p.note)}</span>
@@ -143,8 +182,8 @@ export function PublishedView({
         dir="ltr"
         className="flex items-center justify-between gap-2 font-mono text-[10px] tabular-nums text-ink-soft"
       >
-        <span>0</span>
-        <span>{data.axisMax}</span>
+        <span>{nf.format(0)}</span>
+        <span>{nf.format(data.axisMax)}</span>
       </div>
       <p className="text-[10px] leading-snug text-ink-soft">{t(data.perLabel)}</p>
       <p className="text-[10px] leading-snug text-ink-soft">{t(data.dispersionLabel)}</p>

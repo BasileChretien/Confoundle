@@ -17,6 +17,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "gen:icons": "node scripts/gen-icons.mjs",
+    "gen:agents": "node scripts/gen-agents.mjs",
     "deploy": "tsc && vite build && npx -y wrangler pages deploy dist --project-name confoundle",
     "deploy:reminders": "tsc && npx -y wrangler deploy -c wrangler.reminders.toml"
   },

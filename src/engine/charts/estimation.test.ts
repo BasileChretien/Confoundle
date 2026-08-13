@@ -83,7 +83,22 @@ describe("estimation derivation", () => {
   });
 
   it("formats big numbers so they read as numbers", () => {
-    expect(formatValue(40320)).toBe("40,320");
-    expect(formatValue(512)).toBe("512");
+    expect(formatValue(40320, "en")).toBe("40,320");
+    expect(formatValue(512, "en")).toBe("512");
+  });
+
+  it("groups them the way the reader's language groups them", () => {
+    // This was `toLocaleString("en-US")`, which pinned English grouping in all
+    // ten languages. French separates with a space, Hindi groups by two after
+    // the first three, and Bengali does both that and its own digits.
+    //
+    // The French separator is U+202F NARROW NO-BREAK SPACE and is written as
+    // an escape here rather than pasted, because it is indistinguishable from
+    // an ordinary space in a diff and this assertion is about which character
+    // it is. A plain space would also be wrong on screen: it would let 40 320
+    // break across two lines.
+    expect(formatValue(40320, "fr")).toBe("40\u202f320");
+    expect(formatValue(12000000, "hi")).toBe("1,20,00,000");
+    expect(formatValue(40320, "bn")).toBe("৪০,৩২০");
   });
 });

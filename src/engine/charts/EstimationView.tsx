@@ -1,4 +1,4 @@
-import { useT } from "../../app/i18n";
+import { useLocale, useT } from "../../app/i18n";
 import type { EstimateGroup, EstimationData } from "../../puzzles/schema";
 import { colorFor, declaredColors } from "./palette";
 import { barFraction, formatValue } from "./estimation";
@@ -20,6 +20,7 @@ function Row({
   fraction,
   color,
   emphasis,
+  locale,
 }: {
   name: string;
   prompt?: string;
@@ -27,6 +28,8 @@ function Row({
   fraction: number;
   color: string;
   emphasis?: boolean;
+  /** Passed down because this component has no hook to reach it from. */
+  locale: string;
 }) {
   return (
     <div className="flex flex-col gap-1 py-1.5">
@@ -40,7 +43,7 @@ function Row({
           {name}
         </span>
         <span className="shrink-0 font-mono text-[13px] font-semibold tabular-nums text-ink">
-          {formatValue(value)}
+          {formatValue(value, locale)}
         </span>
       </div>
       {prompt ? (
@@ -54,7 +57,7 @@ function Row({
             backgroundColor: color,
           }}
           role="img"
-          aria-label={`${name}: ${formatValue(value)}`}
+          aria-label={`${name}: ${formatValue(value, locale)}`}
         />
       </div>
     </div>
@@ -76,6 +79,7 @@ export function EstimationView({
   kind: "oneguess" | "withtruth";
 }) {
   const t = useT();
+  const locale = useLocale();
   const againstTruth = kind === "withtruth";
   const colorOf = declaredColors(full.groups);
 
@@ -90,6 +94,7 @@ export function EstimationView({
             value={g.estimate}
             fraction={barFraction(g.estimate, data, againstTruth)}
             color={colorOf(g.id)}
+            locale={locale}
           />
         ))}
 
@@ -100,6 +105,7 @@ export function EstimationView({
             fraction={1}
             color={colorFor(3)}
             emphasis
+            locale={locale}
           />
         ) : null}
       </div>

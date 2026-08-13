@@ -1,4 +1,4 @@
-import { useT } from "../../app/i18n";
+import { useLocale, useT } from "../../app/i18n";
 import type { BunchingData } from "../../puzzles/schema";
 import { colorFor } from "./palette";
 import { bunchingShape, cliffAcross } from "./bunching";
@@ -62,8 +62,16 @@ export function BunchingView({
   const shape = bunchingShape(data);
   const cliff = cliffAcross(data);
 
-  // Locale-aware grouping, so 97,012 is not 97,012 in every language.
-  const formatCount = (n: number) => n.toLocaleString();
+  // Locale-aware grouping, so 97,012 is not 97,012 in every language. The
+  // locale is the one the READER PICKED, which is the whole of the fix here:
+  // this was `n.toLocaleString()` with no argument, and an argument-less call
+  // follows the JavaScript runtime's default locale, which in a browser is the
+  // browser's. So a reader who had switched the app to Bengali still got
+  // English grouping unless their browser happened to agree, and nothing
+  // anywhere failed, because the comment above was already true in spirit.
+  const locale = useLocale();
+  const nf = new Intl.NumberFormat(locale);
+  const formatCount = (n: number) => nf.format(n);
 
   return (
     <div className="flex flex-col gap-2.5">

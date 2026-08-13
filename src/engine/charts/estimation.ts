@@ -69,9 +69,21 @@ export function barFraction(
   return max === 0 ? 0 : value / max;
 }
 
-/** Thousands separators, so 40320 reads as a number rather than a string. */
-export function formatValue(value: number): string {
-  return value.toLocaleString("en-US");
+/**
+ * Thousands separators, so 40320 reads as a number rather than a string.
+ *
+ * The separators are the READER'S. This was `toLocaleString("en-US")`, which
+ * pins English grouping whatever language the app is showing, so a French
+ * reader who writes 40 320 and a Bengali reader who writes ৪০,৩২০ both got
+ * 40,320. The locale is a required argument rather than an optional one on
+ * purpose: an omitted one would fall back to the runtime's default, which is
+ * the same defect wearing a different hat, and it would fail silently.
+ *
+ * The module stays pure, with no React in it, so a Remotion template renders
+ * the identical string by passing the identical locale in.
+ */
+export function formatValue(value: number, locale: string): string {
+  return new Intl.NumberFormat(locale).format(value);
 }
 
 export function formatTimes(times: number): string {

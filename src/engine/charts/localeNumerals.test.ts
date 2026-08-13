@@ -1,0 +1,252 @@
+import { describe, expect, it } from "vitest";
+
+/**
+ * A numeral on a chart follows the READER'S locale, never the runtime's and
+ * never a locale written into the source.
+ *
+ * Nothing caught this, and nothing could. `chartsLocalized.test.ts` renders
+ * every puzzle in six non-Latin locales and fails on any Latin word, which is
+ * what found the strings that were never wrapped in `t()`; but it matches runs
+ * of two or more Latin LETTERS and does not look at digits at all. So a figure
+ * could draw "40,320" at a French reader who writes 40 320, or Western digits
+ * at a Bengali reader, and sweep up perfectly clean. Six call sites did exactly
+ * that, in four different spellings:
+ *
+ *   - `toLocaleString("en-US")` and `toLocaleString("en")`, which pin English
+ *     grouping in all ten languages.
+ *   - `toLocaleString()` and `toLocaleString(undefined, { ... })`, which look
+ *     locale-aware and are not: an absent locale means the JavaScript runtime's
+ *     default, which in a browser is the BROWSER'S language rather than the one
+ *     the reader picked in the app. Two of these even carried a comment saying
+ *     "locale-aware grouping", which was true of the mechanism and false of the
+ *     locale it used.
+ *   - `new Intl.NumberFormat()` with no argument, which is the same defect
+ *     wearing the clothes of the fix.
+ *
+ * So this reads the source, the way `declaredColors.test.ts` and
+ * `translations/inlineChrome.test.ts` do and for the same reason: the call site
+ * is the only place the mistake is visible. A correct call and an incorrect one
+ * produce identical types, identical output under `en`, and identical-looking
+ * figures to anyone testing in English.
+ *
+ * WHAT THIS DELIBERATELY DOES NOT COVER, so that nobody reads it as more than
+ * it is. `toFixed` never localises anything, and twenty-odd files in this
+ * directory still use it for decimals. That is the same bug in the wider sense
+ * and it is not this test's subject, because sweeping it means touching every
+ * shape at once. The boundary drawn instead is the one that can be held today:
+ * no file may pick the WRONG locale, and no file may be half-localised, which
+ * is the state `SurrogateView` argues is worse than either choice made
+ * consistently. Every file that mixed the two has been converted whole; the
+ * files that are uniformly unlocalised are internally consistent and wait their
+ * turn. When they are converted, this scan is where `toFixed` should join.
+ */
+
+/**
+ * Every file in this directory, as text. The whole directory rather than a list
+ * read off `DataViewRenderer`: the defect is not confined to the renderers that
+ * are handed a slice of the data (which is what `declaredColors.test.ts` needs
+ * its list for), and the pure derivation modules beside them format numbers
+ * too. `estimation.ts` held one of the six.
+ */
+const SOURCES = import.meta.glob("./*.{ts,tsx}", {
+  query: "?raw",
+  import: "default",
+  eager: true,
+}) as Record<string, string>;
+
+const isScanned = (path: string) => !/\.test\.tsx?$/.test(path);
+
+/**
+ * Comments are not code, and this project writes a great many of them.
+ *
+ * This is not hypothetical: the first run of this scan reported three files
+ * that had just been FIXED, because each one's comment quotes the call it
+ * replaced in order to explain why. `translations/inlineChrome.test.ts` hit the
+ * same wall and built a character-level scanner for it, because it hunts string
+ * literals and had to keep them intact. This hunts a method name, so it can be
+ * cruder: block comments and line comments come out, string literals are left
+ * exactly where they are.
+ *
+ * `dangling` reports a block comment that never closed, which would have eaten
+ * the rest of the file and read as a pass. The one hole left is a `//` inside a
+ * string literal, which truncates that line: a URL followed by a formatting
+ * call on the SAME line would be missed. Nothing in this directory looks like
+ * that, and the failure would be one line rather than one file.
+ */
+function stripComments(source: string): { code: string; dangling: boolean } {
+  const out: string[] = [];
+  let inBlock = false;
+  for (const line of source.split("\n")) {
+    let kept = "";
+    let i = 0;
+    while (i < line.length) {
+      if (inBlock) {
+        const end = line.indexOf("*/", i);
+        if (end === -1) break;
+        inBlock = false;
+        i = end + 2;
+        continue;
+      }
+      if (line.startsWith("//", i)) break;
+      if (line.startsWith("/*", i)) {
+        inBlock = true;
+        i += 2;
+        continue;
+      }
+      kept += line[i];
+      i++;
+    }
+    out.push(kept);
+  }
+  return { code: out.join("\n"), dangling: inBlock };
+}
+
+/**
+ * `toLocaleString` in any spelling. There is no correct argument to it here:
+ * a literal locale is wrong by definition, and an absent one silently means the
+ * runtime's. The replacement is always an `Intl.NumberFormat` built from
+ * `useLocale()`, so the method is banned outright rather than policed.
+ */
+const TO_LOCALE_STRING = /\.toLocaleString\s*\(/g;
+
+/**
+ * `new Intl.NumberFormat(` whose first argument is not an identifier: `()` or
+ * `("en")` or `(undefined, {...})`. A call like `new Intl.NumberFormat(locale)`
+ * or `new Intl.NumberFormat(props.locale, {...})` passes, which is as far as a
+ * source scan can see: whether that identifier came from `useLocale()` is a
+ * question about values, and the render tests in `chartsLocalized.test.ts` and
+ * the throwaway locale sweeps are what answer it.
+ */
+const HARDCODED_FORMAT = /new\s+Intl\.NumberFormat\s*\(\s*(?:\)|["'`]|undefined\b)/g;
+
+function offendersIn(source: string): string[] {
+  return [
+    ...[...source.matchAll(TO_LOCALE_STRING)].map(() => "toLocaleString()"),
+    ...[...source.matchAll(HARDCODED_FORMAT)].map((m) =>
+      m[0].replace(/\s+/g, " "),
+    ),
+  ];
+}
+
+describe("numerals on a chart follow the reader's locale", () => {
+  it("actually reads the chart sources", () => {
+    // A scan that reads nothing passes everything, which is the failure mode
+    // every source scan in this repo is written to argue against. Floors
+    // rather than exact counts, so adding a chart cannot fail this, but a glob
+    // that has quietly stopped matching must.
+    expect(Object.keys(SOURCES).length).toBeGreaterThan(40);
+    expect(Object.keys(SOURCES).filter(isScanned).length).toBeGreaterThan(30);
+  });
+
+  it("would recognise every spelling of the defect if one came back", () => {
+    // The detector proved against the exact six call sites this was written
+    // for, quoted verbatim from the commit that removed them. An assertion of
+    // absence cannot tell a clean directory from a broken matcher, and four of
+    // these six differ only in their argument.
+    const shipped = [
+      `return \`\${t({ en: "1 in" })} \${n.toLocaleString("en-US")}\`;`,
+      `{p.values.map((v) => \`n = \${v.n.toLocaleString("en")}\`).join(" · ")}`,
+      `const formatCount = (n: number) => n.toLocaleString();`,
+      `? Math.round(n).toLocaleString()`,
+      `\`\${n.toLocaleString(undefined, { maximumFractionDigits: 2 })}%\``,
+      `const nf = new Intl.NumberFormat();`,
+    ];
+    for (const line of shipped) {
+      expect({ line, found: offendersIn(line) }).not.toEqual({
+        line,
+        found: [],
+      });
+    }
+
+    // And the forms that must NOT fire, or the scan would be noise that the
+    // next person turns off rather than a rule they follow.
+    for (const clean of [
+      `const nf = new Intl.NumberFormat(locale);`,
+      `new Intl.NumberFormat(locale, { maximumFractionDigits: 1 })`,
+      `new Intl.NumberFormat(props.locale)`,
+    ]) {
+      expect({ clean, found: offendersIn(clean) }).toEqual({ clean, found: [] });
+    }
+  });
+
+  it("strips the comments without stripping the code", () => {
+    // The stripper is the part that can fail silently: strip too much and
+    // every file sweeps up clean. So prove on a real file that a known
+    // formatting call SURVIVES stripping, and that a known comment does not.
+    // `SurrogateView` is the file that argued the rule in the first place.
+    const surrogate = Object.entries(SOURCES).find(([p]) =>
+      p.endsWith("/SurrogateView.tsx"),
+    );
+    expect(surrogate).toBeDefined();
+    const { code } = stripComments(surrogate![1]);
+    expect(code).toContain("new Intl.NumberFormat(locale)");
+    expect(surrogate![1]).toContain("This was `toLocaleString");
+    expect(code).not.toContain("This was `toLocaleString");
+  });
+
+  it("leaves no file picking a locale of its own", () => {
+    // Build the formatter from `useLocale()` (or take the locale as an
+    // argument, if the module is a pure one that any surface can call), and
+    // convert EVERY numeral in the same figure while you are there: a count
+    // grouped in Bengali beside a percentage that is not is worse than either
+    // choice made consistently.
+    //
+    // An equality against a NAMED list rather than a bare `toEqual({})`, on the
+    // same reasoning as `ANNOUNCED_IN_ENGLISH` in `chartsLocalized.test.ts`:
+    // the two read the same today and fail differently tomorrow. It fails in
+    // both directions on purpose, so a stale entry left behind after its file
+    // was fixed is as loud as a new offender, and anyone tempted to quiet a
+    // failure has to add a line to a list whose comment says it may only
+    // shrink.
+    //
+    // That is not a hypothetical either: the list held `PublishedView.tsx` for
+    // exactly one CI run. It was written while PR #165 had that file's fix open
+    // in review, so that this branch would neither duplicate that work nor
+    // convert half of that figure; #165 merged before this did, and CI, which
+    // builds the branch against main rather than against the commit it was
+    // written on, failed on the stale entry within the hour.
+    const found: Record<string, string[]> = {};
+    const unparsed: string[] = [];
+    for (const [path, source] of Object.entries(SOURCES)) {
+      if (!isScanned(path)) continue;
+      const { code, dangling } = stripComments(source);
+      if (dangling) unparsed.push(path);
+      const offenders = offendersIn(code);
+      if (offenders.length) found[path] = offenders;
+    }
+    // A file the stripper could not read to the end was not fully scanned, and
+    // that reads as a pass. Reported rather than tolerated.
+    expect(unparsed).toEqual([]);
+    expect(found).toEqual(PENDING);
+  });
+});
+
+/**
+ * Files still picking a locale of their own, each with the PR that is fixing it.
+ *
+ * Kept rather than deleted along with its last entry, and the assertion above
+ * stays an equality against a NAMED list rather than becoming a bare
+ * `toEqual({})`, for the reason `ANNOUNCED_IN_ENGLISH` gives in
+ * `chartsLocalized.test.ts`: the two read the same today and fail differently
+ * tomorrow. An equality against something named says what the empty object
+ * MEANS, which is that no chart may pick its own locale rather than that none
+ * currently happens to. A future chart that regresses is then a failing diff
+ * against a documented floor, and anyone tempted to quiet it has to add a line
+ * to a list whose comment says it may only shrink.
+ *
+ * AN ENTRY IS ONLY EVER A CROSS-PR HANDOFF, never a deferral. The distinction
+ * is the whole reason the list is allowed to be non-empty: a file named here
+ * has an owner and a number, and the equality means the entry cannot outlive
+ * the fix by more than one CI run. A file with no PR against it does not belong
+ * here; it belongs fixed, in the change that touched it.
+ *
+ * It has held two entries and holds none now, both discharged exactly the way
+ * the mechanism intends: `PublishedView.tsx` against #165, and
+ * `FrequencyView.tsx` against #167, each named while the other PR had that
+ * file's fix in review and each deleted on the rebase that followed the merge.
+ * Neither had to be remembered, because the assertion is an equality and a
+ * stale entry fails as loudly as a new offender.
+ *
+ * So: it is at zero, and a new entry needs a PR number to point at.
+ */
+const PENDING: Record<string, string[]> = {};

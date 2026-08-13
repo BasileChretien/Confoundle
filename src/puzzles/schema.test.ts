@@ -548,6 +548,34 @@ describe("conditional validation", () => {
     expect(found).not.toContain("no cell for");
   });
 
+  it("still catches a hole when the ids contain a separator", () => {
+    // The half above only proves the old collision no longer fires a FALSE
+    // positive. The dangerous half was the opposite: with `a|b` + `c` and `a` +
+    // `b|c` colliding on one key, a grid genuinely missing a cell looked
+    // complete, because the other pair had already marked that key seen. So
+    // drop one cell from the same fixture and require the complaint.
+    const holed = {
+      ...conditional,
+      rows: [
+        { id: "a|b", label: { en: "A" } },
+        { id: "a", label: { en: "B" } },
+      ],
+      columns: [
+        { id: "c", label: { en: "C" } },
+        { id: "b|c", label: { en: "D" } },
+      ],
+      cells: [
+        { rowId: "a|b", columnId: "c", mean: 2, n: 5 },
+        { rowId: "a|b", columnId: "b|c", mean: 8, n: 5 },
+        { rowId: "a", columnId: "c", mean: 5, n: 5 },
+        // ("a", "b|c") deliberately absent. Under the old key scheme this was
+        // indistinguishable from ("a|b", "c"), which is present, so the hole
+        // went unreported.
+      ],
+    };
+    expect(problems(holed).join(" ")).toContain("no cell for row a, column b|c");
+  });
+
   it("rejects a mean outside the authored scale", () => {
     const bad = {
       ...conditional,

@@ -46,6 +46,8 @@ import { CrossedView } from "./CrossedView";
 import { PublishedView } from "./PublishedView";
 import { SurrogateView } from "./SurrogateView";
 import { AttenuationView } from "./AttenuationView";
+import { ConditionalView } from "./ConditionalView";
+import { restrictConditional } from "./conditional";
 import { restrictPublished } from "./published";
 import { restrictCrossed } from "./crossed";
 import { restrictSeries } from "./series";
@@ -300,6 +302,16 @@ export function DataViewRenderer({
           kind={view.kind}
         />
       ) : null;
+    case "conditional":
+      // A slice-drawer on the ROWS: the setup names one row and the reveal
+      // omits groupIds, so the reveal adds the row that carries the lesson.
+      return view.kind === "onerow" || view.kind === "bothrows" ? (
+        <ConditionalView
+          data={restrictConditional(data, { groupIds: view.groupIds })}
+          full={data}
+          kind={view.kind}
+        />
+      ) : null;
     case "attenuation":
       // Nothing filtered: the beats differ by which windows and outcomes are
       // drawn, and the reveal keeps the setup row untouched underneath.
@@ -473,6 +485,18 @@ export function scopeLabel(kind: DataViewKind): string {
       return "Everyone, over the whole follow-up";
     case "astrimmed":
       return "And with the early deaths thrown away";
+    /*
+      Shape-generic, NOT halo's wording. These are keyed by view KIND, so the
+      second puzzle on `conditional` inherits whatever is written here, and the
+      first draft said "When the work was good", which describes one card's
+      essays and nothing else. A card that wants its own phrasing sets an
+      explicit `caption`, which is what `RevealView` prefers anyway; this is
+      only the fallback.
+    */
+    case "onerow":
+      return "In one case";
+    case "bothrows":
+      return "In every case";
     default:
       return "";
   }

@@ -3385,6 +3385,167 @@ export const AttenuationData = z
   });
 export type AttenuationData = z.infer<typeof AttenuationData>;
 
+/* ---------------------------------------------------------------------------
+ * `conditional`: one factor's effect measured at each level of another, drawn
+ * as cell means on a rating scale.
+ *
+ * The lesson is an INTERACTION, and specifically the case where a bias looks
+ * absent until you look at the condition where judgement has room to move. So
+ * the setup draws one row and the reveal adds the other, which is a filter the
+ * engine already supports rather than a second figure.
+ *
+ * WHY NOT `crossed`, WHICH IS THE NEAR MISS. That shape also takes two crossed
+ * factors over a continuous outcome, but its refinement requires the widest
+ * pairwise gap to be at least ten times the narrowest, because it exists to
+ * draw a setup sitting on a confounded diagonal. Landy and Sigall's four cells
+ * run 6.7, 5.9, 5.2, 2.7, a ratio of about six, so `crossed` rejects them, and
+ * it rejects them CORRECTLY: relaxing that bound to admit this data would
+ * weaken the check the balanced-placebo card depends on. Different lesson,
+ * different shape.
+ *
+ * WHY NOT `interaction`. That one is odds ratios against a no-effect line of 1,
+ * crude against Mantel-Haenszel adjusted. This is means on a rating scale.
+ * ------------------------------------------------------------------------- */
+const ConditionalScale = z.object({
+  min: z.number(),
+  max: z.number(),
+  minLabel: LocalizedText,
+  maxLabel: LocalizedText,
+});
+
+const ConditionalRow = z.object({
+  id: z.string().min(1),
+  label: LocalizedText,
+  short: LocalizedText.optional(),
+  note: LocalizedText.optional(),
+});
+
+const ConditionalColumn = z.object({
+  id: z.string().min(1),
+  label: LocalizedText,
+  short: LocalizedText.optional(),
+  /** The level that is the comparison, drawn differently. */
+  isBaseline: z.boolean().optional(),
+});
+
+const ConditionalCell = z.object({
+  rowId: z.string().min(1),
+  columnId: z.string().min(1),
+  mean: z.number(),
+  /** As printed. Never derived, and never widened into an interval here. */
+  sd: z.number().nonnegative().optional(),
+  n: z.number().int().positive(),
+});
+
+export const ConditionalData = z
+  .object({
+    type: z.literal("conditional"),
+    label: LocalizedText,
+    /** What was rated, and on what, said on the figure. */
+    metricLabel: LocalizedText,
+    /** Names the factor whose effect is being measured, i.e. the columns. */
+    factorLabel: LocalizedText,
+    /** Says what the dispersion mark is, e.g. one standard deviation. */
+    dispersionLabel: LocalizedText.optional(),
+    /** Says the means are as printed and are not derived from counts. */
+    meanNote: LocalizedText,
+    scale: ConditionalScale,
+    rows: z.array(ConditionalRow).min(2),
+    columns: z.array(ConditionalColumn).min(2),
+    cells: z.array(ConditionalCell).min(4),
+  })
+  .superRefine((d, ctx) => {
+    const rowIds = new Set(d.rows.map((r) => r.id));
+    const colIds = new Set(d.columns.map((c) => c.id));
+    if (rowIds.size !== d.rows.length)
+      ctx.addIssue({ code: "custom", path: ["rows"], message: "duplicate row id" });
+    if (colIds.size !== d.columns.length)
+      ctx.addIssue({ code: "custom", path: ["columns"], message: "duplicate column id" });
+    if (d.scale.max <= d.scale.min)
+      ctx.addIssue({ code: "custom", path: ["scale"], message: "scale max must exceed min" });
+    if (d.columns.filter((c) => c.isBaseline).length > 1)
+      ctx.addIssue({ code: "custom", path: ["columns"], message: "at most one baseline column" });
+
+    /**
+     * JSON rather than a joined string. Ids are authored by hand, and a "|"
+     * inside one would let two DIFFERENT pairs collide on a single key: the
+     * duplicate check would then reject a correct grid, and the completeness
+     * check below would accept one with a hole, which is the worse half.
+     */
+    const cellKey = (rowId: string, columnId: string): string =>
+      JSON.stringify([rowId, columnId]);
+
+    const seen = new Set<string>();
+    d.cells.forEach((c, i) => {
+      if (!rowIds.has(c.rowId))
+        ctx.addIssue({ code: "custom", path: ["cells", i, "rowId"], message: `no row ${c.rowId}` });
+      if (!colIds.has(c.columnId))
+        ctx.addIssue({
+          code: "custom",
+          path: ["cells", i, "columnId"],
+          message: `no column ${c.columnId}`,
+        });
+      const key = cellKey(c.rowId, c.columnId);
+      if (seen.has(key))
+        ctx.addIssue({
+          code: "custom",
+          path: ["cells", i],
+          message: `two cells for row ${c.rowId}, column ${c.columnId}`,
+        });
+      seen.add(key);
+      if (c.mean < d.scale.min || c.mean > d.scale.max)
+        ctx.addIssue({
+          code: "custom",
+          path: ["cells", i, "mean"],
+          message: `mean ${c.mean} is outside the scale ${d.scale.min} to ${d.scale.max}`,
+        });
+    });
+
+    // A missing cell would draw a row with a silent hole, which a reader prices
+    // as data rather than as absence.
+    for (const r of d.rows)
+      for (const c of d.columns)
+        if (!seen.has(cellKey(r.id, c.id)))
+          ctx.addIssue({
+            code: "custom",
+            path: ["cells"],
+            message: `no cell for row ${r.id}, column ${c.id}`,
+          });
+
+    // The reason this shape exists: the spread across the columns must differ
+    // between the rows, and by a margin worth drawing. If every row shows the
+    // same spread there is no interaction, the reveal adds nothing, and the
+    // card is about a main effect, which several existing shapes already draw.
+    const spread = (rowId: string): number | null => {
+      const vals = d.columns
+        .map((c) => d.cells.find((x) => x.rowId === rowId && x.columnId === c.id)?.mean)
+        .filter((v): v is number => v !== undefined);
+      return vals.length < 2 ? null : Math.max(...vals) - Math.min(...vals);
+    };
+    const spreads = d.rows.map((r) => spread(r.id)).filter((v): v is number => v !== null);
+    if (spreads.length === d.rows.length) {
+      const widest = Math.max(...spreads);
+      const narrowest = Math.min(...spreads);
+      // Flat everywhere has to be caught FIRST. With every row flat both
+      // numbers are 0, the ratio test below reads "0 < 0" and passes, and a
+      // grid with no variation at all would ship as an interaction chart.
+      if (widest === 0)
+        ctx.addIssue({
+          code: "custom",
+          path: ["cells"],
+          message:
+            "every row is flat across the columns, so there is no effect to modify and nothing for the reveal to add",
+        });
+      else if (widest < 2 * narrowest)
+        ctx.addIssue({
+          code: "custom",
+          path: ["cells"],
+          message: `the widest row spans ${widest.toFixed(2)} and the narrowest ${narrowest.toFixed(2)}, less than double, so there is no interaction for this shape to reveal`,
+        });
+    }
+  });
+export type ConditionalData = z.infer<typeof ConditionalData>;
+
 export const PuzzleData = z.discriminatedUnion("type", [
   RatesData,
   FrequenciesData,
@@ -3419,6 +3580,7 @@ export const PuzzleData = z.discriminatedUnion("type", [
   PublishedData,
   SurrogateData,
   AttenuationData,
+  ConditionalData,
 ]);
 export type PuzzleData = z.infer<typeof PuzzleData>;
 
@@ -3507,6 +3669,8 @@ export const DataView = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("andoutcome"), ...viewFields }),
   z.object({ kind: z.literal("atbaseline"), ...viewFields }),
   z.object({ kind: z.literal("astrimmed"), ...viewFields }),
+  z.object({ kind: z.literal("onerow"), ...viewFields }),
+  z.object({ kind: z.literal("bothrows"), ...viewFields }),
 ]);
 export type DataView = z.infer<typeof DataView>;
 export type DataViewKind = DataView["kind"];
@@ -3858,6 +4022,15 @@ export const Puzzle = z
             strata: new Set(d.arms.map((a) => a.id)),
             strataWord: "arm",
           };
+        case "conditional":
+          // The ROWS are filterable: the setup names one row and the reveal
+          // omits groupIds, so the reveal is a superset by construction.
+          return {
+            groups: new Set(d.rows.map((r) => r.id)),
+            groupWord: "row",
+            strata: null,
+            strataWord: "",
+          };
         case "attenuation":
           /**
            * Nothing is filterable, for the same reason as `surrogate` below:
@@ -3952,6 +4125,41 @@ export const Puzzle = z
             message: `unknown ${filterableIds.strataWord} id "${id}"`,
           });
         }
+      }
+    }
+
+    /**
+     * `conditional` carries the kind and the ids as two halves of one claim,
+     * and nothing above checks they agree. `onerow` with no `groupIds` draws
+     * every row, so the setup would equal the reveal; `bothrows` WITH ids draws
+     * a subset, so the reveal would be smaller than its name promises. Both
+     * are the silent no-op the loop above exists to catch, just expressed
+     * through the kind rather than through an unknown id.
+     */
+    if (p.setup.data.type === "conditional") {
+      for (const [where, view] of [
+        ["initialView", p.setup.initialView],
+        ["reveal.view", p.reveal.view],
+      ] as const) {
+        const ids = view.groupIds ?? [];
+        if (view.kind === "onerow" && ids.length !== 1)
+          ctx.addIssue({
+            code: "custom",
+            path: [where, "groupIds"],
+            message: `onerow must name exactly one row, but names ${ids.length}`,
+          });
+        if (view.kind === "bothrows" && ids.length > 0)
+          ctx.addIssue({
+            code: "custom",
+            path: [where, "groupIds"],
+            message: "bothrows draws every row, so groupIds would contradict it",
+          });
+        if (view.kind !== "onerow" && view.kind !== "bothrows")
+          ctx.addIssue({
+            code: "custom",
+            path: [where, "kind"],
+            message: `conditional data cannot be drawn as "${view.kind}"; DataViewRenderer would render nothing`,
+          });
       }
     }
 

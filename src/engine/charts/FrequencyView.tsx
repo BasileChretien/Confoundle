@@ -3,34 +3,82 @@ import type {
   FrequenciesData,
   LocalizedText,
 } from "../../puzzles/schema";
-import { useT } from "../../app/i18n";
+import { useLocale, useT } from "../../app/i18n";
+import { fillSlots } from "./announce";
 import { frequencyBreakdown } from "./frequencies";
-import { formatPct } from "./rates";
 
 const TRUE_COLOR = "#0E8C7A"; // teal, actually has the condition
 const FALSE_COLOR = "#D8C6A6"; // pale, false alarm
 
+/**
+ * Every sentence on this figure is authored whole, with `{slot}` placeholders,
+ * and every numeral goes through the reader's locale.
+ *
+ * BOTH HALVES OF THIS FILE USED TO BE BUILT BY CONCATENATION, and it is the
+ * clearest case in the deck of why the project forbids it. The counts line read
+ * `` {b.truePositive} {t({ en: "of" })} {b.allPositive} ``, which is the exact
+ * example CLAUDE.md names: "3 of 40" is 40人中3人 in Japanese, whole before
+ * part, so a translator handed only the middle word cannot reach the right
+ * sentence from where they are standing. What they did instead is the evidence.
+ * Asked to translate "of" alone, Japanese and Chinese both returned "/", and
+ * "1 in" came back as "1 /": a translator with no way to reorder the operands
+ * fell back on notation, and the figure quietly stopped speaking either
+ * language. Hindi got "बटा", which reads as a division rather than a
+ * proportion, and Bengali got the postposition "এর মধ্যে", which put the
+ * operands in the wrong order outright and looked fine doing it.
+ *
+ * None of that could fail a test. The fragments WERE in all nine dictionaries,
+ * so `inlineChrome.test.ts` was satisfied, and each one WAS translated, so
+ * `chartsLocalized.test.ts` found no Latin word to complain about. A sentence
+ * assembled in English word order out of correctly translated pieces is
+ * invisible to both. Only a reader of the language can see it.
+ *
+ * So the four fragments are retired and their sentences authored whole. The
+ * counters are deliberately avoided in Japanese, Chinese and Bengali (人, 組,
+ * জন): this shape serves `base-rate`, where the subject is people, and
+ * `prosecutors-fallacy`, where it is couples, and a counter baked into the
+ * chrome would be wrong for one of them. The neutral fraction forms carry both.
+ *
+ * `≈`, `~`, `%` and `·` stay outside the sentences, as `SurrogateView` keeps
+ * `%` outside: they are notation rather than words, and a translator handed
+ * `"~{percent}"` has nothing to decide.
+ */
+function useNumerals() {
+  const locale = useLocale();
+  const nf = new Intl.NumberFormat(locale);
+  // Rounded exactly as `formatPct` in `./rates` rounds, so no puzzle's figure
+  // changes value here; the only difference is which locale groups the digits.
+  const pct = (v: number) => `${nf.format(Math.round(v * 100))}%`;
+  return { nf, pct };
+}
+
 function oneIn(
   t: (x: LocalizedText) => string,
+  nf: Intl.NumberFormat,
   withCondition: number,
   total: number,
 ): string {
-  if (withCondition <= 0) return "n/a";
+  // Reachable: the schema allows `withCondition: 0`, since it is `nonnegative`
+  // rather than `positive`. Keyed rather than left as the bare "n/a" it was,
+  // because an abbreviation is exactly the kind of string that differs by
+  // language and gets missed for looking like notation.
+  if (withCondition <= 0) return t({ en: "n/a" });
   const n = Math.round(total / withCondition);
-  return `${t({ en: "1 in" })} ${n.toLocaleString("en-US")}`;
+  return fillSlots(t({ en: "1 in {count}" }), { count: nf.format(n) });
 }
 
 /** Setup view: the given facts a player is handed (and tends to neglect). */
 function Facts({ data }: { data: FrequenciesData }) {
   const t = useT();
+  const { nf, pct } = useNumerals();
   const b = frequencyBreakdown(data);
   const rows = [
-    { k: t({ en: "How common it is" }), v: oneIn(t, b.withCondition, b.total) },
+    { k: t({ en: "How common it is" }), v: oneIn(t, nf, b.withCondition, b.total) },
     {
       k: t({ en: "Test catches it" }),
-      v: b.sensitivity >= 1 ? t({ en: "Always" }) : formatPct(b.sensitivity),
+      v: b.sensitivity >= 1 ? t({ en: "Always" }) : pct(b.sensitivity),
     },
-    { k: t({ en: "False-alarm rate" }), v: `~${formatPct(b.falsePositiveRate)}` },
+    { k: t({ en: "False-alarm rate" }), v: `~${pct(b.falsePositiveRate)}` },
   ];
   return (
     <dl className="flex flex-col divide-y divide-rule">
@@ -52,13 +100,16 @@ function Facts({ data }: { data: FrequenciesData }) {
 /** Reveal view: the positive group, dominated by false alarms. */
 function Breakdown({ data }: { data: FrequenciesData }) {
   const t = useT();
+  const { nf, pct } = useNumerals();
   const b = frequencyBreakdown(data);
   const asDots = b.allPositive <= 120;
 
   return (
     <div className="flex flex-col items-center gap-3">
       <div className="text-center font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-soft">
-        {t({ en: "Positive tests" })} · {b.allPositive}
+        {fillSlots(t({ en: "Positive tests · {count}" }), {
+          count: nf.format(b.allPositive),
+        })}
       </div>
 
       {asDots ? (
@@ -95,13 +146,19 @@ function Breakdown({ data }: { data: FrequenciesData }) {
 
       <div className="text-center">
         <div className="font-display text-2xl font-semibold text-ink">
-          {b.truePositive} {t({ en: "of" })} {b.allPositive}
+          {fillSlots(t({ en: "{part} of {whole}" }), {
+            part: nf.format(b.truePositive),
+            whole: nf.format(b.allPositive),
+          })}
         </div>
         <div className="text-sm text-ink-soft">
-          {t({ en: "actually" })} {t(data.conditionLabel)}
+          {fillSlots(t({ en: "actually {condition}" }), {
+            condition: t(data.conditionLabel),
+          })}
         </div>
         <div className="mt-1 text-sm font-semibold text-gold-ink">
-          ≈ {formatPct(b.ppv)} {t({ en: "chance" })}
+          ≈{" "}
+          {fillSlots(t({ en: "{percent} chance" }), { percent: pct(b.ppv) })}
         </div>
       </div>
 

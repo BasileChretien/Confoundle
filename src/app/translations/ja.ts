@@ -6,6 +6,7 @@
 export const ja: Record<string, string> = {
   // ---- UI chrome (buttons, labels, section headers) ----
   "n = {count}": "n = {count}",
+  "{name}: {value}": "{name}：{value}",
   "Review": "復習",
   "Loading your review…": "復習を読み込んでいます…",
   "Nothing is due right now. Learn a puzzle or come back later.": "今すぐの復習はありません。レッスンを学ぶか、後で戻ってきてください。",

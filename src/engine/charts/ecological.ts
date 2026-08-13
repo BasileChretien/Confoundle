@@ -71,8 +71,32 @@ export function slopeLine(data: EcologicalData): {
     : { x1: 8, y1: mid + rise / 2, x2: 92, y2: mid - rise / 2 };
 }
 
-/** Correlations are quoted the way sources print them, with a sign. */
-export function formatR(r: number): string {
+/**
+ * Correlations are quoted the way sources print them, with a sign.
+ *
+ * The locale is a REQUIRED argument rather than an optional one, and that is
+ * the point of the signature: an omitted locale falls back to the JavaScript
+ * runtime's default, which is the browser's rather than the reader's, and it
+ * does so silently. `toFixed(2)` had no locale at all, so `+0.79` kept its
+ * decimal point for a French or Russian reader who writes `+0,79`, and did it
+ * beside counts that this figure now groups in their language.
+ *
+ * The module stays pure, so a Remotion template renders the same string by
+ * passing the same locale in.
+ *
+ * The SIGN is still built by hand and the magnitude alone goes through `Intl`,
+ * which is not an oversight. `signDisplay: "exceptZero"` is the tidier spelling
+ * and it changes the glyph: it emits U+002D HYPHEN-MINUS, where this figure has
+ * always drawn U+2212 MINUS SIGN, which is the character a published
+ * correlation is set in and the one that lines up with the digits in a
+ * tabular-numerals font. It also prefixes a U+200E left-to-right mark in
+ * Arabic. Formatting the absolute value sidesteps both.
+ */
+export function formatR(r: number, locale: string): string {
   const rounded = Math.round(r * 100) / 100;
-  return (rounded > 0 ? "+" : rounded < 0 ? "−" : "") + Math.abs(rounded).toFixed(2);
+  const magnitude = new Intl.NumberFormat(locale, {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).format(Math.abs(rounded));
+  return (rounded > 0 ? "+" : rounded < 0 ? "−" : "") + magnitude;
 }

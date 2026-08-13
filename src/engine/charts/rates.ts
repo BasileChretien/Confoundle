@@ -104,6 +104,19 @@ export function bestGroupId(
   return tied ? null : best.groupId;
 }
 
+/**
+ * A rate as whole percent, in English, and NOT a rendering path.
+ *
+ * There is no locale anywhere in this: it rounds and appends a literal `%`, so
+ * it draws Western digits at a reader of any language. It survives because
+ * eight puzzle tests reconcile authored counts against it ("does 49 of 103
+ * round to the 48% the card claims?"), which is a question about the arithmetic
+ * and has no locale in it either.
+ *
+ * `FrequencyView` was its last caller on a render path and no longer is. A view
+ * that needs a percentage builds its own `Intl.NumberFormat` from `useLocale()`,
+ * the way every other figure in this directory does.
+ */
 export function formatPct(rate: number): string {
   return `${Math.round(rate * 100)}%`;
 }

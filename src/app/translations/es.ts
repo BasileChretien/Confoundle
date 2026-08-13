@@ -6,6 +6,7 @@
 export const es: Record<string, string> = {
   // ---- Interfaz (botones, etiquetas, encabezados de sección) ----
   "n = {count}": "n = {count}",
+  "{name}: {value}": "{name}: {value}",
   "Review": "Repaso",
   "Loading your review…": "Cargando tu repaso…",
   "Nothing is due right now. Learn a puzzle or come back later.": "No hay nada pendiente ahora. Aprende una lección o vuelve más tarde.",

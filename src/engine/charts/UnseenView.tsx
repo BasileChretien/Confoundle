@@ -1,4 +1,4 @@
-import { useT } from "../../app/i18n";
+import { useLocale, useT } from "../../app/i18n";
 import { UI } from "../../app/ui";
 import type { UnseenData } from "../../puzzles/schema";
 import { colorFor, WINNER_GOLD } from "./palette";
@@ -37,6 +37,7 @@ function Estimate({
   color,
   solid,
   unit,
+  format,
 }: {
   name: string;
   value: number;
@@ -46,6 +47,7 @@ function Estimate({
   color: string;
   solid: boolean;
   unit: string;
+  format: (n: number) => string;
 }) {
   return (
     <div className="flex flex-col gap-1">
@@ -56,9 +58,12 @@ function Estimate({
           are meant to be compared, and JavaScript renders 7.0 as "7", which put
           "1.9%" next to "7%" and made the pair look like figures of different
           precision. The source publishes both to one decimal.
+
+          The formatter is passed in rather than built here, because it carries
+          the reader's locale and this component has no hook to reach it from.
         */}
         <span className="shrink-0 font-mono text-[11px] tabular-nums text-ink">
-          {value.toFixed(1)}
+          {format(value)}
           {unit}
         </span>
       </div>
@@ -96,7 +101,29 @@ export function UnseenView({
   const revealed = showsCorrection(kind);
   const missing = unobservedShare(data);
   const clear = correctionIsClear(data);
-  const nf = new Intl.NumberFormat();
+  /**
+   * EVERY numeral on this figure, in the reader's locale.
+   *
+   * `new Intl.NumberFormat()` with no argument is the same defect as
+   * `toLocaleString()` with no argument, and it reads as deliberate in a way
+   * the latter does not: it looks like locale-aware formatting and it follows
+   * the JavaScript runtime's default locale, which in a browser is the
+   * browser's rather than the one the reader picked in the app.
+   *
+   * It also left this figure half-localised, which is the state
+   * `SurrogateView` argues is worse than either choice made consistently: the
+   * cohort counts were grouped through `Intl` while the percentages beside them
+   * came from `toFixed`, and the corrected estimate and both ends of its
+   * interval were bare JavaScript numbers. A Bengali reader read
+   * "৪,৩৮২ (10%)" on one line.
+   */
+  const locale = useLocale();
+  const nf = new Intl.NumberFormat(locale);
+  const whole = new Intl.NumberFormat(locale, { maximumFractionDigits: 0 });
+  const oneDecimal = new Intl.NumberFormat(locale, {
+    minimumFractionDigits: 1,
+    maximumFractionDigits: 1,
+  });
 
   return (
     <div className="flex flex-col gap-3">
@@ -128,7 +155,7 @@ export function UnseenView({
           />
         </div>
         <p className="text-[10px] leading-snug text-ink-soft">
-          {t(data.unobservedLabel)}: {nf.format(data.unobserved)} ({(missing * 100).toFixed(0)}%)
+          {t(data.unobservedLabel)}: {nf.format(data.unobserved)} ({whole.format(missing * 100)}%)
         </p>
       </div>
 
@@ -145,17 +172,17 @@ export function UnseenView({
             the noun or puts the qualifier elsewhere.
           */}
           <p className="text-[11px] leading-snug text-ink">
-            {t(data.tracedLabel)}: {nf.format(data.traced)} ({(tracedShare(data) * 100).toFixed(0)}
+            {t(data.tracedLabel)}: {nf.format(data.traced)} ({whole.format(tracedShare(data) * 100)}
             %)
           </p>
           <p className="text-[11px] leading-snug text-ink">
             {t(data.resolvedLabel)}: {nf.format(data.resolved)} (
-            {(resolvedShare(data) * 100).toFixed(0)}%)
+            {whole.format(resolvedShare(data) * 100)}%)
           </p>
           <p className="mt-1 text-[12px] font-medium leading-snug" style={{ color: WINNER_GOLD }}>
-            {t(data.foundAmongUnobserved.label)}: {data.foundAmongUnobserved.value}% (
-            {data.foundAmongUnobserved.ciLow} {t(UI.rangeTo)}{" "}
-            {data.foundAmongUnobserved.ciHigh})
+            {t(data.foundAmongUnobserved.label)}: {nf.format(data.foundAmongUnobserved.value)}% (
+            {nf.format(data.foundAmongUnobserved.ciLow)} {t(UI.rangeTo)}{" "}
+            {nf.format(data.foundAmongUnobserved.ciHigh)})
           </p>
         </div>
       ) : null}
@@ -172,6 +199,7 @@ export function UnseenView({
             color={colorFor(0)}
             solid={revealed && clear}
             unit="%"
+            format={(n) => oneDecimal.format(n)}
           />
           {revealed ? (
             <Estimate
@@ -185,6 +213,7 @@ export function UnseenView({
               color={colorFor(1)}
               solid={clear}
               unit="%"
+              format={(n) => oneDecimal.format(n)}
             />
           ) : null}
         </div>
@@ -201,8 +230,8 @@ export function UnseenView({
         dir="ltr"
         className="flex items-center justify-between gap-2 font-mono text-[10px] tabular-nums text-ink-soft"
       >
-        <span>0</span>
-        <span>{data.axisMax}%</span>
+        <span>{nf.format(0)}</span>
+        <span>{nf.format(data.axisMax)}%</span>
       </div>
       <p className="text-[10px] leading-snug text-ink-soft">{t(data.perLabel)}</p>
       <p className="text-[10px] leading-snug text-ink-soft">{t(data.rateNote)}</p>

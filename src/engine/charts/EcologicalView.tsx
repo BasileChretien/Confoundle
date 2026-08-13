@@ -1,4 +1,4 @@
-import { useT } from "../../app/i18n";
+import { useLocale, useT } from "../../app/i18n";
 import type { EcologicalData } from "../../puzzles/schema";
 import { fillSlots } from "./announce";
 import { colorFor } from "./palette";
@@ -21,6 +21,27 @@ export function EcologicalView({
   kind: "byplace" | "byperson";
 }) {
   const t = useT();
+  /**
+   * Every numeral in this figure, drawn or announced, in the reader's locale.
+   *
+   * The person-level row was the half-localised case `SurrogateView` warns
+   * about, and it was half-localised inside a SINGLE span: the counts went
+   * through `toLocaleString()` while the percentage beside them went through
+   * `toFixed(1)`, so a Bengali reader read "৪২,০০০ / ৫,৭০,০০০ (7.4%)", with the
+   * two counts in Bengali numerals and the percentage they summarise in Western
+   * ones. (`toLocaleString()` with no argument was separately wrong: it follows
+   * the runtime's default locale, not the app's.)
+   *
+   * The announced channel uses the same formatters as the drawn one, so a
+   * screen reader hears the figure it is describing rather than a second,
+   * differently-formatted one.
+   */
+  const locale = useLocale();
+  const nf = new Intl.NumberFormat(locale);
+  const oneDecimal = new Intl.NumberFormat(locale, {
+    minimumFractionDigits: 1,
+    maximumFractionDigits: 1,
+  });
 
   if (kind === "byplace") {
     const line = slopeLine(data);
@@ -31,7 +52,7 @@ export function EcologicalView({
             {t(data.unitLabel)}
           </span>
           <span className="font-mono text-lg font-semibold tabular-nums text-ink">
-            r = {formatR(data.groupCorrelation)}
+            r = {formatR(data.groupCorrelation, locale)}
           </span>
         </div>
 
@@ -66,7 +87,7 @@ export function EcologicalView({
                         en: "Compared group by group, the relationship runs upward. Correlation r equals {r}.",
                       },
                 ),
-                { r: formatR(data.groupCorrelation) },
+                { r: formatR(data.groupCorrelation, locale) },
               )}
             >
               <line
@@ -101,7 +122,7 @@ export function EcologicalView({
           {t(data.outcomeLabel)}
         </span>
         <span className="font-mono text-lg font-semibold tabular-nums text-ink">
-          r = {formatR(data.personCorrelation)}
+          r = {formatR(data.personCorrelation, locale)}
         </span>
       </div>
 
@@ -112,8 +133,8 @@ export function EcologicalView({
               {t(r.short ?? r.label)}
             </span>
             <span className="font-mono text-[12px] tabular-nums text-ink-soft">
-              {r.affected.toLocaleString()} / {r.total.toLocaleString()} (
-              {(r.rate * 100).toFixed(1)}%)
+              {nf.format(r.affected)} / {nf.format(r.total)} (
+              {oneDecimal.format(r.rate * 100)}%)
             </span>
           </div>
           <div className="h-5 w-full overflow-hidden rounded-[3px] bg-rule/60">
@@ -130,7 +151,7 @@ export function EcologicalView({
               // translations of one thing.
               aria-label={fillSlots(t({ en: "{group}: {percent} percent" }), {
                 group: t(r.label),
-                percent: (r.rate * 100).toFixed(1),
+                percent: oneDecimal.format(r.rate * 100),
               })}
             />
           </div>

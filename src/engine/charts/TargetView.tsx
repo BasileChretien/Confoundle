@@ -1,4 +1,4 @@
-import { useT } from "../../app/i18n";
+import { useLocale, useT } from "../../app/i18n";
 import type { TargetData } from "../../puzzles/schema";
 import { colorFor } from "./palette";
 import { lateBand, targetShape } from "./targets";
@@ -90,8 +90,12 @@ export function TargetView({
   const { rows, targetPercent } = targetShape(data);
   const showsBand = kind === "insidewindow";
 
-  const format = (n: number) =>
-    `${n.toLocaleString(undefined, { maximumFractionDigits: 2 })}%`;
+  // `toLocaleString(undefined, ...)` followed the JavaScript runtime's default
+  // locale, not the one the reader chose, so the decimal separator in 88.75%
+  // was a point for a French or Russian reader who writes it as a comma.
+  const locale = useLocale();
+  const nf = new Intl.NumberFormat(locale, { maximumFractionDigits: 2 });
+  const format = (n: number) => `${nf.format(n)}%`;
 
   return (
     <div className="flex flex-col gap-2.5">

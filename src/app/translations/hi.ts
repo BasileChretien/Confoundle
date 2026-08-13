@@ -5,6 +5,7 @@
 export const hi: Record<string, string> = {
   // ---- UI chrome (buttons, labels, section headers) ----
   "n = {count}": "n = {count}",
+  "{name}: {value}": "{name}: {value}",
   "Review": "रिवीज़न",
   "Loading your review…": "आपका रिवीज़न लोड हो रहा है…",
   "Nothing is due right now. Learn a puzzle or come back later.": "अभी कुछ बाकी नहीं। एक पाठ सीखें या बाद में लौटें।",

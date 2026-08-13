@@ -1,4 +1,4 @@
-import { useT } from "../../app/i18n";
+import { useLocale, useT } from "../../app/i18n";
 import type { MagnitudeData } from "../../puzzles/schema";
 import { colorFor } from "./palette";
 import { magnitudeShape } from "./magnitudes";
@@ -68,10 +68,16 @@ export function MagnitudeView({
   // values are fractional in the source; rounding them for display cannot
   // contradict anything, because every number the puzzle reasons about is
   // derived from the authored values rather than from what is drawn.
+  //
+  // The locale is the READER'S. This was `toLocaleString()` and
+  // `toLocaleString(undefined, ...)`, and both of those follow the JavaScript
+  // runtime's default locale rather than the one the app is showing: a reader
+  // in Bengali got English grouping unless their browser agreed with them.
+  const locale = useLocale();
+  const whole = new Intl.NumberFormat(locale);
+  const fractional = new Intl.NumberFormat(locale, { maximumFractionDigits: 1 });
   const format = (n: number) =>
-    n >= 10
-      ? Math.round(n).toLocaleString()
-      : n.toLocaleString(undefined, { maximumFractionDigits: 1 });
+    n >= 10 ? whole.format(Math.round(n)) : fractional.format(n);
 
   return (
     <div className="flex flex-col gap-2.5">

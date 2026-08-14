@@ -5757,7 +5757,7 @@ imply precision the eleven cannot carry.
 
 <!-- skill: rater-leniency -->
 
-**Status: LEAD, ADJACENCY CHECKED, HALF OF IT ALREADY REFUSED.** The last term
+**Status: LEAD, ADJACENCY CHECKED, ONE HALF BLOCKED ON A DISTINCT REVEAL.** The last term
 left in the German IMPP psychology catalogue is **Beurteilungsfehler**, rating
 errors, which is conventionally taught as two things at once. They are not
 equally available, and the check below is why this entry exists in the shape it
@@ -5780,20 +5780,28 @@ subject, but see the warning below.**
 fading at both ends even when the effect is the same size everywhere, so check
 whether the ruler had anywhere left to go.
 
-**THE HALF THAT MUST NOT BE BUILT: central tendency.** Raters avoiding the ends
-of a scale produces a compressed range and differences that vanish at the
-extremes. That is observationally almost identical to a floor and a ceiling, and
-far more importantly the REVEAL lands on the same transferable rule: the
-compression is in the ruler rather than in the world. The mechanism differs, an
-instrument limit against a rater habit, but a card is its reveal, and a second
-card whose reveal restates a shipped one is not a card. This is precisely the
-failure that disqualified Ho and Imai for entry 73, and it is being written down
-here at the same cost, before the sourcing rather than after it.
+**THE HALF THAT DOES NOT CLEAR ADJACENCY: central tendency.** Say what it
+actually does, because the first draft of this entry got it wrong and the wrong
+version made the refusal look stronger than it is. Central tendency pulls
+ratings toward the middle and so shrinks the observed range. It does NOT by
+itself make differences vanish at the ends of the scale: that boundary-specific
+behaviour is floor and ceiling, and conflating the two overstates the overlap.
+
+What survives the correction is still enough to stop it. The reveal a central
+tendency card would land on is that the spread you are looking at is smaller
+than the spread that exists, because of how the measurement was made rather than
+because of the world. `floor-and-ceiling` already teaches that with a hard limit
+as the cause, and `magnitude-compression` already teaches that a ranking tells
+you nothing about the gaps inside it. A third card between them needs a reveal
+neither of those delivers, and the burden is on whoever proposes it to say what
+that reveal is BEFORE sourcing anything. This is the same test entry 73 applied
+to Ho and Imai, whose paper was perfectly usable and whose proposed reveal
+duplicated `halo-effect`.
 
 **THE HALF THAT SURVIVES: leniency and severity.** A systematic shift is a
 different animal from a compression. Two markers given the same work return
-systematically different levels, so a score does not mean anything until you
-know who assigned it. The transferable rule is that the rater is an uncontrolled
+systematically different levels, so a score is not safe to compare across raters
+until it has been calibrated against them. The transferable rule is that the rater is an uncontrolled
 variable in the measurement, and nothing in the deck says that: `halo-effect` is
 one impression bleeding across the attributes of one target,
 `serial-position-effect` is where in a sequence you fell, `detection-bias` is
@@ -5805,12 +5813,19 @@ clinical rating scales.
 **The framing constraint that follows, and it is not optional.** The card must be
 told as WHO GRADED IT, never as "the scale compressed". Drift into compression
 and it becomes `floor-and-ceiling` with different scenery, which is the thing
-the paragraph above refuses.
+the paragraph above blocks.
 
-**The sourcing bar, unchecked, and the specific risk.** This needs a source that
-PRINTS counts or means per rater, and the literature's habit is to report
-variance components, intraclass correlations and generalisability coefficients
-instead. That is the same disqualification that removed Ho and Imai, so it is
+**The sourcing bar, unchecked, and TWO requirements rather than one.** First,
+counts or means per rater must be PRINTED, and this literature's habit is to
+report variance components, intraclass correlations and generalisability
+coefficients instead. Second, and this was missing from the first draft of this
+entry: per-rater numbers identify leniency only when the raters judged
+COMPARABLE work. Raters who see different candidates, or different difficulty
+mixes, will differ in their averages for reasons that have nothing to do with
+their stringency. So the source must supply common items scored by every rater,
+random assignment of work to raters, or an equivalent linking design, and a
+source without one of those cannot support the claim however many per-rater
+means it prints. That is the same disqualification that removed Ho and Imai, so it is
 the FIRST thing to test, before any authoring. Candidate settings, none opened:
 examiner stringency in objective structured clinical examinations, grant peer
 review scoring, and judged sports where each judge's card is published. The last

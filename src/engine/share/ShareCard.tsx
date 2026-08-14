@@ -6,7 +6,7 @@ import type {
   Puzzle,
   RatesData,
 } from "../../puzzles/schema";
-import { useT } from "../../app/i18n";
+import { useLocale, useT } from "../../app/i18n";
 import { UI } from "../../app/ui";
 import { track } from "../../app/analytics";
 import { Badge, Button } from "../ui";
@@ -2218,10 +2218,15 @@ export function ShareCard({
   // The week is read once per render from the same local log everything else
   // uses. Below three played days the strip is withheld: one lonely bar reads
   // as a broken chart rather than as a first day.
+  const shareLocale = useLocale();
   const week = getCalibrationWeek(7);
   const weekPlayed = calibrationDaysPlayed(week);
   const showStrip = weekPlayed >= 3;
   const tally = calibrationSummary(week);
+  // Every numeral this card draws follows the reader's locale, including the
+  // ones inside a slot. A raw number here draws Latin digits at a Bengali or
+  // Arabic reader while the strip beside it is fully translated.
+  const weekNumerals = new Intl.NumberFormat(shareLocale);
   const [framing, setFraming] = useState<Framing>(
     committed.isCorrect ? "competitive" : "selfDeprecating",
   );
@@ -2442,7 +2447,10 @@ export function ShareCard({
                 <span>
                   {fillSlots(
                     t({ en: "Caught {caught} of {played}." }),
-                    { caught: tally.caught, played: tally.played },
+                    {
+                      caught: weekNumerals.format(tally.caught),
+                      played: weekNumerals.format(tally.played),
+                    },
                   )}
                 </span>
                 {tally.certainAndWrong > 0 ? (
@@ -2457,7 +2465,7 @@ export function ShareCard({
                     {tally.certainAndWrong === 1
                       ? t({ en: "Certain and wrong once." })
                       : fillSlots(t({ en: "Certain and wrong {n} times." }), {
-                          n: tally.certainAndWrong,
+                          n: weekNumerals.format(tally.certainAndWrong),
                         })}
                   </span>
                 ) : null}

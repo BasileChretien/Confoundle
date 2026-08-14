@@ -66,9 +66,13 @@ export function CalibrationStrip({
    * in, and the strip is the one part of the card with a label per column.
    */
   const narrowDay = (iso: string) =>
-    new Intl.DateTimeFormat(locale, { weekday: "narrow" }).format(
-      new Date(`${iso}T12:00:00Z`),
-    );
+    new Intl.DateTimeFormat(locale, {
+      weekday: "narrow",
+      // Pinned to UTC. The dates are UTC day strings, and formatting them in
+      // the reader's zone shifted the letter by one for anybody far enough
+      // east: at UTC+13 a midday-UTC instant is already tomorrow.
+      timeZone: "UTC",
+    }).format(new Date(`${iso}T12:00:00Z`));
 
   const caught = week.filter((d) => d.outcome === "caught").length;
   const played = week.filter((d) => d.outcome !== "skipped").length;

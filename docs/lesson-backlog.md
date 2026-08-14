@@ -5752,3 +5752,68 @@ downstream career outcome measured in 1998 rather than the judges' marks, and
 only 11 of 25 surveyed critics answered. The card should claim that a lottery
 slot moved a career outcome, with the sample stated plainly, and should not
 imply precision the eleven cannot carry.
+
+### 74. Rater leniency: the same work, a different marker, a different mark
+
+<!-- skill: rater-leniency -->
+
+**Status: LEAD, ADJACENCY CHECKED, HALF OF IT ALREADY REFUSED.** The last term
+left in the German IMPP psychology catalogue is **Beurteilungsfehler**, rating
+errors, which is conventionally taught as two things at once. They are not
+equally available, and the check below is why this entry exists in the shape it
+does rather than as a single cheerful "gap".
+
+**What was checked, and how.** The three nearest shipped cards were OPENED and
+read, not judged from their titles, because backlog coverage claims in this file
+have twice turned out to be wrong when someone finally read the card.
+
+`threshold-bunching` says: draw a line anywhere and people pile up just on the
+good side of it. That is the RATED party moving around a cutoff, and there is no
+cutoff in a rating-error card. **Distinct, no objection.**
+
+`magnitude-compression` says: people order quantities well and space them badly.
+That is about estimating how big things in the world are. A rating-error card is
+about how a person deploys a scale, whatever is in front of them. **Distinct in
+subject, but see the warning below.**
+
+`floor-and-ceiling` says: a measure with a hard top and bottom shows an effect
+fading at both ends even when the effect is the same size everywhere, so check
+whether the ruler had anywhere left to go.
+
+**THE HALF THAT MUST NOT BE BUILT: central tendency.** Raters avoiding the ends
+of a scale produces a compressed range and differences that vanish at the
+extremes. That is observationally almost identical to a floor and a ceiling, and
+far more importantly the REVEAL lands on the same transferable rule: the
+compression is in the ruler rather than in the world. The mechanism differs, an
+instrument limit against a rater habit, but a card is its reveal, and a second
+card whose reveal restates a shipped one is not a card. This is precisely the
+failure that disqualified Ho and Imai for entry 73, and it is being written down
+here at the same cost, before the sourcing rather than after it.
+
+**THE HALF THAT SURVIVES: leniency and severity.** A systematic shift is a
+different animal from a compression. Two markers given the same work return
+systematically different levels, so a score does not mean anything until you
+know who assigned it. The transferable rule is that the rater is an uncontrolled
+variable in the measurement, and nothing in the deck says that: `halo-effect` is
+one impression bleeding across the attributes of one target,
+`serial-position-effect` is where in a sequence you fell, `detection-bias` is
+differential ascertainment between groups, and none of them is about the
+identity of the judge being a variable in its own right. It is also the version
+that bites in practice, in grant panels, peer review, examiner stringency and
+clinical rating scales.
+
+**The framing constraint that follows, and it is not optional.** The card must be
+told as WHO GRADED IT, never as "the scale compressed". Drift into compression
+and it becomes `floor-and-ceiling` with different scenery, which is the thing
+the paragraph above refuses.
+
+**The sourcing bar, unchecked, and the specific risk.** This needs a source that
+PRINTS counts or means per rater, and the literature's habit is to report
+variance components, intraclass correlations and generalisability coefficients
+instead. That is the same disqualification that removed Ho and Imai, so it is
+the FIRST thing to test, before any authoring. Candidate settings, none opened:
+examiner stringency in objective structured clinical examinations, grant peer
+review scoring, and judged sports where each judge's card is published. The last
+of those is the most promising precisely because published judge-by-judge scores
+are the raw counts this deck needs, and the least promising for scope, since a
+reader may not accept a sport as evidence about hiring or grading.

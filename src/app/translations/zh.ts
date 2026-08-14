@@ -66,6 +66,10 @@ export const zh: Record<string, string> = {
   "Answering trap every time would have scored {n} on this round.": "如果每题都答「有陷阱」，这一轮会得{n}分。",
   "{percent} of players picked that too.": "{percent}的玩家也选了这个。",
   "{percent} of players fell for the same one.": "{percent}的玩家也掉进了同一个陷阱。",
+  "Caught {caught} of the {played} days played this week": "本周游玩的{played}天中，有{caught}天识破了陷阱",
+  "Caught {caught} of {played}.": "{played}天中识破{caught}天。",
+  "Certain and wrong once.": "有一次笃定却错了。",
+  "Certain and wrong {n} times.": "有{n}次笃定却错了。",
   "Two tracks on one scale, three points bunched together on the upper one and spread far apart on the lower one": "同一刻度上的两条轨道，上面一条的三个点挤在一起，下面一条的三个点相距很远",
   "Statistical reasoning": "统计推理",
   // tags

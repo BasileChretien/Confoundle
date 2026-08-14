@@ -284,6 +284,76 @@ export function getActivity(days: number): DayActivity[] {
   return activityByDay(days);
 }
 
+/**
+ * The calibration week: for each of the last N days, what was staked and
+ * whether it paid. This is what the share card draws, and it is deliberately
+ * NOT a score.
+ *
+ * Two things it must never leak, because the card is public and the puzzle is
+ * still live for everyone who has not played it yet. It carries no puzzle slug
+ * and no choice id, only the outcome and the stake. A reader of somebody's card
+ * learns how well calibrated they were and nothing whatever about the answer.
+ *
+ * A day with more than one play (a puzzle plus a replay, or several reviews)
+ * reports the FIRST play of that day, because the first commit is the one made
+ * without hindsight and is therefore the only one whose confidence means
+ * anything.
+ */
+export type DayOutcome = "caught" | "fooled" | "skipped";
+
+export interface CalibrationDay {
+  /** YYYY-MM-DD, local, oldest first. */
+  date: string;
+  outcome: DayOutcome;
+  /** Absent on a skipped day, since nothing was staked. */
+  confidence?: Confidence;
+}
+
+export function calibrationByDay(
+  days: number,
+  todayIso: string = todayISODate(),
+  map: ProgressMap = readAll(),
+): CalibrationDay[] {
+  /** First play of each date, by timestamp, so a replay cannot overwrite it. */
+  const firstOfDay = new Map<string, PlayRecord>();
+  for (const [key, rec] of Object.entries(map)) {
+    const date = key.slice(key.indexOf("@") + 1);
+    const held = firstOfDay.get(date);
+    if (!held || rec.playedAt < held.playedAt) firstOfDay.set(date, rec);
+  }
+
+  const out: CalibrationDay[] = [];
+  const todayNum = dayNumber(todayIso);
+  for (let i = days - 1; i >= 0; i--) {
+    const date = new Date((todayNum - i) * 86_400_000).toISOString().slice(0, 10);
+    const rec = firstOfDay.get(date);
+    if (!rec) {
+      out.push({ date, outcome: "skipped" });
+      continue;
+    }
+    out.push({
+      date,
+      outcome: rec.correct ? "caught" : "fooled",
+      confidence: rec.confidence,
+    });
+  }
+  return out;
+}
+
+/**
+ * How many of the last N days were actually played. The card uses this to
+ * decide whether to draw the strip at all: one lonely bar reads as a broken
+ * chart rather than as a first day, so the strip waits until there is a shape
+ * to show.
+ */
+export function calibrationDaysPlayed(week: CalibrationDay[]): number {
+  return week.filter((d) => d.outcome !== "skipped").length;
+}
+
+export function getCalibrationWeek(days = 7): CalibrationDay[] {
+  return calibrationByDay(days);
+}
+
 // ---- nickname (local only, for the friends board) ----
 const NAME_KEY = "confoundle:name";
 

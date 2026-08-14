@@ -68,6 +68,10 @@ export const es: Record<string, string> = {
   "Answering trap every time would have scored {n} on this round.": "Responder «trampa» siempre habría dado {n} en esta ronda.",
   "{percent} of players picked that too.": "{percent} de los jugadores eligió lo mismo.",
   "{percent} of players fell for the same one.": "{percent} de los jugadores cayó en la misma trampa.",
+  "Caught {caught} of the {played} days played this week": "{caught} trampas detectadas de los {played} días jugados esta semana",
+  "Caught {caught} of {played}.": "{caught} de {played}.",
+  "Certain and wrong once.": "Seguro y equivocado una vez.",
+  "Certain and wrong {n} times.": "Seguro y equivocado {n} veces.",
   "Two tracks on one scale, three points bunched together on the upper one and spread far apart on the lower one": "Dos carriles en una misma escala, tres puntos apretados entre sí en el de arriba y muy separados en el de abajo",
   "Statistical reasoning": "Razonamiento estadístico",
   // etiquetas

@@ -39,6 +39,13 @@ shape sufficient, the reason is stated; where it is not, the new shape is named.
 
 ### 1. Power, type I and type II error
 
+<!-- skill: statistical-power -->
+
+#### SHIPPED 2026-08-03 as `statistical-power`, slug `no-difference-found`.
+The `interval` shape named below was built for it, exactly as planned here.
+This entry rotted for weeks after shipping, which is what put the guard in
+`docsCoverage.test.ts` over this file.
+
 **The illusion.** A trial reports "no significant difference" and the reader
 concludes the treatments are equivalent. The reveal shows the confidence
 interval, which is wide enough to contain a clinically important benefit. The
@@ -117,6 +124,8 @@ percentage-point difference, which is a distinction this deck already teaches in
 
 ### 2. Allocation concealment
 
+<!-- skill: allocation-concealment -->
+
 **The illusion.** Two arms of a trial that was properly randomised on paper, but
 where the person enrolling could see the next assignment. The reveal shows the
 baseline table: the sicker patients accumulated in one arm. The trap is that
@@ -180,6 +189,8 @@ the note records that an unequal ratio proves non-randomness without measuring
 prognostic imbalance.
 
 ### 3. Sponsorship and conflict of interest
+
+<!-- skill: sponsorship-bias -->
 
 **The illusion.** Two sets of trials of the same drug reach different
 conclusions. The reveal splits them by who paid. The trap is that both sets are
@@ -262,6 +273,10 @@ association when restricted to the highest-quality and to the peer-reviewed
 articles.
 
 ### 4. Cognitive biases: anchoring, availability, framing
+
+<!-- skill: anchoring -->
+<!-- skill: availability-heuristic -->
+<!-- skill: framing-effect -->
 
 **This is the one that needs design work before it needs a source.**
 
@@ -438,6 +453,15 @@ survivorship and shipped as review items; availability shipped here.
 
 ### 5. Neyman / prevalence-incidence bias
 
+<!-- skill: neyman-bias -->
+
+#### CLOSED 2026-08-03 as review items, not a puzzle.
+The check this entry demanded was made and it failed in the honest
+direction: the reveal restated `length-time` and `survivorship`, both
+already shipped, so there was no second lesson in it. `exam-syllabus-audit`
+records the same verdict, "covered by length-time and survivorship; review
+items only", and no skill id was ever registered.
+
 **The illusion.** A case-control study of a risk factor for a rapidly fatal
 disease finds the factor protective, because the cases who died fastest never
 became cases.
@@ -484,6 +508,8 @@ each, and they will ride along with the next puzzle's translation pass rather
 than triggering one of their own.
 
 ### 6. Hawthorne effect
+
+<!-- skill: hawthorne-effect -->
 
 **The sourcing problem, stated up front.** The original Hawthorne studies do not
 support the effect named after them. The illumination experiments have been

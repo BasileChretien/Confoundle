@@ -10108,7 +10108,7 @@ const items: TestItem[] = [
   {
     id: "ser-interview-day",
     scenario: {
-      en: "A firm interviews eight candidates a day for a week, with slots allocated by whoever replies to the scheduling email first. Candidates seen in the last slot of a day were hired more often than those seen in the first, and the recruiting lead concluded that eager candidates who reply late are more decisive.",
+      en: "A firm interviews eight candidates a day for a week, with slots allocated by whoever replies to the scheduling email first. Candidates seen in the last slot of a day were hired more often than those seen in the first, and the recruiting lead concluded that candidates who take longer to reply are more considered.",
     },
     trap: "serial-position-effect",
     explanation: {

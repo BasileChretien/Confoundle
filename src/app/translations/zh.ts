@@ -64,6 +64,8 @@ export const zh: Record<string, string> = {
   "{right} of {total} called correctly.": "{total}题中判断正确{right}题。",
   "A new personal best.": "个人新纪录。",
   "Answering trap every time would have scored {n} on this round.": "如果每题都答「有陷阱」，这一轮会得{n}分。",
+  "{percent} of players picked that too.": "{percent}的玩家也选了这个。",
+  "{percent} of players fell for the same one.": "{percent}的玩家也掉进了同一个陷阱。",
   "Two tracks on one scale, three points bunched together on the upper one and spread far apart on the lower one": "同一刻度上的两条轨道，上面一条的三个点挤在一起，下面一条的三个点相距很远",
   "Statistical reasoning": "统计推理",
   // tags

@@ -65,6 +65,8 @@ export const bn: Record<string, string> = {
   "{right} of {total} called correctly.": "{total} এর মধ্যে {right}টি সঠিকভাবে বিচার করা হয়েছে।",
   "A new personal best.": "নতুন ব্যক্তিগত সেরা।",
   "Answering trap every time would have scored {n} on this round.": "প্রতিবার «ফাঁদ» বললে এই দফায় {n} পাওয়া যেত।",
+  "{percent} of players picked that too.": "{percent} খেলোয়াড়ও এটিই বেছেছেন।",
+  "{percent} of players fell for the same one.": "{percent} খেলোয়াড়ও একই ফাঁদে পড়েছেন।",
   "Two tracks on one scale, three points bunched together on the upper one and spread far apart on the lower one": "একই মাপকাঠিতে দুটি পথ, উপরেরটিতে তিনটি বিন্দু গায়ে গায়ে লাগা আর নিচেরটিতে অনেক দূরে ছড়ানো",
   "Statistical reasoning": "পরিসংখ্যানগত যুক্তি",
   // tags

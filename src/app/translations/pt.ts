@@ -65,6 +65,8 @@ export const pt: Record<string, string> = {
   "{right} of {total} called correctly.": "{right} de {total} acertados.",
   "A new personal best.": "Um novo recorde pessoal.",
   "Answering trap every time would have scored {n} on this round.": "Responder «armadilha» sempre teria dado {n} nesta rodada.",
+  "{percent} of players picked that too.": "{percent} dos jogadores escolheu o mesmo.",
+  "{percent} of players fell for the same one.": "{percent} dos jogadores caiu na mesma armadilha.",
   "Two tracks on one scale, three points bunched together on the upper one and spread far apart on the lower one": "Duas trilhas numa mesma escala, três pontos juntos uns aos outros na de cima e bem afastados na de baixo",
   "Statistical reasoning": "Raciocínio estatístico",
   // tags

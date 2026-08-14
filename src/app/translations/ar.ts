@@ -65,6 +65,8 @@ export const ar: Record<string, string> = {
   "{right} of {total} called correctly.": "‏{right} من {total} حُكم عليها بشكل صحيح.",
   "A new personal best.": "رقم شخصي جديد.",
   "Answering trap every time would have scored {n} on this round.": "لو أجبت «فخ» في كل مرة لسجّلت {n} في هذه الجولة.",
+  "{percent} of players picked that too.": "اختار {percent} من اللاعبين الشيء نفسه.",
+  "{percent} of players fell for the same one.": "وقع {percent} من اللاعبين في الفخ نفسه.",
   "Two tracks on one scale, three points bunched together on the upper one and spread far apart on the lower one": "مساران على سلّم واحد، ثلاث نقاط متلاصقة في الأعلى ومتباعدة كثيرا في الأسفل",
   "Statistical reasoning": "الاستدلال الإحصائي",
   // tags

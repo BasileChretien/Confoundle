@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import type { Choice, Puzzle } from "../puzzles/schema";
 import { track } from "../app/analytics";
 import { recordPlay, getStats, markLearned } from "../app/session";
+import { sendAnswer } from "../app/answerStats";
 import { reviews } from "../app/reviews";
 import { ProgressDots } from "./ui";
 import { SetupView } from "./SetupView";
@@ -41,6 +42,10 @@ export function PuzzleFlow({
     setCommitted(choice);
     setConfidence(wager);
     recordPlay(puzzle.slug, choice.id, choice.isCorrect, wager);
+    // Fire and forget, and never awaited: the reveal must not wait on the
+    // network, and a failure here costs the player nothing. Sends nothing at
+    // all when the player has turned contribution off.
+    sendAnswer(puzzle.slug, choice.id, wager);
     track("commit", {
       slug: puzzle.slug,
       choiceId: choice.id,

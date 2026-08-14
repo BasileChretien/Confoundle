@@ -1055,6 +1055,7 @@ export const ACCOUNT: Record<string, LocalizedText> = {
     ru: "Не более одного письма в день и только при реальной просрочке. Отключить можно из любого письма, не входя в аккаунт.",
     ja: "メールは1日1通まで、実際に遅れているときだけ。どのメールからでも、ログインせずに停止できます。",
   },
+<<<<<<< HEAD
   remindMeYes: {
     en: "Yes, remind me",
     zh: "好，提醒我",
@@ -1078,6 +1079,31 @@ export const ACCOUNT: Record<string, LocalizedText> = {
     pt: "Não, obrigado",
     ru: "Нет, спасибо",
     ja: "いいえ、結構です",
+=======
+  contributeAnswers: {
+    en: "Count my answers",
+    zh: "统计我的答案",
+    hi: "मेरे जवाब गिने जाएँ",
+    es: "Contar mis respuestas",
+    fr: "Comptabiliser mes réponses",
+    ar: "احتساب إجاباتي",
+    bn: "আমার উত্তর গোনা হোক",
+    pt: "Contar as minhas respostas",
+    ru: "Учитывать мои ответы",
+    ja: "自分の回答を集計に入れる",
+  },
+  contributeAnswersBlurb: {
+    en: "This is how each puzzle can tell you what most people picked. Three things are sent, with no identifier of any kind: the puzzle, your choice, and how sure you were. Turn this off and nothing is sent at all.",
+    zh: "每道题之所以能告诉你大多数人选了什么，正是靠这个。发送三样东西，不含任何身份标识：题目、你的选择，以及你有多确定。关掉之后就什么都不发送。",
+    hi: "हर पहेली आपको यह इसी से बता पाती है कि ज़्यादातर लोगों ने क्या चुना। तीन चीज़ें भेजी जाती हैं, बिना किसी पहचान के: पहेली, आपका चुनाव, और आप कितने आश्वस्त थे। इसे बंद कर दें तो कुछ भी नहीं भेजा जाता।",
+    es: "Es así como cada puzle puede decirte qué eligió la mayoría. Se envían tres cosas, sin identificador de ningún tipo: el puzle, tu elección y cuán seguro estabas. Si lo desactivas, no se envía nada.",
+    fr: "C'est ce qui permet à chaque énigme de vous dire ce que la plupart des gens ont choisi. Trois choses sont envoyées, sans le moindre identifiant : l'énigme, votre choix, et votre degré de certitude. Désactivez et plus rien n'est envoyé.",
+    ar: "بهذا يستطيع كل لغز أن يخبرك بما اختاره معظم الناس. تُرسل ثلاثة أشياء بلا أي معرِّف: اللغز، واختيارك، ومدى ثقتك. أوقف هذا فلا يُرسل شيء البتة.",
+    bn: "এর মাধ্যমেই প্রতিটি ধাঁধা আপনাকে বলতে পারে বেশিরভাগ মানুষ কী বেছেছেন। তিনটি জিনিস পাঠানো হয়, কোনো শনাক্তকারী ছাড়াই: ধাঁধাটি, আপনার পছন্দ, আর আপনি কতটা নিশ্চিত ছিলেন। বন্ধ করলে কিছুই পাঠানো হয় না।",
+    pt: "É assim que cada enigma consegue dizer-lhe o que a maioria escolheu. São enviadas três coisas, sem qualquer identificador: o enigma, a sua escolha e o quanto tinha a certeza. Se desligar, nada é enviado.",
+    ru: "Именно так каждая задача может сказать вам, что выбрало большинство. Отправляются три вещи и ни одного идентификатора: задача, ваш выбор и насколько вы были уверены. Выключите, и не отправляется ничего.",
+    ja: "各パズルが「多くの人はどれを選んだか」を示せるのは、これがあるからです。送られるのは三つだけで、識別子は一切ありません。どのパズルか、あなたの選択、どれくらい確信していたか。オフにすれば何も送られません。",
+>>>>>>> a51746e (feat: count answers anonymously, and build the switch the policy promises)
   },
   signIn: {
     en: "Sign in",

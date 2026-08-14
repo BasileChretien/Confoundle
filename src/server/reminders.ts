@@ -63,6 +63,13 @@ export interface ReminderPrefs {
   optedIn: boolean;
   locale: string;
   lastSentAt: number | null;
+  /**
+   * Whether a choice was ever made, which is NOT the same as having said no.
+   * The migration keeps that distinction on purpose, and the account panel
+   * needs it: somebody who has never been asked should be asked once, and
+   * somebody who declined should never be asked again.
+   */
+  chosen: boolean;
 }
 
 interface PrefsRow {
@@ -73,7 +80,8 @@ interface PrefsRow {
 
 /**
  * What the account panel shows. Never null: somebody who has never opened the
- * setting is opted out, which is the same answer as having switched it off.
+ * setting is opted out, which is the same ANSWER as having switched it off,
+ * though not the same STATE, which is what `chosen` carries.
  */
 export async function getReminderPrefs(
   db: D1Database,
@@ -85,11 +93,13 @@ export async function getReminderPrefs(
     )
     .bind(accountId)
     .first<PrefsRow>();
-  if (!row) return { optedIn: false, locale: "en", lastSentAt: null };
+  if (!row)
+    return { optedIn: false, locale: "en", lastSentAt: null, chosen: false };
   return {
     optedIn: row.opted_in === 1,
     locale: row.locale,
     lastSentAt: row.last_sent_at,
+    chosen: true,
   };
 }
 

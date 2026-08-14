@@ -4,6 +4,7 @@ import { useT } from "./i18n";
 import { useAuth } from "./auth";
 import { renderGoogleButton } from "./googleSignIn";
 import { ReminderToggle } from "./ReminderToggle";
+import { ReminderChoice } from "./ReminderChoice";
 import { ACCOUNT } from "./ui";
 
 /**
@@ -243,6 +244,7 @@ function SignedIn({ onClose }: { onClose: () => void }) {
         </button>
       </div>
 
+      <ReminderChoice />
       <ReminderToggle />
 
       <div className="border-t border-rule pt-3">

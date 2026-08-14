@@ -10045,6 +10045,146 @@ const items: TestItem[] = [
       en: "The panel's assurance is exactly the evidence that should not be relied on, since this influence is not available to introspection and people who have been swayed report sincerely that they were not. Acting on the structure instead of on the self-report is the sound move.",
     },
   },
+  {
+    id: "ser-audition-draw",
+    scenario: {
+      en: "An orchestra auditioned forty players for one chair over two days, drawing the running order from a hat. The panel used the same score sheet throughout. Players heard on the first morning were rated lower on average than those heard later, and the panel concluded that the weaker candidates had happened to draw early slots.",
+    },
+    trap: "serial-position-effect",
+    explanation: {
+      en: "The order came out of a hat, so it cannot have sorted the players by ability, and with forty of them a run of weak early candidates is not a comfortable explanation. What differs between the two halves is when they were heard, while the panel's sense of what a good audition sounds like was still being assembled.",
+    },
+  },
+  {
+    id: "ser-grant-panel-morning",
+    scenario: {
+      en: "A funding panel worked through sixty applications in the order they arrived in the database, which is alphabetical by the applicant's surname. Proposals discussed in the first session were funded at a noticeably lower rate than those discussed after lunch, and the panel chair reported that the early proposals had simply been weaker.",
+    },
+    trap: "serial-position-effect",
+    explanation: {
+      en: "Alphabetical order by surname is unrelated to the quality of a proposal, so it cannot explain why the early ones fared worse. The difference tracks position in the day rather than anything in the applications, and the panel had no way to revise the earlier decisions once its standard had settled.",
+    },
+  },
+  {
+    id: "ser-viva-slot",
+    scenario: {
+      en: "A medical school examines candidates orally across a week, assigning slots by computer at random. An analyst found that candidates examined on the first day passed at a lower rate than those examined later, and the school responded that the timetable must be picking up some difference between the candidates.",
+    },
+    trap: "serial-position-effect",
+    explanation: {
+      en: "The timetable was assigned at random, so it cannot pick up a difference between the candidates. Something that varies across the week is moving the pass rate, and the candidates are not it.",
+    },
+  },
+  {
+    id: "ser-figure-skating-order",
+    scenario: {
+      en: "In a skating event the starting order for the final is drawn by lot. Across ten seasons, skaters drawn to skate first in the final finished lower than their qualifying position predicted, while those drawn late finished higher. The federation described this as an interesting quirk of who happened to draw what.",
+    },
+    trap: "serial-position-effect",
+    explanation: {
+      en: "A quirk of the draw would not repeat across ten seasons in the same direction. Since the lot is independent of the qualifying position, a systematic gap between where skaters qualified and where they finished has to come from the slot itself.",
+    },
+  },
+  {
+    id: "ser-conference-review",
+    scenario: {
+      en: "A conference assigns each reviewer a batch of twenty submissions in a random order. Papers that landed early in a reviewer's batch received lower scores than papers that landed late, and the programme chairs decided the effect was too small to worry about because every paper was read in full.",
+    },
+    trap: "serial-position-effect",
+    explanation: {
+      en: "Reading every paper in full does not address the problem. The order within each batch is random, so it cannot correlate with quality, and a difference by position means the reviewer's own standard shifted as the batch went on.",
+    },
+  },
+  {
+    id: "ser-wine-flight",
+    scenario: {
+      en: "A tasting panel scored twelve wines poured in an order fixed by drawing numbered corks. The wine poured first scored below its own average from previous years, and the organiser explained that it must have been a weaker bottle.",
+    },
+    trap: "serial-position-effect",
+    explanation: {
+      en: "The same wine scoring below its own historical average, in the one year it was poured first, points at the position rather than the bottle. The first pour is judged with nothing yet in the mouth to measure it against.",
+    },
+  },
+  {
+    id: "ser-interview-day",
+    scenario: {
+      en: "A firm interviews eight candidates a day for a week, with slots allocated by whoever replies to the scheduling email first. Candidates seen in the last slot of a day were hired more often than those seen in the first, and the recruiting lead concluded that eager candidates who reply late are more decisive.",
+    },
+    trap: "serial-position-effect",
+    explanation: {
+      en: "The explanation offered is a story about the candidates, and it is doing work the slot can do on its own. Whatever brings someone to a late slot, what differs at the moment of judgement is that the interviewer has already seen seven people to measure the eighth against.",
+    },
+  },
+  {
+    id: "ser-song-contest-running",
+    scenario: {
+      en: "In a televised song contest the running order is drawn at random after the semi-finals. Over many years, acts drawn into the second half of the running order have finished higher than acts drawn into the first half. Commentators put it down to the stronger countries being luckier with the draw.",
+    },
+    trap: "serial-position-effect",
+    explanation: {
+      en: "Luck with a random draw does not favour the same half of the order year after year. When a randomly assigned position predicts the finish, the position is doing the work, and voters are scoring later acts against everything they have already heard.",
+    },
+  },
+  {
+    id: "ser-marking-pile",
+    scenario: {
+      en: "A teacher marks a stack of essays in whatever order the students handed them in. Essays near the bottom of the stack received higher marks than essays near the top. The teacher said this showed that students who hand in late take more care.",
+    },
+    trap: "serial-position-effect",
+    explanation: {
+      en: "The claim is about the students, but the same fact is explained by the marking. Position in the stack determines when an essay is read, and a marker's standard is not the same on the first essay as on the fortieth.",
+    },
+  },
+  {
+    id: "ser-gymnastics-rotation",
+    scenario: {
+      en: "A gymnastics competition rotates which squad performs first on each apparatus, with the rotation fixed by draw before the meet. Squads performing first on an apparatus scored lower on it than the same squads scored on apparatus where they performed later, and the meet report treated the two as independent results.",
+    },
+    trap: "serial-position-effect",
+    explanation: {
+      en: "This compares the same squads against themselves, which removes any difference in ability between them. What is left varying is whether they went first on a given apparatus, and that was set by a draw.",
+    },
+  },
+  {
+    id: "ser-sound-randomised-order-recorded",
+    scenario: {
+      en: "A panel screening applications recorded the position of each application in the reviewing order, then reported the outcome rate with position included in the model, noting that position accounted for a small but measurable share of the variation in scores.",
+    },
+    trap: null,
+    explanation: {
+      en: "This is sound, and it is the defence rather than the failure. Position was recorded rather than discarded, which is the only thing that makes the effect visible at all, and it is reported instead of being quietly absorbed into the applicants.",
+    },
+  },
+  {
+    id: "ser-sound-reread-first-cases",
+    scenario: {
+      en: "An examinations board marks scripts across a week, then re-marks the first twenty scripts at the end, on the grounds that the marking standard is still settling early on. The re-marks moved four scripts up and one down, and the board kept the revised marks.",
+    },
+    trap: null,
+    explanation: {
+      en: "This is sound and it treats the actual problem. If the standard forms while the judging happens, then the earliest cases were measured against something that no longer exists, and revisiting them once it does is the step that repairs it rather than merely measuring it.",
+    },
+  },
+  {
+    id: "ser-sound-first-truly-weaker",
+    scenario: {
+      en: "A competition seeds its entrants so that the lowest-qualifying performers appear first and the highest-qualifying appear last. Those who appeared first scored lower, and the organisers reported that this was expected given how the running order is built.",
+    },
+    trap: null,
+    explanation: {
+      en: "This is sound. The order here is not random but deliberately built from prior qualifying results, so the early performers really were the lower-ranked ones, and a gap by position is exactly what the seeding was designed to produce.",
+    },
+  },
+  {
+    id: "ser-sound-no-order-difference",
+    scenario: {
+      en: "A journal randomised the order in which reviewers received a batch of manuscripts and compared scores by position. The scores were indistinguishable across positions, and the editors reported that they found no order effect in their process.",
+    },
+    trap: null,
+    explanation: {
+      en: "This is sound. The order was randomised and the comparison was made, and it came out flat. An order effect is something to test for rather than something to assume, and reporting an absence found by looking is a result.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

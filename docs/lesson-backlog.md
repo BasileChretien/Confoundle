@@ -5560,10 +5560,18 @@ The figure comes instead from Landy D, Sigall H. Beauty is talent: task evaluati
 
 <!-- skill: serial-position-effect -->
 
-**Status: SOURCED AND RECONCILED, READY TO AUTHOR.** See the section at the end
-of this entry for the numbers, which have been read from the published paper and
-checked. What follows below is the original lead, kept because the reasoning that
-narrowed it is what made the source findable.
+**Status: SHIPPED 2026-08-14 as `serial-position-effect`, slug
+`the-slot-they-drew`.** Built on Ginsburgh and van Ours 2003, the Queen
+Elisabeth piano competition, on the existing `rates` shape with no new shape
+needed. The setup draws the 121 finalists who played later and the reveal adds
+the 11 who opened, and the framing carries the mechanism without the direction
+so that "about the same" is answerable rather than punished. The numbers in the
+section at the end of this entry were read from the published paper and are
+asserted in `serial-position.test.ts`, including a recomputation of the paper's
+own chi-squared from the four counts. What follows is the original lead and the
+two rejected routes, kept because the reasoning that narrowed them is what made
+the source findable, and because the Ho and Imai rejection is a standing warning
+to anyone tempted by the ballot-order literature.
 
 The second of the two gaps found in the
 German psychology catalogue, and recorded here so the next session does not have

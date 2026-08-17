@@ -1,19 +1,18 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { getOpeningPuzzle, getPuzzleBySlug, getTodaysPuzzle } from "../puzzles";
+import { getPuzzleBySlug, getTodaysPuzzle } from "../puzzles";
 import { PuzzleFlow } from "../engine/PuzzleFlow";
 import { ReviewView } from "../engine/ReviewView";
 import { TrapHuntView } from "../engine/TrapHuntView";
 import { HomeView } from "../engine/HomeView";
 import { ProgressPanel } from "../engine/ProgressPanel";
 import { Confounder, confounderStateFor } from "../engine/Confounder";
-import { getStats, hasEverPlayed } from "./session";
+import { getStats } from "./session";
 import { Button } from "../engine/ui";
 import { AboutView } from "../engine/AboutView";
 import { LessonsView } from "../engine/LessonsView";
 import { reviews } from "./reviews";
 import {
   HOME,
-  landingView,
   sameView,
   searchForView,
   viewFromSearch,
@@ -27,24 +26,6 @@ import { AuthProvider } from "./auth";
 import { UI } from "./ui";
 
 /**
- * The rule itself is `landingView` in `./navigation`, pure and tested there.
- * This supplies the two live values it needs.
- *
- * `hasEverPlayed()` is read from localStorage SYNCHRONOUSLY rather than from
- * the SRS store, which is async and may be account-backed. Waiting on the
- * store would mean a frame of the home screen before the puzzle replaced it,
- * which is the worst of both: a newcomer would watch the pitch flash past on
- * the way to the thing that replaces it.
- */
-function openingView(): View {
-  return landingView(
-    window.location.search,
-    hasEverPlayed(),
-    getOpeningPuzzle().slug,
-  );
-}
-
-/**
  * Navigation, on the History API rather than in component state.
  *
  * Every transition pushes an entry, so the phone back button goes up a level
@@ -53,8 +34,19 @@ function openingView(): View {
  * `popstate` is the only path that sets the view without pushing, otherwise
  * going back would push a new entry and trap the user.
  */
+/*
+  READS THE URL AND NOTHING ELSE, including on a remount.
+
+  The first-visit landing rule deliberately lives in `main.tsx`, applied once
+  as a URL rewrite before React exists. Deciding it here instead would mean
+  deciding it again on every mount, and `LocaleProvider` unmounts this whole
+  subtree each time it fetches a dictionary, so a locale switch would re-apply
+  the rule and drag a newcomer back into the opener they had just left.
+*/
 function useViewNavigation(): [View, (next: View) => void] {
-  const [view, setView] = useState<View>(openingView);
+  const [view, setView] = useState<View>(() =>
+    viewFromSearch(window.location.search),
+  );
 
   useEffect(() => {
     const onPop = (e: PopStateEvent) => {
@@ -65,11 +57,12 @@ function useViewNavigation(): [View, (next: View) => void] {
     // Make the entry the app opened on carry its own state, so the first back
     // out of a lesson has something to restore rather than a null.
     //
-    // REPLACE rather than push when the landing rule redirected, so the URL
-    // names the puzzle (which is what makes it shareable and refreshable) and
-    // the back button still leaves the app rather than bouncing between the
-    // bare root and the opener.
-    window.history.replaceState({ view }, "", searchForView(view));
+    // Passes the CURRENT href rather than resynthesising it: this call exists
+    // only to attach History state, and rebuilding the URL through
+    // `searchForView` would silently drop the hash and any query parameter the
+    // `View` union does not model. `main.tsx` has already normalised the URL
+    // by this point, so there is nothing left for this line to correct.
+    window.history.replaceState({ view }, "", window.location.href);
     return () => window.removeEventListener("popstate", onPop);
     // Runs once: the listener reads live state via setView.
     // eslint-disable-next-line react-hooks/exhaustive-deps

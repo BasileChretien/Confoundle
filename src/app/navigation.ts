@@ -79,6 +79,30 @@ export function landingView(
 }
 
 /**
+ * The query string the landing rule wants written, or `null` to leave the URL
+ * exactly as it is.
+ *
+ * NULL IS THE IMPORTANT RETURN VALUE. An earlier version rewrote the address
+ * bar on every load by resynthesising it through `searchForView`, which
+ * silently dropped the fragment and any query parameter the `View` union does
+ * not model, campaign tags among them. Nothing depended on those, but it
+ * turned a byte-identical round trip into a lossy one for no gain. Rewriting
+ * only when the view actually changed keeps the no-op case genuinely a no-op.
+ *
+ * Pure so the whole rule, decision and rewrite alike, is testable without a
+ * History API.
+ */
+export function landingRewrite(
+  search: string,
+  hasPlayed: boolean,
+  openerSlug: string,
+): string | null {
+  const current = viewFromSearch(search);
+  const target = landingView(search, hasPlayed, openerSlug);
+  return sameView(current, target) ? null : searchForView(target);
+}
+
+/**
  * The query string for a view. Home is "." rather than "?" so a shared home
  * link stays clean, and so returning home does not leave a stale parameter
  * behind that a refresh would then act on.

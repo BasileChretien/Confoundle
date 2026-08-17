@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
 import {
   HOME,
+  landingRewrite,
   landingView,
   sameView,
   searchForView,
@@ -138,6 +139,39 @@ describe("where the app opens", () => {
       slug: OPENER,
     });
     expect(landingView("?utm_source=twitter", true, OPENER)).toEqual(HOME);
+  });
+});
+
+describe("the landing rewrite", () => {
+  const OPENER = "chocolate-nobel";
+
+  it("sends a first-time visitor to the opener", () => {
+    expect(landingRewrite("", false, OPENER)).toBe(`?p=${OPENER}`);
+  });
+
+  it("writes nothing at all when it did not redirect", () => {
+    /*
+      NULL IS THE POINT. Rewriting unconditionally through `searchForView`
+      turned a byte-identical round trip into a lossy resynthesis: the
+      fragment and every query parameter the `View` union does not model,
+      campaign tags included, vanished on every single load. Nothing depended
+      on them, which is exactly why it would have gone unnoticed.
+    */
+    expect(landingRewrite("", true, OPENER)).toBeNull();
+    expect(landingRewrite(`?p=${REAL_SLUG}`, false, OPENER)).toBeNull();
+    expect(landingRewrite("?about=1", true, OPENER)).toBeNull();
+    expect(landingRewrite("?hunt=1", false, OPENER)).toBeNull();
+  });
+
+  it("is idempotent, so the URL it writes is a fixed point", () => {
+    /*
+      After the rewrite lands, every later mount reads the address bar. If
+      applying the rule to its own output moved again, a remount could ping
+      between two URLs.
+    */
+    const once = landingRewrite("", false, OPENER);
+    expect(once).not.toBeNull();
+    expect(landingRewrite(once!, false, OPENER)).toBeNull();
   });
 });
 

@@ -89,14 +89,40 @@ export function sendAnswer(
 /**
  * Read what everybody else did. Returns null when there is nothing worth
  * showing, which the caller renders as nothing at all rather than as a zero.
+ *
+ * IT ASKS FOR EVERY ANSWER EVER GIVEN, NOT TODAY'S. `day` used to DEFAULT to
+ * `todayDayNumber()`, so every request was scoped to one UTC calendar day, and
+ * with `MIN_ANSWERS_TO_SHOW` at 20 the line only appeared once twenty people
+ * had answered THAT slug on THAT day. Across 73 freely browsable puzzles with
+ * no forced daily that needs thousands of daily players per puzzle, so the one
+ * piece of social proof in the product was effectively dark in production.
+ *
+ * The server was always ready for this: `answerDistribution` branches on
+ * `day === undefined` and runs an all-time `SUM(count) GROUP BY choice_id`,
+ * and the endpoint already reads a missing `day` param as `undefined`. That
+ * branch existed, was tested, and was never reached from the client, because a
+ * default argument here quietly guaranteed the parameter was always sent.
+ *
+ * Pooling across days is also the RIGHT denominator rather than merely a
+ * bigger one. `recordPlay` sends only the first answer to a slug on a given
+ * day, so every counted answer is somebody meeting the figures cold; stacking
+ * those across days keeps that property and only adds evidence. And the floor
+ * exists partly because a tally of one or two is the only state in which an
+ * aggregate could describe an individual, which a larger denominator can only
+ * improve.
+ *
+ * `day` stays available for a caller that genuinely wants one day, and is now
+ * OMITTED FROM THE QUERY when absent rather than defaulted, so the shape of
+ * the request says what the caller meant.
  */
 export async function fetchDistribution(
   slug: string,
-  day: number = todayDayNumber(),
+  day?: number,
 ): Promise<Distribution | null> {
   try {
+    const query = day === undefined ? "" : `&day=${day}`;
     const res = await fetch(
-      `/api/answers?slug=${encodeURIComponent(slug)}&day=${day}`,
+      `/api/answers?slug=${encodeURIComponent(slug)}${query}`,
       { credentials: "omit" },
     );
     if (!res.ok) return null;

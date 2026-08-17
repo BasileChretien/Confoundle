@@ -2,6 +2,7 @@ import { describe, it, expect, beforeEach, vi, afterEach } from "vitest";
 
 import {
   contributesAnswers,
+  fetchDistribution,
   MIN_ANSWERS_TO_SHOW,
   sendAnswer,
   setContributesAnswers,
@@ -105,5 +106,73 @@ describe("what the reveal is allowed to draw", () => {
     // Zero and "no data" look identical once rendered, and only one of them is
     // a claim we can support.
     expect(shareOf(dist(100, 68), "never-picked")).toBeNull();
+  });
+});
+
+describe("which population the reveal line is about", () => {
+  beforeEach(() => vi.stubGlobal("localStorage", memoryStorage()));
+  afterEach(() => vi.restoreAllMocks());
+
+  const ok = (body: unknown) => ({
+    ok: true,
+    json: async () => body,
+  });
+
+  /**
+   * THE DEFECT THIS PINS. `fetchDistribution` took `day = todayDayNumber()` as
+   * a DEFAULT ARGUMENT, so every request carried a day and the server answered
+   * from one UTC calendar day. With the floor at twenty, "68% of players fell
+   * for the same one" then required twenty answers to one slug within one day,
+   * across a freely browsable deck of 73 with no forced daily. The line was
+   * built, tested, translated, and unreachable.
+   *
+   * A default argument is exactly the kind of defect no type checks and no
+   * test caught: the call site reads `fetchDistribution(slug)`, which looks
+   * like it is asking for everything.
+   */
+  it("asks for every answer ever given, not just today's", async () => {
+    const fetchSpy = vi.fn().mockResolvedValue(ok({ total: 0, choices: [] }));
+    vi.stubGlobal("fetch", fetchSpy);
+
+    await fetchDistribution("kidney-stones");
+
+    const [url] = fetchSpy.mock.calls[0]!;
+    expect(url).toBe("/api/answers?slug=kidney-stones");
+    expect(String(url)).not.toContain("day");
+  });
+
+  it("still scopes to one day when a caller genuinely asks for one", async () => {
+    const fetchSpy = vi.fn().mockResolvedValue(ok({ total: 0, choices: [] }));
+    vi.stubGlobal("fetch", fetchSpy);
+
+    await fetchDistribution("kidney-stones", 20_314);
+
+    expect(String(fetchSpy.mock.calls[0]![0])).toBe(
+      "/api/answers?slug=kidney-stones&day=20314",
+    );
+  });
+
+  it("escapes the slug rather than pasting it into the query", async () => {
+    const fetchSpy = vi.fn().mockResolvedValue(ok({ total: 0, choices: [] }));
+    vi.stubGlobal("fetch", fetchSpy);
+
+    await fetchDistribution("a slug&day=1");
+
+    expect(String(fetchSpy.mock.calls[0]![0])).toBe(
+      "/api/answers?slug=a%20slug%26day%3D1",
+    );
+  });
+
+  it("treats a malformed body as no data rather than as a zero tally", async () => {
+    // A zero would render as a claim about players. Null renders as nothing.
+    const fetchSpy = vi.fn().mockResolvedValue(ok({ nonsense: true }));
+    vi.stubGlobal("fetch", fetchSpy);
+
+    expect(await fetchDistribution("kidney-stones")).toBeNull();
+  });
+
+  it("survives a transport failure without costing the reveal", async () => {
+    vi.stubGlobal("fetch", () => Promise.reject(new Error("offline")));
+    expect(await fetchDistribution("kidney-stones")).toBeNull();
   });
 });

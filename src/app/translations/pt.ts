@@ -3,6 +3,16 @@
  * Keys must match the English text exactly. Native review pending; correct in place.
  */
 export const pt: Record<string, string> = {
+  // ---- Chart scope labels, reveal badge, reaction lines ----
+  "Time nobody could die in": "O tempo em que ninguém podia morrer",
+  "What the drug did to the marker": "O que o medicamento fez ao marcador",
+  "As one judge marked it": "Segundo a nota de um único avaliador",
+  "As every judge marked it": "Segundo a nota de todos os avaliadores",
+  "Against what happens": "Diante do que acontece",
+  "The trap worked": "A armadilha funcionou",
+  "The setup was built to make that one feel obvious.": "O enunciado foi construído para fazer essa resposta parecer óbvia.",
+  "Wrong, but you staked almost nothing on it. That is the wager working.": "Errado, mas você apostou quase nada. É assim que a aposta deve funcionar.",
+  "The slope is drawn from the published correlation of 0.79. Messerli plotted all 23 countries in his own figure; this one draws the trend alone rather than redrawing his points by eye.": "A inclinação foi traçada a partir da correlação publicada de 0,79. Messerli marcou os 23 países na figura dele; esta desenha apenas a tendência, em vez de redesenhar os pontos a olho.",
   // ---- UI chrome (buttons, labels, section headers) ----
   "n = {count}": "n = {count}",
   "{name}: {value}": "{name}: {value}",

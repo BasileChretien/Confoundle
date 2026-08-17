@@ -4,6 +4,16 @@
  * reference only.
  */
 export const zh: Record<string, string> = {
+  // ---- Chart scope labels, reveal badge, reaction lines ----
+  "Time nobody could die in": "无人可能死亡的那段时间",
+  "What the drug did to the marker": "药物对指标的影响",
+  "As one judge marked it": "一位评分者的评定",
+  "As every judge marked it": "所有评分者的评定",
+  "Against what happens": "与实际情况相比",
+  "The trap worked": "陷阱奏效了",
+  "The setup was built to make that one feel obvious.": "这道题的呈现方式就是为了让那个答案显得理所当然。",
+  "Wrong, but you staked almost nothing on it. That is the wager working.": "答错了，但你几乎没有下注。这正是下注机制该起的作用。",
+  "The slope is drawn from the published correlation of 0.79. Messerli plotted all 23 countries in his own figure; this one draws the trend alone rather than redrawing his points by eye.": "这条斜线是依据已发表的相关系数0.79画出的。梅塞利在他自己的图中标出了全部23个国家；本图只画趋势，而不凭目测重绘他的散点。",
   // ---- UI chrome (buttons, labels, section headers) ----
   "n = {count}": "n = {count}",
   "{name}: {value}": "{name}：{value}",

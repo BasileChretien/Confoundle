@@ -3,6 +3,16 @@
  * must match the English text exactly. Correct in place.
  */
 export const hi: Record<string, string> = {
+  // ---- Chart scope labels, reveal badge, reaction lines ----
+  "Time nobody could die in": "वह समय जिसमें कोई मर ही नहीं सकता था",
+  "What the drug did to the marker": "दवा ने मार्कर पर क्या असर डाला",
+  "As one judge marked it": "जैसा एक जाँचकर्ता ने आँका",
+  "As every judge marked it": "जैसा हर जाँचकर्ता ने आँका",
+  "Against what happens": "असल में जो होता है उसके सामने",
+  "The trap worked": "जाल काम कर गया",
+  "The setup was built to make that one feel obvious.": "सवाल इसी तरह रचा गया था कि वही जवाब साफ़ लगे।",
+  "Wrong, but you staked almost nothing on it. That is the wager working.": "जवाब ग़लत था, पर आपने दाँव लगभग कुछ भी नहीं लगाया। दाँव का काम यही है।",
+  "The slope is drawn from the published correlation of 0.79. Messerli plotted all 23 countries in his own figure; this one draws the trend alone rather than redrawing his points by eye.": "यह ढाल प्रकाशित सहसंबंध 0.79 से खींची गई है। मेसरली ने अपने चित्र में सभी 23 देश अंकित किए थे; यहाँ केवल रुझान खींचा गया है, उनके बिंदु अंदाज़े से दोबारा नहीं बनाए गए।",
   // ---- UI chrome (buttons, labels, section headers) ----
   "n = {count}": "n = {count}",
   "{name}: {value}": "{name}: {value}",

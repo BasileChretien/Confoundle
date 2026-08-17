@@ -3,6 +3,16 @@
  * the English text exactly. Native review by Basile; correct in place.
  */
 export const fr: Record<string, string> = {
+  // ---- Chart scope labels, reveal badge, reaction lines ----
+  "Time nobody could die in": "Le temps où personne ne pouvait mourir",
+  "What the drug did to the marker": "Ce que le médicament a fait au marqueur",
+  "As one judge marked it": "Selon la note d'un seul correcteur",
+  "As every judge marked it": "Selon la note de tous les correcteurs",
+  "Against what happens": "Face à la réalité",
+  "The trap worked": "Le piège a fonctionné",
+  "The setup was built to make that one feel obvious.": "L'énoncé était construit pour rendre cette réponse évidente.",
+  "Wrong, but you staked almost nothing on it. That is the wager working.": "Faux, mais vous n'aviez presque rien misé. C'est exactement le rôle de la mise.",
+  "The slope is drawn from the published correlation of 0.79. Messerli plotted all 23 countries in his own figure; this one draws the trend alone rather than redrawing his points by eye.": "La pente est tracée à partir de la corrélation publiée de 0,79. Messerli avait placé les 23 pays sur sa propre figure ; celle-ci ne trace que la tendance, au lieu de redessiner ses points à vue d'œil.",
   // ---- UI chrome (buttons, labels, section headers) ----
   "n = {count}": "n = {count}",
   "{name}: {value}": "{name} : {value}",

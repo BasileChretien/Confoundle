@@ -4,6 +4,16 @@
  * Arabic. French was used only as a secondary reference.
  */
 export const ar: Record<string, string> = {
+  // ---- Chart scope labels, reveal badge, reaction lines ----
+  "Time nobody could die in": "الفترة التي لم يكن لأحد أن يموت فيها",
+  "What the drug did to the marker": "ما فعله الدواء بالمؤشر",
+  "As one judge marked it": "بحسب تصحيح مقيّم واحد",
+  "As every judge marked it": "بحسب تصحيح كل مقيّم",
+  "Against what happens": "مقابل ما يحدث فعلاً",
+  "The trap worked": "نجح الفخّ",
+  "The setup was built to make that one feel obvious.": "صِيغ السؤال ليبدو ذلك الجواب بديهياً.",
+  "Wrong, but you staked almost nothing on it. That is the wager working.": "إجابة خاطئة، لكنك لم تراهن عليها تقريباً. وهذا بالضبط ما تفعله المراهنة.",
+  "The slope is drawn from the published correlation of 0.79. Messerli plotted all 23 countries in his own figure; this one draws the trend alone rather than redrawing his points by eye.": "رُسم الميل انطلاقاً من معامل الارتباط المنشور 0.79. وقد وضع ميسرلي الدول الثلاث والعشرين جميعها في شكله الخاص، أما هذا الشكل فيرسم الاتجاه وحده بدل إعادة رسم نقاطه بالتقدير.",
   // ---- UI chrome (buttons, labels, section headers) ----
   "n = {count}": "n = {count}",
   "{name}: {value}": "{name}: {value}",

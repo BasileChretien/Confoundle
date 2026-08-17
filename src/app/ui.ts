@@ -913,17 +913,33 @@ export const UI: Record<string, LocalizedText> = {
     bn: "জয় করা",
     ar: "الانتصارات",
   },
+  /*
+    THE APP USED TO CERTIFY PEOPLE PERMANENTLY UNFOOLABLE, IN AN APP ABOUT
+    OVERCONFIDENCE, ON THE STRENGTH OF NINE CORRECT ANSWERS.
+
+    This read "Burned for good. These no longer fool you." Three separate
+    things in the repo already contradicted it. `schedule.ts` says in its own
+    comment that "'Burned' is a scheduling convention, not proof of permanent
+    retention, so it now means an annual check rather than an exit", and its
+    stage table backs that up: burned is 24 * 365 hours, a recheck in a year.
+    The inoculation literature the project is built on has conferred resistance
+    decaying, which is the entire reason spacing exists. And the deck's own
+    subject matter has believing yourself immune as a documented failure mode.
+
+    The code was right and only the string overclaimed, so the string now says
+    what the schedule actually does.
+  */
   conquestsBlurb: {
-    en: "Burned for good. These no longer fool you.",
-    fr: "Gravés pour de bon. Ceux-là ne vous trompent plus.",
-    es: "Grabadas para siempre. Estas ya no te engañan.",
-    pt: "Gravadas de vez. Elas não enganam mais você.",
-    ja: "完全習得済み。もう二度と騙されません。",
-    zh: "已被彻底烙印，这些再也骗不了你。",
-    ru: "Закреплено навсегда. Эти трюки вас больше не обманут.",
-    hi: "हमेशा के लिए पक्का। ये अब आपको धोखा नहीं दे सकते।",
-    bn: "একেবারে স্থায়ী হয়ে গেছে। এগুলো আর আপনাকে ঠকাতে পারবে না।",
-    ar: "رسّختها إلى الأبد. لم تعد تخدعك.",
+    en: "Caught often enough to rest. Each one comes back in a year.",
+    fr: "Repérés assez souvent pour être mis de côté. Chacun revient dans un an.",
+    es: "Detectadas suficientes veces para descansar. Cada una vuelve dentro de un año.",
+    pt: "Detectadas vezes suficientes para descansar. Cada uma volta daqui a um ano.",
+    ja: "十分に見抜けたので一休みです。それぞれ一年後にまた出題されます。",
+    zh: "识破的次数够多，暂时休息。每一个都会在一年后再次出现。",
+    ru: "Вы распознавали их достаточно часто, поэтому они отдыхают. Через год они вернутся снова.",
+    hi: "इतनी बार पकड़े गए कि अब आराम। हर एक साल बाद फिर आएगा।",
+    bn: "যথেষ্টবার ধরা পড়েছে, তাই এখন বিশ্রাম। এক বছর পরে প্রতিটি আবার ফিরবে।",
+    ar: "أمسكتَ بها مرات كافية لترتاح. سيعود كلٌّ منها بعد عام.",
   },
   // Lessons browsing (Learn now, search, category filter).
   learnNow: {

@@ -30,6 +30,9 @@ export const correlationCausation: Puzzle = {
       effect: { en: "Nobel prizes" },
       commonCause: { en: "A country's wealth" },
       correlationNote: { en: "r ≈ 0.79" },
+      schematicNote: {
+        en: "The slope is drawn from the published correlation of 0.79. Messerli plotted all 23 countries in his own figure; this one draws the trend alone rather than redrawing his points by eye.",
+      },
     },
     initialView: { kind: "trend" },
   },

@@ -95,6 +95,22 @@ const CausalData = z.object({
   effect: LocalizedText, // Y, the effect, e.g. "Nobel prizes"
   commonCause: LocalizedText, // Z, the real driver, e.g. "A country's wealth"
   correlationNote: LocalizedText.optional(), // e.g. "r ≈ 0.79"
+  /*
+    Says plainly that the rising line is drawn from a published coefficient
+    rather than plotted point by point, exactly as `EcologicalData` does and
+    for the same reason.
+
+    REQUIRED, not optional, because the figure this shape draws is a trend
+    chart and a trend chart reads as measurement. `CausalView` used to scatter
+    seven hardcoded points across that line, under a comment describing them as
+    "a handful of points sitting near the rising trend line", and nothing on
+    the figure or in its aria-label said they were invented. They were the only
+    numbers in the deck nobody sourced. The dots are gone and the disclosure is
+    mandatory, so a second causal puzzle cannot reintroduce the defect by
+    omission: leaving the field out is a tsc error rather than a silent
+    unlabelled figure.
+  */
+  schematicNote: LocalizedText,
 });
 export type CausalData = z.infer<typeof CausalData>;
 

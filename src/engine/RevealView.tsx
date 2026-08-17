@@ -61,10 +61,30 @@ export function RevealView({
     <section className="flex flex-col gap-4">
       <header className="flex flex-col gap-2">
         <div className="flex items-center justify-between gap-2">
+          {/*
+            A FACT ABOUT THIS PLAYER, NEVER ABOUT THE POPULATION.
+
+            This read "Most people miss this" on every wrong answer, on every
+            puzzle, unconditionally, with no tally behind it. Eighteen lines
+            below, `CompanyLine` renders the real distribution and can say "18%
+            of players fell for the same one", so the deck could contradict its
+            own unsourced claim inside one screen.
+
+            The discipline was already written next door and this badge was the
+            one place bypassing it: `answerStats` sets MIN_ANSWERS_TO_SHOW = 20
+            and argues in its own comment that drawing a percentage the server
+            considers too small to be evidence "would be the deck making
+            exactly the mistake it teaches against", and `CompanyLine` has four
+            states of which three deliberately render nothing.
+
+            So the badge now says only what the app actually knows: the trap
+            worked on the person reading it. Blaming the trap rather than the
+            reader is also the honest attribution, since the setup was built to
+            make the wrong answer feel obvious. The population claim belongs to
+            `CompanyLine`, which has the numbers, or to nobody.
+          */}
           <Badge tone={caught ? "brand" : "rust"}>
-            {caught
-              ? t({ en: "You caught it" })
-              : t({ en: "Most people miss this" })}
+            {caught ? t({ en: "You caught it" }) : t({ en: "The trap worked" })}
           </Badge>
           <span
             className={

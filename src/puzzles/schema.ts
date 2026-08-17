@@ -3546,7 +3546,125 @@ export const ConditionalData = z
   });
 export type ConditionalData = z.infer<typeof ConditionalData>;
 
+/**
+ * `raters`: one piece of work, many judges, and the marks they each gave it.
+ *
+ * WHY THIS IS NOT `ratings`, WHICH IS THE OBVIOUS REUSE AND THE WRONG ONE.
+ * `ratings` carries a MEAN per series with an optional standard deviation, so
+ * putting this data on it means collapsing the individual marks into an average
+ * and a spread. That destroys the entire reveal. The point is not that the marks
+ * have a spread, which sounds like measurement noise and invites a shrug; it is
+ * that the individual marks fall on BOTH SIDES of a line that decides something,
+ * so the same work passes or fails depending on who happened to pick it up. An
+ * average cannot straddle a threshold, and a standard deviation cannot say that
+ * two of five markers passed it.
+ *
+ * WHAT MAKES THE SHAPE HONEST, and it is the reason `subject` is required. Marks
+ * from different judges mean nothing unless they judged the SAME thing: judges
+ * who saw different work differ for reasons that have nothing to do with how
+ * they judge. So the shape asks the data file to name the single object every
+ * rater saw, and the reveal beat is then a claim about the raters rather than
+ * about the work.
+ *
+ * COLOUR IS A FACT ABOUT THE MARK, NOT A POSITION IN A LIST. Each mark is drawn
+ * by which side of `threshold` it falls on, so a rater's colour is identical at
+ * the setup and at the reveal no matter which subset is drawn. That is why this
+ * shape needs no `declaredColors`: there is no slot to keep stable, because
+ * nothing here is coloured by its index.
+ */
+const Rater = z.object({
+  id: z.string().min(1),
+  label: LocalizedText,
+  /** Which body of judges this one belongs to, when the card draws more than one. */
+  groupId: z.string().min(1).optional(),
+  mark: z.number(),
+});
+export type Rater = z.infer<typeof Rater>;
+
+const RaterGroup = z.object({
+  id: z.string().min(1),
+  label: LocalizedText,
+});
+export type RaterGroup = z.infer<typeof RaterGroup>;
+
+const RatersData = z
+  .object({
+    type: z.literal("raters"),
+    label: LocalizedText, // figure title
+    /** The single thing every rater judged. Required: see the note above. */
+    subject: LocalizedText,
+    metricLabel: LocalizedText, // "Mark out of 100"
+    min: z.number(),
+    max: z.number(),
+    /** The line that decides the outcome, e.g. the pass mark. */
+    threshold: z.number(),
+    thresholdLabel: LocalizedText,
+    aboveLabel: LocalizedText, // "Passed"
+    belowLabel: LocalizedText, // "Failed"
+    groups: z.array(RaterGroup).min(1),
+    raters: z.array(Rater).min(2),
+  })
+  .superRefine((d, ctx) => {
+    if (d.max <= d.min)
+      ctx.addIssue({
+        code: "custom",
+        path: ["max"],
+        message: "the scale's max must be above its min",
+      });
+
+    const seen = new Set<string>();
+    for (const r of d.raters) {
+      if (seen.has(r.id))
+        ctx.addIssue({
+          code: "custom",
+          path: ["raters"],
+          message: `two raters share the id "${r.id}", so a view naming it would draw an arbitrary one of them`,
+        });
+      seen.add(r.id);
+
+      if (r.mark < d.min || r.mark > d.max)
+        ctx.addIssue({
+          code: "custom",
+          path: ["raters"],
+          message: `rater "${r.id}" gave ${r.mark}, which is outside the scale ${d.min} to ${d.max}`,
+        });
+
+      if (r.groupId !== undefined && !d.groups.some((g) => g.id === r.groupId))
+        ctx.addIssue({
+          code: "custom",
+          path: ["raters"],
+          message: `rater "${r.id}" names the group "${r.groupId}", which is not declared`,
+        });
+    }
+
+    if (d.threshold <= d.min || d.threshold >= d.max)
+      ctx.addIssue({
+        code: "custom",
+        path: ["threshold"],
+        message: `the threshold ${d.threshold} is not inside the scale ${d.min} to ${d.max}, so no mark could fall on both sides of it`,
+      });
+
+    /*
+      The guard that makes the shape mean what it says. If every marker landed
+      on one side of the line then they agreed about the outcome, and a reveal
+      bringing the others in would show the reader a wider spread and the SAME
+      verdict, which is a much weaker claim than this shape exists to make and
+      one a reader could fairly shrug at. Refuse it at authoring time rather
+      than let a card ship whose reveal quietly does not land.
+    */
+    const above = d.raters.filter((r) => r.mark >= d.threshold).length;
+    if (above === 0 || above === d.raters.length)
+      ctx.addIssue({
+        code: "custom",
+        path: ["raters"],
+        message:
+          "every rater fell on the same side of the threshold, so the same work got the same verdict from all of them and there is nothing for the reveal to show",
+      });
+  });
+export type RatersData = z.infer<typeof RatersData>;
+
 export const PuzzleData = z.discriminatedUnion("type", [
+  RatersData,
   RatesData,
   FrequenciesData,
   CausalData,
@@ -3671,6 +3789,8 @@ export const DataView = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("astrimmed"), ...viewFields }),
   z.object({ kind: z.literal("onerow"), ...viewFields }),
   z.object({ kind: z.literal("bothrows"), ...viewFields }),
+  z.object({ kind: z.literal("onemarker"), ...viewFields }),
+  z.object({ kind: z.literal("everymarker"), ...viewFields }),
 ]);
 export type DataView = z.infer<typeof DataView>;
 export type DataViewKind = DataView["kind"];
@@ -4082,6 +4202,15 @@ export const Puzzle = z
           return {
             groups: new Set(d.comparisons.map((c) => c.id)),
             groupWord: "comparison",
+            strata: null,
+            strataWord: "",
+          };
+        case "raters":
+          // The setup names the judges it draws and the reveal omits groupIds,
+          // so the reveal brings in the judges who disagreed with them.
+          return {
+            groups: new Set(d.raters.map((r) => r.id)),
+            groupWord: "rater",
             strata: null,
             strataWord: "",
           };

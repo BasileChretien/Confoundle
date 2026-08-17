@@ -10185,6 +10185,106 @@ const items: TestItem[] = [
       en: "This is sound. The order was randomised and the comparison was made, and it came out flat. An order effect is something to test for rather than something to assume, and reporting an absence found by looking is a result.",
     },
   },
+  {
+    id: "rat-dissertation-prize",
+    scenario: {
+      en: "A department gives a prize to the highest-scoring dissertation. Students are allocated to supervisors at random, each supervisor marks their own students' work alone, and the prize goes to the top mark on the combined list. One supervisor's students took seven of the ten highest marks, and the department concluded that supervisor was getting better work out of their students.",
+    },
+    trap: "rater-leniency",
+    explanation: {
+      en: "Allocation was random, so the two sets of students were alike before anyone marked anything. No dissertation was seen by more than one supervisor, so nothing in these numbers distinguishes a supervisor whose students write better work from one who simply marks higher, and the combined list treats both markers' numbers as though they came off the same instrument.",
+    },
+  },
+  {
+    id: "rat-osce-room",
+    scenario: {
+      en: "A medical school runs a practical examination in parallel rooms and assigns each student to a room at random. The pass mark is the same in every room. One examiner failed a third of the students they saw and another failed none. Both sets of results went onto the students' transcripts, which record the mark but not the room.",
+    },
+    trap: "rater-leniency",
+    explanation: {
+      en: "Random assignment means the students in the two rooms were alike, so the gap in failure rates is a fact about the examiners. What makes it consequential rather than merely interesting is the transcript: it keeps the mark and discards the examiner, so a student's result depended on a room they were assigned to and nothing downstream can ever see that.",
+    },
+  },
+  {
+    id: "rat-two-funding-panels",
+    scenario: {
+      en: "A funding body splits its applications between two panels at random and funds every proposal scoring above a fixed line. One panel scored higher throughout and sent twice as many proposals over the line. The body's report said the stronger field had come to that panel.",
+    },
+    trap: "rater-leniency",
+    explanation: {
+      en: "The split was random, so neither panel can have received the stronger field. A fixed line applied to two panels' scores does not fund the better proposals; it funds the proposals that happened to reach the more generous panel.",
+    },
+  },
+  {
+    id: "rat-appraisal-league-table",
+    scenario: {
+      en: "A company ranks its whole staff on one list for bonuses, built from managers' ratings of one to five. Every manager rates only their own team, and no employee is rated by anyone else. Staff under one manager took most of the top places, and the company treated the list as evidence of a high-performing team.",
+    },
+    trap: "rater-leniency",
+    explanation: {
+      en: "Because no employee was rated by more than one manager, there is nothing in the data that could tell a generous manager apart from a strong team. The single list makes the two look like one quantity by putting every rating in the same column.",
+    },
+  },
+  {
+    id: "rat-reviewer-cutoff",
+    scenario: {
+      en: "A journal rejects any paper whose average reviewer score falls below a cutoff. Each submission is sent to two reviewers drawn from a large pool. An editor noticed that papers which happened to draw two particular reviewers were rejected far more often, and supposed those two were being sent the weaker submissions.",
+    },
+    trap: "rater-leniency",
+    explanation: {
+      en: "Drawing reviewers from a pool does not sort papers by quality, so those two were not receiving weaker work. The cutoff is what turns the difference into a decision: a habitually strict reviewer and a genuinely weak paper produce the same score, and the journal acts on the score.",
+    },
+  },
+  {
+    id: "rat-inspector-regions",
+    scenario: {
+      en: "A schools inspectorate grades each school from one to four, and each school is graded by whichever inspector was available. A newspaper averaged the grades by region and reported that schools in one region were markedly worse than elsewhere.",
+    },
+    trap: "rater-leniency",
+    explanation: {
+      en: "Each school carries one inspector's grade and inspectors work near where they live, so a regional average is partly an average of the inspectors who happened to cover that region. The figure cannot separate how good the schools are from how hard their inspectors grade.",
+    },
+  },
+  {
+    id: "rat-clinic-year-on-year",
+    scenario: {
+      en: "A clinic tracks how unwell its patients are using a scale filled in by the clinician who sees them. Patients are booked with whoever is free. The clinic compared this year's average score with last year's, when a different group of clinicians had been in post, found this year's lower, and reported that patients were doing better.",
+    },
+    trap: "rater-leniency",
+    explanation: {
+      en: "The two averages were produced by two different sets of clinicians, so the comparison contains a change of instrument as well as any change in the patients. A lower score is what you would see if this year's clinicians simply score the same presentation lower, and nothing here distinguishes that from patients improving.",
+    },
+  },
+  {
+    id: "rat-two-heats",
+    scenario: {
+      en: "A competition runs two heats scored by separate judging panels, with competitors assigned to heats by draw, and the eight highest scores across both heats go through to the final. Six of the eight came from one heat, and the organisers said that heat had been the stronger draw.",
+    },
+    trap: "rater-leniency",
+    explanation: {
+      en: "The draw assigned competitors to heats, so it cannot have concentrated the talent in one of them. Ranking across two panels puts one panel's numbers directly against the other's, which advances whoever met the more generous panel.",
+    },
+  },
+  {
+    id: "rat-appeal-remark",
+    scenario: {
+      en: "An examination board offers a re-mark on appeal. A candidate appealed, a second marker gave the script nine more marks than the first had, and the board entered the higher figure as the correct mark and closed the case.",
+    },
+    trap: "rater-leniency",
+    explanation: {
+      en: "A second marker's mark is another judgement of the same script, not a correction of the first one. What the board actually obtained is the disagreement itself, and taking the higher number because it arrived second does not establish which of the two is right, or that either is.",
+    },
+  },
+  {
+    id: "rat-interview-diary",
+    scenario: {
+      en: "A recruiter allocates candidates to one of four interview panels according to whose diary is free, and everyone scoring above seven goes to the next round. Two panels passed nearly everyone they saw and two passed almost nobody. The recruiter concluded that the first two had been luckier with the candidates they drew.",
+    },
+    trap: "rater-leniency",
+    explanation: {
+      en: "Diary availability has nothing to do with how good a candidate is, so luck of the draw cannot produce a split that clean. One threshold laid across four panels' scores means what a candidate needed to score depended on which panel they sat in front of.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

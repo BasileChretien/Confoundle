@@ -1629,6 +1629,60 @@ function ConditionalGlyph() {
     </svg>
   );
 }
+function RatersGlyph() {
+  const t = useT();
+  const W = 200;
+  const H = 96;
+  /**
+   * One vertical line, and a column of marks scattered on both sides of it.
+   * The line is the threshold and the scatter is a single piece of work, so the
+   * glyph carries the whole shape in one picture: the same thing landed on both
+   * sides of the decision depending on who picked it up. Gold for the marks
+   * that cleared the line, teal for the ones that did not, matching the figure.
+   * Shape-generic wording, since the glyph is chosen by `data.type` and has to
+   * survive whatever the next puzzle on this shape turns out to be about.
+   */
+  const LINE = 120;
+  const marks = [
+    { x: 128, y: 20 },
+    { x: 96, y: 37 },
+    { x: 74, y: 54 },
+    { x: 128, y: 71 },
+    { x: 68, y: 88 },
+  ];
+  return (
+    <svg
+      viewBox={`0 0 ${W} ${H}`}
+      width="100%"
+      role="img"
+      aria-label={t({
+        en: "Five marks for one piece of work, scattered on both sides of a single pass line",
+      })}
+    >
+      <line x1={LINE} y1={8} x2={LINE} y2={H - 4} stroke={CARD.rule} strokeWidth={1.5} />
+      {marks.map((m) => (
+        <g key={`${m.x}-${m.y}`}>
+          <line
+            x1={26}
+            y1={m.y}
+            x2={m.x}
+            y2={m.y}
+            stroke={CARD.rule}
+            strokeWidth={1}
+            opacity={0.5}
+          />
+          <circle
+            cx={m.x}
+            cy={m.y}
+            r={5}
+            fill={m.x >= LINE ? CARD.gold : CARD.teal}
+            opacity={0.9}
+          />
+        </g>
+      ))}
+    </svg>
+  );
+}
 function CrossedGlyph() {
   const t = useT();
   const W = 200;
@@ -2270,6 +2324,7 @@ export function ShareCard({
   const surrogateGlyph = data.type === "surrogate";
   const attenuationGlyph = data.type === "attenuation";
   const conditionalGlyph = data.type === "conditional";
+  const ratersGlyph = data.type === "raters";
   const splitSampleGlyph =
     data.type === "rates" &&
     Boolean(data.strataAreSeparateSamples) &&
@@ -2426,6 +2481,8 @@ export function ShareCard({
               <SurrogateGlyph />
             ) : attenuationGlyph ? (
               <AttenuationGlyph />
+            ) : ratersGlyph ? (
+              <RatersGlyph />
             ) : conditionalGlyph ? (
               <ConditionalGlyph />
             ) : null}

@@ -250,6 +250,7 @@ describe("slice-drawing renderers", () => {
       "EstimationView",
       "ForestView",
       "PublishedView",
+      "RatersView",
       "RatingsView",
       "SalienceView",
       "SeriesView",

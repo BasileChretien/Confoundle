@@ -56,6 +56,15 @@ export const ar: Record<string, string> = {
   // category names (humanized)
   "Causal reasoning": "الاستدلال السببي",
   "Cognitive bias": "تحيز معرفي",
+  "Your best is {best}.": "أفضل نتيجة لك هي {best}.",
+  "Does this reasoning fall for something?": "هل يقع هذا الاستدلال في فخ ما؟",
+  "Yes, it falls for something": "نعم، يقع في فخ",
+  "{at} of {total}": "{at} من {total}",
+  "See the round": "عرض الجولة",
+  "Longest run: {run}": "أطول سلسلة: {run}",
+  "{right} of {total} called correctly.": "‏{right} من {total} حُكم عليها بشكل صحيح.",
+  "A new personal best.": "رقم شخصي جديد.",
+  "Answering trap every time would have scored {n} on this round.": "لو أجبت «فخ» في كل مرة لسجّلت {n} في هذه الجولة.",
   "Two tracks on one scale, three points bunched together on the upper one and spread far apart on the lower one": "مساران على سلّم واحد، ثلاث نقاط متلاصقة في الأعلى ومتباعدة كثيرا في الأسفل",
   "Statistical reasoning": "الاستدلال الإحصائي",
   // tags

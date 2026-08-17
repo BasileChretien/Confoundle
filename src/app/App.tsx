@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { getPuzzleBySlug, getTodaysPuzzle } from "../puzzles";
 import { PuzzleFlow } from "../engine/PuzzleFlow";
 import { ReviewView } from "../engine/ReviewView";
+import { TrapHuntView } from "../engine/TrapHuntView";
 import { HomeView } from "../engine/HomeView";
 import { AboutView } from "../engine/AboutView";
 import { LessonsView } from "../engine/LessonsView";
@@ -138,7 +139,9 @@ function AppShell() {
         <AccountPanel />
 
         <div className="flex-1">
-          {view.name === "review" ? (
+          {view.name === "trapHunt" ? (
+            <TrapHuntView onDone={() => go(HOME)} />
+          ) : view.name === "review" ? (
             <ReviewView
               seed={round}
               practice={view.practice}
@@ -176,6 +179,7 @@ function AppShell() {
               progress={progress}
               dueCount={dueCount}
               onOpenLesson={(next) => go({ name: "lesson", slug: next })}
+              onStartTrapHunt={() => go({ name: "trapHunt" })}
               onStartReviews={() => go({ name: "review", practice: false })}
               onPractise={() => go({ name: "review", practice: true })}
               onOpenAbout={() => go({ name: "about" })}

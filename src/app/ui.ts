@@ -47,6 +47,18 @@ export const UI: Record<string, LocalizedText> = {
     bn: "পাঠ",
     ar: "دروس",
   },
+  trapHunt: {
+    en: "Trap Hunt",
+    zh: "找陷阱",
+    hi: "जाल की तलाश",
+    es: "Caza de trampas",
+    fr: "Chasse aux pièges",
+    ar: "صيد الفخاخ",
+    bn: "ফাঁদ খোঁজা",
+    pt: "Caça às armadilhas",
+    ru: "Охота на ловушки",
+    ja: "罠さがし",
+  },
   allLessons: {
     en: "All lessons",
     fr: "Toutes les leçons",

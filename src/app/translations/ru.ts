@@ -56,6 +56,15 @@ export const ru: Record<string, string> = {
   // category names (humanized)
   "Causal reasoning": "Причинно-следственное мышление",
   "Cognitive bias": "Когнитивное искажение",
+  "Your best is {best}.": "Ваш рекорд: {best}.",
+  "Does this reasoning fall for something?": "Попадается ли это рассуждение на чём-нибудь?",
+  "Yes, it falls for something": "Да, попадается",
+  "{at} of {total}": "{at} из {total}",
+  "See the round": "Посмотреть раунд",
+  "Longest run: {run}": "Самая длинная серия: {run}",
+  "{right} of {total} called correctly.": "Верно определено {right} из {total}.",
+  "A new personal best.": "Новый личный рекорд.",
+  "Answering trap every time would have scored {n} on this round.": "Отвечая «ловушка» каждый раз, в этом раунде вы набрали бы {n}.",
   "Two tracks on one scale, three points bunched together on the upper one and spread far apart on the lower one": "Две дорожки на одной шкале, три точки тесно сжаты на верхней и широко разнесены на нижней",
   "Statistical reasoning": "Статистическое мышление",
   // tags

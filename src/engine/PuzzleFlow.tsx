@@ -41,11 +41,22 @@ export function PuzzleFlow({
   function commit(choice: Choice, wager: Confidence) {
     setCommitted(choice);
     setConfidence(wager);
-    recordPlay(puzzle.slug, choice.id, choice.isCorrect, wager);
+    // `first` is false when the player is replaying, which they can only do
+    // from the share beat, which is to say having already read the reveal.
+    const { first } = recordPlay(puzzle.slug, choice.id, choice.isCorrect, wager);
     // Fire and forget, and never awaited: the reveal must not wait on the
     // network, and a failure here costs the player nothing. Sends nothing at
     // all when the player has turned contribution off.
-    sendAnswer(puzzle.slug, choice.id, wager);
+    //
+    // ONLY THE FIRST ANSWER OF THE DAY IS SENT, and that is the whole value of
+    // the number. "68% picked that" is a claim about people meeting the figures
+    // cold; a replay is made by somebody who has just been told the answer, so
+    // counting it would drag every tally towards the correct band over time and
+    // quietly convert "most people fall for this" into "most people saw
+    // through this". On a deck about not overstating what data shows, a
+    // self-flattering statistic assembled by accident is the worst possible
+    // defect, and nothing downstream could detect it.
+    if (first) sendAnswer(puzzle.slug, choice.id, wager);
     track("commit", {
       slug: puzzle.slug,
       choiceId: choice.id,

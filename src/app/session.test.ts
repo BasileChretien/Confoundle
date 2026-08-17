@@ -1,5 +1,5 @@
-import { describe, it, expect } from "vitest";
-import { activityByDay, computeStats } from "./session";
+import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
+import { activityByDay, computeStats, recordPlay } from "./session";
 import type { PlayRecord } from "./session";
 
 const rec = (correct: boolean, confidence: PlayRecord["confidence"] = "sure"): PlayRecord => ({
@@ -171,5 +171,56 @@ describe("activityByDay", () => {
     expect(out).toHaveLength(30);
     expect(out[29].date).toBe("2026-07-10");
     expect(out.every((d) => d.count === 0)).toBe(true);
+  });
+});
+
+/**
+ * The blind-answer guarantee.
+ *
+ * The anonymous tally may only count a player's FIRST commit to a puzzle. A
+ * replay happens from the share beat, after the reveal has explained the trick,
+ * so an answer given then is not a reading of the figures at all. Counting them
+ * would pull every published "most people picked X" towards the correct option
+ * over time, which on this deck would be the most embarrassing defect possible:
+ * a self-flattering statistic assembled by accident.
+ *
+ * recordPlay reports it, rather than the caller comparing before and after,
+ * because the caller would have to read the store before the write and one
+ * reordered line would silently answer "first" forever.
+ */
+describe("recordPlay reports the first commit of the day", () => {
+  beforeEach(() => {
+    const m = new Map<string, string>();
+    vi.stubGlobal("localStorage", {
+      getItem: (k: string) => m.get(k) ?? null,
+      setItem: (k: string, v: string) => void m.set(k, String(v)),
+      removeItem: (k: string) => void m.delete(k),
+      clear: () => m.clear(),
+    });
+  });
+  afterEach(() => vi.restoreAllMocks());
+
+  it("is first once, and never again for the same puzzle that day", () => {
+    expect(recordPlay("a-slug", "c1", false, "sure").first).toBe(true);
+    // The replay: same puzzle, and this time the player knows the answer.
+    expect(recordPlay("a-slug", "c2", true, "certain").first).toBe(false);
+    expect(recordPlay("a-slug", "c2", true, "certain").first).toBe(false);
+  });
+
+  it("is first again for a different puzzle", () => {
+    recordPlay("a-slug", "c1", false, "sure");
+    expect(recordPlay("b-slug", "c1", false, "sure").first).toBe(true);
+  });
+
+  it("still records the replay, which the streak and stats need", () => {
+    recordPlay("a-slug", "c1", false, "hunch");
+    recordPlay("a-slug", "c2", true, "certain");
+    const raw = localStorage.getItem("confoundle:progress:v1");
+    expect(raw).toBeTruthy();
+    const stored = Object.values(JSON.parse(raw!) as Record<string, PlayRecord>);
+    expect(stored).toHaveLength(1);
+    // Last write wins: not sending the answer must not mean not recording it.
+    expect(stored[0]!.choiceId).toBe("c2");
+    expect(stored[0]!.correct).toBe(true);
   });
 });

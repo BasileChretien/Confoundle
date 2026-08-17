@@ -187,6 +187,13 @@
         <li>how sure you said you were.</li>
       </ul>
       <p>
+        Only your first answer to a puzzle is sent. Replaying it after the
+        reveal sends nothing, because the number is meant to say what people
+        picked when the figures were new to them, and answers from players who
+        have just been told the answer would drag it towards the correct option
+        and make the deck look easier than it is.
+      </p>
+      <p>
         There is no identifier of any kind in that message. No account id, no
         device id, no cookie, no session, no timestamp beyond the day. It is
         added to a running tally and the message itself is discarded. Nothing
@@ -204,7 +211,14 @@
         <strong>The honest limit.</strong> Like every request to this site, the
         one carrying your answer reaches Cloudflare, which sees the connection
         and therefore your IP address in order to route it. That address is not
-        stored with the answer and is not part of the tally. But while this site
+        stored with the answer and is not part of the tally. One value derived
+        from it is stored, briefly and separately: so that a script cannot
+        rewrite these numbers by submitting answers in bulk, the site counts how
+        many arrive from one connection each hour. What it keeps for that is a
+        one-way hash of the address under a secret key, in a table holding a
+        count and a start time and nothing else, with no answer and no puzzle
+        beside it. It cannot be turned back into an address, nothing else reads
+        it, and it is overwritten as the hour rolls. But while this site
         is small, a request is close in time to a visit, and we will not pretend
         that somebody holding both sets of server logs could never line them up.
         What we can say precisely is that we do not do that, we keep nothing

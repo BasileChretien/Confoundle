@@ -196,7 +196,7 @@ ${howItWorks}
 
 <h2>${e(LESSON_PAGE.tryIt)}</h2>
 <p>${e(LESSON_PAGE.spoiler)}</p>
-<a class="cta" href="/?p=${escapeHtml(puzzle.slug)}">${e(LESSON_PAGE.play)}</a>
+<a class="cta" href="/">${e(LESSON_PAGE.play)}</a>
 
 <footer>${e(LESSON_PAGE.free)} <a href="/">${e(LESSON_PAGE.everyDay)}</a></footer>
 </main>

@@ -5942,3 +5942,74 @@ which is a new shape and therefore a full one: union member, derivation module
 with a test, renderer, `DataViewRenderer` case, `scopeLabel` entries, `full`
 prop, `ShareCard` glyph, an authored `aria-label` with slots, and ten locales.
 
+---
+
+## Format ideas that are not lessons
+
+Opened 2026-08-17. Everything above is a lesson waiting for a source. This
+section is for ideas about the FORM the teaching takes, which have no
+provenance to verify and therefore no place in the numbered queue. Nothing here
+carries a `<!-- skill: id -->` tag and nothing here is checked by
+`src/puzzles/docsCoverage.test.ts`, which only reads numbered `###` entries.
+
+### Mnemonic songs for the skill names, and not explainer songs
+
+**Status: OPEN.** Proposed 2026-08-17. Worth doing in a narrow form, not on the
+critical path, and the wide form should be refused if it comes back.
+
+**The wide version, which is the one to refuse.** A short sung video per puzzle,
+explaining that puzzle's flaw. Four things go wrong with it, and the first two
+are close to disqualifying on their own.
+
+*Ten locales.* A song is the most translation-hostile artifact this project
+could choose. Lyrics have to scan, rhyme and sit on a melody, so no dictionary
+pass reaches them and no script helps. Seventy-three songs across nine further
+languages is 657 pieces of original verse, each needing an author who is
+simultaneously a lyricist and numerate enough not to fumble immortal time bias.
+The alternative is English-only, which quietly abandons the trilingual reach
+that `PROJECT_PLAN.md` §9 names as a differentiator.
+
+*Songs cannot hedge, and most of this deck is a hedge.* The project rule is that
+the honest answer is often "it is complicated", and `docs/hedge-audit.md` exists
+because holding that line is hard even in prose. A lyric that scans will
+overclaim, because compression is what makes it sing. That is the
+oversimplification §6 lists as a forbidden viral lever, delivered in the most
+memorable format available.
+
+*A synthetic singing voice is a credibility cost this project cannot pay.* It is
+the obvious way to make the wide version cheap, and it reads as content farm,
+which is the register of the thing the deck exists to oppose.
+
+*It points the wrong way.* The complaint that started this was that the app
+feels passive and like studying. Watching a video is more passive, not less.
+
+**The narrow version, which is worth keeping.** Make it a MNEMONIC rather than
+an explainer, and put it outside the app. The hard part of this curriculum is
+not understanding the ideas, it is retrieving the name and the tell weeks later
+in the wild: people who follow Berkson perfectly still cannot summon it when a
+hospital-based case-control study walks past. A short earworm carrying only the
+skill name and its one-line tell does the job music is actually good at, has no
+argument to compress and therefore nothing to overclaim, and needs roughly eight
+of them rather than seventy-three. Ship English first and translate only if
+anyone cares.
+
+**The sequencing condition, which is the real reason this is not next.** The
+share loop does not currently work. `ShareCard` puts no URL on the card and none
+in the text handed to the OS share sheet, and the only link anywhere in a share
+path is in `FriendsBoard.tsx`, pointing at `confoundle.pages.dev` rather than
+the canonical domain. So nothing produced today can be reached by the person who
+sees it. Building a video layer on top of that spends weeks feeding traffic into
+a dead end. Fix the card, get one card to travel, then film.
+
+**What would have to be true to start.** A working share artifact with a live
+link; a shortlist of the eight skills whose NAMES are hardest to retrieve, which
+is answerable from the SRS data the app already keeps rather than by opinion; and
+a decision about the voice, since the synthetic option is the one that makes the
+idea cheap and also the one that costs the most credibility.
+
+**Related, and separate.** `PROJECT_PLAN.md` §7 specifies Remotion generating
+feed-native reveal clips from the same puzzle JSON, and there is no `remotion/`
+directory, so that layer was planned and never built. A silent reveal clip has
+none of the four problems above: it carries no lyrics to translate, compresses
+no argument, needs no voice, and shows the reversal rather than describing it.
+If a video layer is built at all, that is the one to build first.

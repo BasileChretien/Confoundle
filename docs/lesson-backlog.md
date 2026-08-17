@@ -5840,3 +5840,105 @@ review scoring, and judged sports where each judge's card is published. The last
 of those is the most promising precisely because published judge-by-judge scores
 are the raw counts this deck needs, and the least promising for scope, since a
 reader may not accept a sport as evidence about hiring or grading.
+
+**SOURCE READ AT SOURCE 2026-08-17, RECONCILED, AND THE SOURCING BAR IS
+CLEARED BY A ROUTE THIS ENTRY DID NOT LIST.** The three candidate settings above
+were examiner stringency in OSCEs, grant peer review, and judged sports. All
+three share the weakness this entry predicted, which is that the literature
+reports variance components and generalisability coefficients rather than the
+marks themselves. The route that clears the bar is older and blunter: send ONE
+piece of work to many markers and print what each of them wrote on it.
+
+**Starch D, Elliott EC. Reliability of Grading Work in Mathematics. The School
+Review. 1913;21(4):254-259.** Read in full from the JSTOR Early Journal Content
+scan at `archive.org/details/jstor-1076246`, which is free to anyone and out of
+copyright, so no institutional access is needed to check any of this.
+
+**The design, which is why it clears requirement two.** One geometry final
+examination paper, written by a pupil in a large Wisconsin high school. Plates
+were made and several hundred copies printed on foolscap, "thus exactly
+reproducing the original in every detail". Copies went to about 180 North
+Central Association high schools, asking the principal mathematics teacher to
+grade the paper "according to the practices and standards of the school". So the
+work is not merely comparable across raters, it is IDENTICAL, which is the
+strongest form of the linking design this entry demanded and the exact thing
+whose absence disqualified Ho and Imai in entry 73.
+
+**The numbers, all printed as marks rather than as variance components, which is
+requirement one.** 140 papers returned, 12 discarded for missing data. The
+usable set splits by the school's own passing grade: 43 schools passing at 70
+(median 67, probable error 8), 75 passing at 75 (median 70, probable error 7.2),
+and 10 passing at 80. Composite median 70, probable error 7.5, against 4.0 and
+4.8 for the two English papers of the 1912 companion study, so the geometry
+paper varied MORE than the English ones, which is the finding the authors were
+testing for.
+
+**An arithmetic error in the paper, found by reconciling it and recorded here so
+nobody re-derives it.** The text reads "Of the remaining 138". That is wrong on
+two independent routes: 140 returned minus 12 discarded is 128, and the three
+subgroups the same sentence lists are 43 + 75 + 10 = 128. Both give 128, so 128
+is the usable count and 138 is an error, either the original's or the scan's.
+The card should not quote either figure, because it does not need to: the marks
+worth drawing are printed individually, below.
+
+**The marks the card can actually draw, with the reconciliation done.** Four
+sub-datasets are printed candidate by candidate rather than summarised, and
+every statistic the paper prints for them recomputes exactly from the marks:
+
+  * The Wisconsin school the paper came from has five geometry teachers, each of
+    whom graded it independently: **70, 65, 60, 70, 59**. Printed average 64.8
+    and mean variation 4.2; computed 64.80 and 4.24.
+  * A large Ohio high school, four geometry teachers: **76, 75, 67, 61**.
+    Printed 69.8 and 5.8; computed 69.75 and 5.75.
+  * The ten schools whose passing grade is 80: **72, 80, 83, 80, 58, 50, 50, 75,
+    73, 70**.
+  * Question ten alone, marked by the thirteen teachers using a 0 to 10 scale:
+    **5, 5, 0, 0, 5, 3, 4, 2, 3, 2, 5, 6.5, 5**. Thirteen values as stated;
+    printed average 3.5 and mean variation 1.7, computed 3.50 and 1.69.
+
+**THE REVEAL, AND WHY THE FIRST TWO SUB-DATASETS ARE THE ONES TO USE.** Both of
+those schools have a passing grade of 70. So in the Wisconsin school five
+teachers marked one identical paper 70, 65, 60, 70 and 59: two passed it and
+three failed it. In the Ohio school four teachers marked it 76, 75, 67 and 61:
+two passed and two failed. Nine markers in two schools, one paper, four passes
+and five fails. This is the version that survives every objection at once,
+because both schools' own teachers are applying one shared standard to one
+identical script, so nothing between schools and nothing about the pupil can be
+doing the work. The authors included these two schools for precisely that
+reason, to answer the criticism that the spread came from scattered schools
+having different standards.
+
+**A CORRECTION TO THIS ENTRY'S OWN FRAMING, AND IT MATTERS FOR THE ANSWER KEY.**
+The entry above describes the surviving half as leniency and severity, "a
+systematic shift", meaning a given marker who is consistently soft or hard
+across work. This design cannot show that, because each marker graded one paper,
+so a marker's single mark cannot be separated from noise. What it shows, and
+shows about as cleanly as anything could, is the transferable rule this entry
+already named: **the rater is an uncontrolled variable in the measurement**. The
+card must claim that and not more. "Who marked it changed the mark" is licensed;
+"teacher four is a soft marker" is not, and an answer key that rewarded the
+second would be marking a careful reader wrong.
+
+**Shape: a NEW one is needed, and `ratings` is specifically the wrong reuse.**
+`ratings` carries a mean per series with an optional standard deviation, so
+putting this on it means collapsing five individual marks into a mean and a
+spread. That destroys the entire reveal, because the point is not that the marks
+have a spread, it is that the individual marks fall on both sides of a line that
+decides whether the pupil passed. The shape wanted is a set of individual marks
+on a scale with a threshold drawn across it: setup shows one marker's mark, the
+reveal brings in the rest, which is the superset-by-construction the engine
+wants and needs `restrict`-style filtering plus the `full` prop for colour.
+
+**Scope, to be stated on the card rather than buried.** 1913, American high
+schools, one geometry script, one subject. The mechanism is not in doubt and the
+setting is old; the card should not imply a measured modern effect size, and the
+lesson beat should carry the reader to the settings that matter now, which are
+the ones this entry already lists: examiner stringency, grant panels, peer
+review and clinical rating scales.
+
+**Status: READY TO AUTHOR.** Numbers read at source, reconciled, and the two
+requirements that blocked this entry are both met. What remains is the build,
+which is a new shape and therefore a full one: union member, derivation module
+with a test, renderer, `DataViewRenderer` case, `scopeLabel` entries, `full`
+prop, `ShareCard` glyph, an authored `aria-label` with slots, and ten locales.
+

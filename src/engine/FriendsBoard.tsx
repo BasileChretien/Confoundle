@@ -8,6 +8,7 @@ import {
   setNickname,
   type BoardRow,
 } from "../app/session";
+import { appUrl } from "../app/shareLinks";
 import { buildResultLine, parseResults } from "./result";
 
 interface TodayResult {
@@ -59,7 +60,18 @@ export function FriendsBoard({ today }: { today: TodayResult }) {
   }
 
   function share() {
-    const text = `${myLine}\nhttps://confoundle.pages.dev`;
+    /*
+      This was hardcoded to `https://confoundle.pages.dev`, the preview host,
+      and it was the ONLY URL anywhere in any share path in the app. So the one
+      link the product emitted sent people to a deployment that is not the
+      canonical domain. Reading the live origin fixes it and keeps fixing it:
+      the address can now never drift from wherever the app is actually served.
+
+      The front door rather than a puzzle link, because a result line is about
+      the day rather than about one card, and because the line is deliberately
+      spoiler-free.
+    */
+    const text = `${myLine}\n${appUrl(window.location.origin)}`;
     if (navigator.share) {
       navigator.share({ text }).catch(() => {});
     } else {

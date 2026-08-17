@@ -68,7 +68,7 @@ export const pt: Record<string, string> = {
   "{percent} of players picked that too.": "{percent} dos jogadores escolheu o mesmo.",
   "{percent} of players fell for the same one.": "{percent} dos jogadores caiu na mesma armadilha.",
   "Caught {caught} of the {played} days played this week": "Armadilha apanhada em {caught} dos {played} dias jogados esta semana",
-  "Caught {caught} of {played}.": "{caught} de {played}.",
+  "Caught {caught} of {played}.": "Apanhada em {caught} de {played}.",
   "Certain and wrong once.": "Certo de si e errado uma vez.",
   "Certain and wrong {n} times.": "Certo de si e errado {n} vezes.",
   "Two tracks on one scale, three points bunched together on the upper one and spread far apart on the lower one": "Duas trilhas numa mesma escala, três pontos juntos uns aos outros na de cima e bem afastados na de baixo",

@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { useT } from "../app/i18n";
+import { useLocale, useT } from "../app/i18n";
 import { puzzles } from "../puzzles";
 import { fillSlots } from "./charts/announce";
 import { Badge, Button } from "./ui";
@@ -40,6 +40,10 @@ const choiceButton =
  */
 export function TrapHuntView({ onDone }: { onDone: () => void }) {
   const t = useT();
+  // Every numeral this view draws goes through here before it reaches a slot.
+  // A slot fills by string coercion, which is always Latin digits, so a count
+  // dropped in raw stays "5" beside fully translated Bengali or Arabic text.
+  const nf = new Intl.NumberFormat(useLocale());
 
   // Drawn once per mount, avoiding whatever the player has seen lately.
   const round = useMemo(
@@ -94,15 +98,28 @@ export function TrapHuntView({ onDone }: { onDone: () => void }) {
       <section className="flex flex-col gap-4">
         <header className="flex flex-col gap-2">
           <Badge tone="brand">{t({ en: "Trap Hunt" })}</Badge>
+          {/*
+            This round's run, labelled as this round's run. It read "Best run"
+            while showing the same number, so a player whose record was eight
+            finished a run of three and was told their best was three, with "A
+            new personal best" sitting underneath deciding whether to appear.
+            The record itself was computed, stored, and never drawn.
+          */}
           <h2 className="font-display text-[28px] font-semibold leading-[1.05] text-ink">
-            {fillSlots(t({ en: "Best run: {run}" }), { run })}
+            {fillSlots(t({ en: "Longest run: {run}" }), { run: nf.format(run) })}
           </h2>
           <p className="text-[15px] text-ink-soft">
             {fillSlots(t({ en: "{right} of {total} called correctly." }), {
-              right,
-              total: answers.length,
+              right: nf.format(right),
+              total: nf.format(answers.length),
             })}{" "}
-            {saved?.isBest ? t({ en: "A new personal best." }) : null}
+            {saved === null
+              ? null
+              : saved.isBest
+                ? t({ en: "A new personal best." })
+                : fillSlots(t({ en: "Your best is {best}." }), {
+                    best: nf.format(saved.best),
+                  })}
           </p>
           <p className="text-[13px] leading-snug text-ink-soft">
             {/*
@@ -113,7 +130,7 @@ export function TrapHuntView({ onDone }: { onDone: () => void }) {
               t({
                 en: "Answering trap every time would have scored {n} on this round.",
               }),
-              { n: thoughtless },
+              { n: nf.format(thoughtless) },
             )}
           </p>
         </header>
@@ -152,8 +169,8 @@ export function TrapHuntView({ onDone }: { onDone: () => void }) {
         <Badge tone="brand">{t({ en: "Trap Hunt" })}</Badge>
         <p className="font-sans text-[11px] font-semibold uppercase tracking-eyebrow text-ink-mute">
           {fillSlots(t({ en: "{at} of {total}" }), {
-            at: at + 1,
-            total: round.items.length,
+            at: nf.format(at + 1),
+            total: nf.format(round.items.length),
           })}
         </p>
         <p className="text-[15px] text-ink-soft">

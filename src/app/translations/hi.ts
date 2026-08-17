@@ -55,11 +55,12 @@ export const hi: Record<string, string> = {
   // category names (humanized)
   "Causal reasoning": "कारण संबंधी तर्क",
   "Cognitive bias": "संज्ञानात्मक पूर्वाग्रह",
+  "Your best is {best}.": "आपका रिकॉर्ड {best} है।",
   "Does this reasoning fall for something?": "क्या यह तर्क किसी जाल में फँसता है?",
   "Yes, it falls for something": "हाँ, यह किसी जाल में फँसता है",
   "{at} of {total}": "{total} में से {at}",
   "See the round": "यह दौर देखें",
-  "Best run: {run}": "सबसे लंबी लगातार सही: {run}",
+  "Longest run: {run}": "सबसे लंबी लगातार सही: {run}",
   "{right} of {total} called correctly.": "{total} में से {right} सही आँके।",
   "A new personal best.": "नया व्यक्तिगत रिकॉर्ड।",
   "Answering trap every time would have scored {n} on this round.": "हर बार «जाल» कहने पर इस दौर में {n} अंक मिलते।",

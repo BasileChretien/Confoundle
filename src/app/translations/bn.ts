@@ -56,11 +56,12 @@ export const bn: Record<string, string> = {
   // category names (humanized)
   "Causal reasoning": "কার্যকারণ যুক্তি",
   "Cognitive bias": "জ্ঞানীয় পক্ষপাত",
+  "Your best is {best}.": "আপনার সেরা {best}।",
   "Does this reasoning fall for something?": "এই যুক্তি কি কোনো ফাঁদে পড়ছে?",
   "Yes, it falls for something": "হ্যাঁ, এটি ফাঁদে পড়ছে",
   "{at} of {total}": "{total} এর মধ্যে {at}",
   "See the round": "এই দফাটি দেখুন",
-  "Best run: {run}": "সেরা ধারাবাহিক: {run}",
+  "Longest run: {run}": "সবচেয়ে দীর্ঘ ধারাবাহিক: {run}",
   "{right} of {total} called correctly.": "{total} এর মধ্যে {right}টি সঠিকভাবে বিচার করা হয়েছে।",
   "A new personal best.": "নতুন ব্যক্তিগত সেরা।",
   "Answering trap every time would have scored {n} on this round.": "প্রতিবার «ফাঁদ» বললে এই দফায় {n} পাওয়া যেত।",

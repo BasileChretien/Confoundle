@@ -31,7 +31,7 @@ interface Prefs {
   chosen: boolean;
 }
 
-export function ReminderChoice() {
+export function ReminderChoice({ onAnswered }: { onAnswered?: () => void }) {
   const t = useT();
   const locale = useLocale();
   const [prefs, setPrefs] = useState<Prefs | null>(null);
@@ -83,6 +83,12 @@ export function ReminderChoice() {
       // somebody in a dialogue they have already answered.
       setDismissed(true);
       setBusy(false);
+      // Unconditionally, including after a failure: the toggle beside this one
+      // holds its own copy of the same preference and re-reads it on mount, so
+      // what this signals is "go and look again", and looking again after a
+      // failed write is how it ends up showing the truth rather than my guess
+      // at it.
+      onAnswered?.();
     }
   }
 

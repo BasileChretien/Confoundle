@@ -4,6 +4,16 @@
  * Basile; corregir sobre la marcha.
  */
 export const es: Record<string, string> = {
+  // ---- Chart scope labels, reveal badge, reaction lines ----
+  "Time nobody could die in": "El tiempo en que nadie podía morir",
+  "What the drug did to the marker": "Lo que el fármaco le hizo al marcador",
+  "As one judge marked it": "Según la nota de un solo evaluador",
+  "As every judge marked it": "Según la nota de todos los evaluadores",
+  "Against what happens": "Frente a lo que ocurre",
+  "The trap worked": "La trampa funcionó",
+  "The setup was built to make that one feel obvious.": "El planteamiento estaba construido para que esa respuesta pareciera obvia.",
+  "Wrong, but you staked almost nothing on it. That is the wager working.": "Incorrecto, pero apostaste casi nada. Para eso sirve la apuesta.",
+  "The slope is drawn from the published correlation of 0.79. Messerli plotted all 23 countries in his own figure; this one draws the trend alone rather than redrawing his points by eye.": "La pendiente está trazada a partir de la correlación publicada de 0,79. Messerli situó los 23 países en su propia figura; esta solo dibuja la tendencia, en vez de recalcar sus puntos a ojo.",
   // ---- Interfaz (botones, etiquetas, encabezados de sección) ----
   "n = {count}": "n = {count}",
   "{name}: {value}": "{name}: {value}",

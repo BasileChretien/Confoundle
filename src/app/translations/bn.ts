@@ -3,6 +3,16 @@
  * the English text exactly. French kept only as a secondary reference.
  */
 export const bn: Record<string, string> = {
+  // ---- Chart scope labels, reveal badge, reaction lines ----
+  "Time nobody could die in": "যে সময়ে কারও মৃত্যু হতে পারত না",
+  "What the drug did to the marker": "ওষুধ মার্কারের ওপর যা করেছে",
+  "As one judge marked it": "একজন মূল্যায়নকারীর দেওয়া নম্বরে",
+  "As every judge marked it": "প্রত্যেক মূল্যায়নকারীর দেওয়া নম্বরে",
+  "Against what happens": "বাস্তবে যা ঘটে তার পাশে",
+  "The trap worked": "ফাঁদটা কাজ করেছে",
+  "The setup was built to make that one feel obvious.": "প্রশ্নটা এমনভাবেই সাজানো যাতে ওই উত্তরটাই স্বাভাবিক মনে হয়।",
+  "Wrong, but you staked almost nothing on it. That is the wager working.": "উত্তর ভুল, কিন্তু আপনি প্রায় কিছুই বাজি ধরেননি। বাজির কাজটা ঠিক এটাই।",
+  "The slope is drawn from the published correlation of 0.79. Messerli plotted all 23 countries in his own figure; this one draws the trend alone rather than redrawing his points by eye.": "ঢালটি প্রকাশিত সহসম্পর্ক 0.79 থেকে আঁকা। মেসের্লি তাঁর নিজের চিত্রে ২৩টি দেশই বসিয়েছিলেন; এখানে কেবল প্রবণতা আঁকা হয়েছে, চোখের আন্দাজে তাঁর বিন্দুগুলো আবার আঁকা হয়নি।",
   // ---- UI chrome (buttons, labels, section headers) ----
   "n = {count}": "n = {count}",
   "{name}: {value}": "{name}: {value}",

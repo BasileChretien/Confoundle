@@ -6,16 +6,23 @@ const TEAL = "#0E8C7A";
 const RULE = "#D6C9AE";
 const GOLD = "#9A6B12";
 
-// A handful of points sitting near the rising trend line.
-const SCATTER: ReadonlyArray<readonly [number, number]> = [
-  [40, 92],
-  [72, 84],
-  [104, 74],
-  [140, 64],
-  [176, 52],
-  [214, 40],
-  [252, 30],
-];
+/*
+  THIS FIGURE DRAWS A LINE AND NO POINTS, AND THAT IS THE WHOLE POINT.
+
+  It used to scatter seven hardcoded coordinates along the trend, under a
+  comment calling them "a handful of points sitting near the rising trend
+  line". They were invented. Nothing on the figure said so, the aria-label said
+  only that the two quantities "rise together", and on a deck whose stated
+  position is that every number is read off a source table they were the one
+  set of numbers nobody sourced. A reader had no way to tell them from the
+  measured counts every other shape draws.
+
+  Annotating them would not have been enough: dots on a chart read as
+  observations no matter what the caption says, which is why the fix is
+  removal rather than a disclaimer. The slope carries the correlation, which
+  is the only thing the source actually published, and `schematicNote` now
+  says that in the reader's own language.
+*/
 
 /** Setup view: the observed correlation, X and Y rising together. */
 function TrendView({ data }: { data: CausalData }) {
@@ -46,9 +53,6 @@ function TrendView({ data }: { data: CausalData }) {
           strokeWidth="2.5"
           strokeLinecap="round"
         />
-        {SCATTER.map(([cx, cy], i) => (
-          <circle key={i} cx={cx} cy={cy} r="3.5" fill={TEAL} />
-        ))}
       </svg>
       <div className="flex items-center justify-between font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-soft">
         <span>{t(data.cause)} →</span>
@@ -56,6 +60,9 @@ function TrendView({ data }: { data: CausalData }) {
           <span className="tabular-nums text-ink">{t(data.correlationNote)}</span>
         ) : null}
       </div>
+      <p className="text-[11px] leading-snug text-ink-mute">
+        {t(data.schematicNote)}
+      </p>
     </div>
   );
 }

@@ -3,6 +3,16 @@
  * the English text exactly. Native review pending; correct in place.
  */
 export const ru: Record<string, string> = {
+  // ---- Chart scope labels, reveal badge, reaction lines ----
+  "Time nobody could die in": "Время, когда никто не мог умереть",
+  "What the drug did to the marker": "Что препарат сделал с показателем",
+  "As one judge marked it": "Как оценил один проверяющий",
+  "As every judge marked it": "Как оценил каждый проверяющий",
+  "Against what happens": "На фоне того, что происходит на самом деле",
+  "The trap worked": "Ловушка сработала",
+  "The setup was built to make that one feel obvious.": "Условие было составлено так, чтобы именно этот ответ казался очевидным.",
+  "Wrong, but you staked almost nothing on it. That is the wager working.": "Неверно, но вы почти ничего не поставили. Именно так ставка и должна работать.",
+  "The slope is drawn from the published correlation of 0.79. Messerli plotted all 23 countries in his own figure; this one draws the trend alone rather than redrawing his points by eye.": "Наклон построен по опубликованному коэффициенту корреляции 0,79. Мессерли нанёс на свой рисунок все 23 страны, здесь же показана только тенденция, а не перерисованные на глаз точки.",
   // ---- UI chrome (buttons, labels, section headers) ----
   "n = {count}": "n = {count}",
   "{name}: {value}": "{name}: {value}",

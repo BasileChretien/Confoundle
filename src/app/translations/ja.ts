@@ -4,6 +4,16 @@
  * Native review pending; correct in place.
  */
 export const ja: Record<string, string> = {
+  // ---- Chart scope labels, reveal badge, reaction lines ----
+  "Time nobody could die in": "誰も死にえなかった期間",
+  "What the drug did to the marker": "薬が指標に与えた影響",
+  "As one judge marked it": "一人の採点者の評価",
+  "As every judge marked it": "全採点者の評価",
+  "Against what happens": "実際に起きていることと比べて",
+  "The trap worked": "罠にかかりました",
+  "The setup was built to make that one feel obvious.": "その答えが当然に見えるように問題は作られています。",
+  "Wrong, but you staked almost nothing on it. That is the wager working.": "不正解ですが、ほとんど賭けていませんでした。それこそが賭けの働きです。",
+  "The slope is drawn from the published correlation of 0.79. Messerli plotted all 23 countries in his own figure; this one draws the trend alone rather than redrawing his points by eye.": "この傾きは公表された相関係数0.79から描いたものです。メッセルリ自身の図には23か国すべてが打点されていますが、この図は点を目分量で写さず、傾向だけを示しています。",
   // ---- UI chrome (buttons, labels, section headers) ----
   "n = {count}": "n = {count}",
   "{name}: {value}": "{name}：{value}",

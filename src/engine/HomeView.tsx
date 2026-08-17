@@ -81,6 +81,7 @@ export function HomeView({
   dueCount,
   onOpenLesson,
   onStartReviews,
+  onStartTrapHunt,
   onPractise,
   onOpenAbout,
   onOpenLessons,
@@ -89,6 +90,7 @@ export function HomeView({
   dueCount: number;
   onOpenLesson: (slug: string) => void;
   onStartReviews: () => void;
+  onStartTrapHunt: () => void;
   onPractise: () => void;
   onOpenAbout: () => void;
   onOpenLessons: () => void;
@@ -177,6 +179,7 @@ export function HomeView({
         <>
           <div className="flex gap-2">
             <SecondaryButton label={t(UI.allLessons)} onClick={onOpenLessons} grow />
+            <SecondaryButton label={t(UI.trapHunt)} onClick={onStartTrapHunt} grow />
             <SecondaryButton label={t(UI.aboutLink)} onClick={onOpenAbout} grow />
           </div>
           <ProgressPanel progress={progress} onPractise={onPractise} />

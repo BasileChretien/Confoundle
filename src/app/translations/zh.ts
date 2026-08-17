@@ -55,6 +55,14 @@ export const zh: Record<string, string> = {
   // category names (humanized)
   "Causal reasoning": "因果推理",
   "Cognitive bias": "认知偏差",
+  "Does this reasoning fall for something?": "这段推理掉进了什么陷阱吗？",
+  "Yes, it falls for something": "是，掉进了陷阱",
+  "{at} of {total}": "第{at}题，共{total}题",
+  "See the round": "查看这一轮",
+  "Best run: {run}": "最长连对：{run}",
+  "{right} of {total} called correctly.": "{total}题中判断正确{right}题。",
+  "A new personal best.": "个人新纪录。",
+  "Answering trap every time would have scored {n} on this round.": "如果每题都答「有陷阱」，这一轮会得{n}分。",
   "Two tracks on one scale, three points bunched together on the upper one and spread far apart on the lower one": "同一刻度上的两条轨道，上面一条的三个点挤在一起，下面一条的三个点相距很远",
   "Statistical reasoning": "统计推理",
   // tags

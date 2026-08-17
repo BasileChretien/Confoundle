@@ -56,6 +56,14 @@ export const ja: Record<string, string> = {
   // category names (humanized)
   "Causal reasoning": "因果推論",
   "Cognitive bias": "認知バイアス",
+  "Does this reasoning fall for something?": "この推論は何かの罠にはまっているだろうか。",
+  "Yes, it falls for something": "はい、罠にはまっている",
+  "{at} of {total}": "{total}問中{at}問目",
+  "See the round": "結果を見る",
+  "Best run: {run}": "最長連続正解：{run}",
+  "{right} of {total} called correctly.": "{total}問中{right}問を正しく判断した。",
+  "A new personal best.": "自己最高記録である。",
+  "Answering trap every time would have scored {n} on this round.": "毎回「罠」と答えていれば、この回は{n}問正解だった。",
   "Two tracks on one scale, three points bunched together on the upper one and spread far apart on the lower one": "一つの尺度に載った二本の帯。上の帯では三つの点が寄り集まり、下の帯では大きく離れている",
   "Statistical reasoning": "統計的推論",
   // tags

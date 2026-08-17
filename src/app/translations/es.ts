@@ -57,6 +57,14 @@ export const es: Record<string, string> = {
   // nombres de categoría (humanizados)
   "Causal reasoning": "Razonamiento causal",
   "Cognitive bias": "Sesgo cognitivo",
+  "Does this reasoning fall for something?": "¿Este razonamiento cae en alguna trampa?",
+  "Yes, it falls for something": "Sí, cae en una trampa",
+  "{at} of {total}": "{at} de {total}",
+  "See the round": "Ver la ronda",
+  "Best run: {run}": "Mejor racha: {run}",
+  "{right} of {total} called correctly.": "{right} de {total} acertados.",
+  "A new personal best.": "Un nuevo récord personal.",
+  "Answering trap every time would have scored {n} on this round.": "Responder «trampa» siempre habría dado {n} en esta ronda.",
   "Two tracks on one scale, three points bunched together on the upper one and spread far apart on the lower one": "Dos carriles en una misma escala, tres puntos apretados entre sí en el de arriba y muy separados en el de abajo",
   "Statistical reasoning": "Razonamiento estadístico",
   // etiquetas

@@ -66,6 +66,10 @@ export const hi: Record<string, string> = {
   "Answering trap every time would have scored {n} on this round.": "हर बार «जाल» कहने पर इस दौर में {n} अंक मिलते।",
   "{percent} of players picked that too.": "{percent} खिलाड़ियों ने भी यही चुना।",
   "{percent} of players fell for the same one.": "{percent} खिलाड़ी भी इसी जाल में फँसे।",
+  "Caught {caught} of the {played} days played this week": "इस सप्ताह खेले गए {played} दिनों में से {caught} दिन जाल पहचाना",
+  "Caught {caught} of {played}.": "{played} में से {caught} दिन जाल पहचाना।",
+  "Certain and wrong once.": "एक बार पक्का यक़ीन था और ग़लत निकले।",
+  "Certain and wrong {n} times.": "{n} बार पक्का यक़ीन था और ग़लत निकले।",
   "Two tracks on one scale, three points bunched together on the upper one and spread far apart on the lower one": "एक ही पैमाने पर दो पटरियाँ, ऊपर वाली पर तीन बिंदु आपस में सिमटे हुए और नीचे वाली पर दूर-दूर फैले हुए",
   "Statistical reasoning": "सांख्यिकीय तर्क",
   // tags

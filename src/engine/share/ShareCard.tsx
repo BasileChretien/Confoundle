@@ -6,13 +6,16 @@ import type {
   Puzzle,
   RatesData,
 } from "../../puzzles/schema";
-import { useT } from "../../app/i18n";
+import { useLocale, useT } from "../../app/i18n";
 import { UI } from "../../app/ui";
 import { track } from "../../app/analytics";
 import { Badge, Button } from "../ui";
 import { aggregateRates, bestGroupId, stratifiedRates } from "../charts/rates";
 import { frequencyBreakdown } from "../charts/frequencies";
 import { shareOrDownloadCard, type ExportResult } from "./exportCard";
+import { CalibrationStrip, calibrationSummary } from "./CalibrationStrip";
+import { getCalibrationWeek, calibrationDaysPlayed } from "../../app/session";
+import { fillSlots } from "../charts/announce";
 
 type Framing = "competitive" | "selfDeprecating";
 
@@ -2212,6 +2215,18 @@ export function ShareCard({
 }) {
   const t = useT();
   const cardRef = useRef<HTMLDivElement>(null);
+  // The week is read once per render from the same local log everything else
+  // uses. Below three played days the strip is withheld: one lonely bar reads
+  // as a broken chart rather than as a first day.
+  const shareLocale = useLocale();
+  const week = getCalibrationWeek(7);
+  const weekPlayed = calibrationDaysPlayed(week);
+  const showStrip = weekPlayed >= 3;
+  const tally = calibrationSummary(week);
+  // Every numeral this card draws follows the reader's locale, including the
+  // ones inside a slot. A raw number here draws Latin digits at a Bengali or
+  // Arabic reader while the strip beside it is fully translated.
+  const weekNumerals = new Intl.NumberFormat(shareLocale);
   const [framing, setFraming] = useState<Framing>(
     committed.isCorrect ? "competitive" : "selfDeprecating",
   );
@@ -2416,6 +2431,47 @@ export function ShareCard({
             ) : null}
           </div>
 
+          {showStrip ? (
+            <div className="mt-4">
+              <CalibrationStrip
+                week={week}
+                colors={{
+                  teal: CARD.teal,
+                  rust: CARD.rust,
+                  muted: CARD.falseDim,
+                  text: CARD.text,
+                  rule: CARD.rule,
+                }}
+              />
+              <p className="mt-1 font-sans text-[13px] leading-snug">
+                <span>
+                  {fillSlots(
+                    t({ en: "Caught {caught} of {played}." }),
+                    {
+                      caught: weekNumerals.format(tally.caught),
+                      played: weekNumerals.format(tally.played),
+                    },
+                  )}
+                </span>
+                {tally.certainAndWrong > 0 ? (
+                  <span style={{ color: CARD.rust }}>
+                    {" "}
+                    {/*
+                      Two authored forms rather than one with a slot, because
+                      "Certain and wrong 1 times" is what a single slot ships.
+                      This project has no plural machinery, so the singular is
+                      its own sentence and each translator phrases both.
+                    */}
+                    {tally.certainAndWrong === 1
+                      ? t({ en: "Certain and wrong once." })
+                      : fillSlots(t({ en: "Certain and wrong {n} times." }), {
+                          n: weekNumerals.format(tally.certainAndWrong),
+                        })}
+                  </span>
+                ) : null}
+              </p>
+            </div>
+          ) : null}
           <p className="mt-4 font-display text-[17px] font-medium leading-snug">
             <span style={{ color: CARD.gold }}>“</span>
             {caption}

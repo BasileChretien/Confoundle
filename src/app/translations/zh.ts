@@ -55,6 +55,10 @@ export const zh: Record<string, string> = {
   // category names (humanized)
   "Causal reasoning": "因果推理",
   "Cognitive bias": "认知偏差",
+  "Five marks for one piece of work, scattered on both sides of a single pass line": "同一份作品的五个分数，散落在同一条及格线的两侧",
+  "{subject}, marked by {total} judges: {above} put it at or above {threshold} and {below} below.": "{subject}。在{total}位评分者中，{above}位给到{threshold}或以上，{below}位给到以下。",
+  "{subject}, and one judge's mark for it.": "{subject}，以及其中一位评分者给出的分数。",
+  "{above} of {total} judges passed it. {below} failed it.": "{total}位评分者中有{above}位判为合格，{below}位判为不合格。",
   "Your best is {best}.": "你的个人纪录是{best}。",
   "Does this reasoning fall for something?": "这段推理掉进了什么陷阱吗？",
   "Yes, it falls for something": "是，掉进了陷阱",

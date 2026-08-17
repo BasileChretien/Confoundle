@@ -56,6 +56,10 @@ export const ar: Record<string, string> = {
   // category names (humanized)
   "Causal reasoning": "الاستدلال السببي",
   "Cognitive bias": "تحيز معرفي",
+  "Five marks for one piece of work, scattered on both sides of a single pass line": "خمس درجات لعمل واحد، متناثرة على جانبي خط نجاح واحد",
+  "{subject}, marked by {total} judges: {above} put it at or above {threshold} and {below} below.": "{subject}، صحّحه {total} من المقيّمين: وضعه {above} عند {threshold} أو فوقها، ووضعه {below} دونها.",
+  "{subject}, and one judge's mark for it.": "{subject}، والدرجة التي منحها له مقيّم واحد.",
+  "{above} of {total} judges passed it. {below} failed it.": "أجازه {above} من أصل {total} من المقيّمين، ورسّبه {below}.",
   "Your best is {best}.": "أفضل نتيجة لك هي {best}.",
   "Does this reasoning fall for something?": "هل يقع هذا الاستدلال في فخ ما؟",
   "Yes, it falls for something": "نعم، يقع في فخ",

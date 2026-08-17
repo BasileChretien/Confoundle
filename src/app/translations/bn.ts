@@ -56,6 +56,10 @@ export const bn: Record<string, string> = {
   // category names (humanized)
   "Causal reasoning": "কার্যকারণ যুক্তি",
   "Cognitive bias": "জ্ঞানীয় পক্ষপাত",
+  "Five marks for one piece of work, scattered on both sides of a single pass line": "একটিই কাজের জন্য পাঁচটি নম্বর, একটিমাত্র উত্তীর্ণ রেখার দুই পাশে ছড়ানো",
+  "{subject}, marked by {total} judges: {above} put it at or above {threshold} and {below} below.": "{subject}, {total} জন বিচারক এটি মূল্যায়ন করেছেন: {above} জন এটিকে {threshold} বা তার উপরে রেখেছেন এবং {below} জন নিচে।",
+  "{subject}, and one judge's mark for it.": "{subject}, এবং একজন বিচারক এটিকে যে নম্বর দিয়েছেন।",
+  "{above} of {total} judges passed it. {below} failed it.": "{total} জন বিচারকের মধ্যে {above} জন এটি পাস করিয়েছেন। {below} জন ফেল করিয়েছেন।",
   "Your best is {best}.": "আপনার সেরা {best}।",
   "Does this reasoning fall for something?": "এই যুক্তি কি কোনো ফাঁদে পড়ছে?",
   "Yes, it falls for something": "হ্যাঁ, এটি ফাঁদে পড়ছে",

@@ -55,6 +55,10 @@ export const hi: Record<string, string> = {
   // category names (humanized)
   "Causal reasoning": "कारण संबंधी तर्क",
   "Cognitive bias": "संज्ञानात्मक पूर्वाग्रह",
+  "Five marks for one piece of work, scattered on both sides of a single pass line": "एक ही काम के लिए पाँच अंक, एक ही उत्तीर्ण रेखा के दोनों ओर बिखरे हुए",
+  "{subject}, marked by {total} judges: {above} put it at or above {threshold} and {below} below.": "{subject}, जिसे {total} जाँचने वालों ने आँका: {above} ने इसे {threshold} या उससे ऊपर रखा और {below} ने नीचे।",
+  "{subject}, and one judge's mark for it.": "{subject}, और उसे एक जाँचने वाले ने जो अंक दिए।",
+  "{above} of {total} judges passed it. {below} failed it.": "{total} में से {above} जाँचने वालों ने इसे पास किया। {below} ने इसे फेल किया।",
   "Your best is {best}.": "आपका रिकॉर्ड {best} है।",
   "Does this reasoning fall for something?": "क्या यह तर्क किसी जाल में फँसता है?",
   "Yes, it falls for something": "हाँ, यह किसी जाल में फँसता है",

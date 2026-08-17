@@ -56,6 +56,10 @@ export const ru: Record<string, string> = {
   // category names (humanized)
   "Causal reasoning": "Причинно-следственное мышление",
   "Cognitive bias": "Когнитивное искажение",
+  "Five marks for one piece of work, scattered on both sides of a single pass line": "Пять оценок за одну работу, разбросанных по обе стороны от единственной проходной черты",
+  "{subject}, marked by {total} judges: {above} put it at or above {threshold} and {below} below.": "{subject}. Оценивали {total} судей: {above} поставили {threshold} или выше, {below} ниже.",
+  "{subject}, and one judge's mark for it.": "{subject}, и оценка, которую поставил один судья.",
+  "{above} of {total} judges passed it. {below} failed it.": "Из {total} судей {above} признали её сданной, {below} не признали.",
   "Your best is {best}.": "Ваш рекорд: {best}.",
   "Does this reasoning fall for something?": "Попадается ли это рассуждение на чём-нибудь?",
   "Yes, it falls for something": "Да, попадается",

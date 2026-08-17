@@ -11,7 +11,13 @@ import { Button } from "../engine/ui";
 import { AboutView } from "../engine/AboutView";
 import { LessonsView } from "../engine/LessonsView";
 import { reviews } from "./reviews";
-import { HOME, sameView, searchForView, viewFromSearch, type View } from "./navigation";
+import {
+  HOME,
+  sameView,
+  searchForView,
+  viewFromSearch,
+  type View,
+} from "./navigation";
 import type { SkillProgress } from "../srs/schedule";
 import { LocaleProvider, useT } from "./i18n";
 import { LanguageSwitcher } from "./LanguageSwitcher";
@@ -28,8 +34,19 @@ import { UI } from "./ui";
  * `popstate` is the only path that sets the view without pushing, otherwise
  * going back would push a new entry and trap the user.
  */
+/*
+  READS THE URL AND NOTHING ELSE, including on a remount.
+
+  The first-visit landing rule deliberately lives in `main.tsx`, applied once
+  as a URL rewrite before React exists. Deciding it here instead would mean
+  deciding it again on every mount, and `LocaleProvider` unmounts this whole
+  subtree each time it fetches a dictionary, so a locale switch would re-apply
+  the rule and drag a newcomer back into the opener they had just left.
+*/
 function useViewNavigation(): [View, (next: View) => void] {
-  const [view, setView] = useState<View>(() => viewFromSearch(window.location.search));
+  const [view, setView] = useState<View>(() =>
+    viewFromSearch(window.location.search),
+  );
 
   useEffect(() => {
     const onPop = (e: PopStateEvent) => {
@@ -39,6 +56,12 @@ function useViewNavigation(): [View, (next: View) => void] {
     window.addEventListener("popstate", onPop);
     // Make the entry the app opened on carry its own state, so the first back
     // out of a lesson has something to restore rather than a null.
+    //
+    // Passes the CURRENT href rather than resynthesising it: this call exists
+    // only to attach History state, and rebuilding the URL through
+    // `searchForView` would silently drop the hash and any query parameter the
+    // `View` union does not model. `main.tsx` has already normalised the URL
+    // by this point, so there is nothing left for this line to correct.
     window.history.replaceState({ view }, "", window.location.href);
     return () => window.removeEventListener("popstate", onPop);
     // Runs once: the listener reads live state via setView.

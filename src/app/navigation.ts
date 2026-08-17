@@ -46,6 +46,63 @@ export function viewFromSearch(search: string): View {
 }
 
 /**
+ * The view the app OPENS on, which is not always the one the URL names.
+ *
+ * A first-time visitor arriving at the bare root lands in a puzzle rather than
+ * on a pitch. The old first screen was roughly 197 words arguing that the app
+ * is trustworthy, delivered before the fifteen seconds that demonstrate it,
+ * which is the wrong order for this product specifically: trust here is earned
+ * by being fooled once and shown the source, so those words were spent buying
+ * something the reveal gives away for free.
+ *
+ * A LANDING RULE, NOT A HOME-SCREEN RULE, and that distinction is what stops
+ * it becoming a trap. It fires only when the URL names no view AND nothing has
+ * ever been answered on this device. Somebody who abandons the opener and then
+ * deliberately taps Home still gets the home screen, because they asked for
+ * it. Applied on every home render instead, a newcomer trying to leave would
+ * be bounced straight back into the puzzle they were leaving.
+ *
+ * Pure, and takes `hasPlayed` and the slug as arguments, so the whole rule is
+ * testable without a DOM, a store, or a registry.
+ */
+export function landingView(
+  search: string,
+  hasPlayed: boolean,
+  openerSlug: string,
+): View {
+  const fromUrl = viewFromSearch(search);
+  // A URL that names anything at all wins: a shared link, a bookmark and a
+  // refresh must all land where they say, newcomer or not.
+  if (fromUrl.name !== "home") return fromUrl;
+  if (hasPlayed) return fromUrl;
+  return { name: "lesson", slug: openerSlug };
+}
+
+/**
+ * The query string the landing rule wants written, or `null` to leave the URL
+ * exactly as it is.
+ *
+ * NULL IS THE IMPORTANT RETURN VALUE. An earlier version rewrote the address
+ * bar on every load by resynthesising it through `searchForView`, which
+ * silently dropped the fragment and any query parameter the `View` union does
+ * not model, campaign tags among them. Nothing depended on those, but it
+ * turned a byte-identical round trip into a lossy one for no gain. Rewriting
+ * only when the view actually changed keeps the no-op case genuinely a no-op.
+ *
+ * Pure so the whole rule, decision and rewrite alike, is testable without a
+ * History API.
+ */
+export function landingRewrite(
+  search: string,
+  hasPlayed: boolean,
+  openerSlug: string,
+): string | null {
+  const current = viewFromSearch(search);
+  const target = landingView(search, hasPlayed, openerSlug);
+  return sameView(current, target) ? null : searchForView(target);
+}
+
+/**
  * The query string for a view. Home is "." rather than "?" so a shared home
  * link stays clean, and so returning home does not leave a stale parameter
  * behind that a refresh would then act on.

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { Choice, Puzzle } from "../puzzles/schema";
 import { useT } from "../app/i18n";
 import { track } from "../app/analytics";
@@ -16,10 +16,42 @@ import { scoreFor, reactionFor, type Confidence } from "./scoring";
 import { CompanyLine } from "./CompanyLine";
 
 /**
- * Beat 3: the reveal. The plate opens on the same pooled view the user just
- * committed against, then flips to the stratified breakdown where the trend
- * reverses. Under reduced motion it opens directly on the breakdown with no
- * animation and no auto-transition.
+ * Beat 3: the reveal. The plate opens on the same view the player committed
+ * against, and THEY pull the lever that flips it to the one where the trend
+ * reverses.
+ *
+ * WHAT THIS REPLACED, AND WHY IT WAS THE WORST BEAT IN THE APP. The flip used
+ * to happen on a `setTimeout(1100)` with no input, while the verdict badge,
+ * the score, the reveal headline and the reaction line all rendered ON MOUNT,
+ * a full second before the chart moved. So the app printed the punchline in
+ * words and then animated a picture at somebody who had already read it. The
+ * single moment the whole product exists to deliver was spent as ambient
+ * motion with the answer sitting above it.
+ *
+ * Under `prefers-reduced-motion` it was worse than that: the figure opened
+ * ALREADY FLIPPED, so those players never saw the before state at all. Two
+ * views of one dataset collapsed into one view, which is the entire mechanism
+ * gone. A reduced-motion preference is a request for less movement, never for
+ * less information.
+ *
+ * THREE RULES NOW HOLD.
+ *
+ * The transition is an action. Nothing flips on a timer, for anybody, so the
+ * player is the author of the reversal rather than its audience. Reduced
+ * motion changes only whether the change is animated, which is what the CSS
+ * media query on `.cf-enter-sm` already handles, so the branch that used to
+ * pre-flip is gone rather than reworked.
+ *
+ * Everything that interprets the result waits behind that action. The verdict,
+ * the score, the headline, the reaction, the crowd line and the mechanism are
+ * all withheld until the flip has happened. Before it, the screen says only
+ * which answer the player gave.
+ *
+ * The figure does not move. It sits in the same place in both states and the
+ * commentary appears BELOW it, so the eye stays on the chart at the moment it
+ * changes instead of tracking a block that grew above it. That is also why the
+ * verdict is no longer the first thing on the screen: the insight arrives
+ * first and the scoring of it second.
  */
 export function RevealView({
   puzzle,
@@ -35,79 +67,89 @@ export function RevealView({
   const t = useT();
   const reduced = useReducedMotion();
   const data = puzzle.setup.data;
-  const [flipped, setFlipped] = useState(false);
 
+  /*
+    Two pieces of state, not one, because "has the player pulled the lever" and
+    "which view is the figure drawing" stop being the same question once Replay
+    exists. Replay walks the figure back and forward again; it must not take
+    the explanation away with it.
+  */
+  const [revealed, setRevealed] = useState(false);
+  const [showingReveal, setShowingReveal] = useState(false);
+
+  /*
+    THE LEVER REMOVES ITSELF, SO FOCUS HAS TO GO SOMEWHERE DELIBERATE.
+
+    Activating the button unmounts it and replaces it with the verdict and the
+    explanation. Without this, a keyboard or screen-reader user presses a
+    button, focus falls back to `document.body`, and nothing announces that a
+    screenful of new content arrived: they are left tabbing to find out whether
+    anything happened. `App.tsx` already moves focus to the page heading on
+    every view change for exactly this reason, so this is the same rule applied
+    one level down, where this PR created a new instance of the problem.
+
+    `tabIndex={-1}` makes the heading programmatically focusable without adding
+    it to the tab order.
+  */
+  const revealHeadingRef = useRef<HTMLHeadingElement>(null);
   useEffect(() => {
-    if (reduced) {
-      setFlipped(true);
-      return;
-    }
-    const id = window.setTimeout(() => setFlipped(true), 1100);
-    return () => window.clearTimeout(id);
-  }, [reduced]);
+    if (revealed) revealHeadingRef.current?.focus();
+  }, [revealed]);
+
+  /*
+    Cleared on unmount, following the `live` flag in `CompanyLine`. The player
+    can hit Replay and then "Name the skill" inside the 650ms, which unmounts
+    this component while the timer is still armed. React 19 makes the late
+    setState a silent no-op rather than a warning, so this is tidiness rather
+    than a live bug, but leaving a timer running against a dead component is
+    the kind of thing that stops being harmless the moment the callback grows.
+  */
+  const replayTimer = useRef<number | undefined>(undefined);
+  useEffect(() => {
+    return () => {
+      if (replayTimer.current !== undefined) {
+        window.clearTimeout(replayTimer.current);
+      }
+    };
+  }, []);
+
+  function pull() {
+    /*
+      `reveal_view` moved here from `PuzzleFlow.commit`, where it fired the
+      instant the player answered. It now marks the reveal actually being
+      looked at, so the gap between `commit` and `reveal_view` becomes the
+      measurable share of players who commit and then never pull the lever.
+      Same fixed event name, a truer meaning.
+    */
+    track("reveal_view", { slug: puzzle.slug });
+    setRevealed(true);
+    setShowingReveal(true);
+  }
 
   function replay() {
     track("replay", { slug: puzzle.slug });
-    setFlipped(false);
-    window.setTimeout(() => setFlipped(true), 650);
+    setShowingReveal(false);
+    window.clearTimeout(replayTimer.current);
+    replayTimer.current = window.setTimeout(() => setShowingReveal(true), 650);
   }
 
-  const view = flipped ? puzzle.reveal.view : puzzle.setup.initialView;
+  const view = showingReveal ? puzzle.reveal.view : puzzle.setup.initialView;
   const caught = committed.isCorrect;
   const score = scoreFor(caught, confidence);
   const metric = t(dataTitle(data));
 
   return (
     <section className="flex flex-col gap-4">
+      {/*
+        The only thing on screen before the pull: which answer they gave. No
+        verdict, no score, no headline. Its height does not change when the
+        rest arrives, so the figure below it stays put.
+      */}
       <header className="flex flex-col gap-2">
-        <div className="flex items-center justify-between gap-2">
-          {/*
-            A FACT ABOUT THIS PLAYER, NEVER ABOUT THE POPULATION.
-
-            This read "Most people miss this" on every wrong answer, on every
-            puzzle, unconditionally, with no tally behind it. Eighteen lines
-            below, `CompanyLine` renders the real distribution and can say "18%
-            of players fell for the same one", so the deck could contradict its
-            own unsourced claim inside one screen.
-
-            The discipline was already written next door and this badge was the
-            one place bypassing it: `answerStats` sets MIN_ANSWERS_TO_SHOW = 20
-            and argues in its own comment that drawing a percentage the server
-            considers too small to be evidence "would be the deck making
-            exactly the mistake it teaches against", and `CompanyLine` has four
-            states of which three deliberately render nothing.
-
-            So the badge now says only what the app actually knows: the trap
-            worked on the person reading it. Blaming the trap rather than the
-            reader is also the honest attribution, since the setup was built to
-            make the wrong answer feel obvious. The population claim belongs to
-            `CompanyLine`, which has the numbers, or to nobody.
-          */}
-          <Badge tone={caught ? "brand" : "rust"}>
-            {caught ? t({ en: "You caught it" }) : t({ en: "The trap worked" })}
-          </Badge>
-          <span
-            className={
-              "font-display text-base font-semibold tabular-nums " +
-              (score >= 0 ? "text-brand-ink" : "text-rust-ink")
-            }
-          >
-            {score >= 0 ? `+${score}` : score} {t({ en: "pts" })}
-          </span>
-        </div>
-        <h2 className="font-display text-[24px] font-semibold leading-[1.12] text-ink">
-          {t(puzzle.reveal.headline)}
-        </h2>
         <p className="text-sm text-ink-soft">
           {t({ en: "You picked" })}{" "}
-          <span className="font-semibold text-ink">{t(committed.label)}</span>.{" "}
-          {t({ en: reactionFor(caught, confidence) })}
+          <span className="font-semibold text-ink">{t(committed.label)}</span>.
         </p>
-        <CompanyLine
-          slug={puzzle.slug}
-          choiceId={committed.id}
-          wasCorrect={Boolean(committed.isCorrect)}
-        />
       </header>
 
       <figure className="rounded-lg border border-rule bg-paper-2 p-3.5">
@@ -120,7 +162,8 @@ export function RevealView({
             >
               {view.caption ? t(view.caption) : t({ en: scopeLabel(view.kind) })}
             </span>
-            {!reduced ? (
+            {/* Nothing to replay until the flip has happened once. */}
+            {revealed && !reduced ? (
               <button
                 type="button"
                 onClick={replay}
@@ -142,43 +185,109 @@ export function RevealView({
         {data.type === "rates" ? <Legend data={data} view={view} /> : null}
       </figure>
 
-      <div className="rounded-lg border border-gold/40 border-l-4 border-l-gold bg-gold/8 p-3.5">
-        <Badge tone="gold">
-          {puzzle.reveal.mechanismLabel
-            ? t(puzzle.reveal.mechanismLabel)
-            : t({ en: "The lurking variable" })}
-        </Badge>
-        <h3 className="mt-1 font-display text-lg font-semibold text-ink">
-          {t(puzzle.reveal.mechanismName)}
-        </h3>
-        <p className="mt-1 text-[15px] leading-snug text-ink">
-          {t(puzzle.reveal.explanation)}
-        </p>
-        {/* The case mix is the confounder made visible, so it only earns its
-            place when there is more than one stratum to mix. */}
-        {data.type === "rates" &&
-        data.strata.length > 1 &&
-        !data.strataAreSeparateSamples ? (
-          <div className="mt-3">
-            <div className="mb-1.5 font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-soft">
-              {puzzle.reveal.caseMixLabel
-                ? t(puzzle.reveal.caseMixLabel)
-                : t({ en: "Who each treatment actually treated" })}
-            </div>
-            <CaseMixBars data={data} />
+      {/*
+        THE LEVER. One control, and until it is pulled this is the whole rest
+        of the screen: no verdict, no score, no headline, nothing that
+        interprets a chart the player has not yet seen change.
+
+        It is a real button rather than a gesture so it is reachable by
+        keyboard and by a screen reader, and so the reduced-motion path is the
+        same path rather than a second one that skips the beat.
+      */}
+      {!revealed ? (
+        <Button onClick={pull}>{t({ en: "Reveal the answer" })}</Button>
+      ) : (
+        <div className="cf-enter flex flex-col gap-4">
+          <div className="flex items-center justify-between gap-2">
+            {/*
+              A FACT ABOUT THIS PLAYER, NEVER ABOUT THE POPULATION.
+
+              This read "Most people miss this" on every wrong answer, on every
+              puzzle, unconditionally, with no tally behind it, while
+              `CompanyLine` below renders the real distribution and can say
+              "18% of players fell for the same one". `answerStats` sets
+              MIN_ANSWERS_TO_SHOW = 20 and argues in its own comment that
+              drawing a percentage the server considers too small to be
+              evidence "would be the deck making exactly the mistake it teaches
+              against"; this badge was the one place bypassing that.
+
+              It now says only what the app knows: the trap worked on the
+              person reading it. Blaming the trap rather than the reader is
+              also the honest attribution, since the setup was built to make
+              the wrong answer feel obvious.
+            */}
+            <Badge tone={caught ? "brand" : "rust"}>
+              {caught ? t({ en: "You caught it" }) : t({ en: "The trap worked" })}
+            </Badge>
+            <span
+              className={
+                "font-display text-base font-semibold tabular-nums " +
+                (score >= 0 ? "text-brand-ink" : "text-rust-ink")
+              }
+            >
+              {score >= 0 ? `+${score}` : score} {t({ en: "pts" })}
+            </span>
           </div>
-        ) : null}
-      </div>
 
-      {puzzle.reveal.body ? (
-        <p className="text-sm leading-snug text-ink-soft">
-          {t(puzzle.reveal.body)}
-        </p>
-      ) : null}
+          <h2
+            ref={revealHeadingRef}
+            tabIndex={-1}
+            className="font-display text-[24px] font-semibold leading-[1.12] text-ink focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand"
+          >
+            {t(puzzle.reveal.headline)}
+          </h2>
 
-      <Button onClick={onNext}>
-        {caught ? t({ en: "Name the skill →" }) : t({ en: "So what's the skill? →" })}
-      </Button>
+          <p className="text-sm text-ink-soft">
+            {t({ en: reactionFor(caught, confidence) })}
+          </p>
+
+          <CompanyLine
+            slug={puzzle.slug}
+            choiceId={committed.id}
+            wasCorrect={Boolean(committed.isCorrect)}
+          />
+
+          <div className="rounded-lg border border-gold/40 border-l-4 border-l-gold bg-gold/8 p-3.5">
+            <Badge tone="gold">
+              {puzzle.reveal.mechanismLabel
+                ? t(puzzle.reveal.mechanismLabel)
+                : t({ en: "The lurking variable" })}
+            </Badge>
+            <h3 className="mt-1 font-display text-lg font-semibold text-ink">
+              {t(puzzle.reveal.mechanismName)}
+            </h3>
+            <p className="mt-1 text-[15px] leading-snug text-ink">
+              {t(puzzle.reveal.explanation)}
+            </p>
+            {/* The case mix is the confounder made visible, so it only earns
+                its place when there is more than one stratum to mix. */}
+            {data.type === "rates" &&
+            data.strata.length > 1 &&
+            !data.strataAreSeparateSamples ? (
+              <div className="mt-3">
+                <div className="mb-1.5 font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-soft">
+                  {puzzle.reveal.caseMixLabel
+                    ? t(puzzle.reveal.caseMixLabel)
+                    : t({ en: "Who each treatment actually treated" })}
+                </div>
+                <CaseMixBars data={data} />
+              </div>
+            ) : null}
+          </div>
+
+          {puzzle.reveal.body ? (
+            <p className="text-sm leading-snug text-ink-soft">
+              {t(puzzle.reveal.body)}
+            </p>
+          ) : null}
+
+          <Button onClick={onNext}>
+            {caught
+              ? t({ en: "Name the skill →" })
+              : t({ en: "So what's the skill? →" })}
+          </Button>
+        </div>
+      )}
     </section>
   );
 }

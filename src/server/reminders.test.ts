@@ -80,12 +80,29 @@ async function enrolledLearner(
 }
 
 describe("the preference itself", () => {
+  it("tells never asked apart from asked and declined", async () => {
+    /**
+     * The whole reason the account panel can ask once and then never again.
+     * Declining writes a row, so chosen becomes true while optedIn stays
+     * false; if these ever collapse into one flag, somebody who said no gets
+     * asked again every time they sign in.
+     */
+    const { account } = await signInWithEmail(db, "choosy@example.org", NOW);
+    expect((await getReminderPrefs(db, account.id)).chosen).toBe(false);
+
+    await setReminderOptIn(db, account.id, false, "en", NOW);
+    const after = await getReminderPrefs(db, account.id);
+    expect(after.optedIn).toBe(false);
+    expect(after.chosen).toBe(true);
+  });
   it("treats someone who never opened the setting as opted out", async () => {
     const { account } = await signInWithEmail(db, "new@example.org", NOW);
     expect(await getReminderPrefs(db, account.id)).toEqual({
       optedIn: false,
       locale: "en",
       lastSentAt: null,
+      // Never asked, which the panel needs to tell apart from declined.
+      chosen: false,
     });
   });
 

@@ -30,6 +30,9 @@ export async function onRequestGet(ctx: FunctionContext): Promise<Response> {
     const prefs = await getReminderPrefs(db, account.id);
     return json({
       optedIn: prefs.optedIn,
+      // Never asked is a different state from declined, and only the panel
+      // can act on the difference.
+      chosen: prefs.chosen,
       locale: prefs.locale,
       // Exposed so the panel can say when the last one went out. It is the
       // person's own data and it is the only way to check the once-a-day

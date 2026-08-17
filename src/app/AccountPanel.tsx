@@ -4,6 +4,7 @@ import { useT } from "./i18n";
 import { useAuth } from "./auth";
 import { renderGoogleButton } from "./googleSignIn";
 import { ReminderToggle } from "./ReminderToggle";
+import { ReminderChoice } from "./ReminderChoice";
 import { ACCOUNT } from "./ui";
 
 /**
@@ -209,6 +210,18 @@ function SignedIn({ onClose }: { onClose: () => void }) {
   const [confirming, setConfirming] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  /**
+   * Bumped when the question below is answered, purely to remount the toggle.
+   *
+   * Both components read the same preference and each fetches it once on mount,
+   * so answering "yes, remind me" wrote the new value and left the toggle
+   * directly underneath still drawing the state it had loaded a moment earlier:
+   * off. Somebody who had just consented was shown a switch saying they had
+   * not, and flipping it to correct that would have turned the reminder back
+   * off. Remounting is enough, and it keeps the two components from having to
+   * know about each other.
+   */
+  const [prefsVersion, setPrefsVersion] = useState(0);
 
   async function erase() {
     setBusy(true);
@@ -243,7 +256,8 @@ function SignedIn({ onClose }: { onClose: () => void }) {
         </button>
       </div>
 
-      <ReminderToggle />
+      <ReminderChoice onAnswered={() => setPrefsVersion((n) => n + 1)} />
+      <ReminderToggle key={prefsVersion} />
 
       <div className="border-t border-rule pt-3">
         {confirming ? (

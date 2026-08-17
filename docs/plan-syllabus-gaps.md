@@ -500,12 +500,22 @@ intention-to-treat, and question wording against framing.
 
 **Decision.** Mark the audit row "covered by length-time and survivorship", and
 give readers the setting through the **review bank** instead of a puzzle. Four
-scenarios are drafted (`nb-prevalent-cases`, `nb-clinic-attenders` and
+scenarios cover it: `nb-prevalent-cases`, `nb-clinic-attenders` and
 `nb-survivor-interviews` as traps against those two skills, plus a sound decoy
-`ok-incident-cases` on sampling incident rather than prevalent cases). They are
-deliberately **not** in this commit: new item strings need nine translations
-each, and they will ride along with the next puzzle's translation pass rather
-than triggering one of their own.
+`ok-incident-cases` on sampling incident rather than prevalent cases.
+
+**SHIPPED in PR #49**, the Hawthorne puzzle, which is precisely the plan this
+paragraph set out: new item strings need nine translations each, so these rode
+along with the next puzzle's translation pass rather than triggering one of
+their own. All four are in `testItems.ts` and carry all ten locales.
+
+Until 2026-08-17 this paragraph still read "they are deliberately not in this
+commit", months after they had landed. That is the rot the planning docs are
+enforced against, and it is the expensive kind: it invites somebody to redo
+finished work, or to believe a gap is open when it is closed. It was found by
+reading `testItems.ts` and the dictionaries rather than by trusting the
+paragraph, which is the discipline the backlog already demands of its own
+coverage claims and which this file needs just as much.
 
 ### 6. Hawthorne effect
 

@@ -3,6 +3,7 @@ import backlogDoc from "../../docs/lesson-backlog.md?raw";
 import auditDoc from "../../docs/exam-syllabus-audit.md?raw";
 import gapsDoc from "../../docs/plan-syllabus-gaps.md?raw";
 import { puzzles } from "./index";
+import { TEST_ITEMS } from "./testItems";
 
 /**
  * The planning docs are enforced, not remembered.
@@ -341,5 +342,57 @@ describe("the syllabus gap plan stays honest about what has shipped", () => {
       contradictory,
       "this section says CLOSED but its skill is in the registry",
     ).toEqual([]);
+  });
+});
+
+/**
+ * A planning doc may not describe work as pending once it has landed.
+ *
+ * THE ROT THIS CATCHES is a different shape from the status rot above.
+ * `plan-syllabus-gaps.md` named four review items and said they were
+ * "deliberately not in this commit", to ride along with the next puzzle's
+ * translation pass. They rode along exactly as planned, in PR #49, and the
+ * sentence saying they had not was still there months later. Nothing failed,
+ * because every other check in this file reads STATUS WORDS and none of them
+ * asks whether the things a document names actually exist.
+ *
+ * A GENERAL VERSION OF THIS CHECK WAS WRITTEN AND THEN DELETED, and the reason
+ * is worth keeping. It walked every backticked identifier in all three docs and
+ * required each to resolve to an item, a slug or a skill. It found twelve that
+ * did not, and every one was legitimate: `goodharts-law` and `quote-mining` are
+ * proposed names for lessons nobody has built, which is precisely what a
+ * backlog is FOR, while `length-time` is a data-file basename and `aria-label`
+ * is an HTML attribute. Making it pass would have meant a whitelist that grows
+ * with every doc edit, and a check that needs constant feeding is one that gets
+ * deleted the first time it is inconvenient. So the guard is narrow and exact
+ * instead: the four ids whose absence was claimed must be present.
+ */
+describe("the Neyman review items the plan named", () => {
+  const ITEM_IDS = new Set(TEST_ITEMS.map((i) => i.id));
+  const NAMED = [
+    "nb-prevalent-cases",
+    "nb-clinic-attenders",
+    "nb-survivor-interviews",
+    "ok-incident-cases",
+  ];
+
+  it("are in the bank, which is what the plan used to deny", () => {
+    expect(NAMED.filter((id) => !ITEM_IDS.has(id))).toEqual([]);
+  });
+
+  it("are still named by the section that decided them", () => {
+    // If a future edit drops these ids from the doc, the paragraph stops
+    // telling the reader where the Neyman setting actually lives, and the
+    // check above would then be guarding a claim nobody makes.
+    expect(NAMED.filter((id) => !gapsDoc.includes(id))).toEqual([]);
+  });
+
+  it("are not still described as pending", () => {
+    const section = gapsDoc.slice(gapsDoc.indexOf("### 5. Neyman"));
+    const body = section.slice(0, section.indexOf("### 6."));
+    expect(
+      /deliberately \*\*not\*\* in this commit/.test(body),
+      "this section says the items are not committed, but they are",
+    ).toBe(false);
   });
 });

@@ -5,6 +5,7 @@ import { LocaleProvider } from "../../app/i18n";
 import { loadDictionary } from "../../app/translations";
 import { puzzles } from "../../puzzles";
 import { ShareCard } from "./ShareCard";
+import { displayHost } from "../../app/shareLinks";
 
 /**
  * The share card, rendered in a language that does not use the Latin alphabet,
@@ -49,6 +50,19 @@ const NON_LATIN = ["ja", "zh", "ru", "hi", "bn", "ar"];
  * where the translations keep it inside the translated sentence).
  */
 const BRAND = ["Confoundle", "confoundle"];
+
+/**
+ * The origin the card is rendered with, passed explicitly rather than left to
+ * its default.
+ *
+ * `ShareCard` defaults `origin` to `currentOrigin()`, which returns "" under
+ * node because there is no `window`. Left at the default, the card would
+ * render no address at all here while printing one in every browser, so these
+ * assertions would be checking markup nobody ever sees. That is the exact
+ * failure mode this file exists to prevent, so the test supplies a real one.
+ */
+const TEST_ORIGIN = "https://confoundle.org";
+const TEST_HOST = displayHost(TEST_ORIGIN);
 
 /** Two or more Latin letters in a row. One is a label, not a word. */
 const LATIN_WORD = /[A-Za-z]{2,}/;
@@ -101,6 +115,7 @@ function renderCard(puzzle: (typeof GUTTED)[number], locale: string): string {
         committed: puzzle.choices[0],
         onReplay: () => {},
         onHome: () => {},
+        origin: TEST_ORIGIN,
       }),
     }),
   );
@@ -109,6 +124,24 @@ function renderCard(puzzle: (typeof GUTTED)[number], locale: string): string {
 /** The Latin words on a card, with the brand and the placeholders removed. */
 function latinWords(html: string): string[] {
   let text = visibleText(html);
+  /*
+    THE HOST COMES OFF BEFORE THE BRAND, AND THE ORDER IS LOAD BEARING. The
+    card prints its own address, which is Latin in every locale because it is
+    an address: a host cannot be translated and a Japanese or Arabic reader
+    types the same one, so this is not the shipped-English defect the rest of
+    this file hunts.
+
+    Strip it after the brand loop instead and "confoundle.org" has its brand
+    removed first, leaving ".org", which then reads as an untranslated Latin
+    word and fails every locale. Removing the whole host first is the only
+    order that works.
+
+    It is a COMPUTED token rather than another literal on `BRAND`: whatever
+    `displayHost` derives from the origin the card was handed is what gets
+    stripped, and nothing else. A hand-written entry could later be stretched
+    to excuse a prose string; this cannot.
+  */
+  text = text.split(TEST_HOST).join("");
   for (const name of BRAND) text = text.split(name).join("");
   return [
     ...new Set(

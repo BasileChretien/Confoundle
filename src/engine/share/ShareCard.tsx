@@ -15,6 +15,7 @@ import { frequencyBreakdown } from "../charts/frequencies";
 import { shareOrDownloadCard, type ExportResult } from "./exportCard";
 import { CalibrationStrip, calibrationSummary } from "./CalibrationStrip";
 import { getCalibrationWeek, calibrationDaysPlayed } from "../../app/session";
+import { currentOrigin, displayHost, puzzleUrl } from "../../app/shareLinks";
 import { fillSlots } from "../charts/announce";
 
 type Framing = "competitive" | "selfDeprecating";
@@ -2261,11 +2262,20 @@ export function ShareCard({
   committed,
   onReplay,
   onHome,
+  origin = currentOrigin(),
 }: {
   puzzle: Puzzle;
   committed: Choice;
   onReplay: () => void;
   onHome: () => void;
+  /**
+   * Where shared links point, defaulted to wherever the app is being served.
+   * A prop rather than an inline `window.location.origin` read for two
+   * reasons: `window` does not exist in the node render the localisation test
+   * performs, and a test that could not pass a real origin would be checking
+   * markup the browser never produces.
+   */
+  origin?: string;
 }) {
   const t = useT();
   const cardRef = useRef<HTMLDivElement>(null);
@@ -2339,10 +2349,26 @@ export function ShareCard({
     if (!cardRef.current || busy) return;
     setBusy(true);
     setStatus(t({ en: "Rendering card…" }));
+    /*
+      THE SHARE TEXT CARRIES THE LINK, and this is the half that makes the card
+      travel. It used to be `"<caption>, Confoundle"`, which named the product
+      and gave no way to reach it, so a card seen in a story was a dead end
+      unless the viewer guessed the domain.
+
+      It points at the PUZZLE rather than the lesson page, because the caption
+      beside it is a boast or a confession and both of them are invitations.
+      Sending someone the prerendered explanation would hand them the answer
+      along with the challenge.
+
+      The origin is read live rather than baked, so a preview deployment and a
+      dev server each share themselves rather than sending a tester to
+      production.
+    */
+    const link = puzzleUrl(origin, puzzle.slug);
     const result: ExportResult = await shareOrDownloadCard(
       cardRef.current,
       `confoundle-${puzzle.slug}.png`,
-      { title: t(puzzle.share.title), text: `${caption}, Confoundle` },
+      { title: t(puzzle.share.title), text: `${caption}\n\n${link}` },
     );
     track("share_export", { slug: puzzle.slug, framing, result });
     setStatus(
@@ -2535,11 +2561,29 @@ export function ShareCard({
             <span style={{ color: CARD.gold }}>”</span>
           </p>
 
+          {/*
+            THE HOST, PRINTED ON THE IMAGE ITSELF.
+
+            The card is a PNG, so nothing on it is clickable: this is something
+            a person reads and retypes, which is why it is the bare host and
+            not the deep link. The query string is exactly the part that gets
+            mistyped, and it is already carried by the share text, which is
+            real text. Printing the host also survives the common case where
+            somebody screenshots the image and reposts it with the text gone.
+
+            The tagline keeps its own translated string rather than being
+            rewritten to include the address, so this adds no dictionary keys:
+            a domain is not translatable, and folding it into the sentence
+            would have meant nine new entries to say the same thing.
+          */}
           <div
-            className="mt-4 border-t pt-2 font-sans text-[10px] font-semibold uppercase tracking-eyebrow"
+            className="mt-4 flex items-baseline justify-between gap-3 border-t pt-2 font-sans text-[10px] font-semibold uppercase tracking-eyebrow"
             style={{ borderColor: CARD.rule, color: CARD.muted }}
           >
-            {t({ en: "Spot the hidden variable · confoundle" })}
+            <span>{t({ en: "Spot the hidden variable · confoundle" })}</span>
+            <span className="shrink-0 normal-case tracking-normal">
+              {displayHost(origin)}
+            </span>
           </div>
         </div>
       </div>

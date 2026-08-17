@@ -4,6 +4,8 @@ import { PuzzleFlow } from "../engine/PuzzleFlow";
 import { ReviewView } from "../engine/ReviewView";
 import { TrapHuntView } from "../engine/TrapHuntView";
 import { HomeView } from "../engine/HomeView";
+import { ProgressPanel } from "../engine/ProgressPanel";
+import { Button } from "../engine/ui";
 import { AboutView } from "../engine/AboutView";
 import { LessonsView } from "../engine/LessonsView";
 import { reviews } from "./reviews";
@@ -174,6 +176,16 @@ function AppShell() {
               onOpen={(next) => go({ name: "lesson", slug: next })}
               onBack={() => go(HOME)}
             />
+          ) : view.name === "progress" ? (
+            <section className="flex flex-col gap-4">
+              <h2 className="font-display text-[28px] font-semibold leading-[1.05] text-ink">
+                {t(UI.progress)}
+              </h2>
+              <ProgressPanel progress={progress} />
+              <Button variant="ghost" onClick={() => go(HOME)}>
+                {t(UI.home)}
+              </Button>
+            </section>
           ) : (
             <HomeView
               progress={progress}
@@ -184,6 +196,7 @@ function AppShell() {
               onPractise={() => go({ name: "review", practice: true })}
               onOpenAbout={() => go({ name: "about" })}
               onOpenLessons={() => go({ name: "lessons" })}
+              onOpenProgress={() => go({ name: "progress" })}
             />
           )}
         </div>

@@ -30,6 +30,10 @@ describe("reading a view from the URL", () => {
     expect(viewFromSearch("?lessons=1")).toEqual({ name: "lessons" });
   });
 
+  it("reads the standing screen, which used to be inline on home", () => {
+    expect(viewFromSearch("?progress=1")).toEqual({ name: "progress" });
+  });
+
   it("falls back to home for anything unrecognised", () => {
     expect(viewFromSearch("")).toEqual(HOME);
     expect(viewFromSearch("?utm_source=twitter")).toEqual(HOME);
@@ -44,15 +48,32 @@ describe("reading a view from the URL", () => {
   });
 });
 
+/**
+ * One view of every kind, as a `Record` keyed by `View["name"]`.
+ *
+ * The type is the point: a `Record` over the union REQUIRES an entry per name,
+ * so adding a member to `View` fails `tsc` here until it is covered. The
+ * previous version was a hand-written array and had already drifted, shipping
+ * `trapHunt` without ever round-tripping it. That is the failure mode a list
+ * maintained by memory always eventually has.
+ */
+const ONE_OF_EACH: Record<View["name"], View> = {
+  home: HOME,
+  lesson: { name: "lesson", slug: REAL_SLUG },
+  review: { name: "review", practice: false },
+  about: { name: "about" },
+  lessons: { name: "lessons" },
+  trapHunt: { name: "trapHunt" },
+  progress: { name: "progress" },
+};
+
 describe("writing a view to the URL", () => {
   it("round-trips every view", () => {
+    // The practice flag is the one case where a name carries a second state,
+    // so it rides along with the exhaustive set.
     const views: View[] = [
-      HOME,
-      { name: "lesson", slug: REAL_SLUG },
-      { name: "review", practice: false },
+      ...Object.values(ONE_OF_EACH),
       { name: "review", practice: true },
-      { name: "about" },
-      { name: "lessons" },
     ];
     for (const v of views) {
       const search = searchForView(v);

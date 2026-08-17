@@ -14,7 +14,6 @@ import {
 } from "../srs/buckets";
 import type { SkillProgress } from "../srs/schedule";
 import { CONFIDENCE_LEVELS, type Confidence } from "./scoring";
-import { Confounder, type ConfounderState } from "./Confounder";
 import { StageRungs } from "./ui";
 
 /**
@@ -184,10 +183,8 @@ function MasteryRow({ name, progress }: { name: string; progress: LessonProgress
 
 export function ProgressPanel({
   progress,
-  onPractise,
 }: {
   progress: readonly SkillProgress[];
-  onPractise: () => void;
 }) {
   const t = useT();
   const relative = useRelative();
@@ -226,36 +223,21 @@ export function ProgressPanel({
   });
   const conquered = rows.filter((r) => r.progress.state === "mastered");
 
-  const state: ConfounderState = {
-    learned: rows.length,
-    dueNow,
-    streak: stats.currentStreak,
-    catchRate: stats.catchRate,
-    played: stats.played,
-    burned: counts.burned,
-    misconceptions: rows.filter((r) => r.progress.misconceived).length,
-    allDone: rows.length === puzzles.length && counts.burned === puzzles.length,
-  };
-
   return (
     <div className="flex flex-col gap-5">
-      <Confounder state={state} />
+      {/*
+        THE MASCOT AND THE PRACTICE PROMPT BOTH LEFT THIS FILE, for opposite
+        reasons.
 
-      {dueNow === 0 ? (
-        <button
-          type="button"
-          onClick={onPractise}
-          className="flex w-full items-center justify-between gap-3 rounded-lg border border-brand/35 bg-brand/[0.07] px-3 py-3 text-start transition hover:bg-brand/[0.13] focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand"
-        >
-          <span className="flex flex-col">
-            <span className="font-display text-[15px] font-semibold text-ink">
-              {t(UI.practise)}
-            </span>
-            <span className="text-[12px] text-ink-soft">{t(UI.practiseBlurb)}</span>
-          </span>
-        </button>
-      ) : null}
+        The Confounder is a hook rather than a report. It names an adversary and
+        it is the only character in the interface, so it belongs on the screen a
+        returning player actually lands on. The practice prompt is an ACTION,
+        and actions belong beside the other actions rather than buried under
+        eleven data displays.
 
+        What is left here is the reporting, which is the part that moved behind
+        a tap.
+      */}
       {/* Standing: the satisfying numbers. */}
       <div className="grid grid-cols-4 gap-2">
         <Metric label={t(UI.streak)} value={String(stats.currentStreak)} />

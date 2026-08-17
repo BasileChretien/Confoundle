@@ -1,5 +1,9 @@
 import { useT } from "../app/i18n";
 import { UI } from "../app/ui";
+import { lessonProgressFor } from "../app/lessonState";
+import { puzzles } from "../puzzles";
+import { bucketCounts, reviewForecast } from "../srs/buckets";
+import type { SkillProgress } from "../srs/schedule";
 import { colorFor, WINNER_GOLD } from "./charts/palette";
 
 /**
@@ -33,6 +37,41 @@ export interface Quip {
   key: keyof typeof UI;
   /** Substituted into a `{n}` slot when present. */
   n?: number;
+}
+
+/**
+ * Everything the creature needs to know, derived in one place.
+ *
+ * It lives here rather than inside `ProgressPanel` because the panel moved off
+ * the home screen and the Confounder did not: home shows the line, the standing
+ * page shows the numbers, and two surfaces deriving "how many skills has this
+ * player started" separately is exactly how they come to disagree.
+ *
+ * `stats` is a parameter rather than a `getStats()` call so the derivation can
+ * be exercised without stubbing localStorage.
+ */
+export function confounderStateFor(
+  progress: readonly SkillProgress[],
+  stats: { currentStreak: number; catchRate: number; played: number },
+  now: number = Date.now(),
+): ConfounderState {
+  const started = puzzles
+    .map((p) => lessonProgressFor(p.reasoningSkill, progress))
+    .filter((lp) => lp.state !== "new");
+  const counts = bucketCounts(progress);
+  const forecast = reviewForecast(progress, now);
+
+  return {
+    learned: started.length,
+    dueNow: forecast[0]?.inMs === 0 ? forecast[0].count : 0,
+    streak: stats.currentStreak,
+    catchRate: stats.catchRate,
+    played: stats.played,
+    burned: counts.burned,
+    misconceptions: started.filter((lp) => lp.misconceived).length,
+    allDone:
+      started.length === puzzles.length && counts.burned === puzzles.length,
+  };
 }
 
 /**

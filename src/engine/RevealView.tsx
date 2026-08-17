@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { Choice, Puzzle } from "../puzzles/schema";
 import { useT } from "../app/i18n";
 import { track } from "../app/analytics";
@@ -77,6 +77,42 @@ export function RevealView({
   const [revealed, setRevealed] = useState(false);
   const [showingReveal, setShowingReveal] = useState(false);
 
+  /*
+    THE LEVER REMOVES ITSELF, SO FOCUS HAS TO GO SOMEWHERE DELIBERATE.
+
+    Activating the button unmounts it and replaces it with the verdict and the
+    explanation. Without this, a keyboard or screen-reader user presses a
+    button, focus falls back to `document.body`, and nothing announces that a
+    screenful of new content arrived: they are left tabbing to find out whether
+    anything happened. `App.tsx` already moves focus to the page heading on
+    every view change for exactly this reason, so this is the same rule applied
+    one level down, where this PR created a new instance of the problem.
+
+    `tabIndex={-1}` makes the heading programmatically focusable without adding
+    it to the tab order.
+  */
+  const revealHeadingRef = useRef<HTMLHeadingElement>(null);
+  useEffect(() => {
+    if (revealed) revealHeadingRef.current?.focus();
+  }, [revealed]);
+
+  /*
+    Cleared on unmount, following the `live` flag in `CompanyLine`. The player
+    can hit Replay and then "Name the skill" inside the 650ms, which unmounts
+    this component while the timer is still armed. React 19 makes the late
+    setState a silent no-op rather than a warning, so this is tidiness rather
+    than a live bug, but leaving a timer running against a dead component is
+    the kind of thing that stops being harmless the moment the callback grows.
+  */
+  const replayTimer = useRef<number | undefined>(undefined);
+  useEffect(() => {
+    return () => {
+      if (replayTimer.current !== undefined) {
+        window.clearTimeout(replayTimer.current);
+      }
+    };
+  }, []);
+
   function pull() {
     /*
       `reveal_view` moved here from `PuzzleFlow.commit`, where it fired the
@@ -93,7 +129,8 @@ export function RevealView({
   function replay() {
     track("replay", { slug: puzzle.slug });
     setShowingReveal(false);
-    window.setTimeout(() => setShowingReveal(true), 650);
+    window.clearTimeout(replayTimer.current);
+    replayTimer.current = window.setTimeout(() => setShowingReveal(true), 650);
   }
 
   const view = showingReveal ? puzzle.reveal.view : puzzle.setup.initialView;
@@ -192,7 +229,11 @@ export function RevealView({
             </span>
           </div>
 
-          <h2 className="font-display text-[24px] font-semibold leading-[1.12] text-ink">
+          <h2
+            ref={revealHeadingRef}
+            tabIndex={-1}
+            className="font-display text-[24px] font-semibold leading-[1.12] text-ink focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand"
+          >
             {t(puzzle.reveal.headline)}
           </h2>
 
@@ -207,31 +248,31 @@ export function RevealView({
           />
 
           <div className="rounded-lg border border-gold/40 border-l-4 border-l-gold bg-gold/8 p-3.5">
-        <Badge tone="gold">
-          {puzzle.reveal.mechanismLabel
-            ? t(puzzle.reveal.mechanismLabel)
-            : t({ en: "The lurking variable" })}
-        </Badge>
-        <h3 className="mt-1 font-display text-lg font-semibold text-ink">
-          {t(puzzle.reveal.mechanismName)}
-        </h3>
-        <p className="mt-1 text-[15px] leading-snug text-ink">
-          {t(puzzle.reveal.explanation)}
-        </p>
-        {/* The case mix is the confounder made visible, so it only earns its
-            place when there is more than one stratum to mix. */}
-        {data.type === "rates" &&
-        data.strata.length > 1 &&
-        !data.strataAreSeparateSamples ? (
-          <div className="mt-3">
-            <div className="mb-1.5 font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-soft">
-              {puzzle.reveal.caseMixLabel
-                ? t(puzzle.reveal.caseMixLabel)
-                : t({ en: "Who each treatment actually treated" })}
-            </div>
-            <CaseMixBars data={data} />
-          </div>
-        ) : null}
+            <Badge tone="gold">
+              {puzzle.reveal.mechanismLabel
+                ? t(puzzle.reveal.mechanismLabel)
+                : t({ en: "The lurking variable" })}
+            </Badge>
+            <h3 className="mt-1 font-display text-lg font-semibold text-ink">
+              {t(puzzle.reveal.mechanismName)}
+            </h3>
+            <p className="mt-1 text-[15px] leading-snug text-ink">
+              {t(puzzle.reveal.explanation)}
+            </p>
+            {/* The case mix is the confounder made visible, so it only earns
+                its place when there is more than one stratum to mix. */}
+            {data.type === "rates" &&
+            data.strata.length > 1 &&
+            !data.strataAreSeparateSamples ? (
+              <div className="mt-3">
+                <div className="mb-1.5 font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-soft">
+                  {puzzle.reveal.caseMixLabel
+                    ? t(puzzle.reveal.caseMixLabel)
+                    : t({ en: "Who each treatment actually treated" })}
+                </div>
+                <CaseMixBars data={data} />
+              </div>
+            ) : null}
           </div>
 
           {puzzle.reveal.body ? (

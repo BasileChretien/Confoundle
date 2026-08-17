@@ -13,6 +13,7 @@ import {
 import { Legend } from "./charts/RateChart";
 import { CaseMixBars } from "./charts/CaseMixBars";
 import { scoreFor, reactionFor, type Confidence } from "./scoring";
+import { CompanyLine } from "./CompanyLine";
 
 /**
  * Beat 3: the reveal. The plate opens on the same pooled view the user just
@@ -82,6 +83,11 @@ export function RevealView({
           <span className="font-semibold text-ink">{t(committed.label)}</span>.{" "}
           {t({ en: reactionFor(caught, confidence) })}
         </p>
+        <CompanyLine
+          slug={puzzle.slug}
+          choiceId={committed.id}
+          wasCorrect={Boolean(committed.isCorrect)}
+        />
       </header>
 
       <figure className="rounded-lg border border-rule bg-paper-2 p-3.5">

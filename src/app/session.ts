@@ -43,20 +43,35 @@ function writeAll(map: ProgressMap): void {
   }
 }
 
+/**
+ * Record a commit, and report whether it was the player's FIRST for this puzzle
+ * today.
+ *
+ * The return value exists so callers cannot get the ordering wrong. Asking "was
+ * this blind?" means reading the store before this function writes to it, and a
+ * caller doing that itself is one reordered line away from always answering no,
+ * with nothing failing: the replay would look like a first play forever. The
+ * anonymous tally depends on the distinction (a replay is made by somebody who
+ * has just read the reveal, so counting it would bias the published number
+ * towards the correct answer), so the check belongs where the write is.
+ */
 export function recordPlay(
   slug: string,
   choiceId: string,
   correct: boolean,
   confidence: Confidence,
-): void {
+): { first: boolean } {
   const map = readAll();
-  map[keyFor(slug)] = {
+  const key = keyFor(slug);
+  const first = map[key] === undefined;
+  map[key] = {
     choiceId,
     correct,
     confidence,
     playedAt: new Date().toISOString(),
   };
   writeAll(map);
+  return { first };
 }
 
 export function getTodaysPlay(slug: string): PlayRecord | undefined {

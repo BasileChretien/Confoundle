@@ -64,6 +64,8 @@ export const hi: Record<string, string> = {
   "{right} of {total} called correctly.": "{total} में से {right} सही आँके।",
   "A new personal best.": "नया व्यक्तिगत रिकॉर्ड।",
   "Answering trap every time would have scored {n} on this round.": "हर बार «जाल» कहने पर इस दौर में {n} अंक मिलते।",
+  "{percent} of players picked that too.": "{percent} खिलाड़ियों ने भी यही चुना।",
+  "{percent} of players fell for the same one.": "{percent} खिलाड़ी भी इसी जाल में फँसे।",
   "Two tracks on one scale, three points bunched together on the upper one and spread far apart on the lower one": "एक ही पैमाने पर दो पटरियाँ, ऊपर वाली पर तीन बिंदु आपस में सिमटे हुए और नीचे वाली पर दूर-दूर फैले हुए",
   "Statistical reasoning": "सांख्यिकीय तर्क",
   // tags

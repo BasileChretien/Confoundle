@@ -5,6 +5,7 @@ import { useAuth } from "./auth";
 import { renderGoogleButton } from "./googleSignIn";
 import { ReminderToggle } from "./ReminderToggle";
 import { ReminderChoice } from "./ReminderChoice";
+import { ContributeToggle } from "./ContributeToggle";
 import { ACCOUNT } from "./ui";
 
 /**
@@ -258,6 +259,7 @@ function SignedIn({ onClose }: { onClose: () => void }) {
 
       <ReminderChoice onAnswered={() => setPrefsVersion((n) => n + 1)} />
       <ReminderToggle key={prefsVersion} />
+      <ContributeToggle />
 
       <div className="border-t border-rule pt-3">
         {confirming ? (

@@ -1,5 +1,12 @@
 import { describe, it, expect } from "vitest";
-import { HOME, sameView, searchForView, viewFromSearch, type View } from "./navigation";
+import {
+  HOME,
+  landingView,
+  sameView,
+  searchForView,
+  viewFromSearch,
+  type View,
+} from "./navigation";
 import { puzzles } from "../puzzles";
 
 const REAL_SLUG = puzzles[0].slug;
@@ -90,6 +97,47 @@ describe("writing a view to the URL", () => {
 
   it("escapes a slug rather than trusting it", () => {
     expect(searchForView({ name: "lesson", slug: "a b&c" })).toBe("?p=a%20b%26c");
+  });
+});
+
+describe("where the app opens", () => {
+  const OPENER = "chocolate-nobel";
+
+  it("drops a first-time visitor into the opening puzzle", () => {
+    expect(landingView("", false, OPENER)).toEqual({
+      name: "lesson",
+      slug: OPENER,
+    });
+  });
+
+  it("leaves a returning player on the home screen", () => {
+    expect(landingView("", true, OPENER)).toEqual(HOME);
+  });
+
+  it("never overrides a URL that names something", () => {
+    /*
+      THE ONE THAT PROTECTS SHARING. A newcomer following a shared link, a
+      bookmark, or a mid-puzzle refresh must land where the URL says. If the
+      landing rule beat the URL, every link into the app would dump a new
+      reader into the opener instead of the card they were actually sent.
+    */
+    expect(landingView(`?p=${REAL_SLUG}`, false, OPENER)).toEqual({
+      name: "lesson",
+      slug: REAL_SLUG,
+    });
+    expect(landingView("?about=1", false, OPENER)).toEqual({ name: "about" });
+    expect(landingView("?hunt=1", false, OPENER)).toEqual({ name: "trapHunt" });
+    expect(landingView("?lessons=1", false, OPENER)).toEqual({ name: "lessons" });
+  });
+
+  it("still fires on a URL carrying only tracking noise", () => {
+    // `?utm_source=x` parses as home, so somebody arriving from a campaign
+    // link is still a newcomer and still gets the puzzle rather than a pitch.
+    expect(landingView("?utm_source=twitter", false, OPENER)).toEqual({
+      name: "lesson",
+      slug: OPENER,
+    });
+    expect(landingView("?utm_source=twitter", true, OPENER)).toEqual(HOME);
   });
 });
 

@@ -187,3 +187,40 @@ export function puzzleForDay(dayIndex: number): PuzzleType {
 export function getTodaysPuzzle(): PuzzleType {
   return puzzleForDay(Math.floor(Date.now() / 86_400_000));
 }
+
+/**
+ * The puzzle a first-time visitor lands on.
+ *
+ * WHY THIS IS A NAMED DECISION rather than "whichever comes first in the
+ * registry". The app used to open a newcomer on roughly 197 words of pitch,
+ * and the button out of it led to the first unlearned puzzle, which is
+ * `kidney-stones`. That one is marked `difficulty: "hard"` and its correct
+ * answer is "Neither yet, ask how the patients were split first". It is a
+ * superb puzzle and the hedge rule is working exactly as designed there, and
+ * it is still the wrong first thirty seconds: a newcomer commits, stakes their
+ * confidence, and is told both concrete answers were wrong and the right move
+ * was to decline the question. That reads as a trick question rather than as a
+ * hidden variable, and a first impression is the one thing you cannot retry.
+ *
+ * THREE PROPERTIES MAKE AN OPENER, and `openerRules.test.ts` checks each one:
+ *
+ *  1. The correct answer is CONCRETE rather than a refusal. The reveal should
+ *     flip the reader's intuition, not withdraw the question.
+ *  2. It is the gentlest thing in the deck, so the mechanic gets demonstrated
+ *     before the difficulty does.
+ *  3. The figure genuinely CHANGES between the two beats, because the promise
+ *     is two views of one dataset, and an opener that fails to show that
+ *     teaches a newcomer the wrong thing about what this app is.
+ *
+ * Messerli's chocolate and Nobel prizes meets all three, and is additionally
+ * funny, famous and non-partisan, which matters more here than anywhere else
+ * in the deck.
+ */
+export const OPENING_SLUG = "chocolate-nobel";
+
+export function getOpeningPuzzle(): PuzzleType {
+  // Falls back rather than throwing: a mistyped slug must not be a white
+  // screen for every first-time visitor. The test is what stops it silently
+  // becoming the fallback.
+  return getPuzzleBySlug(OPENING_SLUG) ?? puzzles[0];
+}

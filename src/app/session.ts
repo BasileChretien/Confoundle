@@ -239,6 +239,28 @@ export function getStats(): Stats {
   return computeStats(readAll(), todayISODate(), readReviews());
 }
 
+/**
+ * Has anything ever been answered on this device?
+ *
+ * Used by the landing rule in `App.tsx` to decide whether a visitor arriving
+ * at the bare root is new enough to be dropped straight into a puzzle.
+ *
+ * SYNCHRONOUS AND LOCAL ON PURPOSE. The alternative is waiting on the SRS
+ * store, which is async and may be account-backed, and that would mean a frame
+ * of the home screen before the puzzle replaced it: the worst of both outcomes,
+ * since a newcomer would watch the pitch flash past on the way to the thing
+ * that replaces it. This reads the same two local logs everything else here
+ * derives from and adds no storage of its own.
+ *
+ * It becomes true at the first COMMIT rather than at the first lesson learned,
+ * which is the earliest point at which somebody has genuinely used the app and
+ * therefore the earliest honest moment to stop treating them as new.
+ */
+export function hasEverPlayed(): boolean {
+  if (Object.keys(readAll()).length > 0) return true;
+  return Object.keys(readReviews()).length > 0;
+}
+
 export interface DayActivity {
   /** YYYY-MM-DD, local. */
   date: string;

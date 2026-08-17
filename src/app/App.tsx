@@ -1,23 +1,48 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { getPuzzleBySlug, getTodaysPuzzle } from "../puzzles";
+import { getOpeningPuzzle, getPuzzleBySlug, getTodaysPuzzle } from "../puzzles";
 import { PuzzleFlow } from "../engine/PuzzleFlow";
 import { ReviewView } from "../engine/ReviewView";
 import { TrapHuntView } from "../engine/TrapHuntView";
 import { HomeView } from "../engine/HomeView";
 import { ProgressPanel } from "../engine/ProgressPanel";
 import { Confounder, confounderStateFor } from "../engine/Confounder";
-import { getStats } from "./session";
+import { getStats, hasEverPlayed } from "./session";
 import { Button } from "../engine/ui";
 import { AboutView } from "../engine/AboutView";
 import { LessonsView } from "../engine/LessonsView";
 import { reviews } from "./reviews";
-import { HOME, sameView, searchForView, viewFromSearch, type View } from "./navigation";
+import {
+  HOME,
+  landingView,
+  sameView,
+  searchForView,
+  viewFromSearch,
+  type View,
+} from "./navigation";
 import type { SkillProgress } from "../srs/schedule";
 import { LocaleProvider, useT } from "./i18n";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { AccountPanel } from "./AccountPanel";
 import { AuthProvider } from "./auth";
 import { UI } from "./ui";
+
+/**
+ * The rule itself is `landingView` in `./navigation`, pure and tested there.
+ * This supplies the two live values it needs.
+ *
+ * `hasEverPlayed()` is read from localStorage SYNCHRONOUSLY rather than from
+ * the SRS store, which is async and may be account-backed. Waiting on the
+ * store would mean a frame of the home screen before the puzzle replaced it,
+ * which is the worst of both: a newcomer would watch the pitch flash past on
+ * the way to the thing that replaces it.
+ */
+function openingView(): View {
+  return landingView(
+    window.location.search,
+    hasEverPlayed(),
+    getOpeningPuzzle().slug,
+  );
+}
 
 /**
  * Navigation, on the History API rather than in component state.
@@ -29,7 +54,7 @@ import { UI } from "./ui";
  * going back would push a new entry and trap the user.
  */
 function useViewNavigation(): [View, (next: View) => void] {
-  const [view, setView] = useState<View>(() => viewFromSearch(window.location.search));
+  const [view, setView] = useState<View>(openingView);
 
   useEffect(() => {
     const onPop = (e: PopStateEvent) => {
@@ -39,7 +64,12 @@ function useViewNavigation(): [View, (next: View) => void] {
     window.addEventListener("popstate", onPop);
     // Make the entry the app opened on carry its own state, so the first back
     // out of a lesson has something to restore rather than a null.
-    window.history.replaceState({ view }, "", window.location.href);
+    //
+    // REPLACE rather than push when the landing rule redirected, so the URL
+    // names the puzzle (which is what makes it shareable and refreshable) and
+    // the back button still leaves the app rather than bouncing between the
+    // bare root and the opener.
+    window.history.replaceState({ view }, "", searchForView(view));
     return () => window.removeEventListener("popstate", onPop);
     // Runs once: the listener reads live state via setView.
     // eslint-disable-next-line react-hooks/exhaustive-deps

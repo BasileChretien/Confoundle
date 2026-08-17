@@ -5,6 +5,8 @@ import { ReviewView } from "../engine/ReviewView";
 import { TrapHuntView } from "../engine/TrapHuntView";
 import { HomeView } from "../engine/HomeView";
 import { ProgressPanel } from "../engine/ProgressPanel";
+import { Confounder, confounderStateFor } from "../engine/Confounder";
+import { getStats } from "./session";
 import { Button } from "../engine/ui";
 import { AboutView } from "../engine/AboutView";
 import { LessonsView } from "../engine/LessonsView";
@@ -181,7 +183,24 @@ function AppShell() {
               <h2 className="font-display text-[28px] font-semibold leading-[1.05] text-ink">
                 {t(UI.progress)}
               </h2>
-              <ProgressPanel progress={progress} />
+              {/*
+                THE ROUTE IS REACHABLE BEFORE THERE IS ANYTHING TO REPORT.
+                `HomeView` only offers the button once five skills are enrolled,
+                but a bookmark or a pasted URL has no such gate, and
+                `ProgressPanel` draws nothing at all with no rows. That left a
+                page carrying a heading and a back button and nothing between
+                them.
+
+                The Confounder fills it, which costs no new string and is the
+                better answer anyway: its opening line is addressed to exactly
+                this person, and an empty page that taunts you is a reason to go
+                and earn some numbers rather than a dead end.
+              */}
+              {progress.length === 0 ? (
+                <Confounder state={confounderStateFor(progress, getStats())} />
+              ) : (
+                <ProgressPanel progress={progress} />
+              )}
               <Button variant="ghost" onClick={() => go(HOME)}>
                 {t(UI.home)}
               </Button>

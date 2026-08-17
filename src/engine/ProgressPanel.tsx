@@ -17,16 +17,26 @@ import { CONFIDENCE_LEVELS, type Confidence } from "./scoring";
 import { StageRungs } from "./ui";
 
 /**
- * The progress panel: everything the standalone dashboard used to show, now
- * embedded directly in the home screen so there is one place to be. It is the
- * data half only, the Confounder's scoreboard, the standing strip, the SRS
- * buckets, the week ahead, the activity heatmap, the nemeses and conquests, the
- * per-skill list and calibration. The action of learning or reviewing lives in
- * the home controls above it, so this panel carries no tiles or buttons of its
- * own beyond the one practice prompt.
+ * The progress panel: the standing strip, the SRS buckets, the week ahead, the
+ * activity heatmap, the nemeses and conquests, the per-skill list and
+ * calibration.
  *
- * Takes `progress` as a prop (the home already has it loaded), so there is no
+ * IT IS THE REPORTING AND NOTHING ELSE, and it lives on its own route rather
+ * than on the home screen. It used to render inline on home, which meant the
+ * first thing a returning player saw was eleven measurements of themselves
+ * above the one thing they could do. Two pieces left when it moved: the
+ * Confounder, because a character that names an adversary is a hook rather
+ * than a report, and the practice prompt, because it is an action and actions
+ * belong with the other actions. Both now live in `HomeView`, which derives
+ * the creature's numbers through `confounderStateFor` so the two screens
+ * cannot disagree about them.
+ *
+ * Takes `progress` as a prop (the caller already has it loaded), so there is no
  * second async fetch and no loading flicker.
+ *
+ * Renders nothing at all when no skill has been started, so a player who
+ * reaches the route directly gets the route's own empty state rather than a
+ * column of zeroes.
  */
 
 const BUCKET_LABEL: Record<BucketId, keyof typeof UI> = {

@@ -27,7 +27,7 @@ export function PuzzleFlow({
   onExit,
 }: {
   puzzle: Puzzle;
-  /** Leave the puzzle for the home screen (which carries the dashboard). */
+  /** Leave the puzzle for the home screen. */
   onExit: () => void;
 }) {
   const [beat, setBeat] = useState<Beat>("setup");

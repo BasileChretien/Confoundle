@@ -119,13 +119,21 @@ describe("the home screen", () => {
 
   it("hides the practice prompt when reviews are actually waiting", () => {
     /*
-      Gated on the SAME derivation the Confounder uses, not on the `dueCount`
-      prop. Splitting those was a real defect while writing this: the creature
-      derives due-now from `progress`, so a prop-gated button could show
-      "nothing is due, practise anyway" on a screen with three reviews waiting.
-      Passing an inconsistent fixture here is what surfaced it.
+      THE FIXTURE IS THE TEST, and the first version of it was worthless.
+
+      The prompt is gated on the SAME derivation the Confounder uses, not on
+      the `dueCount` prop, so that the creature cannot say "nothing due just
+      now, practise anyway" on a screen with reviews waiting. To catch a
+      regression to prop-gating, the two must disagree ACROSS ZERO, because
+      that is the only thing the gate branches on.
+
+      This first passed `dueCount: 3` against six overdue skills. Both numbers
+      were non-zero, so `=== 0` was false either way and the test passed
+      against the very mutant it existed to catch. `dueCount: 0` with genuinely
+      overdue progress is the discriminating case: prop-gated, the prompt would
+      wrongly appear.
     */
-    const out = text(render(dueProgressFor(6), 3));
+    const out = text(render(dueProgressFor(6), 0));
     expect(out).not.toContain(UI.practiseBlurb.en);
   });
 });

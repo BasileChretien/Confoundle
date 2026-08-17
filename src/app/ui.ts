@@ -450,8 +450,8 @@ export const UI: Record<string, LocalizedText> = {
     bn: "থেকে",
     ar: "إلى",
   },
-  // A way out of a puzzle back to the home screen (which now carries the whole
-  // progress dashboard), offered at the lesson and share beats where the flow ends.
+  // A way back to the home screen: offered at the lesson and share beats where
+  // the puzzle flow ends, and on the standing page.
   home: {
     en: "Home",
     fr: "Accueil",

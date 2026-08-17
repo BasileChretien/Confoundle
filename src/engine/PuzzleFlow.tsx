@@ -62,7 +62,11 @@ export function PuzzleFlow({
       choiceId: choice.id,
       correct: choice.isCorrect,
     });
-    track("reveal_view", { slug: puzzle.slug });
+    // `reveal_view` used to fire here, one line after `commit`, so the two
+    // events were the same event and the funnel step between them was always
+    // 100%. It now fires in `RevealView` when the player actually pulls the
+    // lever, which makes the gap the share of people who commit and then never
+    // look. Same fixed event name, a step that can now be non-trivial.
     setBeat("reveal");
   }
 

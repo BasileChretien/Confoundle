@@ -47,7 +47,9 @@ import { PublishedView } from "./PublishedView";
 import { SurrogateView } from "./SurrogateView";
 import { AttenuationView } from "./AttenuationView";
 import { ConditionalView } from "./ConditionalView";
+import { RatersView } from "./RatersView";
 import { restrictConditional } from "./conditional";
+import { restrictRaters } from "./raters";
 import { restrictPublished } from "./published";
 import { restrictCrossed } from "./crossed";
 import { restrictSeries } from "./series";
@@ -312,6 +314,16 @@ export function DataViewRenderer({
           kind={view.kind}
         />
       ) : null;
+    case "raters":
+      // A slice-drawer on the RATERS: the setup names one judge and the reveal
+      // omits groupIds, so the reveal adds the judges who disagreed with them.
+      return view.kind === "onemarker" || view.kind === "everymarker" ? (
+        <RatersView
+          data={restrictRaters(data, { raterIds: view.groupIds })}
+          full={data}
+          kind={view.kind}
+        />
+      ) : null;
     case "attenuation":
       // Nothing filtered: the beats differ by which windows and outcomes are
       // drawn, and the reveal keeps the setup row untouched underneath.
@@ -493,6 +505,10 @@ export function scopeLabel(kind: DataViewKind): string {
       explicit `caption`, which is what `RevealView` prefers anyway; this is
       only the fallback.
     */
+    case "onemarker":
+      return "As one judge marked it";
+    case "everymarker":
+      return "As every judge marked it";
     case "onerow":
       return "In one case";
     case "bothrows":

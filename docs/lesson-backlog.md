@@ -5765,7 +5765,7 @@ imply precision the eleven cannot carry.
 
 <!-- skill: rater-leniency -->
 
-**Status: LEAD, ADJACENCY CHECKED, ONE HALF BLOCKED ON A DISTINCT REVEAL.** The last term
+**Status: SHIPPED 2026-08-17** as `who-marked-it`, skill `rater-leniency`, on a NEW shape, `raters`. It is the LENIENCY half that shipped. The central tendency half is still refused, for the reason set out below, and the whole adjacency argument is kept because it is what established which half was buildable. Original status when opened: LEAD, ADJACENCY CHECKED, ONE HALF BLOCKED ON A DISTINCT REVEAL. The last term
 left in the German IMPP psychology catalogue is **Beurteilungsfehler**, rating
 errors, which is conventionally taught as two things at once. They are not
 equally available, and the check below is why this entry exists in the shape it
@@ -5936,7 +5936,7 @@ lesson beat should carry the reader to the settings that matter now, which are
 the ones this entry already lists: examiner stringency, grant panels, peer
 review and clinical rating scales.
 
-**Status: READY TO AUTHOR.** Numbers read at source, reconciled, and the two
+**How the block was cleared.** Numbers read at source, reconciled, and the two
 requirements that blocked this entry are both met. What remains is the build,
 which is a new shape and therefore a full one: union member, derivation module
 with a test, renderer, `DataViewRenderer` case, `scopeLabel` entries, `full`

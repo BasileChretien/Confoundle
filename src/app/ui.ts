@@ -1055,7 +1055,6 @@ export const ACCOUNT: Record<string, LocalizedText> = {
     ru: "Не более одного письма в день и только при реальной просрочке. Отключить можно из любого письма, не входя в аккаунт.",
     ja: "メールは1日1通まで、実際に遅れているときだけ。どのメールからでも、ログインせずに停止できます。",
   },
-<<<<<<< HEAD
   remindMeYes: {
     en: "Yes, remind me",
     zh: "好，提醒我",
@@ -1079,7 +1078,7 @@ export const ACCOUNT: Record<string, LocalizedText> = {
     pt: "Não, obrigado",
     ru: "Нет, спасибо",
     ja: "いいえ、結構です",
-=======
+  },
   contributeAnswers: {
     en: "Count my answers",
     zh: "统计我的答案",
@@ -1103,7 +1102,6 @@ export const ACCOUNT: Record<string, LocalizedText> = {
     pt: "É assim que cada enigma consegue dizer-lhe o que a maioria escolheu. São enviadas três coisas, sem qualquer identificador: o enigma, a sua escolha e o quanto tinha a certeza. Se desligar, nada é enviado.",
     ru: "Именно так каждая задача может сказать вам, что выбрало большинство. Отправляются три вещи и ни одного идентификатора: задача, ваш выбор и насколько вы были уверены. Выключите, и не отправляется ничего.",
     ja: "各パズルが「多くの人はどれを選んだか」を示せるのは、これがあるからです。送られるのは三つだけで、識別子は一切ありません。どのパズルか、あなたの選択、どれくらい確信していたか。オフにすれば何も送られません。",
->>>>>>> a51746e (feat: count answers anonymously, and build the switch the policy promises)
   },
   signIn: {
     en: "Sign in",

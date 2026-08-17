@@ -14,20 +14,29 @@ import {
 } from "../srs/buckets";
 import type { SkillProgress } from "../srs/schedule";
 import { CONFIDENCE_LEVELS, type Confidence } from "./scoring";
-import { Confounder, type ConfounderState } from "./Confounder";
 import { StageRungs } from "./ui";
 
 /**
- * The progress panel: everything the standalone dashboard used to show, now
- * embedded directly in the home screen so there is one place to be. It is the
- * data half only, the Confounder's scoreboard, the standing strip, the SRS
- * buckets, the week ahead, the activity heatmap, the nemeses and conquests, the
- * per-skill list and calibration. The action of learning or reviewing lives in
- * the home controls above it, so this panel carries no tiles or buttons of its
- * own beyond the one practice prompt.
+ * The progress panel: the standing strip, the SRS buckets, the week ahead, the
+ * activity heatmap, the nemeses and conquests, the per-skill list and
+ * calibration.
  *
- * Takes `progress` as a prop (the home already has it loaded), so there is no
+ * IT IS THE REPORTING AND NOTHING ELSE, and it lives on its own route rather
+ * than on the home screen. It used to render inline on home, which meant the
+ * first thing a returning player saw was eleven measurements of themselves
+ * above the one thing they could do. Two pieces left when it moved: the
+ * Confounder, because a character that names an adversary is a hook rather
+ * than a report, and the practice prompt, because it is an action and actions
+ * belong with the other actions. Both now live in `HomeView`, which derives
+ * the creature's numbers through `confounderStateFor` so the two screens
+ * cannot disagree about them.
+ *
+ * Takes `progress` as a prop (the caller already has it loaded), so there is no
  * second async fetch and no loading flicker.
+ *
+ * Renders nothing at all when no skill has been started, so a player who
+ * reaches the route directly gets the route's own empty state rather than a
+ * column of zeroes.
  */
 
 const BUCKET_LABEL: Record<BucketId, keyof typeof UI> = {
@@ -184,10 +193,8 @@ function MasteryRow({ name, progress }: { name: string; progress: LessonProgress
 
 export function ProgressPanel({
   progress,
-  onPractise,
 }: {
   progress: readonly SkillProgress[];
-  onPractise: () => void;
 }) {
   const t = useT();
   const relative = useRelative();
@@ -226,36 +233,21 @@ export function ProgressPanel({
   });
   const conquered = rows.filter((r) => r.progress.state === "mastered");
 
-  const state: ConfounderState = {
-    learned: rows.length,
-    dueNow,
-    streak: stats.currentStreak,
-    catchRate: stats.catchRate,
-    played: stats.played,
-    burned: counts.burned,
-    misconceptions: rows.filter((r) => r.progress.misconceived).length,
-    allDone: rows.length === puzzles.length && counts.burned === puzzles.length,
-  };
-
   return (
     <div className="flex flex-col gap-5">
-      <Confounder state={state} />
+      {/*
+        THE MASCOT AND THE PRACTICE PROMPT BOTH LEFT THIS FILE, for opposite
+        reasons.
 
-      {dueNow === 0 ? (
-        <button
-          type="button"
-          onClick={onPractise}
-          className="flex w-full items-center justify-between gap-3 rounded-lg border border-brand/35 bg-brand/[0.07] px-3 py-3 text-start transition hover:bg-brand/[0.13] focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand"
-        >
-          <span className="flex flex-col">
-            <span className="font-display text-[15px] font-semibold text-ink">
-              {t(UI.practise)}
-            </span>
-            <span className="text-[12px] text-ink-soft">{t(UI.practiseBlurb)}</span>
-          </span>
-        </button>
-      ) : null}
+        The Confounder is a hook rather than a report. It names an adversary and
+        it is the only character in the interface, so it belongs on the screen a
+        returning player actually lands on. The practice prompt is an ACTION,
+        and actions belong beside the other actions rather than buried under
+        eleven data displays.
 
+        What is left here is the reporting, which is the part that moved behind
+        a tap.
+      */}
       {/* Standing: the satisfying numbers. */}
       <div className="grid grid-cols-4 gap-2">
         <Metric label={t(UI.streak)} value={String(stats.currentStreak)} />

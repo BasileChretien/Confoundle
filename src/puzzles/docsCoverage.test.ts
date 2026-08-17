@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import backlogDoc from "../../docs/lesson-backlog.md?raw";
 import auditDoc from "../../docs/exam-syllabus-audit.md?raw";
+import gapsDoc from "../../docs/plan-syllabus-gaps.md?raw";
 import { puzzles } from "./index";
 
 /**
@@ -249,6 +250,96 @@ describe("syllabus audit prose does not claim open work that has shipped", () =>
     expect(
       stale,
       "this lesson has shipped; add **Status: SHIPPED** to the section and name the slug",
+    ).toEqual([]);
+  });
+});
+
+/**
+ * THE THIRD PLANNING DOC, added after it rotted exactly as the other two did.
+ *
+ * `plan-syllabus-gaps.md` carries the six medical gaps that were deliberately
+ * kept out of the backlog queue because they needed deeper plans. Four of them
+ * grew a `SHIPPED` line when they shipped. Two did not: `statistical-power`
+ * shipped as `no-difference-found` and Neyman was closed as review items, and
+ * the document went on describing both as open gaps. Nothing could catch it,
+ * because the two guards above read the backlog and the audit and this file was
+ * not among them.
+ *
+ * Entry 4 tracks three skills at once, so a section may carry several tags and
+ * every one of them is parsed. The rule is deliberately symmetric: a registered
+ * skill demands a resolution line, and a resolution line demands that the work
+ * really is registered or really was closed.
+ */
+interface GapSection {
+  heading: string;
+  skills: string[];
+  body: string;
+}
+
+function gapSections(doc: string): GapSection[] {
+  return doc
+    .split(/^### /m)
+    .slice(1)
+    .filter((section) => /^\d+\.\s/.test(section.split("\n")[0]!.trim()))
+    .map((section) => ({
+      heading: section.split("\n")[0]!.trim(),
+      skills: [...section.matchAll(/<!--\s*skill:\s*([a-z0-9-]+)\s*-->/g)].map(
+        (m) => m[1]!,
+      ),
+      body: section,
+    }));
+}
+
+const gaps = gapSections(gapsDoc);
+const RESOLVED_MARKER = /^####\s+(SHIPPED|CLOSED|REFUSED)\b/m;
+
+describe("the syllabus gap plan stays honest about what has shipped", () => {
+  it("finds the numbered gap entries at all", () => {
+    // Guard on the guard: a heading rename would otherwise leave every
+    // assertion below iterating an empty list and passing on nothing.
+    expect(gaps.length).toBeGreaterThanOrEqual(6);
+  });
+
+  it("gives every gap entry at least one skill tag", () => {
+    const untagged = gaps.filter((g) => g.skills.length === 0).map((g) => g.heading);
+    expect(
+      untagged,
+      "tag this gap with the skill id it ships (or would ship) under",
+    ).toEqual([]);
+  });
+
+  it("resolves a gap once any of its skills is in the registry", () => {
+    // The check that would have caught statistical power here.
+    const stale = gaps
+      .filter(
+        (g) => g.skills.some((s) => SKILLS.has(s)) && !RESOLVED_MARKER.test(g.body),
+      )
+      .map((g) => `${g.heading} (${g.skills.filter((s) => SKILLS.has(s)).join(", ")} registered)`);
+    expect(
+      stale,
+      "this gap has shipped; add a #### SHIPPED line naming the slug",
+    ).toEqual([]);
+  });
+
+  it("does not let a section claim SHIPPED for a skill that does not exist", () => {
+    const bogus = gaps
+      .filter((g) => /^####\s+SHIPPED\b/m.test(g.body) && !g.skills.some((s) => SKILLS.has(s)))
+      .map((g) => `${g.heading} (none of ${g.skills.join(", ") || "no tags"} is registered)`);
+    expect(
+      bogus,
+      "this section says SHIPPED but no tagged skill is in the registry",
+    ).toEqual([]);
+  });
+
+  it("does not let a section claim CLOSED for work that actually shipped", () => {
+    // The mirror of the rot: closing an entry and then shipping it anyway
+    // leaves the document telling the next reader not to bother.
+    const contradictory = gaps
+      .filter((g) => /^####\s+CLOSED\b/m.test(g.body) && g.skills.some((s) => SKILLS.has(s)))
+      .map((g) => g.heading);
+    expect(
+      contradictory,
+      "this section says CLOSED but its skill is in the registry",
     ).toEqual([]);
   });
 });

@@ -35,7 +35,9 @@ describe("the shareable lesson page", () => {
     expect(html).toContain(escapeHtml(puzzle.lesson.takeaway.en));
     expect(html).toContain(escapeHtml(puzzle.lesson.skillName.en));
     // And it warns the reader, so nobody spoils a puzzle they wanted to play.
-    expect(html).toContain("gives the answer away");
+    // The page still warns that it spoils, in the wording that now also says
+    // this card can no longer test you.
+    expect(html).toContain("can no longer catch you");
   });
 
   it("unfurls with the lesson's own title and blurb", () => {
@@ -70,14 +72,22 @@ describe("the shareable lesson page", () => {
     expect(page("asked-twice", "ar")).toContain('dir="rtl"');
   });
 
-  it("links back into the puzzle and out to the source", () => {
+  it("sends the reader to an unspoiled puzzle, not the one they just read", () => {
     const html = page("the-months-before");
     const puzzle = puzzles.find((p) => p.slug === "the-months-before")!;
     expect(html).toContain(escapeHtml(puzzle.provenance.url!));
     // Relative, so a fork or a preview deployment keeps its own visitors
     // instead of handing them to the production site. Only the tags that
     // cannot take a relative URL are absolute.
-    expect(html).toContain('href="/?p=the-months-before"');
+    /**
+     * THE POINT OF THIS PAGE'S CALL TO ACTION. It sits directly below the
+     * answer, so offering the puzzle version of THIS card offers the one
+     * puzzle that cannot catch anybody. It goes to the app root instead, and
+     * the app picks today's puzzle at runtime: baking a slug in here would go
+     * stale the day after the page was prerendered.
+     */
+    expect(html).toContain('class="cta" href="/"');
+    expect(html).not.toContain('href="/?p=the-months-before"');
     const body = html.split("<body>")[1];
     expect(body).not.toContain(ORIGIN);
   });

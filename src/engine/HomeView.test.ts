@@ -79,6 +79,33 @@ describe("the home screen", () => {
     expect(text(render(progressFor(6)))).toContain(UI.allLessons.en);
   });
 
+  it("opens on the calibration run, not on what you owe", () => {
+    /*
+      The top slot used to carry "Reviews due: 3", which tells a returning
+      player what they owe rather than offering them something to do. The run
+      is the thing worth doing most days, so it takes the headline.
+    */
+    const out = text(render(dueProgressFor(6), 3));
+    const run = out.indexOf("How sure are you?");
+    const owed = out.indexOf(UI.reviewsBlurb.en);
+    expect(run, "the calibration run is missing from home").toBeGreaterThan(-1);
+    expect(owed, "the review card vanished instead of moving down").toBeGreaterThan(-1);
+    expect(run).toBeLessThan(owed);
+  });
+
+  it("keeps the schedule reachable, with its count, directly below", () => {
+    // Demoted, not deleted: the minority who want the ladder lose the top
+    // slot and nothing else.
+    const out = text(render(dueProgressFor(6), 3));
+    expect(out).toContain(UI.reviewsDue.en);
+    expect(out).toContain("3");
+  });
+
+  it("offers the run before anything has been learned too", () => {
+    // A player one puzzle in still gets the mode as their headline.
+    expect(text(render(progressFor(1)))).toContain("How sure are you?");
+  });
+
   it("does not offer the standing page to somebody with two skills", () => {
     const out = text(render(progressFor(2)));
     expect(out).not.toContain(UI.progress.en);

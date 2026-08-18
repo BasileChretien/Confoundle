@@ -193,9 +193,28 @@ export function HomeView({
 
   return (
     <div className="flex flex-col gap-4">
+      {/*
+        THE CALIBRATION RUN IS THE HEADLINE, and what it displaced says more
+        than what it is. This slot used to open on "Reviews due: 3", which is a
+        debt notice: it tells a returning player what they owe rather than
+        offering them something to do. The run is the thing worth doing most
+        days, it is the same length every time, and it asks the question the
+        whole deck is about.
+
+        The schedule has not gone anywhere. It sits directly below, still
+        carrying its count when something is genuinely due, so the minority who
+        want the ladder lose nothing but the top slot.
+      */}
+      <PrimaryCard
+        tone="gold"
+        eyebrow={t({ en: "Calibration run" })}
+        title={t({ en: "How sure are you?" })}
+        onClick={onStartRun}
+      />
+
       {dueCount > 0 ? (
         <PrimaryCard
-          tone="gold"
+          tone="brand"
           eyebrow={`${t(UI.reviewsDue)}: ${dueCount}`}
           title={t(UI.reviewsBlurb)}
           onClick={onStartReviews}
@@ -232,11 +251,6 @@ export function HomeView({
           <div className="flex gap-2">
             <SecondaryButton label={t(UI.allLessons)} onClick={onOpenLessons} grow />
             <SecondaryButton label={t(UI.trapHunt)} onClick={onStartTrapHunt} grow />
-            <SecondaryButton
-              label={t({ en: "Calibration run" })}
-              onClick={onStartRun}
-              grow
-            />
             {learned >= STANDING_THRESHOLD ? (
               <SecondaryButton
                 label={t(UI.progress)}

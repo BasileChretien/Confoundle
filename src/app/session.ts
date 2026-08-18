@@ -396,7 +396,32 @@ export function setNickname(name: string): void {
 }
 
 // ---- friends board: a local tally of results friends paste in ----
-const FRIENDS_KEY = "confoundle:friends:v1";
+
+/**
+ * BUMPED TO v2 BECAUSE THE KEYS CHANGED MEANING WITHOUT CHANGING SHAPE.
+ *
+ * This store is `[puzzleNo][name]`, and `puzzleNo` used to be days since
+ * launch. It is now the puzzle's position in the registry. The shape is
+ * identical, every value still parses, and nothing about a stored entry says
+ * which numbering produced it, so a returning player's v1 data would have been
+ * read straight back under the new meaning.
+ *
+ * That is not a distant edge case. Launch was 2026-07-01, so the old numbers
+ * already run 1 to 49 and climb daily, while the new ones run 1 to 73: every
+ * key in that range collides today, and the ranges coincide entirely within a
+ * month. A board opened on the puzzle at registry position 7 would have shown
+ * the friends who played whatever card the rotation served on day 7, with
+ * their names, scores and streaks, presented as though they had played this
+ * one. Which is the defect this whole change removes, reintroduced one layer
+ * down and invisible, since the parser cannot tell the two numberings apart
+ * either.
+ *
+ * Bumping drops the stale board rather than migrating it. There is nothing to
+ * migrate to: a v1 entry records that somebody scored 36 on day 7, and which
+ * card that was depended on a rotation over a registry that has itself grown
+ * since. The information needed to place it correctly was never stored.
+ */
+const FRIENDS_KEY = "confoundle:friends:v2";
 type FriendEntry = { caught: boolean; score: number; streak: number };
 type FriendsStore = Record<string, Record<string, FriendEntry>>; // [puzzleNo][name]
 

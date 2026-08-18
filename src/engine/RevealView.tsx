@@ -5,6 +5,7 @@ import { track } from "../app/analytics";
 import { useReducedMotion } from "./useReducedMotion";
 import { Badge, Button } from "./ui";
 import {
+  canScrub,
   DataViewRenderer,
   dataTitle,
   scopeLabel,
@@ -74,6 +75,14 @@ export function RevealView({
     exists. Replay walks the figure back and forward again; it must not take
     the explanation away with it.
   */
+  /**
+   * How far the reader has dragged, 0 the setup view and 1 the reveal. Only
+   * meaningful for a shape that opted into scrubbing; everything else keeps
+   * the single tap. The scrub is the same beat rather than a different one: it
+   * still withholds every word of commentary until the reader arrives, and it
+   * still refuses to move on its own.
+   */
+  const [phase, setPhase] = useState(0);
   const [revealed, setRevealed] = useState(false);
   const [showingReveal, setShowingReveal] = useState(false);
 
@@ -133,7 +142,35 @@ export function RevealView({
     replayTimer.current = window.setTimeout(() => setShowingReveal(true), 650);
   }
 
-  const view = showingReveal ? puzzle.reveal.view : puzzle.setup.initialView;
+  const scrubbable = canScrub(data);
+
+  /*
+    TWO VIEWS, BECAUSE THEY ANSWER TWO DIFFERENT QUESTIONS, and collapsing them
+    into one was a real defect rather than a tidy simplification.
+
+    `renderView` is what the chart is handed. A scrubbed figure needs the
+    REVEAL view, because the renderer interpolates between the two itself from
+    `phase`.
+
+    `shownView` is the state the reader is actually looking at, and it is what
+    labels the figure. Passing the reveal view to both meant the caption read
+    "Compared to the people" from the very first paint, while the chart was
+    still visibly drawing the relative layout, for the whole first half of
+    every drag. A figure captioned as something it is not is a small version of
+    exactly the dishonesty this whole feature exists to avoid.
+
+    The midpoint is where it switches, matching `riskFrameAt`'s own `framed`
+    flip, so the caption changes at the same instant the frame appears rather
+    than at some second threshold of its own.
+  */
+  const renderView = scrubbable || showingReveal
+    ? puzzle.reveal.view
+    : puzzle.setup.initialView;
+  const shownView = scrubbable
+    ? phase >= 0.5
+      ? puzzle.reveal.view
+      : puzzle.setup.initialView
+    : renderView;
   const caught = committed.isCorrect;
   const score = scoreFor(caught, confidence);
   const metric = t(dataTitle(data));
@@ -160,10 +197,21 @@ export function RevealView({
               className="font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-mute"
               aria-live="polite"
             >
-              {view.caption ? t(view.caption) : t({ en: scopeLabel(view.kind) })}
+              {shownView.caption
+                ? t(shownView.caption)
+                : t({ en: scopeLabel(shownView.kind) })}
             </span>
-            {/* Nothing to replay until the flip has happened once. */}
-            {revealed && !reduced ? (
+            {/*
+              REPLAY IS FOR THE FLIP, AND A SCRUBBED FIGURE HAS NO FLIP.
+
+              It toggles `showingReveal`, which a scrubbed figure does not read:
+              that figure follows `phase`. So on a scrubbable shape this button
+              fired its analytics event and changed nothing on screen at all,
+              which is worse than not offering it. The drag itself is the better
+              affordance anyway, so the slider stays mounted after the reveal
+              instead and this is hidden.
+            */}
+            {revealed && !reduced && !scrubbable ? (
               <button
                 type="button"
                 onClick={replay}
@@ -175,14 +223,31 @@ export function RevealView({
           </div>
         </figcaption>
 
-        {/* Keyed on the whole view, not just its kind: a beat can flip to the
-            same kind with a different slice of the data (setup shows one
-            stratum, the reveal shows them all). */}
-        <div key={viewKey(view)} className="cf-enter-sm">
-          <DataViewRenderer data={data} view={view} animate highlightWinner />
+        {/*
+          Keyed on the whole view, not just its kind: a beat can flip to the
+          same kind with a different slice of the data (setup shows one
+          stratum, the reveal shows them all).
+
+          NOT KEYED AT ALL WHILE SCRUBBING. A key change remounts the subtree,
+          and remounting mid-drag tears out the element the pointer is captured
+          on, so the bars would jump once and then stop following the thumb.
+          The entry animation goes with it, which is right: under a scrub the
+          reader is the animation.
+        */}
+        <div
+          key={scrubbable ? "scrubbed" : viewKey(renderView)}
+          className={scrubbable ? undefined : "cf-enter-sm"}
+        >
+          <DataViewRenderer
+            data={data}
+            view={renderView}
+            animate
+            highlightWinner
+            phase={scrubbable ? phase : undefined}
+          />
         </div>
 
-        {data.type === "rates" ? <Legend data={data} view={view} /> : null}
+        {data.type === "rates" ? <Legend data={data} view={renderView} /> : null}
       </figure>
 
       {/*
@@ -194,9 +259,52 @@ export function RevealView({
         keyboard and by a screen reader, and so the reduced-motion path is the
         same path rather than a second one that skips the beat.
       */}
-      {!revealed ? (
-        <Button onClick={pull}>{t({ en: "Reveal the answer" })}</Button>
-      ) : (
+      {!revealed || scrubbable ? (
+        scrubbable ? (
+          /*
+            A NATIVE RANGE INPUT RATHER THAN A CUSTOM DRAG, and the choice is
+            mostly about who can use it. A hand-rolled pointer handler would
+            have to reimplement keyboard control, the slider role, the value
+            announcements and touch capture, and would get some of them wrong.
+            This has all of it: arrow keys step, Home and End jump to the two
+            authored views, and a screen reader reads it as a slider.
+
+            It also makes the reduced-motion question disappear. There is no
+            animation to suppress, because the reader is the one moving it.
+          */
+          <div className="flex flex-col gap-2">
+            <label
+              htmlFor="reveal-scrub"
+              className="text-center font-sans text-[11px] font-semibold uppercase tracking-eyebrow text-ink-mute"
+            >
+              {t({ en: "Drag to see the same data the other way" })}
+            </label>
+            <input
+              id="reveal-scrub"
+              type="range"
+              min={0}
+              max={1}
+              step={0.01}
+              value={phase}
+              aria-label={t({ en: "Drag to see the same data the other way" })}
+              onChange={(e) => {
+                const next = Number(e.target.value);
+                setPhase(next);
+                // Arriving is what earns the commentary, exactly as the tap
+                // does on every other shape. It is one-way: letting it lapse
+                // when the reader drags back would snatch away the
+                // explanation they just uncovered.
+                if (next >= 1) pull();
+              }}
+              className="w-full accent-brand focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand"
+            />
+          </div>
+        ) : (
+          <Button onClick={pull}>{t({ en: "Reveal the answer" })}</Button>
+        )
+      ) : null}
+
+      {revealed ? (
         <div className="cf-enter flex flex-col gap-4">
           <div className="flex items-center justify-between gap-2">
             {/*
@@ -287,7 +395,7 @@ export function RevealView({
               : t({ en: "So what's the skill? →" })}
           </Button>
         </div>
-      )}
+      ) : null}
     </section>
   );
 }

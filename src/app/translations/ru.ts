@@ -3,6 +3,8 @@
  * the English text exactly. Native review pending; correct in place.
  */
 export const ru: Record<string, string> = {
+  // ---- Scrub lever ----
+  "Drag to see the same data the other way": "Потяните, чтобы увидеть те же данные иначе",
   // ---- Calibration run ----
   "Calibration run": "Проверка уверенности",
   "Score: {n}": "Счёт: {n}",

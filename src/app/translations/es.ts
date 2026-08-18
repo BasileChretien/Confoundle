@@ -4,6 +4,8 @@
  * Basile; corregir sobre la marcha.
  */
 export const es: Record<string, string> = {
+  // ---- Scrub lever ----
+  "Drag to see the same data the other way": "Desliza para ver los mismos datos de otra manera",
   // ---- Calibration run ----
   "Calibration run": "Ronda de calibración",
   "Score: {n}": "Puntuación: {n}",

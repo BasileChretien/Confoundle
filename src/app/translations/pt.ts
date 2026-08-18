@@ -3,6 +3,8 @@
  * Keys must match the English text exactly. Native review pending; correct in place.
  */
 export const pt: Record<string, string> = {
+  // ---- Scrub lever ----
+  "Drag to see the same data the other way": "Arraste para ver os mesmos dados de outra forma",
   // ---- Calibration run ----
   "Calibration run": "Ronda de calibração",
   "Score: {n}": "Pontuação: {n}",

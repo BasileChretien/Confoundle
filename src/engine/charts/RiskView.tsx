@@ -4,7 +4,7 @@ import { useReducedMotion } from "../useReducedMotion";
 import { useCountUp } from "../useCountUp";
 import { fillSlots } from "./announce";
 import { colorFor, WINNER_GOLD } from "./palette";
-import { formatRiskPct, riskSummary } from "./risk";
+import { formatRiskPct, riskFrameAt, riskSummary } from "./risk";
 
 /**
  * The same two counts, drawn twice.
@@ -63,6 +63,7 @@ function ArmBar({
   colorHex,
   framed,
   animate,
+  scrubbing,
 }: {
   arm: RiskArm;
   fill: number;
@@ -74,10 +75,21 @@ function ArmBar({
   colorHex: string;
   framed: boolean;
   animate: boolean;
+  /**
+   * True while a drag is driving `fill` directly.
+   *
+   * `useCountUp` is the wrong primitive under a scrub and not by a little:
+   * its effect restarts an 800ms ease every time the target changes, so a
+   * drag would relaunch the animation on every frame and the bar would
+   * lag the thumb by most of a second while never arriving. Under a scrub
+   * the reader IS the animation, so the raw value is what should be drawn.
+   */
+  scrubbing?: boolean;
 }) {
   const t = useT();
   const reduced = useReducedMotion();
-  const value = useCountUp(fill, animate, 800, reduced);
+  const eased = useCountUp(fill, animate && !scrubbing, 800, reduced);
+  const value = scrubbing ? fill : eased;
   const height = Math.max(0, Math.min(1, value)) * 100;
 
   return (
@@ -139,16 +151,33 @@ export function RiskView({
   data,
   view,
   animate,
+  phase,
 }: {
   data: RiskData;
   view: DataViewKind;
   animate: boolean;
+  /**
+   * Position between the two authored views, 0 relative and 1 absolute, when
+   * the reader is dragging rather than being shown. Absent means the discrete
+   * flip, which is what every other shape still does.
+   *
+   * `riskFrameAt` owns the rule that makes this safe: layout interpolates and
+   * values do not, so no numeral is printed at any point in between.
+   */
+  phase?: number;
 }) {
   const t = useT();
   const s = riskSummary(data);
-  const relative = view === "relative";
+  const scrubbing = phase !== undefined;
+  const frame = scrubbing ? riskFrameAt(data, phase) : null;
+  const relative = frame ? !frame.framed : view === "relative";
 
-  const arms: Array<{ arm: RiskArm; fill: number; readout: string | null }> = relative
+  const arms: Array<{ arm: RiskArm; fill: number; readout: string | null }> = frame
+    ? [
+        { arm: data.control, fill: frame.fills[0], readout: frame.readouts?.[0] ?? null },
+        { arm: data.treated, fill: frame.fills[1], readout: frame.readouts?.[1] ?? null },
+      ]
+    : relative
     ? [
         { arm: data.control, fill: 1, readout: null },
         { arm: data.treated, fill: s.remainingShare, readout: null },
@@ -180,8 +209,9 @@ export function RiskView({
             fill={fill}
             readout={readout}
             colorHex={colorFor(i)}
-            framed={!relative}
+            framed={frame ? frame.framed : !relative}
             animate={animate}
+            scrubbing={scrubbing}
           />
         ))}
       </div>

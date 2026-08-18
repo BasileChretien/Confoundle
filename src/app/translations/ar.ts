@@ -4,6 +4,8 @@
  * Arabic. French was used only as a secondary reference.
  */
 export const ar: Record<string, string> = {
+  // ---- Scrub lever ----
+  "Drag to see the same data the other way": "اسحب لترى البيانات نفسها بطريقة أخرى",
   // ---- Calibration run ----
   "Calibration run": "جولة معايرة الثقة",
   "Score: {n}": "النتيجة: {n}",

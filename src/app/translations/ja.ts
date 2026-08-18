@@ -4,6 +4,8 @@
  * Native review pending; correct in place.
  */
 export const ja: Record<string, string> = {
+  // ---- Scrub lever ----
+  "Drag to see the same data the other way": "スライドすると同じデータが別の見え方になります",
   // ---- Calibration run ----
   "Calibration run": "自信度ラウンド",
   "Score: {n}": "スコア {n}",

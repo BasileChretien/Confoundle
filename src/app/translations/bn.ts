@@ -3,6 +3,8 @@
  * the English text exactly. French kept only as a secondary reference.
  */
 export const bn: Record<string, string> = {
+  // ---- Scrub lever ----
+  "Drag to see the same data the other way": "একই তথ্য অন্যভাবে দেখতে টানুন",
   // ---- Calibration run ----
   "Calibration run": "আত্মবিশ্বাস যাচাই",
   "Score: {n}": "স্কোর: {n}",

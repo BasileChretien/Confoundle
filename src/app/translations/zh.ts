@@ -4,6 +4,8 @@
  * reference only.
  */
 export const zh: Record<string, string> = {
+  // ---- Scrub lever ----
+  "Drag to see the same data the other way": "拖动即可换一种方式看同样的数据",
   // ---- Calibration run ----
   "Calibration run": "校准挑战",
   "Score: {n}": "得分：{n}",

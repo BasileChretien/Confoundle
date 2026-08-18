@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import type { RiskData } from "../../puzzles/schema";
-import { formatRiskPct, riskSummary } from "./risk";
+import { formatRiskPct, riskFrameAt, riskSummary } from "./risk";
 
 const text = (en: string) => ({ en });
 
@@ -75,5 +75,76 @@ describe("risk derivation", () => {
     expect(formatRiskPct(0.31)).toBe("31%");
     expect(formatRiskPct(0.075)).toBe("7.5%");
     expect(formatRiskPct(0.0527)).toBe("5.3%");
+  });
+});
+
+
+/**
+ * The scrub between the two views, and the property that makes it honest:
+ * it interpolates LAYOUT and never VALUES.
+ *
+ * A bar's height is a position on the page and may move smoothly. A printed
+ * number is a claim about the world, and no reading of the source table
+ * supports "7.4%" at phase 0.37. On a deck whose stated position is that every
+ * figure was read off a table, a tweened numeral would be a fabricated data
+ * frame drawn by the app itself.
+ */
+describe("scrubbing between the two views", () => {
+  const s = riskSummary(data);
+
+  it("starts exactly on the relative view the puzzle authored", () => {
+    /*
+      THE ENDPOINTS ARE THE CONTRACT, asserted with equality rather than
+      closeness. A scrub that merely passes near the two authored states shows
+      a chart nobody wrote at the two moments a reader actually studies. This
+      is also what caught the naive lerp, which missed its own endpoint by
+      3e-17 and would have made the assertion below meaningless if softened.
+    */
+    expect(riskFrameAt(data, 0).fills).toEqual([1, s.remainingShare]);
+    expect(riskFrameAt(data, 0).readouts).toBeNull();
+    expect(riskFrameAt(data, 0).framed).toBe(false);
+  });
+
+  it("ends exactly on the absolute view the puzzle authored", () => {
+    expect(riskFrameAt(data, 1).fills).toEqual([s.controlRisk, s.treatedRisk]);
+    expect(riskFrameAt(data, 1).readouts).toEqual([
+      formatRiskPct(s.controlRisk),
+      formatRiskPct(s.treatedRisk),
+    ]);
+    expect(riskFrameAt(data, 1).framed).toBe(true);
+  });
+
+  it("prints no number anywhere in between", () => {
+    for (let t = 0; t < 1; t += 0.01) {
+      expect(
+        riskFrameAt(data, t).readouts,
+        `a numeral appeared mid-scrub at phase ${t.toFixed(2)}`,
+      ).toBeNull();
+    }
+  });
+
+  it("moves the control bar one way only, so a drag never doubles back", () => {
+    let previous = riskFrameAt(data, 0).fills[0];
+    for (let t = 0.02; t <= 1; t += 0.02) {
+      const control = riskFrameAt(data, t).fills[0];
+      expect(control).toBeLessThanOrEqual(previous + 1e-12);
+      previous = control;
+    }
+  });
+
+  it("clamps rather than extrapolating past either end", () => {
+    // A pointer can report a value outside the track, and a bar drawn at
+    // -0.2 or 1.4 is a figure nobody authored in either direction.
+    expect(riskFrameAt(data, -3)).toEqual(riskFrameAt(data, 0));
+    expect(riskFrameAt(data, 9)).toEqual(riskFrameAt(data, 1));
+  });
+
+  it("keeps every fill inside the drawn column", () => {
+    for (let t = 0; t <= 1; t += 0.05) {
+      for (const fill of riskFrameAt(data, t).fills) {
+        expect(fill).toBeGreaterThanOrEqual(0);
+        expect(fill).toBeLessThanOrEqual(1);
+      }
+    }
   });
 });

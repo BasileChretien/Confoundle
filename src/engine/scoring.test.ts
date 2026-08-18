@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { ALL_DICTIONARIES as DICTIONARIES } from "../app/translations/all";
+import { isAcceptableScore } from "../server/scoreBounds";
 import { CONFIDENCE_LEVELS, reactionFor, scoreFor, type Confidence } from "./scoring";
 
 /**
@@ -11,8 +12,9 @@ import { CONFIDENCE_LEVELS, reactionFor, scoreFor, type Confidence } from "./sco
  * `charts/scopeLabels.test.ts` closes, because `reactionFor` also returns bare
  * English which `RevealView` wraps as `t({ en: reactionFor(...) })`, a computed
  * argument that `inlineChrome.test.ts` cannot match and `coverage.test.ts`
- * cannot reach. And it PINS THE KNOWN DEFECT in the payoff table so that the
- * fix cannot be quietly forgotten and the table cannot be quietly changed.
+ * cannot reach. And it holds the payoff table to being a PROPER rule, so the
+ * property that makes the wager mean what it says cannot be lost again by
+ * somebody retuning the numbers with a green suite.
  */
 
 /** Expected score of a stake, given the player's own belief `p` that they are right. */
@@ -95,14 +97,16 @@ describe("the payoff table rewards saying what you believe", () => {
 
   it("stays inside the range the score endpoint accepts", () => {
     /*
-      `functions/api/score.ts` rejects anything outside -50..200 with a 400,
+      IMPORTED, NOT RETYPED, because a hand-copied bound is exactly the
+      defect `declaredColors`, `scopeLabels` and `localeNumerals` exist to
+      catch. The endpoint rejects anything outside these with a 400,
       and `global.ts` turns a failed request into a silent null, so a table
       that overflowed would make the percentile quietly disappear rather than
       break loudly.
     */
     for (const c of CONFIDENCE_LEVELS) {
-      expect(scoreFor(true, c)).toBeLessThanOrEqual(200);
-      expect(scoreFor(false, c)).toBeGreaterThanOrEqual(-50);
+      expect(isAcceptableScore(scoreFor(true, c))).toBe(true);
+      expect(isAcceptableScore(scoreFor(false, c))).toBe(true);
     }
   });
 });

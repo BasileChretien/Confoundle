@@ -86,11 +86,11 @@ import { restrictSeries } from "./series";
  *
  * IT USED TO ASK THE SHAPE, AND THAT WAS WRONG IN A WAY THAT SHIPPED PAST
  * 1921 GREEN TESTS. `rates` was added to a set of scrubbable types, verified
- * against `kidney-stones`, and declared to cover the 30 rates puzzles. An
- * audit of all 30 found that exactly TWO author the aggregate/stratified pair
+ * against `kidney-stones`, and declared to cover the 31 rates puzzles. An
+ * audit of all 31 found that exactly TWO author the aggregate/stratified pair
  * the code assumed, and one of those two runs the other way round
  * (`stage-migration` is stratified at the setup and aggregate at the reveal).
- * The remaining 28 are stratified on both beats, differing only by which
+ * Of the other 29, eighteen are stratified on both beats and eleven aggregate
  * groups or strata each view restricts.
  *
  * Three things went wrong for those 28, all invisible in English on the one

@@ -144,8 +144,8 @@ export function RevealView({
 
   /*
     Asked of the PUZZLE, not the shape. A capability that depended only on the
-    data type claimed 30 rates puzzles and was correct for one of them: the
-    other 29 either restrict which groups or strata each beat draws, or run
+    data type claimed 31 rates puzzles and was correct for one of them: the
+    other 30 either restrict which groups or strata each beat draws, or run
     the pooled and split views the other way round.
   */
   const scrubbable = canScrub(data, puzzle.setup.initialView, puzzle.reveal.view);

@@ -87,7 +87,7 @@ export interface RateChartProps {
    * pulled, 0 being `from`. Absent means the discrete flip.
    *
    * EACH LAYER RENDERS FROM ITS OWN VIEW. A view can restrict which groups or
-   * strata it draws, and 28 of the 30 rates puzzles use that to hold something
+   * strata it draws, and 29 of the 31 rates puzzles use that to hold something
    * back until the reveal. Building both layers from one view dropped the
    * setup's restriction and drew the withheld group at phase 0, which spoils
    * the puzzle before the reader has touched it.
@@ -145,7 +145,13 @@ export function RateChart({
           // The panels arrive from the middle, so the split reads as the pooled
           // picture coming apart rather than as a second chart appearing.
           separation < 1
-            ? { transform: `scaleX(${0.82 + 0.18 * separation})` }
+            ? // KNOWN AND DEFERRED, twice reviewed and twice judged shippable.
+              // This is one shared-centre scale of the whole panel block, not
+              // two panels sliding apart, so it squeezes the text inside them
+              // by up to 18% mid-drag. It is exactly 0 at both rest states, so
+              // nobody sees it at either authored view. Replacing it with a
+              // per-panel translation is the fix, and it is a separate change.
+              { transform: `scaleX(${0.82 + 0.18 * separation})` }
             : undefined
         }
       >
@@ -220,24 +226,50 @@ export function RateChart({
   // whose setup is the split view is scrubbed backwards through it.
   const frame = ratesScrubFrame(pooledIsFrom ? scrub.phase : 1 - scrub.phase);
 
+  /*
+    ALSO KNOWN AND DEFERRED: the layer that is not being shown keeps its text
+    in the DOM, since `opacity: 0` and `aria-hidden` remove it from sight and
+    from the accessibility tree but not from `innerText`, page search or copy.
+    A determined reader could search for a number the reveal has not yet given
+    them. Narrow, but mildly in tension with this beat's promise, and the fix
+    (swapping to `display: none` outside the crossfade window, or `inert`) is
+    a separate change from this one.
+
+    WHICH LAYER IS ANNOUNCED IS DECIDED BY DIRECTION, NOT BY OPACITY.
+
+    Comparing `frame.pooled` against `frame.split` is direction-BLIND: the two
+    are exactly equal at the midpoint, so the tie-break always favoured the
+    split layer. On a forward puzzle split IS the reveal, so that happened to
+    be right. On `stage-migration`, whose reveal is the pooled view, it exposed
+    the SETUP's own deceptive by-stage table at phase 0.5 while `RevealView`'s
+    caption had already switched to the reveal's label. That is the caption and
+    figure disagreeing again, narrowed to a single reachable value rather than
+    to half the drag, and 0.5 is an ordinary place for a `step={0.01}` slider
+    to rest.
+
+    `RevealView` picks the caption with `phase >= 0.5` against the authored
+    from/to pair, so this uses exactly the same rule and the two cannot part
+    company at any phase.
+  */
+  const revealSideShowing = scrub.phase >= 0.5;
+  const pooledIsRevealSide = !pooledIsFrom;
+  const exposePooled = pooledIsRevealSide === revealSideShowing;
+
   return (
     <div className="grid">
       <div
         className="col-start-1 row-start-1"
         style={{ opacity: frame.pooled }}
-        // Exactly one layer is ever exposed to assistive tech. Thresholding
-        // each at 0.5 independently left BOTH readable at phase 0.5, so a
-        // screen reader met the pooled and split figures at once, which is the
-        // one reading of this card that is never true. Comparing them instead
-        // means the more visible layer is always the one announced.
-        aria-hidden={frame.pooled <= frame.split}
+        // Exactly one layer is ever exposed to assistive tech, and which one
+        // follows the same rule the caption uses.
+        aria-hidden={!exposePooled}
       >
         {pooledLayer(pooledData)}
       </div>
       <div
         className="col-start-1 row-start-1"
         style={{ opacity: frame.split }}
-        aria-hidden={frame.split < frame.pooled}
+        aria-hidden={exposePooled}
       >
         {splitLayer(splitData, frame.separation)}
       </div>

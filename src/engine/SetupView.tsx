@@ -53,6 +53,12 @@ export function SetupView({
         the choices as they arrive. Ending the block here rather than around the
         whole beat is the entire trick, since a sticky element pinned inside a
         block that also held the answers would hang over them instead.
+
+        `z-10` is carried over from the bar this replaces. A positioned element
+        paints above its static siblings anyway, so nothing depends on it today,
+        but leaving it implicit would mean a later wrapper with a stacking
+        context of its own could put the choices over the pinned question with
+        nothing to point at.
       */}
       <div className="flex flex-col gap-3">
         <header className="flex flex-col gap-2">
@@ -88,7 +94,7 @@ export function SetupView({
           ) : null}
         </figure>
 
-        <p className="sticky bottom-0 -mx-5 border-t border-rule bg-paper px-5 py-3 text-center font-display text-base font-medium text-ink shadow-[0_-10px_20px_-12px_rgba(34,29,21,0.22)]">
+        <p className="sticky bottom-0 z-10 -mx-5 border-t border-rule bg-paper px-5 py-3 text-center font-display text-base font-medium text-ink shadow-[0_-10px_20px_-12px_rgba(34,29,21,0.22)]">
           {t(puzzle.setup.question)}
         </p>
       </div>

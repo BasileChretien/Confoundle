@@ -4,6 +4,13 @@
  * Basile; corregir sobre la marcha.
  */
 export const es: Record<string, string> = {
+  // ---- Calibration run ----
+  "Calibration run": "Ronda de calibración",
+  "Score: {n}": "Puntuación: {n}",
+  "Longest calibrated streak: {n}": "Racha bien calibrada más larga: {n}",
+  "Staking {stake} on every call would have scored {n}.": "Apostar {stake} en cada respuesta habría dado {n}.",
+  "Overclaimed": "Exceso de confianza",
+  "See the run": "Ver la ronda",
   // ---- Chart scope labels, reveal badge, reaction lines ----
   "Time nobody could die in": "El tiempo en que nadie podía morir",
   "What the drug did to the marker": "Lo que el fármaco le hizo al marcador",

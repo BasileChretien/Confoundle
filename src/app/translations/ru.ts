@@ -3,6 +3,13 @@
  * the English text exactly. Native review pending; correct in place.
  */
 export const ru: Record<string, string> = {
+  // ---- Calibration run ----
+  "Calibration run": "Проверка уверенности",
+  "Score: {n}": "Счёт: {n}",
+  "Longest calibrated streak: {n}": "Самая длинная серия точных оценок: {n}",
+  "Staking {stake} on every call would have scored {n}.": "Ставка {stake} на каждый ответ дала бы {n}.",
+  "Overclaimed": "Переоценка",
+  "See the run": "Посмотреть итог",
   // ---- Chart scope labels, reveal badge, reaction lines ----
   "Time nobody could die in": "Время, когда никто не мог умереть",
   "What the drug did to the marker": "Что препарат сделал с показателем",

@@ -3,6 +3,13 @@
  * Keys must match the English text exactly. Native review pending; correct in place.
  */
 export const pt: Record<string, string> = {
+  // ---- Calibration run ----
+  "Calibration run": "Ronda de calibração",
+  "Score: {n}": "Pontuação: {n}",
+  "Longest calibrated streak: {n}": "Sequência bem calibrada mais longa: {n}",
+  "Staking {stake} on every call would have scored {n}.": "Apostar {stake} em cada resposta teria dado {n}.",
+  "Overclaimed": "Excesso de confiança",
+  "See the run": "Ver a ronda",
   // ---- Chart scope labels, reveal badge, reaction lines ----
   "Time nobody could die in": "O tempo em que ninguém podia morrer",
   "What the drug did to the marker": "O que o medicamento fez ao marcador",

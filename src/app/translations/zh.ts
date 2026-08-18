@@ -4,6 +4,13 @@
  * reference only.
  */
 export const zh: Record<string, string> = {
+  // ---- Calibration run ----
+  "Calibration run": "校准挑战",
+  "Score: {n}": "得分：{n}",
+  "Longest calibrated streak: {n}": "自信判断最贴切的最长连续：{n}",
+  "Staking {stake} on every call would have scored {n}.": "每次都押 {stake} 的话会得 {n}。",
+  "Overclaimed": "过于自信",
+  "See the run": "查看结果",
   // ---- Chart scope labels, reveal badge, reaction lines ----
   "Time nobody could die in": "无人可能死亡的那段时间",
   "What the drug did to the marker": "药物对指标的影响",

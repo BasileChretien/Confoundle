@@ -42,6 +42,10 @@ describe("reading a view from the URL", () => {
     expect(viewFromSearch("?progress=1")).toEqual({ name: "progress" });
   });
 
+  it("reads the calibration run", () => {
+    expect(viewFromSearch("?run=1")).toEqual({ name: "calibrationRun" });
+  });
+
   it("falls back to home for anything unrecognised", () => {
     expect(viewFromSearch("")).toEqual(HOME);
     expect(viewFromSearch("?utm_source=twitter")).toEqual(HOME);
@@ -72,6 +76,7 @@ const ONE_OF_EACH: Record<View["name"], View> = {
   about: { name: "about" },
   lessons: { name: "lessons" },
   trapHunt: { name: "trapHunt" },
+  calibrationRun: { name: "calibrationRun" },
   progress: { name: "progress" },
 };
 

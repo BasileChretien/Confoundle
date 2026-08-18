@@ -10,9 +10,19 @@ const CONFIDENCE_LABEL: Record<Confidence, string> = {
 };
 
 /**
- * The commit step, now a wager. First pick a choice, then stake how sure you
- * are. Conviction is what makes the reveal land: being confidently wrong stings,
+ * The commit step, a wager. First pick a choice, then stake how sure you are.
+ * Conviction is what makes the reveal land: being confidently wrong stings,
  * being right and certain feels earned. Committing has no "skip" or "peek".
+ *
+ * IT IS NO LONGER PINNED TO THE FOOT OF THE SCREEN, and the question it used to
+ * carry now lives in `SetupView`, which explains why. In short: answers written
+ * as whole sentences run to 496px on a phone, and pinning them left a 188px
+ * slot to read a 229-word setup and a 384px figure through. The ask is what a
+ * reader needs in view while reading, so the ask is what stayed pinned.
+ *
+ * Nothing here changed about the wager itself. The confidence row still appears
+ * only once a choice is picked, and it appears directly beneath the button just
+ * tapped, which is where the reader already is.
  */
 export function CommitView({
   puzzle,
@@ -26,13 +36,9 @@ export function CommitView({
 
   return (
     <div
-      className="sticky bottom-0 z-10 -mx-5 flex flex-col gap-2 border-t border-rule bg-paper px-5 pt-3 shadow-[0_-10px_20px_-12px_rgba(34,29,21,0.22)]"
+      className="flex flex-col gap-2"
       style={{ paddingBottom: "max(0.75rem, env(safe-area-inset-bottom))" }}
     >
-      <p className="text-center font-display text-base font-medium text-ink">
-        {t(puzzle.setup.question)}
-      </p>
-
       <div className="grid gap-2">
         {puzzle.choices.map((choice) => {
           const active = selected?.id === choice.id;

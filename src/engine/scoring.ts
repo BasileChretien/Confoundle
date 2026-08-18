@@ -1,32 +1,52 @@
 /**
- * The wager: before the reveal a player says how sure they are. Conviction is
- * rewarded when right and punished when wrong, which is the whole sting of the
- * game.
+ * The wager: before the reveal a player says how sure they are, and the payoff
+ * table is built so that SAYING WHAT YOU ACTUALLY BELIEVE earns the most.
  *
- * KNOWN DEFECT, DELIBERATELY LEFT FOR THE MODES WORK, RECORDED HERE SO NOBODY
- * READS THE PAYOFFS BELOW AS ENDORSED. This docstring used to end "and over
- * time it measures calibration (was your confidence earned?)". It does not.
- * Writing p for the player's own belief that they are right, the three
- * expected-value lines are 10p, 25p-5 and 40p-10, and all three are concurrent
- * at p = 1/3. So "certain" strictly dominates for anybody better than a guess,
- * "fairly sure" is never uniquely optimal at any belief whatsoever, and the
- * rule pays for exactly the overclaiming the deck exists to correct. The
- * schedule disagrees (`schedule.ts` demotes a certain miss by three stages and
- * clamps it to the apprentice ceiling) and so does the Confounder, which mocks
- * the player for having been certain and wrong. The points win that argument,
- * because the points are what reaches the share line and the friends board.
+ * WHAT WAS WRONG BEFORE. The table paid 10/20/30 when right and 0/-5/-10 when
+ * wrong. Writing p for the player's own belief that they are right, the three
+ * expected-value lines were 10p, 25p-5 and 40p-10, and all three met at exactly
+ * p = 1/3. Two consequences, both bad, and the second one worse. "Certain"
+ * strictly dominated for anybody better than a guess, so the rule paid for
+ * exactly the overclaiming this deck exists to correct. And "fairly sure" was
+ * never uniquely optimal at ANY belief, so the middle rung of a three-rung
+ * calibration scale was a dead button.
  *
- * The table is not corrected here because the confidence payoffs are being
- * replaced wholesale, and changing them twice would move the global percentile
- * histogram twice for no gain. What is fixed in this pass is the two reaction
- * lines below, which were making claims of their own.
+ * The app then contradicted itself in three voices: `schedule.ts` demotes a
+ * certain miss by three stages and clamps it to the apprentice ceiling, the
+ * Confounder mocks the player for having been certain and wrong, and the score
+ * rewarded it. The score won that argument, because the score is what reaches
+ * the share line and the friends board, which sorts by it.
+ *
+ * WHAT THE TABLE IS NOW. A quadratic (Brier) rule, evaluated at representative
+ * beliefs for the three bins and scaled to whole numbers. The property that
+ * matters is not the exact figures but the SHAPE: the expected-value lines have
+ * strictly increasing slopes AND strictly increasing crossings, so each stake
+ * is uniquely best on a real interval of belief:
+ *
+ *     hunch   below 0.583
+ *     sure    0.583 to 0.800
+ *     certain above 0.800
+ *
+ * Honest reporting therefore maximises expected score, which is what the wager
+ * always claimed to measure. `scoring.test.ts` asserts the ordering rather than
+ * the numbers, so the figures can be tuned without the property being lost by
+ * accident, which is precisely how it was lost the first time.
+ *
+ * ONE CONSEQUENCE WORTH KNOWING. Per-puzzle scores now range +40 to -36 rather
+ * than +30 to -10, so the day's global percentile histogram mixes the two
+ * scales until old days age out. It stays inside the endpoint's accepted range
+ * of -50 to 200, so nothing is silently rejected.
  */
 export type Confidence = "hunch" | "sure" | "certain";
 
 export const CONFIDENCE_LEVELS: Confidence[] = ["hunch", "sure", "certain"];
 
-const REWARD: Record<Confidence, number> = { hunch: 10, sure: 20, certain: 30 };
-const PENALTY: Record<Confidence, number> = { hunch: 0, sure: -5, certain: -10 };
+const REWARD: Record<Confidence, number> = { hunch: 26, sure: 36, certain: 40 };
+const PENALTY: Record<Confidence, number> = {
+  hunch: -6,
+  sure: -20,
+  certain: -36,
+};
 
 export function scoreFor(correct: boolean, c: Confidence): number {
   return correct ? REWARD[c] : PENALTY[c];

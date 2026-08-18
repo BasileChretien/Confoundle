@@ -229,15 +229,38 @@ describe("slice-drawing renderers", () => {
    * written, and the whole point of this file is the shape that has not been
    * built yet: whoever adds one gets the check without knowing it exists.
    */
-  const SLICED = [
+  const HANDED_A_SLICE = [
     ...sourceOf("DataViewRenderer").matchAll(/<(\w+View)\b([\s\S]{0,500}?)\/>/g),
   ]
     .filter((m) => /data=\{restrict/.test(m[2]!))
-    .map((m) => m[1]!)
+    .map((m) => m[1]!);
+
+  /**
+   * A renderer can be sliced without being HANDED a slice, and one was.
+   *
+   * `RateChart` takes the whole dataset and calls `restrictRates` on it itself,
+   * so it never matches `data={restrict` at the call site and the scan above
+   * could not see it. It is a slice-drawing renderer by every argument in this
+   * file: it maps over a filtered list and colours what it maps. A review pass
+   * reintroduced the exact `reporting-rate-violent-crime` bug inside it and all
+   * 1929 tests stayed green, because the scan's reach stopped at the prop, and
+   * the one puzzle drawing through it shows every group on both beats, so not
+   * even the picture would have moved.
+   *
+   * So the second half of the enumeration asks the sources who restricts,
+   * rather than asking `DataViewRenderer` who is handed a restriction. Read off
+   * the files either way, never listed here.
+   */
+  const RESTRICTS_ITSELF = Object.entries(SOURCES)
+    .filter(([, src]) => /\brestrict[A-Z]\w*\(/.test(src))
+    .map(([path]) => path.slice(path.lastIndexOf("/") + 1).replace(".tsx", ""))
+    .filter((name) => name !== "DataViewRenderer");
+
+  const SLICED = [...HANDED_A_SLICE, ...RESTRICTS_ITSELF]
     .filter((name, i, all) => all.indexOf(name) === i)
     .sort();
 
-  it("finds the renderers that are handed a restricted copy of the data", () => {
+  it("finds every renderer that draws a slice, however it got one", () => {
     // A parse that quietly matched nothing would pass every check below, and
     // this list is the only place the scan's reach is legible.
     expect(SLICED).toEqual([
@@ -250,6 +273,7 @@ describe("slice-drawing renderers", () => {
       "EstimationView",
       "ForestView",
       "PublishedView",
+      "RateChart",
       "RatersView",
       "RatingsView",
       "SalienceView",
@@ -303,11 +327,24 @@ describe("slice-drawing renderers", () => {
    * restricted copy, which would look right and change nothing.
    */
   it("builds every colour lookup from the unrestricted data", () => {
-    const wrong = Object.entries(SOURCES).flatMap(([path, src]) =>
-      [...src.matchAll(/\bdeclared(?:Colors|Slot)\(([^)]*)\)/g)]
-        .filter((m) => !m[1]!.startsWith("full."))
-        .map((m) => `${path}: ${m[0]}`),
-    );
+    // WHICH NAME MEANS "UNRESTRICTED" DEPENDS ON HOW THE RENDERER GOT ITS DATA,
+    // so the rule is scoped rather than global. A renderer handed a slice has
+    // `data` already filtered and takes the declared list as `full`, which is
+    // what the `full.` prefix enforces. A renderer that restricts itself has
+    // the opposite arrangement: `data` IS the declared list and every filtered
+    // copy is a local. Demanding `full.` there would fail correct code and
+    // invite someone to satisfy the scan by renaming a restricted local.
+    const expected = (name: string) =>
+      HANDED_A_SLICE.includes(name) || !RESTRICTS_ITSELF.includes(name)
+        ? "full."
+        : "data.";
+    const wrong = Object.entries(SOURCES).flatMap(([path, src]) => {
+      const name = path.slice(path.lastIndexOf("/") + 1).replace(".tsx", "");
+      const prefix = expected(name);
+      return [...src.matchAll(/\bdeclared(?:Colors|Slot)\(([^)]*)\)/g)]
+        .filter((m) => !m[1]!.startsWith(prefix))
+        .map((m) => `${path}: ${m[0]} (wanted ${prefix}...)`);
+    });
     expect(wrong).toEqual([]);
   });
 });

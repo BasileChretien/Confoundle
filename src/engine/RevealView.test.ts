@@ -188,3 +188,50 @@ describe("a shape you drag rather than tap", () => {
     expect(out).not.toContain(RISK.reveal.mechanismName.en);
   });
 });
+
+/**
+ * The legend follows the drag, and nothing real can prove it yet.
+ *
+ * A scrubbable beat renders `puzzle.reveal.view` for the whole drag, because
+ * the chart interpolates between the two authored views itself. The legend was
+ * handed that same view and never varied with the phase, so it named the
+ * reveal's groups from phase 0. `kidney-stones` cannot show this: it draws both
+ * groups on both beats, which is why the whole suite passes with the bug in
+ * place. Twenty-nine of the thirty-one rates puzzles restrict groups between
+ * their beats, so the first one of those to become scrubbable would have had
+ * its setup spoiled by the legend alone: the same dropped-restriction defect
+ * this feature already shipped once, through the one component the fix for it
+ * did not touch.
+ *
+ * Hence a synthetic puzzle. It is `kidney-stones` with a setup that draws one
+ * group instead of two, which is the ordinary authored shape everywhere else in
+ * the deck and is exactly the case no scrubbable puzzle happens to occupy.
+ */
+describe("the legend during a drag", () => {
+  const base = puzzles.find((p) => p.slug === "kidney-stones")!;
+  const withRestrictedSetup: Puzzle = {
+    ...base,
+    setup: {
+      ...base.setup,
+      initialView: { ...base.setup.initialView, groupIds: ["A"] },
+    },
+  };
+
+  it("names only the groups the setup draws, before the reader has dragged", () => {
+    expect(
+      canScrub(
+        withRestrictedSetup.setup.data,
+        withRestrictedSetup.setup.initialView,
+        withRestrictedSetup.reveal.view,
+      ),
+    ).toBe(true);
+    const html = render(withRestrictedSetup);
+    const data = base.setup.data;
+    if (data.type !== "rates") throw new Error("kidney-stones must be rates");
+    const a = data.groups.find((g) => g.id === "A")!;
+    const b = data.groups.find((g) => g.id === "B")!;
+    expect(html).toContain(a.label.en);
+    // B arrives when the reader drags. Naming it at rest is the spoiler.
+    expect(html).not.toContain(b.label.en);
+  });
+});

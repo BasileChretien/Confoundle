@@ -147,6 +147,60 @@ describe("the scrub across the whole drag", () => {
     expect(scrubs(REVERSED)).toBe(false);
   });
 
+  /**
+   * Both halves of one wrapper div, read together.
+   *
+   * `aria-hidden` and the opacity are computed from different expressions,
+   * `phase < 0.5` and `ratesScrubFrame`, and nothing had ever compared them.
+   * A review pass swapped the two `opacity` values between the wrappers and
+   * every test in the suite still passed: assistive tech and the caption stayed
+   * correct while the visible crossfade ran backwards, so the layer announced
+   * as the setup was drawn transparent and the reveal was on screen from the
+   * start. That is the defect the two earlier passes fixed, inverted to fool
+   * the sighted reader instead of the screen reader.
+   */
+  const wrappers = (phase: number): { opacity: number; exposed: boolean }[] => {
+    const html = renderToStaticMarkup(
+      createElement(LocaleProvider, {
+        locale: "en",
+        children: createElement(DataViewRenderer, {
+          data: FORWARD.setup.data,
+          view: FORWARD.reveal.view,
+          animate: false,
+          scrub: {
+            from: FORWARD.setup.initialView,
+            to: FORWARD.reveal.view,
+            phase,
+          },
+        }),
+      }),
+    );
+    const found = [
+      ...html.matchAll(/style="opacity:([\d.]+)"[^>]*aria-hidden="(true|false)"/g),
+    ].map((m) => ({ opacity: Number(m[1]), exposed: m[2] === "false" }));
+    expect(found, `two layers must carry both flags at phase ${phase}`).toHaveLength(2);
+    return found;
+  };
+
+  it("never announces the layer it is drawing the fainter of the two", () => {
+    // At the midpoint the two are exactly equal, which the >= admits: that is
+    // the crossing point, not a disagreement. Everywhere else the layer the
+    // reader is told about has to be the one they can actually see.
+    for (let i = 0; i <= 20; i++) {
+      const phase = i / 20;
+      const [pooled, split] = wrappers(phase) as [
+        { opacity: number; exposed: boolean },
+        { opacity: number; exposed: boolean },
+      ];
+      const shown = pooled.exposed ? pooled : split;
+      const hidden = pooled.exposed ? split : pooled;
+      expect(
+        shown.opacity,
+        `phase ${phase}: the announced layer is the fainter one`,
+      ).toBeGreaterThanOrEqual(hidden.opacity);
+    }
+  });
+
   it("shows the setup's view until the midpoint and the reveal's after", () => {
     expect(exposedLayer(0)).toBe("pooled");
     expect(exposedLayer(0.25)).toBe("pooled");

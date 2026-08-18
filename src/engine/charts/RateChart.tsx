@@ -3,7 +3,7 @@ import { useT } from "../../app/i18n";
 import { useReducedMotion } from "../useReducedMotion";
 import { useCountUp } from "../useCountUp";
 import { fillSlots } from "./announce";
-import { colorFor } from "./palette";
+import { declaredColors } from "./palette";
 import {
   aggregateRates,
   bestGroupId,
@@ -103,9 +103,11 @@ export function RateChart({
   scrub,
 }: RateChartProps) {
   const t = useT();
-  // Colours are indexed off the FULL group list, so a group keeps its colour
-  // even in a view that only draws some of them.
-  const indexOfGroup = new Map(data.groups.map((g, i) => [g.id, i]));
+  // Colours resolve through the declared list, so a group keeps its colour in
+  // a view that draws only some of them. This shape restricts INSIDE itself
+  // rather than being handed a slice, which is why it sat outside the reach of
+  // `declaredColors.test.ts` until that scan learned to look for the call.
+  const colorOf = declaredColors(data.groups);
   const shown = restrictRates(data, view);
   const shortLabel = (g: { label: typeof data.groups[number]["label"]; short?: typeof data.groups[number]["short"] }) =>
     t(g.short ?? g.label);
@@ -123,7 +125,7 @@ export function RateChart({
           <Bar
             key={r.groupId}
             pct={r.rate * 100}
-            colorHex={colorFor(indexOfGroup.get(r.groupId) ?? 0)}
+            colorHex={colorOf(r.groupId)}
             label={shortLabel(groupById(r.groupId))}
             sub={`${r.numerator}/${r.denominator}`}
             winner={winner === r.groupId}
@@ -171,7 +173,7 @@ export function RateChart({
                 <Bar
                   key={r.groupId}
                   pct={r.rate * 100}
-                  colorHex={colorFor(indexOfGroup.get(r.groupId) ?? 0)}
+                  colorHex={colorOf(r.groupId)}
                   label={shortLabel(groupById(r.groupId))}
                   sub={`${r.numerator}/${r.denominator}`}
                   winner={winner === r.groupId}
@@ -268,16 +270,16 @@ export function Legend({ data, view }: { data: RatesData; view?: DataView }) {
   const t = useT();
   // Name only the groups actually on screen, but keep each one's colour.
   const shownIds = new Set(restrictRates(data, view).groups.map((g) => g.id));
+  const colorOf = declaredColors(data.groups);
   return (
     <ul className="mt-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs text-ink-soft">
       {data.groups
-        .map((g, i) => ({ g, i }))
-        .filter(({ g }) => shownIds.has(g.id))
-        .map(({ g, i }) => (
+        .filter((g) => shownIds.has(g.id))
+        .map((g) => (
           <li key={g.id} className="inline-flex items-center gap-1.5">
             <span
               className="h-2.5 w-2.5 shrink-0 rounded-[2px] ring-1 ring-inset ring-black/15"
-              style={{ backgroundColor: colorFor(i) }}
+              style={{ backgroundColor: colorOf(g.id) }}
               aria-hidden="true"
             />
             <span>{t(g.label)}</span>

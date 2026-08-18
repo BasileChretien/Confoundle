@@ -261,7 +261,7 @@ export function RevealView({
           />
         </div>
 
-        {data.type === "rates" ? <Legend data={data} view={renderView} /> : null}
+        {data.type === "rates" ? <Legend data={data} view={shownView} /> : null}
       </figure>
 
       {/*

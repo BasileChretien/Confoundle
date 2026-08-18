@@ -154,25 +154,36 @@ describe("the streak cannot change what a stake is worth", () => {
     expect(gradeRun(spread).longestStreak).toBe(1);
   });
 
-  it("pays honest reporting the most, at every belief", () => {
+  it("rests on a wager where all three stakes are actually reachable", () => {
     /*
-      The property inherited from the proper wager, asserted here because this
-      mode is where a player is asked to stake eight times in a row and so
-      where a bias would compound.
+      A PRECONDITION, NOT A RESTATEMENT, and the first version of this test was
+      neither. It defined the honest stake AS the argmax and then asserted that
+      no stake beat the argmax, which is true of any table ever written,
+      including the degenerate one this mode was designed around. It proved
+      nothing and would have passed while the mode was broken.
+
+      What the run actually needs from the wager is that every stake is the
+      unique best answer at SOME belief. The run asks for a stake eight times,
+      so a table where one rung is never worth choosing makes a third of the
+      interface a formality and has the mode measuring a choice the player
+      cannot meaningfully make. This fails on the old table, where "fairly
+      sure" was optimal nowhere.
     */
     const ev = (c: Confidence, p: number) =>
       p * scoreFor(true, c) + (1 - p) * scoreFor(false, c);
-    const honest = (p: number): Confidence => {
-      let best: Confidence = "hunch";
-      for (const c of CONFIDENCE_LEVELS) if (ev(c, p) > ev(best, p)) best = c;
-      return best;
-    };
-    for (let p = 0.02; p < 1; p += 0.02) {
-      const mine = ev(honest(p), p);
-      for (const c of CONFIDENCE_LEVELS) {
-        expect(ev(c, p)).toBeLessThanOrEqual(mine + 1e-9);
+
+    const everUniquelyBest = new Set<Confidence>();
+    for (let p = 0.001; p < 1; p += 0.001) {
+      const ranked = [...CONFIDENCE_LEVELS].sort((a, b) => ev(b, p) - ev(a, p));
+      if (ev(ranked[0]!, p) > ev(ranked[1]!, p) + 1e-9) {
+        everUniquelyBest.add(ranked[0]!);
       }
     }
+
+    expect(
+      [...everUniquelyBest].sort(),
+      "a stake that is never uniquely best makes one rung of the run unusable",
+    ).toEqual([...CONFIDENCE_LEVELS].sort());
   });
 });
 

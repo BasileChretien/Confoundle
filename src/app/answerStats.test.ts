@@ -174,6 +174,42 @@ describe("which population the reveal line is about", () => {
     expect(await fetchDistribution("kidney-stones")).toBeNull();
   });
 
+  /**
+   * The reveal must survive a body that is well-formed JSON and nothing else.
+   *
+   * These are not hypothetical shapes chosen for tidiness. Until the certainty
+   * line shipped, `certain` was validated by nothing at all, because nothing
+   * read it. The moment something did, an unvalidated field became a `.reduce`
+   * call inside a render, and this app has no error boundary: the failure mode
+   * was not a wrong sentence but a blank screen.
+   */
+  it.each([
+    ["certain is not an array", { total: 40, choices: [], certain: "lots" }],
+    ["a tally row is null", { total: 40, choices: [null] }],
+    ["a tally row is a bare number", { total: 40, choices: [3] }],
+    ["a count is a string", { total: 40, choices: [{ choiceId: "a", count: "7" }] }],
+    ["a count is negative", { total: 40, choices: [{ choiceId: "a", count: -1 }] }],
+    ["a count is NaN", { total: 40, choices: [{ choiceId: "a", count: NaN }] }],
+    ["a choiceId is missing", { total: 40, choices: [{ count: 7 }] }],
+    ["the total is not finite", { total: Infinity, choices: [] }],
+  ])("draws nothing when %s", async (_name, body) => {
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(ok(body)));
+    expect(await fetchDistribution("kidney-stones")).toBeNull();
+  });
+
+  it("accepts a body with no certain field, which is a tally of nobody sure", async () => {
+    // Absent is not malformed: it means no one staked `certain` yet.
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(ok({ total: 40, choices: [{ choiceId: "a", count: 40 }] })),
+    );
+    expect(await fetchDistribution("kidney-stones")).toEqual({
+      total: 40,
+      choices: [{ choiceId: "a", count: 40 }],
+      certain: [],
+    });
+  });
+
   it("survives a transport failure without costing the reveal", async () => {
     vi.stubGlobal("fetch", () => Promise.reject(new Error("offline")));
     expect(await fetchDistribution("kidney-stones")).toBeNull();

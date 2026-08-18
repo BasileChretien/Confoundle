@@ -87,6 +87,42 @@ export function sendAnswer(
 }
 
 /**
+ * A tally list, or null if the body is not one.
+ *
+ * `Array.isArray(d.choices)` was the whole check, and it was enough only while
+ * nothing walked the entries. `certain` was not checked at all, because until
+ * the certainty line existed nothing read it: `d.certain ?? []` passed any
+ * truthy value straight through to a caller that never came.
+ *
+ * The certainty line made it a live path on every reveal. `certainSplit` calls
+ * `.reduce` and `.find` synchronously during render, so a `certain` that is not
+ * an array throws INSIDE a render rather than returning a bad number, and there
+ * is no error boundary in this app: it would take down the whole tree. The
+ * module promises the opposite in its own header, that every failure here costs
+ * the player nothing but a sentence, and that promise has to be kept at the
+ * boundary rather than hoped for from the server.
+ *
+ * It refuses the whole body rather than dropping bad entries. A tally with some
+ * of its rows silently discarded is a denominator that no longer counts what it
+ * says it counts, which on this deck is the one kind of wrong number that must
+ * never be drawn.
+ */
+function tallies(v: unknown): ChoiceTally[] | null {
+  if (!Array.isArray(v)) return null;
+  const out: ChoiceTally[] = [];
+  for (const row of v) {
+    if (typeof row !== "object" || row === null) return null;
+    const { choiceId, count } = row as Partial<ChoiceTally>;
+    if (typeof choiceId !== "string") return null;
+    if (typeof count !== "number" || !Number.isFinite(count) || count < 0) {
+      return null;
+    }
+    out.push({ choiceId, count });
+  }
+  return out;
+}
+
+/**
  * Read what everybody else did. Returns null when there is nothing worth
  * showing, which the caller renders as nothing at all rather than as a zero.
  *
@@ -127,8 +163,17 @@ export async function fetchDistribution(
     );
     if (!res.ok) return null;
     const d = (await res.json()) as Partial<Distribution>;
-    if (typeof d.total !== "number" || !Array.isArray(d.choices)) return null;
-    return { total: d.total, choices: d.choices, certain: d.certain ?? [] };
+    const choices = tallies(d.choices);
+    const certain = d.certain === undefined ? [] : tallies(d.certain);
+    if (
+      typeof d.total !== "number" ||
+      !Number.isFinite(d.total) ||
+      choices === null ||
+      certain === null
+    ) {
+      return null;
+    }
+    return { total: d.total, choices, certain };
   } catch {
     return null;
   }

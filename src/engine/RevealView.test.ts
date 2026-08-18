@@ -5,7 +5,7 @@ import { LocaleProvider } from "../app/i18n";
 import { puzzles } from "../puzzles";
 import type { Puzzle } from "../puzzles/schema";
 import { RevealView } from "./RevealView";
-import { scopeLabel } from "./charts/DataViewRenderer";
+import { canScrub, scopeLabel } from "./charts/DataViewRenderer";
 
 /**
  * The reveal must not have happened before the player asks for it.
@@ -114,5 +114,49 @@ describe("the reveal beat before the player pulls the lever", () => {
       spoiled,
       `These puzzles show their answer before the player asks:\n${spoiled.join("\n")}`,
     ).toEqual([]);
+  });
+});
+
+
+describe("a shape you drag rather than tap", () => {
+  const RISK = puzzles.find((p) => p.slug === "relative-risk")!;
+
+  it("is the shape this covers, so the assertions below are about a scrub", () => {
+    // Guards the rest: if `risk` ever leaves SCRUBBABLE these become vacuous.
+    expect(canScrub(RISK.setup.data)).toBe(true);
+    expect(canScrub(SEED.setup.data)).toBe(false);
+  });
+
+  it("offers a slider instead of the button", () => {
+    const html = render(RISK);
+    expect(html).toContain('type="range"');
+    expect(text(html)).not.toContain("Reveal the answer");
+  });
+
+  it("captions the figure as the view the reader is actually looking at", () => {
+    /*
+      THE BUG THIS CATCHES. A scrubbed figure is handed the REVEAL view, because
+      the renderer interpolates between the two itself from `phase`. Passing
+      that same view to the caption made it read "Compared to the people" from
+      the first paint, while the chart was still drawing the relative layout,
+      for the whole first half of every drag. A figure captioned as something it
+      is not is a small version of the dishonesty this feature exists to avoid.
+    */
+    const before = scopeLabel(RISK.setup.initialView.kind);
+    const after = scopeLabel(RISK.reveal.view.kind);
+    expect(before).not.toBe(after);
+
+    const out = text(render(RISK));
+    expect(out, "the caption jumped ahead of the chart").toContain(before);
+    expect(out, "the caption is showing the reveal before the drag").not.toContain(
+      after,
+    );
+  });
+
+  it("still withholds the answer behind the drag", () => {
+    // The scrub is the same beat, not a laxer one.
+    const out = text(render(RISK));
+    expect(out).not.toContain(RISK.reveal.headline.en);
+    expect(out).not.toContain(RISK.reveal.mechanismName.en);
   });
 });

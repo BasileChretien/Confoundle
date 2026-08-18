@@ -143,16 +143,34 @@ export function RevealView({
   }
 
   const scrubbable = canScrub(data);
+
   /*
-    A scrubbed figure draws from `phase` and needs the REVEAL view passed to it,
-    because the renderer interpolates between the two itself. An unscrubbed one
-    still switches views outright.
+    TWO VIEWS, BECAUSE THEY ANSWER TWO DIFFERENT QUESTIONS, and collapsing them
+    into one was a real defect rather than a tidy simplification.
+
+    `renderView` is what the chart is handed. A scrubbed figure needs the
+    REVEAL view, because the renderer interpolates between the two itself from
+    `phase`.
+
+    `shownView` is the state the reader is actually looking at, and it is what
+    labels the figure. Passing the reveal view to both meant the caption read
+    "Compared to the people" from the very first paint, while the chart was
+    still visibly drawing the relative layout, for the whole first half of
+    every drag. A figure captioned as something it is not is a small version of
+    exactly the dishonesty this whole feature exists to avoid.
+
+    The midpoint is where it switches, matching `riskFrameAt`'s own `framed`
+    flip, so the caption changes at the same instant the frame appears rather
+    than at some second threshold of its own.
   */
-  const view = scrubbable
+  const renderView = scrubbable || showingReveal
     ? puzzle.reveal.view
-    : showingReveal
+    : puzzle.setup.initialView;
+  const shownView = scrubbable
+    ? phase >= 0.5
       ? puzzle.reveal.view
-      : puzzle.setup.initialView;
+      : puzzle.setup.initialView
+    : renderView;
   const caught = committed.isCorrect;
   const score = scoreFor(caught, confidence);
   const metric = t(dataTitle(data));
@@ -179,10 +197,21 @@ export function RevealView({
               className="font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-mute"
               aria-live="polite"
             >
-              {view.caption ? t(view.caption) : t({ en: scopeLabel(view.kind) })}
+              {shownView.caption
+                ? t(shownView.caption)
+                : t({ en: scopeLabel(shownView.kind) })}
             </span>
-            {/* Nothing to replay until the flip has happened once. */}
-            {revealed && !reduced ? (
+            {/*
+              REPLAY IS FOR THE FLIP, AND A SCRUBBED FIGURE HAS NO FLIP.
+
+              It toggles `showingReveal`, which a scrubbed figure does not read:
+              that figure follows `phase`. So on a scrubbable shape this button
+              fired its analytics event and changed nothing on screen at all,
+              which is worse than not offering it. The drag itself is the better
+              affordance anyway, so the slider stays mounted after the reveal
+              instead and this is hidden.
+            */}
+            {revealed && !reduced && !scrubbable ? (
               <button
                 type="button"
                 onClick={replay}
@@ -206,19 +235,19 @@ export function RevealView({
           reader is the animation.
         */}
         <div
-          key={scrubbable ? "scrubbed" : viewKey(view)}
+          key={scrubbable ? "scrubbed" : viewKey(renderView)}
           className={scrubbable ? undefined : "cf-enter-sm"}
         >
           <DataViewRenderer
             data={data}
-            view={view}
+            view={renderView}
             animate
             highlightWinner
             phase={scrubbable ? phase : undefined}
           />
         </div>
 
-        {data.type === "rates" ? <Legend data={data} view={view} /> : null}
+        {data.type === "rates" ? <Legend data={data} view={renderView} /> : null}
       </figure>
 
       {/*
@@ -230,7 +259,7 @@ export function RevealView({
         keyboard and by a screen reader, and so the reduced-motion path is the
         same path rather than a second one that skips the beat.
       */}
-      {!revealed ? (
+      {!revealed || scrubbable ? (
         scrubbable ? (
           /*
             A NATIVE RANGE INPUT RATHER THAN A CUSTOM DRAG, and the choice is
@@ -273,7 +302,9 @@ export function RevealView({
         ) : (
           <Button onClick={pull}>{t({ en: "Reveal the answer" })}</Button>
         )
-      ) : (
+      ) : null}
+
+      {revealed ? (
         <div className="cf-enter flex flex-col gap-4">
           <div className="flex items-center justify-between gap-2">
             {/*
@@ -364,7 +395,7 @@ export function RevealView({
               : t({ en: "So what's the skill? →" })}
           </Button>
         </div>
-      )}
+      ) : null}
     </section>
   );
 }

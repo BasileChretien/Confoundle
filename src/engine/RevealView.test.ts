@@ -55,9 +55,19 @@ const SEED = puzzles.find((p) => p.slug === "kidney-stones") ?? puzzles[0]!;
 
 describe("the reveal beat before the player pulls the lever", () => {
   it("offers the lever", () => {
-    // If this ever stops matching, every absence assertion below becomes
-    // vacuous: a component that rendered nothing would pass them all.
-    expect(text(render(SEED))).toContain("Reveal the answer");
+    /*
+      If this ever stops matching, every absence assertion below becomes
+      vacuous: a component that rendered nothing would pass them all.
+
+      Either control counts. The seed is a `rates` puzzle and `rates` is now
+      scrubbable, so it offers a slider rather than the button, and a guard
+      that named only the button would have started failing for a reason that
+      has nothing to do with what it guards.
+    */
+    const html = render(SEED);
+    const offered =
+      html.includes('type="range"') || text(html).includes("Reveal the answer");
+    expect(offered, "the beat offers no way forward at all").toBe(true);
   });
 
   it("does not print the reveal headline", () => {
@@ -120,17 +130,35 @@ describe("the reveal beat before the player pulls the lever", () => {
 
 describe("a shape you drag rather than tap", () => {
   const RISK = puzzles.find((p) => p.slug === "relative-risk")!;
+  /** A shape that cannot scrub, for the contrast. */
+  const FLAT = puzzles.find((p) => p.setup.data.type === "causal")!;
 
   it("is the shape this covers, so the assertions below are about a scrub", () => {
-    // Guards the rest: if `risk` ever leaves SCRUBBABLE these become vacuous.
-    expect(canScrub(RISK.setup.data)).toBe(true);
-    expect(canScrub(SEED.setup.data)).toBe(false);
+    /*
+      Guards the rest: if `risk` ever leaves SCRUBBABLE these become vacuous.
+      The negative case has to be a shape that genuinely cannot scrub, and the
+      seed stopped being one when `rates` opted in. `causal` is a real "cannot":
+      its two beats are a scatter and a node diagram, two unrelated drawings
+      with no path between them.
+    */
+    expect(
+      canScrub(RISK.setup.data, RISK.setup.initialView, RISK.reveal.view),
+    ).toBe(true);
+    expect(
+      canScrub(FLAT.setup.data, FLAT.setup.initialView, FLAT.reveal.view),
+    ).toBe(false);
   });
 
   it("offers a slider instead of the button", () => {
     const html = render(RISK);
     expect(html).toContain('type="range"');
     expect(text(html)).not.toContain("Reveal the answer");
+  });
+
+  it("still gives an unscrubbable shape the button", () => {
+    const html = render(FLAT);
+    expect(html).not.toContain('type="range"');
+    expect(text(html)).toContain("Reveal the answer");
   });
 
   it("captions the figure as the view the reader is actually looking at", () => {
@@ -158,5 +186,52 @@ describe("a shape you drag rather than tap", () => {
     const out = text(render(RISK));
     expect(out).not.toContain(RISK.reveal.headline.en);
     expect(out).not.toContain(RISK.reveal.mechanismName.en);
+  });
+});
+
+/**
+ * The legend follows the drag, and nothing real can prove it yet.
+ *
+ * A scrubbable beat renders `puzzle.reveal.view` for the whole drag, because
+ * the chart interpolates between the two authored views itself. The legend was
+ * handed that same view and never varied with the phase, so it named the
+ * reveal's groups from phase 0. `kidney-stones` cannot show this: it draws both
+ * groups on both beats, which is why the whole suite passes with the bug in
+ * place. Twenty-nine of the thirty-one rates puzzles restrict groups between
+ * their beats, so the first one of those to become scrubbable would have had
+ * its setup spoiled by the legend alone: the same dropped-restriction defect
+ * this feature already shipped once, through the one component the fix for it
+ * did not touch.
+ *
+ * Hence a synthetic puzzle. It is `kidney-stones` with a setup that draws one
+ * group instead of two, which is the ordinary authored shape everywhere else in
+ * the deck and is exactly the case no scrubbable puzzle happens to occupy.
+ */
+describe("the legend during a drag", () => {
+  const base = puzzles.find((p) => p.slug === "kidney-stones")!;
+  const withRestrictedSetup: Puzzle = {
+    ...base,
+    setup: {
+      ...base.setup,
+      initialView: { ...base.setup.initialView, groupIds: ["A"] },
+    },
+  };
+
+  it("names only the groups the setup draws, before the reader has dragged", () => {
+    expect(
+      canScrub(
+        withRestrictedSetup.setup.data,
+        withRestrictedSetup.setup.initialView,
+        withRestrictedSetup.reveal.view,
+      ),
+    ).toBe(true);
+    const html = render(withRestrictedSetup);
+    const data = base.setup.data;
+    if (data.type !== "rates") throw new Error("kidney-stones must be rates");
+    const a = data.groups.find((g) => g.id === "A")!;
+    const b = data.groups.find((g) => g.id === "B")!;
+    expect(html).toContain(a.label.en);
+    // B arrives when the reader drags. Naming it at rest is the spoiler.
+    expect(html).not.toContain(b.label.en);
   });
 });

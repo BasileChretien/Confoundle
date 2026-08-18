@@ -66,25 +66,68 @@ import { restrictSeries } from "./series";
  * has the whole argument and the shipped bug that prompted it.
  */
 /**
- * Which shapes can be dragged between their two beats rather than flipped.
+ * Can this PUZZLE be dragged between its two beats? Not this SHAPE.
  *
- * A LIST OF ONE, DELIBERATELY, and it is meant to grow one shape at a time.
- * Interpolating is not a property the dispatch can infer: some pairs are two
- * views of one geometry and genuinely slide (`risk` rescales the same two bars
- * against a different denominator), some are a re-partition needing new
- * mathematics (`rates` unfolds a pooled bar into its strata), some are an
- * annotation where a crossfade would add nothing, and four are two unrelated
- * diagrams where interpolation would assert a continuity that does not exist.
- * `ecological` is the clearest of those: its whole lesson is that the unit of
- * analysis changed, so a smooth path between the two would teach the opposite.
+ * IT USED TO ASK THE SHAPE, AND THAT WAS WRONG IN A WAY THAT SHIPPED PAST
+ * 1921 GREEN TESTS. `rates` was added to a set of scrubbable types, verified
+ * against `kidney-stones`, and declared to cover all 31 rates puzzles. An
+ * audit of those 31 found that exactly TWO author the aggregate/stratified
+ * pair the code assumed. Of the other 29, eighteen are stratified on both
+ * beats and eleven aggregate on both, each differing only by which groups or
+ * strata a view restricts.
  *
- * So a shape opts in by appearing here, and everything absent keeps the
- * discrete flip it has today.
+ * Three things went wrong for those 29, none visible in English on the single
+ * puzzle that was checked. A view's restriction was dropped, so a setup meant
+ * to show one group drew both and gave the answer away at rest.
+ * `aggregateRates` was invoked on data flagged `strataAreSeparateSamples`,
+ * pooling two overlapping samples of the same people into a total that is
+ * arithmetically meaningless and was never authored. And on the one puzzle
+ * whose beats run the other way round, the mapping ran backwards.
+ *
+ * A capability is therefore a property of the two authored VIEWS. Anything
+ * refused here keeps the discrete flip, which is what it has always had.
+ *
+ * The count in this comment said 30 until a second review checked it. It came
+ * from `wc -l` on a file whose last line had no trailing newline: a miscount
+ * produced by an unverified tool, inside the fix for a miscount. Left on the
+ * record, because the mechanism is the useful part.
  */
-const SCRUBBABLE: ReadonlySet<PuzzleData["type"]> = new Set(["risk"]);
+export function canScrub(
+  data: PuzzleData,
+  from: DataView,
+  to: DataView,
+): boolean {
+  const pair = [from.kind, to.kind].sort().join("+");
 
-export function canScrub(data: PuzzleData): boolean {
-  return SCRUBBABLE.has(data.type);
+  if (data.type === "risk") {
+    // The two views rescale one geometry against different denominators.
+    return pair === "absolute+relative";
+  }
+
+  if (data.type === "rates") {
+    /*
+      FORWARD ONLY: pooled at the setup, split at the reveal.
+
+      `stage-migration` runs the other way, and supporting it cost two
+      defects that neither the author nor the first review caught. Every
+      piece of direction-handling code existed for that one puzzle, and both
+      the CRITICAL and the HIGH on this branch lived in it: the first ran the
+      whole scrub backwards, the second exposed the setup's own deceptive
+      table at exactly phase 0.5 while the caption said reveal.
+
+      Refusing it deletes the code path rather than guarding it, which is the
+      difference between a bug fixed and a bug class removed. What is lost is
+      a drag on one puzzle, which keeps the discrete flip it has always had
+      and reads perfectly well.
+    */
+    if (from.kind !== "aggregate" || to.kind !== "stratified") return false;
+    // Defensive: an aggregate over overlapping samples double-counts. No
+    // puzzle pairs the two today, and the day one does is the day this would
+    // otherwise start inventing a total.
+    return data.strataAreSeparateSamples !== true;
+  }
+
+  return false;
 }
 
 export function DataViewRenderer({
@@ -92,20 +135,24 @@ export function DataViewRenderer({
   view,
   animate,
   highlightWinner,
-  phase,
+  scrub,
 }: {
   data: PuzzleData;
   view: DataView;
   animate: boolean;
   highlightWinner?: boolean;
   /**
-   * Position between the setup view and the reveal view while the reader is
-   * dragging, 0 being the setup. Absent everywhere except the reveal beat of a
-   * shape in `SCRUBBABLE`, and ignored by every renderer that has not opted in,
-   * which is what lets shapes convert one at a time without touching the other
-   * thirty-four dispatch arms.
+   * The drag, when there is one: both authored views and how far between them
+   * the reader has pulled, 0 being `from`.
+   *
+   * BOTH VIEWS, NOT JUST A NUMBER. The first version passed only a phase and
+   * let the renderer use whichever single `view` it had been handed for both
+   * ends. That silently assumed the two beats differ only in kind, which held
+   * for one puzzle out of thirty: every view that restricts its groups or
+   * strata had that restriction dropped, so a setup drawing one group drew
+   * both. Passing the pair is what makes each layer able to render its own.
    */
-  phase?: number;
+  scrub?: { from: DataView; to: DataView; phase: number };
 }) {
   switch (data.type) {
     case "rates":
@@ -117,6 +164,7 @@ export function DataViewRenderer({
           view={view}
           animate={animate}
           highlightWinner={highlightWinner}
+          scrub={scrub}
         />
       );
     case "frequencies":
@@ -135,7 +183,7 @@ export function DataViewRenderer({
           data={data}
           view={view.kind}
           animate={animate}
-          phase={phase}
+          phase={scrub?.phase}
         />
       );
     case "agreement":

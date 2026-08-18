@@ -16,6 +16,8 @@
  * move to D1 or a Durable Object if exactness ever matters.
  */
 
+import { isAcceptableScore } from "../../src/server/scoreBounds";
+
 interface KVNamespace {
   get(key: string): Promise<string | null>;
   put(key: string, value: string): Promise<void>;
@@ -29,10 +31,6 @@ interface Context {
   request: Request;
   env: Env;
 }
-
-// Guard rails: scores come from a small fixed set, so anything outside this is junk.
-const MIN_SCORE = -50;
-const MAX_SCORE = 200;
 
 function json(data: unknown, status = 200): Response {
   return new Response(JSON.stringify(data), {
@@ -56,9 +54,9 @@ export async function onRequestPost(ctx: Context): Promise<Response> {
   const score = Math.trunc(Number(body.score));
   if (
     !Number.isFinite(day) ||
-    !Number.isFinite(score) ||
-    score < MIN_SCORE ||
-    score > MAX_SCORE
+    // Bounds live in src/server so tsc and Vitest cover them, and so the
+    // test asserting the wager fits inside them imports the same numbers.
+    !isAcceptableScore(score)
   ) {
     return json({ error: "bad input" }, 400);
   }

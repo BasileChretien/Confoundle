@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { ALL_DICTIONARIES as DICTIONARIES } from "../app/translations/all";
+import { isAcceptableScore } from "../server/scoreBounds";
 import { CONFIDENCE_LEVELS, reactionFor, scoreFor, type Confidence } from "./scoring";
 
 /**
@@ -11,8 +12,9 @@ import { CONFIDENCE_LEVELS, reactionFor, scoreFor, type Confidence } from "./sco
  * `charts/scopeLabels.test.ts` closes, because `reactionFor` also returns bare
  * English which `RevealView` wraps as `t({ en: reactionFor(...) })`, a computed
  * argument that `inlineChrome.test.ts` cannot match and `coverage.test.ts`
- * cannot reach. And it PINS THE KNOWN DEFECT in the payoff table so that the
- * fix cannot be quietly forgotten and the table cannot be quietly changed.
+ * cannot reach. And it holds the payoff table to being a PROPER rule, so the
+ * property that makes the wager mean what it says cannot be lost again by
+ * somebody retuning the numbers with a green suite.
  */
 
 /** Expected score of a stake, given the player's own belief `p` that they are right. */
@@ -36,46 +38,76 @@ describe("scoreFor", () => {
   });
 });
 
-describe("the payoff table is not a proper scoring rule (KNOWN, PENDING)", () => {
+describe("the payoff table rewards saying what you believe", () => {
   /*
-    THIS BLOCK ENCODES A DEFECT, NOT A REQUIREMENT. It asserts what the table
-    does today so that the table cannot change without somebody deciding to,
-    and so the defect has a name in the suite rather than living only in a
-    review comment.
+    THIS BLOCK REPLACED ONE THAT PINNED A DEFECT. The old table paid 10/20/30
+    and 0/-5/-10, whose expected-value lines are 10p, 25p-5 and 40p-10: all
+    three met at p = 1/3, so "certain" strictly dominated for anybody better
+    than a guess and "fairly sure" was never uniquely optimal at any belief.
 
-    All three expected-value lines (10p, 25p-5, 40p-10) meet at the same point,
-    p = 1/3. The consequences: "certain" strictly dominates for any player who
-    is better than a guess, and "fairly sure" is never uniquely optimal at any
-    belief whatsoever, so the middle rung of a three-rung calibration scale is
-    a dead button. On a deck whose subject is calibration, the rule pays for
-    exactly the overclaiming the curriculum exists to correct, and the app
-    contradicts itself: `schedule.ts` demotes a certain miss by three stages
-    and clamps it to the apprentice ceiling, and the Confounder mocks the
-    player for it, while the score rewards it and the score is what reaches the
-    share line and the friends board.
-
-    WHEN THE CONFIDENCE PAYOFFS ARE REPLACED, DELETE THIS BLOCK AND ASSERT THE
-    OPPOSITE: that the crossings are strictly increasing, so that each stake is
-    uniquely optimal on a non-empty interval of belief and honest reporting
-    maximises expected score. The commented assertion below is that test,
-    ready to be swapped in.
+    It asserts the SHAPE rather than the figures, deliberately. The numbers can
+    be retuned; what must survive is that each stake is uniquely best on a real
+    interval of belief. Pinning the numbers instead would let somebody "tune"
+    the table straight back into degeneracy with a green suite, which is how
+    the property was lost the first time.
   */
-  it("has all three stakes crossing at one point, so the middle is unreachable", () => {
-    expect(crossing("hunch", "sure")).toBeCloseTo(1 / 3, 10);
-    expect(crossing("sure", "certain")).toBeCloseTo(1 / 3, 10);
-    expect(crossing("hunch", "certain")).toBeCloseTo(1 / 3, 10);
 
-    // "Fairly sure" is never strictly best, at any belief, anywhere.
-    for (let p = 0; p <= 1.0001; p += 0.01) {
-      const best = Math.max(ev("hunch", p), ev("sure", p), ev("certain", p));
-      expect(ev("sure", p)).toBeLessThanOrEqual(best + 1e-9);
-      if (Math.abs(p - 1 / 3) > 0.02) {
-        expect(ev("sure", p)).toBeLessThan(best - 1e-9);
-      }
+  it("gives each stake a real interval of belief where it is uniquely best", () => {
+    const lo = crossing("hunch", "sure");
+    const hi = crossing("sure", "certain");
+
+    // Ordered crossings are the whole property. Equal crossings are exactly
+    // the old defect: the middle band collapses to a point.
+    expect(lo).toBeLessThan(hi);
+    expect(lo).toBeGreaterThan(0);
+    expect(hi).toBeLessThan(1);
+
+    const bestAt = (p: number): Confidence => {
+      let best: Confidence = "hunch";
+      for (const c of CONFIDENCE_LEVELS) if (ev(c, p) > ev(best, p)) best = c;
+      return best;
+    };
+
+    // A point strictly inside each band picks that band's stake.
+    expect(bestAt(lo / 2)).toBe("hunch");
+    expect(bestAt((lo + hi) / 2)).toBe("sure");
+    expect(bestAt((hi + 1) / 2)).toBe("certain");
+  });
+
+  it("leaves no stake that is never worth choosing", () => {
+    const everBest = new Set<Confidence>();
+    for (let p = 0.001; p < 1; p += 0.001) {
+      let best: Confidence = "hunch";
+      for (const c of CONFIDENCE_LEVELS) if (ev(c, p) > ev(best, p)) best = c;
+      everBest.add(best);
     }
+    expect(
+      [...everBest].sort(),
+      "a stake that is optimal at no belief is a dead button on a calibration scale",
+    ).toEqual([...CONFIDENCE_LEVELS].sort());
+  });
 
-    // The replacement, once the table is proper:
-    //   expect(crossing("hunch", "sure")).toBeLessThan(crossing("sure", "certain"));
+  it("pays more for boldness only where boldness is warranted", () => {
+    // Bolder stakes must have strictly steeper lines, or the ordering above
+    // could hold by accident on a table that is not monotone at all.
+    const slope = (c: Confidence) => scoreFor(true, c) - scoreFor(false, c);
+    expect(slope("hunch")).toBeLessThan(slope("sure"));
+    expect(slope("sure")).toBeLessThan(slope("certain"));
+  });
+
+  it("stays inside the range the score endpoint accepts", () => {
+    /*
+      IMPORTED, NOT RETYPED, because a hand-copied bound is exactly the
+      defect `declaredColors`, `scopeLabels` and `localeNumerals` exist to
+      catch. The endpoint rejects anything outside these with a 400,
+      and `global.ts` turns a failed request into a silent null, so a table
+      that overflowed would make the percentile quietly disappear rather than
+      break loudly.
+    */
+    for (const c of CONFIDENCE_LEVELS) {
+      expect(isAcceptableScore(scoreFor(true, c))).toBe(true);
+      expect(isAcceptableScore(scoreFor(false, c))).toBe(true);
+    }
   });
 });
 

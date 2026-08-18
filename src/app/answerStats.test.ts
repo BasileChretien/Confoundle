@@ -7,6 +7,9 @@ import {
   sendAnswer,
   setContributesAnswers,
   shareOf,
+  formatShare,
+  certainSplit,
+  type Distribution,
 } from "./answerStats";
 import { MIN_ANSWERS_TO_SHOW as SERVER_FLOOR } from "../server/answers";
 
@@ -174,5 +177,94 @@ describe("which population the reveal line is about", () => {
   it("survives a transport failure without costing the reveal", async () => {
     vi.stubGlobal("fetch", () => Promise.reject(new Error("offline")));
     expect(await fetchDistribution("kidney-stones")).toBeNull();
+  });
+});
+
+describe("formatShare", () => {
+  it("never says nobody did a thing that somebody did", () => {
+    // The floor bounds the denominator from below and not from above, so one
+    // player in five hundred is reachable, and `maximumFractionDigits: 0`
+    // drew that as "0%". The company line would then tell the one player who
+    // picked a rare option that nobody picked it, while they sat looking at
+    // their own answer.
+    expect(formatShare(1 / 500, "en")).toBe("0.2%");
+    expect(formatShare(1 / 2500, "en")).toBe("0.04%");
+    expect(formatShare(0.0049, "en")).toBe("0.5%");
+  });
+
+  it("still says zero when it really is zero", () => {
+    // The guard is against rounding somebody away, not against the number nought.
+    expect(formatShare(0, "en")).toBe("0%");
+  });
+
+  it("leaves every figure a player has already seen exactly where it was", () => {
+    // The fix must not restyle the common case into spurious precision: these
+    // are what `maximumFractionDigits: 0` drew before it, to the character.
+    expect(formatShare(3 / 47, "en")).toBe("6%");
+    expect(formatShare(0.41, "en")).toBe("41%");
+    expect(formatShare(0.005, "en")).toBe("1%");
+  });
+
+  it("draws the numerals the reader's locale uses", () => {
+    // Bengali writes its own digits. A hardcoded locale, or an argument-less
+    // Intl, would draw Latin ones here and nothing else in the suite would care.
+    expect(formatShare(0.41, "bn")).toBe("৪১%");
+  });
+});
+
+describe("certainSplit", () => {
+  const dist = (certain: [string, number][], total = 400): Distribution => ({
+    total,
+    choices: [{ choiceId: "a", count: total }],
+    certain: certain.map(([choiceId, count]) => ({ choiceId, count })),
+  });
+
+  it("puts the floor on the certain subgroup and not on the parent tally", () => {
+    // THE TEST THIS FUNCTION EXISTS FOR. Four hundred answers clears the
+    // parent floor several times over while nineteen certain ones do not, so
+    // a gate reading `d.total` passes here and a correct one refuses. Without
+    // the gap between the two numbers this would agree with the mutant.
+    const nineteen = dist([
+      ["a", 10],
+      ["b", 9],
+    ]);
+    expect(nineteen.total).toBeGreaterThanOrEqual(MIN_ANSWERS_TO_SHOW);
+    expect(certainSplit(nineteen, "a")).toBeNull();
+
+    const twenty = dist([
+      ["a", 10],
+      ["b", 10],
+    ]);
+    expect(certainSplit(twenty, "a")).toEqual({ wrong: 10, certain: 20 });
+  });
+
+  it("counts everything that is not the supported answer as wrong", () => {
+    expect(
+      certainSplit(
+        dist([
+          ["a", 5],
+          ["b", 12],
+          ["c", 8],
+        ]),
+        "a",
+      ),
+    ).toEqual({ wrong: 20, certain: 25 });
+  });
+
+  it("reports nobody wrong rather than nothing when the crowd was right", () => {
+    expect(certainSplit(dist([["a", 30]]), "a")).toEqual({
+      wrong: 0,
+      certain: 30,
+    });
+  });
+
+  it("draws nothing rather than condemning everyone when the answer is unknown", () => {
+    // A caller that cannot find the supported choice must not be handed a
+    // split saying every certain player was wrong.
+    expect(certainSplit(dist([["a", 30]]), undefined)).toBeNull();
+  });
+
+  it("draws nothing when there is no tally at all", () => {
+    expect(certainSplit(null, "a")).toBeNull();
   });
 });

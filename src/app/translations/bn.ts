@@ -153,6 +153,7 @@ export const bn: Record<string, string> = {
   "Answering trap every time would have scored {n} on this round.": "প্রতিবার «ফাঁদ» বললে এই দফায় {n} পাওয়া যেত।",
   "{percent} of players picked that too.": "{percent} খেলোয়াড়ও এটিই বেছেছেন।",
   "{percent} of players fell for the same one.": "{percent} খেলোয়াড়ও একই ফাঁদে পড়েছেন।",
+  "{percent} of players who said they were certain got this wrong.": "যাঁরা নিশ্চিত বলেছিলেন, সেই খেলোয়াড়দের {percent} ভুল উত্তর দিয়েছেন।",
   "Caught {caught} of the {played} days played this week": "এই সপ্তাহে খেলা {played} দিনের মধ্যে {caught} দিন ফাঁদ ধরা পড়েছে",
   "Caught {caught} of {played}.": "{played} এর মধ্যে {caught}।",
   "Certain and wrong once.": "একবার নিশ্চিত ছিলেন, আর ভুল করেছেন।",

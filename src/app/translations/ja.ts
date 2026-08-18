@@ -153,6 +153,7 @@ export const ja: Record<string, string> = {
   "Answering trap every time would have scored {n} on this round.": "毎回「罠」と答えていれば、この回は{n}問正解だった。",
   "{percent} of players picked that too.": "プレイヤーの{percent}が同じものを選んだ。",
   "{percent} of players fell for the same one.": "プレイヤーの{percent}が同じ罠にかかった。",
+  "{percent} of players who said they were certain got this wrong.": "「確信あり」と答えたプレイヤーの{percent}が間違えた。",
   "Caught {caught} of the {played} days played this week": "今週プレイした{played}日のうち{caught}日で罠を見抜いた",
   "Caught {caught} of {played}.": "{played}日中{caught}日、見抜いた。",
   "Certain and wrong once.": "確信して外したのが一度。",

@@ -143,7 +143,7 @@ describe("reaction lines", () => {
     /*
       "So does almost everyone. That's the trap." was an unsourced universal
       quantifier in the app's own voice, printed on every sure-and-wrong answer
-      of every puzzle, three lines above `CompanyLine`, which reads the real
+      of every puzzle, three lines above `CrowdLines`, which reads the real
       tally and applies a twenty-answer floor before saying anything at all.
       Population claims belong to the component that has the numbers.
     */

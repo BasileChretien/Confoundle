@@ -152,3 +152,59 @@ export function shareOf(
   if (!hit) return null;
   return hit.count / d.total;
 }
+
+/**
+ * A share as a percentage, in the reader's locale, that never says zero about
+ * something that happened.
+ *
+ * `maximumFractionDigits: 0` on its own was already drawing a falsehood. The
+ * floor constrains the denominator from below and not from above, so one
+ * player in 500 rounds to "0%", and the company line would tell that player
+ * "0% of players fell for the same one" while they sit looking at their own
+ * answer, which is one of them. A deck about not believing a number more than
+ * its collection method supports cannot round a person out of existence.
+ *
+ * Below half a percent it switches to a single significant figure, the
+ * smallest change that cannot print zero for a non-zero share: 1 in 2500 draws
+ * 0.04%. At or above half a percent the output is byte for byte what shipped,
+ * so no figure a player has already seen moves.
+ */
+export function formatShare(share: number, locale: string): string {
+  const digits: Intl.NumberFormatOptions =
+    share > 0 && share < 0.005
+      ? { maximumSignificantDigits: 1 }
+      : { maximumFractionDigits: 0 };
+  return new Intl.NumberFormat(locale, {
+    style: "percent",
+    ...digits,
+  }).format(share);
+}
+
+/**
+ * Of the players who staked `certain`, how many picked something other than
+ * the answer the evidence supports.
+ *
+ * THE FLOOR IS ON THIS SUBGROUP, NOT ON THE PARENT TALLY, which is the whole
+ * reason this is a function and not two lines at the call site. `total >= 20`
+ * says nothing about how many of those twenty were certain, so a puzzle with
+ * 25 answers of which 3 were certain would otherwise draw "67% of players who
+ * were certain got this wrong" from a denominator of three. That is precisely
+ * the mistake the deck teaches against, and the privacy half of the argument
+ * behind `MIN_ANSWERS_TO_SHOW` binds harder on a subgroup than on the whole,
+ * because the smaller cell is the likelier one to describe somebody.
+ *
+ * Fails closed on a missing `correctChoiceId`. The schema guarantees exactly
+ * one correct choice per puzzle, but a caller that cannot find it must draw
+ * nothing rather than count every certain player wrong.
+ */
+export function certainSplit(
+  d: Distribution | null,
+  correctChoiceId: string | undefined,
+): { wrong: number; certain: number } | null {
+  if (!d || correctChoiceId === undefined) return null;
+  const certain = d.certain.reduce((n, c) => n + c.count, 0);
+  if (certain < MIN_ANSWERS_TO_SHOW) return null;
+  const right =
+    d.certain.find((c) => c.choiceId === correctChoiceId)?.count ?? 0;
+  return { wrong: certain - right, certain };
+}

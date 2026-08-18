@@ -6,6 +6,7 @@ import {
   bestGroupId,
   formatPct,
   restrictRates,
+  ratesScrubFrame,
 } from "./rates";
 
 /**
@@ -112,5 +113,59 @@ describe("restrictRates, drawing part of the data", () => {
     const slice = stratifiedRates(restrictRates(data, { strataIds: ["large"] }));
     expect(slice).toHaveLength(1);
     expect(slice[0]).toEqual(whole);
+  });
+});
+
+
+describe("scrubbing between the pooled and split views", () => {
+  it("shows only the pooled layer at the start and only the split one at the end", () => {
+    // THE ENDPOINTS ARE THE CONTRACT: at rest the reader must be looking at
+    // exactly one authored view, not a blend of two.
+    expect(ratesScrubFrame(0)).toEqual({ pooled: 1, split: 0, separation: 0 });
+    expect(ratesScrubFrame(1)).toEqual({ pooled: 0, split: 1, separation: 1 });
+  });
+
+  it("never leaves the figure empty in between", () => {
+    /*
+      The two opacities are complements, so the total ink on screen is
+      constant and the figure never thins out. The first version used two
+      offset ramps and left both layers at 0.2 around phase 0.44, a window
+      where the chart is nearly invisible. This assertion is what found it, so
+      the floor is set where complements guarantee it rather than just above
+      the value that failed.
+    */
+    for (let t = 0; t <= 1; t += 0.01) {
+      const f = ratesScrubFrame(t);
+      expect(
+        Math.max(f.pooled, f.split),
+        `both layers were nearly invisible at phase ${t.toFixed(2)}`,
+      ).toBeGreaterThanOrEqual(0.5);
+    }
+  });
+
+  it("moves each layer one way only", () => {
+    let lastPooled = 1;
+    let lastSplit = 0;
+    for (let t = 0; t <= 1; t += 0.01) {
+      const f = ratesScrubFrame(t);
+      expect(f.pooled).toBeLessThanOrEqual(lastPooled + 1e-12);
+      expect(f.split).toBeGreaterThanOrEqual(lastSplit - 1e-12);
+      lastPooled = f.pooled;
+      lastSplit = f.split;
+    }
+  });
+
+  it("clamps rather than extrapolating past either end", () => {
+    expect(ratesScrubFrame(-2)).toEqual(ratesScrubFrame(0));
+    expect(ratesScrubFrame(7)).toEqual(ratesScrubFrame(1));
+  });
+
+  it("keeps every value drawable", () => {
+    for (let t = 0; t <= 1; t += 0.05) {
+      for (const v of Object.values(ratesScrubFrame(t))) {
+        expect(v).toBeGreaterThanOrEqual(0);
+        expect(v).toBeLessThanOrEqual(1);
+      }
+    }
   });
 });

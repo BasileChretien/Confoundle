@@ -81,7 +81,7 @@ import { restrictSeries } from "./series";
  * So a shape opts in by appearing here, and everything absent keeps the
  * discrete flip it has today.
  */
-const SCRUBBABLE: ReadonlySet<PuzzleData["type"]> = new Set(["risk"]);
+const SCRUBBABLE: ReadonlySet<PuzzleData["type"]> = new Set(["risk", "rates"]);
 
 export function canScrub(data: PuzzleData): boolean {
   return SCRUBBABLE.has(data.type);
@@ -117,6 +117,7 @@ export function DataViewRenderer({
           view={view}
           animate={animate}
           highlightWinner={highlightWinner}
+          phase={phase}
         />
       );
     case "frequencies":

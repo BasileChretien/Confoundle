@@ -120,3 +120,67 @@ export function bestGroupId(
 export function formatPct(rate: number): string {
   return `${Math.round(rate * 100)}%`;
 }
+
+
+/**
+ * How much of each layer to draw at a point in the scrub between the pooled
+ * view and the split one.
+ *
+ * WHY THIS SHAPE MORPHS NOTHING, unlike `risk`, and the difference is not
+ * timidity. There, the two views measure against DIFFERENT denominators, so a
+ * bar sliding between them is a rescale rather than a sequence of claims, and
+ * suppressing the numerals was enough to keep it honest.
+ *
+ * Here both views put a RATE on the same implied scale. Tweening a bar's
+ * height would therefore walk it through rates nobody observed, and, far
+ * worse, through ORDERINGS that hold in neither view. On a Simpson's paradox
+ * card the ordering is the entire lesson: the pooled figure says one group is
+ * ahead and every stratum says the other is. A frame invented between those
+ * two says something true of no reading of the data, and it says it at exactly
+ * the moment the reader is looking hardest.
+ *
+ * So the two layers are drawn superimposed and the drag cross-dissolves
+ * between them while the split panels separate laterally. Nothing interpolates
+ * except opacity and position, and every numeral on screen at every instant
+ * belongs to a view somebody authored. The reader still causes the reveal, and
+ * still sees the pooled picture give way to the split one under their thumb.
+ *
+ * The bands overlap deliberately: the split panels begin arriving before the
+ * pooled bars have finished leaving, so the swap reads as one movement rather
+ * than as a gap with nothing in it.
+ */
+export interface RatesScrubFrame {
+  /** Opacity of the pooled layer, 1 at the start. */
+  pooled: number;
+  /** Opacity of the split layer, 1 at the end. */
+  split: number;
+  /** 0 while the panels are together, 1 once fully separated. */
+  separation: number;
+}
+
+/** Linear ramp from 0 to 1 across [from, to], flat outside it. */
+function ramp(t: number, from: number, to: number): number {
+  if (t <= from) return 0;
+  if (t >= to) return 1;
+  return (t - from) / (to - from);
+}
+
+export function ratesScrubFrame(phase: number): RatesScrubFrame {
+  const t = Math.max(0, Math.min(1, phase));
+  /*
+    COMPLEMENTS, so the two opacities always sum to 1 and the figure never
+    thins out. The first version faded the pooled layer over [0, 0.55] and
+    brought the split one in over [0.35, 1], which left both at 0.2 around
+    phase 0.44: a window where the chart is nearly invisible, which reads as a
+    rendering fault rather than as a transition. The test caught it.
+
+    Flat at both ends so the endpoints are crisp rather than merely close: at
+    rest the reader is looking at exactly one authored view.
+  */
+  const across = ramp(t, 0.1, 0.9);
+  return {
+    pooled: 1 - across,
+    split: across,
+    separation: ramp(t, 0.2, 1),
+  };
+}

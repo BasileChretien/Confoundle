@@ -8,6 +8,7 @@ import {
   aggregateRates,
   bestGroupId,
   restrictRates,
+  ratesScrubFrame,
   stratifiedRates,
 } from "./rates";
 
@@ -81,6 +82,11 @@ export interface RateChartProps {
   animate: boolean;
   /** Mark the winning bar within each view (gold, the truth as it shifts). */
   highlightWinner?: boolean;
+  /**
+   * Position between the pooled view and the split one while the reader is
+   * dragging, 0 being pooled. Absent means the discrete flip.
+   */
+  phase?: number;
 }
 
 export function RateChart({
@@ -88,6 +94,7 @@ export function RateChart({
   view,
   animate,
   highlightWinner = false,
+  phase,
 }: RateChartProps) {
   const t = useT();
   // Colours are indexed off the FULL group list, so a group keeps its colour
@@ -98,7 +105,7 @@ export function RateChart({
     t(g.short ?? g.label);
   const groupById = (id: string) => data.groups.find((g) => g.id === id)!;
 
-  if (view.kind === "aggregate") {
+  const pooledLayer = () => {
     const rates = aggregateRates(shown);
     const winner =
       highlightWinner && shown.crownWinner !== false
@@ -119,11 +126,23 @@ export function RateChart({
         ))}
       </div>
     );
-  }
+  };
 
-  const strata = stratifiedRates(shown);
-  return (
-    <div className={strata.length === 1 ? "grid grid-cols-1" : "grid grid-cols-2 gap-2.5"}>
+  const splitLayer = (separation: number) => {
+    const strata = stratifiedRates(shown);
+    return (
+      <div
+        className={
+          strata.length === 1 ? "grid grid-cols-1" : "grid grid-cols-2 gap-2.5"
+        }
+        style={
+          // The panels arrive from the middle, so the split reads as the pooled
+          // picture coming apart rather than as a second chart appearing.
+          separation < 1
+            ? { transform: `scaleX(${0.82 + 0.18 * separation})` }
+            : undefined
+        }
+      >
       {strata.map((s) => {
         const stratum = shown.strata.find((x) => x.id === s.stratumId)!;
         const winner =
@@ -148,9 +167,56 @@ export function RateChart({
                 />
               ))}
             </div>
-          </div>
-        );
-      })}
+            </div>
+          );
+        })}
+      </div>
+    );
+  };
+
+  /*
+    NOT A MORPH, AND THAT IS THE DESIGN RATHER THAN A LIMITATION.
+
+    `risk` can slide its bars because its two views measure against different
+    denominators, so the motion is a rescale. Here both views put a RATE on the
+    same implied scale, so tweening a bar's height would walk it through rates
+    nobody observed and, worse, through ORDERINGS that hold in neither view. On
+    a Simpson's paradox card the ordering is the whole lesson: pooled says one
+    group is ahead, every stratum says the other is. A frame invented between
+    them states something true of no reading of the data, at the moment the
+    reader is looking hardest.
+
+    So the two layers are superimposed in one grid cell and the drag
+    cross-dissolves between them while the split panels separate laterally.
+    Nothing interpolates but opacity and position, and every numeral on screen
+    at every instant belongs to a view somebody authored.
+  */
+  if (phase === undefined) {
+    return view.kind === "aggregate" ? pooledLayer() : splitLayer(1);
+  }
+
+  const frame = ratesScrubFrame(phase);
+  return (
+    <div className="grid">
+      <div
+        className="col-start-1 row-start-1"
+        style={{ opacity: frame.pooled }}
+        // Exactly one layer is ever exposed to assistive tech. Thresholding
+        // each at 0.5 independently left BOTH readable at phase 0.5, so a
+        // screen reader met the pooled and split figures at once, which is the
+        // one reading of this card that is never true. Comparing them instead
+        // means the more visible layer is always the one announced.
+        aria-hidden={frame.pooled <= frame.split}
+      >
+        {pooledLayer()}
+      </div>
+      <div
+        className="col-start-1 row-start-1"
+        style={{ opacity: frame.split }}
+        aria-hidden={frame.split < frame.pooled}
+      >
+        {splitLayer(frame.separation)}
+      </div>
     </div>
   );
 }

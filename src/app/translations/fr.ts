@@ -3,6 +3,8 @@
  * the English text exactly. Native review by Basile; correct in place.
  */
 export const fr: Record<string, string> = {
+  // ---- Scrub lever ----
+  "Drag to see the same data the other way": "Faites glisser pour voir les mêmes données autrement",
   // ---- Calibration run ----
   "Calibration run": "Épreuve de calibrage",
   "Score: {n}": "Score : {n}",

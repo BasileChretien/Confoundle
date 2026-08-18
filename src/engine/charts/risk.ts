@@ -53,3 +53,66 @@ export function formatRiskPct(rate: number): string {
   const rounded = Math.round(pct * 10) / 10;
   return Number.isInteger(rounded) ? `${rounded}%` : `${rounded.toFixed(1)}%`;
 }
+
+
+/**
+ * The frame to draw at a point in the scrub between the two authored views.
+ *
+ * THE RULE THIS ENCODES, and it is the one constraint the whole scrub design
+ * turns on: LAYOUT MAY INTERPOLATE, VALUES MAY NOT. A bar's height is a
+ * position on the page and may move smoothly. A printed number is a claim
+ * about the world, and there is no reading of the source table that supports
+ * "2.4%" at phase 0.37. Tweening the numerals would fabricate a data frame on
+ * a deck whose whole position is that every figure was read off a table.
+ *
+ * The risk shape makes that easy to honour, because its two views already
+ * disagree about whether numerals exist at all. The relative view prints none
+ * (the bars are a share of the control arm, so "100%" over the control would
+ * read as "100% of these men", which is the opposite of what it means), and
+ * the absolute view prints both. So the readouts simply do not appear until
+ * the scrub has arrived, and no intermediate figure is ever shown.
+ *
+ * `framed` is layout too: the outline of the full 0 to 100 scale is what makes
+ * the absolute view legible, and it snaps at the midpoint rather than fading,
+ * because a half-drawn frame reads as a rendering fault rather than a state.
+ */
+export interface RiskFrame {
+  /** Control then treated, each 0..1 of the drawn column. */
+  fills: [number, number];
+  /** Present only once the scrub has arrived at the absolute view. */
+  readouts: [string, string] | null;
+  framed: boolean;
+}
+
+/*
+  THE PRECISE FORM, NOT `a + (b - a) * t`, and the difference is not pedantry.
+  The naive form is not exact at its own endpoints in floating point: with
+  a = 1 and b = 0.03 it returns 0.030000000000000027 at t = 1, so the scrub
+  would arrive next to the authored view rather than on it. This form is
+  exactly `a` at 0 and exactly `b` at 1, which is what lets the test assert
+  the endpoints with equality instead of tolerance. Caught by that test.
+*/
+const lerp = (a: number, b: number, t: number): number =>
+  (1 - t) * a + t * b;
+
+export function riskFrameAt(data: RiskData, phase: number): RiskFrame {
+  const t = Math.max(0, Math.min(1, phase));
+  const s = riskSummary(data);
+
+  // The two authored endpoints, named rather than inlined so the test can
+  // assert the frame at 0 and 1 equals exactly what the discrete views draw.
+  const relative: [number, number] = [1, s.remainingShare];
+  const absolute: [number, number] = [s.controlRisk, s.treatedRisk];
+
+  return {
+    fills: [
+      lerp(relative[0], absolute[0], t),
+      lerp(relative[1], absolute[1], t),
+    ],
+    readouts:
+      t === 1
+        ? [formatRiskPct(s.controlRisk), formatRiskPct(s.treatedRisk)]
+        : null,
+    framed: t >= 0.5,
+  };
+}

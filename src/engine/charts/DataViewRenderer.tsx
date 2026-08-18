@@ -65,16 +65,47 @@ import { restrictSeries } from "./series";
  * would otherwise take its colour index from. `declaredColors` in `palette.ts`
  * has the whole argument and the shipped bug that prompted it.
  */
+/**
+ * Which shapes can be dragged between their two beats rather than flipped.
+ *
+ * A LIST OF ONE, DELIBERATELY, and it is meant to grow one shape at a time.
+ * Interpolating is not a property the dispatch can infer: some pairs are two
+ * views of one geometry and genuinely slide (`risk` rescales the same two bars
+ * against a different denominator), some are a re-partition needing new
+ * mathematics (`rates` unfolds a pooled bar into its strata), some are an
+ * annotation where a crossfade would add nothing, and four are two unrelated
+ * diagrams where interpolation would assert a continuity that does not exist.
+ * `ecological` is the clearest of those: its whole lesson is that the unit of
+ * analysis changed, so a smooth path between the two would teach the opposite.
+ *
+ * So a shape opts in by appearing here, and everything absent keeps the
+ * discrete flip it has today.
+ */
+const SCRUBBABLE: ReadonlySet<PuzzleData["type"]> = new Set(["risk"]);
+
+export function canScrub(data: PuzzleData): boolean {
+  return SCRUBBABLE.has(data.type);
+}
+
 export function DataViewRenderer({
   data,
   view,
   animate,
   highlightWinner,
+  phase,
 }: {
   data: PuzzleData;
   view: DataView;
   animate: boolean;
   highlightWinner?: boolean;
+  /**
+   * Position between the setup view and the reveal view while the reader is
+   * dragging, 0 being the setup. Absent everywhere except the reveal beat of a
+   * shape in `SCRUBBABLE`, and ignored by every renderer that has not opted in,
+   * which is what lets shapes convert one at a time without touching the other
+   * thirty-four dispatch arms.
+   */
+  phase?: number;
 }) {
   switch (data.type) {
     case "rates":
@@ -99,7 +130,14 @@ export function DataViewRenderer({
     case "timeline":
       return <TimelineView data={data} view={view.kind} animate={animate} />;
     case "risk":
-      return <RiskView data={data} view={view.kind} animate={animate} />;
+      return (
+        <RiskView
+          data={data}
+          view={view.kind}
+          animate={animate}
+          phase={phase}
+        />
+      );
     case "agreement":
       // Only two of the view kinds mean anything to this shape; anything else
       // is an authoring mistake and should draw nothing rather than guess.

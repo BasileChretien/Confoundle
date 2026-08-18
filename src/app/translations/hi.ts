@@ -3,6 +3,8 @@
  * must match the English text exactly. Correct in place.
  */
 export const hi: Record<string, string> = {
+  // ---- Scrub lever ----
+  "Drag to see the same data the other way": "वही आँकड़े दूसरे ढंग से देखने के लिए सरकाएँ",
   // ---- Calibration run ----
   "Calibration run": "आत्मविश्वास परख",
   "Score: {n}": "स्कोर: {n}",

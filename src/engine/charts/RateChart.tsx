@@ -210,50 +210,37 @@ export function RateChart({
   }
 
   /*
-    WHICH END IS WHICH IS READ OFF THE VIEWS, not assumed. `stage-migration`
-    is stratified at the setup and aggregate at the reveal, the opposite of
-    `kidney-stones`, and hard-coding "pooled at phase 0" ran it backwards: the
-    reveal arrived showing the setup's own deceptive by-stage table while the
-    headline announced the unchanged total.
-  */
-  const pooledIsFrom = scrub.from.kind === "aggregate";
-  const pooledView = pooledIsFrom ? scrub.from : scrub.to;
-  const splitView = pooledIsFrom ? scrub.to : scrub.from;
-  const pooledData = restrictRates(data, pooledView);
-  const splitData = restrictRates(data, splitView);
+    POOLED IS ALWAYS THE SETUP HERE. `canScrub` admits a rates puzzle only
+    when the setup is the aggregate view and the reveal is the stratified one,
+    so there is no direction to work out and no reversed case to carry.
 
-  // `ratesScrubFrame` runs from the pooled end to the split one, so a puzzle
-  // whose setup is the split view is scrubbed backwards through it.
-  const frame = ratesScrubFrame(pooledIsFrom ? scrub.phase : 1 - scrub.phase);
+    That gate replaced a version of this code that handled both directions,
+    and the handling cost two defects: one that ran the reversed puzzle
+    backwards, and one that exposed its setup at exactly phase 0.5 while the
+    caption said reveal. Deleting the path was cheaper than guarding it, and
+    `stage-migration` keeps the discrete flip it always had.
+  */
+  const pooledData = restrictRates(data, scrub.from);
+  const splitData = restrictRates(data, scrub.to);
+  const frame = ratesScrubFrame(scrub.phase);
 
   /*
-    ALSO KNOWN AND DEFERRED: the layer that is not being shown keeps its text
-    in the DOM, since `opacity: 0` and `aria-hidden` remove it from sight and
-    from the accessibility tree but not from `innerText`, page search or copy.
-    A determined reader could search for a number the reveal has not yet given
-    them. Narrow, but mildly in tension with this beat's promise, and the fix
-    (swapping to `display: none` outside the crossfade window, or `inert`) is
-    a separate change from this one.
+    KNOWN AND DEFERRED: the layer that is not being shown keeps its text in the
+    DOM, since `opacity: 0` and `aria-hidden` remove it from sight and from the
+    accessibility tree but not from `innerText`, page search or copy. A
+    determined reader could search for a number the reveal has not yet given
+    them. Narrow, mildly in tension with this beat's promise, and the fix
+    (`display: none` outside the crossfade window, or `inert`) is its own
+    change.
 
-    WHICH LAYER IS ANNOUNCED IS DECIDED BY DIRECTION, NOT BY OPACITY.
-
-    Comparing `frame.pooled` against `frame.split` is direction-BLIND: the two
-    are exactly equal at the midpoint, so the tie-break always favoured the
-    split layer. On a forward puzzle split IS the reveal, so that happened to
-    be right. On `stage-migration`, whose reveal is the pooled view, it exposed
-    the SETUP's own deceptive by-stage table at phase 0.5 while `RevealView`'s
-    caption had already switched to the reveal's label. That is the caption and
-    figure disagreeing again, narrowed to a single reachable value rather than
-    to half the drag, and 0.5 is an ordinary place for a `step={0.01}` slider
-    to rest.
-
-    `RevealView` picks the caption with `phase >= 0.5` against the authored
-    from/to pair, so this uses exactly the same rule and the two cannot part
-    company at any phase.
+    WHICH LAYER IS ANNOUNCED USES THE CAPTION'S OWN RULE. It was decided by
+    comparing `frame.pooled` against `frame.split`, which is fine for the
+    magnitudes and useless at the midpoint, where they are exactly equal. The
+    tie fell to the split layer, which was right here and wrong on the reversed
+    puzzle. `RevealView` picks the figcaption with `phase >= 0.5`, so this uses
+    the identical expression and the two cannot part company at any phase.
   */
-  const revealSideShowing = scrub.phase >= 0.5;
-  const pooledIsRevealSide = !pooledIsFrom;
-  const exposePooled = pooledIsRevealSide === revealSideShowing;
+  const exposePooled = scrub.phase < 0.5;
 
   return (
     <div className="grid">

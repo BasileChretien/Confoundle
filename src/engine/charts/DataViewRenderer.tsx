@@ -66,44 +66,31 @@ import { restrictSeries } from "./series";
  * has the whole argument and the shipped bug that prompted it.
  */
 /**
- * Which shapes can be dragged between their two beats rather than flipped.
- *
- * A LIST OF ONE, DELIBERATELY, and it is meant to grow one shape at a time.
- * Interpolating is not a property the dispatch can infer: some pairs are two
- * views of one geometry and genuinely slide (`risk` rescales the same two bars
- * against a different denominator), some are a re-partition needing new
- * mathematics (`rates` unfolds a pooled bar into its strata), some are an
- * annotation where a crossfade would add nothing, and four are two unrelated
- * diagrams where interpolation would assert a continuity that does not exist.
- * `ecological` is the clearest of those: its whole lesson is that the unit of
- * analysis changed, so a smooth path between the two would teach the opposite.
- *
- * So a shape opts in by appearing here, and everything absent keeps the
- * discrete flip it has today.
- */
-/**
  * Can this PUZZLE be dragged between its two beats? Not this SHAPE.
  *
  * IT USED TO ASK THE SHAPE, AND THAT WAS WRONG IN A WAY THAT SHIPPED PAST
  * 1921 GREEN TESTS. `rates` was added to a set of scrubbable types, verified
- * against `kidney-stones`, and declared to cover the 31 rates puzzles. An
- * audit of all 31 found that exactly TWO author the aggregate/stratified pair
- * the code assumed, and one of those two runs the other way round
- * (`stage-migration` is stratified at the setup and aggregate at the reveal).
- * Of the other 29, eighteen are stratified on both beats and eleven aggregate
- * groups or strata each view restricts.
+ * against `kidney-stones`, and declared to cover all 31 rates puzzles. An
+ * audit of those 31 found that exactly TWO author the aggregate/stratified
+ * pair the code assumed. Of the other 29, eighteen are stratified on both
+ * beats and eleven aggregate on both, each differing only by which groups or
+ * strata a view restricts.
  *
- * Three things went wrong for those 28, all invisible in English on the one
- * puzzle that was checked. The withheld group was drawn at phase 0, spoiling
- * the setup before the reader touched anything. `aggregateRates` was invoked
- * on data flagged `strataAreSeparateSamples`, pooling two overlapping samples
- * of the same people and drawing a number that is arithmetically meaningless
- * and was never authored. And on the reversed puzzle the mapping ran
- * backwards, so the reveal arrived showing the setup's own deceptive table.
+ * Three things went wrong for those 29, none visible in English on the single
+ * puzzle that was checked. A view's restriction was dropped, so a setup meant
+ * to show one group drew both and gave the answer away at rest.
+ * `aggregateRates` was invoked on data flagged `strataAreSeparateSamples`,
+ * pooling two overlapping samples of the same people into a total that is
+ * arithmetically meaningless and was never authored. And on the one puzzle
+ * whose beats run the other way round, the mapping ran backwards.
  *
- * A capability is therefore a property of the two authored views, not of the
- * data type. Anything this refuses keeps the discrete flip, which is what it
- * has always had.
+ * A capability is therefore a property of the two authored VIEWS. Anything
+ * refused here keeps the discrete flip, which is what it has always had.
+ *
+ * The count in this comment said 30 until a second review checked it. It came
+ * from `wc -l` on a file whose last line had no trailing newline: a miscount
+ * produced by an unverified tool, inside the fix for a miscount. Left on the
+ * record, because the mechanism is the useful part.
  */
 export function canScrub(
   data: PuzzleData,
@@ -118,10 +105,22 @@ export function canScrub(
   }
 
   if (data.type === "rates") {
-    // Only a genuine pooled/split pair. Two stratified views differ by which
-    // slice each shows, which is an arrival rather than a transformation, and
-    // nothing here knows how to draw that continuously.
-    if (pair !== "aggregate+stratified") return false;
+    /*
+      FORWARD ONLY: pooled at the setup, split at the reveal.
+
+      `stage-migration` runs the other way, and supporting it cost two
+      defects that neither the author nor the first review caught. Every
+      piece of direction-handling code existed for that one puzzle, and both
+      the CRITICAL and the HIGH on this branch lived in it: the first ran the
+      whole scrub backwards, the second exposed the setup's own deceptive
+      table at exactly phase 0.5 while the caption said reveal.
+
+      Refusing it deletes the code path rather than guarding it, which is the
+      difference between a bug fixed and a bug class removed. What is lost is
+      a drag on one puzzle, which keeps the discrete flip it has always had
+      and reads perfectly well.
+    */
+    if (from.kind !== "aggregate" || to.kind !== "stratified") return false;
     // Defensive: an aggregate over overlapping samples double-counts. No
     // puzzle pairs the two today, and the day one does is the day this would
     // otherwise start inventing a total.

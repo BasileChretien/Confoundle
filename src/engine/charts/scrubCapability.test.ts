@@ -47,12 +47,13 @@ describe("which puzzles can be dragged", () => {
       reader a pooled total the puzzle never authored.
     */
     for (const p of RATES) {
-      const kinds = [p.setup.initialView.kind, p.reveal.view.kind].sort();
-      const isPair = kinds.join("+") === "aggregate+stratified";
+      const forward =
+        p.setup.initialView.kind === "aggregate" &&
+        p.reveal.view.kind === "stratified";
       expect(
         scrubs(p),
-        `${p.slug} scrubs=${scrubs(p)} but its beats are ${kinds.join(" and ")}`,
-      ).toBe(isPair && p.setup.data.strataAreSeparateSamples !== true);
+        `${p.slug} scrubs=${scrubs(p)} with beats ${p.setup.initialView.kind} then ${p.reveal.view.kind}`,
+      ).toBe(forward && p.setup.data.strataAreSeparateSamples !== true);
     }
   });
 
@@ -73,7 +74,7 @@ describe("which puzzles can be dragged", () => {
     // Named, so that a puzzle joining or leaving this list is a decision
     // somebody made rather than something that happened.
     const dragging = puzzles.filter(scrubs).map((p) => p.slug).sort();
-    expect(dragging).toEqual(["kidney-stones", "relative-risk", "stage-migration"]);
+    expect(dragging).toEqual(["kidney-stones", "relative-risk"]);
   });
 
   it("refuses shapes whose two beats are unrelated drawings", () => {
@@ -102,7 +103,8 @@ describe("which puzzles can be dragged", () => {
  * end is the reveal, and 0.5 is an ordinary place for a step-0.01 slider to
  * rest.
  */
-describe("the reversed puzzle, across the whole drag", () => {
+describe("the scrub across the whole drag", () => {
+  const FORWARD = puzzles.find((p) => p.slug === "kidney-stones")!;
   const REVERSED = puzzles.find((p) => p.slug === "stage-migration")!;
 
   const exposedLayer = (phase: number): "pooled" | "split" => {
@@ -110,12 +112,12 @@ describe("the reversed puzzle, across the whole drag", () => {
       createElement(LocaleProvider, {
         locale: "en",
         children: createElement(DataViewRenderer, {
-          data: REVERSED.setup.data,
-          view: REVERSED.reveal.view,
+          data: FORWARD.setup.data,
+          view: FORWARD.reveal.view,
           animate: false,
           scrub: {
-            from: REVERSED.setup.initialView,
-            to: REVERSED.reveal.view,
+            from: FORWARD.setup.initialView,
+            to: FORWARD.reveal.view,
             phase,
           },
         }),
@@ -132,21 +134,26 @@ describe("the reversed puzzle, across the whole drag", () => {
     return wrappers[0] === "false" ? "pooled" : "split";
   };
 
-  it("is genuinely the reversed one, or this proves nothing", () => {
+  it("refuses the reversed puzzle rather than handling it", () => {
+    /*
+      `stage-migration` is stratified at the setup and aggregate at the
+      reveal. Supporting it cost two defects, both in direction handling, so
+      the gate now refuses it and the code path is gone. It keeps the discrete
+      flip. If somebody re-admits it, they have to restore that path
+      deliberately, and this fails until they do.
+    */
     expect(REVERSED.setup.initialView.kind).toBe("stratified");
     expect(REVERSED.reveal.view.kind).toBe("aggregate");
+    expect(scrubs(REVERSED)).toBe(false);
   });
 
-  it("shows the setup's own view until the midpoint and the reveal's after", () => {
-    // Its reveal is the POOLED view, so the mapping is the mirror of the
-    // forward puzzle's. A rule that hard-codes "split is the reveal" fails
-    // here and passes everywhere else.
-    expect(exposedLayer(0)).toBe("split");
-    expect(exposedLayer(0.25)).toBe("split");
-    expect(exposedLayer(0.499)).toBe("split");
-    expect(exposedLayer(0.5)).toBe("pooled");
-    expect(exposedLayer(0.75)).toBe("pooled");
-    expect(exposedLayer(1)).toBe("pooled");
+  it("shows the setup's view until the midpoint and the reveal's after", () => {
+    expect(exposedLayer(0)).toBe("pooled");
+    expect(exposedLayer(0.25)).toBe("pooled");
+    expect(exposedLayer(0.499)).toBe("pooled");
+    expect(exposedLayer(0.5)).toBe("split");
+    expect(exposedLayer(0.75)).toBe("split");
+    expect(exposedLayer(1)).toBe("split");
   });
 
   it("agrees with the caption rule at every step of the track", () => {
@@ -159,8 +166,9 @@ describe("the reversed puzzle, across the whole drag", () => {
     for (let i = 0; i <= 100; i++) {
       const phase = i / 100;
       const captionSide = phase >= 0.5 ? "reveal" : "setup";
-      // For this puzzle the reveal is pooled and the setup is split.
-      const chartSide = exposedLayer(phase) === "pooled" ? "reveal" : "setup";
+      // Pooled is the setup and split is the reveal, which the gate now
+      // guarantees for every rates puzzle that scrubs.
+      const chartSide = exposedLayer(phase) === "split" ? "reveal" : "setup";
       expect(chartSide, `caption and chart disagree at phase ${phase}`).toBe(
         captionSide,
       );

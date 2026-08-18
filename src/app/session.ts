@@ -395,13 +395,6 @@ export function setNickname(name: string): void {
   }
 }
 
-// ---- puzzle number: same local day is the same number for everyone ----
-const LAUNCH_ISO = "2026-07-01";
-
-export function puzzleNumber(todayIso: string = todayISODate()): number {
-  return dayNumber(todayIso) - dayNumber(LAUNCH_ISO) + 1;
-}
-
 // ---- friends board: a local tally of results friends paste in ----
 const FRIENDS_KEY = "confoundle:friends:v1";
 type FriendEntry = { caught: boolean; score: number; streak: number };

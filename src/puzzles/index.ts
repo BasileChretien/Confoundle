@@ -169,6 +169,33 @@ export const puzzles: PuzzleType[] = rawPuzzles.map((p, i) => {
   return result.data;
 });
 
+/**
+ * The number a shared result line carries, one-based in registry order.
+ *
+ * IT USED TO BE THE DAY, AND THE DAY IS NOT WHAT ANYBODY COMPARES. `session.ts`
+ * computed it as days since launch, so every player who finished any puzzle on
+ * the same date emitted the same "Confoundle #142", and `FriendsBoard` grouped
+ * by that number and ranked the results against each other. Two friends who
+ * played different cards were shown a leaderboard of their scores, and score
+ * depends on which card and what the player staked. That is a comparison across
+ * different denominators presented as a ranking, which is the mistake this deck
+ * exists to teach against, made by the deck.
+ *
+ * A Wordle number means the day because Wordle has exactly one puzzle a day.
+ * This app has 73 and lets you open any of them, so here the number has to name
+ * the card. Now #7 means the seventh puzzle, a friend comparing #7 played the
+ * same one, and the scores are like-for-like.
+ *
+ * THE ORDER IS THEREFORE PART OF THE PRODUCT, not an implementation detail.
+ * Inserting a puzzle in the middle of the registry would renumber everything
+ * after it and quietly change what already-shared lines refer to, so
+ * `registryOrder.test.ts` pins the sequence and new puzzles are appended.
+ */
+export function puzzleNumberOf(slug: string): number | undefined {
+  const i = puzzles.findIndex((p) => p.slug === slug);
+  return i === -1 ? undefined : i + 1;
+}
+
 export function getPuzzleBySlug(slug: string): PuzzleType | undefined {
   return puzzles.find((p) => p.slug === slug);
 }

@@ -3,6 +3,13 @@
  * must match the English text exactly. Correct in place.
  */
 export const hi: Record<string, string> = {
+  // ---- Calibration run ----
+  "Calibration run": "आत्मविश्वास परख",
+  "Score: {n}": "स्कोर: {n}",
+  "Longest calibrated streak: {n}": "सबसे लंबी सही आँकी गई लड़ी: {n}",
+  "Staking {stake} on every call would have scored {n}.": "हर बार {stake} लगाने पर {n} अंक मिलते।",
+  "Overclaimed": "ज़रूरत से ज़्यादा भरोसा",
+  "See the run": "नतीजा देखें",
   // ---- Chart scope labels, reveal badge, reaction lines ----
   "Time nobody could die in": "वह समय जिसमें कोई मर ही नहीं सकता था",
   "What the drug did to the marker": "दवा ने मार्कर पर क्या असर डाला",

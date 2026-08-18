@@ -4,6 +4,13 @@
  * Native review pending; correct in place.
  */
 export const ja: Record<string, string> = {
+  // ---- Calibration run ----
+  "Calibration run": "自信度ラウンド",
+  "Score: {n}": "スコア {n}",
+  "Longest calibrated streak: {n}": "自信の見立てが当たった最長連続: {n}",
+  "Staking {stake} on every call would have scored {n}.": "毎回 {stake} に賭けていれば {n} でした。",
+  "Overclaimed": "自信過剰",
+  "See the run": "結果を見る",
   // ---- Chart scope labels, reveal badge, reaction lines ----
   "Time nobody could die in": "誰も死にえなかった期間",
   "What the drug did to the marker": "薬が指標に与えた影響",

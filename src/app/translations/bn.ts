@@ -3,6 +3,13 @@
  * the English text exactly. French kept only as a secondary reference.
  */
 export const bn: Record<string, string> = {
+  // ---- Calibration run ----
+  "Calibration run": "আত্মবিশ্বাস যাচাই",
+  "Score: {n}": "স্কোর: {n}",
+  "Longest calibrated streak: {n}": "সবচেয়ে দীর্ঘ সঠিকভাবে আঁচ করা ধারা: {n}",
+  "Staking {stake} on every call would have scored {n}.": "প্রতিবার {stake} বাজি ধরলে {n} হতো।",
+  "Overclaimed": "অতিরিক্ত আত্মবিশ্বাস",
+  "See the run": "ফলাফল দেখুন",
   // ---- Chart scope labels, reveal badge, reaction lines ----
   "Time nobody could die in": "যে সময়ে কারও মৃত্যু হতে পারত না",
   "What the drug did to the marker": "ওষুধ মার্কারের ওপর যা করেছে",

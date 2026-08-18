@@ -123,6 +123,7 @@ export function HomeView({
   onOpenAbout,
   onOpenLessons,
   onOpenProgress,
+  onStartRun,
 }: {
   progress: readonly SkillProgress[];
   dueCount: number;
@@ -133,6 +134,7 @@ export function HomeView({
   onOpenAbout: () => void;
   onOpenLessons: () => void;
   onOpenProgress: () => void;
+  onStartRun: () => void;
 }) {
   const t = useT();
   const [query, setQuery] = useState("");
@@ -230,6 +232,11 @@ export function HomeView({
           <div className="flex gap-2">
             <SecondaryButton label={t(UI.allLessons)} onClick={onOpenLessons} grow />
             <SecondaryButton label={t(UI.trapHunt)} onClick={onStartTrapHunt} grow />
+            <SecondaryButton
+              label={t({ en: "Calibration run" })}
+              onClick={onStartRun}
+              grow
+            />
             {learned >= STANDING_THRESHOLD ? (
               <SecondaryButton
                 label={t(UI.progress)}

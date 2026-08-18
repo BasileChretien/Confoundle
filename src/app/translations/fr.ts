@@ -3,6 +3,13 @@
  * the English text exactly. Native review by Basile; correct in place.
  */
 export const fr: Record<string, string> = {
+  // ---- Calibration run ----
+  "Calibration run": "Épreuve de calibrage",
+  "Score: {n}": "Score : {n}",
+  "Longest calibrated streak: {n}": "Plus longue série bien calibrée : {n}",
+  "Staking {stake} on every call would have scored {n}.": "Miser {stake} à chaque fois aurait donné {n}.",
+  "Overclaimed": "Trop sûr",
+  "See the run": "Voir la série",
   // ---- Chart scope labels, reveal badge, reaction lines ----
   "Time nobody could die in": "Le temps où personne ne pouvait mourir",
   "What the drug did to the marker": "Ce que le médicament a fait au marqueur",

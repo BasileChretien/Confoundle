@@ -3,6 +3,7 @@ import { getPuzzleBySlug, getTodaysPuzzle } from "../puzzles";
 import { PuzzleFlow } from "../engine/PuzzleFlow";
 import { ReviewView } from "../engine/ReviewView";
 import { TrapHuntView } from "../engine/TrapHuntView";
+import { CalibrationRunView } from "../engine/CalibrationRunView";
 import { HomeView } from "../engine/HomeView";
 import { ProgressPanel } from "../engine/ProgressPanel";
 import { Confounder, confounderStateFor } from "../engine/Confounder";
@@ -168,6 +169,8 @@ function AppShell() {
         <div className="flex-1">
           {view.name === "trapHunt" ? (
             <TrapHuntView onDone={() => go(HOME)} />
+          ) : view.name === "calibrationRun" ? (
+            <CalibrationRunView onDone={() => go(HOME)} />
           ) : view.name === "review" ? (
             <ReviewView
               seed={round}
@@ -239,6 +242,7 @@ function AppShell() {
               onOpenAbout={() => go({ name: "about" })}
               onOpenLessons={() => go({ name: "lessons" })}
               onOpenProgress={() => go({ name: "progress" })}
+              onStartRun={() => go({ name: "calibrationRun" })}
             />
           )}
         </div>

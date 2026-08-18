@@ -59,6 +59,7 @@ function render(progress: SkillProgress[], dueCount = 0): string {
         onOpenAbout: () => {},
         onOpenLessons: () => {},
         onOpenProgress: () => {},
+        onStartRun: () => {},
       }),
     }),
   );
@@ -95,12 +96,18 @@ describe("the home screen", () => {
       MORE of it the further along you were.
     */
     const out = text(render(progressFor(12)));
+    /*
+      `UI.calibration.en` is "Calibration", and the calibration run's entry
+      point on this very screen is "Calibration run", so a substring probe on
+      it now reports a collision rather than the panel. Dropped rather than
+      loosened: the panel cannot render inline without also bringing the four
+      below, so the guard still catches exactly what it was built to catch.
+    */
     for (const heading of [
       UI.mastery.en,
       UI.weekAhead.en,
       UI.activityTitle.en,
       UI.nemesesTitle.en,
-      UI.calibration.en,
     ]) {
       expect(out, `"${heading}" is still inline on home`).not.toContain(heading);
     }

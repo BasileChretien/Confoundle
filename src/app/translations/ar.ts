@@ -4,6 +4,13 @@
  * Arabic. French was used only as a secondary reference.
  */
 export const ar: Record<string, string> = {
+  // ---- Calibration run ----
+  "Calibration run": "جولة معايرة الثقة",
+  "Score: {n}": "النتيجة: {n}",
+  "Longest calibrated streak: {n}": "أطول سلسلة تقدير صائب: {n}",
+  "Staking {stake} on every call would have scored {n}.": "لو راهنت بـ {stake} في كل مرة لحصلت على {n}.",
+  "Overclaimed": "مبالغة في الثقة",
+  "See the run": "عرض النتيجة",
   // ---- Chart scope labels, reveal badge, reaction lines ----
   "Time nobody could die in": "الفترة التي لم يكن لأحد أن يموت فيها",
   "What the drug did to the marker": "ما فعله الدواء بالمؤشر",

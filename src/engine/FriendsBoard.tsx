@@ -4,7 +4,6 @@ import {
   addFriendResults,
   getFriendsBoard,
   getNickname,
-  puzzleNumber,
   setNickname,
   type BoardRow,
 } from "../app/session";
@@ -22,9 +21,20 @@ interface TodayResult {
  * into a group chat; paste friends' lines back and it tallies a local board.
  * Nothing leaves the device and no account is needed, just a nickname.
  */
-export function FriendsBoard({ today }: { today: TodayResult }) {
+export function FriendsBoard({
+  puzzleNo,
+  today,
+}: {
+  /**
+   * Which card this is, one-based in registry order. Passed in rather than
+   * derived here, because the board's whole job is to group results that faced
+   * the same puzzle and it must not be able to disagree with the beat it sits
+   * under.
+   */
+  puzzleNo: number;
+  today: TodayResult;
+}) {
   const t = useT();
-  const puzzleNo = puzzleNumber();
   const [name, setName] = useState(getNickname());
   const [paste, setPaste] = useState("");
   const [copied, setCopied] = useState(false);

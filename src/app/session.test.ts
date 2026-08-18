@@ -1,5 +1,11 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
-import { activityByDay, computeStats, recordPlay } from "./session";
+import {
+  activityByDay,
+  addFriendResults,
+  computeStats,
+  getFriendsBoard,
+  recordPlay,
+} from "./session";
 import type { PlayRecord } from "./session";
 
 const rec = (correct: boolean, confidence: PlayRecord["confidence"] = "sure"): PlayRecord => ({
@@ -222,5 +228,65 @@ describe("recordPlay reports the first commit of the day", () => {
     // Last write wins: not sending the answer must not mean not recording it.
     expect(stored[0]!.choiceId).toBe("c2");
     expect(stored[0]!.correct).toBe(true);
+  });
+});
+
+/**
+ * A board keyed by a number that changed meaning must not read its own old data.
+ *
+ * `puzzleNo` used to be days since launch and is now the puzzle's position in
+ * the registry. The store's SHAPE did not change, every stored value still
+ * parses, and nothing in an entry records which numbering wrote it, so the old
+ * data would have been read straight back under the new meaning: the friends
+ * who played whatever card the rotation served on day 7, shown on the board of
+ * the puzzle at registry position 7, with their real names and scores. The
+ * ranges already overlap, so this was today's behaviour and not a future one.
+ *
+ * The key is what separates them, so the key is what this asserts.
+ */
+describe("the friends board across the renumbering", () => {
+  function withStorage(seed: Record<string, string> = {}) {
+    const m = new Map<string, string>(Object.entries(seed));
+    vi.stubGlobal("localStorage", {
+      getItem: (k: string) => m.get(k) ?? null,
+      setItem: (k: string, v: string) => void m.set(k, String(v)),
+      removeItem: (k: string) => void m.delete(k),
+      clear: () => m.clear(),
+    });
+    return m;
+  }
+  afterEach(() => vi.restoreAllMocks());
+
+  const V1 = "confoundle:friends:v1";
+
+  it("ignores a board written under the day numbering", () => {
+    withStorage({
+      [V1]: JSON.stringify({
+        "7": { Ada: { caught: true, score: 40, streak: 9 } },
+      }),
+    });
+    // Day 7 and registry position 7 are different puzzles. Ada never played
+    // this one, and the old store cannot say which one she did play.
+    expect(getFriendsBoard(7)).toEqual([]);
+  });
+
+  it("still keeps a board written under the new numbering", () => {
+    withStorage();
+    addFriendResults([
+      { name: "Ada", puzzleNo: 7, caught: true, score: 40, streak: 9 },
+    ]);
+    expect(getFriendsBoard(7)).toEqual([
+      { name: "Ada", caught: true, score: 40, streak: 9 },
+    ]);
+    // And does not answer for a different card.
+    expect(getFriendsBoard(8)).toEqual([]);
+  });
+
+  it("does not write back into the old key", () => {
+    const m = withStorage();
+    addFriendResults([
+      { name: "Ada", puzzleNo: 7, caught: true, score: 40, streak: 9 },
+    ]);
+    expect(m.get(V1)).toBeUndefined();
   });
 });

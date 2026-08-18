@@ -11,6 +11,7 @@ import { LessonView } from "./LessonView";
 import { ShareCard } from "./share/ShareCard";
 import { StatsPanel } from "./StatsPanel";
 import { FriendsBoard } from "./FriendsBoard";
+import { puzzleNumberOf } from "../puzzles";
 import { scoreFor, type Confidence } from "./scoring";
 
 type Beat = "setup" | "reveal" | "lesson" | "share";
@@ -33,6 +34,7 @@ export function PuzzleFlow({
   const [beat, setBeat] = useState<Beat>("setup");
   const [committed, setCommitted] = useState<Choice | null>(null);
   const [confidence, setConfidence] = useState<Confidence | null>(null);
+  const puzzleNo = puzzleNumberOf(puzzle.slug);
 
   useEffect(() => {
     track("puzzle_view", { slug: puzzle.slug });
@@ -115,13 +117,23 @@ export function PuzzleFlow({
         {beat === "share" && committed && confidence && (
           <div className="flex flex-col gap-4">
             <StatsPanel todayScore={scoreFor(committed.isCorrect, confidence)} />
-            <FriendsBoard
-              today={{
-                caught: committed.isCorrect,
-                score: scoreFor(committed.isCorrect, confidence),
-                streak: getStats().currentStreak,
-              }}
-            />
+            {/*
+              No number, no board. `puzzleNumberOf` cannot miss for a puzzle
+              that came out of the registry, but the alternative to this guard
+              was `?? 0`, which would have shipped a line reading "Confoundle
+              #0" and a board grouping every unnumbered result together. A
+              share surface that is wrong is worse than one that is absent.
+            */}
+            {puzzleNo === undefined ? null : (
+              <FriendsBoard
+                puzzleNo={puzzleNo}
+                today={{
+                  caught: committed.isCorrect,
+                  score: scoreFor(committed.isCorrect, confidence),
+                  streak: getStats().currentStreak,
+                }}
+              />
+            )}
             <ShareCard
               puzzle={puzzle}
               committed={committed}

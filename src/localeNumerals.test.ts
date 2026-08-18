@@ -99,12 +99,22 @@ const SOURCES: Record<string, string> = {
 
 /**
  * Tests are excluded because they quote the defect in order to prove the
- * detector fires on it, and the dictionaries because they are data: nine files
- * of about five thousand translated strings each, holding no code at all and
- * costing real time to read on every run.
+ * detector fires on it, and the nine dictionaries because they are data: about
+ * five thousand translated strings each, holding no code at all and costing
+ * real time to read on every run.
+ *
+ * MATCHED BY FILENAME, NOT BY DIRECTORY, and the distinction is the whole
+ * lesson of this file. `path.includes("/translations/")` was the first version
+ * and it excluded thirteen files rather than nine: the nine dictionaries, two
+ * tests already covered by the suffix check, and `index.ts` and `all.ts`,
+ * which are ordinary code. `index.ts` is the on-demand dictionary loader, one
+ * of the more plausible places in the app for somebody to add a formatting
+ * helper, and it would have been invisible to the scan that exists to see it.
+ * An exclusion broader than its own rationale is exactly the defect this PR
+ * fixes elsewhere, so it should not have been introduced here.
  */
 const isScanned = (path: string) =>
-  !/\.test\.tsx?$/.test(path) && !path.includes("/translations/");
+  !/\.test\.tsx?$/.test(path) && !/\/translations\/[a-z]{2}\.ts$/.test(path);
 
 /**
  * Comments are not code, and this project writes a great many of them.

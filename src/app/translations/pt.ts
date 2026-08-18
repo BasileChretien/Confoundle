@@ -153,6 +153,7 @@ export const pt: Record<string, string> = {
   "Answering trap every time would have scored {n} on this round.": "Responder «armadilha» sempre teria dado {n} nesta rodada.",
   "{percent} of players picked that too.": "{percent} dos jogadores escolheu o mesmo.",
   "{percent} of players fell for the same one.": "{percent} dos jogadores caiu na mesma armadilha.",
+  "{percent} of players who said they were certain got this wrong.": "{percent} dos jogadores que responderam com certeza errou.",
   "Caught {caught} of the {played} days played this week": "Armadilha apanhada em {caught} dos {played} dias jogados esta semana",
   "Caught {caught} of {played}.": "Apanhada em {caught} de {played}.",
   "Certain and wrong once.": "Certo de si e errado uma vez.",

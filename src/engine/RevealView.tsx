@@ -14,7 +14,7 @@ import {
 import { Legend } from "./charts/RateChart";
 import { CaseMixBars } from "./charts/CaseMixBars";
 import { scoreFor, reactionFor, type Confidence } from "./scoring";
-import { CompanyLine } from "./CompanyLine";
+import { CrowdLines } from "./CrowdLines";
 
 /**
  * Beat 3: the reveal. The plate opens on the same view the player committed
@@ -106,7 +106,7 @@ export function RevealView({
   }, [revealed]);
 
   /*
-    Cleared on unmount, following the `live` flag in `CompanyLine`. The player
+    Cleared on unmount, following the `live` flag in `CrowdLines`. The player
     can hit Replay and then "Name the skill" inside the 650ms, which unmounts
     this component while the timer is still armed. React 19 makes the late
     setState a silent no-op rather than a warning, so this is tidiness rather
@@ -326,7 +326,7 @@ export function RevealView({
 
               This read "Most people miss this" on every wrong answer, on every
               puzzle, unconditionally, with no tally behind it, while
-              `CompanyLine` below renders the real distribution and can say
+              `CrowdLines` below renders the real distribution and can say
               "18% of players fell for the same one". `answerStats` sets
               MIN_ANSWERS_TO_SHOW = 20 and argues in its own comment that
               drawing a percentage the server considers too small to be
@@ -363,9 +363,10 @@ export function RevealView({
             {t({ en: reactionFor(caught, confidence) })}
           </p>
 
-          <CompanyLine
+          <CrowdLines
             slug={puzzle.slug}
             choiceId={committed.id}
+            correctChoiceId={puzzle.choices.find((c) => c.isCorrect)?.id}
             wasCorrect={Boolean(committed.isCorrect)}
           />
 

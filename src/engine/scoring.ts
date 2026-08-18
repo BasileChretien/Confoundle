@@ -60,7 +60,7 @@ export function scoreFor(correct: boolean, c: Confidence): number {
  * `sure` and wrong read "So does almost everyone. That's the trap." That is an
  * unsourced universal quantifier in the app's own voice, printed on every
  * sure-and-wrong answer of every puzzle regardless of what the tally actually
- * says, and it sat three lines above `CompanyLine`, which knows the real
+ * says, and it sat three lines above `CrowdLines`, which knows the real
  * number and may say something quite different. Same defect as the reveal
  * badge, same fix: describe the setup, which the deck authored and therefore
  * knows about, rather than the population, which it does not.

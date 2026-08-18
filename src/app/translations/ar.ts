@@ -153,6 +153,7 @@ export const ar: Record<string, string> = {
   "Answering trap every time would have scored {n} on this round.": "لو أجبت «فخ» في كل مرة لسجّلت {n} في هذه الجولة.",
   "{percent} of players picked that too.": "اختار {percent} من اللاعبين الشيء نفسه.",
   "{percent} of players fell for the same one.": "وقع {percent} من اللاعبين في الفخ نفسه.",
+  "{percent} of players who said they were certain got this wrong.": "أخطأ {percent} من اللاعبين الذين قالوا إنهم متيقنون.",
   "Caught {caught} of the {played} days played this week": "‏{caught} من {played} أيام لُعبت هذا الأسبوع تم فيها كشف الفخ",
   "Caught {caught} of {played}.": "‏كُشف الفخ في {caught} من {played}.",
   "Certain and wrong once.": "مرة واحدة كنت واثقا ومخطئا.",

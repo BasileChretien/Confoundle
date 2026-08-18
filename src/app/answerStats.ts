@@ -87,6 +87,42 @@ export function sendAnswer(
 }
 
 /**
+ * A tally list, or null if the body is not one.
+ *
+ * `Array.isArray(d.choices)` was the whole check, and it was enough only while
+ * nothing walked the entries. `certain` was not checked at all, because until
+ * the certainty line existed nothing read it: `d.certain ?? []` passed any
+ * truthy value straight through to a caller that never came.
+ *
+ * The certainty line made it a live path on every reveal. `certainSplit` calls
+ * `.reduce` and `.find` synchronously during render, so a `certain` that is not
+ * an array throws INSIDE a render rather than returning a bad number, and there
+ * is no error boundary in this app: it would take down the whole tree. The
+ * module promises the opposite in its own header, that every failure here costs
+ * the player nothing but a sentence, and that promise has to be kept at the
+ * boundary rather than hoped for from the server.
+ *
+ * It refuses the whole body rather than dropping bad entries. A tally with some
+ * of its rows silently discarded is a denominator that no longer counts what it
+ * says it counts, which on this deck is the one kind of wrong number that must
+ * never be drawn.
+ */
+function tallies(v: unknown): ChoiceTally[] | null {
+  if (!Array.isArray(v)) return null;
+  const out: ChoiceTally[] = [];
+  for (const row of v) {
+    if (typeof row !== "object" || row === null) return null;
+    const { choiceId, count } = row as Partial<ChoiceTally>;
+    if (typeof choiceId !== "string") return null;
+    if (typeof count !== "number" || !Number.isFinite(count) || count < 0) {
+      return null;
+    }
+    out.push({ choiceId, count });
+  }
+  return out;
+}
+
+/**
  * Read what everybody else did. Returns null when there is nothing worth
  * showing, which the caller renders as nothing at all rather than as a zero.
  *
@@ -127,8 +163,17 @@ export async function fetchDistribution(
     );
     if (!res.ok) return null;
     const d = (await res.json()) as Partial<Distribution>;
-    if (typeof d.total !== "number" || !Array.isArray(d.choices)) return null;
-    return { total: d.total, choices: d.choices, certain: d.certain ?? [] };
+    const choices = tallies(d.choices);
+    const certain = d.certain === undefined ? [] : tallies(d.certain);
+    if (
+      typeof d.total !== "number" ||
+      !Number.isFinite(d.total) ||
+      choices === null ||
+      certain === null
+    ) {
+      return null;
+    }
+    return { total: d.total, choices, certain };
   } catch {
     return null;
   }
@@ -151,4 +196,60 @@ export function shareOf(
   const hit = d.choices.find((c) => c.choiceId === choiceId);
   if (!hit) return null;
   return hit.count / d.total;
+}
+
+/**
+ * A share as a percentage, in the reader's locale, that never says zero about
+ * something that happened.
+ *
+ * `maximumFractionDigits: 0` on its own was already drawing a falsehood. The
+ * floor constrains the denominator from below and not from above, so one
+ * player in 500 rounds to "0%", and the company line would tell that player
+ * "0% of players fell for the same one" while they sit looking at their own
+ * answer, which is one of them. A deck about not believing a number more than
+ * its collection method supports cannot round a person out of existence.
+ *
+ * Below half a percent it switches to a single significant figure, the
+ * smallest change that cannot print zero for a non-zero share: 1 in 2500 draws
+ * 0.04%. At or above half a percent the output is byte for byte what shipped,
+ * so no figure a player has already seen moves.
+ */
+export function formatShare(share: number, locale: string): string {
+  const digits: Intl.NumberFormatOptions =
+    share > 0 && share < 0.005
+      ? { maximumSignificantDigits: 1 }
+      : { maximumFractionDigits: 0 };
+  return new Intl.NumberFormat(locale, {
+    style: "percent",
+    ...digits,
+  }).format(share);
+}
+
+/**
+ * Of the players who staked `certain`, how many picked something other than
+ * the answer the evidence supports.
+ *
+ * THE FLOOR IS ON THIS SUBGROUP, NOT ON THE PARENT TALLY, which is the whole
+ * reason this is a function and not two lines at the call site. `total >= 20`
+ * says nothing about how many of those twenty were certain, so a puzzle with
+ * 25 answers of which 3 were certain would otherwise draw "67% of players who
+ * were certain got this wrong" from a denominator of three. That is precisely
+ * the mistake the deck teaches against, and the privacy half of the argument
+ * behind `MIN_ANSWERS_TO_SHOW` binds harder on a subgroup than on the whole,
+ * because the smaller cell is the likelier one to describe somebody.
+ *
+ * Fails closed on a missing `correctChoiceId`. The schema guarantees exactly
+ * one correct choice per puzzle, but a caller that cannot find it must draw
+ * nothing rather than count every certain player wrong.
+ */
+export function certainSplit(
+  d: Distribution | null,
+  correctChoiceId: string | undefined,
+): { wrong: number; certain: number } | null {
+  if (!d || correctChoiceId === undefined) return null;
+  const certain = d.certain.reduce((n, c) => n + c.count, 0);
+  if (certain < MIN_ANSWERS_TO_SHOW) return null;
+  const right =
+    d.certain.find((c) => c.choiceId === correctChoiceId)?.count ?? 0;
+  return { wrong: certain - right, certain };
 }

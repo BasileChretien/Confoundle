@@ -153,6 +153,7 @@ export const ru: Record<string, string> = {
   "Answering trap every time would have scored {n} on this round.": "Отвечая «ловушка» каждый раз, в этом раунде вы набрали бы {n}.",
   "{percent} of players picked that too.": "{percent} игроков выбрали то же самое.",
   "{percent} of players fell for the same one.": "{percent} игроков попались на ту же удочку.",
+  "{percent} of players who said they were certain got this wrong.": "{percent} игроков, ответивших «Уверен полностью», ошиблись.",
   "Caught {caught} of the {played} days played this week": "Распознано ловушек: {caught} из {played} сыгранных дней на этой неделе",
   "Caught {caught} of {played}.": "Распознано {caught} из {played}.",
   "Certain and wrong once.": "Один раз был уверен и ошибся.",

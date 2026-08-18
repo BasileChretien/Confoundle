@@ -1,8 +1,18 @@
 import { describe, expect, it } from "vitest";
 
 /**
- * A numeral on a chart follows the READER'S locale, never the runtime's and
+ * A numeral the app draws follows the READER'S locale, never the runtime's and
  * never a locale written into the source.
+ *
+ * IT USED TO SCAN ONE DIRECTORY, and read as though it scanned the engine.
+ * The glob was `./*.{ts,tsx}` from inside `engine/charts/`, so every
+ * top-level view sat outside it: `TrapHuntView` and `CalibrationRunView`
+ * both format counts for the reader and neither was ever looked at. That is
+ * the same shape as the hole `charts/scopeLabels.test.ts` closed, a guard
+ * whose name promises more than its glob delivers, and it was found by a
+ * reviewer asking what this file actually covers rather than what it says.
+ * It now scans engine, app, srs, server and puzzles, and it lives at the
+ * root of `src` so its position says so.
  *
  * Nothing caught this, and nothing could. `chartsLocalized.test.ts` renders
  * every puzzle in six non-Latin locales and fails on any Latin word, which is
@@ -30,8 +40,8 @@ import { describe, expect, it } from "vitest";
  * figures to anyone testing in English.
  *
  * WHAT THIS DELIBERATELY DOES NOT COVER, so that nobody reads it as more than
- * it is. `toFixed` never localises anything, and twenty-odd files in this
- * directory still use it for decimals. That is the same bug in the wider sense
+ * it is. `toFixed` never localises anything, and a couple of dozen chart
+ * files still use it for decimals. That is the same bug in the wider sense
  * and it is not this test's subject, because sweeping it means touching every
  * shape at once. The boundary drawn instead is the one that can be held today:
  * no file may pick the WRONG locale, and no file may be half-localised, which
@@ -42,19 +52,59 @@ import { describe, expect, it } from "vitest";
  */
 
 /**
- * Every file in this directory, as text. The whole directory rather than a list
- * read off `DataViewRenderer`: the defect is not confined to the renderers that
- * are handed a slice of the data (which is what `declaredColors.test.ts` needs
- * its list for), and the pure derivation modules beside them format numbers
- * too. `estimation.ts` held one of the six.
+ * Every source file the app ships, as text.
+ *
+ * Whole directories rather than a list read off anything: the defect is not
+ * confined to the renderers handed a slice of the data (which is what
+ * `declaredColors.test.ts` needs its list for), the pure derivation modules
+ * beside them format numbers too, and so do the views, the share card and the
+ * server's rendered pages. `estimation.ts` held one of the original six and
+ * `CalibrationRunView.tsx` would have been the next one nobody checked.
  */
-const SOURCES = import.meta.glob("./*.{ts,tsx}", {
-  query: "?raw",
-  import: "default",
-  eager: true,
-}) as Record<string, string>;
+/*
+  Five separate calls rather than one brace pattern, because `import.meta.glob`
+  is resolved by static analysis at build time: its arguments must be literals,
+  so the options cannot be hoisted into a shared constant and the directories
+  cannot be assembled from a variable either. Hoisting them was the first
+  attempt and it fails at transform time rather than at assertion time, which
+  is at least loud.
+*/
+const SOURCES: Record<string, string> = {
+  ...(import.meta.glob("./engine/**/*.{ts,tsx}", {
+    query: "?raw",
+    import: "default",
+    eager: true,
+  }) as Record<string, string>),
+  ...(import.meta.glob("./app/**/*.{ts,tsx}", {
+    query: "?raw",
+    import: "default",
+    eager: true,
+  }) as Record<string, string>),
+  ...(import.meta.glob("./srs/**/*.{ts,tsx}", {
+    query: "?raw",
+    import: "default",
+    eager: true,
+  }) as Record<string, string>),
+  ...(import.meta.glob("./server/**/*.{ts,tsx}", {
+    query: "?raw",
+    import: "default",
+    eager: true,
+  }) as Record<string, string>),
+  ...(import.meta.glob("./puzzles/**/*.{ts,tsx}", {
+    query: "?raw",
+    import: "default",
+    eager: true,
+  }) as Record<string, string>),
+};
 
-const isScanned = (path: string) => !/\.test\.tsx?$/.test(path);
+/**
+ * Tests are excluded because they quote the defect in order to prove the
+ * detector fires on it, and the dictionaries because they are data: nine files
+ * of about five thousand translated strings each, holding no code at all and
+ * costing real time to read on every run.
+ */
+const isScanned = (path: string) =>
+  !/\.test\.tsx?$/.test(path) && !path.includes("/translations/");
 
 /**
  * Comments are not code, and this project writes a great many of them.
@@ -183,8 +233,16 @@ describe("numerals on a chart follow the reader's locale", () => {
     // every source scan in this repo is written to argue against. Floors
     // rather than exact counts, so adding a chart cannot fail this, but a glob
     // that has quietly stopped matching must.
-    expect(Object.keys(SOURCES).length).toBeGreaterThan(40);
-    expect(Object.keys(SOURCES).filter(isScanned).length).toBeGreaterThan(30);
+    expect(Object.keys(SOURCES).length).toBeGreaterThan(300);
+    expect(Object.keys(SOURCES).filter(isScanned).length).toBeGreaterThan(180);
+    // The directories, named, so a glob that silently stops matching one of
+    // them cannot hide behind the total from the other four.
+    for (const dir of ["/engine/", "/app/", "/srs/", "/server/", "/puzzles/"]) {
+      expect(
+        Object.keys(SOURCES).filter((p) => p.includes(dir)).length,
+        `the glob for ${dir} matched nothing`,
+      ).toBeGreaterThan(5);
+    }
   });
 
   it("would recognise every spelling of the defect if one came back", () => {

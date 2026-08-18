@@ -81,10 +81,54 @@ import { restrictSeries } from "./series";
  * So a shape opts in by appearing here, and everything absent keeps the
  * discrete flip it has today.
  */
-const SCRUBBABLE: ReadonlySet<PuzzleData["type"]> = new Set(["risk", "rates"]);
+/**
+ * Can this PUZZLE be dragged between its two beats? Not this SHAPE.
+ *
+ * IT USED TO ASK THE SHAPE, AND THAT WAS WRONG IN A WAY THAT SHIPPED PAST
+ * 1921 GREEN TESTS. `rates` was added to a set of scrubbable types, verified
+ * against `kidney-stones`, and declared to cover the 30 rates puzzles. An
+ * audit of all 30 found that exactly TWO author the aggregate/stratified pair
+ * the code assumed, and one of those two runs the other way round
+ * (`stage-migration` is stratified at the setup and aggregate at the reveal).
+ * The remaining 28 are stratified on both beats, differing only by which
+ * groups or strata each view restricts.
+ *
+ * Three things went wrong for those 28, all invisible in English on the one
+ * puzzle that was checked. The withheld group was drawn at phase 0, spoiling
+ * the setup before the reader touched anything. `aggregateRates` was invoked
+ * on data flagged `strataAreSeparateSamples`, pooling two overlapping samples
+ * of the same people and drawing a number that is arithmetically meaningless
+ * and was never authored. And on the reversed puzzle the mapping ran
+ * backwards, so the reveal arrived showing the setup's own deceptive table.
+ *
+ * A capability is therefore a property of the two authored views, not of the
+ * data type. Anything this refuses keeps the discrete flip, which is what it
+ * has always had.
+ */
+export function canScrub(
+  data: PuzzleData,
+  from: DataView,
+  to: DataView,
+): boolean {
+  const pair = [from.kind, to.kind].sort().join("+");
 
-export function canScrub(data: PuzzleData): boolean {
-  return SCRUBBABLE.has(data.type);
+  if (data.type === "risk") {
+    // The two views rescale one geometry against different denominators.
+    return pair === "absolute+relative";
+  }
+
+  if (data.type === "rates") {
+    // Only a genuine pooled/split pair. Two stratified views differ by which
+    // slice each shows, which is an arrival rather than a transformation, and
+    // nothing here knows how to draw that continuously.
+    if (pair !== "aggregate+stratified") return false;
+    // Defensive: an aggregate over overlapping samples double-counts. No
+    // puzzle pairs the two today, and the day one does is the day this would
+    // otherwise start inventing a total.
+    return data.strataAreSeparateSamples !== true;
+  }
+
+  return false;
 }
 
 export function DataViewRenderer({
@@ -92,20 +136,24 @@ export function DataViewRenderer({
   view,
   animate,
   highlightWinner,
-  phase,
+  scrub,
 }: {
   data: PuzzleData;
   view: DataView;
   animate: boolean;
   highlightWinner?: boolean;
   /**
-   * Position between the setup view and the reveal view while the reader is
-   * dragging, 0 being the setup. Absent everywhere except the reveal beat of a
-   * shape in `SCRUBBABLE`, and ignored by every renderer that has not opted in,
-   * which is what lets shapes convert one at a time without touching the other
-   * thirty-four dispatch arms.
+   * The drag, when there is one: both authored views and how far between them
+   * the reader has pulled, 0 being `from`.
+   *
+   * BOTH VIEWS, NOT JUST A NUMBER. The first version passed only a phase and
+   * let the renderer use whichever single `view` it had been handed for both
+   * ends. That silently assumed the two beats differ only in kind, which held
+   * for one puzzle out of thirty: every view that restricts its groups or
+   * strata had that restriction dropped, so a setup drawing one group drew
+   * both. Passing the pair is what makes each layer able to render its own.
    */
-  phase?: number;
+  scrub?: { from: DataView; to: DataView; phase: number };
 }) {
   switch (data.type) {
     case "rates":
@@ -117,7 +165,7 @@ export function DataViewRenderer({
           view={view}
           animate={animate}
           highlightWinner={highlightWinner}
-          phase={phase}
+          scrub={scrub}
         />
       );
     case "frequencies":
@@ -136,7 +184,7 @@ export function DataViewRenderer({
           data={data}
           view={view.kind}
           animate={animate}
-          phase={phase}
+          phase={scrub?.phase}
         />
       );
     case "agreement":

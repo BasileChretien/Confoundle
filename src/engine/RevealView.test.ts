@@ -141,8 +141,12 @@ describe("a shape you drag rather than tap", () => {
       its two beats are a scatter and a node diagram, two unrelated drawings
       with no path between them.
     */
-    expect(canScrub(RISK.setup.data)).toBe(true);
-    expect(canScrub(FLAT.setup.data)).toBe(false);
+    expect(
+      canScrub(RISK.setup.data, RISK.setup.initialView, RISK.reveal.view),
+    ).toBe(true);
+    expect(
+      canScrub(FLAT.setup.data, FLAT.setup.initialView, FLAT.reveal.view),
+    ).toBe(false);
   });
 
   it("offers a slider instead of the button", () => {

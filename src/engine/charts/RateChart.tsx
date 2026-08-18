@@ -83,10 +83,16 @@ export interface RateChartProps {
   /** Mark the winning bar within each view (gold, the truth as it shifts). */
   highlightWinner?: boolean;
   /**
-   * Position between the pooled view and the split one while the reader is
-   * dragging, 0 being pooled. Absent means the discrete flip.
+   * The drag: both authored views and how far between them the reader has
+   * pulled, 0 being `from`. Absent means the discrete flip.
+   *
+   * EACH LAYER RENDERS FROM ITS OWN VIEW. A view can restrict which groups or
+   * strata it draws, and 28 of the 30 rates puzzles use that to hold something
+   * back until the reveal. Building both layers from one view dropped the
+   * setup's restriction and drew the withheld group at phase 0, which spoils
+   * the puzzle before the reader has touched it.
    */
-  phase?: number;
+  scrub?: { from: DataView; to: DataView; phase: number };
 }
 
 export function RateChart({
@@ -94,7 +100,7 @@ export function RateChart({
   view,
   animate,
   highlightWinner = false,
-  phase,
+  scrub,
 }: RateChartProps) {
   const t = useT();
   // Colours are indexed off the FULL group list, so a group keeps its colour
@@ -105,11 +111,11 @@ export function RateChart({
     t(g.short ?? g.label);
   const groupById = (id: string) => data.groups.find((g) => g.id === id)!;
 
-  const pooledLayer = () => {
-    const rates = aggregateRates(shown);
+  const pooledLayer = (source: RatesData) => {
+    const rates = aggregateRates(source);
     const winner =
-      highlightWinner && shown.crownWinner !== false
-        ? bestGroupId(rates, shown.higherIsBetter)
+      highlightWinner && source.crownWinner !== false
+        ? bestGroupId(rates, source.higherIsBetter)
         : null;
     return (
       <div className="flex items-end justify-center gap-10 px-2">
@@ -128,8 +134,8 @@ export function RateChart({
     );
   };
 
-  const splitLayer = (separation: number) => {
-    const strata = stratifiedRates(shown);
+  const splitLayer = (source: RatesData, separation: number) => {
+    const strata = stratifiedRates(source);
     return (
       <div
         className={
@@ -144,10 +150,10 @@ export function RateChart({
         }
       >
       {strata.map((s) => {
-        const stratum = shown.strata.find((x) => x.id === s.stratumId)!;
+        const stratum = source.strata.find((x) => x.id === s.stratumId)!;
         const winner =
-          highlightWinner && shown.crownWinner !== false
-            ? bestGroupId(s.rates, shown.higherIsBetter)
+          highlightWinner && source.crownWinner !== false
+            ? bestGroupId(s.rates, source.higherIsBetter)
             : null;
         return (
           <div key={s.stratumId} className="rounded-md border border-rule bg-paper/50 p-2.5">
@@ -191,11 +197,29 @@ export function RateChart({
     Nothing interpolates but opacity and position, and every numeral on screen
     at every instant belongs to a view somebody authored.
   */
-  if (phase === undefined) {
-    return view.kind === "aggregate" ? pooledLayer() : splitLayer(1);
+  if (scrub === undefined) {
+    return view.kind === "aggregate"
+      ? pooledLayer(shown)
+      : splitLayer(shown, 1);
   }
 
-  const frame = ratesScrubFrame(phase);
+  /*
+    WHICH END IS WHICH IS READ OFF THE VIEWS, not assumed. `stage-migration`
+    is stratified at the setup and aggregate at the reveal, the opposite of
+    `kidney-stones`, and hard-coding "pooled at phase 0" ran it backwards: the
+    reveal arrived showing the setup's own deceptive by-stage table while the
+    headline announced the unchanged total.
+  */
+  const pooledIsFrom = scrub.from.kind === "aggregate";
+  const pooledView = pooledIsFrom ? scrub.from : scrub.to;
+  const splitView = pooledIsFrom ? scrub.to : scrub.from;
+  const pooledData = restrictRates(data, pooledView);
+  const splitData = restrictRates(data, splitView);
+
+  // `ratesScrubFrame` runs from the pooled end to the split one, so a puzzle
+  // whose setup is the split view is scrubbed backwards through it.
+  const frame = ratesScrubFrame(pooledIsFrom ? scrub.phase : 1 - scrub.phase);
+
   return (
     <div className="grid">
       <div
@@ -208,14 +232,14 @@ export function RateChart({
         // means the more visible layer is always the one announced.
         aria-hidden={frame.pooled <= frame.split}
       >
-        {pooledLayer()}
+        {pooledLayer(pooledData)}
       </div>
       <div
         className="col-start-1 row-start-1"
         style={{ opacity: frame.split }}
         aria-hidden={frame.split < frame.pooled}
       >
-        {splitLayer(frame.separation)}
+        {splitLayer(splitData, frame.separation)}
       </div>
     </div>
   );

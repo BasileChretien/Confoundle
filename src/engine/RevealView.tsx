@@ -142,7 +142,13 @@ export function RevealView({
     replayTimer.current = window.setTimeout(() => setShowingReveal(true), 650);
   }
 
-  const scrubbable = canScrub(data);
+  /*
+    Asked of the PUZZLE, not the shape. A capability that depended only on the
+    data type claimed 30 rates puzzles and was correct for one of them: the
+    other 29 either restrict which groups or strata each beat draws, or run
+    the pooled and split views the other way round.
+  */
+  const scrubbable = canScrub(data, puzzle.setup.initialView, puzzle.reveal.view);
 
   /*
     TWO VIEWS, BECAUSE THEY ANSWER TWO DIFFERENT QUESTIONS, and collapsing them
@@ -243,7 +249,15 @@ export function RevealView({
             view={renderView}
             animate
             highlightWinner
-            phase={scrubbable ? phase : undefined}
+            scrub={
+              scrubbable
+                ? {
+                    from: puzzle.setup.initialView,
+                    to: puzzle.reveal.view,
+                    phase,
+                  }
+                : undefined
+            }
           />
         </div>
 

@@ -69,8 +69,6 @@ export interface RunResult {
   score: number;
   /** Longest unbroken stretch of well-calibrated calls. */
   longestStreak: number;
-  /** Where the streak stood at the end, which is what a share line quotes. */
-  finalStreak: number;
   /** How many calls were simply right, regardless of stake. */
   correct: number;
 }
@@ -78,21 +76,22 @@ export interface RunResult {
 export function gradeRun(answers: readonly RunAnswer[]): RunResult {
   let score = 0;
   let longestStreak = 0;
-  let finalStreak = 0;
+  // Tracks the streak in flight; only its high-water mark is reported.
+  let running = 0;
   let correct = 0;
 
   for (const a of answers) {
     score += scoreFor(a.correct, a.confidence);
     if (a.correct) correct += 1;
     if (isWellCalibrated(a)) {
-      finalStreak += 1;
-      if (finalStreak > longestStreak) longestStreak = finalStreak;
+      running += 1;
+      if (running > longestStreak) longestStreak = running;
     } else {
-      finalStreak = 0;
+      running = 0;
     }
   }
 
-  return { score, longestStreak, finalStreak, correct };
+  return { score, longestStreak, correct };
 }
 
 /**

@@ -86,7 +86,11 @@ export function recordRun(
 ): RunRecorded {
   const before = readRunStats();
   const isBestScore = before.runs === 0 || score > before.bestScore;
-  const isBestStreak = streak > before.bestStreak;
+  // The same first-run guard as the score above, and for the same reason.
+  // Without it, a first run whose every call overclaimed reports "your best
+  // is 0" against a record nobody has ever set. A streak cannot go negative,
+  // so the stored value is right either way; what was wrong was the message.
+  const isBestStreak = before.runs === 0 || streak > before.bestStreak;
 
   const stats: RunStats = {
     bestScore: isBestScore ? score : before.bestScore,

@@ -66,9 +66,10 @@ describe("grading a run", () => {
       answer(false, "certain"), // breaks it
       answer(true, "sure"),
     ];
-    const r = gradeRun(answers);
-    expect(r.longestStreak).toBe(3);
-    expect(r.finalStreak).toBe(1);
+    // The break is in the middle, so the high-water mark has to survive it:
+    // a run that reported only the streak still standing would say 1 here.
+    expect(gradeRun(answers).longestStreak).toBe(3);
+    expect(gradeRun(answers.slice(0, 4)).longestStreak).toBe(3);
   });
 
   it("lets a hedger hold an unbroken streak on a modest score", () => {

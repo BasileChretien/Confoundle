@@ -50,6 +50,19 @@ describe("the calibration run's record", () => {
     expect(stats.bestScore).toBe(-30);
   });
 
+  it("calls a first run a personal best even when the streak was zero", () => {
+    /*
+      The symmetric case to the negative score above, and it was missing. A
+      first run in which every call overclaimed has a streak of 0, and a bare
+      `streak > before.bestStreak` compares 0 > 0 and reports "your best is 0"
+      against a record nobody has ever set. The stored value is right either
+      way, because a streak cannot go negative; what was wrong was the message.
+    */
+    const { isBestStreak, isBestScore } = recordRun(-40, 0, ["a"]);
+    expect(isBestStreak).toBe(true);
+    expect(isBestScore).toBe(true);
+  });
+
   it("never lets a later bad run lower a record", () => {
     recordRun(100, 6, ["a"]);
     const second = recordRun(-10, 0, ["b"]);

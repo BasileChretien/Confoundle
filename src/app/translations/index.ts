@@ -51,21 +51,36 @@ export function cachedDictionary(
  * can await unconditionally. A failed chunk load is swallowed: the app then
  * falls back to English rather than refusing to render.
  *
- * A FAILURE IS NOT AN ANSWER, so it is not cached.
+ * A FAILED LOAD IS CACHED, AND HAS TO BE, because the browser has already made
+ * the decision for us.
  *
- * This used to write `{}` into the same map the early return above consults,
- * which meant one dropped chunk pinned that locale to English for the rest of
- * the session with no retry and nothing said. The reader picks Bengali on a
- * train, the request fails once, and the app is in English until they think to
- * reload it: the single most visible thing this project does, undone by the
- * error path of a function whose comment says it is degrading gracefully.
+ * A previous version of this comment argued the opposite at length: that
+ * caching `{}` pinned a locale to English for the session, that a reader whose
+ * request drops on a train is stuck until they reload, and that leaving the
+ * cache untouched lets the next call try again. The first two are true. The
+ * third is not, and it is the one the change rested on.
  *
- * Degrading gracefully is still right, and still what happens. The promise
- * resolves either way so no caller blocks, and `cachedDictionary` returning
- * undefined already means "English for now" everywhere it is read. The only
- * change is that the next call tries again instead of being told the answer is
- * already known. Callers are effect-driven, one per locale change, so a retry
- * costs one request and never spins.
+ * A dynamic `import()` THAT FAILS IS TERMINAL FOR THE DOCUMENT. The failure is
+ * recorded in the realm's module map against that specifier, and every later
+ * `import()` of it rejects from the map with no network request at all.
+ * Measured here rather than assumed: three sequential imports of a missing
+ * module produced three rejections and exactly ONE request in the network log.
+ * So the "retry" re-entered this function, re-invoked the loader, was rejected
+ * instantly by the module map, and swallowed the same error again. It could
+ * never have fetched anything. The train case is not fixable from this
+ * function, and nothing that only edits these few lines can fix it.
+ *
+ * Caching the failure is therefore not a lost opportunity but a correct record
+ * of a settled fact, and it pays for itself twice. `cachedDictionary` returns
+ * `{}`, which every lookup already treats as "English for now" because
+ * `translate` reaches for the default locale on a miss. And `LocaleProvider`
+ * initialises `ready` from the cache, so returning to a locale whose load
+ * failed short-circuits instead of dropping `ready` to false, which would
+ * unmount the whole subtree under the provider, auth and puzzle state with it.
+ *
+ * If this ever needs to genuinely recover, it will take a different mechanism
+ * (a fresh URL, or a reload offered to the reader) and a different file. It
+ * does not belong in a `catch`.
  */
 export function loadDictionary(locale: string): Promise<void> {
   if (cache.has(locale)) return Promise.resolve();
@@ -82,7 +97,10 @@ export function loadDictionary(locale: string): Promise<void> {
     .catch(() => {
       // Offline, or a chunk that failed to fetch. English is always available
       // as the source text, so degrade to it instead of blocking the app, and
-      // leave the cache untouched so the next call can try again.
+      // remember the failure: the module map will refuse the same specifier
+      // for the life of the document, so asking again costs a re-render and
+      // buys nothing. See the note above.
+      cache.set(locale, {});
     })
     .finally(() => {
       inFlight.delete(locale);

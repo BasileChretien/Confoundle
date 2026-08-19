@@ -25,7 +25,8 @@
  * and `scoreBounds.ts` already are.
  */
 
-import { isAcceptableScore } from "./scoreBounds";
+import { MIN_ANSWERS_TO_SHOW } from "./answers";
+import { isAcceptableScore, MAX_SCORE, MIN_SCORE } from "./scoreBounds";
 
 /** Same shape the puzzle registry enforces, so an unknown key cannot be written. */
 const SLUG = /^[a-z0-9][a-z0-9-]{0,63}$/;
@@ -55,7 +56,21 @@ export function parseHistogram(raw: string | null): Histogram {
     }
     const out: Histogram = {};
     for (const [bucket, count] of Object.entries(parsed as Histogram)) {
-      if (typeof count === "number" && Number.isFinite(count) && count > 0) {
+      // THE KEY IS CHECKED TOO, not only the count. A bucket like "abc" passes
+      // any test on its value, then `Number("abc")` is NaN in `percentileOf`,
+      // so it never counts as below while still counting towards the total: a
+      // silently deflated percentile. Unreachable through `addScore`, which
+      // only ever writes a bounded integer, so this is the guard for a store
+      // corrupted by something other than this endpoint.
+      const value = Number(bucket);
+      const usableBucket =
+        Number.isInteger(value) && value >= MIN_SCORE && value <= MAX_SCORE;
+      if (
+        usableBucket &&
+        typeof count === "number" &&
+        Number.isFinite(count) &&
+        count > 0
+      ) {
         out[bucket] = count;
       }
     }
@@ -71,12 +86,24 @@ export function addScore(histogram: Histogram, score: number): Histogram {
 }
 
 /**
- * The share of recorded scores strictly below this one, or null when there is
- * nobody to compare against.
+ * The share of recorded scores strictly below this one, or null when there are
+ * too few to say.
  *
- * NULL RATHER THAN 0 OR 100 ON A SINGLE ENTRY, because the only entry is the
- * player's own: "you beat 0% of players" would be a claim about a population
- * of one, drawn by a deck whose subject is exactly that.
+ * THE FLOOR IS THE SAME ONE THE ANSWER TALLY USES, imported rather than
+ * repeated so the two cannot drift. It was `total > 1`, which published a
+ * percentile off two entries, and `answers.ts` names that exact case as the
+ * reason its own floor exists: "a tally with one or two entries is the only
+ * state in which the aggregate could say something about an individual".
+ *
+ * MOVING THE HISTOGRAM PER PUZZLE IS WHAT MADE THAT BITE. The old day buckets
+ * pooled every card played that day, so two entries was rare. Per puzzle, a
+ * freshly shipped card or a quiet locale sits at one or two for a long time,
+ * and at n=2 "you beat 0%" tells the reader exactly where one other identifiable
+ * play fell against theirs. Fixing the denominator without moving the floor
+ * would have traded one wrong number for a smaller, sharper disclosure.
+ *
+ * The cost is honest and is the same cost the crowd lines already pay: this
+ * says nothing at all until twenty people have played the card.
  */
 export function percentileOf(
   histogram: Histogram,
@@ -89,7 +116,8 @@ export function percentileOf(
     if (Number(value) < score) below += count;
   }
   return {
-    percentile: total > 1 ? Math.round((below / total) * 100) : null,
+    percentile:
+      total >= MIN_ANSWERS_TO_SHOW ? Math.round((below / total) * 100) : null,
     n: total,
   };
 }

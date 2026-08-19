@@ -8,6 +8,13 @@ import {
   readSubmission,
 } from "./scores";
 import { MIN_SCORE, MAX_SCORE } from "./scoreBounds";
+import { MIN_ANSWERS_TO_SHOW } from "./answers";
+
+/** A histogram with `n` entries, all scoring `at`, plus optional extras. */
+const crowd = (n: number, at = 0, extra: Record<string, number> = {}) => ({
+  [String(at)]: n,
+  ...extra,
+});
 
 /**
  * The percentile has to be a claim about people who played the same card.
@@ -45,19 +52,38 @@ describe("the score histogram", () => {
     expect(addScore(before, -20)).toEqual({ "40": 2, "-20": 1 });
   });
 
-  it("says nothing rather than something about a population of one", () => {
-    // The player's own entry is the only one. "You beat 0% of players" would
-    // be a claim about a population of one, on a deck about exactly that.
-    expect(percentileOf({ "40": 1 }, 40)).toEqual({ percentile: null, n: 1 });
+  it("uses the same floor as the answer tally, not a smaller one", () => {
+    /*
+      THE TEST THE PER-PUZZLE CHANGE MADE NECESSARY. The floor was `total > 1`,
+      so a percentile could be published off two entries, and `answers.ts` names
+      that exact case as why its own floor exists: two entries is the state in
+      which an aggregate can describe an individual. At n=2 "you beat 0%" says
+      precisely where one other play fell against yours.
+
+      Day buckets pooled every card, so two entries was rare. Puzzle buckets sit
+      there for a long time on a new card or a quiet locale, so the fix to the
+      denominator is what made the old floor dangerous.
+    */
+    expect(percentileOf(crowd(1, 40), 40).percentile).toBeNull();
+    expect(percentileOf(crowd(2, 40), 40).percentile).toBeNull();
+    expect(
+      percentileOf(crowd(MIN_ANSWERS_TO_SHOW - 1, 10), 40).percentile,
+    ).toBeNull();
+    // And it does report once the floor is reached, so the guard is not simply
+    // switching the feature off.
+    expect(percentileOf(crowd(MIN_ANSWERS_TO_SHOW, 10), 40)).toEqual({
+      percentile: 100,
+      n: MIN_ANSWERS_TO_SHOW,
+    });
   });
 
   it("ranks strictly below, so ties do not flatter", () => {
-    const h = { "10": 1, "20": 2, "30": 1 };
-    // Four entries; two are strictly below 30.
-    expect(percentileOf(h, 30)).toEqual({ percentile: 75, n: 4 });
-    // Against the tied bucket itself: only the single 10 is below.
-    expect(percentileOf(h, 20)).toEqual({ percentile: 25, n: 4 });
-    expect(percentileOf(h, 10)).toEqual({ percentile: 0, n: 4 });
+    const h = { "10": 5, "20": 10, "30": 5 };
+    // Twenty entries; five are strictly below 30... plus the ten at 20.
+    expect(percentileOf(h, 30)).toEqual({ percentile: 75, n: 20 });
+    // Against the tied bucket itself: only the five at 10 are below.
+    expect(percentileOf(h, 20)).toEqual({ percentile: 25, n: 20 });
+    expect(percentileOf(h, 10)).toEqual({ percentile: 0, n: 20 });
   });
 
   it("treats an unusable stored value as an empty histogram", () => {
@@ -70,6 +96,12 @@ describe("the score histogram", () => {
     expect(parseHistogram('{"40":"lots"}')).toEqual({});
     expect(parseHistogram('{"40":-3}')).toEqual({});
     expect(parseHistogram('{"40":2,"20":1}')).toEqual({ "40": 2, "20": 1 });
+    // A bucket key that is not a score inflates the total while never counting
+    // as below it, so the percentile it produces is silently too low.
+    expect(parseHistogram('{"abc":5}')).toEqual({});
+    expect(parseHistogram('{"1.5":5}')).toEqual({});
+    expect(parseHistogram(`{"${MAX_SCORE + 1}":5}`)).toEqual({});
+    expect(parseHistogram(`{"${MIN_SCORE - 1}":5}`)).toEqual({});
   });
 });
 

@@ -33,11 +33,15 @@ export function StatsPanel({
   todayScore,
 }: {
   /**
-   * Which card the score was earned on. Required alongside `todayScore`,
-   * because a percentile without it ranks this score against scores from other
-   * puzzles, which is what this panel used to do.
+   * Which card the score was earned on.
+   *
+   * REQUIRED, so a caller that forgets it is a `tsc` error rather than a panel
+   * that quietly shows nothing. An optional prop here would leave exactly the
+   * hole this change closes: the percentile is only meaningful against people
+   * who played the same puzzle, and nothing at runtime can tell a missing slug
+   * from a wrong one.
    */
-  slug?: string;
+  slug: string;
   todayScore?: number;
 }) {
   const t = useT();
@@ -47,7 +51,7 @@ export function StatsPanel({
   // Anonymous global comparison; stays hidden if the endpoint isn't deployed.
   const [globalPct, setGlobalPct] = useState<number | null>(null);
   useEffect(() => {
-    if (todayScore == null || slug === undefined) return;
+    if (todayScore == null) return;
     let alive = true;
     globalPercentile(slug, todayScore).then((p) => {
       if (alive) setGlobalPct(p);

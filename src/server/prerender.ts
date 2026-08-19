@@ -36,6 +36,9 @@ export function lessonPages({
   const pages: GeneratedPage[] = [];
 
   for (const puzzle of puzzles) {
+    // Depends on the puzzle and not the locale, so it is computed once rather
+    // than ten times per card.
+    const siblings = siblingsFor(puzzle, puzzles);
     for (const locale of locales) {
       const dictionary = dictionaries[locale] ?? {};
       // The same resolution order as the app's translate(): an inline locale
@@ -55,7 +58,7 @@ export function lessonPages({
           locale,
           origin,
           locales,
-          siblings: siblingsFor(puzzle, puzzles),
+          siblings,
         }),
       });
     }

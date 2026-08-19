@@ -167,6 +167,14 @@ export function renderLessonPage({
     the shape is readable here, and escaped for `</script` because a source
     title containing that sequence would otherwise close the block early.
   */
+  /*
+    THE CITATION AND THE VISIBLE LINK DIVERGE ON PURPOSE, on 33 of the 73
+    puzzles. `sourceLink` prefers an authored `url`, which is usually the
+    reader-friendly page: a PubMed abstract, PMC full text, an arXiv preprint.
+    `citation` prefers the DOI, because a DOI is the canonical identifier of the
+    work and that is precisely what the field is for. A reader gets the page
+    they can actually read; a machine gets the identifier that resolves forever.
+  */
   const citation = puzzle.provenance.doi
     ? `https://doi.org/${puzzle.provenance.doi}`
     : (link ?? "");

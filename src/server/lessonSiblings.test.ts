@@ -112,3 +112,28 @@ describe("the rules today's deck cannot test", () => {
     expect(siblingsFor(deck[0]!, deck)).toHaveLength(1);
   });
 });
+
+describe("which sibling comes first", () => {
+  it("offers the closest match, not merely a related one", () => {
+    /*
+      MUTATION FOUND THIS UNGUARDED. Sorting ascending, so the LEAST related
+      card is offered first, passed all 27 tests: every assertion checked only
+      that some sharing existed. The ordering is the recommendation, so it is
+      the part worth pinning.
+    */
+    const p = (slug: string, skill: string, tags: string[]) =>
+      ({ slug, reasoningSkill: skill, tags, lesson: { skillName: { en: slug } } }) as unknown as
+        (typeof puzzles)[number];
+    const deck = [
+      p("home", "a", ["x", "y", "z"]),
+      p("distant", "b", ["z"]),
+      p("closest", "c", ["x", "y", "z"]),
+      p("middling", "d", ["y", "z"]),
+    ];
+    expect(siblingsFor(deck[0]!, deck).map((s) => s.slug)).toEqual([
+      "closest",
+      "middling",
+      "distant",
+    ]);
+  });
+});

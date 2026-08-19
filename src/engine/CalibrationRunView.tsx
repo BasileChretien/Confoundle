@@ -8,6 +8,7 @@ import { isTrap } from "../srs/trapHunt";
 import {
   drawRun,
   fixedStakeScores,
+  reliabilityByStake,
   gradeAnswer,
   gradeRun,
   isWellCalibrated,
@@ -80,9 +81,8 @@ export function CalibrationRunView({ onDone }: { onDone: () => void }) {
   const [called, setCalled] = useState<boolean | null>(null);
   const [showing, setShowing] = useState<RunAnswer | null>(null);
   const [saved, setSaved] = useState<{
-    bestStreak: number;
-    isBestScore: boolean;
-    isBestStreak: boolean;
+    bestCorrect: number;
+    isBest: boolean;
   } | null>(null);
 
   const skillName = useMemo(
@@ -113,22 +113,15 @@ export function CalibrationRunView({ onDone }: { onDone: () => void }) {
       // Recorded once, at the end, so an abandoned run costs nothing and
       // cannot inflate the count.
       const graded = gradeRun(all);
-      const rec = recordRun(
-        graded.score,
-        graded.longestStreak,
-        items.map((i) => i.id),
-      );
-      setSaved({
-        bestStreak: rec.stats.bestStreak,
-        isBestScore: rec.isBestScore,
-        isBestStreak: rec.isBestStreak,
-      });
+      const rec = recordRun(graded.correct, items.map((i) => i.id));
+      setSaved({ bestCorrect: rec.stats.bestCorrect, isBest: rec.isBest });
     }
   }
 
   if (done) {
     const graded = gradeRun(answers);
     const fixed = fixedStakeScores(answers);
+    const reliability = reliabilityByStake(answers);
     // The best a thoughtless player could have done with the very same calls,
     // which is the only comparator worth publishing.
     const bestFixed = CONFIDENCE_LEVELS.reduce((a, b) =>
@@ -143,23 +136,54 @@ export function CalibrationRunView({ onDone }: { onDone: () => void }) {
             {fillSlots(t({ en: "Score: {n}" }), { n: nf.format(graded.score) })}
           </h2>
           <p className="text-[15px] text-ink-soft">
-            {fillSlots(t({ en: "Longest calibrated streak: {n}" }), {
-              n: nf.format(graded.longestStreak),
-            })}{" "}
-            {saved === null
-              ? null
-              : saved.isBestStreak
-                ? t({ en: "A new personal best." })
-                : fillSlots(t({ en: "Your best is {best}." }), {
-                    best: nf.format(saved.bestStreak),
-                  })}
-          </p>
-          <p className="text-[15px] text-ink-soft">
             {fillSlots(t({ en: "{right} of {total} called correctly." }), {
               right: nf.format(graded.correct),
               total: nf.format(answers.length),
-            })}
+            })}{" "}
+            {saved === null
+              ? null
+              : saved.isBest
+                ? t({ en: "A new personal best." })
+                : fillSlots(t({ en: "Your best is {best}." }), {
+                    best: nf.format(saved.bestCorrect),
+                  })}
           </p>
+
+          {/*
+            THE READ-OUT IS THE PRODUCT, and it replaces a record that paid for
+            hedging. It is a description of what happened rather than a number
+            to beat, so there is no strategy that improves it except reading the
+            evidence better. "Certain: 4 of 4" and "Certain: 1 of 4" are two
+            different people, and neither could learn which they were from a
+            score.
+          */}
+          <div className="rounded-lg border border-rule bg-paper-2 p-3">
+            <p className="mb-1.5 font-sans text-[11px] font-semibold uppercase tracking-eyebrow text-ink-mute">
+              {t({ en: "How your stakes held up" })}
+            </p>
+            <ul className="flex flex-col gap-0.5">
+              {CONFIDENCE_LEVELS.map((c) => {
+                const row = reliability[c];
+                return (
+                  <li
+                    key={c}
+                    className="flex items-baseline justify-between gap-3 text-[14px]"
+                  >
+                    <span className="text-ink-soft">{t(STAKE_LABEL[c])}</span>
+                    <span className="tabular-nums text-ink">
+                      {row.calls === 0
+                        ? t({ en: "not staked" })
+                        : fillSlots(t({ en: "{right} of {calls}" }), {
+                            right: nf.format(row.right),
+                            calls: nf.format(row.calls),
+                          })}
+                    </span>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+
           <p className="text-[13px] leading-snug text-ink-soft">
             {/*
               The honest comparison, on the player's own calls. Without it the
@@ -167,7 +191,9 @@ export function CalibrationRunView({ onDone }: { onDone: () => void }) {
               the round, and never say so.
             */}
             {fillSlots(
-              t({ en: "Staking {stake} on every call would have scored {n}." }),
+              t({
+                en: "With hindsight, staking {stake} on every call would have scored {n}.",
+              }),
               {
                 stake: t(STAKE_LABEL[bestFixed]),
                 n: nf.format(fixed[bestFixed]),

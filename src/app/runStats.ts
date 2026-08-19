@@ -21,20 +21,45 @@
  * policy wrong.
  */
 
-const KEY = "confoundle:run:v1";
+/**
+ * BUMPED TO v2 BECAUSE BOTH STORED RECORDS WERE WRONG, in opposite directions.
+ *
+ * `bestStreak` was the longest run of well-calibrated calls, and a call counts
+ * as calibrated if it was right OR staked at `hunch`. Stake `hunch` eight times
+ * and the streak is eight, every run, guaranteed. The record paid for refusing
+ * to commit.
+ *
+ * `bestScore` looks safe, because the payoff table is a proper scoring rule and
+ * honest reporting maximises its EXPECTATION. A record is not an expectation.
+ * It keeps only the maximum, and the maxima are 320 always-certain, 288
+ * always-sure, 208 always-hunch: strictly ordered by stake, because a maximum
+ * never touches the penalty column. So chasing a best score pays for
+ * overclaiming exactly as the streak paid for underclaiming, and the two
+ * together aimed the mode's only two persistent rewards in opposite wrong
+ * directions.
+ *
+ * What replaces them is confidence-blind by construction. There is nothing to
+ * migrate: both old numbers describe strategies rather than reading, and
+ * `recent` is a 120-item anti-repeat cache whose loss costs a player at most a
+ * few repeated items, once.
+ */
+const KEY = "confoundle:run:v2";
 
 /** How many recent item ids to remember, so a run does not repeat itself. */
 const RECENT_CAP = 120;
 
 export interface RunStats {
-  bestScore: number;
-  bestStreak: number;
+  /**
+   * Most calls got right in a single run. A function of `correct` alone, so no
+   * stake can move it and chasing it can only mean reading the evidence better.
+   */
+  bestCorrect: number;
   runs: number;
   /** Most recently seen first. */
   recent: string[];
 }
 
-const EMPTY: RunStats = { bestScore: 0, bestStreak: 0, runs: 0, recent: [] };
+const EMPTY: RunStats = { bestCorrect: 0, runs: 0, recent: [] };
 
 const num = (v: unknown, fallback: number): number =>
   typeof v === "number" && Number.isFinite(v) ? v : fallback;
@@ -45,8 +70,7 @@ export function readRunStats(): RunStats {
     if (!raw) return EMPTY;
     const parsed = JSON.parse(raw) as Partial<RunStats>;
     return {
-      bestScore: num(parsed.bestScore, 0),
-      bestStreak: num(parsed.bestStreak, 0),
+      bestCorrect: num(parsed.bestCorrect, 0),
       runs: num(parsed.runs, 0),
       recent: Array.isArray(parsed.recent)
         ? parsed.recent.filter((x): x is string => typeof x === "string")
@@ -65,36 +89,31 @@ export function recentlySeen(): ReadonlySet<string> {
 
 export interface RunRecorded {
   stats: RunStats;
-  /** Did this run beat the stored best score? */
-  isBestScore: boolean;
-  /** Did it beat the stored best streak? */
-  isBestStreak: boolean;
+  /** Did this run beat the stored best? */
+  isBest: boolean;
 }
 
 /**
  * Record a finished run.
  *
- * BEST SCORE IS COMPARED BEFORE IT IS STORED, and a negative run cannot lower
- * it. A player can genuinely score below zero here, because the wager takes
- * points off for overclaiming, and a record that fell after a bad afternoon
- * would be a record of the last thing that happened rather than of the best.
+ * ONLY A CONFIDENCE-BLIND NUMBER IS KEPT. The run's score is still shown for
+ * the run just played, where the proper scoring rule makes it a fair signal:
+ * honest reporting maximises it in expectation. It is storing a MAXIMUM of it
+ * across runs that breaks the rule, because a maximum discards the penalty half
+ * of the table. See the note on `KEY`.
  */
 export function recordRun(
-  score: number,
-  streak: number,
+  correct: number,
   itemIds: readonly string[],
 ): RunRecorded {
   const before = readRunStats();
-  const isBestScore = before.runs === 0 || score > before.bestScore;
-  // The same first-run guard as the score above, and for the same reason.
-  // Without it, a first run whose every call overclaimed reports "your best
-  // is 0" against a record nobody has ever set. A streak cannot go negative,
-  // so the stored value is right either way; what was wrong was the message.
-  const isBestStreak = before.runs === 0 || streak > before.bestStreak;
+  // The first-run guard the score and streak both needed, for the same reason:
+  // without it a first run reports "your best is 0" against a record nobody has
+  // ever set.
+  const isBest = before.runs === 0 || correct > before.bestCorrect;
 
   const stats: RunStats = {
-    bestScore: isBestScore ? score : before.bestScore,
-    bestStreak: isBestStreak ? streak : before.bestStreak,
+    bestCorrect: isBest ? correct : before.bestCorrect,
     runs: before.runs + 1,
     recent: [...itemIds, ...before.recent].slice(0, RECENT_CAP),
   };
@@ -104,5 +123,5 @@ export function recordRun(
   } catch {
     // A full or blocked store costs the record, never the run just played.
   }
-  return { stats, isBestScore, isBestStreak };
+  return { stats, isBest };
 }

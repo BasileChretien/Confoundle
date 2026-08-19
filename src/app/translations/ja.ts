@@ -9,8 +9,10 @@ export const ja: Record<string, string> = {
   // ---- Calibration run ----
   "Calibration run": "自信度ラウンド",
   "Score: {n}": "スコア {n}",
-  "Longest calibrated streak: {n}": "自信の見立てが当たった最長連続: {n}",
-  "Staking {stake} on every call would have scored {n}.": "毎回 {stake} に賭けていれば {n} でした。",
+  "How your stakes held up": "宣言した自信の結果",
+  "{right} of {calls}": "{calls}回中{right}回",
+  "not staked": "使用なし",
+  "With hindsight, staking {stake} on every call would have scored {n}.": "後から見れば、すべてに「{stake}」を賭けていれば{n}点だった。",
   "Overclaimed": "自信過剰",
   "See the run": "結果を見る",
   // ---- Chart scope labels, reveal badge, reaction lines ----

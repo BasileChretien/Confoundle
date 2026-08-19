@@ -8,8 +8,10 @@ export const ru: Record<string, string> = {
   // ---- Calibration run ----
   "Calibration run": "Проверка уверенности",
   "Score: {n}": "Счёт: {n}",
-  "Longest calibrated streak: {n}": "Самая длинная серия точных оценок: {n}",
-  "Staking {stake} on every call would have scored {n}.": "Ставка {stake} на каждый ответ дала бы {n}.",
+  "How your stakes held up": "Чего стоили ваши ставки",
+  "{right} of {calls}": "{right} из {calls}",
+  "not staked": "не ставилось",
+  "With hindsight, staking {stake} on every call would have scored {n}.": "Задним числом, ставка «{stake}» на каждый ответ дала бы {n}.",
   "Overclaimed": "Переоценка",
   "See the run": "Посмотреть итог",
   // ---- Chart scope labels, reveal badge, reaction lines ----

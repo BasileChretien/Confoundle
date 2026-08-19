@@ -4,6 +4,7 @@ import { registerSW } from "virtual:pwa-register";
 import "@fontsource-variable/fraunces";
 import "@fontsource-variable/space-grotesk";
 import App from "./App";
+import { ErrorBoundary } from "./ErrorBoundary";
 import { landingRewrite } from "./navigation";
 import { hasEverPlayed } from "./session";
 import { getOpeningPuzzle } from "../puzzles";
@@ -50,6 +51,14 @@ if (!container) throw new Error('Root element "#root" not found');
 
 createRoot(container).render(
   <React.StrictMode>
-    <App />
+    {/*
+      OUTSIDE EVERYTHING, INCLUDING THE LOCALE PROVIDER. A boundary placed
+      inside cannot catch a failure in the provider or in the dictionary
+      loading it does, which is the failure that would otherwise leave the
+      whole installed app blank with no message and no way back.
+    */}
+    <ErrorBoundary>
+      <App />
+    </ErrorBoundary>
   </React.StrictMode>,
 );

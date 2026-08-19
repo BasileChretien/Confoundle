@@ -6,6 +6,42 @@ import type { LocalizedText } from "../puzzles/schema";
  * locales are corrected on feedback. Anything missing falls back to English.
  */
 export const UI: Record<string, LocalizedText> = {
+  crashTitle: {
+    en: "Something broke",
+    zh: "出问题了",
+    hi: "कुछ गड़बड़ हो गई",
+    es: "Algo se ha roto",
+    fr: "Quelque chose a cassé",
+    ar: "حدث خلل",
+    bn: "কিছু একটা ভেঙে গেছে",
+    pt: "Alguma coisa avariou",
+    ru: "Что-то сломалось",
+    ja: "問題が発生しました",
+  },
+  crashBody: {
+    en: "The app hit an error it could not recover from. Your answers, streak and review schedule are stored on this device and are not affected.",
+    zh: "应用遇到了无法自行恢复的错误。你的答案、连续记录和复习计划都保存在本机上，不受影响。",
+    hi: "ऐप को ऐसी गड़बड़ी मिली जिससे वह उबर नहीं सका। आपके जवाब, लगातार खेलने का रिकॉर्ड और दोहराव का शेड्यूल इसी डिवाइस पर सुरक्षित हैं और उन पर कोई असर नहीं पड़ा।",
+    es: "La aplicación encontró un error del que no pudo recuperarse. Tus respuestas, tu racha y tu calendario de repaso están guardados en este dispositivo y no se han visto afectados.",
+    fr: "L'application a rencontré une erreur dont elle n'a pas pu se remettre. Vos réponses, votre série et votre calendrier de révision sont enregistrés sur cet appareil et ne sont pas touchés.",
+    ar: "واجه التطبيق خطأ لم يستطع التعافي منه. إجاباتك وسلسلتك وجدول مراجعتك محفوظة على هذا الجهاز ولم تتأثر.",
+    bn: "অ্যাপটি এমন একটি ত্রুটিতে পড়েছে যা থেকে সে সামলে উঠতে পারেনি। আপনার উত্তর, ধারাবাহিকতা আর পুনরালোচনার সূচি এই ডিভাইসেই রাখা আছে এবং সেগুলোর কিছু হয়নি।",
+    pt: "A aplicação encontrou um erro do qual não conseguiu recuperar. As suas respostas, a sua sequência e o seu calendário de revisão estão guardados neste dispositivo e não foram afetados.",
+    ru: "Приложение столкнулось с ошибкой, от которой не смогло восстановиться. Ваши ответы, серия и график повторений хранятся на этом устройстве и не пострадали.",
+    ja: "アプリが回復できないエラーに遭遇しました。あなたの回答、連続記録、復習の予定はこの端末に保存されており、影響を受けていません。",
+  },
+  crashReload: {
+    en: "Reload",
+    zh: "重新加载",
+    hi: "फिर से लोड करें",
+    es: "Recargar",
+    fr: "Recharger",
+    ar: "إعادة التحميل",
+    bn: "আবার লোড করুন",
+    pt: "Recarregar",
+    ru: "Перезагрузить",
+    ja: "再読み込み",
+  },
   // Reworded a second time, and for the same reason as the first. It used to
   // say "no accounts, no tracking", which stopped being true the day sign-in
   // shipped. It then said "No tracking", which stops being strictly true the

@@ -8,8 +8,10 @@ export const pt: Record<string, string> = {
   // ---- Calibration run ----
   "Calibration run": "Ronda de calibração",
   "Score: {n}": "Pontuação: {n}",
-  "Longest calibrated streak: {n}": "Sequência bem calibrada mais longa: {n}",
-  "Staking {stake} on every call would have scored {n}.": "Apostar {stake} em cada resposta teria dado {n}.",
+  "How your stakes held up": "Como se saíram as suas apostas",
+  "{right} of {calls}": "{right} de {calls}",
+  "not staked": "sem aposta",
+  "With hindsight, staking {stake} on every call would have scored {n}.": "Em retrospetiva, apostar {stake} em todas as respostas teria dado {n}.",
   "Overclaimed": "Excesso de confiança",
   "See the run": "Ver a ronda",
   // ---- Chart scope labels, reveal badge, reaction lines ----

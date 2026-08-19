@@ -22,21 +22,34 @@ import { drawRound, grade, ROUND_SIZE, type TrapHuntAnswer } from "./trapHunt";
  * a risk-management decision about the REST OF THE ROUND rather than a report
  * of belief about THIS item, and hedging is free insurance.
  *
- * SO THE TWO CURRENCIES ARE SEPARATE, and that separation is the whole design.
+ * SO THE STAKE IS SCORED PER ITEM AND NOTHING ELSE IS ACCUMULATED.
  *
- *   The SCORE is the per-item wager from `engine/scoring`, which is a proper
- *   rule: each stake is uniquely best on a real interval of belief, and no
- *   item's stake affects any other item's payoff. Honest reporting therefore
- *   maximises it, by construction rather than by tuning.
+ * The SCORE is the per-item wager from `engine/scoring`, which is a proper
+ * rule: each stake is uniquely best on a real interval of belief, and no item's
+ * stake affects any other item's payoff. Honest reporting maximises it by
+ * construction rather than by tuning, so it is shown for the run just played.
  *
- *   The STREAK is consecutive well-calibrated calls. It is the number to beat
- *   and the thing that makes the mode tense, and it feeds NOTHING. Breaking it
- *   costs no points, so it cannot distort the stake.
+ * THIS FILE ONCE ARGUED, AT LENGTH AND IN THIS PARAGRAPH, THAT A STREAK BESIDE
+ * IT WAS SAFE because it "feeds nothing". That was wrong twice over, and both
+ * halves are worth keeping because the reasoning was persuasive and false.
  *
- * A run therefore says two different things about a player, deliberately. A
- * cautious one can hold a long streak on a modest score; a bold one can post a
- * high score with a short streak. Neither is cheating, and the pair is a more
- * honest description of somebody than either number alone.
+ * A streak of well-calibrated calls is eight out of eight for anybody who
+ * stakes `hunch` every time, since a hedge that misses is calibrated. And a
+ * number the app STORES AND CONGRATULATES feeds something whatever the score
+ * does: being celebrated is the reward. Its neighbour `bestScore` failed the
+ * same test from the other side, because a record keeps only a maximum and a
+ * maximum never meets the penalty column, so its ceilings ran 320 / 288 / 208
+ * strictly by stake.
+ *
+ * The rule that replaced the argument, and the one to apply to anything added
+ * here later: a mechanic is safe only if the map from what the player REPORTS
+ * to everything the player VALUES factors through the per-item payoff table.
+ * Anything that is a function of `correct` is safe. Anything that is a function
+ * of `confidence` is suspect until shown otherwise.
+ *
+ * What a run says about a player is therefore a report rather than a target:
+ * how many calls were right, and how each stake actually held up. See
+ * `reliabilityByStake`.
  *
  * IT WRITES NOTHING TO THE SCHEDULE, for the reasons `trapHunt.ts` gives at
  * length: unscheduled repetitions corrupt the intervals that make spaced
@@ -67,31 +80,70 @@ export function isWellCalibrated(a: RunAnswer): boolean {
 export interface RunResult {
   /** Sum of the per-item proper score. */
   score: number;
-  /** Longest unbroken stretch of well-calibrated calls. */
-  longestStreak: number;
   /** How many calls were simply right, regardless of stake. */
   correct: number;
 }
 
+/**
+ * THE LONGEST CALIBRATED STREAK USED TO BE REPORTED HERE, AND IT PAID FOR
+ * REFUSING TO COMMIT.
+ *
+ * `isWellCalibrated` is `correct || confidence === "hunch"`, which is the right
+ * rule for LABELLING one call: a hedge that misses is an accurate description
+ * of a player who was unsure. It is a catastrophic rule to take a maximum over.
+ * Stake `hunch` on all eight and every call is well calibrated, so the streak
+ * is eight, guaranteed, on every run, forever. The mode then stored that as a
+ * personal best and congratulated the player for it.
+ *
+ * The defence at the time was that the streak "feeds nothing and so cannot
+ * distort the stake". That was wrong, and the shape of the error is worth
+ * keeping: a stored record the app celebrates IS a reward channel, whatever the
+ * score does. It was the degenerate wager this mode was built to replace,
+ * rebuilt inside it.
+ *
+ * `isWellCalibrated` stays, because marking a single overclaim on a single item
+ * is honest feedback rather than a target. What was removed is the maximum.
+ */
 export function gradeRun(answers: readonly RunAnswer[]): RunResult {
   let score = 0;
-  let longestStreak = 0;
-  // Tracks the streak in flight; only its high-water mark is reported.
-  let running = 0;
   let correct = 0;
 
   for (const a of answers) {
     score += scoreFor(a.correct, a.confidence);
     if (a.correct) correct += 1;
-    if (isWellCalibrated(a)) {
-      running += 1;
-      if (running > longestStreak) longestStreak = running;
-    } else {
-      running = 0;
-    }
   }
 
-  return { score, longestStreak, correct };
+  return { score, correct };
+}
+
+/** Calls made and calls right, per stake. */
+export interface StakeReliability {
+  calls: number;
+  right: number;
+}
+
+/**
+ * What the player's own stakes were worth, which is the thing this mode exists
+ * to show them and never did.
+ *
+ * A REPORT, NOT A TARGET, and that distinction is the whole design. It is a
+ * description of what already happened, with nothing to beat and no maximum
+ * taken over it, so there is no strategy that improves it other than reading
+ * the evidence better. Somebody who says "certain" ten times and is right nine
+ * times learns something true and actionable about themselves; that is the
+ * product, and it was sitting one function away the whole time.
+ */
+export function reliabilityByStake(
+  answers: readonly RunAnswer[],
+): Record<Confidence, StakeReliability> {
+  const out = {} as Record<Confidence, StakeReliability>;
+  for (const c of CONFIDENCE_LEVELS) out[c] = { calls: 0, right: 0 };
+  for (const a of answers) {
+    const row = out[a.confidence];
+    row.calls += 1;
+    if (a.correct) row.right += 1;
+  }
+  return out;
 }
 
 /**

@@ -8,8 +8,10 @@ export const bn: Record<string, string> = {
   // ---- Calibration run ----
   "Calibration run": "আত্মবিশ্বাস যাচাই",
   "Score: {n}": "স্কোর: {n}",
-  "Longest calibrated streak: {n}": "সবচেয়ে দীর্ঘ সঠিকভাবে আঁচ করা ধারা: {n}",
-  "Staking {stake} on every call would have scored {n}.": "প্রতিবার {stake} বাজি ধরলে {n} হতো।",
+  "How your stakes held up": "আপনার বাজি কেমন ছিল",
+  "{right} of {calls}": "{calls}টির মধ্যে {right}টি",
+  "not staked": "ব্যবহার হয়নি",
+  "With hindsight, staking {stake} on every call would have scored {n}.": "পরে বোঝা যায়, প্রতিবার {stake} ধরলে {n} পয়েন্ট হতো।",
   "Overclaimed": "অতিরিক্ত আত্মবিশ্বাস",
   "See the run": "ফলাফল দেখুন",
   // ---- Chart scope labels, reveal badge, reaction lines ----

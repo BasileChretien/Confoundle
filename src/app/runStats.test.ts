@@ -1,8 +1,8 @@
 import { describe, it, expect, beforeEach, vi, afterEach } from "vitest";
 import { readRunStats, recentlySeen, recordRun } from "./runStats";
 
-function memoryStorage() {
-  const m = new Map<string, string>();
+function memoryStorage(seed: Record<string, string> = {}) {
+  const m = new Map<string, string>(Object.entries(seed));
   return {
     getItem: (k: string) => m.get(k) ?? null,
     setItem: (k: string, v: string) => void m.set(k, String(v)),
@@ -16,65 +16,82 @@ describe("the calibration run's record", () => {
   afterEach(() => vi.restoreAllMocks());
 
   it("starts empty rather than undefined", () => {
-    expect(readRunStats()).toEqual({
-      bestScore: 0,
-      bestStreak: 0,
-      runs: 0,
-      recent: [],
-    });
+    expect(readRunStats()).toEqual({ bestCorrect: 0, runs: 0, recent: [] });
   });
 
-  it("keeps the two records apart", () => {
+  it("keeps only a number no stake can move", () => {
     /*
-      The whole point of storing two numbers. A bold player can post the best
-      score with a short streak; a cautious one the best streak on a modest
-      score. Combining them would erase the distinction the mode exists to draw.
+      THE TEST THIS MODULE EXISTS FOR NOW. It used to store two records and
+      both were reachable by a strategy rather than by reading well.
+      `bestStreak` counted well-calibrated calls, where a call counts as
+      calibrated if it was right OR staked at `hunch`, so eight hunches scored
+      a perfect streak every time. `bestScore` looks safer because the payoff
+      table is proper, but a RECORD is a maximum and a maximum never touches
+      the penalty column, so its ceilings run 320 / 288 / 208 strictly by
+      stake. One record paid for hedging and the other for overclaiming.
+
+      What is stored is a count of correct calls, which no stake can reach.
     */
-    recordRun(120, 3, ["a"]);
-    recordRun(40, 8, ["b"]);
+    expect(readRunStats()).not.toHaveProperty("bestScore");
+    expect(readRunStats()).not.toHaveProperty("bestStreak");
+    recordRun(6, ["a"]);
+    recordRun(3, ["b"]);
     const s = readRunStats();
-    expect(s.bestScore).toBe(120);
-    expect(s.bestStreak).toBe(8);
+    expect(s.bestCorrect).toBe(6);
     expect(s.runs).toBe(2);
   });
 
-  it("accepts a first run that scored below zero", () => {
+  it("calls a first run a personal best even when nothing was right", () => {
     /*
-      A player CAN go negative here: the wager takes points off for
-      overclaiming. Treating 0 as a floor would tell somebody their best was
-      zero when they have never scored it, which is the kind of quietly wrong
-      number this deck exists to object to.
+      A bare `correct > before.bestCorrect` compares 0 > 0 and reports "your
+      best is 0" against a record nobody has ever set. The stored value is
+      right either way; what was wrong was the message.
     */
-    const { isBestScore, stats } = recordRun(-30, 1, ["a"]);
-    expect(isBestScore).toBe(true);
-    expect(stats.bestScore).toBe(-30);
+    const { isBest, stats } = recordRun(0, ["a"]);
+    expect(isBest).toBe(true);
+    expect(stats.bestCorrect).toBe(0);
   });
 
-  it("calls a first run a personal best even when the streak was zero", () => {
+  it("does not announce equalling your best as beating it", () => {
     /*
-      The symmetric case to the negative score above, and it was missing. A
-      first run in which every call overclaimed has a streak of 0, and a bare
-      `streak > before.bestStreak` compares 0 > 0 and reports "your best is 0"
-      against a record nobody has ever set. The stored value is right either
-      way, because a streak cannot go negative; what was wrong was the message.
+      `trapHuntStats` documents the same rule and this module had neither the
+      rule nor a test for it, so `>` could drift to `>=` and every existing
+      assertion would still pass. Telling somebody they set a personal best for
+      repeating themselves is a small lie of the kind this deck is about.
     */
-    const { isBestStreak, isBestScore } = recordRun(-40, 0, ["a"]);
-    expect(isBestStreak).toBe(true);
-    expect(isBestScore).toBe(true);
+    recordRun(5, ["a"]);
+    const tie = recordRun(5, ["b"]);
+    expect(tie.isBest).toBe(false);
+    expect(tie.stats.bestCorrect).toBe(5);
   });
 
-  it("never lets a later bad run lower a record", () => {
-    recordRun(100, 6, ["a"]);
-    const second = recordRun(-10, 0, ["b"]);
-    expect(second.isBestScore).toBe(false);
-    expect(second.isBestStreak).toBe(false);
-    expect(second.stats.bestScore).toBe(100);
-    expect(second.stats.bestStreak).toBe(6);
+  it("never lets a later bad run lower the record", () => {
+    recordRun(7, ["a"]);
+    const second = recordRun(1, ["b"]);
+    expect(second.isBest).toBe(false);
+    expect(second.stats.bestCorrect).toBe(7);
+  });
+
+  it("ignores a v1 store rather than reading its records forward", () => {
+    // v1 held `bestScore` and `bestStreak`, both of which described a strategy.
+    // Reading them under the new key would carry the defect across the fix.
+    vi.stubGlobal(
+      "localStorage",
+      memoryStorage({
+        "confoundle:run:v1": JSON.stringify({
+          bestScore: 320,
+          bestStreak: 8,
+          runs: 40,
+          recent: ["old"],
+        }),
+      }),
+    );
+    expect(readRunStats()).toEqual({ bestCorrect: 0, runs: 0, recent: [] });
   });
 
   it("remembers recent items newest first, so a run avoids repeats", () => {
-    recordRun(10, 1, ["a", "b"]);
-    recordRun(10, 1, ["c"]);
+    recordRun(4, ["a", "b"]);
+    recordRun(4, ["c"]);
     expect(readRunStats().recent.slice(0, 3)).toEqual(["c", "a", "b"]);
     expect(recentlySeen().has("a")).toBe(true);
   });
@@ -90,6 +107,6 @@ describe("the calibration run's record", () => {
     });
     expect(() => readRunStats()).not.toThrow();
     expect(readRunStats().runs).toBe(0);
-    expect(() => recordRun(10, 2, ["a"])).not.toThrow();
+    expect(() => recordRun(4, ["a"])).not.toThrow();
   });
 });

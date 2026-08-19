@@ -9,8 +9,10 @@ export const ar: Record<string, string> = {
   // ---- Calibration run ----
   "Calibration run": "جولة معايرة الثقة",
   "Score: {n}": "النتيجة: {n}",
-  "Longest calibrated streak: {n}": "أطول سلسلة تقدير صائب: {n}",
-  "Staking {stake} on every call would have scored {n}.": "لو راهنت بـ {stake} في كل مرة لحصلت على {n}.",
+  "How your stakes held up": "كيف صمدت رهاناتك",
+  "{right} of {calls}": "{right} من {calls}",
+  "not staked": "لم تُستخدم",
+  "With hindsight, staking {stake} on every call would have scored {n}.": "بعد فوات الأوان، لو راهنت بـ{stake} في كل مرة لحصلت على {n}.",
   "Overclaimed": "مبالغة في الثقة",
   "See the run": "عرض النتيجة",
   // ---- Chart scope labels, reveal badge, reaction lines ----

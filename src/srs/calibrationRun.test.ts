@@ -7,6 +7,7 @@ import {
   gradeAnswer,
   gradeRun,
   isWellCalibrated,
+  reliabilityByStake,
   RUN_SIZE,
   type RunAnswer,
 } from "./calibrationRun";
@@ -58,31 +59,20 @@ describe("grading a run", () => {
     expect(gradeRun(answers).score).toBe(expected);
   });
 
-  it("keeps the longest streak, not just the surviving one", () => {
-    const answers = [
-      answer(true, "sure"),
-      answer(true, "sure"),
-      answer(true, "sure"),
-      answer(false, "certain"), // breaks it
-      answer(true, "sure"),
-    ];
-    // The break is in the middle, so the high-water mark has to survive it:
-    // a run that reported only the streak still standing would say 1 here.
-    expect(gradeRun(answers).longestStreak).toBe(3);
-    expect(gradeRun(answers.slice(0, 4)).longestStreak).toBe(3);
-  });
-
-  it("lets a hedger hold an unbroken streak on a modest score", () => {
+  it("gives a player who never commits nothing to show for it", () => {
     /*
-      Two currencies saying two different true things about one player. A
-      cautious reader who is right half the time never breaks calibration,
-      because a hedge that misses is honest, so their streak is perfect. Their
-      score is not, and it should not be: they were right four times out of
-      eight and staked nothing on any of it.
+      THE DEFECT THIS REPLACED. `gradeRun` used to report the longest run of
+      well-calibrated calls, and `isWellCalibrated` is `correct || hunch`, so
+      eight hunches were eight calibrated calls, every run, guaranteed. That
+      number was stored as a personal best and congratulated.
+
+      Nothing a stake can reach survives here. The two numbers reported are the
+      proper score, which the timid player loses on, and the count of correct
+      calls, which their staking cannot move at all.
     */
     const timid = Array.from({ length: 8 }, (_, i) => answer(i % 2 === 0, "hunch"));
     const timidResult = gradeRun(timid);
-    expect(timidResult.longestStreak).toBe(8);
+    expect(timidResult).not.toHaveProperty("longestStreak");
     expect(timidResult.correct).toBe(4);
 
     // The same eight calls, staked by somebody who knew which was which.
@@ -90,12 +80,58 @@ describe("grading a run", () => {
       answer(i % 2 === 0, i % 2 === 0 ? "certain" : "hunch"),
     );
     const calibratedResult = gradeRun(calibrated);
-    expect(calibratedResult.longestStreak).toBe(8);
     expect(calibratedResult.score).toBeGreaterThan(timidResult.score);
+    // And the stored record is identical for both, because it is a fact about
+    // reading rather than about staking.
+    expect(calibratedResult.correct).toBe(timidResult.correct);
+  });
+
+  it("counts correct calls independently of every stake", () => {
+    // Restate the same eight outcomes under all three fixed stakes: the score
+    // moves, the record does not.
+    const outcomes = [true, false, true, true, false, true, false, true];
+    const counts = CONFIDENCE_LEVELS.map(
+      (c) => gradeRun(outcomes.map((o) => answer(o, c))).correct,
+    );
+    expect(counts).toEqual([5, 5, 5]);
   });
 });
 
-describe("the streak cannot change what a stake is worth", () => {
+describe("the stake read-out", () => {
+  it("reports calls and hits for each stake, and zero for one never used", () => {
+    const answers = [
+      answer(true, "certain"),
+      answer(false, "certain"),
+      answer(true, "sure"),
+    ];
+    expect(reliabilityByStake(answers)).toEqual({
+      hunch: { calls: 0, right: 0 },
+      sure: { calls: 1, right: 1 },
+      certain: { calls: 2, right: 1 },
+    });
+  });
+
+  it("reports every stake as unused for an empty run", () => {
+    expect(reliabilityByStake([])).toEqual({
+      hunch: { calls: 0, right: 0 },
+      sure: { calls: 0, right: 0 },
+      certain: { calls: 0, right: 0 },
+    });
+  });
+
+  it("accounts for every answer exactly once", () => {
+    // A read-out that dropped or double-counted a call would misdescribe the
+    // player to themselves, which is the one thing this mode must not do.
+    const answers = Array.from({ length: 9 }, (_, i) =>
+      answer(i % 3 === 0, CONFIDENCE_LEVELS[i % 3]!),
+    );
+    const r = reliabilityByStake(answers);
+    const calls = CONFIDENCE_LEVELS.reduce((n, c) => n + r[c].calls, 0);
+    expect(calls).toBe(answers.length);
+  });
+});
+
+describe("nothing stored can change what a stake is worth", () => {
   /*
     THE LOAD-BEARING TEST. The whole reason the run is built this way is that a
     run whose VALUE depends on survival makes the stake a risk-management
@@ -151,8 +187,7 @@ describe("the streak cannot change what a stake is worth", () => {
     ];
 
     expect(gradeRun(spread).score).toBe(gradeRun(clustered).score);
-    expect(gradeRun(clustered).longestStreak).toBe(3);
-    expect(gradeRun(spread).longestStreak).toBe(1);
+    expect(gradeRun(spread).correct).toBe(gradeRun(clustered).correct);
   });
 
   it("rests on a wager where all three stakes are actually reachable", () => {

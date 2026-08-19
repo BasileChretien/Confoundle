@@ -42,7 +42,7 @@ export const ar: Record<string, string> = {
   "See your score": "اطّلع على نتيجتك",
   "The skill": "المهارة",
   "Where this shows up": "أين يظهر هذا",
-  "See it in the wild": "شاهده في الواقع",
+  "The longer answer": "الإجابة المطولة",
   "Why it happens": "لماذا يحدث",
   "Same trap, other places": "الفخ نفسه، في أماكن أخرى",
   Source: "المصدر",

@@ -41,7 +41,7 @@ export const ru: Record<string, string> = {
   "See your score": "Посмотреть результат",
   "The skill": "Навык",
   "Where this shows up": "Где это встречается",
-  "See it in the wild": "Пример из жизни",
+  "The longer answer": "Подробный ответ",
   "Why it happens": "Почему так происходит",
   "Same trap, other places": "Та же ловушка в других местах",
   Source: "Источник",

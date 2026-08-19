@@ -41,7 +41,7 @@ export const fr: Record<string, string> = {
   "See your score": "Voir votre score",
   "The skill": "La compétence",
   "Where this shows up": "Où ça se rencontre",
-  "See it in the wild": "Le voir en vrai",
+  "The longer answer": "La réponse longue",
   "Why it happens": "Pourquoi ça arrive",
   "Same trap, other places": "Le même piège, ailleurs",
   Source: "Source",

@@ -53,6 +53,27 @@ describe("the share beat", () => {
     );
   });
 
+  it("does not let CSS put the card back at the bottom", () => {
+    /*
+      A REVIEW DEMONSTRATED THIS BYPASS RATHER THAN SPECULATING ABOUT IT:
+      changing the wrapper from `flex flex-col` to `flex flex-col-reverse`
+      restores the exact regression this PR fixes, moves no JSX, and left all
+      2068 tests green including the order assertion above.
+
+      Source order and paint order are different things, and a scan can only
+      see the first. This closes the one gap that was actually shown to work;
+      it does not make the instrument sound. Nothing here can see layout, and
+      the honest fix for that class needs a browser this repo has no
+      infrastructure for.
+    */
+    const beat = source!.slice(source!.indexOf('beat === "share"'));
+    const wrapper = beat.slice(0, beat.indexOf(">"));
+    expect(wrapper).toContain("flex-col");
+    expect(wrapper, "a reversing class would undo the order above").not.toMatch(
+      /flex-col-reverse|order-/,
+    );
+  });
+
   it("still renders all three, so the fix is an order and not a deletion", () => {
     // Which of these belongs in the product at all is a separate question from
     // which of them should greet you, and this change answers only the second.

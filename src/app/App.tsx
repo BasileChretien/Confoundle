@@ -169,6 +169,8 @@ function AppShell() {
         <div className="flex-1">
           {view.name === "trapHunt" ? (
             <TrapHuntView onDone={() => go(HOME)} />
+          ) : view.name === "dailyRun" ? (
+            <CalibrationRunView daily onDone={() => go(HOME)} />
           ) : view.name === "calibrationRun" ? (
             <CalibrationRunView onDone={() => go(HOME)} />
           ) : view.name === "review" ? (
@@ -243,6 +245,7 @@ function AppShell() {
               onOpenLessons={() => go({ name: "lessons" })}
               onOpenProgress={() => go({ name: "progress" })}
               onStartRun={() => go({ name: "calibrationRun" })}
+              onStartDaily={() => go({ name: "dailyRun" })}
             />
           )}
         </div>

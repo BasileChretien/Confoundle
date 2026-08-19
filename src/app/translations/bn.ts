@@ -8,6 +8,10 @@ export const bn: Record<string, string> = {
   // ---- Calibration run ----
   "Calibration run": "আত্মবিশ্বাস যাচাই",
   "Score: {n}": "স্কোর: {n}",
+  "Today's run, #{n}": "আজকের রান, #{n}",
+  "Practice. Today's run was already recorded.": "অনুশীলন। আজকের রান আগেই নথিভুক্ত হয়েছে।",
+  "The same eight calls as everybody else": "সবার মতো একই আটটি বিচার",
+  "Played today. Play it again for practice.": "আজ খেলা হয়ে গেছে। অনুশীলনের জন্য আবার খেলুন।",
   "How your stakes held up": "আপনার বাজি কেমন ছিল",
   "{right} of {calls}": "{calls}টির মধ্যে {right}টি",
   "not staked": "ব্যবহার হয়নি",

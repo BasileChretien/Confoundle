@@ -8,6 +8,10 @@ export const pt: Record<string, string> = {
   // ---- Calibration run ----
   "Calibration run": "Ronda de calibração",
   "Score: {n}": "Pontuação: {n}",
+  "Today's run, #{n}": "A ronda de hoje, n.º {n}",
+  "Practice. Today's run was already recorded.": "Treino. A ronda de hoje já está registada.",
+  "The same eight calls as everybody else": "Os mesmos oito juízos que toda a gente",
+  "Played today. Play it again for practice.": "Feita hoje. Jogue outra vez para treinar.",
   "How your stakes held up": "Como se saíram as suas apostas",
   "{right} of {calls}": "{right} de {calls}",
   "not staked": "sem aposta",

@@ -9,6 +9,10 @@ export const ja: Record<string, string> = {
   // ---- Calibration run ----
   "Calibration run": "自信度ラウンド",
   "Score: {n}": "スコア {n}",
+  "Today's run, #{n}": "今日のラン #{n}",
+  "Practice. Today's run was already recorded.": "練習です。今日のランはすでに記録済みです。",
+  "The same eight calls as everybody else": "みんなと同じ八問",
+  "Played today. Play it again for practice.": "今日はプレイ済み。練習としてもう一度どうぞ。",
   "How your stakes held up": "宣言した自信の結果",
   "{right} of {calls}": "{calls}回中{right}回",
   "not staked": "使用なし",

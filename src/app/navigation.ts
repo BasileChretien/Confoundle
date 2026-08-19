@@ -23,6 +23,7 @@ export type View =
   | { name: "review"; practice: boolean }
   | { name: "trapHunt" }
   | { name: "calibrationRun" }
+  | { name: "dailyRun" }
   | { name: "progress" };
 
 export const HOME: View = { name: "home" };
@@ -41,6 +42,7 @@ export function viewFromSearch(search: string): View {
   if (params.get("hunt") === "1") return { name: "trapHunt" };
   if (params.get("about") === "1") return { name: "about" };
   if (params.get("lessons") === "1") return { name: "lessons" };
+  if (params.get("run") === "daily") return { name: "dailyRun" };
   if (params.get("run") === "1") return { name: "calibrationRun" };
   if (params.get("progress") === "1") return { name: "progress" };
 
@@ -123,6 +125,8 @@ export function searchForView(view: View): string {
       return "?lessons=1";
     case "calibrationRun":
       return "?run=1";
+    case "dailyRun":
+      return "?run=daily";
     case "progress":
       return "?progress=1";
     case "home":

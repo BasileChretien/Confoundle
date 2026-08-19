@@ -9,6 +9,10 @@ export const zh: Record<string, string> = {
   // ---- Calibration run ----
   "Calibration run": "校准挑战",
   "Score: {n}": "得分：{n}",
+  "Today's run, #{n}": "今日一局 第 {n} 期",
+  "Practice. Today's run was already recorded.": "这是练习。今日一局已经记录过了。",
+  "The same eight calls as everybody else": "和所有人相同的八道判断",
+  "Played today. Play it again for practice.": "今天已玩过。可以再玩一次作为练习。",
   "How your stakes held up": "你的下注表现",
   "{right} of {calls}": "{calls} 次中 {right} 次",
   "not staked": "未使用",

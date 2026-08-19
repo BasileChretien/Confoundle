@@ -6812,4 +6812,10 @@ export const hi: Record<string, string> = {
   "Two clinics publish success rates for the same operation. Clinic B is far ahead on the overall figure, and the region recommends it.": "दो क्लिनिक एक ही ऑपरेशन की सफलता दर प्रकाशित करते हैं। कुल आँकड़े में क्लिनिक B बहुत आगे है, और क्षेत्र उसकी सिफ़ारिश करता है।",
   "Split by how difficult the cases were, B is ahead in both groups too. B did take far more of the easy cases, but it is better in each group anyway, so the mix is not what is producing the gap.": "मामलों की कठिनाई के हिसाब से बाँटें तो B दोनों समूहों में भी आगे है। B ने वाकई कहीं ज़्यादा आसान मामले लिए, फिर भी वह हर समूह में बेहतर है, यानी यह अंतर मिश्रण से नहीं आ रहा।",
   "Numbers built to show the shape, not measured from anything.": "आकार दिखाने के लिए बनाए गए आँकड़े, किसी माप से नहीं।",
+  "Both groups keep the rates they actually had. The only thing that moves is how the cases were split between them.": "दोनों समूह वही दरें बनाए रखते हैं जो उन्हें सचमुच मिली थीं। बदलती है तो सिर्फ़ यह बात कि मामले उनके बीच कैसे बँटे।",
+  "Within each group, unchanged": "हर समूह के भीतर, अपरिवर्तित",
+  "Overall, as you move the mix": "कुल मिलाकर, जैसे-जैसे आप मिश्रण बदलते हैं",
+  "Who got the {stratum}": "{stratum} किसे मिले",
+  "{winner} is ahead in every group and behind overall.": "{winner} हर समूह में आगे है और कुल मिलाकर पीछे।",
+  "{share} of the {stratum} go to {group}": "{stratum} का {share} {group} को",
 };

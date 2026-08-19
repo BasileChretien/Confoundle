@@ -80,7 +80,8 @@ export function MixerView({ full }: { full: RatesData }) {
   }).format(mix / 100);
 
   return (
-    <div className="mt-3 rounded-lg border border-rule bg-paper-2 p-3.5">
+    /* No top margin: the fold's container is a `gap-4` column already. */
+    <div className="rounded-lg border border-rule bg-paper-2 p-3.5">
       <p className="mb-3 text-[13px] leading-snug text-ink-soft">
         {t({
           en: "Both groups keep the rates they actually had. The only thing that moves is how the cases were split between them.",

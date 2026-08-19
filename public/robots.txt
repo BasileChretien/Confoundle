@@ -1,0 +1,14 @@
+# The lesson pages are the only surface here a stranger can find without being
+# sent one, and the sitemap is the only way anything discovers all 730 of them.
+# Without this file it had to be submitted by hand, once, per search engine.
+User-agent: *
+Allow: /
+
+# The app's own routes are a client-rendered shell: a crawler following one
+# gets an empty page, and the lesson pages carry the same content as documents.
+Disallow: /?p=
+Disallow: /?run=
+Disallow: /?review=
+Disallow: /?hunt=
+
+Sitemap: https://confoundle.org/sitemap.xml

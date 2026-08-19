@@ -1,7 +1,8 @@
 import { describe, it, expect } from "vitest";
-import { clamp, escapeHtml, lessonPath, renderLessonPage } from "./lessonPage";
+import { clamp, escapeHtml, escapeJsonLd, lessonPath, renderLessonPage } from "./lessonPage";
 import { LESSON_PAGE } from "./lessonPageStrings";
 import { lessonPages, lessonSitemap } from "./prerender";
+import { siblingsFor } from "./lessonSiblings";
 import { puzzles } from "../puzzles";
 import { ALL_DICTIONARIES } from "../app/translations/all";
 import { LOCALE_CODES } from "../app/locales";
@@ -194,5 +195,73 @@ describe("what gets written at build time", () => {
     expect((xml.match(/<loc>/g) ?? []).length).toBe(pages.length);
     expect(xml).toContain(`<loc>${ORIGIN}/l/${puzzles[0].slug}/</loc>`);
     expect(xml).not.toContain("<loc>/l/");
+  });
+});
+
+/**
+ * A page that says it is sourced should say so where a machine can read it, and
+ * should not be a dead end for the reader who believed it.
+ */
+describe("what the page tells a crawler and where it sends a reader", () => {
+  const build = (slug: string) => {
+    const puzzle = puzzles.find((p) => p.slug === slug)!;
+    return renderLessonPage({
+      puzzle,
+      t: (text) => text.en,
+      locale: "en",
+      origin: "https://confoundle.org",
+      locales: ["en", "fr"],
+      siblings: siblingsFor(puzzle, puzzles),
+    });
+  };
+
+  it("carries structured data with the citation the page is built on", () => {
+    /*
+      Every one of these pages has a real source and most have a DOI, which is
+      exactly the input structured data wants, and none of it was expressed.
+    */
+    const html = build("kidney-stones");
+    const block = html.match(
+      /<script type="application\/ld\+json">([\s\S]*?)<\/script>/,
+    );
+    expect(block, "no JSON-LD on the page").not.toBeNull();
+    const data = JSON.parse(block![1]!) as Record<string, unknown>;
+    expect(data["@type"]).toBe("Article");
+    expect(data.inLanguage).toBe("en");
+    expect(String(data.citation)).toMatch(/^https?:\/\//);
+  });
+
+  it("cannot be broken open by a title containing a closing script tag", () => {
+    // An HTML parser ends the block at the first `</script`, wherever it is,
+    // including inside a JSON string.
+    const escaped = escapeJsonLd(JSON.stringify({ t: "</script><b>x" }));
+    expect(escaped).not.toContain("</script");
+    expect(JSON.parse(escaped)).toEqual({ t: "</script><b>x" });
+  });
+
+  it("sends the reader to a card that has not been spoiled", () => {
+    /*
+      THE DEAD END. It pointed at `/`, which serves every newcomer the same
+      opening puzzle, so somebody who arrived from a search about one trap, read
+      the whole answer, and clicked the button was handed an unrelated one.
+    */
+    const puzzle = puzzles.find((p) => p.slug === "kidney-stones")!;
+    const html = build("kidney-stones");
+    const cta = html.match(/<a class="cta" href="([^"]+)"/);
+    expect(cta).not.toBeNull();
+    expect(cta![1]).not.toBe("/");
+    expect(cta![1]).toMatch(/^\/\?p=/);
+    expect(cta![1]).not.toContain(puzzle.slug);
+  });
+
+  it("links other lesson pages, not the app, so the set is crawlable", () => {
+    // A crawler following `/?p=slug` lands on a client-rendered shell with
+    // nothing in it. The related list has to point at documents.
+    const html = build("kidney-stones");
+    const related = html.match(/<ul class="related">([\s\S]*?)<\/ul>/);
+    expect(related).not.toBeNull();
+    const hrefs = [...related![1]!.matchAll(/href="([^"]+)"/g)].map((m) => m[1]!);
+    expect(hrefs.length).toBeGreaterThan(0);
+    for (const href of hrefs) expect(href).toMatch(/^\/l\/[a-z0-9-]+\/$/);
   });
 });

@@ -18,17 +18,23 @@ export const UI: Record<string, LocalizedText> = {
     ru: "Что-то сломалось",
     ja: "問題が発生しました",
   },
+  // IT NO LONGER SAYS WHERE THE DATA LIVES. It read "stored on this device and
+  // are not affected", which is true of answers and streaks and false of the
+  // review schedule for anybody signed in: `progress` is a table in this
+  // project's D1 and `srs/remoteStore.ts` syncs it. The reassurance itself
+  // holds either way, because a render that throws touches neither storage nor
+  // the network, so the sentence says that and stops.
   crashBody: {
-    en: "The app hit an error it could not recover from. Your answers, streak and review schedule are stored on this device and are not affected.",
-    zh: "应用遇到了无法自行恢复的错误。你的答案、连续记录和复习计划都保存在本机上，不受影响。",
-    hi: "ऐप को ऐसी गड़बड़ी मिली जिससे वह उबर नहीं सका। आपके जवाब, लगातार खेलने का रिकॉर्ड और दोहराव का शेड्यूल इसी डिवाइस पर सुरक्षित हैं और उन पर कोई असर नहीं पड़ा।",
-    es: "La aplicación encontró un error del que no pudo recuperarse. Tus respuestas, tu racha y tu calendario de repaso están guardados en este dispositivo y no se han visto afectados.",
-    fr: "L'application a rencontré une erreur dont elle n'a pas pu se remettre. Vos réponses, votre série et votre calendrier de révision sont enregistrés sur cet appareil et ne sont pas touchés.",
-    ar: "واجه التطبيق خطأ لم يستطع التعافي منه. إجاباتك وسلسلتك وجدول مراجعتك محفوظة على هذا الجهاز ولم تتأثر.",
-    bn: "অ্যাপটি এমন একটি ত্রুটিতে পড়েছে যা থেকে সে সামলে উঠতে পারেনি। আপনার উত্তর, ধারাবাহিকতা আর পুনরালোচনার সূচি এই ডিভাইসেই রাখা আছে এবং সেগুলোর কিছু হয়নি।",
-    pt: "A aplicação encontrou um erro do qual não conseguiu recuperar. As suas respostas, a sua sequência e o seu calendário de revisão estão guardados neste dispositivo e não foram afetados.",
-    ru: "Приложение столкнулось с ошибкой, от которой не смогло восстановиться. Ваши ответы, серия и график повторений хранятся на этом устройстве и не пострадали.",
-    ja: "アプリが回復できないエラーに遭遇しました。あなたの回答、連続記録、復習の予定はこの端末に保存されており、影響を受けていません。",
+    en: "Nothing you have done has been lost. Your answers, your streak and your review schedule are all still there.",
+    zh: "你做过的一切都没有丢失。你的答案、连续记录和复习计划都还在。",
+    hi: "आपने जो किया है उसमें से कुछ भी नहीं खोया। आपके जवाब, आपका लगातार खेलने का रिकॉर्ड और दोहराव का शेड्यूल सब वहीं हैं।",
+    es: "No se ha perdido nada de lo que has hecho. Tus respuestas, tu racha y tu calendario de repaso siguen ahí.",
+    fr: "Rien de ce que vous avez fait n'a été perdu. Vos réponses, votre série et votre calendrier de révision sont toujours là.",
+    ar: "لم يضِع شيء مما فعلته. إجاباتك وسلسلتك وجدول مراجعتك ما زالت كلها موجودة.",
+    bn: "আপনি যা করেছেন তার কিছুই হারায়নি। আপনার উত্তর, আপনার ধারাবাহিকতা আর পুনরালোচনার সূচি সবই রয়ে গেছে।",
+    pt: "Nada do que fez foi perdido. As suas respostas, a sua sequência e o seu calendário de revisão continuam lá.",
+    ru: "Ничего из того, что вы сделали, не потеряно. Ваши ответы, ваша серия и график повторений на месте.",
+    ja: "あなたがしたことは何も失われていません。回答も、連続記録も、復習の予定もそのまま残っています。",
   },
   crashReload: {
     en: "Reload",

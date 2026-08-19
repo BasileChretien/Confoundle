@@ -43,6 +43,29 @@ describe("the boundary", () => {
     expect(ErrorBoundary.getDerivedStateFromError()).toEqual({ failed: true });
   });
 
+  it("actually shows the fallback once it has failed", () => {
+    /*
+      THE MUTANT THAT SURVIVED. `getDerivedStateFromError` was tested and
+      `CrashScreen` was tested, and neutering `render()` to return children
+      whatever the state passed all seven tests: React would keep computing
+      `{failed: true}` and the app would keep going blank, which is the exact
+      bug this file exists to remove.
+
+      `renderToStaticMarkup` cannot run a boundary, and this project has no DOM
+      environment, but `render()` is an ordinary method on an ordinary object
+      and can simply be called.
+    */
+    const children = createElement("p", null, "the app");
+    const boundary = new ErrorBoundary({ children });
+
+    boundary.state = { failed: false };
+    expect(boundary.render()).toBe(children);
+
+    boundary.state = { failed: true };
+    const shown = boundary.render() as { type: unknown };
+    expect(shown.type).toBe(CrashScreen);
+  });
+
   it("reports to the console and to nowhere else", () => {
     /*
       A stack trace can carry anything that was on screen, and this project has
@@ -68,17 +91,22 @@ describe("the crash screen", () => {
     expect(html).toContain("<button");
   });
 
-  it("promises only what it can keep", () => {
+  it("promises only what it can keep, and says nothing about where", () => {
     /*
-      Everything a player has done is in this device's storage, so a crash
-      genuinely cannot cost them their streak or their schedule. Saying so is
-      the one useful thing this screen offers, and it has to stay true: if
-      anything ever moves off-device, this sentence is what changes.
+      IT USED TO SAY "stored on this device", which is true of answers and
+      streaks and false of the review schedule for anybody signed in: `progress`
+      is a table in this project's D1 and `srs/remoteStore.ts` syncs it. The
+      reassurance holds either way, because a render that throws touches neither
+      storage nor the network, so the sentence makes the promise it can keep and
+      stops short of the claim it cannot.
+
+      Pinned here because the next person to reword this screen will be tempted
+      to add the reassuring detail back.
     */
     withLocale(null);
-    expect(renderToStaticMarkup(createElement(CrashScreen))).toContain(
-      "stored on this device",
-    );
+    const html = renderToStaticMarkup(createElement(CrashScreen));
+    expect(html).toContain("Nothing you have done has been lost");
+    expect(html).not.toContain("on this device");
   });
 
   it("speaks the reader's language with no provider above it", () => {

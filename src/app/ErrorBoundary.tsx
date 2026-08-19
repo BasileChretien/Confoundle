@@ -42,7 +42,12 @@ export function CrashScreen() {
   const t = (key: keyof typeof UI) => translate(UI[key]!, locale);
 
   return (
-    <div className="mx-auto flex min-h-dvh max-w-md flex-col justify-center gap-4 px-5 py-10 text-ink">
+    <div
+      // Announced, because swapping the whole tree for this is a change a
+      // screen reader is otherwise given no reason to notice.
+      role="alert"
+      className="mx-auto flex min-h-dvh max-w-md flex-col justify-center gap-4 px-5 py-10 text-ink"
+    >
       <h1 className="font-display text-[26px] font-semibold leading-tight">
         {t("crashTitle")}
       </h1>
@@ -59,6 +64,18 @@ export function CrashScreen() {
       >
         {t("crashReload")}
       </button>
+      {/*
+        A SECOND WAY OUT, because reloading can be the same crash again. The
+        view is derived from the query string, so a throw tied to whatever is
+        open reproduces exactly on reload and the reader has nowhere to go but
+        the address bar. This clears the query and lands on the home screen.
+      */}
+      <a
+        href="/"
+        className="text-center font-sans text-[14px] text-ink-soft underline decoration-rule underline-offset-4 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand"
+      >
+        {t("home")}
+      </a>
     </div>
   );
 }

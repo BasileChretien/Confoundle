@@ -88,10 +88,20 @@ describe("no string wanders into another script", () => {
     expect(BLOCKS.devanagari.test("আপনার মানচিত্র শুরু করুন।")).toBe(false);
   });
 
+  /*
+    ALL THREE TABLES, NOT ONE. `ui.ts` exports `UI`, `ACCOUNT` and
+    `LESSON_SHARE`, the coverage test above walks all three, and the first
+    version of this one walked only `UI`: a guard whose name promises more than
+    its reach delivers, which is the failure this repo has already been bitten
+    by three times and names in CLAUDE.md. Nothing was contaminated, which is
+    exactly how it would have stayed unnoticed.
+  */
+  const TABLES = { UI, ACCOUNT, LESSON_SHARE };
+
   it.each(Object.keys(ALLOWED))("%s stays in its own script", (locale) => {
     const allowed = ALLOWED[locale]!;
     const offenders: string[] = [];
-    for (const entry of Object.values(UI)) {
+    for (const entry of Object.values(TABLES).flatMap((t) => Object.values(t))) {
       const text = (entry as Record<string, string>)[locale];
       if (typeof text !== "string") continue;
       for (const [name, re] of Object.entries(BLOCKS)) {

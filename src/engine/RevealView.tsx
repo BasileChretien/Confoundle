@@ -15,6 +15,7 @@ import { Legend } from "./charts/RateChart";
 import { CaseMixBars } from "./charts/CaseMixBars";
 import { scoreFor, reactionFor, type Confidence } from "./scoring";
 import { CrowdLines } from "./CrowdLines";
+import { ConfounderMark } from "./Confounder";
 
 /**
  * Beat 3: the reveal. The plate opens on the same view the player committed
@@ -359,9 +360,26 @@ export function RevealView({
             {t(puzzle.reveal.headline)}
           </h2>
 
-          <p className="text-sm text-ink-soft">
-            {t({ en: reactionFor(caught, confidence) })}
-          </p>
+          {/*
+            THE ONE CHARACTER IN THE APP, FINALLY IN THE ROOM WHERE IT MATTERS.
+            It had two surfaces, both on the way in: a line on the home screen
+            before the player had done anything, and its mark on the About page.
+            It set every trap in the deck and was absent from all of them.
+
+            The mark carries its own translated accessible name, so the line
+            beside it needs no attribution written into the copy, in any
+            language. It is the register made legible rather than decoration:
+            without it, "Those are the ones I keep" is the app talking about
+            itself.
+          */}
+          <div className="flex items-start gap-2">
+            <span className="mt-px shrink-0">
+              <ConfounderMark size={20} />
+            </span>
+            <p className="text-sm text-ink-soft">
+              {t({ en: reactionFor(caught, confidence) })}
+            </p>
+          </div>
 
           <CrowdLines
             slug={puzzle.slug}

@@ -21,8 +21,8 @@ export const pt: Record<string, string> = {
   "As every judge marked it": "Segundo a nota de todos os avaliadores",
   "Against what happens": "Diante do que acontece",
   "The trap worked": "A armadilha funcionou",
-  "The setup was built to make that one feel obvious.": "O enunciado foi construído para fazer essa resposta parecer óbvia.",
-  "Wrong, but you staked almost nothing on it. That is the wager working.": "Errado, mas você apostou quase nada. É assim que a aposta deve funcionar.",
+  "I built that setup to mislead. It worked.": "Construí aquele cenário para enganar. Funcionou.",
+  "Wrong, but you barely staked anything. Annoyingly sensible of you.": "Errado, mas quase não apostou nada. Irritantemente sensato.",
   "The slope is drawn from the published correlation of 0.79. Messerli plotted all 23 countries in his own figure; this one draws the trend alone rather than redrawing his points by eye.": "A inclinação foi traçada a partir da correlação publicada de 0,79. Messerli marcou os 23 países na figura dele; esta desenha apenas a tendência, em vez de redesenhar os pontos a olho.",
   // ---- UI chrome (buttons, labels, section headers) ----
   "n = {count}": "n = {count}",
@@ -212,11 +212,10 @@ export const pt: Record<string, string> = {
   "You beat {pct}% of players on this puzzle": "Você superou {pct}% dos jogadores neste enigma",
   "A new puzzle every day. Keep the streak alive.":
     "Um novo desafio todo dia. Mantenha a sequência viva.",
-  "Sharp eye, and you called it.": "Olho atento, e você acertou na previsão.",
-  "Nicely spotted.": "Bem percebido.",
-  "Good instinct.": "Bom instinto.",
-  "Ouch. Confidently wrong, the classic trap.":
-    "Ai. Errado com confiança, a armadilha clássica.",
+  "Certain, and correct. I shall need a moment.": "Com certeza, e certo. Preciso de um momento.",
+  "Spotted, and without much fuss. Disappointing.": "Detectado, e sem grande esforço. Decepcionante.",
+  "You said you were guessing. You were not guessing.": "Disse que estava a adivinhar. Não estava.",
+  "Certain, and wrong. Those are the ones I keep.": "Com certeza, e errado. São esses que eu guardo.",
   "So does almost everyone. That's the trap.":
     "Como quase todo mundo. É essa a armadilha.",
   "You sensed something was off, but went with it anyway.":

@@ -73,14 +73,45 @@ export function scoreFor(correct: boolean, c: Confidence): number {
  * player wrong in order to land a sting, and the rule against that outranks
  * the sting every time. Being wrong with little staked is calibration working,
  * and it now reads that way.
+ *
+ * ALL SIX ARE NOW THE CONFOUNDER'S, and this is the line every play passes
+ * through, so it is the highest-leverage copy in the product. It read like a
+ * consultant initialling a chart, three lines below a gold-bordered character
+ * who set the trap and was nowhere in the room: the app has exactly one
+ * designed character, written and translated into ten languages, and it spoke
+ * only on the home screen, before the player had done anything, and never
+ * again.
+ *
+ * An adversary is the one persona this audience tolerates. The failure mode
+ * for a deck read by clinicians is the encouraging coach, because "great job,
+ * you're improving" tells a competent adult they are being managed. A
+ * character who is cleverer than you, never explains, and is visibly annoyed
+ * when you win flatters the reader instead: it treats them as an opponent
+ * worth beating. It is also thematically exact, since a confounder is a hidden
+ * adversary that takes credit for effects it did not cause.
+ *
+ * TWO RULES HOLD IT IN PLACE, and both are the same rule the two replaced
+ * lines were replaced for.
+ *
+ * It reacts to the VERDICT and never to the evidence. The badge, the score,
+ * `reveal.explanation` and `CrowdLines` stay in the app's neutral voice. A
+ * character with a stake in your being wrong cannot be allowed near the
+ * numbers, and being barred from them is the better joke anyway.
+ *
+ * And it may claim credit for the SETUP, which this deck authored, never for
+ * the player's particular choice, which it did not. `reactionFor(false,
+ * "sure")` fires for any wrong answer, not only for the flagged intuitive
+ * trap, so "I built THAT ONE to feel obvious" would be false whenever somebody
+ * picked a different wrong answer. It claims the setup instead, which is true
+ * of every puzzle in the deck by construction.
  */
 export function reactionFor(correct: boolean, c: Confidence): string {
   if (correct) {
-    if (c === "certain") return "Sharp eye, and you called it.";
-    if (c === "sure") return "Nicely spotted.";
-    return "Good instinct.";
+    if (c === "certain") return "Certain, and correct. I shall need a moment.";
+    if (c === "sure") return "Spotted, and without much fuss. Disappointing.";
+    return "You said you were guessing. You were not guessing.";
   }
-  if (c === "certain") return "Ouch. Confidently wrong, the classic trap.";
-  if (c === "sure") return "The setup was built to make that one feel obvious.";
-  return "Wrong, but you staked almost nothing on it. That is the wager working.";
+  if (c === "certain") return "Certain, and wrong. Those are the ones I keep.";
+  if (c === "sure") return "I built that setup to mislead. It worked.";
+  return "Wrong, but you barely staked anything. Annoyingly sensible of you.";
 }

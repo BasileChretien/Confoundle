@@ -175,3 +175,76 @@ describe("reaction lines", () => {
     ).toEqual([]);
   });
 });
+
+/**
+ * WHAT THE CONFOUNDER MAY SAY, which is narrower than what it may be funny about.
+ *
+ * All six reaction lines are now the app's one character speaking, at the beat
+ * where it set the trap. That buys the register a real constraint, and the
+ * constraint is not new: two of these six lines were previously replaced for
+ * breaking it.
+ *
+ * "So does almost everyone. That's the trap." was an unsourced universal
+ * quantifier printed on every sure-and-wrong answer of every puzzle, three
+ * lines above `CrowdLines`, which knows the real number and may say something
+ * quite different. A character with a stake in your being wrong cannot be near
+ * the numbers, and the deck's whole subject is claims made about populations
+ * that the data does not support.
+ *
+ * The blacklist is the `hedgeTells.test.ts` shape: not a proof, a list of
+ * phrases that have actually caused this, meant to grow when review finds
+ * another. It reads the English source, which is where these are authored;
+ * the nine translations are held to the same rule by the person writing them.
+ */
+describe("the reaction lines claim nothing about the population", () => {
+  const POPULATION_TELLS = [
+    "everyone",
+    "everybody",
+    "most people",
+    "most players",
+    "nobody",
+    "no one",
+    "almost all",
+    "usually",
+    "typically",
+    "% of",
+  ];
+
+  const LINES = [true, false].flatMap((correct) =>
+    CONFIDENCE_LEVELS.map((c) => reactionFor(correct, c)),
+  );
+
+  it("catches a tell when there is one", () => {
+    // The guard on the guard: a matcher that stopped matching passes silently.
+    const offends = (line: string) =>
+      POPULATION_TELLS.some((tell) => line.toLowerCase().includes(tell));
+    expect(offends("So does almost everyone. That's the trap.")).toBe(true);
+    expect(offends("Most people miss this.")).toBe(true);
+    expect(offends("Certain, and wrong. Those are the ones I keep.")).toBe(false);
+  });
+
+  it("finds none in any line the app can show", () => {
+    const offenders = LINES.filter((line) =>
+      POPULATION_TELLS.some((tell) => line.toLowerCase().includes(tell)),
+    );
+    expect(offenders).toEqual([]);
+  });
+
+  it("claims the setup rather than the player's particular answer", () => {
+    /*
+      `reactionFor(false, "sure")` fires for ANY wrong answer, not only for the
+      choice a puzzle flags as its intuitive trap. So a line saying "that one
+      was built to feel obvious" is false whenever somebody picked a different
+      wrong answer, which is the same over-claim as the population line in a
+      smaller costume. The setup is authored by this deck; the player's choice
+      is not.
+    */
+    expect(reactionFor(false, "sure")).toContain("setup");
+    expect(reactionFor(false, "sure")).not.toContain("that one");
+  });
+
+  it("gives all six their own line", () => {
+    // A copy-paste that collapsed two states would read as deliberate.
+    expect(new Set(LINES).size).toBe(LINES.length);
+  });
+});

@@ -22,8 +22,8 @@ export const ja: Record<string, string> = {
   "As every judge marked it": "全採点者の評価",
   "Against what happens": "実際に起きていることと比べて",
   "The trap worked": "罠にかかりました",
-  "The setup was built to make that one feel obvious.": "その答えが当然に見えるように問題は作られています。",
-  "Wrong, but you staked almost nothing on it. That is the wager working.": "不正解ですが、ほとんど賭けていませんでした。それこそが賭けの働きです。",
+  "I built that setup to mislead. It worked.": "あの見せ方は誤解させるために作った。効いたようだ。",
+  "Wrong, but you barely staked anything. Annoyingly sensible of you.": "不正解。だがほとんど賭けていない。腹立たしいほど賢明だ。",
   "The slope is drawn from the published correlation of 0.79. Messerli plotted all 23 countries in his own figure; this one draws the trend alone rather than redrawing his points by eye.": "この傾きは公表された相関係数0.79から描いたものです。メッセルリ自身の図には23か国すべてが打点されていますが、この図は点を目分量で写さず、傾向だけを示しています。",
   // ---- UI chrome (buttons, labels, section headers) ----
   "n = {count}": "n = {count}",
@@ -212,11 +212,10 @@ export const ja: Record<string, string> = {
   "You beat {pct}% of players on this puzzle": "この問題のプレイヤーの{pct}%を上回りました",
   "A new puzzle every day. Keep the streak alive.":
     "毎日新しいパズルを。連続記録を絶やさないように。",
-  "Sharp eye, and you called it.": "鋭い目、しかも自分で言い当てました。",
-  "Nicely spotted.": "お見事、見抜きました。",
-  "Good instinct.": "いい勘です。",
-  "Ouch. Confidently wrong, the classic trap.":
-    "痛いところ。自信満々で間違える、典型的な罠です。",
+  "Certain, and correct. I shall need a moment.": "「確信あり」で、正解。少し時間をくれ。",
+  "Spotted, and without much fuss. Disappointing.": "見抜かれた。しかも苦もなく。がっかりだ。",
+  "You said you were guessing. You were not guessing.": "勘だと言っていたな。あれは勘ではない。",
+  "Certain, and wrong. Those are the ones I keep.": "「確信あり」で、不正解。そういうのは覚えておく。",
   "So does almost everyone. That's the trap.":
     "ほとんどの人も同じです。それが罠なのです。",
   "You sensed something was off, but went with it anyway.":

@@ -6704,4 +6704,13 @@ export const zh: Record<string, string> = {
   "This is sound. The order here is not random but deliberately built from prior qualifying results, so the early performers really were the lower-ranked ones, and a gap by position is exactly what the seeding was designed to produce.": "这是站得住的。这里的顺序不是随机的，而是依据先前的资格赛成绩刻意排定的，因此先上场的确实就是排名较低的人，按位置出现的差距正是这种排法有意造成的。",
   "A journal randomised the order in which reviewers received a batch of manuscripts and compared scores by position. The scores were indistinguishable across positions, and the editors reported that they found no order effect in their process.": "一家期刊把评审收到一批稿件的顺序随机化，然后按位置比较评分。各个位置上的评分无法区分，编辑部报告说，在他们的流程中没有发现顺序效应。",
   "This is sound. The order was randomised and the comparison was made, and it came out flat. An order effect is something to test for rather than something to assume, and reporting an absence found by looking is a result.": "这是站得住的。顺序被随机化了，比较也做了，结果是平的。顺序效应是应当去检验而不是假定的东西，而报告一个经由查看才得出的「没有」，本身就是一项结果。",
+  "Two clinics report their success rates for the same operation. Clinic B comes out well ahead overall, so the region recommends it.": "两家诊所公布了同一手术的成功率。总体上B诊所遥遥领先，于是地区推荐了B。",
+  "Split by how difficult the cases were, Clinic A is ahead in both. B looks better overall only because it took far more of the easy ones.": "按病例难度拆开看，A诊所在两组中都领先。B总体更好，只是因为它接手了多得多的简单病例。",
+  "Clinic A": "A诊所",
+  "Clinic B": "B诊所",
+  "Straightforward cases": "简单病例",
+  "Difficult cases": "疑难病例",
+  "Two clinics publish success rates for the same operation. Clinic B is far ahead on the overall figure, and the region recommends it.": "两家诊所公布了同一手术的成功率。在总体数字上B诊所遥遥领先，地区推荐了B。",
+  "Split by how difficult the cases were, B is ahead in both groups too. B did take far more of the easy cases, but it is better in each group anyway, so the mix is not what is producing the gap.": "按病例难度拆开看，B在两组中同样领先。B确实接手了多得多的简单病例，但它在每一组里依然更好，所以造成差距的并不是病例构成。",
+  "Numbers built to show the shape, not measured from anything.": "这些数字是为展示形状而构造的，并非测量所得。",
 };

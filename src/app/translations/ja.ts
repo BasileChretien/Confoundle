@@ -6762,4 +6762,13 @@ export const ja: Record<string, string> = {
   "This is sound. The order here is not random but deliberately built from prior qualifying results, so the early performers really were the lower-ranked ones, and a gap by position is exactly what the seeding was designed to produce.": "これは健全である。ここでの順番は無作為ではなく、事前の予選結果からわざと組まれている。したがって先に登場した者は実際に順位の低い者たちであり、位置による差はまさにこの配列が生み出すよう意図されたものである。",
   "A journal randomised the order in which reviewers received a batch of manuscripts and compared scores by position. The scores were indistinguishable across positions, and the editors reported that they found no order effect in their process.": "ある学術誌は、査読者が一まとまりの原稿を受け取る順番を無作為化し、位置ごとに評点を比較した。評点は位置によって区別がつかず、編集部は、自誌の査読過程に順番の効果は見つからなかったと報告した。",
   "This is sound. The order was randomised and the comparison was made, and it came out flat. An order effect is something to test for rather than something to assume, and reporting an absence found by looking is a result.": "これは健全である。順番は無作為化され、比較は行われ、そして差は出なかった。順番の効果は前提にするものではなく検定するものであり、実際に調べて見つからなかったという報告は、それ自体がひとつの結果である。",
+  "Two clinics report their success rates for the same operation. Clinic B comes out well ahead overall, so the region recommends it.": "二つの診療所が同じ手術の成功率を公表した。全体ではB診療所が大きく上回っており、地域はBを推奨した。",
+  "Split by how difficult the cases were, Clinic A is ahead in both. B looks better overall only because it took far more of the easy ones.": "症例の難易度で分けると、両方の群でA診療所が上回っている。Bが全体で良く見えるのは、易しい症例をはるかに多く扱ったからにすぎない。",
+  "Clinic A": "A診療所",
+  "Clinic B": "B診療所",
+  "Straightforward cases": "易しい症例",
+  "Difficult cases": "難しい症例",
+  "Two clinics publish success rates for the same operation. Clinic B is far ahead on the overall figure, and the region recommends it.": "二つの診療所が同じ手術の成功率を公表した。全体の数字ではB診療所が大きく先行しており、地域はBを推奨した。",
+  "Split by how difficult the cases were, B is ahead in both groups too. B did take far more of the easy cases, but it is better in each group anyway, so the mix is not what is producing the gap.": "症例の難易度で分けても、両方の群でBが上回っている。Bは確かに易しい症例をはるかに多く扱ったが、それでも各群で上回っている。つまり差を生んでいるのは症例の混ざり方ではない。",
+  "Numbers built to show the shape, not measured from anything.": "形を示すために作った数字であり、何かを測ったものではない。",
 };

@@ -6872,4 +6872,9 @@ export const fr: Record<string, string> = {
   "Two clinics publish success rates for the same operation. Clinic B is far ahead on the overall figure, and the region recommends it.": "Deux cliniques publient leur taux de réussite pour la même opération. La clinique B est loin devant sur le chiffre global, et la région la recommande.",
   "Split by how difficult the cases were, B is ahead in both groups too. B did take far more of the easy cases, but it is better in each group anyway, so the mix is not what is producing the gap.": "En séparant selon la difficulté des cas, B est devant dans les deux groupes aussi. B a bien pris beaucoup plus de cas faciles, mais elle reste meilleure dans chaque groupe : ce n'est donc pas le mélange qui produit l'écart.",
   "Numbers built to show the shape, not measured from anything.": "Chiffres construits pour montrer la forme, mesurés sur rien.",
+  "Both treatments keep the success rates they actually had. The only thing that moves is who got the hard cases.": "Les deux traitements gardent exactement les taux de réussite qu'ils ont eus. La seule chose qui bouge, c'est qui a reçu les cas difficiles.",
+  "Within each group, unchanged": "Dans chaque groupe, inchangé",
+  "Overall, as you move the mix": "Au total, quand vous déplacez la répartition",
+  "Who got the hard cases": "Qui a reçu les cas difficiles",
+  "{winner} is ahead in every group and behind overall.": "{winner} est devant dans chaque groupe et derrière au total.",
 };

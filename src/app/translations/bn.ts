@@ -6821,4 +6821,9 @@ export const bn: Record<string, string> = {
   "Two clinics publish success rates for the same operation. Clinic B is far ahead on the overall figure, and the region recommends it.": "দুটি ক্লিনিক একই অস্ত্রোপচারের সাফল্যের হার প্রকাশ করে। সামগ্রিক সংখ্যায় ক্লিনিক B অনেক এগিয়ে, আর অঞ্চলটি সেটিই সুপারিশ করেছে।",
   "Split by how difficult the cases were, B is ahead in both groups too. B did take far more of the easy cases, but it is better in each group anyway, so the mix is not what is producing the gap.": "কেসের কঠিনতা অনুযায়ী ভাগ করলেও দুই দলেই B এগিয়ে। B সত্যিই অনেক বেশি সহজ কেস নিয়েছে, তবু প্রতিটি দলেই সে ভালো, অর্থাৎ ব্যবধানটা মিশ্রণ থেকে আসছে না।",
   "Numbers built to show the shape, not measured from anything.": "আকৃতি দেখানোর জন্য বানানো সংখ্যা, কোনো কিছু থেকে মাপা নয়।",
+  "Both treatments keep the success rates they actually had. The only thing that moves is who got the hard cases.": "দুটি চিকিৎসাই তাদের প্রকৃত সাফল্যের হার ধরে রাখে। বদলায় কেবল একটাই জিনিস: কঠিন কেসগুলো কে পেল।",
+  "Within each group, unchanged": "প্রতিটি দলের ভিতরে, অপরিবর্তিত",
+  "Overall, as you move the mix": "সব মিলিয়ে, আপনি মিশ্রণ বদলালে",
+  "Who got the hard cases": "কঠিন কেসগুলো কে পেল",
+  "{winner} is ahead in every group and behind overall.": "{winner} প্রতিটি দলে এগিয়ে আর সব মিলিয়ে পিছিয়ে।",
 };

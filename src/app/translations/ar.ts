@@ -6774,4 +6774,9 @@ export const ar: Record<string, string> = {
   "Two clinics publish success rates for the same operation. Clinic B is far ahead on the overall figure, and the region recommends it.": "عيادتان تنشران معدلات النجاح للعملية نفسها. العيادة B متقدمة كثيرًا في الرقم الإجمالي، وأوصت بها المنطقة.",
   "Split by how difficult the cases were, B is ahead in both groups too. B did take far more of the easy cases, but it is better in each group anyway, so the mix is not what is producing the gap.": "بالفصل حسب صعوبة الحالات، B متقدمة في المجموعتين أيضًا. صحيح أن B تولّت حالات سهلة أكثر بكثير، لكنها أفضل في كل مجموعة على أي حال، فليس الخلط هو ما يصنع الفارق.",
   "Numbers built to show the shape, not measured from anything.": "أرقام بُنيت لإظهار الشكل، لا مقيسة من شيء.",
+  "Both treatments keep the success rates they actually had. The only thing that moves is who got the hard cases.": "يحتفظ العلاجان بمعدلات النجاح التي حققاها فعلًا. الشيء الوحيد الذي يتغير هو من تولّى الحالات الصعبة.",
+  "Within each group, unchanged": "داخل كل مجموعة، دون تغيير",
+  "Overall, as you move the mix": "في الإجمالي، بينما تحرّك التوزيع",
+  "Who got the hard cases": "من تولّى الحالات الصعبة",
+  "{winner} is ahead in every group and behind overall.": "{winner} متقدم في كل مجموعة ومتأخر في الإجمالي.",
 };

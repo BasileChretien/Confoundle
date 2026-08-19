@@ -4,6 +4,8 @@ import { UI } from "../app/ui";
 import { forumTagUrl } from "../app/forum";
 import { Badge, Button } from "./ui";
 import { TagChips } from "./TagChips";
+import { canMix } from "./charts/mixer";
+import { MixerView } from "./charts/MixerView";
 import { ShareLesson } from "./ShareLesson";
 
 function linkFor(p: Provenance): string | undefined {
@@ -41,8 +43,17 @@ export function LessonView({
     its body silently vanish, and no test would have failed, because the schema
     makes all three optional.
   */
+  /*
+    A MIXER COUNTS TOO, for the same reason `lesson.body` had to: a fold that
+    does not open is content deleted rather than moved. Every puzzle today has
+    a body, so this cannot yet be the only thing in there, and that is a fact
+    about the deck rather than an invariant.
+  */
   const hasDeepDive =
-    Boolean(lesson.body) || Boolean(lesson.howItWorks) || examples.length > 0;
+    Boolean(lesson.body) ||
+    Boolean(lesson.howItWorks) ||
+    examples.length > 0 ||
+    canMix(puzzle.setup.data);
 
   return (
     <section className="flex flex-col gap-4">
@@ -129,7 +140,24 @@ export function LessonView({
               </p>
             ) : null}
 
-            {lesson.howItWorks ? (
+            {/*
+              THE MECHANISM, AS SOMETHING YOU DRIVE. It sits inside the fold
+              beside "why it happens" because that is exactly what it is, and
+              after the reveal because it scores nothing: there is no band to
+              get wrong, so the hedge rule has no purchase and the toy can be as
+              playful as it likes.
+
+              Offered only where the data can honestly take it. `canMix` refuses
+              anything but two groups and two strata, refuses overlapping
+              samples, and refuses a table with a gap, because one slider cannot
+              describe a three-way split and a filled-in cell would be a rate
+              nobody measured.
+            */}
+            {canMix(puzzle.setup.data) ? (
+              <MixerView full={puzzle.setup.data} />
+            ) : null}
+
+                        {lesson.howItWorks ? (
               <div>
                 <div className="mb-1 font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-mute">
                   {t({ en: "Why it happens" })}

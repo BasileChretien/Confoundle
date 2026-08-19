@@ -6771,4 +6771,9 @@ export const ja: Record<string, string> = {
   "Two clinics publish success rates for the same operation. Clinic B is far ahead on the overall figure, and the region recommends it.": "二つの診療所が同じ手術の成功率を公表した。全体の数字ではB診療所が大きく先行しており、地域はBを推奨した。",
   "Split by how difficult the cases were, B is ahead in both groups too. B did take far more of the easy cases, but it is better in each group anyway, so the mix is not what is producing the gap.": "症例の難易度で分けても、両方の群でBが上回っている。Bは確かに易しい症例をはるかに多く扱ったが、それでも各群で上回っている。つまり差を生んでいるのは症例の混ざり方ではない。",
   "Numbers built to show the shape, not measured from anything.": "形を示すために作った数字であり、何かを測ったものではない。",
+  "Both treatments keep the success rates they actually had. The only thing that moves is who got the hard cases.": "どちらの治療も、実際に出した成功率をそのまま保ちます。動くのは、難しい症例を誰が引き受けたかだけです。",
+  "Within each group, unchanged": "各群の中では変わらない",
+  "Overall, as you move the mix": "全体では、混ぜ方を動かすと",
+  "Who got the hard cases": "難しい症例を引き受けたのは",
+  "{winner} is ahead in every group and behind overall.": "{winner}はどの群でも上回り、全体では下回っている。",
 };

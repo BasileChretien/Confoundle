@@ -116,6 +116,28 @@ export function PuzzleFlow({
         )}
         {beat === "share" && committed && confidence && (
           <div className="flex flex-col gap-4">
+            {/*
+              THE CARD COMES FIRST, and it used to come third.
+
+              `HomeView` argues at length that a screen opening on eleven data
+              displays is what "feels like studying" rendered in DOM, and the
+              home screen was rebuilt around that. The puzzle still ENDED on the
+              same thing: today's score, current streak, best streak, catch
+              rate, a calibration table and a global percentile, then a
+              leaderboard with a nickname field and a paste box, and only then
+              the card the player actually earned. The last beat of being taught
+              something was a report about yourself.
+
+              Nothing is removed. The panels are a scroll away rather than a
+              deletion, because which of them belongs in the product at all is a
+              separate question from which of them should greet you.
+            */}
+            <ShareCard
+              puzzle={puzzle}
+              committed={committed}
+              onReplay={replay}
+              onHome={onExit}
+            />
             <StatsPanel
               slug={puzzle.slug}
               todayScore={scoreFor(committed.isCorrect, confidence)}
@@ -137,12 +159,6 @@ export function PuzzleFlow({
                 }}
               />
             )}
-            <ShareCard
-              puzzle={puzzle}
-              committed={committed}
-              onReplay={replay}
-              onHome={onExit}
-            />
           </div>
         )}
       </div>

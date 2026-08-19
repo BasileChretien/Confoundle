@@ -6843,9 +6843,10 @@ export const ru: Record<string, string> = {
   "Two clinics publish success rates for the same operation. Clinic B is far ahead on the overall figure, and the region recommends it.": "Две клиники публикуют показатели успеха по одной и той же операции. По общей цифре клиника B далеко впереди, и регион рекомендует её.",
   "Split by how difficult the cases were, B is ahead in both groups too. B did take far more of the easy cases, but it is better in each group anyway, so the mix is not what is producing the gap.": "Если разделить по сложности случаев, B впереди и в обеих группах. B действительно взяла гораздо больше лёгких случаев, но она всё равно лучше в каждой группе, так что разрыв создаёт не состав случаев.",
   "Numbers built to show the shape, not measured from anything.": "Числа построены, чтобы показать форму, а не измерены.",
-  "Both treatments keep the success rates they actually had. The only thing that moves is who got the hard cases.": "Оба метода сохраняют те показатели успеха, которые у них действительно были. Меняется только то, кому достались тяжёлые случаи.",
+  "Both groups keep the rates they actually had. The only thing that moves is how the cases were split between them.": "Обе группы сохраняют те показатели, которые у них действительно были. Меняется только то, как случаи распределились между ними.",
   "Within each group, unchanged": "Внутри каждой группы без изменений",
   "Overall, as you move the mix": "В целом, когда вы меняете состав",
-  "Who got the hard cases": "Кому достались тяжёлые случаи",
+  "Who got the {stratum}": "Кому достались: {stratum}",
   "{winner} is ahead in every group and behind overall.": "{winner} впереди в каждой группе и позади в целом.",
+  "{share} of the {stratum} go to {group}": "{share} из {stratum} достаются {group}",
 };

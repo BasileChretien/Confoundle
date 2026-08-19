@@ -33,7 +33,19 @@ export interface MixerGroup {
 export interface MixerModel {
   groups: readonly MixerGroup[];
   stratumIds: readonly string[];
+  /**
+   * Which direction counts as ahead. NOT DECORATION: a mortality table is a
+   * rates puzzle like any other, and comparing it with `>` names the arm that
+   * kills more people as the winner. The caption is a translated sentence, so
+   * that mistake would print, in ten languages, the exact inverse of the
+   * paradox it exists to demonstrate.
+   */
+  higherIsBetter: boolean;
 }
+
+/** Is `x` ahead of `y`, in whichever direction this puzzle counts as better? */
+const ahead = (x: number, y: number, higherIsBetter: boolean): boolean =>
+  higherIsBetter ? x > y : x < y;
 
 /** Can this data be mixed at all? */
 export function mixableShape(data: PuzzleData): data is RatesData {
@@ -54,6 +66,7 @@ export function mixerModel(data: RatesData): MixerModel {
   const stratumIds = (data.strata ?? []).map((s) => s.id);
   return {
     stratumIds,
+    higherIsBetter: data.higherIsBetter,
     groups: data.groups.map((g) => ({
       id: g.id,
       byStratum: stratumIds.map((sid) => {
@@ -69,17 +82,21 @@ export function mixerModel(data: RatesData): MixerModel {
 /**
  * The overall rate each group would show at mix `t`.
  *
- * `t` is the share of the FIRST group's caseload that is the second stratum,
- * the hard one; the other group is its mirror. Mirroring is what makes one
- * slider enough, and it is a stylised world rather than a reconstruction of the
- * study, which is why nothing here claims to mark where the real trial sat.
+ * `t` is the share of the FIRST group's caseload that falls in the SECOND
+ * stratum; the other group is its mirror. Mirroring is what makes one slider
+ * enough, and it is a stylised world rather than a reconstruction of the study,
+ * which is why nothing here claims to mark where the real trial sat.
+ *
+ * NOTHING HERE KNOWS WHICH STRATUM IS THE HARD ONE, and it must not. Which of
+ * the two is harder is a fact about the puzzle rather than about this module,
+ * and a table authored the other way round would silently invert the slider.
+ * The view names the stratum it is moving by that stratum's own label instead.
  */
 export function mixerFrame(model: MixerModel, t: number): number[] {
   const clamped = Math.min(1, Math.max(0, t));
   return model.groups.map((g, i) => {
-    const hardShare = i === 0 ? clamped : 1 - clamped;
-    // (1 - t) * easy + t * hard, written so the endpoints are exact.
-    return (1 - hardShare) * g.byStratum[0]! + hardShare * g.byStratum[1]!;
+    const share = i === 0 ? clamped : 1 - clamped;
+    return (1 - share) * g.byStratum[0]! + share * g.byStratum[1]!;
   });
 }
 
@@ -88,15 +105,18 @@ export function leaderAt(model: MixerModel, t: number): string | null {
   const [a, b] = mixerFrame(model, t);
   if (a === undefined || b === undefined) return null;
   if (a === b) return null;
-  return a > b ? model.groups[0]!.id : model.groups[1]!.id;
+  return ahead(a, b, model.higherIsBetter)
+    ? model.groups[0]!.id
+    : model.groups[1]!.id;
 }
 
 /**
  * Does the winner change anywhere along the slider?
  *
- * The property the whole shape exists to demonstrate, and the one worth
- * refusing to draw without: a mixer whose leader never swaps is a slider that
- * teaches nothing, and offering it would imply a reversal that is not there.
+ * Weaker than `reversible`, and deliberately kept apart from it: a crossing is
+ * necessary for the paradox but not sufficient, and one of the two shipped
+ * puzzles this module refuses is refused by exactly that gap. Used by the tests
+ * to hold the distinction still.
  */
 export function reverses(model: MixerModel): boolean {
   const first = leaderAt(model, 0);
@@ -108,8 +128,9 @@ export function reverses(model: MixerModel): boolean {
 export function betterInEveryStratum(model: MixerModel): string | null {
   const [a, b] = model.groups;
   if (!a || !b) return null;
-  const aWins = a.byStratum.every((rate, i) => rate > b.byStratum[i]!);
-  const bWins = b.byStratum.every((rate, i) => rate > a.byStratum[i]!);
+  const h = model.higherIsBetter;
+  const aWins = a.byStratum.every((rate, i) => ahead(rate, b.byStratum[i]!, h));
+  const bWins = b.byStratum.every((rate, i) => ahead(rate, a.byStratum[i]!, h));
   return aWins ? a.id : bWins ? b.id : null;
 }
 
@@ -134,8 +155,8 @@ export function reversedAt(model: MixerModel, t: number): string | null {
  * Whether the reversal is reachable at all, which decides whether the toy is
  * worth offering.
  *
- * `mixerFrame` is linear in `t` for both groups, so the gap between them is
- * linear too, and a linear function changes sign inside an interval only if it
+ * `mixerFrame` is affine in `t` for both groups, so the gap between them is
+ * affine too, and an affine function changes sign inside an interval only if it
  * differs in sign at the ends. Checking the two endpoints is therefore exact
  * rather than a sample, which matters: sampling would have to guess a step
  * size, and a crossing that only exists between two guesses is a slider that
@@ -148,13 +169,42 @@ export function reversible(model: MixerModel): boolean {
 /**
  * THE MIXER IS OFFERED ONLY WHERE IT HAS SOMETHING TO SHOW.
  *
- * Two shipped puzzles pass every structural test here and never cross:
- * `spectrum-bias` and `written-in-the-stars` are two groups by two strata with
- * a full table, and dragging them moves the overall bars without ever swapping
- * them. A slider whose payoff never arrives teaches the opposite of the lesson,
- * because the reader concludes the mix cannot flip a comparison. So the shape
- * is necessary and the crossing is what makes it sufficient.
+ * The test is `reversedAt` rather than `reverses`, and the difference is the
+ * whole point. Two shipped puzzles pass every structural check here and are
+ * still refused, for two DIFFERENT reasons, and an earlier version of this
+ * comment gave the wrong one for both:
+ *
+ *   `written-in-the-stars` never swaps its leader at all.
+ *
+ *   `spectrum-bias` DOES swap it, and is refused anyway, because neither group
+ *   leads in both strata (0.9245 / 0.4200 against 0.5556 / 0.7801). A crossing
+ *   without a dominant group is just two lines meeting. The paradox is a group
+ *   that wins everywhere and loses overall, so with nobody winning everywhere
+ *   the caption could never fire and the reader would drag to no end.
+ *
+ * The sufficient condition is therefore a REVERSAL and not a crossing. Anyone
+ * tempted to relax this to `reverses` on the strength of "spectrum-bias never
+ * crosses" should know that sentence was false, which is why it is written out
+ * here rather than left as a name.
  */
 export function canMix(data: PuzzleData): data is RatesData {
   return mixableShape(data) && reversible(mixerModel(data));
 }
+
+/**
+ * WHERE THE SLIDER STARTS, and it is not the middle.
+ *
+ * At the midpoint of `kidney-stones` the mixer produces 83.1% and 77.7%, which
+ * are, at the rounding the commit beat uses, that puzzle's own two headline
+ * numbers ATTACHED TO THE OPPOSITE ARMS. A reader who has just chosen between
+ * "83% overall" and "78% overall" would open the fold and meet them swapped,
+ * with nothing marking where the real study sat, because one mirrored slider
+ * cannot reproduce the observed split exactly and inventing a marker for it
+ * would be worse than leaving none.
+ *
+ * Starting at one end removes the collision and reads better anyway. The
+ * opening state is unambiguously hypothetical, the group that wins everywhere
+ * is also winning overall so no claim is being made yet, and the only thing to
+ * do is drag, which is the one thing the reader is there to do.
+ */
+export const OPENING_MIX = 0;

@@ -157,7 +157,7 @@ export function LessonView({
               <MixerView full={puzzle.setup.data} />
             ) : null}
 
-                        {lesson.howItWorks ? (
+            {lesson.howItWorks ? (
               <div>
                 <div className="mb-1 font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-mute">
                   {t({ en: "Why it happens" })}

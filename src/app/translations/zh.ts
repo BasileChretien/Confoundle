@@ -6713,9 +6713,10 @@ export const zh: Record<string, string> = {
   "Two clinics publish success rates for the same operation. Clinic B is far ahead on the overall figure, and the region recommends it.": "两家诊所公布了同一手术的成功率。在总体数字上B诊所遥遥领先，地区推荐了B。",
   "Split by how difficult the cases were, B is ahead in both groups too. B did take far more of the easy cases, but it is better in each group anyway, so the mix is not what is producing the gap.": "按病例难度拆开看，B在两组中同样领先。B确实接手了多得多的简单病例，但它在每一组里依然更好，所以造成差距的并不是病例构成。",
   "Numbers built to show the shape, not measured from anything.": "这些数字是为展示形状而构造的，并非测量所得。",
-  "Both treatments keep the success rates they actually had. The only thing that moves is who got the hard cases.": "两种治疗都保持它们实际取得的成功率。唯一变动的，是谁接手了疑难病例。",
+  "Both groups keep the rates they actually had. The only thing that moves is how the cases were split between them.": "两组都保持它们实际得到的比率。唯一变动的，是病例在两组之间如何分配。",
   "Within each group, unchanged": "在每一组内部，保持不变",
   "Overall, as you move the mix": "总体上，随着你调整构成",
-  "Who got the hard cases": "谁接手了疑难病例",
+  "Who got the {stratum}": "{stratum}由谁接手",
   "{winner} is ahead in every group and behind overall.": "{winner}在每一组里都领先，总体上却落后。",
+  "{share} of the {stratum} go to {group}": "{stratum}中的{share}归{group}",
 };

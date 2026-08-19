@@ -1,10 +1,12 @@
 import { describe, it, expect } from "vitest";
 import {
+  OPENING_MIX,
   betterInEveryStratum,
   canMix,
   leaderAt,
   mixerFrame,
   mixerModel,
+  reversedAt,
   reverses,
 } from "./mixer";
 import { puzzles } from "../../puzzles";
@@ -26,9 +28,19 @@ describe("what the mixer holds still", () => {
     expect(model.groups.map((g) => [...g.byStratum])).toEqual(before);
   });
 
-  it("is exact at both ends rather than nearly right", () => {
-    // `(1-t)*a + t*b` is exactly `b` at t=1 in floating point; `a + (b-a)*t` is
-    // not, and this project has been caught by that difference before.
+  it("lands exactly on the measured rate at both ends", () => {
+    /*
+      A CLAIM THIS TEST USED TO MAKE AND COULD NOT SUPPORT. It said `(1-t)*a +
+      t*b` is exact at t=1 where `a + (b-a)*t` is not, and that the project had
+      been caught by the difference. Review checked: for these numbers the two
+      forms agree to the bit, and rewriting the implementation into the second
+      form passed the whole suite.
+
+      The assertion is still worth having, because what actually matters is
+      that the ends of the slider show the MEASURED rate and not something a
+      hair away from it. That is a statement about the output, which survives
+      whatever algebra produces it, so it is written as one.
+    */
     const model = mixerModel(data);
     const [aEasy, aHard] = model.groups[0]!.byStratum;
     expect(mixerFrame(model, 0)[0]).toEqual(aEasy);
@@ -76,6 +88,46 @@ describe("what it refuses", () => {
     expect(canMix(rates({ strata: [data.strata![0]!] }))).toBe(false);
   });
 
+  it("refuses THREE as firmly as it refuses one", () => {
+    /*
+      THE HALF THE TEST ABOVE WAS MISSING, and the gap was not academic:
+      relaxing `!== 2` to `< 2` passed the entire suite. `mixerFrame` reads
+      `byStratum[0]` and `[1]` and nothing else, so a 2x3 table would have been
+      accepted and its third stratum silently dropped, which is the precise
+      "drawing a number nobody authored" failure this module's header says it
+      refuses. `stage-migration` is a shipped 2x3 puzzle, so the shape is real.
+    */
+    const third = { id: "third", label: { en: "Third" } };
+    const withThreeStrata = rates({
+      strata: [...data.strata!, third],
+      observations: [
+        ...data.observations,
+        ...data.groups.map((g) => ({
+          groupId: g.id,
+          stratumId: third.id,
+          numerator: 5,
+          denominator: 10,
+        })),
+      ],
+    });
+    expect(canMix(withThreeStrata)).toBe(false);
+
+    const thirdGroup = { id: "C", label: { en: "C" }, short: { en: "C" } };
+    const withThreeGroups = rates({
+      groups: [...data.groups, thirdGroup],
+      observations: [
+        ...data.observations,
+        ...data.strata!.map((st) => ({
+          groupId: thirdGroup.id,
+          stratumId: st.id,
+          numerator: 5,
+          denominator: 10,
+        })),
+      ],
+    });
+    expect(canMix(withThreeGroups)).toBe(false);
+  });
+
   it("refuses samples that cannot be pooled", () => {
     // The same flag the scrub refuses on: overlapping samples of the same
     // people have no meaningful total to move.
@@ -96,5 +148,77 @@ describe("what it refuses", () => {
   it("accepts the puzzle it was built for", () => {
     // A guard that refused everything would pass every check above.
     expect(canMix(data)).toBe(true);
+  });
+});
+
+/**
+ * A MORTALITY TABLE IS A RATES PUZZLE LIKE ANY OTHER, and comparing one with
+ * `>` names the arm that kills more people as the winner.
+ *
+ * This module compared with `>` throughout and no test noticed, because the one
+ * shipped puzzle it accepts counts successes. Review built the counter-example:
+ * an arm better (lower) in both strata that takes the severe cases, on which
+ * the caption would have printed the exact inverse of the paradox, in ten
+ * languages, on a translated sentence.
+ *
+ * NOT REACHABLE IN TODAY'S DECK ONLY BY COINCIDENCE. `written-in-the-stars` is
+ * already `higherIsBetter: false` and already passes `mixableShape`, refused
+ * only for lacking a dominant group, and four more 2x2 lower-is-better rates
+ * puzzles are refused only by `strataAreSeparateSamples`. One edit to any of
+ * them and this ships.
+ */
+describe("when lower is better", () => {
+  /** A better (lower) in both strata, and A takes the severe cases. */
+  const mortality: RatesData = {
+    ...data,
+    higherIsBetter: false,
+    observations: [
+      { groupId: "A", stratumId: "small", numerator: 2, denominator: 100 },
+      { groupId: "A", stratumId: "large", numerator: 20, denominator: 100 },
+      { groupId: "B", stratumId: "small", numerator: 5, denominator: 100 },
+      { groupId: "B", stratumId: "large", numerator: 30, denominator: 100 },
+    ],
+  } as RatesData;
+
+  const model = mixerModel(mortality);
+
+  it("names the arm that does better, not the arm with the bigger number", () => {
+    expect(betterInEveryStratum(model)).toBe("A");
+    // At t=1 A carries every severe case: 20% against B's 5%. A is behind.
+    expect(leaderAt(model, 1)).toBe("B");
+    expect(leaderAt(model, 0)).toBe("A");
+  });
+
+  it("reads the direction off the puzzle rather than assuming one", () => {
+    // The same table with the flag flipped must give the opposite reading, or
+    // the flag is being ignored.
+    const flipped = mixerModel({ ...mortality, higherIsBetter: true } as RatesData);
+    expect(betterInEveryStratum(flipped)).toBe("B");
+    expect(leaderAt(flipped, 1)).toBe("A");
+  });
+
+  it("still offers the mixer, and captions it the right way round", () => {
+    expect(canMix(mortality)).toBe(true);
+    expect(reversedAt(model, 1)).toBe("A");
+    expect(reversedAt(model, 0)).toBeNull();
+  });
+});
+
+describe("where the slider opens", () => {
+  it("does not open on the puzzle's own headline numbers, swapped", () => {
+    /*
+      At the midpoint this mixer produces 83.1% and 77.7%. `kidney-stones`
+      offers "83% overall" and "78% overall" as two of its four answers, on the
+      OPPOSITE arms. A reader who has just chosen between those two numbers
+      would open the fold and meet them the other way round, with nothing
+      marking where the real study sat.
+    */
+    const model = mixerModel(data);
+    const middle = mixerFrame(model, 0.5).map((r) => Math.round(r * 100));
+    expect(middle).toEqual([83, 78]);
+    expect(OPENING_MIX).not.toBe(50);
+
+    // And the opening state must still be one where no claim is being made.
+    expect(reversedAt(model, OPENING_MIX / 100)).toBeNull();
   });
 });

@@ -17,6 +17,7 @@ const MIGRATIONS = [
   "migrations/0001_accounts.sql",
   "migrations/0002_reminders.sql",
   "migrations/0003_answer_tally.sql",
+  "migrations/0004_event_tally.sql",
 ] as const;
 
 export function loadMigration(): string {

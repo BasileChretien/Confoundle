@@ -236,8 +236,9 @@
       <p>
         This site uses <strong>Cloudflare Web Analytics</strong> to count how
         many people arrive, which pages they land on, and roughly where in the
-        world and on what kind of device. Together with the answer tally described above, it is the
-        whole of the measurement on this site,
+        world and on what kind of device. Together with the answer tally
+        described above and the step counter described below, it is the whole of
+        the measurement on this site,
         and it exists to answer one question the project genuinely needs an
         answer to: whether any of this is being read.
       </p>
@@ -275,11 +276,52 @@
         Cloudflare on our behalf, under the same processor arrangement as the
         hosting described below.
       </p>
+      <h2 id="funnel">How steps of a puzzle are counted</h2>
       <p>
-        <strong>Not used:</strong> the app carries an internal event module
-        (<code>src/app/analytics.ts</code>) that names the steps of a puzzle. It
-        is still a stub that sends nothing anywhere, and if that ever changes,
-        this page changes with it in the same commit.
+        This page used to say that the app carried an internal event module
+        which sent nothing anywhere, and that if it ever started sending, this
+        page would change with it in the same commit. It started sending, and
+        this is that change.
+      </p>
+      <p>
+        The app now counts <strong>which of eight named steps of a puzzle was
+        reached</strong>, so the project can see where people stop reading. That
+        is the one question it cannot answer any other way, and the reason it
+        matters is ordinary: work gets spent on the beat that is losing people
+        rather than on the one that felt worth improving.
+      </p>
+      <p>What is sent, and it is the whole list:</p>
+      <ul>
+        <li>
+          Which step: one of <em>puzzle_view, commit, reveal_view, lesson_view,
+          share_open, share_caption_select, share_export, replay</em>. The server
+          refuses any other name.
+        </li>
+        <li>Which puzzle it happened in.</li>
+      </ul>
+      <p>
+        That is all. <strong>No identifier, no session, no clock time, no
+        ordering.</strong> The date is added by the server, to the day and no
+        finer. Because there is no session, it is not possible to learn from
+        this that one person reached the commit step and then the reveal: it
+        counts steps, never journeys. That is weaker than the funnel an
+        analytics product would give, deliberately, because a session
+        identifier is exactly the field that would turn these rows into a record
+        of somebody's evening.
+      </p>
+      <p>
+        <strong>It goes to this project's own database</strong>, in the same
+        Cloudflare account as everything else described here, and never to an
+        analytics company. There is no third-party script on this site for it,
+        nothing to block, and nobody new to trust. The counter obeys the same
+        switch as the answer tally above, described there, which is off in one
+        place for both.
+      </p>
+      <p>
+        Like the answer tally, it is not personal data as a property of its
+        table rather than as a promise about our behaviour: there is no column
+        that could hold anything about you, so an erasure request has nothing to
+        erase in it.
       </p>
 
       <h2>Email we send you</h2>

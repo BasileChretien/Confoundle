@@ -59,11 +59,13 @@ export function PuzzleFlow({
     // self-flattering statistic assembled by accident is the worst possible
     // defect, and nothing downstream could detect it.
     if (first) sendAnswer(puzzle.slug, choice.id, wager);
-    track("commit", {
-      slug: puzzle.slug,
-      choiceId: choice.id,
-      correct: choice.isCorrect,
-    });
+    // Only the slug. `choiceId` and `correct` were passed here while `track`
+    // was a stub that discarded them; now that it transmits, the narrow prop
+    // type is what keeps them out, and `tsc` refused this line until they went.
+    // Which option somebody picked is the answer tally's job, where it is
+    // pooled with everyone who picked the same one; here it would be a second
+    // record of the same fact with a different denominator.
+    track("commit", { slug: puzzle.slug });
     // `reveal_view` used to fire here, one line after `commit`, so the two
     // events were the same event and the funnel step between them was always
     // 100%. It now fires in `RevealView` when the player actually pulls the

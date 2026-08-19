@@ -207,7 +207,7 @@ export const bn: Record<string, string> = {
   Best: "সেরা",
   Caught: "ধরেছেন",
   Calibration: "ক্যালিব্রেশন",
-  "You beat {pct}% of players today": "আজ আপনি {pct}% খেলোয়াড়কে হারিয়েছেন",
+  "You beat {pct}% of players on this puzzle": "এই ধাঁধায় আপনি {pct}% খেলোয়াড়কে ছাড়িয়ে গেছেন",
   "A new puzzle every day. Keep the streak alive.":
     "প্রতিদিন একটি নতুন ধাঁধা। ধারাবাহিকতা ধরে রাখুন।",
   "Sharp eye, and you called it.": "তীক্ষ্ণ চোখ, আর আপনি আগেই বলেছিলেন।",

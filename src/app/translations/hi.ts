@@ -206,7 +206,7 @@ export const hi: Record<string, string> = {
   Best: "सर्वश्रेष्ठ",
   Caught: "पकड़े गए",
   Calibration: "कैलिब्रेशन",
-  "You beat {pct}% of players today": "आज आपने {pct}% खिलाड़ियों को पीछे छोड़ा",
+  "You beat {pct}% of players on this puzzle": "इस पहेली में आपने {pct}% खिलाड़ियों को पीछे छोड़ा",
   "A new puzzle every day. Keep the streak alive.":
     "हर दिन एक नई पहेली। सिलसिला बनाए रखें।",
   "Sharp eye, and you called it.": "पैनी नज़र, और आपने पहले ही भाँप लिया।",

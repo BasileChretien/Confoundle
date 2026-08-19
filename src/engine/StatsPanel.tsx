@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getStats, todayDayNumber } from "../app/session";
+import { getStats } from "../app/session";
 import { globalPercentile } from "../app/global";
 import { useT } from "../app/i18n";
 import { CONFIDENCE_LEVELS, type Confidence } from "./scoring";
@@ -28,7 +28,18 @@ function Metric({ label, value }: { label: string; value: string }) {
  * you back tomorrow, and how well your confidence tracked reality (calibration).
  * All derived from localStorage, nothing leaves the device.
  */
-export function StatsPanel({ todayScore }: { todayScore?: number }) {
+export function StatsPanel({
+  slug,
+  todayScore,
+}: {
+  /**
+   * Which card the score was earned on. Required alongside `todayScore`,
+   * because a percentile without it ranks this score against scores from other
+   * puzzles, which is what this panel used to do.
+   */
+  slug?: string;
+  todayScore?: number;
+}) {
   const t = useT();
   const s = getStats();
   const pct = (n: number) => Math.round(n * 100);
@@ -36,15 +47,15 @@ export function StatsPanel({ todayScore }: { todayScore?: number }) {
   // Anonymous global comparison; stays hidden if the endpoint isn't deployed.
   const [globalPct, setGlobalPct] = useState<number | null>(null);
   useEffect(() => {
-    if (todayScore == null) return;
+    if (todayScore == null || slug === undefined) return;
     let alive = true;
-    globalPercentile(todayDayNumber(), todayScore).then((p) => {
+    globalPercentile(slug, todayScore).then((p) => {
       if (alive) setGlobalPct(p);
     });
     return () => {
       alive = false;
     };
-  }, [todayScore]);
+  }, [slug, todayScore]);
   const played = CONFIDENCE_LEVELS.filter((c) => s.byConfidence[c].played > 0);
 
   return (
@@ -89,7 +100,7 @@ export function StatsPanel({ todayScore }: { todayScore?: number }) {
 
       {globalPct != null ? (
         <p className="border-t border-rule pt-2.5 text-center font-sans text-[12px] text-ink-soft">
-          {t({ en: "You beat {pct}% of players today" }).replace(
+          {t({ en: "You beat {pct}% of players on this puzzle" }).replace(
             "{pct}",
             String(globalPct),
           )}

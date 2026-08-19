@@ -208,8 +208,7 @@ export const es: Record<string, string> = {
   Best: "Récord",
   Caught: "Detectados",
   Calibration: "Calibración",
-  "You beat {pct}% of players today":
-    "Has superado al {pct} % de los jugadores hoy",
+  "You beat {pct}% of players on this puzzle": "Superaste al {pct}% de los jugadores en este acertijo",
   "A new puzzle every day. Keep the streak alive.":
     "Un puzle nuevo cada día. No rompas la racha.",
   "Sharp eye, and you called it.": "Buen ojo, y lo habías anunciado.",

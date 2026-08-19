@@ -207,7 +207,7 @@ export const ru: Record<string, string> = {
   Best: "Рекорд",
   Caught: "Замечено",
   Calibration: "Калибровка",
-  "You beat {pct}% of players today": "Сегодня вы обошли {pct} % игроков",
+  "You beat {pct}% of players on this puzzle": "В этой задаче вы обошли {pct}% игроков",
   "A new puzzle every day. Keep the streak alive.":
     "Новая головоломка каждый день. Не прерывайте серию.",
   "Sharp eye, and you called it.": "Острый глаз, и вы это предсказали.",

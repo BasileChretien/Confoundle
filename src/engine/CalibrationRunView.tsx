@@ -23,6 +23,8 @@ import {
   runNumber,
   todayRunDay,
 } from "../app/dailyRun";
+import { buildRunStrip, stripGlyphs } from "./runShare";
+import { appUrl, currentOrigin } from "../app/shareLinks";
 import { drawDailyRun } from "../srs/dailyRun";
 
 const choiceButton =
@@ -128,6 +130,72 @@ export function StakeReadout({ answers }: { answers: readonly RunAnswer[] }) {
           );
         })}
       </ul>
+    </div>
+  );
+}
+
+/**
+ * The pasteable result of a shared day.
+ *
+ * IT ONLY APPEARS FOR THE DAILY. A private run has no denominator: two people
+ * comparing strips from two different draws is exactly the comparison this
+ * project has removed three times, and offering the button on a practice run
+ * would invite it. The daily is the only run everybody played the same.
+ *
+ * The link goes to the front door rather than to the run, because the strip is
+ * about the day and the recipient should meet today's, not a route that would
+ * hand them a different one tomorrow.
+ */
+function RunStripShare({
+  day,
+  answers,
+}: {
+  day: number;
+  answers: readonly RunAnswer[];
+}) {
+  const t = useT();
+  // Every numeral this app draws follows the reader's locale, including the one
+  // in a visually hidden sentence: a screen reader is a reader.
+  const nf = new Intl.NumberFormat(useLocale());
+  const [copied, setCopied] = useState(false);
+  // `runNumber`, never the raw day. The seed is days since the Unix epoch and
+  // reads as a glitch; this is the number two people actually compare.
+  const text = `${buildRunStrip({ day: runNumber(day), answers })}
+${appUrl(currentOrigin())}`;
+
+  function share() {
+    if (navigator.share) {
+      navigator.share({ text }).catch(() => {});
+      return;
+    }
+    navigator.clipboard
+      ?.writeText(text)
+      .then(() => {
+        setCopied(true);
+        window.setTimeout(() => setCopied(false), 1500);
+      })
+      .catch(() => {});
+  }
+
+  return (
+    <div className="rounded-lg border border-rule bg-paper-2 p-3">
+      <p
+        className="mb-2 text-center font-display text-[22px] leading-snug tracking-[0.12em]"
+        // The marks are the message. A screen reader gets the sentence below
+        // instead, because eight emoji read aloud one at a time is noise.
+        aria-hidden="true"
+      >
+        {stripGlyphs(answers)}
+      </p>
+      <p className="sr-only">
+        {fillSlots(t({ en: "{right} of {total} called correctly." }), {
+          right: nf.format(answers.filter((a) => a.correct).length),
+          total: nf.format(answers.length),
+        })}
+      </p>
+      <Button onClick={share}>
+        {copied ? t({ en: "Copied" }) : t({ en: "Copy result" })}
+      </Button>
     </div>
   );
 }
@@ -275,6 +343,8 @@ export function CalibrationRunView({
           </p>
 
           <StakeReadout answers={answers} />
+
+          {daily ? <RunStripShare day={day} answers={answers} /> : null}
 
           <p className="text-[13px] leading-snug text-ink-soft">
             {/*

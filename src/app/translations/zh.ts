@@ -207,7 +207,7 @@ export const zh: Record<string, string> = {
   Best: "最佳",
   Caught: "识破",
   Calibration: "校准",
-  "You beat {pct}% of players today": "你今天击败了 {pct}% 的玩家",
+  "You beat {pct}% of players on this puzzle": "你在这道题上击败了 {pct}% 的玩家",
   "A new puzzle every day. Keep the streak alive.":
     "每天一道新谜题。别让连胜中断。",
   "Sharp eye, and you called it.": "眼光敏锐，而且你早就料到了。",

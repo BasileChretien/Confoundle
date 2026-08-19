@@ -70,7 +70,11 @@ against a guess without the server secret.
 
 ### The one KV namespace, which predates accounts
 
-`SCORES` (`functions/api/score.ts`) holds `day:<n>` to a histogram of scores.
+`SCORES` (`functions/api/score.ts`) holds `puzzle:<slug>` to a histogram of
+scores. It held `day:<n>` until the percentile drawn from it was found to be
+ranking a score earned on one card against scores earned on others; the old
+keys are never read again and nothing was migrated, because which card a
+stored score belonged to was never recorded.
 There is no identifier in it and no way to single anyone out, so it is not
 personal data and is unaffected by an erasure request. It is also why KV is
 still the right store for that and the wrong one for accounts, argued in

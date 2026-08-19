@@ -116,7 +116,10 @@ export function PuzzleFlow({
         )}
         {beat === "share" && committed && confidence && (
           <div className="flex flex-col gap-4">
-            <StatsPanel todayScore={scoreFor(committed.isCorrect, confidence)} />
+            <StatsPanel
+              slug={puzzle.slug}
+              todayScore={scoreFor(committed.isCorrect, confidence)}
+            />
             {/*
               No number, no board. `puzzleNumberOf` cannot miss for a puzzle
               that came out of the registry, but the alternative to this guard

@@ -209,7 +209,7 @@ export const ja: Record<string, string> = {
   Best: "最高",
   Caught: "見抜き",
   Calibration: "キャリブレーション",
-  "You beat {pct}% of players today": "今日のプレイヤーの{pct}%を上回りました",
+  "You beat {pct}% of players on this puzzle": "この問題のプレイヤーの{pct}%を上回りました",
   "A new puzzle every day. Keep the streak alive.":
     "毎日新しいパズルを。連続記録を絶やさないように。",
   "Sharp eye, and you called it.": "鋭い目、しかも自分で言い当てました。",

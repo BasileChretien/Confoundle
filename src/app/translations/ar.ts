@@ -208,7 +208,7 @@ export const ar: Record<string, string> = {
   Best: "الأفضل",
   Caught: "المُلتقَطة",
   Calibration: "المعايرة",
-  "You beat {pct}% of players today": "تفوّقت على {pct}% من اللاعبين اليوم",
+  "You beat {pct}% of players on this puzzle": "تفوّقت على {pct}% من اللاعبين في هذا اللغز",
   "A new puzzle every day. Keep the streak alive.":
     "أحجية جديدة كل يوم. حافظ على استمرار السلسلة.",
   "Sharp eye, and you called it.": "عين ثاقبة، وقد توقعتها.",

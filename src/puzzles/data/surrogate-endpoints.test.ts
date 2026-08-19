@@ -187,4 +187,30 @@ describe("the shape rejects data it cannot honestly draw", () => {
   it("accepts the puzzle as authored", () => {
     expect(SurrogateData.safeParse(d).success).toBe(true);
   });
+
+  /**
+   * A PREDICTION AND A REFUSAL TO PREDICT MUST NOT READ THE SAME.
+   *
+   * The setup draws the suppression funnel and no deaths at all, so every
+   * directional band is unlicensed and "nothing at all" is the answer. That is
+   * a deliberate situation-one card, and it only works if the player can tell
+   * the bands apart at the moment of pressing. Shortening the labels once left
+   * the whole distinction resting on two sublabels that were near-synonyms,
+   * "a marker, not a mechanism" against "the marker is not the outcome": one
+   * is a confident claim that survival will not move, the other is the point
+   * that nothing about survival has been shown, and a player who had reasoned
+   * correctly to the second could reasonably press the first.
+   *
+   * So the pin is on the shape of the two sublabels rather than their wording.
+   * The no-effect band must name a PREDICTION; the correct band must name the
+   * ABSENCE OF EVIDENCE, which is what actually distinguishes them.
+   */
+  it("keeps the no-effect band a prediction and the correct band a refusal", () => {
+    const sub = (id: string) =>
+      surrogateEndpoints.choices.find((c) => c.id === id)?.sublabel?.en ?? "";
+    expect(sub("same-deaths")).toMatch(/predict/i);
+    expect(sub("cannot-tell")).toMatch(/not been shown|no .*(shown|counted|reported)/i);
+    // And that they are not two ways of saying the same thing.
+    expect(sub("same-deaths")).not.toEqual(sub("cannot-tell"));
+  });
 });

@@ -142,7 +142,7 @@ export const surrogateEndpoints: Puzzle = {
        */
       id: "fewer-deaths",
       label: {
-        en: "Fewer deaths are coming. The extra beats are what tip a damaged heart into a fatal rhythm, and the drug abolished them in three quarters of the people who took it",
+        en: "Fewer deaths",
       },
       sublabel: { en: "silence the warning, prevent the death" },
       isCorrect: false,
@@ -151,16 +151,16 @@ export const surrogateEndpoints: Puzzle = {
     {
       id: "same-deaths",
       label: {
-        en: "Survival will be unchanged. The beats are a symptom of scarred muscle rather than a cause of anything, so removing them leaves the underlying risk exactly where it was",
+        en: "The same deaths",
       },
-      sublabel: { en: "a marker, not a mechanism" },
+      sublabel: { en: "predicting no change in survival" },
       isCorrect: false,
       isIntuitiveTrap: false,
     },
     {
       id: "more-deaths",
       label: {
-        en: "More deaths are coming. A drug strong enough to silence the heart's electrical misfiring is strong enough to cause worse misfiring of its own",
+        en: "More deaths",
       },
       sublabel: { en: "the cure is the poison" },
       isCorrect: false,
@@ -169,9 +169,9 @@ export const surrogateEndpoints: Puzzle = {
     {
       id: "cannot-tell",
       label: {
-        en: "Nothing at all. It tells you the drug reaches the heart and does the measurable thing it was designed to do, which is a fact about the beats and not about the patients",
+        en: "Nothing at all",
       },
-      sublabel: { en: "the marker is not the outcome" },
+      sublabel: { en: "you have not been shown a single death" },
       isCorrect: true,
       isIntuitiveTrap: false,
     },

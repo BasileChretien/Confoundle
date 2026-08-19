@@ -148,7 +148,7 @@ export const reverseCausality: Puzzle = {
        */
       id: "thin-lungs",
       label: {
-        en: "Being underweight is bad for the lungs. Thin people have less muscle to breathe with and less reserve to survive an infection, so the weight is doing the damage",
+        en: "Thinness damages the lungs",
       },
       sublabel: { en: "tell them to eat" },
       isCorrect: false,
@@ -157,7 +157,7 @@ export const reverseCausality: Puzzle = {
     {
       id: "smoking-explains",
       label: {
-        en: "It is smoking underneath. Thin men smoke more, smoking destroys lungs, and adjusting the comparison properly for smoking would make the gap go away",
+        en: "Smoking, and adjusting would make the gap go away",
       },
       sublabel: { en: "the usual confounder" },
       isCorrect: false,
@@ -166,7 +166,7 @@ export const reverseCausality: Puzzle = {
     {
       id: "already-ill",
       label: {
-        en: "Many of these men were already ill when they were weighed. The lung disease had begun years earlier and was making them thin, so the thinness is an early symptom rather than a cause",
+        en: "The illness made them thin",
       },
       sublabel: { en: "the arrow points backwards" },
       isCorrect: true,
@@ -175,7 +175,7 @@ export const reverseCausality: Puzzle = {
     {
       id: "too-few",
       label: {
-        en: "Nothing. There are fewer than a thousand underweight men here against more than nine thousand of normal weight, and a comparison that lopsided cannot support a conclusion",
+        en: "Nothing, the groups are too lopsided",
       },
       sublabel: { en: "not enough of them" },
       isCorrect: false,

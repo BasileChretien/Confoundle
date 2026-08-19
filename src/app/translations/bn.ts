@@ -6826,5 +6826,5 @@ export const bn: Record<string, string> = {
   "Overall, as you move the mix": "সব মিলিয়ে, আপনি মিশ্রণ বদলালে",
   "Who got the {stratum}": "{stratum} কে পেল",
   "{winner} is ahead in every group and behind overall.": "{winner} প্রতিটি দলে এগিয়ে আর সব মিলিয়ে পিছিয়ে।",
-  "{share} of the {stratum} go to {group}": "{stratum} এর {share} যায় {group} এ",
+  "{share} of the {stratum} go to {group}": "{stratum}: {share} যায় {group}",
 };

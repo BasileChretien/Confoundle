@@ -6848,5 +6848,5 @@ export const ru: Record<string, string> = {
   "Overall, as you move the mix": "В целом, когда вы меняете состав",
   "Who got the {stratum}": "Кому достались: {stratum}",
   "{winner} is ahead in every group and behind overall.": "{winner} впереди в каждой группе и позади в целом.",
-  "{share} of the {stratum} go to {group}": "{share} из {stratum} достаются {group}",
+  "{share} of the {stratum} go to {group}": "{stratum}: {share} достаются {group}",
 };

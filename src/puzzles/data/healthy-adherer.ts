@@ -139,7 +139,7 @@ export const healthyAdherer: Puzzle = {
        */
       id: "drug-works",
       label: {
-        en: "The drug works, and you have to take it to get the benefit. Ten points of mortality is what the men who actually swallowed it gained",
+        en: "The drug works",
       },
       sublabel: { en: "take your medicine" },
       isCorrect: false,
@@ -148,7 +148,7 @@ export const healthyAdherer: Puzzle = {
     {
       id: "sicker-men",
       label: {
-        en: "The men who skipped doses were sicker to begin with, so the gap is their illness rather than their tablets, and adjusting for how ill they were would remove it",
+        en: "They were sicker, and adjusting fixes it",
       },
       sublabel: { en: "confounding, and fixable" },
       isCorrect: false,
@@ -157,7 +157,7 @@ export const healthyAdherer: Puzzle = {
     {
       id: "too-small",
       label: {
-        en: "Nothing. Adherence groups this size cannot support a comparison, and a ten-point gap in a few hundred men is noise",
+        en: "Nothing, too few men to compare",
       },
       sublabel: { en: "not enough people" },
       isCorrect: false,
@@ -166,7 +166,7 @@ export const healthyAdherer: Puzzle = {
     {
       id: "not-randomised",
       label: {
-        en: "The gap is real but it is not about the drug. Nobody randomised who would take their capsules, so the two groups are different kinds of men",
+        en: "Real, but not about the drug",
       },
       sublabel: { en: "the split was not assigned" },
       isCorrect: true,

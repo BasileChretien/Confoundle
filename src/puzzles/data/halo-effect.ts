@@ -137,7 +137,7 @@ export const haloEffect: Puzzle = {
        */
       id: "about-the-same",
       label: {
-        en: "About what it did here, which is very little. The marker can read the essay either way, and a photograph is not going to move a mark by much",
+        en: "About as little as here",
       },
       sublabel: { en: "a small bias stays small" },
       isCorrect: false,
@@ -146,7 +146,7 @@ export const haloEffect: Puzzle = {
     {
       id: "much-more",
       label: {
-        en: "Much more. A bad essay gives the marker less to go on, and when the work itself does not settle the question the photograph has room to",
+        en: "Much more than here",
       },
       sublabel: { en: "the weaker the evidence, the more the cue" },
       isCorrect: true,
@@ -155,7 +155,7 @@ export const haloEffect: Puzzle = {
     {
       id: "much-less",
       label: {
-        en: "Less than here. A badly written essay is obviously bad, so no photograph can rescue it and the marks will bunch at the bottom whatever the face",
+        en: "Less than here",
       },
       sublabel: { en: "bad work speaks for itself" },
       isCorrect: false,
@@ -164,7 +164,7 @@ export const haloEffect: Puzzle = {
     {
       id: "attractive-penalty",
       label: {
-        en: "It will reverse. Markers hold an attractive author to a higher standard, so on weak work she will be marked down for wasting her advantages",
+        en: "It will reverse",
       },
       sublabel: { en: "the beauty penalty" },
       isCorrect: false,

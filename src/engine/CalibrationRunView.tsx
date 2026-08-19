@@ -146,7 +146,7 @@ export function StakeReadout({ answers }: { answers: readonly RunAnswer[] }) {
  * about the day and the recipient should meet today's, not a route that would
  * hand them a different one tomorrow.
  */
-function RunStripShare({
+export function RunStripShare({
   day,
   answers,
 }: {
@@ -158,9 +158,9 @@ function RunStripShare({
   // in a visually hidden sentence: a screen reader is a reader.
   const nf = new Intl.NumberFormat(useLocale());
   const [copied, setCopied] = useState(false);
-  // `runNumber`, never the raw day. The seed is days since the Unix epoch and
-  // reads as a glitch; this is the number two people actually compare.
-  const text = `${buildRunStrip({ day: runNumber(day), answers })}
+  // The seed goes in and `buildRunStrip` converts. Passing a display number
+  // here is what a review broke silently, so there is no longer a choice.
+  const text = `${buildRunStrip({ day, answers })}
 ${appUrl(currentOrigin())}`;
 
   function share() {

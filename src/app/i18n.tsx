@@ -33,8 +33,16 @@ function readStored(): string | undefined {
   }
 }
 
-/** First run: stored choice, else the browser's language, else English. */
-function initialLocale(): string {
+/**
+ * First run: stored choice, else the browser's language, else English.
+ *
+ * EXPORTED FOR THE ERROR BOUNDARY, which cannot use `useLocale`. It sits above
+ * `LocaleProvider` so that a failure inside the provider is still caught, and a
+ * fallback that could only speak English would tell nine readers in ten that
+ * something broke, in a language they did not choose, at the one moment the app
+ * has nothing else to offer them.
+ */
+export function initialLocale(): string {
   if (typeof navigator === "undefined") return DEFAULT_LOCALE;
   return (
     readStored() ??

@@ -6,6 +6,48 @@ import type { LocalizedText } from "../puzzles/schema";
  * locales are corrected on feedback. Anything missing falls back to English.
  */
 export const UI: Record<string, LocalizedText> = {
+  crashTitle: {
+    en: "Something broke",
+    zh: "出问题了",
+    hi: "कुछ गड़बड़ हो गई",
+    es: "Algo se ha roto",
+    fr: "Quelque chose a cassé",
+    ar: "حدث خلل",
+    bn: "কিছু একটা ভেঙে গেছে",
+    pt: "Alguma coisa avariou",
+    ru: "Что-то сломалось",
+    ja: "問題が発生しました",
+  },
+  // IT NO LONGER SAYS WHERE THE DATA LIVES. It read "stored on this device and
+  // are not affected", which is true of answers and streaks and false of the
+  // review schedule for anybody signed in: `progress` is a table in this
+  // project's D1 and `srs/remoteStore.ts` syncs it. The reassurance itself
+  // holds either way, because a render that throws touches neither storage nor
+  // the network, so the sentence says that and stops.
+  crashBody: {
+    en: "Nothing you have done has been lost. Your answers, your streak and your review schedule are all still there.",
+    zh: "你做过的一切都没有丢失。你的答案、连续记录和复习计划都还在。",
+    hi: "आपने जो किया है उसमें से कुछ भी नहीं खोया। आपके जवाब, आपका लगातार खेलने का रिकॉर्ड और दोहराव का शेड्यूल सब वहीं हैं।",
+    es: "No se ha perdido nada de lo que has hecho. Tus respuestas, tu racha y tu calendario de repaso siguen ahí.",
+    fr: "Rien de ce que vous avez fait n'a été perdu. Vos réponses, votre série et votre calendrier de révision sont toujours là.",
+    ar: "لم يضِع شيء مما فعلته. إجاباتك وسلسلتك وجدول مراجعتك ما زالت كلها موجودة.",
+    bn: "আপনি যা করেছেন তার কিছুই হারায়নি। আপনার উত্তর, আপনার ধারাবাহিকতা আর পুনরালোচনার সূচি সবই রয়ে গেছে।",
+    pt: "Nada do que fez foi perdido. As suas respostas, a sua sequência e o seu calendário de revisão continuam lá.",
+    ru: "Ничего из того, что вы сделали, не потеряно. Ваши ответы, ваша серия и график повторений на месте.",
+    ja: "あなたがしたことは何も失われていません。回答も、連続記録も、復習の予定もそのまま残っています。",
+  },
+  crashReload: {
+    en: "Reload",
+    zh: "重新加载",
+    hi: "फिर से लोड करें",
+    es: "Recargar",
+    fr: "Recharger",
+    ar: "إعادة التحميل",
+    bn: "আবার লোড করুন",
+    pt: "Recarregar",
+    ru: "Перезагрузить",
+    ja: "再読み込み",
+  },
   // Reworded a second time, and for the same reason as the first. It used to
   // say "no accounts, no tracking", which stopped being true the day sign-in
   // shipped. It then said "No tracking", which stops being strictly true the

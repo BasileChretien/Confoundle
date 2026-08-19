@@ -41,3 +41,75 @@ describe("interface strings", () => {
     }
   });
 });
+
+/**
+ * A string in the wrong script, which is how a typo hides in a language you
+ * cannot read.
+ *
+ * I dropped a Japanese fragment into a Russian sentence while writing the crash
+ * copy, and caught it only by reading the line back. Nothing would have failed:
+ * `ui.test.ts` checks that every locale HAS a string, never that the string is
+ * in that locale's script, so it would have shipped to every Russian reader who
+ * ever crashed the app.
+ *
+ * This cannot check grammar or meaning. It checks the one thing a machine can:
+ * that a Latin-script language contains no CJK, Devanagari, Bengali or Arabic,
+ * and vice versa. That is exactly the shape of the mistake a keyboard or a
+ * careless paste produces.
+ */
+describe("no string wanders into another script", () => {
+  /*
+    THE DEVANAGARI RANGE HAS A HOLE IN IT ON PURPOSE. The danda `।` and double
+    danda live at U+0964 and U+0965, inside the Devanagari block, and Bengali
+    uses them as its full stop. The obvious range therefore reported all 27
+    Bengali strings as containing Devanagari, which is how a guard like this
+    ends up deleted for crying wolf instead of narrowed. Shared punctuation is
+    excluded; the letters are not.
+  */
+  const BLOCKS = {
+    cjk: /[぀-ヿ一-鿿]/,
+    devanagari: /[ऀ-ॣ०-ॿ]/,
+    bengali: /[ঀ-৿]/,
+    arabic: /[؀-ۿ]/,
+  };
+  // Which blocks each locale is allowed to contain. Latin locales may quote a
+  // proper noun in principle, so this would need relaxing if one ever does.
+  const ALLOWED: Record<string, (keyof typeof BLOCKS)[]> = {
+    en: [], fr: [], es: [], pt: [], ru: [],
+    zh: ["cjk"], ja: ["cjk"], hi: ["devanagari"], bn: ["bengali"], ar: ["arabic"],
+  };
+
+  it("catches a stray fragment when there is one", () => {
+    // The guard on the guard: the exact mistake that prompted this.
+    expect(BLOCKS.cjk.test("с ошибкой,から которой")).toBe(true);
+    expect(BLOCKS.cjk.test("с ошибкой, от которой")).toBe(false);
+    // And the narrowing above did not narrow the guard into uselessness.
+    expect(BLOCKS.devanagari.test("कुछ गड़बड़ हो गई")).toBe(true);
+    expect(BLOCKS.devanagari.test("আপনার মানচিত্র শুরু করুন।")).toBe(false);
+  });
+
+  /*
+    ALL THREE TABLES, NOT ONE. `ui.ts` exports `UI`, `ACCOUNT` and
+    `LESSON_SHARE`, the coverage test above walks all three, and the first
+    version of this one walked only `UI`: a guard whose name promises more than
+    its reach delivers, which is the failure this repo has already been bitten
+    by three times and names in CLAUDE.md. Nothing was contaminated, which is
+    exactly how it would have stayed unnoticed.
+  */
+  const TABLES = { UI, ACCOUNT, LESSON_SHARE };
+
+  it.each(Object.keys(ALLOWED))("%s stays in its own script", (locale) => {
+    const allowed = ALLOWED[locale]!;
+    const offenders: string[] = [];
+    for (const entry of Object.values(TABLES).flatMap((t) => Object.values(t))) {
+      const text = (entry as Record<string, string>)[locale];
+      if (typeof text !== "string") continue;
+      for (const [name, re] of Object.entries(BLOCKS)) {
+        if (!allowed.includes(name as keyof typeof BLOCKS) && re.test(text)) {
+          offenders.push(`${name}: ${text.slice(0, 60)}`);
+        }
+      }
+    }
+    expect(offenders).toEqual([]);
+  });
+});

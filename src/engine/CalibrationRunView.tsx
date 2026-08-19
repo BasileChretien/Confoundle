@@ -16,6 +16,8 @@ import {
   type RunAnswer,
 } from "../srs/calibrationRun";
 import { recentlySeen, recordRun } from "../app/runStats";
+import { playedDailyRun, recordDailyRun, todayRunDay } from "../app/dailyRun";
+import { drawDailyRun } from "../srs/dailyRun";
 
 const choiceButton =
   "rounded-lg border border-rule bg-paper-2 px-4 py-3.5 text-left font-semibold text-ink transition hover:border-ink/40 hover:bg-paper-3 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand active:scale-[.99]";
@@ -124,14 +126,45 @@ export function StakeReadout({ answers }: { answers: readonly RunAnswer[] }) {
   );
 }
 
-export function CalibrationRunView({ onDone }: { onDone: () => void }) {
+export function CalibrationRunView({
+  daily = false,
+  onDone,
+}: {
+  /**
+   * Draw today's shared eight rather than a private draw.
+   *
+   * The daily excludes nothing, which is the whole difference: the calibration
+   * run passes `recentlySeen()` so a player does not repeat themselves, and
+   * that filters the pool before the shuffle, so the same day would give two
+   * people two different runs. See `srs/dailyRun.ts`.
+   */
+  daily?: boolean;
+  onDone: () => void;
+}) {
   const t = useT();
   // Every numeral this view draws goes through here before it reaches a slot:
   // a slot fills by string coercion, which is always Latin digits, so a count
   // dropped in raw would stay "5" beside fully translated Bengali or Arabic.
   const nf = new Intl.NumberFormat(useLocale());
 
-  const items = useMemo(() => drawRun(Math.random, RUN_SIZE, recentlySeen()), []);
+  // Read once, on mount, so a run that straddles midnight finishes as the day
+  // it started rather than swapping its items underneath the player.
+  const day = useMemo(() => todayRunDay(), []);
+  /**
+   * Whether this attempt counts. Read on mount and held, so finishing does not
+   * retroactively relabel the run the player has just done.
+   *
+   * A daily whose score can be farmed by replaying until the draw goes well
+   * measures nothing, and this deck's subject is a number that means what it
+   * says. Further attempts are allowed rather than refused, because somebody
+   * who simply wants practice should not find the mode gone, and they say so
+   * instead of being silently discarded.
+   */
+  const scored = useMemo(() => !daily || !playedDailyRun(day), [daily, day]);
+  const items = useMemo(
+    () => (daily ? drawDailyRun(day, RUN_SIZE) : drawRun(Math.random, RUN_SIZE, recentlySeen())),
+    [daily, day],
+  );
 
   const [at, setAt] = useState(0);
   const [answers, setAnswers] = useState<RunAnswer[]>([]);
@@ -149,6 +182,15 @@ export function CalibrationRunView({ onDone }: { onDone: () => void }) {
     },
     [t],
   );
+
+  /*
+    ONE LABEL FOR BOTH BADGES. The run draws its header twice, in progress and
+    at the end, and two independent expressions for "which mode is this" is how
+    a beat comes to say one thing on the way in and another on the way out.
+  */
+  const runLabel = daily
+    ? fillSlots(t({ en: "Today's run, #{n}" }), { n: nf.format(day) })
+    : t({ en: "Calibration run" });
 
   const item = items[at];
   const done = at >= items.length;
@@ -170,6 +212,7 @@ export function CalibrationRunView({ onDone }: { onDone: () => void }) {
       // Recorded once, at the end, so an abandoned run costs nothing and
       // cannot inflate the count.
       const graded = gradeRun(all);
+      if (daily && scored) recordDailyRun(day);
       const rec = recordRun(graded.correct, items.map((i) => i.id));
       setSaved({ bestCorrect: rec.stats.bestCorrect, isBest: rec.isBest });
     }
@@ -187,7 +230,12 @@ export function CalibrationRunView({ onDone }: { onDone: () => void }) {
     return (
       <section className="flex flex-col gap-4">
         <header className="flex flex-col gap-2">
-          <Badge tone="brand">{t({ en: "Calibration run" })}</Badge>
+          <Badge tone="brand">{runLabel}</Badge>
+          {daily && !scored ? (
+            <p className="text-[13px] text-ink-soft">
+              {t({ en: "Practice. Today's run was already recorded." })}
+            </p>
+          ) : null}
           <h2 className="font-display text-[28px] font-semibold leading-[1.05] text-ink">
             {fillSlots(t({ en: "Score: {n}" }), { n: nf.format(graded.score) })}
           </h2>
@@ -259,7 +307,7 @@ export function CalibrationRunView({ onDone }: { onDone: () => void }) {
   return (
     <section className="flex flex-col gap-4">
       <header className="flex flex-col gap-2">
-        <Badge tone="brand">{t({ en: "Calibration run" })}</Badge>
+        <Badge tone="brand">{runLabel}</Badge>
         <p className="font-sans text-[11px] font-semibold uppercase tracking-eyebrow text-ink-mute">
           {fillSlots(t({ en: "{at} of {total}" }), {
             at: nf.format(at + 1),

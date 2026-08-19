@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { useT } from "../app/i18n";
+import { useLocale, useT } from "../app/i18n";
 import { lessonProgressFor } from "../app/lessonState";
 import { UI } from "../app/ui";
 import { puzzles } from "../puzzles";
@@ -7,6 +7,8 @@ import { TAGS } from "../puzzles/tags";
 import type { Puzzle, TagId } from "../puzzles/schema";
 import type { SkillProgress } from "../srs/schedule";
 import { getStats } from "../app/session";
+import { playedDailyRun, todayRunDay } from "../app/dailyRun";
+import { fillSlots } from "./charts/announce";
 import { AboutContent } from "./AboutView";
 import { Confounder, confounderStateFor } from "./Confounder";
 import { LessonResults } from "./LessonList";
@@ -124,6 +126,7 @@ export function HomeView({
   onOpenLessons,
   onOpenProgress,
   onStartRun,
+  onStartDaily,
 }: {
   progress: readonly SkillProgress[];
   dueCount: number;
@@ -135,8 +138,14 @@ export function HomeView({
   onOpenLessons: () => void;
   onOpenProgress: () => void;
   onStartRun: () => void;
+  onStartDaily: () => void;
 }) {
   const t = useT();
+  const nf = new Intl.NumberFormat(useLocale());
+  // Read once per render of the home screen, which is where a player returns
+  // to after finishing, so the card flips without a reload.
+  const runDay = todayRunDay();
+  const playedToday = playedDailyRun(runDay);
   const [query, setQuery] = useState("");
 
   const learned = progress.length;
@@ -205,12 +214,42 @@ export function HomeView({
         carrying its count when something is genuinely due, so the minority who
         want the ladder lose nothing but the top slot.
       */}
+      {/*
+        THE DAILY LEADS UNTIL IT IS SPENT, then gets out of the way.
+
+        It is the only thing in the product that two people can have done the
+        same of. Every card is browsable at any time, on purpose, which is a
+        feature of the catalogue and the reason the friends board is correct and
+        permanently empty: across 73 puzzles two friends never collide. A shared
+        eight manufactures the collision without locking anything, so this is a
+        schelling point rather than a gate. Nothing below it is withheld, and
+        the moment anybody proposes that yesterday's run costs a streak, the
+        answer is no.
+      */}
+      {playedToday ? null : (
+        <PrimaryCard
+          tone="gold"
+          eyebrow={fillSlots(t({ en: "Today's run, #{n}" }), { n: nf.format(runDay) })}
+          title={t({ en: "The same eight calls as everybody else" })}
+          onClick={onStartDaily}
+        />
+      )}
+
       <PrimaryCard
-        tone="gold"
+        tone={playedToday ? "gold" : "brand"}
         eyebrow={t({ en: "Calibration run" })}
         title={t({ en: "How sure are you?" })}
         onClick={onStartRun}
       />
+
+      {playedToday ? (
+        <PrimaryCard
+          tone="brand"
+          eyebrow={fillSlots(t({ en: "Today's run, #{n}" }), { n: nf.format(runDay) })}
+          title={t({ en: "Played today. Play it again for practice." })}
+          onClick={onStartDaily}
+        />
+      ) : null}
 
       {dueCount > 0 ? (
         <PrimaryCard

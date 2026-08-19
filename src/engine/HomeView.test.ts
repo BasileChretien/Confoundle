@@ -60,6 +60,7 @@ function render(progress: SkillProgress[], dueCount = 0): string {
         onOpenLessons: () => {},
         onOpenProgress: () => {},
         onStartRun: () => {},
+      onStartDaily: () => {},
       }),
     }),
   );

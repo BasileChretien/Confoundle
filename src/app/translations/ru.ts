@@ -8,6 +8,10 @@ export const ru: Record<string, string> = {
   // ---- Calibration run ----
   "Calibration run": "Проверка уверенности",
   "Score: {n}": "Счёт: {n}",
+  "Today's run, #{n}": "Сегодняшний забег № {n}",
+  "Practice. Today's run was already recorded.": "Тренировка. Сегодняшний забег уже записан.",
+  "The same eight calls as everybody else": "Те же восемь суждений, что у всех",
+  "Played today. Play it again for practice.": "Сегодня пройден. Сыграйте ещё раз для тренировки.",
   "How your stakes held up": "Чего стоили ваши ставки",
   "{right} of {calls}": "{right} из {calls}",
   "not staked": "не ставилось",

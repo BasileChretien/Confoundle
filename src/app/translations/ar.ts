@@ -9,6 +9,10 @@ export const ar: Record<string, string> = {
   // ---- Calibration run ----
   "Calibration run": "جولة معايرة الثقة",
   "Score: {n}": "النتيجة: {n}",
+  "Today's run, #{n}": "جولة اليوم، رقم {n}",
+  "Practice. Today's run was already recorded.": "تدريب. جولة اليوم مسجَّلة بالفعل.",
+  "The same eight calls as everybody else": "الأحكام الثمانية نفسها التي يراها الجميع",
+  "Played today. Play it again for practice.": "لُعبت اليوم. العبها مرة أخرى للتدريب.",
   "How your stakes held up": "كيف صمدت رهاناتك",
   "{right} of {calls}": "{right} من {calls}",
   "not staked": "لم تُستخدم",

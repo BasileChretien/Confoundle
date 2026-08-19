@@ -8,6 +8,10 @@ export const hi: Record<string, string> = {
   // ---- Calibration run ----
   "Calibration run": "आत्मविश्वास परख",
   "Score: {n}": "स्कोर: {n}",
+  "Today's run, #{n}": "आज की पारी, #{n}",
+  "Practice. Today's run was already recorded.": "अभ्यास। आज की पारी पहले ही दर्ज हो चुकी है।",
+  "The same eight calls as everybody else": "सबके जैसे वही आठ फ़ैसले",
+  "Played today. Play it again for practice.": "आज खेल ली। अभ्यास के लिए फिर खेलें।",
   "How your stakes held up": "आपके दांव कैसे रहे",
   "{right} of {calls}": "{calls} में से {right}",
   "not staked": "इस्तेमाल नहीं",

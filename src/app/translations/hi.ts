@@ -6393,11 +6393,11 @@ export const hi: Record<string, string> = {
   "Fewer deaths": "मौतें कम",
   "silence the warning, prevent the death": "चेतावनी शांत करो, मौत रोको",
   "The same deaths": "मौतें उतनी ही",
-  "a marker, not a mechanism": "एक संकेतक, तंत्र नहीं",
+  "predicting no change in survival": "यह भविष्यवाणी कि जीवित रहने की दर नहीं बदलेगी",
   "More deaths": "मौतें ज़्यादा",
   "the cure is the poison": "इलाज ही ज़हर है",
   "Nothing at all": "कुछ भी नहीं",
-  "the marker is not the outcome": "संकेतक परिणाम नहीं है",
+  "you have not been shown a single death": "आपको एक भी मृत्यु नहीं दिखाई गई",
 
   // ---- Surrogate endpoints, reveal and lesson ----
   "Among the patients in whom the drug had provably worked, staying on it more than doubled the chance of being dead within ten months: 56 of 730, against 22 of 725 who switched to placebo.": "जिन मरीज़ों में दवा प्रमाणित रूप से काम कर चुकी थी, उनमें उसे जारी रखने से दस महीनों के भीतर मर चुके होने की संभावना दोगुनी से भी अधिक हो गई: 730 में से 56, जबकि प्लेसीबो पर गए 725 में से 22।",

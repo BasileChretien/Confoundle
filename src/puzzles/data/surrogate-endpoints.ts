@@ -153,7 +153,7 @@ export const surrogateEndpoints: Puzzle = {
       label: {
         en: "The same deaths",
       },
-      sublabel: { en: "a marker, not a mechanism" },
+      sublabel: { en: "predicting no change in survival" },
       isCorrect: false,
       isIntuitiveTrap: false,
     },
@@ -171,7 +171,7 @@ export const surrogateEndpoints: Puzzle = {
       label: {
         en: "Nothing at all",
       },
-      sublabel: { en: "the marker is not the outcome" },
+      sublabel: { en: "you have not been shown a single death" },
       isCorrect: true,
       isIntuitiveTrap: false,
     },

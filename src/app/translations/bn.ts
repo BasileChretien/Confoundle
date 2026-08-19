@@ -6402,11 +6402,11 @@ export const bn: Record<string, string> = {
   "Fewer deaths": "মৃত্যু কমবে",
   "silence the warning, prevent the death": "সতর্কবার্তা থামাও, মৃত্যু ঠেকাও",
   "The same deaths": "মৃত্যু একই থাকবে",
-  "a marker, not a mechanism": "একটি চিহ্ন, কার্যপ্রণালী নয়",
+  "predicting no change in survival": "এই ভবিষ্যদ্বাণী যে বেঁচে থাকার হার বদলাবে না",
   "More deaths": "মৃত্যু বাড়বে",
   "the cure is the poison": "নিরাময়ই বিষ",
   "Nothing at all": "কিছুই বলে না",
-  "the marker is not the outcome": "চিহ্ন মানে পরিণতি নয়",
+  "you have not been shown a single death": "আপনাকে একটিও মৃত্যু দেখানো হয়নি",
 
   // ---- Surrogate endpoints, reveal and lesson ----
   "Among the patients in whom the drug had provably worked, staying on it more than doubled the chance of being dead within ten months: 56 of 730, against 22 of 725 who switched to placebo.": "যেসব রোগীর ক্ষেত্রে ওষুধটি প্রমাণিতভাবে কাজ করেছিল, তাঁদের মধ্যে সেটি চালিয়ে যাওয়া দশ মাসের ভিতর মারা যাওয়ার সম্ভাবনা দ্বিগুণেরও বেশি করে দিল: 730 জনের মধ্যে 56 জন, বিপরীতে প্লাসিবোতে যাওয়া 725 জনের মধ্যে 22 জন।",

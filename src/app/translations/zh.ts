@@ -6294,11 +6294,11 @@ export const zh: Record<string, string> = {
   "Fewer deaths": "死亡更少",
   "silence the warning, prevent the death": "消掉警报，就能防住死亡",
   "The same deaths": "死亡不变",
-  "a marker, not a mechanism": "是标志物，不是机制",
+  "predicting no change in survival": "预测生存率不会改变",
   "More deaths": "死亡更多",
   "the cure is the poison": "解药即是毒药",
   "Nothing at all": "什么也说明不了",
-  "the marker is not the outcome": "标志物不是结局",
+  "you have not been shown a single death": "你没有看到任何一例死亡",
 
   // ---- Surrogate endpoints, reveal and lesson ----
   "Among the patients in whom the drug had provably worked, staying on it more than doubled the chance of being dead within ten months: 56 of 730, against 22 of 725 who switched to placebo.": "在那些药物确实起效的患者当中，继续服药使他们在十个月内死亡的可能性增加了一倍以上：730人中有56人，而换成安慰剂的725人中只有22人。",

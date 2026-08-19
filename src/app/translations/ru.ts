@@ -6424,11 +6424,11 @@ export const ru: Record<string, string> = {
   "Fewer deaths": "Смертей меньше",
   "silence the warning, prevent the death": "заглуши сигнал, предотврати смерть",
   "The same deaths": "Столько же смертей",
-  "a marker, not a mechanism": "маркер, а не механизм",
+  "predicting no change in survival": "прогноз, что выживаемость не изменится",
   "More deaths": "Смертей больше",
   "the cure is the poison": "лекарство и есть яд",
   "Nothing at all": "Ничего не говорит",
-  "the marker is not the outcome": "маркер это не исход",
+  "you have not been shown a single death": "вам не показали ни одной смерти",
 
   // ---- Surrogate endpoints, reveal and lesson ----
   "Among the patients in whom the drug had provably worked, staying on it more than doubled the chance of being dead within ten months: 56 of 730, against 22 of 725 who switched to placebo.": "Среди пациентов, у которых препарат доказанно сработал, продолжение приёма более чем удвоило вероятность умереть в течение десяти месяцев: 56 из 730 против 22 из 725, перешедших на плацебо.",

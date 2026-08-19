@@ -6453,11 +6453,11 @@ export const fr: Record<string, string> = {
   "Fewer deaths": "Moins de morts",
   "silence the warning, prevent the death": "faites taire l'alerte, évitez la mort",
   "The same deaths": "Autant de morts",
-  "a marker, not a mechanism": "un marqueur, pas un mécanisme",
+  "predicting no change in survival": "prédire que la survie ne changera pas",
   "More deaths": "Plus de morts",
   "the cure is the poison": "le remède est le poison",
   "Nothing at all": "Rien du tout",
-  "the marker is not the outcome": "le marqueur n'est pas l'issue",
+  "you have not been shown a single death": "on ne vous a montré aucun décès",
 
   // ---- Surrogate endpoints, reveal and lesson ----
   "Among the patients in whom the drug had provably worked, staying on it more than doubled the chance of being dead within ten months: 56 of 730, against 22 of 725 who switched to placebo.": "Chez les patients pour lesquels le médicament avait manifestement marché, le garder a plus que doublé le risque d'être mort en dix mois : 56 sur 730, contre 22 sur 725 passés au placebo.",

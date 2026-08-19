@@ -6352,11 +6352,11 @@ export const ja: Record<string, string> = {
   "Fewer deaths": "死亡は減る",
   "silence the warning, prevent the death": "警告を消せば死は防げる",
   "The same deaths": "死亡は変わらない",
-  "a marker, not a mechanism": "指標であって仕組みではない",
+  "predicting no change in survival": "生存率は変わらないという予測",
   "More deaths": "死亡は増える",
   "the cure is the poison": "治療そのものが毒",
   "Nothing at all": "何も分からない",
-  "the marker is not the outcome": "指標は結果ではない",
+  "you have not been shown a single death": "死亡は一件も示されていない",
 
   // ---- Surrogate endpoints, reveal and lesson ----
   "Among the patients in whom the drug had provably worked, staying on it more than doubled the chance of being dead within ten months: 56 of 730, against 22 of 725 who switched to placebo.": "薬が確かに効いていた患者たちのなかで、それを続けたことは十か月以内に死んでいる確率を二倍以上にした。730人中56人、対してプラセボに切り替えた725人では22人であった。",

@@ -6355,11 +6355,11 @@ export const ar: Record<string, string> = {
   "Fewer deaths": "وفيات أقل",
   "silence the warning, prevent the death": "أسكِت الإنذار تمنع الموت",
   "The same deaths": "الوفيات نفسها",
-  "a marker, not a mechanism": "مؤشر لا آلية",
+  "predicting no change in survival": "توقع أن البقاء على قيد الحياة لن يتغير",
   "More deaths": "وفيات أكثر",
   "the cure is the poison": "الدواء هو السم",
   "Nothing at all": "لا شيء على الإطلاق",
-  "the marker is not the outcome": "المؤشر ليس النتيجة",
+  "you have not been shown a single death": "لم يُعرض عليك ولا وفاة واحدة",
 
   // ---- Surrogate endpoints, reveal and lesson ----
   "Among the patients in whom the drug had provably worked, staying on it more than doubled the chance of being dead within ten months: 56 of 730, against 22 of 725 who switched to placebo.": "بين المرضى الذين ثبت أن الدواء نجح لديهم، ضاعف الاستمرار عليه احتمال أن يكونوا أمواتا خلال عشرة أشهر أكثر من مرتين: 56 من 730، مقابل 22 من 725 ممن انتقلوا إلى الدواء الوهمي.",

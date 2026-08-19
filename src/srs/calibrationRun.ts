@@ -22,21 +22,34 @@ import { drawRound, grade, ROUND_SIZE, type TrapHuntAnswer } from "./trapHunt";
  * a risk-management decision about the REST OF THE ROUND rather than a report
  * of belief about THIS item, and hedging is free insurance.
  *
- * SO THE TWO CURRENCIES ARE SEPARATE, and that separation is the whole design.
+ * SO THE STAKE IS SCORED PER ITEM AND NOTHING ELSE IS ACCUMULATED.
  *
- *   The SCORE is the per-item wager from `engine/scoring`, which is a proper
- *   rule: each stake is uniquely best on a real interval of belief, and no
- *   item's stake affects any other item's payoff. Honest reporting therefore
- *   maximises it, by construction rather than by tuning.
+ * The SCORE is the per-item wager from `engine/scoring`, which is a proper
+ * rule: each stake is uniquely best on a real interval of belief, and no item's
+ * stake affects any other item's payoff. Honest reporting maximises it by
+ * construction rather than by tuning, so it is shown for the run just played.
  *
- *   The STREAK is consecutive well-calibrated calls. It is the number to beat
- *   and the thing that makes the mode tense, and it feeds NOTHING. Breaking it
- *   costs no points, so it cannot distort the stake.
+ * THIS FILE ONCE ARGUED, AT LENGTH AND IN THIS PARAGRAPH, THAT A STREAK BESIDE
+ * IT WAS SAFE because it "feeds nothing". That was wrong twice over, and both
+ * halves are worth keeping because the reasoning was persuasive and false.
  *
- * A run therefore says two different things about a player, deliberately. A
- * cautious one can hold a long streak on a modest score; a bold one can post a
- * high score with a short streak. Neither is cheating, and the pair is a more
- * honest description of somebody than either number alone.
+ * A streak of well-calibrated calls is eight out of eight for anybody who
+ * stakes `hunch` every time, since a hedge that misses is calibrated. And a
+ * number the app STORES AND CONGRATULATES feeds something whatever the score
+ * does: being celebrated is the reward. Its neighbour `bestScore` failed the
+ * same test from the other side, because a record keeps only a maximum and a
+ * maximum never meets the penalty column, so its ceilings ran 320 / 288 / 208
+ * strictly by stake.
+ *
+ * The rule that replaced the argument, and the one to apply to anything added
+ * here later: a mechanic is safe only if the map from what the player REPORTS
+ * to everything the player VALUES factors through the per-item payoff table.
+ * Anything that is a function of `correct` is safe. Anything that is a function
+ * of `confidence` is suspect until shown otherwise.
+ *
+ * What a run says about a player is therefore a report rather than a target:
+ * how many calls were right, and how each stake actually held up. See
+ * `reliabilityByStake`.
  *
  * IT WRITES NOTHING TO THE SCHEDULE, for the reasons `trapHunt.ts` gives at
  * length: unscheduled repetitions corrupt the intervals that make spaced

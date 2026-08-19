@@ -52,6 +52,19 @@ describe("the calibration run's record", () => {
     expect(stats.bestCorrect).toBe(0);
   });
 
+  it("does not announce equalling your best as beating it", () => {
+    /*
+      `trapHuntStats` documents the same rule and this module had neither the
+      rule nor a test for it, so `>` could drift to `>=` and every existing
+      assertion would still pass. Telling somebody they set a personal best for
+      repeating themselves is a small lie of the kind this deck is about.
+    */
+    recordRun(5, ["a"]);
+    const tie = recordRun(5, ["b"]);
+    expect(tie.isBest).toBe(false);
+    expect(tie.stats.bestCorrect).toBe(5);
+  });
+
   it("never lets a later bad run lower the record", () => {
     recordRun(7, ["a"]);
     const second = recordRun(1, ["b"]);

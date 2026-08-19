@@ -42,19 +42,23 @@ const STAKE_LABEL: Record<Confidence, { en: string }> = {
  * THE MODE EXISTS BECAUSE NOTHING MEASURED THE DEEPEST SKILL IN THE DECK,
  * which is not spotting a trap but knowing how sure you are entitled to be.
  *
- * TWO NUMBERS, DELIBERATELY NOT ONE. The score is the per-item wager, which is
- * a proper rule, so saying what you actually believe earns the most. The streak
- * is consecutive well-calibrated calls and it feeds nothing at all. That
- * separation is the design rather than an implementation detail: a run whose
- * VALUE depends on survival turns the stake into a risk-management decision
- * about the rest of the round instead of a report of belief about this item.
- * Modelling the obvious alternative showed exactly that, with "hunch" optimal
- * up to a belief of about 0.82 and "fairly sure" never optimal at all.
- * `srs/calibrationRun.ts` carries the argument and the tests that hold it.
+ * THE SCORE IS THE PER-ITEM WAGER, which is a proper rule, so saying what you
+ * actually believe earns the most. It is shown for the run just played and
+ * accumulated into nothing: a run whose VALUE depends on survival turns the
+ * stake into a risk-management decision about the rest of the round instead of
+ * a report of belief about this item. Modelling the obvious alternative showed
+ * exactly that, with "hunch" optimal up to a belief of about 0.82 and "fairly
+ * sure" never optimal at all. `srs/calibrationRun.ts` carries the argument.
  *
- * A WRONG HEDGE KEEPS THE STREAK. Somebody who says "I am not sure" and misses
- * has described themselves accurately, which is the behaviour being taught.
- * Ending their streak for it would teach them to be quietly confident instead.
+ * IT USED TO SHOW A STREAK BESIDE IT, and this docstring used to argue the
+ * streak was safe because it fed nothing. Eight hunches scored a perfect streak
+ * every run, and the app stored and congratulated it. What replaced it is a
+ * report: how many calls were right, which no stake can move, and how each
+ * stake actually held up.
+ *
+ * A WRONG HEDGE IS STILL MARKED AS CALIBRATED per item, because somebody who
+ * says "I am not sure" and misses has described themselves accurately, which is
+ * the behaviour being taught. What went away is taking a MAXIMUM of that.
  *
  * THE STAKE IS TAKEN BEFORE THE VERDICT AND AFTER THE CALL, in its own beat.
  * Trap Hunt deliberately asks one binary question and moves on, because a stake
@@ -65,8 +69,61 @@ const STAKE_LABEL: Record<Confidence, { en: string }> = {
  * IT SHOWS WHAT A FIXED STAKE WOULD HAVE SCORED, on the player's own calls.
  * That is the guard rail generalised from `alwaysTrapScore`: a scored mechanic
  * that never publishes what a thoughtless strategy earns is asking to be
- * believed on nothing.
+ * believed on nothing. It is labelled as HINDSIGHT, because it picks the best
+ * of the three stakes on the outcomes that actually happened, and a
+ * well-calibrated player loses to that a good fraction of the time.
  */
+/**
+ * What each stake was actually worth, as its own component so a test can see it.
+ *
+ * IT WAS INLINE AND UNGUARDED. A review swapped the two slots, so the Certain
+ * row would have read "3 of 1" instead of "1 of 3", and all 2042 tests passed:
+ * the block only renders after eight items are answered, which no test can
+ * reach through a component that holds its own state. Splitting it out is what
+ * makes the loaded state reachable, the same move `CrowdLinesView` needed for
+ * the same reason.
+ *
+ * A REPORT, NOT A TARGET. It describes what happened, with no maximum taken
+ * over it, so the only way to improve it is to read the evidence better.
+ * "Certain: 4 of 4" and "Certain: 1 of 4" are two different people, and neither
+ * could learn which they were from a score.
+ */
+export function StakeReadout({ answers }: { answers: readonly RunAnswer[] }) {
+  const t = useT();
+  const locale = useLocale();
+  const nf = new Intl.NumberFormat(locale);
+  const reliability = reliabilityByStake(answers);
+
+  return (
+    <div className="rounded-lg border border-rule bg-paper-2 p-3">
+      <p className="mb-1.5 font-sans text-[11px] font-semibold uppercase tracking-eyebrow text-ink-mute">
+        {t({ en: "How your stakes held up" })}
+      </p>
+      <ul className="flex flex-col gap-0.5">
+        {CONFIDENCE_LEVELS.map((c) => {
+          const row = reliability[c];
+          return (
+            <li
+              key={c}
+              className="flex items-baseline justify-between gap-3 text-[14px]"
+            >
+              <span className="text-ink-soft">{t(STAKE_LABEL[c])}</span>
+              <span className="tabular-nums text-ink">
+                {row.calls === 0
+                  ? t({ en: "not staked" })
+                  : fillSlots(t({ en: "{right} of {calls}" }), {
+                      right: nf.format(row.right),
+                      calls: nf.format(row.calls),
+                    })}
+              </span>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
+}
+
 export function CalibrationRunView({ onDone }: { onDone: () => void }) {
   const t = useT();
   // Every numeral this view draws goes through here before it reaches a slot:
@@ -121,7 +178,6 @@ export function CalibrationRunView({ onDone }: { onDone: () => void }) {
   if (done) {
     const graded = gradeRun(answers);
     const fixed = fixedStakeScores(answers);
-    const reliability = reliabilityByStake(answers);
     // The best a thoughtless player could have done with the very same calls,
     // which is the only comparator worth publishing.
     const bestFixed = CONFIDENCE_LEVELS.reduce((a, b) =>
@@ -149,40 +205,7 @@ export function CalibrationRunView({ onDone }: { onDone: () => void }) {
                   })}
           </p>
 
-          {/*
-            THE READ-OUT IS THE PRODUCT, and it replaces a record that paid for
-            hedging. It is a description of what happened rather than a number
-            to beat, so there is no strategy that improves it except reading the
-            evidence better. "Certain: 4 of 4" and "Certain: 1 of 4" are two
-            different people, and neither could learn which they were from a
-            score.
-          */}
-          <div className="rounded-lg border border-rule bg-paper-2 p-3">
-            <p className="mb-1.5 font-sans text-[11px] font-semibold uppercase tracking-eyebrow text-ink-mute">
-              {t({ en: "How your stakes held up" })}
-            </p>
-            <ul className="flex flex-col gap-0.5">
-              {CONFIDENCE_LEVELS.map((c) => {
-                const row = reliability[c];
-                return (
-                  <li
-                    key={c}
-                    className="flex items-baseline justify-between gap-3 text-[14px]"
-                  >
-                    <span className="text-ink-soft">{t(STAKE_LABEL[c])}</span>
-                    <span className="tabular-nums text-ink">
-                      {row.calls === 0
-                        ? t({ en: "not staked" })
-                        : fillSlots(t({ en: "{right} of {calls}" }), {
-                            right: nf.format(row.right),
-                            calls: nf.format(row.calls),
-                          })}
-                    </span>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
+          <StakeReadout answers={answers} />
 
           <p className="text-[13px] leading-snug text-ink-soft">
             {/*

@@ -111,6 +111,14 @@ describe("the stake read-out", () => {
     });
   });
 
+  it("reports every stake as unused for an empty run", () => {
+    expect(reliabilityByStake([])).toEqual({
+      hunch: { calls: 0, right: 0 },
+      sure: { calls: 0, right: 0 },
+      certain: { calls: 0, right: 0 },
+    });
+  });
+
   it("accounts for every answer exactly once", () => {
     // A read-out that dropped or double-counted a call would misdescribe the
     // player to themselves, which is the one thing this mode must not do.

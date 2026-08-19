@@ -8,12 +8,11 @@
  * at once, so a player could keep one alive without ever meeting the day's
  * puzzle. Both trade a number that means something for a number that goes up.
  *
- * IT KEEPS TWO RECORDS BECAUSE THE MODE HAS TWO CURRENCIES, and they are
- * deliberately not combined. The best score says how well somebody staked; the
- * best streak says how long they went without claiming more than they had. A
- * cautious player and a bold one can each top one of them, which is the honest
- * description of two different readers and would be destroyed by adding them
- * together.
+ * IT KEEPS ONE RECORD, AND ONLY BECAUSE NO STAKE CAN REACH IT. It used to keep
+ * two, on the argument that a best score and a best streak described two honest
+ * kinds of reader. They described two staking strategies instead, and the note
+ * on `KEY` below sets out how each was reachable without reading a single item
+ * correctly.
  *
  * Nothing else in the app reads this, and it syncs nowhere: the account's
  * published promise is that signing in makes the SRS schedule follow you, and

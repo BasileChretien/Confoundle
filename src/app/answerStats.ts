@@ -20,12 +20,29 @@ import { todayDayNumber } from "./session";
  * feature existed.
  */
 
-const OPT_OUT_KEY = "confoundle:answers:optout:v1";
+/**
+ * THE KEY NAMES WHAT IT GOVERNS, and for a while it named half of it.
+ *
+ * It was `confoundle:answers:optout:v1` while it controlled only the answer
+ * tally. When the funnel counter began obeying the same switch, the label and
+ * the blurb were rewritten and this was not, so a maintainer grepping for what
+ * the answers opt-out covers would have undercounted by a whole feature. That
+ * is the same shape as a guard whose name promises more than its glob delivers,
+ * which this project has been bitten by twice.
+ *
+ * The old key is still read once, so nobody who turned contribution off has it
+ * silently turned back on by a rename. It is not written again: the first write
+ * under the new name settles it.
+ */
+const OPT_OUT_KEY = "confoundle:contribute:optout:v1";
+const LEGACY_OPT_OUT_KEY = "confoundle:answers:optout:v1";
 
 /** Contribution is on unless the player has turned it off. */
 export function contributesAnswers(): boolean {
   try {
-    return localStorage.getItem(OPT_OUT_KEY) !== "1";
+    if (localStorage.getItem(OPT_OUT_KEY) === "1") return false;
+    // A rename must not re-enable a contribution somebody switched off.
+    return localStorage.getItem(LEGACY_OPT_OUT_KEY) !== "1";
   } catch {
     // Storage unavailable (private mode, quota). Treat as opted out: the safe
     // default when we cannot read a preference is not to transmit.
@@ -35,8 +52,14 @@ export function contributesAnswers(): boolean {
 
 export function setContributesAnswers(on: boolean): void {
   try {
-    if (on) localStorage.removeItem(OPT_OUT_KEY);
-    else localStorage.setItem(OPT_OUT_KEY, "1");
+    if (on) {
+      localStorage.removeItem(OPT_OUT_KEY);
+      // Turning it back on has to clear the old name too, or the legacy read
+      // above would keep answering "off" forever.
+      localStorage.removeItem(LEGACY_OPT_OUT_KEY);
+    } else {
+      localStorage.setItem(OPT_OUT_KEY, "1");
+    }
   } catch {
     // Nothing to do. The getter fails closed, so the player ends up opted out
     // rather than silently contributing against their choice.

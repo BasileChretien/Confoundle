@@ -154,7 +154,7 @@
             </tr>
             <tr>
               <td>Abuse counter</td>
-              <td>A keyed one-way digest of the network address a sign-in request came from, so the code sender cannot be used to spam strangers. The address itself is never written down, and the digest cannot be reversed or matched to an address without a secret only the server holds.</td>
+              <td>A keyed one-way digest of the network address a request came from, so that neither the code sender can be used to spam strangers nor the two anonymous counts rewritten in bulk. All three purposes share the mechanism under separate namespaces, so one cannot exhaust another's allowance. The address itself is never written down, and the digest cannot be reversed or matched to an address without a secret only the server holds.</td>
               <td>Legitimate interests, art. 6(1)(f): keeping the service from being abused</td>
               <td>Up to 24 hours</td>
             </tr>
@@ -322,6 +322,20 @@
         table rather than as a promise about our behaviour: there is no column
         that could hold anything about you, so an erasure request has nothing to
         erase in it.
+      </p>
+      <p>
+        <strong>The honest limit, which is the same one.</strong> This section
+        can be linked to on its own, so it should not read better than the
+        answer tally's does when both describe the same code. The request
+        carrying a step reaches Cloudflare, which sees the connection and
+        therefore your IP address in order to route it. That address is not
+        stored with the count and is not part of the table. So that a script
+        cannot rewrite these numbers in bulk, the site counts how many requests
+        arrive from one connection each hour, keeping a one-way hash of the
+        address under a secret key in a separate table holding a count and a
+        start time and nothing else. It cannot be turned back into an address,
+        and it is overwritten as the hour rolls. While this site is small, a
+        request is close in time to a visit, and we will not pretend otherwise.
       </p>
 
       <h2>Email we send you</h2>

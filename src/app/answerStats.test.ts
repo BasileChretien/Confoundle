@@ -216,6 +216,52 @@ describe("which population the reveal line is about", () => {
   });
 });
 
+describe("the contribution switch across its rename", () => {
+  /*
+    The key was `confoundle:answers:optout:v1` while it governed only the answer
+    tally. The funnel counter now shares it, so the name had to widen, and a
+    rename must never re-enable a contribution somebody deliberately switched
+    off: silently reversing that is worse than never offering the switch.
+  */
+  it("still honours an opt-out recorded under the old name", () => {
+    const m = new Map([["confoundle:answers:optout:v1", "1"]]);
+    vi.stubGlobal("localStorage", {
+      getItem: (k: string) => m.get(k) ?? null,
+      setItem: (k: string, v: string) => void m.set(k, String(v)),
+      removeItem: (k: string) => void m.delete(k),
+      clear: () => m.clear(),
+    });
+    expect(contributesAnswers()).toBe(false);
+  });
+
+  it("clears both names when contribution is turned back on", () => {
+    const m = new Map([["confoundle:answers:optout:v1", "1"]]);
+    vi.stubGlobal("localStorage", {
+      getItem: (k: string) => m.get(k) ?? null,
+      setItem: (k: string, v: string) => void m.set(k, String(v)),
+      removeItem: (k: string) => void m.delete(k),
+      clear: () => m.clear(),
+    });
+    setContributesAnswers(true);
+    // Without clearing the legacy name the fallback read would keep answering
+    // "off" forever, and the switch would look broken.
+    expect(contributesAnswers()).toBe(true);
+    expect(m.has("confoundle:answers:optout:v1")).toBe(false);
+  });
+
+  it("writes only the new name", () => {
+    const m = new Map<string, string>();
+    vi.stubGlobal("localStorage", {
+      getItem: (k: string) => m.get(k) ?? null,
+      setItem: (k: string, v: string) => void m.set(k, String(v)),
+      removeItem: (k: string) => void m.delete(k),
+      clear: () => m.clear(),
+    });
+    setContributesAnswers(false);
+    expect([...m.keys()]).toEqual(["confoundle:contribute:optout:v1"]);
+  });
+});
+
 describe("formatShare", () => {
   it("never says nobody did a thing that somebody did", () => {
     // The floor bounds the denominator from below and not from above, so one

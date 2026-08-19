@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { LocalizedText } from "./schema";
+import { DataView, LocalizedText, Provenance, PuzzleData } from "./schema";
 
 /**
  * Trap Hunt items: short, neutral scenarios used to test whether a player can
@@ -13,13 +13,64 @@ import { LocalizedText } from "./schema";
  * These are deliberately hypothetical scenarios, not claims about the world, so
  * they carry no provenance. Anything asserting a real finding belongs in a
  * puzzle (which does require provenance), not here.
+ *
+ * AN ITEM MAY NOW CARRY A FIGURE, and that changes the sentence above rather
+ * than contradicting it. Prose is read as a hypothetical; a chart is read as a
+ * measurement, which is why `ItemFigure` draws a constructed-numbers notice
+ * unless real provenance is supplied. The rule is unchanged underneath: nothing
+ * here asserts a finding about the world unless it can cite one.
  */
+/**
+ * A figure attached to a test item, so a review is the same KIND of thing as a
+ * puzzle rather than the homework stapled to it.
+ *
+ * WHY THIS EXISTS. The deck's atom is a chart whose obvious reading is wrong,
+ * committed to under a stake, then redrawn as a second view of the same data.
+ * There are 73 of those. Every surface built for repetition, the calibration
+ * run, reviews, Trap Hunt, draws from an item bank that is entirely prose: no
+ * figure, no reveal, no reversal. So the fun is rationed to 73 uses and the
+ * thing a player repeats forever abandons the product's own thesis.
+ *
+ * `DataViewRenderer` is already generic over `PuzzleData`, so an item can carry
+ * the same shapes a puzzle does and needs no new rendering.
+ *
+ * THE NUMBERS ARE CONSTRUCTED AND THE FIGURE HAS TO SAY SO. Existing items are
+ * prose and explicitly hypothetical, which is honest because nobody reads a
+ * paragraph as a measurement. A CHART DOES read as a measurement. This project
+ * already made exactly this argument once, when `CausalData.schematicNote` went
+ * from optional to required after invented scatter points shipped looking like
+ * data.
+ *
+ * So the disclosure is the DEFAULT rather than a required field somebody has to
+ * remember: a figure with no `provenance` is drawn with the constructed-numbers
+ * notice, and the only way to remove the notice is to supply a real source. An
+ * author cannot forget it, because forgetting is the safe state.
+ */
+export const ItemFigure = z.object({
+  data: PuzzleData,
+  /** What the reader judges. */
+  initialView: DataView,
+  /**
+   * The same data, reframed. It must differ from `initialView`, or the reveal
+   * restates the setup and the item is prose with a picture on it.
+   */
+  revealView: DataView,
+  /**
+   * A real source, when there is one. Absent means the numbers were built to
+   * show the shape, and the figure says so on screen.
+   */
+  provenance: Provenance.optional(),
+});
+export type ItemFigure = z.infer<typeof ItemFigure>;
+
 export const TestItem = z.object({
   id: z.string().min(1),
   scenario: LocalizedText,
   /** null = the reasoning is sound; otherwise the reasoningSkill it trips on. */
   trap: z.string().nullable(),
   explanation: LocalizedText,
+  /** Optional: most items are prose, and prose is right for most of them. */
+  figure: ItemFigure.optional(),
 });
 export type TestItem = z.infer<typeof TestItem>;
 
@@ -10285,6 +10336,84 @@ const items: TestItem[] = [
       en: "Diary availability has nothing to do with how good a candidate is, so luck of the draw cannot produce a split that clean. One threshold laid across four panels' scores means what a candidate needed to score depended on which panel they sat in front of.",
     },
   },
+  /*
+    ---- Figured items ----
+
+    The proof slice. Two of them, and one is SOUND on purpose: if every item
+    carrying a chart were a trap, the chart itself would be the tell, and the
+    mode would be answerable without reading. That is the hedge rule applied to
+    a new dimension, and it is the kind of thing this bank has broken before.
+
+    Both sets of numbers are built to show a shape, not measured, and the
+    figure says so on screen because `ItemFigure` carries no provenance here.
+  */
+  {
+    id: "fig-sp-clinics",
+    scenario: {
+      en: "Two clinics report their success rates for the same operation. Clinic B comes out well ahead overall, so the region recommends it.",
+    },
+    trap: "simpsons-paradox",
+    explanation: {
+      en: "Split by how difficult the cases were, Clinic A is ahead in both. B looks better overall only because it took far more of the easy ones.",
+    },
+    figure: {
+      data: {
+        type: "rates",
+        metricLabel: { en: "Success rate" },
+        higherIsBetter: true,
+        groups: [
+          { id: "A", label: { en: "Clinic A" }, short: { en: "A" } },
+          { id: "B", label: { en: "Clinic B" }, short: { en: "B" } },
+        ],
+        strata: [
+          { id: "easy", label: { en: "Straightforward cases" } },
+          { id: "hard", label: { en: "Difficult cases" } },
+        ],
+        observations: [
+          { groupId: "A", stratumId: "easy", numerator: 18, denominator: 20 },
+          { groupId: "A", stratumId: "hard", numerator: 36, denominator: 180 },
+          { groupId: "B", stratumId: "easy", numerator: 144, denominator: 180 },
+          { groupId: "B", stratumId: "hard", numerator: 3, denominator: 20 },
+        ],
+      },
+      initialView: { kind: "aggregate" },
+      revealView: { kind: "stratified" },
+    },
+  },
+  {
+    id: "fig-sound-clinics",
+    scenario: {
+      en: "Two clinics report their success rates for the same operation. Clinic B comes out ahead overall, and the region recommends it.",
+    },
+    trap: null,
+    explanation: {
+      en: "Split by how difficult the cases were, B is ahead in both groups as well. The overall number is pointing the same way as the parts, so there is nothing hiding in the mix here.",
+    },
+    figure: {
+      data: {
+        type: "rates",
+        metricLabel: { en: "Success rate" },
+        higherIsBetter: true,
+        groups: [
+          { id: "A", label: { en: "Clinic A" }, short: { en: "A" } },
+          { id: "B", label: { en: "Clinic B" }, short: { en: "B" } },
+        ],
+        strata: [
+          { id: "easy", label: { en: "Straightforward cases" } },
+          { id: "hard", label: { en: "Difficult cases" } },
+        ],
+        observations: [
+          { groupId: "A", stratumId: "easy", numerator: 18, denominator: 20 },
+          { groupId: "A", stratumId: "hard", numerator: 36, denominator: 180 },
+          { groupId: "B", stratumId: "easy", numerator: 19, denominator: 20 },
+          { groupId: "B", stratumId: "hard", numerator: 45, denominator: 180 },
+        ],
+      },
+      initialView: { kind: "aggregate" },
+      revealView: { kind: "stratified" },
+    },
+  },
+
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

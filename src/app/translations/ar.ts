@@ -6765,4 +6765,13 @@ export const ar: Record<string, string> = {
   "This is sound. The order here is not random but deliberately built from prior qualifying results, so the early performers really were the lower-ranked ones, and a gap by position is exactly what the seeding was designed to produce.": "هذا سليم. فالترتيب هنا ليس عشوائيا بل مبنيّ عمدا على نتائج التصفيات السابقة، ومن ثم كان أوائل الظاهرين هم فعلا الأدنى ترتيبا، والفارق بحسب الموقع هو بالضبط ما صُمّم هذا الترتيب لإنتاجه.",
   "A journal randomised the order in which reviewers received a batch of manuscripts and compared scores by position. The scores were indistinguishable across positions, and the editors reported that they found no order effect in their process.": "عشوأت مجلة الترتيب الذي يتسلّم به المحكّمون دفعة من المخطوطات، ثم قارنت الدرجات بحسب الموقع. فجاءت الدرجات غير قابلة للتمييز بين المواقع، وأفادت هيئة التحرير بأنها لم تجد أثرا للترتيب في إجراءاتها.",
   "This is sound. The order was randomised and the comparison was made, and it came out flat. An order effect is something to test for rather than something to assume, and reporting an absence found by looking is a result.": "هذا سليم. فقد عُشوئ الترتيب وأُجريت المقارنة فجاءت مستوية. وأثر الترتيب أمر يُختبَر لا يُفترَض، والإبلاغ عن غياب تبيّن بالنظر هو في ذاته نتيجة.",
+  "Two clinics report their success rates for the same operation. Clinic B comes out well ahead overall, so the region recommends it.": "عيادتان تنشران معدل نجاحهما في العملية نفسها. العيادة B متقدمة بفارق واضح في الإجمالي، فأوصت بها المنطقة.",
+  "Split by how difficult the cases were, Clinic A is ahead in both. B looks better overall only because it took far more of the easy ones.": "بالفصل حسب صعوبة الحالات، العيادة A متقدمة في المجموعتين. لا تبدو B أفضل في الإجمالي إلا لأنها تولّت حالات سهلة أكثر بكثير.",
+  "Clinic A": "العيادة A",
+  "Clinic B": "العيادة B",
+  "Straightforward cases": "حالات سهلة",
+  "Difficult cases": "حالات صعبة",
+  "Two clinics report their success rates for the same operation. Clinic B comes out ahead overall, and the region recommends it.": "عيادتان تنشران معدل نجاحهما في العملية نفسها. العيادة B متقدمة في الإجمالي، وأوصت بها المنطقة.",
+  "Split by how difficult the cases were, B is ahead in both groups as well. The overall number is pointing the same way as the parts, so there is nothing hiding in the mix here.": "بالفصل حسب صعوبة الحالات، B متقدمة في المجموعتين أيضًا. الرقم الإجمالي يشير في الاتجاه نفسه الذي تشير إليه الأجزاء: لا شيء مختبئ في الخلط هنا.",
+  "Numbers built to show the shape, not measured from anything.": "أرقام بُنيت لإظهار الشكل، لا مقيسة من شيء.",
 };

@@ -24,6 +24,7 @@ import {
   todayRunDay,
 } from "../app/dailyRun";
 import { buildRunStrip, stripGlyphs } from "./runShare";
+import { ItemFigureView } from "./ItemFigureView";
 import { appUrl, currentOrigin } from "../app/shareLinks";
 import { drawDailyRun } from "../srs/dailyRun";
 
@@ -427,6 +428,24 @@ export function CalibrationRunView({
         className="cf-enter-sm rounded-lg border border-rule bg-paper-2 p-4"
       >
         <p className="text-[15px] leading-relaxed text-ink">{t(item.scenario)}</p>
+
+        {/*
+          THE REVERSAL, IN THE MODE A PLAYER REPEATS FOREVER.
+
+          A puzzle is a chart whose obvious reading is wrong, committed to under
+          a stake, then redrawn as a second view of the same data. There are 73
+          of those, and every repeatable surface drew from a bank that was
+          entirely prose: the product's own thesis, abandoned by everything a
+          player does after the deck runs out.
+
+          The figure follows the beat rather than sitting beside it. Before the
+          call it shows what the reader is judging; once the verdict is in, the
+          same data redrawn. Nothing about the numbers changes, only what is
+          drawn from them.
+        */}
+        {item.figure ? (
+          <ItemFigureView figure={item.figure} revealed={showing !== null} />
+        ) : null}
       </div>
 
       {showing ? (

@@ -32,7 +32,17 @@ export function LessonView({
   // drawn at all. A dead "Discuss" link is worse than no link.
   const discussUrl = forumTagUrl(puzzle.slug);
   const examples = lesson.examples ?? [];
-  const hasDeepDive = Boolean(lesson.howItWorks) || examples.length > 0;
+  /*
+    `lesson.body` COUNTS, and leaving it out would be a content deletion
+    disguised as a layout change. Every one of the 73 puzzles today also has
+    `howItWorks` or an example, so the fold always opens and nothing would have
+    been lost. That is a fact about today's deck rather than an invariant: the
+    first puzzle authored with a body and neither of the others would have had
+    its body silently vanish, and no test would have failed, because the schema
+    makes all three optional.
+  */
+  const hasDeepDive =
+    Boolean(lesson.body) || Boolean(lesson.howItWorks) || examples.length > 0;
 
   return (
     <section className="flex flex-col gap-4">
@@ -50,12 +60,6 @@ export function LessonView({
         </span>
         <TagChips tags={puzzle.tags} />
       </div>
-
-      {lesson.body ? (
-        <p className="text-[15px] leading-relaxed text-ink-soft">
-          {t(lesson.body)}
-        </p>
-      ) : null}
 
       <ShareLesson puzzle={puzzle} />
 
@@ -80,8 +84,27 @@ export function LessonView({
       {hasDeepDive ? (
         <details className="group rounded-lg border border-rule bg-paper-2">
           <summary className="flex cursor-pointer list-none items-center justify-between gap-2 rounded-lg px-4 py-3 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand [&::-webkit-details-marker]:hidden">
+            {/*
+              THE LABEL NAMES THE WHOLE FOLD, and it used to name a third of it.
+              It read "See it in the wild", which every one of the ten locales
+              translates as "look at a real example", because when it was
+              written the fold held only `howItWorks` and `examples`. Moving
+              `lesson.body` in made that label the accessible name announced on
+              a disclosure whose first and longest child is neither an example
+              nor in the wild.
+
+              No heading was added to the body itself, deliberately. Its
+              siblings are one thing each, "why it happens" and "where else",
+              so they label cleanly. The body is not one thing across the deck:
+              in `kidney-stones` it is what to ask next time, in `lead-time` a
+              caveat about what the finding does NOT mean, in `four-cards` a
+              correction to how the bias is usually described. A heading true
+              of a few of those would be false on the rest, and this fold
+              already has the normal shape for that: a lead paragraph, then
+              labelled sections.
+            */}
             <span className="font-sans text-[11px] font-semibold uppercase tracking-eyebrow text-ink-soft">
-              {t({ en: "See it in the wild" })}
+              {t({ en: "The longer answer" })}
             </span>
             <svg
               className="h-4 w-4 text-ink-mute transition-transform duration-200 group-open:rotate-180 motion-reduce:transition-none"
@@ -100,6 +123,12 @@ export function LessonView({
           </summary>
 
           <div className="flex flex-col gap-4 border-t border-rule px-4 pb-4 pt-3">
+            {lesson.body ? (
+              <p className="text-[15px] leading-relaxed text-ink-soft">
+                {t(lesson.body)}
+              </p>
+            ) : null}
+
             {lesson.howItWorks ? (
               <div>
                 <div className="mb-1 font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-mute">

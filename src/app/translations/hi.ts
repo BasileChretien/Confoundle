@@ -41,7 +41,7 @@ export const hi: Record<string, string> = {
   "See your score": "अपना स्कोर देखें",
   "The skill": "यह कौशल",
   "Where this shows up": "यह कहाँ दिखता है",
-  "See it in the wild": "इसे असल जीवन में देखें",
+  "The longer answer": "विस्तार से",
   "Why it happens": "ऐसा क्यों होता है",
   "Same trap, other places": "वही जाल, दूसरी जगहों पर",
   Source: "स्रोत",

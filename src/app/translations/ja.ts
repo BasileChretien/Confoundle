@@ -42,7 +42,7 @@ export const ja: Record<string, string> = {
   "See your score": "スコアを見る",
   "The skill": "スキル",
   "Where this shows up": "どこで現れるか",
-  "See it in the wild": "実例で見る",
+  "The longer answer": "詳しい話",
   "Why it happens": "なぜ起こるのか",
   "Same trap, other places": "同じ罠、別の場面で",
   Source: "出典",

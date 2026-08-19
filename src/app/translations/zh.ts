@@ -42,7 +42,7 @@ export const zh: Record<string, string> = {
   "See your score": "查看你的得分",
   "The skill": "这项技能",
   "Where this shows up": "它出现在哪里",
-  "See it in the wild": "看看真实案例",
+  "The longer answer": "更完整的解释",
   "Why it happens": "为什么会这样",
   "Same trap, other places": "同样的陷阱，换个地方",
   Source: "来源",

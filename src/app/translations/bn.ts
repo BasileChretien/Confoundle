@@ -41,7 +41,7 @@ export const bn: Record<string, string> = {
   "See your score": "আপনার স্কোর দেখুন",
   "The skill": "দক্ষতাটি",
   "Where this shows up": "এটি কোথায় দেখা যায়",
-  "See it in the wild": "বাস্তবে দেখুন",
+  "The longer answer": "বিস্তারিত উত্তর",
   "Why it happens": "কেন এটি ঘটে",
   "Same trap, other places": "একই ফাঁদ, অন্য জায়গায়",
   Source: "উৎস",

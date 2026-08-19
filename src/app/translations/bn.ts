@@ -21,7 +21,7 @@ export const bn: Record<string, string> = {
   "As every judge marked it": "প্রত্যেক মূল্যায়নকারীর দেওয়া নম্বরে",
   "Against what happens": "বাস্তবে যা ঘটে তার পাশে",
   "The trap worked": "ফাঁদটা কাজ করেছে",
-  "I built that setup to mislead. It worked.": "ওই সাজানোটা আমি বিভ্রান্ত করার জন্যই বানিয়েছি। কাজে দিয়েছে।",
+  "That setup was built to mislead. I do good work.": "ওই সাজানোটা বিভ্রান্ত করার জন্যই তৈরি। কাজটা ভালোই করি আমি।",
   "Wrong, but you barely staked anything. Annoyingly sensible of you.": "ভুল, কিন্তু আপনি প্রায় কিছুই বাজি ধরেননি। বিরক্তিকর রকম বিচক্ষণ।",
   "The slope is drawn from the published correlation of 0.79. Messerli plotted all 23 countries in his own figure; this one draws the trend alone rather than redrawing his points by eye.": "ঢালটি প্রকাশিত সহসম্পর্ক 0.79 থেকে আঁকা। মেসের্লি তাঁর নিজের চিত্রে ২৩টি দেশই বসিয়েছিলেন; এখানে কেবল প্রবণতা আঁকা হয়েছে, চোখের আন্দাজে তাঁর বিন্দুগুলো আবার আঁকা হয়নি।",
   // ---- UI chrome (buttons, labels, section headers) ----
@@ -214,7 +214,7 @@ export const bn: Record<string, string> = {
     "প্রতিদিন একটি নতুন ধাঁধা। ধারাবাহিকতা ধরে রাখুন।",
   "Certain, and correct. I shall need a moment.": "নিশ্চিত, এবং সঠিক। আমাকে একটু সময় দিন।",
   "Spotted, and without much fuss. Disappointing.": "ধরে ফেললেন, তাও সহজেই। হতাশাজনক।",
-  "You said you were guessing. You were not guessing.": "বলেছিলেন অনুমান করছেন। আপনি অনুমান করছিলেন না।",
+  "Barely staked, and still right. I liked my chances there.": "বাজি নামমাত্র, তবু ঠিক। ওখানে সুযোগটা আমারই ছিল।",
   "Certain, and wrong. Those are the ones I keep.": "নিশ্চিত, এবং ভুল। এগুলোই আমি মনে রাখি।",
   "So does almost everyone. That's the trap.":
     "প্রায় সবাই তা-ই করে। এটাই ফাঁদ।",

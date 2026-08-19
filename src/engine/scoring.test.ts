@@ -248,3 +248,77 @@ describe("the reaction lines claim nothing about the population", () => {
     expect(new Set(LINES).size).toBe(LINES.length);
   });
 });
+
+/**
+ * WHEREVER THE CHARACTER SPEAKS, ITS NAME IS ON IT.
+ *
+ * `reactionFor` returns first-person lines now, and there are two call sites,
+ * not one. The reveal got the mark and the review screen did not, so a reviewer
+ * met "Those are the ones I keep" with no speaker attached: a product talking
+ * about itself rather than a character talking to them. The previous copy was
+ * neutral and third person, so it was safe unattributed; these lines are not,
+ * and nothing structural noticed the difference.
+ *
+ * The scan is the `declaredColors` shape: it finds the call sites by reading the
+ * sources rather than from a list here, so a third one added later is covered
+ * without its author knowing this test exists. What it proves is that the two
+ * appear in the same file, which is weaker than proving they are adjacent on
+ * screen. That is the honest limit of a text scan, and the alternative is a
+ * browser this repo does not have.
+ */
+describe("the character is never anonymous", () => {
+  const SOURCES = import.meta.glob("./**/*.tsx", {
+    query: "?raw",
+    import: "default",
+    eager: true,
+  }) as Record<string, string>;
+
+  const strip = (src: string) =>
+    src.replace(/\/\*[\s\S]*?\*\//g, "").replace(/\/\/.*$/gm, "");
+
+  const callSites = Object.entries(SOURCES).filter(([, src]) =>
+    /reactionFor\(/.test(strip(src)),
+  );
+
+  it("found the call sites by reading, not from a list", () => {
+    // A scan that matched nothing would pass every check below.
+    expect(Object.keys(SOURCES).length).toBeGreaterThan(20);
+    expect(callSites.length).toBeGreaterThanOrEqual(2);
+  });
+
+  it.each(callSites.map(([path]) => path))(
+    "%s names the speaker beside the line",
+    (path) => {
+      const src = strip(SOURCES[path]!);
+      expect(src).toMatch(/ConfounderMark/);
+    },
+  );
+});
+
+/**
+ * A population claim usually arrives carrying a number, and a number is the one
+ * thing a blacklist can see in a language it cannot read.
+ *
+ * The English blacklist above cannot police the nine translations: a translator
+ * could write the local equivalent of "most players" and nothing would fail,
+ * exactly as `hedgeTells.test.ts` cannot police translated puzzle content. This
+ * does not close that hole. It closes the sharpest corner of it, which is the
+ * form the removed line actually took.
+ */
+describe("no reaction line carries a figure, in any language", () => {
+  it("holds across all ten locales", () => {
+    const english = [true, false].flatMap((correct) =>
+      CONFIDENCE_LEVELS.map((c) => reactionFor(correct, c)),
+    );
+    const offenders: string[] = [];
+    for (const [locale, dict] of Object.entries(DICTIONARIES)) {
+      for (const line of english) {
+        const translated = (dict as Record<string, string>)[line];
+        if (translated && /[0-9%]|[٠-٩০-৯]/.test(translated)) {
+          offenders.push(`${locale}: ${translated}`);
+        }
+      }
+    }
+    expect(offenders).toEqual([]);
+  });
+});

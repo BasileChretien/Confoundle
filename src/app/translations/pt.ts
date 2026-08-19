@@ -21,7 +21,7 @@ export const pt: Record<string, string> = {
   "As every judge marked it": "Segundo a nota de todos os avaliadores",
   "Against what happens": "Diante do que acontece",
   "The trap worked": "A armadilha funcionou",
-  "I built that setup to mislead. It worked.": "Construí aquele cenário para enganar. Funcionou.",
+  "That setup was built to mislead. I do good work.": "Aquele cenário foi construído para enganar. Faço bom trabalho.",
   "Wrong, but you barely staked anything. Annoyingly sensible of you.": "Errado, mas quase não apostou nada. Irritantemente sensato.",
   "The slope is drawn from the published correlation of 0.79. Messerli plotted all 23 countries in his own figure; this one draws the trend alone rather than redrawing his points by eye.": "A inclinação foi traçada a partir da correlação publicada de 0,79. Messerli marcou os 23 países na figura dele; esta desenha apenas a tendência, em vez de redesenhar os pontos a olho.",
   // ---- UI chrome (buttons, labels, section headers) ----
@@ -214,7 +214,7 @@ export const pt: Record<string, string> = {
     "Um novo desafio todo dia. Mantenha a sequência viva.",
   "Certain, and correct. I shall need a moment.": "Com certeza, e certo. Preciso de um momento.",
   "Spotted, and without much fuss. Disappointing.": "Detectado, e sem grande esforço. Decepcionante.",
-  "You said you were guessing. You were not guessing.": "Disse que estava a adivinhar. Não estava.",
+  "Barely staked, and still right. I liked my chances there.": "Quase nada apostado, e ainda assim certo. Eu tinha hipóteses ali.",
   "Certain, and wrong. Those are the ones I keep.": "Com certeza, e errado. São esses que eu guardo.",
   "So does almost everyone. That's the trap.":
     "Como quase todo mundo. É essa a armadilha.",

@@ -21,7 +21,7 @@ export const fr: Record<string, string> = {
   "As every judge marked it": "Selon la note de tous les correcteurs",
   "Against what happens": "Face à la réalité",
   "The trap worked": "Le piège a fonctionné",
-  "I built that setup to mislead. It worked.": "J'ai bâti ce décor pour tromper. Cela a marché.",
+  "That setup was built to mislead. I do good work.": "Ce décor a été bâti pour tromper. Je fais du bon travail.",
   "Wrong, but you barely staked anything. Annoyingly sensible of you.": "Faux, mais vous n'aviez presque rien misé. D'un raisonnable agaçant.",
   "The slope is drawn from the published correlation of 0.79. Messerli plotted all 23 countries in his own figure; this one draws the trend alone rather than redrawing his points by eye.": "La pente est tracée à partir de la corrélation publiée de 0,79. Messerli avait placé les 23 pays sur sa propre figure ; celle-ci ne trace que la tendance, au lieu de redessiner ses points à vue d'œil.",
   // ---- UI chrome (buttons, labels, section headers) ----
@@ -214,7 +214,7 @@ export const fr: Record<string, string> = {
     "Un nouveau puzzle chaque jour. Ne cassez pas la série.",
   "Certain, and correct. I shall need a moment.": "Certain, et juste. Il me faut un instant.",
   "Spotted, and without much fuss. Disappointing.": "Repéré, et sans effort apparent. Décevant.",
-  "You said you were guessing. You were not guessing.": "Vous disiez deviner. Vous ne deviniez pas.",
+  "Barely staked, and still right. I liked my chances there.": "Presque rien misé, et juste quand même. J'avais mes chances, pourtant.",
   "Certain, and wrong. Those are the ones I keep.": "Certain, et faux. Ce sont ceux-là que je garde.",
   "So does almost everyone. That's the trap.":
     "Comme presque tout le monde. C'est ça, le piège.",

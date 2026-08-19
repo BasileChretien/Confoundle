@@ -22,7 +22,7 @@ export const es: Record<string, string> = {
   "As every judge marked it": "Según la nota de todos los evaluadores",
   "Against what happens": "Frente a lo que ocurre",
   "The trap worked": "La trampa funcionó",
-  "I built that setup to mislead. It worked.": "Construí ese planteamiento para engañar. Funcionó.",
+  "That setup was built to mislead. I do good work.": "Ese planteamiento se construyó para engañar. Hago buen trabajo.",
   "Wrong, but you barely staked anything. Annoyingly sensible of you.": "Incorrecto, pero apenas apostaste nada. Irritantemente sensato.",
   "The slope is drawn from the published correlation of 0.79. Messerli plotted all 23 countries in his own figure; this one draws the trend alone rather than redrawing his points by eye.": "La pendiente está trazada a partir de la correlación publicada de 0,79. Messerli situó los 23 países en su propia figura; esta solo dibuja la tendencia, en vez de recalcar sus puntos a ojo.",
   // ---- Interfaz (botones, etiquetas, encabezados de sección) ----
@@ -215,8 +215,8 @@ export const es: Record<string, string> = {
     "Un puzle nuevo cada día. No rompas la racha.",
   "Certain, and correct. I shall need a moment.": "Con certeza, y acertado. Necesito un momento.",
   "Spotted, and without much fuss. Disappointing.": "Detectado, y sin apenas esfuerzo. Decepcionante.",
-  "You said you were guessing. You were not guessing.": "Dijiste que adivinabas. No adivinabas.",
-  "Certain, and wrong. Those are the ones I keep.": "Con certeza, y equivocado. Esos son los que me quedo.",
+  "Barely staked, and still right. I liked my chances there.": "Apenas apostaste, y aun así acertaste. Yo tenía mis opciones ahí.",
+  "Certain, and wrong. Those are the ones I keep.": "Con certeza, y equivocado. Esos me los quedo.",
   "So does almost everyone. That's the trap.":
     "Como casi todo el mundo. Esa es la trampa.",
   "You sensed something was off, but went with it anyway.":

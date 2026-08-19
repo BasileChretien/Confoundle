@@ -22,7 +22,7 @@ export const ar: Record<string, string> = {
   "As every judge marked it": "بحسب تصحيح كل مقيّم",
   "Against what happens": "مقابل ما يحدث فعلاً",
   "The trap worked": "نجح الفخّ",
-  "I built that setup to mislead. It worked.": "بنيت ذلك العرض للتضليل. وقد نجح.",
+  "That setup was built to mislead. I do good work.": "ذلك العرض بُني للتضليل. عملي متقن.",
   "Wrong, but you barely staked anything. Annoyingly sensible of you.": "خطأ، لكنك لم تراهن بشيء تقريبًا. حصافة مزعجة.",
   "The slope is drawn from the published correlation of 0.79. Messerli plotted all 23 countries in his own figure; this one draws the trend alone rather than redrawing his points by eye.": "رُسم الميل انطلاقاً من معامل الارتباط المنشور 0.79. وقد وضع ميسرلي الدول الثلاث والعشرين جميعها في شكله الخاص، أما هذا الشكل فيرسم الاتجاه وحده بدل إعادة رسم نقاطه بالتقدير.",
   // ---- UI chrome (buttons, labels, section headers) ----
@@ -213,7 +213,7 @@ export const ar: Record<string, string> = {
     "أحجية جديدة كل يوم. حافظ على استمرار السلسلة.",
   "Certain, and correct. I shall need a moment.": "متيقن، ومصيب. امهلني لحظة.",
   "Spotted, and without much fuss. Disappointing.": "كُشف الأمر، وبلا عناء يُذكر. مخيب للآمال.",
-  "You said you were guessing. You were not guessing.": "قلت إنك تخمّن. لم تكن تخمّن.",
+  "Barely staked, and still right. I liked my chances there.": "راهنت بالكاد، وأصبت مع ذلك. كانت لي فرصة هناك.",
   "Certain, and wrong. Those are the ones I keep.": "متيقن، ومخطئ. هؤلاء هم من أحتفظ بهم.",
   "So does almost everyone. That's the trap.":
     "وكذلك يفعل الجميع تقريباً. هذا هو الفخ.",

@@ -374,7 +374,7 @@ export function RevealView({
           */}
           <div className="flex items-start gap-2">
             <span className="mt-px shrink-0">
-              <ConfounderMark size={20} />
+              <ConfounderMark size={22} />
             </span>
             <p className="text-sm text-ink-soft">
               {t({ en: reactionFor(caught, confidence) })}

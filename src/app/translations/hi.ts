@@ -21,7 +21,7 @@ export const hi: Record<string, string> = {
   "As every judge marked it": "जैसा हर जाँचकर्ता ने आँका",
   "Against what happens": "असल में जो होता है उसके सामने",
   "The trap worked": "जाल काम कर गया",
-  "I built that setup to mislead. It worked.": "वह सेटअप मैंने भ्रमित करने के लिए बनाया था। काम कर गया।",
+  "That setup was built to mislead. I do good work.": "वह सेटअप भ्रमित करने के लिए ही बनाया गया था। काम अच्छा करता हूँ मैं।",
   "Wrong, but you barely staked anything. Annoyingly sensible of you.": "गलत, पर आपने कुछ खास नहीं लगाया। चिढ़ाने वाली समझदारी।",
   "The slope is drawn from the published correlation of 0.79. Messerli plotted all 23 countries in his own figure; this one draws the trend alone rather than redrawing his points by eye.": "यह ढाल प्रकाशित सहसंबंध 0.79 से खींची गई है। मेसरली ने अपने चित्र में सभी 23 देश अंकित किए थे; यहाँ केवल रुझान खींचा गया है, उनके बिंदु अंदाज़े से दोबारा नहीं बनाए गए।",
   // ---- UI chrome (buttons, labels, section headers) ----
@@ -213,7 +213,7 @@ export const hi: Record<string, string> = {
     "हर दिन एक नई पहेली। सिलसिला बनाए रखें।",
   "Certain, and correct. I shall need a moment.": "पूरा यकीन, और सही भी। मुझे एक पल चाहिए।",
   "Spotted, and without much fuss. Disappointing.": "पकड़ लिया, वह भी बिना मेहनत के। निराशाजनक।",
-  "You said you were guessing. You were not guessing.": "आपने कहा था कि आप अंदाज़ा लगा रहे हैं। आप अंदाज़ा नहीं लगा रहे थे।",
+  "Barely staked, and still right. I liked my chances there.": "दांव नाम का, फिर भी सही। वहाँ मौका तो मेरा था।",
   "Certain, and wrong. Those are the ones I keep.": "पूरा यकीन, और गलत। ऐसे ही मुझे याद रहते हैं।",
   "So does almost everyone. That's the trap.":
     "लगभग हर कोई ऐसा ही करता है। यही तो जाल है।",

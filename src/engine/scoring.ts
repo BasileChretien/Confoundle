@@ -98,6 +98,16 @@ export function scoreFor(correct: boolean, c: Confidence): number {
  * character with a stake in your being wrong cannot be allowed near the
  * numbers, and being barred from them is the better joke anyway.
  *
+ * IT DOES NOT DISPUTE THE PLAYER'S REPORT OF THEIR OWN BELIEF, which is the
+ * third rule and the one this file is least able to afford breaking. The first
+ * draft of the hunch-and-right line read "You said you were guessing. You were
+ * not guessing." That is a flat contradiction of a self-report, on the one
+ * stake this same docstring says two paragraphs above must be taken at face
+ * value, in a mode whose entire premise is that honest reporting is rewarded.
+ * The app cannot know whether a low-staked correct call came from real signal
+ * or from luck, and telling a reader their stated uncertainty was false is a
+ * strange way to ask them to keep stating it. It concedes the outcome instead.
+ *
  * And it may claim credit for the SETUP, which this deck authored, never for
  * the player's particular choice, which it did not. `reactionFor(false,
  * "sure")` fires for any wrong answer, not only for the flagged intuitive
@@ -109,9 +119,9 @@ export function reactionFor(correct: boolean, c: Confidence): string {
   if (correct) {
     if (c === "certain") return "Certain, and correct. I shall need a moment.";
     if (c === "sure") return "Spotted, and without much fuss. Disappointing.";
-    return "You said you were guessing. You were not guessing.";
+    return "Barely staked, and still right. I liked my chances there.";
   }
   if (c === "certain") return "Certain, and wrong. Those are the ones I keep.";
-  if (c === "sure") return "I built that setup to mislead. It worked.";
+  if (c === "sure") return "That setup was built to mislead. I do good work.";
   return "Wrong, but you barely staked anything. Annoyingly sensible of you.";
 }

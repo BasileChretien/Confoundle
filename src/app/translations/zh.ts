@@ -22,7 +22,7 @@ export const zh: Record<string, string> = {
   "As every judge marked it": "所有评分者的评定",
   "Against what happens": "与实际情况相比",
   "The trap worked": "陷阱奏效了",
-  "I built that setup to mislead. It worked.": "那个设置就是我用来误导的。奏效了。",
+  "That setup was built to mislead. I do good work.": "那个设置本就是用来误导的。我的手艺不错。",
   "Wrong, but you barely staked anything. Annoyingly sensible of you.": "答错了，但你几乎没下注。理智得让人恼火。",
   "The slope is drawn from the published correlation of 0.79. Messerli plotted all 23 countries in his own figure; this one draws the trend alone rather than redrawing his points by eye.": "这条斜线是依据已发表的相关系数0.79画出的。梅塞利在他自己的图中标出了全部23个国家；本图只画趋势，而不凭目测重绘他的散点。",
   // ---- UI chrome (buttons, labels, section headers) ----
@@ -212,7 +212,7 @@ export const zh: Record<string, string> = {
     "每天一道新谜题。别让连胜中断。",
   "Certain, and correct. I shall need a moment.": "十分确定，而且答对了。容我缓一缓。",
   "Spotted, and without much fuss. Disappointing.": "被你看穿了，还毫不费力。真扫兴。",
-  "You said you were guessing. You were not guessing.": "你说你是猜的。你不是在猜。",
+  "Barely staked, and still right. I liked my chances there.": "几乎没下注，却还是答对了。那一题我本来挺有把握的。",
   "Certain, and wrong. Those are the ones I keep.": "十分确定，却答错了。这种我会记住。",
   "So does almost everyone. That's the trap.": "几乎所有人都一样。这就是陷阱。",
   "You sensed something was off, but went with it anyway.":

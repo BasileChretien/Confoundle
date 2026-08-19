@@ -7,7 +7,7 @@ import { TAGS } from "../puzzles/tags";
 import type { Puzzle, TagId } from "../puzzles/schema";
 import type { SkillProgress } from "../srs/schedule";
 import { getStats } from "../app/session";
-import { playedDailyRun, todayRunDay } from "../app/dailyRun";
+import { playedDailyRun, runNumber, todayRunDay } from "../app/dailyRun";
 import { fillSlots } from "./charts/announce";
 import { AboutContent } from "./AboutView";
 import { Confounder, confounderStateFor } from "./Confounder";
@@ -229,7 +229,7 @@ export function HomeView({
       {playedToday ? null : (
         <PrimaryCard
           tone="gold"
-          eyebrow={fillSlots(t({ en: "Today's run, #{n}" }), { n: nf.format(runDay) })}
+          eyebrow={fillSlots(t({ en: "Today's run, #{n}" }), { n: nf.format(runNumber(runDay)) })}
           title={t({ en: "The same eight calls as everybody else" })}
           onClick={onStartDaily}
         />
@@ -245,7 +245,7 @@ export function HomeView({
       {playedToday ? (
         <PrimaryCard
           tone="brand"
-          eyebrow={fillSlots(t({ en: "Today's run, #{n}" }), { n: nf.format(runDay) })}
+          eyebrow={fillSlots(t({ en: "Today's run, #{n}" }), { n: nf.format(runNumber(runDay)) })}
           title={t({ en: "Played today. Play it again for practice." })}
           onClick={onStartDaily}
         />

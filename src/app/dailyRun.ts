@@ -21,6 +21,24 @@ import { todayDayNumber } from "./session";
  */
 const KEY = "confoundle:dailyrun:v1";
 
+/**
+ * The number a player sees, which is not the number the draw is seeded with.
+ *
+ * The seed is days since the Unix epoch, because everything day-keyed in this
+ * app already is and two of them agreeing without parsing is worth more than a
+ * pretty integer. Shown raw, that reads "Today's run, #20680", which looks like
+ * a bug rather than a counter and invites nobody to compare anything.
+ *
+ * So the label counts from the day the daily itself started. The two numbers
+ * must never be confused: `todayRunDay()` seeds the draw and keys the record,
+ * `runNumber` is for human eyes and for the strip people paste at each other.
+ */
+const FIRST_RUN_DAY = Math.floor(Date.UTC(2026, 7, 19) / 86_400_000);
+
+export function runNumber(day: number): number {
+  return day - FIRST_RUN_DAY + 1;
+}
+
 /** Days since the epoch, UTC, the same number every other day-keyed thing uses. */
 export function todayRunDay(): number {
   return todayDayNumber();
@@ -61,4 +79,28 @@ export function recordDailyRun(day: number = todayRunDay()): void {
   } catch {
     // A full or blocked store costs the record, never the run just played.
   }
+}
+
+/**
+ * May this finished run touch the persisted record?
+ *
+ * A PREDICATE RATHER THAN AN `if` IN THE VIEW, because the `if` version had no
+ * guard: the write happens after eight answers, which nothing can reach through
+ * a component that holds its own state, so removing the check left every test
+ * green. That is the same seam `StakeReadout` and `CrowdLinesView` needed, for
+ * the same reason.
+ *
+ * WHAT IT REFUSES is the daily replayed after its scored attempt.
+ * `drawDailyRun` is pure in the day, so that replay is the SAME EIGHT ITEMS IN
+ * THE SAME ORDER, and the player has just been shown every answer. `recordRun`
+ * stores a count of correct calls, which was the fix for two records reachable
+ * by a staking pattern; it is confidence-blind and not memory-blind, so a
+ * guaranteed 8 of 8 would go in as a personal best.
+ *
+ * The ordinary calibration run is safe without this, because it passes
+ * `recentlySeen()` and essentially never repeats, and a first daily attempt is
+ * a fresh draw like any other. Only the guaranteed repeat is refused.
+ */
+export function runCountsTowardRecord(daily: boolean, scored: boolean): boolean {
+  return !daily || scored;
 }

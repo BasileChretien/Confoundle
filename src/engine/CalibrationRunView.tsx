@@ -16,7 +16,13 @@ import {
   type RunAnswer,
 } from "../srs/calibrationRun";
 import { recentlySeen, recordRun } from "../app/runStats";
-import { playedDailyRun, recordDailyRun, todayRunDay } from "../app/dailyRun";
+import {
+  playedDailyRun,
+  recordDailyRun,
+  runCountsTowardRecord,
+  runNumber,
+  todayRunDay,
+} from "../app/dailyRun";
 import { drawDailyRun } from "../srs/dailyRun";
 
 const choiceButton =
@@ -189,7 +195,7 @@ export function CalibrationRunView({
     a beat comes to say one thing on the way in and another on the way out.
   */
   const runLabel = daily
-    ? fillSlots(t({ en: "Today's run, #{n}" }), { n: nf.format(day) })
+    ? fillSlots(t({ en: "Today's run, #{n}" }), { n: nf.format(runNumber(day)) })
     : t({ en: "Calibration run" });
 
   const item = items[at];
@@ -213,6 +219,26 @@ export function CalibrationRunView({
       // cannot inflate the count.
       const graded = gradeRun(all);
       if (daily && scored) recordDailyRun(day);
+      /*
+        A REPLAY OF THE DAILY WRITES NOTHING, and leaving that out reopened the
+        defect this mode has now had removed twice.
+
+        `drawDailyRun` is pure in the day, so the practice attempt after the
+        scored one returns the SAME EIGHT ITEMS IN THE SAME ORDER, and the
+        player has just been shown every answer. `recordRun` fired regardless,
+        so a guaranteed 8 of 8 went into `bestCorrect` and the app said "A new
+        personal best." The record is confidence-blind, which was the fix for
+        the last two, and it is not memory-blind: chasing it could mean
+        remembering eight answers rather than reading better.
+
+        The ordinary calibration run is safe from this because it passes
+        `recentlySeen()` and essentially never repeats. Only this path is a
+        guaranteed repeat, so only this path is refused.
+      */
+      if (!runCountsTowardRecord(daily, scored)) {
+        setSaved(null);
+        return;
+      }
       const rec = recordRun(graded.correct, items.map((i) => i.id));
       setSaved({ bestCorrect: rec.stats.bestCorrect, isBest: rec.isBest });
     }
@@ -231,11 +257,6 @@ export function CalibrationRunView({
       <section className="flex flex-col gap-4">
         <header className="flex flex-col gap-2">
           <Badge tone="brand">{runLabel}</Badge>
-          {daily && !scored ? (
-            <p className="text-[13px] text-ink-soft">
-              {t({ en: "Practice. Today's run was already recorded." })}
-            </p>
-          ) : null}
           <h2 className="font-display text-[28px] font-semibold leading-[1.05] text-ink">
             {fillSlots(t({ en: "Score: {n}" }), { n: nf.format(graded.score) })}
           </h2>
@@ -308,6 +329,16 @@ export function CalibrationRunView({
     <section className="flex flex-col gap-4">
       <header className="flex flex-col gap-2">
         <Badge tone="brand">{runLabel}</Badge>
+        {/*
+          BEFORE THE FIRST CALL, NOT AFTER THE LAST. A player deciding how hard
+          to think deserves to know the attempt is not counted, and telling them
+          on the results screen is telling them once it cannot matter.
+        */}
+        {daily && !scored ? (
+          <p className="w-full text-[13px] text-ink-soft">
+            {t({ en: "Practice. Today's run was already recorded." })}
+          </p>
+        ) : null}
         <p className="font-sans text-[11px] font-semibold uppercase tracking-eyebrow text-ink-mute">
           {fillSlots(t({ en: "{at} of {total}" }), {
             at: nf.format(at + 1),

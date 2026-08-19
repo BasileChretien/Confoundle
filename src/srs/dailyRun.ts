@@ -1,4 +1,4 @@
-import { drawRound, ROUND_SIZE } from "./trapHunt";
+import { ROUND_SIZE } from "./trapHunt";
 import { TEST_ITEMS, type TestItem } from "../puzzles/testItems";
 
 /**
@@ -31,41 +31,52 @@ import { TEST_ITEMS, type TestItem } from "../puzzles/testItems";
  * function of WHICH items exist rather than of how they are arranged, so only a
  * deliberate change to the bank can move it.
  *
- * WHAT IS STILL TRUE AND WORTH SAYING PLAINLY: adding or removing an item
- * re-rolls the current day for anybody who loads afterwards, so two friends
- * across a mid-day deploy would compare strips drawn from different sets. That
- * is the cross-denominator defect this project has now fixed three times, in a
- * smaller form, and the fix if it ever bites is a frozen id list per day rather
- * than a live draw. It is not worth that machinery until the bank changes often
- * enough to matter.
+ * ADDING AN ITEM USED TO RE-ROLL THE WHOLE DAY, and the review that found it
+ * checked rather than argued: `testItems.ts` changed on sixteen of the last
+ * twenty-seven days, five times in one of them. A shuffle over the bank makes
+ * every draw a function of the bank's SIZE, so one new item moved all eight.
+ * The claim that a frozen list was not yet worth the machinery did not survive
+ * its own commit history.
+ *
+ * So the draw is not a shuffle. Each item is scored by hashing its id together
+ * with the day, and the eight lowest scores are today's. That is stable under
+ * insertion: a new item changes the day only if it happens to score into the
+ * top eight, which is eight chances in a thousand rather than a certainty. It
+ * is also independent of the bank's order outright, so the sort that used to be
+ * needed to survive a reformat is no longer load-bearing.
+ *
+ * What remains, stated rather than buried: REMOVING an item that was in today's
+ * eight does change that day, and there is no cheap way around that short of
+ * pinning a list. It is rarer than adding and the consequence is cosmetic.
  */
 
 /**
- * A small deterministic generator, seeded from the day.
+ * A 32-bit hash of one id under one day.
  *
- * mulberry32: thirty-two bits of state, well distributed for a shuffle, and
- * short enough to read. `Math.random` cannot be used because the whole point is
- * that two devices agree.
+ * FNV-1a over the id, then mixed with the day and avalanched, so two adjacent
+ * days give unrelated orderings rather than a rotation of the same one. It has
+ * to be a hash rather than a seeded stream because the whole property wanted
+ * here is that an item's score does not depend on which other items exist.
  */
-export function dailyRandom(day: number): () => number {
-  // `| 0` keeps the state a 32-bit integer, and the offset stops day 0 from
-  // seeding a generator whose first outputs are degenerate.
-  let a = (day + 0x6d2b79f5) | 0;
-  return () => {
-    a = (a + 0x6d2b79f5) | 0;
-    let t = Math.imul(a ^ (a >>> 15), 1 | a);
-    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
-    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-  };
+export function itemScore(day: number, id: string): number {
+  let h = 0x811c9dc5 ^ (day | 0);
+  for (let i = 0; i < id.length; i++) {
+    h ^= id.charCodeAt(i);
+    h = Math.imul(h, 0x01000193);
+  }
+  h = Math.imul(h ^ (h >>> 15), 0x2545f491);
+  return (h ^ (h >>> 13)) >>> 0;
 }
 
-/** The bank in an order no edit to its file can change. */
-const stableBank = (): readonly TestItem[] =>
-  [...TEST_ITEMS].sort((a, b) => a.id.localeCompare(b.id));
-
-/** Today's eight, or any given day's. Pure in `day`. */
+/**
+ * Today's eight, or any given day's. Pure in `day`, and independent of both the
+ * bank's order and, for an insertion, its size.
+ */
 export function drawDailyRun(day: number, size = ROUND_SIZE): TestItem[] {
-  // No `exclude`: see the header. Everybody draws from the same pool or the
-  // day is not shared.
-  return drawRound(dailyRandom(day), size, stableBank()).items;
+  return [...TEST_ITEMS]
+    .map((item) => ({ item, score: itemScore(day, item.id) }))
+    // Ties broken by id so the order is total, since two ids can collide.
+    .sort((a, b) => a.score - b.score || a.item.id.localeCompare(b.item.id))
+    .slice(0, size)
+    .map((x) => x.item);
 }

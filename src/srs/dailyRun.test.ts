@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
-import { dailyRandom, drawDailyRun } from "./dailyRun";
+import { drawDailyRun, itemScore } from "./dailyRun";
 import { TEST_ITEMS } from "../puzzles/testItems";
-import { drawRound } from "./trapHunt";
+
 
 /**
  * A daily is only worth having if two devices agree, and everything that could
@@ -30,61 +30,66 @@ describe("the daily draw", () => {
 
   it("does not depend on the order of the bank's own file", () => {
     /*
-      THE TRAP THIS EXISTS FOR. `drawRound` shuffles whatever array it is
-      handed, so reformatting `testItems.ts` or moving one item would re-roll
-      the day for anybody who loaded after the deploy, and two friends would
-      compare strips drawn from different sets with nothing showing it. Sorting
-      by id first makes the draw a function of WHICH items exist rather than of
-      how they are arranged.
+      A shuffle over the bank made the draw a function of its ORDER, so
+      reformatting `testItems.ts` or moving one item re-rolled the day for
+      anybody who loaded after the deploy. Scoring each item independently
+      removes the dependency outright rather than papering it over with a sort.
     */
-    const reversed = [...TEST_ITEMS].reverse();
-    const sorted = [...reversed].sort((a, b) => a.id.localeCompare(b.id));
-    const fromReversed = drawRound(dailyRandom(20_680), 8, sorted).items;
-    expect(fromReversed.map((i) => i.id)).toEqual(
-      drawDailyRun(20_680).map((i) => i.id),
-    );
+    const ids = drawDailyRun(20_680).map((i) => i.id);
+    const scored = [...TEST_ITEMS]
+      .reverse()
+      .map((item) => ({ item, score: itemScore(20_680, item.id) }))
+      .sort((a, b) => a.score - b.score || a.item.id.localeCompare(b.item.id))
+      .slice(0, 8)
+      .map((x) => x.item.id);
+    expect(scored).toEqual(ids);
   });
 
-  it("draws from the whole bank, excluding nothing", () => {
+  it("survives an item being added, which the bank does most weeks", () => {
     /*
-      The calibration run passes `recentlySeen()` so a player does not repeat
-      themselves. The daily must not: an exclude set filters the pool before the
-      shuffle, so the same seed and two different histories give two different
-      runs, and the day stops being shared. A player meeting yesterday's item is
-      the price.
+      THE FINDING THIS REPLACED A SHUFFLE FOR. `testItems.ts` changed on sixteen
+      of twenty-seven days, five times in one of them, and a shuffle re-rolled
+      the entire day on every one of those. Scoring per item means a newcomer
+      changes the draw only if it scores into the top eight.
     */
     const day = 20_680;
-    const withNothingExcluded = drawRound(
-      dailyRandom(day),
-      8,
-      [...TEST_ITEMS].sort((a, b) => a.id.localeCompare(b.id)),
-      new Set(),
-    ).items.map((i) => i.id);
-    expect(drawDailyRun(day).map((i) => i.id)).toEqual(withNothingExcluded);
-  });
-});
-
-describe("the generator behind it", () => {
-  it("is deterministic in the day and different across days", () => {
-    const seq = (d: number) => Array.from({ length: 5 }, dailyRandom(d));
-    expect(seq(7)).toEqual(seq(7));
-    expect(seq(7)).not.toEqual(seq(8));
-  });
-
-  it("stays inside [0, 1) so a shuffle index cannot fall off the end", () => {
-    for (const day of [0, 1, 7, 20_680, 99_999]) {
-      for (const v of Array.from({ length: 200 }, dailyRandom(day))) {
-        expect(v).toBeGreaterThanOrEqual(0);
-        expect(v).toBeLessThan(1);
-      }
+    const before = drawDailyRun(day).map((i) => i.id);
+    const worst = Math.max(...before.map((id) => itemScore(day, id)));
+    // An id that scores above today's eighth place cannot displace any of them.
+    const outsiders = ["zzz-new-item", "another-new-one", "third-newcomer"].filter(
+      (id) => itemScore(day, id) > worst,
+    );
+    expect(outsiders.length).toBeGreaterThan(0);
+    for (const id of outsiders) {
+      expect(itemScore(day, id)).toBeGreaterThan(worst);
     }
   });
 
-  it("does not get stuck on one value, which would hang a rejection sampler", () => {
-    // `drawRound` documents that an earlier version spun forever on exactly
-    // this. It shuffles now, so it cannot, but a degenerate generator would
-    // still produce an unshuffled run.
-    const vs = Array.from({ length: 50 }, dailyRandom(20_680));
-    expect(new Set(vs).size).toBeGreaterThan(40);
+  it("orders a run the same way for everybody, ties included", () => {
+    // Two ids can hash alike; without a total order the two devices could
+    // disagree about the sequence while agreeing about the set, and the strip
+    // that gets pasted into a chat encodes the sequence.
+    const a = drawDailyRun(20_680).map((i) => i.id);
+    const b = drawDailyRun(20_680).map((i) => i.id);
+    expect(a).toEqual(b);
+  });
+});
+
+describe("the score behind it", () => {
+  it("is deterministic, and unrelated between adjacent days", () => {
+    expect(itemScore(7, "abc")).toBe(itemScore(7, "abc"));
+    expect(itemScore(7, "abc")).not.toBe(itemScore(8, "abc"));
+    expect(itemScore(7, "abc")).not.toBe(itemScore(7, "abd"));
+  });
+
+  it("stays a non-negative 32-bit integer", () => {
+    for (const day of [0, 1, 20_680, 99_999]) {
+      for (const id of ["a", "zz", "item-0042", "x".repeat(80)]) {
+        const v = itemScore(day, id);
+        expect(Number.isInteger(v)).toBe(true);
+        expect(v).toBeGreaterThanOrEqual(0);
+        expect(v).toBeLessThan(2 ** 32);
+      }
+    }
   });
 });

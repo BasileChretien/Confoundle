@@ -21,8 +21,8 @@ export const bn: Record<string, string> = {
   "As every judge marked it": "প্রত্যেক মূল্যায়নকারীর দেওয়া নম্বরে",
   "Against what happens": "বাস্তবে যা ঘটে তার পাশে",
   "The trap worked": "ফাঁদটা কাজ করেছে",
-  "The setup was built to make that one feel obvious.": "প্রশ্নটা এমনভাবেই সাজানো যাতে ওই উত্তরটাই স্বাভাবিক মনে হয়।",
-  "Wrong, but you staked almost nothing on it. That is the wager working.": "উত্তর ভুল, কিন্তু আপনি প্রায় কিছুই বাজি ধরেননি। বাজির কাজটা ঠিক এটাই।",
+  "That setup was built to mislead. I do good work.": "ওই সাজানোটা বিভ্রান্ত করার জন্যই তৈরি। কাজটা ভালোই করি আমি।",
+  "Wrong, but you barely staked anything. Annoyingly sensible of you.": "ভুল, কিন্তু আপনি প্রায় কিছুই বাজি ধরেননি। বিরক্তিকর রকম বিচক্ষণ।",
   "The slope is drawn from the published correlation of 0.79. Messerli plotted all 23 countries in his own figure; this one draws the trend alone rather than redrawing his points by eye.": "ঢালটি প্রকাশিত সহসম্পর্ক 0.79 থেকে আঁকা। মেসের্লি তাঁর নিজের চিত্রে ২৩টি দেশই বসিয়েছিলেন; এখানে কেবল প্রবণতা আঁকা হয়েছে, চোখের আন্দাজে তাঁর বিন্দুগুলো আবার আঁকা হয়নি।",
   // ---- UI chrome (buttons, labels, section headers) ----
   "n = {count}": "n = {count}",
@@ -212,11 +212,10 @@ export const bn: Record<string, string> = {
   "You beat {pct}% of players on this puzzle": "এই ধাঁধায় আপনি {pct}% খেলোয়াড়কে হারিয়েছেন",
   "A new puzzle every day. Keep the streak alive.":
     "প্রতিদিন একটি নতুন ধাঁধা। ধারাবাহিকতা ধরে রাখুন।",
-  "Sharp eye, and you called it.": "তীক্ষ্ণ চোখ, আর আপনি আগেই বলেছিলেন।",
-  "Nicely spotted.": "দারুণ ধরেছেন।",
-  "Good instinct.": "ভালো সহজাত বোধ।",
-  "Ouch. Confidently wrong, the classic trap.":
-    "আহ্‌। আত্মবিশ্বাসের সঙ্গে ভুল, চিরচেনা ফাঁদ।",
+  "Certain, and correct. I shall need a moment.": "নিশ্চিত, এবং সঠিক। আমাকে একটু সময় দিন।",
+  "Spotted, and without much fuss. Disappointing.": "ধরে ফেললেন, তাও সহজেই। হতাশাজনক।",
+  "Barely staked, and still right. I liked my chances there.": "বাজি নামমাত্র, তবু ঠিক। ওখানে সুযোগটা আমারই ছিল।",
+  "Certain, and wrong. Those are the ones I keep.": "নিশ্চিত, এবং ভুল। এগুলোই আমি মনে রাখি।",
   "So does almost everyone. That's the trap.":
     "প্রায় সবাই তা-ই করে। এটাই ফাঁদ।",
   "You sensed something was off, but went with it anyway.":

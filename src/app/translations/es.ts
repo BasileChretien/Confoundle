@@ -22,8 +22,8 @@ export const es: Record<string, string> = {
   "As every judge marked it": "Según la nota de todos los evaluadores",
   "Against what happens": "Frente a lo que ocurre",
   "The trap worked": "La trampa funcionó",
-  "The setup was built to make that one feel obvious.": "El planteamiento estaba construido para que esa respuesta pareciera obvia.",
-  "Wrong, but you staked almost nothing on it. That is the wager working.": "Incorrecto, pero apostaste casi nada. Para eso sirve la apuesta.",
+  "That setup was built to mislead. I do good work.": "Ese planteamiento se construyó para engañar. Hago buen trabajo.",
+  "Wrong, but you barely staked anything. Annoyingly sensible of you.": "Incorrecto, pero apenas apostaste nada. Irritantemente sensato.",
   "The slope is drawn from the published correlation of 0.79. Messerli plotted all 23 countries in his own figure; this one draws the trend alone rather than redrawing his points by eye.": "La pendiente está trazada a partir de la correlación publicada de 0,79. Messerli situó los 23 países en su propia figura; esta solo dibuja la tendencia, en vez de recalcar sus puntos a ojo.",
   // ---- Interfaz (botones, etiquetas, encabezados de sección) ----
   "n = {count}": "n = {count}",
@@ -213,11 +213,10 @@ export const es: Record<string, string> = {
   "You beat {pct}% of players on this puzzle": "Has superado al {pct} % de los jugadores en este acertijo",
   "A new puzzle every day. Keep the streak alive.":
     "Un puzle nuevo cada día. No rompas la racha.",
-  "Sharp eye, and you called it.": "Buen ojo, y lo habías anunciado.",
-  "Nicely spotted.": "Bien visto.",
-  "Good instinct.": "Buen instinto.",
-  "Ouch. Confidently wrong, the classic trap.":
-    "Ay. Seguro de ti mismo y aun así equivocado, la trampa clásica.",
+  "Certain, and correct. I shall need a moment.": "Con certeza, y acertado. Necesito un momento.",
+  "Spotted, and without much fuss. Disappointing.": "Detectado, y sin apenas esfuerzo. Decepcionante.",
+  "Barely staked, and still right. I liked my chances there.": "Apenas apostaste, y aun así acertaste. Yo tenía mis opciones ahí.",
+  "Certain, and wrong. Those are the ones I keep.": "Con certeza, y equivocado. Esos me los quedo.",
   "So does almost everyone. That's the trap.":
     "Como casi todo el mundo. Esa es la trampa.",
   "You sensed something was off, but went with it anyway.":

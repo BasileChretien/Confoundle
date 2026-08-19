@@ -175,3 +175,150 @@ describe("reaction lines", () => {
     ).toEqual([]);
   });
 });
+
+/**
+ * WHAT THE CONFOUNDER MAY SAY, which is narrower than what it may be funny about.
+ *
+ * All six reaction lines are now the app's one character speaking, at the beat
+ * where it set the trap. That buys the register a real constraint, and the
+ * constraint is not new: two of these six lines were previously replaced for
+ * breaking it.
+ *
+ * "So does almost everyone. That's the trap." was an unsourced universal
+ * quantifier printed on every sure-and-wrong answer of every puzzle, three
+ * lines above `CrowdLines`, which knows the real number and may say something
+ * quite different. A character with a stake in your being wrong cannot be near
+ * the numbers, and the deck's whole subject is claims made about populations
+ * that the data does not support.
+ *
+ * The blacklist is the `hedgeTells.test.ts` shape: not a proof, a list of
+ * phrases that have actually caused this, meant to grow when review finds
+ * another. It reads the English source, which is where these are authored;
+ * the nine translations are held to the same rule by the person writing them.
+ */
+describe("the reaction lines claim nothing about the population", () => {
+  const POPULATION_TELLS = [
+    "everyone",
+    "everybody",
+    "most people",
+    "most players",
+    "nobody",
+    "no one",
+    "almost all",
+    "usually",
+    "typically",
+    "% of",
+  ];
+
+  const LINES = [true, false].flatMap((correct) =>
+    CONFIDENCE_LEVELS.map((c) => reactionFor(correct, c)),
+  );
+
+  it("catches a tell when there is one", () => {
+    // The guard on the guard: a matcher that stopped matching passes silently.
+    const offends = (line: string) =>
+      POPULATION_TELLS.some((tell) => line.toLowerCase().includes(tell));
+    expect(offends("So does almost everyone. That's the trap.")).toBe(true);
+    expect(offends("Most people miss this.")).toBe(true);
+    expect(offends("Certain, and wrong. Those are the ones I keep.")).toBe(false);
+  });
+
+  it("finds none in any line the app can show", () => {
+    const offenders = LINES.filter((line) =>
+      POPULATION_TELLS.some((tell) => line.toLowerCase().includes(tell)),
+    );
+    expect(offenders).toEqual([]);
+  });
+
+  it("claims the setup rather than the player's particular answer", () => {
+    /*
+      `reactionFor(false, "sure")` fires for ANY wrong answer, not only for the
+      choice a puzzle flags as its intuitive trap. So a line saying "that one
+      was built to feel obvious" is false whenever somebody picked a different
+      wrong answer, which is the same over-claim as the population line in a
+      smaller costume. The setup is authored by this deck; the player's choice
+      is not.
+    */
+    expect(reactionFor(false, "sure")).toContain("setup");
+    expect(reactionFor(false, "sure")).not.toContain("that one");
+  });
+
+  it("gives all six their own line", () => {
+    // A copy-paste that collapsed two states would read as deliberate.
+    expect(new Set(LINES).size).toBe(LINES.length);
+  });
+});
+
+/**
+ * WHEREVER THE CHARACTER SPEAKS, ITS NAME IS ON IT.
+ *
+ * `reactionFor` returns first-person lines now, and there are two call sites,
+ * not one. The reveal got the mark and the review screen did not, so a reviewer
+ * met "Those are the ones I keep" with no speaker attached: a product talking
+ * about itself rather than a character talking to them. The previous copy was
+ * neutral and third person, so it was safe unattributed; these lines are not,
+ * and nothing structural noticed the difference.
+ *
+ * The scan is the `declaredColors` shape: it finds the call sites by reading the
+ * sources rather than from a list here, so a third one added later is covered
+ * without its author knowing this test exists. What it proves is that the two
+ * appear in the same file, which is weaker than proving they are adjacent on
+ * screen. That is the honest limit of a text scan, and the alternative is a
+ * browser this repo does not have.
+ */
+describe("the character is never anonymous", () => {
+  const SOURCES = import.meta.glob("./**/*.tsx", {
+    query: "?raw",
+    import: "default",
+    eager: true,
+  }) as Record<string, string>;
+
+  const strip = (src: string) =>
+    src.replace(/\/\*[\s\S]*?\*\//g, "").replace(/\/\/.*$/gm, "");
+
+  const callSites = Object.entries(SOURCES).filter(([, src]) =>
+    /reactionFor\(/.test(strip(src)),
+  );
+
+  it("found the call sites by reading, not from a list", () => {
+    // A scan that matched nothing would pass every check below.
+    expect(Object.keys(SOURCES).length).toBeGreaterThan(20);
+    expect(callSites.length).toBeGreaterThanOrEqual(2);
+  });
+
+  it.each(callSites.map(([path]) => path))(
+    "%s names the speaker beside the line",
+    (path) => {
+      const src = strip(SOURCES[path]!);
+      expect(src).toMatch(/ConfounderMark/);
+    },
+  );
+});
+
+/**
+ * A population claim usually arrives carrying a number, and a number is the one
+ * thing a blacklist can see in a language it cannot read.
+ *
+ * The English blacklist above cannot police the nine translations: a translator
+ * could write the local equivalent of "most players" and nothing would fail,
+ * exactly as `hedgeTells.test.ts` cannot police translated puzzle content. This
+ * does not close that hole. It closes the sharpest corner of it, which is the
+ * form the removed line actually took.
+ */
+describe("no reaction line carries a figure, in any language", () => {
+  it("holds across all ten locales", () => {
+    const english = [true, false].flatMap((correct) =>
+      CONFIDENCE_LEVELS.map((c) => reactionFor(correct, c)),
+    );
+    const offenders: string[] = [];
+    for (const [locale, dict] of Object.entries(DICTIONARIES)) {
+      for (const line of english) {
+        const translated = (dict as Record<string, string>)[line];
+        if (translated && /[0-9%]|[٠-٩০-৯]/.test(translated)) {
+          offenders.push(`${locale}: ${translated}`);
+        }
+      }
+    }
+    expect(offenders).toEqual([]);
+  });
+});

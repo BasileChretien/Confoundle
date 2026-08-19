@@ -6,6 +6,7 @@ import { recordReviewOutcomes } from "../app/session";
 import { puzzles } from "../puzzles";
 import { searchForView } from "../app/navigation";
 import type { Review } from "../srs/select";
+import { ConfounderMark } from "./Confounder";
 import { CONFIDENCE_LEVELS, reactionFor, type Confidence } from "./scoring";
 import { Badge, Button, ProgressDots } from "./ui";
 
@@ -296,10 +297,26 @@ export function ReviewView({
                 : "border-l-rust bg-rust/[0.06]")
             }
           >
+            {/*
+              THE SAME SPEAKER NEEDS THE SAME NAME ON IT HERE. `reactionFor`
+              has exactly two call sites, and when its six lines became the
+              Confounder's, only the reveal got the mark. The lines are first
+              person, so unattributed they read as the app talking about
+              itself: "Those are the ones I keep" from a product rather than
+              from a character. The verdict word stays in the app's own voice,
+              which is why only the reaction sits beside the mark.
+            */}
             <p className="font-display text-base font-semibold text-ink">
-              {current.correct ? t({ en: "Right." }) : t({ en: "Not this time." })}{" "}
-              {t({ en: reactionFor(current.correct, current.confidence) })}
+              {current.correct ? t({ en: "Right." }) : t({ en: "Not this time." })}
             </p>
+            <div className="mt-1 flex items-start gap-2">
+              <span className="mt-px shrink-0">
+                <ConfounderMark size={22} />
+              </span>
+              <p className="font-display text-base font-semibold text-ink">
+                {t({ en: reactionFor(current.correct, current.confidence) })}
+              </p>
+            </div>
             <p className="mt-1.5 text-[14px] leading-relaxed text-ink-soft">
               {t(review.item.explanation)}
             </p>

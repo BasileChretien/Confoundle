@@ -22,8 +22,8 @@ export const ar: Record<string, string> = {
   "As every judge marked it": "بحسب تصحيح كل مقيّم",
   "Against what happens": "مقابل ما يحدث فعلاً",
   "The trap worked": "نجح الفخّ",
-  "The setup was built to make that one feel obvious.": "صِيغ السؤال ليبدو ذلك الجواب بديهياً.",
-  "Wrong, but you staked almost nothing on it. That is the wager working.": "إجابة خاطئة، لكنك لم تراهن عليها تقريباً. وهذا بالضبط ما تفعله المراهنة.",
+  "That setup was built to mislead. I do good work.": "ذلك العرض بُني للتضليل. عملي متقن.",
+  "Wrong, but you barely staked anything. Annoyingly sensible of you.": "خطأ، لكنك لم تراهن بشيء تقريبًا. حصافة مزعجة.",
   "The slope is drawn from the published correlation of 0.79. Messerli plotted all 23 countries in his own figure; this one draws the trend alone rather than redrawing his points by eye.": "رُسم الميل انطلاقاً من معامل الارتباط المنشور 0.79. وقد وضع ميسرلي الدول الثلاث والعشرين جميعها في شكله الخاص، أما هذا الشكل فيرسم الاتجاه وحده بدل إعادة رسم نقاطه بالتقدير.",
   // ---- UI chrome (buttons, labels, section headers) ----
   "n = {count}": "n = {count}",
@@ -211,11 +211,10 @@ export const ar: Record<string, string> = {
   "You beat {pct}% of players on this puzzle": "تفوّقت على {pct}% من اللاعبين في هذا اللغز",
   "A new puzzle every day. Keep the streak alive.":
     "أحجية جديدة كل يوم. حافظ على استمرار السلسلة.",
-  "Sharp eye, and you called it.": "عين ثاقبة، وقد توقعتها.",
-  "Nicely spotted.": "التقاط جميل.",
-  "Good instinct.": "حدس جيد.",
-  "Ouch. Confidently wrong, the classic trap.":
-    "آخ. مخطئ بثقة، الفخ الكلاسيكي.",
+  "Certain, and correct. I shall need a moment.": "متيقن، ومصيب. امهلني لحظة.",
+  "Spotted, and without much fuss. Disappointing.": "كُشف الأمر، وبلا عناء يُذكر. مخيب للآمال.",
+  "Barely staked, and still right. I liked my chances there.": "راهنت بالكاد، وأصبت مع ذلك. كانت لي فرصة هناك.",
+  "Certain, and wrong. Those are the ones I keep.": "متيقن، ومخطئ. هؤلاء هم من أحتفظ بهم.",
   "So does almost everyone. That's the trap.":
     "وكذلك يفعل الجميع تقريباً. هذا هو الفخ.",
   "You sensed something was off, but went with it anyway.":

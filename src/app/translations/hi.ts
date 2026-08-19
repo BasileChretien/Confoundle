@@ -21,8 +21,8 @@ export const hi: Record<string, string> = {
   "As every judge marked it": "जैसा हर जाँचकर्ता ने आँका",
   "Against what happens": "असल में जो होता है उसके सामने",
   "The trap worked": "जाल काम कर गया",
-  "The setup was built to make that one feel obvious.": "सवाल इसी तरह रचा गया था कि वही जवाब साफ़ लगे।",
-  "Wrong, but you staked almost nothing on it. That is the wager working.": "जवाब ग़लत था, पर आपने दाँव लगभग कुछ भी नहीं लगाया। दाँव का काम यही है।",
+  "That setup was built to mislead. I do good work.": "वह सेटअप भ्रमित करने के लिए ही बनाया गया था। काम अच्छा करता हूँ मैं।",
+  "Wrong, but you barely staked anything. Annoyingly sensible of you.": "गलत, पर आपने कुछ खास नहीं लगाया। चिढ़ाने वाली समझदारी।",
   "The slope is drawn from the published correlation of 0.79. Messerli plotted all 23 countries in his own figure; this one draws the trend alone rather than redrawing his points by eye.": "यह ढाल प्रकाशित सहसंबंध 0.79 से खींची गई है। मेसरली ने अपने चित्र में सभी 23 देश अंकित किए थे; यहाँ केवल रुझान खींचा गया है, उनके बिंदु अंदाज़े से दोबारा नहीं बनाए गए।",
   // ---- UI chrome (buttons, labels, section headers) ----
   "n = {count}": "n = {count}",
@@ -211,11 +211,10 @@ export const hi: Record<string, string> = {
   "You beat {pct}% of players on this puzzle": "इस पहेली में आपने {pct}% खिलाड़ियों को पीछे छोड़ा",
   "A new puzzle every day. Keep the streak alive.":
     "हर दिन एक नई पहेली। सिलसिला बनाए रखें।",
-  "Sharp eye, and you called it.": "पैनी नज़र, और आपने पहले ही भाँप लिया।",
-  "Nicely spotted.": "बढ़िया पकड़ा।",
-  "Good instinct.": "अच्छी सहज बुद्धि।",
-  "Ouch. Confidently wrong, the classic trap.":
-    "आह। पूरे यकीन के साथ गलत, वही चिरपरिचित जाल।",
+  "Certain, and correct. I shall need a moment.": "पूरा यकीन, और सही भी। मुझे एक पल चाहिए।",
+  "Spotted, and without much fuss. Disappointing.": "पकड़ लिया, वह भी बिना मेहनत के। निराशाजनक।",
+  "Barely staked, and still right. I liked my chances there.": "दांव नाम का, फिर भी सही। वहाँ मौका तो मेरा था।",
+  "Certain, and wrong. Those are the ones I keep.": "पूरा यकीन, और गलत। ऐसे ही मुझे याद रहते हैं।",
   "So does almost everyone. That's the trap.":
     "लगभग हर कोई ऐसा ही करता है। यही तो जाल है।",
   "You sensed something was off, but went with it anyway.":

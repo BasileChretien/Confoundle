@@ -21,8 +21,8 @@ export const ru: Record<string, string> = {
   "As every judge marked it": "Как оценил каждый проверяющий",
   "Against what happens": "На фоне того, что происходит на самом деле",
   "The trap worked": "Ловушка сработала",
-  "The setup was built to make that one feel obvious.": "Условие было составлено так, чтобы именно этот ответ казался очевидным.",
-  "Wrong, but you staked almost nothing on it. That is the wager working.": "Неверно, но вы почти ничего не поставили. Именно так ставка и должна работать.",
+  "That setup was built to mislead. I do good work.": "Эта постановка была построена, чтобы ввести в заблуждение. Работаю хорошо.",
+  "Wrong, but you barely staked anything. Annoyingly sensible of you.": "Неверно, но вы почти ничего не поставили. Раздражающе разумно.",
   "The slope is drawn from the published correlation of 0.79. Messerli plotted all 23 countries in his own figure; this one draws the trend alone rather than redrawing his points by eye.": "Наклон построен по опубликованному коэффициенту корреляции 0,79. Мессерли нанёс на свой рисунок все 23 страны, здесь же показана только тенденция, а не перерисованные на глаз точки.",
   // ---- UI chrome (buttons, labels, section headers) ----
   "n = {count}": "n = {count}",
@@ -212,11 +212,10 @@ export const ru: Record<string, string> = {
   "You beat {pct}% of players on this puzzle": "В этой задаче вы обошли {pct} % игроков",
   "A new puzzle every day. Keep the streak alive.":
     "Новая головоломка каждый день. Не прерывайте серию.",
-  "Sharp eye, and you called it.": "Острый глаз, и вы это предсказали.",
-  "Nicely spotted.": "Хорошо подмечено.",
-  "Good instinct.": "Хорошая интуиция.",
-  "Ouch. Confidently wrong, the classic trap.":
-    "Ай. Уверенно ошиблись, классическая ловушка.",
+  "Certain, and correct. I shall need a moment.": "Уверены полностью, и правы. Дайте мне минуту.",
+  "Spotted, and without much fuss. Disappointing.": "Замечено, и почти без усилий. Досадно.",
+  "Barely staked, and still right. I liked my chances there.": "Поставили почти ничего, и всё равно правы. А ведь шансы были у меня.",
+  "Certain, and wrong. Those are the ones I keep.": "Уверены полностью, и неправы. Такие я запоминаю.",
   "So does almost everyone. That's the trap.":
     "Как и почти все. В этом и ловушка.",
   "You sensed something was off, but went with it anyway.":

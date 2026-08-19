@@ -6768,7 +6768,7 @@ export const ja: Record<string, string> = {
   "Clinic B": "B診療所",
   "Straightforward cases": "易しい症例",
   "Difficult cases": "難しい症例",
-  "Two clinics report their success rates for the same operation. Clinic B comes out ahead overall, and the region recommends it.": "二つの診療所が同じ手術の成功率を公表した。全体ではB診療所が上回っており、地域はBを推奨した。",
-  "Split by how difficult the cases were, B is ahead in both groups as well. The overall number is pointing the same way as the parts, so there is nothing hiding in the mix here.": "症例の難易度で分けても、両方の群でBが上回っている。全体の数字は部分と同じ方向を指しており、ここでは混ざり方に何も隠れていない。",
+  "Two clinics publish success rates for the same operation. Clinic B is far ahead on the overall figure, and the region recommends it.": "二つの診療所が同じ手術の成功率を公表した。全体の数字ではB診療所が大きく先行しており、地域はBを推奨した。",
+  "Split by how difficult the cases were, B is ahead in both groups too. B did take far more of the easy cases, but it is better in each group anyway, so the mix is not what is producing the gap.": "症例の難易度で分けても、両方の群でBが上回っている。Bは確かに易しい症例をはるかに多く扱ったが、それでも各群で上回っている。つまり差を生んでいるのは症例の混ざり方ではない。",
   "Numbers built to show the shape, not measured from anything.": "形を示すために作った数字であり、何かを測ったものではない。",
 };

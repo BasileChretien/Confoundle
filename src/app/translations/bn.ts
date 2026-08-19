@@ -6818,7 +6818,7 @@ export const bn: Record<string, string> = {
   "Clinic B": "ক্লিনিক B",
   "Straightforward cases": "সহজ কেস",
   "Difficult cases": "কঠিন কেস",
-  "Two clinics report their success rates for the same operation. Clinic B comes out ahead overall, and the region recommends it.": "দুটি ক্লিনিক একই অস্ত্রোপচারের সাফল্যের হার প্রকাশ করেছে। সব মিলিয়ে ক্লিনিক B এগিয়ে, আর অঞ্চলটি সেটিই সুপারিশ করেছে।",
-  "Split by how difficult the cases were, B is ahead in both groups as well. The overall number is pointing the same way as the parts, so there is nothing hiding in the mix here.": "কেসের কঠিনতা অনুযায়ী ভাগ করলেও দুই দলেই B এগিয়ে। মোট সংখ্যা অংশগুলোর দিকেই ইঙ্গিত করছে: এখানে মিশ্রণে কিছু লুকিয়ে নেই।",
+  "Two clinics publish success rates for the same operation. Clinic B is far ahead on the overall figure, and the region recommends it.": "দুটি ক্লিনিক একই অস্ত্রোপচারের সাফল্যের হার প্রকাশ করে। সামগ্রিক সংখ্যায় ক্লিনিক B অনেক এগিয়ে, আর অঞ্চলটি সেটিই সুপারিশ করেছে।",
+  "Split by how difficult the cases were, B is ahead in both groups too. B did take far more of the easy cases, but it is better in each group anyway, so the mix is not what is producing the gap.": "কেসের কঠিনতা অনুযায়ী ভাগ করলেও দুই দলেই B এগিয়ে। B সত্যিই অনেক বেশি সহজ কেস নিয়েছে, তবু প্রতিটি দলেই সে ভালো, অর্থাৎ ব্যবধানটা মিশ্রণ থেকে আসছে না।",
   "Numbers built to show the shape, not measured from anything.": "আকৃতি দেখানোর জন্য বানানো সংখ্যা, কোনো কিছু থেকে মাপা নয়।",
 };

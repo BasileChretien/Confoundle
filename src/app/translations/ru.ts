@@ -6840,7 +6840,7 @@ export const ru: Record<string, string> = {
   "Clinic B": "Клиника B",
   "Straightforward cases": "Простые случаи",
   "Difficult cases": "Сложные случаи",
-  "Two clinics report their success rates for the same operation. Clinic B comes out ahead overall, and the region recommends it.": "Две клиники опубликовали свои показатели успеха по одной и той же операции. В целом клиника B впереди, и регион рекомендует её.",
-  "Split by how difficult the cases were, B is ahead in both groups as well. The overall number is pointing the same way as the parts, so there is nothing hiding in the mix here.": "Если разделить по сложности случаев, B впереди и в обеих группах. Общее число указывает туда же, куда и части: здесь ничего не спрятано в смеси.",
+  "Two clinics publish success rates for the same operation. Clinic B is far ahead on the overall figure, and the region recommends it.": "Две клиники публикуют показатели успеха по одной и той же операции. По общей цифре клиника B далеко впереди, и регион рекомендует её.",
+  "Split by how difficult the cases were, B is ahead in both groups too. B did take far more of the easy cases, but it is better in each group anyway, so the mix is not what is producing the gap.": "Если разделить по сложности случаев, B впереди и в обеих группах. B действительно взяла гораздо больше лёгких случаев, но она всё равно лучше в каждой группе, так что разрыв создаёт не состав случаев.",
   "Numbers built to show the shape, not measured from anything.": "Числа построены, чтобы показать форму, а не измерены.",
 };

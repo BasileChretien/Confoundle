@@ -6771,7 +6771,7 @@ export const ar: Record<string, string> = {
   "Clinic B": "العيادة B",
   "Straightforward cases": "حالات سهلة",
   "Difficult cases": "حالات صعبة",
-  "Two clinics report their success rates for the same operation. Clinic B comes out ahead overall, and the region recommends it.": "عيادتان تنشران معدل نجاحهما في العملية نفسها. العيادة B متقدمة في الإجمالي، وأوصت بها المنطقة.",
-  "Split by how difficult the cases were, B is ahead in both groups as well. The overall number is pointing the same way as the parts, so there is nothing hiding in the mix here.": "بالفصل حسب صعوبة الحالات، B متقدمة في المجموعتين أيضًا. الرقم الإجمالي يشير في الاتجاه نفسه الذي تشير إليه الأجزاء: لا شيء مختبئ في الخلط هنا.",
+  "Two clinics publish success rates for the same operation. Clinic B is far ahead on the overall figure, and the region recommends it.": "عيادتان تنشران معدلات النجاح للعملية نفسها. العيادة B متقدمة كثيرًا في الرقم الإجمالي، وأوصت بها المنطقة.",
+  "Split by how difficult the cases were, B is ahead in both groups too. B did take far more of the easy cases, but it is better in each group anyway, so the mix is not what is producing the gap.": "بالفصل حسب صعوبة الحالات، B متقدمة في المجموعتين أيضًا. صحيح أن B تولّت حالات سهلة أكثر بكثير، لكنها أفضل في كل مجموعة على أي حال، فليس الخلط هو ما يصنع الفارق.",
   "Numbers built to show the shape, not measured from anything.": "أرقام بُنيت لإظهار الشكل، لا مقيسة من شيء.",
 };

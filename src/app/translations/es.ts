@@ -6871,7 +6871,7 @@ export const es: Record<string, string> = {
   "Clinic B": "Clínica B",
   "Straightforward cases": "Casos sencillos",
   "Difficult cases": "Casos difíciles",
-  "Two clinics report their success rates for the same operation. Clinic B comes out ahead overall, and the region recommends it.": "Dos clínicas publican sus tasas de éxito para la misma operación. La clínica B queda por delante en total, y la región la recomienda.",
-  "Split by how difficult the cases were, B is ahead in both groups as well. The overall number is pointing the same way as the parts, so there is nothing hiding in the mix here.": "Separando por dificultad de los casos, B también va por delante en ambos grupos. El total apunta en la misma dirección que las partes: aquí no se esconde nada en la mezcla.",
+  "Two clinics publish success rates for the same operation. Clinic B is far ahead on the overall figure, and the region recommends it.": "Dos clínicas publican tasas de éxito para la misma operación. La clínica B va muy por delante en la cifra global, y la región la recomienda.",
+  "Split by how difficult the cases were, B is ahead in both groups too. B did take far more of the easy cases, but it is better in each group anyway, so the mix is not what is producing the gap.": "Separando por dificultad de los casos, B va por delante en ambos grupos también. B sí se llevó muchos más casos fáciles, pero aun así es mejor en cada grupo: no es la mezcla lo que produce la diferencia.",
   "Numbers built to show the shape, not measured from anything.": "Cifras construidas para mostrar la forma, no medidas de nada.",
 };

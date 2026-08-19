@@ -46,16 +46,29 @@ describe("a figured item", () => {
     }
   });
 
-  it("draws a different view once the verdict is in", () => {
+  it("draws the right view in the right state, not merely a different one", () => {
     /*
-      The whole point. If the reveal redraws the same view, the item is prose
-      with a picture on it and the reversal never happens.
+      THE ASSERTION THAT WAS DIRECTION BLIND. It used to check only that the two
+      renders DIFFER, so inverting the mapping to `revealed ? initialView :
+      revealView` passed all thirteen tests. That inversion shows the honest
+      stratified breakdown before the stake, spoiling the answer, and the
+      misleading aggregate afterwards, contradicting the explanation the player
+      has just read. Exactly the same blindness as the `aria-hidden` direction
+      bug on the scrub.
+
+      So it asserts CONTENT. Every figured item here goes aggregate to
+      stratified, and only the stratified view names the strata.
     */
     for (const item of figured) {
-      expect(item.figure!.initialView.kind, item.id).not.toBe(
-        item.figure!.revealView.kind,
-      );
-      expect(render(item.figure!, false)).not.toBe(render(item.figure!, true));
+      const fig = item.figure!;
+      expect(fig.initialView.kind, item.id).toBe("aggregate");
+      expect(fig.revealView.kind, item.id).toBe("stratified");
+
+      const data = fig.data;
+      if (data.type !== "rates") continue;
+      const stratum = data.strata![0]!.label.en;
+      expect(render(fig, true), `${item.id} reveal`).toContain(stratum);
+      expect(render(fig, false), `${item.id} setup`).not.toContain(stratum);
     }
   });
 
@@ -67,8 +80,15 @@ describe("a figured item", () => {
       before the slice grows.
     */
     const traps = figured.filter((i) => i.trap !== null).length;
-    expect(traps).toBeGreaterThan(0);
-    expect(traps).toBeLessThan(figured.length);
+    const share = traps / figured.length;
+    /*
+      A RATIO, NOT A STRICT INEQUALITY. `0 < traps < total` is satisfied by
+      nineteen traps and one sound item, and 95% odds on sight of a chart is the
+      same tell as 100%. The band is what has to hold as the slice grows, and it
+      is checked here rather than trusted to whoever authors the next batch.
+    */
+    expect(share).toBeGreaterThanOrEqual(0.3);
+    expect(share).toBeLessThanOrEqual(0.7);
   });
 
   it("draws Latin numerals, which is a hole this did not dig", () => {

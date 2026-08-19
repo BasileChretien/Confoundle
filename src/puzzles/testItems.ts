@@ -10344,6 +10344,17 @@ const items: TestItem[] = [
     mode would be answerable without reading. That is the hedge rule applied to
     a new dimension, and it is the kind of thing this bank has broken before.
 
+    THE TWO LOOK ALIKE UNTIL THEY ARE SPLIT, and that is deliberate. Both say B
+    is far ahead in the same words' worth of emphasis, both put B far ahead
+    overall, and in both
+    B is the clinic holding the easy cases. A review found the first version
+    gave the game away: the trap had a 46-point gap and the sound one had five,
+    with the wording echoing it ("well ahead" against "ahead"), so a player
+    could have learned to answer from the bar heights. Only the stratified view
+    separates them now. The sentences stay different because `registry.test.ts`
+    forbids two items sharing a scenario, and rightly: a run that drew both
+    would print the same paragraph twice.
+
     Both sets of numbers are built to show a shape, not measured, and the
     figure says so on screen because `ItemFigure` carries no provenance here.
   */
@@ -10383,11 +10394,11 @@ const items: TestItem[] = [
   {
     id: "fig-sound-clinics",
     scenario: {
-      en: "Two clinics report their success rates for the same operation. Clinic B comes out ahead overall, and the region recommends it.",
+      en: "Two clinics publish success rates for the same operation. Clinic B is far ahead on the overall figure, and the region recommends it.",
     },
     trap: null,
     explanation: {
-      en: "Split by how difficult the cases were, B is ahead in both groups as well. The overall number is pointing the same way as the parts, so there is nothing hiding in the mix here.",
+      en: "Split by how difficult the cases were, B is ahead in both groups too. B did take far more of the easy cases, but it is better in each group anyway, so the mix is not what is producing the gap.",
     },
     figure: {
       data: {
@@ -10405,8 +10416,8 @@ const items: TestItem[] = [
         observations: [
           { groupId: "A", stratumId: "easy", numerator: 18, denominator: 20 },
           { groupId: "A", stratumId: "hard", numerator: 36, denominator: 180 },
-          { groupId: "B", stratumId: "easy", numerator: 19, denominator: 20 },
-          { groupId: "B", stratumId: "hard", numerator: 45, denominator: 180 },
+          { groupId: "B", stratumId: "easy", numerator: 171, denominator: 180 },
+          { groupId: "B", stratumId: "hard", numerator: 5, denominator: 20 },
         ],
       },
       initialView: { kind: "aggregate" },

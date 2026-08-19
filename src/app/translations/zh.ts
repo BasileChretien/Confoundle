@@ -6710,7 +6710,7 @@ export const zh: Record<string, string> = {
   "Clinic B": "B诊所",
   "Straightforward cases": "简单病例",
   "Difficult cases": "疑难病例",
-  "Two clinics report their success rates for the same operation. Clinic B comes out ahead overall, and the region recommends it.": "两家诊所公布了同一手术的成功率。总体上B诊所领先，地区推荐了B。",
-  "Split by how difficult the cases were, B is ahead in both groups as well. The overall number is pointing the same way as the parts, so there is nothing hiding in the mix here.": "按病例难度拆开看，B在两组中同样领先。总数和分组指向一致，这里没有什么藏在混合里。",
+  "Two clinics publish success rates for the same operation. Clinic B is far ahead on the overall figure, and the region recommends it.": "两家诊所公布了同一手术的成功率。在总体数字上B诊所遥遥领先，地区推荐了B。",
+  "Split by how difficult the cases were, B is ahead in both groups too. B did take far more of the easy cases, but it is better in each group anyway, so the mix is not what is producing the gap.": "按病例难度拆开看，B在两组中同样领先。B确实接手了多得多的简单病例，但它在每一组里依然更好，所以造成差距的并不是病例构成。",
   "Numbers built to show the shape, not measured from anything.": "这些数字是为展示形状而构造的，并非测量所得。",
 };

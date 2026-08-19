@@ -68,6 +68,24 @@ receiving unwanted mail more than a one-way, keyed, 24 hour counter harms the
 sender. The address is never written down and the digest cannot be checked
 against a guess without the server secret.
 
+### The funnel tally, which holds no person
+
+`event_tally` (`migrations/0004_event_tally.sql`) holds `(event, slug, day)` to a
+count. The event is one of the eight names fixed in `src/server/events.ts` and
+the server refuses any other; the slug is the puzzle, or `""` for a step that
+belongs to none; the day is supplied by the server, never by the caller.
+
+There is no account id, no session id, no clock time and no ordering, so the
+table cannot say that one person reached commit and then the reveal. It counts
+steps, never journeys, and that is the price of a table which cannot describe
+anybody. Like `answer_tally` it is therefore **not** in `PERSONAL_TABLES` and
+must not be added: erasure has nothing to find, because the concept of "this
+person's rows" does not exist in the schema.
+
+`public/privacy.html` describes exactly this in "How steps of a puzzle are
+counted", and the two must stay in step. It obeys the same contribution switch
+as the answer tally, so one control turns both off.
+
 ### The one KV namespace, which predates accounts
 
 `SCORES` (`functions/api/score.ts`) holds `puzzle:<slug>` to a histogram of
@@ -87,8 +105,14 @@ still the right store for that and the wrong one for accounts, argued in
 No name, no profile picture, no Google scopes beyond identity, no access or
 refresh token, no IP address in any durable form, no device fingerprint, no
 advertising identifier, no behavioural profile.
-`src/app/analytics.ts` is still a no-op stub with fixed event names and must
-stay one: the in-app funnel is deliberately not wired to anything.
+`src/app/analytics.ts` sends the eight fixed step names described above, and
+nothing else. It was a no-op stub until 2026-08-19, and this paragraph said so
+for twenty lines below the section that now describes the table it writes to,
+which is the exact drift this file's own opening promises against. What it must
+still never carry is anything about a person: no identifier, no session, no
+ordering, and the prop type in that module is narrowed to the one column the
+table has so that adding one is a compile error rather than a decision nobody
+notices.
 
 ### Aggregate visit counting (the one exception, added 2026-07-28)
 

@@ -2342,7 +2342,7 @@ export function ShareCard({
 
   function selectFraming(next: Framing) {
     setFraming(next);
-    track("share_caption_select", { slug: puzzle.slug, framing: next });
+    track("share_caption_select", { slug: puzzle.slug });
   }
 
   async function handleShare() {
@@ -2370,7 +2370,7 @@ export function ShareCard({
       `confoundle-${puzzle.slug}.png`,
       { title: t(puzzle.share.title), text: `${caption}\n\n${link}` },
     );
-    track("share_export", { slug: puzzle.slug, framing, result });
+    track("share_export", { slug: puzzle.slug });
     setStatus(
       result === "shared"
         ? t({ en: "Shared!" })

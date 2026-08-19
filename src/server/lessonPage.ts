@@ -43,6 +43,12 @@ export function lessonPath(slug: string, locale: string): string {
 }
 
 export interface LessonPageOptions {
+  /**
+   * Where to send a reader who has just had this puzzle spoiled, and what to
+   * link so the 730 pages form a graph rather than a set of leaves. Computed by
+   * `lessonSiblings.ts` at build time.
+   */
+  siblings?: readonly Puzzle[];
   puzzle: Puzzle;
   /** Resolver for the reader's locale, e.g. `(text) => translate(text, "fr")`. */
   t: (text: LocalizedText) => string;
@@ -71,6 +77,24 @@ export interface LessonPageOptions {
  * containing an ampersand or an angle bracket and silently breaking the page
  * for one locale.
  */
+/**
+ * Make a JSON string safe inside a `<script>` block.
+ *
+ * An HTML parser ends the block at the first `</script`, wherever it appears,
+ * including inside a JSON string. A source title or a skill name containing it
+ * would break the page open. `<!--` gets the same treatment for the same
+ * reason.
+ */
+export function escapeJsonLd(json: string): string {
+  // The replacements really do contain a backslash: inside a JSON string a
+  // backslash before a slash is a valid escape, and that is what stops the
+  // parser seeing `</script`. An earlier version lost both backslashes to a
+  // shell heredoc and shipped as a no-op that read exactly like this one.
+  return json
+    .replace(/<\/(script)/gi, "<\\/$1")
+    .replace(/<!--/g, "<\\u0021--");
+}
+
 export function escapeHtml(value: string): string {
   return value
     .replace(/&/g, "&amp;")
@@ -124,6 +148,7 @@ export function renderLessonPage({
   origin,
   locales,
   rtlLocales = RTL_DEFAULT,
+  siblings = [],
 }: LessonPageOptions): string {
   const e = (text: LocalizedText) => escapeHtml(t(text));
   const dir = rtlLocales.includes(locale) ? "rtl" : "ltr";
@@ -131,6 +156,41 @@ export function renderLessonPage({
   const skill = t(puzzle.lesson.skillName);
   const description = clamp(t(puzzle.share.explainer), 200);
   const link = sourceLink(puzzle);
+
+  /*
+    STRUCTURED DATA, because every one of these pages carries a real citation
+    and none of it was expressed. `citation` is the field a DOI is for, and it
+    is the single highest-value thing that can be added to a page whose whole
+    claim is that it is sourced.
+
+    Written as a literal rather than through JSON.stringify of a built object so
+    the shape is readable here, and escaped for `</script` because a source
+    title containing that sequence would otherwise close the block early.
+  */
+  /*
+    THE CITATION AND THE VISIBLE LINK DIVERGE ON PURPOSE, on 33 of the 73
+    puzzles. `sourceLink` prefers an authored `url`, which is usually the
+    reader-friendly page: a PubMed abstract, PMC full text, an arXiv preprint.
+    `citation` prefers the DOI, because a DOI is the canonical identifier of the
+    work and that is precisely what the field is for. A reader gets the page
+    they can actually read; a machine gets the identifier that resolves forever.
+  */
+  const citation = puzzle.provenance.doi
+    ? `https://doi.org/${puzzle.provenance.doi}`
+    : (link ?? "");
+  const jsonLd = escapeJsonLd(
+    JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: `${skill} · Confoundle`,
+      description,
+      inLanguage: locale,
+      url: canonical,
+      about: { "@type": "Thing", name: skill },
+      isPartOf: { "@type": "WebSite", name: "Confoundle", url: origin },
+      ...(citation ? { citation } : {}),
+    }),
+  );
 
   // Every locale is a real URL, so a search engine and a reader who speaks
   // another language both land on the right one.
@@ -142,6 +202,11 @@ export function renderLessonPage({
         )}">`,
     )
     .join("");
+
+  // The first sibling is where the button goes; the rest are the link graph.
+  // They point at LESSON PAGES rather than at the app, because a crawler
+  // following `/?p=slug` lands on a client-rendered shell with nothing in it.
+  const [next, ...rest] = siblings;
 
   const howItWorks = puzzle.lesson.howItWorks
     ? `<h2>${e(LESSON_PAGE.whyItWorks)}</h2><p>${e(puzzle.lesson.howItWorks)}</p>`
@@ -170,6 +235,7 @@ ${alternates}
 <meta name="twitter:image" content="${escapeHtml(`${origin}/icons/icon-512.png`)}">
 <link rel="icon" href="/favicon.svg">
 <style>${STYLE}</style>
+<script type="application/ld+json">${jsonLd}</script>
 </head>
 <body>
 <main>
@@ -196,7 +262,19 @@ ${howItWorks}
 
 <h2>${e(LESSON_PAGE.tryIt)}</h2>
 <p>${e(LESSON_PAGE.spoiler)}</p>
-<a class="cta" href="/">${e(LESSON_PAGE.play)}</a>
+<a class="cta" href="${escapeHtml(next ? `/?p=${next.slug}` : "/")}">${e(LESSON_PAGE.play)}</a>
+${
+    rest.length === 0
+      ? ""
+      : `<h2>${e(LESSON_PAGE.related)}</h2><ul class="related">${rest
+          .map(
+            (p) =>
+              `<li><a href="${escapeHtml(lessonPath(p.slug, locale))}">${escapeHtml(
+                t(p.lesson.skillName),
+              )}</a></li>`,
+          )
+          .join("")}</ul>`
+  }
 
 <footer>${e(LESSON_PAGE.free)} <a href="/">${e(LESSON_PAGE.everyDay)}</a></footer>
 </main>

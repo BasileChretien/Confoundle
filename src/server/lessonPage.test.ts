@@ -1,7 +1,8 @@
 import { describe, it, expect } from "vitest";
-import { clamp, escapeHtml, lessonPath, renderLessonPage } from "./lessonPage";
+import { clamp, escapeHtml, escapeJsonLd, lessonPath, renderLessonPage } from "./lessonPage";
 import { LESSON_PAGE } from "./lessonPageStrings";
 import { lessonPages, lessonSitemap } from "./prerender";
+import { siblingsFor } from "./lessonSiblings";
 import { puzzles } from "../puzzles";
 import { ALL_DICTIONARIES } from "../app/translations/all";
 import { LOCALE_CODES } from "../app/locales";
@@ -72,24 +73,24 @@ describe("the shareable lesson page", () => {
     expect(page("asked-twice", "ar")).toContain('dir="rtl"');
   });
 
-  it("sends the reader to an unspoiled puzzle, not the one they just read", () => {
-    const html = page("the-months-before");
-    const puzzle = puzzles.find((p) => p.slug === "the-months-before")!;
-    expect(html).toContain(escapeHtml(puzzle.provenance.url!));
-    // Relative, so a fork or a preview deployment keeps its own visitors
-    // instead of handing them to the production site. Only the tags that
-    // cannot take a relative URL are absolute.
-    /**
-     * THE POINT OF THIS PAGE'S CALL TO ACTION. It sits directly below the
-     * answer, so offering the puzzle version of THIS card offers the one
-     * puzzle that cannot catch anybody. It goes to the app root instead, and
-     * the app picks today's puzzle at runtime: baking a slug in here would go
-     * stale the day after the page was prerendered.
-     */
-    expect(html).toContain('class="cta" href="/"');
-    expect(html).not.toContain('href="/?p=the-months-before"');
-    const body = html.split("<body>")[1];
-    expect(body).not.toContain(ORIGIN);
+  it("falls back to the root only when no siblings are supplied", () => {
+    /*
+      REPURPOSED RATHER THAN DELETED, because the defensive default is worth a
+      guard, but its old description was not.
+
+      It used to assert that the CTA points at `/` and explain that as the
+      intended product behaviour: "the app picks today's puzzle at runtime". The
+      whole premise of the sibling work is that this was the defect. Handing
+      somebody who arrived from a search about one trap the deck's opening
+      puzzle is not a call to action, it is a dead end, and the test survived
+      only because this helper never passes `siblings`, which `prerender.ts`
+      always does.
+
+      So it now says what it actually covers: the path production never takes.
+    */
+    const html = page();
+    expect(html).toContain('<a class="cta" href="/"');
+    expect(html).not.toContain('class="related"');
   });
 
   it("escapes, so an ampersand in a puzzle cannot break a locale's page", () => {
@@ -194,5 +195,125 @@ describe("what gets written at build time", () => {
     expect((xml.match(/<loc>/g) ?? []).length).toBe(pages.length);
     expect(xml).toContain(`<loc>${ORIGIN}/l/${puzzles[0].slug}/</loc>`);
     expect(xml).not.toContain("<loc>/l/");
+  });
+});
+
+/**
+ * A page that says it is sourced should say so where a machine can read it, and
+ * should not be a dead end for the reader who believed it.
+ */
+describe("what the page tells a crawler and where it sends a reader", () => {
+  const build = (slug: string) => {
+    const puzzle = puzzles.find((p) => p.slug === slug)!;
+    return renderLessonPage({
+      puzzle,
+      t: (text) => text.en,
+      locale: "en",
+      origin: "https://confoundle.org",
+      locales: ["en", "fr"],
+      siblings: siblingsFor(puzzle, puzzles),
+    });
+  };
+
+  it("carries structured data with the citation the page is built on", () => {
+    /*
+      Every one of these pages has a real source and most have a DOI, which is
+      exactly the input structured data wants, and none of it was expressed.
+    */
+    const html = build("kidney-stones");
+    const block = html.match(
+      /<script type="application\/ld\+json">([\s\S]*?)<\/script>/,
+    );
+    expect(block, "no JSON-LD on the page").not.toBeNull();
+    const data = JSON.parse(block![1]!) as Record<string, unknown>;
+    expect(data["@type"]).toBe("Article");
+    expect(data.inLanguage).toBe("en");
+    expect(String(data.citation)).toMatch(/^https?:\/\//);
+  });
+
+  it("cannot be broken open by a title containing a closing script tag", () => {
+    // An HTML parser ends the block at the first `</script`, wherever it is,
+    // including inside a JSON string.
+    const escaped = escapeJsonLd(JSON.stringify({ t: "</script><b>x" }));
+    expect(escaped).not.toContain("</script");
+    expect(JSON.parse(escaped)).toEqual({ t: "</script><b>x" });
+  });
+
+  it("sends the reader to a card that has not been spoiled", () => {
+    /*
+      THE DEAD END. It pointed at `/`, which serves every newcomer the same
+      opening puzzle, so somebody who arrived from a search about one trap, read
+      the whole answer, and clicked the button was handed an unrelated one.
+    */
+    const puzzle = puzzles.find((p) => p.slug === "kidney-stones")!;
+    const html = build("kidney-stones");
+    const cta = html.match(/<a class="cta" href="([^"]+)"/);
+    expect(cta).not.toBeNull();
+    expect(cta![1]).not.toBe("/");
+    expect(cta![1]).toMatch(/^\/\?p=/);
+    expect(cta![1]).not.toContain(puzzle.slug);
+  });
+
+  it("links other lesson pages, not the app, so the set is crawlable", () => {
+    // A crawler following `/?p=slug` lands on a client-rendered shell with
+    // nothing in it. The related list has to point at documents.
+    const html = build("kidney-stones");
+    const related = html.match(/<ul class="related">([\s\S]*?)<\/ul>/);
+    expect(related).not.toBeNull();
+    const hrefs = [...related![1]!.matchAll(/href="([^"]+)"/g)].map((m) => m[1]!);
+    expect(hrefs.length).toBeGreaterThan(0);
+    for (const href of hrefs) expect(href).toMatch(/^\/l\/[a-z0-9-]+\/$/);
+  });
+});
+
+/**
+ * The sitemap's language clustering, which nothing checked.
+ *
+ * I verified it by counting matches in the built file, which proves a total and
+ * not a structure, and a total is exactly what a broken cluster still produces.
+ * The path splitting behind it (`file.split("/")[1]`, `parts.length === 4`) is
+ * brittle by nature: it reads a locale out of a filename, so any change to what
+ * `lessonPages` emits silently changes what this claims about languages.
+ */
+describe("the sitemap's language clusters", () => {
+  const built = lessonPages({
+    puzzles: puzzles.slice(0, 3),
+    dictionaries: { fr: {}, es: {} },
+    origin: ORIGIN,
+  });
+  const xml = lessonSitemap(built);
+  const blocks = [...xml.matchAll(/<url>([\s\S]*?)<\/url>/g)].map((m) => m[1]!);
+
+  it("emits one block per page", () => {
+    expect(blocks).toHaveLength(built.length);
+  });
+
+  it("lists every language of a page on every page of it, itself included", () => {
+    // The spec's reciprocity rule: a cluster that omits its own member, or
+    // lists a different set from one page to the next, is ignored wholesale.
+    for (const block of blocks) {
+      const langs = [...block.matchAll(/hreflang="([^"]+)"/g)]
+        .map((m) => m[1]!)
+        .filter((code) => code !== "x-default")
+        .sort();
+      expect(langs).toEqual(["en", "es", "fr"]);
+      const self = block.match(/<loc>([^<]+)<\/loc>/)![1]!;
+      expect(block).toContain(`href="${self}"`);
+    }
+  });
+
+  it("names exactly one x-default, and it is the English page", () => {
+    for (const block of blocks) {
+      const defaults = [...block.matchAll(/hreflang="x-default" href="([^"]+)"/g)];
+      expect(defaults).toHaveLength(1);
+      expect(defaults[0]![1]).not.toMatch(/\/(fr|es)\/$/);
+    }
+  });
+
+  it("claims no lastmod, because nothing records when a puzzle changed", () => {
+    // A build-time date would tell a crawler all 730 pages changed on every
+    // deploy, and a crawler that stops believing this field has no way to
+    // start again.
+    expect(xml).not.toContain("lastmod");
   });
 });

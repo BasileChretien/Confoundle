@@ -76,6 +76,7 @@ const ONE_OF_EACH: Record<View["name"], View> = {
   about: { name: "about" },
   lessons: { name: "lessons" },
   trapHunt: { name: "trapHunt" },
+  publishGame: { name: "publishGame" },
   calibrationRun: { name: "calibrationRun" },
   dailyRun: { name: "dailyRun" },
   progress: { name: "progress" },

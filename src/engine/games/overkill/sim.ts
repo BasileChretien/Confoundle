@@ -1,0 +1,524 @@
+import {
+  CUTS_PER_RUN,
+  CUT_TICKS,
+  DESPAWN_RADIUS,
+  DT,
+  FORWARD_BIAS,
+  ENEMIES,
+  HURT_COOLDOWN,
+  MAX_ENEMIES,
+  MAX_LEVEL,
+  OFFER_SIZE,
+  PLAYER_HP,
+  PLAYER_RADIUS,
+  PLAYER_SPEED,
+  SPAWN_RADIUS,
+  TICK_HZ,
+  WEAPONS,
+  WEAPON_IDS,
+  type EnemyKind,
+  type WeaponId,
+  effectiveDamage,
+  isUpgradeTick,
+  levelScale,
+  phaseAt,
+} from "./content";
+import { foldSpawn, stream, unitVector, weightedIndex } from "./rng";
+
+/**
+ * The deterministic simulation. Everything the game is depends on this file
+ * being reproducible to the last bit, because the death screen is not an
+ * animation: it is this same simulation, re-run with one weapon switched off,
+ * and the difference between the two is the only claim the game makes.
+ *
+ * THE RULES THIS FILE OBEYS, all of them for that reason:
+ *
+ *   - Fixed timestep. `DT` is a constant, never a frame delta. A simulation
+ *     that advances by however long the last frame took is a different
+ *     simulation on every machine and cannot be replayed anywhere.
+ *   - No clock. No `Date`, no `performance`, nothing that knows what time it
+ *     is. The only time here is `tick`, an integer.
+ *   - No `Math.random`. Every draw comes from a named stream in `rng.ts`.
+ *   - No trigonometry. See the note in `rng.ts`.
+ *   - Every branch is a function of state, never of iteration order over a
+ *     `Set` or object whose order is not pinned.
+ *
+ * ONE PLACE MUTATES, and it is here. Enemies are held in a reused array and
+ * updated in place. A run of four minutes is 14,400 ticks with up to 220
+ * enemies alive, so rebuilding the world every tick would allocate several
+ * million objects per run and the death screen runs the whole thing dozens of
+ * times over. The buffer never escapes: `RunResult` is plain numbers, and the
+ * live view handed to a controller is documented below as valid only for the
+ * call it arrives in.
+ *
+ * THE PLAYER'S PATH IS A PURE FUNCTION OF THE INPUT LOG, which is a stronger
+ * property than it looks and the counterfactual leans on it entirely. Nothing
+ * in the game pushes the player around: no knockback, no stuns. So replaying
+ * the same inputs puts the player on exactly the same trajectory whatever is
+ * switched off, spawns land in exactly the same places, and the only thing
+ * that can differ between a run and its counterfactual is which enemies died
+ * and when. That is the clean comparison the design asks for, and
+ * `sim.test.ts` pins it.
+ */
+
+export type Dir = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
+
+const S = Math.SQRT1_2;
+
+/** 0 is standing still; 1 is up, then clockwise. */
+const DIRS: readonly (readonly [number, number])[] = [
+  [0, 0],
+  [0, -1],
+  [S, -S],
+  [1, 0],
+  [S, S],
+  [0, 1],
+  [-S, S],
+  [-1, 0],
+  [-S, -S],
+];
+
+export interface EnemyView {
+  readonly id: number;
+  readonly kind: EnemyKind;
+  readonly x: number;
+  readonly y: number;
+  readonly hp: number;
+}
+
+/**
+ * What a controller sees. VALID ONLY DURING THE CALL IT IS PASSED TO: the
+ * arrays behind it are the simulation's own buffers and will be overwritten on
+ * the next tick. A controller that keeps one is reading a future it has not
+ * seen yet.
+ */
+export interface RunView {
+  readonly tick: number;
+  readonly hp: number;
+  readonly x: number;
+  readonly y: number;
+  readonly enemies: readonly EnemyView[];
+  readonly levels: Readonly<Record<WeaponId, number>>;
+  readonly damage: Readonly<Record<WeaponId, number>>;
+  readonly cutsLeft: number;
+  readonly cutUntil: Readonly<Record<WeaponId, number>>;
+}
+
+/**
+ * The seam that lets one simulation serve three callers: a live player, a
+ * replay reading a log, and a scripted policy being measured headless. Test 3
+ * in the plan is a controller and nothing else.
+ */
+export interface Controller {
+  move(view: RunView): Dir;
+  /** A weapon to switch off for eight seconds, or null. */
+  cut(view: RunView): WeaponId | null;
+  chooseUpgrade(view: RunView, offers: readonly WeaponId[]): WeaponId;
+}
+
+export interface SimOptions {
+  readonly spawnSeed: number;
+  readonly offerSeed: number;
+  readonly controller: Controller;
+  /** The counterfactual: these never fire at all. */
+  readonly without?: readonly WeaponId[];
+  readonly maxTicks?: number;
+}
+
+export interface RunResult {
+  /** Ticks survived. Divide by TICK_HZ for seconds. */
+  readonly ticks: number;
+  readonly died: boolean;
+  /**
+   * True when the run hit `maxTicks` still alive. For a counterfactual that
+   * means the log ran out before the player did, so the honest reading is
+   * "at least this long" rather than a number.
+   */
+  readonly stoppedAtLimit: boolean;
+  readonly finalHp: number;
+  readonly damage: Readonly<Record<WeaponId, number>>;
+  /** Damage that landed on an enemy already below that much hp. */
+  readonly overkill: Readonly<Record<WeaponId, number>>;
+  readonly kills: Readonly<Record<WeaponId, number>>;
+  readonly levels: Readonly<Record<WeaponId, number>>;
+  readonly spawned: number;
+  /**
+   * How many times the spawn stream was consulted. Differs from 
+   * exactly when the live ceiling turned an attempt away. Two runs of the same
+   * length must agree here whatever is switched off, which is a sharper
+   * statement than the digest can make on its own.
+   */
+  readonly spawnAttempts: number;
+  /**
+   * A running fold over every spawn: tick, kind, and position to a thousandth.
+   * Two runs of the same seed agree here or the streams have leaked into each
+   * other, which is the one bug that would quietly invalidate every
+   * counterfactual the game shows.
+   */
+  readonly spawnDigest: number;
+  /**
+   * The running digest and the running count of enemies actually admitted,
+   * sampled once a second.
+   *
+   * WHY A SERIES AND NOT JUST THE TOTAL. A counterfactual usually dies EARLIER
+   * than the run it came from, which is the entire point of it, so comparing
+   * end-of-run totals compares two different numbers of spawns and says
+   * nothing. Comparing the common prefix asks the question that actually
+   * matters: over the stretch both worlds existed for, did they meet the same
+   * enemies? The determinism guard in `sim.test.ts` leans on this, and the
+   * version of it that compared totals could only pass in windows nobody died
+   * in, which is to say in windows where the game was not happening.
+   */
+  readonly digestAt: readonly number[];
+  readonly spawnedAt: readonly number[];
+}
+
+interface Enemy {
+  id: number;
+  kind: EnemyKind;
+  x: number;
+  y: number;
+  hp: number;
+  radius: number;
+  speed: number;
+  damage: number;
+  armour: number;
+  slowUntil: number;
+  slowFactor: number;
+  poisonUntil: number;
+  poisonDps: number;
+}
+
+const DEFAULT_MAX_TICKS = 6 * 60 * TICK_HZ;
+
+function zeroed(): Record<WeaponId, number> {
+  const out = {} as Record<WeaponId, number>;
+  for (const id of WEAPON_IDS) out[id] = 0;
+  return out;
+}
+
+export function simulate(opts: SimOptions): RunResult {
+  const maxTicks = opts.maxTicks ?? DEFAULT_MAX_TICKS;
+  const spawnRng = stream(opts.spawnSeed);
+  const offerRng = stream(opts.offerSeed);
+  const off = new Set<WeaponId>(opts.without ?? []);
+
+  const damage = zeroed();
+  const overkill = zeroed();
+  const kills = zeroed();
+  const levels = zeroed();
+  const nextFire = zeroed();
+  const cutUntil = zeroed();
+  for (const id of WEAPON_IDS) levels[id] = 1;
+
+  let cutsLeft = CUTS_PER_RUN;
+  let px = 0;
+  let py = 0;
+  let hp = PLAYER_HP;
+  let hurtUntil = 0;
+  let nextId = 1;
+  let spawned = 0;
+  let spawnAttempts = 0;
+  let spawnDigest = 0;
+  let faceX = 0;
+  let faceY = 0;
+  const digestAt: number[] = [];
+  const spawnedAt: number[] = [];
+
+  const enemies: Enemy[] = [];
+  const d2: number[] = [];
+  const view: RunView = {
+    tick: 0,
+    hp,
+    x: px,
+    y: py,
+    enemies,
+    levels,
+    damage,
+    cutsLeft,
+    cutUntil,
+  };
+  const mutView = view as {
+    tick: number;
+    hp: number;
+    x: number;
+    y: number;
+    cutsLeft: number;
+  };
+
+  const offers: WeaponId[] = [];
+  let tick = 0;
+  let died = false;
+
+  /**
+   * Applies damage and books it. `pierces` is poison, which ignores armour;
+   * that exemption is the whole reason poison is the only answer to a brute.
+   *
+   * The meter is fed the damage that LANDED, after armour. A weapon doing
+   * nothing at all to a brute therefore reports nothing, honestly, and the
+   * thing the meter still cannot tell you is that the brute is what is about
+   * to kill you.
+   */
+  const hit = (e: Enemy, raw: number, by: WeaponId, pierces = false): void => {
+    if (e.hp <= 0) return;
+    const amount = effectiveDamage(raw, e.armour, pierces);
+    if (amount <= 0) return;
+    damage[by] += amount;
+    if (amount > e.hp) overkill[by] += amount - e.hp;
+    e.hp -= amount;
+    if (e.hp <= 0) kills[by] += 1;
+  };
+
+  for (; tick < maxTicks; tick++) {
+    mutView.tick = tick;
+    mutView.hp = hp;
+    mutView.x = px;
+    mutView.y = py;
+    mutView.cutsLeft = cutsLeft;
+
+    // 1. UPGRADES, before anything moves, because the choice is about the
+    //    tick that follows it.
+    if (isUpgradeTick(tick)) {
+      offers.length = 0;
+      const pool = WEAPON_IDS.filter((id) => levels[id] < MAX_LEVEL);
+      // Drawing without replacement, and drawing the full OFFER_SIZE even when
+      // the pool is short, so the number of draws does not depend on which
+      // weapons the player has been feeding.
+      const bag = pool.slice();
+      for (let k = 0; k < OFFER_SIZE; k++) {
+        const r = offerRng();
+        if (bag.length === 0) continue;
+        const pick = Math.min(bag.length - 1, Math.floor(r * bag.length));
+        offers.push(bag[pick]!);
+        bag.splice(pick, 1);
+      }
+      if (offers.length > 0) {
+        const chosen = opts.controller.chooseUpgrade(view, offers);
+        const valid = offers.includes(chosen) ? chosen : offers[0]!;
+        levels[valid] = Math.min(MAX_LEVEL, levels[valid] + 1);
+      }
+    }
+
+    // 2. CUTS.
+    const wants = opts.controller.cut(view);
+    if (wants !== null && cutsLeft > 0 && cutUntil[wants] <= tick) {
+      cutUntil[wants] = tick + CUT_TICKS;
+      cutsLeft -= 1;
+    }
+
+    // 3. THE PLAYER, whose path is a pure function of these directions.
+    const dir = DIRS[opts.controller.move(view)] ?? DIRS[0]!;
+    px += dir[0]! * PLAYER_SPEED * DT;
+    py += dir[1]! * PLAYER_SPEED * DT;
+    if (dir[0] !== 0 || dir[1] !== 0) {
+      faceX = dir[0]!;
+      faceY = dir[1]!;
+    }
+
+    // 4. SPAWNING. The draws happen BEFORE the cap is consulted, so a run that
+    //    is going badly enough to sit at the ceiling still consumes the stream
+    //    at the same rate as one that is not. Deciding first and drawing
+    //    second would tie the spawn sequence to combat outcomes and every
+    //    counterfactual in the game would be comparing two different worlds.
+    const phase = phaseAt(tick);
+    if (tick % phase.everyTicks === 0) {
+      const weights = phase.mix.map((m) => m[1]);
+      const kind = phase.mix[weightedIndex(spawnRng, weights)]![0];
+      const u = unitVector(spawnRng);
+      // Drawn unconditionally, even when the player is standing still and it
+      // cannot change anything, so the number of draws per spawn is a
+      // constant and the sequence never depends on how the run is going.
+      const roll = spawnRng();
+      let ux = u.x;
+      let uy = u.y;
+      if ((faceX !== 0 || faceY !== 0) && roll < FORWARD_BIAS && ux * faceX + uy * faceY < 0) {
+        ux = -ux;
+        uy = -uy;
+      }
+      spawnAttempts += 1;
+      const ex = px + ux * SPAWN_RADIUS;
+      const ey = py + uy * SPAWN_RADIUS;
+      spawnDigest = foldSpawn(
+        spawnDigest,
+        tick,
+        phase.mix.findIndex((m) => m[0] === kind),
+        ex,
+        ey,
+      );
+      if (enemies.length < MAX_ENEMIES) {
+        const spec = ENEMIES[kind];
+        enemies.push({
+          id: nextId++,
+          kind,
+          x: ex,
+          y: ey,
+          hp: spec.hp,
+          radius: spec.radius,
+          speed: spec.speed,
+          damage: spec.damage,
+          armour: spec.armour,
+          slowUntil: 0,
+          slowFactor: 1,
+          poisonUntil: 0,
+          poisonDps: 0,
+        });
+        spawned += 1;
+      }
+    }
+
+    // 5. ENEMIES MOVE, and their distance to the player is measured once for
+    //    every weapon that will ask about it this tick.
+    for (let i = 0; i < enemies.length; i++) {
+      const e = enemies[i]!;
+      const dx = px - e.x;
+      const dy = py - e.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist > 1e-6) {
+        const factor = tick < e.slowUntil ? e.slowFactor : 1;
+        const step = e.speed * factor * DT;
+        e.x += (dx / dist) * step;
+        e.y += (dy / dist) * step;
+      }
+      const ndx = px - e.x;
+      const ndy = py - e.y;
+      d2[i] = ndx * ndx + ndy * ndy;
+    }
+
+    // 6. WEAPONS, in the fixed order of the WEAPONS table.
+    for (const id of WEAPON_IDS) {
+      if (off.has(id)) continue;
+      if (tick < cutUntil[id]) continue;
+      if (tick < nextFire[id]) continue;
+      const spec = WEAPONS[id];
+      nextFire[id] = tick + spec.cooldown;
+      const scale = levelScale(levels[id]);
+      const lo = spec.minRange * spec.minRange;
+      const hi = spec.maxRange * spec.maxRange;
+
+      if (spec.prefer === "nearest") {
+        let best = -1;
+        let bestD = Infinity;
+        for (let i = 0; i < enemies.length; i++) {
+          const dd = d2[i]!;
+          if (enemies[i]!.hp <= 0 || dd < lo || dd > hi) continue;
+          if (dd < bestD) {
+            bestD = dd;
+            best = i;
+          }
+        }
+        if (best >= 0) applyTo(enemies[best]!, id, spec, scale, tick, hit);
+        continue;
+      }
+
+      if (spec.prefer === "toughest") {
+        // A small fixed selection rather than a sort: maxTargets is three.
+        const chosen: number[] = [];
+        for (let i = 0; i < enemies.length; i++) {
+          const dd = d2[i]!;
+          if (enemies[i]!.hp <= 0 || dd < lo || dd > hi) continue;
+          chosen.push(i);
+          if (chosen.length > spec.maxTargets) {
+            let worst = 0;
+            for (let k = 1; k < chosen.length; k++) {
+              // Ties go to the later index, which is the younger enemy, so the
+              // survivor is always the oldest of the equally tough.
+              if (enemies[chosen[k]!]!.hp <= enemies[chosen[worst]!]!.hp) worst = k;
+            }
+            chosen.splice(worst, 1);
+          }
+        }
+        for (const i of chosen) applyTo(enemies[i]!, id, spec, scale, tick, hit);
+        continue;
+      }
+
+      let taken = 0;
+      for (let i = 0; i < enemies.length && taken < spec.maxTargets; i++) {
+        const dd = d2[i]!;
+        if (enemies[i]!.hp <= 0 || dd < lo || dd > hi) continue;
+        applyTo(enemies[i]!, id, spec, scale, tick, hit);
+        taken += 1;
+      }
+    }
+
+    // 7. POISON, which is the only damage that lands outside its weapon's turn.
+    for (let i = 0; i < enemies.length; i++) {
+      const e = enemies[i]!;
+      if (e.hp > 0 && tick < e.poisonUntil) hit(e, e.poisonDps * DT, "poison", true);
+    }
+
+    // 8. CONTACT. Everything touching you lands at once, so a crowd is worse
+    //    than one thing, which is the entire reason a weapon that only slows
+    //    people down can be load bearing.
+    if (tick >= hurtUntil) {
+      let incoming = 0;
+      for (let i = 0; i < enemies.length; i++) {
+        const e = enemies[i]!;
+        if (e.hp <= 0) continue;
+        const reach = PLAYER_RADIUS + e.radius;
+        if (d2[i]! <= reach * reach) incoming += e.damage;
+      }
+      if (incoming > 0) {
+        hp -= incoming;
+        hurtUntil = tick + HURT_COOLDOWN;
+      }
+    }
+
+    // 9. COMPACTION, stable, so the array stays in id order and "any" targeting
+    //    means "the oldest things in range" rather than "whatever the last
+    //    removal happened to swap into place".
+    let w = 0;
+    for (let i = 0; i < enemies.length; i++) {
+      const e = enemies[i]!;
+      if (e.hp <= 0) continue;
+      if (d2[i]! > DESPAWN_RADIUS * DESPAWN_RADIUS) continue;
+      enemies[w++] = e;
+    }
+    enemies.length = w;
+
+    if (tick % TICK_HZ === TICK_HZ - 1) {
+      digestAt.push(spawnDigest);
+      spawnedAt.push(spawned);
+    }
+
+    if (hp <= 0) {
+      died = true;
+      tick += 1;
+      break;
+    }
+  }
+
+  return {
+    ticks: tick,
+    died,
+    stoppedAtLimit: !died && tick >= maxTicks,
+    finalHp: hp,
+    damage,
+    overkill,
+    kills,
+    levels,
+    spawned,
+    spawnAttempts,
+    spawnDigest,
+    digestAt,
+    spawnedAt,
+  };
+}
+
+function applyTo(
+  e: Enemy,
+  id: WeaponId,
+  spec: (typeof WEAPONS)[WeaponId],
+  scale: number,
+  tick: number,
+  hit: (e: Enemy, amount: number, by: WeaponId, pierces?: boolean) => void,
+): void {
+  if (spec.damage > 0) hit(e, spec.damage * scale, id);
+  if (spec.slowFactor !== undefined && spec.slowTicks !== undefined) {
+    e.slowFactor = spec.slowFactor;
+    e.slowUntil = tick + Math.round(spec.slowTicks * scale);
+  }
+  if (spec.poisonDps !== undefined && spec.poisonTicks !== undefined) {
+    e.poisonDps = spec.poisonDps * scale;
+    e.poisonUntil = tick + spec.poisonTicks;
+  }
+}

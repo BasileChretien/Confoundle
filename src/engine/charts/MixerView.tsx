@@ -88,8 +88,12 @@ export function MixerView({ full }: { full: RatesData }) {
         })}
       </p>
 
-      <p className="mb-1.5 font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-mute">
+      <p className="font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-mute">
         {t({ en: "Within each group, unchanged" })}
+      </p>
+      {/* What the percentages count. See the note in `SlicerView`. */}
+      <p className="mb-1.5 text-[12px] leading-snug text-ink-soft">
+        {t(full.metricLabel)}
       </p>
       <ul className="mb-3 flex flex-col gap-1">
         {strata.map((s, i) => (

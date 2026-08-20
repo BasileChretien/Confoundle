@@ -138,6 +138,73 @@ describe("dragging the screening toy", () => {
   });
 
   /**
+   * THE WAY BACK TO THE MEASUREMENT.
+   *
+   * Exactly one position on this slider is a study rather than a what-if, and
+   * before this control nothing on screen said which, nor could a reader on a
+   * phone return to it: a thousand stops across 375 px puts one person at
+   * about a third of a pixel, and the first four values share the first one.
+   *
+   * Both halves are asserted, because either alone is useless. A button that
+   * restores without naming the number leaves the reader unable to tell a
+   * measurement from a guess; one that names it without restoring is a caption
+   * pretending to be a control.
+   */
+  it("names the measured base rate and goes back to it", () => {
+    const back = container.querySelector("button")!;
+    expect(back.textContent).toBe("Back to the measured 1 in 1,000");
+
+    dragTo(500);
+    expect(shareLine()).toContain("95%");
+
+    act(() => {
+      back.dispatchEvent(new Event("click", { bubbles: true }));
+    });
+    expect((slider() as HTMLInputElement).value).toBe(
+      String(data.withCondition),
+    );
+    expect(shareLine()).toContain("2%");
+  });
+
+  /**
+   * And it names the PUZZLE'S number rather than a remembered one.
+   *
+   * ASSERTED AGAINST A DIFFERENT TABLE, because asserting it against this one
+   * proves nothing: a label hardcoded to "1 in 1,000" renders correctly on the
+   * only screening puzzle that exists, and the mutation survived until this
+   * test rendered a second. That is the third time on these toys that the
+   * shipped puzzle's own numbers have hidden a bug, after `sensitivity: 1` and
+   * the rounding direction, so it is now the default suspicion rather than a
+   * surprise: a figure with one puzzle behind it is tested against that
+   * puzzle's coincidences unless a synthetic one says otherwise.
+   */
+  it("takes that number from the puzzle, not from the engine", () => {
+    const other: FrequenciesData = {
+      ...data,
+      total: 400,
+      withCondition: 37,
+      positiveGivenCondition: 30,
+      positiveGivenNoCondition: 36,
+    };
+    const second = document.createElement("div");
+    document.body.appendChild(second);
+    const secondRoot = createRoot(second);
+    act(() => {
+      secondRoot.render(
+        createElement(LocaleProvider, {
+          locale: "en",
+          children: createElement(ScreenView, { full: other }),
+        }),
+      );
+    });
+    expect(second.querySelector("button")!.textContent).toBe(
+      "Back to the measured 37 in 400",
+    );
+    act(() => secondRoot.unmount());
+    second.remove();
+  });
+
+  /**
    * THE NUMBER THAT MOVES HAS TO BE THE NUMBER THAT IS SPOKEN.
    *
    * Asserting that the markup contains `aria-live="polite"` somewhere is not

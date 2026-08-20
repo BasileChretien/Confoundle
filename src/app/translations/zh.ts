@@ -6730,4 +6730,5 @@ export const zh: Record<string, string> = {
   "{n} of {total}": "{total}人中{n}人",
   "More than half of them {condition}.": "超过一半的人{condition}。",
   "Fewer than half of them {condition}.": "不到一半的人{condition}。",
+  "Back to the measured {n} in {total}": "回到实测的{total}人中{n}人",
 };

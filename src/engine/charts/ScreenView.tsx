@@ -197,6 +197,36 @@ export function ScreenView({ full }: { full: FrequenciesData }) {
       </label>
 
       {/*
+        THE WAY BACK TO THE ONE POSITION THAT IS A MEASUREMENT.
+
+        Two problems, and they are the same problem. Nothing on screen said
+        WHICH position is the study, so a reader who dragged had no way to know
+        the figure had stopped being real; and with a thousand stops across a
+        phone's width, one person is about a third of a pixel, so even a reader
+        who knew could not get back. Values 0 to 3 all live inside the first
+        pixel. Keyboard users could always do it with Home; nobody else could.
+
+        A button naming the measured base rate answers both at once: it marks
+        the position by printing it, and pressing it returns. Naming the number
+        is the half that also teaches, because "1 in 1,000" is the fact the
+        whole puzzle turns on and it was nowhere in this panel.
+
+        Not disabled at the study, deliberately. A control that vanishes or
+        greys out exactly when it is telling the truth stops being a label at
+        the moment it is most worth reading.
+      */}
+      <button
+        type="button"
+        onClick={() => setWithCondition(model.authoredWithCondition)}
+        className="mt-1.5 rounded-sm text-[12px] leading-snug text-ink-mute underline decoration-rule underline-offset-2 hover:text-ink-soft focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand"
+      >
+        {fillSlots(t({ en: "Back to the measured {n} in {total}" }), {
+          n: num.format(model.authoredWithCondition),
+          total: num.format(model.total),
+        })}
+      </button>
+
+      {/*
         The verdict, and it is a claim, so it comes from a tested function
         rather than from a comparison written here. It sits in the same live
         region as the share above, because they are one reading: the number,

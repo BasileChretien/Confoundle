@@ -6838,4 +6838,5 @@ export const bn: Record<string, string> = {
   "{n} of {total}": "{total} জনের মধ্যে {n}",
   "More than half of them {condition}.": "অর্ধেকের বেশি জনের {condition}।",
   "Fewer than half of them {condition}.": "অর্ধেকের কম জনের {condition}।",
+  "Back to the measured {n} in {total}": "মাপা {total} জনের মধ্যে {n} এ ফিরুন",
 };

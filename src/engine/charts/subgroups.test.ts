@@ -47,12 +47,6 @@ describe("what the slicer holds still", () => {
    * Drawing outcomes from a fitted rate would pass every other test in this
    * file and quietly print people who were never in the study.
    */
-  /**
-   * AND EVERY DEAL IS THE SAME PATIENTS. The subgroups are the trial
-   * rearranged, so their counts must add back up to it at every slice count.
-   * Drawing outcomes from a fitted rate would pass every other test in this
-   * file and quietly print people who were never in the study.
-   */
   it.each(Array.from({ length: MAX_SLICES }, (_, i) => i + 1))(
     "deals every patient exactly once at %i slices",
     (k) => {

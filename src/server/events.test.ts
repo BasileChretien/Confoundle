@@ -34,6 +34,26 @@ describe("what an unauthenticated caller may write", () => {
     });
   });
 
+  /**
+   * AND SENDING "" MEANS THE SAME AS SENDING NOTHING.
+   *
+   * These two produced different answers: omitting the key gave 200 and a row
+   * with `slug = ""`, while sending `""` explicitly gave 400, for the row that
+   * would have been identical. Found by probing the live endpoint after the
+   * schema was applied, not by reading the code, and not reachable from the
+   * app today because every call site passes a real `puzzle.slug`.
+   *
+   * It is worth a test rather than a shrug because of how it would have
+   * failed: `track` takes `slug?: string` and swallows every error by design,
+   * so a caller handing it an empty slug would have lost events silently and
+   * indefinitely.
+   */
+  it("treats an empty slug as no slug", () => {
+    expect(parseEvent({ event: "replay", slug: "" }, TODAY)).toEqual(
+      parseEvent({ event: "replay" }, TODAY),
+    );
+  });
+
   it("refuses a name nobody chose", () => {
     // An unknown name would create a dimension the migration does not describe,
     // which is how a table stops meaning what its own comment says.
@@ -46,6 +66,9 @@ describe("what an unauthenticated caller may write", () => {
   });
 
   it("refuses a slug that is not registry-shaped", () => {
+    // "" is deliberately absent: it is the value for "no puzzle" and is
+    // covered by the test above. Everything here is a slug that CLAIMS to name
+    // a puzzle and does not.
     for (const slug of ["Upper", "has space", "../escape", "-lead", "x".repeat(65)]) {
       expect(() => parseEvent({ event: "commit", slug }, TODAY)).toThrow(InvalidEvent);
     }

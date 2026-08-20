@@ -5,6 +5,7 @@ import { createRoot, type Root } from "react-dom/client";
 import { LocaleProvider } from "../../app/i18n";
 import { puzzles } from "../../puzzles";
 import type { RatesData } from "../../puzzles/schema";
+import { declaredColors } from "./palette";
 import { SlicerView } from "./SlicerView";
 import { MAX_SLICES, canSlice, contraryCount, sliceFrame, slicerModel } from "./subgroups";
 
@@ -51,12 +52,16 @@ afterEach(() => {
 
 const slider = () => container.querySelector("input[type=range]") as HTMLInputElement;
 const trialRows = () =>
-  [...container.querySelectorAll("ul li span:last-child")].map(
-    (n) => n.textContent ?? "",
-  );
+  [
+    ...container.querySelectorAll('[data-slicer="pooled"] li span:last-child'),
+  ].map((n) => n.textContent ?? "");
 const verdict = () =>
   container.querySelector('[data-slicer="verdict"]')!.textContent ?? "";
 const cells = () => container.querySelectorAll("div[aria-hidden] > span").length;
+const counts = () =>
+  [...container.querySelectorAll('[aria-live] ul li span:last-child')].map(
+    (n) => n.textContent ?? "",
+  );
 
 function dragTo(value: number) {
   const el = slider();
@@ -95,14 +100,70 @@ describe("dragging the subgroup slicer", () => {
    * ever showed contradictions would teach that subgroups are always wrong,
    * and one that never showed any would teach that they are always fine.
    */
-  it("finds no contradiction at twelve and several by the end", () => {
-    dragTo(12);
-    expect(verdict()).toContain("All 12 subgroups still favour");
-
+  /**
+   * THE VERDICT REPORTS THE DEAL IN FRONT OF THE READER, whatever it happens
+   * to be. An earlier version asserted that twelve finds nothing, which was
+   * true of one deal and false of most.
+   */
+  it("says whether this deal contradicts the trial, and counts it", () => {
     dragTo(MAX_SLICES);
-    const expected = contraryCount(model, sliceFrame(model, MAX_SLICES));
-    expect(expected).toBeGreaterThan(0);
-    expect(verdict()).toContain(`${expected} of the ${MAX_SLICES} subgroups`);
+    const contrary = contraryCount(model, sliceFrame(model, MAX_SLICES, 0));
+    expect(contrary).toBeGreaterThan(0);
+    expect(verdict()).toBe("Some subgroups now disagree with the trial.");
+    expect(counts()).toEqual([
+      `${MAX_SLICES - contrary} of ${MAX_SLICES}`,
+      `${contrary} of ${MAX_SLICES}`,
+    ]);
+  });
+
+  /**
+   * RE-DEALING IS THE MOST IMPORTANT CONTROL HERE, because every arrangement
+   * is one draw and a reader who saw only one would take it for a fact about
+   * the trial. At the trial's own twelve, contradictions come and go.
+   */
+  it("re-deals the same patients into a different arrangement", () => {
+    dragTo(12);
+    const first = counts();
+    const seen = new Set([first.join("|")]);
+    const again = container.querySelectorAll("button")[0]!;
+    expect(again.textContent).toBe("Deal them again");
+    for (let i = 0; i < 12; i++) {
+      act(() => {
+        again.dispatchEvent(new Event("click", { bubbles: true }));
+      });
+      seen.add(counts().join("|"));
+    }
+    // The trial is untouched by all of it.
+    expect(trialRows()[0]).toContain("804 of 8,585");
+    expect(seen.size).toBeGreaterThan(1);
+  });
+
+  /**
+   * THE CELLS ARE THE ONLY PART OF THE FIGURE THAT IS NOT WORDS, and nothing
+   * checked what their colours meant: swapping them survived the whole suite.
+   *
+   * They are coloured by WHICH ARM LED, through `declaredColors`, so a colour
+   * here means what the same colour means anywhere else in the app. An earlier
+   * version coloured by agreement-with-the-trial while borrowing the group
+   * palette's first two slots, which coincide on this puzzle only because its
+   * overall leader happens to be the first-declared arm. On a trial whose
+   * winner is the second, cells agreeing with it would have taken the first
+   * arm's colour, under a reveal chart drawing that arm in the other one. That
+   * is the `reporting-rate-violent-crime` defect, in a renderer
+   * `declaredColors.test.ts` cannot reach.
+   */
+  it("colours each cell by the arm that led in it", () => {
+    dragTo(MAX_SLICES);
+    const frame = sliceFrame(model, MAX_SLICES, 0);
+    const swatches = [...container.querySelectorAll("div[aria-hidden] > span")].map(
+      (n) => (n as HTMLElement).style.backgroundColor,
+    );
+    const expected = frame.map((s) =>
+      s.leader === null ? "var(--color-paper-3)" : declaredColors(data.groups)(s.leader),
+    );
+    expect(swatches).toEqual(expected);
+    // And both arms really do appear, or the assertion above is vacuous.
+    expect(new Set(swatches).size).toBeGreaterThan(1);
   });
 
   it("speaks its position, and keeps speaking it as it moves", () => {
@@ -110,7 +171,7 @@ describe("dragging the subgroup slicer", () => {
     // subgroups". Found by reading the panel in a browser.
     expect(slider().getAttribute("aria-valuetext")).toBe("Not cut up");
     dragTo(13);
-    expect(slider().getAttribute("aria-valuetext")).toBe("13 subgroups");
+    expect(slider().getAttribute("aria-valuetext")).toBe("Cut into 13");
   });
 
   /**
@@ -120,16 +181,19 @@ describe("dragging the subgroup slicer", () => {
    * position is the published result, not one of the rearrangements.
    */
   it("describes the uncut position as the trial", () => {
-    expect(verdict()).toBe("Uncut, this is the whole trial.");
+    expect(verdict()).toBe("Uncut, this is both arms pooled.");
+    expect(counts()).toEqual([]);
     dragTo(2);
-    expect(verdict()).not.toContain("whole trial");
+    expect(verdict()).not.toContain("pooled");
+    expect(counts()).toHaveLength(2);
   });
 
   /** Exactly one position is the trial, and there is a way back to it. */
   it("goes back to the trial itself", () => {
     dragTo(MAX_SLICES);
-    expect(verdict()).not.toContain("All 1 subgroups");
-    const back = container.querySelector("button")!;
+    const back = [...container.querySelectorAll("button")].find(
+      (b) => b.textContent === "Back to the trial itself",
+    )!;
     expect(back.textContent).toBe("Back to the trial itself");
     act(() => {
       back.dispatchEvent(new Event("click", { bubbles: true }));

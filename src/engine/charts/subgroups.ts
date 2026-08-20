@@ -26,9 +26,25 @@ import type { PuzzleData, RatesData } from "../../puzzles/schema";
  * Drawing outcomes from a fitted rate instead would have been easier and would
  * have printed numbers nobody counted.
  *
- * DETERMINISTIC, so the same slider position always shows the same deal. A
- * figure that reshuffled under the reader on every render would be a slot
- * machine, and worse, its claims could not be tested.
+ * DETERMINISTIC, so a given deal always shows the same thing. A figure that
+ * reshuffled on every render would change while the reader looked at it, and
+ * its claims could not be tested.
+ *
+ * BUT THE READER CAN RE-DEAL, and that turned out to be the difference between
+ * a toy and a lie. An earlier version had one deal per slice count and drew a
+ * lesson from it: cut ISIS-2 twelve ways and nothing contradicts it, therefore
+ * groups of seven hundred are too big to reverse, therefore the cap must be
+ * higher than twelve. Measured over two thousand deals, 43.8% give no
+ * contradiction at twelve and 56.2% give at least one, mean 0.70. The claim
+ * was a property of one seed, not of the trial.
+ *
+ * That mattered twice over. It was false, and it made the page argue with
+ * itself: this puzzle is about a trial that WAS cut twelve ways and DID produce
+ * a subgroup pointing the other way, and the toy beside it said twelve ways
+ * finds nothing. Re-dealing removes the whole problem. No single deal carries
+ * a claim, the reader sees contradictions come and go at a fixed number of
+ * cuts, and THAT is the lesson: not that subgroups always mislead, but that
+ * whether they do is luck.
  */
 
 export interface SlicerModel {
@@ -101,20 +117,35 @@ function dealer(seed: number): () => number {
  * The arms are dealt from ONE generator rather than one each, so the two arms
  * do not receive the same pattern.
  *
- * Seeding from `k` is arbitrary and nothing depends on it: the deal already
- * differs at every slice count because the number of buckets does, so seeding
- * from a constant would work equally well. Said plainly because a mutation
- * replacing it changes no observable behaviour, and the next person to notice
- * that should not have to wonder what they have broken.
+ * AN EARLIER COMMENT HERE SAID THE SEED WAS ARBITRARY AND THAT NOTHING
+ * DEPENDED ON IT. That was wrong, and it was wrong in the dangerous direction:
+ * review measured that changing it broke two tests, because those tests were
+ * quietly asserting facts about one particular deal. The comment would have
+ * invited the next reader to make the change and then "fix" the failing test.
+ * Nothing depends on the seed NOW, and the reason is structural rather than a
+ * promise: the reader can re-deal, so every claim the module makes has to hold
+ * across deals, and the tests assert it across deals.
  */
-export function sliceFrame(model: SlicerModel, splits: number): Subgroup[] {
+export function sliceFrame(
+  model: SlicerModel,
+  splits: number,
+  deal = 0,
+): Subgroup[] {
   const k = Math.max(1, Math.round(splits));
-  const rand = dealer(k);
+  /*
+    The slice count and the deal both feed the seed, so every combination is
+    its own arrangement and none of them is privileged. Nothing anywhere may
+    depend on which: that was the bug.
+  */
+  const rand = dealer(k * 7919 + deal);
   const events = model.groups.map(() => new Array<number>(k).fill(0));
   const totals = model.groups.map(() => new Array<number>(k).fill(0));
 
   model.groups.forEach((g, gi) => {
     for (let p = 0; p < g.total; p++) {
+      // `Math.min` is belt and braces: `rand()` is strictly below 1, so the
+      // floor cannot reach `k`. Kept because the cost of being wrong is a
+      // subgroup that exists in one array and not the other.
       const bucket = Math.min(k - 1, Math.floor(rand() * k));
       totals[gi]![bucket]!++;
       // The first `events` patients are the ones who had the event. Which
@@ -134,6 +165,17 @@ export function sliceFrame(model: SlicerModel, splits: number): Subgroup[] {
 
 function leaderOf(model: SlicerModel, rates: readonly number[]): string | null {
   const [a, b] = rates;
+  /*
+    THREE OF THESE FOUR REFUSALS ARE UNREACHABLE IN THE SHIPPED DECK, and
+    saying so is better than letting the next reader assume they are load
+    bearing. `canSlice` admits only two-arm tables, so `undefined` cannot
+    happen through the app; the ≥480 floor means no bucket is empty, so `NaN`
+    cannot either; and an exact tie between two rates over a few hundred people
+    does not occur anywhere in the deck's range, which is why `contraryCount`'s
+    own tie handling is tested on a hand-built frame rather than a dealt one.
+    They are kept because a comparison that returns a winner for data it cannot
+    compare is the kind of thing that becomes reachable later, quietly.
+  */
   if (a === undefined || b === undefined) return null;
   if (Number.isNaN(a) || Number.isNaN(b) || a === b) return null;
   const aAhead = model.higherIsBetter ? a > b : a < b;
@@ -162,27 +204,18 @@ export function contraryCount(model: SlicerModel, frame: Subgroup[]): number {
 }
 
 /**
- * The most slices worth offering, and the number was measured rather than
- * chosen.
+ * The most slices worth offering.
  *
- * Twelve was the obvious pick, because twelve is what ISIS-2 did. Dealing this
- * trial twelve ways produces NO subgroup that contradicts it: aspirin wins all
- * twelve, and the closest is a dead tie. The effect is simply too strong to
- * reverse in groups of seven hundred, and a toy capped there would have let a
- * reader drag the whole range and conclude that subgroups are fine.
+ * Twenty-four, twice what ISIS-2 did, so the slider spans the trial's own
+ * analysis and keeps going. The average number of contradictions rises with
+ * the number of cuts, which is the trend worth being able to see; at any fixed
+ * number it varies from deal to deal, which is what the re-deal button is for.
  *
- * Reversals begin at thirteen and are routine from seventeen. At
- * twenty-four the trial's own patients produce four subgroups saying the
- * opposite of the trial, in groups of about 360, which is an entirely ordinary
- * size for a published subgroup. So the cap is twenty-four, and the shape of
- * the slider is now the lesson: the further you cut, the more contradictions
- * you buy, and none of them mean anything.
- *
- * WHAT WAS NOT DONE is worth recording. The alternative fix was to keep twelve
- * and hunt for a seed that produced a reversal there. That is exactly the
- * search this puzzle condemns, run by the author of the figure about it, and
- * the fact that it would have been invisible in the diff is the reason to say
- * so out loud.
+ * AN EARLIER VERSION JUSTIFIED THIS NUMBER WITH A MEASUREMENT THAT WAS NOT ONE.
+ * It said twelve produces no contradiction, therefore the cap must be higher.
+ * Twelve produces no contradiction in 43.8% of deals and at least one in the
+ * other 56.2%. The cap is not load-bearing for the lesson any more, because no
+ * single deal is.
  */
 export const MAX_SLICES = 24;
 

@@ -116,14 +116,14 @@ describe("the slicer's place in the lesson beat", () => {
 
   it("renders on the randomised trial", () => {
     expect(lessonHtml("written-in-the-stars")).toContain(
-      "The whole trial, unchanged",
+      "Both arms pooled, unchanged",
     );
   });
 
   /** And never on the observational comparison, whatever else it looks like. */
   it("stays off the observational comparison", () => {
     expect(lessonHtml("kidney-stones")).not.toContain(
-      "The whole trial, unchanged",
+      "Both arms pooled, unchanged",
     );
   });
 
@@ -132,6 +132,6 @@ describe("the slicer's place in the lesson beat", () => {
     const details = html.indexOf("<details");
     expect(details).toBeGreaterThan(-1);
     expect(html).not.toContain("<details open");
-    expect(html.indexOf("The whole trial, unchanged")).toBeGreaterThan(details);
+    expect(html.indexOf("Both arms pooled, unchanged")).toBeGreaterThan(details);
   });
 });

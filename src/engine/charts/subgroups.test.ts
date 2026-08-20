@@ -80,8 +80,8 @@ describe("what the slicer holds still", () => {
 });
 
 describe("the reversal the reader causes", () => {
-  it("shows no contradiction when the trial is not sliced", () => {
-    expect(contraryCount(model, sliceFrame(model, 1))).toBe(0);
+  it.each([0, 1, 5])("shows no contradiction when uncut, on deal %i", (deal) => {
+    expect(contraryCount(model, sliceFrame(model, 1, deal))).toBe(0);
   });
 
   /**
@@ -90,29 +90,66 @@ describe("the reversal the reader causes", () => {
    * trial. ISIS-2 found one; a reader finds their own.
    */
   it("produces subgroups that contradict the trial once it is sliced", () => {
-    const contrary = Array.from({ length: MAX_SLICES }, (_, i) =>
-      contraryCount(model, sliceFrame(model, i + 1)),
+    // Across deals rather than within one, so this cannot become a fact about
+    // a seed the way its predecessor did.
+    const atCap = Array.from({ length: 40 }, (_, deal) =>
+      contraryCount(model, sliceFrame(model, MAX_SLICES, deal)),
     );
-    expect(contrary[0]).toBe(0);
-    expect(Math.max(...contrary)).toBeGreaterThan(0);
-    // And the payoff is reachable at the end of the slider, not only at some
-    // lucky position in the middle that a reader might scroll past.
-    expect(contrary[MAX_SLICES - 1]).toBeGreaterThan(0);
+    /*
+      MOST deals, not every deal. Asserting that all of them contradict was the
+      same mistake in the other direction: a handful of deals at the cap really
+      do come out clean, and a test demanding otherwise would have to be
+      loosened by whoever next changed the generator. What is true is that
+      contradictions are ordinary here and rare when uncut.
+    */
+    expect(atCap.filter((n) => n > 0).length).toBeGreaterThan(atCap.length * 0.8);
   });
 
   /**
-   * AND TWELVE IS NOT ENOUGH, which is why the cap is not twelve.
+   * WHETHER TWELVE FINDS ANYTHING IS LUCK, AND THAT IS THE LESSON.
    *
-   * Dealing ISIS-2 into twelve, the number of astrological signs the trial
-   * actually used, produces no contradiction at all: aspirin wins every one
-   * and the closest subgroup is a dead tie. Pinned because it is the reason
-   * `MAX_SLICES` is 24, and because the alternative fix was to keep twelve and
-   * go looking for a seed that reversed there, which is the very search this
-   * puzzle is about.
+   * An earlier version of this file asserted `contraryCount(model, 12) === 0`
+   * and a comment explained that the effect was too strong to reverse in
+   * groups of seven hundred. Both were properties of ONE DEAL. Measured over
+   * two thousand: 43.8% of deals give no contradiction at twelve, 56.2% give
+   * at least one, mean 0.70.
+   *
+   * That mattered beyond the arithmetic. This puzzle is about a trial that was
+   * cut twelve ways and DID produce a subgroup pointing the other way, and the
+   * toy beside it was telling readers that twelve ways finds nothing.
+   *
+   * So the claim is now the one that survives re-dealing, and it is stronger:
+   * at the trial's own twelve, both outcomes are ordinary. Nothing anywhere may
+   * depend on which deal you happen to be looking at.
    */
-  it("finds nothing at twelve, which is what makes the cap honest", () => {
-    expect(contraryCount(model, sliceFrame(model, 12))).toBe(0);
-    expect(contraryCount(model, sliceFrame(model, 13))).toBeGreaterThan(0);
+  it("finds a contradiction at twelve in some deals and not others", () => {
+    const outcomes = Array.from({ length: 40 }, (_, deal) =>
+      contraryCount(model, sliceFrame(model, 12, deal)),
+    );
+    expect(outcomes.some((n) => n === 0)).toBe(true);
+    expect(outcomes.some((n) => n > 0)).toBe(true);
+  });
+
+  /**
+   * And re-dealing really re-deals: the same cut, a different arrangement.
+   */
+  it("gives a different arrangement on a different deal", () => {
+    expect(sliceFrame(model, 12, 0)).not.toEqual(sliceFrame(model, 12, 1));
+    expect(sliceFrame(model, 12, 3)).toEqual(sliceFrame(model, 12, 3));
+  });
+
+  /**
+   * THE TREND SURVIVES THE LUCK, which is what the slider is for. Averaged
+   * over deals, cutting more ways buys more contradictions. Asserted as an
+   * average precisely because no single deal is allowed to carry it.
+   */
+  it("produces more contradictions on average the more it is cut", () => {
+    const mean = (k: number) =>
+      Array.from({ length: 40 }, (_, deal) =>
+        contraryCount(model, sliceFrame(model, k, deal)),
+      ).reduce((a, b) => a + b, 0) / 40;
+    expect(mean(4)).toBeLessThan(mean(12));
+    expect(mean(12)).toBeLessThan(mean(MAX_SLICES));
   });
 
   /**
@@ -129,6 +166,43 @@ describe("the reversal the reader causes", () => {
       { events: [12, 5], totals: [100, 100], rates: [0.12, 0.05], leader: "placebo" },
     ];
     expect(contraryCount(model, level)).toBe(1);
+  });
+
+  /**
+   * AND IT COMPARES RATES, NOT COUNTS, which ISIS-2 cannot show because its
+   * arms are the same size.
+   *
+   * Review found that `overallLeader` could drop its denominator entirely,
+   * `g.events / g.total` to `g.events`, and the whole suite stayed green: with
+   * 8,585 against 8,599 patients the two readings agree, and they agree again
+   * when `higherIsBetter` is flipped, so even the direction test could not see
+   * it. That is the fifth time on these toys that this deck's own numbers have
+   * hidden a defect.
+   *
+   * The consequence is not subtle. On a 2:1 randomised trial the larger arm
+   * can have MORE events and a LOWER rate, so the wrong arm is named the
+   * overall winner; `contraryCount` then reports the complement, the verdict
+   * names the wrong arm in ten languages, and the cell grid colours agreement
+   * as disagreement. Here is that trial.
+   */
+  it("compares rates when the arms are different sizes", () => {
+    const unequal = slicerModel({
+      ...data,
+      strata: [data.strata![0]!],
+      observations: [
+        // 2:1 allocation. The big arm has more deaths and a lower rate, so
+        // counts and rates disagree, which is the whole point of the case.
+        { groupId: "aspirin", stratumId: "gemini-libra", numerator: 90, denominator: 1000 },
+        { groupId: "placebo", stratumId: "gemini-libra", numerator: 60, denominator: 500 },
+      ],
+    } as RatesData);
+    expect(unequal.groups.map((g) => [g.events, g.total])).toEqual([
+      [90, 1000],
+      [60, 500],
+    ]);
+    // 9.0% against 12.0%, and deaths are bad, so aspirin leads on rate even
+    // though it recorded half as many deaths again.
+    expect(overallLeader(unequal)).toBe("aspirin");
   });
 
   it("reads the direction off the puzzle rather than assuming one", () => {
@@ -198,8 +272,64 @@ describe("what it refuses", () => {
     expect(canSlice(rates({ groups: [data.groups[0]!] }))).toBe(false);
   });
 
+  /**
+   * THREE ARMS, WHICH THE TWO-ARM CHECK IS ACTUALLY FOR. Review found that
+   * check and the "clear overall winner" check shadow each other: the existing
+   * test passes a ONE-group table, where `leaderOf` reads an undefined second
+   * rate and returns null, so the winner check refuses it first and deleting
+   * the arm count changed nothing.
+   *
+   * Three is the case with teeth. `leaderOf` destructures `[a, b]` and ignores
+   * everything after, so a three-arm randomised trial would be accepted and
+   * its third arm would be silently absent from every subgroup verdict while
+   * the pooled rows above printed all three.
+   */
+  it("refuses three arms, not just one", () => {
+    const third = { id: "third", label: { en: "Third" }, short: { en: "C" } };
+    expect(
+      canSlice(
+        rates({
+          groups: [...data.groups, third],
+          observations: [
+            ...data.observations,
+            ...data.strata!.map((st) => ({
+              groupId: third.id,
+              stratumId: st.id,
+              numerator: 200,
+              denominator: 2000,
+            })),
+          ],
+        }),
+      ),
+    ).toBe(false);
+  });
+
   it("refuses samples that cannot be pooled", () => {
     expect(canSlice(rates({ strataAreSeparateSamples: true }))).toBe(false);
+  });
+
+  /**
+   * A TRIAL WITH NO WINNER HAS NOTHING TO CONTRADICT. Two arms at identical
+   * rates: `overallLeader` is null, so "points the other way" has no other way
+   * to point and the cell colouring has nothing to mean.
+   *
+   * Written because the two checks that could refuse this now shadow each
+   * other in the opposite direction from before. The arm count catches one and
+   * three arms; only an exact draw between two reaches this line, and only
+   * this test does.
+   */
+  it("refuses a trial with no overall winner", () => {
+    expect(
+      canSlice(
+        rates({
+          strata: [data.strata![0]!],
+          observations: [
+            { groupId: "aspirin", stratumId: "gemini-libra", numerator: 500, denominator: 5000 },
+            { groupId: "placebo", stratumId: "gemini-libra", numerator: 500, denominator: 5000 },
+          ],
+        }),
+      ),
+    ).toBe(false);
   });
 
   it("refuses a shape that is not a rates table", () => {

@@ -2,11 +2,10 @@ import { useState } from "react";
 import { useLocale, useT } from "../../app/i18n";
 import type { RatesData } from "../../puzzles/schema";
 import { fillSlots } from "./announce";
-import { colorFor } from "./palette";
+import { declaredColors } from "./palette";
 import {
   MAX_SLICES,
   contraryCount,
-  overallLeader,
   sliceFrame,
   slicerModel,
 } from "./subgroups";
@@ -37,6 +36,7 @@ export function SlicerView({ full }: { full: RatesData }) {
   const locale = useLocale();
   const model = slicerModel(full);
   const [slices, setSlices] = useState(1);
+  const [deal, setDeal] = useState(0);
 
   const num = new Intl.NumberFormat(locale);
   const pct = new Intl.NumberFormat(locale, {
@@ -44,14 +44,14 @@ export function SlicerView({ full }: { full: RatesData }) {
     maximumFractionDigits: 1,
   });
 
-  const frame = sliceFrame(model, slices);
-  const overall = overallLeader(model);
+  const frame = sliceFrame(model, slices, deal);
   const contrary = contraryCount(model, frame);
   const shortOf = (id: string) => {
     const g = full.groups.find((x) => x.id === id)!;
     return t(g.short ?? g.label);
   };
-  const winner = overall === null ? "" : shortOf(overall);
+  const colorOf = declaredColors(full.groups);
+  const agree = frame.length - contrary;
 
   return (
     <div className="rounded-lg border border-rule bg-paper-2 p-3.5">
@@ -62,9 +62,9 @@ export function SlicerView({ full }: { full: RatesData }) {
       </p>
 
       <p className="mb-1.5 font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-mute">
-        {t({ en: "The whole trial, unchanged" })}
+        {t({ en: "Both arms pooled, unchanged" })}
       </p>
-      <ul className="mb-3 flex flex-col gap-1 text-[13px]">
+      <ul data-slicer="pooled" className="mb-3 flex flex-col gap-1 text-[13px]">
         {model.groups.map((g) => (
           <li key={g.id} className="flex items-baseline justify-between gap-3">
             <span className="text-ink-soft">{shortOf(g.id)}</span>
@@ -100,9 +100,7 @@ export function SlicerView({ full }: { full: RatesData }) {
               backgroundColor:
                 s.leader === null
                   ? "var(--color-paper-3)"
-                  : s.leader === overall
-                    ? colorFor(0)
-                    : colorFor(1),
+                  : colorOf(s.leader),
             }}
           />
         ))}
@@ -114,31 +112,56 @@ export function SlicerView({ full }: { full: RatesData }) {
           className="mt-2 text-[13px] leading-snug text-ink"
         >
           {/*
-            ONE SLICE IS NOT A SUBGROUP, it is the trial. Printing "All 1
-            subgroups still favour Aspirin" was ungrammatical, and worse, it
-            described the published result as though it were one of the
-            rearrangements. The opening position is the only one that is a
-            measurement, so it gets its own sentence rather than a plural
-            phrased around a number that happens to be one.
+            NOT ONE NUMBER IN THIS SENTENCE, and that is the whole design.
+
+            It used to read "{contrary} of the {n} subgroups now point away from
+            {winner}", which is broken in six languages at once. At one it says
+            "1 ... point away" in English and the same in French, Spanish,
+            Portuguese and Hindi, all of which need the singular; Russian needs
+            a different noun form at two, three and four; Arabic needs the dual
+            at two. And `{winner}` arrives as a bare nominative, so Russian
+            cannot decline it after "in favour of" and French cannot elide
+            before a vowel.
+
+            No count in the sentence, no agreement to get wrong. The counts go
+            in the two rows below, where a numeral is followed by "of" and by
+            nothing that has to agree with it. That is the same rule the
+            screening toy arrived at, stated once more because this is the
+            second shape to need it: A NUMBER THE TRANSLATOR CANNOT SEE MUST
+            NEVER STAND WHERE SOMETHING HAS TO AGREE WITH IT.
           */}
           {frame.length === 1
-            ? t({ en: "Uncut, this is the whole trial." })
+            ? t({ en: "Uncut, this is both arms pooled." })
             : contrary === 0
-            ? fillSlots(
-                t({ en: "All {n} subgroups still favour {winner}." }),
-                { n: num.format(frame.length), winner },
-              )
-            : fillSlots(
-                t({
-                  en: "{contrary} of the {n} subgroups now point away from {winner}.",
-                }),
-                {
-                  contrary: num.format(contrary),
-                  n: num.format(frame.length),
-                  winner,
-                },
-              )}
+              ? t({ en: "Every subgroup still agrees with the trial." })
+              : t({ en: "Some subgroups now disagree with the trial." })}
         </p>
+        {frame.length > 1 ? (
+          <ul className="mt-1.5 flex flex-col gap-1 text-[13px]">
+            <li className="flex items-baseline justify-between gap-3">
+              <span className="text-ink-soft">
+                {t({ en: "Agree with the trial" })}
+              </span>
+              <span className="shrink-0 tabular-nums text-ink">
+                {fillSlots(t({ en: "{n} of {total}" }), {
+                  n: num.format(agree),
+                  total: num.format(frame.length),
+                })}
+              </span>
+            </li>
+            <li className="flex items-baseline justify-between gap-3">
+              <span className="text-ink-soft">
+                {t({ en: "Disagree with the trial" })}
+              </span>
+              <span className="shrink-0 tabular-nums text-ink">
+                {fillSlots(t({ en: "{n} of {total}" }), {
+                  n: num.format(contrary),
+                  total: num.format(frame.length),
+                })}
+              </span>
+            </li>
+          </ul>
+        ) : null}
       </div>
 
       <label className="mt-3 block">
@@ -155,7 +178,7 @@ export function SlicerView({ full }: { full: RatesData }) {
           aria-valuetext={
             frame.length === 1
               ? t({ en: "Not cut up" })
-              : fillSlots(t({ en: "{n} subgroups" }), {
+              : fillSlots(t({ en: "Cut into {n}" }), {
                   n: num.format(frame.length),
                 })
           }
@@ -169,13 +192,31 @@ export function SlicerView({ full }: { full: RatesData }) {
         rearrangement, and without a control saying so a reader cannot tell
         which, nor easily return to it.
       */}
+      {/*
+        RE-DEAL, and it is the most important control here. Every arrangement
+        is one draw, and a reader who saw only one would take it for a fact
+        about the trial: dealt twelve ways, this one contradicts itself in 56%
+        of deals and not in the other 44%, and an earlier version of this file
+        drew a conclusion from the deal it happened to have. Pressing this is
+        the difference between "subgroups mislead" and "whether subgroups
+        mislead is luck", which is the actual lesson.
+      */}
+      <div className="mt-1.5 flex flex-wrap items-center gap-3">
+        <button
+          type="button"
+          onClick={() => setDeal((d) => d + 1)}
+          className="rounded-sm text-[12px] leading-snug text-ink-mute underline decoration-rule underline-offset-2 hover:text-ink-soft focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand"
+        >
+          {t({ en: "Deal them again" })}
+        </button>
       <button
         type="button"
         onClick={() => setSlices(1)}
-        className="mt-1.5 rounded-sm text-[12px] leading-snug text-ink-mute underline decoration-rule underline-offset-2 hover:text-ink-soft focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand"
-      >
+          className="rounded-sm text-[12px] leading-snug text-ink-mute underline decoration-rule underline-offset-2 hover:text-ink-soft focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand"
+        >
         {t({ en: "Back to the trial itself" })}
-      </button>
+        </button>
+      </div>
     </div>
   );
 }

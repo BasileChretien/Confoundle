@@ -4,6 +4,11 @@
  * Arabic. French was used only as a secondary reference.
  */
 export const ar: Record<string, string> = {
+  // ---- Overkill (the game) ----
+  "Damage": "الضرر",
+  "Leave the game": "مغادرة اللعبة",
+  "Which one could you least afford to lose?": "أي واحد كان فقدانه سيكلفك أكثر؟",
+  "Your run": "جولتك",
   // ---- Scrub lever ----
   "Drag to see the same data the other way": "اسحب لترى البيانات نفسها بطريقة أخرى",
   // ---- Calibration run ----

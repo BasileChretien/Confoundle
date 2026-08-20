@@ -248,6 +248,10 @@ const pwa = VitePWA({
     // every install.
     globIgnores: [
       "**/assets/{fr,es,pt,ja,zh,ru,hi,bn,ar}-*.js",
+      // The game, for the same reason: it is about sixty KiB, it is reachable
+      // only from ?game=overkill, and precaching it would spend most of the
+      // install budget that is left on something almost nobody opens.
+      "**/assets/OverkillGame-*.js",
       "l/**",
       "sitemap.xml",
     ],

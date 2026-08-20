@@ -1,5 +1,12 @@
 import { WEAPON_IDS, type WeaponId } from "./content";
-import { simulate, type Controller, type Dir, type RunResult, type RunView } from "./sim";
+import {
+  simulate,
+  type Controller,
+  type Dir,
+  type Driver,
+  type RunResult,
+  type RunView,
+} from "./sim";
 import { stream } from "./rng";
 
 /**
@@ -48,46 +55,74 @@ export interface RunLog {
  * scripted policy produce the same kind of artefact and the counterfactual
  * machinery does not care which one it is looking at.
  */
-export function recording(
-  inner: Controller,
+export interface Recorder {
+  /** Wraps the caller's driver. Pass this to `createRun`. */
+  readonly driver: Driver;
+  /**
+   * Called with whatever level up was actually applied. Separate from the
+   * driver because a live player answers a level up through the stepper's
+   * `chooseUpgrade` and never goes through a controller at all.
+   */
+  noteUpgrade(id: WeaponId): void;
+  log(): RunLog;
+}
+
+export function recorder(
+  inner: Driver,
   seeds: { spawnSeed: number; offerSeed: number },
-): { controller: Controller; log: () => RunLog } {
+): Recorder {
   const moves: [number, Dir][] = [];
   const cuts: [number, WeaponId][] = [];
   const upgrades: WeaponId[] = [];
   let last: Dir | null = null;
   let ticks = 0;
 
-  const controller: Controller = {
-    move(view) {
-      const d = inner.move(view);
-      if (d !== last) {
-        moves.push([view.tick, d]);
-        last = d;
-      }
-      if (view.tick + 1 > ticks) ticks = view.tick + 1;
-      return d;
-    },
-    cut(view) {
-      const c = inner.cut(view);
-      // Recorded only when the simulation will actually honour it, so a replay
-      // does not spend a cut the original run never spent.
-      if (c !== null && view.cutsLeft > 0 && view.cutUntil[c] <= view.tick) {
-        cuts.push([view.tick, c]);
-      }
-      return c;
-    },
-    chooseUpgrade(view, offers) {
-      const w = inner.chooseUpgrade(view, offers);
-      const valid = offers.includes(w) ? w : offers[0]!;
-      upgrades.push(valid);
-      return valid;
-    },
-  };
-
   return {
-    controller,
+    driver: {
+      move(view) {
+        const d = inner.move(view);
+        if (d !== last) {
+          moves.push([view.tick, d]);
+          last = d;
+        }
+        if (view.tick + 1 > ticks) ticks = view.tick + 1;
+        return d;
+      },
+      cut(view) {
+        const c = inner.cut(view);
+        // Recorded only when the simulation will actually honour it, so a
+        // replay does not spend a cut the original run never spent.
+        if (c !== null && view.cutsLeft > 0 && view.cutUntil[c] <= view.tick) {
+          cuts.push([view.tick, c]);
+        }
+        return c;
+      },
+    },
+    noteUpgrade(id) {
+      upgrades.push(id);
+    },
     log: () => ({ ...seeds, moves, cuts, upgrades, ticks }),
+  };
+}
+
+/** The scripted form: a controller in, a controller out. */
+export function recording(
+  inner: Controller,
+  seeds: { spawnSeed: number; offerSeed: number },
+): { controller: Controller; log: () => RunLog } {
+  const rec = recorder(inner, seeds);
+  return {
+    controller: {
+      move: rec.driver.move,
+      cut: rec.driver.cut,
+      chooseUpgrade(view, offers) {
+        const w = inner.chooseUpgrade(view, offers);
+        const valid = offers.includes(w) ? w : offers[0]!;
+        rec.noteUpgrade(valid);
+        return valid;
+      },
+    },
+    log: rec.log,
   };
 }
 
@@ -179,6 +214,33 @@ export function study(log: RunLog, seedCount: number): CounterfactualStudy {
     baseline: arm(log, null, seeds),
     arms: WEAPON_IDS.map((id) => arm(log, id, seeds)),
   };
+}
+
+/**
+ * The same study, one arm at a time, so a browser can draw a progress bar
+ * instead of freezing.
+ *
+ * Seven arms over a few dozen seeds is minutes of arithmetic on a phone, and
+ * it lands at the exact moment the player has just died and is looking at the
+ * screen. Yielding between arms is the difference between a pause and a
+ * hang. The arms are computed in the same order and on the same seeds as
+ * `study`, so the two agree exactly; `replay.test.ts` checks that they do.
+ */
+export function* studyByArm(
+  log: RunLog,
+  seedCount: number,
+): Generator<{ done: number; total: number }, CounterfactualStudy, void> {
+  const seeds = seedsFor(log, seedCount);
+  const total = WEAPON_IDS.length + 1;
+  const actual = replay(log).ticks;
+  const baseline = arm(log, null, seeds);
+  yield { done: 1, total };
+  const arms: Arm[] = [];
+  for (const id of WEAPON_IDS) {
+    arms.push(arm(log, id, seeds));
+    yield { done: arms.length + 1, total };
+  }
+  return { seeds, actual, baseline, arms };
 }
 
 export interface Summary {

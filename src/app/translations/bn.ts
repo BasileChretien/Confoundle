@@ -3,6 +3,11 @@
  * the English text exactly. French kept only as a secondary reference.
  */
 export const bn: Record<string, string> = {
+  // ---- Overkill (the game) ----
+  "Damage": "ক্ষতি",
+  "Leave the game": "গেম ছাড়ুন",
+  "Which one could you least afford to lose?": "কোনটি হারানো আপনার পক্ষে সবচেয়ে কঠিন হত?",
+  "Your run": "আপনার খেলা",
   // ---- Scrub lever ----
   "Drag to see the same data the other way": "একই তথ্য অন্যভাবে দেখতে টানুন",
   // ---- Calibration run ----

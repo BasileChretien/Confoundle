@@ -84,6 +84,8 @@ export interface EnemyView {
   readonly x: number;
   readonly y: number;
   readonly hp: number;
+  /** The tick this enemy stops being slowed. Zero if it never was. */
+  readonly slowUntil: number;
 }
 
 /**
@@ -102,27 +104,72 @@ export interface RunView {
   readonly damage: Readonly<Record<WeaponId, number>>;
   readonly cutsLeft: number;
   readonly cutUntil: Readonly<Record<WeaponId, number>>;
+  /**
+   * Which weapons went off on this tick, and whether the player was hit. Both
+   * are for the renderer and neither is read by the simulation: a run is the
+   * same run whether or not anybody is looking at it.
+   */
+  readonly firedThisTick: readonly WeaponId[];
+  readonly hurtThisTick: boolean;
 }
 
 /**
- * The seam that lets one simulation serve three callers: a live player, a
- * replay reading a log, and a scripted policy being measured headless. Test 3
- * in the plan is a controller and nothing else.
+ * The seam that lets one simulation serve four callers: a live player, a
+ * replay reading a log, a counterfactual, and a scripted policy being measured
+ * headless. Test 3 in the plan is a driver and nothing else.
+ *
+ * What the simulation needs on every tick. A thumb can supply this.
  */
-export interface Controller {
+export interface Driver {
   move(view: RunView): Dir;
   /** A weapon to switch off for eight seconds, or null. */
   cut(view: RunView): WeaponId | null;
+}
+
+/**
+ * A driver that also answers the level up without being asked twice, which a
+ * script can do and a person cannot. See `StepStatus`.
+ */
+export interface Controller extends Driver {
   chooseUpgrade(view: RunView, offers: readonly WeaponId[]): WeaponId;
 }
 
-export interface SimOptions {
+export interface RunOptions {
   readonly spawnSeed: number;
   readonly offerSeed: number;
-  readonly controller: Controller;
+  readonly driver: Driver;
   /** The counterfactual: these never fire at all. */
   readonly without?: readonly WeaponId[];
   readonly maxTicks?: number;
+}
+
+export interface SimOptions extends Omit<RunOptions, "driver"> {
+  readonly controller: Controller;
+}
+
+/**
+ * `awaitingUpgrade` is the whole reason this is a stepper rather than a loop.
+ *
+ * A script answers a level up in the same breath as the tick it happens on.
+ * A person has to be shown three cards and given as long as they want, and
+ * the browser has to be handed back in the meantime. So the tick stops half
+ * finished, the offers are already drawn and readable, and nothing else
+ * advances until `chooseUpgrade` resolves it.
+ *
+ * The offers are drawn BEFORE the pause rather than after it, so the draw
+ * count per level up is the same whoever is playing, and a recorded run
+ * replays identically under a script.
+ */
+export type StepStatus = "ran" | "awaitingUpgrade" | "over";
+
+export interface Run {
+  /** Live. Valid until the next `step`, and never to be retained. */
+  readonly view: RunView;
+  /** The three cards, meaningful only while the last step said it was waiting. */
+  readonly offers: readonly WeaponId[];
+  step(): StepStatus;
+  chooseUpgrade(id: WeaponId): void;
+  result(): RunResult;
 }
 
 export interface RunResult {
@@ -143,8 +190,8 @@ export interface RunResult {
   readonly levels: Readonly<Record<WeaponId, number>>;
   readonly spawned: number;
   /**
-   * How many times the spawn stream was consulted. Differs from 
-   * exactly when the live ceiling turned an attempt away. Two runs of the same
+   * How many times the spawn stream was consulted. Differs from the number
+   * spawned exactly when the ceiling turned an attempt away. Two runs of the same
    * length must agree here whatever is switched off, which is a sharper
    * statement than the digest can make on its own.
    */
@@ -197,7 +244,23 @@ function zeroed(): Record<WeaponId, number> {
   return out;
 }
 
+/**
+ * Runs the whole thing to the end, answering level ups from a script. This is
+ * what every headless caller wants: the tests, the counterfactual study, and
+ * the balance policies.
+ */
 export function simulate(opts: SimOptions): RunResult {
+  const run = createRun({ ...opts, driver: opts.controller });
+  for (;;) {
+    const status = run.step();
+    if (status === "over") return run.result();
+    if (status === "awaitingUpgrade") {
+      run.chooseUpgrade(opts.controller.chooseUpgrade(run.view, run.offers));
+    }
+  }
+}
+
+export function createRun(opts: RunOptions): Run {
   const maxTicks = opts.maxTicks ?? DEFAULT_MAX_TICKS;
   const spawnRng = stream(opts.spawnSeed);
   const offerRng = stream(opts.offerSeed);
@@ -227,6 +290,7 @@ export function simulate(opts: SimOptions): RunResult {
 
   const enemies: Enemy[] = [];
   const d2: number[] = [];
+  const firedThisTick: WeaponId[] = [];
   const view: RunView = {
     tick: 0,
     hp,
@@ -237,6 +301,8 @@ export function simulate(opts: SimOptions): RunResult {
     damage,
     cutsLeft,
     cutUntil,
+    firedThisTick,
+    hurtThisTick: false,
   };
   const mutView = view as {
     tick: number;
@@ -244,11 +310,17 @@ export function simulate(opts: SimOptions): RunResult {
     x: number;
     y: number;
     cutsLeft: number;
+    hurtThisTick: boolean;
   };
 
   const offers: WeaponId[] = [];
   let tick = 0;
   let died = false;
+  let over = false;
+  /** The tick whose level up has already been drawn and applied. */
+  let upgradeDoneAt = -1;
+  /** The tick whose offers are on the table, waiting for somebody to choose. */
+  let offeringAt = -1;
 
   /**
    * Applies damage and books it. `pierces` is poison, which ignores armour;
@@ -269,7 +341,13 @@ export function simulate(opts: SimOptions): RunResult {
     if (e.hp <= 0) kills[by] += 1;
   };
 
-  for (; tick < maxTicks; tick++) {
+  const step = (): StepStatus => {
+    if (over) return "over";
+    if (tick >= maxTicks) {
+      over = true;
+      return "over";
+    }
+
     mutView.tick = tick;
     mutView.hp = hp;
     mutView.x = px;
@@ -278,36 +356,39 @@ export function simulate(opts: SimOptions): RunResult {
 
     // 1. UPGRADES, before anything moves, because the choice is about the
     //    tick that follows it.
-    if (isUpgradeTick(tick)) {
-      offers.length = 0;
-      const pool = WEAPON_IDS.filter((id) => levels[id] < MAX_LEVEL);
-      // Drawing without replacement, and drawing the full OFFER_SIZE even when
-      // the pool is short, so the number of draws does not depend on which
-      // weapons the player has been feeding.
-      const bag = pool.slice();
-      for (let k = 0; k < OFFER_SIZE; k++) {
-        const r = offerRng();
-        if (bag.length === 0) continue;
-        const pick = Math.min(bag.length - 1, Math.floor(r * bag.length));
-        offers.push(bag[pick]!);
-        bag.splice(pick, 1);
+    if (isUpgradeTick(tick) && upgradeDoneAt !== tick) {
+      if (offeringAt !== tick) {
+        offers.length = 0;
+        const pool = WEAPON_IDS.filter((id) => levels[id] < MAX_LEVEL);
+        // Drawing without replacement, and drawing the full OFFER_SIZE even
+        // when the pool is short, so the number of draws does not depend on
+        // which weapons the player has been feeding.
+        const bag = pool.slice();
+        for (let k = 0; k < OFFER_SIZE; k++) {
+          const r = offerRng();
+          if (bag.length === 0) continue;
+          const pick = Math.min(bag.length - 1, Math.floor(r * bag.length));
+          offers.push(bag[pick]!);
+          bag.splice(pick, 1);
+        }
+        offeringAt = tick;
       }
-      if (offers.length > 0) {
-        const chosen = opts.controller.chooseUpgrade(view, offers);
-        const valid = offers.includes(chosen) ? chosen : offers[0]!;
-        levels[valid] = Math.min(MAX_LEVEL, levels[valid] + 1);
-      }
+      if (offers.length > 0) return "awaitingUpgrade";
+      upgradeDoneAt = tick;
     }
 
+    firedThisTick.length = 0;
+    mutView.hurtThisTick = false;
+
     // 2. CUTS.
-    const wants = opts.controller.cut(view);
+    const wants = opts.driver.cut(view);
     if (wants !== null && cutsLeft > 0 && cutUntil[wants] <= tick) {
       cutUntil[wants] = tick + CUT_TICKS;
       cutsLeft -= 1;
     }
 
     // 3. THE PLAYER, whose path is a pure function of these directions.
-    const dir = DIRS[opts.controller.move(view)] ?? DIRS[0]!;
+    const dir = DIRS[opts.driver.move(view)] ?? DIRS[0]!;
     px += dir[0]! * PLAYER_SPEED * DT;
     py += dir[1]! * PLAYER_SPEED * DT;
     if (dir[0] !== 0 || dir[1] !== 0) {
@@ -391,6 +472,7 @@ export function simulate(opts: SimOptions): RunResult {
       if (tick < nextFire[id]) continue;
       const spec = WEAPONS[id];
       nextFire[id] = tick + spec.cooldown;
+      firedThisTick.push(id);
       const scale = levelScale(levels[id]);
       const lo = spec.minRange * spec.minRange;
       const hi = spec.maxRange * spec.maxRange;
@@ -460,6 +542,7 @@ export function simulate(opts: SimOptions): RunResult {
       if (incoming > 0) {
         hp -= incoming;
         hurtUntil = tick + HURT_COOLDOWN;
+        mutView.hurtThisTick = true;
       }
     }
 
@@ -483,24 +566,43 @@ export function simulate(opts: SimOptions): RunResult {
     if (hp <= 0) {
       died = true;
       tick += 1;
-      break;
+      over = true;
+      mutView.tick = tick;
+      mutView.hp = hp;
+      return "over";
     }
-  }
+
+    tick += 1;
+    return "ran";
+  };
 
   return {
-    ticks: tick,
-    died,
-    stoppedAtLimit: !died && tick >= maxTicks,
-    finalHp: hp,
-    damage,
-    overkill,
-    kills,
-    levels,
-    spawned,
-    spawnAttempts,
-    spawnDigest,
-    digestAt,
-    spawnedAt,
+    view,
+    offers,
+    step,
+    chooseUpgrade(id: WeaponId) {
+      // Ignored unless a level up is genuinely on the table right now, so a
+      // stray tap between rounds cannot hand out a free level.
+      if (offeringAt !== tick || upgradeDoneAt === tick || offers.length === 0) return;
+      const valid = offers.includes(id) ? id : offers[0]!;
+      levels[valid] = Math.min(MAX_LEVEL, levels[valid] + 1);
+      upgradeDoneAt = tick;
+    },
+    result: (): RunResult => ({
+      ticks: tick,
+      died,
+      stoppedAtLimit: !died && tick >= maxTicks,
+      finalHp: hp,
+      damage,
+      overkill,
+      kills,
+      levels,
+      spawned,
+      spawnAttempts,
+      spawnDigest,
+      digestAt,
+      spawnedAt,
+    }),
   };
 }
 

@@ -241,7 +241,7 @@ describe("armour, which is what stops any weapon being generally good", () => {
  * counterfactual the game draws a fiction.
  */
 describe("nothing in here can reach outside itself", () => {
-  const SOURCES = import.meta.glob("./*.ts", {
+  const SOURCES = import.meta.glob("./*.{ts,tsx}", {
     query: "?raw",
     import: "default",
     eager: true,
@@ -250,6 +250,24 @@ describe("nothing in here can reach outside itself", () => {
   const production = Object.entries(SOURCES).filter(
     ([path]) => !path.endsWith(".test.ts") && !path.includes("_probe"),
   );
+
+  /**
+   * The simulation, which must be reproducible, and the presentation, which
+   * must not be able to reach into it. Splitting them here rather than listing
+   * only the strict ones means a file added later cannot quietly land on
+   * either side: the membership assertion below fails until somebody says
+   * which it is.
+   */
+  const SIMULATION = ["content.ts", "replay.ts", "rng.ts", "sim.ts"];
+  const PRESENTATION = [
+    "DeathScreen.tsx",
+    "Meter.tsx",
+    "OverkillGame.tsx",
+    "format.ts",
+    "input.ts",
+    "policies.ts",
+    "render.ts",
+  ];
 
   const BANNED: readonly (readonly [string, RegExp])[] = [
     ["Math.random", /Math\s*\.\s*random/],
@@ -261,9 +279,23 @@ describe("nothing in here can reach outside itself", () => {
   it("scans the files it thinks it scans", () => {
     // The hole every scan in this repo has had at least once: a glob that
     // matches less than its name promises. Assert the membership, not the
-    // count.
+    // count, and make a new file force a decision about which half it is in.
     const names = production.map(([p]) => p.replace("./", "")).sort();
-    expect(names).toEqual(["content.ts", "policies.ts", "replay.ts", "rng.ts", "sim.ts"]);
+    expect(names).toEqual([...SIMULATION, ...PRESENTATION].sort());
+  });
+
+  it("keeps the simulation from importing anything that draws", () => {
+    // The boundary that makes the split above mean something. A simulation
+    // that reached into the renderer could pick up a frame time, a canvas
+    // size or a device pixel ratio, and a run would stop being reproducible
+    // on a different screen.
+    for (const name of SIMULATION) {
+      const source = production.find(([p]) => p.endsWith(name))![1];
+      for (const other of PRESENTATION) {
+        const mod = other.replace(/\.tsx?$/, "");
+        expect(source.includes(`from "./${mod}"`), `${name} must not import ${other}`).toBe(false);
+      }
+    }
   });
 
   it("detects the things it is looking for", () => {
@@ -272,7 +304,7 @@ describe("nothing in here can reach outside itself", () => {
     for (const [, re] of BANNED) expect(re.test(bait)).toBe(true);
   });
 
-  it.each(["sim.ts", "rng.ts", "content.ts", "replay.ts"])(
+  it.each(SIMULATION)(
     "%s reads no clock, draws no unseeded randomness, and uses no trigonometry",
     (file) => {
       const source = production.find(([p]) => p.endsWith(file))![1];

@@ -1,6 +1,21 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { Suspense, lazy, useCallback, useEffect, useRef, useState } from "react";
 import { getPuzzleBySlug, getTodaysPuzzle } from "../puzzles";
 import { PuzzleFlow } from "../engine/PuzzleFlow";
+
+/**
+ * SPLIT OUT OF THE SHELL, and not as a nicety.
+ *
+ * The install budget had about 100 KiB left in it and the game is roughly
+ * sixty of them, which took the precache to 99.9% of workbox's ceiling: the
+ * build still passed and the next small change would not have. It is also
+ * simply correct, since a reader who never opens the game should not be
+ * downloading a canvas renderer and an arena simulation to read a puzzle. The
+ * chunk is kept out of the precache in `vite.config.ts` for the same reason
+ * the dictionaries are.
+ */
+const OverkillGame = lazy(() =>
+  import("../engine/games/overkill/OverkillGame").then((m) => ({ default: m.OverkillGame })),
+);
 import { ReviewView } from "../engine/ReviewView";
 import { TrapHuntView } from "../engine/TrapHuntView";
 import { CalibrationRunView } from "../engine/CalibrationRunView";
@@ -133,6 +148,17 @@ function AppShell() {
       alive = false;
     };
   }, [view]);
+
+  // The game takes the whole screen, so it returns before the app shell
+  // rather than sitting inside it: a fullscreen canvas under a header, an
+  // account panel and a max-w-md column is not the same thing at all.
+  if (view.name === "overkill") {
+    return (
+      <Suspense fallback={<div className="fixed inset-0 bg-[#080C11]" />}>
+        <OverkillGame seed={0x9e3779b9} onExit={() => go(HOME)} />
+      </Suspense>
+    );
+  }
 
   return (
     <div className="min-h-dvh bg-paper">

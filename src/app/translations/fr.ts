@@ -3,6 +3,11 @@
  * the English text exactly. Native review by Basile; correct in place.
  */
 export const fr: Record<string, string> = {
+  // ---- Overkill (the game) ----
+  "Damage": "Dégâts",
+  "Leave the game": "Quitter le jeu",
+  "Which one could you least afford to lose?": "Laquelle pouviez-vous le moins vous permettre de perdre ?",
+  "Your run": "Votre partie",
   // ---- Scrub lever ----
   "Drag to see the same data the other way": "Faites glisser pour voir les mêmes données autrement",
   // ---- Calibration run ----

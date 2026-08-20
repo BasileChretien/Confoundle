@@ -6789,4 +6789,5 @@ export const ja: Record<string, string> = {
   "More than half of them {condition}.": "半数を超える人が{condition}。",
   "Fewer than half of them {condition}.": "半数に満たない人が{condition}。",
   "Back to the measured {n} in {total}": "実測の{total}人中{n}人に戻す",
+  "Try it": "さわってみる",
 };

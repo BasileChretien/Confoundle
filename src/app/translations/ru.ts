@@ -6861,4 +6861,5 @@ export const ru: Record<string, string> = {
   "More than half of them {condition}.": "Больше половины из них {condition}.",
   "Fewer than half of them {condition}.": "Меньше половины из них {condition}.",
   "Back to the measured {n} in {total}": "Вернуться к измеренному: {n} из {total}",
+  "Try it": "Попробуйте",
 };

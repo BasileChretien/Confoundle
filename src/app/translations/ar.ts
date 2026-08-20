@@ -6792,4 +6792,5 @@ export const ar: Record<string, string> = {
   "More than half of them {condition}.": "أكثر من نصفهم {condition}.",
   "Fewer than half of them {condition}.": "أقل من نصفهم {condition}.",
   "Back to the measured {n} in {total}": "العودة إلى {n} من {total} المقاسة",
+  "Try it": "جرّبه",
 };

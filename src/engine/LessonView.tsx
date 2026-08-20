@@ -51,12 +51,20 @@ export function LessonView({
     a body, so this cannot yet be the only thing in there, and that is a fact
     about the deck rather than an invariant.
   */
+  /*
+    A TOY BEHIND A CLOSED FOLD IS A TOY NOBODY PLAYS WITH. Both of them are the
+    most engaging thing in the beat and the least discoverable: the summary
+    says "The longer answer", which promises reading, and a reader who does not
+    open it never learns there is something to drag. So when one is present the
+    summary says so, which costs one word and is the difference between a
+    feature and a feature nobody found.
+  */
+  const hasToy = canMix(puzzle.setup.data) || canScreen(puzzle.setup.data);
   const hasDeepDive =
     Boolean(lesson.body) ||
     Boolean(lesson.howItWorks) ||
     examples.length > 0 ||
-    canMix(puzzle.setup.data) ||
-    canScreen(puzzle.setup.data);
+    hasToy;
 
   return (
     <section className="flex flex-col gap-4">
@@ -117,8 +125,22 @@ export function LessonView({
               already has the normal shape for that: a lead paragraph, then
               labelled sections.
             */}
-            <span className="font-sans text-[11px] font-semibold uppercase tracking-eyebrow text-ink-soft">
-              {t({ en: "The longer answer" })}
+            <span className="flex items-center gap-2">
+              <span className="font-sans text-[11px] font-semibold uppercase tracking-eyebrow text-ink-soft">
+                {t({ en: "The longer answer" })}
+              </span>
+              {/*
+                THE LABEL STILL NAMES THE WHOLE FOLD, which is the rule the
+                summary's own comment above sets out; this adds to it rather
+                than replacing it. "Try it" rather than a name for the toy,
+                because there are two of them, they do different things, and
+                the summary is not the place to explain either.
+              */}
+              {hasToy ? (
+                <span className="rounded-full border border-brand/40 bg-brand/10 px-1.5 py-0.5 font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-brand">
+                  {t({ en: "Try it" })}
+                </span>
+              ) : null}
             </span>
             <svg
               className="h-4 w-4 text-ink-mute transition-transform duration-200 group-open:rotate-180 motion-reduce:transition-none"

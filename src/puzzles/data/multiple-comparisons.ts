@@ -66,6 +66,10 @@ export const multipleComparisons: Puzzle = {
       metricLabel: { en: "Died of a vascular cause within five weeks" },
       // Deaths, so a lower bar is the better one.
       higherIsBetter: false,
+      // ISIS-2 randomised. That is what lets the lesson beat offer the
+      // subgroup slicer: re-dealing these patients models something precisely
+      // because randomisation made them exchangeable between the arms.
+      armsAreRandomised: true,
       // Crowning a bar would be the exact error this puzzle is about: in the
       // setup it would declare placebo the winner of a difference that is noise.
       crownWinner: false,

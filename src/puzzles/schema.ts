@@ -45,6 +45,25 @@ const RatesData = z.object({
   metricLabel: LocalizedText, // "Success rate"
   higherIsBetter: z.boolean().default(true),
   /**
+   * Whether the two arms were RANDOMISED, which is what licenses re-dealing
+   * the patients into subgroups at random.
+   *
+   * OPT-IN, AND NOT DERIVABLE FROM THE COUNTS. Randomisation is what makes
+   * patients exchangeable between the arms, so a random subgroup of a
+   * randomised trial differs from the whole only by chance, which is the point
+   * the slicer exists to make. Deal an OBSERVATIONAL comparison the same way
+   * and every subgroup silently inherits whatever sorted people into the
+   * groups to begin with: the figure would then teach that those differences
+   * are chance when they are the opposite of chance. `kidney-stones` is the
+   * deck's standing example of that data and must never get this toy.
+   *
+   * Optional rather than defaulted, because `.default()` makes the inferred
+   * type required and would force an edit to every existing puzzle. A puzzle
+   * that says nothing gets no toy, which is the safe direction to fail.
+   */
+  armsAreRandomised: z.boolean().optional(),
+
+  /**
    * Whether the taller bar is a winner worth marking. Not every rate is a
    * contest: "share of these people who also had a second disease" has no good
    * side, and crowning the higher bar would assert a finding the data does not

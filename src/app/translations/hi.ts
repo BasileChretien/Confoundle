@@ -6818,7 +6818,7 @@ export const hi: Record<string, string> = {
   "Who got the {stratum}": "{stratum} किसे मिले",
   "{winner} is ahead in every group and behind overall.": "{winner} हर समूह में आगे है और कुल मिलाकर पीछे।",
   "{share} of the {stratum} go to {group}": "{stratum} का {share} {group} को",
-  "The test keeps the two numbers it actually scored. The only thing that moves is how common the condition is among the people tested.": "जाँच वही दो आँकड़े बनाए रखती है जो उसने सचमुच दिए थे। बदलता है तो सिर्फ़ यह कि जाँच कराने वालों में यह बीमारी कितनी आम है।",
+  "The test keeps the two numbers it actually scored. The only thing that moves is the mix of people it is pointed at.": "जाँच वही दो आँकड़े बनाए रखती है जो उसने सचमुच दिए थे। बदलता है तो सिर्फ़ यह कि वह किन लोगों पर की जा रही है।",
   "About the test, unchanged": "जाँच के बारे में, अपरिवर्तित",
   "Of the people who {condition}, it catches": "जो लोग {condition} हैं, उनमें से यह पकड़ पाती है",
   "Of the people who do not, it still flags": "जिन्हें नहीं है, उनमें भी यह चिह्नित करती है",

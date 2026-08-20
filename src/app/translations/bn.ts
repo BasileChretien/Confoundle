@@ -6827,7 +6827,7 @@ export const bn: Record<string, string> = {
   "Who got the {stratum}": "{stratum} কে পেল",
   "{winner} is ahead in every group and behind overall.": "{winner} প্রতিটি দলে এগিয়ে আর সব মিলিয়ে পিছিয়ে।",
   "{share} of the {stratum} go to {group}": "{stratum}: {share} যায় {group}",
-  "The test keeps the two numbers it actually scored. The only thing that moves is how common the condition is among the people tested.": "পরীক্ষাটি তার প্রকৃত পাওয়া দুটি সংখ্যাই ধরে রাখে। বদলায় কেবল একটাই জিনিস: যাদের পরীক্ষা করা হচ্ছে তাদের মধ্যে রোগটি কতটা সাধারণ।",
+  "The test keeps the two numbers it actually scored. The only thing that moves is the mix of people it is pointed at.": "পরীক্ষাটি তার প্রকৃত পাওয়া দুটি সংখ্যাই ধরে রাখে। বদলায় কেবল একটাই জিনিস: কাদের উপর সেটি প্রয়োগ করা হচ্ছে।",
   "About the test, unchanged": "পরীক্ষা সম্পর্কে, অপরিবর্তিত",
   "Of the people who {condition}, it catches": "যাদের {condition}, তাদের মধ্যে এটি ধরতে পারে",
   "Of the people who do not, it still flags": "যাদের নেই, তাদের ক্ষেত্রেও এটি চিহ্নিত করে",

@@ -76,7 +76,7 @@ export function ScreenView({ full }: { full: FrequenciesData }) {
     <div className="rounded-lg border border-rule bg-paper-2 p-3.5">
       <p className="mb-3 text-[13px] leading-snug text-ink-soft">
         {t({
-          en: "The test keeps the two numbers it actually scored. The only thing that moves is how common the condition is among the people tested.",
+          en: "The test keeps the two numbers it actually scored. The only thing that moves is the mix of people it is pointed at.",
         })}
       </p>
 
@@ -108,51 +108,68 @@ export function ScreenView({ full }: { full: FrequenciesData }) {
         {fillSlots(t({ en: "So, among the people who {positive}" }), { positive })}
       </p>
       {/*
-        The bar is one row split in two rather than two rows, because the
-        quantity in question is a SHARE OF THE POSITIVES and a reader should be
-        able to see the split without comparing lengths across a gap.
+        ONE LIVE REGION AROUND EVERYTHING THAT MOVES, and the share was
+        outside it. `aria-live` wrapped only the verdict, so arrowing the
+        slider announced "1 of 1,000 ... 500 of 1,000" and, once, "More than
+        half of them have the disease" -- and never the 2% to 95% swing, which
+        is the entire point of the toy. The bar and the sentence and the
+        verdict are one reading, so they are one region.
       */}
-      <div className="flex h-5 overflow-hidden rounded-[3px] bg-paper-3">
-        {positives > 0 ? (
-          <>
-            <div
-              style={{
-                width: `${(frame.truePositives / positives) * 100}%`,
-                backgroundColor: colorFor(0),
-              }}
-            />
-            <div
-              style={{
-                width: `${(frame.falsePositives / positives) * 100}%`,
-                backgroundColor: colorFor(1),
-              }}
-            />
-          </>
-        ) : null}
+      <div aria-live="polite">
+        {/*
+          The bar is one row split in two rather than two rows, because the
+          quantity in question is a SHARE OF THE POSITIVES and a reader should
+          be able to see the split without comparing lengths across a gap.
+
+          HIDDEN FROM ASSISTIVE TECHNOLOGY, because colour is the only thing
+          distinguishing its two segments and the sentence below says the same
+          in words. Announcing two unlabelled boxes would add nothing.
+        */}
+        <div
+          className="flex h-5 overflow-hidden rounded-[3px] bg-paper-3"
+          aria-hidden="true"
+        >
+          {positives > 0 ? (
+            <>
+              <div
+                style={{
+                  width: `${(frame.truePositives / positives) * 100}%`,
+                  backgroundColor: colorFor(0),
+                }}
+              />
+              <div
+                style={{
+                  width: `${(frame.falsePositives / positives) * 100}%`,
+                  backgroundColor: colorFor(1),
+                }}
+              />
+            </>
+          ) : null}
+        </div>
+        {/*
+          A TEST HOOK, AND IT EARNS ITS KEEP. At the opening position the count
+          with the condition, the count of true positives and the numeral 1 are
+          the same character, so a numeral check searching the whole page finds
+          it in the slider label and passes while this line prints anything at
+          all. The attribute lets the guard read this element instead of the
+          document.
+        */}
+        <p data-screen="share" className="mt-1.5 text-[13px] leading-snug text-ink">
+          {frame.shareReal === null
+            ? t({ en: "Nobody tests positive at all." })
+            : fillSlots(
+                t({
+                  en: "{share} of them {condition}: {real} of {positives}.",
+                }),
+                {
+                  share: pct.format(frame.shareReal),
+                  condition,
+                  real: num.format(frame.truePositives),
+                  positives: num.format(positives),
+                },
+              )}
+        </p>
       </div>
-      {/*
-        A TEST HOOK, AND IT EARNS ITS KEEP. At the opening position the count
-        with the condition, the count of true positives and the numeral 1 are
-        the same character, so a numeral check searching the whole page finds
-        it in the slider label and passes while this line prints anything at
-        all. The attribute lets the guard read this element instead of the
-        document.
-      */}
-      <p data-screen="share" className="mt-1.5 text-[13px] leading-snug text-ink">
-        {frame.shareReal === null
-          ? t({ en: "Nobody tests positive at all." })
-          : fillSlots(
-              t({
-                en: "{share} of them {condition}: {real} of {positives}.",
-              }),
-              {
-                share: pct.format(frame.shareReal),
-                condition,
-                real: num.format(frame.truePositives),
-                positives: num.format(positives),
-              },
-            )}
-      </p>
 
       <label className="mt-3 block">
         <span className="mb-1 block font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-mute">
@@ -181,11 +198,9 @@ export function ScreenView({ full }: { full: FrequenciesData }) {
 
       {/*
         The verdict, and it is a claim, so it comes from a tested function
-        rather than from a comparison written here.
-
-        THE REGION IS ALWAYS PRESENT so it can be a live one: swapped in and out
-        of the DOM it would be announced by nothing, and a reader arrowing the
-        slider would flip the answer without being told.
+        rather than from a comparison written here. It sits in the same live
+        region as the share above, because they are one reading: the number,
+        then what the number means.
       */}
       <div aria-live="polite">
         {real !== null ? (

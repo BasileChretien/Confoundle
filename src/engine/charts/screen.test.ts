@@ -95,6 +95,24 @@ describe("a test that misses some of them", () => {
     expect(model.falsePositiveRate).toEqual(0.1);
   });
 
+  /**
+   * AND THE ROUNDING DIRECTION IS PINNED, which needs numbers that do not land
+   * on integers. Review found `floor` and `ceil` both survived the suite for
+   * true positives, because `medical-test` has sensitivity exactly 1, and the
+   * one place false positives were pinned was a position where `ceil` and
+   * `round` agree. The `imperfect` table above does not close it either: 80%
+   * of 100 and of 500 are both whole.
+   *
+   * 37 people at 80% is 29.6, and 963 at 10% is 96.3. Nearest is 30 and 96;
+   * flooring gives 29, ceiling gives 30 and 97. All three differ.
+   */
+  it("rounds to the nearest person, not up and not down", () => {
+    const model = screenModel(imperfect);
+    const frame = screenFrame(model, 37);
+    expect(frame.truePositives).toBe(30);
+    expect(frame.falsePositives).toBe(96);
+  });
+
   it("carries the missed cases through into the counts it draws", () => {
     const model = screenModel(imperfect);
     const frame = screenFrame(model, 100);
@@ -169,22 +187,44 @@ describe("what it refuses", () => {
     ({ ...data, ...over }) as FrequenciesData;
 
   /**
-   * THE REFUSAL THAT NO ARITHMETIC COULD MAKE. `prosecutors-fallacy` is the
-   * same shape, its share flips, and it is still nonsense to drag, because one
-   * crime happened. It is refused because it does not opt in, and this asserts
-   * that the shipped puzzle really does not.
+   * THE REFUSAL THAT NO ARITHMETIC COULD MAKE, and it took a review to make
+   * this test mean anything.
+   *
+   * `courtroom-odds` passes every structural check here: its verdict flips
+   * from "fewer than half" at nobody to "more than half" at everybody, its
+   * table is complete, and its counts are sane. Dragging it is still nonsense,
+   * because one crime happened and "how many couples did it" is not a dial.
+   *
+   * The first version of this test asserted only `canScreen(courtroom) ===
+   * false`, WHICH PASSED WITH THE WHOLE OPT-IN MECHANISM DELETED, because at
+   * the time `flips` sampled one person in and hit an exact 1-against-1 tie
+   * there, so the arithmetic was refusing the puzzle and the flag was doing
+   * nothing. Six places in the repo said otherwise. The endpoints are the true
+   * ends now, so the sentence is true, and the assertion that matters is the
+   * second one: with the flag set, this puzzle WOULD be accepted, so the flag
+   * is the only thing standing between the deck and that slider.
    */
-  it("refuses a frequencies puzzle that has not opted in", () => {
-    const prosecutors = puzzles.find((p) => p.slug === "courtroom-odds")!;
-    expect(prosecutors.setup.data.type).toBe("frequencies");
-    expect(canScreen(prosecutors.setup.data)).toBe(false);
-    expect(canScreen(freq({ baseRateCanVary: undefined }))).toBe(false);
+  it("refuses the puzzle that has not opted in, and only for that reason", () => {
+    const court = puzzles.find((p) => p.slug === "courtroom-odds")!.setup.data;
+    expect(court.type).toBe("frequencies");
+    const asFreq = court as FrequenciesData;
+
+    expect(flips(screenModel(asFreq))).toBe(true);
+    expect(canScreen(court)).toBe(false);
+    expect(canScreen({ ...asFreq, baseRateCanVary: true })).toBe(true);
   });
 
   it("accepts the puzzle that did opt in", () => {
     expect(canScreen(data)).toBe(true);
   });
 
+  /*
+    The next three assert an OUTCOME rather than a mechanism, and say so.
+    `flips` refuses each of these on its own, so deleting the guard named in
+    the title changes nothing: the refusal is real and doubly held, and a
+    version of these tests that claimed to isolate the guard would be claiming
+    something no mutation can support.
+  */
   it("refuses a population with only one kind of person in it", () => {
     expect(canScreen(freq({ withCondition: 0 }))).toBe(false);
     expect(canScreen(freq({ withCondition: data.total }))).toBe(false);

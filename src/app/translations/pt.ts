@@ -6859,7 +6859,7 @@ export const pt: Record<string, string> = {
   "Who got the {stratum}": "Quem ficou com: {stratum}",
   "{winner} is ahead in every group and behind overall.": "{winner} está à frente em cada grupo e atrás no total.",
   "{share} of the {stratum} go to {group}": "{share} de {stratum} vão para {group}",
-  "The test keeps the two numbers it actually scored. The only thing that moves is how common the condition is among the people tested.": "O teste mantém os dois números que realmente obteve. A única coisa que se move é quão comum a doença é entre as pessoas testadas.",
+  "The test keeps the two numbers it actually scored. The only thing that moves is the mix of people it is pointed at.": "O teste mantém os dois números que realmente obteve. A única coisa que se move é a quem ele é aplicado.",
   "About the test, unchanged": "Sobre o teste, inalterado",
   "Of the people who {condition}, it catches": "Das pessoas que {condition}, ele deteta",
   "Of the people who do not, it still flags": "Das que não têm, ainda assim sinaliza",

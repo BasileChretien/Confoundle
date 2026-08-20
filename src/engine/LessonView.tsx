@@ -163,8 +163,10 @@ export function LessonView({
 
               Offered only where the puzzle has SAID the base rate is a dial a
               reader can turn, because no arrangement of the counts can tell
-              that: `courtroom-odds` has this exact shape and dragging it would
-              teach that the base rate is a matter of opinion.
+              that: `courtroom-odds` has this exact shape, passes every
+              structural check, and would be offered but for the flag, and
+              dragging it would teach that the base rate is a matter of
+              opinion.
             */}
             {canScreen(puzzle.setup.data) ? (
               <ScreenView full={puzzle.setup.data} />

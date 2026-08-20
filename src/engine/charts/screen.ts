@@ -97,8 +97,21 @@ export function screenFrame(model: ScreenModel, withCondition: number): ScreenFr
  */
 export function mostAreReal(model: ScreenModel, withCondition: number): boolean | null {
   const { shareReal } = screenFrame(model, withCondition);
-  if (shareReal === null) return null;
-  if (shareReal === 0.5) return null;
+  if (shareReal === null || Number.isNaN(shareReal)) return null;
+  /*
+    A HALF IS NOT A MAJORITY, AND NEITHER IS ANYTHING THAT PRINTS AS ONE.
+    The exact tie is reachable on the shipped figure: 48 with the condition
+    gives 48 real positives out of 96, and a plain `> 0.5` called that "most of
+    them do not" beside a figure reading 50%.
+
+    The band is here for the same reason one step out. The share is drawn to
+    the nearest whole percent, so every value within half a point of a half
+    DISPLAYS as 50%, and a claim of a majority beside that number contradicts
+    the number. Not reachable on `medical-test`, where no position lands in the
+    band, which is exactly why it is written down: this shape has already had
+    one bug hidden by that puzzle's convenient arithmetic.
+  */
+  if (Math.abs(shareReal - 0.5) < 0.005) return null;
   return shareReal > 0.5;
 }
 
@@ -113,13 +126,24 @@ export function mostAreReal(model: ScreenModel, withCondition: number): boolean 
  *
  * The share is monotonic in the base rate (more of the condition can only add
  * true positives and remove false ones), so the two ends decide it, exactly as
- * `reversible` does for the Simpson mixer. Both ends are taken one step inside
- * the range because at zero and at the total one arm of the comparison is
- * empty, which is a degenerate population rather than a rare one.
+ * `reversible` does for the Simpson mixer.
+ *
+ * THE ENDS ARE THE ENDS, and an earlier version took them one step inside on
+ * the grounds that an empty arm is degenerate. That was wrong twice over. It is
+ * not degenerate: a population with none of the condition is exactly the case
+ * where every positive is a false one, which is the lesson rather than an edge
+ * of it. And stepping inside made this function abort on `courtroom-odds`,
+ * whose 12,000,000 / 1 / 1 / 1 produces a 1-against-1 TIE at one person, so
+ * `mostAreReal` returned null and the whole check gave up. The consequence was
+ * not a wrong answer but a false STORY: six places in this repo said that
+ * puzzle passes every structural check and is refused only by
+ * `baseRateCanVary`, when in fact the arithmetic was quietly refusing it and
+ * the flag was doing nothing. At the true ends it passes, the flag is what
+ * stops it, and the sentence is true.
  */
 export function flips(model: ScreenModel): boolean {
-  const low = mostAreReal(model, 1);
-  const high = mostAreReal(model, model.total - 1);
+  const low = mostAreReal(model, 0);
+  const high = mostAreReal(model, model.total);
   return low !== null && high !== null && low !== high;
 }
 
@@ -127,14 +151,16 @@ export function flips(model: ScreenModel): boolean {
  * THE TOY IS OFFERED ONLY WHERE MOVING THE BASE RATE IS A SENSIBLE QUESTION,
  * and that is not something the numbers can tell you.
  *
- * `prosecutors-fallacy` has exactly this shape: a total, a count that did it,
- * and how many fit the description either way. The arithmetic works and the
- * share flips, so every structural check here passes. It is still nonsense to
- * drag, because ONE CRIME HAPPENED: "how many couples did it" is not a dial a
- * reader can turn, and inviting them to turn it teaches that the base rate is
- * a matter of opinion. For a screening test the same dial is the whole
- * clinical point, because the base rate is a property of WHO YOU TEST and the
- * reader really does choose that.
+ * `courtroom-odds` has exactly this shape: a total, a count that did it, and
+ * how many fit the description either way. Its verdict flips from "fewer than
+ * half" at nobody to "more than half" at everybody, its table is complete, and
+ * every structural check here passes: with the flag set it WOULD be offered,
+ * which is what makes the flag load-bearing rather than decorative. It is
+ * still nonsense to drag, because ONE CRIME HAPPENED and "how many couples did
+ * it" is not a dial a reader can turn; inviting them to turn it teaches that
+ * the base rate is a matter of opinion. For a screening test the same dial is
+ * the whole clinical point, because the base rate is a property of WHO YOU
+ * TEST and the reader really does choose that.
  *
  * No arrangement of the counts distinguishes those two, so the puzzle declares
  * it. `baseRateCanVary` is opt-in and optional: a `frequencies` puzzle that
@@ -143,8 +169,20 @@ export function flips(model: ScreenModel): boolean {
 export function canScreen(data: PuzzleData): data is FrequenciesData {
   if (data.type !== "frequencies") return false;
   if (data.baseRateCanVary !== true) return false;
-  // A test that catches nobody, or a population with only one kind of person
-  // in it, has no share of real positives to talk about.
+  /*
+    THESE TWO ARE BELT AND BRACES, AND THE TESTS BELOW CANNOT ISOLATE THEM.
+    A population with only one kind of person in it, or a test that catches
+    nobody, is already refused by `flips`: the first divides by zero and gives
+    a NaN share, the second produces no positives at either end, and both land
+    on the null that `flips` treats as "no answer". Deleting either line
+    therefore changes no outcome, and review showed that the tests naming them
+    stay green without them.
+
+    They are kept because they say what the shape requires, in the place a
+    reader looks for it, and because relying on NaN propagation to refuse bad
+    data is a guarantee nobody should have to reconstruct. What is NOT claimed
+    is that they are load-bearing.
+  */
   if (data.withCondition <= 0 || data.total - data.withCondition <= 0) return false;
   if (data.positiveGivenCondition <= 0) return false;
   return flips(screenModel(data));

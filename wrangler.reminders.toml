@@ -37,6 +37,10 @@ SITE_ORIGIN = "https://confoundle.org"
 [[d1_databases]]
 binding = "DB"
 database_name = "confoundle-accounts"
-# Filled in from `npx wrangler d1 list`. Same database as the Pages project's
-# DB binding.
-database_id = "REPLACE_WITH_D1_DATABASE_ID"
+# The same database as the Pages project's DB binding, from `wrangler d1 list`.
+# Not a secret: a D1 id is an account-scoped resource identifier, it grants
+# nothing on its own, and the account id it sits under is already printed in
+# every CI log by the Pages deploy check. Committed because the alternative is
+# a placeholder that makes `pnpm deploy:reminders` fail for whoever runs it
+# next, with an error that says nothing about why.
+database_id = "d0d19f5f-5f9d-4791-bdb8-3cb07376f270"

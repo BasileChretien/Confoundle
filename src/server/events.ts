@@ -59,7 +59,28 @@ export function parseEvent(body: unknown, day: number): EventSubmission {
   if (typeof body !== "object" || body === null) throw new InvalidEvent("body");
   const { event, slug } = body as { event?: unknown; slug?: unknown };
   if (!isEventName(event)) throw new InvalidEvent("event");
-  if (slug !== undefined && (typeof slug !== "string" || !SLUG.test(slug))) {
+  /*
+    "" IS THE SAME THING AS OMITTING IT, and it has to be accepted, because ""
+    is what this function RETURNS when the key is absent and what the table
+    stores for a step that belongs to no puzzle.
+
+    `SLUG` deliberately does not match it: that pattern is the one the puzzle
+    registry enforces, and no puzzle has an empty slug. Rejecting "" on the
+    wire while writing "" to the database was an inconsistency found by probing
+    the live endpoint, not by reading this file. `{"event":"puzzle_view"}`
+    returned 200 and `{"event":"puzzle_view","slug":""}` returned 400, for the
+    same stored row.
+
+    Unreachable from the app today, since every call site passes a real
+    `puzzle.slug`. Worth fixing anyway, because `track`'s prop is
+    `slug?: string` and `track` swallows every failure by design: a caller
+    handing it a slug that happened to be empty would have lost events with
+    nothing, anywhere, to show for it.
+  */
+  if (
+    slug !== undefined &&
+    (typeof slug !== "string" || (slug !== "" && !SLUG.test(slug)))
+  ) {
     throw new InvalidEvent("slug");
   }
   return { event, slug: typeof slug === "string" ? slug : "", day };

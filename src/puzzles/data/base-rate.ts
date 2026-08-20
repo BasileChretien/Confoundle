@@ -33,6 +33,9 @@ export const baseRate: Puzzle = {
       withCondition: 1,
       positiveGivenCondition: 1,
       positiveGivenNoCondition: 50,
+      // The lesson beat offers the screening mixer: the base rate here is a
+      // property of who gets tested, and choosing that is the clinical point.
+      baseRateCanVary: true,
     },
     initialView: { kind: "headline" },
   },

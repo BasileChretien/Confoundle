@@ -80,6 +80,23 @@ const FrequenciesData = z.object({
   withCondition: z.number().int().nonnegative(), // base-rate count
   positiveGivenCondition: z.number().int().nonnegative(), // true positives
   positiveGivenNoCondition: z.number().int().nonnegative(), // false positives
+  /**
+   * Whether the base rate is something a reader can meaningfully move.
+   *
+   * OPT-IN, AND NOT DERIVABLE FROM THE COUNTS. `medical-test` and
+   * `courtroom-odds` are the same shape and the same arithmetic, both pass
+   * every structural check the toy makes, and only one of them can be dragged:
+   * for a screening test the base rate is a property of WHO YOU TEST, which is
+   * exactly the clinical choice, while in the courtroom ONE CRIME HAPPENED and
+   * "how many couples did it" is not a dial. Inviting a reader to turn that one
+   * would teach that the base rate is a matter of opinion. This flag is the
+   * only thing that separates them.
+   *
+   * Optional rather than defaulted, because `.default()` makes the inferred
+   * type required and would force an edit to every existing puzzle. A puzzle
+   * that says nothing gets no toy, which is the safe direction to fail.
+   */
+  baseRateCanVary: z.boolean().optional(),
 });
 export type FrequenciesData = z.infer<typeof FrequenciesData>;
 

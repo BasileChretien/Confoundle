@@ -61,8 +61,22 @@ export function SlicerView({ full }: { full: RatesData }) {
         })}
       </p>
 
-      <p className="mb-1.5 font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-mute">
+      <p className="font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-ink-mute">
         {t({ en: "Both arms pooled, unchanged" })}
+      </p>
+      {/*
+        WHAT THE PERCENTAGES COUNT, which neither toy said until now.
+
+        This is the first toy on a metric where lower is better, and the panel
+        was printing "Aspirin 9.4%" against "Placebo 11.8%" and calling the
+        SMALLER number the leader, with nothing on screen naming the outcome. A
+        reader who assumed a success rate would have read the verdict as
+        backwards. `metricLabel` is required on the shape, puzzle-owned, and
+        was sitting unused: "Died of a vascular cause within five weeks" here,
+        "Success rate" on the mixer's puzzle.
+      */}
+      <p className="mb-1.5 text-[12px] leading-snug text-ink-soft">
+        {t(full.metricLabel)}
       </p>
       <ul data-slicer="pooled" className="mb-3 flex flex-col gap-1 text-[13px]">
         {model.groups.map((g) => (

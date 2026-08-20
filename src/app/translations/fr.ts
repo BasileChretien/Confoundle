@@ -6889,4 +6889,5 @@ export const fr: Record<string, string> = {
   "{n} of {total}": "{n} sur {total}",
   "More than half of them {condition}.": "Plus de la moitié d'entre elles {condition}.",
   "Fewer than half of them {condition}.": "Moins de la moitié d'entre elles {condition}.",
+  "Back to the measured {n} in {total}": "Revenir au {n} sur {total} mesuré",
 };

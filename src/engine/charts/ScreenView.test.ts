@@ -105,6 +105,16 @@ describe("ScreenView", () => {
       num.format(frame.truePositives + frame.falsePositives),
     );
     expect(summary).toContain(pct.format(frame.shareReal!));
+
+    /*
+      The way-back control prints the measured base rate, so it is a numeral
+      the reader sees and has to follow their locale like the rest. Read off
+      its own element for the same reason the summary is: at this position the
+      count and the numeral 1 coincide.
+    */
+    const back = html.match(/<button[^>]*>([^<]*)<\/button>/)?.[1] ?? "";
+    expect(back).toContain(num.format(data.withCondition));
+    expect(back).toContain(num.format(data.total));
   });
 
   /**

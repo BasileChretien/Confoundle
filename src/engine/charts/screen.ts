@@ -81,15 +81,24 @@ export function screenFrame(model: ScreenModel, withCondition: number): ScreenFr
 }
 
 /**
- * Whether most positives are real at this base rate, or null when there is no
- * answer because nobody tested positive.
+ * Whether MOST positives are real at this base rate, or null when there is no
+ * majority to report.
  *
  * The one claim the figure makes in words, so it is a function with a test
  * rather than a comparison assembled in a renderer.
+ *
+ * NULL COVERS TWO CASES AND BOTH ARE REACHABLE. Nobody testing positive is the
+ * obvious one. The other is an EXACT TIE, and it is not hypothetical: on the
+ * shipped figure, 48 people with the condition gives 48 real positives out of
+ * 96, and a plain `> 0.5` reported that as "most of them do not", which is
+ * false. Half is not a majority in either direction, and a caption that claims
+ * one while the figure beside it reads 50% is the figure contradicting itself,
+ * which is the failure this whole family of toys is written to avoid.
  */
 export function mostAreReal(model: ScreenModel, withCondition: number): boolean | null {
   const { shareReal } = screenFrame(model, withCondition);
   if (shareReal === null) return null;
+  if (shareReal === 0.5) return null;
   return shareReal > 0.5;
 }
 

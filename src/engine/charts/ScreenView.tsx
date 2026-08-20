@@ -56,11 +56,21 @@ export function ScreenView({ full }: { full: FrequenciesData }) {
   const condition = t(full.conditionLabel);
   const positive = t(full.positiveLabel);
   /*
-    `step` keeps the slider to a couple of hundred stops whatever the total, so
-    dragging feels the same on a figure of 1,000 and one of 100,000 rather than
-    demanding pixel precision on the second.
+    ONE PERSON PER STOP, and the obvious optimisation here is a bug.
+
+    Keeping the slider to a couple of hundred stops, `total / 200`, gives 5 on
+    a figure of 1,000 and reads sensibly. It also puts the AUTHORED BASE RATE
+    off the grid: 1 in 1,000 is not a multiple of 5, so the browser drew the
+    thumb at 0 while the figure said 1, and the published study became a
+    position the reader could not return to once they had moved. The opening
+    state is the only place on this slider that is a measurement rather than a
+    what-if, so making it unreachable is the one thing the control must not do.
+
+    A person is the unit the figure counts in, so a person is the step. Found by
+    dragging it; nothing in the tests could see it, because they read the value
+    React holds and the browser is what snaps it.
   */
-  const step = Math.max(1, Math.round(model.total / 200));
+  const step = 1;
 
   return (
     <div className="rounded-lg border border-rule bg-paper-2 p-3.5">
@@ -86,9 +96,7 @@ export function ScreenView({ full }: { full: FrequenciesData }) {
         </li>
         <li className="flex items-baseline justify-between gap-3">
           <span className="text-ink-soft">
-            {fillSlots(t({ en: "Of the people who do not, it still says {positive}" }), {
-              positive,
-            })}
+            {t({ en: "Of the people who do not, it still flags" })}
           </span>
           <span className="shrink-0 tabular-nums text-ink">
             {rate.format(model.falsePositiveRate)}
@@ -132,10 +140,10 @@ export function ScreenView({ full }: { full: FrequenciesData }) {
       */}
       <p data-screen="share" className="mt-1.5 text-[13px] leading-snug text-ink">
         {frame.shareReal === null
-          ? fillSlots(t({ en: "Nobody would {positive} at all." }), { positive })
+          ? t({ en: "Nobody tests positive at all." })
           : fillSlots(
               t({
-                en: "{share} of them really {condition}: {real} of {positives}.",
+                en: "{share} of them {condition}: {real} of {positives}.",
               }),
               {
                 share: pct.format(frame.shareReal),
@@ -161,11 +169,10 @@ export function ScreenView({ full }: { full: FrequenciesData }) {
           value={withCondition}
           onChange={(e) => setWithCondition(Number(e.target.value))}
           aria-valuetext={fillSlots(
-            t({ en: "{n} of the {total} {condition}" }),
+            t({ en: "{n} of {total}" }),
             {
               n: num.format(frame.withCondition),
               total: num.format(model.total),
-              condition,
             },
           )}
           className="w-full accent-brand focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand"
@@ -185,12 +192,12 @@ export function ScreenView({ full }: { full: FrequenciesData }) {
           <p className="mt-2 border-t border-rule pt-2 text-[13px] leading-snug text-ink">
             {real
               ? fillSlots(
-                  t({ en: "Most of the people who {positive} really {condition}." }),
-                  { positive, condition },
+                  t({ en: "More than half of them {condition}." }),
+                  { condition },
                 )
               : fillSlots(
-                  t({ en: "Most of the people who {positive} do not {condition}." }),
-                  { positive, condition },
+                  t({ en: "Fewer than half of them {condition}." }),
+                  { condition },
                 )}
           </p>
         ) : null}

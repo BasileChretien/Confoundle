@@ -134,6 +134,20 @@ describe("the reversal the reader causes", () => {
     }
   });
 
+  /**
+   * AND NO ANSWER AT AN EXACT TIE, which the shipped figure can actually
+   * reach. At 48 with the condition the test produces 48 real positives and 48
+   * false ones, and a plain `> 0.5` called that "most of them do not", printed
+   * beside a figure reading 50%.
+   */
+  it("makes no claim at an exact tie", () => {
+    const frame = screenFrame(model, 48);
+    expect(frame.truePositives).toBe(48);
+    expect(frame.falsePositives).toBe(48);
+    expect(frame.shareReal).toEqual(0.5);
+    expect(mostAreReal(model, 48)).toBeNull();
+  });
+
   it("has no answer when nobody tests positive at all", () => {
     // A perfectly specific test on a population with none of the condition
     // produces no positives, and the share of nothing is not zero, it is

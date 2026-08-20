@@ -6,8 +6,11 @@ import { Badge, Button } from "./ui";
 import { TagChips } from "./TagChips";
 import { canMix } from "./charts/mixer";
 import { canScreen } from "./charts/screen";
+import { canSlice } from "./charts/subgroups";
+import { hasToy } from "./charts/toys";
 import { MixerView } from "./charts/MixerView";
 import { ScreenView } from "./charts/ScreenView";
+import { SlicerView } from "./charts/SlicerView";
 import { ShareLesson } from "./ShareLesson";
 
 function linkFor(p: Provenance): string | undefined {
@@ -59,12 +62,12 @@ export function LessonView({
     summary says so, which costs one word and is the difference between a
     feature and a feature nobody found.
   */
-  const hasToy = canMix(puzzle.setup.data) || canScreen(puzzle.setup.data);
+  const toyPresent = hasToy(puzzle.setup.data);
   const hasDeepDive =
     Boolean(lesson.body) ||
     Boolean(lesson.howItWorks) ||
     examples.length > 0 ||
-    hasToy;
+    toyPresent;
 
   return (
     <section className="flex flex-col gap-4">
@@ -136,7 +139,7 @@ export function LessonView({
                 because there are two of them, they do different things, and
                 the summary is not the place to explain either.
               */}
-              {hasToy ? (
+              {toyPresent ? (
                 <span className="rounded-full border border-brand/40 bg-brand/10 px-1.5 py-0.5 font-sans text-[10px] font-semibold uppercase tracking-eyebrow text-brand">
                   {t({ en: "Try it" })}
                 </span>
@@ -190,6 +193,18 @@ export function LessonView({
               dragging it would teach that the base rate is a matter of
               opinion.
             */}
+            {/*
+              THE THIRD TOY. The trial's own result holds still while the
+              reader cuts its patients into more and more subgroups, and
+              subgroups start contradicting it. Offered only where the puzzle
+              has SAID the arms were randomised, because dealing an
+              observational comparison at random would teach that a confounded
+              difference is chance.
+            */}
+            {canSlice(puzzle.setup.data) ? (
+              <SlicerView full={puzzle.setup.data} />
+            ) : null}
+
             {canScreen(puzzle.setup.data) ? (
               <ScreenView full={puzzle.setup.data} />
             ) : null}

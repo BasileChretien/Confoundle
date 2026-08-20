@@ -4,8 +4,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { LocaleProvider } from "../app/i18n";
 import { puzzles } from "../puzzles";
 import { LessonView } from "./LessonView";
-import { canMix } from "./charts/mixer";
-import { canScreen } from "./charts/screen";
+import { hasToy } from "./charts/toys";
 
 /**
  * THE BADGE PROMISES SOMETHING TO PLAY WITH, SO IT HAS TO BE THERE.
@@ -22,8 +21,11 @@ import { canScreen } from "./charts/screen";
  * learns not to trust the badge, and the 71 puzzles without one vastly
  * outnumber the two with.
  *
- * SO THE CHECK WALKS THE WHOLE REGISTRY rather than the two puzzles I happen
- * to be thinking about. That is the same rule `declaredColors.test.ts` and
+ * SO THE CHECK WALKS THE WHOLE REGISTRY rather than the puzzles I happen to be
+ * thinking about, and asks `hasToy` rather than listing the toys itself: the
+ * third one was added after this file, and a hand-kept disjunction here would
+ * have gone red on a correct change and invited someone to edit the
+ * expectation instead of reading it. That is the same rule `declaredColors.test.ts` and
  * `scopeLabels.test.ts` follow: read the enumeration off a runtime source, so
  * the puzzle somebody adds next year is covered without its author knowing
  * this file exists. A hand-written list of two slugs would pass forever and
@@ -51,9 +53,7 @@ const lessonHtml = (puzzle: (typeof puzzles)[number]) =>
 
 describe("the fold's 'try it' badge", () => {
   it("is offered by some puzzles and not others, or it proves nothing", () => {
-    const withToy = puzzles.filter(
-      (p) => canMix(p.setup.data) || canScreen(p.setup.data),
-    );
+    const withToy = puzzles.filter((p) => hasToy(p.setup.data));
     expect(withToy.length).toBeGreaterThan(0);
     expect(withToy.length).toBeLessThan(puzzles.length);
   });
@@ -61,8 +61,7 @@ describe("the fold's 'try it' badge", () => {
   it.each(puzzles.map((p) => [p.slug, p] as const))(
     "shows it on %s exactly when that puzzle has a toy",
     (_slug, puzzle) => {
-      const hasToy = canMix(puzzle.setup.data) || canScreen(puzzle.setup.data);
-      expect(lessonHtml(puzzle).includes(BADGE)).toBe(hasToy);
+      expect(lessonHtml(puzzle).includes(BADGE)).toBe(hasToy(puzzle.setup.data));
     },
   );
 });

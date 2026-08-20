@@ -22,6 +22,7 @@ export type View =
   | { name: "lesson"; slug: string }
   | { name: "review"; practice: boolean }
   | { name: "trapHunt" }
+  | { name: "publishGame" }
   | { name: "calibrationRun" }
   | { name: "dailyRun" }
   | { name: "progress" };
@@ -40,6 +41,7 @@ export function viewFromSearch(search: string): View {
   if (review === "practice") return { name: "review", practice: true };
 
   if (params.get("hunt") === "1") return { name: "trapHunt" };
+  if (params.get("game") === "publish") return { name: "publishGame" };
   if (params.get("about") === "1") return { name: "about" };
   if (params.get("lessons") === "1") return { name: "lessons" };
   if (params.get("run") === "daily") return { name: "dailyRun" };
@@ -119,6 +121,8 @@ export function searchForView(view: View): string {
       return view.practice ? "?review=practice" : "?review=1";
     case "trapHunt":
       return "?hunt=1";
+    case "publishGame":
+      return "?game=publish";
     case "about":
       return "?about=1";
     case "lessons":

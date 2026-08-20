@@ -3,6 +3,7 @@ import { getPuzzleBySlug, getTodaysPuzzle } from "../puzzles";
 import { PuzzleFlow } from "../engine/PuzzleFlow";
 import { ReviewView } from "../engine/ReviewView";
 import { TrapHuntView } from "../engine/TrapHuntView";
+import { PublishGame } from "../engine/games/PublishGame";
 import { CalibrationRunView } from "../engine/CalibrationRunView";
 import { HomeView } from "../engine/HomeView";
 import { ProgressPanel } from "../engine/ProgressPanel";
@@ -167,7 +168,17 @@ function AppShell() {
         <AccountPanel />
 
         <div className="flex-1">
-          {view.name === "trapHunt" ? (
+          {/*
+            ONE CHAIN, NOT TWO. This started as a separate `{... ? ... : null}`
+            block above the chain, which rendered the game AND let the chain
+            fall through to its home fallback, so the whole landing page sat
+            underneath the game. It looked fine on the first screen and only
+            showed up on the last one, which is where a scroll finally reached
+            it. A new view goes in the chain.
+          */}
+          {view.name === "publishGame" ? (
+            <PublishGame onDone={() => go(HOME)} />
+          ) : view.name === "trapHunt" ? (
             <TrapHuntView onDone={() => go(HOME)} />
           ) : view.name === "dailyRun" ? (
             <CalibrationRunView daily onDone={() => go(HOME)} />

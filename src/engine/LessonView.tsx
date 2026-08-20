@@ -5,7 +5,9 @@ import { forumTagUrl } from "../app/forum";
 import { Badge, Button } from "./ui";
 import { TagChips } from "./TagChips";
 import { canMix } from "./charts/mixer";
+import { canScreen } from "./charts/screen";
 import { MixerView } from "./charts/MixerView";
+import { ScreenView } from "./charts/ScreenView";
 import { ShareLesson } from "./ShareLesson";
 
 function linkFor(p: Provenance): string | undefined {
@@ -53,7 +55,8 @@ export function LessonView({
     Boolean(lesson.body) ||
     Boolean(lesson.howItWorks) ||
     examples.length > 0 ||
-    canMix(puzzle.setup.data);
+    canMix(puzzle.setup.data) ||
+    canScreen(puzzle.setup.data);
 
   return (
     <section className="flex flex-col gap-4">
@@ -153,6 +156,20 @@ export function LessonView({
               describe a three-way split and a filled-in cell would be a rate
               nobody measured.
             */}
+            {/*
+              THE SECOND TOY, AND THE SAME CONTRACT. The test's characteristics
+              hold still while the reader moves who gets tested, and the worth
+              of a positive swings from almost nothing to almost certain.
+
+              Offered only where the puzzle has SAID the base rate is a dial a
+              reader can turn, because no arrangement of the counts can tell
+              that: `courtroom-odds` has this exact shape and dragging it would
+              teach that the base rate is a matter of opinion.
+            */}
+            {canScreen(puzzle.setup.data) ? (
+              <ScreenView full={puzzle.setup.data} />
+            ) : null}
+
             {canMix(puzzle.setup.data) ? (
               <MixerView full={puzzle.setup.data} />
             ) : null}

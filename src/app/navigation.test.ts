@@ -79,6 +79,7 @@ const ONE_OF_EACH: Record<View["name"], View> = {
   calibrationRun: { name: "calibrationRun" },
   dailyRun: { name: "dailyRun" },
   overkill: { name: "overkill" },
+  encounter: { name: "encounter" },
   progress: { name: "progress" },
 };
 

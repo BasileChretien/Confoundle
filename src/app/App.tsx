@@ -13,6 +13,9 @@ import { PuzzleFlow } from "../engine/PuzzleFlow";
  * chunk is kept out of the precache in `vite.config.ts` for the same reason
  * the dictionaries are.
  */
+const EncounterDemo = lazy(() =>
+  import("../engine/games/overkill/EncounterDemo").then((m) => ({ default: m.EncounterDemo })),
+);
 const OverkillGame = lazy(() =>
   import("../engine/games/overkill/OverkillGame").then((m) => ({ default: m.OverkillGame })),
 );
@@ -152,6 +155,14 @@ function AppShell() {
   // The game takes the whole screen, so it returns before the app shell
   // rather than sitting inside it: a fullscreen canvas under a header, an
   // account panel and a max-w-md column is not the same thing at all.
+  if (view.name === "encounter") {
+    return (
+      <Suspense fallback={<div className="fixed inset-0 bg-[#150A12]" />}>
+        <EncounterDemo onExit={() => go(HOME)} />
+      </Suspense>
+    );
+  }
+
   if (view.name === "overkill") {
     return (
       <Suspense fallback={<div className="fixed inset-0 bg-[#080C11]" />}>

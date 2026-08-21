@@ -333,7 +333,9 @@ describe("nothing in here can reach outside itself", () => {
   const SIMULATION = ["content.ts", "replay.ts", "rng.ts", "sim.ts"];
   const PRESENTATION = [
     "BriefingSheet.tsx",
+    "EncounterDemo.tsx",
     "cells.ts",
+    "encounter.ts",
     "DeathScreen.tsx",
     "Meter.tsx",
     "OverkillGame.tsx",

@@ -168,13 +168,24 @@ export interface EnemySpec {
    * as a broken weapon rather than as the wrong tool for the job.
    */
   readonly armour: number;
+  /**
+   * How thick the outer wall is, as a fraction of the pathogen's radius.
+   *
+   * A NUMBER AND NOT A DRAWING DECISION, because the whole point is that the
+   * membrane attack complex either reaches the membrane underneath or does
+   * not, and that is arithmetic: `wall < PORE_REACH`. Complement's row in
+   * `EFFECTIVE` is a consequence of this number rather than an opinion beside
+   * it, and the encounter animation and the arena silhouette read the same
+   * field, so the picture cannot drift from the mechanism.
+   */
+  readonly wall: number;
 }
 
 export const ENEMIES: Readonly<Record<EnemyKind, EnemySpec>> = {
   /** E. coli. Thin walled, and complement goes straight through it. */
-  coli: { cls: "gramNegative", hp: 9, speed: 48, damage: 3, radius: 7, armour: 0 },
+  coli: { cls: "gramNegative", hp: 9, speed: 48, damage: 3, radius: 7, armour: 0 , wall: 0.1 /* a hairline wall, and complement goes straight through it */ },
   /** S. aureus. The thick wall is the whole lesson, so it is drawn thick. */
-  aureus: { cls: "gramPositive", hp: 26, speed: 44, damage: 5, radius: 8, armour: 3 },
+  aureus: { cls: "gramPositive", hp: 26, speed: 44, damage: 5, radius: 8, armour: 3 , wall: 0.36 /* the thick peptidoglycan the MAC cannot reach past */ },
   /**
    * A free influenza virion, out where an antibody can still reach it.
    *
@@ -185,13 +196,13 @@ export const ENEMIES: Readonly<Record<EnemyKind, EnemySpec>> = {
    * legible from playing, and "the right answer barely scratches it" is the
    * wrong lesson taught convincingly.
    */
-  virion: { cls: "freeVirion", hp: 14, speed: 104, damage: 7, radius: 7, armour: 0 },
+  virion: { cls: "freeVirion", hp: 14, speed: 104, damage: 7, radius: 7, armour: 0 , wall: 0 /* an envelope, no wall at all */ },
   /** One of your own cells, infected. Killing it is the only thing that works. */
-  infected: { cls: "infectedCell", hp: 60, speed: 34, damage: 14, radius: 12, armour: 6 },
+  infected: { cls: "infectedCell", hp: 60, speed: 34, damage: 14, radius: 12, armour: 6 , wall: 0.08 /* your own membrane, thin, and defended another way */ },
   /** Candida. The filamentous form is far too big to engulf. */
-  candida: { cls: "fungus", hp: 70, speed: 38, damage: 12, radius: 13, armour: 5 },
+  candida: { cls: "fungus", hp: 70, speed: 38, damage: 12, radius: 13, armour: 5 , wall: 0.3 /* a chitin and glucan wall, thick enough to resist */ },
   /** A schistosome. Too large to phagocytose, and indifferent to most of you. */
-  worm: { cls: "helminth", hp: 420, speed: 30, damage: 26, radius: 19, armour: 10 },
+  worm: { cls: "helminth", hp: 420, speed: 30, damage: 26, radius: 19, armour: 10 , wall: 0.5 /* a syncytial tegument, and far too much of it */ },
 };
 
 /**

@@ -25,6 +25,8 @@ export type View =
   | { name: "calibrationRun" }
   | { name: "dailyRun" }
   | { name: "overkill" }
+  /** A prototype screen that scores nothing. See `EncounterDemo`. */
+  | { name: "encounter" }
   | { name: "progress" };
 
 export const HOME: View = { name: "home" };
@@ -46,6 +48,7 @@ export function viewFromSearch(search: string): View {
   if (params.get("run") === "daily") return { name: "dailyRun" };
   if (params.get("run") === "1") return { name: "calibrationRun" };
   if (params.get("game") === "overkill") return { name: "overkill" };
+  if (params.get("demo") === "encounter") return { name: "encounter" };
   if (params.get("progress") === "1") return { name: "progress" };
 
   return HOME;
@@ -131,6 +134,8 @@ export function searchForView(view: View): string {
       return "?run=daily";
     case "overkill":
       return "?game=overkill";
+    case "encounter":
+      return "?demo=encounter";
     case "progress":
       return "?progress=1";
     case "home":

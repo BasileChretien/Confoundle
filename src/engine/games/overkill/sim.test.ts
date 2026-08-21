@@ -18,7 +18,7 @@ const SEEDS = { spawnSeed: 12345, offerSeed: 999 };
 const SHORT = 90 * TICK_HZ;
 
 function loggedRun(maxTicks = SHORT) {
-  const rec = recording(policy({ kind: "fixed", weapon: "lightning" }), SEEDS);
+  const rec = recording(policy({ kind: "fixed", weapon: "cytokine" }), SEEDS);
   const result = simulate({ ...SEEDS, controller: rec.controller, maxTicks });
   return { result, log: rec.log() };
 }
@@ -192,14 +192,14 @@ describe("the cut", () => {
     let duringCut = 0;
     let afterCut = 0;
     const cutter: Controller = {
-      ...policy({ kind: "fixed", weapon: "lightning" }),
-      cut: (view) => (view.tick === at ? "lightning" : null),
+      ...policy({ kind: "fixed", weapon: "cytokine" }),
+      cut: (view) => (view.tick === at ? "cytokine" : null),
     };
     let last = 0;
     const watch: Controller = {
       ...cutter,
       move(view) {
-        const now = view.damage.lightning;
+        const now = view.damage.cytokine;
         if (view.tick > at && view.tick <= at + CUT_TICKS) duringCut += now - last;
         if (view.tick > at + CUT_TICKS && view.tick <= at + 2 * CUT_TICKS) afterCut += now - last;
         last = now;
@@ -227,8 +227,8 @@ describe("armour, which is what stops any weapon being generally good", () => {
     // Stated here as well as in the table because it is the design claim, and
     // a tuning pass that quietly made lightning a brute answer would break the
     // game without breaking anything that looks like a test.
-    const brute = ENEMIES.brute.armour;
-    expect(effectiveDamage(WEAPONS.lightning.damage, brute, false)).toBe(0);
+    const brute = ENEMIES.superbug.armour;
+    expect(effectiveDamage(WEAPONS.cytokine.damage, brute, false)).toBe(0);
     expect(effectiveDamage(WEAPONS.knife.damage, brute, false)).toBeGreaterThan(0);
   });
 });
@@ -263,6 +263,7 @@ describe("nothing in here can reach outside itself", () => {
     "DeathScreen.tsx",
     "Meter.tsx",
     "OverkillGame.tsx",
+    "WeaponIcon.tsx",
     "format.ts",
     "input.ts",
     "policies.ts",
@@ -341,8 +342,8 @@ describe("the run itself", () => {
     // across several ways of playing and several worlds instead.
     const cap = 8 * 60 * TICK_HZ;
     const results = [
-      policy({ kind: "fixed", weapon: "ice" }),
-      policy({ kind: "fixed", weapon: "fire" }),
+      policy({ kind: "fixed", weapon: "antibody" }),
+      policy({ kind: "fixed", weapon: "burst" }),
       policy({ kind: "spread" }),
     ].flatMap((p, k) =>
       [0, 1].map((j) =>
@@ -365,13 +366,13 @@ describe("the run itself", () => {
   it("books overkill against the weapon that wasted it", () => {
     const r = simulate({
       ...SEEDS,
-      controller: policy({ kind: "fixed", weapon: "lightning" }),
+      controller: policy({ kind: "fixed", weapon: "cytokine" }),
       maxTicks: SHORT,
     });
     // Lightning sprays into crowds that other weapons are already killing, so
     // a large slice of what it reports never bought anything. That surplus is
     // the first of the two ways the meter misleads.
-    expect(r.overkill.lightning / r.damage.lightning).toBeGreaterThan(0.1);
+    expect(r.overkill.cytokine / r.damage.cytokine).toBeGreaterThan(0.1);
     for (const id of WEAPON_IDS) {
       expect(r.overkill[id]).toBeLessThanOrEqual(r.damage[id]);
     }

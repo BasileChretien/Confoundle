@@ -30,8 +30,8 @@
  *     depending on how many arrive and what arrives alongside it.
  */
 
-export type WeaponId = "lightning" | "knife" | "fire" | "ice" | "poison" | "orb";
-export type EnemyKind = "chaff" | "hunter" | "brute";
+export type WeaponId = "cytokine" | "knife" | "burst" | "antibody" | "complement" | "killerT";
+export type EnemyKind = "bacteria" | "virus" | "superbug";
 
 export const TICK_HZ = 60;
 export const DT = 1 / TICK_HZ;
@@ -102,9 +102,9 @@ export const OFFER_SIZE = 3;
  * correct and therefore dull.
  */
 export const XP_VALUE: Readonly<Record<EnemyKind, number>> = {
-  chaff: 1,
-  hunter: 4,
-  brute: 18,
+  bacteria: 1,
+  virus: 4,
+  superbug: 18,
 };
 
 /** Gems inside this are pulled towards the player, and picked up inside that. */
@@ -114,12 +114,15 @@ export const GEM_SPEED = 300;
 export const MAX_GEMS = 500;
 
 /**
- * Experience needed to go from `level` to the next one. Cheap at the start on
- * purpose: the first three levels should arrive inside the first ten seconds,
- * while a player is still working out that the dot is them.
+ * Experience needed to go from `level` to the next one.
+ *
+ * SLOWED FROM THE FIRST VERSION, which handed out six levels in the first
+ * twenty five seconds. That is not generous, it is an interruption every four
+ * seconds, and choosing that often breaks the run into a series of menus.
+ * The reference game is quick at the start and then lets you play.
  */
 export function xpToNext(level: number): number {
-  return Math.round(2 + (level - 1) * 1.6 + Math.pow(level - 1, 1.8));
+  return Math.round(4 + (level - 1) * 2.4 + Math.pow(level - 1, 1.95));
 }
 
 export interface EnemySpec {
@@ -139,11 +142,11 @@ export interface EnemySpec {
 
 export const ENEMIES: Readonly<Record<EnemyKind, EnemySpec>> = {
   /** Dies to anything. Arrives in numbers. Inflates every wide weapon. */
-  chaff: { hp: 8, speed: 46, damage: 3, radius: 7, armour: 0 },
+  bacteria: { hp: 8, speed: 46, damage: 3, radius: 7, armour: 0 },
   /** Fast enough to actually arrive. This is what kills you. */
-  hunter: { hp: 45, speed: 112, damage: 12, radius: 8, armour: 6 },
+  virus: { hp: 45, speed: 112, damage: 12, radius: 8, armour: 6 },
   /** Slow, and nothing that sprays will bring it down. */
-  brute: { hp: 340, speed: 30, damage: 30, radius: 16, armour: 18 },
+  superbug: { hp: 340, speed: 30, damage: 30, radius: 16, armour: 18 },
 };
 
 /** How a weapon chooses among the enemies inside its band. */
@@ -173,7 +176,7 @@ export interface WeaponSpec {
  */
 export const WEAPONS: Readonly<Record<WeaponId, WeaponSpec>> = {
   /** Wide, frequent, weak. Erases crowds and cannot dent anything solid. */
-  lightning: {
+  cytokine: {
     cooldown: 30,
     minRange: 0,
     maxRange: 172,
@@ -191,7 +194,7 @@ export const WEAPONS: Readonly<Record<WeaponId, WeaponSpec>> = {
     damage: 26,
   },
   /** Holds the ground immediately around you. */
-  fire: {
+  burst: {
     cooldown: 24,
     minRange: 0,
     maxRange: 95,
@@ -203,7 +206,7 @@ export const WEAPONS: Readonly<Record<WeaponId, WeaponSpec>> = {
    * THE ONE THE DESIGN IS ABOUT. Four tenths of a point of damage, and it
    * decides whether anything reaches you at all.
    */
-  ice: {
+  antibody: {
     cooldown: 18,
     minRange: 0,
     maxRange: 124,
@@ -214,7 +217,7 @@ export const WEAPONS: Readonly<Record<WeaponId, WeaponSpec>> = {
     slowTicks: 45,
   },
   /** The only answer to a brute, and wasted on anything that dies quickly. */
-  poison: {
+  complement: {
     cooldown: 60,
     minRange: 0,
     maxRange: 220,
@@ -225,7 +228,7 @@ export const WEAPONS: Readonly<Record<WeaponId, WeaponSpec>> = {
     poisonTicks: 240,
   },
   /** A middle distance weapon with a hole underneath it. */
-  orb: {
+  killerT: {
     cooldown: 21,
     minRange: 40,
     maxRange: 115,
@@ -273,9 +276,9 @@ export interface Phase {
  * does not has to find out by spending a cut.
  */
 export const PHASES: readonly Phase[] = [
-  { fromTick: 0, everyTicks: 10, mix: [["chaff", 1]] },
-  { fromTick: 60 * TICK_HZ, everyTicks: 10, mix: [["chaff", 5], ["hunter", 5]] },
-  { fromTick: 200 * TICK_HZ, everyTicks: 7, mix: [["chaff", 4], ["hunter", 4], ["brute", 2]] },
+  { fromTick: 0, everyTicks: 10, mix: [["bacteria", 1]] },
+  { fromTick: 60 * TICK_HZ, everyTicks: 10, mix: [["bacteria", 5], ["virus", 5]] },
+  { fromTick: 200 * TICK_HZ, everyTicks: 7, mix: [["bacteria", 4], ["virus", 4], ["superbug", 2]] },
   /*
     THE RAMP MUST NOT STOP, and the first version of this table stopped here.
 
@@ -286,9 +289,9 @@ export const PHASES: readonly Phase[] = [
     is necessary, could not even be posed. A game whose difficulty stops
     climbing has no answer to "how long did you last".
   */
-  { fromTick: 260 * TICK_HZ, everyTicks: 6, mix: [["chaff", 3], ["hunter", 5], ["brute", 2]] },
-  { fromTick: 320 * TICK_HZ, everyTicks: 5, mix: [["chaff", 3], ["hunter", 5], ["brute", 3]] },
-  { fromTick: 380 * TICK_HZ, everyTicks: 4, mix: [["chaff", 2], ["hunter", 5], ["brute", 4]] },
+  { fromTick: 260 * TICK_HZ, everyTicks: 6, mix: [["bacteria", 3], ["virus", 5], ["superbug", 2]] },
+  { fromTick: 320 * TICK_HZ, everyTicks: 5, mix: [["bacteria", 3], ["virus", 5], ["superbug", 3]] },
+  { fromTick: 380 * TICK_HZ, everyTicks: 4, mix: [["bacteria", 2], ["virus", 5], ["superbug", 4]] },
 ];
 
 export function phaseAt(tick: number): Phase {

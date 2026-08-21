@@ -93,6 +93,8 @@ export interface EnemyView {
   readonly slowUntil: number;
   /** The tick this enemy stops flashing from a hit. */
   readonly flashUntil: number;
+  /** The tick complement stops eating it, so the renderer can show it working. */
+  readonly poisonUntil: number;
 }
 
 /**
@@ -629,7 +631,7 @@ export function createRun(opts: RunOptions): Run {
     // 7. POISON, which is the only damage that lands outside its weapon's turn.
     for (let i = 0; i < enemies.length; i++) {
       const e = enemies[i]!;
-      if (e.hp > 0 && tick < e.poisonUntil) hit(e, e.poisonDps * DT, "poison", true);
+      if (e.hp > 0 && tick < e.poisonUntil) hit(e, e.poisonDps * DT, "complement", true);
     }
 
     // 8. CONTACT. Everything touching you lands at once, so a crowd is worse

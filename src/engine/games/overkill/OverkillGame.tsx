@@ -15,6 +15,7 @@ import {
 import { dirFromKeys, dirFromOffset, isMovementKey } from "./input";
 import { useNumbers } from "./format";
 import { Meter } from "./Meter";
+import { WeaponIcon } from "./WeaponIcon";
 import { DeathScreen } from "./DeathScreen";
 
 /**
@@ -272,14 +273,19 @@ export function OverkillGame({ seed, onExit }: { seed: number; onExit: () => voi
                   setPhase({ at: "playing" });
                 }}
                 className="flex flex-col items-center gap-3 rounded-lg border border-slate-700 bg-slate-900/90 px-2 py-5 active:bg-slate-800"
+                style={{ borderColor: WEAPON_COLOR[id] + "66" }}
               >
-                <span
-                  className="h-9 w-9 rounded"
-                  style={{ background: WEAPON_COLOR[id] }}
-                  aria-hidden
-                />
-                <span className="text-xs text-slate-400 tabular-nums">
-                  {n.int(view?.levels[id] ?? 1)}
+                <WeaponIcon id={id} size={40} />
+                {/* Pips rather than a numeral: how many you already have is a
+                    quantity to glance at, not one to read. */}
+                <span className="flex gap-[3px]" aria-hidden>
+                  {Array.from({ length: Math.min(6, view?.levels[id] ?? 1) }, (_, k) => (
+                    <span
+                      key={k}
+                      className="inline-block h-1 w-1 rounded-full"
+                      style={{ background: WEAPON_COLOR[id] }}
+                    />
+                  ))}
                 </span>
               </button>
             ))}

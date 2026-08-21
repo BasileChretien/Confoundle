@@ -238,15 +238,15 @@ describe("the meter and the truth disagree", () => {
     const total = WEAPON_IDS.reduce((s, id) => s + result.damage[id], 0);
     const share = (id: WeaponId) => result.damage[id] / total;
 
-    expect(share("ice")).toBeLessThan(0.01);
+    expect(share("antibody")).toBeLessThan(0.01);
     const byMeter = [...WEAPON_IDS].sort((a, b) => share(b) - share(a));
-    expect(byMeter[byMeter.length - 1]).toBe("ice");
+    expect(byMeter[byMeter.length - 1]).toBe("antibody");
 
     const loss = (id: WeaponId) =>
       pairedLoss(st.baseline, st.arms.find((a) => a.weapon === id)!);
-    const beatenByIce = WEAPON_IDS.filter((id) => id !== "ice" && loss(id) < loss("ice"));
+    const beatenByIce = WEAPON_IDS.filter((id) => id !== "antibody" && loss(id) < loss("antibody"));
     expect(beatenByIce.length).toBeGreaterThanOrEqual(2);
-    expect(loss("ice")).toBeGreaterThan(20 * TICK_HZ);
+    expect(loss("antibody")).toBeGreaterThan(20 * TICK_HZ);
   });
 
   it("has a weapon whose damage is a rounding error and whose absence is not", () => {
@@ -254,8 +254,8 @@ describe("the meter and the truth disagree", () => {
     // satisfied by everything being close together, and the point is the size
     // of the gap rather than the order.
     const { result, study8: st } = fixture();
-    const iceArm = st.arms.find((a) => a.weapon === "ice")!;
-    expect(result.damage.ice).toBeLessThan(result.damage.lightning / 100);
+    const iceArm = st.arms.find((a) => a.weapon === "antibody")!;
+    expect(result.damage.antibody).toBeLessThan(result.damage.cytokine / 100);
     expect(pairedLoss(st.baseline, iceArm)).toBeGreaterThan(15 * TICK_HZ);
   });
 });
@@ -338,40 +338,47 @@ describe("what one card was worth", () => {
   });
 
   it("keeps offering a weapon that is already at its ceiling", () => {
-    // The spawn-stream argument, one level up, and stated as the property
-    // rather than as a comparison. If the bag of cards were filtered by which
-    // weapons are already maxed, then the offers would depend on the choices,
-    // switching one card would deal a different hand at every later level up,
-    // and the difference the reveal reports would not be the decision.
+    // The spawn-stream argument, one level up. If the bag of cards were
+    // filtered by which weapons are already maxed, the offers would depend on
+    // the choices, switching one card would deal a different hand at every
+    // later level up, and the difference the reveal reports would not be the
+    // decision.
     //
-    // Asserted directly because the comparison version was vacuous: it ran for
-    // two hundred seconds, nothing reached the ceiling in that time, and the
-    // filter it was meant to catch never had a chance to bite. Mutation
-    // testing is what said so.
-    const rec = recording(policy({ kind: "fixed", weapon: "lightning" }), SEEDS);
-    simulate({ ...SEEDS, controller: rec.controller, maxTicks: 8 * 60 * TICK_HZ });
-    const decisions = rec.log().upgrades;
+    // POOLED OVER SEVERAL RUNS, because a single run leaves only three or four
+    // decisions after the ceiling is reached and three cards drawn from six is
+    // about even money each time: an earlier version missed by chance and
+    // looked like a real failure. Pooling makes a miss vanishingly unlikely
+    // without weakening what is asserted.
+    let laterTotal = 0;
+    let sawIt = 0;
+    for (let k = 0; k < 4; k++) {
+      const seeds = { spawnSeed: SEEDS.spawnSeed + k * 7919, offerSeed: SEEDS.offerSeed };
+      const rec = recording(policy({ kind: "fixed", weapon: "cytokine" }), seeds);
+      simulate({ ...seeds, controller: rec.controller, maxTicks: 14 * 60 * TICK_HZ });
+      const decisions = rec.log().upgrades;
 
-    let level = 1;
-    let maxedAt = -1;
-    for (let i = 0; i < decisions.length; i++) {
-      if (decisions[i]!.chosen === "lightning") level += 1;
-      if (level >= MAX_LEVEL && maxedAt < 0) maxedAt = i;
+      let level = 1;
+      let maxedAt = -1;
+      for (let i = 0; i < decisions.length; i++) {
+        if (decisions[i]!.chosen === "cytokine") level += 1;
+        if (level >= MAX_LEVEL && maxedAt < 0) maxedAt = i;
+      }
+      if (maxedAt < 0) continue;
+      const later = decisions.slice(maxedAt + 1);
+      laterTotal += later.length;
+      sawIt += later.filter((d) => d.offers.includes("cytokine")).length;
     }
-    // The premise: the run really did take something to its ceiling.
-    expect(maxedAt).toBeGreaterThan(-1);
-    // And it kept being dealt afterwards, dead card and all.
-    const later = decisions.slice(maxedAt + 1);
-    expect(later.length).toBeGreaterThan(2);
-    expect(later.some((d) => d.offers.includes("lightning"))).toBe(true);
-  }, 60_000);
+    // The premise: runs really did take something to its ceiling and carry on.
+    expect(laterTotal).toBeGreaterThan(6);
+    expect(sawIt).toBeGreaterThan(0);
+  }, 120_000);
 
   it("reads positive when the alternative was better", () => {
     // The sign is the meaning: a negated gain would draw the losing card as
     // the winner. Asserted on hand-built arms so it cannot depend on tuning.
     const base: Arm = { weapon: null, ticks: [100, 100], censored: [false, false] };
-    const better: Arm = { weapon: "ice", ticks: [160, 140], censored: [false, false] };
-    const worse: Arm = { weapon: "orb", ticks: [40, 60], censored: [false, false] };
+    const better: Arm = { weapon: "antibody", ticks: [160, 140], censored: [false, false] };
+    const worse: Arm = { weapon: "killerT", ticks: [40, 60], censored: [false, false] };
     expect(pairedGain(base, better)).toBe(50);
     expect(pairedGain(base, worse)).toBe(-50);
     // And it is the exact opposite of the loss the removal study reports.

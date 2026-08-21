@@ -3,6 +3,7 @@ import { CUTS_PER_RUN, WEAPON_IDS, type WeaponId } from "./content";
 import { WEAPON_COLOR, cutProgress } from "./render";
 import type { RunView } from "./sim";
 import { useNumbers } from "./format";
+import { WeaponIcon } from "./WeaponIcon";
 
 /**
  * The damage meter, which is also the way you switch a weapon off.
@@ -94,13 +95,9 @@ export function Meter({
               onPointerCancel={() => setHolding(null)}
               onPointerLeave={() => setHolding(null)}
             >
-              <span
-                className="h-3 w-3 flex-none rounded-sm"
-                style={{
-                  background: WEAPON_COLOR[id],
-                  opacity: cut !== null ? 0.25 : 1,
-                }}
-              />
+              <span className="flex-none">
+                <WeaponIcon id={id} size={16} dim={cut !== null} />
+              </span>
               <span className="relative h-2.5 w-24 flex-none overflow-hidden rounded-sm bg-slate-800">
                 <span
                   className="absolute inset-y-0 left-0"

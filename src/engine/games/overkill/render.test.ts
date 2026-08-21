@@ -65,12 +65,31 @@ function fakeContext() {
     stroke() {
       this.note("stroke", []);
     },
+    ellipse(...a: number[]) {
+      this.note("ellipse", a);
+    },
+    quadraticCurveTo(...a: number[]) {
+      this.note("quadraticCurveTo", a);
+    },
+    createRadialGradient() {
+      return { addColorStop() {} };
+    },
   };
   return { ctx: ctx as unknown as CanvasRenderingContext2D, calls };
 }
 
 function enemy(over: Partial<EnemyView> = {}): EnemyView {
-  return { id: 1, kind: "chaff", x: 0, y: 0, hp: 8, slowUntil: 0, flashUntil: 0, ...over };
+  return {
+    id: 1,
+    kind: "bacteria",
+    x: 0,
+    y: 0,
+    hp: 8,
+    slowUntil: 0,
+    flashUntil: 0,
+    poisonUntil: 0,
+    ...over,
+  };
 }
 
 function view(over: Partial<RunView> = {}): RunView {
@@ -99,6 +118,10 @@ function view(over: Partial<RunView> = {}): RunView {
 
 const SIZE = { width: 400, height: 800, particles: [], shake: 0 };
 
+/** Every weapon switched off, so the always-on visuals are absent. */
+const allCut = (): RunView["cutUntil"] =>
+  Object.fromEntries(WEAPON_IDS.map((id) => [id, 10_000])) as RunView["cutUntil"];
+
 describe("drawing a frame", () => {
   it("paints a ground and a grid before anything else", () => {
     const { ctx, calls } = fakeContext();
@@ -122,74 +145,117 @@ describe("drawing a frame", () => {
     expect(xs(a)).not.toEqual(xs(b));
   });
 
-  it("draws the player at the centre whatever the world coordinates are", () => {
+  it("draws the white cell at the centre whatever the world coordinates are", () => {
+    // The camera is locked to it, so wherever the run has wandered to, the
+    // player is in the middle of the screen and everything else moves.
     for (const at of [0, 500, -900]) {
       const { ctx, calls } = fakeContext();
       drawFrame(ctx, { view: view({ x: at, y: at }), pulses: [], ...SIZE });
-      const white = calls.find((c) => c.op === "arc" && c.fill === "#FFFFFF");
-      expect(white).toBeDefined();
-      expect(white!.args.slice(0, 2)).toEqual([200, 400]);
+      const body = calls.filter((c) => c.fill === "#F8FAFC" && ["moveTo", "lineTo"].includes(c.op));
+      expect(body.length).toBeGreaterThan(20);
+      for (const c of body) {
+        expect(Math.abs(c.args[0]! - 200)).toBeLessThan(60);
+        expect(Math.abs(c.args[1]! - 400)).toBeLessThan(60);
+      }
     }
   });
 
-  it("gives each enemy kind its own shape", () => {
-    const shapes = (kind: EnemyView["kind"]) => {
+  it("gives each pathogen a silhouette anybody would recognise", () => {
+    const drawn = (kind: EnemyView["kind"]) => {
       const { ctx, calls } = fakeContext();
       drawFrame(ctx, {
         view: view({ enemies: [enemy({ kind, x: 40, y: 0 })] }),
         pulses: [],
         ...SIZE,
       });
-      return calls.filter((c) => ["rect", "lineTo", "arc"].includes(c.op)).map((c) => c.op);
+      return calls;
     };
-    expect(shapes("brute")).toContain("rect");
-    expect(shapes("hunter")).toContain("lineTo");
-    // Chaff is a circle, and so is the player, so the count is what separates
-    // them: two arcs for the player's body and halo, plus one for the chaff.
-    expect(shapes("chaff").filter((o) => o === "arc").length).toBeGreaterThan(2);
+    // A rod with a flagellum trailing off it.
+    expect(drawn("bacteria").some((c) => c.op === "ellipse")).toBe(true);
+    expect(drawn("bacteria").some((c) => c.op === "quadraticCurveTo")).toBe(true);
+    // A spiked capsid: eight spikes, so plenty of short strokes.
+    const virus = drawn("virus").filter((c) => c.op === "lineTo" && c.stroke === "#DB2777");
+    expect(virus.length).toBeGreaterThanOrEqual(8);
+    // The walled one, drawn with a pale rim nothing else has.
+    expect(drawn("superbug").some((c) => c.stroke === "#DDD6FE")).toBe(true);
   });
 
-  it("rings a slowed enemy in the ice colour, and only while it is slowed", () => {
-    const ringed = (slowUntil: number) => {
+  it("sticks an antibody to anything it has tagged, and only while tagged", () => {
+    const tagged = (slowUntil: number) => {
       const { ctx, calls } = fakeContext();
       drawFrame(ctx, {
-        view: view({ tick: 100, enemies: [enemy({ slowUntil })] }),
+        view: view({ tick: 100, enemies: [enemy({ slowUntil })], cutUntil: allCut() }),
         pulses: [],
         ...SIZE,
       });
-      return calls.some((c) => c.op === "arc" && c.stroke === WEAPON_COLOR.ice);
+      return calls.some((c) => c.op === "lineTo" && c.stroke === WEAPON_COLOR.antibody);
     };
-    expect(ringed(160)).toBe(true);
-    expect(ringed(100)).toBe(false);
-    expect(ringed(0)).toBe(false);
+    expect(tagged(160)).toBe(true);
+    expect(tagged(100)).toBe(false);
+    expect(tagged(0)).toBe(false);
+  });
+
+  it("shows complement working on whatever it has attached to", () => {
+    const eaten = (poisonUntil: number) => {
+      const { ctx, calls } = fakeContext();
+      drawFrame(ctx, {
+        view: view({ tick: 100, enemies: [enemy({ poisonUntil })], cutUntil: allCut() }),
+        pulses: [],
+        ...SIZE,
+      });
+      return calls.some((c) => c.op === "arc" && c.stroke === WEAPON_COLOR.complement);
+    };
+    expect(eaten(160)).toBe(true);
+    expect(eaten(0)).toBe(false);
+  });
+
+  it("keeps the orbiting weapons on screen when they are not cut, and takes them away when they are", () => {
+    // THE THING THE WHOLE REDRAW EXISTS FOR. A weapon that only appears at the
+    // instant it lands cannot be seen, cannot be seen improving, and gives a
+    // player nothing to attach the meter's numbers to.
+    const shown = (cut: boolean) => {
+      const { ctx, calls } = fakeContext();
+      drawFrame(ctx, {
+        view: view({ tick: 100, cutUntil: cut ? allCut() : ({ ...view().cutUntil } as RunView["cutUntil"]) }),
+        pulses: [],
+        ...SIZE,
+      });
+      return {
+        antibodies: calls.filter((c) => c.op === "lineTo" && c.stroke === WEAPON_COLOR.antibody).length,
+        killers: calls.filter((c) => c.op === "arc" && c.fill === WEAPON_COLOR.killerT).length,
+      };
+    };
+    const on = shown(false);
+    expect(on.antibodies).toBeGreaterThan(0);
+    expect(on.killers).toBeGreaterThan(0);
+    const off = shown(true);
+    expect(off.antibodies).toBe(0);
+    expect(off.killers).toBe(0);
   });
 
   it("marks a hit on the player without moving them", () => {
     const { ctx, calls } = fakeContext();
     drawFrame(ctx, { view: view({ hurtThisTick: true }), pulses: [], ...SIZE });
-    expect(calls.some((c) => c.op === "arc" && c.fill === "#FCA5A5")).toBe(true);
-    expect(calls.some((c) => c.op === "arc" && c.fill === "#FFFFFF")).toBe(false);
+    expect(calls.some((c) => c.fill === "#FECACA")).toBe(true);
+    expect(calls.some((c) => c.fill === "#F8FAFC")).toBe(false);
   });
 
-  it("expands a pulse in the weapon's colour and drops it once it is stale", () => {
+  it("expands a cytokine pulse and drops it once it is stale", () => {
     const drawn = (age: number) => {
       const { ctx, calls } = fakeContext();
       drawFrame(ctx, {
         view: view({ tick: 100 }),
-        pulses: [{ weapon: "poison", tick: 100 - age }],
+        pulses: [{ weapon: "cytokine", tick: 100 - age }],
         ...SIZE,
       });
-      // A pulse is the only thing drawn part-transparent. Filtering on colour
-      // alone caught the player's own circle too, because the stroke colour
-      // is still whatever the last pulse set it to when the player is drawn.
+      // A pulse is the only thing drawn part-transparent in that colour.
       return calls.filter(
-        (c) => c.op === "arc" && c.stroke === WEAPON_COLOR.poison && c.alpha < 1,
+        (c) => c.op === "arc" && c.stroke === WEAPON_COLOR.cytokine && c.alpha < 1,
       );
     };
-    expect(drawn(0)).toHaveLength(1);
+    expect(drawn(1)).toHaveLength(1);
     expect(drawn(4)).toHaveLength(1);
     expect(drawn(40)).toHaveLength(0);
-    // It grows outwards, so the eye reads it as leaving the player.
     expect(drawn(6)[0]!.args[2]).toBeGreaterThan(drawn(1)[0]!.args[2]!);
   });
 
@@ -204,11 +270,11 @@ describe("drawing a frame", () => {
 
 describe("the small readouts", () => {
   it("reports how far through a cut a weapon is", () => {
-    const v = view({ tick: 100, cutUntil: { ...view().cutUntil, ice: 100 + 8 * TICK_HZ } });
-    expect(cutProgress(v, "ice")).toBeCloseTo(0, 6);
+    const v = view({ tick: 100, cutUntil: { ...view().cutUntil, antibody: 100 + 8 * TICK_HZ } });
+    expect(cutProgress(v, "antibody")).toBeCloseTo(0, 6);
     expect(cutProgress(v, "knife")).toBeNull();
     const later = view({ tick: 100 + 4 * TICK_HZ, cutUntil: v.cutUntil });
-    expect(cutProgress(later, "ice")).toBeCloseTo(0.5, 6);
+    expect(cutProgress(later, "antibody")).toBeCloseTo(0.5, 6);
   });
 
   it("splits ticks into minutes and seconds", () => {

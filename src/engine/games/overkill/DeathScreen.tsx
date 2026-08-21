@@ -3,6 +3,7 @@ import { useT } from "../../../app/i18n";
 import { type WeaponId } from "./content";
 import { WEAPON_COLOR } from "./render";
 import { useNumbers } from "./format";
+import { WeaponIcon } from "./WeaponIcon";
 import {
   decisionStudyByArm,
   decisionToAskAbout,
@@ -113,11 +114,7 @@ export function DeathScreen({ log, onAgain }: { log: RunLog; onAgain: () => void
                 id === phase.decision.chosen ? "border-slate-400" : "border-slate-700"
               }`}
             >
-              <span
-                className="h-8 w-8 rounded"
-                style={{ background: WEAPON_COLOR[id] }}
-                aria-hidden
-              />
+              <WeaponIcon id={id} size={34} />
               {/* The one the player took, marked so the question is about a
                   moment they remember rather than three abstract colours. */}
               <span className="h-1 w-1 rounded-full bg-slate-400" style={{
@@ -158,12 +155,12 @@ export function DeathScreen({ log, onAgain }: { log: RunLog; onAgain: () => void
         {rows.map((r) => (
           <li key={r.id} className="flex items-center gap-2">
             <span
-              className={`h-4 w-4 flex-none rounded-sm ${
+              className={`flex-none rounded-sm ${
                 r.id === pick ? "ring-2 ring-white ring-offset-1 ring-offset-slate-900" : ""
               }`}
-              style={{ background: WEAPON_COLOR[r.id] }}
-              aria-hidden
-            />
+            >
+              <WeaponIcon id={r.id} size={18} />
+            </span>
             <span className="relative h-3 flex-1 overflow-hidden rounded-sm bg-slate-800">
               <span
                 className="absolute inset-y-0 left-0"

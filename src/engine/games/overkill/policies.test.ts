@@ -194,48 +194,37 @@ describe("the briefing, and whether the meter can answer it", () => {
     expect(seen).not.toContain("cytokine");
   });
 
-  it("brackets the decision, and finds every way of not deciding lands together", () => {
+  it("orders the three ways of answering a briefing, worst last", () => {
     /*
-      THE INSTRUMENT, CHECKED AGAINST ITSELF.
+      THE INSTRUMENT, AND WHAT IT NOW SAYS.
 
-      For a while this comparison could not be made, because the floor arm was
-      not a floor: `loadoutScore` rates the recruiter 0, 0 is the minimum, so
-      sorting ascending handed the "deliberately worst" loadout the single
-      strongest card in the game on every briefing while the ceiling arm never
-      took it. Measured then, the worst loadout beat the best one, 332 seconds
-      to 325, and that read as a finding about the game rather than a defect in
-      the ruler. `loadouts.test.ts` now holds the recruiter constant across
-      both arms and proves it.
+      This assertion used to read "every way of not deciding lands together",
+      and it was true: deliberately mismatching, never changing anything and
+      following the damage meter all finished within a second of each other, so
+      the game rewarded choosing well and did not punish choosing badly. There
+      was no penalty for a wrong answer, only a prize for a right one.
 
-      With a real control the picture is unambiguous and the same under either
-      levelling policy: matching is worth roughly 170 seconds, and deliberately
-      mismatching, never changing anything, and following the damage meter all
-      land within a second of each other on the floor. That last part is the
-      sharper half. There is no penalty for choosing badly, only a reward for
-      choosing well, because every route to not-choosing arrives at the same
-      130 seconds.
+      `LOAD_TOLERATED` changed that, and this is where it shows up. Measured
+      over 24 seeds under both levelling policies: matched about 300 seconds,
+      never-choosing 128, deliberately mismatching 111. Choosing badly is now
+      strictly worse than not choosing, which is what a briefing has to mean.
 
-      AND THIS TEST DOES NOT CATCH THAT DEFECT, which is worth saying here so
-      nobody reads the paragraph above and believes it does. Restoring the
-      confound leaves this assertion green: the inversion only ever appeared
-      under the `biggestBar` levelling policy, and everything here runs under
-      `spread`, where the recruiter-laden floor arm still came in at 137
-      seconds against a 300-second ceiling and comfortably passed. What guards
-      the confound is the structural pair in `loadouts.test.ts`, which needs no
-      simulation at all and fails in milliseconds. This test measures the
-      bracket; it does not verify the ruler.
+      Note that KEEP and BIGGEST_BAR still land together, to the second, and
+      that is not a failure of the fix. It is the identity proved two tests
+      above: at a briefing the meter can only ever recommend the effectors
+      already deployed, so following it IS never changing anything. They are
+      the same arm wearing two names, and they should never separate.
     */
-    const floor = [
-      survivalsWith(MISMATCHED),
-      survivalsWith(KEEP),
-      survivalsWith(BIGGEST_BAR),
-    ].map(median);
-    const ceiling = median(survivalsWith(MATCHED));
-    for (const f of floor) expect(ceiling).toBeGreaterThan(f * 1.8);
-    // Every way of not deciding lands in the same place, within 15%.
-    const lo = Math.min(...floor);
-    const hi = Math.max(...floor);
-    expect(hi - lo).toBeLessThan(lo * 0.15);
+    const keep = median(survivalsWith(KEEP));
+    const meter = median(survivalsWith(BIGGEST_BAR));
+    const mismatched = median(survivalsWith(MISMATCHED));
+    const matched = median(survivalsWith(MATCHED));
+
+    expect(matched).toBeGreaterThan(keep * 1.8);
+    // Following the meter is never changing anything. Same arm, same number.
+    expect(Math.abs(keep - meter)).toBeLessThan(keep * 0.05);
+    // And the new part: a wrong answer costs more than no answer.
+    expect(mismatched).toBeLessThan(keep);
   }, 600_000);
 
   it("finds that matching the announced threat is worth minutes, not seconds", () => {

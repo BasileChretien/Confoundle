@@ -122,6 +122,7 @@ function view(over: Partial<RunView> = {}): RunView {
     unlocked: WEAPON_IDS,
     waveIndex: 0,
     waveTick: 0,
+    overload: 0,
     ...over,
   };
 }

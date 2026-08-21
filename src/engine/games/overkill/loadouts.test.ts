@@ -61,6 +61,7 @@ const viewAt = (waveIndex: number): RunView =>
     unlocked: offeredAt(waveIndex),
     waveIndex,
     waveTick: 0,
+    overload: 0,
   }) as RunView;
 
 const pickAt = (arm: typeof MATCHED, i: number) => arm(viewAt(i), offeredAt(i));

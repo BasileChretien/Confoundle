@@ -156,6 +156,7 @@ describe("the squad", () => {
     unlocked: WEAPON_IDS,
     waveIndex: 0,
     waveTick: 0,
+    overload: 0,
     ...over,
   });
 

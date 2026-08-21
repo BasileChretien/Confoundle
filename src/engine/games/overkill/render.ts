@@ -262,6 +262,7 @@ export function drawFrame(ctx: CanvasRenderingContext2D, frame: Frame): void {
   }
   ctx.globalAlpha = 1;
 
+  drawOverload(ctx, view, width, height);
   drawSquad(ctx, view, scale, cx, cy);
   drawNeutrophil(ctx, cx, cy, PLAYER_RADIUS * scale, view);
 }
@@ -296,6 +297,43 @@ function drawAreaWeapons(
     ctx.stroke();
     ctx.globalAlpha = 1;
   }
+}
+
+/**
+ * THE INFECTION WINNING, drawn as a stain creeping in from the edges.
+ *
+ * `view.overload` is health draining with NO POSITION: nothing has touched the
+ * player, so there is nothing on screen for the eye to blame, and a health bar
+ * falling for no visible reason is indistinguishable from a bug. A player has
+ * to be able to see the cause, and the cause is that the screen is full.
+ *
+ * DELIBERATELY NOT A JOLT. Contact damage already owns the shake and the red
+ * flash, and it means "something reached you". This means "you are not
+ * clearing this", which is a state rather than an event, so it is drawn as a
+ * state: it rises, it stays, and it recedes if the player gets back on top of
+ * the wave. Two channels that never say the same thing.
+ *
+ * Reduced motion is respected by construction, since nothing here moves.
+ */
+function drawOverload(
+  ctx: CanvasRenderingContext2D,
+  view: RunView,
+  width: number,
+  height: number,
+): void {
+  if (view.overload <= 0) return;
+  const grad = ctx.createRadialGradient(
+    width / 2,
+    height / 2,
+    Math.min(width, height) * 0.28,
+    width / 2,
+    height / 2,
+    Math.max(width, height) * 0.72,
+  );
+  grad.addColorStop(0, "rgba(120, 8, 40, 0)");
+  grad.addColorStop(1, `rgba(120, 8, 40, ${(0.16 + view.overload * 0.5).toFixed(3)})`);
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, width, height);
 }
 
 /**

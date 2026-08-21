@@ -116,6 +116,68 @@ export const BURST_CAP = 0.4;
  */
 export const MAX_ENEMIES = 220;
 
+/**
+ * PATHOGEN LOAD: how many live pathogens the body tolerates before the
+ * infection itself starts doing the damage, regardless of what touches you.
+ *
+ * THIS IS THE STAKES FIX, AND IT IS ALSO A CORRECTION TO THE BIOLOGY. The game
+ * modelled harm as contact damage only, which says you are hurt because a
+ * germ bumped into you. Nobody dies of that. People die of an infection that
+ * is not being cleared, and the distinction is the whole difference between a
+ * scratch and sepsis.
+ *
+ * It happens to be the only thing that can create stakes here, for a reason
+ * worth writing down. Measured: PLAYER_SPEED is 92 and the bacteria move at 44
+ * and 48, so a player simply walks away, and the median count of pathogens
+ * within 40 units of them is ZERO, with a 99th percentile of three, even in a
+ * run with 198 alive on screen. They are spread across the annulus between the
+ * spawn ring at 640 and the despawn ring at 900 and they never form a wall. So
+ * every proximity-based idea, crowding, blocking, contact pressure, was going
+ * to fire on nothing.
+ *
+ * Raising speeds does not work either, and failed three times in a row for the
+ * same reason each time: faster pathogens come TO the player, so kills land
+ * closer, gems are easier to collect, and the arm that was already matching
+ * gets stronger. At an aureus speed of 86 the matched arm went from 306
+ * seconds to 600 while the mismatched arm did not move by one second. Speed is
+ * a reward lever, not a punishment lever.
+ *
+ * A load term is immune to all of that because it does not care where anybody
+ * is. It cannot be dodged, it can only be cleared, and clearing is exactly the
+ * thing the loadout decides. A player who brought the wrong effectors watches
+ * the screen fill and takes damage for as long as it stays full, which is the
+ * consequence the briefing was always supposed to have.
+ */
+export const LOAD_TOLERATED_BASE = 75;
+
+/**
+ * How much more each later wave is allowed to hold.
+ *
+ * A FIXED CEILING PUNISHES SURVIVING, which a flat 70 did: measured over four
+ * seeds, a matched run sits at 50 pathogens through the early waves and rises
+ * to a 99th percentile of 123 in the late ones, not because it is failing but
+ * because a wave of helminths at 420 health each takes far longer to clear
+ * than a wave of E. coli at 9. A run that never gets there peaks at 63. So the
+ * flat ceiling read "you reached wave five" as "you are losing", and it cost
+ * the matched arm forty seconds of median survival while barely touching the
+ * arm it was aimed at.
+ *
+ * Raising the flat ceiling to 140 fixed that and then fired on nobody, because
+ * a mismatched run reaches 150 to 200 DURING WAVE ONE, where a matched run is
+ * still at 50. The two never overlap at the same moment; they only overlap
+ * when you ignore what wave it is. So the tolerance rises with the wave, and
+ * the signal becomes "more alive than this wave should be holding" rather than
+ * "a lot alive".
+ */
+export const LOAD_TOLERATED_PER_WAVE = 20;
+
+export function loadTolerated(waveIndex: number): number {
+  return LOAD_TOLERATED_BASE + waveIndex * LOAD_TOLERATED_PER_WAVE;
+}
+
+/** Health per second, per live pathogen above what the wave should hold. */
+export const LOAD_DPS_PER_ENEMY = 0.08;
+
 export const OFFER_SIZE = 3;
 /** How many effectors may be deployed at once. */
 export const LOADOUT_SIZE = 3;

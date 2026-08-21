@@ -21,6 +21,8 @@ import {
   type WeaponId,
   effectiveDamage,
   killFloor,
+  LOAD_DPS_PER_ENEMY,
+  loadTolerated,
   BURST_CAP,
   EFFECTIVE,
   GEM_SPEED,
@@ -142,6 +144,16 @@ export interface RunView {
   readonly active: readonly WeaponId[];
   /** Everything unlocked so far, which the next briefing chooses from. */
   readonly unlocked: readonly WeaponId[];
+  /**
+   * How far past what this wave should be holding the infection has run, 0 to
+   * 1, where 1 is double the tolerated count.
+   *
+   * Renderer-only, like `firedThisTick`. It exists because the damage it
+   * describes has NO POSITION: nothing touches the player, so there is nothing
+   * on screen for the eye to blame, and health draining for no visible reason
+   * is indistinguishable from a bug. The vignette is the reason, drawn.
+   */
+  readonly overload: number;
   readonly waveIndex: number;
   readonly waveTick: number;
 }
@@ -433,6 +445,7 @@ export function createRun(opts: RunOptions): Run {
     xpNeeded: xpToNext(1),
     active,
     unlocked,
+    overload: 0,
     waveIndex: 0,
     waveTick: 0,
   };
@@ -448,6 +461,7 @@ export function createRun(opts: RunOptions): Run {
     xpNeeded: number;
     waveIndex: number;
     waveTick: number;
+    overload: number;
   };
 
   const offers: WeaponId[] = [];
@@ -810,10 +824,41 @@ export function createRun(opts: RunOptions): Run {
       if (e.hp > 0 && tick < e.poisonUntil) hit(e, e.poisonDps * DT, "complement", true);
     }
 
+    /*
+      THE INFECTION ITSELF, which needs no pathogen to touch you.
+
+      Everything else in this loop asks where things ARE. This asks how many
+      there are, and that is the only question a player cannot answer by
+      running: measured, the median count of pathogens within 40 units of the
+      player is ZERO even in a run with 198 alive, because they are spread over
+      the annulus between the spawn and despawn rings and never form a wall. It
+      is also the honest model of what kills somebody, which contact damage is
+      not: nobody dies because a germ bumped into them, they die of an
+      infection nobody cleared.
+
+      OUTSIDE THE CONTACT COOLDOWN, and it was inside it first, which is a bug
+      worth naming because it is invisible: `hurtUntil` suppresses the whole
+      contact block for 18 ticks after anything touches you, so a drain written
+      in there silently stopped whenever the player was ALSO being hit, which
+      is exactly when an uncleared infection should hurt most. It is not
+      routed through `BURST_CAP` either. Both of those exist so that being
+      surrounded is not an instant unreadable death and so the screen does not
+      shake continuously, and both are facts about being touched.
+
+      The renderer draws this as a rising stain rather than a jolt, so the two
+      channels never say the same thing: a jolt means something reached you, a
+      stain means you are not clearing this.
+    */
+    const load = enemies.length;
+    const tolerated = loadTolerated(waveIndex);
+    if (load > tolerated) hp -= (load - tolerated) * LOAD_DPS_PER_ENEMY * DT;
+    mutView.overload = Math.min(1, Math.max(0, (load - tolerated) / tolerated));
+
     // 8. CONTACT. Everything touching you lands at once, so a crowd is worse
     //    than one thing, which is the entire reason a weapon that only slows
     //    people down can be load bearing.
     if (tick >= hurtUntil) {
+
       let incoming = 0;
       for (let i = 0; i < enemies.length; i++) {
         const e = enemies[i]!;

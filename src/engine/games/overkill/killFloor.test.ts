@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { EFFECTIVE, ENEMIES, WEAPONS, effectiveDamage, killFloor } from "./content";
 import { createRun, type Controller } from "./sim";
 import { policy, type LoadoutChoice } from "./policies";
-import { MATCHED, MISMATCHED } from "./loadouts";
+import { MISMATCHED } from "./loadouts";
 
 /**
  * THE WRONG TOOL NEVER FINISHES THE JOB.
@@ -127,12 +127,73 @@ describe("what it does to a run", () => {
     expect(seen.filter((h) => h.match < 0.35).length).toBeGreaterThan(100);
   }, 300_000);
 
-  it("makes the crowd run away from a mismatched player", () => {
-    // The consequence, kept as documentation of the intent, with a threshold
-    // set from the measured with-and-without pair rather than from taste: the
-    // ratio is about 4x with the cap and about 2.5x without it.
-    const matched = everyHit(MATCHED, SEEDS[0]!, 115 * 60).peak;
-    const mismatched = everyHit(MISMATCHED, SEEDS[0]!, 115 * 60).peak;
-    expect(mismatched).toBeGreaterThan(matched * 3);
+  it("hurts a player nothing is anywhere near, because the infection is uncleared", () => {
+    /*
+      THE STAKES MECHANIC, ASSERTED GEOMETRICALLY.
+
+      Two earlier versions of this test were wrong in instructive ways. The
+      first compared peak crowd sizes between the arms, which was true and also
+      passed with the mechanic deleted, since a mismatched loadout already let
+      the crowd build. The second tried to separate contact damage from
+      infection damage using `hurtThisTick`, and could not: `mutView.hp` is
+      assigned near the TOP of a tick and the contact block runs near the
+      bottom, so a contact drop surfaces in the view one tick later, by which
+      point the flag has been reset. That version counted every drop as
+      non-contact and would have passed on a game with no such mechanic at all.
+
+      So the separation is done in space, where there is no ordering to get
+      wrong: only count health lost on ticks where the NEAREST pathogen, this
+      tick and last, was further away than anything could possibly reach. What
+      is left cannot be contact, and it is the only pressure a player who
+      outruns every pathogen has no answer to except killing.
+    */
+    // Contact reach is the player's 9 plus the largest pathogen's 19, so 28.
+    // Forty five is comfortably past it, and past it by more than anything can
+    // close in one tick: the fastest pathogen moves 1.7 units per tick and the
+    // player 1.5, so a 45 unit gap cannot become a touch before the next
+    // sample. That is what makes the one tick of lag in `view.hp` harmless
+    // here, where it silently defeated the previous version of this test.
+    const FAR = 45;
+    // NOT GUARDED HERE: whether the drain sits inside or outside the contact
+    // cooldown. Putting it back inside, which was the original bug, leaves
+    // this green, because a mismatched run registers only ONE contact tick in
+    // its whole life, so an 18 tick suppression window has almost nothing to
+    // suppress. The placement matters in a run that is being touched often,
+    // and nothing in the suite currently produces one.
+    const c: Controller = policy({ kind: "spread" }, MISMATCHED);
+    const run = createRun({ spawnSeed: SEEDS[0]!, offerSeed: 999, driver: c, maxTicks: CAP });
+    let lostWhileAlone = 0;
+    let overloaded = 0;
+    let hp = 100;
+    let wasAlone = true;
+    for (;;) {
+      const st = run.step();
+      if (st === "over") break;
+      if (st === "awaitingUpgrade") {
+        run.chooseUpgrade(c.chooseUpgrade(run.view, run.offers));
+        continue;
+      }
+      if (st === "awaitingLoadout") {
+        run.chooseLoadout(c.chooseLoadout(run.view, run.view.unlocked));
+        continue;
+      }
+      const v = run.view;
+      let nearest = Infinity;
+      for (const e of v.enemies) {
+        const dx = e.x - v.x;
+        const dy = e.y - v.y;
+        nearest = Math.min(nearest, Math.sqrt(dx * dx + dy * dy));
+      }
+      const alone = nearest > FAR;
+      if (v.overload > 0) overloaded += 1;
+      if (alone && wasAlone && v.hp < hp) lostWhileAlone += hp - v.hp;
+      wasAlone = alone;
+      hp = v.hp;
+    }
+    expect(overloaded, "the crowd never ran past what the wave should hold").toBeGreaterThan(300);
+    expect(
+      Math.round(lostWhileAlone),
+      "no health was lost with every pathogen out of reach",
+    ).toBeGreaterThan(20);
   }, 300_000);
 });

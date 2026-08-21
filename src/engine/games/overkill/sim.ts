@@ -616,8 +616,23 @@ function applyTo(
 ): void {
   if (spec.damage > 0) hit(e, spec.damage * scale, id);
   if (spec.slowFactor !== undefined && spec.slowTicks !== undefined) {
-    e.slowFactor = spec.slowFactor;
-    e.slowUntil = tick + Math.round(spec.slowTicks * scale);
+    /*
+      A LEVEL MAKES THE SLOW DEEPER, not just longer.
+
+      Scaling only the duration is the wrong lever, measured: past the
+      cooldown, extra duration buys nothing at all, so a level spent on ice
+      bought almost nothing while a level spent on lightning compounded.
+
+      HONEST ABOUT WHAT THIS DID NOT FIX. It was changed while chasing the
+      result in `policies.test.ts`, that following the meter is the best
+      investment strategy in the game, and it did not move that: only-ice went
+      from 261s to 283s against a meter follower reaching the ceiling. The
+      change is kept because the reasoning stands on its own, not because it
+      achieved what it was reached for. The real gap is described in that
+      file and is not a tuning problem.
+    */
+    e.slowFactor = spec.slowFactor / (1 + 0.19 * (scale - 1));
+    e.slowUntil = tick + Math.round(spec.slowTicks * Math.min(scale, 1.6));
   }
   if (spec.poisonDps !== undefined && spec.poisonTicks !== undefined) {
     e.poisonDps = spec.poisonDps * scale;

@@ -245,6 +245,19 @@ export const PHASES: readonly Phase[] = [
   { fromTick: 0, everyTicks: 14, mix: [["chaff", 1]] },
   { fromTick: 60 * TICK_HZ, everyTicks: 10, mix: [["chaff", 5], ["hunter", 5]] },
   { fromTick: 200 * TICK_HZ, everyTicks: 7, mix: [["chaff", 4], ["hunter", 4], ["brute", 2]] },
+  /*
+    THE RAMP MUST NOT STOP, and the first version of this table stopped here.
+
+    With the last phase flat, the pressure plateaus and a player who keeps
+    moving simply never dies: measured over twenty five seeds, six of nine
+    scripted policies reached the six minute ceiling, so every arm reported the
+    same number and the question the plan's third test asks, whether diagnosis
+    is necessary, could not even be posed. A game whose difficulty stops
+    climbing has no answer to "how long did you last".
+  */
+  { fromTick: 260 * TICK_HZ, everyTicks: 6, mix: [["chaff", 3], ["hunter", 5], ["brute", 2]] },
+  { fromTick: 320 * TICK_HZ, everyTicks: 5, mix: [["chaff", 3], ["hunter", 5], ["brute", 3]] },
+  { fromTick: 380 * TICK_HZ, everyTicks: 4, mix: [["chaff", 2], ["hunter", 5], ["brute", 4]] },
 ];
 
 export function phaseAt(tick: number): Phase {

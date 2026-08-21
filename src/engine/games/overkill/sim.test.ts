@@ -333,17 +333,34 @@ describe("nothing in here can reach outside itself", () => {
 
 describe("the run itself", () => {
   it("kills the player rather than running out the clock", () => {
-    // If nothing ever dies the counterfactual has nothing to measure, and
-    // every arm reports the same number. This is the premise of the whole
-    // death screen and it is a property of the tuning, so it is asserted.
-    const r = simulate({
-      ...SEEDS,
-      controller: policy({ kind: "fixed", weapon: "ice" }),
-      maxTicks: 8 * 60 * TICK_HZ,
-    });
-    expect(r.died).toBe(true);
-    expect(r.ticks).toBeGreaterThan(60 * TICK_HZ);
-  });
+    // If nothing ever dies the counterfactual has nothing to measure and every
+    // arm reports the same number, so this is the premise of the whole death
+    // screen. It is a property of the TUNING, and the first version of this
+    // test pinned it to one policy, which meant a tuning pass that made that
+    // one weapon stronger broke a test about something else entirely. Asked
+    // across several ways of playing and several worlds instead.
+    const cap = 8 * 60 * TICK_HZ;
+    const results = [
+      policy({ kind: "fixed", weapon: "ice" }),
+      policy({ kind: "fixed", weapon: "fire" }),
+      policy({ kind: "spread" }),
+    ].flatMap((p, k) =>
+      [0, 1].map((j) =>
+        simulate({
+          spawnSeed: SEEDS.spawnSeed + k * 101 + j * 7919,
+          offerSeed: SEEDS.offerSeed,
+          controller: p,
+          maxTicks: cap,
+        }),
+      ),
+    );
+    // Most ways of playing end in death inside eight minutes. Before the ramp
+    // was extended past 3:20 the pressure plateaued and almost nothing did.
+    expect(results.filter((r) => r.died).length).toBeGreaterThanOrEqual(4);
+    // And nobody dies instantly, or the arms would be indistinguishable at the
+    // other end.
+    for (const r of results) expect(r.ticks).toBeGreaterThan(60 * TICK_HZ);
+  }, 60_000);
 
   it("books overkill against the weapon that wasted it", () => {
     const r = simulate({

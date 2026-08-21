@@ -1,65 +1,71 @@
 import { useEffect, useMemo, useState } from "react";
 import { useT } from "../../../app/i18n";
-import { WEAPON_IDS, type WeaponId } from "./content";
+import { type WeaponId } from "./content";
 import { WEAPON_COLOR } from "./render";
 import { useNumbers } from "./format";
 import {
-  pairedLoss,
-  studyByArm,
+  decisionStudyByArm,
+  decisionToAskAbout,
+  pairedGain,
   summarise,
   type CounterfactualStudy,
+  type Decision,
   type RunLog,
 } from "./replay";
 
 /**
  * The commit, then the reveal. The same two beats every puzzle in this app
- * already has, arrived at from a completely different direction.
+ * already has, arrived at here from a completely different direction.
  *
- * THE QUESTION IS "WHICH COULD YOU LEAST AFFORD TO LOSE", not "which was
- * keeping you alive". The second implies there is one, and with specialised
- * weapons there usually is not: ice buys time, the knife handles whatever
- * reaches you, poison is the only answer to a brute, and pulling any of them
- * hurts. Asking which one, when the honest answer is three, would mark a
- * player wrong for reasoning correctly. "Least afford to lose" asks for the
- * largest gap, which is exactly what the bars below measure.
+ * IT ASKS ABOUT A DECISION THE PLAYER MADE, and that is a change of subject
+ * rather than a change of wording.
  *
- * NOTHING HERE SAYS YOU WERE WRONG. The player's pick is outlined and the
- * numbers are printed beside it. If those two disagree, the screen has said
- * everything it needs to and saying it out loud would be the game explaining
- * its own joke.
+ * The screen used to ask which weapon you could least afford to lose, and
+ * answer it by re-running the game with each weapon removed. That question is
+ * clean and honestly measured and NOBODY CAN ACT ON IT: nothing in the game
+ * lets a player remove a weapon. The only lever they have is which of three
+ * cards they take at a level up. Measured headless, the two answers are not the
+ * same answer: ice costs about two minutes to remove and pouring levels into it
+ * loses. So the game was demonstrating a lesson about a quantity nobody
+ * controls, while the quantity they do control was one the damage meter
+ * predicts perfectly well, and there was no lesson left in the loop at all.
  *
- * The bars run the other way from the meter: they show how long the same run
- * lasted WITHOUT each weapon, so the shortest bar is the biggest loss. The
- * soft end on each is the spread across seeds, and it is there because a
- * single replay is a single sample and printing it as a fact would be the
- * error this whole project exists to point at.
+ * So the reveal now replays the run with ONE card changed, and the three arms
+ * are the three cards that were actually on the table. Everything before that
+ * moment is identical and everything after it is the consequence.
+ *
+ * NOTHING HERE SAYS YOU WERE WRONG. The card the player took is outlined and
+ * the numbers sit beside it. If those disagree, the screen has said what it
+ * needs to; saying it aloud would be the game explaining its own joke.
  */
 
-/** How many worlds each arm is measured in. */
+/** How many worlds each card is measured in. */
 const SEEDS = 9;
 
-type Phase = { at: "ask" } | { at: "working"; done: number; total: number } | { at: "seen" };
+type Phase =
+  | { at: "ask"; decision: Decision; index: number }
+  | { at: "working"; done: number; total: number }
+  | { at: "seen" };
 
-export function DeathScreen({
-  log,
-  onAgain,
-}: {
-  log: RunLog;
-  onAgain: () => void;
-}) {
+export function DeathScreen({ log, onAgain }: { log: RunLog; onAgain: () => void }) {
   const t = useT();
   const n = useNumbers();
-  const [phase, setPhase] = useState<Phase>({ at: "ask" });
+  const index = useMemo(() => decisionToAskAbout(log), [log]);
+  const [phase, setPhase] = useState<Phase>(() =>
+    index === null
+      ? { at: "seen" }
+      : { at: "ask", decision: log.upgrades[index]!, index },
+  );
   const [pick, setPick] = useState<WeaponId | null>(null);
-  const [study, setStudy] = useState<CounterfactualStudy | null>(null);
+  const [study, setStudy] = useState<(CounterfactualStudy & { decision: Decision }) | null>(null);
 
-  // Run the arms one at a time on timeouts. Seven arms over nine seeds is
-  // seconds of arithmetic, and it lands exactly when the player is looking at
-  // the screen, so it cannot be one synchronous call.
+  // One arm at a time on timeouts. Four arms over nine worlds is seconds of
+  // arithmetic and it lands while somebody is looking at the screen, so it
+  // cannot be a single synchronous call.
   useEffect(() => {
-    if (pick === null) return;
+    if (pick === null || index === null) return;
     let cancelled = false;
-    const it = studyByArm(log, SEEDS);
+    const it = decisionStudyByArm(log, index, SEEDS);
     const pump = () => {
       if (cancelled) return;
       const next = it.next();
@@ -75,38 +81,48 @@ export function DeathScreen({
     return () => {
       cancelled = true;
     };
-  }, [pick, log]);
+  }, [pick, log, index]);
 
   const rows = useMemo(() => {
     if (study === null) return [];
-    return WEAPON_IDS.map((id) => {
-      const a = study.arms.find((x) => x.without === id)!;
-      return { id, arm: a, summary: summarise(a), loss: pairedLoss(study.baseline, a) };
-    }).sort((p, q) => q.loss - p.loss);
+    return study.arms
+      .map((a) => ({
+        id: a.weapon!,
+        summary: summarise(a),
+        gain: pairedGain(study.baseline, a),
+      }))
+      .sort((p, q) => q.gain - p.gain);
   }, [study]);
 
   if (phase.at === "ask") {
     return (
       <Sheet>
-        <p className="text-center text-base leading-snug text-slate-100">
-          {t({ en: "Which one could you least afford to lose?" })}
+        <p className="text-center text-[0.6rem] tracking-[0.18em] text-slate-400 uppercase">
+          {n.clock(phase.decision.tick)}
+        </p>
+        <p className="mt-2 text-center text-base leading-snug text-slate-100">
+          {t({ en: "Which of these was worth most?" })}
         </p>
         <div className="mt-5 grid grid-cols-3 gap-2">
-          {WEAPON_IDS.map((id) => (
+          {phase.decision.offers.map((id) => (
             <button
               key={id}
               type="button"
               onClick={() => setPick(id)}
-              className="flex flex-col items-center gap-2 rounded-md border border-slate-700 bg-slate-900/70 px-2 py-3 active:bg-slate-800"
+              className={`flex flex-col items-center gap-2 rounded-md border bg-slate-900/70 px-2 py-4 active:bg-slate-800 ${
+                id === phase.decision.chosen ? "border-slate-400" : "border-slate-700"
+              }`}
             >
               <span
-                className="h-6 w-6 rounded-sm"
+                className="h-8 w-8 rounded"
                 style={{ background: WEAPON_COLOR[id] }}
                 aria-hidden
               />
-              <span className="text-[0.6rem] text-slate-500 tabular-nums">
-                {n.int(log.upgrades.filter((u) => u === id).length)}
-              </span>
+              {/* The one the player took, marked so the question is about a
+                  moment they remember rather than three abstract colours. */}
+              <span className="h-1 w-1 rounded-full bg-slate-400" style={{
+                opacity: id === phase.decision.chosen ? 1 : 0,
+              }} aria-hidden />
             </button>
           ))}
         </div>
@@ -127,11 +143,7 @@ export function DeathScreen({
     );
   }
 
-  const longest = Math.max(
-    ...rows.map((r) => r.summary.high),
-    study?.actual ?? 1,
-    1,
-  );
+  const longest = Math.max(...rows.map((r) => r.summary.high), study?.actual ?? 1, 1);
 
   return (
     <Sheet>
@@ -160,6 +172,9 @@ export function DeathScreen({
                   background: WEAPON_COLOR[r.id],
                 }}
               />
+              {/* The soft end is the spread across worlds. One replay is one
+                  sample, and drawing a hard edge on it would be the error this
+                  whole project exists to point at. */}
               <span
                 className="absolute inset-y-0"
                 style={{

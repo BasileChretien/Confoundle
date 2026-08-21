@@ -34,6 +34,12 @@ import { stream } from "./rng";
  * that lands inside the censored region.
  */
 
+export interface Decision {
+  readonly tick: number;
+  readonly offers: readonly WeaponId[];
+  readonly chosen: WeaponId;
+}
+
 export interface RunLog {
   readonly spawnSeed: number;
   readonly offerSeed: number;
@@ -41,11 +47,18 @@ export interface RunLog {
   readonly moves: readonly (readonly [number, Dir])[];
   readonly cuts: readonly (readonly [number, WeaponId])[];
   /**
-   * The weapon chosen at each level up, in order. The weapon rather than the
-   * index into the offers, because a log that says "index 2" is unreadable and
-   * silently means something different if the offer stream ever changes.
+   * Every level up: when it happened, what the three cards were, and which one
+   * was taken.
+   *
+   * The weapon rather than the index into the offers, because a log that says
+   * "index 2" is unreadable and silently means something different if the
+   * offer stream ever changes.
+   *
+   * The offers and the tick are here because the death screen asks about a
+   * DECISION, and a decision cannot be described without them: "at 2:30 you
+   * took the yellow one over these two" needs all three.
    */
-  readonly upgrades: readonly WeaponId[];
+  readonly upgrades: readonly Decision[];
   /** How many ticks the log covers. No replay of it may run longer. */
   readonly ticks: number;
 }
@@ -63,7 +76,7 @@ export interface Recorder {
    * driver because a live player answers a level up through the stepper's
    * `chooseUpgrade` and never goes through a controller at all.
    */
-  noteUpgrade(id: WeaponId): void;
+  noteUpgrade(tick: number, offers: readonly WeaponId[], chosen: WeaponId): void;
   log(): RunLog;
 }
 
@@ -73,7 +86,7 @@ export function recorder(
 ): Recorder {
   const moves: [number, Dir][] = [];
   const cuts: [number, WeaponId][] = [];
-  const upgrades: WeaponId[] = [];
+  const upgrades: Decision[] = [];
   let last: Dir | null = null;
   let ticks = 0;
 
@@ -98,8 +111,8 @@ export function recorder(
         return c;
       },
     },
-    noteUpgrade(id) {
-      upgrades.push(id);
+    noteUpgrade(tick, offers, chosen) {
+      upgrades.push({ tick, offers: [...offers], chosen });
     },
     log: () => ({ ...seeds, moves, cuts, upgrades, ticks }),
   };
@@ -118,7 +131,7 @@ export function recording(
       chooseUpgrade(view, offers) {
         const w = inner.chooseUpgrade(view, offers);
         const valid = offers.includes(w) ? w : offers[0]!;
-        rec.noteUpgrade(valid);
+        rec.noteUpgrade(view.tick, offers, valid);
         return valid;
       },
     },
@@ -145,7 +158,7 @@ export function replayController(log: RunLog): Controller {
       return cutAt.get(view.tick) ?? null;
     },
     chooseUpgrade(_view, offers) {
-      const want = log.upgrades[nextUpgrade++];
+      const want = log.upgrades[nextUpgrade++]?.chosen;
       return want !== undefined && offers.includes(want) ? want : offers[0]!;
     },
   };
@@ -162,8 +175,15 @@ export function replay(log: RunLog, spawnSeed = log.spawnSeed): RunResult {
 }
 
 export interface Arm {
-  /** null is the arm with nothing taken away. */
-  readonly without: WeaponId | null;
+  /**
+   * Which weapon this arm is about, or null for the run as it was played.
+   *
+   * Deliberately not called `without`: two studies build these now, one that
+   * removes a weapon and one that invests in it, and a field whose meaning
+   * depends on which function produced it is the kind of ambiguity that turns
+   * into a wrong number on a screen.
+   */
+  readonly weapon: WeaponId | null;
   readonly ticks: readonly number[];
   /** Reached the end of the log still alive, so its true length is unknown. */
   readonly censored: readonly boolean[];
@@ -189,7 +209,12 @@ export function seedsFor(log: RunLog, count: number): number[] {
   return out;
 }
 
-function arm(log: RunLog, without: WeaponId | null, seeds: readonly number[]): Arm {
+function arm(
+  log: RunLog,
+  weapon: WeaponId | null,
+  seeds: readonly number[],
+  how: "remove" | "asPlayed",
+): Arm {
   const ticks: number[] = [];
   const censored: boolean[] = [];
   for (const seed of seeds) {
@@ -197,13 +222,97 @@ function arm(log: RunLog, without: WeaponId | null, seeds: readonly number[]): A
       spawnSeed: seed,
       offerSeed: log.offerSeed,
       controller: replayController(log),
-      without: without === null ? undefined : [without],
+      without: how === "remove" && weapon !== null ? [weapon] : undefined,
       maxTicks: log.ticks,
     });
     ticks.push(r.ticks);
     censored.push(r.stoppedAtLimit);
   }
-  return { without, ticks, censored };
+  return { weapon, ticks, censored };
+}
+
+/**
+ * Replays the run, but takes a different card at ONE level up.
+ *
+ * THIS IS THE MARGINAL VALUE OF THE NEXT LEVEL, and it is the only version of
+ * that question that is not confounded.
+ *
+ * The obvious version, and the one written first, is "always take X whenever
+ * it is offered". Measured, every such arm loses to the run as played, and it
+ * loses for a reason that has nothing to do with which weapon is good: a fixed
+ * preference concentrates every level into one weapon while the recorded run
+ * spread them, and concentration loses to spread on its own. That comparison
+ * cannot say anything about the meter because the two arms differ in two ways
+ * at once.
+ *
+ * Changing exactly one card changes exactly one thing. Everything before it is
+ * identical, and everything after it is the honest consequence.
+ */
+export function switchingController(log: RunLog, at: number, to: WeaponId): Controller {
+  const base = replayController(log);
+  let seen = 0;
+  return {
+    move: base.move,
+    cut: base.cut,
+    chooseUpgrade(view, offers) {
+      const recorded = base.chooseUpgrade(view, offers);
+      const mine = seen++;
+      return mine === at && offers.includes(to) ? to : recorded;
+    },
+  };
+}
+
+/**
+ * What each of the three cards at one level up was worth.
+ *
+ * The arm for the card the player actually took is the baseline by
+ * construction, and `replay.test.ts` checks that it comes back identical
+ * rather than merely close: if it did not, the switch would be changing
+ * something other than the decision.
+ */
+export function decisionStudy(
+  log: RunLog,
+  at: number,
+  seedCount: number,
+): CounterfactualStudy & { readonly decision: Decision } {
+  const decision = log.upgrades[at]!;
+  const seeds = seedsFor(log, seedCount);
+  const armFor = (to: WeaponId): Arm => {
+    const ticks: number[] = [];
+    const censored: boolean[] = [];
+    for (const seed of seeds) {
+      const r = simulate({
+        spawnSeed: seed,
+        offerSeed: log.offerSeed,
+        controller: switchingController(log, at, to),
+        maxTicks: log.ticks,
+      });
+      ticks.push(r.ticks);
+      censored.push(r.stoppedAtLimit);
+    }
+    return { weapon: to, ticks, censored };
+  };
+  return {
+    decision,
+    seeds,
+    actual: replay(log).ticks,
+    baseline: arm(log, null, seeds, "asPlayed"),
+    arms: decision.offers.map(armFor),
+  };
+}
+
+/**
+ * Which level up to ask about: far enough in that the meter has had time to
+ * become persuasive, far enough from the end that the answer had time to
+ * matter.
+ *
+ * A third of the way through, and the first decision is never chosen: at the
+ * first level up the meter is a few seconds old and there is nothing yet to be
+ * misled by.
+ */
+export function decisionToAskAbout(log: RunLog): number | null {
+  if (log.upgrades.length < 2) return null;
+  return Math.max(1, Math.round((log.upgrades.length - 1) / 3));
 }
 
 export function study(log: RunLog, seedCount: number): CounterfactualStudy {
@@ -211,36 +320,64 @@ export function study(log: RunLog, seedCount: number): CounterfactualStudy {
   return {
     seeds,
     actual: replay(log).ticks,
-    baseline: arm(log, null, seeds),
-    arms: WEAPON_IDS.map((id) => arm(log, id, seeds)),
+    baseline: arm(log, null, seeds, "asPlayed"),
+    arms: WEAPON_IDS.map((id) => arm(log, id, seeds, "remove")),
   };
 }
 
 /**
- * The same study, one arm at a time, so a browser can draw a progress bar
+ * The decision study, one arm at a time, so a browser can draw a progress bar
  * instead of freezing.
  *
- * Seven arms over a few dozen seeds is minutes of arithmetic on a phone, and
- * it lands at the exact moment the player has just died and is looking at the
- * screen. Yielding between arms is the difference between a pause and a
- * hang. The arms are computed in the same order and on the same seeds as
- * `study`, so the two agree exactly; `replay.test.ts` checks that they do.
+ * Four arms of a few dozen replays each is seconds of arithmetic on a phone,
+ * and it lands at the exact moment the player has just died and is looking at
+ * the screen. Yielding between arms is the difference between a pause and a
+ * hang. Same order and same seeds as `decisionStudy`, so the two agree
+ * exactly; `replay.test.ts` checks that they do.
  */
-export function* studyByArm(
+export function* decisionStudyByArm(
   log: RunLog,
+  at: number,
   seedCount: number,
-): Generator<{ done: number; total: number }, CounterfactualStudy, void> {
+): Generator<{ done: number; total: number }, CounterfactualStudy & { decision: Decision }, void> {
+  const decision = log.upgrades[at]!;
   const seeds = seedsFor(log, seedCount);
-  const total = WEAPON_IDS.length + 1;
+  const total = decision.offers.length + 1;
   const actual = replay(log).ticks;
-  const baseline = arm(log, null, seeds);
+  const baseline = arm(log, null, seeds, "asPlayed");
   yield { done: 1, total };
   const arms: Arm[] = [];
-  for (const id of WEAPON_IDS) {
-    arms.push(arm(log, id, seeds));
+  for (const to of decision.offers) {
+    const ticks: number[] = [];
+    const censored: boolean[] = [];
+    for (const seed of seeds) {
+      const r = simulate({
+        spawnSeed: seed,
+        offerSeed: log.offerSeed,
+        controller: switchingController(log, at, to),
+        maxTicks: log.ticks,
+      });
+      ticks.push(r.ticks);
+      censored.push(r.stoppedAtLimit);
+    }
+    arms.push({ weapon: to, ticks, censored });
     yield { done: arms.length + 1, total };
   }
-  return { seeds, actual, baseline, arms };
+  return { decision, seeds, actual, baseline, arms };
+}
+
+/**
+ * How much longer the same worlds ran when a different card was taken.
+ * Positive means the alternative beat what the player actually did.
+ *
+ * A separate function from `pairedLoss` rather than a negated call to it,
+ * because the sign IS the meaning here and a reader should not have to work
+ * out which way round a subtraction went to know whether a bar is good news.
+ */
+export function pairedGain(baseline: Arm, a: Arm): number {
+  let total = 0;
+  for (let i = 0; i < a.ticks.length; i++) total += a.ticks[i]! - baseline.ticks[i]!;
+  return total / a.ticks.length;
 }
 
 export interface Summary {

@@ -7,7 +7,7 @@ export const ja: Record<string, string> = {
   // ---- Overkill (the game) ----
   "Damage": "ダメージ",
   "Leave the game": "ゲームを終了",
-  "Which one could you least afford to lose?": "失って一番困ったのはどれですか？",
+  "Which of these was worth most?": "どれが一番効きましたか？",
   "Your run": "今回のプレイ",
   // ---- Scrub lever ----
   "Drag to see the same data the other way": "スライドすると同じデータが別の見え方になります",

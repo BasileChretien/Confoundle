@@ -6,7 +6,7 @@ export const ru: Record<string, string> = {
   // ---- Overkill (the game) ----
   "Damage": "Урон",
   "Leave the game": "Выйти из игры",
-  "Which one could you least afford to lose?": "Без какого из них вам пришлось бы хуже всего?",
+  "Which of these was worth most?": "Какая из них дала больше всего?",
   "Your run": "Ваш забег",
   // ---- Scrub lever ----
   "Drag to see the same data the other way": "Потяните, чтобы увидеть те же данные иначе",

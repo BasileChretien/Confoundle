@@ -234,7 +234,7 @@ export function OverkillGame({ seed, onExit }: { seed: number; onExit: () => voi
                 type="button"
                 onClick={() => {
                   run.current?.chooseUpgrade(id);
-                  rec.current?.noteUpgrade(id);
+                  rec.current?.noteUpgrade(view?.tick ?? 0, phase.offers, id);
                   setPhase({ at: "playing" });
                 }}
                 className="flex flex-col items-center gap-3 rounded-lg border border-slate-700 bg-slate-900/90 px-2 py-5 active:bg-slate-800"

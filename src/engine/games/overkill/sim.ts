@@ -359,11 +359,25 @@ export function createRun(opts: RunOptions): Run {
     if (isUpgradeTick(tick) && upgradeDoneAt !== tick) {
       if (offeringAt !== tick) {
         offers.length = 0;
-        const pool = WEAPON_IDS.filter((id) => levels[id] < MAX_LEVEL);
-        // Drawing without replacement, and drawing the full OFFER_SIZE even
-        // when the pool is short, so the number of draws does not depend on
-        // which weapons the player has been feeding.
-        const bag = pool.slice();
+        /*
+          THE BAG IS ALWAYS EVERY WEAPON, and never a pool filtered by what
+          the player has already levelled.
+
+          This is the spawn-stream argument again, one level up. An upgrade
+          counterfactual asks what would have happened had you taken a
+          different card, and that question is only answerable if the LATER
+          cards are the same either way. Filtering the bag by which weapons
+          are maxed makes the offer sequence depend on the choices, so the
+          moment any weapon reaches the ceiling the two runs are being dealt
+          different hands and the difference between them is no longer the
+          decision being studied.
+
+          The cost is that a maxed weapon can be offered, which is a dead card.
+          That is a real cost and it is the smaller one: a dead card is
+          visible and annoying, where a contaminated counterfactual is
+          invisible and wrong.
+        */
+        const bag = WEAPON_IDS.slice();
         for (let k = 0; k < OFFER_SIZE; k++) {
           const r = offerRng();
           if (bag.length === 0) continue;

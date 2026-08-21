@@ -6,7 +6,7 @@ export const bn: Record<string, string> = {
   // ---- Overkill (the game) ----
   "Damage": "ক্ষতি",
   "Leave the game": "গেম ছাড়ুন",
-  "Which one could you least afford to lose?": "কোনটি হারানো আপনার পক্ষে সবচেয়ে কঠিন হত?",
+  "Which of these was worth most?": "এদের মধ্যে কোনটি সবচেয়ে কাজে এসেছিল?",
   "Your run": "আপনার খেলা",
   // ---- Scrub lever ----
   "Drag to see the same data the other way": "একই তথ্য অন্যভাবে দেখতে টানুন",

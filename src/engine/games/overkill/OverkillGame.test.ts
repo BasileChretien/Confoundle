@@ -221,9 +221,9 @@ describe("the end", () => {
         b.className.includes("flex-col"),
       );
       if (card !== undefined) act(() => card.dispatchEvent(new Event("click", { bubbles: true })));
-      if (text().includes("least afford to lose")) break;
+      if (text().includes("worth most")) break;
     }
-    expect(text()).toContain("Which one could you least afford to lose?");
+    expect(text()).toContain("Which of these was worth most?");
   }, 60_000);
 
   it("can be left at any time", () => {

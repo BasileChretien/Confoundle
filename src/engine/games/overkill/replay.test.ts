@@ -1,9 +1,14 @@
 import { describe, expect, it } from "vitest";
-import { TICK_HZ, WEAPON_IDS, type WeaponId } from "./content";
+import { MAX_LEVEL, TICK_HZ, WEAPON_IDS, type WeaponId } from "./content";
 import { simulate } from "./sim";
 import { policy } from "./policies";
 import {
+  decisionStudy,
+  decisionStudyByArm,
+  decisionToAskAbout,
+  pairedGain,
   pairedLoss,
+  switchingController,
   recording,
   replay,
   seedsFor,
@@ -44,13 +49,24 @@ describe("recording and replaying", () => {
     expect(replay(log)).toEqual(result);
   });
 
-  it("records the decisions rather than the offers", () => {
+  it("records the whole decision, not just the answer", () => {
     const { log } = fixture();
     expect(log.upgrades.length).toBeGreaterThan(0);
-    for (const w of log.upgrades) expect(WEAPON_IDS).toContain(w);
-    // A log of indices would replay as something else the moment the offer
-    // stream changed, and would be unreadable in the meantime.
-    expect(log.upgrades.every((w) => typeof w === "string")).toBe(true);
+    for (const d of log.upgrades) {
+      // The weapon rather than an index into the offers: a log saying
+      // "index 2" is unreadable and silently means something else the moment
+      // the offer stream changes.
+      expect(WEAPON_IDS).toContain(d.chosen);
+      // And the cards that were on the table, because the death screen asks
+      // about a decision and a decision cannot be described without them.
+      expect(d.offers).toContain(d.chosen);
+      expect(d.offers.length).toBeGreaterThan(0);
+      expect(d.tick).toBeGreaterThanOrEqual(0);
+    }
+    // The moments are in order, so an index into this list names a moment.
+    for (let i = 1; i < log.upgrades.length; i++) {
+      expect(log.upgrades[i]!.tick).toBeGreaterThan(log.upgrades[i - 1]!.tick);
+    }
   });
 
   it("stores only the changes of direction", () => {
@@ -177,7 +193,7 @@ describe("the study", () => {
 
   it("says so when the middle of an arm is censored", () => {
     const arm: Arm = {
-      without: null,
+      weapon: null,
       ticks: [100, 200, 300, 300, 300],
       censored: [false, false, true, true, true],
     };
@@ -189,7 +205,7 @@ describe("the study", () => {
 
   it("does not call an uncensored middle censored", () => {
     const arm: Arm = {
-      without: null,
+      weapon: null,
       ticks: [100, 200, 300, 400, 900],
       censored: [false, false, false, false, true],
     };
@@ -219,7 +235,7 @@ describe("the meter and the truth disagree", () => {
     expect(byMeter[byMeter.length - 1]).toBe("ice");
 
     const loss = (id: WeaponId) =>
-      pairedLoss(st.baseline, st.arms.find((a) => a.without === id)!);
+      pairedLoss(st.baseline, st.arms.find((a) => a.weapon === id)!);
     const beatenByIce = WEAPON_IDS.filter((id) => id !== "ice" && loss(id) < loss("ice"));
     expect(beatenByIce.length).toBeGreaterThanOrEqual(2);
     expect(loss("ice")).toBeGreaterThan(20 * TICK_HZ);
@@ -230,8 +246,141 @@ describe("the meter and the truth disagree", () => {
     // satisfied by everything being close together, and the point is the size
     // of the gap rather than the order.
     const { result, study8: st } = fixture();
-    const iceArm = st.arms.find((a) => a.without === "ice")!;
+    const iceArm = st.arms.find((a) => a.weapon === "ice")!;
     expect(result.damage.ice).toBeLessThan(result.damage.lightning / 100);
     expect(pairedLoss(st.baseline, iceArm)).toBeGreaterThan(15 * TICK_HZ);
+  });
+});
+
+/**
+ * THE MARGINAL VALUE OF THE NEXT LEVEL, which is the only quantity in the game
+ * a player can act on.
+ *
+ * Removing a weapon is a clean question that nobody can answer with their
+ * thumb. Taking a different card is the whole of the player's agency, so it is
+ * what the reveal measures now.
+ */
+describe("what one card was worth", () => {
+  it("reproduces the run exactly when the card taken is the one that was taken", () => {
+    // THE CHECK THAT SAYS THE SWITCH CHANGES ONLY THE DECISION. If re-taking
+    // the same card gave a different run, something other than the choice
+    // would be moving and every number on the screen would be measuring it.
+    const { log } = fixture();
+    const at = decisionToAskAbout(log)!;
+    const st = decisionStudy(log, at, 4);
+    const same = st.arms.find((a) => a.weapon === st.decision.chosen)!;
+    expect(same.ticks).toEqual(st.baseline.ticks);
+    expect(same.censored).toEqual(st.baseline.censored);
+    expect(pairedGain(st.baseline, same)).toBe(0);
+  });
+
+  it("measures exactly the cards that were on the table", () => {
+    const { log } = fixture();
+    const at = decisionToAskAbout(log)!;
+    const st = decisionStudy(log, at, 3);
+    expect(st.arms.map((a) => a.weapon)).toEqual([...st.decision.offers]);
+    expect(st.decision).toEqual(log.upgrades[at]);
+  });
+
+  it("changes the run when a different card is taken", () => {
+    // Non-vacuity: if switching did nothing, the test above would pass by
+    // accident and the whole reveal would be reporting zeroes.
+    const { log } = fixture();
+    const at = decisionToAskAbout(log)!;
+    const st = decisionStudy(log, at, 6);
+    const others = st.arms.filter((a) => a.weapon !== st.decision.chosen);
+    expect(others.length).toBeGreaterThan(0);
+    expect(others.some((a) => !a.ticks.every((t, i) => t === st.baseline.ticks[i]))).toBe(true);
+  });
+
+  it("never asks about the first level up, where there is nothing to be misled by", () => {
+    const { log } = fixture();
+    expect(decisionToAskAbout(log)).toBeGreaterThan(0);
+    expect(decisionToAskAbout(log)).toBeLessThan(log.upgrades.length);
+    // A run too short to have made a second decision has nothing to ask about,
+    // and saying so beats asking about a moment that did not happen.
+    expect(decisionToAskAbout({ ...log, upgrades: [] })).toBeNull();
+    expect(decisionToAskAbout({ ...log, upgrades: log.upgrades.slice(0, 1) })).toBeNull();
+  });
+
+  it("changes exactly one decision and leaves the rest alone", () => {
+    // THE CENTRAL CLAIM OF THE WHOLE MEASUREMENT, and mutation testing found
+    // it untested: making the switch fire at EVERY level up left every other
+    // assertion in this block green, and the screen would then have been
+    // reporting the value of a whole different strategy while calling it the
+    // value of one card.
+    const { log } = fixture();
+    const at = decisionToAskAbout(log)!;
+    const other = log.upgrades[at]!.offers.find((o) => o !== log.upgrades[at]!.chosen)!;
+
+    const rec = recording(switchingController(log, at, other), SEEDS);
+    simulate({ ...SEEDS, controller: rec.controller, maxTicks: log.ticks });
+    const after = rec.log().upgrades;
+
+    expect(after[at]!.chosen).toBe(other);
+    for (let i = 0; i < at; i++) {
+      expect(after[i]!.chosen).toBe(log.upgrades[i]!.chosen);
+      expect(after[i]!.tick).toBe(log.upgrades[i]!.tick);
+    }
+    // And every later decision still takes the card the player took, because
+    // only the one under study was substituted.
+    for (let i = at + 1; i < Math.min(after.length, log.upgrades.length); i++) {
+      expect(after[i]!.chosen).toBe(log.upgrades[i]!.chosen);
+    }
+  });
+
+  it("keeps offering a weapon that is already at its ceiling", () => {
+    // The spawn-stream argument, one level up, and stated as the property
+    // rather than as a comparison. If the bag of cards were filtered by which
+    // weapons are already maxed, then the offers would depend on the choices,
+    // switching one card would deal a different hand at every later level up,
+    // and the difference the reveal reports would not be the decision.
+    //
+    // Asserted directly because the comparison version was vacuous: it ran for
+    // two hundred seconds, nothing reached the ceiling in that time, and the
+    // filter it was meant to catch never had a chance to bite. Mutation
+    // testing is what said so.
+    const rec = recording(policy({ kind: "fixed", weapon: "lightning" }), SEEDS);
+    simulate({ ...SEEDS, controller: rec.controller, maxTicks: 12 * 60 * TICK_HZ });
+    const decisions = rec.log().upgrades;
+
+    let level = 1;
+    let maxedAt = -1;
+    for (let i = 0; i < decisions.length; i++) {
+      if (decisions[i]!.chosen === "lightning") level += 1;
+      if (level >= MAX_LEVEL && maxedAt < 0) maxedAt = i;
+    }
+    // The premise: the run really did take something to its ceiling.
+    expect(maxedAt).toBeGreaterThan(-1);
+    // And it kept being dealt afterwards, dead card and all.
+    const later = decisions.slice(maxedAt + 1);
+    expect(later.length).toBeGreaterThan(2);
+    expect(later.some((d) => d.offers.includes("lightning"))).toBe(true);
+  }, 60_000);
+
+  it("reads positive when the alternative was better", () => {
+    // The sign is the meaning: a negated gain would draw the losing card as
+    // the winner. Asserted on hand-built arms so it cannot depend on tuning.
+    const base: Arm = { weapon: null, ticks: [100, 100], censored: [false, false] };
+    const better: Arm = { weapon: "ice", ticks: [160, 140], censored: [false, false] };
+    const worse: Arm = { weapon: "orb", ticks: [40, 60], censored: [false, false] };
+    expect(pairedGain(base, better)).toBe(50);
+    expect(pairedGain(base, worse)).toBe(-50);
+    // And it is the exact opposite of the loss the removal study reports.
+    expect(pairedGain(base, better)).toBe(-pairedLoss(base, better));
+  });
+
+  it("agrees with its own progressive form, arm for arm", () => {
+    const { log } = fixture();
+    const at = decisionToAskAbout(log)!;
+    const it = decisionStudyByArm(log, at, 3);
+    let step = it.next();
+    let steps = 0;
+    while (step.done !== true) {
+      steps += 1;
+      step = it.next();
+    }
+    expect(steps).toBeGreaterThan(1);
+    expect(step.value).toEqual(decisionStudy(log, at, 3));
   });
 });

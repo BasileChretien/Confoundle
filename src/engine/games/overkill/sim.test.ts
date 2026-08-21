@@ -213,23 +213,32 @@ describe("the cut", () => {
 });
 
 describe("armour, which is what stops any weapon being generally good", () => {
-  it("takes armour off every hit and never goes below zero", () => {
+  it("takes armour off every hit but never all the way to nothing", () => {
     expect(effectiveDamage(26, 6, false)).toBe(20);
-    expect(effectiveDamage(9, 18, false)).toBe(0);
     expect(effectiveDamage(9, 0, false)).toBe(9);
+    // THE FLOOR, and it is the point. Flat subtraction alone made the wide
+    // weapon do literally zero to the walled pathogen, which in a wordless
+    // game reads as a broken weapon rather than as a lesson about the wrong
+    // tool. Fifteen per cent always gets through.
+    expect(effectiveDamage(9, 18, false)).toBeCloseTo(1.35, 6);
+    expect(effectiveDamage(9, 1000, false)).toBeCloseTo(1.35, 6);
   });
 
   it("lets poison through, which is the only reason a brute can be killed", () => {
     expect(effectiveDamage(22, 18, true)).toBe(22);
   });
 
-  it("means lightning does literally nothing to a brute and the knife does something", () => {
-    // Stated here as well as in the table because it is the design claim, and
-    // a tuning pass that quietly made lightning a brute answer would break the
-    // game without breaking anything that looks like a test.
-    const brute = ENEMIES.superbug.armour;
-    expect(effectiveDamage(WEAPONS.cytokine.damage, brute, false)).toBe(0);
-    expect(effectiveDamage(WEAPONS.knife.damage, brute, false)).toBeGreaterThan(0);
+  it("leaves the wide weapon barely scratching the walled one, and the knife hurting it", () => {
+    // The design claim, stated here as well as in the table, because a tuning
+    // pass that quietly made the wide weapon a good answer to the walled
+    // pathogen would break the game without breaking anything that looks like
+    // a test. It is a trickle now rather than a zero, so the weapon reads as
+    // wrong-for-the-job instead of broken, and the gap is what carries it.
+    const walled = ENEMIES.superbug.armour;
+    const wide = effectiveDamage(WEAPONS.cytokine.damage, walled, false);
+    const blade = effectiveDamage(WEAPONS.knife.damage, walled, false);
+    expect(wide).toBeGreaterThan(0);
+    expect(blade).toBeGreaterThan(wide * 5);
   });
 });
 

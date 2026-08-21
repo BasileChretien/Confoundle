@@ -40,8 +40,25 @@ export const DT = 1 / TICK_HZ;
 export const CUT_TICKS = 8 * TICK_HZ;
 export const CUTS_PER_RUN = 3;
 
-/** Where the ring of spawns sits, and how far out an enemy is culled. */
-export const SPAWN_RADIUS = 430;
+/**
+ * Where the ring of spawns sits.
+ *
+ * IT USED TO BE INSIDE THE SCREEN. It sat at 430, the same number as the
+ * visible width, and on a 375 by 812 phone the visible half-diagonal is 513.
+ * Measured by sampling spawn angles, 33% of everything materialised inside the
+ * frame, popping into existence in front of the player. On a desktop window it
+ * is 0%, which is why it went unnoticed for so long.
+ *
+ * SIZED FROM THE WORST CASE AND KEPT CIRCULAR. A specialist proposed an
+ * ellipse matched to the screen, which would give every aspect ratio the same
+ * warning time and is the right idea in an ordinary game. It cannot happen
+ * here: the death screen replays a recorded run on whatever device opens it,
+ * so a world whose shape depended on the viewport would replay as a different
+ * game. The ring is a constant in world units instead, chosen so that nothing
+ * pops in on any plausible screen: a 21:9 portrait phone has a half-diagonal
+ * of about 546, so 640 clears every one of them with margin.
+ */
+export const SPAWN_RADIUS = 640;
 
 /**
  * How much of the ring gets folded round to the side the player is walking
@@ -60,7 +77,7 @@ export const SPAWN_RADIUS = 430;
  * Running is still worth doing. It is no longer free.
  */
 export const FORWARD_BIAS = 0.72;
-export const DESPAWN_RADIUS = 620;
+export const DESPAWN_RADIUS = 900;
 
 export const PLAYER_SPEED = 92;
 export const PLAYER_HP = 100;
@@ -131,11 +148,14 @@ export interface EnemySpec {
   readonly damage: number;
   readonly radius: number;
   /**
-   * Flat reduction on every hit, and the reason no weapon is generally good.
-   * A weapon that sprays nine points a time is doing nothing at all to a
-   * brute, and the meter reports that honestly; what it cannot report is that
-   * the brute is the thing about to kill you. Poison ignores armour, which is
-   * its whole identity.
+   * Reduction on every hit, and the reason no weapon is generally good.
+   *
+   * SUBTRACTED, BUT NEVER DOWN TO NOTHING. Flat subtraction alone made the
+   * wide weapon do literally zero to the walled pathogen, which in a wordless
+   * game reads as a bug rather than as a lesson and silently turned one of six
+   * weapons into a no-op against it. Two specialists independently proposed
+   * the same floor and `effectiveDamage` applies it: fifteen per cent always
+   * gets through. Complement ignores armour entirely, which is its identity.
    */
   readonly armour: number;
 }
@@ -252,7 +272,8 @@ export const WEAPON_IDS = Object.keys(WEAPONS) as readonly WeaponId[];
  */
 export function effectiveDamage(raw: number, armour: number, pierces: boolean): number {
   if (pierces) return Math.max(0, raw);
-  return Math.max(0, raw - armour);
+  // The floor is what stops a weapon becoming a silent no-op. See `armour`.
+  return Math.max(raw * 0.15, raw - armour);
 }
 
 export const MAX_LEVEL = 8;

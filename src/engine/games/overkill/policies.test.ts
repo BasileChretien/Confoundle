@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { beforeAll, describe, expect, it } from "vitest";
 import { TICK_HZ, WEAPON_IDS } from "./content";
 import { simulate, type Controller } from "./sim";
 import { policy } from "./policies";
@@ -44,8 +44,17 @@ import { policy } from "./policies";
  * makes whoever made it write down what it did.
  */
 
-/** Ten seeds and a ten minute ceiling: enough to see it, cheap enough to run. */
-const SEEDS = Array.from({ length: 14 }, (_, i) => 4242 + i * 7919);
+/**
+ * FORTY SEEDS, and the number matters.
+ *
+ * At fourteen the meter comparison came back 7 to 7 and read as the design
+ * premise collapsing. At forty the same comparison is 22 to 17 with a mean of
+ * plus 8.5 seconds, so the premise holds and the sample was simply too small
+ * to see an effect that size. The arms are computed once in a hook and shared,
+ * because at this width recomputing them per test costs more than the rest of
+ * the suite together.
+ */
+const SEEDS = Array.from({ length: 40 }, (_, i) => 4242 + i * 7919);
 const CAP = 10 * 60 * TICK_HZ;
 const CUT_AT = [40, 85, 130].map((s) => s * 60);
 
@@ -89,35 +98,48 @@ function wins(a: readonly number[], b: readonly number[]): { a: number; b: numbe
   return { a: av, b: bv, tied };
 }
 
+let arms: { dumb: number[]; cuts: number[]; smart: number[]; spread: number[] };
+beforeAll(() => {
+  arms = {
+    dumb: survivals(() => policy({ kind: "biggestBar" })),
+    cuts: survivals(wastesCuts),
+    smart: survivals(() => policy({ kind: "diagnosing" })),
+    spread: survivals(() => policy({ kind: "spread" })),
+  };
+}, 600_000);
+
 describe("is diagnosis necessary?", () => {
   it("finds that three cuts now cost real survival, so the intervention is a decision", () => {
     // THE PLAN'S REQUIREMENT, and it did not hold until levels were earned
     // rather than handed out: an arm that throws three cuts away has to lose
     // most of the time, or cutting is bookkeeping. It used to be a coin flip.
-    const dumb = survivals(() => policy({ kind: "biggestBar" }));
-    const cuts = survivals(wastesCuts);
-    const w = wins(dumb, cuts);
+    const w = wins(arms.dumb, arms.cuts);
     expect(w.a).toBeGreaterThan(w.b);
     expect(w.a + w.b).toBeGreaterThan(0);
-  }, 180_000);
+  });
 
   it("finds that ignoring the meter beats following it, which is the premise holding", () => {
     // The one the whole design rests on. A player who pours levels into the
     // biggest bar must do WORSE than one who ignores it, or the meter is good
-    // advice and there is nothing to learn. This failed for the entire life of
-    // the timer-driven version.
-    const dumb = survivals(() => policy({ kind: "biggestBar" }));
-    const spread = survivals(() => policy({ kind: "spread" }));
-    expect(wins(spread, dumb).a).toBeGreaterThan(wins(spread, dumb).b);
-  }, 180_000);
+    // advice and there is nothing to learn.
+    //
+    // IT HOLDS WEAKLY, and that is worth stating rather than hiding behind a
+    // passing assertion. Twenty two wins to seventeen, mean plus 8.5 seconds
+    // on runs of about 300. A separate measurement against the real code found
+    // why: the meter is roughly right about four weapons of six and wrong only
+    // about the antibodies, so following it is not a losing strategy, it is a
+    // strategy with one blind spot. Closing that gap is an upgrade-model
+    // problem and is not fixed here.
+    const w = wins(arms.spread, arms.dumb);
+    expect(w.a).toBeGreaterThan(w.b);
+  });
 
   it("still finds the diagnosing policy losing, which is a flaw in the policy", () => {
     // Recorded as it stands. It commits everything to one weapon once it has
     // measured, and the test above is what says concentration is the mistake.
-    const dumb = survivals(() => policy({ kind: "biggestBar" }));
-    const smart = survivals(() => policy({ kind: "diagnosing" }));
-    expect(wins(dumb, smart).a).toBeGreaterThanOrEqual(wins(dumb, smart).b);
-  }, 180_000);
+    const w = wins(arms.dumb, arms.smart);
+    expect(w.a).toBeGreaterThanOrEqual(w.b);
+  });
 
   it("has a diagnosing policy that actually spends its cuts", () => {
     // Otherwise the comparison above is between two identical strategies and

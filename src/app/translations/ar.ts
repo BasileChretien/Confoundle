@@ -4,6 +4,11 @@
  * Arabic. French was used only as a secondary reference.
  */
 export const ar: Record<string, string> = {
+  // ---- Overkill (the game) ----
+  "Damage": "الضرر",
+  "Leave the game": "مغادرة اللعبة",
+  "Which of these was worth most?": "أيها كان الأكثر فائدة؟",
+  "Your run": "جولتك",
   // ---- Scrub lever ----
   "Drag to see the same data the other way": "اسحب لترى البيانات نفسها بطريقة أخرى",
   // ---- Calibration run ----
@@ -43,6 +48,7 @@ export const ar: Record<string, string> = {
   "Right.": "صحيح.",
   "Not this time.": "ليس هذه المرة.",
   "Next": "التالي",
+  "Deploy": "نشر",
   "See your score": "اطّلع على نتيجتك",
   "The skill": "المهارة",
   "Where this shows up": "أين يظهر هذا",

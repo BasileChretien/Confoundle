@@ -3,6 +3,11 @@
  * the English text exactly. Native review pending; correct in place.
  */
 export const ru: Record<string, string> = {
+  // ---- Overkill (the game) ----
+  "Damage": "Урон",
+  "Leave the game": "Выйти из игры",
+  "Which of these was worth most?": "Какая из них дала больше всего?",
+  "Your run": "Ваш забег",
   // ---- Scrub lever ----
   "Drag to see the same data the other way": "Потяните, чтобы увидеть те же данные иначе",
   // ---- Calibration run ----
@@ -42,6 +47,7 @@ export const ru: Record<string, string> = {
   "Right.": "Верно.",
   "Not this time.": "Не в этот раз.",
   "Next": "Дальше",
+  "Deploy": "Развернуть",
   "See your score": "Посмотреть результат",
   "The skill": "Навык",
   "Where this shows up": "Где это встречается",

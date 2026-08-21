@@ -4,20 +4,47 @@
     {
       "name": "confoundle-dev",
       "runtimeExecutable": "corepack",
-      "runtimeArgs": ["pnpm", "dev"],
+      "runtimeArgs": [
+        "pnpm",
+        "dev"
+      ],
       "port": 5173
     },
     {
       "name": "confoundle-preview",
       "runtimeExecutable": "corepack",
-      "runtimeArgs": ["pnpm", "preview", "--port", "5175", "--strictPort"],
+      "runtimeArgs": [
+        "pnpm",
+        "preview",
+        "--port",
+        "5175",
+        "--strictPort"
+      ],
       "port": 5175
     },
     {
       "name": "confoundle-dev-alt",
       "runtimeExecutable": "corepack",
-      "runtimeArgs": ["pnpm", "dev", "--port", "5174", "--strictPort"],
+      "runtimeArgs": [
+        "pnpm",
+        "dev",
+        "--port",
+        "5174",
+        "--strictPort"
+      ],
       "port": 5174
+    },
+    {
+      "name": "overkill-dev",
+      "runtimeExecutable": "corepack",
+      "runtimeArgs": [
+        "pnpm",
+        "dev",
+        "--port",
+        "5180",
+        "--strictPort"
+      ],
+      "port": 5180
     }
   ]
 }

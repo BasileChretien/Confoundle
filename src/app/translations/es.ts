@@ -4,6 +4,11 @@
  * Basile; corregir sobre la marcha.
  */
 export const es: Record<string, string> = {
+  // ---- Overkill (the game) ----
+  "Damage": "Daño",
+  "Leave the game": "Salir del juego",
+  "Which of these was worth most?": "¿Cuál valía más?",
+  "Your run": "Tu partida",
   // ---- Scrub lever ----
   "Drag to see the same data the other way": "Desliza para ver los mismos datos de otra manera",
   // ---- Calibration run ----
@@ -43,6 +48,7 @@ export const es: Record<string, string> = {
   "Right.": "Correcto.",
   "Not this time.": "Esta vez no.",
   "Next": "Siguiente",
+  "Deploy": "Desplegar",
   "See your score": "Ver tu puntuación",
   "The skill": "La habilidad",
   "Where this shows up": "Dónde aparece esto",

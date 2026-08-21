@@ -4,6 +4,11 @@
  * reference only.
  */
 export const zh: Record<string, string> = {
+  // ---- Overkill (the game) ----
+  "Damage": "伤害",
+  "Leave the game": "退出游戏",
+  "Which of these was worth most?": "哪一个最有价值？",
+  "Your run": "本局",
   // ---- Scrub lever ----
   "Drag to see the same data the other way": "拖动即可换一种方式看同样的数据",
   // ---- Calibration run ----
@@ -43,6 +48,7 @@ export const zh: Record<string, string> = {
   "Right.": "答对了。",
   "Not this time.": "这次没有。",
   "Next": "下一个",
+  "Deploy": "部署",
   "See your score": "查看你的得分",
   "The skill": "这项技能",
   "Where this shows up": "它出现在哪里",

@@ -3,6 +3,11 @@
  * must match the English text exactly. Correct in place.
  */
 export const hi: Record<string, string> = {
+  // ---- Overkill (the game) ----
+  "Damage": "क्षति",
+  "Leave the game": "गेम छोड़ें",
+  "Which of these was worth most?": "इनमें से कौन सा सबसे उपयोगी था?",
+  "Your run": "आपका खेल",
   // ---- Scrub lever ----
   "Drag to see the same data the other way": "वही आँकड़े दूसरे ढंग से देखने के लिए सरकाएँ",
   // ---- Calibration run ----
@@ -42,6 +47,7 @@ export const hi: Record<string, string> = {
   "Right.": "सही।",
   "Not this time.": "इस बार नहीं।",
   "Next": "आगे",
+  "Deploy": "तैनात करें",
   "See your score": "अपना स्कोर देखें",
   "The skill": "यह कौशल",
   "Where this shows up": "यह कहाँ दिखता है",

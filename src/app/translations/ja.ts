@@ -4,6 +4,11 @@
  * Native review pending; correct in place.
  */
 export const ja: Record<string, string> = {
+  // ---- Overkill (the game) ----
+  "Damage": "ダメージ",
+  "Leave the game": "ゲームを終了",
+  "Which of these was worth most?": "どれが一番効きましたか？",
+  "Your run": "今回のプレイ",
   // ---- Scrub lever ----
   "Drag to see the same data the other way": "スライドすると同じデータが別の見え方になります",
   // ---- Calibration run ----
@@ -43,6 +48,7 @@ export const ja: Record<string, string> = {
   "Right.": "正解。",
   "Not this time.": "今回は違った。",
   "Next": "次へ",
+  "Deploy": "配備",
   "See your score": "スコアを見る",
   "The skill": "スキル",
   "Where this shows up": "どこで現れるか",

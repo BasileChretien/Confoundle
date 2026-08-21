@@ -3,6 +3,11 @@
  * the English text exactly. Native review by Basile; correct in place.
  */
 export const fr: Record<string, string> = {
+  // ---- Overkill (the game) ----
+  "Damage": "Dégâts",
+  "Leave the game": "Quitter le jeu",
+  "Which of these was worth most?": "Laquelle valait le plus ?",
+  "Your run": "Votre partie",
   // ---- Scrub lever ----
   "Drag to see the same data the other way": "Faites glisser pour voir les mêmes données autrement",
   // ---- Calibration run ----
@@ -42,6 +47,7 @@ export const fr: Record<string, string> = {
   "Right.": "Exact.",
   "Not this time.": "Pas cette fois.",
   "Next": "Suivant",
+  "Deploy": "Déployer",
   "See your score": "Voir votre score",
   "The skill": "La compétence",
   "Where this shows up": "Où ça se rencontre",

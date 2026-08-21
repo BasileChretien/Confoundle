@@ -4,7 +4,6 @@ import { act, createElement } from "react";
 import { createRoot, type Root } from "react-dom/client";
 import { LocaleProvider } from "../../../app/i18n";
 import { loadDictionary } from "../../../app/translations";
-import { FIRST_UPGRADE, TICK_HZ } from "./content";
 import { OverkillGame } from "./OverkillGame";
 
 /**
@@ -112,6 +111,32 @@ function play(seconds: number) {
   for (let i = 0; i < 6; i++) frame(0);
 }
 
+const cardsOnScreen = () =>
+  [...container.querySelectorAll("button")].filter((b) => b.className.includes("flex-col"));
+
+/**
+ * Plays, moving, until three cards appear.
+ *
+ * IT HAS TO MOVE. Levels are earned by killing and by walking over what drops,
+ * so there is no tick a test can name in advance; and a player who stands
+ * perfectly still is surrounded and killed before the first level arrives,
+ * which is what the first version of this helper did and reported as "no
+ * level up inside 60s".
+ */
+function playUntilLevelUp(limitSeconds = 90) {
+  window.dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowRight" }));
+  try {
+    for (let i = 0; i < limitSeconds; i++) {
+      play(1);
+      if (cardsOnScreen().length === 3) return;
+      if (text().includes("worth most")) throw new Error("died before any level up");
+    }
+  } finally {
+    window.dispatchEvent(new KeyboardEvent("keyup", { key: "ArrowRight" }));
+  }
+  throw new Error("no level up inside " + limitSeconds + "s");
+}
+
 const text = () => container.textContent ?? "";
 const clock = () => (text().match(/\d+:\d\d/) ?? ["?"])[0];
 const seconds = () => {
@@ -171,11 +196,8 @@ describe("the level up", () => {
     // the note in OverkillGame.tsx. This asserts the behaviour a player sees
     // and does not claim to isolate which layer produces it.
     mount();
-    play(FIRST_UPGRADE / TICK_HZ + 1);
-    const cards = [...container.querySelectorAll("button")].filter((b) =>
-      b.className.includes("flex-col"),
-    );
-    expect(cards.length).toBe(3);
+    playUntilLevelUp();
+    expect(cardsOnScreen().length).toBe(3);
     const held = clock();
     play(2);
     expect(clock()).toBe(held);
@@ -195,7 +217,7 @@ describe("the level up", () => {
     // rebuilt when the modal closes anyway. That is written up where the code
     // is; what is asserted here is only what a player would see.
     mount();
-    play(FIRST_UPGRADE / TICK_HZ + 1);
+    playUntilLevelUp();
     const before = seconds();
     for (let i = 0; i < 180; i++) frame();
     for (let i = 0; i < 6; i++) frame(0);

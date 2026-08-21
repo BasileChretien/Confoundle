@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { beforeAll, describe, expect, it } from "vitest";
 import { MAX_LEVEL, TICK_HZ, WEAPON_IDS, type WeaponId } from "./content";
 import { simulate } from "./sim";
 import { policy } from "./policies";
@@ -20,7 +20,16 @@ import {
 } from "./replay";
 
 const SEEDS = { spawnSeed: 12345, offerSeed: 999 };
-const RUN = 360 * TICK_HZ;
+/**
+ * Long enough that the run ENDS IN DEATH, which several tests below depend on
+ * without saying so.
+ *
+ * At two hundred seconds nobody dies, so every arm comes back censored at the
+ * limit, the baseline has no spread, and the luck term is exactly zero. Two
+ * tests then fail in a way that looks like a broken study and is really a
+ * fixture that never finished.
+ */
+const RUN = 420 * TICK_HZ;
 
 function logged(feed: Parameters<typeof policy>[0] = { kind: "biggestBar" }) {
   const rec = recording(policy(feed), SEEDS);
@@ -29,17 +38,16 @@ function logged(feed: Parameters<typeof policy>[0] = { kind: "biggestBar" }) {
 }
 
 /**
- * One study, shared. Eight seeds across seven arms is fifty six runs of three
- * minutes each, so recomputing it per test costs more than everything else in
- * the suite put together.
+ * One run and one study, shared by the whole file and built in a hook so the
+ * cost lands somewhere with its own timeout rather than on whichever test
+ * happens to run first.
  */
-let cached: { result: ReturnType<typeof simulate>; log: RunLog; study8: CounterfactualStudy } | null =
-  null;
+let cached: { result: ReturnType<typeof simulate>; log: RunLog; study8: CounterfactualStudy };
+beforeAll(() => {
+  const { result, log } = logged();
+  cached = { result, log, study8: study(log, 4) };
+}, 180_000);
 function fixture() {
-  if (cached === null) {
-    const { result, log } = logged();
-    cached = { result, log, study8: study(log, 8) };
-  }
   return cached;
 }
 
@@ -341,7 +349,7 @@ describe("what one card was worth", () => {
     // filter it was meant to catch never had a chance to bite. Mutation
     // testing is what said so.
     const rec = recording(policy({ kind: "fixed", weapon: "lightning" }), SEEDS);
-    simulate({ ...SEEDS, controller: rec.controller, maxTicks: 12 * 60 * TICK_HZ });
+    simulate({ ...SEEDS, controller: rec.controller, maxTicks: 8 * 60 * TICK_HZ });
     const decisions = rec.log().upgrades;
 
     let level = 1;

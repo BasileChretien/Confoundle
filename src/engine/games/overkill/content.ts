@@ -69,9 +69,14 @@ export const PLAYER_RADIUS = 9;
 export const HURT_COOLDOWN = 18;
 
 /**
- * A ceiling on live enemies. Present for a reason that is not performance:
- * without it a run that goes badly becomes a run where nothing any weapon does
- * matters, and every counterfactual collapses to the same number.
+ * A ceiling on live enemies.
+ *
+ * IT DOES NOT BIND IN A REAL RUN, measured: the peak live count across the
+ * scripted players is 84 to 121, because the player dies long before that many
+ * accumulate. It is a safety rail against a tuning pass that makes something
+ * unkillable, not a mechanic, and nothing should be written that depends on it
+ * firing. A test that tried to observe it through gameplay went vacuous rather
+ * than red, and was rewritten to assert the ordering property directly.
  */
 export const MAX_ENEMIES = 220;
 
@@ -79,16 +84,42 @@ export const MAX_ENEMIES = 220;
 export const OFFER_SIZE = 3;
 
 /**
- * First upgrade at twenty seconds, then every twenty five. The first cut is
- * meant to land around 1:15, so a player needs to have made two or three
- * investment decisions before then and to have had time to grow attached to
- * one of them.
+ * LEVELS COME FROM KILLING THINGS, NOT FROM THE CLOCK, and that is the single
+ * biggest thing the first version got wrong.
+ *
+ * It handed out the first upgrade at twenty seconds and the next twenty five
+ * seconds later. The reference game gives you five or six inside the first
+ * thirty, and the difference is not pacing, it is whether the game has a loop
+ * at all: a level up you earned by killing is a reward, and a level up on a
+ * timer is an interruption. Twenty seconds of watching a dot move before
+ * anything happens is why nobody wanted to keep playing.
+ *
+ * Experience drops as gems where a thing died. Gems do not come to you until
+ * you are close, so the whole movement game is walking INTO the place the
+ * fighting just happened, which is also the most dangerous place to be. That
+ * tension is the reference game's actual core and the first version had no
+ * equivalent: there was nothing on the floor, so running away was strictly
+ * correct and therefore dull.
  */
-export const FIRST_UPGRADE = 20 * TICK_HZ;
-export const UPGRADE_EVERY = 25 * TICK_HZ;
+export const XP_VALUE: Readonly<Record<EnemyKind, number>> = {
+  chaff: 1,
+  hunter: 4,
+  brute: 18,
+};
 
-export function isUpgradeTick(tick: number): boolean {
-  return tick >= FIRST_UPGRADE && (tick - FIRST_UPGRADE) % UPGRADE_EVERY === 0;
+/** Gems inside this are pulled towards the player, and picked up inside that. */
+export const MAGNET_RADIUS = 132;
+export const PICKUP_RADIUS = 20;
+export const GEM_SPEED = 300;
+export const MAX_GEMS = 500;
+
+/**
+ * Experience needed to go from `level` to the next one. Cheap at the start on
+ * purpose: the first three levels should arrive inside the first ten seconds,
+ * while a player is still working out that the dot is them.
+ */
+export function xpToNext(level: number): number {
+  return Math.round(2 + (level - 1) * 1.6 + Math.pow(level - 1, 1.8));
 }
 
 export interface EnemySpec {
@@ -242,7 +273,7 @@ export interface Phase {
  * does not has to find out by spending a cut.
  */
 export const PHASES: readonly Phase[] = [
-  { fromTick: 0, everyTicks: 14, mix: [["chaff", 1]] },
+  { fromTick: 0, everyTicks: 10, mix: [["chaff", 1]] },
   { fromTick: 60 * TICK_HZ, everyTicks: 10, mix: [["chaff", 5], ["hunter", 5]] },
   { fromTick: 200 * TICK_HZ, everyTicks: 7, mix: [["chaff", 4], ["hunter", 4], ["brute", 2]] },
   /*

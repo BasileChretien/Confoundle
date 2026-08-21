@@ -6,51 +6,46 @@ import { policy } from "./policies";
 /**
  * THE PLAN'S THIRD TEST, THE ONE THAT NEEDS NOBODY: is diagnosis necessary?
  *
- * If a dumb policy scores near a considered one, the mechanic the whole game
- * is built around is optional, and an optional mechanic is one nobody uses.
- * This file runs that comparison headless.
+ * If a dumb policy scores near a considered one, the mechanic the whole game is
+ * built around is optional, and an optional mechanic is one nobody uses.
  *
- * IT CURRENTLY FAILS, AND THIS FILE IS THE RECORD OF THAT rather than a
- * celebration of a passing suite. Measured paired over 24 seeds with a 25
- * minute ceiling:
+ * IT FAILED BEFORE THE GAME WAS REBUILT AROUND EXPERIENCE, and this file is the
+ * record of both readings. Levels used to arrive on a timer, so a run was a
+ * fixed number of decisions however it went, nothing dropped on the floor, and
+ * running away was strictly correct. Measured paired over 24 seeds then:
  *
- *   dumb (feed the biggest bar, never cut)   median 592s, capped 11/24
- *   dumb but throws three cuts away          median 419s, capped  8/24
- *   diagnosing (cuts, measures, invests)     median 394s, capped  3/24
+ *   dumb (feed the biggest bar, never cut)   dumb 15, diagnosing 6, tied 3
+ *   dumb vs the same but wasting three cuts  dumb 11, cuts 9,       tied 4
  *
- *   dumb vs diagnosing:  dumb wins 15, diagnosing wins 6, tied 3
- *   dumb vs wasted cuts: dumb wins 11, cuts wins 9, tied 4
+ * Eleven to nine is a coin flip: the cut cost nothing, so it was bookkeeping
+ * rather than the frightening decision the plan requires. And following the
+ * meter beat every alternative, which inverts the premise.
  *
- * Two things follow, and the second is the serious one.
+ * Measured again over 20 seeds once experience, gems and earned levels went in:
  *
- * THE CUT IS NEARLY FREE. Eleven to nine is a coin flip: three interventions,
- * eight seconds each, cost almost no survival. The plan says a cut has to be
- * long enough to frighten you or it is bookkeeping rather than a choice, and
- * at this tuning it is bookkeeping. That is the assertion this file makes,
- * because it is the cheapest to measure and the most stable at small samples.
+ *   dumb    median 307s      dumb vs wasting three cuts   dumb 16, cuts 4
+ *   cuts    median 291s      dumb vs diagnosing           dumb 13, smart 7
+ *   smart   median 291s
+ *   spread  median 388s
  *
- * AND FOLLOWING THE METER IS THE BEST INVESTMENT STRATEGY IN THE GAME, which
- * inverts the premise. The reason is a gap between two different questions
- * that the design had been treating as one. The death screen measures what
- * happens when a weapon is ABSENT. The player's only lever is which weapon
- * gets the NEXT LEVEL. A weapon can be indispensable and a poor investment at
- * the same time, and ice is exactly that: removing it costs 110 seconds, and
- * pouring levels into it loses. So the game teaches its lesson about a
- * quantity the player cannot act on, and the quantity they can act on is one
- * the meter predicts well.
+ * TWO THINGS MOVED. Sixteen to four says the cut now costs real survival, so
+ * the intervention is a decision. And SPREAD, which ignores the meter entirely
+ * and levels everything evenly, beats the meter follower by eighty seconds:
+ * for the first time the biggest bar is the wrong thing to feed, which is the
+ * premise the whole design rests on.
  *
- * None of that is fixed here. Tuning cannot close a gap of this shape; it is
- * a question about what the death screen should measure, and it belongs in
- * the design rather than in `content.ts`.
+ * What has NOT been fixed is the diagnosing policy, which still loses. It
+ * commits everything to one weapon after measuring, and concentration is what
+ * `spread` beating `dumb` says is wrong. That is a flaw in the scripted player
+ * rather than in the game, and it is the next thing to try.
  *
- * WHEN IT IS FIXED, THIS FILE MUST BE UPDATED RATHER THAN DELETED. Its
- * assertion is deliberately the direction that holds today, so a change that
- * closes the gap fails here and forces whoever made it to write down the new
- * numbers. Same discipline as an at-zero list that may only shrink.
+ * WHEN THESE NUMBERS MOVE AGAIN, UPDATE THIS FILE RATHER THAN DELETING IT. The
+ * assertions are the directions that hold today, so a change fails here and
+ * makes whoever made it write down what it did.
  */
 
 /** Ten seeds and a ten minute ceiling: enough to see it, cheap enough to run. */
-const SEEDS = Array.from({ length: 10 }, (_, i) => 4242 + i * 7919);
+const SEEDS = Array.from({ length: 14 }, (_, i) => 4242 + i * 7919);
 const CAP = 10 * 60 * TICK_HZ;
 const CUT_AT = [40, 85, 130].map((s) => s * 60);
 
@@ -95,29 +90,34 @@ function wins(a: readonly number[], b: readonly number[]): { a: number; b: numbe
 }
 
 describe("is diagnosis necessary?", () => {
-  it("finds that three cuts cost almost nothing, so the intervention is not a real decision", () => {
+  it("finds that three cuts now cost real survival, so the intervention is a decision", () => {
+    // THE PLAN'S REQUIREMENT, and it did not hold until levels were earned
+    // rather than handed out: an arm that throws three cuts away has to lose
+    // most of the time, or cutting is bookkeeping. It used to be a coin flip.
     const dumb = survivals(() => policy({ kind: "biggestBar" }));
     const cuts = survivals(wastesCuts);
     const w = wins(dumb, cuts);
-
-    // The plan's requirement is that a cut is frightening. If it were, the
-    // arm that throws three away would lose most of the time. It does not.
-    expect(w.a).toBeLessThanOrEqual(Math.ceil(SEEDS.length * 0.7));
-    // And the premise of the measurement: the runs really do differ, so this
-    // is not passing because both arms are identical.
+    expect(w.a).toBeGreaterThan(w.b);
     expect(w.a + w.b).toBeGreaterThan(0);
-  }, 120_000);
+  }, 180_000);
 
-  it("finds that following the meter beats diagnosing it, which inverts the premise", () => {
+  it("finds that ignoring the meter beats following it, which is the premise holding", () => {
+    // The one the whole design rests on. A player who pours levels into the
+    // biggest bar must do WORSE than one who ignores it, or the meter is good
+    // advice and there is nothing to learn. This failed for the entire life of
+    // the timer-driven version.
+    const dumb = survivals(() => policy({ kind: "biggestBar" }));
+    const spread = survivals(() => policy({ kind: "spread" }));
+    expect(wins(spread, dumb).a).toBeGreaterThan(wins(spread, dumb).b);
+  }, 180_000);
+
+  it("still finds the diagnosing policy losing, which is a flaw in the policy", () => {
+    // Recorded as it stands. It commits everything to one weapon once it has
+    // measured, and the test above is what says concentration is the mistake.
     const dumb = survivals(() => policy({ kind: "biggestBar" }));
     const smart = survivals(() => policy({ kind: "diagnosing" }));
-    const w = wins(dumb, smart);
-
-    // Recorded as it stands. The design wants the opposite, and the reason it
-    // does not hold is written at the top of this file: the death screen
-    // measures absence and the player's lever is investment.
-    expect(w.a).toBeGreaterThanOrEqual(w.b);
-  }, 120_000);
+    expect(wins(dumb, smart).a).toBeGreaterThanOrEqual(wins(dumb, smart).b);
+  }, 180_000);
 
   it("has a diagnosing policy that actually spends its cuts", () => {
     // Otherwise the comparison above is between two identical strategies and

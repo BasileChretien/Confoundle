@@ -70,7 +70,7 @@ function fakeContext() {
 }
 
 function enemy(over: Partial<EnemyView> = {}): EnemyView {
-  return { id: 1, kind: "chaff", x: 0, y: 0, hp: 8, slowUntil: 0, ...over };
+  return { id: 1, kind: "chaff", x: 0, y: 0, hp: 8, slowUntil: 0, flashUntil: 0, ...over };
 }
 
 function view(over: Partial<RunView> = {}): RunView {
@@ -87,11 +87,17 @@ function view(over: Partial<RunView> = {}): RunView {
     cutUntil: zero as RunView["cutUntil"],
     firedThisTick: [],
     hurtThisTick: false,
+    hitsThisTick: [],
+    deathsThisTick: [],
+    gems: [],
+    level: 1,
+    xp: 0,
+    xpNeeded: 3,
     ...over,
   };
 }
 
-const SIZE = { width: 400, height: 800 };
+const SIZE = { width: 400, height: 800, particles: [], shake: 0 };
 
 describe("drawing a frame", () => {
   it("paints a ground and a grid before anything else", () => {

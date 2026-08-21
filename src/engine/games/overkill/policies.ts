@@ -13,31 +13,65 @@ import type { Controller, Dir, RunView } from "./sim";
  * is only good or bad relative to how somebody plays, and asking a person
  * every time is both slow and, worse, a moving target.
  *
- * THE MOVEMENT IS SHARED ON PURPOSE. Every policy here walks away from the
- * densest crowd nearby, because the interesting variable is what a player
- * INVESTS IN, not how well they dodge. Holding movement fixed across policies
- * is the only way the comparison says anything about the upgrade decision,
- * which is the decision the game is about.
+ * THE MOVEMENT IS SHARED ON PURPOSE. Every policy walks the same way, because
+ * the interesting variable is what a player INVESTS IN, not how well they
+ * dodge; holding movement fixed is the only thing that lets the comparison say
+ * anything about the upgrade decision.
+ *
+ * That shared movement used to be pure fleeing, and it made every measurement
+ * in this file describe a game nobody plays. Experience drops on the floor
+ * where things die, so a policy that only runs away collects almost nothing:
+ * measured, it levelled at a quarter of the real rate and finished a run
+ * having walked past five hundred gems. Every policy now walks towards the
+ * nearest gem and breaks off only when something is close enough to hurt.
  */
 
 /** Eight directions, so a policy returns the same alphabet a thumb does. */
 const OCTANT: readonly Dir[] = [7, 8, 1, 2, 3, 4, 5, 6];
 
-function awayFromTheCrowd(view: RunView): Dir {
-  let bx = 0;
-  let by = 0;
+/**
+ * Walks towards the nearest gem unless something is about to touch them, and
+ * runs from the crowd when it is.
+ *
+ * A MUCH BETTER MODEL OF A PLAYER than pure fleeing, and the balance numbers
+ * were wrong without it. Fleeing never collects anything, so a run measured
+ * that way levels at a quarter of the real rate and walks past five hundred
+ * uncollected gems: it was reporting the pace of a game nobody plays.
+ */
+function towardsTheGems(view: RunView): Dir {
+  let nearest = Infinity;
+  let fx = 0;
+  let fy = 0;
   for (const e of view.enemies) {
     const dx = view.x - e.x;
     const dy = view.y - e.y;
     const d2 = dx * dx + dy * dy;
-    if (d2 > 220 * 220 || d2 < 1e-6) continue;
-    // Inverse square, so the thing about to touch you outweighs the crowd
-    // behind it rather than being averaged away by it.
-    bx += dx / d2;
-    by += dy / d2;
+    if (d2 < nearest) nearest = d2;
+    if (d2 > 130 * 130 || d2 < 1e-6) continue;
+    fx += dx / d2;
+    fy += dy / d2;
   }
-  if (bx === 0 && by === 0) return 0;
-  const ang = Math.atan2(by, bx);
+  // Something is close enough to hurt: get out first, collect later.
+  if (nearest < 62 * 62) return octant(fx, fy);
+
+  let best: { x: number; y: number } | null = null;
+  let bestD = Infinity;
+  for (const g of view.gems) {
+    const dx = g.x - view.x;
+    const dy = g.y - view.y;
+    const d2 = dx * dx + dy * dy;
+    if (d2 < bestD) {
+      bestD = d2;
+      best = { x: dx, y: dy };
+    }
+  }
+  if (best === null) return octant(fx, fy);
+  return octant(best.x, best.y);
+}
+
+function octant(x: number, y: number): Dir {
+  if (x === 0 && y === 0) return 0;
+  const ang = Math.atan2(y, x);
   const oct = Math.round(((ang + Math.PI) / (2 * Math.PI)) * 8) % 8;
   return OCTANT[oct]!;
 }
@@ -58,7 +92,7 @@ export function policy(feed: Feed): Controller {
   const diag = feed.kind === "diagnosing" ? diagnosis() : null;
 
   return {
-    move: awayFromTheCrowd,
+    move: towardsTheGems,
     cut: (view) => (diag === null ? null : diag.cut(view)),
     chooseUpgrade(view, offers) {
       if (feed.kind === "fixed") {

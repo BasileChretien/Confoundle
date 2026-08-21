@@ -19,8 +19,13 @@ import {
   type EnemyKind,
   type WeaponId,
   effectiveDamage,
-  isUpgradeTick,
+  GEM_SPEED,
+  MAGNET_RADIUS,
+  MAX_GEMS,
+  PICKUP_RADIUS,
+  XP_VALUE,
   levelScale,
+  xpToNext,
   phaseAt,
 } from "./content";
 import { foldSpawn, stream, unitVector, weightedIndex } from "./rng";
@@ -86,6 +91,8 @@ export interface EnemyView {
   readonly hp: number;
   /** The tick this enemy stops being slowed. Zero if it never was. */
   readonly slowUntil: number;
+  /** The tick this enemy stops flashing from a hit. */
+  readonly flashUntil: number;
 }
 
 /**
@@ -111,6 +118,33 @@ export interface RunView {
    */
   readonly firedThisTick: readonly WeaponId[];
   readonly hurtThisTick: boolean;
+  /** Where each weapon actually landed this tick, so the renderer can draw it. */
+  readonly hitsThisTick: readonly Landed[];
+  /** Where something died this tick, so the renderer can make it pop. */
+  readonly deathsThisTick: readonly Died[];
+  readonly gems: readonly GemView[];
+  readonly level: number;
+  readonly xp: number;
+  readonly xpNeeded: number;
+}
+
+export interface Landed {
+  readonly weapon: WeaponId;
+  readonly x: number;
+  readonly y: number;
+  readonly killed: boolean;
+}
+
+export interface Died {
+  readonly kind: EnemyKind;
+  readonly x: number;
+  readonly y: number;
+}
+
+export interface GemView {
+  readonly x: number;
+  readonly y: number;
+  readonly value: number;
 }
 
 /**
@@ -218,6 +252,14 @@ export interface RunResult {
    */
   readonly digestAt: readonly number[];
   readonly spawnedAt: readonly number[];
+  /**
+   * The running count of times the spawn stream was consulted, sampled once a
+   * second. Must match between a run and its counterfactual over the stretch
+   * both existed for, whatever is switched off, because the draw happens
+   * before the ceiling is consulted and the ceiling is the only thing combat
+   * can influence.
+   */
+  readonly attemptsAt: readonly number[];
 }
 
 interface Enemy {
@@ -234,6 +276,13 @@ interface Enemy {
   slowFactor: number;
   poisonUntil: number;
   poisonDps: number;
+  flashUntil: number;
+}
+
+interface Gem {
+  x: number;
+  y: number;
+  value: number;
 }
 
 const DEFAULT_MAX_TICKS = 6 * 60 * TICK_HZ;
@@ -263,7 +312,6 @@ export function simulate(opts: SimOptions): RunResult {
 export function createRun(opts: RunOptions): Run {
   const maxTicks = opts.maxTicks ?? DEFAULT_MAX_TICKS;
   const spawnRng = stream(opts.spawnSeed);
-  const offerRng = stream(opts.offerSeed);
   const off = new Set<WeaponId>(opts.without ?? []);
 
   const damage = zeroed();
@@ -287,10 +335,17 @@ export function createRun(opts: RunOptions): Run {
   let faceY = 0;
   const digestAt: number[] = [];
   const spawnedAt: number[] = [];
+  const attemptsAt: number[] = [];
 
   const enemies: Enemy[] = [];
+  const gems: Gem[] = [];
   const d2: number[] = [];
   const firedThisTick: WeaponId[] = [];
+  const hitsThisTick: Landed[] = [];
+  const deathsThisTick: Died[] = [];
+  let level = 1;
+  let xp = 0;
+  let pendingLevels = 0;
   const view: RunView = {
     tick: 0,
     hp,
@@ -303,6 +358,12 @@ export function createRun(opts: RunOptions): Run {
     cutUntil,
     firedThisTick,
     hurtThisTick: false,
+    hitsThisTick,
+    deathsThisTick,
+    gems,
+    level: 1,
+    xp: 0,
+    xpNeeded: xpToNext(1),
   };
   const mutView = view as {
     tick: number;
@@ -311,6 +372,9 @@ export function createRun(opts: RunOptions): Run {
     y: number;
     cutsLeft: number;
     hurtThisTick: boolean;
+    level: number;
+    xp: number;
+    xpNeeded: number;
   };
 
   const offers: WeaponId[] = [];
@@ -338,7 +402,14 @@ export function createRun(opts: RunOptions): Run {
     damage[by] += amount;
     if (amount > e.hp) overkill[by] += amount - e.hp;
     e.hp -= amount;
-    if (e.hp <= 0) kills[by] += 1;
+    e.flashUntil = tick + 4;
+    const killed = e.hp <= 0;
+    if (killed) {
+      kills[by] += 1;
+      deathsThisTick.push({ kind: e.kind, x: e.x, y: e.y });
+      if (gems.length < MAX_GEMS) gems.push({ x: e.x, y: e.y, value: XP_VALUE[e.kind] });
+    }
+    hitsThisTick.push({ weapon: by, x: e.x, y: e.y, killed });
   };
 
   const step = (): StepStatus => {
@@ -356,9 +427,24 @@ export function createRun(opts: RunOptions): Run {
 
     // 1. UPGRADES, before anything moves, because the choice is about the
     //    tick that follows it.
-    if (isUpgradeTick(tick) && upgradeDoneAt !== tick) {
+    if (pendingLevels > 0 && upgradeDoneAt !== tick) {
       if (offeringAt !== tick) {
         offers.length = 0;
+        /*
+          A FRESH STREAM PER LEVEL, KEYED TO THE LEVEL NUMBER.
+
+          Levels are earned by killing now, so WHEN the fifth one arrives
+          depends on how the fight went, and a counterfactual that removes a
+          weapon reaches it later. Drawing the cards from one running stream
+          would then deal a different hand at every level in the two runs, and
+          the difference the reveal reports would stop being the decision.
+
+          Keying the draw to the level index instead makes the Nth level up
+          offer the same three cards in every world. What legitimately differs
+          between them is how long it took to get there, which is a real
+          consequence of the intervention rather than an artefact of the deal.
+        */
+        const cards = stream((opts.offerSeed ^ Math.imul(level, 0x9e3779b9)) >>> 0);
         /*
           THE BAG IS ALWAYS EVERY WEAPON, and never a pool filtered by what
           the player has already levelled.
@@ -379,7 +465,7 @@ export function createRun(opts: RunOptions): Run {
         */
         const bag = WEAPON_IDS.slice();
         for (let k = 0; k < OFFER_SIZE; k++) {
-          const r = offerRng();
+          const r = cards();
           if (bag.length === 0) continue;
           const pick = Math.min(bag.length - 1, Math.floor(r * bag.length));
           offers.push(bag[pick]!);
@@ -389,9 +475,12 @@ export function createRun(opts: RunOptions): Run {
       }
       if (offers.length > 0) return "awaitingUpgrade";
       upgradeDoneAt = tick;
+      pendingLevels -= 1;
     }
 
     firedThisTick.length = 0;
+    hitsThisTick.length = 0;
+    deathsThisTick.length = 0;
     mutView.hurtThisTick = false;
 
     // 2. CUTS.
@@ -456,6 +545,7 @@ export function createRun(opts: RunOptions): Run {
           slowFactor: 1,
           poisonUntil: 0,
           poisonDps: 0,
+          flashUntil: 0,
         });
         spawned += 1;
       }
@@ -560,6 +650,43 @@ export function createRun(opts: RunOptions): Run {
       }
     }
 
+    // 8b. GEMS. They sit where the thing died until the player comes near, so
+    //     collecting experience means walking into the place the fighting
+    //     just happened. That is the reference game's core tension and the
+    //     first version of this file had no equivalent at all.
+    {
+      let g = 0;
+      for (let i = 0; i < gems.length; i++) {
+        const gem = gems[i]!;
+        const dx = px - gem.x;
+        const dy = py - gem.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist <= PICKUP_RADIUS) {
+          xp += gem.value;
+          continue;
+        }
+        if (dist < MAGNET_RADIUS && dist > 1e-6) {
+          // Faster the closer it gets, so a pickup finishes with a snap.
+          const pull = GEM_SPEED * (1.15 - dist / MAGNET_RADIUS) * DT;
+          gem.x += (dx / dist) * pull;
+          gem.y += (dy / dist) * pull;
+        }
+        gems[g++] = gem;
+      }
+      gems.length = g;
+
+      let need = xpToNext(level);
+      while (xp >= need) {
+        xp -= need;
+        level += 1;
+        pendingLevels += 1;
+        need = xpToNext(level);
+      }
+      mutView.level = level;
+      mutView.xp = xp;
+      mutView.xpNeeded = need;
+    }
+
     // 9. COMPACTION, stable, so the array stays in id order and "any" targeting
     //    means "the oldest things in range" rather than "whatever the last
     //    removal happened to swap into place".
@@ -575,6 +702,7 @@ export function createRun(opts: RunOptions): Run {
     if (tick % TICK_HZ === TICK_HZ - 1) {
       digestAt.push(spawnDigest);
       spawnedAt.push(spawned);
+      attemptsAt.push(spawnAttempts);
     }
 
     if (hp <= 0) {
@@ -601,6 +729,12 @@ export function createRun(opts: RunOptions): Run {
       const valid = offers.includes(id) ? id : offers[0]!;
       levels[valid] = Math.min(MAX_LEVEL, levels[valid] + 1);
       upgradeDoneAt = tick;
+      // SPENDING THE LEVEL, which the first version forgot to do. Without it
+      // `upgradeDoneAt` blocks a second card on the same tick and nothing
+      // blocks one on the next, so a single earned level hands out a card
+      // every tick forever: measured at forty two thousand level ups in a
+      // twelve minute run, with every weapon maxed inside a second.
+      pendingLevels -= 1;
     },
     result: (): RunResult => ({
       ticks: tick,
@@ -616,6 +750,7 @@ export function createRun(opts: RunOptions): Run {
       spawnDigest,
       digestAt,
       spawnedAt,
+      attemptsAt,
     }),
   };
 }

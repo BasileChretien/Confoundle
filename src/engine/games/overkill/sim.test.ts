@@ -93,20 +93,20 @@ describe("a counterfactual is the same world", () => {
     expect(shorter).toBeGreaterThan(0);
   });
 
-  it("keeps drawing at the same rate when the enemy cap bites", () => {
-    // With a weapon switched off more enemies survive, so the live ceiling is
-    // reached sooner and FEWER enemies actually enter the world. The draws
-    // still happen: the stream is consulted before the cap is, so the sequence
-    // is untouched. Deciding first and drawing second would tie the spawn
-    // sequence to combat outcomes, which is the subtle version of the bug
-    // above and the one that would survive review.
-    const rec = recording(policy({ kind: "spread" }), SEEDS);
-    simulate({ ...SEEDS, controller: rec.controller, maxTicks: 360 * TICK_HZ });
-    const log = rec.log();
+  it("consults the stream at a rate nothing in the fight can change", () => {
+    // THE SUBTLE HALF OF THE GUARD ABOVE. The spawn stream is drawn from before
+    // the live-enemy ceiling is consulted, so how many draws happen depends
+    // only on how long the run lasted. Deciding first and drawing second would
+    // tie the sequence to combat outcomes, which is invisible in a digest
+    // comparison and would quietly make every counterfactual a different game.
+    //
+    // ASSERTED ON THE SERIES RATHER THAN THROUGH GAMEPLAY, because the ceiling
+    // does not bind in a real run: measured, the peak live count is 84 to 121
+    // against a cap of 220, since the player dies long before that many pile
+    // up. The version of this test that waited for the cap to bite went
+    // VACUOUS rather than red, and only its own premise check noticed.
+    const { log } = loggedRun(240 * TICK_HZ);
     const base = simulate({ ...SEEDS, controller: replayController(log), maxTicks: log.ticks });
-    expect(base.spawnAttempts - base.spawned).toBeGreaterThan(0);
-
-    let capDiffered = 0;
     for (const id of WEAPON_IDS) {
       const arm = simulate({
         ...SEEDS,
@@ -114,13 +114,13 @@ describe("a counterfactual is the same world", () => {
         without: [id],
         maxTicks: log.ticks,
       });
-      const common = Math.min(arm.digestAt.length, base.digestAt.length);
-      expect(arm.digestAt.slice(0, common)).toEqual(base.digestAt.slice(0, common));
-      if (!arm.spawnedAt.slice(0, common).every((n, i) => n === base.spawnedAt[i])) capDiffered += 1;
+      const common = Math.min(arm.attemptsAt.length, base.attemptsAt.length);
+      expect(common).toBeGreaterThan(30);
+      expect(arm.attemptsAt.slice(0, common)).toEqual(base.attemptsAt.slice(0, common));
     }
-    // Non-vacuity again: somewhere in that common window the ceiling really
-    // did admit a different number of enemies, and the stream did not care.
-    expect(capDiffered).toBeGreaterThan(0);
+    // Non-vacuity: the counts really do climb, so this is not comparing two
+    // lists of zeroes.
+    expect(base.attemptsAt[base.attemptsAt.length - 1]!).toBeGreaterThan(100);
   });
 
   it("has a digest that can actually see a different world", () => {

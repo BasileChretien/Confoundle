@@ -3,9 +3,9 @@ import { useT } from "../../../app/i18n";
 import { PLAYER_HP, TICK_HZ, type WeaponId } from "./content";
 import { createRun, type Dir, type Run, type RunView } from "./sim";
 import { recorder, type Recorder, type RunLog } from "./replay";
+import { WEAPON_COLOR } from "./palette";
 import {
   MAX_PARTICLES,
-  WEAPON_COLOR,
   drawFrame,
   spawnDeathParticles,
   stepParticles,

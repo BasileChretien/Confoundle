@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { CUTS_PER_RUN, WEAPON_IDS, type WeaponId } from "./content";
-import { WEAPON_COLOR, cutProgress } from "./render";
+import { WEAPON_COLOR } from "./palette";
+import { cutProgress } from "./render";
 import type { RunView } from "./sim";
 import { useNumbers } from "./format";
 import { WeaponIcon } from "./WeaponIcon";

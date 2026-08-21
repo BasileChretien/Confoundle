@@ -333,12 +333,14 @@ describe("nothing in here can reach outside itself", () => {
   const SIMULATION = ["content.ts", "replay.ts", "rng.ts", "sim.ts"];
   const PRESENTATION = [
     "BriefingSheet.tsx",
+    "cells.ts",
     "DeathScreen.tsx",
     "Meter.tsx",
     "OverkillGame.tsx",
     "WeaponIcon.tsx",
     "format.ts",
     "input.ts",
+    "palette.ts",
     // The oracle. Presentation rather than simulation because it exists to
     // MEASURE the game from outside, and because it imports a type from
     // `policies.ts`, which the boundary below forbids a simulation file from

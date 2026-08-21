@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { TICK_HZ, WEAPON_IDS } from "./content";
-import { WEAPON_COLOR, cutProgress, drawFrame, secondsOf } from "./render";
+import { WEAPON_COLOR } from "./palette";
+import { cutProgress, drawFrame, secondsOf } from "./render";
 import type { EnemyView, RunView } from "./sim";
 
 /**
@@ -290,9 +291,19 @@ describe("drawing a frame", () => {
         pulses: [{ weapon: "cytokine", tick: 100 - age }],
         ...SIZE,
       });
-      // A pulse is the only thing drawn part-transparent in that colour.
+      // CENTRED ON THE PLAYER, which is what makes a pulse a pulse. The old
+      // discriminator was "the only part-transparent arc in that colour", and
+      // that stopped being true the moment the recruiter became a thing you
+      // can see: the cell in your squad draws three semi-transparent rings of
+      // its own. Position is the honest distinction, because the pulse comes
+      // off the player and the cell sits out on the squad ring.
       return calls.filter(
-        (c) => c.op === "arc" && c.stroke === WEAPON_COLOR.cytokine && c.alpha < 1,
+        (c) =>
+          c.op === "arc" &&
+          c.stroke === WEAPON_COLOR.cytokine &&
+          c.alpha < 1 &&
+          c.args[0] === SIZE.width / 2 &&
+          c.args[1] === SIZE.height / 2,
       );
     };
     expect(drawn(1)).toHaveLength(1);

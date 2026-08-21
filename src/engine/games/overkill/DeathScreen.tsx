@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useT } from "../../../app/i18n";
 import { type WeaponId } from "./content";
-import { WEAPON_COLOR } from "./render";
+import { WEAPON_COLOR } from "./palette";
 import { useNumbers } from "./format";
 import { WeaponIcon } from "./WeaponIcon";
 import {

@@ -1,3 +1,5 @@
+import { ENEMY_COLOR, WEAPON_COLOR } from "./palette";
+import { drawEffector, drawY } from "./cells";
 import {
   CUT_TICKS,
   ENEMIES,
@@ -9,61 +11,7 @@ import {
 } from "./content";
 import type { RunView } from "./sim";
 
-/**
- * Drawing a tick, as a white blood cell fighting its way through an infection.
- *
- * THE SUBJECT IS THE POINT, not decoration on top of one. A neutrophil against
- * bacteria, viruses and something antibiotics have stopped touching is a scene
- * anybody recognises in a second, and it puts the game's actual question,
- * which of these is doing the work, in the one setting where a reader of this
- * app has met it before. The previous version drew coloured dots fighting
- * other coloured dots, which is legible to nobody.
- *
- * WEAPONS ARE ON SCREEN AT ALL TIMES, which is the other thing that was
- * missing. Before, a weapon existed only as a flash at the instant it hit, so
- * a player could not see what they had, could not see it improve, and had no
- * picture in their head to attach the meter's numbers to. Now the antibodies
- * orbit, the killer T cells circle, the oxidative burst glows, and complement
- * visibly eats whatever it has attached to.
- *
- * The particles are the one piece of state the renderer owns. Nothing reads
- * them back, and they are seeded from the simulation's deterministic death
- * list, so two people watching the same run see the same thing without the
- * simulation having to know they exist.
- */
 
-export const WEAPON_COLOR: Readonly<Record<WeaponId, string>> = {
-  /** The neutrophil's own blade, which is how the manga arms them. */
-  neutrophil: "#F1F5F9",
-  /** The oxidative burst: bleach, essentially, at arm's length. */
-  burst: "#FB923C",
-  /** Complement: drills a hole and lets the pressure do the rest. */
-  complement: "#A3E635",
-  /** Antibodies: tag it, slow it, do almost no damage yourself. */
-  antibody: "#67E8F9",
-  /** A cytotoxic T cell, which only ever has one job. */
-  killerT: "#C084FC",
-  /** An NK cell, hunting for one of yours that stopped saying hello. */
-  nk: "#FDE047",
-  /** Eosinophils, named for the dye that stains them, so: rose. */
-  eosinophil: "#FB7185",
-  /** Cytokines: the shout that brings everyone else. */
-  cytokine: "#A5B4FC",
-};
-
-/**
- * S. aureus is gold because S. aureus is gold: the name is Latin for golden,
- * after the colour of its colonies. When the fiction and the fact agree for
- * free, take it.
- */
-const ENEMY_COLOR: Readonly<Record<EnemyKind, string>> = {
-  coli: "#65A30D",
-  aureus: "#CA8A04",
-  virion: "#DB2777",
-  infected: "#9333EA",
-  candida: "#D6D3D1",
-  worm: "#B45309",
-};
 
 /** World units across the smaller side of the screen. */
 const VIEWPORT = 430;
@@ -186,7 +134,7 @@ export function drawFrame(ctx: CanvasRenderingContext2D, frame: Frame): void {
       ctx.strokeStyle = WEAPON_COLOR.antibody;
       ctx.lineWidth = 1.6;
       ctx.globalAlpha = 0.95;
-      drawAntibody(ctx, ex + r * 0.7, ey - r * 0.7, r * 0.9, view.tick / 9);
+      drawY(ctx, ex + r * 0.7, ey - r * 0.7, r * 0.9, view.tick / 9);
       ctx.globalAlpha = 1;
     }
     if (view.tick < e.poisonUntil) {
@@ -210,26 +158,48 @@ export function drawFrame(ctx: CanvasRenderingContext2D, frame: Frame): void {
 
     if (h.match < 0.35) {
       /*
-        THE WRONG TOOL, LANDING AND FAILING. Two short marks skidding off the
-        surface, and nothing else.
+        THE WRONG TOOL, LANDING AND FAILING, AND SAYING WHICH TOOL.
 
-        This is the most important drawing in the file. The matrix keeps a
-        trickle rather than zeroing a mismatched effector precisely so the
-        player can SEE it fail, because nothing happening reads as a broken
-        weapon rather than as complement meeting a wall it cannot cross.
+        This is the most important drawing in the file, and the first version
+        of it was two hairline skid marks that named nothing. A player saw a
+        scratch, could not tell which of their three effectors had made it,
+        and had no way to connect it to the choice they made at the briefing.
+        The matrix keeps a trickle rather than zeroing a mismatched effector
+        precisely so this moment is VISIBLE, and then it was drawn invisibly.
+
+        So the effector itself is drawn at the point of failure, greyed out and
+        struck through. Same drawing as the one in your squad and the one on
+        the card you picked, so the three are unmistakably the same thing: this
+        is the cell you chose, this is it arriving, this is it not working.
       */
       const dx = hx - cx;
       const dy = hy - cy;
       const len = Math.sqrt(dx * dx + dy * dy) || 1;
+      const g = 7 * Math.max(0.7, scale);
+      drawEffector(ctx, h.weapon, hx, hy, g, view.tick, {
+        failed: true,
+        angle: Math.atan2(dy, dx),
+      });
+      // Struck through, which is the one mark that reads as "no" without a
+      // word in it, and the one thing on screen drawn in flat grey.
+      ctx.strokeStyle = "#94A3B8";
+      ctx.lineWidth = 1.8 * Math.max(0.7, scale);
+      ctx.beginPath();
+      ctx.moveTo(hx - g * 0.9, hy - g * 0.9);
+      ctx.lineTo(hx + g * 0.9, hy + g * 0.9);
+      ctx.stroke();
+      // And a skid, so it reads as having arrived rather than as having been
+      // placed: the effector reached the pathogen and slid off it.
       const nx = -dy / len;
       const ny = dx / len;
       ctx.lineWidth = 1.4 * Math.max(0.7, scale);
+      ctx.globalAlpha = 0.7;
       for (const side of [-1, 1]) {
         ctx.beginPath();
-        ctx.moveTo(hx + nx * side * 3 * scale, hy + ny * side * 3 * scale);
+        ctx.moveTo(hx + nx * side * g * 1.1, hy + ny * side * g * 1.1);
         ctx.lineTo(
-          hx + nx * side * 9 * scale - (dx / len) * 5 * scale,
-          hy + ny * side * 9 * scale - (dy / len) * 5 * scale,
+          hx + nx * side * g * 1.9 - (dx / len) * g,
+          hy + ny * side * g * 1.9 - (dy / len) * g,
         );
         ctx.stroke();
       }
@@ -250,7 +220,7 @@ export function drawFrame(ctx: CanvasRenderingContext2D, frame: Frame): void {
       ctx.lineTo(hx + nx * 10 * scale, hy + ny * 10 * scale);
       ctx.stroke();
     } else if (h.weapon === "antibody") {
-      drawAntibody(ctx, hx, hy, 7 * scale, view.tick / 7);
+      drawY(ctx, hx, hy, 7 * scale, view.tick / 7);
     } else if (h.weapon === "killerT" || h.weapon === "nk") {
       // A reach from the patrol to the cell it has condemned.
       ctx.beginPath();
@@ -292,11 +262,19 @@ export function drawFrame(ctx: CanvasRenderingContext2D, frame: Frame): void {
   }
   ctx.globalAlpha = 1;
 
-  drawOrbitingWeapons(ctx, view, scale, cx, cy);
+  drawSquad(ctx, view, scale, cx, cy);
   drawNeutrophil(ctx, cx, cy, PLAYER_RADIUS * scale, view);
 }
 
-/** The glows and rings that sit under everything and never switch off. */
+/**
+ * How far each deployed effector reaches, as a faint ring on the floor.
+ *
+ * ONE RING PER DEPLOYED EFFECTOR, read off `view.active` rather than written
+ * out for two of them by hand. The old version drew a reach indicator for the
+ * burst and the antibody and for nothing else, so six effectors had no way of
+ * telling you they had a range at all, and a player standing outside every
+ * useful radius had no way to find that out except by dying.
+ */
 function drawAreaWeapons(
   ctx: CanvasRenderingContext2D,
   view: RunView,
@@ -304,88 +282,71 @@ function drawAreaWeapons(
   cx: number,
   cy: number,
 ): void {
-  if (deployed(view, "burst")) {
-    const r = WEAPONS.burst.maxRange * scale;
-    const grad = ctx.createRadialGradient(cx, cy, r * 0.25, cx, cy, r);
-    grad.addColorStop(0, "rgba(251, 146, 60, 0.20)");
-    grad.addColorStop(1, "rgba(251, 146, 60, 0)");
-    ctx.fillStyle = grad;
-    ctx.beginPath();
-    ctx.arc(cx, cy, r, 0, TAU);
-    ctx.fill();
-  }
-  if (deployed(view, "antibody")) {
-    ctx.strokeStyle = "rgba(103, 232, 249, 0.16)";
+  for (const id of view.active) {
+    if (view.cutUntil[id] > view.tick) continue;
+    const spec = WEAPONS[id];
+    // The recruiter reaches everywhere and hits nothing, so a reach ring for
+    // it would be drawing a weapon that does not exist.
+    if (spec.recruits === true) continue;
+    ctx.strokeStyle = WEAPON_COLOR[id];
+    ctx.globalAlpha = 0.13;
     ctx.lineWidth = 1;
     ctx.beginPath();
-    ctx.arc(cx, cy, WEAPONS.antibody.maxRange * scale, 0, TAU);
+    ctx.arc(cx, cy, spec.maxRange * scale, 0, TAU);
     ctx.stroke();
+    ctx.globalAlpha = 1;
   }
 }
 
-/** Antibodies and killer T cells, circling the player, always visible. */
-function drawOrbitingWeapons(
+/**
+ * YOUR SQUAD: the three effectors you deployed, drawn as themselves, always
+ * on screen, in the slot order you picked them.
+ *
+ * This replaces two abstract orbits at different radii which between them
+ * covered two of eight effectors and left the other six with no
+ * representation at all. The complaint that landed it was exact: you could not
+ * tell what was what. You could not, because five of them were not there.
+ *
+ * ONE RING, EVENLY SPACED, FIXED TO THE SLOT. The radius does not encode range
+ * any more, because using position to mean two things at once is how the old
+ * version became unreadable: the reach rings below say range, and this ring
+ * says WHO IS HERE. A slot keeps its angle for the whole wave, so the squad is
+ * a thing you learn the shape of rather than a swarm you re-read every second.
+ */
+function drawSquad(
   ctx: CanvasRenderingContext2D,
   view: RunView,
   scale: number,
   cx: number,
   cy: number,
 ): void {
-  if (deployed(view, "antibody")) {
-    const n = Math.min(6, 2 + view.levels.antibody);
-    const r = WEAPONS.antibody.maxRange * 0.72 * scale;
-    ctx.strokeStyle = WEAPON_COLOR.antibody;
-    ctx.lineWidth = 1.7;
-    for (let i = 0; i < n; i++) {
-      const a = (i / n) * TAU + view.tick / 70;
-      drawAntibody(ctx, cx + Math.cos(a) * r, cy + Math.sin(a) * r, 6.5 * scale, a);
+  const live = view.active.filter((id) => view.cutUntil[id] <= view.tick);
+  if (live.length === 0) return;
+  const ring = 30 * scale;
+  // Aim at the nearest pathogen, so a firing cell visibly turns towards what
+  // it is about to hit rather than firing into the middle distance.
+  let aim = 0;
+  let best = Infinity;
+  for (const e of view.enemies) {
+    const dx = e.x - view.x;
+    const dy = e.y - view.y;
+    const d2 = dx * dx + dy * dy;
+    if (d2 < best) {
+      best = d2;
+      aim = Math.atan2(dy, dx);
     }
   }
-  if (deployed(view, "killerT")) {
-    const n = Math.min(4, 1 + Math.ceil(view.levels.killerT / 2));
-    const r = ((WEAPONS.killerT.minRange + WEAPONS.killerT.maxRange) / 2) * scale;
-    for (let i = 0; i < n; i++) {
-      const a = (i / n) * TAU - view.tick / 45;
-      const tx = cx + Math.cos(a) * r;
-      const ty = cy + Math.sin(a) * r;
-      ctx.fillStyle = WEAPON_COLOR.killerT;
-      ctx.beginPath();
-      ctx.arc(tx, ty, 6 * scale, 0, TAU);
-      ctx.fill();
-      ctx.fillStyle = "#3B0764";
-      ctx.beginPath();
-      ctx.arc(tx, ty, 2.4 * scale, 0, TAU);
-      ctx.fill();
-    }
+  for (let i = 0; i < live.length; i++) {
+    const id = live[i]!;
+    const a = (i / live.length) * TAU + view.tick / 260;
+    const px = cx + Math.cos(a) * ring;
+    const py = cy + Math.sin(a) * ring;
+    const firing = view.firedThisTick.includes(id);
+    drawEffector(ctx, id, px, py, 8.5 * scale, view.tick, {
+      firing,
+      angle: view.enemies.length === 0 ? a : aim,
+    });
   }
-}
-
-/** The Y everybody recognises, rotated so it does not read as a stamp. */
-function drawAntibody(
-  ctx: CanvasRenderingContext2D,
-  x: number,
-  y: number,
-  size: number,
-  angle: number,
-): void {
-  const c = Math.cos(angle);
-  const s = Math.sin(angle);
-  const at = (dx: number, dy: number): [number, number] => [
-    x + dx * c - dy * s,
-    y + dx * s + dy * c,
-  ];
-  const stem = at(0, size);
-  const mid = at(0, 0);
-  const left = at(-size * 0.8, -size * 0.8);
-  const right = at(size * 0.8, -size * 0.8);
-  ctx.beginPath();
-  ctx.moveTo(stem[0], stem[1]);
-  ctx.lineTo(mid[0], mid[1]);
-  ctx.moveTo(mid[0], mid[1]);
-  ctx.lineTo(left[0], left[1]);
-  ctx.moveTo(mid[0], mid[1]);
-  ctx.lineTo(right[0], right[1]);
-  ctx.stroke();
 }
 
 /**
@@ -608,16 +569,6 @@ function enemyRadius(kind: EnemyKind): number {
   return ENEMIES[kind].radius;
 }
 
-/**
- * On screen right now: deployed for this wave, and not switched off.
- *
- * Both halves matter. An effector left behind at the briefing must be absent
- * rather than dimmed, because the loadout is the decision the whole wave turns
- * on and a player has to see what they brought.
- */
-function deployed(view: RunView, id: WeaponId): boolean {
-  return view.active.includes(id) && view.cutUntil[id] <= view.tick;
-}
 
 /** Whether a weapon is currently cut, and how far through the eight seconds. */
 export function cutProgress(view: RunView, id: WeaponId): number | null {

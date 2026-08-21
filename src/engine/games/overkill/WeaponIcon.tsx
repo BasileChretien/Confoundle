@@ -1,24 +1,27 @@
+import { useEffect, useRef } from "react";
 import { type WeaponId } from "./content";
-import { WEAPON_COLOR } from "./render";
+import { drawEffector } from "./cells";
 
 /**
- * A weapon as a shape, not as a colour.
+ * An effector, drawn as the thing it is.
  *
- * THIS IS WHY THE LEVEL UPS WERE UNPLAYABLE. The cards were three coloured
- * squares, so every single one meant reading a legend off the meter, working
- * out which colour was which, and only then deciding, several times a minute,
- * with the game held still. That is not a decision under pressure, it is a
- * quiz, and it broke the rhythm of the run more thoroughly than the pause
- * itself ever could.
+ * THIS USED TO BE EIGHT HAND-DRAWN SVG GLYPHS and they were the wrong idea in
+ * a way that took a play session to see. They were fine glyphs. They were also
+ * a SECOND visual language, with no relationship to what the arena drew, so
+ * learning the icons taught you nothing about the game and playing the game
+ * taught you nothing about the icons. Picking a card meant choosing between
+ * abstract marks and then watching an unrelated abstract effect happen.
  *
- * A shape is recognised rather than decoded. The Y of an antibody, a blade, a
- * spiked virus: these are read at a glance and they carry the fiction at the
- * same time, which is what lets the whole game stay wordless in ten languages.
- * Colour is kept, but as reinforcement rather than as the only channel, which
- * also means the eight per cent of men who cannot separate red from green are
- * not playing a different game.
+ * So the icon is now a canvas running the SAME `drawEffector` the battlefield
+ * runs. The cell on the card is the cell that appears beside you. There is
+ * exactly one visual language, it is anatomical rather than invented, and
+ * nothing can drift because there is only one drawing.
+ *
+ * DRAWN ONCE, NOT ANIMATED. A briefing shows eight of these at a time and a
+ * level up shows three; eight animation loops to wiggle a nucleus is real
+ * battery on a phone for no legibility gain, since what distinguishes these is
+ * shape rather than motion.
  */
-
 export function WeaponIcon({
   id,
   size = 28,
@@ -28,94 +31,31 @@ export function WeaponIcon({
   size?: number;
   dim?: boolean;
 }) {
-  const c = WEAPON_COLOR[id];
-  const common = {
-    stroke: c,
-    strokeWidth: 2,
-    fill: "none",
-    strokeLinecap: "round" as const,
-    strokeLinejoin: "round" as const,
-  };
+  const canvas = useRef<HTMLCanvasElement | null>(null);
+
+  useEffect(() => {
+    const c = canvas.current;
+    if (c === null) return;
+    const ctx = c.getContext("2d");
+    if (ctx === null) return;
+    const dpr = Math.min(3, window.devicePixelRatio || 1);
+    c.width = Math.round(size * dpr);
+    c.height = Math.round(size * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, size, size);
+    // A third rather than a half, so a cell that spills past its own radius
+    // (the eosinophil degranulating, the plasma cell's antibodies) is not
+    // clipped at the edge of its box.
+    drawEffector(ctx, id, size / 2, size / 2, size * 0.33, 0);
+  }, [id, size]);
+
   return (
-    <svg
+    <canvas
+      ref={canvas}
       width={size}
       height={size}
-      viewBox="0 0 24 24"
+      style={{ width: size, height: size, opacity: dim ? 0.3 : 1, display: "block" }}
       aria-hidden
-      style={{ opacity: dim ? 0.3 : 1, display: "block" }}
-    >
-      {id === "antibody" && (
-        <g {...common}>
-          <path d="M12 21V13" />
-          <path d="M12 13L6 5" />
-          <path d="M12 13L18 5" />
-          <circle cx="6" cy="4" r="1.6" fill={c} stroke="none" />
-          <circle cx="18" cy="4" r="1.6" fill={c} stroke="none" />
-        </g>
-      )}
-
-      {id === "neutrophil" && (
-        <g {...common}>
-          <path d="M5 19L14 10" />
-          <path d="M13 4L20 11L16.5 12.5L11.5 7.5Z" fill={c} />
-          <path d="M5 19L7.5 18.5L8 16" />
-        </g>
-      )}
-
-      {id === "cytokine" && (
-        <g {...common}>
-          <circle cx="12" cy="12" r="2.6" fill={c} stroke="none" />
-          {[0, 45, 90, 135, 180, 225, 270, 315].map((deg) => (
-            <path key={deg} d="M12 7.5V4" transform={`rotate(${deg} 12 12)`} />
-          ))}
-        </g>
-      )}
-
-      {id === "burst" && (
-        <g {...common}>
-          <path d="M12 3c3 4 5 6 5 9a5 5 0 0 1-10 0c0-3 2-5 5-9Z" fill={c} fillOpacity="0.25" />
-          <path d="M12 20a3 3 0 0 1-3-3c0-2 3-3 3-6 2 3 3 4 3 6a3 3 0 0 1-3 3Z" fill={c} />
-        </g>
-      )}
-
-      {id === "complement" && (
-        <g {...common}>
-          {/* A pore punched through a membrane, which is what it does. */}
-          <circle cx="12" cy="12" r="6.5" />
-          <circle cx="12" cy="12" r="2.2" fill={c} stroke="none" />
-          {[0, 60, 120, 180, 240, 300].map((deg) => (
-            <path key={deg} d="M12 5.5V2.5" transform={`rotate(${deg} 12 12)`} />
-          ))}
-        </g>
-      )}
-
-      {id === "killerT" && (
-        <g {...common}>
-          <circle cx="12" cy="12" r="7.5" fill={c} fillOpacity="0.22" />
-          <path d="M8 9.5h8" />
-          <path d="M12 9.5v7" />
-        </g>
-      )}
-
-      {id === "nk" && (
-        <g {...common}>
-          {/* A cell with a bite taken out: missing self, which is the cue. */}
-          <path d="M12 4.5a7.5 7.5 0 1 0 7.4 8.7L15 12l4.2-3.1A7.5 7.5 0 0 0 12 4.5Z" fill={c} fillOpacity="0.22" />
-          <circle cx="10.5" cy="12" r="2" fill={c} stroke="none" />
-        </g>
-      )}
-
-      {id === "eosinophil" && (
-        <g {...common}>
-          {/* A bilobed nucleus and granules, which is how you know one. */}
-          <circle cx="12" cy="12" r="7.5" fill={c} fillOpacity="0.18" />
-          <path d="M9.5 8.5a3 3 0 0 0 0 7" />
-          <path d="M14.5 8.5a3 3 0 0 1 0 7" />
-          <circle cx="12" cy="7" r="1" fill={c} stroke="none" />
-          <circle cx="12" cy="17" r="1" fill={c} stroke="none" />
-        </g>
-      )}
-
-    </svg>
+    />
   );
 }

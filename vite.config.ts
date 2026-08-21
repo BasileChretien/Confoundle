@@ -251,7 +251,9 @@ const pwa = VitePWA({
       // The game, for the same reason: it is about sixty KiB, it is reachable
       // only from ?game=overkill, and precaching it would spend most of the
       // install budget that is left on something almost nobody opens.
-      "**/assets/OverkillGame-*.js",
+      // One chunk, named by `manualChunks` in the build config below, so this
+      // stays correct when somebody adds another way into the game.
+      "**/assets/overkill-*.js",
       "l/**",
       "sitemap.xml",
     ],
@@ -349,6 +351,33 @@ export default defineConfig(({ mode }) => {
           output: { format: "iife", inlineDynamicImports: true },
         },
       }
-    : undefined,
+    : {
+        rollupOptions: {
+          output: {
+            /*
+              EVERY FILE UNDER THE GAME GOES IN ONE CHUNK WITH A STABLE NAME.
+
+              Not a performance tweak. `globIgnores` below keeps the game out
+              of the install precache, and it did that by naming the chunk
+              rollup happened to produce, `OverkillGame-*`. That glob was
+              correct exactly until a SECOND entry point into the same code
+              appeared: adding the encounter prototype made rollup hoist the
+              shared renderer into `render-*.js`, which matched no ignore, so
+              16 KiB of game code silently moved into the app shell and the
+              precache went to 2045 KiB of a 2048 KiB ceiling. Two and a half
+              KiB of headroom, from adding one screen.
+
+              Naming the chunk ourselves makes the ignore correct by
+              construction instead of by maintenance, which is the same lesson
+              this repo already learned about globs that promise more than they
+              match.
+            */
+            manualChunks(id: string) {
+              if (id.includes("/src/engine/games/overkill/")) return "overkill";
+              return undefined;
+            },
+          },
+        },
+      },
   };
 });

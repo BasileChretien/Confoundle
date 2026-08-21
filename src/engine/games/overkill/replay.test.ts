@@ -2,6 +2,7 @@ import { beforeAll, describe, expect, it } from "vitest";
 import { MAX_LEVEL, TICK_HZ, WEAPON_IDS, type WeaponId } from "./content";
 import { simulate } from "./sim";
 import { policy, type LoadoutChoice } from "./policies";
+import { MATCHED } from "./loadouts";
 import {
   decisionStudy,
   decisionStudyByArm,
@@ -34,14 +35,28 @@ const RUN = 420 * TICK_HZ;
 /**
  * The loadout the fixture plays with.
  *
- * FIXED, AND IT INCLUDES THE RECRUITER, because the whole of what this file
- * measures is what removing an effector costs, and removing one that was never
- * deployed costs exactly nothing. A meter-following loadout would never deploy
- * the recruiter at all (see `policies.test.ts`), so every arm below would have
- * come back identical and the study would have looked broken rather than
+ * IT INCLUDES THE RECRUITER, because the whole of what this file measures is
+ * what removing an effector costs, and removing one that was never deployed
+ * costs exactly nothing. A meter-following loadout would never deploy the
+ * recruiter at all (see `policies.test.ts`), so every arm below would have come
+ * back identical and the study would have looked broken rather than
  * misconfigured.
+ *
+ * AND IT MATCHES THE WAVE, which a fixed trio did not. Holding
+ * [neutrophil, burst, cytokine] for the whole run walked into the influenza
+ * wave with nothing that can touch a virion, so every run ended at the same
+ * tick against the same wall, and a counterfactual cannot measure anything
+ * when both arms die to something neither of them could have affected:
+ * removing the recruiter came back as costing EXACTLY zero, alongside the five
+ * effectors that were never deployed at all. A degenerate fixture, not a
+ * regression, but it reads identically to one. The two best answers to the
+ * announced wave plus the recruiter keeps the run alive long enough that the
+ * arms have somewhere to diverge.
  */
-const DEPLOYED: LoadoutChoice = () => ["neutrophil", "burst", "cytokine"];
+const DEPLOYED: LoadoutChoice = (view, unlocked) => [
+  ...MATCHED(view, unlocked).slice(0, 2),
+  "cytokine",
+];
 
 function logged(feed: Parameters<typeof policy>[0] = { kind: "biggestBar" }) {
   const rec = recording(policy(feed, DEPLOYED), SEEDS);

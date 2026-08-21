@@ -20,6 +20,7 @@ import {
   type PathogenClass,
   type WeaponId,
   effectiveDamage,
+  killFloor,
   BURST_CAP,
   EFFECTIVE,
   GEM_SPEED,
@@ -475,12 +476,39 @@ export function createRun(opts: RunOptions): Run {
     const match = EFFECTIVE[by][e.cls];
     const amount = effectiveDamage(raw, e.armour, pierces, match);
     if (amount <= 0) return;
-    damage[by] += amount;
-    if (amount > e.hp) overkill[by] += amount - e.hp;
-    e.hp -= amount;
-    // A hit that barely registers should barely flash, or a trickle looks the
-    // same as a killing blow and the player cannot see the wrong tool failing.
-    e.flashUntil = tick + (match >= 0.5 ? 5 : 2);
+    /*
+      THE WRONG TOOL NEVER FINISHES THE JOB. See `killFloor`.
+
+      `damage` BOOKS WHAT LANDED, not the whole swing, and that was a real
+      fork. Booking the swing inflates a blocked effector's bar while nothing
+      it touches dies, which is a sharper confound and measurably lethal: a
+      player feeding the biggest bar then pours every level into the effector
+      that is doing nothing, and a correct loadout played that way dropped from
+      291 seconds to 135. It is also not true. The meter is supposed to be an
+      accurate number that misleads, not an inaccurate one, and this project
+      derives every rate from raw counts precisely so a figure cannot contradict
+      what happened.
+
+      The confound survives intact anyway, because it never lived here. What
+      makes the meter useless is proven as an identity in `policies.test.ts`:
+      at a briefing it can only ever recommend the effectors already deployed,
+      so following it is exactly never changing anything. Booking honestly
+      costs none of that and buys the player a way to see, within a wave, which
+      of their three is working.
+    */
+    const floor = killFloor(match) * ENEMIES[e.kind].hp;
+    const landed = Math.min(amount, Math.max(0, e.hp - floor));
+    damage[by] += landed;
+    // Overkill keeps its original meaning: the part of a killing blow that was
+    // more than the target had left. Damage the floor refused is not overkill,
+    // it is damage that never happened, and it is booked nowhere.
+    if (amount > e.hp && floor === 0) overkill[by] += amount - e.hp;
+    e.hp -= landed;
+    // A hit that lands flashes. A hit the target shrugs off entirely does NOT,
+    // because the flash is white and white reads as "that worked": the one
+    // event meaning "this is not working" was being drawn in the colour of
+    // success. A target that has stopped reacting is the signal.
+    if (landed > 0) e.flashUntil = tick + (match >= 0.5 ? 5 : 2);
     const killed = e.hp <= 0;
     if (killed) {
       kills[by] += 1;

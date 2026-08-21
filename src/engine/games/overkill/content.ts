@@ -376,6 +376,49 @@ export function effectiveDamage(
   return Math.max(matched * 0.15, matched - armour);
 }
 
+/**
+ * The lowest fraction of maximum health a hit at this match can push a target
+ * to. THE WRONG TOOL NEVER FINISHES THE JOB.
+ *
+ * WHY THIS EXISTS. Measured, deliberately mismatching every briefing scored
+ * 129 seconds, never changing your loadout scored 130, and following the
+ * damage meter scored 130. Matching scored 300. So the game rewarded choosing
+ * well and did not punish choosing badly: every route to not-deciding arrived
+ * at the same floor, and a player had no way to discover that their answer was
+ * wrong rather than merely unlucky.
+ *
+ * The cause was that the matrix was a minority term in its own equation. Raw
+ * throughput varies 4.6x between effectors before the matrix is consulted, and
+ * `levelScale` adds another 3.75x on top, so roughly 17x of non-matrix spread
+ * sat against a matrix penalty of 8.3x. Complement at level 6 against a
+ * helminth it "cannot do the job" on out-damaged a level 1 eosinophil, the
+ * actual answer, by six times. The lesson was a rounding error next to the
+ * thing the player was not supposed to be thinking about.
+ *
+ * A CAP RATHER THAN A MULTIPLIER, and that is the whole idea. Scaling numbers
+ * further would just move the same race; a ceiling on what a mismatched hit
+ * can ACHIEVE makes the match dominant by construction, because no amount of
+ * levelling buys a kill. It is also better biology than "eight times slower":
+ * complement does not lyse S. aureus slowly, it opsonises a little and stops.
+ *
+ * And it pays for the feedback problem at the same time, for free. A stalled
+ * target stops dying, so the crowd stops thinning, and a change in RATE is the
+ * one thing peripheral vision reads well while a thumb is busy. One enemy's
+ * health stalling at a fixed fraction is a mechanism; a number going down more
+ * slowly is a statistic.
+ */
+export function killFloor(match: number): number {
+  // A principal defence finishes what it starts.
+  if (match >= 1) return 0;
+  // "Contributes without being sufficient alone" is a claim about SUFFICIENCY,
+  // so it is drawn as one: this tier can take a target most of the way down
+  // and cannot land the last quarter. Two such effectors together still
+  // cannot, which is what "alone" has to mean for the word to do any work.
+  if (match >= 0.35) return 0.25;
+  // Cannot do the job. Lands, is felt, and gets nowhere.
+  return 0.6;
+}
+
 export interface Wave {
   /** What the briefing shows. The threat, never the answer. */
   readonly headline: EnemyKind;

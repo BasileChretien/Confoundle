@@ -81,12 +81,37 @@ export function loadoutScore(id: WeaponId, waveIndex: number): number {
   return score;
 }
 
+/*
+  THE TWO ARMS MUST DIFFER IN MATCHING AND IN NOTHING ELSE, and for a while
+  they did not, which quietly corrupted every measurement taken with them.
+
+  `loadoutScore` returns 0 for the recruiter, deliberately: it kills nothing,
+  so it is not a matching choice and scoring it on the matrix would rank it
+  first against every wave in the deck. But 0 is also the MINIMUM, so sorting
+  descending put it last and sorting ascending put it FIRST. The ceiling arm
+  never took it and the floor arm always took it, on every briefing of every
+  run. The recruiter is worth about 196 seconds of median survival, so the
+  "deliberately worst" loadout was quietly handed the strongest card in the
+  game and duly beat the "correct" one, 332 seconds to 325.
+
+  That is a textbook confound and it was sitting inside the instrument built to
+  measure a game about confounds. It also went unnoticed because `MISMATCHED`
+  had no test of its own anywhere: it was only ever read off in scratch
+  measurements, where a surprising number reads as a finding.
+
+  So both arms now choose among KILLERS ONLY. The recruiter is held constant
+  across the comparison, at zero, which is what holding a factor constant
+  means. What it is worth is a separate question and deserves a separate arm
+  rather than a free ride inside this one.
+*/
 function ranked(sign: number): LoadoutChoice {
   return (view, unlocked) => {
     // Sorted off `WEAPON_IDS` rather than off whatever order `unlocked`
     // happens to be in, so two runs handed the same set in a different order
     // still deploy the same three and the arms stay comparable.
-    const order = WEAPON_IDS.filter((id) => unlocked.includes(id)).slice();
+    const order = WEAPON_IDS.filter(
+      (id) => unlocked.includes(id) && WEAPONS[id].recruits !== true,
+    ).slice();
     order.sort(
       (a, b) => sign * (loadoutScore(a, view.waveIndex) - loadoutScore(b, view.waveIndex)),
     );
@@ -94,8 +119,20 @@ function ranked(sign: number): LoadoutChoice {
   };
 }
 
-/** Deploys the best available answer to the announced threat. The ceiling. */
+/**
+ * Deploys the best available answer to the announced threat. The ceiling of
+ * the MATCHING decision, which is narrower than the ceiling of play: it never
+ * deploys the recruiter, and a real optimum sometimes would.
+ */
 export const MATCHED: LoadoutChoice = ranked(-1);
 
-/** Deploys the worst available answer. The floor, and the control. */
+/**
+ * Deploys the worst available answer. The floor, and the control.
+ *
+ * Note that on the opening wave the two arms agree, and that is correct rather
+ * than a defect: every innate effector is a principal defence against E. coli,
+ * so there is no worse choice to make. A wave with no wrong answer is pinned
+ * on purpose in `waves.test.ts`, and a control that manufactured a difference
+ * there would be inventing one.
+ */
 export const MISMATCHED: LoadoutChoice = ranked(1);

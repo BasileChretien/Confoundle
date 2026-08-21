@@ -2,7 +2,7 @@ import { beforeAll, describe, expect, it } from "vitest";
 import { TICK_HZ, WEAPON_IDS } from "./content";
 import { simulate, type Controller } from "./sim";
 import { BIGGEST_BAR, KEEP, policy, type LoadoutChoice } from "./policies";
-import { MATCHED } from "./loadouts";
+import { MATCHED, MISMATCHED } from "./loadouts";
 
 /**
  * THE PLAN'S THIRD TEST, THE ONE THAT NEEDS NOBODY: is diagnosis necessary?
@@ -115,6 +115,9 @@ describe("the briefing, and whether the meter can answer it", () => {
    * as win counts, which is a much stronger kind of claim than anything the
    * levelling measurements could make.
    */
+  const median = (v: readonly number[]) =>
+    [...v].sort((p, q) => p - q)[Math.floor(v.length / 2)]!;
+
   const survivalsWith = (loadout: LoadoutChoice) =>
     SEEDS.map(
       (seed) =>
@@ -190,6 +193,50 @@ describe("the briefing, and whether the meter can answer it", () => {
     expect(seen.length).toBeGreaterThan(3);
     expect(seen).not.toContain("cytokine");
   });
+
+  it("brackets the decision, and finds every way of not deciding lands together", () => {
+    /*
+      THE INSTRUMENT, CHECKED AGAINST ITSELF.
+
+      For a while this comparison could not be made, because the floor arm was
+      not a floor: `loadoutScore` rates the recruiter 0, 0 is the minimum, so
+      sorting ascending handed the "deliberately worst" loadout the single
+      strongest card in the game on every briefing while the ceiling arm never
+      took it. Measured then, the worst loadout beat the best one, 332 seconds
+      to 325, and that read as a finding about the game rather than a defect in
+      the ruler. `loadouts.test.ts` now holds the recruiter constant across
+      both arms and proves it.
+
+      With a real control the picture is unambiguous and the same under either
+      levelling policy: matching is worth roughly 170 seconds, and deliberately
+      mismatching, never changing anything, and following the damage meter all
+      land within a second of each other on the floor. That last part is the
+      sharper half. There is no penalty for choosing badly, only a reward for
+      choosing well, because every route to not-choosing arrives at the same
+      130 seconds.
+
+      AND THIS TEST DOES NOT CATCH THAT DEFECT, which is worth saying here so
+      nobody reads the paragraph above and believes it does. Restoring the
+      confound leaves this assertion green: the inversion only ever appeared
+      under the `biggestBar` levelling policy, and everything here runs under
+      `spread`, where the recruiter-laden floor arm still came in at 137
+      seconds against a 300-second ceiling and comfortably passed. What guards
+      the confound is the structural pair in `loadouts.test.ts`, which needs no
+      simulation at all and fails in milliseconds. This test measures the
+      bracket; it does not verify the ruler.
+    */
+    const floor = [
+      survivalsWith(MISMATCHED),
+      survivalsWith(KEEP),
+      survivalsWith(BIGGEST_BAR),
+    ].map(median);
+    const ceiling = median(survivalsWith(MATCHED));
+    for (const f of floor) expect(ceiling).toBeGreaterThan(f * 1.8);
+    // Every way of not deciding lands in the same place, within 15%.
+    const lo = Math.min(...floor);
+    const hi = Math.max(...floor);
+    expect(hi - lo).toBeLessThan(lo * 0.15);
+  }, 600_000);
 
   it("finds that matching the announced threat is worth minutes, not seconds", () => {
     // What makes the briefing a mechanic rather than a modal. If this margin

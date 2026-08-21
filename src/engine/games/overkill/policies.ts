@@ -86,7 +86,46 @@ export type Feed =
   /** Spends its cuts to find out, then feeds what it found. See below. */
   | { kind: "diagnosing" };
 
-export function policy(feed: Feed): Controller {
+/**
+ * How a scripted player answers a briefing.
+ *
+ * PASSED IN RATHER THAN CHOSEN HERE, and that is the whole point of the shape.
+ * Working out which effectors actually beat the wave that was just announced
+ * means reading the matrix in `content.ts`, and a policy that reads the tuning
+ * table is measuring the author rather than the game. `policies.test.ts` scans
+ * this file to keep that true.
+ *
+ * So the oracle lives in `loadouts.ts`, where reading the table is its job,
+ * and arrives here as a function. The DEFAULT needs no table at all: keep
+ * whatever is already deployed, which is what a player who has not worked
+ * anything out yet does, and which leaves every measurement of the LEVEL UP
+ * decision exactly as it was before briefings existed. One factor at a time.
+ */
+export type LoadoutChoice = (
+  view: RunView,
+  unlocked: readonly WeaponId[],
+) => readonly WeaponId[];
+
+export const KEEP: LoadoutChoice = (view) => view.active;
+
+/**
+ * Deploys the three effectors with the biggest bars on the meter.
+ *
+ * THIS ONE BELONGS HERE RATHER THAN IN `loadouts.ts`, because everything it
+ * reads is on screen: it is exactly what a player who trusts the damage meter
+ * does at a briefing. It is also the arm the whole game is an argument
+ * against. A bar is large because that effector has been deployed for four
+ * waves, and says nothing whatsoever about whether it works on the thing that
+ * was just announced. Measuring it against the oracle is how the briefing
+ * earns its place, or fails to.
+ */
+export const BIGGEST_BAR: LoadoutChoice = (view, unlocked) => {
+  const order = WEAPON_IDS.filter((id) => unlocked.includes(id)).slice();
+  order.sort((a, b) => view.damage[b] - view.damage[a]);
+  return order.slice(0, 3);
+};
+
+export function policy(feed: Feed, loadout: LoadoutChoice = KEEP): Controller {
   const taken = {} as Record<WeaponId, number>;
   for (const id of WEAPON_IDS) taken[id] = 0;
   const diag = feed.kind === "diagnosing" ? diagnosis() : null;
@@ -94,6 +133,7 @@ export function policy(feed: Feed): Controller {
   return {
     move: towardsTheGems,
     cut: (view) => (diag === null ? null : diag.cut(view)),
+    chooseLoadout: loadout,
     chooseUpgrade(view, offers) {
       if (feed.kind === "fixed") {
         return offers.includes(feed.weapon) ? feed.weapon : offers[0]!;

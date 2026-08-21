@@ -47,6 +47,7 @@ export const bn: Record<string, string> = {
   "Right.": "ঠিক।",
   "Not this time.": "এবার নয়।",
   "Next": "পরবর্তী",
+  "Deploy": "মোতায়েন",
   "See your score": "আপনার স্কোর দেখুন",
   "The skill": "দক্ষতাটি",
   "Where this shows up": "এটি কোথায় দেখা যায়",

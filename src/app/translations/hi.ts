@@ -47,6 +47,7 @@ export const hi: Record<string, string> = {
   "Right.": "सही।",
   "Not this time.": "इस बार नहीं।",
   "Next": "आगे",
+  "Deploy": "तैनात करें",
   "See your score": "अपना स्कोर देखें",
   "The skill": "यह कौशल",
   "Where this shows up": "यह कहाँ दिखता है",

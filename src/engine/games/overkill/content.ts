@@ -1,127 +1,143 @@
 /**
- * The tuning table: what the weapons do, what the enemies are, when they come.
+ * The tuning table and the immunology: what the effectors are, what the
+ * pathogens are, and which of them actually work on which.
  *
  * SEPARATE FROM `sim.ts` ON PURPOSE. The simulation is the part that has to be
- * right; this is the part that has to be BALANCED, and the two fail in
- * completely different ways and get fixed by completely different work. The
- * numbers here are a starting point chosen to realise the design, not a
- * measured result, and they are expected to move once the headless policy
- * tests can say which of them make diagnosis necessary.
+ * right; this is the part that has to be BALANCED and TRUE, and those fail in
+ * completely different ways and get fixed by completely different work.
  *
- * WHAT THE DESIGN NEEDS FROM THESE NUMBERS, so a later tuner knows what is
- * load bearing and what is arbitrary:
+ * WHY THIS FILE WAS REBUILT. An independent measurement against the previous
+ * version found that the damage meter's ranking was identical in every seed:
+ * the same six weapons in the same order, always. A game about diagnosis whose
+ * diagnosis is a constant is learnable in two runs and pointless in three.
  *
- *   - Lightning must post an enormous share of the damage and buy little
- *     survival. It gets there by hitting many weak things at long range, most
- *     of which were never going to reach the player. That surplus is measured
- *     as `overkill` and is the first way the meter misleads.
- *
- *   - Ice must post almost NO damage and be close to load bearing. It is the
- *     second and better way the meter misleads, because it changes the
- *     outcome without touching the quantity the meter reports. Its damage is
- *     deliberately a rounding error.
- *
- *   - No weapon may be generally good, or a player can win by feeding the
- *     biggest bar and never asking the question.
- *
- *   - But specialisation may not become a lookup table either, which is the
- *     opposite failure and the harder one. That is a property of the PHASES
- *     below rather than of the weapons: the same enemy needs different answers
- *     depending on how many arrive and what arrives alongside it.
+ * The fix is that the right answer must depend on WHAT IS ATTACKING, and the
+ * happiest thing about it is that the real answers are not arbitrary.
+ * Complement lyses E. coli and cannot lyse S. aureus. Antibody neutralises a
+ * virus in the open and is useless the moment it is inside a cell. A worm
+ * cannot be eaten at all. Those are facts, they are sourced against `EFFECTIVE`
+ * below, and a player who learns them by playing well has learned immunology.
  */
 
-export type WeaponId = "cytokine" | "knife" | "burst" | "antibody" | "complement" | "killerT";
-export type EnemyKind = "bacteria" | "virus" | "superbug";
+export type WeaponId =
+  | "neutrophil"
+  | "burst"
+  | "complement"
+  | "antibody"
+  | "killerT"
+  | "nk"
+  | "eosinophil"
+  | "cytokine";
+
+/**
+ * What a pathogen IS, which is the only thing that decides what beats it.
+ *
+ * Deliberately a property of the enemy rather than a name: influenza appears
+ * as both `freeVirion` and `infectedCell` inside one wave, and the point of
+ * that wave is that the correct answer inverts when it changes.
+ */
+export type PathogenClass =
+  | "gramNegative"
+  | "gramPositive"
+  | "freeVirion"
+  | "infectedCell"
+  | "fungus"
+  | "helminth";
+
+export type EnemyKind = "coli" | "aureus" | "virion" | "infected" | "candida" | "worm";
 
 export const TICK_HZ = 60;
 export const DT = 1 / TICK_HZ;
 
-/** Eight seconds, per the design. Long enough to be frightening. */
+/** Eight seconds. Long enough to be frightening. */
 export const CUT_TICKS = 8 * TICK_HZ;
 export const CUTS_PER_RUN = 3;
 
 /**
  * Where the ring of spawns sits.
  *
- * IT USED TO BE INSIDE THE SCREEN. It sat at 430, the same number as the
- * visible width, and on a 375 by 812 phone the visible half-diagonal is 513.
- * Measured by sampling spawn angles, 33% of everything materialised inside the
- * frame, popping into existence in front of the player. On a desktop window it
- * is 0%, which is why it went unnoticed for so long.
- *
- * SIZED FROM THE WORST CASE AND KEPT CIRCULAR. A specialist proposed an
- * ellipse matched to the screen, which would give every aspect ratio the same
- * warning time and is the right idea in an ordinary game. It cannot happen
- * here: the death screen replays a recorded run on whatever device opens it,
- * so a world whose shape depended on the viewport would replay as a different
- * game. The ring is a constant in world units instead, chosen so that nothing
- * pops in on any plausible screen: a 21:9 portrait phone has a half-diagonal
- * of about 546, so 640 clears every one of them with margin.
+ * IT USED TO BE INSIDE THE SCREEN, at 430, while the visible half-diagonal on
+ * a 375 by 812 phone is 513: measured, 33% of spawns materialised inside the
+ * frame. Kept CIRCULAR rather than matched to the screen, because the death
+ * screen replays a recorded run on whatever device opens it, so a world whose
+ * shape depended on the viewport would replay as a different game. Sized from
+ * the worst plausible half-diagonal instead.
  */
 export const SPAWN_RADIUS = 640;
+export const DESPAWN_RADIUS = 900;
 
 /**
  * How much of the ring gets folded round to the side the player is walking
- * towards.
+ * towards, so that running is worth doing without being free.
  *
- * WITHOUT THIS THE GAME HAS NO TEETH, and the discovery is worth recording
- * because it invalidated a whole tuning pass. Spawns land on a ring centred on
- * the player, so a player who simply runs in one direction outpaces anything
- * slower than they are and can never be caught. Every weapon that slows things
- * down then wins the game outright on its own, ice included, which is the
- * opposite of no weapon being generally good; and the first version of the
- * tuning had exactly that, with an eight minute run that refused to end.
- *
- * Biasing the ring forward is what the genre actually does, since spawns come
- * in at the edge of the screen and moving means meeting the ones ahead of you.
- * Running is still worth doing. It is no longer free.
+ * STILL A BINARY FLIP, AND IT SHOULD NOT BE. Two specialists called it a hack
+ * covering for the real problem, which is that most pathogens are slower than
+ * the player and therefore cannot ever catch a moving one. The better version
+ * is a smooth angular distribution centred on the heading, so pressure has a
+ * direction rather than a wall, and there is always a discoverable good way to
+ * run. Left as it is here only because it is not what this change is about.
  */
 export const FORWARD_BIAS = 0.72;
-export const DESPAWN_RADIUS = 900;
+
+/**
+ * The circle that is inside the viewport on EVERY device, since the short side
+ * always shows 430 world units so its half-extent is always 215.
+ *
+ * Any telegraph must begin inside this, which enforces fair warning with no
+ * camera-aware code in the simulation at all. Derived by a specialist after it
+ * conceded that a screen-shaped world would break replay.
+ */
+export const SAFE_RADIUS = 215;
 
 export const PLAYER_SPEED = 92;
 export const PLAYER_HP = 100;
 export const PLAYER_RADIUS = 9;
-/** Contact damage cannot land more often than this, or a crowd deletes you. */
+/** Contact damage cannot land more often than this. */
 export const HURT_COOLDOWN = 18;
 
 /**
- * A ceiling on live enemies.
+ * The most damage one contact window may deal, as a fraction of maximum health.
  *
- * IT DOES NOT BIND IN A REAL RUN, measured: the peak live count across the
- * scripted players is 84 to 121, because the player dies long before that many
- * accumulate. It is a safety rail against a tuning pass that makes something
- * unkillable, not a mechanic, and nothing should be written that depends on it
- * firing. A test that tried to observe it through gameplay went vacuous rather
- * than red, and was rewritten to assert the ordering property directly.
+ * Everything touching the player lands at once, so without a ceiling a deep
+ * encirclement is an instant, unreadable death. Forty per cent guarantees
+ * three windows, 0.75 seconds, from full health to dead.
+ *
+ * Fifteen per cent was proposed and is too tight: six of the weakest pathogen
+ * already deal 18, so the cap would bind in ordinary play and "surrounded"
+ * would stop differing from "very surrounded", which deletes the only skill
+ * signal a movement-only game has.
+ */
+export const BURST_CAP = 0.4;
+
+/**
+ * A ceiling on live pathogens. IT DOES NOT BIND IN A REAL RUN, measured: the
+ * peak live count under scripted play is 84 to 121. A safety rail against a
+ * tuning pass that makes something unkillable, not a mechanic.
  */
 export const MAX_ENEMIES = 220;
 
-/** Cards offered at a level up. Three, per the design. */
 export const OFFER_SIZE = 3;
+/** How many effectors may be deployed at once. */
+export const LOADOUT_SIZE = 3;
 
 /**
- * LEVELS COME FROM KILLING THINGS, NOT FROM THE CLOCK, and that is the single
- * biggest thing the first version got wrong.
+ * Experience needed to go from `level` to the next one.
  *
- * It handed out the first upgrade at twenty seconds and the next twenty five
- * seconds later. The reference game gives you five or six inside the first
- * thirty, and the difference is not pacing, it is whether the game has a loop
- * at all: a level up you earned by killing is a reward, and a level up on a
- * timer is an interruption. Twenty seconds of watching a dot move before
- * anything happens is why nobody wanted to keep playing.
- *
- * Experience drops as gems where a thing died. Gems do not come to you until
- * you are close, so the whole movement game is walking INTO the place the
- * fighting just happened, which is also the most dangerous place to be. That
- * tension is the reference game's actual core and the first version had no
- * equivalent: there was nothing on the floor, so running away was strictly
- * correct and therefore dull.
+ * Levels are earned by collecting what dies, not handed out on a timer. Six
+ * levels in the first twenty five seconds is not generosity, it is an
+ * interruption every four seconds.
  */
+export function xpToNext(level: number): number {
+  return Math.round(4 + (level - 1) * 2.4 + Math.pow(level - 1, 1.95));
+}
+
 export const XP_VALUE: Readonly<Record<EnemyKind, number>> = {
-  bacteria: 1,
-  virus: 4,
-  superbug: 18,
+  coli: 1,
+  aureus: 2,
+  virion: 1,
+  infected: 5,
+  candida: 3,
+  worm: 14,
 };
 
 /** Gems inside this are pulled towards the player, and picked up inside that. */
@@ -131,45 +147,119 @@ export const GEM_SPEED = 300;
 export const MAX_GEMS = 500;
 
 /**
- * Experience needed to go from `level` to the next one.
+ * How long a gem survives before it fades.
  *
- * SLOWED FROM THE FIRST VERSION, which handed out six levels in the first
- * twenty five seconds. That is not generous, it is an interruption every four
- * seconds, and choosing that often breaks the run into a series of menus.
- * The reference game is quick at the start and then lets you play.
+ * Without it the floor is a savings account, and worse, it taxed the wrong
+ * strategy: a player running in a straight line loses gems, and one circling
+ * sweeps back over their own kills every lap and collects everything anyway.
+ * Twelve seconds is under a wide circle's lap time and over a tight one's.
  */
-export function xpToNext(level: number): number {
-  return Math.round(4 + (level - 1) * 2.4 + Math.pow(level - 1, 1.95));
-}
+export const GEM_TICKS = 12 * TICK_HZ;
 
 export interface EnemySpec {
+  readonly cls: PathogenClass;
   readonly hp: number;
   readonly speed: number;
   readonly damage: number;
   readonly radius: number;
   /**
-   * Reduction on every hit, and the reason no weapon is generally good.
-   *
-   * SUBTRACTED, BUT NEVER DOWN TO NOTHING. Flat subtraction alone made the
-   * wide weapon do literally zero to the walled pathogen, which in a wordless
-   * game reads as a bug rather than as a lesson and silently turned one of six
-   * weapons into a no-op against it. Two specialists independently proposed
-   * the same floor and `effectiveDamage` applies it: fifteen per cent always
-   * gets through. Complement ignores armour entirely, which is its identity.
+   * Reduction on every hit, never down to nothing: `effectiveDamage` keeps a
+   * fifteen per cent trickle, because an effector doing literally zero reads
+   * as a broken weapon rather than as the wrong tool for the job.
    */
   readonly armour: number;
 }
 
 export const ENEMIES: Readonly<Record<EnemyKind, EnemySpec>> = {
-  /** Dies to anything. Arrives in numbers. Inflates every wide weapon. */
-  bacteria: { hp: 8, speed: 46, damage: 3, radius: 7, armour: 0 },
-  /** Fast enough to actually arrive. This is what kills you. */
-  virus: { hp: 45, speed: 112, damage: 12, radius: 8, armour: 6 },
-  /** Slow, and nothing that sprays will bring it down. */
-  superbug: { hp: 340, speed: 30, damage: 30, radius: 16, armour: 18 },
+  /** E. coli. Thin walled, and complement goes straight through it. */
+  coli: { cls: "gramNegative", hp: 9, speed: 48, damage: 3, radius: 7, armour: 0 },
+  /** S. aureus. The thick wall is the whole lesson, so it is drawn thick. */
+  aureus: { cls: "gramPositive", hp: 26, speed: 44, damage: 5, radius: 8, armour: 3 },
+  /**
+   * A free influenza virion, out where an antibody can still reach it.
+   *
+   * ARMOUR ZERO, and deliberately: a capsid is not a wall, and there is no
+   * anatomy here for armour to stand for. It was 2, which is most of an
+   * antibody's three points of damage, so the effector that is SUPPOSED to be
+   * the answer to this wave read as feeble against it. The lesson has to be
+   * legible from playing, and "the right answer barely scratches it" is the
+   * wrong lesson taught convincingly.
+   */
+  virion: { cls: "freeVirion", hp: 14, speed: 104, damage: 7, radius: 7, armour: 0 },
+  /** One of your own cells, infected. Killing it is the only thing that works. */
+  infected: { cls: "infectedCell", hp: 60, speed: 34, damage: 14, radius: 12, armour: 6 },
+  /** Candida. The filamentous form is far too big to engulf. */
+  candida: { cls: "fungus", hp: 70, speed: 38, damage: 12, radius: 13, armour: 5 },
+  /** A schistosome. Too large to phagocytose, and indifferent to most of you. */
+  worm: { cls: "helminth", hp: 420, speed: 30, damage: 26, radius: 19, armour: 10 },
 };
 
-/** How a weapon chooses among the enemies inside its band. */
+/**
+ * THE MATRIX. How well each effector works on each class of pathogen.
+ *
+ * 1 is a principal defence, 0.35 contributes without being sufficient alone,
+ * and 0.12 is the trickle that means "this cannot do the job". NEVER ZERO: an
+ * effector that does literally nothing reads as a bug, and the player has to
+ * SEE the attack land and fail rather than see nothing happen at all.
+ *
+ * Every row is sourced. The load-bearing ones:
+ *
+ *   Complement kills mainly gram negatives; gram positives resist the membrane
+ *   attack complex because the peptidoglycan is too thick for C5b-9 to reach
+ *   the plasma membrane (Microbiol Mol Biol Rev, mmbr.00177-20).
+ *
+ *   Intracellular pathogens are inaccessible to antibody and can be cleared
+ *   only by destroying the infected cell; cytotoxic T cells do exactly that,
+ *   before the virus can spread (Janeway's Immunobiology, NBK27101).
+ *
+ *   Viruses pull MHC class I off the surface to hide from T cells, which is
+ *   precisely what makes them NK targets under missing-self recognition
+ *   (Front Immunol 2014.00349).
+ *
+ *   Helminths are too large to phagocytose and carry a resistant integument;
+ *   IgE coats them and eosinophils kill by antibody dependent cellular
+ *   cytotoxicity (PMC2817558).
+ *
+ *   Neutrophils clear extracellular bacteria and fungi by phagocytosis, the
+ *   oxidative burst and NETs (PMC3052948).
+ */
+export const EFFECTIVE: Readonly<Record<WeaponId, Readonly<Record<PathogenClass, number>>>> = {
+  neutrophil: {
+    gramNegative: 1, gramPositive: 1, freeVirion: 0.12,
+    infectedCell: 0.12, fungus: 1, helminth: 0.12,
+  },
+  burst: {
+    gramNegative: 1, gramPositive: 1, freeVirion: 0.12,
+    infectedCell: 0.12, fungus: 1, helminth: 0.12,
+  },
+  complement: {
+    gramNegative: 1, gramPositive: 0.12, freeVirion: 0.35,
+    infectedCell: 0.12, fungus: 0.35, helminth: 0.35,
+  },
+  antibody: {
+    gramNegative: 1, gramPositive: 1, freeVirion: 1,
+    infectedCell: 0.12, fungus: 0.35, helminth: 0.35,
+  },
+  killerT: {
+    gramNegative: 0.12, gramPositive: 0.12, freeVirion: 0.12,
+    infectedCell: 1, fungus: 0.12, helminth: 0.12,
+  },
+  nk: {
+    gramNegative: 0.12, gramPositive: 0.12, freeVirion: 0.12,
+    infectedCell: 1, fungus: 0.12, helminth: 0.12,
+  },
+  eosinophil: {
+    gramNegative: 0.12, gramPositive: 0.12, freeVirion: 0.12,
+    infectedCell: 0.12, fungus: 0.35, helminth: 1,
+  },
+  /** Kills nothing, so these numbers never multiply anything. See below. */
+  cytokine: {
+    gramNegative: 1, gramPositive: 1, freeVirion: 1,
+    infectedCell: 1, fungus: 1, helminth: 1,
+  },
+};
+
+/** How a weapon chooses among the pathogens inside its band. */
 export type Prefer = "any" | "nearest" | "toughest";
 
 export interface WeaponSpec {
@@ -179,144 +269,212 @@ export interface WeaponSpec {
   readonly maxTargets: number;
   readonly prefer: Prefer;
   readonly damage: number;
-  /** Ice only: multiplies enemy speed while it lasts. */
   readonly slowFactor?: number;
   readonly slowTicks?: number;
-  /** Poison only: damage per second, applied for a while after the hit. */
   readonly poisonDps?: number;
   readonly poisonTicks?: number;
+  /** Complement goes through the wall rather than around it. */
+  readonly pierces?: boolean;
+  /**
+   * Cytokines: recruits rather than kills, so every point of its contribution
+   * lands in somebody else's bar on the meter. This is the whole reason it
+   * exists. See `RECRUIT_BONUS`.
+   */
+  readonly recruits?: boolean;
 }
 
 /**
- * Iteration order over the weapons is FIXED by this object's key order and
- * nothing may sort it. Two weapons firing at the same enemy in the same tick
- * both want the kill, and which one gets it decides whose column the kill
- * lands in; a run that resolved them in a different order would be a
- * different run.
+ * Iteration order is FIXED by this object's key order and nothing may sort it.
+ * Two effectors hitting the same pathogen on the same tick both want the kill,
+ * and which one gets it decides whose column it lands in.
  */
 export const WEAPONS: Readonly<Record<WeaponId, WeaponSpec>> = {
-  /** Wide, frequent, weak. Erases crowds and cannot dent anything solid. */
-  cytokine: {
-    cooldown: 30,
-    minRange: 0,
-    maxRange: 172,
-    maxTargets: 8,
-    prefer: "any",
-    damage: 9,
+  /** The neutrophil's own blade: phagocytosis, at arm's length. */
+  neutrophil: {
+    cooldown: 15, minRange: 0, maxRange: 44, maxTargets: 2, prefer: "nearest", damage: 24,
   },
-  /** Kills nothing at range and destroys whatever reaches you. */
-  knife: {
-    cooldown: 15,
-    minRange: 0,
-    maxRange: 36,
-    maxTargets: 1,
-    prefer: "nearest",
-    damage: 26,
-  },
-  /** Holds the ground immediately around you. */
+  /** The oxidative burst. Bleach, essentially, in a ring around you. */
   burst: {
-    cooldown: 24,
-    minRange: 0,
-    maxRange: 95,
-    maxTargets: 8,
-    prefer: "any",
-    damage: 11,
+    cooldown: 24, minRange: 0, maxRange: 104, maxTargets: 8, prefer: "any", damage: 11,
+  },
+  /** Complement: drills a hole and lets the pressure do the rest. */
+  complement: {
+    cooldown: 34, minRange: 0, maxRange: 190, maxTargets: 5, prefer: "any",
+    damage: 0, poisonDps: 20, poisonTicks: 150, pierces: true,
+  },
+  /** IgG: tags what it hits, which slows it and marks it for everything else. */
+  antibody: {
+    cooldown: 18, minRange: 0, maxRange: 150, maxTargets: 10, prefer: "any",
+    damage: 3, slowFactor: 0.5, slowTicks: 45,
+  },
+  /** A cytotoxic T cell, which only ever has one job. */
+  killerT: {
+    cooldown: 21, minRange: 40, maxRange: 168, maxTargets: 2, prefer: "toughest", damage: 30,
+  },
+  /** An NK cell, looking for one of yours that has stopped saying hello. */
+  nk: {
+    cooldown: 26, minRange: 0, maxRange: 140, maxTargets: 3, prefer: "toughest", damage: 22,
+  },
+  /** Eosinophils degranulating onto something far too big to swallow. */
+  eosinophil: {
+    cooldown: 30, minRange: 0, maxRange: 130, maxTargets: 2, prefer: "toughest", damage: 34,
   },
   /**
-   * THE ONE THE DESIGN IS ABOUT. Four tenths of a point of damage, and it
-   * decides whether anything reaches you at all.
+   * CYTOKINES, AND THE POINT OF THEM.
+   *
+   * They kill nothing at all. What a neutrophil does with them is call for
+   * help, and the help does the killing, so every point of their contribution
+   * appears in somebody else's bar. That is confounding by mediation: the
+   * meter is not lying, it is answering a different question than the one the
+   * player is asking it.
+   *
+   * It is also the better biology. One cell recruits; it does not command.
    */
-  antibody: {
-    cooldown: 18,
-    minRange: 0,
-    maxRange: 124,
-    maxTargets: 10,
-    prefer: "any",
-    damage: 0.4,
-    slowFactor: 0.5,
-    slowTicks: 45,
-  },
-  /** The only answer to a brute, and wasted on anything that dies quickly. */
-  complement: {
-    cooldown: 60,
-    minRange: 0,
-    maxRange: 220,
-    maxTargets: 3,
-    prefer: "toughest",
-    damage: 0,
-    poisonDps: 22,
-    poisonTicks: 240,
-  },
-  /** A middle distance weapon with a hole underneath it. */
-  killerT: {
-    cooldown: 21,
-    minRange: 40,
-    maxRange: 115,
-    maxTargets: 2,
-    prefer: "any",
-    damage: 11,
+  cytokine: {
+    cooldown: 90, minRange: 0, maxRange: 220, maxTargets: 0, prefer: "any",
+    damage: 0, recruits: true,
   },
 };
 
 export const WEAPON_IDS = Object.keys(WEAPONS) as readonly WeaponId[];
 
-/**
- * What actually lands. Extracted from the simulation so it can be tested on
- * its own: it is three lines and it is the whole of "no weapon is generally
- * good", so it is worth being able to state it without standing up a run.
- *
- * Poison pierces, which is its identity. Everything else is reduced flat, so a
- * weapon that sprays nine points a time does literally nothing to a brute and
- * the meter reports that honestly. What the meter still cannot say is that the
- * brute is the thing about to kill you.
- */
-export function effectiveDamage(raw: number, armour: number, pierces: boolean): number {
-  if (pierces) return Math.max(0, raw);
-  // The floor is what stops a weapon becoming a silent no-op. See `armour`.
-  return Math.max(raw * 0.15, raw - armour);
-}
+/** How much every other deployed effector gains per level of cytokines. */
+export const RECRUIT_BONUS = 0.18;
 
-export const MAX_LEVEL = 8;
+export const MAX_LEVEL = 6;
 
-/** A level buys damage. Deliberately linear, so a player can feel it. */
+/** A level buys damage. Fewer and bigger steps than before, deliberately. */
 export function levelScale(level: number): number {
-  return 1 + 0.45 * (level - 1);
+  return 1 + 0.55 * (level - 1);
 }
 
-export interface Phase {
-  readonly fromTick: number;
+/**
+ * What actually lands: the matrix, then armour, then a floor.
+ *
+ * The floor stops an effector becoming a silent no-op. A player must SEE the
+ * wrong tool land and fail, because nothing happening reads as a bug.
+ */
+export function effectiveDamage(
+  raw: number,
+  armour: number,
+  pierces: boolean,
+  match: number,
+): number {
+  const matched = raw * match;
+  if (pierces) return Math.max(0, matched);
+  return Math.max(matched * 0.15, matched - armour);
+}
+
+export interface Wave {
+  /** What the briefing shows. The threat, never the answer. */
+  readonly headline: EnemyKind;
+  readonly ticks: number;
   /** One spawn every this many ticks. */
   readonly everyTicks: number;
   readonly mix: readonly (readonly [EnemyKind, number])[];
+  /**
+   * A wave may change what it is halfway through, which is the best moment in
+   * the design: influenza in the open becomes influenza inside your own cells,
+   * and the correct answer inverts without a word being said.
+   */
+  readonly turnsInto?: {
+    readonly atTick: number;
+    readonly mix: readonly (readonly [EnemyKind, number])[];
+    readonly everyTicks: number;
+  };
+  /** Effectors that become available at the NEXT briefing once this ends. */
+  readonly unlocks?: readonly WeaponId[];
 }
 
 /**
- * The composition changes at a minute and again at three and a third, which is
- * what makes the swarm evidence rather than wallpaper: a player who reads what
- * is arriving can predict which weapon is about to matter, and a player who
- * does not has to find out by spending a cut.
+ * FIVE WAVES, and the order is a difficulty curve and a teaching order at
+ * once: each one breaks a habit the one before it rewarded.
+ *
+ * Innate defences act within minutes to hours; an adaptive response takes four
+ * to seven days, during which innate immunity holds the line (Janeway,
+ * NBK27090). So a run opens innate and the adaptive effectors arrive on their
+ * own schedule, which is both true and exactly the acquisition curve a
+ * roguelite wants.
+ *
+ * THE UNLOCK ORDER IS CONSTRAINED, and the constraint is easy to get wrong.
+ * `infectedCell` appears in exactly ONE wave, so both of the things that kill
+ * an infected cell have to be on the table by that wave's briefing, and
+ * nothing may unlock one afterwards. The first draft of this table unlocked
+ * the cytotoxic T cell at the END of the influenza wave, which made it a card
+ * that could never be used for anything at all, in any run, and no test
+ * anywhere would have gone red. `waves.test.ts` now proves the general
+ * property off this array rather than off a memory of it: every principal
+ * defence is reachable when it is needed, and no effector is dead.
+ *
+ * It happens to be better biology as well. NK cells are innate and act within
+ * hours; cytotoxic T cells are adaptive and take days. Arriving in that order,
+ * both before the virus goes intracellular, is what actually occurs.
  */
-export const PHASES: readonly Phase[] = [
-  { fromTick: 0, everyTicks: 10, mix: [["bacteria", 1]] },
-  { fromTick: 60 * TICK_HZ, everyTicks: 10, mix: [["bacteria", 5], ["virus", 5]] },
-  { fromTick: 200 * TICK_HZ, everyTicks: 7, mix: [["bacteria", 4], ["virus", 4], ["superbug", 2]] },
-  /*
-    THE RAMP MUST NOT STOP, and the first version of this table stopped here.
-
-    With the last phase flat, the pressure plateaus and a player who keeps
-    moving simply never dies: measured over twenty five seeds, six of nine
-    scripted policies reached the six minute ceiling, so every arm reported the
-    same number and the question the plan's third test asks, whether diagnosis
-    is necessary, could not even be posed. A game whose difficulty stops
-    climbing has no answer to "how long did you last".
-  */
-  { fromTick: 260 * TICK_HZ, everyTicks: 6, mix: [["bacteria", 3], ["virus", 5], ["superbug", 2]] },
-  { fromTick: 320 * TICK_HZ, everyTicks: 5, mix: [["bacteria", 3], ["virus", 5], ["superbug", 3]] },
-  { fromTick: 380 * TICK_HZ, everyTicks: 4, mix: [["bacteria", 2], ["virus", 5], ["superbug", 4]] },
+export const WAVES: readonly Wave[] = [
+  {
+    // Everything works. This wave exists to build the wrong habit deliberately,
+    // because you cannot break a trust you have not established.
+    headline: "coli",
+    ticks: 55 * TICK_HZ,
+    everyTicks: 13,
+    mix: [["coli", 1]],
+    unlocks: ["antibody", "nk"],
+  },
+  {
+    // The same silhouette family with a visibly thicker wall, and complement
+    // stops working. The first real decision, and the meter will not tell you.
+    headline: "aureus",
+    ticks: 65 * TICK_HZ,
+    everyTicks: 15,
+    mix: [["aureus", 7], ["coli", 3]],
+    unlocks: ["killerT"],
+  },
+  {
+    // Antibody neutralises in the open and is worthless the moment the virus
+    // is inside. This wave turns over halfway and inverts its own answer.
+    headline: "virion",
+    ticks: 80 * TICK_HZ,
+    everyTicks: 12,
+    mix: [["virion", 1]],
+    turnsInto: { atTick: 38 * TICK_HZ, mix: [["infected", 6], ["virion", 4]], everyTicks: 20 },
+    unlocks: ["eosinophil"],
+  },
+  {
+    // Back to something the innate side handles, except the filamentous form
+    // is too big to engulf, so the burst matters more than the blade.
+    headline: "candida",
+    ticks: 75 * TICK_HZ,
+    everyTicks: 20,
+    mix: [["candida", 6], ["aureus", 4]],
+  },
+  {
+    // Too large to eat. Only the effector nobody has been feeding works at all.
+    headline: "worm",
+    ticks: 90 * TICK_HZ,
+    everyTicks: 34,
+    mix: [["worm", 5], ["coli", 5]],
+  },
 ];
 
-export function phaseAt(tick: number): Phase {
-  let found = PHASES[0]!;
-  for (const p of PHASES) if (tick >= p.fromTick) found = p;
-  return found;
+/** Everything available before the first briefing. Innate, all of it. */
+export const STARTING_LOADOUT: readonly WeaponId[] = [
+  "neutrophil",
+  "burst",
+  "complement",
+  "cytokine",
+];
+
+export function waveAt(index: number): Wave {
+  return WAVES[Math.min(index, WAVES.length - 1)]!;
+}
+
+/** The mix in force, which a wave that turns over changes partway through. */
+export function mixAt(
+  wave: Wave,
+  waveTick: number,
+): { mix: readonly (readonly [EnemyKind, number])[]; everyTicks: number } {
+  if (wave.turnsInto !== undefined && waveTick >= wave.turnsInto.atTick) {
+    return { mix: wave.turnsInto.mix, everyTicks: wave.turnsInto.everyTicks };
+  }
+  return { mix: wave.mix, everyTicks: wave.everyTicks };
 }

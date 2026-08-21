@@ -1,8 +1,10 @@
 import { describe, expect, it } from "vitest";
 import {
   CUTS_PER_RUN,
+  EFFECTIVE,
   CUT_TICKS,
   ENEMIES,
+  LOADOUT_SIZE,
   TICK_HZ,
   WEAPONS,
   WEAPON_IDS,
@@ -131,12 +133,18 @@ describe("a counterfactual is the same world", () => {
     // compared agreed anyway. So the detector gets its own test.
     const still = simulate({
       ...SEEDS,
-      controller: { move: () => 0, cut: () => null, chooseUpgrade: (_v, o) => o[0]! },
+      controller: { move: () => 0, cut: () => null,
+        chooseUpgrade: (_v, o) => o[0]!,
+        chooseLoadout: (_v, u) => u.slice(0, LOADOUT_SIZE),
+      },
       maxTicks: SHORT,
     });
     const walking = simulate({
       ...SEEDS,
-      controller: { move: () => 3, cut: () => null, chooseUpgrade: (_v, o) => o[0]! },
+      controller: { move: () => 3, cut: () => null,
+        chooseUpgrade: (_v, o) => o[0]!,
+        chooseLoadout: (_v, u) => u.slice(0, LOADOUT_SIZE),
+      },
       maxTicks: SHORT,
     });
     // Same seed and same length, so the stream was consulted identically and
@@ -191,15 +199,20 @@ describe("the cut", () => {
     const at = 30 * TICK_HZ;
     let duringCut = 0;
     let afterCut = 0;
+    // CUTTING SOMETHING THAT KILLS. The cytokines used to be the subject
+    // here and cannot be any more: they deal no damage at all now, so
+    // `damage.cytokine` is zero throughout and the test would have "proved"
+    // the silence by measuring a weapon that was already silent. The whole
+    // assertion would have passed with the cut mechanism deleted.
     const cutter: Controller = {
-      ...policy({ kind: "fixed", weapon: "cytokine" }),
-      cut: (view) => (view.tick === at ? "cytokine" : null),
+      ...policy({ kind: "fixed", weapon: "burst" }),
+      cut: (view) => (view.tick === at ? "burst" : null),
     };
     let last = 0;
     const watch: Controller = {
       ...cutter,
       move(view) {
-        const now = view.damage.cytokine;
+        const now = view.damage.burst;
         if (view.tick > at && view.tick <= at + CUT_TICKS) duringCut += now - last;
         if (view.tick > at + CUT_TICKS && view.tick <= at + 2 * CUT_TICKS) afterCut += now - last;
         last = now;
@@ -212,33 +225,83 @@ describe("the cut", () => {
   });
 });
 
-describe("armour, which is what stops any weapon being generally good", () => {
+describe("armour and the matrix, which is what stops any effector being generally good", () => {
   it("takes armour off every hit but never all the way to nothing", () => {
-    expect(effectiveDamage(26, 6, false)).toBe(20);
-    expect(effectiveDamage(9, 0, false)).toBe(9);
-    // THE FLOOR, and it is the point. Flat subtraction alone made the wide
-    // weapon do literally zero to the walled pathogen, which in a wordless
-    // game reads as a broken weapon rather than as a lesson about the wrong
-    // tool. Fifteen per cent always gets through.
-    expect(effectiveDamage(9, 18, false)).toBeCloseTo(1.35, 6);
-    expect(effectiveDamage(9, 1000, false)).toBeCloseTo(1.35, 6);
+    expect(effectiveDamage(26, 6, false, 1)).toBe(20);
+    expect(effectiveDamage(9, 0, false, 1)).toBe(9);
+    // THE FLOOR, and it is the point. Flat subtraction alone made the wrong
+    // effector do literally zero, which in a wordless game reads as a broken
+    // weapon rather than as a lesson about the wrong tool. Fifteen per cent
+    // always gets through, so the attack is SEEN to land and fail.
+    expect(effectiveDamage(9, 18, false, 1)).toBeCloseTo(1.35, 6);
+    expect(effectiveDamage(9, 1000, false, 1)).toBeCloseTo(1.35, 6);
   });
 
-  it("lets poison through, which is the only reason a brute can be killed", () => {
-    expect(effectiveDamage(22, 18, true)).toBe(22);
+  it("lets complement through the wall rather than around it", () => {
+    expect(effectiveDamage(22, 18, true, 1)).toBe(22);
   });
 
-  it("leaves the wide weapon barely scratching the walled one, and the knife hurting it", () => {
-    // The design claim, stated here as well as in the table, because a tuning
-    // pass that quietly made the wide weapon a good answer to the walled
-    // pathogen would break the game without breaking anything that looks like
-    // a test. It is a trickle now rather than a zero, so the weapon reads as
-    // wrong-for-the-job instead of broken, and the gap is what carries it.
-    const walled = ENEMIES.superbug.armour;
-    const wide = effectiveDamage(WEAPONS.cytokine.damage, walled, false);
-    const blade = effectiveDamage(WEAPONS.knife.damage, walled, false);
-    expect(wide).toBeGreaterThan(0);
-    expect(blade).toBeGreaterThan(wide * 5);
+  it("scales by the match before armour, not after", () => {
+    // ORDER MATTERS AND IS EASY TO GET BACKWARDS. Matching first means the
+    // floor is fifteen per cent OF THE MATCHED DAMAGE, so bringing the wrong
+    // effector against an armoured pathogen is bad twice over, which is the
+    // intended shape. Subtracting armour first and matching after would give
+    // the same trickle whatever you brought, and the whole briefing decision
+    // would stop paying.
+    expect(effectiveDamage(100, 0, false, 0.12)).toBeCloseTo(12, 6);
+    expect(effectiveDamage(100, 90, false, 0.12)).toBeCloseTo(1.8, 6);
+    // Armour first would have been max(100*0.15, 100-90) * 0.12 = 1.8 as well
+    // at this pair, so the case is chosen where the two orders disagree.
+    expect(effectiveDamage(100, 50, false, 0.5)).toBeCloseTo(7.5, 6);
+  });
+
+  it("leaves complement scratching the thick wall and tearing the thin one", () => {
+    // THE LOAD-BEARING CLAIM OF THE WHOLE GAME, stated here as arithmetic as
+    // well as in the matrix. A tuning pass that quietly made complement a
+    // good answer to a gram positive would break the design without breaking
+    // anything that looks like a test.
+    const thin = ENEMIES.coli;
+    const thick = ENEMIES.aureus;
+    const dps = WEAPONS.complement.poisonDps!;
+    const onThin = effectiveDamage(dps, thin.armour, true, EFFECTIVE.complement[thin.cls]);
+    const onThick = effectiveDamage(dps, thick.armour, true, EFFECTIVE.complement[thick.cls]);
+    expect(onThick).toBeGreaterThan(0);
+    expect(onThin).toBeGreaterThan(onThick * 5);
+  });
+
+  it("inverts which effector works when the virus goes inside a cell", () => {
+    // The best moment in the design, checked as a number. Antibody is the
+    // answer in the open and is worth almost nothing the instant the same
+    // wave turns over; the cytotoxic T cell is the exact inverse.
+    //
+    // COMPARED AS THROUGHPUT AND NOT PER HIT, and the first version of this
+    // test compared per hit and came out backwards. Antibody is a high rate
+    // tagger, three damage across ten targets every 0.3s; a cytotoxic T cell
+    // is thirty damage across two every 0.35s. So per hit the T cell "wins"
+    // even against a free virion it is the wrong tool for, which is true and
+    // completely irrelevant: what a player experiences is how fast the wave
+    // in front of them dies. Per hit is a fact about one number in the table.
+    // Throughput is the thing the briefing decision is actually about.
+    const free = ENEMIES.virion;
+    const inside = ENEMIES.infected;
+    const dps = (w: "antibody" | "killerT", e: typeof free) => {
+      const spec = WEAPONS[w];
+      const per = effectiveDamage(spec.damage, e.armour, false, EFFECTIVE[w][e.cls]);
+      return (per * spec.maxTargets * TICK_HZ) / spec.cooldown;
+    };
+    // Each effector is far better on its own side of the turn, and the two
+    // thresholds differ ON PURPOSE rather than because one was fitted to the
+    // numbers. Antibody's failure against an intracellular pathogen is
+    // ABSOLUTE: it cannot physically reach the virus, so the margin is huge
+    // and should stay huge. A cytotoxic T cell pointed at a free virion is
+    // merely the wrong job for a specialist, so a smaller margin is the
+    // honest claim there.
+    expect(dps("antibody", free)).toBeGreaterThan(dps("antibody", inside) * 20);
+    expect(dps("killerT", inside)).toBeGreaterThan(dps("killerT", free) * 5);
+    // And it is a real SWAP rather than two things both getting worse: which
+    // of the two you would rather have deployed changes with the phase.
+    expect(dps("antibody", free)).toBeGreaterThan(dps("killerT", free));
+    expect(dps("killerT", inside)).toBeGreaterThan(dps("antibody", inside));
   });
 });
 
@@ -269,12 +332,19 @@ describe("nothing in here can reach outside itself", () => {
    */
   const SIMULATION = ["content.ts", "replay.ts", "rng.ts", "sim.ts"];
   const PRESENTATION = [
+    "BriefingSheet.tsx",
     "DeathScreen.tsx",
     "Meter.tsx",
     "OverkillGame.tsx",
     "WeaponIcon.tsx",
     "format.ts",
     "input.ts",
+    // The oracle. Presentation rather than simulation because it exists to
+    // MEASURE the game from outside, and because it imports a type from
+    // `policies.ts`, which the boundary below forbids a simulation file from
+    // doing. It is also the one file allowed to know the answers; see the
+    // scan in `policies.test.ts` for why that is kept out of `policies.ts`.
+    "loadouts.ts",
     "policies.ts",
     "render.ts",
   ];
@@ -375,13 +445,19 @@ describe("the run itself", () => {
   it("books overkill against the weapon that wasted it", () => {
     const r = simulate({
       ...SEEDS,
-      controller: policy({ kind: "fixed", weapon: "cytokine" }),
+      controller: policy({ kind: "fixed", weapon: "burst" }),
       maxTicks: SHORT,
     });
-    // Lightning sprays into crowds that other weapons are already killing, so
+    // The burst sprays into crowds that other effectors are already killing, so
     // a large slice of what it reports never bought anything. That surplus is
     // the first of the two ways the meter misleads.
-    expect(r.overkill.cytokine / r.damage.cytokine).toBeGreaterThan(0.1);
+    // MEASURED ON `burst` RATHER THAN ON THE CYTOKINES, and the change is
+    // forced. Cytokines now deal no damage whatsoever: they recruit, and the
+    // killing lands in somebody else's column. Dividing by their damage was
+    // dividing by zero, and the assertion was quietly NaN rather than false.
+    // The wide low-damage sweep is the right subject anyway, because it is
+    // the one that lands on things already dying.
+    expect(r.overkill.burst / r.damage.burst).toBeGreaterThan(0.1);
     for (const id of WEAPON_IDS) {
       expect(r.overkill[id]).toBeLessThanOrEqual(r.damage[id]);
     }

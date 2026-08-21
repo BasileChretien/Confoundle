@@ -48,6 +48,7 @@ export const es: Record<string, string> = {
   "Right.": "Correcto.",
   "Not this time.": "Esta vez no.",
   "Next": "Siguiente",
+  "Deploy": "Desplegar",
   "See your score": "Ver tu puntuación",
   "The skill": "La habilidad",
   "Where this shows up": "Dónde aparece esto",

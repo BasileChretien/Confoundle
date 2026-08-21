@@ -47,6 +47,7 @@ export const ru: Record<string, string> = {
   "Right.": "Верно.",
   "Not this time.": "Не в этот раз.",
   "Next": "Дальше",
+  "Deploy": "Развернуть",
   "See your score": "Посмотреть результат",
   "The skill": "Навык",
   "Where this shows up": "Где это встречается",

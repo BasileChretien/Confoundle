@@ -1,5 +1,6 @@
 import {
   CUT_TICKS,
+  ENEMIES,
   PLAYER_RADIUS,
   TICK_HZ,
   WEAPONS,
@@ -32,24 +33,36 @@ import type { RunView } from "./sim";
  */
 
 export const WEAPON_COLOR: Readonly<Record<WeaponId, string>> = {
-  /** Cytokines: the shout that reaches everything nearby. */
-  cytokine: "#FDE047",
   /** The neutrophil's own blade, which is how the manga arms them. */
-  knife: "#F1F5F9",
+  neutrophil: "#F1F5F9",
   /** The oxidative burst: bleach, essentially, at arm's length. */
   burst: "#FB923C",
-  /** Antibodies: tag it, slow it, do almost no damage yourself. */
-  antibody: "#67E8F9",
   /** Complement: drills a hole and lets the pressure do the rest. */
   complement: "#A3E635",
-  /** A killer T cell, patrolling alongside you. */
+  /** Antibodies: tag it, slow it, do almost no damage yourself. */
+  antibody: "#67E8F9",
+  /** A cytotoxic T cell, which only ever has one job. */
   killerT: "#C084FC",
+  /** An NK cell, hunting for one of yours that stopped saying hello. */
+  nk: "#FDE047",
+  /** Eosinophils, named for the dye that stains them, so: rose. */
+  eosinophil: "#FB7185",
+  /** Cytokines: the shout that brings everyone else. */
+  cytokine: "#A5B4FC",
 };
 
+/**
+ * S. aureus is gold because S. aureus is gold: the name is Latin for golden,
+ * after the colour of its colonies. When the fiction and the fact agree for
+ * free, take it.
+ */
 const ENEMY_COLOR: Readonly<Record<EnemyKind, string>> = {
-  bacteria: "#65A30D",
-  virus: "#DB2777",
-  superbug: "#7E22CE",
+  coli: "#65A30D",
+  aureus: "#CA8A04",
+  virion: "#DB2777",
+  infected: "#9333EA",
+  candida: "#D6D3D1",
+  worm: "#B45309",
 };
 
 /** World units across the smaller side of the screen. */
@@ -88,7 +101,7 @@ export interface Frame {
 
 export function spawnDeathParticles(view: RunView, into: Particle[]): void {
   for (const d of view.deathsThisTick) {
-    const many = d.kind === "superbug" ? 12 : d.kind === "virus" ? 7 : 5;
+    const many = d.kind === "worm" ? 14 : d.kind === "infected" || d.kind === "candida" ? 9 : 5;
     for (let i = 0; i < many; i++) {
       // A fixed fan rather than a random one: no stream to consult, and the
       // simulation stays the only thing that owns randomness.
@@ -101,7 +114,7 @@ export function spawnDeathParticles(view: RunView, into: Particle[]): void {
         vy: Math.sin(a) * speed,
         born: view.tick,
         color: ENEMY_COLOR[d.kind],
-        size: d.kind === "superbug" ? 3.6 : 2.4,
+        size: d.kind === "worm" ? 3.8 : 2.4,
       });
     }
   }
@@ -145,8 +158,12 @@ export function drawFrame(ctx: CanvasRenderingContext2D, frame: Frame): void {
     const gx = sx(g.x);
     const gy = sy(g.y);
     if (gx < -8 || gy < -8 || gx > width + 8 || gy > height + 8) continue;
-    const r = (g.value >= 18 ? 4.8 : g.value >= 4 ? 3.6 : 2.8) * scale;
-    ctx.fillStyle = g.value >= 18 ? "#FCD34D" : g.value >= 4 ? "#7DD3FC" : "#86EFAC";
+    const r = (g.value >= 10 ? 4.8 : g.value >= 3 ? 3.6 : 2.8) * scale;
+    // Fading over the last three seconds, so "now or never" is visible rather
+    // than something the player finds out by arriving too late.
+    const left = g.until - view.tick;
+    ctx.globalAlpha = left < 3 * TICK_HZ ? Math.max(0.15, left / (3 * TICK_HZ)) : 1;
+    ctx.fillStyle = g.value >= 10 ? "#FCD34D" : g.value >= 3 ? "#7DD3FC" : "#86EFAC";
     ctx.beginPath();
     ctx.moveTo(gx, gy - r);
     ctx.lineTo(gx + r * 0.8, gy);
@@ -154,6 +171,7 @@ export function drawFrame(ctx: CanvasRenderingContext2D, frame: Frame): void {
     ctx.lineTo(gx - r * 0.8, gy);
     ctx.closePath();
     ctx.fill();
+    ctx.globalAlpha = 1;
   }
 
   for (const e of view.enemies) {
@@ -183,22 +201,44 @@ export function drawFrame(ctx: CanvasRenderingContext2D, frame: Frame): void {
     }
   }
 
-  // WHERE THE WEAPONS LANDED, from the simulation's own record.
+  // WHERE THE EFFECTORS LANDED, from the simulation's own record.
   for (const h of view.hitsThisTick) {
     const hx = sx(h.x);
     const hy = sy(h.y);
     ctx.strokeStyle = WEAPON_COLOR[h.weapon];
-    ctx.lineWidth = (h.killed ? 2.8 : 1.6) * Math.max(0.7, scale);
     ctx.globalAlpha = 0.95;
-    if (h.weapon === "cytokine") {
-      ctx.beginPath();
-      ctx.moveTo(cx, cy);
-      const mx = (cx + hx) / 2;
-      const my = (cy + hy) / 2;
-      ctx.lineTo(mx + (hy - cy) * 0.14, my - (hx - cx) * 0.14);
-      ctx.lineTo(hx, hy);
-      ctx.stroke();
-    } else if (h.weapon === "knife") {
+
+    if (h.match < 0.35) {
+      /*
+        THE WRONG TOOL, LANDING AND FAILING. Two short marks skidding off the
+        surface, and nothing else.
+
+        This is the most important drawing in the file. The matrix keeps a
+        trickle rather than zeroing a mismatched effector precisely so the
+        player can SEE it fail, because nothing happening reads as a broken
+        weapon rather than as complement meeting a wall it cannot cross.
+      */
+      const dx = hx - cx;
+      const dy = hy - cy;
+      const len = Math.sqrt(dx * dx + dy * dy) || 1;
+      const nx = -dy / len;
+      const ny = dx / len;
+      ctx.lineWidth = 1.4 * Math.max(0.7, scale);
+      for (const side of [-1, 1]) {
+        ctx.beginPath();
+        ctx.moveTo(hx + nx * side * 3 * scale, hy + ny * side * 3 * scale);
+        ctx.lineTo(
+          hx + nx * side * 9 * scale - (dx / len) * 5 * scale,
+          hy + ny * side * 9 * scale - (dy / len) * 5 * scale,
+        );
+        ctx.stroke();
+      }
+      ctx.globalAlpha = 1;
+      continue;
+    }
+
+    ctx.lineWidth = (h.killed ? 2.8 : 1.6) * Math.max(0.7, scale);
+    if (h.weapon === "neutrophil") {
       // A slash across the thing, not a line to it.
       const dx = hx - cx;
       const dy = hy - cy;
@@ -211,6 +251,15 @@ export function drawFrame(ctx: CanvasRenderingContext2D, frame: Frame): void {
       ctx.stroke();
     } else if (h.weapon === "antibody") {
       drawAntibody(ctx, hx, hy, 7 * scale, view.tick / 7);
+    } else if (h.weapon === "killerT" || h.weapon === "nk") {
+      // A reach from the patrol to the cell it has condemned.
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.lineTo(hx, hy);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(hx, hy, 8 * scale, 0, TAU);
+      ctx.stroke();
     } else {
       ctx.beginPath();
       ctx.arc(hx, hy, (h.killed ? 9 : 6) * scale, 0, TAU);
@@ -255,7 +304,7 @@ function drawAreaWeapons(
   cx: number,
   cy: number,
 ): void {
-  if (view.cutUntil.burst <= view.tick) {
+  if (deployed(view, "burst")) {
     const r = WEAPONS.burst.maxRange * scale;
     const grad = ctx.createRadialGradient(cx, cy, r * 0.25, cx, cy, r);
     grad.addColorStop(0, "rgba(251, 146, 60, 0.20)");
@@ -265,7 +314,7 @@ function drawAreaWeapons(
     ctx.arc(cx, cy, r, 0, TAU);
     ctx.fill();
   }
-  if (view.cutUntil.antibody <= view.tick) {
+  if (deployed(view, "antibody")) {
     ctx.strokeStyle = "rgba(103, 232, 249, 0.16)";
     ctx.lineWidth = 1;
     ctx.beginPath();
@@ -282,7 +331,7 @@ function drawOrbitingWeapons(
   cx: number,
   cy: number,
 ): void {
-  if (view.cutUntil.antibody <= view.tick) {
+  if (deployed(view, "antibody")) {
     const n = Math.min(6, 2 + view.levels.antibody);
     const r = WEAPONS.antibody.maxRange * 0.72 * scale;
     ctx.strokeStyle = WEAPON_COLOR.antibody;
@@ -292,7 +341,7 @@ function drawOrbitingWeapons(
       drawAntibody(ctx, cx + Math.cos(a) * r, cy + Math.sin(a) * r, 6.5 * scale, a);
     }
   }
-  if (view.cutUntil.killerT <= view.tick) {
+  if (deployed(view, "killerT")) {
     const n = Math.min(4, 1 + Math.ceil(view.levels.killerT / 2));
     const r = ((WEAPONS.killerT.minRange + WEAPONS.killerT.maxRange) / 2) * scale;
     for (let i = 0; i < n; i++) {
@@ -339,7 +388,18 @@ function drawAntibody(
   ctx.stroke();
 }
 
-function drawPathogen(
+/**
+ * The six silhouettes.
+ *
+ * THE WALL IS DRAWN, and that is the single most important decision here. The
+ * load-bearing fact in the whole matrix is that complement lyses a gram
+ * negative and cannot lyse a gram positive, because the peptidoglycan is too
+ * thick for the membrane attack complex to reach the membrane underneath. That
+ * is a stain in a laboratory and a shape here: E. coli gets a hairline outline,
+ * S. aureus gets a wall you can see from across the screen. The picture and the
+ * mechanism are then the same picture, and no words are needed in any language.
+ */
+export function drawPathogen(
   ctx: CanvasRenderingContext2D,
   kind: EnemyKind,
   x: number,
@@ -350,59 +410,132 @@ function drawPathogen(
 ): void {
   const body = flashing ? "#FFFFFF" : ENEMY_COLOR[kind];
   ctx.fillStyle = body;
+  ctx.strokeStyle = body;
 
-  if (kind === "bacteria") {
-    // A rod with a flagellum, wobbling as it swims.
+  if (kind === "coli") {
+    // A rod with a flagellum, and a HAIRLINE wall: thin, and complement knows.
     const wob = Math.sin(tick / 6 + x) * r * 0.3;
     ctx.beginPath();
-    ctx.ellipse(x, y, r * 1.25, r * 0.85, 0, 0, TAU);
+    ctx.ellipse(x, y, r * 1.3, r * 0.8, 0, 0, TAU);
     ctx.fill();
-    ctx.strokeStyle = body;
-    ctx.lineWidth = Math.max(1, r * 0.22);
+    ctx.lineWidth = Math.max(0.8, r * 0.1);
+    ctx.strokeStyle = flashing ? "#FFFFFF" : "#BEF264";
     ctx.beginPath();
-    ctx.moveTo(x - r * 1.2, y);
-    ctx.quadraticCurveTo(x - r * 2, y + wob, x - r * 2.6, y);
+    ctx.ellipse(x, y, r * 1.36, r * 0.86, 0, 0, TAU);
+    ctx.stroke();
+    ctx.strokeStyle = body;
+    ctx.lineWidth = Math.max(1, r * 0.2);
+    ctx.beginPath();
+    ctx.moveTo(x - r * 1.25, y);
+    ctx.quadraticCurveTo(x - r * 2, y + wob, x - r * 2.7, y);
     ctx.stroke();
     return;
   }
 
-  if (kind === "virus") {
-    // The spiky capsid. The one silhouette nobody has to be told.
+  if (kind === "aureus") {
+    // Staphylo, from the Greek for a bunch of grapes, which is how it grows.
+    // And the WALL, drawn thick, because the wall is why complement fails.
+    for (let i = 0; i < 4; i++) {
+      const a = (i / 4) * TAU + tick / 90;
+      const bx = x + Math.cos(a) * r * 0.5;
+      const by = y + Math.sin(a) * r * 0.5;
+      ctx.fillStyle = body;
+      ctx.beginPath();
+      ctx.arc(bx, by, r * 0.62, 0, TAU);
+      ctx.fill();
+      ctx.strokeStyle = flashing ? "#FFFFFF" : "#FEF08A";
+      ctx.lineWidth = Math.max(2, r * 0.36);
+      ctx.beginPath();
+      ctx.arc(bx, by, r * 0.48, 0, TAU);
+      ctx.stroke();
+    }
+    return;
+  }
+
+  if (kind === "virion") {
+    // The spiked capsid. The one silhouette nobody has to be told.
     ctx.beginPath();
-    ctx.arc(x, y, r * 0.72, 0, TAU);
+    ctx.arc(x, y, r * 0.7, 0, TAU);
     ctx.fill();
-    ctx.strokeStyle = body;
     ctx.lineWidth = Math.max(1, r * 0.2);
     for (let i = 0; i < 8; i++) {
       const a = (i / 8) * TAU + tick / 40;
       ctx.beginPath();
-      ctx.moveTo(x + Math.cos(a) * r * 0.7, y + Math.sin(a) * r * 0.7);
-      ctx.lineTo(x + Math.cos(a) * r * 1.25, y + Math.sin(a) * r * 1.25);
+      ctx.moveTo(x + Math.cos(a) * r * 0.68, y + Math.sin(a) * r * 0.68);
+      ctx.lineTo(x + Math.cos(a) * r * 1.3, y + Math.sin(a) * r * 1.3);
       ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(x + Math.cos(a) * r * 1.36, y + Math.sin(a) * r * 1.36, r * 0.16, 0, TAU);
+      ctx.fill();
     }
-    ctx.fillStyle = flashing ? "#FFFFFF" : "#FBCFE8";
-    ctx.beginPath();
-    ctx.arc(x, y, r * 0.25, 0, TAU);
-    ctx.fill();
     return;
   }
 
-  // The one the drugs stopped touching: bigger, darker, visibly walled.
-  ctx.beginPath();
-  ctx.arc(x, y, r, 0, TAU);
-  ctx.fill();
-  ctx.strokeStyle = flashing ? "#FFFFFF" : "#DDD6FE";
-  ctx.lineWidth = Math.max(1.5, r * 0.22);
-  ctx.beginPath();
-  ctx.arc(x, y, r * 0.96, 0, TAU);
-  ctx.stroke();
-  ctx.fillStyle = flashing ? "#FFFFFF" : "#DDD6FE";
-  for (let i = 0; i < 3; i++) {
-    const a = (i / 3) * TAU + tick / 55;
+  if (kind === "infected") {
+    // ONE OF YOUR OWN, and it has to read as one of your own or the moment
+    // where killing it is the right answer lands as nothing. Same lobed
+    // outline as the player, gone wrong: purple, no eyes, virions inside.
+    ctx.fillStyle = flashing ? "#FFFFFF" : ENEMY_COLOR.infected;
     ctx.beginPath();
-    ctx.arc(x + Math.cos(a) * r * 0.42, y + Math.sin(a) * r * 0.42, r * 0.16, 0, TAU);
+    for (let i = 0; i <= 20; i++) {
+      const a = (i / 20) * TAU;
+      const wob = 1 + Math.sin(a * 3 + tick / 18) * 0.09;
+      const px = x + Math.cos(a) * r * wob;
+      const py = y + Math.sin(a) * r * wob;
+      if (i === 0) ctx.moveTo(px, py);
+      else ctx.lineTo(px, py);
+    }
+    ctx.closePath();
     ctx.fill();
+    ctx.fillStyle = flashing ? "#FFFFFF" : ENEMY_COLOR.virion;
+    for (let i = 0; i < 3; i++) {
+      const a = (i / 3) * TAU - tick / 30;
+      ctx.beginPath();
+      ctx.arc(x + Math.cos(a) * r * 0.42, y + Math.sin(a) * r * 0.42, r * 0.19, 0, TAU);
+      ctx.fill();
+    }
+    return;
   }
+
+  if (kind === "candida") {
+    // A budding yeast growing a hypha. The filament is the reason a phagocyte
+    // cannot simply swallow it.
+    ctx.beginPath();
+    ctx.ellipse(x, y, r * 0.72, r * 0.9, 0, 0, TAU);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(x + r * 0.7, y - r * 0.6, r * 0.36, 0, TAU);
+    ctx.fill();
+    ctx.lineWidth = Math.max(2, r * 0.3);
+    ctx.beginPath();
+    ctx.moveTo(x - r * 0.5, y + r * 0.6);
+    ctx.quadraticCurveTo(
+      x - r * 1.5,
+      y + r * 1.1 + Math.sin(tick / 20 + x) * r * 0.2,
+      x - r * 2.1,
+      y + r * 0.6,
+    );
+    ctx.stroke();
+    return;
+  }
+
+  // A worm. Long, segmented, and far too big to be eaten by anything.
+  ctx.lineWidth = Math.max(3, r * 0.85);
+  ctx.lineCap = "round";
+  ctx.beginPath();
+  for (let i = 0; i <= 6; i++) {
+    const t = i / 6;
+    const px = x - r * 1.9 + t * r * 3.8;
+    const py = y + Math.sin(t * 5 + tick / 14) * r * 0.55;
+    if (i === 0) ctx.moveTo(px, py);
+    else ctx.lineTo(px, py);
+  }
+  ctx.stroke();
+  ctx.lineCap = "butt";
+  ctx.fillStyle = flashing ? "#FFFFFF" : "#FDBA74";
+  ctx.beginPath();
+  ctx.arc(x + r * 1.9, y + Math.sin(5 + tick / 14) * r * 0.55, r * 0.5, 0, TAU);
+  ctx.fill();
 }
 
 /** The player: a neutrophil, pale and lobed, with a face. */
@@ -472,7 +605,18 @@ function drawGrid(
 }
 
 function enemyRadius(kind: EnemyKind): number {
-  return kind === "superbug" ? 17 : kind === "virus" ? 10 : 7;
+  return ENEMIES[kind].radius;
+}
+
+/**
+ * On screen right now: deployed for this wave, and not switched off.
+ *
+ * Both halves matter. An effector left behind at the briefing must be absent
+ * rather than dimmed, because the loadout is the decision the whole wave turns
+ * on and a player has to see what they brought.
+ */
+function deployed(view: RunView, id: WeaponId): boolean {
+  return view.active.includes(id) && view.cutUntil[id] <= view.tick;
 }
 
 /** Whether a weapon is currently cut, and how far through the eight seconds. */

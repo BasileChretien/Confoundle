@@ -47,6 +47,7 @@ export const pt: Record<string, string> = {
   "Right.": "Correto.",
   "Not this time.": "Desta vez não.",
   "Next": "Seguinte",
+  "Deploy": "Implantar",
   "See your score": "Ver a sua pontuação",
   "The skill": "A habilidade",
   "Where this shows up": "Onde isso aparece",

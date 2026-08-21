@@ -20,6 +20,8 @@ interface Call {
   fill: string;
   stroke: string;
   alpha: number;
+  /** Recorded so the WALL can be asserted. See the silhouette test. */
+  width: number;
 }
 
 function fakeContext() {
@@ -36,6 +38,7 @@ function fakeContext() {
         fill: String(this.fillStyle),
         stroke: String(this.strokeStyle),
         alpha: this.globalAlpha,
+        width: Number(this.lineWidth),
       });
     },
     fillRect(...a: number[]) {
@@ -81,7 +84,7 @@ function fakeContext() {
 function enemy(over: Partial<EnemyView> = {}): EnemyView {
   return {
     id: 1,
-    kind: "bacteria",
+    kind: "coli",
     x: 0,
     y: 0,
     hp: 8,
@@ -112,6 +115,12 @@ function view(over: Partial<RunView> = {}): RunView {
     level: 1,
     xp: 0,
     xpNeeded: 3,
+    // Everything deployed by default, so a test that is about a silhouette or
+    // a colour does not have to know the loadout mechanic exists.
+    active: WEAPON_IDS,
+    unlocked: WEAPON_IDS,
+    waveIndex: 0,
+    waveTick: 0,
     ...over,
   };
 }
@@ -171,13 +180,46 @@ describe("drawing a frame", () => {
       return calls;
     };
     // A rod with a flagellum trailing off it.
-    expect(drawn("bacteria").some((c) => c.op === "ellipse")).toBe(true);
-    expect(drawn("bacteria").some((c) => c.op === "quadraticCurveTo")).toBe(true);
+    expect(drawn("coli").some((c) => c.op === "ellipse")).toBe(true);
+    expect(drawn("coli").some((c) => c.op === "quadraticCurveTo")).toBe(true);
     // A spiked capsid: eight spikes, so plenty of short strokes.
-    const virus = drawn("virus").filter((c) => c.op === "lineTo" && c.stroke === "#DB2777");
+    const virus = drawn("virion").filter((c) => c.op === "lineTo" && c.stroke === "#DB2777");
     expect(virus.length).toBeGreaterThanOrEqual(8);
-    // The walled one, drawn with a pale rim nothing else has.
-    expect(drawn("superbug").some((c) => c.stroke === "#DDD6FE")).toBe(true);
+    // Staphylo, from the Greek for a bunch of grapes: four cocci, not one.
+    expect(drawn("aureus").filter((c) => c.op === "arc").length).toBeGreaterThanOrEqual(8);
+    // A worm, which is one long stroked line rather than a body.
+    expect(drawn("worm").filter((c) => c.op === "lineTo").length).toBeGreaterThanOrEqual(6);
+  });
+
+  it("draws the gram positive's wall visibly thicker than the gram negative's", () => {
+    // THE LOAD-BEARING PICTURE IN THE WHOLE GAME, and the only reason this
+    // test records `lineWidth` at all.
+    //
+    // Complement lyses E. coli and cannot lyse S. aureus because the
+    // peptidoglycan is too thick for the membrane attack complex to reach the
+    // membrane underneath. That is the single fact the second wave teaches,
+    // and the ONLY channel it is taught through is how the two are drawn:
+    // there is no text anywhere, in any of the ten languages. So if a tidying
+    // pass ever evens these two strokes out, the wave stops being solvable by
+    // looking and starts being solvable only by dying once and remembering,
+    // and nothing else in the suite would notice.
+    const wallOf = (kind: "coli" | "aureus") => {
+      const { ctx, calls } = fakeContext();
+      drawFrame(ctx, {
+        view: view({ enemies: [enemy({ kind, x: 40, y: 0 })] }),
+        pulses: [],
+        ...SIZE,
+      });
+      // Scoped to the wall's OWN colour rather than to every stroke in the
+      // frame. The grid under the arena is stroked too, and it is wider than
+      // either wall, so a naive max came back identical for both and the
+      // assertion passed by measuring the floor.
+      const wall = kind === "coli" ? "#BEF264" : "#FEF08A";
+      const strokes = calls.filter((c) => c.op === "stroke" && c.stroke === wall);
+      expect(strokes.length, `no wall drawn for ${kind}`).toBeGreaterThan(0);
+      return Math.max(...strokes.map((c) => c.width));
+    };
+    expect(wallOf("aureus")).toBeGreaterThan(wallOf("coli") * 2);
   });
 
   it("sticks an antibody to anything it has tagged, and only while tagged", () => {
@@ -272,7 +314,7 @@ describe("the small readouts", () => {
   it("reports how far through a cut a weapon is", () => {
     const v = view({ tick: 100, cutUntil: { ...view().cutUntil, antibody: 100 + 8 * TICK_HZ } });
     expect(cutProgress(v, "antibody")).toBeCloseTo(0, 6);
-    expect(cutProgress(v, "knife")).toBeNull();
+    expect(cutProgress(v, "neutrophil")).toBeNull();
     const later = view({ tick: 100 + 4 * TICK_HZ, cutUntil: v.cutUntil });
     expect(cutProgress(later, "antibody")).toBeCloseTo(0.5, 6);
   });

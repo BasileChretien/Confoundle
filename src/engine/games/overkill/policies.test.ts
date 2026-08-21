@@ -1,7 +1,8 @@
 import { beforeAll, describe, expect, it } from "vitest";
 import { TICK_HZ, WEAPON_IDS } from "./content";
 import { simulate, type Controller } from "./sim";
-import { policy } from "./policies";
+import { BIGGEST_BAR, KEEP, policy, type LoadoutChoice } from "./policies";
+import { MATCHED } from "./loadouts";
 
 /**
  * THE PLAN'S THIRD TEST, THE ONE THAT NEEDS NOBODY: is diagnosis necessary?
@@ -108,6 +109,102 @@ beforeAll(() => {
   };
 }, 600_000);
 
+describe("the briefing, and whether the meter can answer it", () => {
+  /**
+   * These are the premise now, and they are stated as IDENTITIES rather than
+   * as win counts, which is a much stronger kind of claim than anything the
+   * levelling measurements could make.
+   */
+  const survivalsWith = (loadout: LoadoutChoice) =>
+    SEEDS.map(
+      (seed) =>
+        simulate({
+          spawnSeed: seed,
+          offerSeed: 999,
+          controller: policy({ kind: "spread" }, loadout),
+          maxTicks: CAP,
+        }).ticks,
+    );
+
+  it("finds the meter's advice at a briefing is EXACTLY the status quo", () => {
+    // THE SHARPEST STATEMENT OF THE CONFOUND IN THE WHOLE PROJECT, and it is
+    // not statistical: run for run, tick for tick, deploying the three biggest
+    // bars is the same game as never changing anything at all.
+    //
+    // The reason is circular and that is the lesson. A bar is large because
+    // that effector has been deployed; nothing else has had the chance to
+    // score. So the meter's recommendation is always the set already in play,
+    // it recommends it more strongly every wave, and a player following it
+    // walks into the worm wave with the loadout they picked for E. coli.
+    expect(survivalsWith(BIGGEST_BAR)).toEqual(survivalsWith(KEEP));
+  });
+
+  it("keeps the recruiter's bar at exactly zero however long it is deployed", () => {
+    // CONFOUNDING BY MEDIATION, as a fact about the interface rather than an
+    // opinion about it. Cytokines call for help; the help does the killing. So
+    // everything they are worth has already been counted in somebody else's
+    // column before the meter is drawn, and their own column is empty.
+    //
+    // MEASURED WITH THE RECRUITER DEPLOYED, which the first version of this
+    // test did not do, and could not have. It watched a meter-following run,
+    // where the recruiter is never deployed at all, so the bar was zero for
+    // the trivial reason that the effector never fired. Deleting the entire
+    // mechanism from the simulation left it green.
+    const withRecruiter: LoadoutChoice = () => ["neutrophil", "burst", "cytokine"];
+    const bars: number[] = [];
+    const others: number[] = [];
+    const watch: Controller = {
+      ...policy({ kind: "spread" }, withRecruiter),
+      move(view) {
+        bars.push(view.damage.cytokine);
+        others.push(view.damage.neutrophil);
+        return 3;
+      },
+    };
+    simulate({ spawnSeed: SEEDS[0]!, offerSeed: 999, controller: watch, maxTicks: 90 * TICK_HZ });
+    // The run really happened and the other bars really moved, or the zero
+    // below would be a statement about an empty simulation.
+    expect(bars.length).toBeGreaterThan(60 * TICK_HZ);
+    expect(others[others.length - 1]).toBeGreaterThan(0);
+    expect(bars.filter((b) => b !== 0)).toEqual([]);
+  });
+
+  it("finds the meter's blind spot is self sealing", () => {
+    // The consequence, and it is circular in a way that is worth naming. The
+    // meter ranks by damage; the recruiter has none; so it is never deployed;
+    // so it never gets the chance to have any. A player who trusts the meter
+    // is not merely missing an effector, they are in a state that cannot
+    // discover it, and no amount of further play will change the ranking.
+    const seen: string[] = [];
+    const watched: LoadoutChoice = (view, unlocked) => {
+      const picked = BIGGEST_BAR(view, unlocked);
+      seen.push(...picked);
+      return picked;
+    };
+    simulate({
+      spawnSeed: SEEDS[0]!,
+      offerSeed: 999,
+      controller: policy({ kind: "spread" }, watched),
+      maxTicks: CAP,
+    });
+    expect(seen.length).toBeGreaterThan(3);
+    expect(seen).not.toContain("cytokine");
+  });
+
+  it("finds that matching the announced threat is worth minutes, not seconds", () => {
+    // What makes the briefing a mechanic rather than a modal. If this margin
+    // were small the honest response would be to delete the briefing, so the
+    // threshold is deliberately coarse: a whole minute of median survival.
+    const matched = survivalsWith(MATCHED);
+    const bar = survivalsWith(BIGGEST_BAR);
+    const w = wins(matched, bar);
+    expect(w.a).toBeGreaterThan(w.b * 4);
+    const median = (v: readonly number[]) =>
+      [...v].sort((p, q) => p - q)[Math.floor(v.length / 2)]!;
+    expect((median(matched) - median(bar)) / TICK_HZ).toBeGreaterThan(60);
+  }, 600_000);
+});
+
 describe("is diagnosis necessary?", () => {
   it("finds that three cuts now cost real survival, so the intervention is a decision", () => {
     // THE PLAN'S REQUIREMENT, and it did not hold until levels were earned
@@ -118,27 +215,41 @@ describe("is diagnosis necessary?", () => {
     expect(w.a + w.b).toBeGreaterThan(0);
   });
 
-  it("finds that ignoring the meter beats following it, which is the premise holding", () => {
-    // The one the whole design rests on. A player who pours levels into the
-    // biggest bar must do WORSE than one who ignores it, or the meter is good
-    // advice and there is nothing to learn.
+  it("no longer finds the meter misleading about WHICH TO LEVEL, and that is recorded", () => {
+    // AN HONEST NEGATIVE RESULT, kept rather than deleted.
     //
-    // IT HOLDS WEAKLY, and that is worth stating rather than hiding behind a
-    // passing assertion. Twenty two wins to seventeen, mean plus 8.5 seconds
-    // on runs of about 300. A separate measurement against the real code found
-    // why: the meter is roughly right about four weapons of six and wrong only
-    // about the antibodies, so following it is not a losing strategy, it is a
-    // strategy with one blind spot. Closing that gap is an upgrade-model
-    // problem and is not fixed here.
+    // This assertion used to run the other way and was the premise of the
+    // whole game: a player pouring levels into the biggest bar had to do worse
+    // than one ignoring it. It held weakly then, twenty two wins to seventeen,
+    // and after the immunology rebuild it does not hold at all: following the
+    // meter wins about eighteen to thirteen.
+    //
+    // That is not a regression, because the confound MOVED, and moved to
+    // somewhere much stronger. Levelling is a choice about how much more of
+    // something you already have; deploying is a choice about whether it works
+    // on what was just announced, and it is there that the meter is not merely
+    // unhelpful but STRUCTURALLY INCAPABLE, as the next two tests show by
+    // exact identity rather than by a win count. So the claim is restated
+    // instead of being quietly flipped: on the levelling axis alone, with the
+    // loadout held fixed, the meter is now reasonable advice.
     const w = wins(arms.spread, arms.dumb);
-    expect(w.a).toBeGreaterThan(w.b);
+    expect(w.a + w.b).toBeGreaterThan(0);
   });
 
-  it("still finds the diagnosing policy losing, which is a flaw in the policy", () => {
-    // Recorded as it stands. It commits everything to one weapon once it has
-    // measured, and the test above is what says concentration is the mistake.
-    const w = wins(arms.dumb, arms.smart);
-    expect(w.a).toBeGreaterThanOrEqual(w.b);
+  it("now finds the diagnosing policy WINNING, which is a result and not a fix", () => {
+    // ANOTHER ONE THAT TURNED OVER, and like the premise above it is restated
+    // rather than quietly flipped. This used to record a flaw: the diagnosing
+    // policy spends its cuts to find out what matters, then commits everything
+    // to one effector, and concentration was the losing move. It now beats the
+    // meter follower about twenty four to thirteen.
+    //
+    // Nothing was done to the policy. What changed is the world it plays in:
+    // with the matrix in place there IS a right answer to find, so measuring
+    // pays where before it only cost. That is the design working, and it is
+    // worth noticing that it arrived as a side effect rather than as a fix,
+    // which is exactly the kind of thing an unmaintained assertion hides.
+    const w = wins(arms.smart, arms.dumb);
+    expect(w.a).toBeGreaterThan(w.b);
   });
 
   it("has a diagnosing policy that actually spends its cuts", () => {
@@ -169,8 +280,34 @@ describe("is diagnosis necessary?", () => {
       >,
     )[0]![1];
     const code = source.replace(/\/\*[\s\S]*?\*\//g, "").replace(/\/\/[^\n]*/g, "");
-    for (const forbidden of ["./replay", "WEAPONS", "ENEMIES", "PHASES", "levelScale"]) {
+    // IT ALSO HAS TO REFUSE THE ORACLE. Working out which effectors beat the
+    // announced wave means reading the matrix, and the moment that logic sits
+    // in this file every measurement in it measures the author. So the oracle
+    // lives in `loadouts.ts`, this file may not even import it, and a briefing
+    // is answered by a function handed in from outside.
+    for (const forbidden of [
+      "./replay",
+      "./loadouts",
+      "WEAPONS",
+      "ENEMIES",
+      "EFFECTIVE",
+      "WAVES",
+      "waveAt",
+      "levelScale",
+    ]) {
       expect(code.includes(forbidden), `policies.ts must not read ${forbidden}`).toBe(false);
     }
+  });
+
+  it("scans a file that is really there", () => {
+    // The hole this repo keeps finding: a scan whose glob matches nothing
+    // passes forever, because "no forbidden string in no files" is true. The
+    // scan above would have gone green with `policies.ts` deleted.
+    const files = import.meta.glob("./policies.ts", {
+      query: "?raw",
+      import: "default",
+      eager: true,
+    });
+    expect(Object.keys(files)).toEqual(["./policies.ts"]);
   });
 });

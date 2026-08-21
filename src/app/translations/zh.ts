@@ -48,6 +48,7 @@ export const zh: Record<string, string> = {
   "Right.": "答对了。",
   "Not this time.": "这次没有。",
   "Next": "下一个",
+  "Deploy": "部署",
   "See your score": "查看你的得分",
   "The skill": "这项技能",
   "Where this shows up": "它出现在哪里",

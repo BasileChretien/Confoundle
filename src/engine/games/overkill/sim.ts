@@ -17,16 +17,25 @@ import {
   WEAPONS,
   WEAPON_IDS,
   type EnemyKind,
+  type PathogenClass,
   type WeaponId,
   effectiveDamage,
+  BURST_CAP,
+  EFFECTIVE,
   GEM_SPEED,
+  GEM_TICKS,
+  LOADOUT_SIZE,
   MAGNET_RADIUS,
   MAX_GEMS,
   PICKUP_RADIUS,
+  RECRUIT_BONUS,
+  STARTING_LOADOUT,
+  WAVES,
   XP_VALUE,
   levelScale,
+  mixAt,
+  waveAt,
   xpToNext,
-  phaseAt,
 } from "./content";
 import { foldSpawn, stream, unitVector, weightedIndex } from "./rng";
 
@@ -128,6 +137,12 @@ export interface RunView {
   readonly level: number;
   readonly xp: number;
   readonly xpNeeded: number;
+  /** The three effectors deployed right now. Nothing else fires. */
+  readonly active: readonly WeaponId[];
+  /** Everything unlocked so far, which the next briefing chooses from. */
+  readonly unlocked: readonly WeaponId[];
+  readonly waveIndex: number;
+  readonly waveTick: number;
 }
 
 export interface Landed {
@@ -135,6 +150,12 @@ export interface Landed {
   readonly x: number;
   readonly y: number;
   readonly killed: boolean;
+  /**
+   * How well this effector matches what it just hit, straight out of the
+   * matrix. The renderer draws a ricochet below about a third, because the
+   * player has to SEE the wrong tool land and fail rather than see nothing.
+   */
+  readonly match: number;
 }
 
 export interface Died {
@@ -147,6 +168,8 @@ export interface GemView {
   readonly x: number;
   readonly y: number;
   readonly value: number;
+  /** The tick it fades, so the renderer can warn before it goes. */
+  readonly until: number;
 }
 
 /**
@@ -168,6 +191,18 @@ export interface Driver {
  */
 export interface Controller extends Driver {
   chooseUpgrade(view: RunView, offers: readonly WeaponId[]): WeaponId;
+  /**
+   * Answer the briefing: which effectors to deploy against the wave named by
+   * `view.waveIndex`, chosen from `unlocked`.
+   *
+   * REQUIRED, not optional, and that is deliberate. A briefing halts the run
+   * completely, so a controller that cannot answer one does not degrade, it
+   * hangs: `simulate` would spin on `awaitingLoadout` forever and the test
+   * that called it would time out somewhere else entirely, looking like a
+   * performance problem. Making it part of the interface turns that into a
+   * compile error at every call site the day the mechanic was added.
+   */
+  chooseLoadout(view: RunView, unlocked: readonly WeaponId[]): readonly WeaponId[];
 }
 
 export interface RunOptions {
@@ -196,7 +231,7 @@ export interface SimOptions extends Omit<RunOptions, "driver"> {
  * count per level up is the same whoever is playing, and a recorded run
  * replays identically under a script.
  */
-export type StepStatus = "ran" | "awaitingUpgrade" | "over";
+export type StepStatus = "ran" | "awaitingUpgrade" | "awaitingLoadout" | "over";
 
 export interface Run {
   /** Live. Valid until the next `step`, and never to be retained. */
@@ -205,6 +240,13 @@ export interface Run {
   readonly offers: readonly WeaponId[];
   step(): StepStatus;
   chooseUpgrade(id: WeaponId): void;
+  /**
+   * Deploy these effectors for the wave about to start. Meaningful only while
+   * the last step said `awaitingLoadout`.
+   */
+  chooseLoadout(ids: readonly WeaponId[]): void;
+  /** The wave the briefing is about, which is the threat and never the answer. */
+  readonly briefing: number;
   result(): RunResult;
 }
 
@@ -224,6 +266,8 @@ export interface RunResult {
   readonly overkill: Readonly<Record<WeaponId, number>>;
   readonly kills: Readonly<Record<WeaponId, number>>;
   readonly levels: Readonly<Record<WeaponId, number>>;
+  /** How many waves the run got past. The headline number of a run. */
+  readonly wavesCleared: number;
   readonly spawned: number;
   /**
    * How many times the spawn stream was consulted. Differs from the number
@@ -267,6 +311,7 @@ export interface RunResult {
 interface Enemy {
   id: number;
   kind: EnemyKind;
+  cls: PathogenClass;
   x: number;
   y: number;
   hp: number;
@@ -285,6 +330,8 @@ interface Gem {
   x: number;
   y: number;
   value: number;
+  /** The tick it fades. Without this the floor is a savings account. */
+  until: number;
 }
 
 const DEFAULT_MAX_TICKS = 6 * 60 * TICK_HZ;
@@ -307,6 +354,9 @@ export function simulate(opts: SimOptions): RunResult {
     if (status === "over") return run.result();
     if (status === "awaitingUpgrade") {
       run.chooseUpgrade(opts.controller.chooseUpgrade(run.view, run.offers));
+    }
+    if (status === "awaitingLoadout") {
+      run.chooseLoadout(opts.controller.chooseLoadout(run.view, run.view.unlocked));
     }
   }
 }
@@ -348,6 +398,20 @@ export function createRun(opts: RunOptions): Run {
   let level = 1;
   let xp = 0;
   let pendingLevels = 0;
+  let waveIndex = 0;
+  let waveStartedAt = 0;
+  /**
+   * Set while a briefing is on the table and nothing else may advance.
+   *
+   * STARTS AT ZERO, so the very first thing a run does is ask. That opening
+   * briefing is where the mechanic is taught, and it is deliberately taught on
+   * the one wave where every answer is right: a player who has not yet worked
+   * out what the screen is asking loses nothing by guessing, and by the second
+   * briefing they know what the question was.
+   */
+  let briefingFor = 0;
+  const unlocked: WeaponId[] = [...STARTING_LOADOUT];
+  const active: WeaponId[] = STARTING_LOADOUT.slice(0, LOADOUT_SIZE);
   const view: RunView = {
     tick: 0,
     hp,
@@ -366,6 +430,10 @@ export function createRun(opts: RunOptions): Run {
     level: 1,
     xp: 0,
     xpNeeded: xpToNext(1),
+    active,
+    unlocked,
+    waveIndex: 0,
+    waveTick: 0,
   };
   const mutView = view as {
     tick: number;
@@ -377,6 +445,8 @@ export function createRun(opts: RunOptions): Run {
     level: number;
     xp: number;
     xpNeeded: number;
+    waveIndex: number;
+    waveTick: number;
   };
 
   const offers: WeaponId[] = [];
@@ -399,19 +469,27 @@ export function createRun(opts: RunOptions): Run {
    */
   const hit = (e: Enemy, raw: number, by: WeaponId, pierces = false): void => {
     if (e.hp <= 0) return;
-    const amount = effectiveDamage(raw, e.armour, pierces);
+    // THE MATRIX, applied here and nowhere else. Complement on a gram positive
+    // wall, an antibody reaching for something already inside a cell: both
+    // land, both barely scratch, and both are honest about why.
+    const match = EFFECTIVE[by][e.cls];
+    const amount = effectiveDamage(raw, e.armour, pierces, match);
     if (amount <= 0) return;
     damage[by] += amount;
     if (amount > e.hp) overkill[by] += amount - e.hp;
     e.hp -= amount;
-    e.flashUntil = tick + 4;
+    // A hit that barely registers should barely flash, or a trickle looks the
+    // same as a killing blow and the player cannot see the wrong tool failing.
+    e.flashUntil = tick + (match >= 0.5 ? 5 : 2);
     const killed = e.hp <= 0;
     if (killed) {
       kills[by] += 1;
       deathsThisTick.push({ kind: e.kind, x: e.x, y: e.y });
-      if (gems.length < MAX_GEMS) gems.push({ x: e.x, y: e.y, value: XP_VALUE[e.kind] });
+      if (gems.length < MAX_GEMS) {
+        gems.push({ x: e.x, y: e.y, value: XP_VALUE[e.kind], until: tick + GEM_TICKS });
+      }
     }
-    hitsThisTick.push({ weapon: by, x: e.x, y: e.y, killed });
+    hitsThisTick.push({ weapon: by, x: e.x, y: e.y, killed, match });
   };
 
   const step = (): StepStatus => {
@@ -426,6 +504,54 @@ export function createRun(opts: RunOptions): Run {
     mutView.x = px;
     mutView.y = py;
     mutView.cutsLeft = cutsLeft;
+    mutView.waveIndex = waveIndex;
+    mutView.waveTick = tick - waveStartedAt;
+
+    /*
+      THE BRIEFING. Before every wave the run stops and shows what is coming,
+      and the player deploys three effectors against it.
+
+      It shows the THREAT AND NEVER THE ANSWER. A silhouette is a fact about
+      the world; a silhouette with "bring complement" written under it is a
+      lookup table, and the moment a player is memorising pathogen to effector
+      rather than working it out, every bit of reasoning in the game stops.
+    */
+    if (briefingFor === waveIndex) return "awaitingLoadout";
+
+    /*
+      THE WAVE TURNS OVER HERE, AT THE TOP, AND NOWHERE ELSE.
+
+      It used to happen down in the spawning section, which is AFTER the player
+      has moved, and it returned `awaitingLoadout` from there. So the tick was
+      half executed, halted, and then run again from the top once the briefing
+      was answered: the player moved TWICE on every wave boundary.
+
+      That is not a cosmetic stutter, it silently broke replay. The recorder
+      writes movement as [tick, direction] and replays it through a Map keyed
+      by tick, so two directions on one tick cannot both be stored; the second
+      overwrote the first and every recorded run diverged from itself at 3:20.
+      Both runs still finished, still looked plausible, and reported different
+      damage, kills and spawns, which means every counterfactual the death
+      screen draws after the first wave boundary was comparing two worlds.
+
+      A step must therefore either run a whole tick or none of it. Advancing
+      here costs one tick of the new wave's spawns landing before the player
+      has deployed, which is a sixtieth of a second and nobody's problem.
+    */
+    {
+      const current = waveAt(waveIndex);
+      if (tick - waveStartedAt >= current.ticks && waveIndex < WAVES.length - 1) {
+        for (const id of current.unlocks ?? []) {
+          if (!unlocked.includes(id)) unlocked.push(id);
+        }
+        waveIndex += 1;
+        waveStartedAt = tick;
+        briefingFor = waveIndex;
+        mutView.waveIndex = waveIndex;
+        mutView.waveTick = 0;
+        return "awaitingLoadout";
+      }
+    }
 
     // 1. UPGRADES, before anything moves, because the choice is about the
     //    tick that follows it.
@@ -465,7 +591,7 @@ export function createRun(opts: RunOptions): Run {
           visible and annoying, where a contaminated counterfactual is
           invisible and wrong.
         */
-        const bag = WEAPON_IDS.slice();
+        const bag = unlocked.slice();
         for (let k = 0; k < OFFER_SIZE; k++) {
           const r = cards();
           if (bag.length === 0) continue;
@@ -506,10 +632,13 @@ export function createRun(opts: RunOptions): Run {
     //    at the same rate as one that is not. Deciding first and drawing
     //    second would tie the spawn sequence to combat outcomes and every
     //    counterfactual in the game would be comparing two different worlds.
-    const phase = phaseAt(tick);
-    if (tick % phase.everyTicks === 0) {
-      const weights = phase.mix.map((m) => m[1]);
-      const kind = phase.mix[weightedIndex(spawnRng, weights)]![0];
+    const wave = waveAt(waveIndex);
+    const waveTick = tick - waveStartedAt;
+
+    const { mix, everyTicks } = mixAt(wave, waveTick);
+    if (tick % everyTicks === 0) {
+      const weights = mix.map((m) => m[1]);
+      const kind = mix[weightedIndex(spawnRng, weights)]![0];
       const u = unitVector(spawnRng);
       // Drawn unconditionally, even when the player is standing still and it
       // cannot change anything, so the number of draws per spawn is a
@@ -527,7 +656,7 @@ export function createRun(opts: RunOptions): Run {
       spawnDigest = foldSpawn(
         spawnDigest,
         tick,
-        phase.mix.findIndex((m) => m[0] === kind),
+        mix.findIndex((m) => m[0] === kind),
         ex,
         ey,
       );
@@ -536,6 +665,7 @@ export function createRun(opts: RunOptions): Run {
         enemies.push({
           id: nextId++,
           kind,
+          cls: spec.cls,
           x: ex,
           y: ey,
           hp: spec.hp,
@@ -572,14 +702,32 @@ export function createRun(opts: RunOptions): Run {
     }
 
     // 6. WEAPONS, in the fixed order of the WEAPONS table.
+    // What the cytokines have called in. They kill nothing themselves, so
+    // every point of this lands in somebody else's bar on the meter.
+    //
+    // THE THREE CONDITIONS ARE THE SAME THREE THE FIRING LOOP BELOW APPLIES,
+    // and leaving two of them out made the whole mechanic UNREMOVABLE. The
+    // counterfactual that takes the recruiter away sets `off`, and the cut
+    // sets `cutUntil`; neither was consulted here, so both went on collecting
+    // the bonus and the death screen measured the recruiter's worth as exactly
+    // zero. That is the precise opposite of what this effector exists to
+    // demonstrate, it was reported by the one screen built to be trusted, and
+    // nothing failed: two tests in `replay.test.ts` asserted the value was
+    // large and had been quietly rewritten around a different weapon.
+    const helping =
+      active.includes("cytokine") && !off.has("cytokine") && tick >= cutUntil.cytokine;
+    const recruited = helping ? 1 + RECRUIT_BONUS * levels.cytokine : 1;
+
     for (const id of WEAPON_IDS) {
+      if (!active.includes(id)) continue;
       if (off.has(id)) continue;
       if (tick < cutUntil[id]) continue;
       if (tick < nextFire[id]) continue;
       const spec = WEAPONS[id];
       nextFire[id] = tick + spec.cooldown;
+      if (spec.recruits) continue;
       firedThisTick.push(id);
-      const scale = levelScale(levels[id]);
+      const scale = levelScale(levels[id]) * recruited;
       const lo = spec.minRange * spec.minRange;
       const hi = spec.maxRange * spec.maxRange;
 
@@ -646,7 +794,10 @@ export function createRun(opts: RunOptions): Run {
         if (d2[i]! <= reach * reach) incoming += e.damage;
       }
       if (incoming > 0) {
-        hp -= incoming;
+        // CAPPED, because everything touching lands at once and a deep
+        // encirclement would otherwise be an instant unreadable death. Forty
+        // per cent of maximum guarantees three windows from full to dead.
+        hp -= Math.min(incoming, PLAYER_HP * BURST_CAP);
         hurtUntil = tick + HURT_COOLDOWN;
         mutView.hurtThisTick = true;
       }
@@ -660,6 +811,7 @@ export function createRun(opts: RunOptions): Run {
       let g = 0;
       for (let i = 0; i < gems.length; i++) {
         const gem = gems[i]!;
+        if (tick >= gem.until) continue;
         const dx = px - gem.x;
         const dy = py - gem.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
@@ -724,6 +876,26 @@ export function createRun(opts: RunOptions): Run {
     view,
     offers,
     step,
+    chooseLoadout(ids: readonly WeaponId[]) {
+      if (briefingFor < 0) return;
+      // Only things unlocked, no duplicates, and never more than the slots
+      // allow. A briefing that could be answered with six effectors would not
+      // be a decision at all.
+      const picked: WeaponId[] = [];
+      for (const id of ids) {
+        if (picked.length >= LOADOUT_SIZE) break;
+        if (unlocked.includes(id) && !picked.includes(id)) picked.push(id);
+      }
+      if (picked.length === 0) return;
+      active.length = 0;
+      for (const id of picked) active.push(id);
+      briefingFor = -1;
+    },
+
+    get briefing() {
+      return briefingFor;
+    },
+
     chooseUpgrade(id: WeaponId) {
       // Ignored unless a level up is genuinely on the table right now, so a
       // stray tap between rounds cannot hand out a free level.
@@ -747,6 +919,7 @@ export function createRun(opts: RunOptions): Run {
       overkill,
       kills,
       levels,
+      wavesCleared: waveIndex,
       spawned,
       spawnAttempts,
       spawnDigest,

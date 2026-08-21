@@ -48,6 +48,7 @@ export const ja: Record<string, string> = {
   "Right.": "正解。",
   "Not this time.": "今回は違った。",
   "Next": "次へ",
+  "Deploy": "配備",
   "See your score": "スコアを見る",
   "The skill": "スキル",
   "Where this shows up": "どこで現れるか",

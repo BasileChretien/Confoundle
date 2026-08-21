@@ -17,6 +17,7 @@ import { useNumbers } from "./format";
 import { Meter } from "./Meter";
 import { WeaponIcon } from "./WeaponIcon";
 import { DeathScreen } from "./DeathScreen";
+import { BriefingSheet } from "./BriefingSheet";
 
 /**
  * The whole game on one screen.
@@ -43,6 +44,12 @@ const METER_EVERY = 5;
 type Phase =
   | { at: "playing" }
   | { at: "levelup"; offers: readonly WeaponId[] }
+  | {
+      at: "briefing";
+      waveIndex: number;
+      unlocked: readonly WeaponId[];
+      active: readonly WeaponId[];
+    }
   | { at: "dead"; log: RunLog };
 
 export function OverkillGame({ seed, onExit }: { seed: number; onExit: () => void }) {
@@ -126,6 +133,19 @@ export function OverkillGame({ seed, onExit }: { seed: number; onExit: () => voi
           if (r.view.hurtThisTick) shake.current = 7;
           if (status === "awaitingUpgrade") {
             setPhase({ at: "levelup", offers: [...r.offers] });
+            carry = 0;
+            break;
+          }
+          if (status === "awaitingLoadout") {
+            // Copied out rather than held: `view` is explicitly documented as
+            // valid only until the next step, and a briefing sheet outlives
+            // several thousand of them.
+            setPhase({
+              at: "briefing",
+              waveIndex: r.view.waveIndex,
+              unlocked: [...r.view.unlocked],
+              active: [...r.view.active],
+            });
             carry = 0;
             break;
           }
@@ -258,6 +278,19 @@ export function OverkillGame({ seed, onExit }: { seed: number; onExit: () => voi
         <div key={meter} className="pointer-events-none absolute right-3 bottom-3">
           <Meter view={view} onCut={onCut} label={t({ en: "Damage" })} />
         </div>
+      )}
+
+      {phase.at === "briefing" && (
+        <BriefingSheet
+          waveIndex={phase.waveIndex}
+          unlocked={phase.unlocked}
+          active={phase.active}
+          onDeploy={(ids) => {
+            run.current?.chooseLoadout(ids);
+            rec.current?.noteLoadout(view?.tick ?? 0, phase.waveIndex, phase.unlocked, ids);
+            setPhase({ at: "playing" });
+          }}
+        />
       )}
 
       {phase.at === "levelup" && (

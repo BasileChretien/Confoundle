@@ -47,6 +47,7 @@ export const fr: Record<string, string> = {
   "Right.": "Exact.",
   "Not this time.": "Pas cette fois.",
   "Next": "Suivant",
+  "Deploy": "Déployer",
   "See your score": "Voir votre score",
   "The skill": "La compétence",
   "Where this shows up": "Où ça se rencontre",

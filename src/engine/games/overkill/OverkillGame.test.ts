@@ -111,6 +111,43 @@ function play(seconds: number) {
   for (let i = 0; i < 6; i++) frame(0);
 }
 
+/**
+ * Answers whatever briefing is on screen, if one is.
+ *
+ * EVERY TEST IN THIS FILE NEEDS IT, because the run now opens on a briefing
+ * and halts there: the stepper returns `awaitingLoadout` forever until
+ * somebody deploys, so without this the clock reads 0:00 for as many frames as
+ * a test cares to pump, which looks exactly like a broken loop. Six tests here
+ * failed that way the moment the mechanic landed, and every one of them said
+ * "expected 0:00 to be 0:03" rather than anything about a briefing.
+ *
+ * The sheet opens with the current loadout already selected, so answering it
+ * is one click. Found by the commit button's accessible name, which is the one
+ * hook here that is load bearing for a reason other than testing: it exists so
+ * a screen reader has something to announce, so a styling pass cannot quietly
+ * remove it the way a class name or a DOM shape can.
+ */
+function deploy(): boolean {
+  const confirm = container.querySelector('button[aria-label="Deploy"]');
+  if (confirm === null) return false;
+  act(() => confirm.dispatchEvent(new Event("click", { bubbles: true })));
+  return true;
+}
+
+/** Mount, then get past the opening briefing, which is what a player does. */
+function start(onExit = () => {}) {
+  mount(onExit);
+  // TWO FRAMES, and the second one has to have DURATION. The loop only calls
+  // `step` once it has banked a whole tick of wall clock, and the very first
+  // frame spends itself establishing the clock, so a zero-length frame never
+  // reaches the stepper and the briefing is never asked for. The briefing gate
+  // returns before consuming a tick, so this still leaves the clock at zero
+  // and the first test can go on asserting that.
+  frame(0);
+  frame();
+  if (!deploy()) throw new Error("the run did not open on a briefing");
+}
+
 const cardsOnScreen = () =>
   [...container.querySelectorAll("button")].filter((b) => b.className.includes("flex-col"));
 
@@ -128,6 +165,10 @@ function playUntilLevelUp(limitSeconds = 90) {
   try {
     for (let i = 0; i < limitSeconds; i++) {
       play(1);
+      // Waves end mid-run and each one briefs before it starts, so this has to
+      // answer them too or it stalls at the first boundary and reports "no
+      // level up" about a game that is simply waiting to be told something.
+      deploy();
       if (cardsOnScreen().length === 3) return;
       if (text().includes("worth most")) throw new Error("died before any level up");
     }
@@ -146,7 +187,7 @@ const seconds = () => {
 
 describe("the loop", () => {
   it("starts stopped at zero and advances once frames arrive", () => {
-    mount();
+    start();
     expect(clock()).toBe("0:00");
     play(3);
     expect(clock()).toBe("0:03");
@@ -160,7 +201,7 @@ describe("the loop", () => {
     // second, so a duration landing exactly on a tick boundary lets one tick
     // of floating point drift flip the number on screen. Mid-second measures
     // the thing this test is about rather than the last bit of a division.
-    mount();
+    start();
     frame(0);
     for (let i = 0; i < 75; i++) frame(100);
     for (let i = 0; i < 6; i++) frame(0);
@@ -174,13 +215,13 @@ describe("the loop", () => {
     root = createRoot(container);
     queued = new Map();
     now = 0;
-    mount();
+    start();
     play(7.5);
     expect(clock()).toBe(slow);
   });
 
   it("refuses to swallow a long stall, so tabbing away does not kill you", () => {
-    mount();
+    start();
     frame(0);
     frame(60_000);
     // Capped at a quarter second of catch-up, not a minute of it.
@@ -195,7 +236,7 @@ describe("the level up", () => {
     // The stepper is what actually holds time still here, not the loop: see
     // the note in OverkillGame.tsx. This asserts the behaviour a player sees
     // and does not claim to isolate which layer produces it.
-    mount();
+    start();
     playUntilLevelUp();
     expect(cardsOnScreen().length).toBe(3);
     const held = clock();
@@ -216,7 +257,7 @@ describe("the level up", () => {
     // apart: the loop drops the carry, and the effect that owns the carry is
     // rebuilt when the modal closes anyway. That is written up where the code
     // is; what is asserted here is only what a player would see.
-    mount();
+    start();
     playUntilLevelUp();
     const before = seconds();
     for (let i = 0; i < 180; i++) frame();
@@ -235,10 +276,14 @@ describe("the level up", () => {
 
 describe("the end", () => {
   it("reaches the death screen and asks the question", () => {
-    mount();
+    start();
     // Long enough for a player who never chooses anything to be overwhelmed.
     for (let round = 0; round < 40; round++) {
       play(10);
+      // Waves brief before they start, so a run that answers nothing stops at
+      // 0:55 forever and this reported "the death screen never came" about a
+      // game that was patiently waiting to be told what to deploy.
+      deploy();
       const card = [...container.querySelectorAll("button")].find((b) =>
         b.className.includes("flex-col"),
       );
@@ -250,7 +295,7 @@ describe("the end", () => {
 
   it("can be left at any time", () => {
     let left = false;
-    mount(() => {
+    start(() => {
       left = true;
     });
     play(2);

@@ -48,6 +48,7 @@ export const ar: Record<string, string> = {
   "Right.": "صحيح.",
   "Not this time.": "ليس هذه المرة.",
   "Next": "التالي",
+  "Deploy": "نشر",
   "See your score": "اطّلع على نتيجتك",
   "The skill": "المهارة",
   "Where this shows up": "أين يظهر هذا",

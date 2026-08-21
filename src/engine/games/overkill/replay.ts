@@ -1,4 +1,4 @@
-import { WEAPON_IDS, type WeaponId } from "./content";
+import { LOADOUT_SIZE, WEAPON_IDS, type WeaponId } from "./content";
 import {
   simulate,
   type Controller,
@@ -40,6 +40,22 @@ export interface Decision {
   readonly chosen: WeaponId;
 }
 
+/**
+ * One briefing answered: what was on the table and what was deployed.
+ *
+ * A SEPARATE RECORD FROM A LEVEL UP, because it is a different decision with
+ * a different currency. A level up spends experience on more of something you
+ * already have; a briefing spends nothing at all and picks which three of your
+ * effectors are in the fight, against a threat that has been named. A log that
+ * folded them together could not replay either one.
+ */
+export interface Deployment {
+  readonly tick: number;
+  readonly waveIndex: number;
+  readonly offered: readonly WeaponId[];
+  readonly chosen: readonly WeaponId[];
+}
+
 export interface RunLog {
   readonly spawnSeed: number;
   readonly offerSeed: number;
@@ -59,6 +75,8 @@ export interface RunLog {
    * took the yellow one over these two" needs all three.
    */
   readonly upgrades: readonly Decision[];
+  /** Every briefing answered, in order. */
+  readonly deployments: readonly Deployment[];
   /** How many ticks the log covers. No replay of it may run longer. */
   readonly ticks: number;
 }
@@ -77,6 +95,12 @@ export interface Recorder {
    * `chooseUpgrade` and never goes through a controller at all.
    */
   noteUpgrade(tick: number, offers: readonly WeaponId[], chosen: WeaponId): void;
+  noteLoadout(
+    tick: number,
+    waveIndex: number,
+    offered: readonly WeaponId[],
+    chosen: readonly WeaponId[],
+  ): void;
   log(): RunLog;
 }
 
@@ -87,6 +111,7 @@ export function recorder(
   const moves: [number, Dir][] = [];
   const cuts: [number, WeaponId][] = [];
   const upgrades: Decision[] = [];
+  const deployments: Deployment[] = [];
   let last: Dir | null = null;
   let ticks = 0;
 
@@ -114,7 +139,10 @@ export function recorder(
     noteUpgrade(tick, offers, chosen) {
       upgrades.push({ tick, offers: [...offers], chosen });
     },
-    log: () => ({ ...seeds, moves, cuts, upgrades, ticks }),
+    noteLoadout(tick, waveIndex, offered, chosen) {
+      deployments.push({ tick, waveIndex, offered: [...offered], chosen: [...chosen] });
+    },
+    log: () => ({ ...seeds, moves, cuts, upgrades, deployments, ticks }),
   };
 }
 
@@ -134,6 +162,11 @@ export function recording(
         rec.noteUpgrade(view.tick, offers, valid);
         return valid;
       },
+      chooseLoadout(view, unlocked) {
+        const picked = inner.chooseLoadout(view, unlocked);
+        rec.noteLoadout(view.tick, view.waveIndex, unlocked, picked);
+        return picked;
+      },
     },
     log: rec.log,
   };
@@ -147,6 +180,7 @@ export function replayController(log: RunLog): Controller {
   for (const [t, w] of log.cuts) cutAt.set(t, w);
   let held: Dir = 0;
   let nextUpgrade = 0;
+  let nextDeployment = 0;
 
   return {
     move(view) {
@@ -160,6 +194,16 @@ export function replayController(log: RunLog): Controller {
     chooseUpgrade(_view, offers) {
       const want = log.upgrades[nextUpgrade++]?.chosen;
       return want !== undefined && offers.includes(want) ? want : offers[0]!;
+    },
+    chooseLoadout(_view, unlocked) {
+      // Past the end of the log a counterfactual can still be asked, because
+      // taking a weapon away can make a run reach a briefing the original one
+      // never got to. Falling back to what is available keeps it alive rather
+      // than deadlocking the stepper, and `replay.test.ts` pins the case.
+      const want = log.deployments[nextDeployment++]?.chosen;
+      if (want === undefined) return unlocked.slice(0, LOADOUT_SIZE);
+      const kept = want.filter((id) => unlocked.includes(id));
+      return kept.length > 0 ? kept : unlocked.slice(0, LOADOUT_SIZE);
     },
   };
 }
@@ -254,6 +298,7 @@ export function switchingController(log: RunLog, at: number, to: WeaponId): Cont
   return {
     move: base.move,
     cut: base.cut,
+    chooseLoadout: base.chooseLoadout,
     chooseUpgrade(view, offers) {
       const recorded = base.chooseUpgrade(view, offers);
       const mine = seen++;
@@ -425,4 +470,5 @@ export const IDLE: Controller = {
   move: () => 0,
   cut: () => null,
   chooseUpgrade: (_v: RunView, offers) => offers[0]!,
+  chooseLoadout: (_v: RunView, unlocked) => unlocked.slice(0, LOADOUT_SIZE),
 };

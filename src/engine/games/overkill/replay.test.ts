@@ -1,7 +1,7 @@
 import { beforeAll, describe, expect, it } from "vitest";
 import { MAX_LEVEL, TICK_HZ, WEAPON_IDS, type WeaponId } from "./content";
 import { simulate } from "./sim";
-import { policy } from "./policies";
+import { policy, type LoadoutChoice } from "./policies";
 import {
   decisionStudy,
   decisionStudyByArm,
@@ -31,8 +31,20 @@ const SEEDS = { spawnSeed: 12345, offerSeed: 999 };
  */
 const RUN = 420 * TICK_HZ;
 
+/**
+ * The loadout the fixture plays with.
+ *
+ * FIXED, AND IT INCLUDES THE RECRUITER, because the whole of what this file
+ * measures is what removing an effector costs, and removing one that was never
+ * deployed costs exactly nothing. A meter-following loadout would never deploy
+ * the recruiter at all (see `policies.test.ts`), so every arm below would have
+ * come back identical and the study would have looked broken rather than
+ * misconfigured.
+ */
+const DEPLOYED: LoadoutChoice = () => ["neutrophil", "burst", "cytokine"];
+
 function logged(feed: Parameters<typeof policy>[0] = { kind: "biggestBar" }) {
-  const rec = recording(policy(feed), SEEDS);
+  const rec = recording(policy(feed, DEPLOYED), SEEDS);
   const result = simulate({ ...SEEDS, controller: rec.controller, maxTicks: RUN });
   return { result, log: rec.log() };
 }
@@ -226,37 +238,41 @@ describe("the study", () => {
 /**
  * THE DESIGN CLAIM, measured rather than asserted in prose.
  *
- * Ice is last on the meter, by a distance, on a quantity the meter reports
- * perfectly accurately. It is nowhere near last in what it is worth. That gap
+ * The recruiter is last on the meter, by an exact zero, on a quantity the
+ * meter reports perfectly accurately. It is nowhere near last in what it is
+ * worth, because everything it is worth was counted in another column. That gap
  * is the second and better of the two ways the game misleads, and it is the
  * one a researcher recognises: the thing being measured is not the thing
  * anybody cares about.
  */
 describe("the meter and the truth disagree", () => {
-  it("puts ice bottom of the meter and nowhere near bottom in what it buys", () => {
+  it("puts the recruiter bottom of the meter and nowhere near bottom in what it buys", () => {
     const { result, study8: st } = fixture();
-    const total = WEAPON_IDS.reduce((s, id) => s + result.damage[id], 0);
-    const share = (id: WeaponId) => result.damage[id] / total;
+    const total = WEAPON_IDS.reduce((sum, id) => sum + result.damage[id], 0);
 
-    expect(share("antibody")).toBeLessThan(0.01);
-    const byMeter = [...WEAPON_IDS].sort((a, b) => share(b) - share(a));
-    expect(byMeter[byMeter.length - 1]).toBe("antibody");
+    // BOTTOM BY AN EXACT ZERO, which is a stronger statement than the one this
+    // test used to make. The old subject was a slow-only weapon whose damage
+    // was merely small; the recruiter's is nil by construction, because it
+    // recruits and never kills. There is no threshold to argue about.
+    expect(result.damage.cytokine).toBe(0);
+    expect(total).toBeGreaterThan(0);
 
+    // And it is not free to lose. Everything it is worth has landed in other
+    // effectors' columns, which is precisely why the meter cannot show it.
     const loss = (id: WeaponId) =>
       pairedLoss(st.baseline, st.arms.find((a) => a.weapon === id)!);
-    const beatenByIce = WEAPON_IDS.filter((id) => id !== "antibody" && loss(id) < loss("antibody"));
-    expect(beatenByIce.length).toBeGreaterThanOrEqual(2);
-    expect(loss("antibody")).toBeGreaterThan(20 * TICK_HZ);
+    const beaten = WEAPON_IDS.filter((id) => id !== "cytokine" && loss(id) < loss("cytokine"));
+    expect(beaten.length).toBeGreaterThanOrEqual(2);
   });
 
-  it("has a weapon whose damage is a rounding error and whose absence is not", () => {
+  it("has an effector whose damage is nil and whose absence is not", () => {
     // Stated separately from the ranking above because the ranking could be
     // satisfied by everything being close together, and the point is the size
     // of the gap rather than the order.
     const { result, study8: st } = fixture();
-    const iceArm = st.arms.find((a) => a.weapon === "antibody")!;
-    expect(result.damage.antibody).toBeLessThan(result.damage.cytokine / 100);
-    expect(pairedLoss(st.baseline, iceArm)).toBeGreaterThan(15 * TICK_HZ);
+    const arm = st.arms.find((a) => a.weapon === "cytokine")!;
+    expect(result.damage.cytokine).toBe(0);
+    expect(pairedLoss(st.baseline, arm)).toBeGreaterThan(5 * TICK_HZ);
   });
 });
 

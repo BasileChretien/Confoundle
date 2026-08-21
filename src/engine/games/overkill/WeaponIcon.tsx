@@ -54,7 +54,7 @@ export function WeaponIcon({
         </g>
       )}
 
-      {id === "knife" && (
+      {id === "neutrophil" && (
         <g {...common}>
           <path d="M5 19L14 10" />
           <path d="M13 4L20 11L16.5 12.5L11.5 7.5Z" fill={c} />
@@ -80,6 +80,7 @@ export function WeaponIcon({
 
       {id === "complement" && (
         <g {...common}>
+          {/* A pore punched through a membrane, which is what it does. */}
           <circle cx="12" cy="12" r="6.5" />
           <circle cx="12" cy="12" r="2.2" fill={c} stroke="none" />
           {[0, 60, 120, 180, 240, 300].map((deg) => (
@@ -95,6 +96,26 @@ export function WeaponIcon({
           <path d="M12 9.5v7" />
         </g>
       )}
+
+      {id === "nk" && (
+        <g {...common}>
+          {/* A cell with a bite taken out: missing self, which is the cue. */}
+          <path d="M12 4.5a7.5 7.5 0 1 0 7.4 8.7L15 12l4.2-3.1A7.5 7.5 0 0 0 12 4.5Z" fill={c} fillOpacity="0.22" />
+          <circle cx="10.5" cy="12" r="2" fill={c} stroke="none" />
+        </g>
+      )}
+
+      {id === "eosinophil" && (
+        <g {...common}>
+          {/* A bilobed nucleus and granules, which is how you know one. */}
+          <circle cx="12" cy="12" r="7.5" fill={c} fillOpacity="0.18" />
+          <path d="M9.5 8.5a3 3 0 0 0 0 7" />
+          <path d="M14.5 8.5a3 3 0 0 1 0 7" />
+          <circle cx="12" cy="7" r="1" fill={c} stroke="none" />
+          <circle cx="12" cy="17" r="1" fill={c} stroke="none" />
+        </g>
+      )}
+
     </svg>
   );
 }

@@ -127,7 +127,7 @@ function view(over: Partial<RunView> = {}): RunView {
   };
 }
 
-const SIZE = { width: 400, height: 800, particles: [], shake: 0 };
+const SIZE = { width: 400, height: 800, particles: [], shake: 0, marks: [] };
 
 /** Every weapon switched off, so the always-on visuals are absent. */
 const allCut = (): RunView["cutUntil"] =>

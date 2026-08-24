@@ -7,6 +7,7 @@ import {
   TICK_HZ,
   WEAPONS,
   type EnemyKind,
+  type PathogenClass,
   type WeaponId,
 } from "./content";
 import type { RunView } from "./sim";
@@ -40,11 +41,80 @@ export const MAX_PARTICLES = 260;
 export interface Frame {
   readonly view: RunView;
   readonly pulses: readonly Pulse[];
+  readonly marks: readonly Mark[];
   readonly particles: readonly Particle[];
   readonly width: number;
   readonly height: number;
   /** Pixels of screen shake, decaying, applied to everything in the world. */
   readonly shake: number;
+}
+
+/** Where an effector landed, and how it went. Renderer-owned, like `Particle`. */
+export interface Mark {
+  readonly weapon: WeaponId;
+  readonly cls: PathogenClass;
+  readonly x: number;
+  readonly y: number;
+  readonly killed: boolean;
+  readonly match: number;
+  readonly born: number;
+}
+
+/** Forty ticks, two thirds of a second. See `spawnHitMarks`. */
+export const MARK_TICKS = 40;
+
+/**
+ * How many hits per tick are allowed to leave a mark.
+ *
+ * MEASURED, AND THE NUMBER IS THE POINT. Complement is a poison and `sim.ts`
+ * resolves it once per poisoned enemy per TICK, so a complement carried into
+ * the gram-positive wave produced up to 637 records per second, every one of
+ * them a failure. Drawn one frame each that was already a strobe; persisted
+ * for forty ticks it would be a solid grey screen. The simulation's record
+ * stays complete because it is the truth, and the renderer decides what a
+ * person can actually look at.
+ */
+export const MARKS_PER_TICK = 4;
+
+/**
+ * Turns this tick's hits into marks that LAST.
+ *
+ * Every hit drawing in this file used to be read straight out of
+ * `view.hitsThisTick`, which the simulation clears every tick, so the greyed
+ * struck-through effector that a comment here calls the most important drawing
+ * in the file had a lifetime of ONE TICK: 16.7 milliseconds. Worse, the host
+ * loop steps the simulation as many times as the frame budget allows and
+ * paints once at the end, so on any frame that advanced two ticks the earlier
+ * tick's hits were discarded having never been drawn at all.
+ *
+ * Sixteen milliseconds is below the threshold for noticing a change in a
+ * cluttered moving field even when you are looking straight at it, and these
+ * land a median of 122 pixels from where the eye is. Forty ticks is the
+ * cheapest real improvement available to this renderer.
+ *
+ * FAILURES ARE KEPT FIRST when the budget binds, because they are 55% of the
+ * matrix and the entire teaching content of the design. A frame that must drop
+ * something should drop a kill, which the player can already see happening.
+ */
+export function spawnHitMarks(view: RunView, into: Mark[]): void {
+  const hits = view.hitsThisTick;
+  if (hits.length === 0) return;
+  const wrong = hits.filter((h) => h.match < 1);
+  const rest = hits.filter((h) => h.match >= 1);
+  let budget = MARKS_PER_TICK;
+  for (const h of [...wrong, ...rest]) {
+    if (budget <= 0) break;
+    budget -= 1;
+    into.push({
+      weapon: h.weapon,
+      cls: h.cls,
+      x: h.x,
+      y: h.y,
+      killed: h.killed,
+      match: h.match,
+      born: view.tick,
+    });
+  }
 }
 
 export function spawnDeathParticles(view: RunView, into: Particle[]): void {
@@ -149,90 +219,91 @@ export function drawFrame(ctx: CanvasRenderingContext2D, frame: Frame): void {
     }
   }
 
-  // WHERE THE EFFECTORS LANDED, from the simulation's own record.
-  for (const h of view.hitsThisTick) {
-    const hx = sx(h.x);
-    const hy = sy(h.y);
-    ctx.strokeStyle = WEAPON_COLOR[h.weapon];
-    ctx.globalAlpha = 0.95;
+  /*
+    WHERE THE EFFECTORS LANDED, from marks that outlive the tick they were
+    made on, and drawn in THREE bands rather than two.
 
-    if (h.match < 0.35) {
+    The old branch was `if (h.match < 0.35)`, and the matrix has three tiers.
+    A match of exactly 0.35, the "contributes but is not sufficient alone"
+    tier, is not less than 0.35, so it took the success branch and drew
+    identically to a principal defence. Complement on a fungus, on a helminth
+    and on a free virion all rendered as wins. That is not a missing nicety,
+    it is the screen stating something the simulation disagrees with.
+  */
+  for (const m of frame.marks) {
+    const age = view.tick - m.born;
+    if (age < 0 || age > MARK_TICKS) continue;
+    const hx = sx(m.x);
+    const hy = sy(m.y);
+    if (hx < -30 || hy < -30 || hx > width + 30 || hy > height + 30) continue;
+    // Fading over the back half, so the screen clears itself.
+    const life = 1 - Math.max(0, (age - MARK_TICKS * 0.5) / (MARK_TICKS * 0.5));
+    ctx.globalAlpha = 0.95 * life;
+    ctx.strokeStyle = WEAPON_COLOR[m.weapon];
+
+    if (m.match < 0.35) {
       /*
         THE WRONG TOOL, LANDING AND FAILING, AND SAYING WHICH TOOL.
 
-        This is the most important drawing in the file, and the first version
-        of it was two hairline skid marks that named nothing. A player saw a
-        scratch, could not tell which of their three effectors had made it,
-        and had no way to connect it to the choice they made at the briefing.
-        The matrix keeps a trickle rather than zeroing a mismatched effector
-        precisely so this moment is VISIBLE, and then it was drawn invisibly.
-
-        So the effector itself is drawn at the point of failure, greyed out and
-        struck through. Same drawing as the one in your squad and the one on
-        the card you picked, so the three are unmistakably the same thing: this
-        is the cell you chose, this is it arriving, this is it not working.
+        The effector itself is drawn at the point of failure, greyed and
+        struck through: the same drawing as the one in your squad and the one
+        on the card you picked, so the three are unmistakably the same thing.
+        This is the cell you chose, this is it arriving, this is it not
+        working.
       */
       const dx = hx - cx;
       const dy = hy - cy;
       const len = Math.sqrt(dx * dx + dy * dy) || 1;
       const g = 7 * Math.max(0.7, scale);
-      drawEffector(ctx, h.weapon, hx, hy, g, view.tick, {
+      drawEffector(ctx, m.weapon, hx, hy, g, view.tick, {
         failed: true,
         angle: Math.atan2(dy, dx),
       });
-      // Struck through, which is the one mark that reads as "no" without a
-      // word in it, and the one thing on screen drawn in flat grey.
       ctx.strokeStyle = "#94A3B8";
       ctx.lineWidth = 1.8 * Math.max(0.7, scale);
       ctx.beginPath();
       ctx.moveTo(hx - g * 0.9, hy - g * 0.9);
       ctx.lineTo(hx + g * 0.9, hy + g * 0.9);
       ctx.stroke();
-      // And a skid, so it reads as having arrived rather than as having been
-      // placed: the effector reached the pathogen and slid off it.
+      ctx.lineWidth = 1.4 * Math.max(0.7, scale);
+      ctx.globalAlpha = 0.7 * life;
       const nx = -dy / len;
       const ny = dx / len;
-      ctx.lineWidth = 1.4 * Math.max(0.7, scale);
-      ctx.globalAlpha = 0.7;
       for (const side of [-1, 1]) {
         ctx.beginPath();
         ctx.moveTo(hx + nx * side * g * 1.1, hy + ny * side * g * 1.1);
-        ctx.lineTo(
-          hx + nx * side * g * 1.9 - (dx / len) * g,
-          hy + ny * side * g * 1.9 - (dy / len) * g,
-        );
+        ctx.lineTo(hx + nx * side * g * 1.9 - (dx / len) * g, hy + ny * side * g * 1.9 - (dy / len) * g);
         ctx.stroke();
       }
       ctx.globalAlpha = 1;
       continue;
     }
 
-    ctx.lineWidth = (h.killed ? 2.8 : 1.6) * Math.max(0.7, scale);
-    if (h.weapon === "neutrophil") {
-      // A slash across the thing, not a line to it.
-      const dx = hx - cx;
-      const dy = hy - cy;
-      const len = Math.sqrt(dx * dx + dy * dy) || 1;
-      const nx = -dy / len;
-      const ny = dx / len;
-      ctx.beginPath();
-      ctx.moveTo(hx - nx * 10 * scale, hy - ny * 10 * scale);
-      ctx.lineTo(hx + nx * 10 * scale, hy + ny * 10 * scale);
-      ctx.stroke();
-    } else if (h.weapon === "antibody") {
+    if (m.match < 1) {
+      // CONTRIBUTES, AND CANNOT FINISH. A broken ring: the shape of a
+      // principal defence with a piece missing, so it reads as the same act
+      // left incomplete rather than as a different act.
+      ctx.lineWidth = 1.6 * Math.max(0.7, scale);
+      const r = 7 * scale;
+      for (const from of [0.2, 2.4, 4.5]) {
+        ctx.beginPath();
+        ctx.arc(hx, hy, r, from, from + 1.1);
+        ctx.stroke();
+      }
+      ctx.globalAlpha = 1;
+      continue;
+    }
+
+    ctx.lineWidth = (m.killed ? 2.8 : 1.6) * Math.max(0.7, scale);
+    if (m.weapon === "antibody") {
       drawY(ctx, hx, hy, 7 * scale, view.tick / 7);
-    } else if (h.weapon === "killerT" || h.weapon === "nk") {
-      // A reach from the patrol to the cell it has condemned.
-      ctx.beginPath();
-      ctx.moveTo(cx, cy);
-      ctx.lineTo(hx, hy);
-      ctx.stroke();
+    } else if (m.weapon === "killerT" || m.weapon === "nk") {
       ctx.beginPath();
       ctx.arc(hx, hy, 8 * scale, 0, TAU);
       ctx.stroke();
     } else {
       ctx.beginPath();
-      ctx.arc(hx, hy, (h.killed ? 9 : 6) * scale, 0, TAU);
+      ctx.arc(hx, hy, (m.killed ? 9 : 6) * scale, 0, TAU);
       ctx.stroke();
     }
     ctx.globalAlpha = 1;

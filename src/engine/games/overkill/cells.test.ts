@@ -162,7 +162,7 @@ describe("the squad", () => {
 
   const frameFor = (v: RunView) => {
     const { ctx, calls } = recorder();
-    drawFrame(ctx, { view: v, pulses: [], width: 400, height: 800, particles: [], shake: 0 });
+    drawFrame(ctx, { view: v, pulses: [], marks: [], width: 400, height: 800, particles: [], shake: 0 });
     return calls.map((c) => `${c.op}(${c.args.join(",")})`).join("|");
   };
 

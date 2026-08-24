@@ -5,6 +5,7 @@ import {
   LOADOUT_SIZE,
   WEAPON_IDS,
   waveAt,
+  type EnemyKind,
   type WeaponId,
 } from "./content";
 import { drawPathogen } from "./render";
@@ -123,17 +124,112 @@ export function BriefingSheet({
   );
 }
 
+export interface PortraitItem {
+  readonly kind: EnemyKind;
+  readonly x: number;
+  readonly y: number;
+  readonly r: number;
+  /** An animation offset, so three of the same thing do not move in lockstep. */
+  readonly phase: number;
+}
+
+export interface PortraitPlan {
+  readonly pathogens: readonly PortraitItem[];
+  readonly arrowAt: { readonly x: number; readonly y: number } | null;
+}
+
 /**
- * The threat, drawn large and drawn moving, by the arena's own function.
+ * WHAT THE BRIEFING DRAWS, as data rather than as canvas calls.
+ *
+ * Pure so the fairness property can be tested at all: a canvas effect cannot
+ * be inspected in this suite, and the property that matters is not how it
+ * looks but WHICH PATHOGENS IT NAMES. `briefing.test.ts` asserts that every
+ * phase of every wave appears here, off `WAVES` itself, so a second turning
+ * wave added later is covered without its author knowing this exists.
+ */
+export function portraitPlan(waveIndex: number, width: number, height: number): PortraitPlan {
+  const wave = waveAt(waveIndex);
+  const cy = height / 2;
+  const sizeOf = (k: EnemyKind) => 92 / (ENEMIES[k].radius > 12 ? 2.4 : 1.6);
+  const becomes = turnsIntoKind(wave);
+
+  if (becomes === null) {
+    const cx = width / 2;
+    const r = sizeOf(wave.headline);
+    // Three of them, the middle one large: a wave rather than a specimen.
+    return {
+      pathogens: [
+        { kind: wave.headline, x: cx - 76, y: cy + 14, r: r * 0.55, phase: 40 },
+        { kind: wave.headline, x: cx + 78, y: cy - 10, r: r * 0.62, phase: 90 },
+        { kind: wave.headline, x: cx, y: cy, r, phase: 0 },
+      ],
+      arrowAt: null,
+    };
+  }
+
+  // Two halves and an arrow: this, and then this. The whole wave, before the
+  // player is asked to answer it.
+  const left = width * 0.26;
+  const right = width * 0.74;
+  const rl = sizeOf(wave.headline) * 0.78;
+  const rr = sizeOf(becomes) * 0.78;
+  return {
+    pathogens: [
+      { kind: wave.headline, x: left - 26, y: cy + 16, r: rl * 0.55, phase: 40 },
+      { kind: wave.headline, x: left, y: cy - 4, r: rl, phase: 0 },
+      { kind: becomes, x: right + 26, y: cy + 16, r: rr * 0.55, phase: 70 },
+      { kind: becomes, x: right, y: cy - 4, r: rr, phase: 20 },
+    ],
+    arrowAt: { x: width / 2, y: cy },
+  };
+}
+
+/**
+ * What a turning wave turns into: the heaviest kind in its second phase, or
+ * null for a wave that stays what it started as.
+ *
+ * Read off the data rather than written out per wave, so a second turning wave
+ * added later announces itself without anybody remembering this exists.
+ */
+function turnsIntoKind(wave: ReturnType<typeof waveAt>): EnemyKind | null {
+  if (wave.turnsInto === undefined) return null;
+  let best: EnemyKind | null = null;
+  let weight = -1;
+  for (const [kind, w] of wave.turnsInto.mix) {
+    if (w > weight) {
+      weight = w;
+      best = kind;
+    }
+  }
+  return best;
+}
+
+/**
+ * What is coming, drawn large and drawn moving, by the arena's own function.
  *
  * Deliberately the same code path: if the wall on the gram positive ever stops
  * being visibly thicker in the arena, it stops being thicker here too, and the
  * briefing cannot quietly promise a distinction the game no longer draws.
+ *
+ * IT SHOWS BOTH HALVES OF A WAVE THAT TURNS OVER, and it did not, which was a
+ * violation of this project's oldest rule about never marking a well-reasoning
+ * player wrong in order to land a surprise.
+ *
+ * The influenza wave announces free virions and then, at 38 seconds, becomes
+ * infected host cells. A player who reasons correctly from what they were
+ * shown deploys antibody, which is the right answer to a free virion and
+ * cannot reach a virus that is inside one of your own cells. The loadout is
+ * then LOCKED for the rest of the wave, so there is no remedy: the game asked
+ * a question, accepted the correct answer, and killed them for it.
+ *
+ * CLAUDE.md is explicit that the fix is to put the discriminator in the
+ * framing rather than to enjoy the reveal, so the briefing now draws the
+ * second phase beside the first with an arrow between them. The surprise that
+ * remains is the interesting one, which is that the answer inverts. The one
+ * that is removed is the unfair one, which is that you were not told.
  */
 function ThreatPortrait({ waveIndex }: { waveIndex: number }) {
   const canvas = useRef<HTMLCanvasElement | null>(null);
-  const wave = waveAt(waveIndex);
-
   useEffect(() => {
     const c = canvas.current;
     if (c === null) return;
@@ -144,23 +240,37 @@ function ThreatPortrait({ waveIndex }: { waveIndex: number }) {
     c.height = Math.round(c.clientHeight * dpr);
     let raf = 0;
     let tick = 0;
-    const spec = ENEMIES[wave.headline];
+    // Motion is decoration here; the shapes carry everything. Frozen rather
+    // than animated for a reader who asked not to be moved at.
+    const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const plan = portraitPlan(waveIndex, c.clientWidth, c.clientHeight);
+
     const draw = () => {
       raf = requestAnimationFrame(draw);
-      tick += 1;
+      if (!still) tick += 1;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       ctx.clearRect(0, 0, c.clientWidth, c.clientHeight);
-      const cx = c.clientWidth / 2;
-      const cy = c.clientHeight / 2;
-      // Three of them, the middle one large: a wave rather than a specimen.
-      const r = 92 / (spec.radius > 12 ? 2.4 : 1.6);
-      drawPathogen(ctx, wave.headline, cx - 76, cy + 14, r * 0.55, tick + 40, false);
-      drawPathogen(ctx, wave.headline, cx + 78, cy - 10, r * 0.62, tick + 90, false);
-      drawPathogen(ctx, wave.headline, cx, cy, r, tick, false);
+      for (const item of plan.pathogens) {
+        drawPathogen(ctx, item.kind, item.x, item.y, item.r, tick + item.phase, false);
+      }
+      if (plan.arrowAt !== null) {
+        const { x, y } = plan.arrowAt;
+        ctx.strokeStyle = "#64748B";
+        ctx.lineWidth = 2;
+        ctx.lineCap = "round";
+        ctx.beginPath();
+        ctx.moveTo(x - 14, y);
+        ctx.lineTo(x + 12, y);
+        ctx.moveTo(x + 4, y - 7);
+        ctx.lineTo(x + 12, y);
+        ctx.lineTo(x + 4, y + 7);
+        ctx.stroke();
+        ctx.lineCap = "butt";
+      }
     };
     draw();
     return () => cancelAnimationFrame(raf);
-  }, [wave.headline, waveIndex]);
+  }, [waveIndex]);
 
   return <canvas ref={canvas} className="h-28 w-full" aria-hidden />;
 }

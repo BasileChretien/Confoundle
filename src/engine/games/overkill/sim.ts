@@ -160,6 +160,19 @@ export interface RunView {
 
 export interface Landed {
   readonly weapon: WeaponId;
+  /**
+   * WHAT WAS HIT, and without it the renderer cannot draw why anything failed.
+   *
+   * The record used to carry only how well the effector matched, a scalar, so
+   * complement stopped by a peptidoglycan wall and a T cell finding nothing to
+   * recognise on a free virion were the SAME EVENT as far as anything drawing
+   * them could tell, and both got the same grey mark. That is not an art
+   * problem that better draughtsmanship could have solved, which is why two
+   * attempts at better draughtsmanship did not solve it. It is a missing
+   * field, and it costs nothing: `hit` already has the enemy in hand.
+   */
+  readonly kind: EnemyKind;
+  readonly cls: PathogenClass;
   readonly x: number;
   readonly y: number;
   readonly killed: boolean;
@@ -531,7 +544,7 @@ export function createRun(opts: RunOptions): Run {
         gems.push({ x: e.x, y: e.y, value: XP_VALUE[e.kind], until: tick + GEM_TICKS });
       }
     }
-    hitsThisTick.push({ weapon: by, x: e.x, y: e.y, killed, match });
+    hitsThisTick.push({ weapon: by, kind: e.kind, cls: e.cls, x: e.x, y: e.y, killed, match });
   };
 
   const step = (): StepStatus => {

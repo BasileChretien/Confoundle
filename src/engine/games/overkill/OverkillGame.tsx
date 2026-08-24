@@ -5,7 +5,10 @@ import { createRun, type Dir, type Run, type RunView } from "./sim";
 import { recorder, type Recorder, type RunLog } from "./replay";
 import { WEAPON_COLOR } from "./palette";
 import {
+  MARK_TICKS,
   MAX_PARTICLES,
+  spawnHitMarks,
+  type Mark,
   drawFrame,
   spawnDeathParticles,
   stepParticles,
@@ -41,6 +44,15 @@ const STEP_MS = 1000 / TICK_HZ;
 const MAX_CATCHUP_MS = 250;
 const METER_EVERY = 5;
 
+/**
+ * A ceiling on marks held in memory.
+ *
+ * Four per tick for forty ticks is 160 live at most, so this only binds if the
+ * loop ever falls far enough behind to step many ticks between paints. It is a
+ * memory rail, not a design decision.
+ */
+const MAX_MARKS = MARK_TICKS * 6;
+
 type Phase =
   | { at: "playing" }
   | { at: "levelup"; offers: readonly WeaponId[] }
@@ -59,6 +71,7 @@ export function OverkillGame({ seed, onExit }: { seed: number; onExit: () => voi
   const run = useRef<Run | null>(null);
   const rec = useRef<Recorder | null>(null);
   const pulses = useRef<Pulse[]>([]);
+  const marks = useRef<Mark[]>([]);
   const particles = useRef<Particle[]>([]);
   /** Decays every frame. Pure feedback: nothing reads it back. */
   const shake = useRef(0);
@@ -87,6 +100,7 @@ export function OverkillGame({ seed, onExit }: { seed: number; onExit: () => voi
     rec.current = r;
     run.current = createRun({ ...seeds, driver: r.driver });
     pulses.current = [];
+    marks.current = [];
     particles.current = [];
     shake.current = 0;
     setPhase({ at: "playing" });
@@ -127,6 +141,10 @@ export function OverkillGame({ seed, onExit }: { seed: number; onExit: () => voi
           carry -= STEP_MS;
           const status = r.step();
           for (const w of r.view.firedThisTick) pulses.current.push({ weapon: w, tick: r.view.tick });
+          // Collected per TICK and not per frame: the loop below steps as many
+          // ticks as the frame budget allows and paints once, so anything read
+          // off `view` at paint time has already lost every tick but the last.
+          spawnHitMarks(r.view, marks.current);
           spawnDeathParticles(r.view, particles.current);
           stepParticles(particles.current, r.view);
           // A hit is the one moment the screen is allowed to shout.
@@ -156,6 +174,9 @@ export function OverkillGame({ seed, onExit }: { seed: number; onExit: () => voi
           }
         }
         if (pulses.current.length > 40) pulses.current.splice(0, pulses.current.length - 40);
+        if (marks.current.length > MAX_MARKS) {
+          marks.current.splice(0, marks.current.length - MAX_MARKS);
+        }
         if (particles.current.length > MAX_PARTICLES) {
           particles.current.splice(0, particles.current.length - MAX_PARTICLES);
         }
@@ -177,7 +198,7 @@ export function OverkillGame({ seed, onExit }: { seed: number; onExit: () => voi
 
       shake.current *= 0.82;
       if (shake.current < 0.3) shake.current = 0;
-      paint(c, r.view, pulses.current, particles.current, shake.current);
+      paint(c, r.view, pulses.current, marks.current, particles.current, shake.current);
       frames += 1;
       if (frames % METER_EVERY === 0) setMeter((m) => m + 1);
     };
@@ -337,6 +358,7 @@ function paint(
   canvas: HTMLCanvasElement,
   view: RunView,
   pulses: readonly Pulse[],
+  marks: readonly Mark[],
   particles: readonly Particle[],
   shake: number,
 ): void {
@@ -350,5 +372,5 @@ function paint(
   const ctx = canvas.getContext("2d");
   if (ctx === null) return;
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  drawFrame(ctx, { view, pulses, particles, width: w, height: h, shake });
+  drawFrame(ctx, { view, pulses, marks, particles, width: w, height: h, shake });
 }

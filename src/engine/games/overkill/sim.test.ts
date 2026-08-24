@@ -351,6 +351,7 @@ describe("nothing in here can reach outside itself", () => {
     "loadouts.ts",
     "policies.ts",
     "render.ts",
+    "verbs.ts",
   ];
 
   const BANNED: readonly (readonly [string, RegExp])[] = [

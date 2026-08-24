@@ -5,9 +5,11 @@ import {
   WEAPONS,
   WEAPON_IDS,
   waveAt,
+  type EnemyKind,
   type PathogenClass,
   type WeaponId,
 } from "./content";
+
 import type { LoadoutChoice } from "./policies";
 
 /**
@@ -104,18 +106,91 @@ export function loadoutScore(id: WeaponId, waveIndex: number): number {
   means. What it is worth is a separate question and deserves a separate arm
   rather than a free ride inside this one.
 */
+/**
+ * What a whole LOADOUT is worth, which is not the sum of its parts any more.
+ *
+ * THE ORACLE USED TO SCORE EFFECTORS ONE AT A TIME AND ADD THEM UP, and that
+ * stopped being valid the moment opsonisation existed. Antibody is worth
+ * almost nothing alone against a bacterium and it makes a phagocyte able to
+ * finish one, so the value of the card depends entirely on what else is in the
+ * three slots. An additive scorer cannot represent that, and it showed:
+ * measured, the "correct" loadout came in at 125 seconds against 128 for never
+ * choosing at all. The ceiling arm was below the floor.
+ *
+ * That is the immunologist's objection arriving as a number. A model in which
+ * every effector is independent cannot express the one fact about immunity
+ * that matters most, which is that almost nothing in it works alone.
+ *
+ * So the arms now search over COMBINATIONS. There are at most 35 of them and
+ * they are evaluated once per briefing, five times a run.
+ */
+export function setScore(ids: readonly WeaponId[], waveIndex: number): number {
+  const weights = kindWeights(waveIndex);
+  let total = 0;
+  for (const id of ids) {
+    if (WEAPONS[id].recruits === true) continue;
+    for (const kind of Object.keys(weights) as EnemyKind[]) {
+      // NO COAT TERM, because the simulation has none: see the long note in
+      // `hit`. The rule this file has to keep is that the oracle scores the
+      // game that is actually played, and a scorer that models a cooperation
+      // the simulation does not have will confidently recommend nonsense. It
+      // did, briefly, and deployed a phagocyte against influenza.
+      total += weights[kind]! * EFFECTIVE[id][ENEMIES[kind].cls];
+    }
+  }
+  return total;
+}
+
+/**
+ * The same threat weighting as `classWeights`, kept by KIND rather than
+ * collapsed to class, because whether a coat can land is a fact about the
+ * pathogen and not about its category.
+ */
+export function kindWeights(waveIndex: number): Readonly<Partial<Record<EnemyKind, number>>> {
+  const wave = waveAt(waveIndex);
+  const phases = wave.turnsInto === undefined ? [wave.mix] : [wave.mix, wave.turnsInto.mix];
+  const out: Partial<Record<EnemyKind, number>> = {};
+  for (const mix of phases) {
+    const threat = (kind: EnemyKind, n: number) => n * ENEMIES[kind].hp * ENEMIES[kind].damage;
+    let sum = 0;
+    for (const [kind, n] of mix) sum += threat(kind, n);
+    for (const [kind, n] of mix) {
+      out[kind] = (out[kind] ?? 0) + threat(kind, n) / sum / phases.length;
+    }
+  }
+  return out;
+}
+
+/** Every way of filling the slots from what is on the table. */
+function combinations(pool: readonly WeaponId[], size: number): WeaponId[][] {
+  if (size === 0) return [[]];
+  const out: WeaponId[][] = [];
+  for (let i = 0; i <= pool.length - size; i++) {
+    for (const rest of combinations(pool.slice(i + 1), size - 1)) {
+      out.push([pool[i]!, ...rest]);
+    }
+  }
+  return out;
+}
+
 function ranked(sign: number): LoadoutChoice {
   return (view, unlocked) => {
-    // Sorted off `WEAPON_IDS` rather than off whatever order `unlocked`
-    // happens to be in, so two runs handed the same set in a different order
-    // still deploy the same three and the arms stay comparable.
-    const order = WEAPON_IDS.filter(
+    // Killers only, in both arms: see the comment above `MATCHED`. The pool is
+    // walked in `WEAPON_IDS` order so ties resolve the same way every run.
+    const pool = WEAPON_IDS.filter(
       (id) => unlocked.includes(id) && WEAPONS[id].recruits !== true,
-    ).slice();
-    order.sort(
-      (a, b) => sign * (loadoutScore(a, view.waveIndex) - loadoutScore(b, view.waveIndex)),
     );
-    return order.slice(0, LOADOUT_SIZE);
+    const sets = combinations(pool, Math.min(LOADOUT_SIZE, pool.length));
+    let best = sets[0]!;
+    let bestScore = sign * setScore(best, view.waveIndex);
+    for (const set of sets) {
+      const score = sign * setScore(set, view.waveIndex);
+      if (score < bestScore) {
+        bestScore = score;
+        best = set;
+      }
+    }
+    return best;
   };
 }
 

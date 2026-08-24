@@ -92,6 +92,7 @@ function enemy(over: Partial<EnemyView> = {}): EnemyView {
     slowUntil: 0,
     flashUntil: 0,
     poisonUntil: 0,
+    opsonisedUntil: 0,
     ...over,
   };
 }

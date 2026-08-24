@@ -241,13 +241,32 @@ export interface EnemySpec {
    * field, so the picture cannot drift from the mechanism.
    */
   readonly wall: number;
+  /**
+   * Whether the thing that has to die is INSIDE one of your own cells.
+   *
+   * The single property that decides whether antibody is any use, because an
+   * antibody binds surfaces and there is no surface to bind. Stored rather
+   * than inferred from the class name so the encounter animation and the
+   * matrix are reading the same fact.
+   */
+  readonly intracellular: boolean;
+  /**
+   * Whether the target IS one of your own cells.
+   *
+   * Distinct from `intracellular`, and the distinction earns its keep twice.
+   * Complement does not lyse host cells because they carry regulators, CD46,
+   * CD55 and CD59, which is a better reason than "it is not on the list". And
+   * an eosinophil does not degranulate onto one of yours, which is what stops
+   * "too large to engulf" from being the whole of its story.
+   */
+  readonly self: boolean;
 }
 
 export const ENEMIES: Readonly<Record<EnemyKind, EnemySpec>> = {
   /** E. coli. Thin walled, and complement goes straight through it. */
-  coli: { cls: "gramNegative", hp: 9, speed: 48, damage: 3, radius: 7, armour: 0 , wall: 0.1 /* a hairline wall, and complement goes straight through it */ },
+  coli: { cls: "gramNegative", hp: 9, speed: 48, damage: 3, radius: 7, armour: 0 , wall: 0.1 /* a hairline wall, and complement goes straight through it */ , intracellular: false, self: false },
   /** S. aureus. The thick wall is the whole lesson, so it is drawn thick. */
-  aureus: { cls: "gramPositive", hp: 26, speed: 44, damage: 5, radius: 8, armour: 3 , wall: 0.36 /* the thick peptidoglycan the MAC cannot reach past */ },
+  aureus: { cls: "gramPositive", hp: 26, speed: 44, damage: 5, radius: 8, armour: 3 , wall: 0.36 /* the thick peptidoglycan the MAC cannot reach past */ , intracellular: false, self: false },
   /**
    * A free influenza virion, out where an antibody can still reach it.
    *
@@ -258,13 +277,13 @@ export const ENEMIES: Readonly<Record<EnemyKind, EnemySpec>> = {
    * legible from playing, and "the right answer barely scratches it" is the
    * wrong lesson taught convincingly.
    */
-  virion: { cls: "freeVirion", hp: 14, speed: 104, damage: 7, radius: 7, armour: 0 , wall: 0 /* an envelope, no wall at all */ },
+  virion: { cls: "freeVirion", hp: 14, speed: 104, damage: 7, radius: 7, armour: 0 , wall: 0 /* an envelope, no wall at all */ , intracellular: false, self: false },
   /** One of your own cells, infected. Killing it is the only thing that works. */
-  infected: { cls: "infectedCell", hp: 60, speed: 34, damage: 14, radius: 12, armour: 6 , wall: 0.08 /* your own membrane, thin, and defended another way */ },
+  infected: { cls: "infectedCell", hp: 60, speed: 34, damage: 14, radius: 12, armour: 6 , wall: 0.08 /* your own membrane, thin, and defended another way */ , intracellular: true, self: true },
   /** Candida. The filamentous form is far too big to engulf. */
-  candida: { cls: "fungus", hp: 70, speed: 38, damage: 12, radius: 13, armour: 5 , wall: 0.3 /* a chitin and glucan wall, thick enough to resist */ },
+  candida: { cls: "fungus", hp: 70, speed: 38, damage: 12, radius: 13, armour: 5 , wall: 0.3 /* a chitin and glucan wall, thick enough to resist */ , intracellular: false, self: false },
   /** A schistosome. Too large to phagocytose, and indifferent to most of you. */
-  worm: { cls: "helminth", hp: 420, speed: 30, damage: 26, radius: 19, armour: 10 , wall: 0.5 /* a syncytial tegument, and far too much of it */ },
+  worm: { cls: "helminth", hp: 420, speed: 30, damage: 26, radius: 19, armour: 10 , wall: 0.5 /* a syncytial tegument, and far too much of it */ , intracellular: false, self: false },
 };
 
 /**
@@ -297,9 +316,33 @@ export const ENEMIES: Readonly<Record<EnemyKind, EnemySpec>> = {
  *   oxidative burst and NETs (PMC3052948).
  */
 export const EFFECTIVE: Readonly<Record<WeaponId, Readonly<Record<PathogenClass, number>>>> = {
+  /*
+    FUNGUS IS 0.35 AND NOT 1, and the correction came from the drawing.
+
+    The encounter animations derive their outcome from the pathogen's
+    properties rather than from this table, and then `verbs.test.ts` requires
+    the two to agree. Exactly one pair disagreed: a neutrophil is 13 world
+    units of Candida against its own 9, so it cannot close around it, and the
+    matrix insisted it was the principal defence anyway. The comment on wave
+    four had said the opposite of this row since the day it was written.
+
+    The biology is better than the fix needed to be. Neutrophils phagocytose
+    Candida in its YEAST form and cannot engulf a hypha at all; what they do to
+    something too large is release extracellular traps, and Branzk et al. (Nat
+    Immunol 2014, PMID 25064073) showed they SENSE MICROBE SIZE and switch to
+    NETs selectively for pathogens they cannot phagocytose. That is exactly
+    what `ENGULF_MAX` models, arrived at independently, which is the strongest
+    evidence yet that deriving these from size rather than listing them is
+    right.
+
+    It also splits the only pair of byte-identical rows in the table. The
+    phagocyte and the burst were the same six numbers, so two of the eight
+    cards carried one behaviour between them, and a player who learned to tell
+    them apart then correctly observed it made no difference.
+  */
   neutrophil: {
     gramNegative: 1, gramPositive: 1, freeVirion: 0.12,
-    infectedCell: 0.12, fungus: 1, helminth: 0.12,
+    infectedCell: 0.12, fungus: 0.35, helminth: 0.12,
   },
   burst: {
     gramNegative: 1, gramPositive: 1, freeVirion: 0.12,
@@ -309,8 +352,31 @@ export const EFFECTIVE: Readonly<Record<WeaponId, Readonly<Record<PathogenClass,
     gramNegative: 1, gramPositive: 0.12, freeVirion: 0.35,
     infectedCell: 0.12, fungus: 0.35, helminth: 0.35,
   },
+  /*
+    ANTIBODY IS 0.35 AGAINST BACTERIA, NOT 1, AND THIS ROW WAS TEACHING THE
+    OPPOSITE OF THE MECHANISM.
+
+    Antibody has no intrinsic bactericidal power. It has four functions and
+    three of them are handoffs: it neutralises, which is real killing only
+    against something whose entry it blocks, and otherwise it opsonises for a
+    phagocyte, fixes complement, or arms a cell for ADCC. Giving it 1.0 against
+    both gram classes made "always bring antibody" near optimal forever, and
+    the oracle proved it: antibody sat in the computed best loadout for waves
+    two through five, so a player could play near optimally without ever
+    discriminating anything.
+
+    Found twice independently, which is why it is being changed. An immunology
+    review flagged it as one of three critical errors, and separately the
+    encounter derivation, which knows nothing about that review, refused to
+    call it a kill: the verb is COAT, coating is not killing, and the drawing
+    had no way to show a bacterium dying of being labelled.
+
+    Neutralisation of a free virion stays 1.0. That one really is the antibody
+    finishing the job by itself, because a virus that cannot attach is a virus
+    that is finished.
+  */
   antibody: {
-    gramNegative: 1, gramPositive: 1, freeVirion: 1,
+    gramNegative: 0.35, gramPositive: 0.35, freeVirion: 1,
     infectedCell: 0.12, fungus: 0.35, helminth: 0.35,
   },
   killerT: {
@@ -349,6 +415,13 @@ export interface WeaponSpec {
   /** Complement goes through the wall rather than around it. */
   readonly pierces?: boolean;
   /**
+   * Leaves the target coated, so a phagocyte can get a grip on it.
+   *
+   * The whole of what antibody does to a bacterium. It is worth nothing on its
+   * own and it is what makes the phagocyte in the next slot work.
+   */
+  readonly opsonises?: boolean;
+  /**
    * Cytokines: recruits rather than kills, so every point of its contribution
    * lands in somebody else's bar on the meter. This is the whole reason it
    * exists. See `RECRUIT_BONUS`.
@@ -378,7 +451,7 @@ export const WEAPONS: Readonly<Record<WeaponId, WeaponSpec>> = {
   /** IgG: tags what it hits, which slows it and marks it for everything else. */
   antibody: {
     cooldown: 18, minRange: 0, maxRange: 150, maxTargets: 10, prefer: "any",
-    damage: 3, slowFactor: 0.5, slowTicks: 45,
+    damage: 3, slowFactor: 0.5, slowTicks: 45, opsonises: true,
   },
   /** A cytotoxic T cell, which only ever has one job. */
   killerT: {
@@ -415,6 +488,16 @@ export const WEAPON_IDS = Object.keys(WEAPONS) as readonly WeaponId[];
 export const RECRUIT_BONUS = 0.18;
 
 export const MAX_LEVEL = 6;
+
+/**
+ * How long an antibody coat stays on, at 60 ticks a second.
+ *
+ * Long enough that a phagocyte arriving a moment later still benefits, which
+ * is the entire point: the two effectors are not firing at the same target on
+ * the same tick, they are working in sequence, and a coat that expired before
+ * the second one arrived would make the interaction invisible.
+ */
+export const OPSONISED_TICKS = 4 * TICK_HZ;
 
 /** A level buys damage. Fewer and bigger steps than before, deliberately. */
 export function levelScale(level: number): number {
@@ -541,7 +624,7 @@ export const WAVES: readonly Wave[] = [
     // stops working. The first real decision, and the meter will not tell you.
     headline: "aureus",
     ticks: 65 * TICK_HZ,
-    everyTicks: 15,
+    everyTicks: 21,
     mix: [["aureus", 7], ["coli", 3]],
     unlocks: ["killerT"],
   },

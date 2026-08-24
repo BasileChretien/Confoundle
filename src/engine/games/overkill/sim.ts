@@ -40,6 +40,7 @@ import {
   waveAt,
   xpToNext,
 } from "./content";
+
 import { foldSpawn, stream, unitVector, weightedIndex } from "./rng";
 
 /**
@@ -107,6 +108,11 @@ export interface EnemyView {
   readonly flashUntil: number;
   /** The tick complement stops eating it, so the renderer can show it working. */
   readonly poisonUntil: number;
+  /**
+   * Coated in antibody, and therefore edible by something that could not
+   * otherwise get a grip on it. See `OPSONISED_TICKS`.
+   */
+  readonly opsonisedUntil: number;
 }
 
 /**
@@ -349,6 +355,7 @@ interface Enemy {
   slowFactor: number;
   poisonUntil: number;
   poisonDps: number;
+  opsonisedUntil: number;
   flashUntil: number;
 }
 
@@ -500,6 +507,31 @@ export function createRun(opts: RunOptions): Run {
     // THE MATRIX, applied here and nowhere else. Complement on a gram positive
     // wall, an antibody reaching for something already inside a cell: both
     // land, both barely scratch, and both are honest about why.
+    /*
+      OPSONISATION IS NOT HERE, AND FINDING OUT WHY WAS THE USEFUL PART.
+
+      Antibody has no intrinsic bactericidal power, so correcting its row from
+      1.0 to 0.35 against both gram classes was right and left it looking weak.
+      The obvious compensation is the real mechanism: a coat is worth nothing
+      alone and makes a phagocyte able to finish something. It was built, and
+      then it had NOWHERE TO APPLY.
+
+      A coat helps a phagocyte engulf something it could physically engulf but
+      cannot grip. Every pathogen in this deck that a phagocyte can reach is
+      already a principal defence for it, and every one it cannot reach is out
+      of reach for a reason no coat changes: a hypha and a worm are too large,
+      and an infected cell is one of yours. So the upgrade was either a no-op
+      or a licence to eat your own tissue, and while it was in it did the
+      second: `completes` is true for the HOLLOW outcome as well as the killing
+      one, so a coated virion counted as engulfable and the oracle deployed a
+      neutrophil against influenza.
+
+      Opsonisation needs a pathogen whose defence is a capsule that resists
+      phagocytosis until it is coated, which is what pneumococcus is for. That
+      is a pathogen and a property this deck does not have yet, and adding one
+      is the right way to bring this mechanic back. Asserting it without one
+      would be drawing a cooperation that does not happen.
+    */
     const match = EFFECTIVE[by][e.cls];
     const amount = effectiveDamage(raw, e.armour, pierces, match);
     if (amount <= 0) return;
@@ -599,6 +631,27 @@ export function createRun(opts: RunOptions): Run {
         for (const id of current.unlocks ?? []) {
           if (!unlocked.includes(id)) unlocked.push(id);
         }
+        /*
+          THE PREVIOUS INFECTION IS OVER, so what is left of it goes.
+
+          Without this a wave's survivors are STRANDED, and after the matrix
+          was corrected they became immortal. The loadout you deploy against
+          influenza is antibody and two lymphocytes; none of the three can
+          finish a bacterium, and the kill floor means none of them can land a
+          killing blow on one at all. So every E. coli and S. aureus still
+          alive at the boundary stayed alive for the rest of the run, the crowd
+          only ever grew, and every arm died at the same 128 seconds no matter
+          what it deployed or how the spawn rates were tuned. Four sweeps
+          across three different knobs all converged there before the trace
+          showed why.
+
+          Clearing at the boundary also fixes the thing the learning review
+          called a binding constraint: a player can never estimate what an
+          effector did if the screen is a mixture of this wave and every wave
+          before it. Each wave is now a clean test of one loadout against one
+          announced threat, which is what the briefing promises.
+        */
+        enemies.length = 0;
         waveIndex += 1;
         waveStartedAt = tick;
         briefingFor = waveIndex;
@@ -731,6 +784,7 @@ export function createRun(opts: RunOptions): Run {
           slowUntil: 0,
           slowFactor: 1,
           poisonUntil: 0,
+          opsonisedUntil: 0,
           poisonDps: 0,
           flashUntil: 0,
         });

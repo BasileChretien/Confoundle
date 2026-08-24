@@ -336,6 +336,7 @@ describe("nothing in here can reach outside itself", () => {
     "EncounterDemo.tsx",
     "cells.ts",
     "encounter.ts",
+    "encounterDraw.ts",
     "DeathScreen.tsx",
     "Meter.tsx",
     "OverkillGame.tsx",

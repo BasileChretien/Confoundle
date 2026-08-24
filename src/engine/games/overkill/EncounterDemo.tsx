@@ -1,39 +1,71 @@
 import { useEffect, useRef, useState } from "react";
-import { ENEMIES, type EnemyKind } from "./content";
-import { ENCOUNTER_SPEED, ENCOUNTER_TICKS, PORE_REACH, STILL_FRAMES, macAt } from "./encounter";
+import { ENEMIES, WEAPON_IDS, type EnemyKind, type WeaponId } from "./content";
+import { ENCOUNTER_SPEED, encounterAt, lengthOf, stillFrames } from "./encounter";
+import { VERB, blockerOf } from "./verbs";
+import { drawEncounter } from "./encounterDraw";
 import { drawPathogen } from "./render";
-import { WEAPON_COLOR } from "./palette";
+import { WeaponIcon } from "./WeaponIcon";
 
 /**
- * THE TEST. Two pathogens, one animation, run twice.
+ * EVERY MEETING, ONE AT A TIME, SLOWLY.
  *
- * Left is E. coli, wall 0.1 of a radius. Right is S. aureus, wall 0.36. The
- * membrane attack complex reaches 0.22. Everything else about the two runs is
- * identical, including the assembly, which is the point: complement is not
- * repelled by the gram positive, it builds perfectly well and then cannot get
- * through what it built on.
+ * Pick an effector down the side and a pathogen along the bottom and watch
+ * that one encounter alone, at 0.4x, with a scrubber. Nothing here scores
+ * anything and nothing is wired into a run: it exists so the mechanisms can be
+ * looked at, argued with, and corrected before any of them is asked to teach
+ * somebody something during combat.
  *
- * If a viewer cannot say, unprompted and without words, why the right-hand one
- * survived, then the encounter idea is wrong and the nine remaining animations
- * should not be built. That is the whole purpose of this screen and it is why
- * it is not wired into the game.
+ * THE COMPARISON IS THE POINT, so two panels run side by side and the second
+ * one is chosen for you: whatever the current pathogen's most instructive
+ * partner is. Complement against E. coli sits beside complement against
+ * S. aureus, because a pore that sinks through beside a pore that sits on top
+ * is the entire lesson of the second wave and neither half means much alone.
+ *
+ * There is no text on the canvas in any of it. If a picture needs a caption it
+ * has failed, and the caption would be nine translations of the answer.
  */
 
 const BG = "#150A12";
+const KINDS = Object.keys(ENEMIES) as EnemyKind[];
+
+/**
+ * Who to show beside this one.
+ *
+ * MINIMAL PAIRS, in the sense The Witness uses: two cases differing in one
+ * feature, so that feature is the only thing that can explain the difference.
+ * Chosen by hand because "one feature apart" is a judgement about which
+ * feature matters, and there is no honest way to derive that.
+ */
+const PARTNER: Readonly<Record<EnemyKind, EnemyKind>> = {
+  // Thin wall against thick: the whole of wave two.
+  coli: "aureus",
+  aureus: "coli",
+  // In the open against inside one of your own cells: the whole of wave three.
+  virion: "infected",
+  infected: "virion",
+  // Big enough to need spraying against far too big to do anything else with.
+  candida: "worm",
+  worm: "candida",
+};
 
 export function EncounterDemo({ onExit }: { onExit: () => void }) {
-  const canvas = useRef<HTMLCanvasElement | null>(null);
+  const [weapon, setWeapon] = useState<WeaponId>("complement");
+  const [kind, setKind] = useState<EnemyKind>("coli");
   const [paused, setPaused] = useState(false);
   const [scrub, setScrub] = useState(0);
+  const canvas = useRef<HTMLCanvasElement | null>(null);
   const held = useRef(0);
   held.current = scrub;
+
+  const span = lengthOf(VERB[weapon]);
 
   useEffect(() => {
     const c = canvas.current;
     if (c === null) return;
     const ctx = c.getContext("2d");
     if (ctx === null) return;
-    const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const frames = stillFrames(VERB[weapon]);
 
     let raf = 0;
     let clock = 0;
@@ -52,71 +84,119 @@ export function EncounterDemo({ onExit }: { onExit: () => void }) {
 
       if (paused) {
         clock = held.current;
-      } else if (still) {
-        // Three held frames, a second and a half each, cross-faded by nothing:
-        // the comparison is meant to be looked at rather than followed.
+      } else if (reduced) {
+        // Three held frames rather than a sequence. Not a degraded fallback:
+        // holding the comparison still is arguably the better teaching object.
         const step = previous < 0 ? 0 : (now - previous) / 1000;
         previous = now;
-        clock = (clock + step) % (STILL_FRAMES.length * 1.5);
-        clock = STILL_FRAMES[Math.floor(clock / 1.5)]!;
+        const cycle = (clock + step) % (frames.length * 1.5);
+        clock = cycle;
+        setScrub(frames[Math.floor(cycle / 1.5)] ?? 0);
       } else {
         const step = previous < 0 ? 0 : ((now - previous) / 1000) * 60 * ENCOUNTER_SPEED;
         previous = now;
         clock += step;
         // A held beat on the outcome before it loops, so the last thing seen
         // is the answer rather than the reset.
-        if (clock > ENCOUNTER_TICKS + 40) clock = 0;
-        setScrub(Math.min(clock, ENCOUNTER_TICKS));
+        if (clock > span + 40) clock = 0;
+        setScrub(Math.min(clock, span));
       }
+
+      const at = reduced ? (frames[Math.floor((clock / 1.5) % frames.length)] ?? 0) : Math.min(clock, span);
 
       ctx.fillStyle = BG;
       ctx.fillRect(0, 0, w, h);
 
-      const r = Math.min(w * 0.19, h * 0.3);
+      const r = Math.min(w * 0.17, h * 0.3);
       const y = h / 2;
-      draw(ctx, "coli", w * 0.27, y, r, Math.min(clock, ENCOUNTER_TICKS));
-      draw(ctx, "aureus", w * 0.73, y, r, Math.min(clock, ENCOUNTER_TICKS));
+      drawEncounter(ctx, weapon, kind, w * 0.29, y, r, at);
+      drawEncounter(ctx, weapon, PARTNER[kind], w * 0.75, y, r, at);
 
       // The one piece of chrome: a hairline down the middle, so the two read
       // as one comparison rather than two illustrations.
       ctx.strokeStyle = "#3F2233";
       ctx.lineWidth = 1;
       ctx.beginPath();
-      ctx.moveTo(w / 2, h * 0.12);
-      ctx.lineTo(w / 2, h * 0.88);
+      ctx.moveTo(w / 2, h * 0.1);
+      ctx.lineTo(w / 2, h * 0.9);
       ctx.stroke();
     };
     raf = requestAnimationFrame(frame);
     return () => cancelAnimationFrame(raf);
-  }, [paused]);
+  }, [paused, weapon, kind, span]);
+
+  const state = encounterAt(weapon, kind, Math.round(scrub));
 
   return (
     <div className="fixed inset-0 flex flex-col" style={{ background: BG }}>
-      <canvas ref={canvas} className="min-h-0 w-full flex-1" />
-      <div className="flex items-center gap-3 px-4 pb-5">
+      <div className="flex min-h-0 flex-1">
+        {/* Effectors down the side, drawn as the cells they are. */}
+        <div className="flex flex-col justify-center gap-1 px-2">
+          {WEAPON_IDS.map((id) => (
+            <button
+              key={id}
+              type="button"
+              onClick={() => setWeapon(id)}
+              aria-pressed={id === weapon}
+              className={`rounded-md border p-1.5 ${
+                id === weapon ? "border-slate-300 bg-slate-800/70" : "border-transparent"
+              }`}
+            >
+              <WeaponIcon id={id} size={26} dim={id !== weapon} />
+            </button>
+          ))}
+        </div>
+        <canvas ref={canvas} className="min-h-0 min-w-0 flex-1" />
+      </div>
+
+      {/* Pathogens along the bottom, drawn by the arena's own function. */}
+      <div className="flex items-center justify-center gap-1 px-2">
+        {KINDS.map((k) => (
+          <button
+            key={k}
+            type="button"
+            onClick={() => setKind(k)}
+            aria-pressed={k === kind}
+            className={`rounded-md border p-1 ${
+              k === kind ? "border-slate-300 bg-slate-800/70" : "border-transparent"
+            }`}
+          >
+            <PathogenChip kind={k} dim={k !== kind} />
+          </button>
+        ))}
+      </div>
+
+      <div className="flex items-center gap-3 px-4 pb-5 pt-2">
         <button
           type="button"
           onClick={() => setPaused((p) => !p)}
-          className="rounded-md border border-slate-700 px-4 py-2 text-sm text-slate-200"
+          className="rounded-md border border-slate-700 px-3 py-2 text-sm text-slate-200"
         >
           {paused ? "▶" : "‖"}
         </button>
         <input
           type="range"
           min={0}
-          max={ENCOUNTER_TICKS}
+          max={span}
           value={Math.round(scrub)}
-          onChange={(e) => {
+          onChange={(ev) => {
             setPaused(true);
-            setScrub(Number(e.target.value));
+            setScrub(Number(ev.target.value));
           }}
           className="min-w-0 flex-1"
           aria-label="Scrub the encounter"
         />
+        {/* The one readout, and it is for whoever is BUILDING these rather than
+            for a player: which step is running and whether it is stuck. It has
+            no place in the game and is why this screen is not in the game. */}
+        <span className="w-32 text-right font-mono text-[0.65rem] text-slate-500">
+          {state.step}
+          {state.stalled ? ` ⊘${blockerOf(weapon, kind) ?? ""}` : ""}
+        </span>
         <button
           type="button"
           onClick={onExit}
-          className="rounded-md border border-slate-700 px-4 py-2 text-sm text-slate-200"
+          className="rounded-md border border-slate-700 px-3 py-2 text-sm text-slate-200"
         >
           {"✕"}
         </button>
@@ -125,93 +205,27 @@ export function EncounterDemo({ onExit }: { onExit: () => void }) {
   );
 }
 
-function draw(
-  ctx: CanvasRenderingContext2D,
-  kind: EnemyKind,
-  cx: number,
-  cy: number,
-  r: number,
-  tick: number,
-): void {
-  const m = macAt(tick, kind);
-  const colour = WEAPON_COLOR.complement;
-  const spec = ENEMIES[kind];
-  const swollen = r * (1 + m.swell);
-  // Bursting: the body tears open over the last third of a successful lysis.
-  const gone = m.stage === "lyse" ? Math.max(0, (m.t - 0.62) / 0.38) : 0;
-
-  ctx.save();
-  ctx.globalAlpha = 1 - gone;
-
-  // The pathogen, drawn by the arena's own function so the wall a player sees
-  // here is the wall they will meet in the fight.
-  drawPathogen(ctx, kind, cx, cy, swollen, Math.round(tick * 3), false);
-
-  // The wall, lit where the pore is working on it. On the thick one this is
-  // the moment the whole screen exists for: the ring is resting ON the bright
-  // band, and the dark interior below it is never touched.
-  if (m.stage === "insert" || m.stage === "stall") {
-    const heat = m.stage === "stall" ? Math.max(0, 1 - m.t * 1.4) : m.t;
-    ctx.strokeStyle = "#FFFFFF";
-    ctx.globalAlpha = (1 - gone) * 0.9 * heat;
-    ctx.lineWidth = Math.max(2, swollen * spec.wall);
-    ctx.beginPath();
-    ctx.arc(cx, cy, swollen * (1 - spec.wall / 2), -0.8, 0.8);
-    ctx.stroke();
-    ctx.globalAlpha = 1 - gone;
-  }
-
-  // The pore: nine subunits, arriving scattered, sliding into an even ring,
-  // then driving inward as far as they can go.
-  const n = 9;
-  const ringR = swollen * 0.34;
-  const at = swollen * (1 - m.depth);
-  for (let i = 0; i < n; i++) {
-    const even = (i / n) * Math.PI * 2;
-    // Scatter is a fixed per-subunit offset that shrinks to nothing, so the
-    // assembly reads as the same nine objects tidying up rather than as a
-    // dissolve between two pictures.
-    const jitter = Math.sin(i * 12.9898) * 1.7;
-    const a = even + jitter * m.scatter;
-    // Before they land they are still flying in from outside.
-    const fly = m.stage === "deposit" ? 1 + (1 - m.t) * 1.6 : 1;
-    const px = cx + Math.cos(a) * ringR * fly + (m.stage === "stall" ? Math.sin(i + m.t * 40) * 1.2 : 0);
-    const py = cy + Math.sin(a) * ringR * fly - (m.depth > 0 ? 0 : 0);
-    // Two subunits give up and drift off once it is clear this is going nowhere.
-    const lost = m.stage === "stall" && i % 4 === 0 ? m.t * 26 : 0;
-    ctx.globalAlpha = (1 - gone) * (m.stage === "stall" ? Math.max(0, 1 - m.t * 0.9) : 1);
-    ctx.fillStyle = colour;
-    ctx.beginPath();
-    ctx.arc(px + lost, py - lost * 0.4, swollen * 0.075, 0, Math.PI * 2);
-    ctx.fill();
-  }
-  ctx.globalAlpha = 1 - gone;
-
-  // The hole, once there is one. Drawn in the background colour rather than
-  // composited out, because `destination-out` erases the canvas beneath.
-  if (m.penetrates && (m.stage === "insert" || m.stage === "lyse")) {
-    ctx.fillStyle = BG;
-    ctx.beginPath();
-    ctx.arc(cx, cy - at + swollen * 0.02, ringR * 0.55, 0, Math.PI * 2);
-    ctx.fill();
-  }
-
-  // And the contents leaving through it, which is why the cell dies.
-  if (m.stage === "lyse") {
-    ctx.fillStyle = "#FBCFE8";
-    for (let i = 0; i < 7; i++) {
-      const a = -Math.PI / 2 + (i - 3) * 0.16;
-      const d = swollen * (0.5 + m.t * 2.4 + i * 0.05);
-      ctx.globalAlpha = (1 - gone) * Math.max(0, 1 - m.t * 1.1);
-      ctx.beginPath();
-      ctx.arc(cx + Math.cos(a) * d, cy + Math.sin(a) * d, swollen * 0.05, 0, Math.PI * 2);
-      ctx.fill();
-    }
-  }
-
-  ctx.restore();
-
-  // Nothing is written anywhere on this screen. If the picture needs a caption
-  // it has failed, and the caption would be nine translations of the answer.
-  void PORE_REACH;
+function PathogenChip({ kind, dim }: { kind: EnemyKind; dim: boolean }) {
+  const canvas = useRef<HTMLCanvasElement | null>(null);
+  useEffect(() => {
+    const c = canvas.current;
+    if (c === null) return;
+    const ctx = c.getContext("2d");
+    if (ctx === null) return;
+    const dpr = Math.min(3, window.devicePixelRatio || 1);
+    c.width = Math.round(34 * dpr);
+    c.height = Math.round(34 * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, 34, 34);
+    drawPathogen(ctx, kind, 17, 17, 9, 0, false);
+  }, [kind]);
+  return (
+    <canvas
+      ref={canvas}
+      width={34}
+      height={34}
+      style={{ width: 34, height: 34, opacity: dim ? 0.35 : 1, display: "block" }}
+      aria-hidden
+    />
+  );
 }

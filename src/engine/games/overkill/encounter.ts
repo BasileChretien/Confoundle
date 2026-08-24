@@ -1,184 +1,306 @@
-import { ENEMIES, type EnemyKind } from "./content";
+import { ENEMIES, type EnemyKind, type WeaponId } from "./content";
+import { VERB, blockerOf, outcomeOf, type Blocker, type Verb } from "./verbs";
 
 /**
  * ONE MEETING, DRAWN SLOWLY, ALONE.
  *
- * This is a prototype answering exactly one question: can a wordless animation
- * make a mechanism legible, where two passes of better draughtsmanship could
- * not? Five specialists read the game and two of them, from different fields,
- * independently proposed the same thing and the same cheap way to falsify it:
- * build the complement encounter, run it against a thin wall and a thick one
- * side by side, and if that single sequence does not read, abandon the
- * approach before building nine more.
- *
- * So this is deliberately NOT wired into the run. It is reachable on its own
- * and it scores nothing.
- *
- * THE RULE THAT MAKES IT WORK, and it is the best idea the panel produced:
+ * THE RULE THE WHOLE THING IS BUILT ON, and it is the best idea the specialist
+ * panel produced:
  *
  *   A failure animation is the SUCCESS animation, run identically, and
  *   interrupted at the exact step that cannot complete.
  *
  * A strike-through is a verdict. It announces a conclusion and hides the
- * cause, which is precisely what the shipped game does and precisely why a
- * player cannot say why anything failed. An interruption explains itself,
- * because the viewer has already watched the same motion succeed and can see
- * which step is missing. That has a hard corollary: a failure must never be
- * the first time somebody sees a given effector move.
+ * cause, which is what the shipped game does and precisely why a player could
+ * not say why anything failed. An interruption explains itself, because the
+ * viewer has already watched the same motion succeed and can see which step is
+ * missing. That has a hard corollary, enforced in `encounter.test.ts`: a
+ * failure must never be the first time somebody sees a given effector move.
  *
- * THE OUTCOME IS ARITHMETIC, NOT A BRANCH. `penetrates` is `wall < PORE_REACH`
- * on the pathogen's own `wall` field. Nobody scripted "complement fails on
- * S. aureus"; the pore reaches 0.22 of a radius, the peptidoglycan is 0.36 of
- * one, and the rest follows. Which means the drawing has to justify the
- * mechanism rather than merely illustrate a number that was justified
- * elsewhere, and that turns out to be a much stronger correctness check.
+ * SO THE RULE IS THE DATA STRUCTURE. Every verb is an ordered list of steps,
+ * and every blocker names the step it stops at. There is no separate failure
+ * animation anywhere in this file, and there cannot be one: the same sequence
+ * runs either way and a blocked encounter simply stops advancing. That makes
+ * it impossible to draw a failure that does not correspond to a real step of a
+ * real mechanism, which was the defect in the shipped version, where every
+ * failure was one grey mark that named nothing.
+ *
+ * THE OUTCOME IS ARITHMETIC. Nobody scripted "complement fails on S. aureus";
+ * the pore reaches 0.22 of a radius, the peptidoglycan is 0.36 of one, and
+ * `verbs.ts` derives the rest from properties the pathogen already has.
  */
+
+/** Played at this fraction of real time, so a sequence lasts about 2.5s. */
+export const ENCOUNTER_SPEED = 0.4;
 
 /**
  * How deep the membrane attack complex can insert, as a fraction of the
- * target's radius.
- *
- * Between coli's 0.1 and aureus's 0.36 because that is the fact being modelled:
- * C5b-9 spans a lipid bilayer and cannot span a thick peptidoglycan layer, so
- * a gram negative lyses and a gram positive does not. Sitting between them is
- * the whole of it.
+ * target's radius. Between coli's 0.1 and aureus's 0.36, because that is the
+ * fact being modelled: C5b-9 spans a lipid bilayer and cannot span a thick
+ * peptidoglycan layer.
  */
 export const PORE_REACH = 0.22;
 
-/** Sixty ticks at 60Hz, then played back slowly. See `ENCOUNTER_SPEED`. */
-export const ENCOUNTER_TICKS = 60;
-
-/** Played at this fraction of real time, so the sequence lasts about 2.5s. */
-export const ENCOUNTER_SPEED = 0.4;
-
-export type MacStage =
-  /** Subunits arriving and landing scattered on the surface. */
-  | "deposit"
-  /** Sliding around the surface into an evenly spaced ring. */
-  | "assemble"
-  /** Driving inward, either through the wall or into it. */
-  | "insert"
-  /** Through: the contents vent and the cell collapses. */
-  | "lyse"
-  /** Stopped: the ring sits on the wall, jitters, and falls off. */
-  | "stall";
-
-export interface MacState {
-  readonly stage: MacStage;
-  /** 0 to 1 within the current stage, for easing. */
-  readonly t: number;
-  /** Whether the pore reaches the membrane. Arithmetic, not a script. */
-  readonly penetrates: boolean;
-  /** How far in the ring has driven, as a fraction of radius. */
-  readonly depth: number;
-  /** How scattered the subunits still are: 1 at arrival, 0 once assembled. */
-  readonly scatter: number;
-  /** How much the body has swollen. Only ever non-zero when penetrating. */
-  readonly swell: number;
-  /** 0 to 1, how far through collapse or fade-off the sequence is. */
-  readonly done: number;
-}
-
-const CUTS = { deposit: 12, assemble: 26, insert: 34 } as const;
-
-function span(tick: number, from: number, to: number): number {
-  return Math.min(1, Math.max(0, (tick - from) / (to - from)));
+export interface Step {
+  readonly name: string;
+  readonly ticks: number;
 }
 
 /**
- * The whole sequence as a pure function of the tick and the target.
+ * What each verb does, in order.
  *
- * Pure and separate from the drawing on purpose, so the claim this prototype
- * exists to make ("the ring assembles either way, and only the last step
- * differs") is testable without a canvas.
+ * Read these as sentences. "Reach, embrace, close, digest" is phagocytosis and
+ * nothing else; "deposit, assemble, insert, burst" is a membrane attack
+ * complex and nothing else. If a sequence cannot be read aloud as the
+ * mechanism, it is decoration.
  */
-export function macAt(tick: number, kind: EnemyKind): MacState {
-  const wall = ENEMIES[kind].wall;
-  const penetrates = wall < PORE_REACH;
-  const t = Math.min(tick, ENCOUNTER_TICKS);
+export const SEQUENCE: Readonly<Record<Verb, readonly Step[]>> = {
+  engulf: [
+    { name: "reach", ticks: 10 },
+    { name: "embrace", ticks: 16 },
+    { name: "close", ticks: 8 },
+    { name: "digest", ticks: 16 },
+  ],
+  pore: [
+    { name: "deposit", ticks: 12 },
+    { name: "assemble", ticks: 14 },
+    { name: "insert", ticks: 8 },
+    { name: "burst", ticks: 26 },
+  ],
+  coat: [
+    { name: "approach", ticks: 10 },
+    { name: "bind", ticks: 14 },
+    { name: "cover", ticks: 14 },
+    { name: "neutralise", ticks: 14 },
+  ],
+  condemn: [
+    { name: "dock", ticks: 10 },
+    { name: "read", ticks: 14 },
+    { name: "polarise", ticks: 12 },
+    { name: "apoptose", ticks: 22 },
+  ],
+  burn: [
+    { name: "charge", ticks: 8 },
+    { name: "release", ticks: 12 },
+    { name: "oxidise", ticks: 16 },
+    { name: "dissolve", ticks: 18 },
+  ],
+  spray: [
+    { name: "attempt", ticks: 12 },
+    { name: "tether", ticks: 10 },
+    { name: "degranulate", ticks: 14 },
+    { name: "necrose", ticks: 20 },
+  ],
+  signal: [
+    { name: "secrete", ticks: 10 },
+    { name: "diffuse", ticks: 16 },
+    { name: "bind", ticks: 12 },
+    { name: "answer", ticks: 18 },
+  ],
+};
 
-  if (t < CUTS.deposit) {
-    return {
-      stage: "deposit",
-      t: span(t, 0, CUTS.deposit),
-      penetrates,
-      depth: 0,
-      scatter: 1,
-      swell: 0,
-      done: 0,
-    };
+/**
+ * Which step each reason stops at, PER VERB.
+ *
+ * Not a flat table from reason to step, and two attempts at one both broke in
+ * the same way. A step is a property of the MECHANISM, not of the reason: a
+ * phagocyte meeting a worm gets all the way to `embrace` and its arms cannot
+ * meet, while an oxidative burst meeting the same worm has no embrace to fail
+ * at, it releases fine and the chemistry is simply not enough. Writing
+ * `tooLarge: "embrace"` once meant the burst named a step it does not have, so
+ * it never stopped at all and ran to `dissolve`, drawing a kill for a pair the
+ * matrix calls a failure. The same thing happened first with `self`.
+ *
+ * Every entry is a claim about WHERE IN THE MECHANISM the trouble is, which is
+ * a different and much more useful claim than "this does not work". Two
+ * reasons may stall the same step and still draw differently, because the step
+ * says where it stopped and the blocker says why.
+ */
+export const STOPS_AT: Readonly<Record<Verb, Partial<Record<Blocker, string>>>> = {
+  engulf: {
+    /** The arms grow around it and cannot meet. */
+    tooLarge: "embrace",
+    /** Recognised on contact as one of yours, and never begun. */
+    self: "reach",
+  },
+  pore: {
+    /** The ring assembles perfectly and cannot reach through what it sits on. */
+    wall: "insert",
+    self: "deposit",
+  },
+  coat: {
+    /** It arrives at a host membrane with nothing on it to bind. */
+    hidden: "bind",
+  },
+  condemn: {
+    /** The receptor sweeps the surface and finds no slot to read. */
+    noBadge: "read",
+  },
+  burn: {
+    /** The chemistry lands on something with no chemistry in it. */
+    inert: "oxidise",
+    /** And on something there is simply far too much of. */
+    tooLarge: "oxidise",
+    self: "charge",
+  },
+  spray: {
+    /** The granules leave and drift past something that never needed them. */
+    tooSmall: "degranulate",
+    self: "attempt",
+  },
+  signal: {},
+};
+
+/** Where this exact pair stops, or null when it completes. */
+export function stopStep(weapon: WeaponId, kind: EnemyKind): string | null {
+  const blocker = blockerOf(weapon, kind);
+  if (blocker === null) return null;
+  return STOPS_AT[VERB[weapon]][blocker] ?? null;
+}
+
+export interface Encounter {
+  readonly verb: Verb;
+  /** Which step is running. */
+  readonly step: string;
+  /** How far through that step, 0 to 1. */
+  readonly t: number;
+  /** How far through the whole sequence, 0 to 1. */
+  readonly at: number;
+  /** Null when this pair completes. */
+  readonly blocker: Blocker | null;
+  /** True once the sequence has stopped and will not continue. */
+  readonly stalled: boolean;
+  /** Whether the target dies at the end of it. */
+  readonly kills: boolean;
+}
+
+/** Total ticks of a verb's sequence, before any interruption. */
+export function lengthOf(verb: Verb): number {
+  return SEQUENCE[verb].reduce((sum, s) => sum + s.ticks, 0);
+}
+
+/** The longest sequence, so a caller can size a scrubber without guessing. */
+export const ENCOUNTER_TICKS = Math.max(
+  ...(Object.keys(SEQUENCE) as Verb[]).map((v) => lengthOf(v)),
+);
+
+/**
+ * The whole meeting as a pure function of the tick.
+ *
+ * Pure and separate from the drawing on purpose, so the claims this makes can
+ * be tested without a canvas: that the two runs are identical until the
+ * blocked step, that a blocked one never advances past it, and that every
+ * blocker names a step its own verb actually has.
+ */
+export function encounterAt(weapon: WeaponId, kind: EnemyKind, tick: number): Encounter {
+  const verb = VERB[weapon];
+  const steps = SEQUENCE[verb];
+  const blocker = blockerOf(weapon, kind);
+  const stopAt = stopStep(weapon, kind);
+
+  let elapsed = 0;
+  for (const step of steps) {
+    const within = tick - elapsed;
+    if (within < step.ticks) {
+      const t = Math.max(0, within / step.ticks);
+      return {
+        verb,
+        step: step.name,
+        t,
+        at: Math.min(1, tick / lengthOf(verb)),
+        blocker,
+        stalled: false,
+        kills: outcomeOf(weapon, kind) === "kills",
+      };
+    }
+    elapsed += step.ticks;
+    if (step.name === stopAt) {
+      // BLOCKED. The sequence holds here for the rest of the encounter, which
+      // is what "interrupted at the step that cannot complete" means: not a
+      // different animation, the same one, stopped.
+      return {
+        verb,
+        step: step.name,
+        t: 1,
+        at: Math.min(1, tick / lengthOf(verb)),
+        blocker,
+        stalled: true,
+        kills: false,
+      };
+    }
   }
 
-  if (t < CUTS.assemble) {
-    // THE RING ASSEMBLES IDENTICALLY EITHER WAY, and that is load bearing.
-    // Complement is not prevented from forming on a gram positive; it forms
-    // perfectly well and then cannot reach through. Showing the assembly
-    // succeed is what makes the next beat mean what it means, and skipping
-    // it would teach "complement does not work here", which is a different
-    // and wrong lesson.
-    return {
-      stage: "assemble",
-      t: span(t, CUTS.deposit, CUTS.assemble),
-      penetrates,
-      depth: 0,
-      scatter: 1 - span(t, CUTS.deposit, CUTS.assemble),
-      swell: 0,
-      done: 0,
-    };
-  }
-
-  if (t < CUTS.insert) {
-    const p = span(t, CUTS.assemble, CUTS.insert);
-    /*
-      Driving in, THE SAME DISTANCE IN BOTH RUNS.
-
-      The first version drove the failing pore as deep as the wall was thick,
-      which made the gram positive look MORE penetrated than the gram negative
-      at every moment of the insertion: 0.243 against 0.1485 halfway through.
-      The picture said the opposite of the mechanism, and the test caught it.
-
-      C5b-9 is a fixed-length object. It inserts as far as it inserts, and the
-      only question is whether the wall it is buried in is thinner than that.
-      So both rings travel exactly `PORE_REACH`, one arrives at a membrane and
-      one is still inside peptidoglycan, and the motion is identical right up
-      to the instant one of them breaks through. Which is the rule this whole
-      prototype is built on, arrived at by being wrong first.
-    */
-    const reach = PORE_REACH;
-    // A recoil at the end of a failed insertion, so it reads as hitting
-    // something rather than as simply deciding to stop.
-    const bounce = penetrates ? 0 : Math.max(0, p - 0.75) * 0.12;
-    return {
-      stage: "insert",
-      t: p,
-      penetrates,
-      depth: reach * Math.min(1, p * 1.35) - bounce,
-      scatter: 0,
-      swell: 0,
-      done: 0,
-    };
-  }
-
-  const p = span(t, CUTS.insert, ENCOUNTER_TICKS);
+  const last = steps[steps.length - 1]!;
   return {
-    stage: penetrates ? "lyse" : "stall",
-    t: p,
-    penetrates,
-    depth: PORE_REACH,
-    scatter: 0,
-    // Osmotic: water rushes in through the hole, the cell swells, then bursts.
-    swell: penetrates ? Math.sin(Math.min(1, p * 1.6) * Math.PI) * 0.18 : 0,
-    done: p,
+    verb,
+    step: last.name,
+    t: 1,
+    at: 1,
+    blocker,
+    stalled: blocker !== null,
+    kills: outcomeOf(weapon, kind) === "kills",
   };
 }
 
 /**
- * The three still frames the sequence reduces to under `prefers-reduced-motion`.
+ * The membrane attack complex, in the extra detail its drawing needs.
  *
- * NOT A DEGRADED FALLBACK. A cross-fade between "ring assembled" and "ring
- * stopped on the wall" is arguably the clearer teaching artefact, because the
- * comparison is held still instead of having to be remembered across two
- * seconds. The rest of this repository honours the preference and the game
- * currently honours it nowhere, which is its own defect.
+ * DERIVED FROM `encounterAt` rather than kept beside it. This predates the
+ * general sequence and carried three scalars of its own; folding it in was
+ * worth the churn, because two systems describing the same event is exactly
+ * how a drawing and a mechanism drift apart.
  */
-export const STILL_FRAMES: readonly number[] = [CUTS.deposit - 1, CUTS.insert - 1, ENCOUNTER_TICKS];
+export interface MacState {
+  readonly stage: "deposit" | "assemble" | "insert" | "lyse" | "stall";
+  readonly t: number;
+  readonly penetrates: boolean;
+  readonly depth: number;
+  readonly scatter: number;
+  readonly swell: number;
+  readonly done: number;
+}
+
+export function macAt(tick: number, kind: EnemyKind): MacState {
+  const e = encounterAt("complement", kind, tick);
+  const penetrates = ENEMIES[kind].wall < PORE_REACH && !ENEMIES[kind].self;
+  const stalled = e.stalled;
+  const stage: MacState["stage"] =
+    e.step === "burst" ? "lyse" : stalled && e.step === "insert" ? "stall" : (e.step as MacState["stage"]);
+  return {
+    stage,
+    t: e.t,
+    penetrates,
+    // BOTH RINGS TRAVEL THE SAME DISTANCE. C5b-9 is a fixed length object, and
+    // the only question is whether the wall it is buried in is thinner than
+    // that. An earlier version drove the failing pore as deep as the wall was
+    // thick, so the gram positive read as MORE penetrated throughout.
+    depth:
+      stage === "insert" || stage === "stall"
+        ? PORE_REACH * Math.min(1, e.t * 1.35) - (penetrates ? 0 : Math.max(0, e.t - 0.75) * 0.12)
+        : stage === "lyse"
+          ? PORE_REACH
+          : 0,
+    scatter: stage === "deposit" ? 1 : stage === "assemble" ? 1 - e.t : 0,
+    // Osmotic: water rushes in through the hole, the cell swells, then bursts.
+    swell: stage === "lyse" && penetrates ? Math.sin(Math.min(1, e.t * 1.6) * Math.PI) * 0.18 : 0,
+    done: stage === "lyse" || stalled ? e.t : 0,
+  };
+}
+
+/**
+ * The three still frames a sequence reduces to under `prefers-reduced-motion`.
+ *
+ * NOT A DEGRADED FALLBACK. A cross-fade between "assembled" and "stopped on
+ * the wall" is arguably the clearer teaching artefact, because the comparison
+ * is held still instead of having to be remembered across two seconds.
+ */
+export function stillFrames(verb: Verb): readonly number[] {
+  const steps = SEQUENCE[verb];
+  let elapsed = 0;
+  const out: number[] = [];
+  for (const s of steps.slice(0, 3)) {
+    elapsed += s.ticks;
+    out.push(elapsed - 1);
+  }
+  return out;
+}

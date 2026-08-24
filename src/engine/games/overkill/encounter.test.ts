@@ -1,6 +1,15 @@
 import { describe, expect, it } from "vitest";
-import { ENEMIES, type EnemyKind } from "./content";
-import { ENCOUNTER_TICKS, PORE_REACH, macAt } from "./encounter";
+import { ENEMIES, WEAPON_IDS, type EnemyKind, type WeaponId } from "./content";
+import {
+  ENCOUNTER_TICKS,
+  PORE_REACH,
+  SEQUENCE,
+  stopStep,
+  encounterAt,
+  lengthOf,
+  macAt,
+} from "./encounter";
+import { VERB, blockerOf } from "./verbs";
 
 /**
  * The prototype makes one claim. This checks it is the claim being made.
@@ -48,8 +57,13 @@ describe("the two runs of the same animation", () => {
     // of it.
     const stalled = macAt(ENCOUNTER_TICKS, "aureus");
     const through = macAt(ENCOUNTER_TICKS, "coli");
-    expect(stalled.depth).toBeCloseTo(PORE_REACH, 6);
     expect(through.depth).toBeCloseTo(PORE_REACH, 6);
+    // The stalled one travels the same distance and then RECOILS off what it
+    // hit, so it rests just short. That is the drawing being honest about an
+    // impact rather than the pore reaching less far: the equal-travel check
+    // below is the load-bearing one.
+    expect(stalled.depth).toBeLessThan(PORE_REACH);
+    expect(stalled.depth).toBeGreaterThan(PORE_REACH * 0.8);
     // Same insertion, and the wall is what decides what it reached.
     expect(ENEMIES.aureus.wall).toBeGreaterThan(PORE_REACH);
     expect(ENEMIES.coli.wall).toBeLessThan(PORE_REACH);
@@ -82,5 +96,100 @@ describe("the wall numbers carry complement's whole row", () => {
 
   it("orders the walls the way a Gram stain does", () => {
     expect(ENEMIES.aureus.wall).toBeGreaterThan(ENEMIES.coli.wall * 3);
+  });
+});
+
+
+describe("every verb is a sequence, and every failure is that sequence stopped", () => {
+  const KINDS = Object.keys(ENEMIES) as EnemyKind[];
+  const pairs: [WeaponId, EnemyKind][] = WEAPON_IDS.flatMap((w) =>
+    KINDS.map((k) => [w, k] as [WeaponId, EnemyKind]),
+  );
+
+  it("stops every blocker at a step its own verb actually has", () => {
+    // A blocker naming a step that does not exist would never fire, so the
+    // encounter would run to completion and draw a success for a pair the
+    // matrix calls a failure. Nothing else would notice.
+    for (const [w, k] of pairs) {
+      const b = blockerOf(w, k);
+      if (b === null) continue;
+      const names = SEQUENCE[VERB[w]].map((s) => s.name);
+      const stop = stopStep(w, k);
+      // A pair that fails and names no step never stops, so it runs to the end
+      // and draws a kill. Both of this file's real bugs were exactly that.
+      expect(stop, `${w} vs ${k} fails (${b}) and names no step`).not.toBeNull();
+      expect(names, `${w} vs ${k}: ${b} stops at "${stop}"`).toContain(stop);
+    }
+  });
+
+  it("runs a blocked encounter identically to a working one until the block", () => {
+    /*
+      THE RULE, AS AN ASSERTION. A failure is the success interrupted at the
+      step that cannot complete, and that is only true if everything before
+      that step is the same. If the two diverged earlier, the viewer would be
+      watching two different mechanisms and the interruption would explain
+      nothing.
+    */
+    for (const [w, k] of pairs) {
+      const b = blockerOf(w, k);
+      if (b === null) continue;
+      const working = KINDS.find((other) => blockerOf(w, other) === null);
+      if (working === undefined) continue;
+      const steps = SEQUENCE[VERB[w]];
+      const upTo = steps.findIndex((s) => s.name === stopStep(w, k));
+      const ticks = steps.slice(0, upTo).reduce((sum, s) => sum + s.ticks, 0);
+      for (let t = 0; t < ticks; t++) {
+        const a = encounterAt(w, k, t);
+        const c = encounterAt(w, working, t);
+        expect(`${a.step}:${a.t.toFixed(4)}`, `${w}: ${k} vs ${working} at ${t}`).toBe(
+          `${c.step}:${c.t.toFixed(4)}`,
+        );
+      }
+    }
+  });
+
+  it("never advances a blocked encounter past the step it stopped at", () => {
+    for (const [w, k] of pairs) {
+      const b = blockerOf(w, k);
+      if (b === null) continue;
+      const long = lengthOf(VERB[w]) + 200;
+      const end = encounterAt(w, k, long);
+      expect(end.step, `${w} vs ${k}`).toBe(stopStep(w, k));
+      expect(end.stalled).toBe(true);
+      expect(end.kills).toBe(false);
+    }
+  });
+
+  it("finishes every pair that is not blocked", () => {
+    for (const [w, k] of pairs) {
+      if (blockerOf(w, k) !== null) continue;
+      const steps = SEQUENCE[VERB[w]];
+      const end = encounterAt(w, k, lengthOf(VERB[w]) + 50);
+      expect(end.step, `${w} vs ${k}`).toBe(steps[steps.length - 1]!.name);
+      expect(end.stalled).toBe(false);
+    }
+  });
+
+  it("gives every verb a success somewhere, so no failure is a first sighting", () => {
+    /*
+      THE COROLLARY, AND IT IS A HARD RULE. An interruption explains itself
+      only to somebody who has already watched that motion succeed. A verb
+      that fails against everything in the deck would be teaching a shape
+      nobody has ever seen work, which is a strike-through with extra steps.
+    */
+    for (const w of WEAPON_IDS) {
+      const wins = KINDS.filter((k) => blockerOf(w, k) === null);
+      expect(wins.length, `${w} never completes against anything`).toBeGreaterThan(0);
+    }
+  });
+
+  it("gives every verb a failure somewhere, or it teaches nothing", () => {
+    // The inverse. An effector that works on everything is a card with no
+    // decision attached, and its encounter has nothing to show.
+    for (const w of WEAPON_IDS) {
+      if (VERB[w] === "signal") continue; // Touches nothing, so it cannot fail.
+      const losses = KINDS.filter((k) => blockerOf(w, k) !== null);
+      expect(losses.length, `${w} never fails against anything`).toBeGreaterThan(0);
+    }
   });
 });

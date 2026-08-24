@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useT } from "../../../app/i18n";
-import { PLAYER_HP, TICK_HZ, type WeaponId } from "./content";
+import { PLAYER_HP, TICK_HZ, type EnemyKind, type WeaponId } from "./content";
 import { createRun, type Dir, type Run, type RunView } from "./sim";
 import { recorder, type Recorder, type RunLog } from "./replay";
 import { WEAPON_COLOR } from "./palette";
@@ -21,6 +21,7 @@ import { Meter } from "./Meter";
 import { WeaponIcon } from "./WeaponIcon";
 import { DeathScreen } from "./DeathScreen";
 import { BriefingSheet } from "./BriefingSheet";
+import { EncounterBeat } from "./EncounterBeat";
 
 /**
  * The whole game on one screen.
@@ -44,6 +45,9 @@ const STEP_MS = 1000 / TICK_HZ;
 const MAX_CATCHUP_MS = 250;
 const METER_EVERY = 5;
 
+/** At most this many first meetings stop a single run. */
+const MAX_BEATS = 10;
+
 /**
  * A ceiling on marks held in memory.
  *
@@ -62,6 +66,7 @@ type Phase =
       unlocked: readonly WeaponId[];
       active: readonly WeaponId[];
     }
+  | { at: "encounter"; weapon: WeaponId; kind: EnemyKind }
   | { at: "dead"; log: RunLog };
 
 export function OverkillGame({ seed, onExit }: { seed: number; onExit: () => void }) {
@@ -80,6 +85,14 @@ export function OverkillGame({ seed, onExit }: { seed: number; onExit: () => voi
   const pointerDir = useRef<Dir>(0);
   const wantCut = useRef<WeaponId | null>(null);
   const [phase, setPhase] = useState<Phase>({ at: "playing" });
+  /**
+   * How many times a run may stop for a first meeting.
+   *
+   * Ten is roughly every pair a run actually reaches, and the cap is a rail
+   * rather than a design: a device that fires more often than the player has
+   * questions stops being a lesson and becomes a toll gate.
+   */
+  const seenBeats = useRef(0);
   const [meter, setMeter] = useState(0);
   const [generation, setGeneration] = useState(0);
 
@@ -100,6 +113,7 @@ export function OverkillGame({ seed, onExit }: { seed: number; onExit: () => voi
     rec.current = r;
     run.current = createRun({ ...seeds, driver: r.driver });
     pulses.current = [];
+    seenBeats.current = 0;
     marks.current = [];
     particles.current = [];
     shake.current = 0;
@@ -164,6 +178,22 @@ export function OverkillGame({ seed, onExit }: { seed: number; onExit: () => voi
               unlocked: [...r.view.unlocked],
               active: [...r.view.active],
             });
+            carry = 0;
+            break;
+          }
+          /*
+            FIRST CONTACT stops the clock. `firstContact` is renderer-only and
+            the simulation never reads it, so this pause consumes no ticks and
+            nothing about it reaches replay, exactly like a level up.
+
+            Checked BEFORE the death branch on purpose: dying on the same tick
+            you first meet something is the moment the lesson is most wanted,
+            and swallowing it there would drop it precisely when it matters.
+          */
+          const met = r.view.firstContact;
+          if (met !== null && seenBeats.current < MAX_BEATS) {
+            seenBeats.current += 1;
+            setPhase({ at: "encounter", weapon: met.weapon, kind: met.kind });
             carry = 0;
             break;
           }
@@ -299,6 +329,14 @@ export function OverkillGame({ seed, onExit }: { seed: number; onExit: () => voi
         <div key={meter} className="pointer-events-none absolute right-3 bottom-3">
           <Meter view={view} onCut={onCut} label={t({ en: "Damage" })} />
         </div>
+      )}
+
+      {phase.at === "encounter" && (
+        <EncounterBeat
+          weapon={phase.weapon}
+          kind={phase.kind}
+          onDone={() => setPhase({ at: "playing" })}
+        />
       )}
 
       {phase.at === "briefing" && (

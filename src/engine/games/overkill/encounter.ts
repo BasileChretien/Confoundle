@@ -1,5 +1,7 @@
-import { ENEMIES, type EnemyKind, type WeaponId } from "./content";
+import { ENEMIES, PORE_REACH, type EnemyKind, type WeaponId } from "./content";
 import { VERB, blockerOf, outcomeOf, type Blocker, type Verb } from "./verbs";
+
+export { PORE_REACH };
 
 /**
  * ONE MEETING, DRAWN SLOWLY, ALONE.
@@ -32,14 +34,6 @@ import { VERB, blockerOf, outcomeOf, type Blocker, type Verb } from "./verbs";
 
 /** Played at this fraction of real time, so a sequence lasts about 2.5s. */
 export const ENCOUNTER_SPEED = 0.4;
-
-/**
- * How deep the membrane attack complex can insert, as a fraction of the
- * target's radius. Between coli's 0.1 and aureus's 0.36, because that is the
- * fact being modelled: C5b-9 spans a lipid bilayer and cannot span a thick
- * peptidoglycan layer.
- */
-export const PORE_REACH = 0.22;
 
 export interface Step {
   readonly name: string;

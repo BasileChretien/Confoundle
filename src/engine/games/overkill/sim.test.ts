@@ -330,9 +330,15 @@ describe("nothing in here can reach outside itself", () => {
    * either side: the membership assertion below fails until somebody says
    * which it is.
    */
-  const SIMULATION = ["content.ts", "replay.ts", "rng.ts", "sim.ts"];
+  // `verbs.ts` is SIMULATION, and moved here when `hit` began asking it whether
+// a meeting is worth stopping the game for. That import is exactly what this
+// boundary exists to notice: it forced `PORE_REACH` out of the encounter
+// module and into `content.ts`, where a number the matrix depends on always
+// belonged.
+const SIMULATION = ["content.ts", "replay.ts", "rng.ts", "sim.ts", "verbs.ts"];
   const PRESENTATION = [
     "BriefingSheet.tsx",
+    "EncounterBeat.tsx",
     "EncounterDemo.tsx",
     "cells.ts",
     "encounter.ts",
@@ -352,7 +358,6 @@ describe("nothing in here can reach outside itself", () => {
     "loadouts.ts",
     "policies.ts",
     "render.ts",
-    "verbs.ts",
   ];
 
   const BANNED: readonly (readonly [string, RegExp])[] = [

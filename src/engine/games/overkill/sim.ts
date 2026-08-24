@@ -41,6 +41,7 @@ import {
   xpToNext,
 } from "./content";
 
+import { worthStopping } from "./verbs";
 import { foldSpawn, stream, unitVector, weightedIndex } from "./rng";
 
 /**
@@ -137,6 +138,16 @@ export interface RunView {
    * same run whether or not anybody is looking at it.
    */
   readonly firedThisTick: readonly WeaponId[];
+  /**
+   * The first time this run that a deployed effector has met a class of
+   * pathogen, or null. Cleared every tick, like `firedThisTick`.
+   *
+   * RENDERER-ONLY, and nothing in the simulation reads it. That is what lets
+   * the host stop the clock on it without any of this touching replay: the
+   * pause consumes no ticks, exactly as a level up does not, so a recorded run
+   * plays back identically whether or not anybody was shown anything.
+   */
+  readonly firstContact: { readonly weapon: WeaponId; readonly kind: EnemyKind } | null;
   readonly hurtThisTick: boolean;
   /** Where each weapon actually landed this tick, so the renderer can draw it. */
   readonly hitsThisTick: readonly Landed[];
@@ -412,6 +423,8 @@ export function createRun(opts: RunOptions): Run {
   let py = 0;
   let hp = PLAYER_HP;
   let hurtUntil = 0;
+  /** Effector-and-class pairs already met, so a lesson is offered once. */
+  const metPairs = new Set<string>();
   let nextId = 1;
   let spawned = 0;
   let spawnAttempts = 0;
@@ -466,6 +479,7 @@ export function createRun(opts: RunOptions): Run {
     active,
     unlocked,
     overload: 0,
+    firstContact: null,
     waveIndex: 0,
     waveTick: 0,
   };
@@ -482,6 +496,7 @@ export function createRun(opts: RunOptions): Run {
     waveIndex: number;
     waveTick: number;
     overload: number;
+    firstContact: { weapon: WeaponId; kind: EnemyKind } | null;
   };
 
   const offers: WeaponId[] = [];
@@ -533,6 +548,25 @@ export function createRun(opts: RunOptions): Run {
       would be drawing a cooperation that does not happen.
     */
     const match = EFFECTIVE[by][e.cls];
+    /*
+      FIRST CONTACT. The one moment a player's question actually exists: this
+      just happened, and they want to know what it was.
+
+      Recorded per (effector, pathogen CLASS) rather than per kind, because
+      what is being taught is a mechanism and the mechanism is a property of
+      the class. Meeting a second gram positive is not a new lesson.
+
+      Only for pairs whose encounter has something to say. A trickle from a
+      recruiter, or the twentieth coli of the wave, is not a teaching moment
+      and stopping the game for it would make the device a tax.
+    */
+    const pair = `${by}:${e.cls}`;
+    if (!metPairs.has(pair)) {
+      metPairs.add(pair);
+      if (worthStopping(by, e.kind, metPairs)) {
+        mutView.firstContact = { weapon: by, kind: e.kind };
+      }
+    }
     const amount = effectiveDamage(raw, e.armour, pierces, match);
     if (amount <= 0) return;
     /*
@@ -718,6 +752,7 @@ export function createRun(opts: RunOptions): Run {
     hitsThisTick.length = 0;
     deathsThisTick.length = 0;
     mutView.hurtThisTick = false;
+    mutView.firstContact = null;
 
     // 2. CUTS.
     const wants = opts.driver.cut(view);

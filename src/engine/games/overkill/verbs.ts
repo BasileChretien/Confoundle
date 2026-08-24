@@ -1,5 +1,4 @@
-import { ENEMIES, type EnemyKind, type WeaponId } from "./content";
-import { PORE_REACH } from "./encounter";
+import { ENEMIES, PORE_REACH, type EnemyKind, type WeaponId } from "./content";
 
 /**
  * WHAT EACH EFFECTOR ACTUALLY DOES, and whether it can do it here.
@@ -198,4 +197,32 @@ export function blockerOf(weapon: WeaponId, kind: EnemyKind): Blocker | null {
     case "signal":
       return null;
   }
+}
+
+/**
+ * Whether a first meeting is worth stopping the game for.
+ *
+ * THE ORDERING RULE IS THE IMPORTANT HALF, and it is not a nicety. A failure
+ * animation is the success animation interrupted, so it explains itself only
+ * to somebody who has already watched that motion succeed. Showing a player
+ * complement sliding off a thick wall before they have ever seen a pore open
+ * one teaches nothing: they have no idea what was supposed to happen, so the
+ * interruption is just an unfamiliar shape that stopped. So a failure waits
+ * until that effector has completed against something.
+ *
+ * Recruiters are excluded because they never meet anything: the whole of what
+ * a cytokine does happens somewhere else, and a duel between it and a pathogen
+ * would be inventing a confrontation that does not occur.
+ */
+export function worthStopping(
+  weapon: WeaponId,
+  kind: EnemyKind,
+  met: ReadonlySet<string>,
+): boolean {
+  if (VERB[weapon] === "signal") return false;
+  if (completes(weapon, kind)) return true;
+  // A failure, so only once this effector has been seen to work somewhere.
+  return (Object.keys(ENEMIES) as EnemyKind[]).some(
+    (other) => completes(weapon, other) && met.has(`${weapon}:${ENEMIES[other].cls}`),
+  );
 }

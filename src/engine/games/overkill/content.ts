@@ -487,6 +487,19 @@ export const WEAPON_IDS = Object.keys(WEAPONS) as readonly WeaponId[];
 /** How much every other deployed effector gains per level of cytokines. */
 export const RECRUIT_BONUS = 0.18;
 
+/**
+ * How deep the membrane attack complex can insert, as a fraction of the
+ * target's radius.
+ *
+ * DATA, NOT DRAWING, which is why it lives here. It sits between E. coli's
+ * hairline 0.1 and the 0.36 of S. aureus peptidoglycan, because that is the
+ * fact being modelled: C5b-9 spans a lipid bilayer and cannot span a thick
+ * wall. Complement's whole row in `EFFECTIVE` is a consequence of comparing
+ * this number to `wall`, and both the simulation and the encounter animation
+ * read the same one, so the picture cannot drift from the mechanism.
+ */
+export const PORE_REACH = 0.22;
+
 export const MAX_LEVEL = 6;
 
 /**

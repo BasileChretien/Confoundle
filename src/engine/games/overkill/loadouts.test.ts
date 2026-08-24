@@ -62,6 +62,7 @@ const viewAt = (waveIndex: number): RunView =>
     waveIndex,
     waveTick: 0,
     overload: 0,
+    firstContact: null,
   }) as RunView;
 
 const pickAt = (arm: typeof MATCHED, i: number) => arm(viewAt(i), offeredAt(i));

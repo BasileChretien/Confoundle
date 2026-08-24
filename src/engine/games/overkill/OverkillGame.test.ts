@@ -134,6 +134,30 @@ function deploy(): boolean {
   return true;
 }
 
+/**
+ * Answers the first-contact beat if one is on screen.
+ *
+ * NEEDED FOR THE SAME REASON `deploy` IS: the beat halts the run until
+ * somebody commits a prediction, so a test that pumps frames past one sees the
+ * clock stop and reports it as a broken loop. Three tests failed exactly that
+ * way when the beat landed, and every one of them said "expected 0:09" rather
+ * than anything about an encounter.
+ *
+ * Predicts "works" every time, which is fine because nothing is scored on it:
+ * the commit exists to put the player's belief at risk, not to grade them.
+ */
+function predict(): boolean {
+  const yes = container.querySelector('button[aria-label="Predict it works"]');
+  if (yes === null) return false;
+  act(() => yes.dispatchEvent(new Event("click", { bubbles: true })));
+  // The reveal then plays on its own clock and closes itself; frames drive it.
+  // The reveal plays on its own clock and closes itself. A pore sequence is
+  // 60 ticks plus an 18 tick hold at 0.7 speed, so about 111 frames; 160 is
+  // margin for the longer verbs.
+  for (let i = 0; i < 160; i++) frame();
+  return true;
+}
+
 /** Mount, then get past the opening briefing, which is what a player does. */
 function start(onExit = () => {}) {
   mount(onExit);
@@ -169,6 +193,7 @@ function playUntilLevelUp(limitSeconds = 90) {
       // answer them too or it stalls at the first boundary and reports "no
       // level up" about a game that is simply waiting to be told something.
       deploy();
+      predict();
       if (cardsOnScreen().length === 3) return;
       if (text().includes("worth most")) throw new Error("died before any level up");
     }
@@ -284,6 +309,7 @@ describe("the end", () => {
       // 0:55 forever and this reported "the death screen never came" about a
       // game that was patiently waiting to be told what to deploy.
       deploy();
+      predict();
       const card = [...container.querySelectorAll("button")].find((b) =>
         b.className.includes("flex-col"),
       );

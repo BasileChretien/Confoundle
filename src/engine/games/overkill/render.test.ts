@@ -124,6 +124,7 @@ function view(over: Partial<RunView> = {}): RunView {
     waveIndex: 0,
     waveTick: 0,
     overload: 0,
+    firstContact: null,
     ...over,
   };
 }

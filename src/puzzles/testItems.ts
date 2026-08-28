@@ -10534,6 +10534,116 @@ const items: TestItem[] = [
       en: "Consumption measures how much heat a home loses and also how much heating the household is willing to pay for. A family that cannot afford to run the heating consumes little and lives in the cold, and the model reads that as a warm house. It predicts consumption well, which is the claim it was built to make, and the coldest homes are the ones it rules out first.",
     },
   },
+
+  /*
+    COMPETING RISKS. Each of these states that follow-up was complete and
+    that nobody was lost, which is not scene setting. It forecloses
+    attrition and survivorship, the two critiques a player could otherwise
+    correctly make, and leaves the estimator as the only reading. Each also
+    names something that is genuinely a loss of observation, a move abroad,
+    a transfer, a suspension, beside the competing event, because the whole
+    distinction is that one of the two could still have the outcome.
+  */
+  {
+    id: "cr-dementia-ninety",
+    scenario: {
+      en: "A cohort study follows 3,000 people aged 85 and over for fifteen years to estimate the risk of developing dementia. Every participant is traced to the end, and nobody is lost. The published survival analysis reports that 60 in 100 will develop dementia within fifteen years, and a newspaper reports that most people who reach 85 will end up with dementia.",
+    },
+    trap: "competing-risks",
+    explanation: {
+      en: "The estimate is the risk of dementia in a group where nobody dies of anything else, and in a cohort aged 85 and over most people die within fifteen years. Those deaths are treated as though the person were still being followed and could still be diagnosed, so the curve keeps carrying them upward. The share of these people who actually go on to be diagnosed is smaller, and the arithmetic is not wrong: it answers a question about a group that does not exist.",
+    },
+  },
+  {
+    id: "cr-graft-failure",
+    scenario: {
+      en: "A transplant registry estimates how often a donated kidney fails. It follows every recipient from the operation, with complete records and no one untraced. Patients who die with the kidney still working are treated the same way as patients who moved abroad, and the reported ten-year risk of graft failure is used to counsel new recipients.",
+    },
+    trap: "competing-risks",
+    explanation: {
+      en: "A patient who dies with a working kidney cannot go on to have it fail, whereas a patient who moved abroad might. Treating the two the same keeps the dead in the pool at risk for the rest of the study, and the estimate drifts upward from the share of recipients who actually lose a graft. In an older transplant population, where death with a functioning kidney is common, the gap is large, and it is the counselling figure that suffers.",
+    },
+  },
+  {
+    id: "cr-bypass-waiting",
+    scenario: {
+      en: "A health service estimates how long patients with coronary artery disease wait for bypass surgery. Every referral is tracked and no records are missing. Patients who instead receive a stent are removed from follow-up at that point and handled the same way as patients who move out of the region, and the service publishes a rising cumulative chance of receiving bypass surgery.",
+    },
+    trap: "competing-risks",
+    explanation: {
+      en: "Someone who has a stent instead is not waiting for bypass surgery any more, and in most cases will never have it. Someone who moves away is still a person who might. Treating the two identically keeps stented patients counted as though they were still in the queue, so the published chance of eventually receiving bypass surgery is larger than the share of patients who actually receive one.",
+    },
+  },
+  {
+    id: "cr-relapse-transplant",
+    scenario: {
+      en: "A haematology unit reports the risk of leukaemia relapse after bone marrow transplantation, over five years, with complete follow-up on every patient. Deaths from infection and other complications of the transplant itself are censored at the date of death. The unit's five-year relapse figure is quoted to patients deciding whether to have the procedure.",
+    },
+    trap: "competing-risks",
+    explanation: {
+      en: "A patient who dies of a transplant complication cannot then relapse. Censoring those deaths keeps them counted as still able to relapse for the rest of the five years, which lifts the estimate above the share of patients who actually relapse. It also removes from view the thing the patient most needs weighed against relapse, which is the chance of dying of the treatment.",
+    },
+  },
+  {
+    id: "cr-hip-replacement",
+    scenario: {
+      en: "A registry estimates how often an artificial hip needs replacing again. It follows every patient from the first operation and traces all of them. Patients who die with the original joint still in place are censored on the date they die. The registry reports a twenty-year revision risk, which is used to compare implants and to advise patients in their eighties.",
+    },
+    trap: "competing-risks",
+    explanation: {
+      en: "A patient who dies with the joint intact will never need it revised. Censoring those deaths keeps them in the pool at risk for the remaining years, so the reported twenty-year figure is the revision risk in a group where nobody dies. For a patient in their eighties, most of whom will not see twenty years, that is not the number they are asking for, though it may be the right number for comparing how the implants themselves wear.",
+    },
+  },
+  {
+    id: "cr-nursing-home-fall",
+    scenario: {
+      en: "A study of nursing home residents estimates the chance of being hospitalised for a fall within three years. Every resident is followed to the end of the study or until they leave, and the records are complete. Residents who die in the home are treated as no longer observable, in the same way as residents who transfer to another facility. The reported three-year risk of a fall requiring hospital care is 40 in 100.",
+    },
+    trap: "competing-risks",
+    explanation: {
+      en: "Residents who die cannot be hospitalised for a fall afterwards, and in this population many die within three years. Handling them the same way as residents who transferred keeps them counted as still at risk, so the reported figure sits above the share of residents who actually go to hospital after a fall. The transfers are a genuine loss of observation; the deaths are the end of the possibility.",
+    },
+  },
+  {
+    id: "cr-second-cancer",
+    scenario: {
+      en: "An oncology centre estimates the risk of a second, unrelated cancer among people treated for a first one at age 70 or older. Every patient is traced and none are lost. Deaths from the original cancer are censored, and the centre publishes a fifteen-year risk of a second cancer to guide how often survivors should be screened.",
+    },
+    trap: "competing-risks",
+    explanation: {
+      en: "A patient who dies of the first cancer cannot develop a second one. Censoring those deaths keeps them counted as at risk for fifteen years, so the published figure describes a group in which the original cancer never kills anybody. The screening decision depends on how many survivors will actually develop a second cancer, which is the smaller number, and the difference grows the longer the horizon.",
+    },
+  },
+  {
+    id: "cr-waiting-list",
+    scenario: {
+      en: "A transplant service estimates how likely somebody on the waiting list is to receive a liver. Everyone on the list is accounted for, with no missing records. Patients who die on the list are censored on the date of death, exactly as patients who are temporarily suspended for illness are. The service reports a three-year chance of transplantation and uses it when counselling people who have just been listed.",
+    },
+    trap: "competing-risks",
+    explanation: {
+      en: "Dying on the list ends the possibility of a transplant; being temporarily suspended does not. Censoring both the same way keeps the dead counted as though they were still waiting their turn, so the published chance of receiving a liver is higher than the share of listed patients who actually receive one. For a person newly listed, the two competing outcomes are precisely what they want weighed against each other.",
+    },
+  },
+  {
+    id: "cr-aneurysm-repair",
+    scenario: {
+      en: "A vascular unit reports how often a small abdominal aneurysm grows enough to need surgery. It follows every patient with scans at fixed intervals, and no patient is lost to follow-up. Patients who die of heart disease before surgery are censored at death. The unit's ten-year figure is used to argue that most small aneurysms will eventually need operating on.",
+    },
+    trap: "competing-risks",
+    explanation: {
+      en: "These patients are old and their aneurysms and their heart disease share the same causes, so many die before any aneurysm grows enough to matter. Censoring those deaths keeps them counted as still able to reach the surgical threshold, which pushes the ten-year figure up. The claim that most small aneurysms eventually need surgery is a claim about patients, and the estimate is about a population in which the competing cause of death has been removed.",
+    },
+  },
+  {
+    id: "cr-hearing-aid",
+    scenario: {
+      en: "An audiology service estimates the chance that someone fitted with a first hearing aid will return for a second, more powerful one. Everyone fitted is followed through the national record, with no one untraced. Patients who die are censored on the date of death, and the service reports that 45 in 100 will return within ten years, using it to plan its future workload.",
+    },
+    trap: "competing-risks",
+    explanation: {
+      en: "Most people fitted with a first hearing aid are elderly, and a large share die within ten years without returning. Censoring them keeps them counted as though they were still going to come back, so 45 in 100 is the return rate in a population that does not age out. The workload the service has to plan for is the number of people who actually return, which is lower, and the arithmetic that produced 45 was correct throughout.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

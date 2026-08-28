@@ -265,6 +265,7 @@ describe("slice-drawing renderers", () => {
     // this list is the only place the scan's reach is legible.
     expect(SLICED).toEqual([
       "BunchingView",
+      "CompetingView",
       "ConditionalView",
       "CrossedView",
       "DistributionView",

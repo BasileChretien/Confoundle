@@ -6125,3 +6125,155 @@ directory, so that layer was planned and never built. A silent reveal clip has
 none of the four problems above: it carries no lyrics to translate, compresses
 no argument, needs no voice, and shows the reversal rather than describing it.
 If a video layer is built at all, that is the one to build first.
+
+### 76. The curve that answers a question about a world where nobody dies <!-- skill: competing-risks -->
+
+**Status: SHIPPED 2026-08-28 as `competing-risks`, slug
+`the-risk-if-nobody-died`, on a new `competing` shape.** Full text read at
+source on PMC, not from the
+abstract, and specifically because the abstract cannot settle the one question
+that decides whether this is publishable. Reconciles four ways.
+
+Berry SD, Ngo L, Samelson EJ, Kiel DP. Competing risk of death: an important
+consideration in studies of older adults. *J Am Geriatr Soc*
+2010;58(4):783-787. DOI 10.1111/j.1532-5415.2010.02767.x. Free full text at
+PMC2873048. The underlying cohort study is Berry SD, Samelson EJ, Hannan MT, et
+al. Second hip fracture in older men and women: the Framingham Study. *Arch
+Intern Med* 2007;167(18):1971-1976.
+
+#### The cohort
+
+481 Framingham Heart Study members who had a first hip fracture between 1948
+and 2003, followed until a second hip fracture, death, dropout, or the study
+closing in 2003. Median follow-up 4.2 years, range 4 days to 43 years.
+
+#### What happened to them, as printed
+
+| | share |
+|---|---|
+| Had a second hip fracture | 15% |
+| Died without a second hip fracture | 73% |
+| Alive at study completion | 12% |
+
+Half of all the deaths fell within four years of the first fracture.
+
+#### The two estimates, as printed
+
+Incidence of second hip fracture at 1, 3, 5 and 10 years:
+
+| method | 1 y | 3 y | 5 y | 10 y |
+|---|---|---|---|---|
+| Survival analysis (1 - Kaplan-Meier) | 3% | 7% | 11% | 21% |
+| Cumulative Incidence Competing Risk | 3% | 6% | 8% | 12% |
+
+Also printed, and useful because it is absurd on its face: by standard
+survival analysis the **median time to second hip fracture was 26 years**, in a
+cohort where only 15% ever had one. A median for an event most people never
+experience is not a median of anything.
+
+#### THE THING THE ABSTRACT CANNOT SETTLE, and why this was nearly refused
+
+The section carrying these numbers is headed **"Simulation Study of Second Hip
+Fracture According to Varying Mortality"**, and its first line is "we performed
+a simulation study". Read no further and this is invented data, and the entry
+should have been a sourcing note rather than a card.
+
+It is not, and the full text is explicit about which half is which:
+
+* The **481 people are real**, with real observed outcomes, cited to the 2007
+  Arch Intern Med cohort study.
+* The **3/7/11/21 against 3/6/8/12 comparison is the real cohort**, computed at
+  its own observed mortality. The Results state it flatly, with no assumption
+  attached: "Using traditional survival analysis... the incidence of second hip
+  fracture at 1, 3, 5, and 10 years was 3%, 7%, 11%, and 21%... A competing risk
+  approach resulted in a lower estimate of incidence: 3%, 6%, 8%, and 12%."
+* The **simulated part is a separate paragraph and a separate figure**, and is
+  flagged by the word "assuming": mortality was varied from 10% to 85% to draw
+  Figures 1 and 2, giving a 10-year incidence of 19% at 10% mortality and 11%
+  at 85%.
+
+**Figures 1 and 2 are simulated and must not be used.** The card uses only the
+observed comparison and the observed composition.
+
+#### It reconciles four ways
+
+1. **15 + 73 + 12 = 100.** The three fates partition the cohort exactly, which
+   is what a real complete follow-up looks like written out.
+2. **11 / 8 = 1.375**, against the paper's stated "37% greater" at 5 years.
+   This one agrees only to within the rounding of its own inputs, and the
+   half point matters enough to write down. 1.375 is 37.5% greater, which
+   rounds to 38, not 37; the paper computed from its unrounded estimates
+   while anyone reading the table has only 11 and 8, each already rounded
+   to a whole per cent. Neither is wrong. The consequence for the card is
+   a rule: **never print a derived 5-year ratio beside the paper's own
+   sentence**, or the page contradicts its citation over a rounding
+   artefact. Quote the 10-year figure, which is exact, and draw the gap in
+   percentage points, which is exact at every time.
+3. **21 / 12 = 1.75**, and the paper independently states the 10-year figure is
+   "75% greater".
+4. **The observed 10-year competing-risk estimate of 12% falls between the two
+   simulated extremes, 19% at 10% mortality and 11% at 85%, and sits near the
+   high-mortality end.** The observed mortality was 73%. This is the check that
+   actually proves point 3 of the section above: an observed estimate lands
+   where the simulation says an observed mortality of 73% should put it, which
+   it would not do if 12% had itself come off the simulation.
+
+#### Why this is a gap and not one of the cards already shipped
+
+Checked against every neighbour that could carry it.
+
+`survivorship-bias` is about who is left to be *looked at*. Here nobody is
+missing: all 481 are counted, and the dead are counted as censored rather than
+dropped.
+
+`attrition-bias` is differential loss to follow-up. There is no loss here worth
+the name, and the problem would persist with perfect follow-up.
+
+`immortal-time-bias` is a stretch of time misallocated so that an outcome could
+not have occurred. Nothing is misallocated here; the arithmetic is right.
+
+`overdiagnosis` and `lead-time-bias` are about detection. Detection is not
+involved.
+
+What is new is that **the estimator answers a question nobody asked.** 1 minus
+Kaplan-Meier estimates the risk that would be seen if death were abolished. In
+a cohort of people who have just broken a hip at eighty, that world does not
+exist, and the number is not wrong so much as about somewhere else. The deck
+has no card where the arithmetic is correct, the data complete, the follow-up
+honest, and the answer still not about these patients.
+
+#### Why it needs a new shape
+
+`series` is the only candidate and it cannot carry it. It draws two lines for
+two **groups**, with an optional label for the moment they cross. Here the two
+lines are two **estimators of one group**, and they never cross: 1 - KM is
+greater than or equal to the competing-risk estimate everywhere, by
+construction. Bending it would produce a figure whose one distinguishing
+feature, the crossover, can never fire.
+
+More decisively, no line chart can say the thing the reveal has to say. The gap
+between the curves has to be shown to be **dead people**, not unknowns, and the
+composition of the cohort at the end (15/73/12) has to be visible in the same
+figure that draws the curves. That is a second dimension a line chart does not
+have.
+
+#### Four honesty constraints for whoever authors it
+
+1. **Do not say the model is wrong.** 1 - KM is a correct estimate of a
+   well-defined quantity. It answers "what is the risk if death did not
+   intervene", and there are questions for which that is the right quantity,
+   for example a study of aetiology. The card must land on the mismatch between
+   the estimator and the clinical question, not on an error.
+2. **Do not touch Figures 1 and 2.** They are simulated. The temptation will be
+   the 19%-to-11% sweep, which would make a lovely toy and would be inventing
+   data.
+3. **The gap between the curves is not literally the dead people.** It arises
+   from the censoring assumption. Word it as the extra risk the first curve
+   reports by treating people who had died as though they could still fracture,
+   which is what the paper says, rather than as a headcount.
+4. **The skill licenses a DIRECTION, not a magnitude.** 1 - KM is greater than
+   or equal to the competing-risk estimate always, so "lower than the curve
+   says" is guaranteed and a player can know it. That 21% becomes 12% rather
+   than 17% is not derivable from the setup, so no two answer bands may sit on
+   the low side, and "there is no way to tell" must be wrong rather than
+   correct here, because the direction genuinely is tellable.

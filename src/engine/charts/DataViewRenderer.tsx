@@ -51,6 +51,8 @@ import { AttenuationView } from "./AttenuationView";
 import { ConditionalView } from "./ConditionalView";
 import { RatersView } from "./RatersView";
 import { restrictConditional } from "./conditional";
+import { CompetingView } from "./CompetingView";
+import { restrictCompeting } from "./competing";
 import { restrictRaters } from "./raters";
 import { restrictPublished } from "./published";
 import { restrictCrossed } from "./crossed";
@@ -419,6 +421,22 @@ export function DataViewRenderer({
           kind={view.kind}
         />
       ) : null;
+    case "competing":
+      /*
+        A SLICE-DRAWER ON THE ESTIMATORS. The setup hides the competing-risk
+        curve and the cohort's fates, so what is on screen is one ordinary
+        looking survival curve. The reveal turns both back on.
+      */
+      return view.kind === "asestimated" || view.kind === "aseveryone" ? (
+        <CompetingView
+          data={restrictCompeting(data, {
+            showAdjusted: view.kind === "aseveryone",
+            showFates: view.kind === "aseveryone",
+          })}
+          full={data}
+          kind={view.kind}
+        />
+      ) : null;
     case "raters":
       // A slice-drawer on the RATERS: the setup names one judge and the reveal
       // omits groupIds, so the reveal adds the judges who disagreed with them.
@@ -542,6 +560,10 @@ export function scopeLabel(kind: DataViewKind): string {
       return "Measured straight away";
     case "overtime":
       return "And the same people later";
+    case "asestimated":
+      return "As the risk was estimated";
+    case "aseveryone":
+      return "With everyone accounted for";
     case "onerating":
       return "One of the two ratings";
     case "bothratings":

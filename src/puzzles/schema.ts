@@ -3823,8 +3823,150 @@ const RatersData = z
   });
 export type RatersData = z.infer<typeof RatersData>;
 
+/* ---------------------------------------------------------------------------
+ * A competing risk: one cohort, one outcome, and two estimators of it.
+ *
+ * The shape exists because no line chart could carry the lesson. `series`
+ * draws two lines for two GROUPS and turns on the moment they cross; here the
+ * two lines are two ESTIMATORS OF ONE GROUP, and they can never cross, since
+ * one minus Kaplan-Meier is greater than or equal to the competing-risk
+ * estimate everywhere by construction. Its one distinguishing feature could
+ * never fire.
+ *
+ * What the reveal has to say is also a dimension a line chart does not have.
+ * The gap between the curves has to be shown to be DEAD PEOPLE rather than
+ * unknowns, so the composition of the cohort has to sit in the same figure
+ * that draws the curves. Hence `fates` beside `points`.
+ * ------------------------------------------------------------------------- */
+
+/** One time point, carrying both estimates of cumulative incidence per 100. */
+const CompetingPoint = z.object({
+  /** Time since entry, in `timeUnit`. */
+  t: z.number().nonnegative(),
+  /** The estimator that treats a death as a censoring, i.e. 1 - Kaplan-Meier. */
+  naive: z.number().min(0).max(100),
+  /** The estimator that treats a death as an outcome the patient cannot leave. */
+  adjusted: z.number().min(0).max(100),
+});
+
+/**
+ * What became of the cohort, as observed. Not an estimate: these are the
+ * counted fates, and they are what makes the reveal a fact rather than a
+ * second opinion.
+ */
+const CompetingFate = z.object({
+  id: z.string().min(1),
+  label: LocalizedText,
+  /** Per 100 of the cohort. */
+  share: z.number().min(0).max(100),
+  role: z.enum(["event", "competing", "stillfollowed"]),
+});
+
+const CompetingData = z
+  .object({
+    type: z.literal("competing"),
+    label: LocalizedText, // figure title
+    timeUnit: LocalizedText, // "years"
+    metricLabel: LocalizedText, // what the curves count
+    naiveLabel: LocalizedText, // names the estimator drawn at the setup
+    adjustedLabel: LocalizedText, // names the one added at the reveal
+    /** Names the band between the curves. Drawn only at the reveal. */
+    gapLabel: LocalizedText,
+    /** Says on the figure who these people are and how long they were followed. */
+    cohortNote: LocalizedText,
+    points: z.array(CompetingPoint).min(2),
+    fates: z.array(CompetingFate).min(2),
+  })
+  .superRefine((d, ctx) => {
+    d.points.forEach((p, i) => {
+      if (i > 0 && p.t <= d.points[i - 1].t)
+        ctx.addIssue({
+          code: "custom",
+          path: ["points", i, "t"],
+          message: "points must run forwards in time",
+        });
+      /*
+        A CUMULATIVE INCIDENCE CANNOT FALL. Both curves count people who have
+        ever had the event, so a drop would mean somebody un-had one.
+      */
+      if (i > 0 && p.naive < d.points[i - 1].naive)
+        ctx.addIssue({
+          code: "custom",
+          path: ["points", i, "naive"],
+          message: "a cumulative incidence cannot fall",
+        });
+      if (i > 0 && p.adjusted < d.points[i - 1].adjusted)
+        ctx.addIssue({
+          code: "custom",
+          path: ["points", i, "adjusted"],
+          message: "a cumulative incidence cannot fall",
+        });
+      /*
+        THE ORDERING IS A THEOREM, NOT A FINDING. Treating a death as a
+        censoring keeps that patient in the risk set forever, so the naive
+        estimate is greater than or equal to the competing-risk one at every
+        time. A card drawing the reverse has a transcription error, and the
+        figure would be teaching an impossibility.
+      */
+      if (p.naive < p.adjusted)
+        ctx.addIssue({
+          code: "custom",
+          path: ["points", i],
+          message:
+            "the naive estimate cannot sit below the competing-risk one; one minus Kaplan-Meier is an upper bound",
+        });
+    });
+
+    // Equal everywhere is legal arithmetic and a dead puzzle: the reveal would
+    // redraw the setup. Separate from the check above, which allows it.
+    if (!d.points.some((p) => p.naive > p.adjusted))
+      ctx.addIssue({
+        code: "custom",
+        path: ["points"],
+        message:
+          "the two estimators agree at every point, so the reveal has nothing to show",
+      });
+
+    const ids = new Set<string>();
+    d.fates.forEach((f, i) => {
+      if (ids.has(f.id))
+        ctx.addIssue({ code: "custom", path: ["fates", i, "id"], message: `duplicate fate ${f.id}` });
+      ids.add(f.id);
+    });
+
+    if (d.fates.filter((f) => f.role === "event").length !== 1)
+      ctx.addIssue({
+        code: "custom",
+        path: ["fates"],
+        message: "exactly one fate is the outcome the curves are about",
+      });
+    if (!d.fates.some((f) => f.role === "competing"))
+      ctx.addIssue({
+        code: "custom",
+        path: ["fates"],
+        message: "a competing risk shape with no competing event is not one",
+      });
+
+    /*
+      THE FATES PARTITION THE COHORT. Everyone ends in exactly one of them, so
+      the shares total 100, and a figure whose bar does not fill is a figure
+      quietly dropping people. The tolerance is 1.5 rather than 0, because a
+      source printing three shares each rounded to a whole per cent can move
+      the total by half a point apiece.
+    */
+    const total = d.fates.reduce((sum, f) => sum + f.share, 0);
+    if (Math.abs(total - 100) > 1.5)
+      ctx.addIssue({
+        code: "custom",
+        path: ["fates"],
+        message: `the fates total ${total} per cent, so they do not partition the cohort`,
+      });
+  });
+export type CompetingData = z.infer<typeof CompetingData>;
+
 export const PuzzleData = z.discriminatedUnion("type", [
   ProxyData,
+  CompetingData,
   RatersData,
   RatesData,
   FrequenciesData,
@@ -3937,6 +4079,8 @@ export const DataView = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("whatitfound"), ...viewFields }),
   z.object({ kind: z.literal("whatitchanged"), ...viewFields }),
   z.object({ kind: z.literal("asrecorded"), ...viewFields }),
+  z.object({ kind: z.literal("asestimated"), ...viewFields }),
+  z.object({ kind: z.literal("aseveryone"), ...viewFields }),
   z.object({ kind: z.literal("afterlooking"), ...viewFields }),
   z.object({ kind: z.literal("asmeasured"), ...viewFields }),
   z.object({ kind: z.literal("asdelivered"), ...viewFields }),

@@ -1727,6 +1727,49 @@ function ProxyGlyph() {
     </svg>
   );
 }
+function CompetingGlyph() {
+  const t = useT();
+  const W = 200;
+  const H = 96;
+  /**
+   * Two curves from one origin, the upper one climbing away from the lower,
+   * with the band between them filled. The band is the whole shape: a distance
+   * that is not a disagreement between two methods but a population of people
+   * one of them is still counting.
+   *
+   * Drawn as a widening fan rather than as two parallel lines, because the
+   * separation growing with time is the property that makes the shape worth a
+   * card. Two parallel lines would say the estimators differ by a constant,
+   * which is the case where none of this matters.
+   *
+   * Shape-generic wording, since the glyph is chosen by `data.type` and has to
+   * survive whatever the next puzzle on this shape turns out to be about.
+   */
+  const X0 = 22;
+  const Y0 = H - 14;
+  const upper = `M${X0},${Y0} C 80,${Y0 - 14} 130,${Y0 - 40} ${W - 12},14`;
+  const lower = `M${X0},${Y0} C 80,${Y0 - 6} 130,${Y0 - 20} ${W - 12},48`;
+  return (
+    <svg
+      viewBox={`0 0 ${W} ${H}`}
+      width="100%"
+      role="img"
+      aria-label={t({
+        en: "Two rising curves from one starting point, the gap between them widening as they go",
+      })}
+    >
+      <path
+        d={`${upper} L ${W - 12},48 C 130,${Y0 - 20} 80,${Y0 - 6} ${X0},${Y0} Z`}
+        fill={CARD.gold}
+        opacity={0.22}
+      />
+      <path d={upper} fill="none" stroke={CARD.gold} strokeWidth={2} />
+      <path d={lower} fill="none" stroke={CARD.teal} strokeWidth={2} />
+      <line x1={X0} y1={10} x2={X0} y2={Y0} stroke={CARD.rule} strokeWidth={1.5} />
+      <line x1={X0} y1={Y0} x2={W - 8} y2={Y0} stroke={CARD.rule} strokeWidth={1.5} />
+    </svg>
+  );
+}
 function CrossedGlyph() {
   const t = useT();
   const W = 200;
@@ -2379,6 +2422,7 @@ export function ShareCard({
   const conditionalGlyph = data.type === "conditional";
   const ratersGlyph = data.type === "raters";
   const proxyGlyph = data.type === "proxy";
+  const competingGlyph = data.type === "competing";
   const splitSampleGlyph =
     data.type === "rates" &&
     Boolean(data.strataAreSeparateSamples) &&
@@ -2557,6 +2601,8 @@ export function ShareCard({
               <ConditionalGlyph />
             ) : proxyGlyph ? (
               <ProxyGlyph />
+            ) : competingGlyph ? (
+              <CompetingGlyph />
             ) : null}
           </div>
 

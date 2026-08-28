@@ -5944,6 +5944,116 @@ prop, `ShareCard` glyph, an authored `aria-label` with slots, and ten locales.
 
 ---
 
+### 75. The algorithm that was accurate about cost and wrong about who was sick <!-- skill: proxy-target -->
+
+**Status: VERIFIED 2026-08-28.** Read off the paper's own Table 1 and its
+stated exemplars. Science carries this one as FULL ACCESS, so no institutional
+route was needed and anyone can check it.
+
+Obermeyer Z, Powers B, Vogeli C, Mullainathan S. Dissecting racial bias in an
+algorithm used to manage the health of populations. *Science*
+2019;366(6464):447-453. DOI 10.1126/science.aax2342.
+
+#### What the algorithm was for
+
+A commercial risk score, used by a large academic hospital on all primary care
+patients in risk-based contracts from 2013 to 2015, to decide who is offered a
+care management programme. Above the **97th percentile** a patient is
+automatically identified for enrolment. Above the **55th** they are referred to
+their primary care physician, who is asked to consider them. The score is
+trained to predict **cost**.
+
+#### Table 1, as printed
+
+Sample: 43,539 patients who self-identified as White without another race or
+ethnicity, over 88,080 patient-years, and 6,079 who self-identified as Black,
+over 11,929 patient-years.
+
+| | White | Black |
+|---|---|---|
+| Algorithm score (percentile) | 50 | 52 |
+| Actual cost | $7,540 | $8,442 |
+| Hospitalizations | 0.09 | 0.13 |
+| Hospital days | 0.50 | 0.78 |
+| Emergency visits | 0.19 | 0.35 |
+| Race composition of programme (%) | 81.8 | 18.2 |
+
+#### Stated in the text, and not in Table 1
+
+* At the 97th percentile of risk score, the threshold at which patients are
+  auto-identified, Black patients have **4.8** distinct chronic conditions
+  against **3.8** for White patients. The paper calls this 26.3% more, P < 0.001.
+* Cost at the median risk score: **$5,147** for Black patients against **$4,995**
+  for White.
+* Cost in the top 5% of predicted risk: **$35,541** against **$34,059**.
+* Removing the disparity would move the share of Black patients receiving
+  additional help from **17.7%** to **46.5%**.
+
+#### It reconciles three ways
+
+1. 4.8 divided by 3.8 is 1.263, which is exactly the 26.3% the paper states.
+2. Table 1 answers the question by itself. Cost runs 12.0% higher for Black
+   patients (8,442 over 7,540) while the same table's acute utilisation runs
+   44% higher for hospitalisations (0.13 over 0.09), 56% higher for hospital
+   days (0.78 over 0.50) and 84% higher for emergency visits (0.35 over 0.19).
+   The gap between what was spent and what was needed is inside one table.
+3. The two cost exemplars bracket the distribution and agree in direction with
+   Table 1: Black patients cost slightly more at the median and slightly more in
+   the top 5%, which is what "well calibrated" looks like when it is written out
+   as numbers rather than asserted.
+
+#### Why this is a gap and not one of the cards already shipped
+
+Checked against both neighbours before proposing it.
+
+`surrogate-endpoints` is a stand-in **outcome inside a trial**, where a marker
+is measured because the real endpoint is slow or rare. Nothing here is a trial
+and nothing is standing in for a slow endpoint: cost is the thing the model was
+built to predict, in deployment, on everybody.
+
+`campbells-law` is **gaming**: a measure becomes a target and the behaviour
+underneath it changes to satisfy it. Nobody games this algorithm. The patients
+do not know it exists and the score is not an incentive.
+
+What is new is the third thing, and it is the reason the paper matters. The
+proxy is not merely imperfect, its distance from the truth **differs by group**,
+and that failure is invisible to the accuracy check anyone would actually run.
+Calibration passes. The model predicts cost well for both groups at every level
+of risk. You cannot find this by testing whether the model is right; you find it
+only by asking what it was trying to be right about.
+
+#### Why it needs a new shape
+
+Neither existing shape can carry it. `SurrogateData` is built around run-in
+stages and two trial arms. `TargetData` is built around a compliance deadline
+and bunching in the stretch before it. Both are specialised to their own lesson,
+which is correct, and neither has anywhere to put this one.
+
+What the lesson needs is two groups held at the same position on one axis and
+then measured **two different ways**, where the setup's yardstick says they are
+alike and the reveal's says they are not. That is the deck's own promise, setup
+and reveal being two views of the same data, in its purest available form: not
+one number recomputed, but the same people weighed on a second scale.
+
+#### Four honesty constraints for whoever authors it
+
+1. **Never put a cost number and an illness number at the same point on an
+   axis.** The cost figures are at the median and in the top 5%. The chronic
+   conditions figure is at the 97th percentile. The paper does not print both at
+   any single point, and a figure implying it does would be inventing a reading.
+2. **18.2% and 17.7% are different quantities.** The first is Table 1's actual
+   composition of the programme. The second is the abstract's figure for the
+   auto-identified group. They are close, which is exactly why they will get
+   used interchangeably by somebody in a hurry.
+3. **Say how race was defined.** Anyone who identified as Black is Black; of the
+   remainder, those self-identifying as another race are excluded, and what is
+   left is White. The authors name this limitation themselves and the card
+   should not quietly present it as the only possible cut.
+4. **The algorithm is not broken, and the card must not say it is.** It does its
+   stated job well. If the reveal reads as "the model was wrong" the lesson has
+   been lost, because the point is that it was right about the thing it was
+   asked about and nobody had checked whether that was the right thing to ask.
+
 ## Format ideas that are not lessons
 
 Opened 2026-08-17. Everything above is a lesson waiting for a source. This

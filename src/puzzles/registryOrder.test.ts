@@ -95,6 +95,7 @@ describe("the registry sequence", () => {
   "the-photo-on-the-essay",
   "the-slot-they-drew",
   "who-marked-it",
+  "the-number-it-was-trained-on",
   ];
 
   it("is unchanged, and grew only at the end", () => {

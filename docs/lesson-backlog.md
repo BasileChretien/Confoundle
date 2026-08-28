@@ -5946,7 +5946,9 @@ prop, `ShareCard` glyph, an authored `aria-label` with slots, and ten locales.
 
 ### 75. The algorithm that was accurate about cost and wrong about who was sick <!-- skill: proxy-target -->
 
-**Status: VERIFIED 2026-08-28.** Read off the paper's own Table 1 and its
+**Status: SHIPPED 2026-08-28 as `proxy-target`, slug
+`the-number-it-was-trained-on`, on a new `proxy` shape.** Read off the paper's
+own Table 1 and its
 stated exemplars. Science carries this one as FULL ACCESS, so no institutional
 route was needed and anyone can check it.
 

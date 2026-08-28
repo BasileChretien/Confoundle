@@ -272,6 +272,7 @@ describe("slice-drawing renderers", () => {
       "DriftView",
       "EstimationView",
       "ForestView",
+      "ProxyView",
       "PublishedView",
       "RateChart",
       "RatersView",

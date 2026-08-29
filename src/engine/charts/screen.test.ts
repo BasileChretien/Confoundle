@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { puzzles } from "../../puzzles";
+import { puzzles } from "../../puzzles/all";
 import type { FrequenciesData } from "../../puzzles/schema";
 import {
   canScreen,

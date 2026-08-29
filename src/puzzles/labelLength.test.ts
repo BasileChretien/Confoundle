@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { puzzles } from "./index";
+import { puzzles } from "./all";
 
 /**
  * AN ANSWER IS AN ANSWER. THE ARGUMENT GOES IN THE SUBLABEL.

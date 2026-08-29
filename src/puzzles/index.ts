@@ -1,173 +1,76 @@
-import { z } from "zod";
-import { Puzzle, type Puzzle as PuzzleType } from "./schema";
-import { kidneyStones } from "./data/kidney-stones";
-import { baseRate } from "./data/base-rate";
-import { correlationCausation } from "./data/correlation-causation";
-import { survivorship } from "./data/survivorship";
-import { prosecutorsFallacy } from "./data/prosecutors-fallacy";
-import { willRogers } from "./data/will-rogers";
-import { leadTime } from "./data/lead-time";
-import { spectrumBias } from "./data/spectrum-bias";
-import { berkson } from "./data/berkson";
-import { relativeRisk } from "./data/relative-risk";
-import { confoundingIndication } from "./data/confounding-indication";
-import { lengthTime } from "./data/length-time";
-import { publicationBias } from "./data/publication-bias";
-import { intentionToTreat } from "./data/intention-to-treat";
-import { recallBias } from "./data/recall-bias";
-import { immortalTime } from "./data/immortal-time";
-import { nocebo } from "./data/nocebo";
-import { misclassification } from "./data/misclassification";
-import { detectionBias } from "./data/detection-bias";
-import { statisticalSignificance } from "./data/statistical-significance";
-import { ecologicalFallacy } from "./data/ecological-fallacy";
-import { framingEffect } from "./data/framing-effect";
-import { regressionMean } from "./data/regression-mean";
-import { effectModification } from "./data/effect-modification";
-import { misleadingAxis } from "./data/misleading-axis";
-import { meanVsMedian } from "./data/mean-vs-median";
-import { illusoryTruth } from "./data/illusory-truth";
-import { anchoring } from "./data/anchoring";
-import { gerrymandering } from "./data/gerrymandering";
-import { literaryDigest } from "./data/literary-digest";
-import { misinformationEffect } from "./data/misinformation-effect";
-import { statisticalPower } from "./data/statistical-power";
-import { allocationConcealment } from "./data/allocation-concealment";
-import { hawthorneEffect } from "./data/hawthorne-effect";
-import { sponsorshipBias } from "./data/sponsorship-bias";
-import { availabilityHeuristic } from "./data/availability-heuristic";
-import { multipleComparisons } from "./data/multiple-comparisons";
-import { conjunctionFallacy } from "./data/conjunction-fallacy";
-import { selfAppliedLabel } from "./data/self-applied-label";
-import { metaphorFraming } from "./data/metaphor-framing";
-import { complianceSequencing } from "./data/compliance-sequencing";
-import { falseBalance } from "./data/false-balance";
-import { continuedInfluence } from "./data/continued-influence";
-import { sleeperEffect } from "./data/sleeper-effect";
-import { paltering } from "./data/paltering";
-import { thirdPersonEffect } from "./data/third-person-effect";
-import { innuendoEffect } from "./data/innuendo-effect";
-import { confirmationBias } from "./data/confirmation-bias";
-import { thresholdBunching } from "./data/threshold-bunching";
-import { whataboutism } from "./data/whataboutism";
-import { boomerangEffect } from "./data/boomerang-effect";
-import { prebunking } from "./data/prebunking";
-import { magnitudeCompression } from "./data/magnitude-compression";
-import { projectionDistortion } from "./data/projection-distortion";
-import { campbellsLaw } from "./data/campbells-law";
-import { pollsShapeOpinion } from "./data/polls-shape-opinion";
-import { reportingRate } from "./data/reporting-rate";
-import { marginOfError } from "./data/margin-of-error";
-import { floorAndCeiling } from "./data/floor-and-ceiling";
-import { sourceCountIllusion } from "./data/source-count-illusion";
-import { compositeEndpoints } from "./data/composite-endpoints";
-import { fearAppeals } from "./data/fear-appeals";
-import { shelfLife } from "./data/shelf-life";
-import { overdiagnosis } from "./data/overdiagnosis";
-import { attrition } from "./data/attrition";
-import { pygmalion } from "./data/pygmalion";
-import { performanceBias } from "./data/performance-bias";
-import { healthyAdherer } from "./data/healthy-adherer";
-import { surrogateEndpoints } from "./data/surrogate-endpoints";
-import { reverseCausality } from "./data/reverse-causality";
-import { haloEffect } from "./data/halo-effect";
-import { serialPosition } from "./data/serial-position";
-import { raterLeniency } from "./data/rater-leniency";
+import type { Puzzle as PuzzleType } from "./schema";
 
 /**
- * The puzzle registry. Adding a puzzle = import its data file and add it to
- * this array. Every entry is validated against the schema at module load, so a
- * malformed or self-contradictory puzzle fails fast (in dev, build, and tests)
- * rather than shipping a broken beat.
+ * The registry, loaded on demand.
+ *
+ * WHY THIS FILE IS A CACHE AND NOT A LIST. Every puzzle's content, 765 kB of
+ * it, used to sit in the app shell and therefore in the precache manifest, so
+ * installing the app pulled down all 73 cards whether or not anyone opened
+ * one, and each new card pushed the shell closer to workbox's 2 MiB per-file
+ * ceiling. At 73 puzzles the shell measured 94.8% of it. The ceiling is a
+ * useful signal and raising it would have traded a loud build error for a
+ * silently heavier install, so the content moved behind a dynamic import
+ * instead, the way the dictionaries already had.
+ *
+ * THE ACCESSORS STAY SYNCHRONOUS, because they are called during render and
+ * from `main.tsx` before React exists. That is what the cache is for: the
+ * entry point awaits `loadPuzzles()` once and everything afterwards reads the
+ * cache without awaiting anything. `LocaleProvider` does the same with its
+ * dictionary.
+ *
+ * A FAILED LOAD IS FATAL HERE, and that is the difference from the
+ * dictionaries. A dictionary that will not load falls back to English and the
+ * app still works; a registry that will not load leaves an app with nothing in
+ * it, so `loadPuzzles` rejects and the caller shows the error boundary rather
+ * than painting an empty shell that looks like a bug in the content.
  */
-const rawPuzzles: unknown[] = [
-  kidneyStones,
-  baseRate,
-  correlationCausation,
-  survivorship,
-  prosecutorsFallacy,
-  willRogers,
-  leadTime,
-  spectrumBias,
-  berkson,
-  relativeRisk,
-  confoundingIndication,
-  lengthTime,
-  publicationBias,
-  intentionToTreat,
-  recallBias,
-  immortalTime,
-  nocebo,
-  misclassification,
-  regressionMean,
-  effectModification,
-  detectionBias,
-  statisticalSignificance,
-  ecologicalFallacy,
-  framingEffect,
-  misleadingAxis,
-  meanVsMedian,
-  illusoryTruth,
-  anchoring,
-  gerrymandering,
-  literaryDigest,
-  misinformationEffect,
-  statisticalPower,
-  allocationConcealment,
-  hawthorneEffect,
-  sponsorshipBias,
-  availabilityHeuristic,
-  multipleComparisons,
-  conjunctionFallacy,
-  selfAppliedLabel,
-  metaphorFraming,
-  complianceSequencing,
-  falseBalance,
-  continuedInfluence,
-  sleeperEffect,
-  paltering,
-  thirdPersonEffect,
-  innuendoEffect,
-  confirmationBias,
-  thresholdBunching,
-  whataboutism,
-  boomerangEffect,
-  prebunking,
-  magnitudeCompression,
-  projectionDistortion,
-  campbellsLaw,
-  pollsShapeOpinion,
-  reportingRate,
-  marginOfError,
-  floorAndCeiling,
-  sourceCountIllusion,
-  shelfLife,
-  fearAppeals,
-  compositeEndpoints,
-  overdiagnosis,
-  attrition,
-  pygmalion,
-  performanceBias,
-  healthyAdherer,
-  surrogateEndpoints,
-  reverseCausality,
-  haloEffect,
-  serialPosition,
-  raterLeniency,
-];
 
-export const puzzles: PuzzleType[] = rawPuzzles.map((p, i) => {
-  const result = Puzzle.safeParse(p);
-  if (!result.success) {
-    // prettifyError reads far better than the old nested format() tree: it
-    // prints one line per problem with its path, which is what someone who has
-    // just mistyped a count in a data file actually needs to see.
+let cache: readonly PuzzleType[] | undefined;
+let inFlight: Promise<readonly PuzzleType[]> | undefined;
+
+/**
+ * Fetch the registry once and keep it.
+ *
+ * The in-flight promise is shared rather than re-entered, so two callers
+ * racing at startup make one request. Note that it is NOT cleared on
+ * rejection: a dynamic `import()` that fails is terminal for the document,
+ * recorded in the realm's module map against that specifier, and every later
+ * `import()` of it rejects from the map with no network request at all. The
+ * same fact is written up at greater length in `app/translations/index.ts`,
+ * where it was measured. Retrying here would re-enter, be rejected instantly
+ * by the module map, and look like a network attempt that never happened.
+ */
+export function loadPuzzles(): Promise<readonly PuzzleType[]> {
+  if (cache) return Promise.resolve(cache);
+  if (inFlight) return inFlight;
+  inFlight = import("./all").then((m) => {
+    cache = m.puzzles;
+    return m.puzzles;
+  });
+  return inFlight;
+}
+
+/**
+ * The registry, for callers that run after `loadPuzzles()` has resolved.
+ *
+ * Throws rather than returning an empty array, because every caller here is
+ * rendering something and an empty registry would paint a plausible screen: a
+ * catalogue with no lessons, a progress panel reading zero of zero. That is a
+ * bug wearing the costume of a legitimate state, and it would reach a reader
+ * before it reached anybody who could recognise it.
+ */
+export function puzzles(): readonly PuzzleType[] {
+  if (!cache)
     throw new Error(
-      `Invalid puzzle at index ${i}:\n${z.prettifyError(result.error)}`,
+      "puzzles() before loadPuzzles() resolved: the entry point must await it",
     );
-  }
-  return result.data;
-});
+  return cache;
+}
+
+/** Whether the registry is in memory, for a caller that can render without it. */
+export function puzzlesLoaded(): boolean {
+  return cache !== undefined;
+}
 
 /**
  * The number a shared result line carries, one-based in registry order.
@@ -192,12 +95,12 @@ export const puzzles: PuzzleType[] = rawPuzzles.map((p, i) => {
  * `registryOrder.test.ts` pins the sequence and new puzzles are appended.
  */
 export function puzzleNumberOf(slug: string): number | undefined {
-  const i = puzzles.findIndex((p) => p.slug === slug);
+  const i = puzzles().findIndex((p) => p.slug === slug);
   return i === -1 ? undefined : i + 1;
 }
 
 export function getPuzzleBySlug(slug: string): PuzzleType | undefined {
-  return puzzles.find((p) => p.slug === slug);
+  return puzzles().find((p) => p.slug === slug);
 }
 
 /**
@@ -206,9 +109,10 @@ export function getPuzzleBySlug(slug: string): PuzzleType | undefined {
  * testable; `getTodaysPuzzle` supplies today's day number.
  */
 export function puzzleForDay(dayIndex: number): PuzzleType {
-  const n = puzzles.length;
+  const all = puzzles();
+  const n = all.length;
   const i = ((dayIndex % n) + n) % n;
-  return puzzles[i];
+  return all[i]!;
 }
 
 export function getTodaysPuzzle(): PuzzleType {
@@ -249,5 +153,5 @@ export function getOpeningPuzzle(): PuzzleType {
   // Falls back rather than throwing: a mistyped slug must not be a white
   // screen for every first-time visitor. The test is what stops it silently
   // becoming the fallback.
-  return getPuzzleBySlug(OPENING_SLUG) ?? puzzles[0];
+  return getPuzzleBySlug(OPENING_SLUG) ?? puzzles()[0]!;
 }

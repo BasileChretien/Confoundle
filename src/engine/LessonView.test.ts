@@ -2,7 +2,7 @@ import { describe, it, expect, beforeAll, afterAll, vi } from "vitest";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { LocaleProvider } from "../app/i18n";
-import { puzzles } from "../puzzles";
+import { puzzles } from "../puzzles/all";
 import type { Puzzle } from "../puzzles/schema";
 import { LessonView } from "./LessonView";
 

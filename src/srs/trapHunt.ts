@@ -1,4 +1,5 @@
-import { TEST_ITEMS, type TestItem } from "../puzzles/testItems";
+import type { TestItem } from "../puzzles/testItems";
+import { itemBank } from "../puzzles/itemBank";
 
 /**
  * Trap Hunt: the item bank as a game in its own right.
@@ -44,7 +45,7 @@ export interface TrapHuntAnswer {
 export function drawRound(
   random: () => number,
   size = ROUND_SIZE,
-  bank: readonly TestItem[] = TEST_ITEMS,
+  bank: readonly TestItem[] = itemBank(),
   exclude: ReadonlySet<string> = new Set(),
 ): TrapHuntRound {
   const pool = bank.filter((i) => !exclude.has(i.id));

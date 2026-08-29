@@ -37,10 +37,10 @@ export function LessonsView({
   const t = useT();
   const [query, setQuery] = useState("");
   // Read once on mount, then kept here and mirrored to storage on every change.
-  const [interests, setInterests] = useState(() => readInterests(puzzles));
+  const [interests, setInterests] = useState(() => readInterests(puzzles()));
 
   // Only interests some lesson actually carries, so no choice empties the screen.
-  const offered = availableInterests(puzzles);
+  const offered = availableInterests(puzzles());
 
   const choose = (tag: (typeof offered)[number] | null) => {
     const next = tag === null ? [] : toggleInterest(interests, tag);
@@ -63,7 +63,7 @@ export function LessonsView({
   }, [t]);
 
   const results = filterLessons(
-    filterByInterests(puzzles, interests),
+    filterByInterests(puzzles(), interests),
     { category: null, query },
     searchable,
   );

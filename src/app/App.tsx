@@ -12,6 +12,7 @@ import { Button } from "../engine/ui";
 import { AboutView } from "../engine/AboutView";
 import { LessonsView } from "../engine/LessonsView";
 import { reviews } from "./reviews";
+import { itemBankLoaded, loadItemBank } from "../puzzles/itemBank";
 import {
   HOME,
   sameView,
@@ -25,6 +26,19 @@ import { LanguageSwitcher } from "./LanguageSwitcher";
 import { AccountPanel } from "./AccountPanel";
 import { AuthProvider } from "./auth";
 import { UI } from "./ui";
+
+/**
+ * The views that read the Trap Hunt bank on their first render, and therefore
+ * cannot be shown until it has loaded. Kept beside the switch that uses it so
+ * the two are read together; a view added to one and not the other throws on
+ * a deep link, which is the failure this set exists to prevent.
+ */
+const BANK_VIEWS: ReadonlySet<string> = new Set([
+  "trapHunt",
+  "dailyRun",
+  "calibrationRun",
+  "review",
+]);
 
 /**
  * Navigation, on the History API rather than in component state.
@@ -118,6 +132,37 @@ function AppShell() {
     headingRef.current?.focus();
   }, [view]);
 
+  /*
+    THE TRAP HUNT BANK, FETCHED AS SOON AS THE APP IS UP.
+
+    It is 517 kB and no first paint needs it, so it is not in the shell (see
+    `puzzles/itemBank.ts`). But every surface that does need it is one tap from
+    here, so waiting for the tap would put a spinner in front of a reader who
+    has just asked for something. Starting the fetch on mount means the bytes
+    are usually already there when they ask.
+
+    Deliberately NOT awaited before rendering: a reader who only wants the
+    day's puzzle should never wait for a bank they are not going to open.
+  */
+  const [bankReady, setBankReady] = useState(itemBankLoaded);
+  useEffect(() => {
+    if (bankReady) return;
+    let alive = true;
+    void loadItemBank().then(
+      () => {
+        if (alive) setBankReady(true);
+      },
+      () => {
+        // Left false. The four surfaces below stay on their loading state
+        // rather than throwing, and everything else in the app still works,
+        // which is the right trade for a file only some sessions need.
+      },
+    );
+    return () => {
+      alive = false;
+    };
+  }, [bankReady]);
+
   // How many skills the scheduler says are due. Rechecked when a session ends
   // (progress changed) and when the open lesson changes (finishing one can
   // enrol a new skill onto the ladder).
@@ -167,7 +212,22 @@ function AppShell() {
         <AccountPanel />
 
         <div className="flex-1">
-          {view.name === "trapHunt" ? (
+          {/*
+            THE FOUR BANK-FED SURFACES ARE GATED TOGETHER. Each one reads the
+            item bank during its first render, so reaching any of them before
+            the fetch lands would throw. They are grouped rather than gated
+            individually because the condition is identical and four copies of
+            it would drift.
+
+            A deep link is why this cannot rely on the prefetch alone: these
+            views are addressable from the URL, so a cold load straight into
+            one arrives before the bank does, every time.
+          */}
+          {BANK_VIEWS.has(view.name) && !bankReady ? (
+            <p className="py-16 text-center text-[15px] text-ink-soft" role="status">
+              {t(UI.loading!)}
+            </p>
+          ) : view.name === "trapHunt" ? (
             <TrapHuntView onDone={() => go(HOME)} />
           ) : view.name === "dailyRun" ? (
             <CalibrationRunView daily onDone={() => go(HOME)} />

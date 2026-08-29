@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { puzzles } from "./index";
+import { puzzles } from "./all";
 import { TEST_ITEMS } from "./testItems";
 import { scopeLabel, viewKey } from "../engine/charts/DataViewRenderer";
 

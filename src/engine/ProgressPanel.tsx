@@ -202,7 +202,7 @@ export function ProgressPanel({
 
   const rows = useMemo(
     () =>
-      puzzles
+      puzzles()
         .map((p) => ({
           slug: p.slug,
           name: t(p.lesson.skillName),
@@ -261,7 +261,7 @@ export function ProgressPanel({
         <h3 className="mb-2 flex items-baseline justify-between font-sans text-[11px] font-semibold uppercase tracking-eyebrow text-ink-mute">
           <span>{t(UI.mastery)}</span>
           <span className="tabular-nums">
-            {rows.length} / {puzzles.length}
+            {rows.length} / {puzzles().length}
           </span>
         </h3>
         <div className="grid grid-cols-5 gap-1.5">

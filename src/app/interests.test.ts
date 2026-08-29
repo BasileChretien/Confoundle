@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import type { Puzzle, TagId } from "../puzzles/schema";
-import { puzzles } from "../puzzles";
+import { puzzles } from "../puzzles/all";
 import {
   availableInterests,
   filterByInterests,

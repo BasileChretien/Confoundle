@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { TEST_ITEMS } from "../puzzles/testItems";
-import { puzzles } from "../puzzles";
+import { puzzles } from "../puzzles/all";
 import { newProgress, type SkillProgress } from "./schedule";
 import { SOUND_SHARE, buildSession, poolDepth, selectReview } from "./select";
 

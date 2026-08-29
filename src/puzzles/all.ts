@@ -1,0 +1,192 @@
+/**
+ * Every puzzle, eagerly, validated at module load. FOR TESTS, TOOLING AND THE
+ * PRERENDER ONLY.
+ *
+ * THE APP MUST NEVER IMPORT THIS, and unlike the sibling rule for the
+ * dictionaries, that is now checked rather than trusted: `shellSplit.test.ts`
+ * walks the static import graph from `app/main.tsx` and fails if this module
+ * is reachable. It is worth the file because the failure is invisible. One
+ * `import { puzzles } from "./all"` added to a view puts 765 kB of puzzle
+ * content back into the app shell, everything still works, every test passes,
+ * and the only symptom is a heavier install and a build that eventually stops
+ * on workbox's precache ceiling for reasons nobody can trace to the commit
+ * that caused it.
+ *
+ * `./index.ts` reaches this through a DYNAMIC import, so it lands in its own
+ * chunk, is excluded from the precache manifest and is cached at runtime the
+ * first time it is fetched. That is exactly what `app/translations/index.ts`
+ * does with the ten dictionaries, for exactly the same reason.
+ *
+ * Tests import from here rather than from `./index`, because a test wants the
+ * whole registry synchronously and has no shell to keep light.
+ */
+import { z } from "zod";
+import { Puzzle, type Puzzle as PuzzleType } from "./schema";
+import { kidneyStones } from "./data/kidney-stones";
+import { baseRate } from "./data/base-rate";
+import { correlationCausation } from "./data/correlation-causation";
+import { survivorship } from "./data/survivorship";
+import { prosecutorsFallacy } from "./data/prosecutors-fallacy";
+import { willRogers } from "./data/will-rogers";
+import { leadTime } from "./data/lead-time";
+import { spectrumBias } from "./data/spectrum-bias";
+import { berkson } from "./data/berkson";
+import { relativeRisk } from "./data/relative-risk";
+import { confoundingIndication } from "./data/confounding-indication";
+import { lengthTime } from "./data/length-time";
+import { publicationBias } from "./data/publication-bias";
+import { intentionToTreat } from "./data/intention-to-treat";
+import { recallBias } from "./data/recall-bias";
+import { immortalTime } from "./data/immortal-time";
+import { nocebo } from "./data/nocebo";
+import { misclassification } from "./data/misclassification";
+import { detectionBias } from "./data/detection-bias";
+import { statisticalSignificance } from "./data/statistical-significance";
+import { ecologicalFallacy } from "./data/ecological-fallacy";
+import { framingEffect } from "./data/framing-effect";
+import { regressionMean } from "./data/regression-mean";
+import { effectModification } from "./data/effect-modification";
+import { misleadingAxis } from "./data/misleading-axis";
+import { meanVsMedian } from "./data/mean-vs-median";
+import { illusoryTruth } from "./data/illusory-truth";
+import { anchoring } from "./data/anchoring";
+import { gerrymandering } from "./data/gerrymandering";
+import { literaryDigest } from "./data/literary-digest";
+import { misinformationEffect } from "./data/misinformation-effect";
+import { statisticalPower } from "./data/statistical-power";
+import { allocationConcealment } from "./data/allocation-concealment";
+import { hawthorneEffect } from "./data/hawthorne-effect";
+import { sponsorshipBias } from "./data/sponsorship-bias";
+import { availabilityHeuristic } from "./data/availability-heuristic";
+import { multipleComparisons } from "./data/multiple-comparisons";
+import { conjunctionFallacy } from "./data/conjunction-fallacy";
+import { selfAppliedLabel } from "./data/self-applied-label";
+import { metaphorFraming } from "./data/metaphor-framing";
+import { complianceSequencing } from "./data/compliance-sequencing";
+import { falseBalance } from "./data/false-balance";
+import { continuedInfluence } from "./data/continued-influence";
+import { sleeperEffect } from "./data/sleeper-effect";
+import { paltering } from "./data/paltering";
+import { thirdPersonEffect } from "./data/third-person-effect";
+import { innuendoEffect } from "./data/innuendo-effect";
+import { confirmationBias } from "./data/confirmation-bias";
+import { thresholdBunching } from "./data/threshold-bunching";
+import { whataboutism } from "./data/whataboutism";
+import { boomerangEffect } from "./data/boomerang-effect";
+import { prebunking } from "./data/prebunking";
+import { magnitudeCompression } from "./data/magnitude-compression";
+import { projectionDistortion } from "./data/projection-distortion";
+import { campbellsLaw } from "./data/campbells-law";
+import { pollsShapeOpinion } from "./data/polls-shape-opinion";
+import { reportingRate } from "./data/reporting-rate";
+import { marginOfError } from "./data/margin-of-error";
+import { floorAndCeiling } from "./data/floor-and-ceiling";
+import { sourceCountIllusion } from "./data/source-count-illusion";
+import { compositeEndpoints } from "./data/composite-endpoints";
+import { fearAppeals } from "./data/fear-appeals";
+import { shelfLife } from "./data/shelf-life";
+import { overdiagnosis } from "./data/overdiagnosis";
+import { attrition } from "./data/attrition";
+import { pygmalion } from "./data/pygmalion";
+import { performanceBias } from "./data/performance-bias";
+import { healthyAdherer } from "./data/healthy-adherer";
+import { surrogateEndpoints } from "./data/surrogate-endpoints";
+import { reverseCausality } from "./data/reverse-causality";
+import { haloEffect } from "./data/halo-effect";
+import { serialPosition } from "./data/serial-position";
+import { raterLeniency } from "./data/rater-leniency";
+
+/**
+ * The puzzle registry. Adding a puzzle = import its data file and add it to
+ * this array. Every entry is validated against the schema at module load, so a
+ * malformed or self-contradictory puzzle fails fast (in dev, build, and tests)
+ * rather than shipping a broken beat.
+ */
+const rawPuzzles: unknown[] = [
+  kidneyStones,
+  baseRate,
+  correlationCausation,
+  survivorship,
+  prosecutorsFallacy,
+  willRogers,
+  leadTime,
+  spectrumBias,
+  berkson,
+  relativeRisk,
+  confoundingIndication,
+  lengthTime,
+  publicationBias,
+  intentionToTreat,
+  recallBias,
+  immortalTime,
+  nocebo,
+  misclassification,
+  regressionMean,
+  effectModification,
+  detectionBias,
+  statisticalSignificance,
+  ecologicalFallacy,
+  framingEffect,
+  misleadingAxis,
+  meanVsMedian,
+  illusoryTruth,
+  anchoring,
+  gerrymandering,
+  literaryDigest,
+  misinformationEffect,
+  statisticalPower,
+  allocationConcealment,
+  hawthorneEffect,
+  sponsorshipBias,
+  availabilityHeuristic,
+  multipleComparisons,
+  conjunctionFallacy,
+  selfAppliedLabel,
+  metaphorFraming,
+  complianceSequencing,
+  falseBalance,
+  continuedInfluence,
+  sleeperEffect,
+  paltering,
+  thirdPersonEffect,
+  innuendoEffect,
+  confirmationBias,
+  thresholdBunching,
+  whataboutism,
+  boomerangEffect,
+  prebunking,
+  magnitudeCompression,
+  projectionDistortion,
+  campbellsLaw,
+  pollsShapeOpinion,
+  reportingRate,
+  marginOfError,
+  floorAndCeiling,
+  sourceCountIllusion,
+  shelfLife,
+  fearAppeals,
+  compositeEndpoints,
+  overdiagnosis,
+  attrition,
+  pygmalion,
+  performanceBias,
+  healthyAdherer,
+  surrogateEndpoints,
+  reverseCausality,
+  haloEffect,
+  serialPosition,
+  raterLeniency,
+];
+
+export const puzzles: PuzzleType[] = rawPuzzles.map((p, i) => {
+  const result = Puzzle.safeParse(p);
+  if (!result.success) {
+    // prettifyError reads far better than the old nested format() tree: it
+    // prints one line per problem with its path, which is what someone who has
+    // just mistyped a count in a data file actually needs to see.
+    throw new Error(
+      `Invalid puzzle at index ${i}:\n${z.prettifyError(result.error)}`,
+    );
+  }
+  return result.data;
+});

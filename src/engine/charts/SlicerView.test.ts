@@ -4,7 +4,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { LocaleProvider } from "../../app/i18n";
 import { loadDictionary } from "../../app/translations";
 import { LOCALES } from "../../app/locales";
-import { puzzles } from "../../puzzles";
+import { puzzles } from "../../puzzles/all";
 import type { RatesData } from "../../puzzles/schema";
 import { LessonView } from "../LessonView";
 import { SlicerView } from "./SlicerView";

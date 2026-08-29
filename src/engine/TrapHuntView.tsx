@@ -58,7 +58,7 @@ export function TrapHuntView({ onDone }: { onDone: () => void }) {
 
   const skillName = useMemo(
     () => (slug: string) => {
-      const p = puzzles.find((x) => x.reasoningSkill === slug);
+      const p = puzzles().find((x) => x.reasoningSkill === slug);
       return p ? t(p.lesson.skillName) : slug;
     },
     [t],

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { TEST_ITEMS } from "./testItems";
-import { puzzles } from "./index";
+import { puzzles } from "./all";
 
 /**
  * The hedge rule, applied to the Trap Hunt bank by machine instead of by memory.

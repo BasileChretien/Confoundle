@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { puzzles } from "../../puzzles";
+import { puzzles } from "../../puzzles/all";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { LocaleProvider } from "../../app/i18n";

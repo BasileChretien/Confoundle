@@ -4,10 +4,10 @@ import { registerSW } from "virtual:pwa-register";
 import "@fontsource-variable/fraunces";
 import "@fontsource-variable/space-grotesk";
 import App from "./App";
-import { ErrorBoundary } from "./ErrorBoundary";
+import { CrashScreen, ErrorBoundary } from "./ErrorBoundary";
 import { landingRewrite } from "./navigation";
 import { hasEverPlayed } from "./session";
-import { getOpeningPuzzle } from "../puzzles";
+import { getOpeningPuzzle, loadPuzzles } from "../puzzles";
 import "../styles/index.css";
 
 // Keep the installed PWA's offline shell fresh.
@@ -39,26 +39,60 @@ registerSW({ immediate: true });
  * included. Nothing depended on those, but it was a lossy resynthesis where
  * the previous code was a byte-identical round trip.
  */
-const rewrite = landingRewrite(
-  window.location.search,
-  hasEverPlayed(),
-  getOpeningPuzzle().slug,
-);
-if (rewrite !== null) window.history.replaceState(null, "", rewrite);
-
 const container = document.getElementById("root");
 if (!container) throw new Error('Root element "#root" not found');
 
-createRoot(container).render(
-  <React.StrictMode>
-    {/*
-      OUTSIDE EVERYTHING, INCLUDING THE LOCALE PROVIDER. A boundary placed
-      inside cannot catch a failure in the provider or in the dictionary
-      loading it does, which is the failure that would otherwise leave the
-      whole installed app blank with no message and no way back.
-    */}
-    <ErrorBoundary>
-      <App />
-    </ErrorBoundary>
-  </React.StrictMode>,
+const root = createRoot(container);
+
+/**
+ * NOTHING RENDERS UNTIL THE REGISTRY IS IN MEMORY, and that is a change in
+ * timing rather than in cost.
+ *
+ * The puzzle content used to be part of this very bundle, so it was already
+ * blocking the first paint; it simply blocked it invisibly. Moving it behind a
+ * dynamic import buys a shell that is a quarter of the size and an install
+ * that no longer carries all 73 cards, at the price of one extra round trip
+ * that was previously hidden inside the first one. See `puzzles/index.ts`.
+ *
+ * THE FAILURE PATH IS THE POINT OF DOING IT HERE. `ErrorBoundary` cannot catch
+ * this: the load happens before React exists, and a rejected chunk would
+ * otherwise leave the container empty, which in an installed app opened from a
+ * home screen is indistinguishable from the app being broken. `CrashScreen` is
+ * exported for exactly this kind of caller, translates through `UI` without
+ * needing a fetch, and offers a reload.
+ */
+loadPuzzles().then(
+  () => {
+    /*
+      The landing rule still runs ONCE, before anything is rendered, for the
+      reasons set out above. It needs the registry, so it waits for it.
+    */
+    const rewrite = landingRewrite(
+      window.location.search,
+      hasEverPlayed(),
+      getOpeningPuzzle().slug,
+    );
+    if (rewrite !== null) window.history.replaceState(null, "", rewrite);
+
+    root.render(
+      <React.StrictMode>
+        {/*
+          OUTSIDE EVERYTHING, INCLUDING THE LOCALE PROVIDER. A boundary placed
+          inside cannot catch a failure in the provider or in the dictionary
+          loading it does, which is the failure that would otherwise leave the
+          whole installed app blank with no message and no way back.
+        */}
+        <ErrorBoundary>
+          <App />
+        </ErrorBoundary>
+      </React.StrictMode>,
+    );
+  },
+  () => {
+    root.render(
+      <React.StrictMode>
+        <CrashScreen />
+      </React.StrictMode>,
+    );
+  },
 );

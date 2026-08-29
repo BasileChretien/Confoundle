@@ -6,6 +6,24 @@ import type { LocalizedText } from "../puzzles/schema";
  * locales are corrected on feedback. Anything missing falls back to English.
  */
 export const UI: Record<string, LocalizedText> = {
+  /*
+    Shown while the Trap Hunt bank is being fetched, which happens the
+    first time a reader opens a review, a run or a hunt. It is usually
+    invisible: the bank is prefetched as soon as the app mounts, so this
+    only appears on a connection slow enough that the tap outran it.
+  */
+  loading: {
+    en: "Loading\u2026",
+    fr: "Chargement\u2026",
+    es: "Cargando\u2026",
+    pt: "Carregando\u2026",
+    ja: "\u8aad\u307f\u8fbc\u307f\u4e2d\u2026",
+    zh: "\u52a0\u8f7d\u4e2d\u2026",
+    ru: "\u0417\u0430\u0433\u0440\u0443\u0437\u043a\u0430\u2026",
+    hi: "\u0932\u094b\u0921 \u0939\u094b \u0930\u0939\u093e \u0939\u0948\u2026",
+    bn: "\u09b2\u09cb\u09a1 \u09b9\u099a\u09cd\u099b\u09c7\u2026",
+    ar: "\u062c\u0627\u0631\u064d \u0627\u0644\u062a\u062d\u0645\u064a\u0644\u2026",
+  },
   crashTitle: {
     en: "Something broke",
     zh: "出问题了",

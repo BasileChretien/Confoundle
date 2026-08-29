@@ -3,7 +3,7 @@ import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { LocaleProvider } from "../../app/i18n";
 import { loadDictionary } from "../../app/translations";
-import { puzzles } from "../../puzzles";
+import { puzzles } from "../../puzzles/all";
 import { DataViewRenderer } from "./DataViewRenderer";
 
 /**

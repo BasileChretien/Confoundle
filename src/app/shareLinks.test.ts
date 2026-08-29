@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { puzzles } from "../puzzles";
+import { puzzles } from "../puzzles/all";
 import { viewFromSearch } from "./navigation";
 import { appUrl, displayHost, puzzleUrl } from "./shareLinks";
 

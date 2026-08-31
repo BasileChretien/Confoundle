@@ -96,6 +96,7 @@ import { haloEffect } from "./data/halo-effect";
 import { serialPosition } from "./data/serial-position";
 import { raterLeniency } from "./data/rater-leniency";
 import { proxyTarget } from "./data/proxy-target";
+import { competingRisks } from "./data/competing-risks";
 
 /**
  * The puzzle registry. Adding a puzzle = import its data file and add it to
@@ -178,6 +179,7 @@ const rawPuzzles: unknown[] = [
   serialPosition,
   raterLeniency,
   proxyTarget,
+  competingRisks,
 ];
 
 export const puzzles: PuzzleType[] = rawPuzzles.map((p, i) => {

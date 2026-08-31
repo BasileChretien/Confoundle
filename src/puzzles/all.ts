@@ -95,6 +95,7 @@ import { reverseCausality } from "./data/reverse-causality";
 import { haloEffect } from "./data/halo-effect";
 import { serialPosition } from "./data/serial-position";
 import { raterLeniency } from "./data/rater-leniency";
+import { proxyTarget } from "./data/proxy-target";
 
 /**
  * The puzzle registry. Adding a puzzle = import its data file and add it to
@@ -176,6 +177,7 @@ const rawPuzzles: unknown[] = [
   haloEffect,
   serialPosition,
   raterLeniency,
+  proxyTarget,
 ];
 
 export const puzzles: PuzzleType[] = rawPuzzles.map((p, i) => {

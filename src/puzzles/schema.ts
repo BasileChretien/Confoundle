@@ -383,6 +383,114 @@ export const InteractionStratum = z.object({
 });
 export type InteractionStratum = z.infer<typeof InteractionStratum>;
 
+/**
+ * THE PROXY SHAPE: two groups held at one place by a model, weighed twice.
+ *
+ * A model is trained on a convenient stand-in for the thing anyone actually
+ * cares about, because the stand-in is what the data holds. On the scale it was
+ * trained on, the groups look alike, and every accuracy check anyone would
+ * think to run agrees. On the scale that mattered, they were never alike.
+ *
+ * WHAT MAKES THIS ITS OWN SHAPE rather than a use of `surrogate` or `target`.
+ * `SurrogateData` is a stand-in OUTCOME inside a trial, and carries run-in
+ * stages and two arms it does not have here. `TargetData` is about gaming, and
+ * needs a deadline and the bunching before it. Neither has anywhere to put the
+ * thing this lesson turns on, which is one population measured on two
+ * different scales that disagree about whether the groups are the same.
+ *
+ * A MEASURE IS EITHER `proxy` OR `truth`, and the setup draws only the proxy
+ * ones. That is a slice, so `ProxyView` takes the unrestricted data as well and
+ * resolves colour through `declaredColors`: without it, a group drawn alone at
+ * the setup takes slot 0 and then moves when the reveal brings the others in.
+ */
+const ProxyGroup = z.object({
+  id: z.string().min(1),
+  label: LocalizedText,
+  /** Short form for an axis, e.g. "White". */
+  short: LocalizedText,
+});
+export type ProxyGroup = z.infer<typeof ProxyGroup>;
+
+const ProxyMeasure = z.object({
+  id: z.string().min(1),
+  label: LocalizedText,
+  /**
+   * `proxy` is what the model was trained to predict. `truth` is what anybody
+   * actually wanted it to predict. The whole lesson is that these disagree,
+   * so a shape with only one of them would have nothing to show.
+   */
+  scale: z.enum(["proxy", "truth"]),
+  /** How the number is printed. Locale formatting happens in the renderer. */
+  unit: z.enum(["currency", "count", "percentile"]),
+  /** Said under the number when a bare count would be ambiguous. */
+  per: LocalizedText.optional(),
+});
+export type ProxyMeasure = z.infer<typeof ProxyMeasure>;
+
+const ProxyObservation = z.object({
+  measureId: z.string().min(1),
+  groupId: z.string().min(1),
+  value: z.number().nonnegative(),
+});
+export type ProxyObservation = z.infer<typeof ProxyObservation>;
+
+const ProxyData = z
+  .object({
+    type: z.literal("proxy"),
+    label: LocalizedText,
+    /** Names what the model was trained on, on the figure. */
+    trainedOnLabel: LocalizedText,
+    /** Names what it was supposed to be about, on the figure. */
+    mattersLabel: LocalizedText,
+    /** Says what the numbers count, e.g. "per patient-year". */
+    basisNote: LocalizedText,
+    groups: z.array(ProxyGroup).length(2),
+    measures: z.array(ProxyMeasure).min(2),
+    observations: z.array(ProxyObservation).min(4),
+  })
+  .superRefine((d, ctx) => {
+    const groupIds = new Set(d.groups.map((g) => g.id));
+    const measureIds = new Set(d.measures.map((m) => m.id));
+    if (groupIds.size !== d.groups.length) {
+      ctx.addIssue({ code: "custom", message: "group ids must be unique" });
+    }
+    if (measureIds.size !== d.measures.length) {
+      ctx.addIssue({ code: "custom", message: "measure ids must be unique" });
+    }
+    // BOTH SCALES OR THERE IS NO LESSON. A figure with only the proxy measures
+    // has nothing to reveal, and one with only the truth measures never sets
+    // the trap in the first place.
+    for (const scale of ["proxy", "truth"] as const) {
+      if (!d.measures.some((m) => m.scale === scale)) {
+        ctx.addIssue({ code: "custom", message: `needs at least one ${scale} measure` });
+      }
+    }
+    // EVERY CELL EXACTLY ONCE. A missing cell would draw a group as absent
+    // rather than as equal, which is a different and much stronger claim.
+    for (const m of d.measures) {
+      for (const g of d.groups) {
+        const n = d.observations.filter(
+          (o) => o.measureId === m.id && o.groupId === g.id,
+        ).length;
+        if (n !== 1) {
+          ctx.addIssue({
+            code: "custom",
+            message: `measure ${m.id} needs exactly one observation for group ${g.id}, found ${n}`,
+          });
+        }
+      }
+    }
+    for (const o of d.observations) {
+      if (!measureIds.has(o.measureId)) {
+        ctx.addIssue({ code: "custom", message: `unknown measureId ${o.measureId}` });
+      }
+      if (!groupIds.has(o.groupId)) {
+        ctx.addIssue({ code: "custom", message: `unknown groupId ${o.groupId}` });
+      }
+    }
+  });
+export type ProxyData = z.infer<typeof ProxyData>;
+
 const InteractionData = z.object({
   type: z.literal("interaction"),
   label: LocalizedText, // figure title
@@ -3716,6 +3824,7 @@ const RatersData = z
 export type RatersData = z.infer<typeof RatersData>;
 
 export const PuzzleData = z.discriminatedUnion("type", [
+  ProxyData,
   RatersData,
   RatesData,
   FrequenciesData,
@@ -3843,6 +3952,8 @@ export const DataView = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("bothrows"), ...viewFields }),
   z.object({ kind: z.literal("onemarker"), ...viewFields }),
   z.object({ kind: z.literal("everymarker"), ...viewFields }),
+  z.object({ kind: z.literal("astrained"), ...viewFields }),
+  z.object({ kind: z.literal("asithappened"), ...viewFields }),
 ]);
 export type DataView = z.infer<typeof DataView>;
 export type DataViewKind = DataView["kind"];

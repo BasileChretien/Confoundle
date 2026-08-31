@@ -1684,6 +1684,49 @@ function RatersGlyph() {
     </svg>
   );
 }
+function ProxyGlyph() {
+  const t = useT();
+  const W = 200;
+  const H = 96;
+  /**
+   * Two pairs of bars for the same two groups, one pair per scale, with a rule
+   * between them. The upper pair sit almost level, which is what every check
+   * anyone runs against the trained-on scale reports. The lower pair, the same
+   * two groups measured on the scale nobody trained on, come apart.
+   *
+   * Colour is by GROUP rather than by scale, so the eye can follow one of them
+   * down the card and watch it move. Colouring by scale would draw the same
+   * picture and say the two rows were different things, when the whole claim is
+   * that they are the same people weighed twice.
+   *
+   * Shape-generic wording, since the glyph is chosen by `data.type` and has to
+   * survive whatever the next puzzle on this shape turns out to be about.
+   */
+  const X = 22;
+  const rows = [
+    { y: 18, a: 84, b: 92 },
+    { y: 62, a: 52, b: 150 },
+  ];
+  return (
+    <svg
+      viewBox={`0 0 ${W} ${H}`}
+      width="100%"
+      role="img"
+      aria-label={t({
+        en: "Two groups almost level on the scale a model was trained on, and far apart on a second scale below",
+      })}
+    >
+      {rows.map((r) => (
+        <g key={r.y}>
+          <rect x={X} y={r.y} width={r.a} height={9} rx={2} fill={CARD.gold} opacity={0.9} />
+          <rect x={X} y={r.y + 13} width={r.b} height={9} rx={2} fill={CARD.teal} opacity={0.9} />
+        </g>
+      ))}
+      <line x1={X} y1={50} x2={W - 8} y2={50} stroke={CARD.rule} strokeWidth={1} opacity={0.7} />
+      <line x1={X} y1={8} x2={X} y2={H - 4} stroke={CARD.rule} strokeWidth={1.5} />
+    </svg>
+  );
+}
 function CrossedGlyph() {
   const t = useT();
   const W = 200;
@@ -2335,6 +2378,7 @@ export function ShareCard({
   const attenuationGlyph = data.type === "attenuation";
   const conditionalGlyph = data.type === "conditional";
   const ratersGlyph = data.type === "raters";
+  const proxyGlyph = data.type === "proxy";
   const splitSampleGlyph =
     data.type === "rates" &&
     Boolean(data.strataAreSeparateSamples) &&
@@ -2511,6 +2555,8 @@ export function ShareCard({
               <RatersGlyph />
             ) : conditionalGlyph ? (
               <ConditionalGlyph />
+            ) : proxyGlyph ? (
+              <ProxyGlyph />
             ) : null}
           </div>
 

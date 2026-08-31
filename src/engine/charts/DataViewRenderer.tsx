@@ -32,6 +32,8 @@ import { EstimationView } from "./EstimationView";
 import { restrictEstimation } from "./estimation";
 import { SalienceView } from "./SalienceView";
 import { restrictSalience } from "./salience";
+import { restrictProxy } from "./proxy";
+import { ProxyView } from "./ProxyView";
 import { MagnitudeView } from "./MagnitudeView";
 import { ProjectionView } from "./ProjectionView";
 import { TargetView } from "./TargetView";
@@ -186,6 +188,23 @@ export function DataViewRenderer({
           phase={scrub?.phase}
         />
       );
+    case "proxy":
+      /*
+        The setup is handed only the rows the model was trained on, so the two
+        groups sit almost level and every accuracy check a reader might think
+        to run agrees. The reveal is handed both scales at once, because the
+        lesson is not the second set of rows, it is the COMPARISON between the
+        two sets, and dropping the first would leave nothing to compare against.
+      */
+      return view.kind === "astrained" || view.kind === "asithappened" ? (
+        <ProxyView
+          data={restrictProxy(data, {
+            scales: view.kind === "astrained" ? ["proxy"] : ["proxy", "truth"],
+          })}
+          full={data}
+          kind={view.kind}
+        />
+      ) : null;
     case "agreement":
       // Only two of the view kinds mean anything to this shape; anything else
       // is an authoring mistake and should draw nothing rather than guess.
@@ -479,6 +498,10 @@ export function scopeLabel(kind: DataViewKind): string {
       return "What they said afterwards";
     case "agreement":
       return "Against what they said before";
+    case "astrained":
+      return "On the scale it was trained on";
+    case "asithappened":
+      return "On the scale that mattered";
     case "extremes":
       return "Where they started";
     case "reversion":

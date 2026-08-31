@@ -10425,6 +10425,115 @@ const items: TestItem[] = [
     },
   },
 
+
+  /*
+    PROXY TARGETS. Every one of these states that the data is complete, the
+    label accurately recorded and the model genuinely accurate against that
+    label, and that is not padding. It forecloses the other critiques a
+    player could correctly make, so the choice of target is the only reading
+    left standing. An item that leaves the sampling or the measurement open
+    hands the player a second right answer and then marks it wrong.
+  */
+  {
+    id: "pt-tutoring-graduation",
+    scenario: {
+      en: "A university decides which first-year students to offer free tutoring to. The model is trained on ten years of complete records and predicts whether a student went on to graduate. Checked against years it was not trained on, it predicts graduation accurately for every kind of student. Tutoring is offered to those it says are least likely to graduate.",
+    },
+    trap: "proxy-target",
+    explanation: {
+      en: "The model answers who will not graduate. The programme exists for students whom tutoring would help, and those are not the same people: a student who leaves because they cannot afford to stay is predicted correctly and helped not at all, while a student tutoring would carry through a hard year is predicted to graduate and passed over. Every accuracy check is run against graduation, so none of them can see the difference.",
+    },
+  },
+  {
+    id: "pt-food-bank-visits",
+    scenario: {
+      en: "A regional charity decides where to send food by ranking districts on the number of food-bank visits recorded there last year. Every visit is logged and the counts are complete. The ranking reproduces the following year's visit counts closely. Districts near the bottom receive the smallest deliveries.",
+    },
+    trap: "proxy-target",
+    explanation: {
+      en: "Visits measure how many people came, which is how hungry a district is and also how reachable its food bank is. A district served by one van a fortnight records few visits whatever its need. Reproducing next year's visit counts confirms the ranking is good at predicting visits, which is the one thing it was never in doubt about.",
+    },
+  },
+  {
+    id: "pt-library-openings",
+    scenario: {
+      en: "A company decides which internal documents to keep updated by ranking them on how often they were opened. Opens are logged for every employee and none are missing. The ranking predicts the next quarter's opens almost exactly. Documents at the bottom are archived.",
+    },
+    trap: "proxy-target",
+    explanation: {
+      en: "How often a document is opened depends on how useful it is and also on whether anyone can find it. A page that answers a rare but critical question, or that search buries, is opened seldom either way. The check asks whether the ranking predicts opens, and it does, which leaves the question of whether opens were the thing worth ranking on entirely untouched.",
+    },
+  },
+  {
+    id: "pt-maintenance-jobs",
+    scenario: {
+      en: "An operator ranks its machines for replacement with a model trained on recorded repair jobs. Every job is logged with its date and machine. At each of the firm's sites the model predicts the next year's job count well. The machines with the fewest recorded jobs are kept in service.",
+    },
+    trap: "proxy-target",
+    explanation: {
+      en: "A repair job happens when a machine fails and a technician reaches it. Remote sites are visited rarely, so their machines accumulate faults and few jobs, and the model reads that as reliability. Predicting job counts accurately at every site is exactly what a model trained on job counts should do, and it says nothing about which machines are failing.",
+    },
+  },
+  {
+    id: "pt-spam-reports",
+    scenario: {
+      en: "A mail provider trains its filter on the messages users pressed the report button on. The button presses are all recorded. On held-out reports the filter is accurate for every group of accounts. Anything it scores low is delivered to the inbox.",
+    },
+    trap: "proxy-target",
+    explanation: {
+      en: "Pressing the button requires somebody to open the message and bother. Accounts checked once a month report almost nothing however much spam arrives, so the filter learns that what reaches them is fine. It is accurate about reports, which is what it was trained on and what it is tested against, and the question of whether a message is spam was never put to it.",
+    },
+  },
+  {
+    id: "pt-grant-income",
+    scenario: {
+      en: "A funder shortlists departments for a new scheme using a score built from their grant income over the previous five years. The income figures are audited and complete. The score predicts the next round's income closely for every department. Departments scoring lowest are not shortlisted.",
+    },
+    trap: "proxy-target",
+    explanation: {
+      en: "Grant income records which departments have been funded before. The scheme is meant to find where the money would do the most good, and a department can be full of promising work and short of income, or well funded and coasting. Because the score is checked against income, a department that was never funded looks the same as one that was funded and achieved nothing.",
+    },
+  },
+  {
+    id: "pt-crop-sold",
+    scenario: {
+      en: "An agricultural agency decides which villages receive subsidised seed by ranking them on the crop weight sold at market. Market records are complete and weights are accurate. The ranking predicts each village's sales the following season well. The lowest-selling villages are treated as the least productive and given least.",
+    },
+    trap: "proxy-target",
+    explanation: {
+      en: "Weight sold is the harvest minus what was eaten at home, and minus whatever could not be carried to a market. A village a day's travel from the nearest market sells little at any yield. Predicting next season's sales confirms the ranking tracks sales, and productivity was the thing the agency meant to rank on.",
+    },
+  },
+  {
+    id: "pt-time-in-feature",
+    scenario: {
+      en: "A software company decides which features to keep by ranking them on the time users spend in each. Telemetry covers every session and the timings are accurate. The ranking predicts next month's time spent almost exactly. Features at the bottom are cut.",
+    },
+    trap: "proxy-target",
+    explanation: {
+      en: "Time spent measures how much a feature is used and also how long it takes to get through. A feature that does its job in four seconds records almost nothing, and a confusing one that people wrestle with records a great deal. The ranking is accurate about time spent, and time spent points the wrong way for exactly the features that work best.",
+    },
+  },
+  {
+    id: "pt-legal-aid-wins",
+    scenario: {
+      en: "A legal aid charity decides how to staff its practice areas using a model that predicts which cases will be won. Outcomes are recorded for every case it has taken. The model predicts wins accurately across all its areas of work. The areas where it predicts fewest wins get the fewest lawyers.",
+    },
+    trap: "proxy-target",
+    explanation: {
+      en: "The model answers which cases are winnable. The charity's purpose is to reach the people who most need representation, and the two come apart wherever the law is hardest on the people it applies to: an area where almost nobody wins is where an unrepresented person fares worst. Checking the model against wins can only ever confirm it is good at picking winners.",
+    },
+  },
+  {
+    id: "pt-heating-meter",
+    scenario: {
+      en: "A utility decides which households to offer insulation grants to using a model trained on metered electricity use, on the reasoning that a poorly insulated home costs more to heat. Meter readings are complete and accurate. The model predicts next winter's consumption closely for every kind of household. The lowest-consuming homes are not contacted.",
+    },
+    trap: "proxy-target",
+    explanation: {
+      en: "Consumption measures how much heat a home loses and also how much heating the household is willing to pay for. A family that cannot afford to run the heating consumes little and lives in the cold, and the model reads that as a warm house. It predicts consumption well, which is the claim it was built to make, and the coldest homes are the ones it rules out first.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

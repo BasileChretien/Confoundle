@@ -6,7 +6,7 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import { VitePWA } from "vite-plugin-pwa";
 import { viteSingleFile } from "vite-plugin-singlefile";
-import { puzzles } from "./src/puzzles";
+import { puzzles } from "./src/puzzles/all";
 import { ALL_DICTIONARIES } from "./src/app/translations/all";
 import { lessonPages, lessonSitemap } from "./src/server/prerender";
 
@@ -248,6 +248,19 @@ const pwa = VitePWA({
     // every install.
     globIgnores: [
       "**/assets/{fr,es,pt,ja,zh,ru,hi,bn,ar}-*.js",
+      // The puzzle content and the Trap Hunt bank, for the same reason as the
+      // dictionaries and with the same consequence. Between them they were
+      // 1.28 MB of a 1.99 MB shell, so every install carried all 73 cards and
+      // 500-odd Trap Hunt items whether or not the reader ever opened one, and
+      // each new card pushed the shell closer to workbox's 2 MiB per-file
+      // ceiling. They are cached at runtime below instead.
+      //
+      // The chunk names are pinned by `manualChunks`, not inferred, precisely
+      // so these globs cannot silently stop matching: a renamed entry module
+      // would otherwise produce a differently-named chunk that quietly falls
+      // back into the precache.
+      "**/assets/puzzle-content-*.js",
+      "**/assets/item-bank-*.js",
       "l/**",
       "sitemap.xml",
     ],
@@ -272,6 +285,26 @@ const pwa = VitePWA({
           cacheName: "confoundle-locales",
           // Ten languages, and hashed names mean a new entry per deploy.
           expiration: { maxEntries: 30 },
+          cacheableResponse: { statuses: [0, 200] },
+        },
+      },
+      {
+        /*
+          THE CONTENT, CACHED ON FIRST USE. This is what keeps an installed app
+          working offline after the split: the registry is fetched during the
+          first launch, so it is in this cache before anyone can be offline
+          with the app installed, and the bank joins it the first time a review
+          or a run is opened.
+
+          NO EXPIRATION BY COUNT, unlike the locales above. A reader has one
+          registry, not ten, so there is nothing to bound; capping entries
+          would only evict across deploys, which is what the hash already
+          handles by making the old entry unreachable rather than wrong.
+        */
+        urlPattern: /\/assets\/(puzzle-content|item-bank)-[^/]+\.js$/,
+        handler: "CacheFirst",
+        options: {
+          cacheName: "confoundle-content",
           cacheableResponse: { statuses: [0, 200] },
         },
       },
@@ -345,6 +378,35 @@ export default defineConfig(({ mode }) => {
           output: { format: "iife", inlineDynamicImports: true },
         },
       }
-    : undefined,
+    : {
+        rollupOptions: {
+          output: {
+            /*
+              PINNED NAMES FOR THE TWO LAZY CHUNKS, so the globs above and the
+              runtime-caching rule can match them. Left to itself the bundler
+              names a chunk after its entry module, which means renaming
+              `all.ts` or `testItems.ts` would rename the chunk, the globs
+              would stop matching, and the content would slide back into the
+              precache with nothing failing anywhere. That is the same class of
+              silent regression `shellSplit.test.ts` exists to catch from the
+              other direction.
+
+              This groups modules; it does not make them eager. Both chunks are
+              reached only through `import()`, so they stay off the critical
+              path.
+            */
+            manualChunks(id: string) {
+              if (
+                id.includes("/src/puzzles/data/") ||
+                id.endsWith("/src/puzzles/all.ts") ||
+                id.endsWith("/src/puzzles/schema.ts")
+              )
+                return "puzzle-content";
+              if (id.endsWith("/src/puzzles/testItems.ts")) return "item-bank";
+              return undefined;
+            },
+          },
+        },
+      },
   };
 });

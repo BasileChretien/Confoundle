@@ -8,7 +8,7 @@ import {
   viewFromSearch,
   type View,
 } from "./navigation";
-import { puzzles } from "../puzzles";
+import { puzzles } from "../puzzles/all";
 
 const REAL_SLUG = puzzles[0].slug;
 

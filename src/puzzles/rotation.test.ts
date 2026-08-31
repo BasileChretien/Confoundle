@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
-import { puzzles, puzzleForDay } from "./index";
+import { puzzles } from "./all";
+import { puzzleForDay } from "./index";
 
 describe("daily rotation", () => {
   it("is stable for a given day and cycles through the registry", () => {

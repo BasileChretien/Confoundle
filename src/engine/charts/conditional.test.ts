@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { puzzles } from "../../puzzles";
+import { puzzles } from "../../puzzles/all";
 import type { ConditionalData } from "../../puzzles/schema";
 import {
   restrictConditional,

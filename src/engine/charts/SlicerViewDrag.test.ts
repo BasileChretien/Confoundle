@@ -3,7 +3,7 @@ import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import { act, createElement } from "react";
 import { createRoot, type Root } from "react-dom/client";
 import { LocaleProvider } from "../../app/i18n";
-import { puzzles } from "../../puzzles";
+import { puzzles } from "../../puzzles/all";
 import type { RatesData } from "../../puzzles/schema";
 import { declaredColors } from "./palette";
 import { SlicerView } from "./SlicerView";

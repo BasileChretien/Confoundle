@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { puzzles } from "../../puzzles/index";
+import { puzzles } from "../../puzzles/all";
 import type {
   DriftData,
   EstimationData,

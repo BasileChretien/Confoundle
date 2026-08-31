@@ -8,6 +8,12 @@ export default defineConfig({
     include: ["src/**/*.test.ts"],
 
     /*
+      Primes the two lazy modules the app shell no longer contains, so a
+      test file never has to know the split happened. See src/testSetup.ts.
+    */
+    setupFiles: ["./src/testSetup.ts"],
+
+    /*
       THE DEFAULT TIMEOUTS ARE TOO TIGHT FOR THIS PROJECT, AND WHEN THEY BITE
       THEY LOOK LIKE A BUG IN THE CODE RATHER THAN A BUG IN THE CLOCK.
 

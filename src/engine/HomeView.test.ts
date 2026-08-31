@@ -3,7 +3,7 @@ import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { LocaleProvider } from "../app/i18n";
 import { UI } from "../app/ui";
-import { puzzles } from "../puzzles";
+import { puzzles } from "../puzzles/all";
 import { newProgress, type SkillProgress } from "../srs/schedule";
 import { HomeView } from "./HomeView";
 

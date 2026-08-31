@@ -3,7 +3,7 @@ import { clamp, escapeHtml, escapeJsonLd, lessonPath, renderLessonPage } from ".
 import { LESSON_PAGE } from "./lessonPageStrings";
 import { lessonPages, lessonSitemap } from "./prerender";
 import { siblingsFor } from "./lessonSiblings";
-import { puzzles } from "../puzzles";
+import { puzzles } from "../puzzles/all";
 import { ALL_DICTIONARIES } from "../app/translations/all";
 import { LOCALE_CODES } from "../app/locales";
 import type { LocalizedText } from "../puzzles/schema";

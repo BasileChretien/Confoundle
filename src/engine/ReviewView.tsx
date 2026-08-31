@@ -69,7 +69,7 @@ export function ReviewView({
 
   const skillName = useMemo(
     () => (slug: string) => {
-      const p = puzzles.find((x) => x.reasoningSkill === slug);
+      const p = puzzles().find((x) => x.reasoningSkill === slug);
       return p ? t(p.lesson.skillName) : slug;
     },
     [t],
@@ -90,7 +90,7 @@ export function ReviewView({
     for (const r of session) {
       if (seen.has(r.skill)) continue;
       seen.add(r.skill);
-      const p = puzzles.find((x) => x.reasoningSkill === r.skill);
+      const p = puzzles().find((x) => x.reasoningSkill === r.skill);
       if (p) out.push(p);
     }
     return out;

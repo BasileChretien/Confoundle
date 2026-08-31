@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { ALL_DICTIONARIES as DICTIONARIES } from "./all";
-import { puzzles } from "../../puzzles";
+import { puzzles } from "../../puzzles/all";
 import { TEST_ITEMS } from "../../puzzles/testItems";
 import { TAGS } from "../../puzzles/tags";
 

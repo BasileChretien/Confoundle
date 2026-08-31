@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { puzzles } from "../../puzzles";
+import { puzzles } from "../../puzzles/all";
 import { canMix } from "./mixer";
 import { canScreen } from "./screen";
 import { canSlice } from "./subgroups";

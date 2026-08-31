@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { siblingsFor } from "./lessonSiblings";
-import { puzzles } from "../puzzles";
+import { puzzles } from "../puzzles/all";
 
 /**
  * The 730 lesson pages were isolated leaves: three links each, its source and

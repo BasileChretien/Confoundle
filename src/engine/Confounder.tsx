@@ -55,7 +55,7 @@ export function confounderStateFor(
   stats: { currentStreak: number; catchRate: number; played: number },
   now: number = Date.now(),
 ): ConfounderState {
-  const started = puzzles
+  const started = puzzles()
     .map((p) => lessonProgressFor(p.reasoningSkill, progress))
     .filter((lp) => lp.state !== "new");
   const counts = bucketCounts(progress);
@@ -70,7 +70,7 @@ export function confounderStateFor(
     burned: counts.burned,
     misconceptions: started.filter((lp) => lp.misconceived).length,
     allDone:
-      started.length === puzzles.length && counts.burned === puzzles.length,
+      started.length === puzzles().length && counts.burned === puzzles().length,
   };
 }
 

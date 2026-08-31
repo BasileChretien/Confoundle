@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
-import { puzzles, puzzleNumberOf } from "./index";
+import { puzzles } from "./all";
+import { puzzleNumberOf } from "./index";
 
 /**
  * THE REGISTRY ORDER IS PART OF THE PRODUCT, and this is the only thing saying so.

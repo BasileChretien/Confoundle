@@ -1,5 +1,6 @@
 import { ROUND_SIZE } from "./trapHunt";
-import { TEST_ITEMS, type TestItem } from "../puzzles/testItems";
+import type { TestItem } from "../puzzles/testItems";
+import { itemBank } from "../puzzles/itemBank";
 
 /**
  * The same eight items for everybody, today.
@@ -73,7 +74,7 @@ export function itemScore(day: number, id: string): number {
  * bank's order and, for an insertion, its size.
  */
 export function drawDailyRun(day: number, size = ROUND_SIZE): TestItem[] {
-  return [...TEST_ITEMS]
+  return [...itemBank()]
     .map((item) => ({ item, score: itemScore(day, item.id) }))
     // Ties broken by id so the order is total, since two ids can collide.
     .sort((a, b) => a.score - b.score || a.item.id.localeCompare(b.item.id))

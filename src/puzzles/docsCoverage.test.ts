@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import backlogDoc from "../../docs/lesson-backlog.md?raw";
 import auditDoc from "../../docs/exam-syllabus-audit.md?raw";
 import gapsDoc from "../../docs/plan-syllabus-gaps.md?raw";
-import { puzzles } from "./index";
+import { puzzles } from "./all";
 import { TEST_ITEMS } from "./testItems";
 
 /**

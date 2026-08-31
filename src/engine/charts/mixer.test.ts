@@ -9,7 +9,7 @@ import {
   reversedAt,
   reverses,
 } from "./mixer";
-import { puzzles } from "../../puzzles";
+import { puzzles } from "../../puzzles/all";
 import type { RatesData } from "../../puzzles/schema";
 
 const kidneyStones = puzzles.find((p) => p.slug === "kidney-stones")!;

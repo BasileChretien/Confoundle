@@ -1,4 +1,4 @@
-import { TEST_ITEMS } from "../puzzles/testItems";
+import { itemBank } from "../puzzles/itemBank";
 import {
   applyPractice,
   applyReview,
@@ -49,7 +49,15 @@ export interface Reviews {
 
 export function createReviews(
   store: ProgressStore,
-  bank: readonly TestItem[] = TEST_ITEMS,
+  /*
+    A THUNK, NOT AN ARRAY, and the difference is load-bearing. `reviews`
+    below is a module-scope singleton, so a default of `itemBank()` would
+    run at import time, before `main.tsx` has had any chance to fetch the
+    bank, and would throw on the first import of this file. Deferring the
+    call to the two places that build a session moves it to a point where
+    the caller has already awaited `loadItemBank()`.
+  */
+  bank: () => readonly TestItem[] = itemBank,
 ): Reviews {
   return {
     /**
@@ -93,7 +101,7 @@ export function createReviews(
      */
     async nextSession(seed, now = Date.now()) {
       const due = dueSkills(await store.load(), now);
-      return buildSession(due, [...bank], seed + now);
+      return buildSession(due, [...bank()], seed + now);
     },
 
     /**
@@ -121,7 +129,7 @@ export function createReviews(
         if (aAcc !== bAcc) return aAcc - bAcc;
         return a.updatedAt - b.updatedAt;
       });
-      return buildSession(ordered, [...bank], seed + now);
+      return buildSession(ordered, [...bank()], seed + now);
     },
 
     /** Score practice: everything a review records except the ladder. */

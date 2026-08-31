@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
-import { getOpeningPuzzle, OPENING_SLUG, puzzles } from "./index";
+import { puzzles } from "./all";
+import { getOpeningPuzzle, OPENING_SLUG } from "./index";
 
 /**
  * The first puzzle a stranger ever sees, checked against the three properties

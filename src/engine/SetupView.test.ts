@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { LocaleProvider } from "../app/i18n";
-import { puzzles } from "../puzzles";
+import { puzzles } from "../puzzles/all";
 import type { Puzzle } from "../puzzles/schema";
 import { SetupView } from "./SetupView";
 

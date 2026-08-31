@@ -152,13 +152,13 @@ export function HomeView({
   // What to learn next follows the interests chosen on the browse screen, so
   // the choice is about the course rather than one screen's view. Read on
   // render: this component remounts whenever the learner comes back here.
-  const interests = readInterests(puzzles);
-  const wanted = filterByInterests(puzzles, interests);
+  const interests = readInterests(puzzles());
+  const wanted = filterByInterests(puzzles(), interests);
   const next =
     wanted.find((p) => lessonProgressFor(p.reasoningSkill, progress).state === "new") ??
     // Everything in the chosen areas is done, so offer the rest rather than
     // dead-ending on a screen with nothing to do.
-    puzzles.find((p) => lessonProgressFor(p.reasoningSkill, progress).state === "new");
+    puzzles().find((p) => lessonProgressFor(p.reasoningSkill, progress).state === "new");
   const start = () => (next ? onOpenLesson(next.slug) : onStartReviews());
 
   /*
@@ -186,7 +186,7 @@ export function HomeView({
 
   const q = query.trim();
   const results = q
-    ? filterLessons(puzzles, { category: null, query: q }, searchable)
+    ? filterLessons(puzzles(), { category: null, query: q }, searchable)
     : [];
 
   // A newcomer gets the whole pitch, then a way into the catalogue. There is no

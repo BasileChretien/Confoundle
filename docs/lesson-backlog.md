@@ -6277,3 +6277,186 @@ have.
    than 17% is not derivable from the setup, so no two answer bands may sit on
    the low side, and "there is no way to tell" must be wrong rather than
    correct here, because the direction genuinely is tellable.
+
+## The queue as of 2026-09-01
+
+Entries 1 to 76 are all resolved, so what follows is a fresh queue rather than
+a continuation of one. It comes from a gap analysis run after the numbered
+backlog emptied, and it is written down here rather than left in a chat log
+because a lead nobody can find is a lead nobody will work.
+
+**All five are LEADS, not ready to author.** None has been read at source. Each
+records what makes it look promising, what would have to reconcile before it
+could ship, and which shipped card it is most likely to be confused with,
+because that last question has killed candidates before: entry 21 was closed
+after the neighbour check, and two "already covered inside X" claims turned out
+to be wrong on reading the card rather than the note.
+
+A word on where these came from. The medical-exam audit
+([`exam-syllabus-audit.md`](./exam-syllabus-audit.md)) is exhausted, and so is
+the persuasion audit. These five are not from a blueprint at all: three are
+from the epidemiology of how papers are actually misread, and two are from the
+algorithmic wing that `proxy-target` opened. That wing has exactly one card in
+it, and it is the only part of the deck where the subject matter is still
+growing faster than the deck is.
+
+### 77. Both sides of the fairness argument were right, and that is a theorem <!-- skill: fairness-impossibility -->
+
+**Status: LEAD.** Not yet read at source. The strongest of the five and the one
+to source first.
+
+A risk score used in bail and sentencing decisions was attacked for being
+racially biased and defended as racially unbiased, and the two claims used
+different definitions of the word. The attack measured ERROR RATES: among
+defendants who did not go on to reoffend, Black defendants were labelled high
+risk far more often than White ones. The defence measured CALIBRATION: among
+defendants given the same score, the share who went on to reoffend was about
+the same in both groups. Both were computed from the same table and both are
+correct.
+
+What makes it a lesson rather than a row is the part that came afterwards.
+When the base rates differ between groups, calibration and equal error rates
+are **mathematically incompatible**: you cannot have both, no matter how the
+model is built, and no amount of care or good intent buys a way out. So the
+argument was never about whether the model was fair. It was about which
+definition of fair everybody had silently assumed.
+
+**Why it is not `proxy-target`.** That card is about the LABEL: cost was
+recorded, health was meant, and the accuracy check could not see the gap. Here
+the label is not in dispute and the model is accurate in the sense its makers
+claimed. What fails is the METRIC, and it fails necessarily rather than
+accidentally.
+
+**Why it is not `prosecutors-fallacy` or `base-rate-fallacy`.** Both are about
+one conditional probability being read as its converse. This is about two
+conditionals both being reported honestly and disagreeing, which is the
+opposite failure: nobody has confused P(A|B) with P(B|A), they have each picked
+a different one and called it fairness.
+
+**What has to reconcile before it ships.**
+
+1. The two-by-two counts by group, from a primary source, with enough of them
+   printed that the false positive rate, the false negative rate and the
+   positive predictive value can all be **recomputed rather than quoted**. A
+   card that quotes three rates it cannot derive has no business drawing them
+   as one figure.
+2. The base rates by group, because they are the reason the impossibility
+   bites, and a figure that omits them makes the conflict look like a choice
+   somebody made.
+3. Whether the vendor's own reply and the journalists' analysis really do use
+   the same underlying data. If they do not, the card is about two datasets and
+   collapses.
+
+**The hedge problem, which is unusually sharp here.** The honest answer to "is
+it fair" is that the question is underdetermined, and "there is no way to tell"
+is close enough to that to be defensible. Either the framing has to pin which
+definition is being asked about, the way `statistical-power` pins that its
+question is about size, or the hedge has to be the correct answer and the
+reveal has to carry the impossibility. Decide before authoring, not after.
+
+**Shape.** Probably new. The setup and the reveal are two slices of one
+confusion matrix, and the deck has no shape that draws one.
+
+### 78. Every number in the table is not an effect <!-- skill: table-two-fallacy -->
+
+**Status: LEAD.** Not sourced. Named and defined in the methodological
+literature, which is a good sign for provenance and a bad sign for finding real
+counts to draw.
+
+A paper adjusts for age, sex, smoking and three other things, and prints one
+table of adjusted odds ratios with a row for each. Readers take every row as
+that variable's effect. Only the exposure's row is estimated the way the design
+intended; the covariates' rows are a mixture of their own effect and whatever
+confounding the model happened to control for them, and can point the wrong way
+entirely. This is close to universal in how papers are read, including by
+people who would never make the mistake about their own exposure.
+
+**Why it is not `effect-modification-vs-confounding`.** That card is about one
+factor whose effect differs between groups. This is about which coefficients in
+a fitted model are interpretable at all, which is a different question and has a
+different remedy: not stratifying, but declining to read most of the table.
+
+**What has to reconcile.** The hard part is not the argument, it is finding a
+published table where the covariate row is demonstrably wrong in direction and
+the correct value is also published. Without that the reveal is a claim rather
+than a second view of the data, which this deck does not do.
+
+**Shape.** Unclear, and worth resolving before sourcing rather than after. The
+setup would be a regression table, but a reveal that only annotates which rows
+may be read is a restatement, not a reframing. If no honest reveal exists, this
+becomes a lesson page rather than a card, and that is an acceptable outcome to
+reach deliberately.
+
+### 79. The users you can see are the ones it did not stop <!-- skill: prevalent-user-bias -->
+
+**Status: LEAD.** Not sourced. Ray 2003 is the canonical methods reference.
+
+A study of a long-used drug enrols people currently taking it. Everyone who
+started it and stopped, because it harmed them or did not work, is absent by
+construction, so the cohort is enriched for people who tolerate it. Early
+events, which for many drugs is when the risk is concentrated, are invisible.
+The drug looks safer than it is, and the fix is to study new users from their
+first prescription.
+
+**Why it is not `healthy-adherer` or `immortal-time-bias`.** The adherer card is
+about people who take medicine as prescribed differing from those who do not,
+within a study. Immortal time is about a stretch of follow-up in which the
+outcome could not have occurred. This one is about who was eligible to be
+enrolled at all, which happens before either.
+
+**Why it is not `survivorship-bias`.** Genuinely close, and this is the one
+that could sink it. Survivorship is about who is left to look at, and so is
+this. The distinction to defend, if it can be defended, is that the survivor
+card is about a sample that lost its failures, while this is about a design
+choice with a named remedy that the reader can be taught to ask for. If that
+distinction cannot be made to feel different inside a puzzle, close this entry
+rather than shipping a second survivorship card under a new name.
+
+### 80. The model sends the patrols, and the patrols write the data <!-- skill: feedback-loops -->
+
+**Status: LEAD.** Not sourced. Simulation studies exist; the difficulty is
+finding one whose numbers are real rather than modelled.
+
+A model predicts where something will be found, resources are sent there on the
+strength of the prediction, and what those resources find becomes the training
+data for the next version. The model's output has become its own input. It
+converges on wherever it started looking, and every retrain makes it more
+confident, because it is now being scored against data it caused.
+
+**Why it is not `campbells-law`.** That card is about people gaming a measure
+once it becomes a target. Nobody games anything here, and the loop closes with
+no human intent at all, which is what makes it worth its own card.
+
+**Why it is not `proxy-target`.** Adjacent, and the two would sit well together.
+The proxy card is static: the label was wrong from the start. This one is
+dynamic: the label may start fine and be corrupted by the model's own
+deployment.
+
+**The provenance problem, stated plainly because it is likely to be fatal.**
+The honest demonstrations of this are simulations, and CLAUDE.md's rules do not
+allow a simulation to be drawn as though it were a measurement. If no real
+deployed system has published the before-and-after, the honest output is a
+lesson page or a note recording exactly that.
+
+### 81. It learned the scanner, not the disease <!-- skill: cross-site-generalisation -->
+
+**Status: LEAD.** Not sourced. Zech 2018 and the COVID imaging reviews are the
+obvious starting points.
+
+A diagnostic model reports excellent accuracy and fails at the hospital next
+door. It had learned something real but useless: which machine took the image,
+which ward the portable scanner served, a marker burned into a corner. Within
+one site that predicts the diagnosis well, because sicker patients are imaged
+differently. Across sites it predicts nothing.
+
+**Why it is not `temporal-validity`.** That card is about a finding not
+surviving the passage of time. This is about not surviving a change of place,
+and the mechanism is a shortcut the model found rather than a world that moved.
+
+**Why it is not `spectrum-bias`.** Spectrum bias is about the case mix a test is
+evaluated on. Here the case mix may be identical; what differs is an artefact
+the model attached to.
+
+**What has to reconcile.** Accuracy at the training site and at the external
+site, both published, for the same model. That pairing is the whole card and it
+is what most papers of this kind do not print.

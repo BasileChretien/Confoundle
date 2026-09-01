@@ -1770,6 +1770,48 @@ function CompetingGlyph() {
     </svg>
   );
 }
+function ClassifierGlyph() {
+  const t = useT();
+  const W = 200;
+  const H = 96;
+  /**
+   * Two pairs of bars sharing a baseline: the upper pair almost equal, the
+   * lower pair one nearly twice the other. Same two colours in both rows,
+   * because the claim is that these are the same two groups read twice rather
+   * than four measurements of four things.
+   *
+   * The rule between the rows is doing work. Without it the four bars read as
+   * one chart with an odd shape; with it they read as two answers, which is
+   * the whole card.
+   *
+   * Shape-generic wording, since the glyph is chosen by `data.type` and has to
+   * survive whatever the next puzzle on this shape turns out to be about.
+   */
+  const X = 26;
+  const rows = [
+    { y: 14, a: 118, b: 110 },
+    { y: 56, a: 132, b: 69 },
+  ];
+  return (
+    <svg
+      viewBox={`0 0 ${W} ${H}`}
+      width="100%"
+      role="img"
+      aria-label={t({
+        en: "Two groups almost equal on one reading of a table and far apart on a second reading of the same table",
+      })}
+    >
+      {rows.map((r) => (
+        <g key={r.y}>
+          <rect x={X} y={r.y} width={r.a} height={11} rx={2} fill={CARD.gold} opacity={0.9} />
+          <rect x={X} y={r.y + 15} width={r.b} height={11} rx={2} fill={CARD.teal} opacity={0.9} />
+        </g>
+      ))}
+      <line x1={X - 4} y1={48} x2={W - 8} y2={48} stroke={CARD.rule} strokeWidth={1} opacity={0.75} />
+      <line x1={X} y1={8} x2={X} y2={H - 4} stroke={CARD.rule} strokeWidth={1.5} />
+    </svg>
+  );
+}
 function CrossedGlyph() {
   const t = useT();
   const W = 200;
@@ -2423,6 +2465,7 @@ export function ShareCard({
   const ratersGlyph = data.type === "raters";
   const proxyGlyph = data.type === "proxy";
   const competingGlyph = data.type === "competing";
+  const classifierGlyph = data.type === "classifier";
   const splitSampleGlyph =
     data.type === "rates" &&
     Boolean(data.strataAreSeparateSamples) &&
@@ -2603,6 +2646,8 @@ export function ShareCard({
               <ProxyGlyph />
             ) : competingGlyph ? (
               <CompetingGlyph />
+            ) : classifierGlyph ? (
+              <ClassifierGlyph />
             ) : null}
           </div>
 

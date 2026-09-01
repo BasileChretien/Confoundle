@@ -10644,6 +10644,118 @@ const items: TestItem[] = [
       en: "Most people fitted with a first hearing aid are elderly, and a large share die within ten years without returning. Censoring them keeps them counted as though they were still going to come back, so 45 in 100 is the return rate in a population that does not age out. The workload the service has to plan for is the number of people who actually return, which is lower, and the arithmetic that produced 45 was correct throughout.",
     },
   },
+
+  /*
+    COMPETING DEFINITIONS OF FAIR. Every one of these says three things on
+    purpose: that both parties computed correctly, that they used the same
+    counts, and that the two groups differ in how often the outcome happens
+    at all. The first two foreclose the reading that somebody made an
+    arithmetic error, which is the easy wrong answer. The third is the
+    condition that makes the conflict a theorem rather than a fixable flaw,
+    and without it on the page a player could reasonably say the tool should
+    simply be rebuilt, which would be a correct critique of a different
+    scenario.
+  */
+  {
+    id: "fi-hiring-test",
+    scenario: {
+      en: "A company scores applicants and interviews everyone above a cut-off. Reviewing a year of hiring, it finds that among the people it interviewed, graduates and non-graduates were hired at the same rate, so it reports that the screen treats the two groups alike. A campaigner reviewing the same records finds that among applicants who would have done the job well, non-graduates were passed over twice as often, and calls the screen biased. Neither side disputes the other's arithmetic, and the two groups did not succeed in the job at the same rate to begin with.",
+    },
+    trap: "fairness-impossibility",
+    explanation: {
+      en: "Both figures come out of the same table and both are correct. The company measured what a high score is worth: given that somebody was interviewed, how often it worked out. The campaigner measured who pays for the mistakes: given that somebody would have succeeded, how often they were passed over. Because the two groups succeed at different underlying rates, a screen that equalises the first necessarily leaves the second unequal, so this is not a dispute either side can win with better data.",
+    },
+  },
+  {
+    id: "fi-loan-default",
+    scenario: {
+      en: "A lender's model flags applications as high risk. It reports that among the applications it flagged, the share that went on to default was the same for borrowers in two regions, and concludes the model does not disadvantage either. A regulator, using the lender's own figures, reports that among borrowers who repaid without difficulty, those in one region were flagged nearly twice as often. Default rates in the two regions differ.",
+    },
+    trap: "fairness-impossibility",
+    explanation: {
+      en: "The lender measured what a flag means and the regulator measured who is wrongly flagged, and both computed correctly from the same table. When the underlying default rates differ between the regions, holding the first equal forces the second apart. The disagreement is about which of the two definitions of even-handed the lender should be held to, and no adjustment to the model removes the need to choose.",
+    },
+  },
+  {
+    id: "fi-school-places",
+    scenario: {
+      en: "A city assigns extra tutoring using a test. Officials report that among the children the test selected, the share who went on to need the support was the same in two districts. Parents in one district reply that among the children who turned out not to need support at all, theirs were selected far more often. The counts are agreed by both sides, and the two districts did not need the support at equal rates.",
+    },
+    trap: "fairness-impossibility",
+    explanation: {
+      en: "Both readings come from one table and neither is a mistake. Selecting equally well among the chosen and selecting wrongly at equal rates among the unaffected are different requirements, and different underlying rates of need make them incompatible. The city can pick which one to guarantee and say so, but it cannot deliver both, and presenting only the first as proof of fairness answers a question the parents did not ask.",
+    },
+  },
+  {
+    id: "fi-fraud-review",
+    scenario: {
+      en: "A payment processor holds transactions its model calls suspicious. It publishes that among held transactions, the share that turned out to be fraudulent was almost identical for two categories of merchant. A trade body publishes that among entirely legitimate transactions, those from one category were held three times as often. Both are computed from the processor's released figures, and fraud is genuinely more common in one category.",
+    },
+    trap: "fairness-impossibility",
+    explanation: {
+      en: "The processor reported what a hold is worth and the trade body reported the cost of the mistakes, from the same counts. Because fraud really is more common in one category, a model whose holds mean the same thing in both will inevitably hold more innocent transactions in the category where fraud is commoner. Both parties are right, and the question left over is which guarantee the processor should be making, which is a decision rather than a calculation.",
+    },
+  },
+  {
+    id: "fi-welfare-screening",
+    scenario: {
+      en: "An agency screens referrals and opens an investigation above a threshold. It reports that among the families it investigated, the share where a problem was confirmed was the same for two groups. A review board reports that among families where nothing was found, one group was investigated at twice the rate. The board and the agency agree on every count, and the two groups differ in how often problems are confirmed overall.",
+    },
+    trap: "fairness-impossibility",
+    explanation: {
+      en: "These are two different questions asked of one table, and both answers are right. Equalising what an investigation is worth and equalising who is investigated needlessly cannot both be achieved while the underlying rates differ. A statement that the screen is fair, without naming which of the two it satisfies, has not told the board anything it was asking about.",
+    },
+  },
+  {
+    id: "fi-early-warning",
+    scenario: {
+      en: "A university flags first-year students as at risk of dropping out. Its report shows that among flagged students, the share who did drop out was the same for two faculties. The students' union shows that among students who completed the year without difficulty, those in one faculty were flagged much more often. The union used the university's published figures, and the two faculties have different overall dropout rates.",
+    },
+    trap: "fairness-impossibility",
+    explanation: {
+      en: "One side measured what a flag predicts and the other measured who is flagged without cause, and both are correct readings of the same counts. Different dropout rates between the faculties make the two impossible to satisfy at once. Whether the flag should mean the same thing everywhere, or should be wrong equally often everywhere, is a choice the university has to state, and it has so far only reported the one it happens to satisfy.",
+    },
+  },
+  {
+    id: "fi-audit-selection",
+    scenario: {
+      en: "A tax authority selects returns for audit. It states that among the returns it selected, the share found to contain an error was equal for two categories of filer. An advocacy group states that among filers whose returns were entirely correct, one category was selected for audit far more often. The authority's own published tables support both statements, and error rates differ between the categories.",
+    },
+    trap: "fairness-impossibility",
+    explanation: {
+      en: "Both statements are true of the same table. The authority measured the yield of an audit and the group measured the burden of a needless one, and those are different definitions of treating filers alike. With different underlying error rates the two cannot both hold, so the authority is not being caught in a contradiction; it is being asked which guarantee it intends to offer, and it has not said.",
+    },
+  },
+  {
+    id: "fi-secondary-screening",
+    scenario: {
+      en: "An airport refers some passengers for additional checks. Its figures show that among passengers referred, the share carrying something prohibited was the same for two groups of travellers. A civil liberties group, using those figures, shows that among passengers carrying nothing prohibited, one group was referred at twice the rate. Nobody disputes the counts, and the two groups differ in how often anything is found.",
+    },
+    trap: "fairness-impossibility",
+    explanation: {
+      en: "The airport reported what a referral is worth; the group reported who is referred for nothing. Both come out of the same table and both are right. Where the underlying rates differ, a referral rule that means the same thing for both groups must inconvenience one of them more often for no reason, and no better rule escapes that. What is being argued about is which of the two the airport should promise.",
+    },
+  },
+  {
+    id: "fi-content-review",
+    scenario: {
+      en: "A platform's classifier removes posts it judges to break the rules, with human review of a sample. It reports that among removed posts, the share confirmed as breaking the rules was the same in two languages. Researchers report that among posts that broke no rules, those in one language were removed at three times the rate. The platform's own audit data supports both, and rule-breaking is more common in one of the two languages.",
+    },
+    trap: "fairness-impossibility",
+    explanation: {
+      en: "Both are correct readings of the same audit. The platform measured how often a removal was justified and the researchers measured how often an innocent post was removed, which are different fairness guarantees. Different underlying rates of rule-breaking make them incompatible, so the platform cannot answer the researchers by pointing at its own figure. It has to say which of the two it is trying to deliver.",
+    },
+  },
+  {
+    id: "fi-maintenance-flags",
+    scenario: {
+      en: "A rail operator's model flags trains for unscheduled inspection. It reports that among flagged trains, the share found to have a genuine fault was the same for two classes of rolling stock. The depot managers report that among trains with nothing wrong with them, one class was pulled from service twice as often. Both use the operator's maintenance records, and one class really does develop faults more often.",
+    },
+    trap: "fairness-impossibility",
+    explanation: {
+      en: "Both figures are right and come from the same records. The operator measured what a flag is worth and the depots measured the cost of the false ones, which are different things to hold equal. Because one class genuinely fails more often, a model whose flags mean the same thing for both must pull more sound trains of that class out of service. Neither party has miscounted, and no better model removes the trade-off.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

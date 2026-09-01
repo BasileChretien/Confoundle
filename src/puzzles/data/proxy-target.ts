@@ -1,4 +1,4 @@
-import type { Puzzle } from "../schema";
+import type { Puzzle } from "../schema.ts";
 
 /**
  * The proxy target, on the `proxy` shape.

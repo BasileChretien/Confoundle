@@ -1,4 +1,4 @@
-import type { Puzzle } from "../schema";
+import type { Puzzle } from "../schema.ts";
 
 /**
  * Puzzle #39, the self-applied label, on Law and Versteeg (2013). Backlog entry

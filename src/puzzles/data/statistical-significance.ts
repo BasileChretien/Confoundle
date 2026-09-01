@@ -1,4 +1,4 @@
-import type { Puzzle } from "../schema";
+import type { Puzzle } from "../schema.ts";
 
 /**
  * Statistical significance is not clinical significance, on the drug that

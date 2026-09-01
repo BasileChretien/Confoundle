@@ -1,12 +1,12 @@
-import { fr } from "./fr";
-import { es } from "./es";
-import { pt } from "./pt";
-import { ja } from "./ja";
-import { zh } from "./zh";
-import { ru } from "./ru";
-import { hi } from "./hi";
-import { bn } from "./bn";
-import { ar } from "./ar";
+import { fr } from "./fr.ts";
+import { es } from "./es.ts";
+import { pt } from "./pt.ts";
+import { ja } from "./ja.ts";
+import { zh } from "./zh.ts";
+import { ru } from "./ru.ts";
+import { hi } from "./hi.ts";
+import { bn } from "./bn.ts";
+import { ar } from "./ar.ts";
 
 /**
  * Every dictionary, eagerly. FOR TESTS AND TOOLING ONLY.

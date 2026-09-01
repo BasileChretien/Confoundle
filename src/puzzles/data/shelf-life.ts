@@ -1,4 +1,4 @@
-import type { Puzzle } from "../schema";
+import type { Puzzle } from "../schema.ts";
 
 /**
  * Puzzle #61, temporal validity, via Moss et al. (2023), Table 2.

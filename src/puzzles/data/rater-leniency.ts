@@ -1,4 +1,4 @@
-import type { Puzzle } from "../schema";
+import type { Puzzle } from "../schema.ts";
 
 /**
  * Puzzle #75, rater leniency, on Starch and Elliott's 1913 geometry paper.

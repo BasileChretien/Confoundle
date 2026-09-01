@@ -1,4 +1,4 @@
-import type { Puzzle } from "../schema";
+import type { Puzzle } from "../schema.ts";
 
 /**
  * Puzzle #42, false balance. Two studies, read at source, placed side by side:

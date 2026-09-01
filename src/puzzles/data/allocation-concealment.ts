@@ -1,4 +1,4 @@
-import type { Puzzle } from "../schema";
+import type { Puzzle } from "../schema.ts";
 
 /**
  * Puzzle #33, allocation concealment, on the PHANTASi trial (Alam et al. 2018).

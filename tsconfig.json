@@ -5,6 +5,11 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "moduleResolution": "bundler",
+    // Relative imports carry their file extension so that Node can resolve
+    // them with no bundler in the way, which is what `configLoader: "native"`
+    // requires. Legal here only because `noEmit` is set; TypeScript refuses
+    // this flag when it would have to emit the extension it cannot rewrite.
+    "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "moduleDetection": "force",

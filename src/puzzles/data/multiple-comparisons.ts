@@ -1,4 +1,4 @@
-import type { Puzzle } from "../schema";
+import type { Puzzle } from "../schema.ts";
 
 /**
  * Puzzle #37, multiplicity, on ISIS-2 (1988). The largest remaining hole in the

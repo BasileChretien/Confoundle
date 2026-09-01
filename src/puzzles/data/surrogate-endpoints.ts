@@ -1,4 +1,4 @@
-import type { Puzzle } from "../schema";
+import type { Puzzle } from "../schema.ts";
 
 /**
  * Puzzle #69, surrogate endpoints, on CAST (N Engl J Med 1989;321:406-412),

@@ -1,4 +1,4 @@
-import type { Puzzle } from "../schema";
+import type { Puzzle } from "../schema.ts";
 
 /**
  * Puzzle #8, spectrum bias, on the real Lachs et al. (Ann Intern Med 1992)

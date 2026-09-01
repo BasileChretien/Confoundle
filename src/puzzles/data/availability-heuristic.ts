@@ -1,4 +1,4 @@
-import type { Puzzle } from "../schema";
+import type { Puzzle } from "../schema.ts";
 
 /**
  * Puzzle #36, the availability heuristic, on Lichtenstein, Slovic, Fischhoff,

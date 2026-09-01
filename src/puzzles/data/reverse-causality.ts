@@ -1,4 +1,4 @@
-import type { Puzzle } from "../schema";
+import type { Puzzle } from "../schema.ts";
 
 /**
  * Puzzle #70, reverse causality, on Kivimäki 2015 (Thorax 71:84-85), read in

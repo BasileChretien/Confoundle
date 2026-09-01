@@ -1,4 +1,4 @@
-import type { Puzzle } from "../schema";
+import type { Puzzle } from "../schema.ts";
 
 /**
  * Puzzle #40, metaphor framing, on Thibodeau and Boroditsky (2011). Backlog

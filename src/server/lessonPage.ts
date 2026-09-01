@@ -1,5 +1,5 @@
-import type { LocalizedText, Puzzle } from "../puzzles/schema";
-import { LESSON_PAGE } from "./lessonPageStrings";
+import type { LocalizedText, Puzzle } from "../puzzles/schema.ts";
+import { LESSON_PAGE } from "./lessonPageStrings.ts";
 
 /**
  * A lesson as a page you can paste into an argument.

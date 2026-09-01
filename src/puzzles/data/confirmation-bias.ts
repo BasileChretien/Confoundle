@@ -1,4 +1,4 @@
-import type { Puzzle } from "../schema";
+import type { Puzzle } from "../schema.ts";
 
 /**
  * Puzzle #48, confirmation bias, via Griggs and Cox (1982), Experiment 3.

@@ -1,4 +1,4 @@
-import type { Puzzle } from "../schema";
+import type { Puzzle } from "../schema.ts";
 
 /**
  * Puzzle #45, paltering, via Rogers, Zeckhauser, Gino, Norton and Schweitzer

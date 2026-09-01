@@ -6,9 +6,9 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import { VitePWA } from "vite-plugin-pwa";
 import { viteSingleFile } from "vite-plugin-singlefile";
-import { puzzles } from "./src/puzzles/all";
-import { ALL_DICTIONARIES } from "./src/app/translations/all";
-import { lessonPages, lessonSitemap } from "./src/server/prerender";
+import { puzzles } from "./src/puzzles/all.ts";
+import { ALL_DICTIONARIES } from "./src/app/translations/all.ts";
+import { lessonPages, lessonSitemap } from "./src/server/prerender.ts";
 
 /**
  * The controller's contact address on the privacy page.

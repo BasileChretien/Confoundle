@@ -1,4 +1,4 @@
-import type { Puzzle } from "../schema";
+import type { Puzzle } from "../schema.ts";
 
 /**
  * Puzzle #62, weaker is not the same as backfired, via Tannenbaum et al. (2015).

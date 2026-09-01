@@ -1,4 +1,4 @@
-import type { Puzzle } from "../schema";
+import type { Puzzle } from "../schema.ts";
 
 /**
  * Puzzle #3, correlation ≠ causation, via Messerli's real (tongue-in-cheek)

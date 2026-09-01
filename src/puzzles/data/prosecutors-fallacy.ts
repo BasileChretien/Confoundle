@@ -1,4 +1,4 @@
-import type { Puzzle } from "../schema";
+import type { Puzzle } from "../schema.ts";
 
 /**
  * The prosecutor's fallacy (the transposed conditional), via People v. Collins

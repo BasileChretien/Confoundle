@@ -1,6 +1,6 @@
-import type { LocalizedText, Puzzle } from "../puzzles/schema";
-import { lessonPath, renderLessonPage } from "./lessonPage";
-import { siblingsFor } from "./lessonSiblings";
+import type { LocalizedText, Puzzle } from "../puzzles/schema.ts";
+import { lessonPath, renderLessonPage } from "./lessonPage.ts";
+import { siblingsFor } from "./lessonSiblings.ts";
 
 /**
  * Every shareable lesson page, as files to write.

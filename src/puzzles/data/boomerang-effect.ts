@@ -1,4 +1,4 @@
-import type { Puzzle } from "../schema";
+import type { Puzzle } from "../schema.ts";
 
 /**
  * Puzzle #51, the boomerang effect, via Hovland, Harvey and Sherif (1957).

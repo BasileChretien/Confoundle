@@ -3964,7 +3964,97 @@ const CompetingData = z
   });
 export type CompetingData = z.infer<typeof CompetingData>;
 
+/* ---------------------------------------------------------------------------
+ * A classifier judged two ways: one confusion matrix per group.
+ *
+ * The shape exists because the lesson is a DISAGREEMENT BETWEEN TWO CORRECT
+ * READINGS OF ONE TABLE, and no existing shape draws a table that can be read
+ * two ways. `rates` compares a proportion between groups and strata, which is
+ * one reading; the whole point here is that a second reading of the same four
+ * counts gives the opposite verdict, and both are right.
+ *
+ * WHY THE COUNTS AND NOT THE RATES. Every rate this shape draws is derived
+ * from the four cells, so the reassuring number at the setup and the alarming
+ * one at the reveal cannot contradict each other: they are the same arithmetic
+ * asked different questions. A shape that stored the rates could hold a pair
+ * that no table could produce, which for this lesson would be fatal, since the
+ * lesson is that the rates are constrained by each other.
+ * ------------------------------------------------------------------------- */
+
+/**
+ * One group's confusion matrix, in counts.
+ *
+ * Named for what happened rather than for the jargon, because the figure has
+ * to be readable by somebody who has never met a true positive. `flagged` is
+ * what the tool said; `happened` is what the world did.
+ */
+const ClassifierGroup = z.object({
+  id: z.string().min(1),
+  label: LocalizedText,
+  short: LocalizedText,
+  /** Flagged, and the outcome followed. */
+  flaggedAndHappened: z.number().int().nonnegative(),
+  /** Flagged, and it did not. The error the reveal is about. */
+  flaggedNotHappened: z.number().int().nonnegative(),
+  /** Not flagged, and the outcome followed anyway. */
+  notFlaggedButHappened: z.number().int().nonnegative(),
+  /** Not flagged, and it did not. */
+  notFlaggedNorHappened: z.number().int().nonnegative(),
+});
+
+const ClassifierData = z
+  .object({
+    type: z.literal("classifier"),
+    label: LocalizedText, // figure title
+    /** What the tool predicted, e.g. "labelled higher risk". */
+    flagLabel: LocalizedText,
+    /** What actually happened, e.g. "was arrested again within two years". */
+    outcomeLabel: LocalizedText,
+    /** Names the setup's reading: of those flagged, how many did it. */
+    amongFlaggedLabel: LocalizedText,
+    /** Names the reveal's reading: of those it did not happen to, how many were flagged. */
+    amongUneventfulLabel: LocalizedText,
+    /** Says on the figure who these people are and where the counts come from. */
+    cohortNote: LocalizedText,
+    groups: z.array(ClassifierGroup).min(2),
+  })
+  .superRefine((d, ctx) => {
+    const ids = new Set<string>();
+    d.groups.forEach((g, i) => {
+      if (ids.has(g.id))
+        ctx.addIssue({ code: "custom", path: ["groups", i, "id"], message: `duplicate group ${g.id}` });
+      ids.add(g.id);
+
+      /*
+        EVERY MARGIN HAS TO BE NON-EMPTY, and each of the four is a different
+        division this shape performs. A group with nobody flagged has no
+        share-of-flagged to draw at the setup; one with nobody unaffected has
+        no error rate to reveal. Refusing here beats dividing by zero in a
+        renderer and painting NaN at a reader.
+      */
+      const flagged = g.flaggedAndHappened + g.flaggedNotHappened;
+      const notFlagged = g.notFlaggedButHappened + g.notFlaggedNorHappened;
+      const happened = g.flaggedAndHappened + g.notFlaggedButHappened;
+      const notHappened = g.flaggedNotHappened + g.notFlaggedNorHappened;
+      for (const [margin, n] of [
+        ["flagged", flagged],
+        ["not flagged", notFlagged],
+        ["the outcome happened", happened],
+        ["the outcome did not happen", notHappened],
+      ] as const) {
+        if (n === 0)
+          ctx.addIssue({
+            code: "custom",
+            path: ["groups", i],
+            message: `nobody in ${g.id} falls under "${margin}", so a rate this shape draws would divide by zero`,
+          });
+      }
+    });
+  });
+export type ClassifierData = z.infer<typeof ClassifierData>;
+
 export const PuzzleData = z.discriminatedUnion("type", [
+  ClassifierData,
   ProxyData,
   CompetingData,
   RatersData,
@@ -4081,6 +4171,8 @@ export const DataView = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("asrecorded"), ...viewFields }),
   z.object({ kind: z.literal("asestimated"), ...viewFields }),
   z.object({ kind: z.literal("aseveryone"), ...viewFields }),
+  z.object({ kind: z.literal("whenitflagged"), ...viewFields }),
+  z.object({ kind: z.literal("everyoutcome"), ...viewFields }),
   z.object({ kind: z.literal("afterlooking"), ...viewFields }),
   z.object({ kind: z.literal("asmeasured"), ...viewFields }),
   z.object({ kind: z.literal("asdelivered"), ...viewFields }),

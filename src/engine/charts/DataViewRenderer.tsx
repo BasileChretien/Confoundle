@@ -51,6 +51,7 @@ import { AttenuationView } from "./AttenuationView";
 import { ConditionalView } from "./ConditionalView";
 import { RatersView } from "./RatersView";
 import { restrictConditional } from "./conditional";
+import { ClassifierView } from "./ClassifierView";
 import { CompetingView } from "./CompetingView";
 import { restrictCompeting } from "./competing";
 import { restrictRaters } from "./raters";
@@ -421,6 +422,15 @@ export function DataViewRenderer({
           kind={view.kind}
         />
       ) : null;
+    case "classifier":
+      /*
+        NOT A SLICE-DRAWER. Both beats receive the whole table; what changes is
+        which question the renderer asks of it. See the note at the foot of
+        `classifier.ts` for why there is no `restrictClassifier` to hand it.
+      */
+      return view.kind === "whenitflagged" || view.kind === "everyoutcome" ? (
+        <ClassifierView data={data} full={data} kind={view.kind} />
+      ) : null;
     case "competing":
       /*
         A SLICE-DRAWER ON THE ESTIMATORS. The setup hides the competing-risk
@@ -560,6 +570,10 @@ export function scopeLabel(kind: DataViewKind): string {
       return "Measured straight away";
     case "overtime":
       return "And the same people later";
+    case "whenitflagged":
+      return "When it raised a flag";
+    case "everyoutcome":
+      return "Every outcome, both ways";
     case "asestimated":
       return "As the risk was estimated";
     case "aseveryone":

@@ -6302,8 +6302,14 @@ growing faster than the deck is.
 
 ### 77. Both sides of the fairness argument were right, and that is a theorem <!-- skill: fairness-impossibility -->
 
-**Status: LEAD.** Not yet read at source. The strongest of the five and the one
-to source first.
+**Status: SHIPPED 2026-09-01 as `fairness-impossibility`, slug
+`both-sides-were-right`, on a new `classifier` shape.** Sourced from
+ProPublica's published contingency tables, read at source. Every rate the
+figure draws is recomputed from the counts and matches the rate printed
+beside them, and the identity that makes the conflict a theorem holds to
+floating point on those exact counts. The hedge question flagged below was
+settled before authoring: the hedge is the correct answer, and the two
+"less accurate for X" bands are ruled out by the figure itself.
 
 A risk score used in bail and sentencing decisions was attacked for being
 racially biased and defended as racially unbiased, and the two claims used

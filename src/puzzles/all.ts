@@ -97,6 +97,7 @@ import { serialPosition } from "./data/serial-position";
 import { raterLeniency } from "./data/rater-leniency";
 import { proxyTarget } from "./data/proxy-target";
 import { competingRisks } from "./data/competing-risks";
+import { fairnessImpossibility } from "./data/fairness-impossibility";
 
 /**
  * The puzzle registry. Adding a puzzle = import its data file and add it to
@@ -180,6 +181,7 @@ const rawPuzzles: unknown[] = [
   raterLeniency,
   proxyTarget,
   competingRisks,
+  fairnessImpossibility,
 ];
 
 export const puzzles: PuzzleType[] = rawPuzzles.map((p, i) => {

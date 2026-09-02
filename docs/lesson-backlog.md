@@ -6365,9 +6365,119 @@ confusion matrix, and the deck has no shape that draws one.
 
 ### 78. Every number in the table is not an effect <!-- skill: table-two-fallacy -->
 
-**Status: LEAD.** Not sourced. Named and defined in the methodological
-literature, which is a good sign for provenance and a bad sign for finding real
-counts to draw.
+**Status: VERIFIED 2026-09-02, ON A RENEGOTIATED BAR.** Sourced and
+reconciled. But the bar this entry set for itself was not met and, as far as a
+search can tell, cannot be met, so read the section on that before authoring:
+the card that is available is a real one, and it is not the card described
+below.
+
+Bandoli G, Palmsten K, Chambers CD, Jelliffe-Pawlowski LL, Baer RJ, Thompson CA.
+Revisiting the Table 2 Fallacy: a motivating example examining preeclampsia and
+preterm birth. *Paediatric and Perinatal Epidemiology* 2018;32(4):390-397. DOI
+10.1111/ppe.12474. Free author manuscript at eScholarship (UC San Diego,
+permalink `5450f301`), read at source.
+
+Westreich and Greenland 2013 is the paper that names the fallacy, and it argues
+entirely from DAGs and hypothetical examples. It prints no counts. Bandoli 2018
+exists precisely to supply the quantitative illustration that one lacks, on
+2,963,888 singleton California births from 2007 to 2012.
+
+#### The finding, which is one table re-estimated four ways
+
+Table 2. Risk ratios for preterm birth. All models adjusted for maternal age,
+race, pregnancy smoking and body mass index.
+
+| row | Model 1, as a Table 2 is normally printed | re-estimated properly |
+|---|---|---|
+| Preeclampsia | 4.65 (4.59, 4.70) | already a total effect |
+| Previous preterm birth | 3.56 (3.47, 3.66) | **3.91 (3.81, 4.00)** |
+| Alcohol abuse | 1.49 (1.42, 1.56) | **1.15 (1.10, 1.22)** |
+| Maternal education (<12 years) | 1.12 (1.11, 1.14) | 1.13 (1.12, 1.14) |
+
+The paper's own footnote to Model 1 is the whole lesson in one line: "Total
+effect of preeclampsia and education, controlled direct effects of previous
+preterm birth and (biased) alcohol abuse". Four rows, printed identically, and
+they are three different kinds of quantity.
+
+Why each row moves or does not. Previous preterm birth causes preeclampsia, so
+in Model 1 it is a controlled direct effect with its mediated path blocked;
+estimated as a total effect it strengthens. Alcohol abuse is confounded by drug
+abuse, which the model never adjusts for because it did not need to for the
+exposure; adjusted, it collapses. Maternal education is a predictor of the
+outcome only, with no path to preeclampsia, so it is a total effect already and
+does not move.
+
+#### It reconciles
+
+1. **Table 1 adds up.** 102,545 with preeclampsia plus 2,861,343 without is
+   2,963,888. Preterm births 31,268 plus 180,534 is 211,802, and 211,802 of
+   2,963,888 is 7.1 per cent against a printed 7.2.
+2. **The crude and adjusted exposure effects agree.** 30.5 per cent against 6.3
+   per cent is a crude risk ratio of 4.83, beside an adjusted 4.65.
+3. **The two quoted percentage changes are right.** 3.91 over 3.56 is 9.8 per
+   cent against a stated 10; 1.15 against 1.49 is a fall of 22.8 per cent
+   against a stated 23. Education moves 0.9 per cent against a stated "less
+   than 1%".
+4. **The interval claims are right.** The paper says the previous preterm birth
+   change was "not contained in initial confidence intervals", and the two
+   intervals are indeed disjoint, as are alcohol abuse's. Education's two
+   intervals overlap, as the paper says.
+5. **One number does NOT reconcile, and it is not in Table 2.** The sensitivity
+   analysis reports 110,130 spontaneous preterm births, "19,146 (18.9%) among
+   women with preeclampsia diagnosis, and 90,714 (3.2%) among women without".
+   19,146 and 90,714 sum to 109,860, not 110,130, and 19,146 of 102,545 is 18.7
+   per cent, not 18.9. The 3.2 per cent is exact. Whatever the explanation, it
+   is in a sensitivity analysis and not in the table a card would draw, so it
+   costs nothing here as long as nobody quotes it.
+
+#### The bar this entry set, and why it is dropped
+
+The LEAD demanded a published table where a covariate row is **demonstrably
+wrong in direction** with the correct value also published. Bandoli does not
+provide that: no row crosses 1, and the paper says so itself, calling the
+changes "modest" and conceding that "readers may disagree with the
+'significance' of the change in estimate that we have demonstrated". Searching
+for a published direction reversal of a covariate coefficient against a
+correctly specified estimate of the same quantity turned up nothing. The
+reversals that exist in the literature (the birth weight paradox, Simpson's
+paradox) are collider stratification and confounding respectively, both already
+distinct skills, and neither is this one.
+
+**The bar was set by somebody who had not yet read a source, and it was set too
+high.** A direction reversal is not what makes this a lesson. What makes it a
+lesson is that four rows printed in one table are three different quantities,
+and nothing about the table says which is which. That IS visible in these
+numbers: two rows move with disjoint intervals and two do not, and which two is
+not guessable from the table.
+
+#### Shape, now resolvable
+
+The entry asked for the shape to be settled before sourcing, and it can now be
+settled after. The `forest` shape draws this directly: four rows with intervals
+at the setup, and the reveal re-draws the two that move. That is a second view
+of the same data rather than an annotation, which is what the entry worried
+about.
+
+**The commit beat has to be built carefully or it breaks the hedge rule.** A
+reader cannot tell a controlled direct effect from a total effect by looking at
+a table; that is the entire point of the fallacy. So the framing must carry the
+causal story in plain words (previous preterm birth causes preeclampsia; alcohol
+abuse and drug abuse travel together and only one is in the model; education
+predicts preterm birth and has nothing to do with preeclampsia), and the
+question must then be **which row moves most when each is estimated properly**.
+That is answerable from the framing, exactly once, and the answer is alcohol
+abuse at 23 per cent. Without the causal story on screen the question is
+unanswerable and the puzzle would be marking a careful reader wrong.
+
+#### One thing to check before authoring
+
+The alcohol abuse row has a third published value that makes the reveal
+stronger and must not be misread. Removing the preeclampsia covariate but still
+failing to adjust for drug abuse gives RR 1.61 (1.54, 1.69), which the paper
+calls a biased overestimate and does not put in Table 2. So the three alcohol
+figures are 1.49 as printed, 1.61 as a total effect estimated badly, and 1.15
+as a total effect estimated properly. A card that draws all three has to say
+which is which, and the middle one is not in the table.
 
 A paper adjusts for age, sex, smoking and three other things, and prints one
 table of adjusted odds ratios with a row for each. Readers take every row as
@@ -6516,8 +6626,68 @@ rather than a new shape.
 
 ### 80. The model sends the patrols, and the patrols write the data <!-- skill: feedback-loops -->
 
-**Status: LEAD.** Not sourced. Simulation studies exist; the difficulty is
-finding one whose numbers are real rather than modelled.
+**Status: REFUSED AS A CARD 2026-09-02, after sourcing.** The entry predicted
+its own provenance problem would be fatal and it is. Three candidate sources
+were checked and every one of them fails the same way, which is worth recording
+so that nobody checks them again.
+
+1. **Lum K, Isaac W. To predict and serve? *Significance* 2016;13(5):14-19.**
+   Read at source. The famous one, and half of it is real. The Oakland drug
+   arrest records are real police records, and the disparity is real: the West
+   Oakland and International Boulevard clusters "experience about 200 times
+   more drug-related arrests than areas outside of these clusters". But the
+   comparator, drug use spread roughly evenly across the city, is not a
+   measurement. It is a small-area estimate: the authors fit a model to the 2011
+   National Survey on Drug Use and Health predicting an individual's probability
+   of past-month drug use from sex, household income, age and race, then applied
+   it to every member of a **synthetic population** of Oakland. And the policing
+   loop is not a deployment either: they reimplemented a published self-exciting
+   point process algorithm and applied it "to Oakland's police database to
+   obtain a predicted rate of drug crime for every grid square in the city for
+   every day in 2011". Their headline results, that black people would be
+   targeted at roughly twice the rate of whites and other non-white groups at
+   1.5 times, are outputs of that reimplementation. So the setup would be real
+   and the reveal would be modelled, which is not two views of the same data,
+   and CLAUDE.md's rule against drawing a simulation as a measurement covers
+   the rest.
+2. **Ensign D, Friedler SA, Neville S, Scheidegger C, Venkatasubramanian S.
+   Runaway feedback loops in predictive policing. PMLR 2018;81:160-171.** The
+   result is a theorem about Polya urns plus simulations. It is the cleanest
+   statement of the mechanism and it contains no measurement at all.
+3. **Saunders J, Hunt P, Hollywood JS. Predictions put into practice: a
+   quasi-experimental evaluation of Chicago's predictive policing pilot.
+   *Journal of Experimental Criminology* 2016;12:347-371.** A real deployment,
+   really evaluated, with a matched comparison group. But it measures ONE STEP
+   (what happened to the 426 people on the Strategic Subject List), not a loop:
+   there is no retrain, and no before-and-after of the model's own predictions
+   drifting. Paywalled and not read in full, because the abstract already
+   settles the question this entry asks.
+
+The recommender-systems literature was checked for the same thing on the same
+day and is in the same state: the honest work is simulation or benchmark
+replay, and the industry papers say plainly that measuring a loop in production
+is limited by platform restrictions, short observation horizons and poor
+reproducibility.
+
+**So there is no published before-and-after of a deployed model's own output
+becoming its own input.** The entry's own instruction applies: the honest
+output is a lesson page or a note recording exactly that, and this is the note.
+A lesson page remains available and would be honest, because a lesson page
+makes an argument rather than showing a reader a figure.
+
+#### One live lead this turned up, which is NOT this skill
+
+The Chicago evaluation found that people on the Strategic Subject List were **no
+more or less likely to be a victim of violence** than the matched comparison,
+and were **more likely to be arrested**: a list built to predict who would be
+shot, used in practice to decide whom to go and find. That is a real deployment
+with a real published contrast between what a model was built to predict and
+what it was used for, which is `proxy-target` territory rather than
+`feedback-loops`, and `proxy-target` has already shipped as
+`the-number-it-was-trained-on`. Whether it supports a second card on that skill, or
+a lesson-page example on the shipped one, is worth its own sourcing pass. The
+numbers here are unread: the paper is paywalled and the figures above are from
+the abstract and from RAND's own summary.
 
 A model predicts where something will be found, resources are sent there on the
 strength of the prediction, and what those resources find becomes the training

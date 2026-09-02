@@ -86,6 +86,18 @@ export function formatValue(value: number, locale: string): string {
   return new Intl.NumberFormat(locale).format(value);
 }
 
-export function formatTimes(times: number): string {
-  return `${times.toFixed(1)}x`;
-}
+/*
+  `formatTimes` USED TO LIVE HERE and was deleted rather than converted.
+
+  It returned `${times.toFixed(1)}x`, which is two defects in one line: the
+  decimal separator is English in all ten languages, and the "x" is an English
+  multiplication marker short enough that `chartsLocalized`, which matches runs
+  of two or more Latin letters, would never have seen it.
+
+  It was also called by nothing. The only references anywhere in the repo were
+  its own two test assertions, which is why the file could be described as
+  "converted whole" while still mixing the two styles: the conversion reached
+  every function a view actually used. A caller that needs this should build the
+  whole sentence with `fillSlots` and put the unit inside the slot, the way the
+  shortcut shape's ratio caption does.
+*/

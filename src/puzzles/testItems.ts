@@ -10982,6 +10982,172 @@ const items: TestItem[] = [
       en: "Pooling sources with different outcome rates is where a shortcut can inflate a pooled score, so this is the situation to be careful in. Reporting accuracy within each registry is what answers it: a model profiting from recognising the registry would look good pooled and worse within each, because inside one registry there is no registry to recognise. The within-registry figures hold up, so the pooled number is not resting on that.",
     },
   },
+
+  // ---- Prevalent-user bias ----
+  {
+    id: "pub-pharmacy-snapshot",
+    scenario: {
+      en: "A health system compares death rates between people taking a cholesterol drug and people not taking it. The treated group was identified from a single day's pharmacy records: everyone holding a current prescription on the first of January. Follow-up runs from that date. The drug group has markedly lower mortality, and the analysis adjusts for age, sex, smoking, blood pressure and prior events.",
+    },
+    trap: "prevalent-user-bias",
+    explanation: {
+      en: "Everyone in the treated group was already taking the drug on the day the study started, so it holds nobody who began it and died in the first months, and nobody who began it and stopped. Those people are absent from the treated group and are not in the comparison group either. What is being compared is people who have already survived the drug against everybody who was never on it. Adjustment cannot weigh people who are not in the data; the fix is to enrol at the first prescription and follow everyone from there.",
+    },
+  },
+  {
+    id: "pub-hrt-current-users",
+    scenario: {
+      en: "A cohort study of hormone therapy and heart disease compares women recorded as current users at enrolment with women who had never used it. Current users have substantially fewer heart attacks over the following decade. The model adjusts for age, weight, smoking and social class, and the outcome was taken from hospital records rather than self-report.",
+    },
+    trap: "prevalent-user-bias",
+    explanation: {
+      en: "Current use at enrolment is a status that only women who started and continued can hold. Those who started and had an early event, or who stopped because of one, are not in the current-user group, and the never-users have no equivalent exclusion. The comparison is therefore between women selected for having done well on the drug and women who were never exposed to the selection at all. Enrolling women at their first prescription instead would put the early events back where they happened.",
+    },
+  },
+  {
+    id: "pub-metformin-registry",
+    scenario: {
+      en: "A diabetes registry study reports that people on metformin live longer than people with diabetes who are not on it. Participants were enrolled at their first registry visit, and treatment was taken from what they were on that day. Anyone on metformin at that visit counts as treated, however long they had been taking it. Baseline kidney function, weight and diabetes duration are all adjusted for.",
+    },
+    trap: "prevalent-user-bias",
+    explanation: {
+      en: "Taking treatment status from whatever a person happened to be on at their first visit means the treated group is made of people who reached that visit still on metformin. Someone who started it a year earlier and stopped, or died, never appears as treated. The years already spent tolerating the drug are also invisible to the analysis, so the treated group brings survival it is never charged for. Anchoring enrolment to the first prescription rather than to the first visit removes both problems at once.",
+    },
+  },
+  {
+    id: "pub-transplant-continuers",
+    scenario: {
+      en: "A transplant centre compares graft survival between patients on a maintenance immunosuppressant and patients on an older regimen. The cohort was assembled from patients attending the six-month clinic, and each was classified by the drug they were on that day. The newer drug looks considerably better, and the two groups are matched on donor type and recipient age.",
+    },
+    trap: "prevalent-user-bias",
+    explanation: {
+      en: "Assembling the cohort at the six-month clinic means every patient in it survived six months with a working graft while on their drug. Anyone whose graft failed at two months, or who was switched off the newer drug because of side effects, is not in the comparison. The newer drug is being judged only on the patients it did not fail, and matching on donor type does nothing about who was eligible to be matched in the first place.",
+    },
+  },
+  {
+    id: "pub-claims-cross-section",
+    scenario: {
+      en: "An insurer compares hospital admissions between members with a filled prescription for an inhaled maintenance therapy in the current quarter and members with asthma who have none. Current users are admitted less often. The comparison is adjusted for age, prior admissions and a measure of disease severity from the previous year.",
+    },
+    trap: "prevalent-user-bias",
+    explanation: {
+      en: "A quarter's filled prescriptions identify people who are on the therapy now, which is a group that has already been filtered by everyone who tried it and came off it. Patients who started, had a bad reaction and stopped are in neither group as users. Adjusting for last year's severity does not restore them, because they are not rows in the dataset waiting to be weighted; they are simply not there. The design that answers the question enrols at the first fill.",
+    },
+  },
+  {
+    id: "pub-bisphosphonate-refills",
+    scenario: {
+      en: "A study of a bone drug and hip fracture builds its exposed group from a refill list: everyone who collected at least their second prescription. Unexposed comparators are drawn from the same practices. Fracture rates are much lower in the exposed group over five years, and the analysis adjusts for age, prior fracture and bone density where recorded.",
+    },
+    trap: "prevalent-user-bias",
+    explanation: {
+      en: "Requiring a second prescription to enter the exposed group means the exposed group cannot contain anyone who took one course and stopped, and cannot contain anyone who fractured or died before the refill was due. Every one of those events is invisible on the treated side and fully counted on the untreated side. This is a question about eligibility rather than about analysis, and no covariate list repairs it.",
+    },
+  },
+  {
+    id: "pub-antidepressant-year-one",
+    scenario: {
+      en: "A cohort study compares people who have been taking an antidepressant for at least a year with people with depression who are not on one, and reports better functional outcomes in the treated group. Everyone was enrolled at a clinic visit, and a year of continuous prescriptions was required to count as treated. Baseline symptom scores were recorded at enrolment.",
+    },
+    trap: "prevalent-user-bias",
+    explanation: {
+      en: "A year of continuous prescriptions is a condition that can only be met by people for whom the drug worked well enough and was tolerated well enough to keep taking. Those who started it and stopped within weeks, or who deteriorated and were switched, cannot enter the treated group at all. Recording symptoms at enrolment measures people after the selection has already happened, so the baseline is not a baseline for the question being asked.",
+    },
+  },
+  {
+    id: "pub-anticoagulant-still-on",
+    scenario: {
+      en: "A registry reports that patients on a newer oral anticoagulant have fewer major bleeds than patients on the older one. Patients entered the registry at any point while taking their drug, and were classified by the drug they were taking on the day they entered. Age, kidney function and bleeding history are all adjusted for.",
+    },
+    trap: "prevalent-user-bias",
+    explanation: {
+      en: "Entering at any point while on a drug means every patient in each arm had already tolerated that drug up to the day they entered. Bleeds are commonest early, so both arms are missing their early events, and the arm whose early events are more common loses more of them. The comparison is between two groups of survivors, each selected by its own drug, which is not the comparison the registry reports.",
+    },
+  },
+  {
+    id: "pub-device-still-in-place",
+    scenario: {
+      en: "A comparison of two hip implants recruits patients at their routine five-year review and follows them for revision surgery over the next five years. One implant shows a far lower revision rate. The two groups are similar in age, sex and surgical indication, and revisions are captured from a national registry rather than from the surgeons.",
+    },
+    trap: "prevalent-user-bias",
+    explanation: {
+      en: "Recruiting at the five-year review means only implants that had not already been revised can enter, so each device is judged on the ones that lasted five years. A device that fails early loses those failures from its own record entirely. Complete revision capture afterwards is real and does nothing about this, because the missing failures happened before anybody was recruited.",
+    },
+  },
+  {
+    id: "pub-subscription-retention",
+    scenario: {
+      en: "A company reports that customers on its premium plan have far higher satisfaction scores than customers who never upgraded. The premium group was sampled from people holding an active premium subscription on the survey date, and the analysis controls for tenure, spend and support contacts.",
+    },
+    trap: "prevalent-user-bias",
+    explanation: {
+      en: "Holding an active premium subscription on the survey date is a status only reachable by people who upgraded and did not cancel. Everyone who upgraded, disliked it and left is absent from the premium group and sits, if anywhere, among the non-upgraders. The premium plan is being scored by the customers it did not lose. Sampling everyone at the moment they upgraded, and keeping them regardless of what they did next, is the comparison that answers the question.",
+    },
+  },
+
+  /*
+    SOUND, and every one of them shows the new-user design being done
+    RIGHT rather than merely showing an absence of the flaw. A decoy that
+    is sound because nothing much happened teaches nothing; one that is
+    sound because somebody anchored enrolment at the first prescription,
+    kept the people who stopped, or reported the early window separately,
+    teaches the remedy the trap items are asking the player to want.
+
+    Five rather than none because the bank's sound share grinds down by
+    about a third of a point per card, and `registry.test.ts` fails at a
+    quarter. Topping it up with each card is cheaper than discovering the
+    floor again mid-authoring, which is how the last card found it.
+  */
+  {
+    id: "pub-sound-first-prescription",
+    scenario: {
+      en: "A study of a blood pressure drug and stroke enrols every patient at the date of their first ever prescription for it, and compares them with patients starting a different first-line drug on the same date scale. Everyone stays in the group they started in, whatever they do afterwards. The treated group shows a modest reduction in stroke.",
+    },
+    trap: null,
+    explanation: {
+      en: "This is the new-user design done properly. The clock starts at the first prescription, so the early events and the early discontinuations happen inside the follow-up rather than before it, and the comparison group is anchored at the same point in its own treatment. Nobody is excluded for having stopped, so the estimate answers what happens when a person starts the drug, which is the question a reader will take it to answer.",
+    },
+  },
+  {
+    id: "pub-sound-active-comparator",
+    scenario: {
+      en: "Investigators comparing two diabetes drugs enrol patients at their first prescription of either one and follow them from that day. They report that the two groups are similar at that moment on weight, kidney function and diabetes duration, and that around a fifth of each group had stopped by a year, with those people kept in their original group.",
+    },
+    trap: null,
+    explanation: {
+      en: "Anchoring both groups at their first prescription means neither is made of people who had already tolerated the drug, and using another active drug as the comparator puts both groups at the same point in the course of the same illness. Keeping the fifth who stopped inside their original group is the part that matters most: dropping them would rebuild the very selection the design was chosen to avoid.",
+    },
+  },
+  {
+    id: "pub-sound-early-window-reported",
+    scenario: {
+      en: "A cohort study of a drug and early adverse events reports its results separately for the first ninety days and for the period after that, having enrolled everyone at their first prescription. Most of the excess events occur in the first ninety days, and the paper says so.",
+    },
+    trap: null,
+    explanation: {
+      en: "Because enrolment is at the first prescription, the first ninety days are inside the study rather than before it, which is exactly where the events that a prevalent-user design loses would have been. Reporting that window separately rather than averaging it into five years shows the reader where the risk actually sits. Nothing here is being selected on having survived the drug.",
+    },
+  },
+  {
+    id: "pub-sound-both-designs-reported",
+    scenario: {
+      en: "A paper reports the same question two ways: once enrolling everyone at their first prescription, and once with the cross-sectional design used by earlier studies of the drug. The two estimates differ, and the authors present the first as their result and the second only to explain the difference from the older literature.",
+    },
+    trap: null,
+    explanation: {
+      en: "Running both designs and presenting the one whose enrolment is anchored at the first prescription is the honest ordering. The second is reported to reconcile with earlier work rather than as a finding, and the gap between them is itself informative, because it measures how much of the older literature's effect came from who was eligible to enter it.",
+    },
+  },
+  {
+    id: "pub-sound-restricted-to-initiators",
+    scenario: {
+      en: "A registry analysis restricts itself to patients recorded as starting the drug during the study window, discards everyone already on it at the start, and says how many were discarded. The remaining cohort is followed from the start date, and the reported benefit is smaller than a previous analysis of the same registry.",
+    },
+    trap: null,
+    explanation: {
+      en: "Discarding the patients already on the drug is the point, not a loss of power: those are precisely the people whose early events and early stops happened before anyone was watching. Saying how many were dropped lets a reader judge how much of the registry the restriction cost. The smaller estimate is what this design usually produces, and it is the one that matches what happens when somebody starts the drug.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

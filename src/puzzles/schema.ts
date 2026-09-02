@@ -2156,6 +2156,17 @@ const ForestRow = z.object({
   k: z.number().int().positive(),
   /** Set on the row that pools the others, so the renderer can mark it. */
   isPooled: z.boolean().optional(),
+  /**
+   * I-squared for this row, per cent, when the source printed it.
+   *
+   * Optional because most rows a forest plot draws are single estimates with
+   * nothing to disagree. Where a row pools studies that disagree a lot, the
+   * diamond is the tidiest thing on the page and the least representative, and
+   * a figure that draws four neat rows without saying so is prettier than the
+   * evidence behind it. Drawn as a number beside the row rather than argued
+   * about, because the honest move is to show it and let the reader weigh it.
+   */
+  heterogeneity: z.number().min(0).max(100).optional(),
 });
 
 const ForestData = z
@@ -2190,6 +2201,37 @@ const ForestData = z
     axisMin: z.number(),
     axisMax: z.number(),
     rows: z.array(ForestRow).min(2),
+    /**
+     * The id of the row whose estimate is ALSO drawn as a line across the plot.
+     *
+     * A second reference, distinct from the null. The null answers "did it do
+     * anything"; a benchmark answers "did it get the same answer as the study
+     * design we trust", which is a different question and the one a card about
+     * design choice has to ask. Only with the line drawn can a reader see which
+     * intervals reach it, and reaching it is a stronger claim than being near
+     * it: an estimate can be closer and still exclude the benchmark.
+     *
+     * IT NAMES A ROW RATHER THAN CARRYING ITS OWN NUMBER, so the benchmark is
+     * authored once. A separate `benchmarkValue` could drift from the row that
+     * prints the same figure, and this shape's whole rule is that published
+     * numbers are authored once and everything else derived.
+     *
+     * It follows that the line appears only on a beat that draws its row, which
+     * is what the setup needs: a reader is quoted the observational estimate
+     * with nothing to measure it against, and the trial arrives at the reveal.
+     * `restrictForest` gives that for free rather than by a second switch.
+     */
+    benchmarkId: z.string().optional(),
+    /**
+     * Names the second number a row may carry, so the column is never bare.
+     *
+     * `k` gets its meaning from `metricLabel`, which is prose the card writes.
+     * Heterogeneity gets its own field because it is the one number on this
+     * figure a reader is likeliest to mistake for another count, and because a
+     * figure that draws it without saying what it is has added a number and no
+     * information.
+     */
+    heterogeneityLabel: LocalizedText.optional(),
   })
   .superRefine((d, ctx) => {
     if (d.axisMin >= d.axisMax)
@@ -2203,6 +2245,28 @@ const ForestData = z
         code: "custom",
         path: ["nullValue"],
         message: `the null line at ${d.nullValue} must fall inside the axis (${d.axisMin} to ${d.axisMax}), or no row can be seen to cross it`,
+      });
+    if (d.benchmarkId !== undefined && !d.rows.some((r) => r.id === d.benchmarkId))
+      ctx.addIssue({
+        code: "custom",
+        path: ["benchmarkId"],
+        message: `benchmarkId ${d.benchmarkId} names no row, so the line would be drawn from nothing`,
+      });
+    // The label and the column travel together in both directions. A value with
+    // no label draws a bare number the reader has to guess at; a label with no
+    // value names a column that is not there.
+    const anyHeterogeneity = d.rows.some((r) => r.heterogeneity !== undefined);
+    if (anyHeterogeneity && d.heterogeneityLabel === undefined)
+      ctx.addIssue({
+        code: "custom",
+        path: ["heterogeneityLabel"],
+        message: "a row carries heterogeneity, so the figure must say what that number is",
+      });
+    if (!anyHeterogeneity && d.heterogeneityLabel !== undefined)
+      ctx.addIssue({
+        code: "custom",
+        path: ["heterogeneityLabel"],
+        message: "heterogeneityLabel names a column no row fills",
       });
     const seen = new Set();
     for (const r of d.rows) {

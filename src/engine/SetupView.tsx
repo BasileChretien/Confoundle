@@ -9,12 +9,8 @@ import {
 } from "./charts/DataViewRenderer";
 import { Legend } from "./charts/RateChart";
 import { TagChips } from "./TagChips";
+import { humanizeCategory } from "./lessons";
 import type { Confidence } from "./scoring";
-
-function humanize(category: string): string {
-  const spaced = category.replace(/-/g, " ");
-  return spaced.charAt(0).toUpperCase() + spaced.slice(1);
-}
 
 /**
  * Beat 1+2: the setup (framing + data plate) and the commit, on one screen.
@@ -63,7 +59,7 @@ export function SetupView({
       <div className="flex flex-col gap-3">
         <header className="flex flex-col gap-2">
           <div className="flex flex-wrap items-center gap-2">
-            <Badge tone="rust">{t({ en: humanize(puzzle.category) })}</Badge>
+            <Badge tone="rust">{t({ en: humanizeCategory(puzzle.category) })}</Badge>
             <TagChips tags={puzzle.tags} />
           </div>
           <h2 className="font-display text-[25px] font-semibold leading-[1.1] text-ink">

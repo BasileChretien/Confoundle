@@ -99,6 +99,7 @@ import { proxyTarget } from "./data/proxy-target.ts";
 import { competingRisks } from "./data/competing-risks.ts";
 import { fairnessImpossibility } from "./data/fairness-impossibility.ts";
 import { crossSiteGeneralisation } from "./data/cross-site-generalisation.ts";
+import { prevalentUserBias } from "./data/prevalent-user-bias.ts";
 
 /**
  * The puzzle registry. Adding a puzzle = import its data file and add it to
@@ -184,6 +185,7 @@ const rawPuzzles: unknown[] = [
   competingRisks,
   fairnessImpossibility,
   crossSiteGeneralisation,
+  prevalentUserBias,
 ];
 
 export const puzzles: PuzzleType[] = rawPuzzles.map((p, i) => {

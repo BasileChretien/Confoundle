@@ -1,7 +1,8 @@
-import { useT } from "../../app/i18n";
+import { useLocale, useT } from "../../app/i18n";
 import type { ForestData } from "../../puzzles/schema";
+import { fillSlots } from "./announce";
 import { declaredColors } from "./palette";
-import { axisFraction, forestRows } from "./forest";
+import { axisFraction, benchmarkRow, forestRows } from "./forest";
 
 /**
  * A forest plot: several pooled estimates, each with its interval, against the
@@ -29,6 +30,13 @@ function Row({
   k,
   isPooled,
   nullAt,
+  benchmarkAt,
+  benchmarkColor,
+  heterogeneity,
+  showHeterogeneity,
+  number,
+  count,
+  percent,
 }: {
   name: string;
   left: number;
@@ -40,6 +48,15 @@ function Row({
   k: number;
   isPooled: boolean;
   nullAt: number;
+  /** Where the benchmark line falls, or null on a beat that has no benchmark. */
+  benchmarkAt: number | null;
+  benchmarkColor: string;
+  heterogeneity: number | undefined;
+  /** Whether the column exists at all, so rows without a value still line up. */
+  showHeterogeneity: boolean;
+  number: Intl.NumberFormat;
+  count: Intl.NumberFormat;
+  percent: Intl.NumberFormat;
 }) {
   return (
     <div className="flex items-center gap-2">
@@ -62,6 +79,20 @@ function Row({
           className="absolute -top-1.5 -bottom-1.5 w-px bg-ink/35"
           style={{ left: `${nullAt * 100}%` }}
         />
+        {/* The benchmark, in the SAME coordinate space and for the same reason
+            the comment above gives. Drawn dashed and in the benchmark row's own
+            colour so it reads as that row extended across the plot rather than
+            as a second null. It exists only on a beat that draws its row, which
+            `restrictForest` decides, so nothing here needs to know the beat. */}
+        {benchmarkAt !== null && (
+          <div
+            className="absolute -top-1.5 -bottom-1.5 w-0"
+            style={{
+              left: `${benchmarkAt * 100}%`,
+              borderLeft: `1px dashed ${benchmarkColor}`,
+            }}
+          />
+        )}
         <div
           className="absolute top-1/2 h-[3px] -translate-y-1/2 rounded-full"
           style={{
@@ -88,11 +119,16 @@ function Row({
         )}
       </div>
       <span className="w-11 shrink-0 text-right font-mono text-[11px] tabular-nums text-ink">
-        {estimate.toFixed(2)}
+        {number.format(estimate)}
       </span>
       <span className="w-8 shrink-0 text-right font-mono text-[10px] tabular-nums text-ink-soft">
-        {k}
+        {count.format(k)}
       </span>
+      {showHeterogeneity && (
+        <span className="w-9 shrink-0 text-right font-mono text-[10px] tabular-nums text-ink-soft">
+          {heterogeneity === undefined ? "" : percent.format(heterogeneity / 100)}
+        </span>
+      )}
     </div>
   );
 }
@@ -115,12 +151,41 @@ export function ForestView({
 }) {
   void _kind;
   const t = useT();
+  const locale = useLocale();
   // Both kinds draw whatever rows the view handed over. The reveal differs by
   // carrying MORE rows, not by drawing the same ones differently, so the
   // restriction lives in `restrictForest` and the kind only names the beat.
   const shown = forestRows(data);
   const colorOf = declaredColors(full.rows);
   const nullAt = axisFraction(data, data.nullValue);
+
+  /*
+    THE WHOLE FIGURE'S NUMERALS, converted together.
+
+    This view drew `estimate.toFixed(2)` and a bare `k`, which localise nothing
+    but were at least uniformly unlocalised. Adding a per cent through `Intl`
+    beside them would have made it half-converted, which `localeNumerals`
+    argues is worse than either choice held consistently, so the estimate and
+    the study count come with it. Two fraction digits kept exactly, so an
+    English reader sees what `toFixed(2)` drew and everyone else stops seeing
+    English separators.
+  */
+  const number = new Intl.NumberFormat(locale, {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+  const count = new Intl.NumberFormat(locale, { maximumFractionDigits: 0 });
+  const percent = new Intl.NumberFormat(locale, {
+    style: "percent",
+    maximumFractionDigits: 0,
+  });
+
+  // Null on the setup, because the beat was not given the row. Colour is
+  // resolved through `declaredColors` like every other row's, so the line and
+  // the row it belongs to always match.
+  const mark = benchmarkRow(data);
+  const benchmarkAt = mark ? axisFraction(data, mark.estimate) : null;
+  const showHeterogeneity = data.heterogeneityLabel !== undefined;
 
   return (
     <div className="flex flex-col gap-2.5">
@@ -141,6 +206,13 @@ export function ForestView({
               k={r.k}
               nullAt={nullAt}
               isPooled={r.isPooled}
+              benchmarkAt={benchmarkAt}
+              benchmarkColor={mark ? colorOf(mark.id) : "transparent"}
+              heterogeneity={r.heterogeneity}
+              showHeterogeneity={showHeterogeneity}
+              number={number}
+              count={count}
+              percent={percent}
             />
           ))}
         </div>
@@ -170,6 +242,23 @@ export function ForestView({
           {t(data.higherIsWorse ? data.worseLabel : data.betterLabel)} →
         </span>
       </div>
+      {/*
+        The dashed line, named. A line a reader cannot name is decoration, and
+        this one carries the card's whole claim, so it says whose estimate it
+        is. One authored sentence with a slot rather than a fragment plus a
+        variable, because the row's name does not fall at the end of the
+        sentence in Japanese, Hindi or Arabic.
+      */}
+      {mark && (
+        <p className="text-[10px] leading-snug text-ink-soft">
+          {fillSlots(t({ en: "The dashed line is {row}." }), {
+            row: t(mark.short ?? mark.label),
+          })}
+        </p>
+      )}
+      {data.heterogeneityLabel && (
+        <p className="text-[10px] leading-snug text-ink-soft">{t(data.heterogeneityLabel)}</p>
+      )}
       <p className="text-[10px] leading-snug text-ink-soft">{t(data.unit)}</p>
     </div>
   );

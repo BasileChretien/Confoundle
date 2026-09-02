@@ -46,9 +46,17 @@ import { describe, expect, it } from "vitest";
  * shape at once. The boundary drawn instead is the one that can be held today:
  * no file may pick the WRONG locale, and no file may be half-localised, which
  * is the state `SurrogateView` argues is worse than either choice made
- * consistently. Every file that mixed the two has been converted whole; the
- * files that are uniformly unlocalised are internally consistent and wait their
- * turn. When they are converted, this scan is where `toFixed` should join.
+ * consistently. The files that are uniformly unlocalised are internally
+ * consistent and wait their turn.
+ *
+ * THE SECOND HALF OF THAT BOUNDARY IS NOW ENFORCED, at the bottom of this file,
+ * and it had to be: it was stated here as an accomplished fact and was not one.
+ * `estimation.ts` built a formatter from the reader's locale and eleven lines
+ * later still returned a `toFixed` decimal with an English "x" glued to it, in
+ * a function nothing called. Being dead is how it survived the conversion and
+ * how it survived every reading since. So "every file that mixed the two has
+ * been converted whole" is no longer a sentence anybody has to keep true by
+ * remembering; it is a pinned, empty exception list.
  */
 
 /**
@@ -228,6 +236,16 @@ const TO_LOCALE_STRING = /\.toLocaleString\s*\(/g;
 const HARDCODED_FORMAT =
   /(?:new\s+)?Intl\.NumberFormat\s*\(\s*(?:\)|["'`]|undefined\b)/g;
 
+/**
+ * A formatter built from a locale IDENTIFIER, i.e. a file that has been
+ * converted. The complement of `HARDCODED_FORMAT`, which catches the ones built
+ * from nothing or from a literal.
+ */
+const LOCALE_FORMAT = /(?:new\s+)?Intl\.NumberFormat\s*\(\s*[A-Za-z_$]/;
+
+/** `toFixed`, which localises nothing at all. */
+const TO_FIXED = /\.toFixed\s*\(/;
+
 function offendersIn(source: string): string[] {
   return [
     ...[...source.matchAll(TO_LOCALE_STRING)].map(() => "toLocaleString()"),
@@ -405,3 +423,76 @@ describe("numerals on a chart follow the reader's locale", () => {
  * So: it is at zero, and a new entry needs a PR number to point at.
  */
 const PENDING: Record<string, string[]> = {};
+
+/**
+ * THE HALF-LOCALISED RULE, which this file has always claimed and never
+ * enforced.
+ *
+ * Its header says the boundary held today is that "no file may pick the WRONG
+ * locale, and no file may be half-localised", and that every file which mixed
+ * the two "has been converted whole". The first half was enforced above. The
+ * second was not enforced anywhere, and it was not true either: `estimation.ts`
+ * built one formatter from the reader's locale and, eleven lines later, still
+ * returned a string ending in a `toFixed` decimal and an English "x". That
+ * function was dead, which is how it survived the conversion and how it
+ * survived being read afterwards.
+ *
+ * So the rule is now a ratchet rather than a claim: the set of files mixing an
+ * `Intl` formatter with `toFixed` is pinned, and it is EMPTY. A file that is
+ * uniformly `toFixed` is untouched, because it is internally consistent and
+ * waiting its turn; the moment somebody converts one number in it, they have to
+ * convert the rest.
+ *
+ * WHY AN EXCEPTION LIST AND NOT A CLEVERER MATCHER. `toFixed` has one
+ * legitimate use here that must never be localised: SVG path coordinates, where
+ * a French decimal comma would corrupt the path itself. `CeilingView` and
+ * `SeriesView` both do this, and neither uses `Intl` today, so neither is
+ * caught. If a converted file ever needs geometry, the entry goes in the list
+ * below WITH ITS REASON, and a reviewer reads the reason instead of guessing at
+ * a regex. The list starting empty is the point: it can only be added to
+ * deliberately.
+ */
+const HALF_LOCALISED_EXCEPTIONS: string[] = [];
+
+describe("a converted file is converted whole", () => {
+  const scanned = Object.entries(SOURCES).filter(([path]) => isScanned(path));
+  const codeOf = (source: string) => stripComments(source).code;
+
+  const mixed = scanned
+    .filter(([, source]) => {
+      const code = codeOf(source);
+      return LOCALE_FORMAT.test(code) && TO_FIXED.test(code);
+    })
+    .map(([path]) => path);
+
+  it("finds both halves on real files, so neither matcher is inert", () => {
+    // An assertion of absence cannot tell a clean tree from a broken matcher,
+    // and this one needs BOTH patterns alive: if either quietly matched
+    // nothing, their conjunction would be empty and the rule would pass on
+    // nothing forever.
+    const converted = scanned.filter(([, s]) => LOCALE_FORMAT.test(codeOf(s)));
+    const stillFixed = scanned.filter(([, s]) => TO_FIXED.test(codeOf(s)));
+    expect(converted.length).toBeGreaterThan(15);
+    expect(stillFixed.length).toBeGreaterThan(5);
+  });
+
+  it("would recognise the mix if one came back", () => {
+    const half = "const nf = new Intl.NumberFormat(locale);\nconst s = x.toFixed(1);";
+    const code = codeOf(half);
+    expect(LOCALE_FORMAT.test(code) && TO_FIXED.test(code)).toBe(true);
+    // And the two states that are perfectly fine on their own.
+    expect(TO_FIXED.test("const s = x.toFixed(1);")).toBe(true);
+    expect(LOCALE_FORMAT.test("const s = x.toFixed(1);")).toBe(false);
+    expect(TO_FIXED.test("new Intl.NumberFormat(locale).format(x)")).toBe(false);
+    // A formatter built from a literal is the OTHER rule's business, not this
+    // one's, or a file caught above would be reported twice under two names.
+    expect(LOCALE_FORMAT.test('new Intl.NumberFormat("en")')).toBe(false);
+  });
+
+  it("has no file drawing some numerals through the reader's locale and others not", () => {
+    expect(
+      mixed.filter((p) => !HALF_LOCALISED_EXCEPTIONS.includes(p)),
+      "this file builds a formatter from the reader's locale and also calls toFixed; convert the rest of it, or add it to HALF_LOCALISED_EXCEPTIONS with a reason",
+    ).toEqual([]);
+  });
+});

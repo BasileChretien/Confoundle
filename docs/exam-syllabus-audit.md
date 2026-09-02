@@ -1395,7 +1395,18 @@ Reasoning traps that are not called "bias" but are printed:
   rest: **reverse causality** and **non-inferiority and equivalence designs**,
   both on this list, still look uncovered on the same test.
 - internal versus external validity, generalisability, efficacy versus
-  effectiveness
+  effectiveness <!-- skill: cross-site-generalisation -->. **PARTLY COVERED
+  2026-09-02** by `it-learned-the-hospital`, skill `cross-site-generalisation`,
+  on the new `shortcut` shape, from Zech 2018; see numbered entry 81 in the
+  backlog. Read the claim narrowly. That card covers one mechanism of external
+  invalidity, a score earned on a test set pooled from sources with different
+  outcome rates, where part of the score is payment for recognising the source.
+  It does NOT cover **efficacy versus effectiveness**, which is a different
+  question about trial conditions rather than about the composition of a test
+  set, and no card in the deck covers that today. This bullet gets no row in
+  the consolidated table above, because that table is the list of named exam
+  bias TERMS audited against four national outlines and no outline names this
+  one; recording it here is the honest place.
 - non-inferiority and equivalence designs
 - causal criteria: temporality, dose-response
 

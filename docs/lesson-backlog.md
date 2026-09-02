@@ -6524,7 +6524,9 @@ lesson page or a note recording exactly that.
 
 ### 81. It learned the scanner, not the disease <!-- skill: cross-site-generalisation -->
 
-**Status: VERIFIED 2026-09-02.** Sourced and reconciled, including one figure
+**Status: SHIPPED 2026-09-02 as `cross-site-generalisation`, slug
+`it-learned-the-hospital`, on a new `shortcut` shape.** Sourced and
+reconciled, including one figure
 rebuilt from scratch to check it means what it appears to mean. But the card
 is NOT the one the LEAD imagined: see the reframing below, which matters more
 than the numbers.

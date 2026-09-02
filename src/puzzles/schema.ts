@@ -4053,7 +4053,122 @@ const ClassifierData = z
   });
 export type ClassifierData = z.infer<typeof ClassifierData>;
 
+/* ---------------------------------------------------------------------------
+ * A shortcut: several models scored on ONE pooled test set, where the parts of
+ * that set differ in how often the outcome occurs.
+ *
+ * The shape exists because the lesson is a comparison between MODELS rather
+ * than between groups or between times, and nothing here draws that. `rates`
+ * compares groups, `classifier` compares two readings of one table, and
+ * `competing` compares two estimators of one cohort. This compares two
+ * predictors of the same thing on the same data, one of which is not allowed
+ * to look at the thing it is predicting from.
+ *
+ * WHY THE SITES CARRY A PREVALENCE. Without it the figure is two bars and an
+ * accusation. The whole mechanism is that the pooled set is a mixture whose
+ * parts differ, so knowing which part an item came from is itself predictive,
+ * and a model that can identify the part gets that for free. A shape that
+ * stored only the scores could hold a card that had no reason to be true.
+ * ------------------------------------------------------------------------- */
+
+/** One collection the pooled set was drawn from. */
+const ShortcutSite = z.object({
+  id: z.string().min(1),
+  label: LocalizedText,
+  short: LocalizedText,
+  /** How many items the collection holds. Size, not the test split. */
+  n: z.number().int().positive(),
+  /** How often the outcome occurs here, per cent. The reason the shortcut works. */
+  prevalence: z.number().min(0).max(100),
+});
+
+/** One predictor, and whether it was allowed to see the thing it predicts from. */
+const ShortcutModel = z.object({
+  id: z.string().min(1),
+  label: LocalizedText,
+  /** On the shape's own metric, e.g. area under the curve. */
+  score: z.number().min(0).max(1),
+  /**
+   * False for a predictor deliberately denied the evidence, which is the
+   * control the whole card turns on. The setup draws only the models that saw
+   * it; the reveal adds the ones that did not.
+   */
+  usesEvidence: z.boolean(),
+  note: LocalizedText.optional(),
+});
+
+const ShortcutData = z
+  .object({
+    type: z.literal("shortcut"),
+    label: LocalizedText, // figure title
+    metricLabel: LocalizedText, // what the score is
+    outcomeLabel: LocalizedText, // what is being predicted
+    /** Names the axis the sites differ on, e.g. "pneumonia in this collection". */
+    prevalenceLabel: LocalizedText,
+    /** The claim that the parts are separable, e.g. "told the hospitals apart". */
+    separabilityLabel: LocalizedText,
+    /** Per cent, when a source measured it. Drawn at the reveal only. */
+    separability: z.number().min(0).max(100).optional(),
+    /** Says on the figure where the numbers come from and what was held out. */
+    cohortNote: LocalizedText,
+    /** Chance level for the metric, so the figure never implies 0 is the floor. */
+    chance: z.number().min(0).max(1),
+    sites: z.array(ShortcutSite).min(2),
+    models: z.array(ShortcutModel).min(2),
+  })
+  .superRefine((d, ctx) => {
+    for (const [key, list] of [["sites", d.sites], ["models", d.models]] as const) {
+      const ids = new Set<string>();
+      list.forEach((x, i) => {
+        if (ids.has(x.id))
+          ctx.addIssue({ code: "custom", path: [key, i, "id"], message: `duplicate ${key} id ${x.id}` });
+        ids.add(x.id);
+      });
+    }
+
+    /*
+      THE SITES MUST DIFFER, and this is the shape's real precondition rather
+      than a tidiness check. If every part of the pooled set had the same
+      prevalence, knowing which part an item came from would predict nothing,
+      the model denied the evidence could not score above chance, and the card
+      would be asserting a mechanism its own numbers rule out.
+    */
+    const prevalences = d.sites.map((s) => s.prevalence);
+    if (Math.max(...prevalences) - Math.min(...prevalences) < 1)
+      ctx.addIssue({
+        code: "custom",
+        path: ["sites"],
+        message:
+          "the collections have the same outcome rate, so there is no shortcut for a model to find",
+      });
+
+    if (!d.models.some((m) => m.usesEvidence))
+      ctx.addIssue({ code: "custom", path: ["models"], message: "no model saw the evidence, so the setup draws nothing" });
+    if (!d.models.some((m) => !m.usesEvidence))
+      ctx.addIssue({
+        code: "custom",
+        path: ["models"],
+        message: "no model was denied the evidence, so the reveal has nothing to add",
+      });
+
+    /*
+      A MODEL DENIED THE EVIDENCE MUST STILL BEAT CHANCE. If it did not, the
+      figure would be showing that the shortcut does not exist, drawn as though
+      it did. Refusing here is the difference between a card and a claim.
+    */
+    for (const [i, m] of d.models.entries()) {
+      if (!m.usesEvidence && m.score <= d.chance)
+        ctx.addIssue({
+          code: "custom",
+          path: ["models", i, "score"],
+          message: `${m.id} saw no evidence and scored at or below chance, so there is nothing to reveal`,
+        });
+    }
+  });
+export type ShortcutData = z.infer<typeof ShortcutData>;
+
 export const PuzzleData = z.discriminatedUnion("type", [
+  ShortcutData,
   ClassifierData,
   ProxyData,
   CompetingData,
@@ -4173,6 +4288,8 @@ export const DataView = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("aseveryone"), ...viewFields }),
   z.object({ kind: z.literal("whenitflagged"), ...viewFields }),
   z.object({ kind: z.literal("everyoutcome"), ...viewFields }),
+  z.object({ kind: z.literal("asscored"), ...viewFields }),
+  z.object({ kind: z.literal("whatitsaw"), ...viewFields }),
   z.object({ kind: z.literal("afterlooking"), ...viewFields }),
   z.object({ kind: z.literal("asmeasured"), ...viewFields }),
   z.object({ kind: z.literal("asdelivered"), ...viewFields }),

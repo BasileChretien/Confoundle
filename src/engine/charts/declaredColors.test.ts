@@ -280,6 +280,7 @@ describe("slice-drawing renderers", () => {
       "RatingsView",
       "SalienceView",
       "SeriesView",
+      "ShortcutView",
       "YieldView",
     ]);
   });

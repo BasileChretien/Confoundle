@@ -2,7 +2,6 @@ import { describe, it, expect } from "vitest";
 import type { EstimationData } from "../../puzzles/schema";
 import {
   barFraction,
-  formatTimes,
   formatValue,
   higherGroup,
   lowerGroup,
@@ -39,7 +38,9 @@ const data: EstimationData = {
 describe("estimation derivation", () => {
   it("derives how far apart the two guesses are", () => {
     expect(ratioBetween(data)).toBeCloseTo(2250 / 512, 10);
-    expect(formatTimes(ratioBetween(data))).toBe("4.4x");
+    // Was asserted through a `formatTimes` helper that nothing called and that
+    // localised nothing; the claim was always about the number.
+    expect(Number(ratioBetween(data).toFixed(1))).toBe(4.4);
   });
 
   it("derives how far short of the answer each one falls", () => {
@@ -52,7 +53,7 @@ describe("estimation derivation", () => {
 
   it("says how far out even the more generous guess was", () => {
     expect(truthOverBest(data)).toBeCloseTo(40320 / 2250, 10);
-    expect(formatTimes(truthOverBest(data))).toBe("17.9x");
+    expect(Number(truthOverBest(data).toFixed(1))).toBe(17.9);
   });
 
   it("names which group guessed higher without the caller assuming an order", () => {

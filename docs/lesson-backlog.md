@@ -6395,9 +6395,27 @@ reach deliberately.
 
 ### 79. The users you can see are the ones it did not stop <!-- skill: prevalent-user-bias -->
 
-**Status: VERIFIED 2026-09-02.** Sourced, and the survivorship worry the LEAD
-raised is answered rather than waved away. See the neighbour section below
-before authoring.
+**Status: SHIPPED 2026-09-02 as `prevalent-user-bias`, slug
+`when-the-clock-started`, on the `forest` shape extended with a benchmark
+line.** Sourced, and the survivorship worry the LEAD raised is answered rather
+than waved away. See the neighbour section below before authoring.
+
+The shape note below asked whether `forest` could carry a reference line. It
+could not, and the extension was small as predicted: an optional `benchmarkId`
+naming one of the rows, so the trial estimate is authored once and drawn twice,
+and an optional per-row `heterogeneity` with a label, which is how honesty
+constraint 2 is discharged on the figure rather than in prose. The claim the
+card makes is `reachesBenchmark`, a pure function with a test, because only the
+new-user row's interval contains 0.84 and containment is a stronger statement
+than nearness.
+
+One thing the entry did not anticipate. The three observational rows are drawn
+at the COMMIT beat, not held for the reveal, because the skill licenses a
+direction and a direction alone cannot separate "around 0.8" from "at 1, the
+whole thing was an artefact". Both are the same way from 0.54. The visible
+gradient, whose steps decelerate from 0.16 to 0.07, is the discriminator that
+makes the commit answerable, and the reveal keeps its surprise: two of the
+three intervals do not reach the trials at all.
 
 Danaei G, Tavakkoli M, Hernán MA. Bias in observational studies of prevalent
 users: lessons for comparative effectiveness research from a meta-analysis of

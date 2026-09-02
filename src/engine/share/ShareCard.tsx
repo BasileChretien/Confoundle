@@ -10,6 +10,7 @@ import { useLocale, useT } from "../../app/i18n";
 import { UI } from "../../app/ui";
 import { track } from "../../app/analytics";
 import { Badge, Button } from "../ui";
+import { humanizeCategory } from "../lessons";
 import { aggregateRates, bestGroupId, stratifiedRates } from "../charts/rates";
 import { frequencyBreakdown } from "../charts/frequencies";
 import { shareOrDownloadCard, type ExportResult } from "./exportCard";
@@ -31,11 +32,6 @@ const CARD = {
   falseDim: "#7E7159", // dim tan, "false alarm" dots on the dark plate
   rule: "rgba(242,236,222,0.16)",
 };
-
-function humanize(category: string): string {
-  const s = category.replace(/-/g, " ");
-  return s.charAt(0).toUpperCase() + s.slice(1);
-}
 
 /** True when the pooled winner differs from the (consistent) subgroup winner. */
 function hasReversal(data: RatesData): boolean {
@@ -2577,7 +2573,7 @@ export function ShareCard({
               className="font-sans text-[10px] font-semibold uppercase tracking-eyebrow"
               style={{ color: CARD.muted }}
             >
-              {t({ en: humanize(puzzle.category) })}
+              {t({ en: humanizeCategory(puzzle.category) })}
             </span>
           </div>
 

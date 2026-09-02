@@ -26,6 +26,8 @@ export type ForestBar = {
   side: "better" | "worse" | "null";
   /** True when the interval is entirely clear of the null line. */
   clearsNull: boolean;
+  /** I-squared for the row, per cent, when the source printed one. */
+  heterogeneity?: number;
 };
 
 const sideOf = (
@@ -53,6 +55,7 @@ export function forestRows(data: ForestData): ForestBar[] {
     isPooled: r.isPooled === true,
     side: sideOf(r.estimate, data.nullValue, data.higherIsWorse === true),
     clearsNull: r.ciLow > data.nullValue || r.ciHigh < data.nullValue,
+    heterogeneity: r.heterogeneity,
   }));
 }
 
@@ -154,4 +157,71 @@ export function restrictForest(data: ForestData, view: { groupIds?: string[] }):
   if (!view.groupIds) return data;
   const keep = new Set(view.groupIds);
   return { ...data, rows: data.rows.filter((r) => keep.has(r.id)) };
+}
+
+/* ---------------------------------------------------------------------------
+   The benchmark: a second reference line, and what reaches it.
+   ------------------------------------------------------------------------ */
+
+/**
+ * The row the figure measures the others against, or null when none is named.
+ *
+ * Null rather than a throw, because a beat that has not been given the
+ * benchmark row is the ordinary case and not an error: `restrictForest` filters
+ * it out at the setup on purpose, and a renderer asking "is there a line to
+ * draw" must get an answer rather than an exception.
+ */
+export function benchmarkRow(data: ForestData): ForestBar | null {
+  if (data.benchmarkId === undefined) return null;
+  return forestRows(data).find((r) => r.id === data.benchmarkId) ?? null;
+}
+
+/**
+ * Does this row's interval contain the benchmark's point estimate?
+ *
+ * THE CLAIM THE CARD MAKES, so it is a function with a test rather than a
+ * sentence in a data file. "Closer to the benchmark" is a trend and can be said
+ * of any row; "its interval contains the benchmark" is a fact that either holds
+ * or does not, and the difference between the two is the difference between a
+ * gradient and a miss.
+ *
+ * DELIBERATELY DIRECTION-FREE. Containment is symmetric, so `higherIsWorse`
+ * must not touch it: an interval either covers a value or it does not, whichever
+ * side of the null the harm lives on. A test pins that, because the natural
+ * instinct when extending this module is to reach for the flag.
+ *
+ * Null when there is no benchmark to reach, or when the row IS the benchmark,
+ * where the answer would be a tautology dressed as a finding.
+ */
+export function reachesBenchmark(data: ForestData, id: string): boolean | null {
+  const mark = benchmarkRow(data);
+  if (!mark || mark.id === id) return null;
+  const row = rowOf(data, id);
+  return row.ciLow <= mark.estimate && row.ciHigh >= mark.estimate;
+}
+
+/**
+ * Every row whose interval reaches the benchmark, in the authored order.
+ *
+ * The benchmark itself is never in the list. A figure asserting "only one row
+ * agrees with the trials" is counting the rows being judged, and including the
+ * yardstick in its own tally is how that count silently becomes two.
+ */
+export function rowsReachingBenchmark(data: ForestData): string[] {
+  return data.rows
+    .filter((r) => reachesBenchmark(data, r.id) === true)
+    .map((r) => r.id);
+}
+
+/**
+ * How far a row's estimate sits from the benchmark's, in the shape's own unit.
+ *
+ * Signed, and the sign is left alone: a caller that wants a distance can take
+ * the magnitude, and a caller that wants to say which way a design erred needs
+ * to know. Null when no benchmark is named.
+ */
+export function distanceFromBenchmark(data: ForestData, id: string): number | null {
+  const mark = benchmarkRow(data);
+  if (!mark) return null;
+  return rowOf(data, id).estimate - mark.estimate;
 }

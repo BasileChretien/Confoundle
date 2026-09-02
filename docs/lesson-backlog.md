@@ -6395,28 +6395,106 @@ reach deliberately.
 
 ### 79. The users you can see are the ones it did not stop <!-- skill: prevalent-user-bias -->
 
-**Status: LEAD.** Not sourced. Ray 2003 is the canonical methods reference.
+**Status: VERIFIED 2026-09-02.** Sourced, and the survivorship worry the LEAD
+raised is answered rather than waved away. See the neighbour section below
+before authoring.
 
-A study of a long-used drug enrols people currently taking it. Everyone who
-started it and stopped, because it harmed them or did not work, is absent by
-construction, so the cohort is enriched for people who tolerate it. Early
-events, which for many drugs is when the risk is concentrated, are invisible.
-The drug looks safer than it is, and the fix is to study new users from their
-first prescription.
+Danaei G, Tavakkoli M, Hernán MA. Bias in observational studies of prevalent
+users: lessons for comparative effectiveness research from a meta-analysis of
+statins. *Am J Epidemiol* 2012;175(4):250-262. DOI 10.1093/aje/kwr301. Free
+full text at PMC3271813, read at source.
 
-**Why it is not `healthy-adherer` or `immortal-time-bias`.** The adherer card is
-about people who take medicine as prescribed differing from those who do not,
-within a study. Immortal time is about a stretch of follow-up in which the
-outcome could not have occurred. This one is about who was eligible to be
-enrolled at all, which happens before either.
+Ray WA 2003 is the methods paper that names the new-user design, but it prints
+no counts. This one prints the numbers, and better still it VARIES THE DESIGN
+and holds the question fixed, which is what a card needs.
 
-**Why it is not `survivorship-bias`.** Genuinely close, and this is the one
-that could sink it. Survivorship is about who is left to look at, and so is
-this. The distinction to defend, if it can be defended, is that the survivor
-card is about a sample that lost its failures, while this is about a design
-choice with a named remedy that the reader can be taught to ask for. If that
-distinction cannot be made to feel different inside a puzzle, close this entry
-rather than shipping a second survivorship card under a new name.
+#### The finding, secondary prevention, all-cause mortality
+
+The same question, "does taking a statin lower mortality in people with
+cardiovascular disease", answered by observational studies grouped by which
+users they enrolled, against a randomised benchmark.
+
+| what was compared | studies | adjusted HR (95% CI) |
+|---|---|---|
+| Prevalent users vs nonusers | 13 | 0.54 (0.45, 0.66) |
+| Prevalent and incident users vs nonusers | 13 | 0.70 (0.64, 0.78) |
+| Incident (new) users vs nonusers | 4 | 0.77 (0.65, 0.91) |
+| **Randomised trials, statin initiation** | **18** | **0.84 (0.77, 0.91)** |
+
+Unadjusted figures are printed too and matter: 0.44 for prevalent users and
+0.47 for the mixed group, against 0.54 and 0.70 adjusted. Adjustment moved
+them and did not close the gap.
+
+#### It reconciles four ways
+
+1. **The study counts match the reference ranges.** Prevalent users cite refs
+   59 to 71, which is 13; the mixed group cites 72 to 84, which is 13; the
+   incident group cites 59 and 85 to 87, which is 4. All three match the counts
+   stated in the text.
+2. **The gradient is strictly monotone**, 0.54 to 0.70 to 0.77 to 0.84, and it
+   runs in the direction the mechanism predicts: the fewer prevalent users a
+   design admits, the closer it lands to the trials.
+3. **Only the new-user design's interval contains the trial estimate.** 0.84
+   sits inside (0.65, 0.91) and outside both (0.45, 0.66) and (0.64, 0.78).
+   That is a stronger statement than "closer" and it is the one the card should
+   make, because it is the difference between a trend and a miss.
+4. **Adjustment is shown not to be the remedy.** Both prevalent-user groups
+   were multivariate adjusted and both still exclude the trial result. What
+   moved the answer was who was eligible to enrol.
+
+#### Why it is not `survivorship-bias`, which the LEAD said might sink it
+
+The mechanisms are cousins: in both, the people who fared worst are missing.
+The reason this still earns a card is what the reader is asked to do.
+
+A survivorship puzzle asks you to notice that somebody is absent. This one
+cannot be solved that way, because nobody is visibly absent: all four
+estimates come from published studies of real patients, all four are adjusted,
+and none of them looks thin. What the reader is asked to notice is that **a
+design choice nobody mentions moved the answer from 0.54 to 0.77 while the
+randomised truth was 0.84**, and that the choice has a name and a remedy they
+can ask for. That is a different act of reasoning and a different thing to
+take away.
+
+If an author cannot make that land, the LEAD's instruction stands: close the
+entry rather than ship a second survivorship card under a new name.
+
+Also checked: not `healthy-adherer`, which is about how people behave once
+enrolled, where this is about who was eligible to enrol at all. Not
+`intention-to-treat`, which is about analysing by assignment.
+
+#### Four honesty constraints for whoever authors it
+
+1. **These are DIFFERENT STUDIES, not one dataset analysed four ways.** Berry
+   2010 let `competing-risks` say "the same cohort, two estimators". This one
+   cannot say that, and a card implying it would be inventing a design the
+   paper did not run. The honest claim is about studies grouped by design
+   against a randomised benchmark.
+2. **The heterogeneity is large and must not be hidden.** I-squared is 91% for
+   the prevalent-user studies, 58% for the mixed group and 84% for the incident
+   group. The paper says its meta-regression found no strong predictor of that
+   heterogeneity among the prevalent-user studies. A figure drawing four tidy
+   diamonds without saying the underlying studies disagree a lot is prettier
+   than the evidence.
+3. **Reference 59 appears in two groups**, because that study reported both a
+   prevalent-user and an incident-user comparison. That is not double counting
+   but it is the kind of detail a careful reader will find, so say it rather
+   than be caught by it.
+4. **Do not say the observational studies were wrong.** They measured what they
+   measured. The trials answer "what happens if you start a statin", and a
+   prevalent-user study answers something closer to "how do people who have
+   already tolerated a statin for years compare with people not on one", which
+   is a different question with a flattering answer.
+
+#### Shape
+
+Possibly none. This is four pooled estimates with confidence intervals against
+a reference line, which is what the existing `forest` shape draws. Check
+whether it supports grouping and a benchmark line before building anything.
+The setup would show the single observational estimate a reader would be
+quoted, and the reveal would group the studies by design and drop in the trial
+line. If `forest` cannot carry a reference line, that is a small extension
+rather than a new shape.
 
 ### 80. The model sends the patrols, and the patrols write the data <!-- skill: feedback-loops -->
 
@@ -6446,23 +6524,110 @@ lesson page or a note recording exactly that.
 
 ### 81. It learned the scanner, not the disease <!-- skill: cross-site-generalisation -->
 
-**Status: LEAD.** Not sourced. Zech 2018 and the COVID imaging reviews are the
-obvious starting points.
+**Status: VERIFIED 2026-09-02.** Sourced and reconciled, including one figure
+rebuilt from scratch to check it means what it appears to mean. But the card
+is NOT the one the LEAD imagined: see the reframing below, which matters more
+than the numbers.
 
-A diagnostic model reports excellent accuracy and fails at the hospital next
-door. It had learned something real but useless: which machine took the image,
-which ward the portable scanner served, a marker burned into a corner. Within
-one site that predicts the diagnosis well, because sicker patients are imaged
-differently. Across sites it predicts nothing.
+Zech JR, Badgeley MA, Liu M, Costa AB, Titano JJ, Oermann EK. Variable
+generalization performance of a deep learning model to detect pneumonia in
+chest radiographs: a cross-sectional study. *PLOS Medicine*
+2018;15(11):e1002683. Open access, read at source.
 
-**Why it is not `temporal-validity`.** That card is about a finding not
-surviving the passage of time. This is about not surviving a change of place,
-and the mechanism is a shortcut the model found rather than a world that moved.
+#### The data
 
-**Why it is not `spectrum-bias`.** Spectrum bias is about the case mix a test is
-evaluated on. Here the case mix may be identical; what differs is an artefact
-the model attached to.
+158,323 frontal chest radiographs from three institutions: NIH (112,120 from
+30,805 patients), Mount Sinai (MSH; 42,396 from 12,904), Indiana University
+(IU; 3,807 from 3,683). Pneumonia prevalence differs enormously between them:
+**34.2% at MSH against 1.2% at NIH and 1.0% at IU.**
 
-**What has to reconcile.** Accuracy at the training site and at the external
-site, both published, for the same model. That pairing is the whole card and it
-is what most papers of this kind do not print.
+#### What the models did
+
+| trained on | tested on | AUC (95% CI) |
+|---|---|---|
+| NIH | NIH (internal) | 0.750 (0.721, 0.778) |
+| NIH | MSH | 0.695 (0.683, 0.706) |
+| NIH | IU | 0.725 (0.644, 0.807) |
+| MSH | MSH (internal) | 0.802 (0.793, 0.812) |
+| MSH | NIH | 0.717 (0.687, 0.746) |
+| MSH | IU | 0.756 (0.674, 0.838) |
+| MSH + NIH jointly | joint internal | 0.931 (0.927, 0.936) |
+| MSH + NIH jointly | IU (external) | 0.815 (0.745, 0.885) |
+
+And the two findings that make it a card rather than a table:
+
+* A CNN trained to name the hospital got **22,050/22,062 NIH (99.95%),
+  8,386/8,388 MSH (99.98%) and 737/771 IU (95.59%)**. Within MSH, a CNN naming
+  the department got 5,805/5,805 inpatient and 449/449 emergency, both 100%.
+* **A trivial model that ranks cases using nothing but each hospital's average
+  pneumonia prevalence scores AUC 0.861 on the joint MSH-NIH test set**, where
+  the joint deep model scores 0.931.
+
+#### THE CARD IS THE TRIVIAL MODEL, NOT THE INTERNAL-VERSUS-EXTERNAL DROP
+
+The LEAD assumed the lesson was "excellent accuracy at home, failure next
+door". The numbers do not support that story. MSH-trained goes 0.802 to 0.717,
+which is a real drop and an unremarkable one, and the joint model still manages
+0.815 on a hospital it never saw. A card built on that comparison would be
+overselling a modest effect, and would also be comparing across different test
+sets, which invites the objection that the sets simply differ.
+
+The trivial model is the finding. It is measured **on the same test set** as
+the 0.931, so nothing is being compared across populations, and it says that
+most of an impressive-looking score is available to something that never looks
+at the lungs. That, with the 99.95% hospital-identification, is the whole
+lesson: the network found the site, and the site predicts the diagnosis,
+because prevalence differs 28-fold.
+
+#### It reconciles three ways
+
+1. **The dataset sizes sum exactly.** 112,120 + 42,396 + 3,807 = 158,323,
+   which is the total the paper states.
+2. **All three hospital-identification accuracies recompute** from the counts
+   printed beside them: 22,050/22,062 = 99.95%, 8,386/8,388 = 99.98%,
+   737/771 = 95.59%.
+3. **The trivial model was rebuilt from scratch and lands where it should.**
+   Ranking every MSH image above every NIH image, with ties inside each site,
+   and using the printed prevalences and the test-set sizes above, gives AUC
+   0.857 against the paper's 0.861. The 0.004 gap is expected: the printed
+   prevalences are whole-dataset figures standing in for test-set ones, and the
+   pneumonia split need not be exactly the hospital-identification split. What
+   this check buys is confidence that "trivial model" means what it looks like
+   it means, which the card's entire claim depends on.
+
+#### Four honesty constraints for whoever authors it
+
+1. **Quote 0.861, never 0.857.** The reconstruction above is a check on
+   understanding, not a source. A figure drawing a number this project derived
+   from two rounded percentages, beside a citation to a paper printing a
+   different one, would be the `competing-risks` rounding trap again.
+2. **The 28-fold prevalence gap has to be on screen.** Without it the reveal
+   looks like an accusation and the reader has no way to see why site identity
+   is so informative. With it, the reasoning is available and the hedge stops
+   being the only defensible answer.
+3. **Do not say the model is useless or fraudulent.** The single-site models
+   beat chance, the authors are careful and are reporting their own limitation,
+   and the paper's own conclusion is about the need for external validation
+   rather than about a bad model.
+4. **The comparison must stay inside one test set.** 0.931 against 0.861 on the
+   joint MSH-NIH set is like for like. Pairing the 0.931 with the 0.815 at
+   Indiana is a different and weaker claim, and mixing the two would let a
+   reader think the drop and the shortcut are the same evidence.
+
+#### Why it is still not `proxy-target` or `spectrum-bias`
+
+Checked again now the numbers are in. Not `proxy-target`: the label here is
+pneumonia and pneumonia is what was wanted, so nothing stands in for anything.
+Not `spectrum-bias`, though this is the closer call, because spectrum bias is
+about a test evaluated on an unrepresentative case mix, whereas here the
+finding is that the model **identified which mix each image came from** and
+used that. The 99.95% is what separates them, and a card that omitted it would
+indeed be a spectrum-bias card wearing a new name.
+
+#### Shape
+
+Probably new, and the LEAD guessed wrong about it too. This is not two curves
+or a matrix; it is two models scored on one test set, one of which is allowed
+to see nothing but a label on the door. Consider whether the reveal should
+show the two prevalences as the mechanism rather than as a footnote, since
+that is the number that explains everything else.

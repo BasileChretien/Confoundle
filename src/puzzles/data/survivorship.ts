@@ -1,4 +1,4 @@
-import type { Puzzle } from "../schema";
+import type { Puzzle } from "../schema.ts";
 
 /**
  * Puzzle #4, survivorship bias, via Wald's WWII bomber-armour analysis. Uses

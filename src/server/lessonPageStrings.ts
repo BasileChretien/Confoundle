@@ -1,4 +1,4 @@
-import type { LocalizedText } from "../puzzles/schema";
+import type { LocalizedText } from "../puzzles/schema.ts";
 
 /**
  * The lesson page's own chrome, in the ten languages the app speaks.

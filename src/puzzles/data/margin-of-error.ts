@@ -1,4 +1,4 @@
-import type { Puzzle } from "../schema";
+import type { Puzzle } from "../schema.ts";
 
 /**
  * A five point lead, a margin of plus or minus 2.9, and the wrong ruler.

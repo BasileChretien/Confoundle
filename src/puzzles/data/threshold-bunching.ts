@@ -1,4 +1,4 @@
-import type { Puzzle } from "../schema";
+import type { Puzzle } from "../schema.ts";
 
 /**
  * Puzzle #49, threshold bunching, via Allen, Dechow, Pope and Wu (2017).

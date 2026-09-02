@@ -1,4 +1,4 @@
-import type { Puzzle } from "../schema";
+import type { Puzzle } from "../schema.ts";
 
 /**
  * Puzzle #34, the Hawthorne effect, on Wu et al. (2018). Closes gap 6 of

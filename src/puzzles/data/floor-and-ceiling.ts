@@ -1,4 +1,4 @@
-import type { Puzzle } from "../schema";
+import type { Puzzle } from "../schema.ts";
 
 /**
  * Puzzle #59, floor and ceiling effects, via Fazio, Rand and Pennycook (2019).

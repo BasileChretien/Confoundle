@@ -1,4 +1,4 @@
-import type { Puzzle } from "../puzzles/schema";
+import type { Puzzle } from "../puzzles/schema.ts";
 
 /**
  * What a lesson page should offer next, computed at build time.

@@ -1,4 +1,4 @@
-import type { Puzzle } from "../schema";
+import type { Puzzle } from "../schema.ts";
 
 /**
  * Puzzle #27, the illusory truth effect, on Hassan and Barber (2021) Table 2.

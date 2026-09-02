@@ -1,4 +1,4 @@
-import type { Puzzle } from "../schema";
+import type { Puzzle } from "../schema.ts";
 
 /**
  * NOT YET REGISTERED in ../index.ts, deliberately. Registering it turns on two

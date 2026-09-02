@@ -1,4 +1,4 @@
-import type { Puzzle } from "../schema";
+import type { Puzzle } from "../schema.ts";
 
 /**
  * Puzzle #50, whataboutism, via van Eemeren, Meuffels and Verburg (2000).

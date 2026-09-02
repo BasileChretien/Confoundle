@@ -1,4 +1,4 @@
-import type { Puzzle } from "../schema";
+import type { Puzzle } from "../schema.ts";
 
 /**
  * Puzzle #6, the Will Rogers phenomenon, via Feinstein's lung cancer cohort.

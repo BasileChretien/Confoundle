@@ -1436,3 +1436,18 @@ That last one is the most interesting gap: effect modification is absent from
 the official outline entirely, yet it is the concept most often confused with
 confounding in teaching. Under-specified officially and heavily tested in
 practice is exactly the profile of a good puzzle.
+
+**Not even that, and shipped anyway: the Table 2 fallacy**
+<!-- skill: table-two-fallacy -->. **SHIPPED 2026-09-02** as
+`four-rows-three-meanings`, from Bandoli 2018; see numbered entry 78 in the
+backlog. It belongs in this section rather than the table above, and it is a
+step further out than everything listed here: the terms above are at least
+named in US teaching, whereas this one was coined in a 2013 methods commentary
+and is named in no outline and in few courses. It gets no row in the
+consolidated list for the same reason `cross-site-generalisation` gets none,
+that the list is of exam bias TERMS audited against four national outlines.
+Recorded here because the deck now teaches it and nobody should later mistake
+it for something an examiner has heard of. Worth noticing that the deck has now
+shipped two cards in a row that no outline names, which is a direction to watch
+rather than a problem: it means the queue is running past the syllabus, and a
+future audit should ask whether that is deliberate.

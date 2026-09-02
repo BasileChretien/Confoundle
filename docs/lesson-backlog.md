@@ -6365,11 +6365,12 @@ confusion matrix, and the deck has no shape that draws one.
 
 ### 78. Every number in the table is not an effect <!-- skill: table-two-fallacy -->
 
-**Status: VERIFIED 2026-09-02, ON A RENEGOTIATED BAR.** Sourced and
-reconciled. But the bar this entry set for itself was not met and, as far as a
-search can tell, cannot be met, so read the section on that before authoring:
-the card that is available is a real one, and it is not the card described
-below.
+**Status: SHIPPED 2026-09-02 as `table-two-fallacy`, slug
+`four-rows-three-meanings`, on the `forest` shape with no extension needed.**
+Sourced and reconciled. The bar this entry set for itself was not met and, as
+far as a search can tell, cannot be met, so the section on that below is the
+part that mattered: the card that shipped is a real one, and it is not the card
+described in the original LEAD.
 
 Bandoli G, Palmsten K, Chambers CD, Jelliffe-Pawlowski LL, Baer RJ, Thompson CA.
 Revisiting the Table 2 Fallacy: a motivating example examining preeclampsia and
@@ -6463,11 +6464,23 @@ reader cannot tell a controlled direct effect from a total effect by looking at
 a table; that is the entire point of the fallacy. So the framing must carry the
 causal story in plain words (previous preterm birth causes preeclampsia; alcohol
 abuse and drug abuse travel together and only one is in the model; education
-predicts preterm birth and has nothing to do with preeclampsia), and the
-question must then be **which row moves most when each is estimated properly**.
-That is answerable from the framing, exactly once, and the answer is alcohol
-abuse at 23 per cent. Without the causal story on screen the question is
-unanswerable and the puzzle would be marking a careful reader wrong.
+predicts preterm birth and has nothing to do with preeclampsia).
+
+**THIS PARAGRAPH THEN PROPOSED THE WRONG QUESTION, and authoring caught it.** It
+said the question should be *which row moves most*, and called that answerable.
+It is not. The framing tells a reader which rows are broken; it gives them
+nothing that ranks the SIZE of a blocked mediated path against the size of an
+omitted confounder, so two bands would sit on the one direction the framing
+licenses and the hedge rule would break on exactly the test that rule states.
+The shipped question is qualitative instead, **which of the four rows can be
+read as that variable's own effect**, which the causal story determines exactly
+once and which no magnitude is needed to answer. The magnitudes become the
+reveal, which is the better place for them: the surprise is that a 23 per cent
+difference is invisible in a table that looks uniform.
+
+Worth keeping in view for the next sourcing pass, because the mistake is easy to
+repeat: a question about SIZE needs something in the setup that orders the
+sizes, and a causal story orders nothing.
 
 #### One thing to check before authoring
 

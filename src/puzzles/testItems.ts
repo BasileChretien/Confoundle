@@ -10756,6 +10756,232 @@ const items: TestItem[] = [
       en: "Both figures are right and come from the same records. The operator measured what a flag is worth and the depots measured the cost of the false ones, which are different things to hold equal. Because one class genuinely fails more often, a model whose flags mean the same thing for both must pull more sound trains of that class out of service. Neither party has miscounted, and no better model removes the trade-off.",
     },
   },
+
+  /*
+    SHORTCUTS. Every one of these says the labels are correct and the split
+    is honest, which forecloses the two easy wrong answers, mislabelling and
+    a leaky test set. Each then names TWO things: something in the input that
+    identifies the source, and a difference between the sources in how often
+    the outcome occurs. Both are needed. Without the first there is nothing
+    to learn; without the second, learning it buys nothing, and an item
+    missing either would be teaching a mechanism its own scenario rules out.
+  */
+  {
+    id: "cs-skin-ruler",
+    scenario: {
+      en: "A model classifies photographs of skin lesions as malignant or benign and reports high accuracy on a held-out set. The images were pooled from two archives: a specialist cancer centre, where most photographs are of confirmed malignancies and a measuring ruler is usually laid beside the lesion, and a general practice archive, where malignancies are rare and no ruler is used. Every image was correctly labelled and the held-out set was never trained on.",
+    },
+    trap: "cross-site-generalisation",
+    explanation: {
+      en: "The two archives differ enormously in how often a lesion is malignant, so knowing which archive a photograph came from is by itself strongly predictive, and a ruler in the frame identifies the archive. The model can score well by learning the ruler and never learning anything about skin. The check that would settle it is to train a model on the images with the lesion itself masked out, and see how much of the accuracy survives.",
+    },
+  },
+  {
+    id: "cs-handwriting-forms",
+    scenario: {
+      en: "A hospital builds a model that reads scanned admission forms and predicts which patients will be readmitted within a month. It reports strong performance on held-out forms. The forms come from two wards that use different printed templates, and readmission is far commoner on one ward than the other. Every form is complete and the outcome is recorded for all of them.",
+    },
+    trap: "cross-site-generalisation",
+    explanation: {
+      en: "The template identifies the ward, and the ward predicts readmission because the two wards differ in how often it happens. A model can reach a good score by recognising the template and nothing else, without reading a word a clinician wrote. Nothing here is missing or mislabelled; the score is simply partly payment for recognising which ward the form came from.",
+    },
+  },
+  {
+    id: "cs-audio-clinics",
+    scenario: {
+      en: "A model listens to recorded coughs and predicts tuberculosis. Recordings were gathered at a specialist TB clinic on one type of microphone and at community screening events on another. TB is common among those attending the clinic and rare at the screening events. On a held-out mixture of both, the model performs well, and all diagnoses were confirmed by laboratory testing.",
+    },
+    trap: "cross-site-generalisation",
+    explanation: {
+      en: "The microphone leaves a signature in the recording that identifies where it was made, and where it was made predicts the diagnosis, because the two settings differ hugely in how common TB is. A model that learns the microphone inherits that predictive power without learning anything about coughs. Confirming the diagnoses rules out mislabelling; it does nothing about the shortcut.",
+    },
+  },
+  {
+    id: "cs-satellite-poverty",
+    scenario: {
+      en: "A model estimates household poverty from satellite images, trained and tested on images from two countries with very different poverty rates. It reports strong accuracy on a held-out mixture. The imagery for the two countries was captured by different satellites at different resolutions, and the ground-truth survey data is complete for both.",
+    },
+    trap: "cross-site-generalisation",
+    explanation: {
+      en: "Resolution and sensor artefacts identify the country, and the country predicts poverty because the two rates differ sharply. A model can score well by classifying the imagery source and applying that country's average, without learning anything about roofs or roads. A model given only the image metadata, and no image, would show how much of the score that alone buys.",
+    },
+  },
+  {
+    id: "cs-lab-batches",
+    scenario: {
+      en: "A laboratory trains a model to spot a disease from blood samples. Samples from cases were processed in one batch and samples from controls in another, on different days with different reagent lots. The model separates cases from controls almost perfectly on held-out samples, and every sample was correctly labelled by an independent clinical assessment.",
+    },
+    trap: "cross-site-generalisation",
+    explanation: {
+      en: "Batch processing leaves measurable traces in the samples, and here the batch coincides exactly with the outcome, so a model that detects the batch separates cases from controls perfectly while learning nothing about the disease. Correct labelling and a clean held-out split do not help: the shortcut is present in the held-out samples too, because they were processed the same way.",
+    },
+  },
+  {
+    id: "cs-essay-scoring",
+    scenario: {
+      en: "An examination board trains a model to grade essays, using scripts from two years. The first year's scripts were handwritten and scanned; the second year's were typed. Grades were markedly higher in the second year. The model scores well on a held-out mixture of both years, and every grade was assigned by trained human markers.",
+    },
+    trap: "cross-site-generalisation",
+    explanation: {
+      en: "Whether a script is handwritten or typed identifies the year, and the year predicts the grade because the two years differ. A model can do well by detecting the input format and applying that year's average, without assessing any argument. The human marking is sound; what is unsound is reading the model's score as evidence that it evaluates writing.",
+    },
+  },
+  {
+    id: "cs-retina-cameras",
+    scenario: {
+      en: "A screening programme trains a model to detect diabetic retinopathy from retinal photographs, pooling images from a hospital eye clinic and from mobile screening vans. Disease is far commoner among clinic attenders. The cameras used differ between the two settings. The model performs strongly on a held-out pooled set, and every image was graded by two ophthalmologists.",
+    },
+    trap: "cross-site-generalisation",
+    explanation: {
+      en: "Each camera leaves its own characteristic artefacts, which identify the setting, and the setting predicts disease because the two populations differ. The model can profit from recognising the camera while learning little about retinas. Double grading protects the labels, not the input, so it does nothing about a feature that identifies where the photograph was taken.",
+    },
+  },
+  {
+    id: "cs-fraud-terminals",
+    scenario: {
+      en: "A payments firm trains a model to detect card fraud, pooling transactions from two acquiring banks. One serves mostly online merchants, where fraud is common; the other mostly in-person retailers, where it is rare. The two banks format their transaction records slightly differently. The model performs well on a held-out pooled sample, and every transaction's outcome is known.",
+    },
+    trap: "cross-site-generalisation",
+    explanation: {
+      en: "The formatting identifies the acquiring bank, and the bank predicts fraud because the two portfolios differ greatly in how often it occurs. A model can score well by detecting which bank a record came from and applying that bank's rate, without weighing anything about the transaction. Knowing every outcome guarantees the labels, not that the model used the features anyone intended.",
+    },
+  },
+  {
+    id: "cs-speech-devices",
+    scenario: {
+      en: "A team trains a model to detect Parkinson's disease from speech. Patients were recorded in a movement disorders clinic using a headset microphone; healthy volunteers were recorded at a university using laptop microphones. The model distinguishes the two groups with high accuracy on held-out recordings, and every diagnosis was made by a neurologist.",
+    },
+    trap: "cross-site-generalisation",
+    explanation: {
+      en: "The recording device differs systematically between the groups, so device identity coincides with diagnosis, and a model that detects the device separates the groups without hearing anything about speech. This survives a held-out split because the held-out recordings were made the same way. Recording both groups on both devices, or testing on recordings made elsewhere, is what would tell you whether anything about the voice was learned.",
+    },
+  },
+  {
+    id: "cs-xray-portable",
+    scenario: {
+      en: "A model detects collapsed lung on chest X-rays, trained on images from a single large hospital. Patients too unwell to reach the radiology department are imaged with a portable machine, and those patients are far likelier to have the condition. The portable machine stamps a small marker in the corner of every image it produces. The model performs strongly on held-out images from the same hospital.",
+    },
+    trap: "cross-site-generalisation",
+    explanation: {
+      en: "The marker identifies the portable machine, which identifies the sicker patients, which predicts the condition, so the model can score well by finding a stamp in the corner. This one does not even need two hospitals: the shortcut lives inside one, because the machine used is itself a record of how ill the patient was. Cropping the marker and retraining is the check.",
+    },
+  },
+
+  /*
+    SOUND, and added because the bank ran out of them. Four consecutive
+    skills' worth of traps took the sound share to exactly the quarter that
+    `registry.test.ts` insists it stay above, which is the guard doing its
+    job: with too few decoys the winning strategy is to answer "trap" every
+    time and the score measures nothing.
+
+    They are deliberately about the same subject as the shortcut items, and
+    each one shows a DEFENCE rather than merely an absence of the flaw:
+    holding out a whole site, running the blinded control, reporting per
+    source, removing the marker and retraining, matching prevalence,
+    balancing batches, recording both groups on both devices. A decoy that
+    is sound because nothing much happens teaches nothing; one that is sound
+    because somebody did the right thing teaches the remedy.
+  */
+  {
+    id: "cs-sound-held-out-site",
+    scenario: {
+      en: "A model detecting a lung condition on X-rays is trained at two hospitals and then evaluated at a third that contributed nothing to training. The team reports the third hospital's result as the headline figure, notes that the condition is about as common at all three, and reports the two training hospitals' held-out results separately and lower down.",
+    },
+    trap: null,
+    explanation: {
+      en: "This is how the check is supposed to run. Holding out a whole institution rather than a random sample of images means the model cannot profit from recognising equipment it was trained on, and reporting that figure as the headline rather than the flattering pooled one is the honest choice. Similar prevalence across the sites removes the other half of the problem, since knowing the site would buy little even if the model could tell.",
+    },
+  },
+  {
+    id: "cs-sound-blinded-control",
+    scenario: {
+      en: "Before publishing, a team trains a second model on nothing but each record's metadata, the acquiring site, the date and the device, with the clinical measurements removed. That model performs no better than chance. They report this alongside the main model's accuracy.",
+    },
+    trap: null,
+    explanation: {
+      en: "This is the control that settles the question, and running it is the point. If the source and the equipment predicted the outcome, a model given only those would beat chance; it does not, so the main model's accuracy cannot be explained by recognising where the data came from. Reporting the negative result is what makes the main figure interpretable.",
+    },
+  },
+  {
+    id: "cs-sound-per-source",
+    scenario: {
+      en: "A model is trained on records pooled from four clinics and its accuracy is reported separately for each clinic rather than as a single pooled number. The four figures are close to each other and close to the pooled one. The outcome rate is similar across the four.",
+    },
+    trap: null,
+    explanation: {
+      en: "Reporting per source is the right way round. A pooled figure can be inflated when the sources differ, because a model is rewarded for recognising which source it is looking at, and reporting each separately makes that impossible to hide. Here the four agree and the outcome rates are similar, so there is nothing for a source-recognising shortcut to exploit and nothing being averaged away.",
+    },
+  },
+  {
+    id: "cs-sound-marker-removed",
+    scenario: {
+      en: "Investigators notice that images from one scanner carry a small marker in the corner and worry the model may be using it. They crop the marker from every image, retrain from scratch, and find performance essentially unchanged. They publish both results.",
+    },
+    trap: null,
+    explanation: {
+      en: "The worry was reasonable and they tested it directly rather than arguing about it. If the marker had been carrying the model's performance, removing it would have cost accuracy; performance held, so the marker was not what the model was using. Publishing both numbers lets a reader check the reasoning instead of taking the reassurance on trust.",
+    },
+  },
+  {
+    id: "cs-sound-matched-prevalence",
+    scenario: {
+      en: "Two hospitals contribute images to one training set. They serve different populations but, as it happens, the condition is diagnosed in about 12 per cent of images at both. A model trained on the pooled set performs well on a held-out pooled sample.",
+    },
+    trap: null,
+    explanation: {
+      en: "The shortcut needs two things: something that identifies the source, and a difference between sources in how often the outcome occurs. Here the second is absent. A model could identify the hospital perfectly and gain nothing by it, because that tells it nothing about the diagnosis. Pooling was safe on this occasion, and it is the matched rates rather than any care taken that made it so.",
+    },
+  },
+  {
+    id: "cs-sound-balanced-batches",
+    scenario: {
+      en: "A laboratory processing samples for a diagnostic study deliberately splits cases and controls evenly across every processing batch, so that each day's run contains both in proportion. A model trained on the resulting measurements separates cases from controls well.",
+    },
+    trap: null,
+    explanation: {
+      en: "Batch effects are real and would have been a serious problem had the batches lined up with the outcome. Spreading cases and controls evenly across batches means batch identity carries no information about which is which, so a model that detects the batch gains nothing. The design removed the shortcut before the data existed, which is the cheapest place to remove it.",
+    },
+  },
+  {
+    id: "cs-sound-both-devices",
+    scenario: {
+      en: "A study recording speech from patients and from healthy volunteers arranges for both groups to be recorded on both types of microphone used, in roughly equal numbers. A model trained on the recordings distinguishes the groups well.",
+    },
+    trap: null,
+    explanation: {
+      en: "Had each group been recorded on its own device, device identity would have coincided with diagnosis and a model could have separated the groups by detecting the microphone. Recording both groups on both devices breaks that alignment, so the device says nothing about which group a recording came from and the model's performance has to come from the speech.",
+    },
+  },
+  {
+    id: "cs-sound-masked-evidence",
+    scenario: {
+      en: "A team evaluating a model that reads skin lesion photographs reruns it on the same test images with the lesion itself blacked out and everything else left in place. Accuracy falls to about chance. They report this.",
+    },
+    trap: null,
+    explanation: {
+      en: "This is the blinded control done on the exact test set the headline figure came from, which is the strongest version of it. If the surroundings, the lighting, a ruler or the framing had been carrying the result, the masked images would still have scored well. They do not, so what the model is using is the lesion.",
+    },
+  },
+  {
+    id: "cs-sound-prospective-same-site",
+    scenario: {
+      en: "A hospital deploys a model trained on its own historical records and then evaluates it prospectively on patients admitted over the following six months, at the same hospital, with no change in referral patterns or equipment. Performance matches the retrospective estimate.",
+    },
+    trap: null,
+    explanation: {
+      en: "This is a fair test of the claim actually being made, which is about this hospital rather than about hospitals in general. Because nothing about the setting changed, any equipment signature the model may have learned is still valid, and the estimate is not being asked to transfer anywhere. It would not license deploying the model elsewhere, and the team does not claim it does.",
+    },
+  },
+  {
+    id: "cs-sound-source-reported",
+    scenario: {
+      en: "A paper pooling data from several registries reports its model's overall accuracy, and also reports the outcome rate in each registry and the accuracy within each. The outcome rates vary considerably between registries, and the within-registry accuracies are all close to the pooled figure.",
+    },
+    trap: null,
+    explanation: {
+      en: "Pooling sources with different outcome rates is where a shortcut can inflate a pooled score, so this is the situation to be careful in. Reporting accuracy within each registry is what answers it: a model profiting from recognising the registry would look good pooled and worse within each, because inside one registry there is no registry to recognise. The within-registry figures hold up, so the pooled number is not resting on that.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

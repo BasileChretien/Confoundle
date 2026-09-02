@@ -1812,6 +1812,44 @@ function ClassifierGlyph() {
     </svg>
   );
 }
+function ShortcutGlyph() {
+  const t = useT();
+  const W = 200;
+  const H = 96;
+  /**
+   * Two bars from a baseline that is NOT the left edge, with the baseline
+   * drawn and the gap beyond the shorter bar left open. The point of the
+   * picture is how little of the first bar the second fails to cover, and that
+   * only reads correctly if the eye can see where measuring begins. Drawn from
+   * the left edge these two would be nearly identical and the glyph would say
+   * the opposite of the card.
+   *
+   * Gold is the model that saw the evidence, teal the one that did not, which
+   * matches the figure inside the puzzle.
+   *
+   * Shape-generic wording, since the glyph is chosen by `data.type` and has to
+   * survive whatever the next puzzle on this shape turns out to be about.
+   */
+  const X = 40;
+  const FULL = W - X - 14;
+  return (
+    <svg
+      viewBox={`0 0 ${W} ${H}`}
+      width="100%"
+      role="img"
+      aria-label={t({
+        en: "Two bars measured from a marked starting line, the shorter one covering most of the longer",
+      })}
+    >
+      <rect x={X} y={20} width={FULL} height={14} rx={2} fill={CARD.gold} opacity={0.9} />
+      <rect x={X} y={50} width={FULL * 0.84} height={14} rx={2} fill={CARD.teal} opacity={0.9} />
+      <line x1={X} y1={10} x2={X} y2={H - 12} stroke={CARD.rule} strokeWidth={1.5} />
+      <text x={X - 5} y={H - 4} textAnchor="end" fontSize={9} fill={CARD.rule}>
+        {t({ en: "chance" })}
+      </text>
+    </svg>
+  );
+}
 function CrossedGlyph() {
   const t = useT();
   const W = 200;
@@ -2466,6 +2504,7 @@ export function ShareCard({
   const proxyGlyph = data.type === "proxy";
   const competingGlyph = data.type === "competing";
   const classifierGlyph = data.type === "classifier";
+  const shortcutGlyph = data.type === "shortcut";
   const splitSampleGlyph =
     data.type === "rates" &&
     Boolean(data.strataAreSeparateSamples) &&
@@ -2648,6 +2687,8 @@ export function ShareCard({
               <CompetingGlyph />
             ) : classifierGlyph ? (
               <ClassifierGlyph />
+            ) : shortcutGlyph ? (
+              <ShortcutGlyph />
             ) : null}
           </div>
 

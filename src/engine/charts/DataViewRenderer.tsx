@@ -52,6 +52,8 @@ import { ConditionalView } from "./ConditionalView";
 import { RatersView } from "./RatersView";
 import { restrictConditional } from "./conditional";
 import { ClassifierView } from "./ClassifierView";
+import { ShortcutView } from "./ShortcutView.tsx";
+import { restrictShortcut } from "./shortcut.ts";
 import { CompetingView } from "./CompetingView";
 import { restrictCompeting } from "./competing";
 import { restrictRaters } from "./raters";
@@ -422,6 +424,19 @@ export function DataViewRenderer({
           kind={view.kind}
         />
       ) : null;
+    case "shortcut":
+      /*
+        A SLICE-DRAWER ON THE MODELS. The setup hands over only the models that
+        saw the evidence, so the blind one arrives at the reveal, and colour has
+        to be resolved from the declared list or it would inherit a slot.
+      */
+      return view.kind === "asscored" || view.kind === "whatitsaw" ? (
+        <ShortcutView
+          data={restrictShortcut(data, { showWithoutEvidence: view.kind === "whatitsaw" })}
+          full={data}
+          kind={view.kind}
+        />
+      ) : null;
     case "classifier":
       /*
         NOT A SLICE-DRAWER. Both beats receive the whole table; what changes is
@@ -570,6 +585,10 @@ export function scopeLabel(kind: DataViewKind): string {
       return "Measured straight away";
     case "overtime":
       return "And the same people later";
+    case "asscored":
+      return "As it was scored";
+    case "whatitsaw":
+      return "What it was actually seeing";
     case "whenitflagged":
       return "When it raised a flag";
     case "everyoutcome":

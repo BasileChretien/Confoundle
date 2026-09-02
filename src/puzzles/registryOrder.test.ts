@@ -98,6 +98,7 @@ describe("the registry sequence", () => {
   "the-number-it-was-trained-on",
   "the-risk-if-nobody-died",
   "both-sides-were-right",
+  "it-learned-the-hospital",
   ];
 
   it("is unchanged, and grew only at the end", () => {

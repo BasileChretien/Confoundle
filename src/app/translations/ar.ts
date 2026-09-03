@@ -7289,4 +7289,10 @@ export const ar: Record<string, string> = {
   "A pharmacoepidemiology study estimates the effect of one medicine on falls, adjusting for a second medicine that is often taken alongside it.": "دراسة في وبائيات الدواء تقدّر أثر دواء على السقوط، مصححةً لدواء ثانٍ كثيرًا ما يؤخذ معه.",
   "Both coefficients are printed together.": "ويُطبع المعاملان معًا.",
   "A safety bulletin cites the second medicine's coefficient as evidence that it too raises the risk of falls, and notes that the confidence interval is narrow.": "وتستشهد نشرة سلامة بمعامل الدواء الثاني دليلًا على أنه يرفع هو أيضًا خطر السقوط، وتشير إلى أن مجال الثقة ضيق.",
+
+  // ---- Session shape ----
+  "Now name it. What does it fall for?": "الآن سمِّه. في ماذا يقع هذا الاستدلال؟",
+  "Named it": "أصبتَ الاسم",
+  "It falls for {skill}.": "الذي يقع فيه هو {skill}.",
+  "One more": "واحد آخر",
 };

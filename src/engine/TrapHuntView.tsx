@@ -15,6 +15,7 @@ import {
 import { recentlySeen, recordRound } from "../app/trapHuntStats";
 import { itemBank } from "../puzzles/itemBank";
 import { gradeSpot, hasSpot, segmentJoin, withOneSpot } from "../srs/spotTheTell";
+import { gradeName, nameOptions, planSteps } from "../srs/session";
 
 /**
  * A clause inside the scenario, tappable on the second beat.
@@ -31,18 +32,30 @@ function segmentButton(state: "tell" | "wrong" | null): string {
   return `${base} hover:bg-paper-3`;
 }
 
+/** How many items "one more" appends. Short enough to be a nightcap. */
+const EXTENSION_SIZE = 3;
+
 const choiceButton =
   "rounded-lg border border-rule bg-paper-2 px-4 py-3.5 text-left font-semibold text-ink transition hover:border-ink/40 hover:bg-paper-3 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand active:scale-[.99]";
 
 /**
- * Trap Hunt: eight scenarios, one question, no scheduling.
+ * Trap Hunt: eight scenarios, three questions, no scheduling.
+ *
+ * IT USED TO BE ONE QUESTION EIGHT TIMES, which is what made it, and the two
+ * modes drawing from the same bank, feel like one activity dressed three ways.
+ * Three of the eight now carry a follow-up: name the skill, or point at the
+ * clause. `srs/session.ts` decides which, and its header argues the one thing
+ * here that is easy to get wrong, which is that the follow-up must be scattered
+ * rather than ramped: only a trap can carry one, so any difficulty ramp puts the
+ * traps at the end and hands a returning player the binary for free.
  *
  * WHAT MAKES IT DIFFERENT FROM A REVIEW, beyond not touching the SRS. A review
  * asks you to stake a confidence and then grades that too, because being
- * confidently wrong is the failure worth measuring on a schedule. This asks one
- * binary question and moves immediately, because the mode exists to be fast
- * and because a stake on every item eight times over is a chore rather than a
- * game.
+ * confidently wrong is the failure worth measuring on a schedule. This asks the
+ * binary and moves, because the mode exists to be fast and because a stake on
+ * every item eight times over is a chore rather than a game. The follow-ups are
+ * not a stake: they are the next question about the same scenario, asked on the
+ * paragraph already read.
  *
  * IT SHOWS THE THOUGHTLESS SCORE AT THE END, and that is not decoration. Around
  * a quarter of the bank is sound reasoning, so answering "trap" every time
@@ -64,18 +77,35 @@ export function TrapHuntView({ onDone }: { onDone: () => void }) {
   const nf = new Intl.NumberFormat(locale);
 
   // Drawn once per mount, avoiding whatever the player has seen lately.
-  const round = useMemo(() => {
+  const first = useMemo(() => {
     const drawn = drawRound(Math.random, ROUND_SIZE, undefined, recentlySeen());
     // One clause question per round, guaranteed. See `withOneSpot` for why the
     // preference lives there and not in the shared draw.
-    return { items: withOneSpot(drawn.items, Math.random, itemBank()) };
+    return planSteps(withOneSpot(drawn.items, Math.random, itemBank()), Math.random);
   }, []);
+
+  /*
+    ONE MORE, and it appends rather than restarting.
+
+    The mode used to stop dead at eight with a Done button, which is a strange
+    thing to do to somebody who is enjoying it. An extension keeps the same
+    session: the run counts across the join, the record is written once at the
+    real end, and the items already seen are excluded so the extra three are
+    new. Nothing about it is scored differently, because nothing here is scored
+    at all.
+  */
+  const [steps, setSteps] = useState(first);
+  /** True once "one more" has been pressed, so the record is not counted twice. */
+  const [extended, setExtended] = useState(false);
+  const skills = useMemo(() => [...new Set(puzzles().map((p) => p.reasoningSkill))], []);
 
   const [at, setAt] = useState(0);
   const [answers, setAnswers] = useState<TrapHuntAnswer[]>([]);
   const [showing, setShowing] = useState<TrapHuntAnswer | null>(null);
   /** Which clause was tapped on the second beat, or null before one is. */
   const [picked, setPicked] = useState<number | null>(null);
+  /** Which skill was named on the second beat, or null before one is. */
+  const [named, setNamed] = useState<string | null>(null);
   const [saved, setSaved] = useState<{ best: number; isBest: boolean } | null>(null);
 
   const skillName = useMemo(
@@ -86,19 +116,31 @@ export function TrapHuntView({ onDone }: { onDone: () => void }) {
     [t],
   );
 
-  const item = round.items[at];
-  const done = at >= round.items.length;
+  const step = steps[at];
+  const item = step?.item;
+  const done = at >= steps.length;
 
   /*
-    The second beat exists only where the item carries the annotation, and only
-    after the binary call. It is offered whether or not that call was right: a
-    player who said "sound" has just been told they were wrong, and pointing at
-    the clause is the cheapest way to show them what they walked past.
+    The follow-up runs after the binary call, and is offered whether or not that
+    call was right: a player who said "sound" has just been told otherwise, and
+    being asked what kind and where is the cheapest way to show them what they
+    walked past.
   */
-  const asking = showing !== null && item !== undefined && hasSpot(item);
+  const followUp = showing !== null ? step?.beats[1] : undefined;
+  const askingSpot = followUp === "spot" && item !== undefined && hasSpot(item);
+  const askingName = followUp === "name" && item !== undefined;
+  const pending =
+    (askingSpot && picked === null) || (askingName && named === null);
+
   const join = segmentJoin(locale);
   const spotResult =
-    asking && picked !== null ? gradeSpot(item, picked) : null;
+    askingSpot && picked !== null ? gradeSpot(item, picked) : null;
+  /* Drawn once per item, so the four names do not reshuffle under a tapping
+     finger when the component re-renders. */
+  const options = useMemo(
+    () => (item && isTrap(item) ? nameOptions(item, skills, Math.random) : []),
+    [item, skills],
+  );
 
   function answer(saidTrap: boolean) {
     if (!item || showing) return;
@@ -111,23 +153,47 @@ export function TrapHuntView({ onDone }: { onDone: () => void }) {
     setAnswers(all);
     setShowing(null);
     setPicked(null);
+    setNamed(null);
     const nextAt = at + 1;
     setAt(nextAt);
-    if (nextAt >= round.items.length) {
-      // Recorded once, at the end, so an abandoned round costs nothing and
-      // cannot inflate the count.
+    if (nextAt >= steps.length) {
+      // Recorded at the end, so an abandoned round costs nothing and cannot
+      // inflate the count. An extension records again to keep the best run and
+      // the seen list current, but says it is a continuation so one sitting is
+      // never counted twice.
       const { stats, isBest } = recordRound(
         longestRun(all),
-        round.items.map((i) => i.id),
+        steps.map((s) => s.item.id),
+        undefined,
+        { continued: extended },
       );
       setSaved({ best: stats.bestRun, isBest });
     }
   }
 
+  /**
+   * Three more items, appended, drawn away from everything already in play.
+   *
+   * The plan is rebuilt over the new items alone, so the extension carries its
+   * own follow-up rather than inheriting a beat from the items behind it.
+   */
+  function oneMore() {
+    const seen = new Set([...recentlySeen(), ...steps.map((s) => s.item.id)]);
+    const drawn = drawRound(Math.random, EXTENSION_SIZE, undefined, seen);
+    const more = planSteps(
+      withOneSpot(drawn.items, Math.random, itemBank()),
+      Math.random,
+      1,
+    );
+    setSteps([...steps, ...more]);
+    setExtended(true);
+    setSaved(null);
+  }
+
   if (done) {
     const run = longestRun(answers);
     const right = answers.filter((a) => a.correct).length;
-    const thoughtless = alwaysTrapScore(round.items);
+    const thoughtless = alwaysTrapScore(steps.map((s) => s.item));
     return (
       <section className="flex flex-col gap-4">
         <header className="flex flex-col gap-2">
@@ -170,7 +236,7 @@ export function TrapHuntView({ onDone }: { onDone: () => void }) {
         </header>
 
         <ol className="flex flex-col gap-3">
-          {round.items.map((it, i) => {
+          {steps.map(({ item: it }, i) => {
             const res = answers[i];
             return (
               <li key={it.id} className="rounded-lg border border-rule bg-paper-2 p-3">
@@ -190,7 +256,12 @@ export function TrapHuntView({ onDone }: { onDone: () => void }) {
           })}
         </ol>
 
-        <Button onClick={onDone}>{t({ en: "Done" })}</Button>
+        <div className="grid gap-2">
+          <Button onClick={oneMore}>{t({ en: "One more" })}</Button>
+          <Button variant="ghost" onClick={onDone}>
+            {t({ en: "Done" })}
+          </Button>
+        </div>
       </section>
     );
   }
@@ -204,7 +275,7 @@ export function TrapHuntView({ onDone }: { onDone: () => void }) {
         <p className="font-sans text-[11px] font-semibold uppercase tracking-eyebrow text-ink-mute">
           {fillSlots(t({ en: "{at} of {total}" }), {
             at: nf.format(at + 1),
-            total: nf.format(round.items.length),
+            total: nf.format(steps.length),
           })}
         </p>
         <p className="text-[15px] text-ink-soft">
@@ -220,7 +291,7 @@ export function TrapHuntView({ onDone }: { onDone: () => void }) {
         argument for putting it here rather than in a mode of its own.
       */}
       <div key={item.id} className="cf-enter-sm rounded-lg border border-rule bg-paper-2 p-4">
-        {asking ? (
+        {askingSpot ? (
           <p className="text-[15px] leading-relaxed text-ink">
             {item.spot.segments.map((seg, i) => (
               <span key={i}>
@@ -261,20 +332,55 @@ export function TrapHuntView({ onDone }: { onDone: () => void }) {
               the first beat earned and because knowing WHAT KIND of flaw it is
               does not tell you which sentence carries it.
             */}
-            {asking && picked === null ? null : (
+            {pending ? null : (
               <p className="text-[13px] leading-snug text-ink-soft">
                 {t(item.explanation)}
               </p>
             )}
           </div>
 
-          {asking && picked === null ? (
+          {askingSpot && picked === null ? (
             <p className="text-[15px] text-ink-soft">
               {t({ en: "Now point at it. Which part does the damage?" })}
             </p>
           ) : null}
 
-          {asking && spotResult !== null ? (
+          {askingName && named === null ? (
+            <div className="flex flex-col gap-2">
+              <p className="text-[15px] text-ink-soft">
+                {t({ en: "Now name it. What does it fall for?" })}
+              </p>
+              <div className="grid gap-2">
+                {options.map((slug) => (
+                  <button
+                    key={slug}
+                    type="button"
+                    onClick={() => setNamed(slug)}
+                    className={choiceButton}
+                  >
+                    {skillName(slug)}
+                  </button>
+                ))}
+              </div>
+            </div>
+          ) : null}
+
+          {askingName && named !== null ? (
+            <div className="cf-enter-sm rounded-lg border border-rule bg-paper-2 p-3">
+              <div className="flex items-center gap-2">
+                <span>{gradeName(item, named) ? "✅" : "❌"}</span>
+                <span className="font-sans text-[11px] font-semibold uppercase tracking-eyebrow text-ink-mute">
+                  {gradeName(item, named)
+                    ? t({ en: "Named it" })
+                    : fillSlots(t({ en: "It falls for {skill}." }), {
+                        skill: skillName(item.trap!),
+                      })}
+                </span>
+              </div>
+            </div>
+          ) : null}
+
+          {askingSpot && spotResult !== null ? (
             <div className="cf-enter-sm rounded-lg border border-rule bg-paper-2 p-3">
               <div className="mb-1 flex items-center gap-2">
                 <span>{spotResult.correct ? "✅" : "❌"}</span>
@@ -288,9 +394,9 @@ export function TrapHuntView({ onDone }: { onDone: () => void }) {
             </div>
           ) : null}
 
-          {asking && picked === null ? null : (
+          {pending ? null : (
             <Button onClick={next}>
-              {at + 1 >= round.items.length
+              {at + 1 >= steps.length
                 ? t({ en: "See the round" })
                 : t({ en: "Next" })}
             </Button>

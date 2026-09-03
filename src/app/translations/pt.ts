@@ -7368,4 +7368,10 @@ export const pt: Record<string, string> = {
   "A pharmacoepidemiology study estimates the effect of one medicine on falls, adjusting for a second medicine that is often taken alongside it.": "Um estudo de farmacoepidemiologia estima o efeito de um medicamento sobre quedas, ajustando para um segundo medicamento frequentemente tomado junto.",
   "Both coefficients are printed together.": "Os dois coeficientes são impressos juntos.",
   "A safety bulletin cites the second medicine's coefficient as evidence that it too raises the risk of falls, and notes that the confidence interval is narrow.": "Um boletim de segurança cita o coeficiente do segundo medicamento como evidência de que ele também aumenta o risco de quedas, e observa que o intervalo de confiança é estreito.",
+
+  // ---- Session shape ----
+  "Now name it. What does it fall for?": "Agora nomeie. Em que este raciocínio cai?",
+  "Named it": "Nomeou certo",
+  "It falls for {skill}.": "Cai em {skill}.",
+  "One more": "Mais um",
 };

@@ -7336,4 +7336,10 @@ export const bn: Record<string, string> = {
   "A pharmacoepidemiology study estimates the effect of one medicine on falls, adjusting for a second medicine that is often taken alongside it.": "একটি ওষুধ-মহামারীবিদ্যা গবেষণা একটি ওষুধের পড়ে যাওয়ার উপর প্রভাব হিসাব করে, প্রায়ই একসঙ্গে নেওয়া হয় এমন একটি দ্বিতীয় ওষুধের জন্য সমন্বয় করে।",
   "Both coefficients are printed together.": "দুটি সহগই পাশাপাশি ছাপা হয়।",
   "A safety bulletin cites the second medicine's coefficient as evidence that it too raises the risk of falls, and notes that the confidence interval is narrow.": "একটি নিরাপত্তা বুলেটিন দ্বিতীয় ওষুধের সহগকে এই প্রমাণ হিসেবে উদ্ধৃত করে যে সেটিও পড়ে যাওয়ার ঝুঁকি বাড়ায়, আর জানায় যে আস্থার ব্যবধান সংকীর্ণ।",
+
+  // ---- Session shape ----
+  "Now name it. What does it fall for?": "এবার নাম বলুন। এই যুক্তি কীসে পড়ছে?",
+  "Named it": "নাম ঠিক বলেছেন",
+  "It falls for {skill}.": "এটি যাতে পড়ছে তা হল {skill}।",
+  "One more": "আরও একটি",
 };

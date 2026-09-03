@@ -7358,4 +7358,10 @@ export const ru: Record<string, string> = {
   "A pharmacoepidemiology study estimates the effect of one medicine on falls, adjusting for a second medicine that is often taken alongside it.": "Фармакоэпидемиологическое исследование оценивает эффект одного лекарства на падения, корректируя на второе лекарство, которое часто принимают вместе с ним.",
   "Both coefficients are printed together.": "Оба коэффициента напечатаны рядом.",
   "A safety bulletin cites the second medicine's coefficient as evidence that it too raises the risk of falls, and notes that the confidence interval is narrow.": "Бюллетень по безопасности цитирует коэффициент второго лекарства как свидетельство того, что и оно повышает риск падений, и отмечает, что доверительный интервал узок.",
+
+  // ---- Session shape ----
+  "Now name it. What does it fall for?": "Теперь назовите это. Во что попадает такое рассуждение?",
+  "Named it": "Названо верно",
+  "It falls for {skill}.": "Это попадает вот во что: {skill}.",
+  "One more": "Ещё одно",
 };

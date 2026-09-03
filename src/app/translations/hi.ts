@@ -7327,4 +7327,10 @@ export const hi: Record<string, string> = {
   "A pharmacoepidemiology study estimates the effect of one medicine on falls, adjusting for a second medicine that is often taken alongside it.": "एक औषधि-महामारीविज्ञान अध्ययन किसी दवा का गिरने पर प्रभाव आँकता है, और एक दूसरी दवा के लिए समायोजित करता है जो अक्सर साथ ली जाती है।",
   "Both coefficients are printed together.": "दोनों गुणांक साथ छपते हैं।",
   "A safety bulletin cites the second medicine's coefficient as evidence that it too raises the risk of falls, and notes that the confidence interval is narrow.": "एक सुरक्षा बुलेटिन दूसरी दवा के गुणांक को इस प्रमाण के रूप में उद्धृत करता है कि वह भी गिरने का ख़तरा बढ़ाती है, और जोड़ता है कि विश्वास अंतराल संकीर्ण है।",
+
+  // ---- Session shape ----
+  "Now name it. What does it fall for?": "अब इसका नाम लीजिए। यह तर्क किसमें फँसता है?",
+  "Named it": "नाम सही बताया",
+  "It falls for {skill}.": "यह जिसमें फँसता है वह है {skill}।",
+  "One more": "एक और",
 };

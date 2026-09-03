@@ -7228,4 +7228,10 @@ export const zh: Record<string, string> = {
   "A pharmacoepidemiology study estimates the effect of one medicine on falls, adjusting for a second medicine that is often taken alongside it.": "一项药物流行病学研究估计某种药物对跌倒的影响，调整了另一种常与之同服的药物。",
   "Both coefficients are printed together.": "两个系数被并排印出。",
   "A safety bulletin cites the second medicine's coefficient as evidence that it too raises the risk of falls, and notes that the confidence interval is narrow.": "一份安全通报引用第二种药物的系数，作为它也会提高跌倒风险的证据，并指出置信区间很窄。",
+
+  // ---- Session shape ----
+  "Now name it. What does it fall for?": "现在说出它的名字。这段推理落进了什么？",
+  "Named it": "叫对了",
+  "It falls for {skill}.": "它落进的是{skill}。",
+  "One more": "再来一题",
 };

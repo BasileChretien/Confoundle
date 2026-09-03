@@ -44,3 +44,22 @@ describe("recording a round", () => {
     expect(next.recent[0]).toBe("fresh");
   });
 });
+
+describe("a session that was extended rather than restarted", () => {
+  it("does not count one sitting as two", () => {
+    // "One more" appends to the round in progress. Counting the extension as a
+    // second round would tell somebody who pressed it three times that they had
+    // played four.
+    const before = () => stats({ rounds: 3, bestRun: 4 });
+    expect(recordRound(6, ["x"], before, { continued: true }).stats.rounds).toBe(3);
+    expect(recordRound(6, ["x"], before).stats.rounds).toBe(4);
+  });
+
+  it("still updates the best run and the seen list, which are facts about items", () => {
+    const before = () => stats({ rounds: 3, bestRun: 4, recent: ["old"] });
+    const { stats: next, isBest } = recordRound(9, ["new"], before, { continued: true });
+    expect(next.bestRun).toBe(9);
+    expect(isBest).toBe(true);
+    expect(next.recent).toEqual(["new", "old"]);
+  });
+});

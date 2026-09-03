@@ -7286,4 +7286,10 @@ export const ja: Record<string, string> = {
   "A study of a bone drug and hip fracture builds its exposed group from a refill list: everyone who collected at least their second prescription.": "骨の薬と大腿骨頸部骨折の研究が、暴露群を再処方の一覧から作る。少なくとも二回目の処方を受け取った人全員である。",
   "Unexposed comparators are drawn from the same practices.": "非暴露の比較対象は同じ診療所から取る。",
   "Fracture rates are much lower in the exposed group over five years, and the analysis adjusts for age, prior fracture and bone density where recorded.": "五年間の骨折率は暴露群のほうがはるかに低く、解析は年齢、既往骨折、記録があれば骨密度で調整している。",
+
+  // ---- Session shape ----
+  "Now name it. What does it fall for?": "では名前を挙げてほしい。これは何にはまっているか。",
+  "Named it": "言い当てた",
+  "It falls for {skill}.": "これがはまっているのは{skill}である。",
+  "One more": "もう一問",
 };

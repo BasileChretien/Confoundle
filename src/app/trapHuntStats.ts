@@ -50,17 +50,28 @@ export function readTrapHunt(): TrapHuntStats {
  * this round set a new best, since the summary says so and should not have to
  * compare two numbers itself.
  */
+/**
+ * `continued` records a session that has already been counted once.
+ *
+ * WHY IT EXISTS. Trap Hunt can now be extended at the end rather than stopping
+ * dead, and an extension is the same sitting rather than a second one. Writing
+ * an ordinary record for it would count one session as two, so a player who
+ * pressed "one more" three times would be told they had played four rounds. The
+ * best run and the seen list still update, because those are facts about the
+ * items answered; only the tally of sittings is held.
+ */
 export function recordRound(
   run: number,
   seenIds: readonly string[],
   read: () => TrapHuntStats = readTrapHunt,
+  { continued = false }: { continued?: boolean } = {},
 ): { stats: TrapHuntStats; isBest: boolean } {
   const before = read();
   // Strictly greater, so equalling your best is not announced as beating it.
   const isBest = run > before.bestRun;
   const next: TrapHuntStats = {
     bestRun: Math.max(before.bestRun, run),
-    rounds: before.rounds + 1,
+    rounds: before.rounds + (continued ? 0 : 1),
     recent: [...seenIds, ...before.recent].slice(0, RECENT_CAP),
   };
   try {

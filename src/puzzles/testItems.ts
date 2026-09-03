@@ -11148,6 +11148,170 @@ const items: TestItem[] = [
       en: "Discarding the patients already on the drug is the point, not a loss of power: those are precisely the people whose early events and early stops happened before anyone was watching. Saying how many were dropped lets a reader judge how much of the registry the restriction cost. The smaller estimate is what this design usually produces, and it is the one that matches what happens when somebody starts the drug.",
     },
   },
+
+  // ---- Table 2 fallacy ----
+  {
+    id: "t2-pollution-smoking",
+    scenario: {
+      en: "A cohort study estimates the effect of long-term air pollution exposure on asthma, adjusting for smoking, income and urban residence. It prints all four adjusted odds ratios in one table. The press release leads with the smoking row, reporting it as the study's estimate of how much smoking raises asthma risk. The pollution estimate itself is carefully specified and the adjustment set was chosen for it.",
+    },
+    trap: "table-two-fallacy",
+    explanation: {
+      en: "The adjustment set was assembled to make the pollution estimate unconfounded, and nobody asked what smoking would need. Smoking has its own causes of asthma travelling with it, occupational exposure among them, and none of those are in the model because the pollution estimate did not require them. The smoking row is a real, tightly bounded number about something other than the effect of smoking. If smoking is of interest it needs its own model with its own adjustment set.",
+    },
+  },
+  {
+    id: "t2-statin-diabetes",
+    scenario: {
+      en: "A paper estimating the effect of a lipid drug on heart attacks adjusts for diabetes, age and blood pressure, and tabulates every coefficient. A clinical review quotes the diabetes row as the paper's estimate of how much diabetes raises heart attack risk. Diabetes is a reason people are prescribed the drug in the first place, and the model's own exposure estimate is properly specified.",
+    },
+    trap: "table-two-fallacy",
+    explanation: {
+      en: "Diabetes lies upstream of the drug: it is one of the things that puts a person on it. Holding the drug fixed, which is what putting it in the model does, blocks the part of diabetes' effect that runs through being treated. What is left in that row is the leftover, not the total effect of diabetes, and a reader quoting it as the effect of diabetes is reading a different quantity than the label suggests.",
+    },
+  },
+  {
+    id: "t2-exercise-covariate",
+    scenario: {
+      en: "A nutrition cohort estimates the effect of a dietary pattern on cardiovascular death, adjusting for physical activity, smoking and education. A commentary cites the physical activity row as evidence for how much exercise reduces cardiovascular death, noting that the study is large and that the estimate is precise.",
+    },
+    trap: "table-two-fallacy",
+    explanation: {
+      en: "Precision says how tightly the number is bounded, not what it is a number about. Physical activity has its own confounders, general health among them, and the model contains only what the dietary estimate needed. The activity coefficient is therefore confounded even though the dietary one may not be, and being large and precise makes a wrong quantity more confidently wrong rather than more nearly right.",
+    },
+  },
+  {
+    id: "t2-class-size",
+    scenario: {
+      en: "An education study estimates the effect of a new reading programme on test scores, adjusting for class size, teacher experience and school funding. All coefficients appear in one table. A policy brief quotes the class size row as the study's finding on class size, and recommends smaller classes on that basis. The programme estimate is the one the study was designed around.",
+    },
+    trap: "table-two-fallacy",
+    explanation: {
+      en: "Class size is in the model to make the programme estimate work, and it was never specified for its own sake. Whether that coefficient is the effect of class size depends on what else drives both class size and scores, and nobody checked, because the programme estimate did not need it. The row is being read as a finding when it is a nuisance parameter that happened to be printed.",
+    },
+  },
+  {
+    id: "t2-surgical-volume",
+    scenario: {
+      en: "A study of a surgical technique adjusts for hospital volume, patient age and comorbidity, and prints the whole model. A quality-improvement report quotes the hospital volume row as the effect of hospital volume on mortality, and uses it to argue for centralising the operation. The technique estimate itself is the study's stated purpose.",
+    },
+    trap: "table-two-fallacy",
+    explanation: {
+      en: "Hospital volume is upstream of which technique gets used: high-volume centres adopt techniques differently. Holding the technique fixed blocks the part of the volume effect that runs through technique choice, so the volume row is a direct effect and not the total effect that a centralisation argument needs. Nothing in the table marks it as a different kind of quantity from the one beside it.",
+    },
+  },
+  {
+    id: "t2-bmi-mediator",
+    scenario: {
+      en: "A study of a sedentary occupation and diabetes adjusts for body mass index, and reports the coefficient for body mass index alongside the occupational one. A summary reads the body mass index row as the effect of body mass index on diabetes and quotes it beside estimates from studies designed to answer that question.",
+    },
+    trap: "table-two-fallacy",
+    explanation: {
+      en: "Body mass index sits on the path from the occupation to diabetes, so putting it in the model blocks that path. The occupational row becomes a direct effect and the body mass index row becomes a quantity conditioned on occupation, which is not what the studies it is being quoted beside estimated. Two numbers that look comparable are answering different questions.",
+    },
+  },
+  {
+    id: "t2-union-wages",
+    scenario: {
+      en: "An economics paper estimates the effect of a training programme on wages, adjusting for union membership, tenure and industry. Every coefficient is tabulated. A newspaper reports the union membership row as the study's estimate of the union wage premium. The training estimate is the paper's subject and its adjustment set was chosen for that.",
+    },
+    trap: "table-two-fallacy",
+    explanation: {
+      en: "The union wage premium is a question with its own literature and its own confounding, none of which this model addresses, because it was built to isolate the training effect. The union coefficient is conditioned on training and on whatever else the training estimate required, and is missing whatever the union question would have required. It is a real number from a real model and it is not the union wage premium.",
+    },
+  },
+  {
+    id: "t2-guideline-age",
+    scenario: {
+      en: "A prognostic paper reports a model for post-operative complications and prints coefficients for the procedure, for age, and for two comorbidities. A guideline cites the age coefficient as the independent effect of age on complications. The paper says clearly which variable it set out to estimate.",
+    },
+    trap: "table-two-fallacy",
+    explanation: {
+      en: "The word independent in that citation is doing work the model cannot support. The age coefficient is conditioned on the procedure and on the two comorbidities, and older patients get different procedures and have more comorbidities, so part of what age does has been blocked. The row is the effect of age with several of its own routes closed off, which is a different quantity from the one a guideline needs.",
+    },
+  },
+  {
+    id: "t2-deprivation-row",
+    scenario: {
+      en: "A study of a screening programme and late-stage diagnosis adjusts for area deprivation, ethnicity and distance to the nearest clinic. The paper prints all coefficients in one table and the discussion interprets the deprivation row as showing how much deprivation drives late diagnosis. The screening estimate is the study's own subject.",
+    },
+    trap: "table-two-fallacy",
+    explanation: {
+      en: "Deprivation is a cause of whether people attend screening, so it sits upstream of the exposure and its coefficient has the screening path blocked. It is also entangled with things the model does not contain, because the screening estimate did not need them. Both defects sit in the same row, and the table shows neither: it prints one column of numbers to the same number of decimal places.",
+    },
+  },
+  {
+    id: "t2-drug-interaction-covariate",
+    scenario: {
+      en: "A pharmacoepidemiology study estimates the effect of one medicine on falls, adjusting for a second medicine that is often taken alongside it. Both coefficients are printed together. A safety bulletin cites the second medicine's coefficient as evidence that it too raises the risk of falls, and notes that the confidence interval is narrow.",
+    },
+    trap: "table-two-fallacy",
+    explanation: {
+      en: "The second medicine is in the model because it confounds the first, not because anybody worked out what an unconfounded estimate of it would require. Its own confounders, including whatever conditions lead to it being taken, are absent. A narrow interval means the model is confident about the quantity it estimated, and the quantity it estimated is not the effect of the second medicine on falls.",
+    },
+  },
+
+  /*
+    SOUND, and each one shows a DEFENCE: separate models per question, a
+    caption that says which rows are interpretable, printing only the
+    exposure, giving a second exposure its own adjustment set, and stating
+    when a covariate has no path to the exposure and so can be read.
+
+    The last of those is the one worth having, because it is the case the
+    trap items never show: a covariate row CAN be a valid total effect, and
+    a player who learns "never read the other rows" has learned a rule
+    rather than the reason. The card itself has such a row.
+  */
+  {
+    id: "t2-sound-separate-models",
+    scenario: {
+      en: "A paper interested in three exposures fits three separate models, each with its own adjustment set worked out from its own causal diagram, and reports each estimate in its own row with a note saying which model it came from. The adjustment sets overlap but are not identical.",
+    },
+    trap: null,
+    explanation: {
+      en: "This is the remedy, and it is not statistical: one question, one model, one adjustment set chosen for that question. The sets differ because what confounds one exposure is not what confounds another, and saying which model each row came from is what stops a reader treating the three as one table of comparable effects. Nothing here is being read off a model that was built for something else.",
+    },
+  },
+  {
+    id: "t2-sound-caption-says-which",
+    scenario: {
+      en: "A study reports a single model with the exposure and four covariates, and the table caption states that only the exposure coefficient is interpretable as a causal effect, the others being included for confounding control. The discussion does not mention the covariate coefficients at all.",
+    },
+    trap: null,
+    explanation: {
+      en: "Printing the whole model is fine; the fallacy is in the reading, and the caption forecloses it. Saying which rows are interpretable costs one sentence and is the difference between a table a reader can use and a table that invites four conclusions where the study supports one. Declining to discuss the covariates in the text is the same discipline applied twice.",
+    },
+  },
+  {
+    id: "t2-sound-exposure-only",
+    scenario: {
+      en: "A paper prints only the exposure's adjusted estimate and lists the adjustment set in the methods, with no table of covariate coefficients. A reviewer asks for the full model and the authors decline, explaining that those coefficients would not be valid estimates of anything a reader would want.",
+    },
+    trap: null,
+    explanation: {
+      en: "Not printing a number is a legitimate way to stop it being misread, and the authors gave the reason rather than just refusing. The adjustment set is in the methods, so the analysis is fully reportable and reproducible; what is withheld is a column of quantities that were never specified for their own sake. Transparency is about being able to check the work, not about tabulating every parameter.",
+    },
+  },
+  {
+    id: "t2-sound-own-adjustment-set",
+    scenario: {
+      en: "A study primarily about occupational exposure is also interested in smoking. It reports the occupational estimate from one model, and then reports smoking from a second model built with an adjustment set worked out for smoking specifically, including two variables the first model does not contain.",
+    },
+    trap: null,
+    explanation: {
+      en: "The second exposure is treated as an exposure rather than as a leftover coefficient. Its adjustment set differs from the first because the two variables have different causes, which is exactly why the first model's smoking row would not have answered the question. Reporting both estimates is fine; what would not be fine is reporting the second from the first model.",
+    },
+  },
+  {
+    id: "t2-sound-predictor-declared",
+    scenario: {
+      en: "A model includes a variable purely because it predicts the outcome, with no causal relation to the exposure, and the paper says so. It reports that variable's coefficient and notes that, unlike the other covariates, this one is not conditioned on anything that lies between it and the outcome.",
+    },
+    trap: null,
+    explanation: {
+      en: "A covariate with no path to the exposure has nothing blocked and nothing to lose by the exposure being in the model, so its coefficient can be a total effect. The paper has done the work of saying which case this is rather than leaving a reader to assume all rows are alike. That distinction is the whole substance of the fallacy, and stating it is what makes the row readable.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

@@ -100,6 +100,7 @@ describe("the registry sequence", () => {
   "both-sides-were-right",
   "it-learned-the-hospital",
   "when-the-clock-started",
+  "four-rows-three-meanings",
   ];
 
   it("is unchanged, and grew only at the end", () => {

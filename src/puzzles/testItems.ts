@@ -63,15 +63,82 @@ export const ItemFigure = z.object({
 });
 export type ItemFigure = z.infer<typeof ItemFigure>;
 
-export const TestItem = z.object({
-  id: z.string().min(1),
-  scenario: LocalizedText,
-  /** null = the reasoning is sound; otherwise the reasoningSkill it trips on. */
-  trap: z.string().nullable(),
-  explanation: LocalizedText,
-  /** Optional: most items are prose, and prose is right for most of them. */
-  figure: ItemFigure.optional(),
+/**
+ * The scenario cut into clauses, one of which is the one that does the damage.
+ *
+ * WHY THIS EXISTS, and it is the only reason: every interaction in this app is
+ * the same gesture. Trap Hunt, the calibration run and the daily all draw from
+ * this one bank and all ask you to read a paragraph and press a button; the
+ * puzzles add a chart and are the exhaustible 79. One verb, and the most
+ * expensive verb available, which is careful reading. That is a fine design for
+ * a thing you meet twenty times and a bad one for a thing you meet daily.
+ *
+ * So this adds a second verb to the bank rather than a fourth mode to the app:
+ * having decided that a scenario falls for something, POINT AT THE CLAUSE. It
+ * is a harder question than the binary, it needs no new prose, and it is the
+ * skill the binary only approximates, since noticing that an argument smells is
+ * worth much less than being able to say which sentence did it.
+ *
+ * SEGMENTS RATHER THAN OFFSETS, and rather than a quoted substring, because the
+ * scenario is translated into nine other languages. A character range into the
+ * English is meaningless in Japanese; a substring match requires a translator to
+ * reproduce a clause identically in two places and fails silently when they do
+ * not. Each segment is its own `LocalizedText`, so it is a dictionary key like
+ * any other and `coverage.test.ts` enforces it without being taught anything.
+ *
+ * THE ENGLISH MUST STILL JOIN BACK TO THE SCENARIO, which `spotJoinsScenario`
+ * checks for every annotated item. That keeps one source of truth: an editor
+ * who rewords the scenario and forgets the segments gets a failure rather than
+ * a screen where the tappable text and the read text quietly disagree.
+ *
+ * Only a trap can carry one. A sound item has no clause that does the damage,
+ * and inventing one would teach the habit this bank exists to punish.
+ */
+export const SpotTheTell = z.object({
+  /** The scenario in order, each clause its own translatable string. */
+  segments: z.array(LocalizedText).min(3),
+  /** Index into `segments` of the clause that does the damage. */
+  tell: z.number().int().nonnegative(),
+  /** One line on why that clause and not its neighbours. */
+  why: LocalizedText,
 });
+export type SpotTheTell = z.infer<typeof SpotTheTell>;
+
+export const TestItem = z
+  .object({
+    id: z.string().min(1),
+    scenario: LocalizedText,
+    /** null = the reasoning is sound; otherwise the reasoningSkill it trips on. */
+    trap: z.string().nullable(),
+    explanation: LocalizedText,
+    /** Optional: most items are prose, and prose is right for most of them. */
+    figure: ItemFigure.optional(),
+    /** Optional: the clause-level question, on the items that carry one. */
+    spot: SpotTheTell.optional(),
+  })
+  .superRefine((d, ctx) => {
+    if (d.spot === undefined) return;
+    if (d.trap === null)
+      ctx.addIssue({
+        code: "custom",
+        path: ["spot"],
+        message: "sound reasoning has no clause that does the damage",
+      });
+    if (d.spot.tell >= d.spot.segments.length)
+      ctx.addIssue({
+        code: "custom",
+        path: ["spot", "tell"],
+        message: `tell ${d.spot.tell} names no segment (there are ${d.spot.segments.length})`,
+      });
+    const joined = d.spot.segments.map((s) => s.en).join(" ");
+    if (joined !== d.scenario.en)
+      ctx.addIssue({
+        code: "custom",
+        path: ["spot", "segments"],
+        message:
+          "the segments do not join back to the scenario, so the text a player taps is not the text they read",
+      });
+  });
 export type TestItem = z.infer<typeof TestItem>;
 
 const items: TestItem[] = [
@@ -10993,6 +11060,18 @@ const items: TestItem[] = [
     explanation: {
       en: "Everyone in the treated group was already taking the drug on the day the study started, so it holds nobody who began it and died in the first months, and nobody who began it and stopped. Those people are absent from the treated group and are not in the comparison group either. What is being compared is people who have already survived the drug against everybody who was never on it. Adjustment cannot weigh people who are not in the data; the fix is to enrol at the first prescription and follow everyone from there.",
     },
+    spot: {
+      segments: [
+        { en: "A health system compares death rates between people taking a cholesterol drug and people not taking it." },
+        { en: "The treated group was identified from a single day's pharmacy records: everyone holding a current prescription on the first of January." },
+        { en: "Follow-up runs from that date." },
+        { en: "The drug group has markedly lower mortality, and the analysis adjusts for age, sex, smoking, blood pressure and prior events." },
+      ],
+      tell: 1,
+      why: {
+        en: "The other clauses are all fine work done afterwards. This one decides who was allowed into the study at all, and no amount of adjusting in the last clause can reach somebody who is not in the data.",
+      },
+    },
   },
   {
     id: "pub-hrt-current-users",
@@ -11002,6 +11081,17 @@ const items: TestItem[] = [
     trap: "prevalent-user-bias",
     explanation: {
       en: "Current use at enrolment is a status that only women who started and continued can hold. Those who started and had an early event, or who stopped because of one, are not in the current-user group, and the never-users have no equivalent exclusion. The comparison is therefore between women selected for having done well on the drug and women who were never exposed to the selection at all. Enrolling women at their first prescription instead would put the early events back where they happened.",
+    },
+    spot: {
+      segments: [
+        { en: "A cohort study of hormone therapy and heart disease compares women recorded as current users at enrolment with women who had never used it." },
+        { en: "Current users have substantially fewer heart attacks over the following decade." },
+        { en: "The model adjusts for age, weight, smoking and social class, and the outcome was taken from hospital records rather than self-report." },
+      ],
+      tell: 0,
+      why: {
+        en: "Everything after this is careful and beside the point. The group was already chosen by the time the model in the last clause got to work, and a hospital record cannot recover a woman who stopped before enrolment.",
+      },
     },
   },
   {
@@ -11023,6 +11113,17 @@ const items: TestItem[] = [
     explanation: {
       en: "Assembling the cohort at the six-month clinic means every patient in it survived six months with a working graft while on their drug. Anyone whose graft failed at two months, or who was switched off the newer drug because of side effects, is not in the comparison. The newer drug is being judged only on the patients it did not fail, and matching on donor type does nothing about who was eligible to be matched in the first place.",
     },
+    spot: {
+      segments: [
+        { en: "A transplant centre compares graft survival between patients on a maintenance immunosuppressant and patients on an older regimen." },
+        { en: "The cohort was assembled from patients attending the six-month clinic, and each was classified by the drug they were on that day." },
+        { en: "The newer drug looks considerably better, and the two groups are matched on donor type and recipient age." },
+      ],
+      tell: 1,
+      why: {
+        en: "Matching on donor type and age, in the last clause, is real work on the wrong problem. This clause is where the cohort was assembled out of people who had already survived six months.",
+      },
+    },
   },
   {
     id: "pub-claims-cross-section",
@@ -11033,6 +11134,17 @@ const items: TestItem[] = [
     explanation: {
       en: "A quarter's filled prescriptions identify people who are on the therapy now, which is a group that has already been filtered by everyone who tried it and came off it. Patients who started, had a bad reaction and stopped are in neither group as users. Adjusting for last year's severity does not restore them, because they are not rows in the dataset waiting to be weighted; they are simply not there. The design that answers the question enrols at the first fill.",
     },
+    spot: {
+      segments: [
+        { en: "An insurer compares hospital admissions between members with a filled prescription for an inhaled maintenance therapy in the current quarter and members with asthma who have none." },
+        { en: "Current users are admitted less often." },
+        { en: "The comparison is adjusted for age, prior admissions and a measure of disease severity from the previous year." },
+      ],
+      tell: 0,
+      why: {
+        en: "The severity measure in the last clause is the tempting answer and it is the wrong one: it weighs people who are in the data. This clause is what decided who got in.",
+      },
+    },
   },
   {
     id: "pub-bisphosphonate-refills",
@@ -11042,6 +11154,17 @@ const items: TestItem[] = [
     trap: "prevalent-user-bias",
     explanation: {
       en: "Requiring a second prescription to enter the exposed group means the exposed group cannot contain anyone who took one course and stopped, and cannot contain anyone who fractured or died before the refill was due. Every one of those events is invisible on the treated side and fully counted on the untreated side. This is a question about eligibility rather than about analysis, and no covariate list repairs it.",
+    },
+    spot: {
+      segments: [
+        { en: "A study of a bone drug and hip fracture builds its exposed group from a refill list: everyone who collected at least their second prescription." },
+        { en: "Unexposed comparators are drawn from the same practices." },
+        { en: "Fracture rates are much lower in the exposed group over five years, and the analysis adjusts for age, prior fracture and bone density where recorded." },
+      ],
+      tell: 0,
+      why: {
+        en: "Requiring the second prescription is the filter. Everything after it, including the adjustment in the last clause, operates on a group that already excludes anyone who fractured or died early.",
+      },
     },
   },
   {
@@ -11072,6 +11195,17 @@ const items: TestItem[] = [
     trap: "prevalent-user-bias",
     explanation: {
       en: "Recruiting at the five-year review means only implants that had not already been revised can enter, so each device is judged on the ones that lasted five years. A device that fails early loses those failures from its own record entirely. Complete revision capture afterwards is real and does nothing about this, because the missing failures happened before anybody was recruited.",
+    },
+    spot: {
+      segments: [
+        { en: "A comparison of two hip implants recruits patients at their routine five-year review and follows them for revision surgery over the next five years." },
+        { en: "One implant shows a far lower revision rate." },
+        { en: "The two groups are similar in age, sex and surgical indication, and revisions are captured from a national registry rather than from the surgeons." },
+      ],
+      tell: 0,
+      why: {
+        en: "The registry capture in the last clause is genuinely good practice and cannot help: it counts revisions from the moment of recruitment onwards, and the failures that matter happened before that moment.",
+      },
     },
   },
   {
@@ -11159,6 +11293,18 @@ const items: TestItem[] = [
     explanation: {
       en: "The adjustment set was assembled to make the pollution estimate unconfounded, and nobody asked what smoking would need. Smoking has its own causes of asthma travelling with it, occupational exposure among them, and none of those are in the model because the pollution estimate did not require them. The smoking row is a real, tightly bounded number about something other than the effect of smoking. If smoking is of interest it needs its own model with its own adjustment set.",
     },
+    spot: {
+      segments: [
+        { en: "A cohort study estimates the effect of long-term air pollution exposure on asthma, adjusting for smoking, income and urban residence." },
+        { en: "It prints all four adjusted odds ratios in one table." },
+        { en: "The press release leads with the smoking row, reporting it as the study's estimate of how much smoking raises asthma risk." },
+        { en: "The pollution estimate itself is carefully specified and the adjustment set was chosen for it." },
+      ],
+      tell: 2,
+      why: {
+        en: "Nothing is wrong with the study; the last clause says as much and means it. The damage is done by the reader in this clause, who lifts a row that only existed to make another row work.",
+      },
+    },
   },
   {
     id: "t2-statin-diabetes",
@@ -11189,6 +11335,18 @@ const items: TestItem[] = [
     explanation: {
       en: "Class size is in the model to make the programme estimate work, and it was never specified for its own sake. Whether that coefficient is the effect of class size depends on what else drives both class size and scores, and nobody checked, because the programme estimate did not need it. The row is being read as a finding when it is a nuisance parameter that happened to be printed.",
     },
+    spot: {
+      segments: [
+        { en: "An education study estimates the effect of a new reading programme on test scores, adjusting for class size, teacher experience and school funding." },
+        { en: "All coefficients appear in one table." },
+        { en: "A policy brief quotes the class size row as the study's finding on class size, and recommends smaller classes on that basis." },
+        { en: "The programme estimate is the one the study was designed around." },
+      ],
+      tell: 2,
+      why: {
+        en: "The first clause is a perfectly good study and the last says what it was designed around. The error is here, in a brief quoting a row that nobody ever specified for its own sake.",
+      },
+    },
   },
   {
     id: "t2-surgical-volume",
@@ -11198,6 +11356,17 @@ const items: TestItem[] = [
     trap: "table-two-fallacy",
     explanation: {
       en: "Hospital volume is upstream of which technique gets used: high-volume centres adopt techniques differently. Holding the technique fixed blocks the part of the volume effect that runs through technique choice, so the volume row is a direct effect and not the total effect that a centralisation argument needs. Nothing in the table marks it as a different kind of quantity from the one beside it.",
+    },
+    spot: {
+      segments: [
+        { en: "A study of a surgical technique adjusts for hospital volume, patient age and comorbidity, and prints the whole model." },
+        { en: "A quality-improvement report quotes the hospital volume row as the effect of hospital volume on mortality, and uses it to argue for centralising the operation." },
+        { en: "The technique estimate itself is the study's stated purpose." },
+      ],
+      tell: 1,
+      why: {
+        en: "The first clause describes an ordinary adjusted model and the last states its purpose. This clause is where a coefficient meant for adjustment is turned into an argument for reorganising a health service.",
+      },
     },
   },
   {
@@ -11229,6 +11398,17 @@ const items: TestItem[] = [
     explanation: {
       en: "The word independent in that citation is doing work the model cannot support. The age coefficient is conditioned on the procedure and on the two comorbidities, and older patients get different procedures and have more comorbidities, so part of what age does has been blocked. The row is the effect of age with several of its own routes closed off, which is a different quantity from the one a guideline needs.",
     },
+    spot: {
+      segments: [
+        { en: "A prognostic paper reports a model for post-operative complications and prints coefficients for the procedure, for age, and for two comorbidities." },
+        { en: "A guideline cites the age coefficient as the independent effect of age on complications." },
+        { en: "The paper says clearly which variable it set out to estimate." },
+      ],
+      tell: 1,
+      why: {
+        en: "The word independent is the whole error. The first clause is an ordinary model and the last says plainly what it was for; only here does somebody claim a coefficient means something the model never estimated.",
+      },
+    },
   },
   {
     id: "t2-deprivation-row",
@@ -11248,6 +11428,17 @@ const items: TestItem[] = [
     trap: "table-two-fallacy",
     explanation: {
       en: "The second medicine is in the model because it confounds the first, not because anybody worked out what an unconfounded estimate of it would require. Its own confounders, including whatever conditions lead to it being taken, are absent. A narrow interval means the model is confident about the quantity it estimated, and the quantity it estimated is not the effect of the second medicine on falls.",
+    },
+    spot: {
+      segments: [
+        { en: "A pharmacoepidemiology study estimates the effect of one medicine on falls, adjusting for a second medicine that is often taken alongside it." },
+        { en: "Both coefficients are printed together." },
+        { en: "A safety bulletin cites the second medicine's coefficient as evidence that it too raises the risk of falls, and notes that the confidence interval is narrow." },
+      ],
+      tell: 2,
+      why: {
+        en: "The first two clauses describe an ordinary and correct piece of modelling. Only here does a coefficient that was in the model to clean up somebody else get read as a finding of its own, and the narrow interval quoted alongside it is true and beside the point.",
+      },
     },
   },
 

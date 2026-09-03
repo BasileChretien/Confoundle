@@ -13,6 +13,23 @@ import {
   type TrapHuntAnswer,
 } from "../srs/trapHunt";
 import { recentlySeen, recordRound } from "../app/trapHuntStats";
+import { itemBank } from "../puzzles/itemBank";
+import { gradeSpot, hasSpot, segmentJoin, withOneSpot } from "../srs/spotTheTell";
+
+/**
+ * A clause inside the scenario, tappable on the second beat.
+ *
+ * Inline rather than a block, so the paragraph still reads as a paragraph: the
+ * question is which sentence did it, and a player who has been handed the
+ * sentences pre-separated into a list has been given most of the answer.
+ */
+function segmentButton(state: "tell" | "wrong" | null): string {
+  const base =
+    "cursor-pointer rounded-[3px] px-0.5 text-left underline decoration-dotted decoration-ink-mute underline-offset-4 transition focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand";
+  if (state === "tell") return `${base} bg-brand/25 decoration-transparent`;
+  if (state === "wrong") return `${base} bg-rust/20 decoration-transparent`;
+  return `${base} hover:bg-paper-3`;
+}
 
 const choiceButton =
   "rounded-lg border border-rule bg-paper-2 px-4 py-3.5 text-left font-semibold text-ink transition hover:border-ink/40 hover:bg-paper-3 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand active:scale-[.99]";
@@ -43,17 +60,22 @@ export function TrapHuntView({ onDone }: { onDone: () => void }) {
   // Every numeral this view draws goes through here before it reaches a slot.
   // A slot fills by string coercion, which is always Latin digits, so a count
   // dropped in raw stays "5" beside fully translated Bengali or Arabic text.
-  const nf = new Intl.NumberFormat(useLocale());
+  const locale = useLocale();
+  const nf = new Intl.NumberFormat(locale);
 
   // Drawn once per mount, avoiding whatever the player has seen lately.
-  const round = useMemo(
-    () => drawRound(Math.random, ROUND_SIZE, undefined, recentlySeen()),
-    [],
-  );
+  const round = useMemo(() => {
+    const drawn = drawRound(Math.random, ROUND_SIZE, undefined, recentlySeen());
+    // One clause question per round, guaranteed. See `withOneSpot` for why the
+    // preference lives there and not in the shared draw.
+    return { items: withOneSpot(drawn.items, Math.random, itemBank()) };
+  }, []);
 
   const [at, setAt] = useState(0);
   const [answers, setAnswers] = useState<TrapHuntAnswer[]>([]);
   const [showing, setShowing] = useState<TrapHuntAnswer | null>(null);
+  /** Which clause was tapped on the second beat, or null before one is. */
+  const [picked, setPicked] = useState<number | null>(null);
   const [saved, setSaved] = useState<{ best: number; isBest: boolean } | null>(null);
 
   const skillName = useMemo(
@@ -67,6 +89,17 @@ export function TrapHuntView({ onDone }: { onDone: () => void }) {
   const item = round.items[at];
   const done = at >= round.items.length;
 
+  /*
+    The second beat exists only where the item carries the annotation, and only
+    after the binary call. It is offered whether or not that call was right: a
+    player who said "sound" has just been told they were wrong, and pointing at
+    the clause is the cheapest way to show them what they walked past.
+  */
+  const asking = showing !== null && item !== undefined && hasSpot(item);
+  const join = segmentJoin(locale);
+  const spotResult =
+    asking && picked !== null ? gradeSpot(item, picked) : null;
+
   function answer(saidTrap: boolean) {
     if (!item || showing) return;
     setShowing(grade(item, saidTrap));
@@ -77,6 +110,7 @@ export function TrapHuntView({ onDone }: { onDone: () => void }) {
     const all = [...answers, showing];
     setAnswers(all);
     setShowing(null);
+    setPicked(null);
     const nextAt = at + 1;
     setAt(nextAt);
     if (nextAt >= round.items.length) {
@@ -178,8 +212,34 @@ export function TrapHuntView({ onDone }: { onDone: () => void }) {
         </p>
       </header>
 
+      {/*
+        THE SCENARIO IS THE SAME TEXT IN BOTH BEATS, and becoming tappable is
+        the only thing that changes. A second beat that reprinted the paragraph
+        somewhere else would make a player read it twice; keeping it in place
+        means the clause question costs no reading at all, which is the whole
+        argument for putting it here rather than in a mode of its own.
+      */}
       <div key={item.id} className="cf-enter-sm rounded-lg border border-rule bg-paper-2 p-4">
-        <p className="text-[15px] leading-relaxed text-ink">{t(item.scenario)}</p>
+        {asking ? (
+          <p className="text-[15px] leading-relaxed text-ink">
+            {item.spot.segments.map((seg, i) => (
+              <span key={i}>
+                {i > 0 ? join : null}
+                <button
+                  type="button"
+                  onClick={() => setPicked(i)}
+                  className={segmentButton(
+                    picked === null ? null : i === item.spot!.tell ? "tell" : picked === i ? "wrong" : null,
+                  )}
+                >
+                  {t(seg)}
+                </button>
+              </span>
+            ))}
+          </p>
+        ) : (
+          <p className="text-[15px] leading-relaxed text-ink">{t(item.scenario)}</p>
+        )}
       </div>
 
       {showing ? (
@@ -191,15 +251,50 @@ export function TrapHuntView({ onDone }: { onDone: () => void }) {
                 {isTrap(item) ? skillName(item.trap!) : t({ en: "Sound reasoning" })}
               </span>
             </div>
-            <p className="text-[13px] leading-snug text-ink-soft">
-              {t(item.explanation)}
-            </p>
+            {/*
+              THE EXPLANATION IS HELD BACK WHILE THE CLAUSE QUESTION IS OPEN,
+              and this was found by playing it rather than by reasoning about
+              it. The explanation names the clause almost verbatim, so showing
+              it first turned the second beat into a copying exercise: the
+              answer was on screen, three lines above the thing being asked.
+              The verdict and the skill name still show, because those are what
+              the first beat earned and because knowing WHAT KIND of flaw it is
+              does not tell you which sentence carries it.
+            */}
+            {asking && picked === null ? null : (
+              <p className="text-[13px] leading-snug text-ink-soft">
+                {t(item.explanation)}
+              </p>
+            )}
           </div>
-          <Button onClick={next}>
-            {at + 1 >= round.items.length
-              ? t({ en: "See the round" })
-              : t({ en: "Next" })}
-          </Button>
+
+          {asking && picked === null ? (
+            <p className="text-[15px] text-ink-soft">
+              {t({ en: "Now point at it. Which part does the damage?" })}
+            </p>
+          ) : null}
+
+          {asking && spotResult !== null ? (
+            <div className="cf-enter-sm rounded-lg border border-rule bg-paper-2 p-3">
+              <div className="mb-1 flex items-center gap-2">
+                <span>{spotResult.correct ? "✅" : "❌"}</span>
+                <span className="font-sans text-[11px] font-semibold uppercase tracking-eyebrow text-ink-mute">
+                  {spotResult.correct
+                    ? t({ en: "That is the one" })
+                    : t({ en: "The highlighted clause is the one" })}
+                </span>
+              </div>
+              <p className="text-[13px] leading-snug text-ink-soft">{t(item.spot!.why)}</p>
+            </div>
+          ) : null}
+
+          {asking && picked === null ? null : (
+            <Button onClick={next}>
+              {at + 1 >= round.items.length
+                ? t({ en: "See the round" })
+                : t({ en: "Next" })}
+            </Button>
+          )}
         </div>
       ) : (
         <div className="grid gap-2">

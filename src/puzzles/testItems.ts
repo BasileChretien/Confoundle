@@ -11614,6 +11614,117 @@ const items: TestItem[] = [
       en: "Every claim here sits at the level the design supports. Non-inferiority is asserted and superiority is explicitly disclaimed rather than quietly implied, the margin was fixed before the data existed rather than chosen to fit them, and the reason offered for preferring the new drug is a convenience advantage the trial did not need to measure. That an interval crosses the line of no difference is expected in this design and is not itself a defect, since the question asked was whether the new drug falls short by too much.",
     },
   },
+  // ---- Collider stratification ----
+  {
+    id: "cs-post-randomisation-marker",
+    scenario: {
+      en: "A randomised trial finds that a new drug reduces deaths. The investigators then repeat the analysis adjusting for a blood marker measured three months after randomisation, which the drug is known to lower, and which is also lowered by an undiagnosed illness that itself raises mortality. In the adjusted analysis the drug's benefit disappears, and the authors report that its apparent effect was explained by the marker.",
+    },
+    trap: "collider-stratification",
+    explanation: {
+      en: "The marker was measured after treatment began and the drug moves it, so holding it fixed compares patients who arrived at the same marker value by different routes. Some are there because the drug put them there, others because they are quietly ill. That is enough to manufacture an association between the drug and death with no change in the drug's real effect. Nothing was explained; a path was opened. The randomisation guaranteed a fair comparison, and adjusting for something measured afterwards throws that guarantee away.",
+    },
+  },
+  {
+    id: "cs-small-twins",
+    scenario: {
+      en: "Twins are on average much lighter at birth than single babies. A study compares infant mortality between twins and single babies of the same birth weight, and finds that among the smallest babies, twins die less often than singletons. The authors conclude that being a twin is protective for very small babies.",
+    },
+    trap: "collider-stratification",
+    explanation: {
+      en: "Being a twin is itself one of the reasons a baby is small, and it is a comparatively benign one. A single baby who is that small got there some other way, and the other ways include severe growth restriction and malformation, which carry their own high mortality. So inside a weight group the two sets of babies are not alike: they are small for different reasons, and the reason predicts survival. The comparison creates the protection rather than finding it.",
+    },
+  },
+  {
+    id: "cs-drug-rash",
+    scenario: {
+      en: "A drug causes a mild rash in about a fifth of the people who take it. Investigators studying whether the drug shortens an illness adjust their model for whether the patient had a rash, reasoning that rash is a sign of how much drug reached the tissues and so should be controlled for. The adjusted estimate is considerably weaker than the unadjusted one.",
+    },
+    trap: "collider-stratification",
+    explanation: {
+      en: "The rash is caused by the drug, so it sits downstream of the exposure. Adjusting for it compares treated and untreated patients who share a rash status they arrived at differently, and it also removes part of whatever effect travels with the drug actually reaching the tissues. The reasoning offered for the adjustment is exactly the reason not to make it: a variable that reflects how much drug got in is a consequence of treatment, not a background characteristic of the patient.",
+    },
+  },
+  {
+    id: "cs-promotion-salary",
+    scenario: {
+      en: "A company evaluates a voluntary training programme. Among employees who were promoted in the following two years, those who had taken the training earn slightly less than those who had not. Training is known to make promotion substantially more likely. The report concludes that the training gets people promoted into worse-paid roles.",
+    },
+    trap: "collider-stratification",
+    explanation: {
+      en: "Promotion is a consequence of the training, so restricting to the promoted compares people who cleared the same bar in different ways. A trained employee could be promoted partly on the strength of the training; an untrained one who was promoted anyway had to be exceptional on everything else, and whatever made them exceptional is also worth money. The comparison inside the promoted group is between the ordinary who were helped and the outstanding who needed no help.",
+    },
+  },
+  {
+    id: "cs-crash-severity",
+    scenario: {
+      en: "A car maker fits a new collision-avoidance system that prevents many severe crashes. Analysts compare injuries between cars with and without the system, restricting to crashes recorded at the highest severity band so that the comparison is like for like. Within that band, cars fitted with the system show more injuries, and a report concludes that the system makes the worst crashes worse.",
+    },
+    trap: "collider-stratification",
+    explanation: {
+      en: "The system changes which crashes reach the highest severity band, so the band is downstream of the thing being studied. A fitted car that still ends up in that band did so despite the system, which takes unusual circumstances, and unusual circumstances hurt people. An unfitted car reaches the same band easily. Restricting to a severity level that the intervention itself moves compares two differently selected sets of collisions, and the difference in how they were selected is what the figure is measuring.",
+    },
+  },
+  {
+    id: "cs-cd4-adjustment",
+    scenario: {
+      en: "A cohort study estimates the effect of starting antiretroviral therapy on survival. Because immune status strongly predicts death, the analysts adjust for the patient's CD4 count measured six months after treatment started. Treatment raises CD4 counts, and CD4 counts are also driven down by co-infections that independently raise mortality. The adjusted estimate shows almost no benefit from treatment.",
+    },
+    trap: "collider-stratification",
+    explanation: {
+      en: "The CD4 count used here is measured after treatment and is one of the things treatment changes, so it is not a background characteristic. Fixing it compares patients who reached the same count by different routes: on treatment, or by being free of the co-infections that would have pushed it down. Since those co-infections also kill, the comparison acquires an association that the treatment did not cause. The variable is predictive of death, which is what makes the adjustment tempting, and irrelevant to whether it is valid.",
+    },
+  },
+  {
+    id: "cs-inspection-failures",
+    scenario: {
+      en: "A factory changes a moulding process. The new process introduces a harmless cosmetic blemish that causes many more units to be pulled aside at inspection. Comparing only the units that failed inspection, the analysts find that failures from the new process are much less likely to be structurally defective, and the report concludes that the new process produces sounder parts when it does go wrong.",
+    },
+    trap: "collider-stratification",
+    explanation: {
+      en: "Failing inspection is caused by the new process, through the blemish, so the failed pile is not assembled the same way for the two processes. A new-process unit can be in it merely for looking wrong; an old-process unit is in it because something is actually the matter. The structural comparison inside the failed pile therefore compares cosmetic rejects against genuine faults. Whether the new process is better has to be settled on all units produced, not on the ones it caused to be set aside.",
+    },
+  },
+  {
+    id: "cs-enzymes-alcohol",
+    scenario: {
+      en: "Among patients whose liver enzyme levels are raised, those who drink heavily have a better short-term prognosis than those who do not. A commentary suggests that in patients with liver damage already established, alcohol may be doing less harm than assumed.",
+    },
+    trap: "collider-stratification",
+    explanation: {
+      en: "Heavy drinking is one cause of raised liver enzymes, and there are others, including liver cancer. A patient with raised enzymes who does not drink is likelier to have one of the others, and those carry a far worse prognosis. So the group defined by raised enzymes contains drinkers who are there for a survivable reason and non-drinkers who are there for a lethal one. The apparent advantage belongs to how the group was assembled, and it would appear even if alcohol did nothing at all.",
+    },
+  },
+  {
+    id: "cs-adjust-for-everything",
+    scenario: {
+      en: "An analyst is asked whether a workplace exposure raises the risk of a lung condition. To be thorough, they put every variable in the dataset into the model, including several recorded at the follow-up visit rather than at baseline, on the grounds that leaving a variable out risks confounding while putting one in cannot do harm.",
+    },
+    trap: "collider-stratification",
+    explanation: {
+      en: "The stated principle is the error. Adjusting for a variable recorded after the exposure can create bias where none existed, if the exposure affects that variable and the variable shares causes with the outcome. Which variables belong in a model is a question about what causes what, decided before the data are opened, and it cannot be answered by including everything available. A larger adjustment set is not a safer one, and the extra variables here are the ones most likely to sit downstream of the exposure.",
+    },
+  },
+  {
+    id: "cs-academy-selection",
+    scenario: {
+      en: "A football club opens a youth academy that substantially improves technical skill and makes selection for the first team far more likely. Among players who reach the first team, academy graduates have lower physical fitness scores than those who came through other routes. A coach concludes that the academy is neglecting fitness.",
+    },
+    trap: "collider-stratification",
+    explanation: {
+      en: "Selection for the first team is caused in part by the academy, so the selected group is assembled differently for the two routes. An academy graduate can be selected on technical skill alone; a player arriving by another route had to be outstanding on something else, and fitness is one of the few things left. Comparing fitness inside the selected group therefore compares the ordinarily fit who had another advantage against the exceptionally fit who needed one. The academy's actual fitness record has to be read across everyone who went through it.",
+    },
+  },
+  {
+    id: "cs-sound-baseline-confounder",
+    scenario: {
+      en: "A cohort study estimates whether a workplace exposure raises the risk of a lung condition. The analysts adjust for smoking status recorded at enrolment, before any of the exposure occurred, on the grounds that smoking causes the condition and that smokers are more likely to take these jobs. They state that they did not adjust for lung function measured during follow-up, because the exposure affects it.",
+    },
+    trap: null,
+    explanation: {
+      en: "Smoking here is measured before the exposure and is a plausible common cause of both the exposure and the outcome, which is the definition of a confounder and exactly what adjustment is for. The analysts have also drawn the distinction that matters, leaving alone a variable that the exposure itself moves. Adjusting for a genuine baseline confounder is not the same act as adjusting for something downstream, and doing the first correctly while explicitly declining the second is what a careful analysis looks like.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

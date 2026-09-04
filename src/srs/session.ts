@@ -70,6 +70,10 @@ export const NAME_OPTIONS = 4;
  * MEANT TO GROW. When review finds a pair that reads as ambiguous, add it.
  */
 export const COUSINS: readonly (readonly [string, string])[] = [
+  ["collider-stratification", "simpsons-paradox"],
+  ["collider-stratification", "berksons-bias"],
+  ["collider-stratification", "table-two-fallacy"],
+  ["collider-stratification", "effect-modification-vs-confounding"],
   ["prevalent-user-bias", "survivorship-bias"],
   ["prevalent-user-bias", "healthy-adherer"],
   ["prevalent-user-bias", "immortal-time-bias"],

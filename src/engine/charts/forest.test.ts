@@ -287,3 +287,57 @@ describe("the schema, on the benchmark it now allows", () => {
     expect(parse(bad).success).toBe(false);
   });
 });
+
+/**
+ * `k` became optional so a forest could draw one study's own subgroup
+ * estimates, where the source prints the ratios and leaves the stratum sizes
+ * inside a figure. Without these tests the field could be made required again,
+ * or the two functions that read it could start treating a missing count as a
+ * zero-weighted row, and every existing puzzle would stay green because all of
+ * them supply one.
+ */
+describe("a forest whose source printed no row counts", () => {
+  const countless: ForestData = {
+    ...data,
+    rows: data.rows.map(({ k: _k, ...rest }) => rest),
+  };
+  const mixed: ForestData = {
+    ...data,
+    rows: data.rows.map((r, i) => (i === 0 ? r : { ...r, k: undefined })),
+  };
+
+  it("is a valid puzzle shape, so a card can ship without counts", () => {
+    expect(PuzzleData.safeParse(countless).success).toBe(true);
+  });
+
+  it("still refuses a count that is present but nonsensical", () => {
+    // Optional must not mean unchecked.
+    const zero = { ...data, rows: [{ ...data.rows[0]!, k: 0 }, ...data.rows.slice(1)] };
+    expect(PuzzleData.safeParse(zero).success).toBe(false);
+  });
+
+  it("carries the absence through to the drawn row rather than inventing a zero", () => {
+    expect(forestRows(countless).every((r) => r.k === undefined)).toBe(true);
+    // A zero would be a claim that no evidence sits behind the row, which is a
+    // different statement from the source not having printed one.
+    expect(forestRows(countless).some((r) => r.k === 0)).toBe(false);
+  });
+
+  it("totals only the rows that carry a count", () => {
+    expect(totalK(mixed, ["pooled", "strong", "weak"])).toBe(100);
+    expect(totalK(countless, ["strong", "weak"])).toBe(0);
+  });
+
+  it("weights the mean by the rows that have weights, and ignores the rest", () => {
+    // Adding a countless row must not move the answer. Note this does NOT
+    // distinguish filtering from zero-weighting, because those are the same
+    // arithmetic; what it pins is the behaviour, which is the part that has to
+    // hold however the function is written.
+    expect(weightedMean(mixed, ["pooled", "strong"])).toBeCloseTo(0.3, 10);
+    expect(weightedMean(mixed, ["pooled"])).toBeCloseTo(0.3, 10);
+  });
+
+  it("refuses a mean over rows that carry no weight at all", () => {
+    expect(() => weightedMean(countless, ["strong", "weak"])).toThrow(/no evidence/);
+  });
+});

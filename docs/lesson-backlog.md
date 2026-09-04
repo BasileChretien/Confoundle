@@ -6932,3 +6932,83 @@ and the lesson and three bank items cover the distinction, but the figure
 cannot draw it: an equivalence test needs a margin either side of the null and
 this shape draws one. If that is wanted as a chart it is a second margin on
 this shape and a separate card.
+
+### 83. Small for a worse reason <!-- skill: collider-stratification -->
+
+**Status: SHIPPED 2026-09-04 as `collider-stratification`, slug
+`small-for-a-worse-reason`, on the EXISTING `forest` shape.** Read at source.
+Not from this queue, which was empty: found by listing the eighty skills the
+deck teaches and asking what classic trap was not among them.
+
+Hernández-Díaz S, Schisterman EF, Hernán MA. The birth weight "paradox"
+uncovered? *American Journal of Epidemiology* 2006;164(11):1115-1120.
+doi 10.1093/aje/kwj275.
+
+#### The data
+
+US 1991 national linked birth/infant-death records. 4,115,494 livebirths, cut
+to **3,001,621** after dropping records with missing birth weight or smoking
+data and dropping California, which recorded no smoking data.
+
+| | rate ratio, smokers vs non-smokers |
+|---|---|
+| Among babies under 2,500 g | **0.79** (95% CI 0.76 to 0.82) |
+| All babies | **1.55** (1.50 to 1.59) |
+| Among babies 2,500 g or more | **1.80** (1.72 to 1.88) |
+| All babies, adjusted for birth weight | **1.09** (1.05 to 1.12) |
+
+Infant mortality 1,235 per 100,000 livebirths for smokers against 805 for
+non-smokers. Low birth weight prevalence 11.4% against 6.4%.
+
+#### Why it is a card
+
+The underweight stratum points the **opposite** way from the population, not
+merely a weaker way, and both facts are on one figure. The reveal is the other
+two rows: normal-weight babies at 1.80, and the adjusted estimate at 1.09,
+which is the same artifact wearing the clothes of ordinary statistical care.
+
+#### Three decisions worth recording
+
+1. **No new shape.** The lesson is that a stratum estimate and the whole
+   disagree, and a plot of exactly those estimates against the null says that.
+   `benchmarkId` names the overall row so the reveal draws it as a line the
+   strata visibly fail to reach. `crossed` was checked and rejected: it is a
+   two by two factorial shape.
+2. **The crossover curves are NOT drawn**, although they are the paradox's
+   visual signature. The paper puts them in a figure with no table behind it,
+   so the per-interval rates would have to be read off a plotted line, which is
+   inventing them.
+3. **Nothing is recomputed from counts**, which departs from this deck's usual
+   rule. The source estimates its ratios by logistic regression, and 1,235
+   divided by 805 is 1.53 rather than the printed 1.55: the rates and the ratio
+   come from different estimators. Both are quoted as printed, neither derived
+   from the other, and a test pins the discrepancy so nobody later "fixes" the
+   card by dividing one published number by another.
+
+#### What it cost the shape
+
+`ForestRow.k` is now **optional**, because the stratum sizes are not printed
+and the alternatives were inventing them or repeating the whole population on a
+row computed from a slice of it. The renderer hides the column when no row
+carries a count, mirroring `heterogeneity`, and reads that from the
+unrestricted rows so the column cannot appear at one beat and vanish at the
+other. `weightedMean` skips countless rows rather than weighting them at zero,
+which is the same arithmetic but a different claim.
+
+#### Neighbour check
+
+Closest shipped card is `simpsons-paradox`, and the difference is the whole
+point: there the lurking variable is a **confounder** and stratifying is the
+fix, here it is caused **by** the exposure and stratifying is what creates the
+reversal. Same picture, opposite remedy, so the two are now paired in
+`COUSINS`, along with `berksons-bias` (selection into the sample rather than
+stratification after it), `table-two-fallacy` and
+`effect-modification-vs-confounding`.
+
+#### Left undone
+
+The eleven Trap Hunt items carry no `spot` annotation. The card also does not
+teach the **fetuses-at-risk** reframing, which is the other published answer to
+the paradox; the lesson mentions neither it nor population-specific birth
+weight standards, on the grounds that a card that opens two disputes teaches
+neither.

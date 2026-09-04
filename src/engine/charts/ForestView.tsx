@@ -28,6 +28,7 @@ function Row({
   color,
   clearsNull,
   k,
+  showK,
   isPooled,
   nullAt,
   benchmarkAt,
@@ -45,7 +46,9 @@ function Row({
   estimate: number;
   color: string;
   clearsNull: boolean;
-  k: number;
+  k: number | undefined;
+  /** Whether the column exists at all, so rows without a count still line up. */
+  showK: boolean;
   isPooled: boolean;
   nullAt: number;
   /** Where the benchmark line falls, or null on a beat that has no benchmark. */
@@ -121,9 +124,11 @@ function Row({
       <span className="w-11 shrink-0 text-right font-mono text-[11px] tabular-nums text-ink">
         {number.format(estimate)}
       </span>
-      <span className="w-8 shrink-0 text-right font-mono text-[10px] tabular-nums text-ink-soft">
-        {count.format(k)}
-      </span>
+      {showK && (
+        <span className="w-8 shrink-0 text-right font-mono text-[10px] tabular-nums text-ink-soft">
+          {k === undefined ? "" : count.format(k)}
+        </span>
+      )}
       {showHeterogeneity && (
         <span className="w-9 shrink-0 text-right font-mono text-[10px] tabular-nums text-ink-soft">
           {heterogeneity === undefined ? "" : percent.format(heterogeneity / 100)}
@@ -186,6 +191,14 @@ export function ForestView({
   const mark = benchmarkRow(data);
   const benchmarkAt = mark ? axisFraction(data, mark.estimate) : null;
   const showHeterogeneity = data.heterogeneityLabel !== undefined;
+  /*
+    READ OFF `full`, NOT `data`. `restrictForest` filters the rows, so asking
+    the restricted copy whether any row carries a count lets the column appear
+    at one beat and vanish at the other, shifting every row's width between the
+    setup and the reveal on a figure whose whole promise is that the two beats
+    are the same picture with more of it shown.
+  */
+  const showK = full.rows.some((r) => r.k !== undefined);
 
   return (
     <div className="flex flex-col gap-2.5">
@@ -204,6 +217,7 @@ export function ForestView({
               color={colorOf(r.id)}
               clearsNull={r.clearsNull}
               k={r.k}
+              showK={showK}
               nullAt={nullAt}
               isPooled={r.isPooled}
               benchmarkAt={benchmarkAt}

@@ -184,7 +184,12 @@ describe("the bands", () => {
     expect(trap[0]!.isCorrect).toBe(false);
     // The trap is reasonable, which is why it works: the correct row pools the
     // FEWEST studies on the figure and has the widest interval.
-    expect(rowAt(data, "incident").k).toBeLessThan(rowAt(data, "prevalent").k);
+    const kOf = (id: string) => {
+      const k = rowAt(data, id).k;
+      expect(k).toBeDefined();
+      return k!;
+    };
+    expect(kOf("incident")).toBeLessThan(kOf("prevalent"));
     const width = (id: string) => rowAt(data, id).ciHigh - rowAt(data, id).ciLow;
     expect(width("incident")).toBeGreaterThan(width("prevalent"));
     expect(width("incident")).toBeGreaterThan(width("mixed"));

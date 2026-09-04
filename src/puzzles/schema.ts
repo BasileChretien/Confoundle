@@ -2152,8 +2152,23 @@ const ForestRow = z.object({
   estimate: z.number(),
   ciLow: z.number(),
   ciHigh: z.number(),
-  /** How many studies or samples sit behind this row. */
-  k: z.number().int().positive(),
+  /**
+   * How many studies or samples sit behind this row.
+   *
+   * OPTIONAL, because not every forest is a meta-analysis. A plot of one
+   * study's own subgroup estimates carries a count per row only if the source
+   * printed the stratum sizes, and several do not: they print the ratios and
+   * leave the denominators inside a figure. Authoring a number anyway would
+   * mean either inventing it or repeating the whole study population on a row
+   * computed from a slice of it, and the second is the more dangerous,
+   * because it looks like a measurement rather than like a gap.
+   *
+   * Optional rather than defaulted, since a `.default()` becomes required on
+   * the inferred type and would force an edit to every existing puzzle. The
+   * renderer hides the column when NO row carries a count, exactly as it
+   * already does for `heterogeneity`.
+   */
+  k: z.number().int().positive().optional(),
   /** Set on the row that pools the others, so the renderer can mark it. */
   isPooled: z.boolean().optional(),
   /**

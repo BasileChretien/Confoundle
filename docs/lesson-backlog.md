@@ -6834,3 +6834,101 @@ or a matrix; it is two models scored on one test set, one of which is allowed
 to see nothing but a label on the door. Consider whether the reveal should
 show the two prevalences as the mechanism rather than as a footnote, since
 that is the number that explains everything else.
+
+### 82. Not worse is not better <!-- skill: non-inferiority -->
+
+**Status: SHIPPED 2026-09-04 as `non-inferiority`, slug
+`not-worse-is-not-better`, on a new `noninferiority` shape.** Sourced and
+reconciled at the paper: the counts are authored and every rate, ratio and
+percentage on the card derives from them.
+
+Gommers J, Hernström V, Josefsson V, Sartor H, Schmidt D, Hjelmgren A, et al.
+Interval cancer, sensitivity, and specificity comparing AI-supported
+mammography screening with standard double reading without AI in the MASAI
+study: a randomised, controlled, non-inferiority, single-blinded,
+population-based, screening-accuracy trial. *The Lancet*
+2026;407(10527):505-514. Read at source.
+
+#### The data
+
+105,934 women randomised between April 2021 and December 2022, 19 excluded,
+leaving 53,043 in the AI-supported arm and 52,872 in the control arm.
+
+| | interval cancers | rate per 1000 |
+|---|---|---|
+| AI-supported reading | 82 of 53,043 | 1.55 (95% CI 1.23 to 1.92) |
+| Standard double reading | 93 of 52,872 | 1.76 (1.42 to 2.15) |
+
+Proportion ratio **0.88 (95% CI 0.65 to 1.18), p = 0.41**, against a
+**prespecified non-inferiority margin of 1.20**. The trial's stated success
+criterion was that the upper bound of the interval fall below 1.20. It did,
+at 1.18.
+
+The secondary that actually reached significance: sensitivity **80.5% (76.4
+to 84.2) against 73.8% (68.9 to 78.3), p = 0.031**, at a specificity of
+98.5% in both arms (p = 0.88).
+
+Funded by the Swedish Cancer Society, the Confederation of Regional Cancer
+Centres and Swedish governmental funding for clinical research. **The trial
+is not vendor-funded**; only the press release quoted below is.
+
+#### Why it is a card
+
+ScreenPoint Medical, which sells the AI product tested, announced that the
+trial "met its primary endpoint with a noninferior reduction of interval
+cancer (12% lower rate)". That is a null finding written in the grammar of a
+demonstrated benefit, and the p value of 0.41 appears nowhere in it. The
+subgroup percentages it goes on to quote (16% fewer invasive, 21% fewer T2+,
+27% fewer non-luminal A) are arithmetically correct conversions of counts the
+paper itself labels "descriptively", the largest of which is 43 against 59.
+
+#### Where it came from
+
+Not from this queue. It came out of a hand-run probe of seven press releases
+against the papers behind them, which is also how the funding error above got
+caught: the first pass of that probe asserted the trial was the vendor's, on
+no evidence beyond the release being the vendor's. Two lessons worth keeping.
+**A release tells you about the release.** And an audit of the deck against
+`exam-syllabus-audit.md` had already flagged this gap; the probe only supplied
+the numbers.
+
+#### What was decided while authoring
+
+1. **A new shape, not `forest`.** Forest needs two rows, its optional
+   benchmark must be some row's own estimate, and its axis has two sides. This
+   needs one estimate, a margin that is not a measurement at all, and three
+   zones. Bending it into `forest` would have produced a reveal that restates
+   the setup.
+2. **The margin carries the direction, so there is no `higherIsWorse` flag.**
+   A non-inferiority margin is by definition the largest tolerable amount of
+   worseness, so it always sits on the worse side of the null. Deriving the
+   direction from where the margin sits makes it impossible for a flag and a
+   figure to disagree. `noninferiority.test.ts` proves it is read rather than
+   assumed by taking one interval and putting the margin on each side, which
+   gives opposite verdicts.
+3. **The framing states the design and the margin.** The reveal draws the
+   confidence interval, so without that the only defensible answer would be
+   that there is no way to tell, and the reveal would be an ambush. The commit
+   beat is answerable by anyone who knows what the design can reach.
+4. **Sensitivity is kept out of the answer bands.** It is the trial's genuinely
+   significant finding, so a band naming it would be a second correct answer.
+   It lives in the lesson, where it does the more useful job of stopping the
+   card teaching cynicism about the trial.
+5. **The schema refuses a ratio the counts do not reproduce.** 82/53,043 over
+   93/52,872 is 0.8788, which rounds to the published 0.88. That check exists
+   to catch the exact error this card is about: a ratio taken from a release
+   and counts taken from a paper.
+
+#### Left undone
+
+The four Trap Hunt items written first carry no `spot` annotation, and nor do
+the seven added to reach the bank's depth floor of ten. Nothing is broken by
+that (11 of about 1,100 items carry one), but this skill is a good candidate:
+the tell is almost always a single clause, and several of these items already
+have it isolated in one sentence.
+
+**Equivalence is taught only in prose.** The audit row is tagged to this card,
+and the lesson and three bank items cover the distinction, but the figure
+cannot draw it: an equivalence test needs a margin either side of the null and
+this shape draws one. If that is wanted as a chart it is a second margin on
+this shape and a separate card.

@@ -1846,6 +1846,78 @@ function ShortcutGlyph() {
     </svg>
   );
 }
+function NoninferiorityGlyph() {
+  const t = useT();
+  const W = 200;
+  const H = 96;
+  /**
+   * One interval against two lines of different kinds: a solid one for no
+   * difference and a dashed one for the margin.
+   *
+   * The interval STRADDLES the solid line and stops short of the dashed one,
+   * which is the whole card in a picture: the trial cleared the line it was
+   * built to clear and not the one a reader hears about. The marker sits on the
+   * favourable side, because that is the number a release quotes.
+   *
+   * Shape-generic wording, since the glyph is chosen by `data.type` and has to
+   * survive whatever the next puzzle on this shape turns out to be about.
+   */
+  const MID = 48;
+  const NULL_X = 104;
+  const MARGIN_X = 158;
+  return (
+    <svg
+      viewBox={`0 0 ${W} ${H}`}
+      width="100%"
+      role="img"
+      aria-label={t({
+        en: "An interval crossing a solid line for no difference and stopping short of a dashed margin",
+      })}
+    >
+      <line
+        x1={NULL_X}
+        y1={16}
+        x2={NULL_X}
+        y2={H - 22}
+        stroke={CARD.text}
+        strokeWidth={1.5}
+        opacity={0.55}
+      />
+      <line
+        x1={MARGIN_X}
+        y1={16}
+        x2={MARGIN_X}
+        y2={H - 22}
+        stroke={CARD.rust}
+        strokeWidth={1.5}
+        strokeDasharray="4 3"
+      />
+      <rect
+        x={34}
+        y={MID - 2}
+        width={110}
+        height={4}
+        rx={2}
+        fill={CARD.teal}
+        opacity={0.45}
+      />
+      <circle
+        cx={72}
+        cy={MID}
+        r={5.5}
+        fill="none"
+        stroke={CARD.teal}
+        strokeWidth={2.5}
+      />
+      <text x={NULL_X - 4} y={H - 8} textAnchor="end" fontSize={9} fill={CARD.rule}>
+        {t({ en: "no difference" })}
+      </text>
+      <text x={MARGIN_X + 4} y={H - 8} textAnchor="start" fontSize={9} fill={CARD.rust}>
+        {t({ en: "margin" })}
+      </text>
+    </svg>
+  );
+}
 function CrossedGlyph() {
   const t = useT();
   const W = 200;
@@ -2501,6 +2573,7 @@ export function ShareCard({
   const competingGlyph = data.type === "competing";
   const classifierGlyph = data.type === "classifier";
   const shortcutGlyph = data.type === "shortcut";
+  const noninferiorityGlyph = data.type === "noninferiority";
   const splitSampleGlyph =
     data.type === "rates" &&
     Boolean(data.strataAreSeparateSamples) &&
@@ -2685,6 +2758,8 @@ export function ShareCard({
               <ClassifierGlyph />
             ) : shortcutGlyph ? (
               <ShortcutGlyph />
+            ) : noninferiorityGlyph ? (
+              <NoninferiorityGlyph />
             ) : null}
           </div>
 

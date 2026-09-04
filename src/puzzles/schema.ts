@@ -4231,7 +4231,152 @@ const ShortcutData = z
   });
 export type ShortcutData = z.infer<typeof ShortcutData>;
 
+/** One arm of a two-arm trial, as counts. Rates are derived, never authored. */
+const NoninferiorityArm = z.object({
+  id: z.string().min(1),
+  label: LocalizedText,
+  /** How many people had the outcome. */
+  events: z.number().int().nonnegative(),
+  /** How many were analysed in this arm. */
+  n: z.number().int().positive(),
+});
+
+const NoninferiorityData = z
+  .object({
+    type: z.literal("noninferiority"),
+    label: LocalizedText, // figure title
+    /** What the ratio is, e.g. "rate ratio". */
+    metricLabel: LocalizedText,
+    /** What is being counted, e.g. "interval cancers". */
+    outcomeLabel: LocalizedText,
+    /** Per how many people the arm rates are printed, e.g. 1000. */
+    per: z.number().positive(),
+    /** Names that denominator on the figure, e.g. "per 1000 screened". */
+    perLabel: LocalizedText,
+    /** The arm under test, and the one it is being compared against. */
+    intervention: NoninferiorityArm,
+    control: NoninferiorityArm,
+    /** The ratio the source prints, on the same scale as the margin. */
+    estimate: z.number().positive(),
+    ciLow: z.number().positive(),
+    ciHigh: z.number().positive(),
+    /** What the source reported for the comparison, e.g. "p = 0.41". */
+    pLabel: LocalizedText.optional(),
+    /** The value meaning no difference: 1 for a ratio. */
+    nullValue: z.number().positive(),
+    nullLabel: LocalizedText,
+    /**
+     * The margin, FIXED BEFORE THE TRIAL RAN, beyond which the intervention
+     * would count as unacceptably worse.
+     *
+     * IT CARRIES THE AXIS'S DIRECTION, which is why this shape needs no
+     * `higherIsWorse` flag. A non-inferiority margin is by definition on the
+     * worse side of the null: it is the largest tolerable amount of worseness.
+     * So `margin > nullValue` means higher is worse, which suits a ratio of an
+     * adverse outcome, and `margin < nullValue` means higher is better, which
+     * suits a ratio of a cure rate. Deriving the direction from where the
+     * margin sits makes it impossible for a flag and a figure to disagree, and
+     * the refinement below refuses the one case that would be ambiguous.
+     */
+    margin: z.number().positive(),
+    marginLabel: LocalizedText,
+    /** The three zones the null and the margin cut the axis into. */
+    inferiorLabel: LocalizedText,
+    noninferiorLabel: LocalizedText,
+    superiorLabel: LocalizedText,
+    /** Axis bounds, authored so both beats share one scale. */
+    axisMin: z.number().positive(),
+    axisMax: z.number().positive(),
+    /** Says on the figure who was studied and where the numbers come from. */
+    cohortNote: LocalizedText,
+  })
+  .superRefine((d, ctx) => {
+    if (d.axisMin >= d.axisMax)
+      ctx.addIssue({
+        code: "custom",
+        path: ["axisMin"],
+        message: `axisMin (${d.axisMin}) must be below axisMax (${d.axisMax})`,
+      });
+
+    for (const key of ["nullValue", "margin"] as const) {
+      const v = d[key];
+      if (v <= d.axisMin || v >= d.axisMax)
+        ctx.addIssue({
+          code: "custom",
+          path: [key],
+          message: `the ${key} line at ${v} must fall inside the axis (${d.axisMin} to ${d.axisMax}), or the reader cannot see which side of it the interval falls`,
+        });
+    }
+
+    /*
+      A MARGIN ON THE NULL IS NOT A NON-INFERIORITY TRIAL. It would make the
+      tolerable amount of worseness zero, which is a superiority test written
+      backwards, and it would leave the shape unable to say which way the axis
+      runs. Refusing is the difference between a figure and a guess.
+    */
+    if (d.margin === d.nullValue)
+      ctx.addIssue({
+        code: "custom",
+        path: ["margin"],
+        message:
+          "the margin sits exactly on the null, so there is no tolerance to test against and no way to tell which side of the axis is worse",
+      });
+
+    if (d.ciLow > d.estimate || d.ciHigh < d.estimate)
+      ctx.addIssue({
+        code: "custom",
+        path: ["estimate"],
+        message: `the estimate ${d.estimate} must lie inside its interval (${d.ciLow} to ${d.ciHigh})`,
+      });
+    if (d.ciLow < d.axisMin || d.ciHigh > d.axisMax)
+      ctx.addIssue({
+        code: "custom",
+        path: ["ciLow"],
+        message: `the interval ${d.ciLow} to ${d.ciHigh} runs outside the axis (${d.axisMin} to ${d.axisMax}), so it would be drawn clipped and read as narrower than it is`,
+      });
+
+    if (d.intervention.id === d.control.id)
+      ctx.addIssue({
+        code: "custom",
+        path: ["control", "id"],
+        message: "the two arms need different ids, or colour and keys collide",
+      });
+    for (const key of ["intervention", "control"] as const) {
+      const arm = d[key];
+      if (arm.events > arm.n)
+        ctx.addIssue({
+          code: "custom",
+          path: [key, "events"],
+          message: `${arm.id}: ${arm.events} events out of ${arm.n} analysed is more events than people`,
+        });
+    }
+
+    /*
+      THE PUBLISHED RATIO MUST REPRODUCE FROM THE COUNTS, and this is the check
+      that catches the nastiest authoring error in this shape: taking the ratio
+      from a press release and the counts from the paper, or from a different
+      analysis of the same trial. Everything the figure draws hangs off the
+      estimate, so if it does not match the arms underneath it then the marker,
+      the interval and the three zones are all placed against numbers the card
+      also prints and contradicts.
+
+      A relative tolerance, because sources print ratios rounded to two places.
+    */
+    const implied =
+      d.control.events === 0
+        ? null
+        : d.intervention.events / d.intervention.n / (d.control.events / d.control.n);
+    if (implied !== null && Math.abs(implied - d.estimate) / d.estimate > 0.01)
+      ctx.addIssue({
+        code: "custom",
+        path: ["estimate"],
+        message: `${d.intervention.events}/${d.intervention.n} against ${d.control.events}/${d.control.n} implies a ratio of ${implied.toFixed(4)}, not the authored ${d.estimate}`,
+      });
+  });
+export type NoninferiorityData = z.infer<typeof NoninferiorityData>;
+
 export const PuzzleData = z.discriminatedUnion("type", [
+  NoninferiorityData,
   ShortcutData,
   ClassifierData,
   ProxyData,
@@ -4371,6 +4516,8 @@ export const DataView = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("everymarker"), ...viewFields }),
   z.object({ kind: z.literal("astrained"), ...viewFields }),
   z.object({ kind: z.literal("asithappened"), ...viewFields }),
+  z.object({ kind: z.literal("asclaimed"), ...viewFields }),
+  z.object({ kind: z.literal("againstmargin"), ...viewFields }),
 ]);
 export type DataView = z.infer<typeof DataView>;
 export type DataViewKind = DataView["kind"];

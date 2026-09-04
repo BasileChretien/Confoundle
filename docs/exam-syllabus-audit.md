@@ -1371,7 +1371,8 @@ Bias and validity terms, printed:
 - lead-time bias
 - length bias
 - publication bias, funnel diagrams
-- reverse causality
+- reverse causality <!-- skill: reverse-causality -->. **SHIPPED** as
+  `thin-and-then-dead`, skill `reverse-causality`, from Whitehall II.
 - regression to the mean
 - intention-to-treat, loss to follow-up
 
@@ -1392,8 +1393,11 @@ Reasoning traps that are not called "bias" but are printed:
   backlog queue, which was empty: the phrase appeared exactly once in the whole
   project, on this line, with no puzzle, no entry and no lead behind it. Worth
   recording for whoever audits next, because the same method should find the
-  rest: **reverse causality** and **non-inferiority and equivalence designs**,
-  both on this list, still look uncovered on the same test.
+  rest: **reverse causality** and **non-inferiority and equivalence designs**
+  were both flagged here by that scan and both have since shipped, the
+  second on 2026-09-04. Neither was in the backlog queue when the scan ran,
+  which is the argument for auditing against this list and not against the
+  queue.
 - internal versus external validity, generalisability, efficacy versus
   effectiveness <!-- skill: cross-site-generalisation -->. **PARTLY COVERED
   2026-09-02** by `it-learned-the-hospital`, skill `cross-site-generalisation`,
@@ -1407,7 +1411,17 @@ Reasoning traps that are not called "bias" but are printed:
   the consolidated table above, because that table is the list of named exam
   bias TERMS audited against four national outlines and no outline names this
   one; recording it here is the honest place.
-- non-inferiority and equivalence designs
+- non-inferiority and equivalence designs <!-- skill: non-inferiority -->.
+  **SHIPPED 2026-09-04** as `not-worse-is-not-better`, skill
+  `non-inferiority`, on the new `noninferiority` shape, from MASAI (Lancet
+  2026;407(10527):505-514); see numbered entry 82 in the backlog. The card
+  covers non-inferiority proper: a margin fixed in advance, a three-zone
+  axis, and the reading that a favourable point estimate from such a trial
+  is not a demonstrated benefit. **Equivalence is covered only in the
+  lesson and the item bank, not by the figure**, since an equivalence test
+  needs a margin on both sides of the null and this shape draws one. Read
+  the claim narrowly: if a future audit wants equivalence taught by a
+  chart, that is a second margin on the same shape and a new card.
 - causal criteria: temporality, dose-response
 
 Cognitive bias, official enumeration, and note **where it sits**: Social

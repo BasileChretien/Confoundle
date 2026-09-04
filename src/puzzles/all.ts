@@ -101,6 +101,7 @@ import { fairnessImpossibility } from "./data/fairness-impossibility.ts";
 import { crossSiteGeneralisation } from "./data/cross-site-generalisation.ts";
 import { prevalentUserBias } from "./data/prevalent-user-bias.ts";
 import { tableTwoFallacy } from "./data/table-two-fallacy.ts";
+import { nonInferiority } from "./data/non-inferiority.ts";
 
 /**
  * The puzzle registry. Adding a puzzle = import its data file and add it to
@@ -188,6 +189,7 @@ const rawPuzzles: unknown[] = [
   crossSiteGeneralisation,
   prevalentUserBias,
   tableTwoFallacy,
+  nonInferiority,
 ];
 
 export const puzzles: PuzzleType[] = rawPuzzles.map((p, i) => {

@@ -54,6 +54,7 @@ import { restrictConditional } from "./conditional";
 import { ClassifierView } from "./ClassifierView";
 import { ShortcutView } from "./ShortcutView.tsx";
 import { restrictShortcut } from "./shortcut.ts";
+import { NoninferiorityView } from "./NoninferiorityView.tsx";
 import { CompetingView } from "./CompetingView";
 import { restrictCompeting } from "./competing";
 import { restrictRaters } from "./raters";
@@ -485,6 +486,17 @@ export function DataViewRenderer({
       return view.kind === "markeronly" || view.kind === "andoutcome" ? (
         <SurrogateView data={data} kind={view.kind} />
       ) : null;
+    case "noninferiority":
+      /*
+        NOT A SLICE-DRAWER. Both beats get the whole dataset; the reveal adds
+        the confidence interval, the margin and the three zones to a plot the
+        setup drew with the point estimate alone. A superset by construction,
+        so no `restrict*` and no `full` prop: every palette slot in the view is
+        a fixed number rather than a position in a list.
+      */
+      return view.kind === "asclaimed" || view.kind === "againstmargin" ? (
+        <NoninferiorityView data={data} kind={view.kind} />
+      ) : null;
     default:
       return null;
   }
@@ -589,6 +601,10 @@ export function scopeLabel(kind: DataViewKind): string {
       return "As it was scored";
     case "whatitsaw":
       return "What it was actually seeing";
+    case "asclaimed":
+      return "As it was announced";
+    case "againstmargin":
+      return "Against the margin";
     case "whenitflagged":
       return "When it raised a flag";
     case "everyoutcome":

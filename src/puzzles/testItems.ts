@@ -11503,6 +11503,117 @@ const items: TestItem[] = [
       en: "A covariate with no path to the exposure has nothing blocked and nothing to lose by the exposure being in the model, so its coefficient can be a total effect. The paper has done the work of saying which case this is rather than leaving a reader to assume all rows are alike. That distinction is the whole substance of the fallacy, and stating it is what makes the row readable.",
     },
   },
+  // ---- Non-inferiority ----
+  {
+    id: "ni-antibiotic-two-points",
+    scenario: {
+      en: "A new antibiotic is compared with the standard one in a randomised trial powered to test non-inferiority against a margin of 10 percentage points, fixed in the protocol before enrolment. Cure rates come out at 87 per cent and 85 per cent, a difference of 2 points with a confidence interval running from minus 4 points to plus 8. The company announces that the new antibiotic is more effective than the standard.",
+    },
+    trap: "non-inferiority",
+    explanation: {
+      en: "The interval contains zero, so the trial did not show a difference in cure rates at all. What it showed is what it was built to show: the unfavourable end, 4 points worse, stays well inside the 10-point margin, so non-inferiority is met. A trial can only support a claim of greater effectiveness when its interval clears the line of no difference entirely, and this one spans it. The 2-point gap is the value most compatible with the data, not a demonstrated advantage.",
+    },
+  },
+  {
+    id: "ni-device-guideline",
+    scenario: {
+      en: "A cardiac device trial reports that it met its primary endpoint of non-inferiority against the established device, with the margin set in the protocol before enrolment and the analysis performed as planned. A guideline committee cites the result as evidence that the new device performs better, and recommends it in preference to the established one on that basis.",
+    },
+    trap: "non-inferiority",
+    explanation: {
+      en: "Meeting a non-inferiority endpoint establishes that the new device is not worse by more than the margin. It says nothing about whether it is better, and it is entirely compatible with the new device being somewhat worse, so long as the shortfall stays inside what the margin allows. Preferring the new device may well be right on other grounds, cost or ease of implantation among them, but the trial cannot supply the reason the committee actually gave for it.",
+    },
+  },
+  {
+    id: "ni-generation-chain",
+    scenario: {
+      en: "A third-generation treatment is licensed after a trial showing it non-inferior to the second-generation one, against a margin of 10 per cent. The second generation had itself been licensed on non-inferiority to the first, on the same margin, and only the first generation was ever compared with placebo. Every trial met its margin and every margin was fixed in advance. A review concludes that all three treatments work about equally well.",
+    },
+    trap: "non-inferiority",
+    explanation: {
+      en: "Each step in the chain permitted a loss of up to 10 per cent against the step before it, and those permitted losses accumulate. Three links, each individually acceptable, can leave the newest treatment substantially worse than the original while no single trial ever showed it to be worse at all. This is the reason non-inferiority claims are anchored to a common reference wherever it is possible, and the reason a chain of them is not equivalent to a comparison with the treatment at the start of the chain.",
+    },
+  },
+  {
+    id: "ni-margin-widened",
+    scenario: {
+      en: "A trial protocol sets a non-inferiority margin of 5 percentage points. The results come in with a confidence interval whose unfavourable end reaches 7 points. The statistical analysis plan is amended, the margin is restated as 10 points with a paragraph explaining why that is clinically acceptable, and the paper reports that non-inferiority was demonstrated.",
+    },
+    trap: "non-inferiority",
+    explanation: {
+      en: "A margin is a statement about how much worse would still be acceptable, and it only means anything if it is fixed before anyone knows which side of it the answer falls. Chosen afterwards, it stops being a test and becomes a description: any result can be declared non-inferior by nominating a margin beyond it. The reasoning offered for 10 points may even be sound in itself, but it arrived after the number it was chosen to accommodate, and the trial no longer had a threshold it could fail.",
+    },
+  },
+  {
+    id: "ni-equivalence-claimed",
+    scenario: {
+      en: "A trial is designed to test whether a new formulation is not worse than the established one by more than a prespecified margin. The unfavourable end of the confidence interval falls inside that margin, and the trial reports success. The discussion concludes that the two formulations are equivalent and may be used interchangeably.",
+    },
+    trap: "non-inferiority",
+    explanation: {
+      en: "Non-inferiority is a one-directional claim: the new formulation is not worse by more than the margin. Equivalence is two-directional and requires the interval to sit inside a margin on both sides, which is a harder test and was not the one performed here. This trial is entirely compatible with the new formulation being appreciably better as well as slightly worse, and neither has been ruled out. Interchangeability is a stronger claim still, and rests on a comparison the design never made.",
+    },
+  },
+  {
+    id: "ni-assay-sensitivity",
+    scenario: {
+      en: "A new drug is tested for non-inferiority against an established one with a margin of 8 percentage points on response rate. The established drug's own advantage over placebo, in the trials that licensed it, was about 6 percentage points. The new drug's interval falls inside the 8-point margin and non-inferiority is declared.",
+    },
+    trap: "non-inferiority",
+    explanation: {
+      en: "The margin is wider than the entire benefit the comparator was ever shown to have. A drug can therefore sit inside this margin while being no better than placebo, which means the trial cannot distinguish a working treatment from an inert one. A margin has to be small enough that preserving it preserves some of the reference treatment's own effect, and this one is not. Success here is a fact about the width of the margin rather than about the drug.",
+    },
+  },
+  {
+    id: "ni-margin-crossed-reported-similar",
+    scenario: {
+      en: "A trial compares a shorter course of treatment with the standard course, testing non-inferiority against a margin of 10 percentage points fixed in the protocol. The unfavourable end of the confidence interval reaches 13 points. The abstract reports that outcomes were similar in the two groups and that no significant difference was found.",
+    },
+    trap: "non-inferiority",
+    explanation: {
+      en: "This trial failed its own test. The interval reaches past the margin, so the data remain compatible with the shorter course being worse by more than the amount the investigators themselves called unacceptable. Reporting that no significant difference was found describes a comparison the trial was not designed around, and it converts a failure into a null result, which sounds reassuring. The correct summary is that non-inferiority was not established.",
+    },
+  },
+  {
+    id: "ni-point-estimate-inside",
+    scenario: {
+      en: "A trial testing non-inferiority against a margin of 6 percentage points reports a difference of 2 points against the new treatment, with a confidence interval whose unfavourable end reaches 9 points. The paper notes that the observed difference of 2 points is well within the prespecified margin and concludes that non-inferiority was met.",
+    },
+    trap: "non-inferiority",
+    explanation: {
+      en: "The test is on the confidence interval, not on the point estimate. Comparing the observed difference with the margin ignores everything the trial says about how uncertain that difference is, and a wide enough interval will always contain a point estimate that looks comfortable. Here the interval reaches 9 points, so the data are consistent with a shortfall half again as large as the margin allows, and non-inferiority has not been shown.",
+    },
+  },
+  {
+    id: "ni-no-prespecified-margin",
+    scenario: {
+      en: "A trial compares two surgical approaches with no non-inferiority margin named in its protocol or its registration. When the results show a small and statistically non-significant difference, the authors write that the new approach can be considered non-inferior to the old one, and the accompanying editorial repeats the phrase.",
+    },
+    trap: "non-inferiority",
+    explanation: {
+      en: "There is no such thing as non-inferiority without a margin, because the claim is precisely that the shortfall is smaller than some stated amount. Without one, nothing has been tested and the word is doing rhetorical work only. A small difference that fails to reach significance is not evidence that the two approaches are close: it is compatible with a difference large enough to matter, and how large is exactly the question a margin exists to make answerable in advance.",
+    },
+  },
+  {
+    id: "ni-relative-margin-common-outcome",
+    scenario: {
+      en: "A trial sets its non-inferiority margin as a 20 per cent relative increase in the rate of the primary outcome. That outcome occurs in about 40 per cent of patients on the standard treatment, so the margin permits the new treatment to reach 48 per cent. The result falls inside the margin and the summary reports that the new treatment performed as well as the standard.",
+    },
+    trap: "non-inferiority",
+    explanation: {
+      en: "A relative margin translates into an absolute one through the event rate, and on a common outcome the translation is unforgiving: 20 per cent relative here means eight more patients in every hundred suffering the outcome. That may be a defensible trade for a treatment that is cheaper or easier to take, but it is a trade, and reporting the result as performing as well as the standard conceals the size of what was traded away. The relative form of the margin is what makes it sound smaller than it is.",
+    },
+  },
+  {
+    id: "ni-sound-once-daily",
+    scenario: {
+      en: "A trial comparing a once-daily drug with an established twice-daily one is designed to test non-inferiority, with the margin fixed in the protocol. The result falls inside the margin, and the interval also crosses the line of no difference. The authors report that non-inferiority was met, state plainly that the trial was not designed to detect superiority and does not claim it, and give the simpler once-daily schedule as the reason for preferring the new drug.",
+    },
+    trap: null,
+    explanation: {
+      en: "Every claim here sits at the level the design supports. Non-inferiority is asserted and superiority is explicitly disclaimed rather than quietly implied, the margin was fixed before the data existed rather than chosen to fit them, and the reason offered for preferring the new drug is a convenience advantage the trial did not need to measure. That an interval crosses the line of no difference is expected in this design and is not itself a defect, since the question asked was whether the new drug falls short by too much.",
+    },
+  },
 ];
 
 /** Fail fast on malformed items, same contract discipline as puzzles. */

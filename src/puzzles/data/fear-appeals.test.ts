@@ -91,7 +91,11 @@ describe("the finding the puzzle turns on, derived not asserted", () => {
 describe("the reconciliation, which is a check and not an identity", () => {
   it("sums the two subgroups to 246 against a printed 248, and says so", () => {
     expect(totalK(data, ["with-advice", "without-advice"])).toBe(CLASSIFIED_ON_EFFICACY);
-    expect(rowAt(data, "overall").k - CLASSIFIED_ON_EFFICACY).toBe(2);
+    // `k` is optional on the shape now, so the count this card reconciles
+    // against has to be asserted present rather than assumed.
+    const overallK = rowAt(data, "overall").k;
+    expect(overallK).toBeDefined();
+    expect(overallK! - CLASSIFIED_ON_EFFICACY).toBe(2);
     expect(fearAppeals.provenance.note?.en ?? "").toContain("two samples are unclassified");
   });
 

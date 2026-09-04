@@ -894,11 +894,26 @@ Two new leads checked on 2026-07-29, both failing the rules:
   the contested-science and partisan ground the project excludes, and the
   outcomes are convincingness ratings and investment amounts rather than counts.
 - **Visualization guardrails: designing interventions against cherry-picking in
-  interactive data explorers. CHI 2025. doi 10.1145/3706598.3713385.** Could not
-  be read here: unlike Pandey, this one is not free access and ACM returned 403
-  to an unauthenticated fetch. 160 participants, four scenarios, outcomes again
-  convincingness and investment amounts. Worth one look through institutional
-  access, but the outcome type already points at the same wall.
+  interactive data explorers. CHI 2025. doi 10.1145/3706598.3713385.**
+  **READ AT SOURCE 2026-09-04 AND REFUSED.** The ACM record is behind a bot
+  check, but the authors host a preprint at
+  `sci.utah.edu/~vdl/papers/2024_preprint_guardrails.pdf`, which was read in
+  full. The earlier prediction was right on both counts and wrong about why it
+  matters. The four scenarios are two viral-outbreak and two stock-investment,
+  so half are the contested-science ground the project excludes and half are
+  investment amounts. The outcomes are a mean monetary decision and Likert
+  ratings, with only one count in the paper (38 per cent of participants did not
+  notice the guardrails and a further 23 per cent noticed without understanding
+  them).
+
+  But the decisive objection is one nobody had recorded: **this is a paper about
+  a remedy, not about the trap.** It measures whether a UI intervention makes
+  readers sceptical, and mostly finds that it does not; the authors' own summary
+  is that guardrails work "in a subset of experimental conditions". A card needs
+  a source that DEMONSTRATES the reasoning error with numbers a figure can draw,
+  and a failed intervention against an error demonstrates neither. Do not
+  re-check this one. Cherry-picked baselines still needs a source in which
+  somebody is shown a truncated baseline and gets the question wrong.
 
 ### Illusory truth: sourced, verified, non-partisan, and SHIPPED
 

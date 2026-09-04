@@ -20,7 +20,8 @@ export type ForestBar = {
   estimate: number;
   ciLow: number;
   ciHigh: number;
-  k: number;
+  /** Absent when the source printed no count for this row. */
+  k?: number;
   isPooled: boolean;
   /** Where the row sits relative to the null line. */
   side: "better" | "worse" | "null";
@@ -123,15 +124,20 @@ export function intervalsDisjoint(data: ForestData, aId: string, bId: string): b
  * source did not.
  */
 export function weightedMean(data: ForestData, ids: string[]): number {
+  // A row whose source printed no count contributes nothing. `?? 0` gives it
+  // zero weight, which is arithmetically identical to filtering it out, so
+  // there is no filter here: the version that had one read as though the two
+  // differed. The existing throw already covers the case where NO row in the
+  // set carries a count, since the weights then sum to zero.
   const rows = ids.map((id) => rowOf(data, id));
-  const totalK = rows.reduce((s, r) => s + r.k, 0);
+  const totalK = rows.reduce((s, r) => s + (r.k ?? 0), 0);
   if (totalK === 0) throw new Error("no evidence behind those rows");
-  return rows.reduce((s, r) => s + r.k * r.estimate, 0) / totalK;
+  return rows.reduce((s, r) => s + (r.k ?? 0) * r.estimate, 0) / totalK;
 }
 
 /** Total studies behind a set of rows, for reconciling against a printed total. */
 export function totalK(data: ForestData, ids: string[]): number {
-  return ids.map((id) => rowOf(data, id)).reduce((s, r) => s + r.k, 0);
+  return ids.map((id) => rowOf(data, id)).reduce((s, r) => s + (r.k ?? 0), 0);
 }
 
 /** Fraction of the axis at which a value sits, for the renderer. */
